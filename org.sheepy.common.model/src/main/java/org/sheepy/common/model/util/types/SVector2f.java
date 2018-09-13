@@ -1,20 +1,20 @@
 package org.sheepy.common.model.util.types;
 
-public class Point2f implements Cloneable, Comparable<Point2f>
+public class SVector2f implements Cloneable, Comparable<SVector2f>
 {
 	public float x;
 	public float y;
 
 	
-	public static final Point2f ZERO_POINT = new Point2f(0, 0);
+	public static final SVector2f ZERO_POINT = new SVector2f(0, 0);
 	
-	public Point2f()
+	public SVector2f()
 	{
 		x = 0;
 		y = 0;
 	}
 
-	public Point2f(float x, float y)
+	public SVector2f(float x, float y)
 	{
 		this.x = x;
 		this.y = y;
@@ -75,13 +75,13 @@ public class Point2f implements Cloneable, Comparable<Point2f>
 		return orientation;
 	}
 
-	public float getXProjection(Point2f vector, float yTarget)
+	public float getXProjection(SVector2f vector, float yTarget)
 	{
 		// C'est pas trop cool cette simplification ?
 		return x + (((yTarget - y) / vector.y) * vector.x);
 	}
 
-	public float getYProjection(Point2f vector, float xTarget)
+	public float getYProjection(SVector2f vector, float xTarget)
 	{
 		// Bien sûr que oui !!
 		return y + (((xTarget - x) / vector.x) * vector.y);
@@ -102,9 +102,9 @@ public class Point2f implements Cloneable, Comparable<Point2f>
 	}
 
 	@Override
-	public Point2f clone()
+	public SVector2f clone()
 	{
-		return new Point2f(x, y);
+		return new SVector2f(x, y);
 	}
 
 	@Override
@@ -126,7 +126,7 @@ public class Point2f implements Cloneable, Comparable<Point2f>
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Point2f other = (Point2f) obj;
+		SVector2f other = (SVector2f) obj;
 		if (Float.floatToIntBits(x) != Float.floatToIntBits(other.x))
 			return false;
 		if (Float.floatToIntBits(y) != Float.floatToIntBits(other.y))
@@ -134,7 +134,7 @@ public class Point2f implements Cloneable, Comparable<Point2f>
 		return true;
 	}
 
-	public static int compare(Point2f o1, Point2f o2)
+	public static int compare(SVector2f o1, SVector2f o2)
 	{
 		int res = Float.compare(o2.y, o1.y);
 		
@@ -145,7 +145,7 @@ public class Point2f implements Cloneable, Comparable<Point2f>
 	}
 
 	@Override
-	public int compareTo(Point2f o)
+	public int compareTo(SVector2f o)
 	{
 		return compare(this, o);
 	}

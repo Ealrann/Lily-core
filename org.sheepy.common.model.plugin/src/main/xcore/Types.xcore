@@ -5,21 +5,21 @@
 
 package org.sheepy.common.model.types
 
-import org.sheepy.common.model.util.types.Point2f
-import org.sheepy.common.model.util.types.Point2i
+import org.sheepy.common.model.util.types.SVector2f
+import org.sheepy.common.model.util.types.SVector2i
 
 
 //class PositionObject
 //{
-//	LPoint position = "0;0"
+//	SVector2i position = "0;0"
 //}
 
 //class PositionFObject
 //{
-//	LPointF position = "0;0"
+//	SVector2i position = "0;0"
 //}
 
-type LPointF wraps Point2f
+type SVector2f wraps SVector2f
 create
 {
 	if(it !== null)
@@ -27,10 +27,10 @@ create
 		val String[] split = it.split(";")
 		if(split.length == 2)
 		{
-			return new Point2f(Float.valueOf(split.get(0)), Float.valueOf(split.get(1)))
+			return new SVector2f(Float.valueOf(split.get(0)), Float.valueOf(split.get(1)))
 		}
 	}
-	return new Point2f(0, 0)
+	return new SVector2f(0, 0)
 }
 convert
 {
@@ -54,12 +54,12 @@ interface Parameter
 
 interface PositionParameter extends Parameter
 {
-	op LPoint getPosition()
+	op SVector2i getPosition()
 }
 
 interface PositionFParameter extends Parameter
 {
-	op LPointF getPosition()
+	op SVector2f getPosition()
 }
 
 interface NativeParameter<T> extends Parameter
@@ -98,7 +98,7 @@ class BooleanParameter extends NativeParameter<Boolean>
 }
 
 
-type LPoint wraps Point2i
+type SVector2i wraps SVector2i
 create
 {
 	if(it !== null)
@@ -106,10 +106,10 @@ create
 		val String[] split = it.split(";")
 		if(split.length == 2)
 		{
-			return new Point2i(Integer.valueOf(split.get(0)), Integer.valueOf(split.get(1)))
+			return new SVector2i(Integer.valueOf(split.get(0)), Integer.valueOf(split.get(1)))
 		}
 	}
-	return new Point2i(0, 0)
+	return new SVector2i(0, 0)
 }
 convert
 {

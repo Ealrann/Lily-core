@@ -2,7 +2,7 @@
  */
 package org.sheepy.common.model.types;
 
-import org.sheepy.common.model.util.types.Point2i;
+import org.sheepy.common.model.util.types.SVector2i;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,9 +19,9 @@ public interface PositionParameter extends Parameter
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation" dataType="org.sheepy.common.model.types.LPoint" unique="false"
+	 * @model kind="operation" dataType="org.sheepy.common.model.types.SVector2i" unique="false"
 	 * @generated
 	 */
-	Point2i getPosition();
+	SVector2i getPosition();
 
 } // PositionParameter

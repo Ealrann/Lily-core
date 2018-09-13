@@ -12,8 +12,8 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import org.sheepy.common.model.types.*;
-import org.sheepy.common.model.util.types.Point2f;
-import org.sheepy.common.model.util.types.Point2i;
+import org.sheepy.common.model.util.types.SVector2f;
+import org.sheepy.common.model.util.types.SVector2i;
 
 /**
  * <!-- begin-user-doc -->
@@ -103,10 +103,10 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				return createEMouseButtonFromString(eDataType, initialValue);
 			case TypesPackage.EKEY_STATE:
 				return createEKeyStateFromString(eDataType, initialValue);
-			case TypesPackage.LPOINT_F:
-				return createLPointFFromString(eDataType, initialValue);
-			case TypesPackage.LPOINT:
-				return createLPointFromString(eDataType, initialValue);
+			case TypesPackage.SVECTOR2F:
+				return createSVector2fFromString(eDataType, initialValue);
+			case TypesPackage.SVECTOR2I:
+				return createSVector2iFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -140,10 +140,10 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				return convertEMouseButtonToString(eDataType, instanceValue);
 			case TypesPackage.EKEY_STATE:
 				return convertEKeyStateToString(eDataType, instanceValue);
-			case TypesPackage.LPOINT_F:
-				return convertLPointFToString(eDataType, instanceValue);
-			case TypesPackage.LPOINT:
-				return convertLPointToString(eDataType, instanceValue);
+			case TypesPackage.SVECTOR2F:
+				return convertSVector2fToString(eDataType, instanceValue);
+			case TypesPackage.SVECTOR2I:
+				return convertSVector2iToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -385,7 +385,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Point2f createLPointF(final String it)
+	public SVector2f createSVector2f(final String it)
 	{
 		if ((it != null))
 		{
@@ -396,10 +396,10 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 			{
 				Float _valueOf = Float.valueOf(split[0]);
 				Float _valueOf_1 = Float.valueOf(split[1]);
-				return new Point2f((_valueOf).floatValue(), (_valueOf_1).floatValue());
+				return new SVector2f((_valueOf).floatValue(), (_valueOf_1).floatValue());
 			}
 		}
-		return new Point2f(0, 0);
+		return new SVector2f(0, 0);
 	}
 
 	/**
@@ -407,9 +407,9 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Point2f createLPointFFromString(EDataType eDataType, String initialValue)
+	public SVector2f createSVector2fFromString(EDataType eDataType, String initialValue)
 	{
-		return createLPointF(initialValue);
+		return createSVector2f(initialValue);
 	}
 
 	/**
@@ -417,7 +417,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertLPointF(final Point2f it)
+	public String convertSVector2f(final SVector2f it)
 	{
 		String _plus = (Float.valueOf(it.x) + ";");
 		return (_plus + Float.valueOf(it.y));
@@ -428,9 +428,9 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertLPointFToString(EDataType eDataType, Object instanceValue)
+	public String convertSVector2fToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertLPointF((Point2f)instanceValue);
+		return convertSVector2f((SVector2f)instanceValue);
 	}
 
 	/**
@@ -438,7 +438,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Point2i createLPoint(final String it)
+	public SVector2i createSVector2i(final String it)
 	{
 		if ((it != null))
 		{
@@ -449,10 +449,10 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 			{
 				Integer _valueOf = Integer.valueOf(split[0]);
 				Integer _valueOf_1 = Integer.valueOf(split[1]);
-				return new Point2i((_valueOf).intValue(), (_valueOf_1).intValue());
+				return new SVector2i((_valueOf).intValue(), (_valueOf_1).intValue());
 			}
 		}
-		return new Point2i(0, 0);
+		return new SVector2i(0, 0);
 	}
 
 	/**
@@ -460,9 +460,9 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Point2i createLPointFromString(EDataType eDataType, String initialValue)
+	public SVector2i createSVector2iFromString(EDataType eDataType, String initialValue)
 	{
-		return createLPoint(initialValue);
+		return createSVector2i(initialValue);
 	}
 
 	/**
@@ -470,7 +470,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertLPoint(final Point2i it)
+	public String convertSVector2i(final SVector2i it)
 	{
 		String _plus = (Integer.valueOf(it.x) + ";");
 		return (_plus + Integer.valueOf(it.y));
@@ -481,9 +481,9 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertLPointToString(EDataType eDataType, Object instanceValue)
+	public String convertSVector2iToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertLPoint((Point2i)instanceValue);
+		return convertSVector2i((SVector2i)instanceValue);
 	}
 
 	/**

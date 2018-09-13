@@ -33,8 +33,8 @@ import org.sheepy.common.model.types.PositionParameter;
 import org.sheepy.common.model.types.StringParameter;
 import org.sheepy.common.model.types.TypesFactory;
 import org.sheepy.common.model.types.TypesPackage;
-import org.sheepy.common.model.util.types.Point2f;
-import org.sheepy.common.model.util.types.Point2i;
+import org.sheepy.common.model.util.types.SVector2f;
+import org.sheepy.common.model.util.types.SVector2i;
 
 /**
  * <!-- begin-user-doc -->
@@ -168,14 +168,14 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType lPointFEDataType = null;
+	private EDataType sVector2fEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType lPointEDataType = null;
+	private EDataType sVector2iEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -518,9 +518,9 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EDataType getLPointF()
+	public EDataType getSVector2f()
 	{
-		return lPointFEDataType;
+		return sVector2fEDataType;
 	}
 
 	/**
@@ -528,9 +528,9 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EDataType getLPoint()
+	public EDataType getSVector2i()
 	{
-		return lPointEDataType;
+		return sVector2iEDataType;
 	}
 
 	/**
@@ -601,8 +601,8 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		eKeyStateEEnum = createEEnum(EKEY_STATE);
 
 		// Create data types
-		lPointFEDataType = createEDataType(LPOINT_F);
-		lPointEDataType = createEDataType(LPOINT);
+		sVector2fEDataType = createEDataType(SVECTOR2F);
+		sVector2iEDataType = createEDataType(SVECTOR2I);
 	}
 
 	/**
@@ -662,11 +662,11 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 
 		initEClass(positionParameterEClass, PositionParameter.class, "PositionParameter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getPositionParameter__GetPosition(), this.getLPoint(), "getPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getPositionParameter__GetPosition(), this.getSVector2i(), "getPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(positionFParameterEClass, PositionFParameter.class, "PositionFParameter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getPositionFParameter__GetPosition(), this.getLPointF(), "getPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getPositionFParameter__GetPosition(), this.getSVector2f(), "getPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(nativeParameterEClass, NativeParameter.class, "NativeParameter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -739,8 +739,8 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		addEEnumLiteral(eKeyStateEEnum, EKeyState.RELEASED);
 
 		// Initialize data types
-		initEDataType(lPointFEDataType, Point2f.class, "LPointF", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(lPointEDataType, Point2i.class, "LPoint", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(sVector2fEDataType, SVector2f.class, "SVector2f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(sVector2iEDataType, SVector2i.class, "SVector2i", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

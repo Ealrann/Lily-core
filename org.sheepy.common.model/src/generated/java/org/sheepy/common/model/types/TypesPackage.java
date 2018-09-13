@@ -465,25 +465,24 @@ public interface TypesPackage extends EPackage
 	int EKEY_STATE = 16;
 
 	/**
-	 * The meta object id for the '<em>LPoint F</em>' data type.
+	 * The meta object id for the '<em>SVector2f</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.util.types.Point2f
-	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getLPointF()
+	 * @see org.sheepy.common.model.util.types.SVector2f
+	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getSVector2f()
 	 * @generated
 	 */
-	int LPOINT_F = 17;
+	int SVECTOR2F = 17;
 
 	/**
-	 * The meta object id for the '<em>LPoint</em>' data type.
+	 * The meta object id for the '<em>SVector2i</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.util.types.Point2i
-	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getLPoint()
+	 * @see org.sheepy.common.model.util.types.SVector2i
+	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getSVector2i()
 	 * @generated
 	 */
-	int LPOINT = 18;
-
+	int SVECTOR2I = 18;
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.common.model.types.LNamedElement <em>LNamed Element</em>}'.
@@ -760,28 +759,28 @@ public interface TypesPackage extends EPackage
 	EEnum getEKeyState();
 
 	/**
-	 * Returns the meta object for data type '{@link org.sheepy.common.model.util.types.Point2f <em>LPoint F</em>}'.
+	 * Returns the meta object for data type '{@link org.sheepy.common.model.util.types.SVector2f <em>SVector2f</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>LPoint F</em>'.
-	 * @see org.sheepy.common.model.util.types.Point2f
-	 * @model instanceClass="org.sheepy.common.model.util.types.Point2f"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel create='if ((it != null))\n{\n\tfinal &lt;%java.lang.String%&gt;[] split = it.split(\";\");\n\tint _length = split.length;\n\tboolean _equals = (_length == 2);\n\tif (_equals)\n\t{\n\t\t&lt;%java.lang.Float%&gt; _valueOf = &lt;%java.lang.Float%&gt;.valueOf(split[0]);\n\t\t&lt;%java.lang.Float%&gt; _valueOf_1 = &lt;%java.lang.Float%&gt;.valueOf(split[1]);\n\t\treturn new &lt;%org.sheepy.common.model.util.types.Point2f%&gt;((_valueOf).floatValue(), (_valueOf_1).floatValue());\n\t}\n}\nreturn new &lt;%org.sheepy.common.model.util.types.Point2f%&gt;(0, 0);' convert='&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Float%&gt;.valueOf(it.x) + \";\");\nreturn (_plus + &lt;%java.lang.Float%&gt;.valueOf(it.y));'"
+	 * @return the meta object for data type '<em>SVector2f</em>'.
+	 * @see org.sheepy.common.model.util.types.SVector2f
+	 * @model instanceClass="org.sheepy.common.model.util.types.SVector2f"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel create='if ((it != null))\n{\n\tfinal &lt;%java.lang.String%&gt;[] split = it.split(\";\");\n\tint _length = split.length;\n\tboolean _equals = (_length == 2);\n\tif (_equals)\n\t{\n\t\t&lt;%java.lang.Float%&gt; _valueOf = &lt;%java.lang.Float%&gt;.valueOf(split[0]);\n\t\t&lt;%java.lang.Float%&gt; _valueOf_1 = &lt;%java.lang.Float%&gt;.valueOf(split[1]);\n\t\treturn new &lt;%org.sheepy.common.model.util.types.SVector2f%&gt;((_valueOf).floatValue(), (_valueOf_1).floatValue());\n\t}\n}\nreturn new &lt;%org.sheepy.common.model.util.types.SVector2f%&gt;(0, 0);' convert='&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Float%&gt;.valueOf(it.x) + \";\");\nreturn (_plus + &lt;%java.lang.Float%&gt;.valueOf(it.y));'"
 	 * @generated
 	 */
-	EDataType getLPointF();
+	EDataType getSVector2f();
 
 	/**
-	 * Returns the meta object for data type '{@link org.sheepy.common.model.util.types.Point2i <em>LPoint</em>}'.
+	 * Returns the meta object for data type '{@link org.sheepy.common.model.util.types.SVector2i <em>SVector2i</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>LPoint</em>'.
-	 * @see org.sheepy.common.model.util.types.Point2i
-	 * @model instanceClass="org.sheepy.common.model.util.types.Point2i"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel create='if ((it != null))\n{\n\tfinal &lt;%java.lang.String%&gt;[] split = it.split(\";\");\n\tint _length = split.length;\n\tboolean _equals = (_length == 2);\n\tif (_equals)\n\t{\n\t\t&lt;%java.lang.Integer%&gt; _valueOf = &lt;%java.lang.Integer%&gt;.valueOf(split[0]);\n\t\t&lt;%java.lang.Integer%&gt; _valueOf_1 = &lt;%java.lang.Integer%&gt;.valueOf(split[1]);\n\t\treturn new &lt;%org.sheepy.common.model.util.types.Point2i%&gt;((_valueOf).intValue(), (_valueOf_1).intValue());\n\t}\n}\nreturn new &lt;%org.sheepy.common.model.util.types.Point2i%&gt;(0, 0);' convert='&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Integer%&gt;.valueOf(it.x) + \";\");\nreturn (_plus + &lt;%java.lang.Integer%&gt;.valueOf(it.y));'"
+	 * @return the meta object for data type '<em>SVector2i</em>'.
+	 * @see org.sheepy.common.model.util.types.SVector2i
+	 * @model instanceClass="org.sheepy.common.model.util.types.SVector2i"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel create='if ((it != null))\n{\n\tfinal &lt;%java.lang.String%&gt;[] split = it.split(\";\");\n\tint _length = split.length;\n\tboolean _equals = (_length == 2);\n\tif (_equals)\n\t{\n\t\t&lt;%java.lang.Integer%&gt; _valueOf = &lt;%java.lang.Integer%&gt;.valueOf(split[0]);\n\t\t&lt;%java.lang.Integer%&gt; _valueOf_1 = &lt;%java.lang.Integer%&gt;.valueOf(split[1]);\n\t\treturn new &lt;%org.sheepy.common.model.util.types.SVector2i%&gt;((_valueOf).intValue(), (_valueOf_1).intValue());\n\t}\n}\nreturn new &lt;%org.sheepy.common.model.util.types.SVector2i%&gt;(0, 0);' convert='&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Integer%&gt;.valueOf(it.x) + \";\");\nreturn (_plus + &lt;%java.lang.Integer%&gt;.valueOf(it.y));'"
 	 * @generated
 	 */
-	EDataType getLPoint();
+	EDataType getSVector2i();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1058,24 +1057,24 @@ public interface TypesPackage extends EPackage
 		EEnum EKEY_STATE = eINSTANCE.getEKeyState();
 
 		/**
-		 * The meta object literal for the '<em>LPoint F</em>' data type.
+		 * The meta object literal for the '<em>SVector2f</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.util.types.Point2f
-		 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getLPointF()
+		 * @see org.sheepy.common.model.util.types.SVector2f
+		 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getSVector2f()
 		 * @generated
 		 */
-		EDataType LPOINT_F = eINSTANCE.getLPointF();
+		EDataType SVECTOR2F = eINSTANCE.getSVector2f();
 
 		/**
-		 * The meta object literal for the '<em>LPoint</em>' data type.
+		 * The meta object literal for the '<em>SVector2i</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.util.types.Point2i
-		 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getLPoint()
+		 * @see org.sheepy.common.model.util.types.SVector2i
+		 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getSVector2i()
 		 * @generated
 		 */
-		EDataType LPOINT = eINSTANCE.getLPoint();
+		EDataType SVECTOR2I = eINSTANCE.getSVector2i();
 
 	}
 

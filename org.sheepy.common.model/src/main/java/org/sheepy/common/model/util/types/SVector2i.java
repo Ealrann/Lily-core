@@ -1,17 +1,17 @@
 package org.sheepy.common.model.util.types;
 
-public class Point2i implements Cloneable
+public class SVector2i implements Cloneable
 {
 	public int x;
 	public int y;
 
-	public Point2i()
+	public SVector2i()
 	{
 		this.x = 0;
 		this.y = 0;
 	}
 	
-	public Point2i(int x, int y)
+	public SVector2i(int x, int y)
 	{
 		this.x = x;
 		this.y = y;
@@ -38,12 +38,12 @@ public class Point2i implements Cloneable
 	}
 	
 	@Override
-	public Point2i clone()
+	public SVector2i clone()
 	{
-		return new Point2i(x, y);
+		return new SVector2i(x, y);
 	}
 	
-	public float distanceSquare(Point2i target)
+	public float distanceSquare(SVector2i target)
 	{
 		return (target.x - x) * (target.x - x) 
 				+ (target.y - y) * (target.y - y);
@@ -83,7 +83,7 @@ public class Point2i implements Cloneable
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Point2i other = (Point2i) obj;
+		SVector2i other = (SVector2i) obj;
 		if (x != other.x)
 			return false;
 		if (y != other.y)
