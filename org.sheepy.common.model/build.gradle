@@ -12,19 +12,19 @@ if (project.hasProperty('javaModule')) {
 project.ext.emfVersion = "2.12.0"
 
 dependencies {
-    api "org.eclipse.emf:org.eclipse.emf.ecore:${emfVersion}"
-		api "org.eclipse.emf:org.eclipse.emf.common:${emfVersion}"
+	api "org.eclipse.emf:org.eclipse.emf.ecore:${emfVersion}"
+	api "org.eclipse.emf:org.eclipse.emf.common:${emfVersion}"
 }
 
 sourceSets {
-    main {
-        resources {
-            exclude '**/*.xcore'
-        }
-        java {
-            srcDirs= ["src/main/java",
-            	"src/main/module",
-	            "src/generated/java"]
-        }
-    }
+	main {
+		resources {
+			exclude '**/*.xcore'
+		}
+		java {
+			srcDirs= ["src/main/java",
+			"src/main/module",
+			"src/generated/java"]
+		}
+	}
 }
