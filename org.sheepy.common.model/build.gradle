@@ -9,7 +9,7 @@ if (project.hasProperty('javaModule')) {
 	javaModule.name = 'org.sheepy.common.model'
 }
 
-project.ext.emfVersion = "2.12.0"
+project.ext.emfVersion = "+"
 
 dependencies {
 	api "org.eclipse.emf:org.eclipse.emf.ecore:${emfVersion}"

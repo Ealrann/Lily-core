@@ -44,6 +44,7 @@ subprojects {
 
 	afterEvaluate {
 		repositories {
+			mavenLocal()
 			jcenter()
 		}
 	}
