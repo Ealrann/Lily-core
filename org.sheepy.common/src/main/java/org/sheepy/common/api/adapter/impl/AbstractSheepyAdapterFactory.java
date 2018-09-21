@@ -1,10 +1,13 @@
-package org.sheepy.common.api.adapter;
+package org.sheepy.common.api.adapter.impl;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.sheepy.common.api.adapter.ISheepyAdapter;
+import org.sheepy.common.api.adapter.ISheepyAdapterFactory;
+import org.sheepy.common.api.adapter.ISheepyAdapterRegistry;
 import org.sheepy.common.model.types.SObject;
 
 /**
