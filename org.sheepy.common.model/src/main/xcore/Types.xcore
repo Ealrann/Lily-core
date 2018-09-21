@@ -1,0 +1,73 @@
+@GenModel(modelDirectory="/org.sheepy.common.model/src/generated/java")
+@GenModel(editDirectory="/org.sheepy.common.model.edit/src/generated/java")
+@GenModel(publicConstructors="true")
+@GenModel(updateClasspath="false")
+
+package org.sheepy.common.model.types
+
+import org.sheepy.common.api.types.SVector2f
+import org.sheepy.common.api.types.SVector2i
+import org.sheepy.common.api.adapter.AdapterIndexer
+import org.eclipse.emf.common.notify.Adapter
+
+type SAdapterIndexer wraps AdapterIndexer
+
+interface SObject
+{
+	@GenModel(property="None")
+	transient SAdapterIndexer adapterIndexer
+	
+	op SAdapterIndexer lAdapterIndexer()
+	{
+		if(adapterIndexer === null)
+		{
+			synchronized(this)
+			{
+				if(adapterIndexer === null)
+				{
+					adapterIndexer = new AdapterIndexer
+					eAdapters.add(adapterIndexer as Adapter)
+				}
+			}
+		}
+		return adapterIndexer
+	}
+}
+
+type SVector2f wraps SVector2f
+create
+{
+	if(it !== null)
+	{
+		val String[] split = it.split(";")
+		if(split.length == 2)
+		{
+			return new SVector2f(Float.valueOf(split.get(0)), Float.valueOf(split.get(1)))
+		}
+	}
+	return new SVector2f(0, 0)
+}
+convert
+{
+	it.x + ";" + it.y
+}
+
+type SVector2i wraps SVector2i
+create
+{
+	if(it !== null)
+	{
+		val String[] split = it.split(";")
+		if(split.length == 2)
+		{
+			return new SVector2i(Integer.valueOf(split.get(0)), Integer.valueOf(split.get(1)))
+		}
+	}
+	return new SVector2i(0, 0)
+}
+convert
+{
+	it.x + ";" + it.y
+}
+
+

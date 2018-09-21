@@ -1,3 +1,3 @@
 rootProject.name = "Sheepy"
 
-include 'org.sheepy.common.model'
+include 'org.sheepy.common'
