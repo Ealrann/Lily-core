@@ -35,7 +35,7 @@ public abstract class AbstractSheepyAdapter
 	}
 
 	@Override
-	public final void setLilyAdapterFactory(ISheepyAdapterFactory adapterFactory)
+	public final void setAdapterFactory(ISheepyAdapterFactory adapterFactory)
 	{
 		this.adapterFactory = adapterFactory;
 	}

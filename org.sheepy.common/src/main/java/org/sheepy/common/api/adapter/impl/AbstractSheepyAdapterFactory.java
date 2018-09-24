@@ -81,7 +81,7 @@ public abstract class AbstractSheepyAdapterFactory extends AdapterFactoryImpl
 			adapter = retainedExtension.createAdapter((SObject) target,
 					(Class<? extends ISheepyAdapter>) adapterType);
 
-			adapter.setLilyAdapterFactory(this);
+			adapter.setAdapterFactory(this);
 		}
 
 		return adapter;
@@ -95,19 +95,19 @@ public abstract class AbstractSheepyAdapterFactory extends AdapterFactoryImpl
 	}
 
 	@Override
-	public <T extends ISheepyAdapter> T adapt(SObject lilyObject, Class<T> type)
+	public <T extends ISheepyAdapter> T adapt(SObject sheepyObject, Class<T> type)
 	{
 		load();
-		T res = lilyObject.lAdapterIndexer().adapt(this, lilyObject, type);
+		T res = sheepyObject.lAdapterIndexer().adapt(this, sheepyObject, type);
 
 		if (res == null)
 		{
 			if (type instanceof Class) System.err.println("Error : Can't adapt "
-					+ ((EObject) lilyObject).eClass().getName()
+					+ ((EObject) sheepyObject).eClass().getName()
 					+ " to "
 					+ ((Class<?>) type).getSimpleName());
 			else System.err.println("Error : Can't adapt "
-					+ ((EObject) lilyObject).eClass().getName()
+					+ ((EObject) sheepyObject).eClass().getName()
 					+ " to "
 					+ type.getClass().getSimpleName());
 		}
@@ -116,9 +116,9 @@ public abstract class AbstractSheepyAdapterFactory extends AdapterFactoryImpl
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T extends ISheepyAdapter> T adaptNew(SObject lilyObject, Class<T> type)
+	public <T extends ISheepyAdapter> T adaptNew(SObject sheepyObject, Class<T> type)
 	{
-		return (T) adaptNew((Notifier) lilyObject, type);
+		return (T) adaptNew((Notifier) sheepyObject, type);
 	}
 
 	protected abstract ISheepyAdapterRegistry getRegistry();

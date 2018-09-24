@@ -21,7 +21,7 @@ public interface ISheepyAdapter extends Adapter
 
 	ISheepyAdapterFactory getLilyAdapterFactory();
 
-	void setLilyAdapterFactory(ISheepyAdapterFactory adapterFactory);
+	void setAdapterFactory(ISheepyAdapterFactory adapterFactory);
 
 	void removeAllAdapters();
 
