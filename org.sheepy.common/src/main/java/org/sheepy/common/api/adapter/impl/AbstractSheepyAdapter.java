@@ -87,8 +87,24 @@ public abstract class AbstractSheepyAdapter
 	@Override
 	public void setTarget(Notifier newTarget)
 	{
+		if (target != null)
+		{
+			unload();
+		}
+
 		target = (SObject) newTarget;
+
+		if (target != null)
+		{
+			load();
+		}
 	}
+
+	protected void load()
+	{}
+
+	protected void unload()
+	{}
 
 	private void registerAdapter(	SObject newTarget,
 									AbstractSheepyAdapter adapter)
