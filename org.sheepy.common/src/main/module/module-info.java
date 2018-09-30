@@ -12,5 +12,4 @@ module org.sheepy.common
 	
 	exports org.sheepy.common.model.types;
 	exports org.sheepy.common.model.types.impl;
-	exports org.sheepy.common.model.types.util;
 }
