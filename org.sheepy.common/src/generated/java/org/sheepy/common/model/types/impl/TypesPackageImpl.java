@@ -2,16 +2,11 @@
  */
 package org.sheepy.common.model.types.impl;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
-import org.sheepy.common.api.adapter.AdapterIndexer;
-
 import org.sheepy.common.api.types.SVector2f;
 import org.sheepy.common.api.types.SVector2i;
 
@@ -33,13 +28,6 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	private EClass sObjectEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EDataType sAdapterIndexerEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,36 +121,6 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSObject_AdapterIndexer()
-	{
-		return (EAttribute)sObjectEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getSObject__LAdapterIndexer()
-	{
-		return sObjectEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EDataType getSAdapterIndexer()
-	{
-		return sAdapterIndexerEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EDataType getSVector2f()
 	{
 		return sVector2fEDataType;
@@ -209,11 +167,8 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 
 		// Create classes and their features
 		sObjectEClass = createEClass(SOBJECT);
-		createEAttribute(sObjectEClass, SOBJECT__ADAPTER_INDEXER);
-		createEOperation(sObjectEClass, SOBJECT___LADAPTER_INDEXER);
 
 		// Create data types
-		sAdapterIndexerEDataType = createEDataType(SADAPTER_INDEXER);
 		sVector2fEDataType = createEDataType(SVECTOR2F);
 		sVector2iEDataType = createEDataType(SVECTOR2I);
 	}
@@ -250,12 +205,8 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(sObjectEClass, SObject.class, "SObject", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSObject_AdapterIndexer(), this.getSAdapterIndexer(), "adapterIndexer", null, 0, 1, SObject.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEOperation(getSObject__LAdapterIndexer(), this.getSAdapterIndexer(), "lAdapterIndexer", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		// Initialize data types
-		initEDataType(sAdapterIndexerEDataType, AdapterIndexer.class, "SAdapterIndexer", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(sVector2fEDataType, SVector2f.class, "SVector2f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(sVector2iEDataType, SVector2i.class, "SVector2i", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 

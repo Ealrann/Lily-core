@@ -2,10 +2,8 @@
  */
 package org.sheepy.common.model.types;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 
 /**
@@ -70,31 +68,13 @@ public interface TypesPackage extends EPackage
 	int SOBJECT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Adapter Indexer</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SOBJECT__ADAPTER_INDEXER = 0;
-
-	/**
 	 * The number of structural features of the '<em>SObject</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SOBJECT_FEATURE_COUNT = 1;
-
-	/**
-	 * The operation id for the '<em>LAdapter Indexer</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SOBJECT___LADAPTER_INDEXER = 0;
+	int SOBJECT_FEATURE_COUNT = 0;
 
 	/**
 	 * The number of operations of the '<em>SObject</em>' class.
@@ -103,17 +83,7 @@ public interface TypesPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SOBJECT_OPERATION_COUNT = 1;
-
-	/**
-	 * The meta object id for the '<em>SAdapter Indexer</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.api.adapter.AdapterIndexer
-	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getSAdapterIndexer()
-	 * @generated
-	 */
-	int SADAPTER_INDEXER = 1;
+	int SOBJECT_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '<em>SVector2f</em>' data type.
@@ -123,7 +93,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getSVector2f()
 	 * @generated
 	 */
-	int SVECTOR2F = 2;
+	int SVECTOR2F = 1;
 
 	/**
 	 * The meta object id for the '<em>SVector2i</em>' data type.
@@ -133,7 +103,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getSVector2i()
 	 * @generated
 	 */
-	int SVECTOR2I = 3;
+	int SVECTOR2I = 2;
 
 
 	/**
@@ -145,38 +115,6 @@ public interface TypesPackage extends EPackage
 	 * @generated
 	 */
 	EClass getSObject();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.types.SObject#getAdapterIndexer <em>Adapter Indexer</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Adapter Indexer</em>'.
-	 * @see org.sheepy.common.model.types.SObject#getAdapterIndexer()
-	 * @see #getSObject()
-	 * @generated
-	 */
-	EAttribute getSObject_AdapterIndexer();
-
-	/**
-	 * Returns the meta object for the '{@link org.sheepy.common.model.types.SObject#lAdapterIndexer() <em>LAdapter Indexer</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>LAdapter Indexer</em>' operation.
-	 * @see org.sheepy.common.model.types.SObject#lAdapterIndexer()
-	 * @generated
-	 */
-	EOperation getSObject__LAdapterIndexer();
-
-	/**
-	 * Returns the meta object for data type '{@link org.sheepy.common.api.adapter.AdapterIndexer <em>SAdapter Indexer</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>SAdapter Indexer</em>'.
-	 * @see org.sheepy.common.api.adapter.AdapterIndexer
-	 * @model instanceClass="org.sheepy.common.api.adapter.AdapterIndexer"
-	 * @generated
-	 */
-	EDataType getSAdapterIndexer();
 
 	/**
 	 * Returns the meta object for data type '{@link org.sheepy.common.api.types.SVector2f <em>SVector2f</em>}'.
@@ -235,32 +173,6 @@ public interface TypesPackage extends EPackage
 		 * @generated
 		 */
 		EClass SOBJECT = eINSTANCE.getSObject();
-
-		/**
-		 * The meta object literal for the '<em><b>Adapter Indexer</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SOBJECT__ADAPTER_INDEXER = eINSTANCE.getSObject_AdapterIndexer();
-
-		/**
-		 * The meta object literal for the '<em><b>LAdapter Indexer</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation SOBJECT___LADAPTER_INDEXER = eINSTANCE.getSObject__LAdapterIndexer();
-
-		/**
-		 * The meta object literal for the '<em>SAdapter Indexer</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.api.adapter.AdapterIndexer
-		 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getSAdapterIndexer()
-		 * @generated
-		 */
-		EDataType SADAPTER_INDEXER = eINSTANCE.getSAdapterIndexer();
 
 		/**
 		 * The meta object literal for the '<em>SVector2f</em>' data type.

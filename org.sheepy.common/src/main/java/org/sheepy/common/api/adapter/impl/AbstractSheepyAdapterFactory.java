@@ -2,12 +2,11 @@ package org.sheepy.common.api.adapter.impl;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.common.api.adapter.ISheepyAdapter;
 import org.sheepy.common.api.adapter.ISheepyAdapterFactory;
 import org.sheepy.common.api.adapter.ISheepyAdapterRegistry;
+import org.sheepy.common.api.adapter.ISheepyAdapterWrapper;
 import org.sheepy.common.model.types.SObject;
 
 /**
@@ -16,8 +15,7 @@ import org.sheepy.common.model.types.SObject;
  * @author Ealrann
  *
  */
-public abstract class AbstractSheepyAdapterFactory extends AdapterFactoryImpl
-		implements ISheepyAdapterFactory
+public abstract class AbstractSheepyAdapterFactory implements ISheepyAdapterFactory
 {
 
 	private ISheepyAdapterRegistry registry = null;
@@ -30,11 +28,10 @@ public abstract class AbstractSheepyAdapterFactory extends AdapterFactoryImpl
 		}
 	}
 
-	@Override
 	public boolean isFactoryForType(Object object)
 	{
 		load();
-		for (ISheepyAdapter extension : registry.getRegisteredAdapters())
+		for (ISheepyAdapterWrapper extension : registry.getRegisteredAdapters())
 		{
 			if (extension.isAdapterForType(object))
 			{
@@ -45,80 +42,37 @@ public abstract class AbstractSheepyAdapterFactory extends AdapterFactoryImpl
 	}
 
 	@SuppressWarnings("unchecked")
-	@Override
-	public Adapter createAdapter(Notifier target, Object adapterType)
-	{
-		load();
-		ISheepyAdapter adapter = null;
-		EClass clazz = ((EObject) target).eClass();
-
-		ISheepyAdapter defaultExtension = null;
-		ISheepyAdapter retainedExtension = null;
-
-		for (ISheepyAdapter extension : registry.getRegisteredAdapters())
-		{
-			if (extension.isAdapterForType(adapterType) && extension.isApplicable(clazz))
-			{
-				if (extension.isDefaultAdapter())
-				{
-					defaultExtension = extension;
-				}
-				else
-				{
-					retainedExtension = extension;
-					break;
-				}
-			}
-		}
-
-		if (retainedExtension == null)
-		{
-			retainedExtension = defaultExtension;
-		}
-
-		if (retainedExtension != null)
-		{
-			adapter = retainedExtension.createAdapter((SObject) target,
-					(Class<? extends ISheepyAdapter>) adapterType);
-
-			adapter.setAdapterFactory(this);
-		}
-
-		return adapter;
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
 	public Adapter adapt(Notifier target, Object type)
 	{
 		return adapt((SObject) target, (Class<ISheepyAdapter>) type);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public <T extends ISheepyAdapter> T adapt(SObject sheepyObject, Class<T> type)
+	public <T extends ISheepyAdapter> T adapt(SObject target, Class<T> type)
 	{
 		load();
-		T res = sheepyObject.lAdapterIndexer().adapt(this, sheepyObject, type);
+		ISheepyAdapterWrapper extension = registry.getAdapterFor(target, type);
+		T res = (T) extension.adapt(target, this);
 
 		if (res == null)
 		{
-			if (type instanceof Class) System.err.println("Error : Can't adapt "
-					+ ((EObject) sheepyObject).eClass().getName()
-					+ " to "
-					+ ((Class<?>) type).getSimpleName());
-			else System.err.println("Error : Can't adapt "
-					+ ((EObject) sheepyObject).eClass().getName()
-					+ " to "
-					+ type.getClass().getSimpleName());
+			logUnregisteredAdapter(target, type);
 		}
+
 		return res;
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public <T extends ISheepyAdapter> T adaptNew(SObject sheepyObject, Class<T> type)
+	private void logUnregisteredAdapter(SObject target, Class<?> type)
 	{
-		return (T) adaptNew((Notifier) sheepyObject, type);
+		if (type instanceof Class) System.err.println("Error : Can't adapt "
+				+ ((EObject) target).eClass().getName()
+				+ " to "
+				+ ((Class<?>) type).getSimpleName());
+		else System.err.println("Error : Can't adapt "
+				+ ((EObject) target).eClass().getName()
+				+ " to "
+				+ type.getClass().getSimpleName());
 	}
 
 	protected abstract ISheepyAdapterRegistry getRegistry();

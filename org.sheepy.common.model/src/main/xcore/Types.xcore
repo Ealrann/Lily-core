@@ -7,31 +7,9 @@ package org.sheepy.common.model.types
 
 import org.sheepy.common.api.types.SVector2f
 import org.sheepy.common.api.types.SVector2i
-import org.sheepy.common.api.adapter.AdapterIndexer
-import org.eclipse.emf.common.notify.Adapter
-
-type SAdapterIndexer wraps AdapterIndexer
 
 interface SObject
 {
-	@GenModel(property="None")
-	transient SAdapterIndexer adapterIndexer
-	
-	op SAdapterIndexer lAdapterIndexer()
-	{
-		if(adapterIndexer === null)
-		{
-			synchronized(this)
-			{
-				if(adapterIndexer === null)
-				{
-					adapterIndexer = new AdapterIndexer
-					eAdapters.add(adapterIndexer as Adapter)
-				}
-			}
-		}
-		return adapterIndexer
-	}
 }
 
 type SVector2f wraps SVector2f

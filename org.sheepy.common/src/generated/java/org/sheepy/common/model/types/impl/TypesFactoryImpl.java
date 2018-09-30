@@ -10,9 +10,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.sheepy.common.api.adapter.AdapterIndexer;
-
 import org.sheepy.common.api.types.SVector2f;
 import org.sheepy.common.api.types.SVector2i;
 
@@ -85,8 +82,6 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	{
 		switch (eDataType.getClassifierID())
 		{
-			case TypesPackage.SADAPTER_INDEXER:
-				return createSAdapterIndexerFromString(eDataType, initialValue);
 			case TypesPackage.SVECTOR2F:
 				return createSVector2fFromString(eDataType, initialValue);
 			case TypesPackage.SVECTOR2I:
@@ -106,8 +101,6 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	{
 		switch (eDataType.getClassifierID())
 		{
-			case TypesPackage.SADAPTER_INDEXER:
-				return convertSAdapterIndexerToString(eDataType, instanceValue);
 			case TypesPackage.SVECTOR2F:
 				return convertSVector2fToString(eDataType, instanceValue);
 			case TypesPackage.SVECTOR2I:
@@ -115,26 +108,6 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AdapterIndexer createSAdapterIndexerFromString(EDataType eDataType, String initialValue)
-	{
-		return (AdapterIndexer)super.createFromString(eDataType, initialValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertSAdapterIndexerToString(EDataType eDataType, Object instanceValue)
-	{
-		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

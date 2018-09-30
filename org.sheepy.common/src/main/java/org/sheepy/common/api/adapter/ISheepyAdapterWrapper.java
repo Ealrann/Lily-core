@@ -1,10 +1,12 @@
 package org.sheepy.common.api.adapter;
 
-import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.ecore.EClass;
+import org.sheepy.common.model.types.SObject;
 
-public interface ISheepyAdapter extends Adapter
+public interface ISheepyAdapterWrapper
 {
-	@Override
+	ISheepyAdapter adapt(SObject target, ISheepyAdapterFactory adapterFactory);
+
 	@SuppressWarnings("unchecked")
 	default boolean isAdapterForType(Object type)
 	{
@@ -15,7 +17,8 @@ public interface ISheepyAdapter extends Adapter
 
 	boolean isAdapterForType(Class<? extends ISheepyAdapter> type);
 
-	ISheepyAdapterFactory getLilyAdapterFactory();
+	boolean isDefaultAdapter();
 
-	void setAdapterFactory(ISheepyAdapterFactory adapterFactory);
+	boolean isApplicable(EClass eClass);
+
 }
