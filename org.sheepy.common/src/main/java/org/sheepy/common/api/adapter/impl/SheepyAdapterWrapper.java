@@ -13,14 +13,14 @@ import org.sheepy.common.model.types.SObject;
 
 public class SheepyAdapterWrapper implements ISheepyAdapterWrapper
 {
-	private final Class<ISheepyAdapter> classifier;
+	private final Class<? extends ISheepyAdapter> classifier;
 	private EClass targetEClass;
 	private final boolean singleton;
 
 	private ISheepyAdapter reference = null;
 	private HashMap<SObject, ISheepyAdapter> adapterMap = new HashMap<>();
 
-	public SheepyAdapterWrapper(Class<ISheepyAdapter> classifier, EClass targetEClass)
+	public SheepyAdapterWrapper(Class<? extends ISheepyAdapter> classifier, EClass targetEClass)
 	{
 		this.classifier = classifier;
 		this.targetEClass = targetEClass;
