@@ -2,15 +2,12 @@
  */
 package org.sheepy.common.model.types.impl;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.sheepy.common.api.types.SVector2f;
 import org.sheepy.common.api.types.SVector2i;
-
-import org.sheepy.common.model.types.SObject;
 import org.sheepy.common.model.types.TypesFactory;
 import org.sheepy.common.model.types.TypesPackage;
 
@@ -22,13 +19,6 @@ import org.sheepy.common.model.types.TypesPackage;
  */
 public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass sObjectEClass = null;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -111,16 +101,6 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSObject()
-	{
-		return sObjectEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EDataType getSVector2f()
 	{
 		return sVector2fEDataType;
@@ -165,9 +145,6 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		if (isCreated) return;
 		isCreated = true;
 
-		// Create classes and their features
-		sObjectEClass = createEClass(SOBJECT);
-
 		// Create data types
 		sVector2fEDataType = createEDataType(SVECTOR2F);
 		sVector2iEDataType = createEDataType(SVECTOR2I);
@@ -196,15 +173,6 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		setName(eNAME);
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
-
-		// Create type parameters
-
-		// Set bounds for type parameters
-
-		// Add supertypes to classes
-
-		// Initialize classes, features, and operations; add parameters
-		initEClass(sObjectEClass, SObject.class, "SObject", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize data types
 		initEDataType(sVector2fEDataType, SVector2f.class, "SVector2f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

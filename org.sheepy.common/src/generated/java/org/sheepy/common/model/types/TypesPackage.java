@@ -2,7 +2,6 @@
  */
 package org.sheepy.common.model.types;
 
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -58,34 +57,6 @@ public interface TypesPackage extends EPackage
 	TypesPackage eINSTANCE = org.sheepy.common.model.types.impl.TypesPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.types.SObject <em>SObject</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.types.SObject
-	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getSObject()
-	 * @generated
-	 */
-	int SOBJECT = 0;
-
-	/**
-	 * The number of structural features of the '<em>SObject</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SOBJECT_FEATURE_COUNT = 0;
-
-	/**
-	 * The number of operations of the '<em>SObject</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SOBJECT_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '<em>SVector2f</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -93,7 +64,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getSVector2f()
 	 * @generated
 	 */
-	int SVECTOR2F = 1;
+	int SVECTOR2F = 0;
 
 	/**
 	 * The meta object id for the '<em>SVector2i</em>' data type.
@@ -103,18 +74,8 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getSVector2i()
 	 * @generated
 	 */
-	int SVECTOR2I = 2;
+	int SVECTOR2I = 1;
 
-
-	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.types.SObject <em>SObject</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>SObject</em>'.
-	 * @see org.sheepy.common.model.types.SObject
-	 * @generated
-	 */
-	EClass getSObject();
 
 	/**
 	 * Returns the meta object for data type '{@link org.sheepy.common.api.types.SVector2f <em>SVector2f</em>}'.
@@ -164,16 +125,6 @@ public interface TypesPackage extends EPackage
 	 */
 	interface Literals
 	{
-		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.types.SObject <em>SObject</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.types.SObject
-		 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getSObject()
-		 * @generated
-		 */
-		EClass SOBJECT = eINSTANCE.getSObject();
-
 		/**
 		 * The meta object literal for the '<em>SVector2f</em>' data type.
 		 * <!-- begin-user-doc -->

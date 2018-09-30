@@ -1,11 +1,11 @@
 package org.sheepy.common.api.adapter;
 
 import org.eclipse.emf.ecore.EClass;
-import org.sheepy.common.model.types.SObject;
+import org.eclipse.emf.ecore.EObject;
 
 public interface ISheepyAdapterWrapper
 {
-	ISheepyAdapter adapt(SObject target, ISheepyAdapterFactory adapterFactory);
+	ISheepyAdapter adapt(EObject target, ISheepyAdapterFactory adapterFactory);
 
 	@SuppressWarnings("unchecked")
 	default boolean isAdapterForType(Object type)

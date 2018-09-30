@@ -7,7 +7,6 @@ import org.sheepy.common.api.adapter.ISheepyAdapter;
 import org.sheepy.common.api.adapter.ISheepyAdapterFactory;
 import org.sheepy.common.api.adapter.ISheepyAdapterRegistry;
 import org.sheepy.common.api.adapter.ISheepyAdapterWrapper;
-import org.sheepy.common.model.types.SObject;
 
 /**
  * Extensible Mapped AdapterFactory.
@@ -44,12 +43,12 @@ public abstract class AbstractSheepyAdapterFactory implements ISheepyAdapterFact
 	@SuppressWarnings("unchecked")
 	public Adapter adapt(Notifier target, Object type)
 	{
-		return adapt((SObject) target, (Class<ISheepyAdapter>) type);
+		return adapt((EObject) target, (Class<ISheepyAdapter>) type);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T extends ISheepyAdapter> T adapt(SObject target, Class<T> type)
+	public <T extends ISheepyAdapter> T adapt(EObject target, Class<T> type)
 	{
 		load();
 		ISheepyAdapterWrapper extension = registry.getAdapterFor(target, type);
@@ -63,7 +62,7 @@ public abstract class AbstractSheepyAdapterFactory implements ISheepyAdapterFact
 		return res;
 	}
 
-	private void logUnregisteredAdapter(SObject target, Class<?> type)
+	private void logUnregisteredAdapter(EObject target, Class<?> type)
 	{
 		if (type instanceof Class) System.err.println("Error : Can't adapt "
 				+ ((EObject) target).eClass().getName()

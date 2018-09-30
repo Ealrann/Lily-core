@@ -5,11 +5,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.sheepy.common.api.adapter.ISheepyAdapter;
 import org.sheepy.common.api.adapter.ISheepyAdapterFactory;
 import org.sheepy.common.api.adapter.ISheepyAdapterWrapper;
 import org.sheepy.common.api.util.SingletonUtil;
-import org.sheepy.common.model.types.SObject;
 
 public class SheepyAdapterWrapper implements ISheepyAdapterWrapper
 {
@@ -18,7 +18,7 @@ public class SheepyAdapterWrapper implements ISheepyAdapterWrapper
 	private final boolean singleton;
 
 	private ISheepyAdapter reference = null;
-	private HashMap<SObject, ISheepyAdapter> adapterMap = new HashMap<>();
+	private HashMap<EObject, ISheepyAdapter> adapterMap = new HashMap<>();
 
 	public SheepyAdapterWrapper(Class<? extends ISheepyAdapter> classifier, EClass targetEClass)
 	{
@@ -28,7 +28,7 @@ public class SheepyAdapterWrapper implements ISheepyAdapterWrapper
 	}
 
 	@Override
-	public ISheepyAdapter adapt(SObject target, ISheepyAdapterFactory adapterFactory)
+	public ISheepyAdapter adapt(EObject target, ISheepyAdapterFactory adapterFactory)
 	{
 		if (singleton)
 		{
@@ -52,7 +52,7 @@ public class SheepyAdapterWrapper implements ISheepyAdapterWrapper
 		}
 	}
 
-	protected ISheepyAdapter instantiateNew(SObject target, ISheepyAdapterFactory adapterFactory)
+	protected ISheepyAdapter instantiateNew(EObject target, ISheepyAdapterFactory adapterFactory)
 	{
 		ISheepyAdapter res = null;
 

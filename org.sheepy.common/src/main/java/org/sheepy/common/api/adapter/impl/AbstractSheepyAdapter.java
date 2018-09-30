@@ -3,17 +3,16 @@ package org.sheepy.common.api.adapter.impl;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.ecore.EObject;
 import org.sheepy.common.api.adapter.ISheepyAdapter;
 import org.sheepy.common.api.adapter.ISheepyAdapterFactory;
-import org.sheepy.common.model.types.SObject;
 
-public abstract class AbstractSheepyAdapter
-		implements Adapter.Internal, ISheepyAdapter
+public abstract class AbstractSheepyAdapter implements Adapter.Internal, ISheepyAdapter
 {
 	/**
 	 * The last notifier set to this adapter.
 	 */
-	protected SObject target = null;
+	protected EObject target = null;
 
 	protected ISheepyAdapterFactory adapterFactory;
 
@@ -79,7 +78,7 @@ public abstract class AbstractSheepyAdapter
 			unload();
 		}
 
-		target = (SObject) newTarget;
+		target = (EObject) newTarget;
 
 		if (target != null)
 		{
