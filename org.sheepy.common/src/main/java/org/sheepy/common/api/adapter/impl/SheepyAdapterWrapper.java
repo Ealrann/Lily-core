@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.sheepy.common.api.adapter.ISheepyAdapter;
 import org.sheepy.common.api.adapter.ISheepyAdapterFactory;
 import org.sheepy.common.api.adapter.ISheepyAdapterWrapper;
+import org.sheepy.common.api.util.ClassHierarchyIterator;
 import org.sheepy.common.api.util.SingletonUtil;
 
 public class SheepyAdapterWrapper implements ISheepyAdapterWrapper
@@ -75,7 +76,17 @@ public class SheepyAdapterWrapper implements ISheepyAdapterWrapper
 	@Override
 	public boolean isAdapterForType(Class<? extends ISheepyAdapter> type)
 	{
-		return ((Class<?>) type).isInstance(this);
+		ClassHierarchyIterator iterator = new ClassHierarchyIterator(classifier);
+		while (iterator.hasNext())
+		{
+			Class<?> current = iterator.next();
+			if (current == type)
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	@Override
