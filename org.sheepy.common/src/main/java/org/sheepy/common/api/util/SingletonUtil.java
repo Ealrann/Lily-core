@@ -7,42 +7,24 @@ public class SingletonUtil
 {
 	public static boolean isSingleton(Class<?> classifier)
 	{
-		boolean res = false;
-
-		res |= hasNonStaticFields(classifier);
-		res |= checkSuperInterfaces(classifier);
-		res |= checkSuperClass(classifier);
-
-		return res;
-	}
-
-	private static boolean checkSuperInterfaces(Class<?> classifier)
-	{
-		for (Class<?> iface : classifier.getInterfaces())
+		var iterator = new ClassHierarchyIterator(classifier);
+		while (iterator.hasNext())
 		{
-			if (isSingleton(iface))
+			Class<?> currentClass = iterator.next();
+			if (hasNonStaticFields(currentClass))
 			{
-				return true;
+				return false;
 			}
 		}
-		return false;
-	}
 
-	private static boolean checkSuperClass(Class<?> classifier)
-	{
-		Class<?> superclass = classifier.getSuperclass();
-		if (superclass != null && isSingleton(superclass))
-		{
-			return true;
-		}
-		return false;
+		return true;
 	}
 
 	private static boolean hasNonStaticFields(Class<?> classifier)
 	{
 		for (Field field : classifier.getDeclaredFields())
 		{
-			if (Modifier.isStatic(field.getModifiers()) == false)
+			if (Modifier.isStatic(field.getModifiers()) == false && field.isSynthetic() == false)
 			{
 				return true;
 			}
