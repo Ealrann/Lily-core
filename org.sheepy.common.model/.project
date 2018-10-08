@@ -38,9 +38,9 @@
 			<locationURI>PARENT-1-PROJECT_LOC/org.sheepy.common/src/generated/java</locationURI>
 		</link>
 		<link>
-			<name>src/main/java</name>
+			<name>src/shared/java</name>
 			<type>2</type>
-			<locationURI>PARENT-1-PROJECT_LOC/org.sheepy.common/src/main/java</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/org.sheepy.common/src/shared/java</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

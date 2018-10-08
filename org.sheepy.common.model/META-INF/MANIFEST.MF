@@ -8,10 +8,7 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-10
-Export-Package: org.sheepy.common.api.adapter,
- org.sheepy.common.api.adapter.impl,
- org.sheepy.common.api.types,
- org.sheepy.common.model.types,
+Export-Package: org.sheepy.common.model.types,
  org.sheepy.common.model.types.impl
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,

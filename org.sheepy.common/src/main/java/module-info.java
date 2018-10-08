@@ -12,4 +12,7 @@ module org.sheepy.common
 	
 	exports org.sheepy.common.model.types;
 	exports org.sheepy.common.model.types.impl;
+	
+	
+	requires org.junit.jupiter.api;
 }

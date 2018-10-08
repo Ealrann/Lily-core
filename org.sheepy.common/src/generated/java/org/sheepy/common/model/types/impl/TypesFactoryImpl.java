@@ -12,7 +12,6 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.sheepy.common.api.types.SVector2f;
 import org.sheepy.common.api.types.SVector2i;
-
 import org.sheepy.common.model.types.*;
 
 /**
