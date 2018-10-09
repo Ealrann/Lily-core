@@ -1,7 +1,5 @@
 package org.sheepy.common.api.adapter.impl;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 
 import org.eclipse.emf.ecore.EClass;
@@ -12,10 +10,10 @@ import org.sheepy.common.api.adapter.ISheepyAdapterWrapper;
 import org.sheepy.common.api.util.ClassHierarchyIterator;
 import org.sheepy.common.api.util.SingletonUtil;
 
-public class SheepyAdapterWrapper implements ISheepyAdapterWrapper
+public abstract class SheepyAdapterWrapper implements ISheepyAdapterWrapper
 {
-	private final Class<? extends ISheepyAdapter> classifier;
-	private EClass targetEClass;
+	protected final Class<? extends ISheepyAdapter> classifier;
+	private final EClass targetEClass;
 	private final boolean singleton;
 
 	private ISheepyAdapter reference = null;
@@ -35,7 +33,7 @@ public class SheepyAdapterWrapper implements ISheepyAdapterWrapper
 		{
 			if (reference == null)
 			{
-				reference = instantiateNew(target, adapterFactory);
+				reference = createNewAdapter(target, adapterFactory);
 			}
 			reference.setTarget(target);
 			return reference;
@@ -45,7 +43,7 @@ public class SheepyAdapterWrapper implements ISheepyAdapterWrapper
 			ISheepyAdapter res = adapterMap.get(target);
 			if (res == null)
 			{
-				res = instantiateNew(target, adapterFactory);
+				res = createNewAdapter(target, adapterFactory);
 				adapterMap.put(target, res);
 				res.setTarget(target);
 			}
@@ -53,23 +51,11 @@ public class SheepyAdapterWrapper implements ISheepyAdapterWrapper
 		}
 	}
 
-	protected ISheepyAdapter instantiateNew(EObject target, ISheepyAdapterFactory adapterFactory)
+	protected ISheepyAdapter createNewAdapter(EObject target, ISheepyAdapterFactory adapterFactory)
 	{
-		ISheepyAdapter res = null;
-
-		try
-		{
-			Constructor<? extends ISheepyAdapter> constructor = classifier.getConstructor();
-			res = constructor.newInstance();
-			res.setAdapterFactory(adapterFactory);
-			target.eAdapters().add(res);
-
-		} catch (NoSuchMethodException | SecurityException | InstantiationException
-				| IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
-		{
-			e.printStackTrace();
-		}
-
+		ISheepyAdapter res = instanciateNew();
+		res.setAdapterFactory(adapterFactory);
+		target.eAdapters().add(res);
 		return res;
 	}
 
@@ -100,4 +86,6 @@ public class SheepyAdapterWrapper implements ISheepyAdapterWrapper
 	{
 		return targetEClass == eClass;
 	}
+	
+	protected abstract ISheepyAdapter instanciateNew();
 }
