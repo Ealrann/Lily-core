@@ -73,16 +73,19 @@ public abstract class AbstractSheepyAdapter implements Adapter.Internal, ISheepy
 	@Override
 	public void setTarget(Notifier newTarget)
 	{
-		if (target != null)
+		if (target != newTarget)
 		{
-			unload();
-		}
+			if (target != null)
+			{
+				unload();
+			}
 
-		target = (EObject) newTarget;
+			target = (EObject) newTarget;
 
-		if (target != null)
-		{
-			load();
+			if (target != null)
+			{
+				load();
+			}
 		}
 	}
 
