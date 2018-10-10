@@ -52,11 +52,17 @@ public abstract class AbstractSheepyAdapterFactory implements ISheepyAdapterFact
 	{
 		load();
 		ISheepyAdapterWrapper extension = registry.getAdapterFor(target, type);
+
+		if (extension == null)
+		{
+			logUnregisteredAdapter(target, type);
+		}
+
 		T res = (T) extension.adapt(target, this);
 
 		if (res == null)
 		{
-			logUnregisteredAdapter(target, type);
+			logInvalidExtension(extension, type);
 		}
 
 		return res;
@@ -72,6 +78,15 @@ public abstract class AbstractSheepyAdapterFactory implements ISheepyAdapterFact
 				+ ((EObject) target).eClass().getName()
 				+ " to "
 				+ type.getClass().getSimpleName());
+	}
+
+	private void logInvalidExtension(ISheepyAdapterWrapper extension, Class<?> type)
+	{
+		System.err.println("The adapter extension ["
+				+ extension.getClass().getSimpleName()
+				+ "] is invalid: returned NULL adapter for type ["
+				+ type.getSimpleName()
+				+ "].");
 	}
 
 	protected abstract ISheepyAdapterRegistry getRegistry();
