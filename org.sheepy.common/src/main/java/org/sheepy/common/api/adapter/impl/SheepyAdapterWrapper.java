@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.sheepy.common.api.adapter.ISheepyAdapter;
 import org.sheepy.common.api.adapter.ISheepyAdapterFactory;
 import org.sheepy.common.api.adapter.ISheepyAdapterWrapper;
@@ -17,7 +18,7 @@ public abstract class SheepyAdapterWrapper implements ISheepyAdapterWrapper
 	private final boolean singleton;
 
 	private ISheepyAdapter reference = null;
-	private HashMap<EObject, ISheepyAdapter> adapterMap = new HashMap<>();
+	private final HashMap<EObject, ISheepyAdapter> adapterMap = new HashMap<>();
 
 	public SheepyAdapterWrapper(Class<? extends ISheepyAdapter> classifier, EClass targetEClass)
 	{
@@ -45,7 +46,7 @@ public abstract class SheepyAdapterWrapper implements ISheepyAdapterWrapper
 			{
 				res = createNewAdapter(target, adapterFactory);
 				adapterMap.put(target, res);
-				res.setTarget(target);
+				target.eAdapters().add(res);
 			}
 			return res;
 		}
@@ -53,19 +54,18 @@ public abstract class SheepyAdapterWrapper implements ISheepyAdapterWrapper
 
 	protected ISheepyAdapter createNewAdapter(EObject target, ISheepyAdapterFactory adapterFactory)
 	{
-		ISheepyAdapter res = instanciateNew();
+		final ISheepyAdapter res = instanciateNew();
 		res.setAdapterFactory(adapterFactory);
-		target.eAdapters().add(res);
 		return res;
 	}
 
 	@Override
 	public boolean isAdapterForType(Class<? extends ISheepyAdapter> type)
 	{
-		ClassHierarchyIterator iterator = new ClassHierarchyIterator(classifier);
+		final ClassHierarchyIterator iterator = new ClassHierarchyIterator(classifier);
 		while (iterator.hasNext())
 		{
-			Class<?> current = iterator.next();
+			final Class<?> current = iterator.next();
 			if (current == type)
 			{
 				return true;
