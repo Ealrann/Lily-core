@@ -84,8 +84,8 @@ public abstract class SheepyAdapterWrapper implements ISheepyAdapterWrapper
 	@Override
 	public boolean isApplicable(EClass eClass)
 	{
-		return targetEClass == eClass;
+		return targetEClass == EcorePackage.Literals.EOBJECT || targetEClass.isSuperTypeOf(eClass);
 	}
-	
+
 	protected abstract ISheepyAdapter instanciateNew();
 }
