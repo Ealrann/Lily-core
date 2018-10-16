@@ -30,7 +30,7 @@ public abstract class AbstractSheepyAdapterFactory implements ISheepyAdapterFact
 	public boolean isFactoryForType(Object object)
 	{
 		load();
-		for (ISheepyAdapterWrapper extension : registry.getRegisteredAdapters())
+		for (final ISheepyAdapterWrapper extension : registry.getRegisteredAdapters())
 		{
 			if (extension.isAdapterForType(object))
 			{
@@ -51,36 +51,35 @@ public abstract class AbstractSheepyAdapterFactory implements ISheepyAdapterFact
 	public <T extends ISheepyAdapter> T adapt(EObject target, Class<T> type)
 	{
 		load();
-		ISheepyAdapterWrapper extension = registry.getAdapterFor(target, type);
+		final var wrapper = registry.getAdapterFor(target, type);
+		T res = null;
 
-		if (extension == null)
+		if (wrapper != null)
 		{
-			logUnregisteredAdapter(target, type);
-		}
+			res = (T) wrapper.adapt(target, this);
 
-		T res = (T) extension.adapt(target, this);
-
-		if (res == null)
-		{
-			logInvalidExtension(extension, type);
+			if (res == null)
+			{
+				logInvalidExtension(wrapper, type);
+			}
 		}
 
 		return res;
 	}
 
-	private void logUnregisteredAdapter(EObject target, Class<?> type)
+	public static void logUnregisteredAdapter(EObject target, Class<?> type)
 	{
 		if (type instanceof Class) System.err.println("Error : Can't adapt "
-				+ ((EObject) target).eClass().getName()
+				+ target.eClass().getName()
 				+ " to "
 				+ ((Class<?>) type).getSimpleName());
 		else System.err.println("Error : Can't adapt "
-				+ ((EObject) target).eClass().getName()
+				+ target.eClass().getName()
 				+ " to "
 				+ type.getClass().getSimpleName());
 	}
 
-	private void logInvalidExtension(ISheepyAdapterWrapper extension, Class<?> type)
+	private static void logInvalidExtension(ISheepyAdapterWrapper extension, Class<?> type)
 	{
 		System.err.println("The adapter extension ["
 				+ extension.getClass().getSimpleName()
