@@ -34,7 +34,7 @@ public abstract class SheepyAdapterWrapper implements ISheepyAdapterWrapper
 		{
 			if (reference == null)
 			{
-				reference = createNewAdapter(target, adapterFactory);
+				reference = createNewAdapter(adapterFactory);
 			}
 			reference.setTarget(target);
 			return reference;
@@ -44,7 +44,7 @@ public abstract class SheepyAdapterWrapper implements ISheepyAdapterWrapper
 			ISheepyAdapter res = adapterMap.get(target);
 			if (res == null)
 			{
-				res = createNewAdapter(target, adapterFactory);
+				res = createNewAdapter(adapterFactory);
 				adapterMap.put(target, res);
 				target.eAdapters().add(res);
 			}
@@ -52,7 +52,7 @@ public abstract class SheepyAdapterWrapper implements ISheepyAdapterWrapper
 		}
 	}
 
-	protected ISheepyAdapter createNewAdapter(EObject target, ISheepyAdapterFactory adapterFactory)
+	protected ISheepyAdapter createNewAdapter(ISheepyAdapterFactory adapterFactory)
 	{
 		final ISheepyAdapter res = instanciateNew();
 		res.setAdapterFactory(adapterFactory);

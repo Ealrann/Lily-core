@@ -38,11 +38,6 @@ public abstract class AbstractSheepyAdapter implements Adapter.Internal, ISheepy
 		return adapterFactory;
 	}
 
-	public boolean isSingleton()
-	{
-		return true;
-	}
-
 	@Override
 	public boolean isAdapterForType(Class<? extends ISheepyAdapter> type)
 	{
