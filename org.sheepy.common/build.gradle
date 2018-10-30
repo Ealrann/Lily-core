@@ -14,8 +14,11 @@ project.ext.emfVersion = "2.15.0"
 dependencies {
 	api "org.eclipse.emf:org.eclipse.emf.ecore:${emfVersion}"
 	api "org.eclipse.emf:org.eclipse.emf.common:${emfVersion}"
+	
+    api 'com.google.guava:guava:24.1-jre'
 
 	api 'org.junit.jupiter:junit-jupiter-api:5.1.1'
+	
 	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.1.1'
 }
 

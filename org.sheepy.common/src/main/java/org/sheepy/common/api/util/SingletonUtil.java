@@ -5,6 +5,7 @@ import java.lang.reflect.Modifier;
 
 public class SingletonUtil
 {
+	@Deprecated
 	public static boolean isSingleton(Class<?> classifier)
 	{
 		var iterator = new ClassHierarchyIterator(classifier);
