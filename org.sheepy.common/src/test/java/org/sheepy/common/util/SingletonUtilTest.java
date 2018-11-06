@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.sheepy.common.api.util.SingletonUtil;
 
+@Deprecated
 public class SingletonUtilTest
 {
 	@Test
