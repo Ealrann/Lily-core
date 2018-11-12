@@ -13,6 +13,7 @@ module org.sheepy.common
 	exports org.sheepy.common.api.adapter;
 	exports org.sheepy.common.api.adapter.impl;
 	exports org.sheepy.common.api.types;
+	exports org.sheepy.common.api.util;
 	
 	exports org.sheepy.common.model.types;
 	exports org.sheepy.common.model.types.impl;
