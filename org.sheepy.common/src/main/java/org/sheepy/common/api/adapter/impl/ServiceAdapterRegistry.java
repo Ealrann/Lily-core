@@ -124,7 +124,7 @@ public class ServiceAdapterRegistry
 
 		for (int i = 0; i < serviceAdapters.size(); i++)
 		{
-			final IServiceAdapter adapter = serviceAdapters.get(i);
+			var adapter = serviceAdapters.get(i);
 			if (adapter.isAdapterForType(type) && adapter.isApplicable(targetEClass))
 			{
 				res = (T) adapter;
