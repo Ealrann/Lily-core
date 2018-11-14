@@ -1,16 +1,14 @@
 package org.sheepy.common.api.adapter.impl;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.emf.ecore.EClass;
 import org.sheepy.common.api.adapter.IAutoAdapter;
-import org.sheepy.common.api.adapter.IServiceAdapter;
 import org.sheepy.common.api.adapter.IServiceAdapterFactory;
+import org.sheepy.common.api.adapter.ISingletonAdapter;
 import org.sheepy.common.api.service.ServiceManager;
 
 import com.google.common.collect.ArrayListMultimap;
@@ -18,12 +16,11 @@ import com.google.common.collect.ListMultimap;
 
 public class ServiceAdapterRegistry
 {
-	private final List<IServiceAdapter> serviceAdapters;
+	private final List<ISingletonAdapter> serviceAdapters;
 	private final List<IAutoAdapter> autoServiceAdapters;
 
 	private final Set<EClass> mappedEClasses = ConcurrentHashMap.newKeySet();
 
-	private final Map<Integer, IServiceAdapter> adapterMap = new HashMap<>();
 	private final ListMultimap<EClass, IAutoAdapter> autoAdapterMap = ArrayListMultimap.create();
 
 	private final IServiceAdapterFactory adapterFactory;
@@ -31,10 +28,10 @@ public class ServiceAdapterRegistry
 	ServiceAdapterRegistry(IServiceAdapterFactory adapterFactory)
 	{
 		this.adapterFactory = adapterFactory;
-		List<IServiceAdapter> foundAdapters = new ArrayList<>();
+		List<ISingletonAdapter> foundAdapters = new ArrayList<>();
 		List<IAutoAdapter> foundAutoAdapters = new ArrayList<>();
 
-		for (var adapterService : ServiceManager.getServices(IServiceAdapter.class))
+		for (var adapterService : ServiceManager.getServices(ISingletonAdapter.class))
 		{
 			initAdapter(adapterService);
 			foundAdapters.add(adapterService);
@@ -53,12 +50,12 @@ public class ServiceAdapterRegistry
 		autoServiceAdapters = List.copyOf(foundAutoAdapters);
 	}
 
-	private void initAdapter(IServiceAdapter adapterService)
+	private void initAdapter(ISingletonAdapter adapterService)
 	{
 		adapterService.setAdapterFactory(adapterFactory);
 	}
 
-	public List<IServiceAdapter> getRegisteredAdapters()
+	public List<ISingletonAdapter> getRegisteredAdapters()
 	{
 		return serviceAdapters;
 	}
@@ -99,26 +96,7 @@ public class ServiceAdapterRegistry
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T extends IServiceAdapter> T getAdapterFor(EClass targetEClass, Class<T> type)
-	{
-		T res = null;
-
-		var key = hash(targetEClass, type);
-		if (adapterMap.containsKey(key))
-		{
-			res = (T) adapterMap.get(key);
-		}
-		else
-		{
-			res = findAdapter(targetEClass, type);
-			adapterMap.put(key, res);
-		}
-
-		return res;
-	}
-
-	@SuppressWarnings("unchecked")
-	private <T extends IServiceAdapter> T findAdapter(EClass targetEClass, Class<T> type)
+	public <T extends ISingletonAdapter> T getAdapterFor(EClass targetEClass, Class<T> type)
 	{
 		T res = null;
 
@@ -133,14 +111,5 @@ public class ServiceAdapterRegistry
 		}
 
 		return res;
-	}
-
-	private static final int hash(EClass targetEClass, Class<? extends IServiceAdapter> type)
-	{
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((targetEClass == null) ? 0 : targetEClass.hashCode());
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
-		return result;
 	}
 }

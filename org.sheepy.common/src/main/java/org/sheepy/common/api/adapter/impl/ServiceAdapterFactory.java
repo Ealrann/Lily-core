@@ -2,8 +2,8 @@ package org.sheepy.common.api.adapter.impl;
 
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.common.api.adapter.IAutoAdapter;
-import org.sheepy.common.api.adapter.IServiceAdapter;
 import org.sheepy.common.api.adapter.IServiceAdapterFactory;
+import org.sheepy.common.api.adapter.ISingletonAdapter;
 import org.sheepy.common.api.adapter.IStatefullAdapter;
 
 public class ServiceAdapterFactory implements IServiceAdapterFactory
@@ -17,34 +17,36 @@ public class ServiceAdapterFactory implements IServiceAdapterFactory
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T extends IServiceAdapter> T adapt(EObject target, Class<T> type)
+	public <T extends ISingletonAdapter> T adapt(EObject target, Class<T> type)
 	{
-		final T patternAdapter = registry.getAdapterFor(target.eClass(), type);
 		T res = null;
 
-		if (patternAdapter != null)
+		var adapters = target.eAdapters();
+		for (int i = 0; i < adapters.size(); i++)
 		{
-			if (patternAdapter instanceof IStatefullAdapter)
+			var adapter = adapters.get(i);
+			if (adapter.isAdapterForType(type))
 			{
-				var adapters = target.eAdapters();
-				for (int i = 0; i < adapters.size(); i++)
-				{
-					final var adapter = adapters.get(i);
-					if (adapter.getClass() == patternAdapter.getClass())
-					{
-						res = (T) adapter;
-						break;
-					}
-				}
-				if (res == null)
+				res = (T) adapter;
+				break;
+			}
+		}
+
+		if (res == null)
+		{
+			final T patternAdapter = registry.getAdapterFor(target.eClass(), type);
+			if (patternAdapter != null)
+			{
+				if (patternAdapter instanceof IStatefullAdapter)
 				{
 					res = (T) patternAdapter.clone();
-					target.eAdapters().add((IStatefullAdapter) res);
 				}
-			}
-			else // Singleton Adapter, no need to check anything else.
-			{
-				res = patternAdapter;
+				else // Singleton Adapter, no need to check anything else.
+				{
+					res = patternAdapter;
+				}
+
+				target.eAdapters().add(res);
 			}
 		}
 

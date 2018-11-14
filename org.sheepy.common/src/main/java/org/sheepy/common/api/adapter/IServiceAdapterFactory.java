@@ -4,7 +4,7 @@ import org.eclipse.emf.ecore.EObject;
 
 public interface IServiceAdapterFactory
 {
-	<T extends IServiceAdapter> T adapt(EObject lilyObject, Class<T> classifier);
+	<T extends ISingletonAdapter> T adapt(EObject lilyObject, Class<T> classifier);
 
 	void loadAutoAdapters(EObject target);
 

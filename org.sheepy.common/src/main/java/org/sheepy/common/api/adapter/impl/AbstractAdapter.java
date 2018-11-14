@@ -1,13 +1,13 @@
 package org.sheepy.common.api.adapter.impl;
 
-import org.sheepy.common.api.adapter.IServiceAdapter;
+import org.sheepy.common.api.adapter.ISingletonAdapter;
 import org.sheepy.common.api.adapter.IServiceAdapterFactory;
 
-public abstract class AbstractServiceAdapter implements IServiceAdapter
+public abstract class AbstractAdapter implements ISingletonAdapter
 {
 	protected IServiceAdapterFactory adapterFactory;
 
-	public AbstractServiceAdapter()
+	public AbstractAdapter()
 	{
 		super();
 	}
@@ -25,11 +25,11 @@ public abstract class AbstractServiceAdapter implements IServiceAdapter
 	}
 	
 	@Override
-	public IServiceAdapter clone()
+	public ISingletonAdapter clone()
 	{
 		try
 		{
-			return (IServiceAdapter) super.clone();
+			return (ISingletonAdapter) super.clone();
 		} catch (CloneNotSupportedException e)
 		{
 			e.printStackTrace();
@@ -38,7 +38,7 @@ public abstract class AbstractServiceAdapter implements IServiceAdapter
 	}
 
 	@Override
-	public boolean isAdapterForType(Class<? extends IServiceAdapter> type)
+	public boolean isAdapterForType(Class<? extends ISingletonAdapter> type)
 	{
 		return ((Class<?>) type).isInstance(this);
 	}

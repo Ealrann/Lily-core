@@ -1,4 +1,4 @@
-import org.sheepy.common.api.adapter.IServiceAdapter;
+import org.sheepy.common.api.adapter.ISingletonAdapter;
 
 /**
  *
@@ -18,5 +18,5 @@ module org.sheepy.common
 	exports org.sheepy.common.model.types;
 	exports org.sheepy.common.model.types.impl;
 	
-	uses IServiceAdapter;
+	uses ISingletonAdapter;
 }
