@@ -3,11 +3,11 @@ package org.sheepy.common.api.adapter.impl;
 import org.sheepy.common.api.adapter.ISingletonAdapter;
 import org.sheepy.common.api.adapter.IServiceAdapterFactory;
 
-public abstract class AbstractAdapter implements ISingletonAdapter
+public abstract class AbstractSingletonAdapter implements ISingletonAdapter
 {
 	protected IServiceAdapterFactory adapterFactory;
 
-	public AbstractAdapter()
+	public AbstractSingletonAdapter()
 	{
 		super();
 	}
