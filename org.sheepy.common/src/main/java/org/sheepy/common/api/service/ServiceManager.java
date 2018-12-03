@@ -10,9 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.ServiceLoader;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.ListMultimap;
-
 public class ServiceManager
 {
 	/**
@@ -28,8 +25,9 @@ public class ServiceManager
 	/**
 	 * Map between implementation service classes, and service.
 	 */
-	private static ListMultimap<Class<? extends ITreeService>, Class<? extends ITreeService>> dependancyGraph = ArrayListMultimap
-			.create();
+	// private static ListMultimap<Class<? extends ITreeService>, Class<? extends ITreeService>>
+	// dependancyGraph = ArrayListMultimap
+	// .create();
 
 	private static final Comparator<IService> priorityComparator = new Comparator<>()
 	{
@@ -70,22 +68,22 @@ public class ServiceManager
 		}
 	}
 
-	public static final void restartTreeService(Class<? extends ITreeService> serviceClass)
-	{
-		ITreeService service = getService(serviceClass);
-
-		if (service != null)
-		{
-			service.deactivate();
-
-			for (Class<? extends ITreeService> subService : dependancyGraph.get(serviceClass))
-			{
-				restartTreeService(subService);
-			}
-
-			service.activate();
-		}
-	}
+//	public static final void restartTreeService(Class<? extends ITreeService> serviceClass)
+//	{
+//		ITreeService service = getService(serviceClass);
+//
+//		if (service != null)
+//		{
+//			service.deactivate();
+//
+//			for (Class<? extends ITreeService> subService : dependancyGraph.get(serviceClass))
+//			{
+//				restartTreeService(subService);
+//			}
+//
+//			service.activate();
+//		}
+//	}
 
 	/**
 	 * 
@@ -120,28 +118,28 @@ public class ServiceManager
 		// If the build list is empty : we activate treeServices
 		if (serviceBuildDeque.isEmpty())
 		{
-			activateTreeServices();
+//			activateTreeServices();
 		}
 	}
 
-	private static void activateTreeServices()
-	{
-		// We copy the list, because the activation could lead to new
-		// service build.
-		List<ITreeService> toActivate = List.copyOf(serviceToActivate);
-		Collections.reverse(toActivate);
-		serviceToActivate.clear();
-		for (ITreeService service : toActivate)
-		{
-			if (service.dependsOn() != null)
-			{
-				Class<? extends ITreeService> clazz = service.getClass();
-				dependancyGraph.put(service.dependsOn(), clazz);
-			}
-
-			service.activate();
-		}
-	}
+//	private static void activateTreeServices()
+//	{
+//		// We copy the list, because the activation could lead to new
+//		// service build.
+//		List<ITreeService> toActivate = List.copyOf(serviceToActivate);
+//		Collections.reverse(toActivate);
+//		serviceToActivate.clear();
+//		for (ITreeService service : toActivate)
+//		{
+//			if (service.dependsOn() != null)
+//			{
+//				Class<? extends ITreeService> clazz = service.getClass();
+//				dependancyGraph.put(service.dependsOn(), clazz);
+//			}
+//
+//			service.activate();
+//		}
+//	}
 
 	private static List<IService> gatherServices(Class<? extends IService> serviceClass)
 	{

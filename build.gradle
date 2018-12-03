@@ -21,7 +21,7 @@ subprojects {
 
 	apply plugin: 'java'
 	apply plugin: 'eclipse'
-	apply plugin: 'org.gradle.java.experimental-jigsaw'
+	apply plugin: "org.javamodularity.moduleplugin"
 
 	eclipse {
 		classpath {

@@ -1,7 +1,9 @@
 package org.sheepy.common.api.adapter.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -11,9 +13,6 @@ import org.sheepy.common.api.adapter.IServiceAdapterFactory;
 import org.sheepy.common.api.adapter.ISingletonAdapter;
 import org.sheepy.common.api.service.ServiceManager;
 
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.ListMultimap;
-
 public class ServiceAdapterRegistry
 {
 	private final List<ISingletonAdapter> serviceAdapters;
@@ -21,7 +20,7 @@ public class ServiceAdapterRegistry
 
 	private final Set<EClass> mappedEClasses = ConcurrentHashMap.newKeySet();
 
-	private final ListMultimap<EClass, IAutoAdapter> autoAdapterMap = ArrayListMultimap.create();
+	private final Map<EClass, List<IAutoAdapter>> autoAdapterMap = new HashMap<>();
 
 	private final IServiceAdapterFactory adapterFactory;
 
@@ -77,7 +76,7 @@ public class ServiceAdapterRegistry
 			IAutoAdapter adapter = autoServiceAdapters.get(i);
 			if (adapter.isApplicable(eClass))
 			{
-				autoAdapterMap.put(eClass, adapter);
+				addAutoAdapter(eClass, adapter);
 			}
 		}
 
@@ -90,9 +89,20 @@ public class ServiceAdapterRegistry
 		{
 			if (adapter.isApplicable(eClass))
 			{
-				autoAdapterMap.put(eClass, adapter);
+				addAutoAdapter(eClass, adapter);
 			}
 		}
+	}
+
+	private void addAutoAdapter(EClass eClass, IAutoAdapter adapter)
+	{
+		List<IAutoAdapter> list = autoAdapterMap.get(eClass);
+		if (list == null)
+		{
+			list = new ArrayList<>();
+			autoAdapterMap.put(eClass, list);
+		}
+		list.add(adapter);
 	}
 
 	@SuppressWarnings("unchecked")
