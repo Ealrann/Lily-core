@@ -9,16 +9,18 @@ if (project.hasProperty('javaModule')) {
 	javaModule.name = 'org.sheepy.common'
 }
 
-project.ext.emfVersion = "2.15.0"
+test {
+  useJUnitPlatform()
+}
 
 dependencies {
-	api "org.eclipse.emf:org.eclipse.emf.ecore:${emfVersion}"
-	api "org.eclipse.emf:org.eclipse.emf.common:${emfVersion}"
-	
-    implementation 'com.google.guava:guava:26.0-jre'
+	api project(":org.eclipse.emf.ecore")
+	api project(":org.eclipse.emf.common")
 
-	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-api:5.1.1'
-	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.1.1'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+	testImplementation 'org.junit.jupiter:junit-jupiter-params:5.3.1'
+
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 }
 
 sourceSets {

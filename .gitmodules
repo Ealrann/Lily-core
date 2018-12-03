@@ -1,0 +1,3 @@
+[submodule "EMF"]
+	path = EMF
+	url = git@github.com:Ealrann/EMF-Standalone.git

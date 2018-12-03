@@ -1,3 +1,10 @@
 rootProject.name = "Sheepy"
 
 include 'org.sheepy.common'
+
+// EMF
+include 'org.eclipse.emf.common'
+include 'org.eclipse.emf.ecore'
+
+project(':org.eclipse.emf.common').projectDir = new File(settingsDir, 'EMF/org.eclipse.emf.common')
+project(':org.eclipse.emf.ecore').projectDir = new File(settingsDir, 'EMF/org.eclipse.emf.ecore')
