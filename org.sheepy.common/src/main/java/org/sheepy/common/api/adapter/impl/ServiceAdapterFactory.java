@@ -5,6 +5,7 @@ import org.sheepy.common.api.adapter.IAutoAdapter;
 import org.sheepy.common.api.adapter.IServiceAdapterFactory;
 import org.sheepy.common.api.adapter.ISingletonAdapter;
 import org.sheepy.common.api.adapter.IStatefullAdapter;
+import org.sheepy.common.api.util.ReflectivityUtils;
 
 public class ServiceAdapterFactory implements IServiceAdapterFactory
 {
@@ -39,7 +40,8 @@ public class ServiceAdapterFactory implements IServiceAdapterFactory
 			{
 				if (patternAdapter instanceof IStatefullAdapter)
 				{
-					res = (T) patternAdapter.clone();
+					var classifier = (Class<T>) patternAdapter.getClass();
+					res = ReflectivityUtils.constructNew(classifier);
 				}
 				else // Singleton Adapter, no need to check anything else.
 				{

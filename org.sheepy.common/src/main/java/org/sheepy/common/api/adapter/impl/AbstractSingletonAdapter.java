@@ -1,7 +1,7 @@
 package org.sheepy.common.api.adapter.impl;
 
-import org.sheepy.common.api.adapter.ISingletonAdapter;
 import org.sheepy.common.api.adapter.IServiceAdapterFactory;
+import org.sheepy.common.api.adapter.ISingletonAdapter;
 
 public abstract class AbstractSingletonAdapter implements ISingletonAdapter
 {
@@ -22,19 +22,6 @@ public abstract class AbstractSingletonAdapter implements ISingletonAdapter
 	public final IServiceAdapterFactory getAdapterFactory()
 	{
 		return adapterFactory;
-	}
-	
-	@Override
-	public ISingletonAdapter clone()
-	{
-		try
-		{
-			return (ISingletonAdapter) super.clone();
-		} catch (CloneNotSupportedException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	@Override

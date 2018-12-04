@@ -6,7 +6,7 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EClass;
 import org.sheepy.common.api.service.IStandaloneService;
 
-public interface ISingletonAdapter extends Adapter, IStandaloneService, Cloneable
+public interface ISingletonAdapter extends Adapter, IStandaloneService
 {
 	boolean isAdapterForType(Class<? extends ISingletonAdapter> type);
 
@@ -15,8 +15,6 @@ public interface ISingletonAdapter extends Adapter, IStandaloneService, Cloneabl
 	IServiceAdapterFactory getAdapterFactory();
 
 	void setAdapterFactory(IServiceAdapterFactory adapterFactory);
-
-	ISingletonAdapter clone();
 
 	@Override
 	default void notifyChanged(Notification notification)
