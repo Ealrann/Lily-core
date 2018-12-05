@@ -27,7 +27,7 @@ public interface ISingletonAdapter extends Adapter, IStandaloneService
 	}
 
 	@Override
-	default void setTarget(Notifier newTarget)
+	default void setTarget(Notifier target)
 	{}
 
 	@Override
