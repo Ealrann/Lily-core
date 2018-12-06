@@ -1,10 +1,13 @@
-package org.sheepy.common.api.adapter.impl;
+package org.sheepy.common.api.adapter.internal;
+
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.common.api.adapter.IAutoAdapter;
 import org.sheepy.common.api.adapter.IServiceAdapterFactory;
 import org.sheepy.common.api.adapter.ISingletonAdapter;
 import org.sheepy.common.api.adapter.IStatefullAdapter;
+import org.sheepy.common.api.adapter.impl.AutoEContentAdapter;
 import org.sheepy.common.api.util.ReflectivityUtils;
 
 public class ServiceAdapterFactory implements IServiceAdapterFactory
@@ -55,21 +58,33 @@ public class ServiceAdapterFactory implements IServiceAdapterFactory
 		return res;
 	}
 
-	@Override
 	public void loadAutoAdapters(EObject target)
 	{
-		for (IAutoAdapter adapter : registry.getAutoAdapters(target.eClass()))
+		List<IAutoAdapter> autoAdapters = registry.getAutoAdapters(target.eClass());
+		if (autoAdapters != null)
 		{
-			adapt(target, adapter.getClass()).load(target);
+			for (IAutoAdapter adapter : autoAdapters)
+			{
+				adapt(target, adapter.getClass()).load(target);
+			}
+		}
+	}
+
+	public void disposeAutoAdapters(EObject target)
+	{
+		List<IAutoAdapter> autoAdapters = registry.getAutoAdapters(target.eClass());
+		if (autoAdapters != null)
+		{
+			for (IAutoAdapter adapter : autoAdapters)
+			{
+				adapt(target, adapter.getClass()).dispose(target);
+			}
 		}
 	}
 
 	@Override
-	public void disposeAutoAdapters(EObject target)
+	public void setupRootForAutoAdapters(EObject root)
 	{
-		for (IAutoAdapter adapter : registry.getAutoAdapters(target.eClass()))
-		{
-			adapt(target, adapter.getClass()).dispose(target);
-		}
+		root.eAdapters().add(new AutoEContentAdapter());
 	}
 }
