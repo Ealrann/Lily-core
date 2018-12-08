@@ -2,7 +2,7 @@
 
 optimize='false'
 
-for i in `find . -type f -name "*.frag" -o -name "*.vert" -o -name "*.comp" 2>/dev/null`
+for i in `find -regex '.*\.\(frag\|comp\|vert\)' ! -path "*/bin/*" ! -path "*/build/*" 2>/dev/null`
 do
 	rm $i.spv 2>/dev/null
 	dir=`dirname $i`
