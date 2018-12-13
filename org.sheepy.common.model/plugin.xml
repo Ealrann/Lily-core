@@ -14,4 +14,20 @@
             genModel="src/main/xcore/Types.xcore"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Application -->
+      <package
+            uri="org.sheepy.common.model.application"
+            class="org.sheepy.common.model.application.ApplicationPackage"
+            genModel="src/main/xcore/Application.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Presentation -->
+      <package
+            uri="org.sheepy.common.model.presentation"
+            class="org.sheepy.common.model.presentation.PresentationPackage"
+            genModel="src/main/xcore/Presentation.xcore"/>
+   </extension>
+
 </plugin>
