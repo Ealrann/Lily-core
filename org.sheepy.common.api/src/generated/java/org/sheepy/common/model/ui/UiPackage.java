@@ -1,0 +1,2179 @@
+/**
+ */
+package org.sheepy.common.model.ui;
+
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+
+import org.sheepy.common.model.presentation.PresentationPackage;
+
+/**
+ * <!-- begin-user-doc -->
+ * The <b>Package</b> for the model.
+ * It contains accessors for the meta objects to represent
+ * <ul>
+ *   <li>each class,</li>
+ *   <li>each feature of each class,</li>
+ *   <li>each operation of each class,</li>
+ *   <li>each enum,</li>
+ *   <li>and each data type</li>
+ * </ul>
+ * <!-- end-user-doc -->
+ * @see org.sheepy.common.model.ui.UiFactory
+ * @model kind="package"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.common.model/src/generated/java' editDirectory='/org.sheepy.common.model.edit/src/generated/java' publicConstructors='true' extensibleProviderFactory='true' childCreationExtenders='true' basePackage='org.sheepy.common.model'"
+ * @generated
+ */
+public interface UiPackage extends EPackage
+{
+	/**
+	 * The package name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String eNAME = "ui";
+
+	/**
+	 * The package namespace URI.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String eNS_URI = "org.sheepy.common.model.ui";
+
+	/**
+	 * The package namespace name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	String eNS_PREFIX = "ui";
+
+	/**
+	 * The singleton instance of the package.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	UiPackage eINSTANCE = org.sheepy.common.model.ui.impl.UiPackageImpl.init();
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.AbstractLabelImpl <em>Abstract Label</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.common.model.ui.impl.AbstractLabelImpl
+	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getAbstractLabel()
+	 * @generated
+	 */
+	int ABSTRACT_LABEL = 0;
+
+	/**
+	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__CONTENT_OBJECTS = PresentationPackage.CONTROL__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__POSITION = PresentationPackage.CONTROL__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__WIDTH = PresentationPackage.CONTROL__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__HEIGHT = PresentationPackage.CONTROL__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__VERTICAL_RELATIVE = PresentationPackage.CONTROL__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__HORIZONTAL_RELATIVE = PresentationPackage.CONTROL__HORIZONTAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__LABEL = PresentationPackage.CONTROL_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Font Scale</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__FONT_SCALE = PresentationPackage.CONTROL_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Label</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL_FEATURE_COUNT = PresentationPackage.CONTROL_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL___LINFERENCE_OBJECT = PresentationPackage.CONTROL___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.CONTROL___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL___LCONTENTS = PresentationPackage.CONTROL___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL___LPARENT = PresentationPackage.CONTROL___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL___LALL_UNITS = PresentationPackage.CONTROL___LALL_UNITS;
+
+	/**
+	 * The number of operations of the '<em>Abstract Label</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL_OPERATION_COUNT = PresentationPackage.CONTROL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.DynamicRowLayoutImpl <em>Dynamic Row Layout</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.common.model.ui.impl.DynamicRowLayoutImpl
+	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getDynamicRowLayout()
+	 * @generated
+	 */
+	int DYNAMIC_ROW_LAYOUT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT__CONTENT_OBJECTS = PresentationPackage.CONTROL__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT__POSITION = PresentationPackage.CONTROL__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT__WIDTH = PresentationPackage.CONTROL__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT__HEIGHT = PresentationPackage.CONTROL__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT__VERTICAL_RELATIVE = PresentationPackage.CONTROL__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT__HORIZONTAL_RELATIVE = PresentationPackage.CONTROL__HORIZONTAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Column Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT__COLUMN_COUNT = PresentationPackage.CONTROL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Dynamic Row Layout</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT_FEATURE_COUNT = PresentationPackage.CONTROL_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT___LINFERENCE_OBJECT = PresentationPackage.CONTROL___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.CONTROL___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT___LCONTENTS = PresentationPackage.CONTROL___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT___LPARENT = PresentationPackage.CONTROL___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT___LALL_UNITS = PresentationPackage.CONTROL___LALL_UNITS;
+
+	/**
+	 * The number of operations of the '<em>Dynamic Row Layout</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT_OPERATION_COUNT = PresentationPackage.CONTROL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.VariableLabelImpl <em>Variable Label</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.common.model.ui.impl.VariableLabelImpl
+	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getVariableLabel()
+	 * @generated
+	 */
+	int VARIABLE_LABEL = 2;
+
+	/**
+	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL__CONTENT_OBJECTS = ABSTRACT_LABEL__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL__POSITION = ABSTRACT_LABEL__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL__WIDTH = ABSTRACT_LABEL__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL__HEIGHT = ABSTRACT_LABEL__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL__VERTICAL_RELATIVE = ABSTRACT_LABEL__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL__HORIZONTAL_RELATIVE = ABSTRACT_LABEL__HORIZONTAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL__LABEL = ABSTRACT_LABEL__LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Font Scale</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL__FONT_SCALE = ABSTRACT_LABEL__FONT_SCALE;
+
+	/**
+	 * The feature id for the '<em><b>Variable Resolver</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL__VARIABLE_RESOLVER = ABSTRACT_LABEL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Variable Label</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL_FEATURE_COUNT = ABSTRACT_LABEL_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL___LINFERENCE_OBJECT = ABSTRACT_LABEL___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL___CREATE_CONTAINMENT_ELIST__ECLASS = ABSTRACT_LABEL___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL___LCONTENTS = ABSTRACT_LABEL___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL___LPARENT = ABSTRACT_LABEL___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL___LALL_UNITS = ABSTRACT_LABEL___LALL_UNITS;
+
+	/**
+	 * The number of operations of the '<em>Variable Label</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL_OPERATION_COUNT = ABSTRACT_LABEL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.LabelImpl <em>Label</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.common.model.ui.impl.LabelImpl
+	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getLabel()
+	 * @generated
+	 */
+	int LABEL = 3;
+
+	/**
+	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__CONTENT_OBJECTS = ABSTRACT_LABEL__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__POSITION = ABSTRACT_LABEL__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__WIDTH = ABSTRACT_LABEL__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__HEIGHT = ABSTRACT_LABEL__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__VERTICAL_RELATIVE = ABSTRACT_LABEL__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__HORIZONTAL_RELATIVE = ABSTRACT_LABEL__HORIZONTAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__LABEL = ABSTRACT_LABEL__LABEL;
+
+	/**
+	 * The feature id for the '<em><b>Font Scale</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__FONT_SCALE = ABSTRACT_LABEL__FONT_SCALE;
+
+	/**
+	 * The number of structural features of the '<em>Label</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_FEATURE_COUNT = ABSTRACT_LABEL_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL___LINFERENCE_OBJECT = ABSTRACT_LABEL___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL___CREATE_CONTAINMENT_ELIST__ECLASS = ABSTRACT_LABEL___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL___LCONTENTS = ABSTRACT_LABEL___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL___LPARENT = ABSTRACT_LABEL___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL___LALL_UNITS = ABSTRACT_LABEL___LALL_UNITS;
+
+	/**
+	 * The number of operations of the '<em>Label</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_OPERATION_COUNT = ABSTRACT_LABEL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.TextFieldImpl <em>Text Field</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.common.model.ui.impl.TextFieldImpl
+	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getTextField()
+	 * @generated
+	 */
+	int TEXT_FIELD = 4;
+
+	/**
+	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD__CONTENT_OBJECTS = PresentationPackage.CONTROL__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD__POSITION = PresentationPackage.CONTROL__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD__WIDTH = PresentationPackage.CONTROL__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD__HEIGHT = PresentationPackage.CONTROL__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD__VERTICAL_RELATIVE = PresentationPackage.CONTROL__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD__HORIZONTAL_RELATIVE = PresentationPackage.CONTROL__HORIZONTAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Variable Resolver</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD__VARIABLE_RESOLVER = PresentationPackage.CONTROL_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Text Field</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD_FEATURE_COUNT = PresentationPackage.CONTROL_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD___LINFERENCE_OBJECT = PresentationPackage.CONTROL___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.CONTROL___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD___LCONTENTS = PresentationPackage.CONTROL___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD___LPARENT = PresentationPackage.CONTROL___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD___LALL_UNITS = PresentationPackage.CONTROL___LALL_UNITS;
+
+	/**
+	 * The number of operations of the '<em>Text Field</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD_OPERATION_COUNT = PresentationPackage.CONTROL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.AbstractButtonImpl <em>Abstract Button</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.common.model.ui.impl.AbstractButtonImpl
+	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getAbstractButton()
+	 * @generated
+	 */
+	int ABSTRACT_BUTTON = 5;
+
+	/**
+	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON__CONTENT_OBJECTS = PresentationPackage.CONTROL__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON__POSITION = PresentationPackage.CONTROL__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON__WIDTH = PresentationPackage.CONTROL__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON__HEIGHT = PresentationPackage.CONTROL__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON__VERTICAL_RELATIVE = PresentationPackage.CONTROL__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON__HORIZONTAL_RELATIVE = PresentationPackage.CONTROL__HORIZONTAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON__TEXT = PresentationPackage.CONTROL_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Pressed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON__PRESSED = PresentationPackage.CONTROL_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Button</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON_FEATURE_COUNT = PresentationPackage.CONTROL_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON___LINFERENCE_OBJECT = PresentationPackage.CONTROL___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.CONTROL___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON___LCONTENTS = PresentationPackage.CONTROL___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON___LPARENT = PresentationPackage.CONTROL___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON___LALL_UNITS = PresentationPackage.CONTROL___LALL_UNITS;
+
+	/**
+	 * The number of operations of the '<em>Abstract Button</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON_OPERATION_COUNT = PresentationPackage.CONTROL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.ButtonImpl <em>Button</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.common.model.ui.impl.ButtonImpl
+	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getButton()
+	 * @generated
+	 */
+	int BUTTON = 6;
+
+	/**
+	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON__CONTENT_OBJECTS = ABSTRACT_BUTTON__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON__POSITION = ABSTRACT_BUTTON__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON__WIDTH = ABSTRACT_BUTTON__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON__HEIGHT = ABSTRACT_BUTTON__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON__VERTICAL_RELATIVE = ABSTRACT_BUTTON__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON__HORIZONTAL_RELATIVE = ABSTRACT_BUTTON__HORIZONTAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON__TEXT = ABSTRACT_BUTTON__TEXT;
+
+	/**
+	 * The feature id for the '<em><b>Pressed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON__PRESSED = ABSTRACT_BUTTON__PRESSED;
+
+	/**
+	 * The feature id for the '<em><b>Shortcut</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON__SHORTCUT = ABSTRACT_BUTTON_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON__STATE = ABSTRACT_BUTTON_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON__ACTIONS = ABSTRACT_BUTTON_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Button</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON_FEATURE_COUNT = ABSTRACT_BUTTON_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON___LINFERENCE_OBJECT = ABSTRACT_BUTTON___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS = ABSTRACT_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON___LCONTENTS = ABSTRACT_BUTTON___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON___LPARENT = ABSTRACT_BUTTON___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON___LALL_UNITS = ABSTRACT_BUTTON___LALL_UNITS;
+
+	/**
+	 * The operation id for the '<em>LActions</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON___LACTIONS = ABSTRACT_BUTTON_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Executor</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON___GET_EXECUTOR = ABSTRACT_BUTTON_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Button</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON_OPERATION_COUNT = ABSTRACT_BUTTON_OPERATION_COUNT + 2;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.AbstractBooleanButtonImpl <em>Abstract Boolean Button</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.common.model.ui.impl.AbstractBooleanButtonImpl
+	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getAbstractBooleanButton()
+	 * @generated
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON = 7;
+
+	/**
+	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON__CONTENT_OBJECTS = ABSTRACT_BUTTON__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON__POSITION = ABSTRACT_BUTTON__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON__WIDTH = ABSTRACT_BUTTON__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON__HEIGHT = ABSTRACT_BUTTON__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON__VERTICAL_RELATIVE = ABSTRACT_BUTTON__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON__HORIZONTAL_RELATIVE = ABSTRACT_BUTTON__HORIZONTAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON__TEXT = ABSTRACT_BUTTON__TEXT;
+
+	/**
+	 * The feature id for the '<em><b>Pressed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON__PRESSED = ABSTRACT_BUTTON__PRESSED;
+
+	/**
+	 * The feature id for the '<em><b>Text When True</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE = ABSTRACT_BUTTON_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Text When False</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE = ABSTRACT_BUTTON_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Boolean Button</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON_FEATURE_COUNT = ABSTRACT_BUTTON_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON___LINFERENCE_OBJECT = ABSTRACT_BUTTON___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS = ABSTRACT_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON___LCONTENTS = ABSTRACT_BUTTON___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON___LPARENT = ABSTRACT_BUTTON___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON___LALL_UNITS = ABSTRACT_BUTTON___LALL_UNITS;
+
+	/**
+	 * The number of operations of the '<em>Abstract Boolean Button</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON_OPERATION_COUNT = ABSTRACT_BUTTON_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.BooleanButtonImpl <em>Boolean Button</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.common.model.ui.impl.BooleanButtonImpl
+	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getBooleanButton()
+	 * @generated
+	 */
+	int BOOLEAN_BUTTON = 8;
+
+	/**
+	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON__CONTENT_OBJECTS = ABSTRACT_BOOLEAN_BUTTON__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON__POSITION = ABSTRACT_BOOLEAN_BUTTON__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON__WIDTH = ABSTRACT_BOOLEAN_BUTTON__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON__HEIGHT = ABSTRACT_BOOLEAN_BUTTON__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON__VERTICAL_RELATIVE = ABSTRACT_BOOLEAN_BUTTON__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON__HORIZONTAL_RELATIVE = ABSTRACT_BOOLEAN_BUTTON__HORIZONTAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON__TEXT = ABSTRACT_BOOLEAN_BUTTON__TEXT;
+
+	/**
+	 * The feature id for the '<em><b>Pressed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON__PRESSED = ABSTRACT_BOOLEAN_BUTTON__PRESSED;
+
+	/**
+	 * The feature id for the '<em><b>Text When True</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON__TEXT_WHEN_TRUE = ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE;
+
+	/**
+	 * The feature id for the '<em><b>Text When False</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON__TEXT_WHEN_FALSE = ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE;
+
+	/**
+	 * The feature id for the '<em><b>Variable Resolver</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON__VARIABLE_RESOLVER = ABSTRACT_BOOLEAN_BUTTON_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Boolean Button</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON_FEATURE_COUNT = ABSTRACT_BOOLEAN_BUTTON_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON___LINFERENCE_OBJECT = ABSTRACT_BOOLEAN_BUTTON___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS = ABSTRACT_BOOLEAN_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON___LCONTENTS = ABSTRACT_BOOLEAN_BUTTON___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON___LPARENT = ABSTRACT_BOOLEAN_BUTTON___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON___LALL_UNITS = ABSTRACT_BOOLEAN_BUTTON___LALL_UNITS;
+
+	/**
+	 * The number of operations of the '<em>Boolean Button</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON_OPERATION_COUNT = ABSTRACT_BOOLEAN_BUTTON_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.BooleanActionButtonImpl <em>Boolean Action Button</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.common.model.ui.impl.BooleanActionButtonImpl
+	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getBooleanActionButton()
+	 * @generated
+	 */
+	int BOOLEAN_ACTION_BUTTON = 9;
+
+	/**
+	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON__CONTENT_OBJECTS = ABSTRACT_BOOLEAN_BUTTON__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON__POSITION = ABSTRACT_BOOLEAN_BUTTON__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON__WIDTH = ABSTRACT_BOOLEAN_BUTTON__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON__HEIGHT = ABSTRACT_BOOLEAN_BUTTON__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON__VERTICAL_RELATIVE = ABSTRACT_BOOLEAN_BUTTON__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON__HORIZONTAL_RELATIVE = ABSTRACT_BOOLEAN_BUTTON__HORIZONTAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON__TEXT = ABSTRACT_BOOLEAN_BUTTON__TEXT;
+
+	/**
+	 * The feature id for the '<em><b>Pressed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON__PRESSED = ABSTRACT_BOOLEAN_BUTTON__PRESSED;
+
+	/**
+	 * The feature id for the '<em><b>Text When True</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON__TEXT_WHEN_TRUE = ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE;
+
+	/**
+	 * The feature id for the '<em><b>Text When False</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON__TEXT_WHEN_FALSE = ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE;
+
+	/**
+	 * The feature id for the '<em><b>Action When True</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE = ABSTRACT_BOOLEAN_BUTTON_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Action When False</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE = ABSTRACT_BOOLEAN_BUTTON_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Boolean Action Button</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON_FEATURE_COUNT = ABSTRACT_BOOLEAN_BUTTON_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON___LINFERENCE_OBJECT = ABSTRACT_BOOLEAN_BUTTON___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS = ABSTRACT_BOOLEAN_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON___LCONTENTS = ABSTRACT_BOOLEAN_BUTTON___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON___LPARENT = ABSTRACT_BOOLEAN_BUTTON___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON___LALL_UNITS = ABSTRACT_BOOLEAN_BUTTON___LALL_UNITS;
+
+	/**
+	 * The number of operations of the '<em>Boolean Action Button</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON_OPERATION_COUNT = ABSTRACT_BOOLEAN_BUTTON_OPERATION_COUNT + 0;
+
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.AbstractLabel <em>Abstract Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abstract Label</em>'.
+	 * @see org.sheepy.common.model.ui.AbstractLabel
+	 * @generated
+	 */
+	EClass getAbstractLabel();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.AbstractLabel#getLabel <em>Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Label</em>'.
+	 * @see org.sheepy.common.model.ui.AbstractLabel#getLabel()
+	 * @see #getAbstractLabel()
+	 * @generated
+	 */
+	EAttribute getAbstractLabel_Label();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.AbstractLabel#getFontScale <em>Font Scale</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Font Scale</em>'.
+	 * @see org.sheepy.common.model.ui.AbstractLabel#getFontScale()
+	 * @see #getAbstractLabel()
+	 * @generated
+	 */
+	EAttribute getAbstractLabel_FontScale();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.DynamicRowLayout <em>Dynamic Row Layout</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Dynamic Row Layout</em>'.
+	 * @see org.sheepy.common.model.ui.DynamicRowLayout
+	 * @generated
+	 */
+	EClass getDynamicRowLayout();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.DynamicRowLayout#getColumnCount <em>Column Count</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Column Count</em>'.
+	 * @see org.sheepy.common.model.ui.DynamicRowLayout#getColumnCount()
+	 * @see #getDynamicRowLayout()
+	 * @generated
+	 */
+	EAttribute getDynamicRowLayout_ColumnCount();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.VariableLabel <em>Variable Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Variable Label</em>'.
+	 * @see org.sheepy.common.model.ui.VariableLabel
+	 * @generated
+	 */
+	EClass getVariableLabel();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.sheepy.common.model.ui.VariableLabel#getVariableResolver <em>Variable Resolver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Variable Resolver</em>'.
+	 * @see org.sheepy.common.model.ui.VariableLabel#getVariableResolver()
+	 * @see #getVariableLabel()
+	 * @generated
+	 */
+	EReference getVariableLabel_VariableResolver();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.Label <em>Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Label</em>'.
+	 * @see org.sheepy.common.model.ui.Label
+	 * @generated
+	 */
+	EClass getLabel();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.TextField <em>Text Field</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Text Field</em>'.
+	 * @see org.sheepy.common.model.ui.TextField
+	 * @generated
+	 */
+	EClass getTextField();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.sheepy.common.model.ui.TextField#getVariableResolver <em>Variable Resolver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Variable Resolver</em>'.
+	 * @see org.sheepy.common.model.ui.TextField#getVariableResolver()
+	 * @see #getTextField()
+	 * @generated
+	 */
+	EReference getTextField_VariableResolver();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.AbstractButton <em>Abstract Button</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abstract Button</em>'.
+	 * @see org.sheepy.common.model.ui.AbstractButton
+	 * @generated
+	 */
+	EClass getAbstractButton();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.AbstractButton#getText <em>Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see org.sheepy.common.model.ui.AbstractButton#getText()
+	 * @see #getAbstractButton()
+	 * @generated
+	 */
+	EAttribute getAbstractButton_Text();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.AbstractButton#isPressed <em>Pressed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Pressed</em>'.
+	 * @see org.sheepy.common.model.ui.AbstractButton#isPressed()
+	 * @see #getAbstractButton()
+	 * @generated
+	 */
+	EAttribute getAbstractButton_Pressed();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.Button <em>Button</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Button</em>'.
+	 * @see org.sheepy.common.model.ui.Button
+	 * @generated
+	 */
+	EClass getButton();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.Button#getShortcut <em>Shortcut</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Shortcut</em>'.
+	 * @see org.sheepy.common.model.ui.Button#getShortcut()
+	 * @see #getButton()
+	 * @generated
+	 */
+	EAttribute getButton_Shortcut();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.Button#getState <em>State</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>State</em>'.
+	 * @see org.sheepy.common.model.ui.Button#getState()
+	 * @see #getButton()
+	 * @generated
+	 */
+	EAttribute getButton_State();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.common.model.ui.Button#getActions <em>Actions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Actions</em>'.
+	 * @see org.sheepy.common.model.ui.Button#getActions()
+	 * @see #getButton()
+	 * @generated
+	 */
+	EReference getButton_Actions();
+
+	/**
+	 * Returns the meta object for the '{@link org.sheepy.common.model.ui.Button#lActions() <em>LActions</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>LActions</em>' operation.
+	 * @see org.sheepy.common.model.ui.Button#lActions()
+	 * @generated
+	 */
+	EOperation getButton__LActions();
+
+	/**
+	 * Returns the meta object for the '{@link org.sheepy.common.model.ui.Button#getExecutor() <em>Get Executor</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Executor</em>' operation.
+	 * @see org.sheepy.common.model.ui.Button#getExecutor()
+	 * @generated
+	 */
+	EOperation getButton__GetExecutor();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.AbstractBooleanButton <em>Abstract Boolean Button</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abstract Boolean Button</em>'.
+	 * @see org.sheepy.common.model.ui.AbstractBooleanButton
+	 * @generated
+	 */
+	EClass getAbstractBooleanButton();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.AbstractBooleanButton#getTextWhenTrue <em>Text When True</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text When True</em>'.
+	 * @see org.sheepy.common.model.ui.AbstractBooleanButton#getTextWhenTrue()
+	 * @see #getAbstractBooleanButton()
+	 * @generated
+	 */
+	EAttribute getAbstractBooleanButton_TextWhenTrue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.AbstractBooleanButton#getTextWhenFalse <em>Text When False</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text When False</em>'.
+	 * @see org.sheepy.common.model.ui.AbstractBooleanButton#getTextWhenFalse()
+	 * @see #getAbstractBooleanButton()
+	 * @generated
+	 */
+	EAttribute getAbstractBooleanButton_TextWhenFalse();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.BooleanButton <em>Boolean Button</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Boolean Button</em>'.
+	 * @see org.sheepy.common.model.ui.BooleanButton
+	 * @generated
+	 */
+	EClass getBooleanButton();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.sheepy.common.model.ui.BooleanButton#getVariableResolver <em>Variable Resolver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Variable Resolver</em>'.
+	 * @see org.sheepy.common.model.ui.BooleanButton#getVariableResolver()
+	 * @see #getBooleanButton()
+	 * @generated
+	 */
+	EReference getBooleanButton_VariableResolver();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.BooleanActionButton <em>Boolean Action Button</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Boolean Action Button</em>'.
+	 * @see org.sheepy.common.model.ui.BooleanActionButton
+	 * @generated
+	 */
+	EClass getBooleanActionButton();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.sheepy.common.model.ui.BooleanActionButton#getActionWhenTrue <em>Action When True</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Action When True</em>'.
+	 * @see org.sheepy.common.model.ui.BooleanActionButton#getActionWhenTrue()
+	 * @see #getBooleanActionButton()
+	 * @generated
+	 */
+	EReference getBooleanActionButton_ActionWhenTrue();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.sheepy.common.model.ui.BooleanActionButton#getActionWhenFalse <em>Action When False</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Action When False</em>'.
+	 * @see org.sheepy.common.model.ui.BooleanActionButton#getActionWhenFalse()
+	 * @see #getBooleanActionButton()
+	 * @generated
+	 */
+	EReference getBooleanActionButton_ActionWhenFalse();
+
+	/**
+	 * Returns the factory that creates the instances of the model.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the factory that creates the instances of the model.
+	 * @generated
+	 */
+	UiFactory getUiFactory();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * Defines literals for the meta objects that represent
+	 * <ul>
+	 *   <li>each class,</li>
+	 *   <li>each feature of each class,</li>
+	 *   <li>each operation of each class,</li>
+	 *   <li>each enum,</li>
+	 *   <li>and each data type</li>
+	 * </ul>
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	interface Literals
+	{
+		/**
+		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.AbstractLabelImpl <em>Abstract Label</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.common.model.ui.impl.AbstractLabelImpl
+		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getAbstractLabel()
+		 * @generated
+		 */
+		EClass ABSTRACT_LABEL = eINSTANCE.getAbstractLabel();
+
+		/**
+		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABSTRACT_LABEL__LABEL = eINSTANCE.getAbstractLabel_Label();
+
+		/**
+		 * The meta object literal for the '<em><b>Font Scale</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABSTRACT_LABEL__FONT_SCALE = eINSTANCE.getAbstractLabel_FontScale();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.DynamicRowLayoutImpl <em>Dynamic Row Layout</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.common.model.ui.impl.DynamicRowLayoutImpl
+		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getDynamicRowLayout()
+		 * @generated
+		 */
+		EClass DYNAMIC_ROW_LAYOUT = eINSTANCE.getDynamicRowLayout();
+
+		/**
+		 * The meta object literal for the '<em><b>Column Count</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DYNAMIC_ROW_LAYOUT__COLUMN_COUNT = eINSTANCE.getDynamicRowLayout_ColumnCount();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.VariableLabelImpl <em>Variable Label</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.common.model.ui.impl.VariableLabelImpl
+		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getVariableLabel()
+		 * @generated
+		 */
+		EClass VARIABLE_LABEL = eINSTANCE.getVariableLabel();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable Resolver</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VARIABLE_LABEL__VARIABLE_RESOLVER = eINSTANCE.getVariableLabel_VariableResolver();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.LabelImpl <em>Label</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.common.model.ui.impl.LabelImpl
+		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getLabel()
+		 * @generated
+		 */
+		EClass LABEL = eINSTANCE.getLabel();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.TextFieldImpl <em>Text Field</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.common.model.ui.impl.TextFieldImpl
+		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getTextField()
+		 * @generated
+		 */
+		EClass TEXT_FIELD = eINSTANCE.getTextField();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable Resolver</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEXT_FIELD__VARIABLE_RESOLVER = eINSTANCE.getTextField_VariableResolver();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.AbstractButtonImpl <em>Abstract Button</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.common.model.ui.impl.AbstractButtonImpl
+		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getAbstractButton()
+		 * @generated
+		 */
+		EClass ABSTRACT_BUTTON = eINSTANCE.getAbstractButton();
+
+		/**
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABSTRACT_BUTTON__TEXT = eINSTANCE.getAbstractButton_Text();
+
+		/**
+		 * The meta object literal for the '<em><b>Pressed</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABSTRACT_BUTTON__PRESSED = eINSTANCE.getAbstractButton_Pressed();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.ButtonImpl <em>Button</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.common.model.ui.impl.ButtonImpl
+		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getButton()
+		 * @generated
+		 */
+		EClass BUTTON = eINSTANCE.getButton();
+
+		/**
+		 * The meta object literal for the '<em><b>Shortcut</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BUTTON__SHORTCUT = eINSTANCE.getButton_Shortcut();
+
+		/**
+		 * The meta object literal for the '<em><b>State</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BUTTON__STATE = eINSTANCE.getButton_State();
+
+		/**
+		 * The meta object literal for the '<em><b>Actions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BUTTON__ACTIONS = eINSTANCE.getButton_Actions();
+
+		/**
+		 * The meta object literal for the '<em><b>LActions</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation BUTTON___LACTIONS = eINSTANCE.getButton__LActions();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Executor</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation BUTTON___GET_EXECUTOR = eINSTANCE.getButton__GetExecutor();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.AbstractBooleanButtonImpl <em>Abstract Boolean Button</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.common.model.ui.impl.AbstractBooleanButtonImpl
+		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getAbstractBooleanButton()
+		 * @generated
+		 */
+		EClass ABSTRACT_BOOLEAN_BUTTON = eINSTANCE.getAbstractBooleanButton();
+
+		/**
+		 * The meta object literal for the '<em><b>Text When True</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE = eINSTANCE.getAbstractBooleanButton_TextWhenTrue();
+
+		/**
+		 * The meta object literal for the '<em><b>Text When False</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE = eINSTANCE.getAbstractBooleanButton_TextWhenFalse();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.BooleanButtonImpl <em>Boolean Button</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.common.model.ui.impl.BooleanButtonImpl
+		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getBooleanButton()
+		 * @generated
+		 */
+		EClass BOOLEAN_BUTTON = eINSTANCE.getBooleanButton();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable Resolver</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BOOLEAN_BUTTON__VARIABLE_RESOLVER = eINSTANCE.getBooleanButton_VariableResolver();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.BooleanActionButtonImpl <em>Boolean Action Button</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.common.model.ui.impl.BooleanActionButtonImpl
+		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getBooleanActionButton()
+		 * @generated
+		 */
+		EClass BOOLEAN_ACTION_BUTTON = eINSTANCE.getBooleanActionButton();
+
+		/**
+		 * The meta object literal for the '<em><b>Action When True</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE = eINSTANCE.getBooleanActionButton_ActionWhenTrue();
+
+		/**
+		 * The meta object literal for the '<em><b>Action When False</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE = eINSTANCE.getBooleanActionButton_ActionWhenFalse();
+
+	}
+
+} //UiPackage

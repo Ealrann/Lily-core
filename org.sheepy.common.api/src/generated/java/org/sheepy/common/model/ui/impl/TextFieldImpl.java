@@ -1,0 +1,196 @@
+/**
+ */
+package org.sheepy.common.model.ui.impl;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.sheepy.common.model.presentation.impl.ControlImpl;
+
+import org.sheepy.common.model.ui.TextField;
+import org.sheepy.common.model.ui.UiPackage;
+
+import org.sheepy.common.model.variable.VariableResolver;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Text Field</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link org.sheepy.common.model.ui.impl.TextFieldImpl#getVariableResolver <em>Variable Resolver</em>}</li>
+ * </ul>
+ *
+ * @generated
+ */
+public class TextFieldImpl extends ControlImpl implements TextField
+{
+	/**
+	 * The cached value of the '{@link #getVariableResolver() <em>Variable Resolver</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVariableResolver()
+	 * @generated
+	 * @ordered
+	 */
+	protected VariableResolver variableResolver;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TextFieldImpl()
+	{
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass()
+	{
+		return UiPackage.Literals.TEXT_FIELD;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public VariableResolver getVariableResolver()
+	{
+		return variableResolver;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetVariableResolver(VariableResolver newVariableResolver, NotificationChain msgs)
+	{
+		VariableResolver oldVariableResolver = variableResolver;
+		variableResolver = newVariableResolver;
+		if (eNotificationRequired())
+		{
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UiPackage.TEXT_FIELD__VARIABLE_RESOLVER, oldVariableResolver, newVariableResolver);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setVariableResolver(VariableResolver newVariableResolver)
+	{
+		if (newVariableResolver != variableResolver)
+		{
+			NotificationChain msgs = null;
+			if (variableResolver != null)
+				msgs = ((InternalEObject)variableResolver).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UiPackage.TEXT_FIELD__VARIABLE_RESOLVER, null, msgs);
+			if (newVariableResolver != null)
+				msgs = ((InternalEObject)newVariableResolver).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UiPackage.TEXT_FIELD__VARIABLE_RESOLVER, null, msgs);
+			msgs = basicSetVariableResolver(newVariableResolver, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.TEXT_FIELD__VARIABLE_RESOLVER, newVariableResolver, newVariableResolver));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+	{
+		switch (featureID)
+		{
+			case UiPackage.TEXT_FIELD__VARIABLE_RESOLVER:
+				return basicSetVariableResolver(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eGet(int featureID, boolean resolve, boolean coreType)
+	{
+		switch (featureID)
+		{
+			case UiPackage.TEXT_FIELD__VARIABLE_RESOLVER:
+				return getVariableResolver();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eSet(int featureID, Object newValue)
+	{
+		switch (featureID)
+		{
+			case UiPackage.TEXT_FIELD__VARIABLE_RESOLVER:
+				setVariableResolver((VariableResolver)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void eUnset(int featureID)
+	{
+		switch (featureID)
+		{
+			case UiPackage.TEXT_FIELD__VARIABLE_RESOLVER:
+				setVariableResolver((VariableResolver)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID)
+	{
+		switch (featureID)
+		{
+			case UiPackage.TEXT_FIELD__VARIABLE_RESOLVER:
+				return variableResolver != null;
+		}
+		return super.eIsSet(featureID);
+	}
+
+} //TextFieldImpl

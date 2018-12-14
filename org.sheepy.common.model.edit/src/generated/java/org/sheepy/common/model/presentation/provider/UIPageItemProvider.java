@@ -9,15 +9,18 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.sheepy.common.api.types.SVector2i;
-
+import org.sheepy.common.model.presentation.PresentationFactory;
 import org.sheepy.common.model.presentation.PresentationPackage;
 import org.sheepy.common.model.presentation.UIPage;
+import org.sheepy.common.model.root.LObject;
+import org.sheepy.common.model.root.provider.LObjectItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.sheepy.common.model.presentation.UIPage} object.
@@ -25,7 +28,7 @@ import org.sheepy.common.model.presentation.UIPage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class UIPageItemProvider extends UIElementItemProvider
+public class UIPageItemProvider extends LObjectItemProvider
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -51,8 +54,80 @@ public class UIPageItemProvider extends UIElementItemProvider
 		{
 			super.getPropertyDescriptors(object);
 
+			addPositionPropertyDescriptor(object);
+			addWidthPropertyDescriptor(object);
+			addHeightPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Position feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPositionPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_IPresentationElement_position_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPresentationElement_position_feature", "_UI_IPresentationElement_type"),
+				 PresentationPackage.Literals.IPRESENTATION_ELEMENT__POSITION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Width feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addWidthPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_IPresentationElement_width_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPresentationElement_width_feature", "_UI_IPresentationElement_type"),
+				 PresentationPackage.Literals.IPRESENTATION_ELEMENT__WIDTH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Height feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHeightPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_IPresentationElement_height_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPresentationElement_height_feature", "_UI_IPresentationElement_type"),
+				 PresentationPackage.Literals.IPRESENTATION_ELEMENT__HEIGHT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -69,7 +144,7 @@ public class UIPageItemProvider extends UIElementItemProvider
 		if (childrenFeatures == null)
 		{
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(PresentationPackage.Literals.UI_PAGE__CONTROLS);
+			childrenFeatures.add(PresentationPackage.Literals.UI_PAGE__PANELS);
 		}
 		return childrenFeatures;
 	}
@@ -109,7 +184,7 @@ public class UIPageItemProvider extends UIElementItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		SVector2i labelValue = ((UIPage)object).getPosition();
+		EList<LObject> labelValue = ((UIPage)object).getContentObjects();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_UIPage_type") :
@@ -131,7 +206,12 @@ public class UIPageItemProvider extends UIElementItemProvider
 
 		switch (notification.getFeatureID(UIPage.class))
 		{
-			case PresentationPackage.UI_PAGE__CONTROLS:
+			case PresentationPackage.UI_PAGE__POSITION:
+			case PresentationPackage.UI_PAGE__WIDTH:
+			case PresentationPackage.UI_PAGE__HEIGHT:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case PresentationPackage.UI_PAGE__PANELS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -149,6 +229,11 @@ public class UIPageItemProvider extends UIElementItemProvider
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(PresentationPackage.Literals.UI_PAGE__PANELS,
+				 PresentationFactory.eINSTANCE.createPanel()));
 	}
 
 }

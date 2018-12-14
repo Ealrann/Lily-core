@@ -30,4 +30,52 @@
             genModel="src/main/xcore/Presentation.xcore"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Root -->
+      <package
+            uri="org.sheepy.common.model.root"
+            class="org.sheepy.common.model.root.RootPackage"
+            genModel="src/main/xcore/Root.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated UI -->
+      <package
+            uri="org.sheepy.common.model.ui"
+            class="org.sheepy.common.model.ui.UiPackage"
+            genModel="src/main/xcore/UI.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Inference -->
+      <package
+            uri="org.sheepy.common.model.inference"
+            class="org.sheepy.common.model.inference.InferencePackage"
+            genModel="src/main/xcore/Inference.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Variable -->
+      <package
+            uri="org.sheepy.common.model.variable"
+            class="org.sheepy.common.model.variable.VariablePackage"
+            genModel="src/main/xcore/Variable.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Action -->
+      <package
+            uri="org.sheepy.common.model.action"
+            class="org.sheepy.common.model.action.ActionPackage"
+            genModel="src/main/xcore/Action.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Resolver -->
+      <package
+            uri="org.sheepy.common.model.resolver"
+            class="org.sheepy.common.model.resolver.ResolverPackage"
+            genModel="src/main/xcore/Resolver.xcore"/>
+   </extension>
+
 </plugin>

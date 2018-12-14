@@ -9,11 +9,10 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-
-import org.sheepy.common.api.types.SVector2i;
-
 import org.sheepy.common.model.presentation.Control;
+import org.sheepy.common.model.root.LObject;
 
 /**
  * This is the item provider adapter for a {@link org.sheepy.common.model.presentation.Control} object.
@@ -60,7 +59,7 @@ public class ControlItemProvider extends UIElementItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		SVector2i labelValue = ((Control)object).getPosition();
+		EList<LObject> labelValue = ((Control)object).getContentObjects();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Control_type") :

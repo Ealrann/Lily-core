@@ -9,24 +9,15 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IChildCreationExtender;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.sheepy.common.api.types.SVector2i;
-
 import org.sheepy.common.model.presentation.PresentationPackage;
 import org.sheepy.common.model.presentation.UIElement;
+import org.sheepy.common.model.root.LObject;
+import org.sheepy.common.model.root.provider.LObjectItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.sheepy.common.model.presentation.UIElement} object.
@@ -35,13 +26,7 @@ import org.sheepy.common.model.presentation.UIElement;
  * @generated
  */
 public class UIElementItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource
+	extends LObjectItemProvider
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -200,7 +185,7 @@ public class UIElementItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		SVector2i labelValue = ((UIElement)object).getPosition();
+		EList<LObject> labelValue = ((UIElement)object).getContentObjects();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_UIElement_type") :
@@ -244,18 +229,6 @@ public class UIElementItemProvider
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator()
-	{
-		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
 	}
 
 }

@@ -1,0 +1,86 @@
+@GenModel(modelDirectory="/org.sheepy.common.model/src/generated/java")
+@GenModel(editDirectory="/org.sheepy.common.model.edit/src/generated/java")
+@GenModel(publicConstructors="true")
+@GenModel(extensibleProviderFactory="true", childCreationExtenders="true")
+
+package org.sheepy.common.model.ui
+
+import org.sheepy.common.model.action.ActionList
+import org.sheepy.common.model.application.IView
+import org.sheepy.common.model.presentation.Control
+import org.sheepy.common.model.root.LObject
+import org.sheepy.common.model.types.EKeyState
+import org.sheepy.common.model.variable.VariableResolver
+import org.sheepy.common.model.action.Action
+
+abstract class AbstractLabel extends Control
+{
+	String label = ""
+	float fontScale = "1"
+}
+
+class DynamicRowLayout extends Control
+{
+	int columnCount
+}
+
+class VariableLabel extends AbstractLabel
+{
+	contains VariableResolver variableResolver
+}
+
+class Label extends AbstractLabel
+{
+}
+
+class TextField extends Control
+{
+	contains VariableResolver variableResolver
+}
+
+abstract class AbstractButton extends Control
+{
+	String text
+	boolean pressed = "false"
+}
+
+class Button extends AbstractButton
+{
+	int shortcut
+	EKeyState state
+
+	contains Action[] actions
+	
+	op ActionList lActions()
+	{
+		actions
+	}
+	
+	// Will execute actions on the view
+	op LObject getExecutor()
+	{
+		var LObject unit = this
+		
+		while(unit instanceof IView == false)
+			unit = unit.lParent
+		
+		return unit
+	}
+}
+
+abstract class AbstractBooleanButton extends AbstractButton
+{
+	String textWhenTrue
+	String textWhenFalse
+}
+
+class BooleanButton extends AbstractBooleanButton
+{
+	contains VariableResolver variableResolver
+}
+
+class BooleanActionButton extends AbstractBooleanButton
+{
+	contains Action actionWhenTrue
+	contains Action actionWhenFalse
+}

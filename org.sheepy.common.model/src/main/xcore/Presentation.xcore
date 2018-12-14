@@ -6,8 +6,12 @@ package org.sheepy.common.model.presentation
 
 import org.sheepy.common.model.types.SVector2i
 import org.sheepy.common.model.application.IView
+import org.sheepy.common.model.root.LObject
+import org.sheepy.common.model.types.EVerticalRelative
+import org.sheepy.common.model.types.EHorizontalRelative
+import org.sheepy.common.model.root.LNamedElement
 
-interface IPresentationElement
+interface IPresentationElement 
 {
 	SVector2i position = "0;0"
 	int width
@@ -17,6 +21,11 @@ interface IPresentationElement
 interface IUIView extends IView
 {
 	contains UIPage[] uiPages
+	refers UIPage currentUIPage
+}
+
+class TranparentUIView extends IUIView
+{
 }
 
 interface IMusicView extends IView
@@ -33,13 +42,18 @@ interface ISizedView extends IPresentationElement, IView
 	boolean fullscreen = "true"
 }
 
-abstract class UIElement extends IPresentationElement
+abstract class UIElement extends LObject, IPresentationElement
 {
-	EVerticalRelative verticalRelative
-	EHorizontalRelative horizontalRelative
+	EVerticalRelative verticalRelative = "TOP"
+	EHorizontalRelative horizontalRelative = "LEFT"
 }
 
-class UIPage extends UIElement
+class UIPage extends LObject, IPresentationElement
+{
+	contains Panel[] panels
+}
+
+class Panel extends UIElement, LNamedElement
 {
 	contains Control[] controls
 }
@@ -48,16 +62,3 @@ abstract class Control extends UIElement
 {
 }
 
-enum EVerticalRelative
-{
-	BOTTOM
-	MIDDLE
-	TOP
-}
-
-enum EHorizontalRelative
-{
-	LEFT
-	MIDDLE
-	RIGHT
-}

@@ -2,26 +2,29 @@
 @GenModel(editDirectory="/org.sheepy.common.model.edit/src/generated/java")
 @GenModel(publicConstructors="true")
 @GenModel(extensibleProviderFactory="true", childCreationExtenders="true")
+
 package org.sheepy.common.model.application
 
 import org.sheepy.common.model.types.SVector2i
+import org.sheepy.common.model.root.LObject
 
-class Application
+class Application extends LObject
 {
+	resolving contains IView[] views
+	resolving contains IEngine[] engines
+	
 	boolean fullscreen = "false"
 	boolean resizeable = "false"
 	boolean debug = "false"
 	String title
 	SVector2i size
-	contains IView[] views
 	refers IView currentView
-	resolving contains IEngine[] engines
 }
 
-interface IEngine
+interface IEngine extends LObject
 {
 }
 
-interface IView
+interface IView extends LObject
 {
 }

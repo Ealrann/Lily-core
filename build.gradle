@@ -21,14 +21,22 @@ subprojects {
 	apply plugin: 'eclipse'
 	apply plugin: "org.javamodularity.moduleplugin"
 
+	sourceCompatibility = 11
+	targetCompatibility = 11
+
 	eclipse {
 		classpath {
 			file {
 				whenMerged {
 					//Define a module as being either a library or a project dependency.
 					//Test sources are excluded because eclipse wants them on the classpath for some reason (1)
-					entries.findAll { isModule(it) || isTest(it) }.each {
+					entries.findAll { isModule(it) }.each {
 						it.entryAttributes['module'] = 'true'
+					}
+
+					//Test-scoped stuff should set the appropriate flag
+					entries.findAll { isTest(it) }.each {
+						it.entryAttributes['test'] = 'true'
 					}
 				}
 			}

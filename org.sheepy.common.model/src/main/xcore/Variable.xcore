@@ -1,0 +1,142 @@
+@GenModel(modelDirectory="/org.sheepy.common.model/src/generated/java")
+@GenModel(editDirectory="/org.sheepy.common.model.edit/src/generated/java")
+@GenModel(publicConstructors="true")
+@GenModel(extensibleProviderFactory="true", childCreationExtenders="true")
+
+package org.sheepy.common.model.variable
+
+// =====================
+// Variable
+// =====================
+
+import org.sheepy.common.api.util.ResolvedVariableFeature
+import org.sheepy.common.model.action.ParameteredAction
+import org.sheepy.common.model.types.FloatParameter
+import org.sheepy.common.model.types.StringParameter
+import org.sheepy.common.model.types.BooleanParameter
+import org.sheepy.common.model.action.Action
+import org.sheepy.common.model.resolver.ILObjectResolver
+
+class VariableResolver 
+{
+	contains ILObjectResolver resolver
+	
+	VariableDefinition variableDefinition
+	
+	@GenModel(property="None")
+	transient LResolvedVariableFeature emfAttributes
+	
+	op LResolvedVariableFeature lEMFAttributes()
+	{
+		if(emfAttributes === null && variableDefinition !== null)
+			emfAttributes = new ResolvedVariableFeature(variableDefinition)
+			
+		return emfAttributes
+	}
+	
+//	op boolean match(LUnit unit) 
+//	{
+//		val ResolvedVariableAttribute resolved = lEMFAttributes()
+//		
+//		if (resolved.eClass.isSuperTypeOf(unit.eClass()))
+//		{
+//			for (EAttribute att : unit.eClass().getEAllAttributes())
+//			{
+//				if (att == resolved.attribute)
+//				{
+//					return true
+//				}
+//			}
+//		}
+//		return false
+//	}
+}
+
+type LResolvedVariableFeature wraps ResolvedVariableFeature
+
+type VariableDefinition wraps String
+
+// =====================
+// Action
+// =====================
+
+abstract class VarChangeAction extends Action 
+{
+	contains VariableResolver variableResolver
+}
+
+
+class BooleanChangeAction extends VarChangeAction, Action
+{
+}
+
+class VarChangeActionPkg {
+	contains VarChangeAction[] actions
+}
+
+class IncrementAction extends ParameteredAction<FloatParameter>, VarChangeAction
+{
+	int increment = "1"
+}
+
+class SetString extends ParameteredAction<StringParameter>, VarChangeAction
+{
+}
+
+class SetBoolean extends ParameteredAction<BooleanParameter>, VarChangeAction
+{
+}
+
+class SetNumber extends ParameteredAction<FloatParameter>, VarChangeAction
+{
+}
+
+
+// =====================
+// Inference
+// =====================
+
+//class VariableNotificationDef extends ParameteredNotification<Object>{
+//}
+//
+//class PositionNotificationDef extends ParameteredNotification<LPoint>{
+//}
+//
+//class StringNotificationDef extends ParameteredNotification<String>{
+//}
+//
+//class NumberNotificationDef extends ParameteredNotification<Float>{
+//}
+
+
+
+
+
+
+//class NumberConditionDef extends Condition<Float> {
+//	
+//	ENumberComparisonType comparisonType
+//	
+//	op EClassifier getType() {
+//		EcorePackage.Literals.EFLOAT
+//	}
+//	op boolean match(Float compareTo) {
+//
+//		var boolean res = false
+//
+//		switch (comparisonType) {
+//			case EQUAL:
+//				res = (compareTo  == value)
+//			case INF:
+//				res = (compareTo < value)
+//			case INF_OR_EQUAL:
+//				res = (compareTo <= value)
+//			case SUP:
+//				res = (compareTo > value)
+//			case SUP_OR_EQUAL:
+//				res = (compareTo >= value)
+//		}
+//
+//		return res
+//	}
+//}
