@@ -6,7 +6,7 @@ import org.sheepy.common.api.cadence.ICadencer;
 
 public class ActionDispatcher implements IActionDispatcher
 {
-	private final ICadencer cadencer = ICadencer.getService();
+	private final ICadencer cadencer = ICadencer.INSTANCE;
 	private final ActionHandlerRegistry registry = new ActionHandlerRegistry();
 
 	private final ActionDispatcherThread dispatcher = new ActionDispatcherThread(cadencer,
@@ -23,5 +23,4 @@ public class ActionDispatcher implements IActionDispatcher
 	{
 		dispatcher.postAction(executionContext);
 	}
-
 }

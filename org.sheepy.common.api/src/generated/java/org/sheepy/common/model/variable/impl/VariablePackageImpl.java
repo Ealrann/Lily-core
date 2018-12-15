@@ -6,7 +6,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EGenericType;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -18,14 +17,13 @@ import org.sheepy.common.api.util.ResolvedVariableFeature;
 import org.sheepy.common.model.action.ActionPackage;
 
 import org.sheepy.common.model.inference.InferencePackage;
-
-import org.sheepy.common.model.resolver.ResolverPackage;
-
 import org.sheepy.common.model.root.RootPackage;
 
 import org.sheepy.common.model.types.TypesPackage;
 
+import org.sheepy.common.model.variable.AbstractVariableResolver;
 import org.sheepy.common.model.variable.BooleanChangeAction;
+import org.sheepy.common.model.variable.DirectVariableResolver;
 import org.sheepy.common.model.variable.IncrementAction;
 import org.sheepy.common.model.variable.SetBoolean;
 import org.sheepy.common.model.variable.SetNumber;
@@ -34,7 +32,6 @@ import org.sheepy.common.model.variable.VarChangeAction;
 import org.sheepy.common.model.variable.VarChangeActionPkg;
 import org.sheepy.common.model.variable.VariableFactory;
 import org.sheepy.common.model.variable.VariablePackage;
-import org.sheepy.common.model.variable.VariableResolver;
 
 /**
  * <!-- begin-user-doc -->
@@ -49,7 +46,14 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass variableResolverEClass = null;
+	private EClass abstractVariableResolverEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass directVariableResolverEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -164,10 +168,9 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		isInited = true;
 
 		// Initialize simple dependencies
-		ResolverPackage.eINSTANCE.eClass();
+		EcorePackage.eINSTANCE.eClass();
 		ActionPackage.eINSTANCE.eClass();
 		RootPackage.eINSTANCE.eClass();
-		EcorePackage.eINSTANCE.eClass();
 		TypesPackage.eINSTANCE.eClass();
 		InferencePackage.eINSTANCE.eClass();
 
@@ -190,9 +193,9 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getVariableResolver()
+	public EClass getAbstractVariableResolver()
 	{
-		return variableResolverEClass;
+		return abstractVariableResolverEClass;
 	}
 
 	/**
@@ -200,9 +203,9 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getVariableResolver_Resolver()
+	public EAttribute getAbstractVariableResolver_VariableDefinition()
 	{
-		return (EReference)variableResolverEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)abstractVariableResolverEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -210,9 +213,9 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getVariableResolver_VariableDefinition()
+	public EClass getDirectVariableResolver()
 	{
-		return (EAttribute)variableResolverEClass.getEStructuralFeatures().get(1);
+		return directVariableResolverEClass;
 	}
 
 	/**
@@ -220,19 +223,9 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getVariableResolver_EmfAttributes()
+	public EReference getDirectVariableResolver_Target()
 	{
-		return (EAttribute)variableResolverEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EOperation getVariableResolver__LEMFAttributes()
-	{
-		return variableResolverEClass.getEOperations().get(0);
+		return (EReference)directVariableResolverEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -385,11 +378,11 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		isCreated = true;
 
 		// Create classes and their features
-		variableResolverEClass = createEClass(VARIABLE_RESOLVER);
-		createEReference(variableResolverEClass, VARIABLE_RESOLVER__RESOLVER);
-		createEAttribute(variableResolverEClass, VARIABLE_RESOLVER__VARIABLE_DEFINITION);
-		createEAttribute(variableResolverEClass, VARIABLE_RESOLVER__EMF_ATTRIBUTES);
-		createEOperation(variableResolverEClass, VARIABLE_RESOLVER___LEMF_ATTRIBUTES);
+		abstractVariableResolverEClass = createEClass(ABSTRACT_VARIABLE_RESOLVER);
+		createEAttribute(abstractVariableResolverEClass, ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION);
+
+		directVariableResolverEClass = createEClass(DIRECT_VARIABLE_RESOLVER);
+		createEReference(directVariableResolverEClass, DIRECT_VARIABLE_RESOLVER__TARGET);
 
 		varChangeActionEClass = createEClass(VAR_CHANGE_ACTION);
 		createEReference(varChangeActionEClass, VAR_CHANGE_ACTION__VARIABLE_RESOLVER);
@@ -438,16 +431,16 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		ResolverPackage theResolverPackage = (ResolverPackage)EPackage.Registry.INSTANCE.getEPackage(ResolverPackage.eNS_URI);
+		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 		ActionPackage theActionPackage = (ActionPackage)EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
 		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
-		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		directVariableResolverEClass.getESuperTypes().add(this.getAbstractVariableResolver());
 		varChangeActionEClass.getESuperTypes().add(theActionPackage.getAction());
 		booleanChangeActionEClass.getESuperTypes().add(this.getVarChangeAction());
 		booleanChangeActionEClass.getESuperTypes().add(theActionPackage.getAction());
@@ -477,15 +470,14 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		setNumberEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(variableResolverEClass, VariableResolver.class, "VariableResolver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getVariableResolver_Resolver(), theResolverPackage.getILObjectResolver(), null, "resolver", null, 0, 1, VariableResolver.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVariableResolver_VariableDefinition(), this.getVariableDefinition(), "variableDefinition", null, 0, 1, VariableResolver.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVariableResolver_EmfAttributes(), this.getLResolvedVariableFeature(), "emfAttributes", null, 0, 1, VariableResolver.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(abstractVariableResolverEClass, AbstractVariableResolver.class, "AbstractVariableResolver", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAbstractVariableResolver_VariableDefinition(), this.getVariableDefinition(), "variableDefinition", null, 0, 1, AbstractVariableResolver.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getVariableResolver__LEMFAttributes(), this.getLResolvedVariableFeature(), "lEMFAttributes", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEClass(directVariableResolverEClass, DirectVariableResolver.class, "DirectVariableResolver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDirectVariableResolver_Target(), theEcorePackage.getEObject(), null, "target", null, 0, 1, DirectVariableResolver.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(varChangeActionEClass, VarChangeAction.class, "VarChangeAction", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getVarChangeAction_VariableResolver(), this.getVariableResolver(), null, "variableResolver", null, 0, 1, VarChangeAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVarChangeAction_VariableResolver(), this.getAbstractVariableResolver(), null, "variableResolver", null, 0, 1, VarChangeAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(booleanChangeActionEClass, BooleanChangeAction.class, "BooleanChangeAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -9,7 +9,6 @@ import org.sheepy.common.model.action.provider.ActionEditPlugin;
 import org.sheepy.common.model.application.provider.ApplicationEditPlugin;
 import org.sheepy.common.model.inference.provider.InferenceEditPlugin;
 import org.sheepy.common.model.presentation.provider.PresentationEditPlugin;
-import org.sheepy.common.model.resolver.provider.ResolverEditPlugin;
 import org.sheepy.common.model.root.provider.RootEditPlugin;
 import org.sheepy.common.model.types.provider.TypesEditPlugin;
 import org.sheepy.common.model.variable.provider.VariableEditPlugin;
@@ -56,7 +55,6 @@ public final class UiEditPlugin extends EMFPlugin
 		     ActionEditPlugin.INSTANCE,
 		     TypesEditPlugin.INSTANCE,
 		     ApplicationEditPlugin.INSTANCE,
-		     ResolverEditPlugin.INSTANCE,
 		   });
 	}
 

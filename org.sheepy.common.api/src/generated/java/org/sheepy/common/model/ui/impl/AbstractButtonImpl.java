@@ -22,7 +22,6 @@ import org.sheepy.common.model.ui.UiPackage;
  * </p>
  * <ul>
  *   <li>{@link org.sheepy.common.model.ui.impl.AbstractButtonImpl#getText <em>Text</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.AbstractButtonImpl#isPressed <em>Pressed</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,7 +36,7 @@ public abstract class AbstractButtonImpl extends ControlImpl implements Abstract
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TEXT_EDEFAULT = null;
+	protected static final String TEXT_EDEFAULT = "";
 
 	/**
 	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
@@ -48,26 +47,6 @@ public abstract class AbstractButtonImpl extends ControlImpl implements Abstract
 	 * @ordered
 	 */
 	protected String text = TEXT_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isPressed() <em>Pressed</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isPressed()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean PRESSED_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isPressed() <em>Pressed</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isPressed()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean pressed = PRESSED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -118,29 +97,6 @@ public abstract class AbstractButtonImpl extends ControlImpl implements Abstract
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isPressed()
-	{
-		return pressed;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPressed(boolean newPressed)
-	{
-		boolean oldPressed = pressed;
-		pressed = newPressed;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.ABSTRACT_BUTTON__PRESSED, oldPressed, pressed));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType)
 	{
@@ -148,8 +104,6 @@ public abstract class AbstractButtonImpl extends ControlImpl implements Abstract
 		{
 			case UiPackage.ABSTRACT_BUTTON__TEXT:
 				return getText();
-			case UiPackage.ABSTRACT_BUTTON__PRESSED:
-				return isPressed();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -166,9 +120,6 @@ public abstract class AbstractButtonImpl extends ControlImpl implements Abstract
 		{
 			case UiPackage.ABSTRACT_BUTTON__TEXT:
 				setText((String)newValue);
-				return;
-			case UiPackage.ABSTRACT_BUTTON__PRESSED:
-				setPressed((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -187,9 +138,6 @@ public abstract class AbstractButtonImpl extends ControlImpl implements Abstract
 			case UiPackage.ABSTRACT_BUTTON__TEXT:
 				setText(TEXT_EDEFAULT);
 				return;
-			case UiPackage.ABSTRACT_BUTTON__PRESSED:
-				setPressed(PRESSED_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -206,8 +154,6 @@ public abstract class AbstractButtonImpl extends ControlImpl implements Abstract
 		{
 			case UiPackage.ABSTRACT_BUTTON__TEXT:
 				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
-			case UiPackage.ABSTRACT_BUTTON__PRESSED:
-				return pressed != PRESSED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -225,8 +171,6 @@ public abstract class AbstractButtonImpl extends ControlImpl implements Abstract
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (text: ");
 		result.append(text);
-		result.append(", pressed: ");
-		result.append(pressed);
 		result.append(')');
 		return result.toString();
 	}

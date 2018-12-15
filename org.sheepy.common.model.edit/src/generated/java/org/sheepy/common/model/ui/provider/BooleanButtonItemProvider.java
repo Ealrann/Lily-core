@@ -153,7 +153,7 @@ public class BooleanButtonItemProvider extends AbstractBooleanButtonItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UiPackage.Literals.BOOLEAN_BUTTON__VARIABLE_RESOLVER,
-				 VariableFactory.eINSTANCE.createVariableResolver()));
+				 VariableFactory.eINSTANCE.createDirectVariableResolver()));
 	}
 
 }

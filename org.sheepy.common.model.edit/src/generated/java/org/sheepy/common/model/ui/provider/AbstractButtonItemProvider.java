@@ -53,7 +53,6 @@ public class AbstractButtonItemProvider extends ControlItemProvider
 			super.getPropertyDescriptors(object);
 
 			addTextPropertyDescriptor(object);
-			addPressedPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -77,29 +76,6 @@ public class AbstractButtonItemProvider extends ControlItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Pressed feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPressedPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractButton_pressed_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractButton_pressed_feature", "_UI_AbstractButton_type"),
-				 UiPackage.Literals.ABSTRACT_BUTTON__PRESSED,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -136,7 +112,6 @@ public class AbstractButtonItemProvider extends ControlItemProvider
 		switch (notification.getFeatureID(AbstractButton.class))
 		{
 			case UiPackage.ABSTRACT_BUTTON__TEXT:
-			case UiPackage.ABSTRACT_BUTTON__PRESSED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

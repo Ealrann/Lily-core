@@ -3,11 +3,13 @@ package org.sheepy.common.api.adapter.internal;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.sheepy.common.api.adapter.IAutoAdapter;
 import org.sheepy.common.api.adapter.IServiceAdapterFactory;
 import org.sheepy.common.api.adapter.ISingletonAdapter;
 import org.sheepy.common.api.adapter.IStatefullAdapter;
 import org.sheepy.common.api.adapter.impl.AutoEContentAdapter;
+import org.sheepy.common.api.resource.IModelExtension;
 import org.sheepy.common.api.util.ReflectivityUtils;
 
 public class ServiceAdapterFactory implements IServiceAdapterFactory
@@ -85,6 +87,21 @@ public class ServiceAdapterFactory implements IServiceAdapterFactory
 	@Override
 	public void setupRootForAutoAdapters(EObject root)
 	{
+		loadEPackages();
+		
 		root.eAdapters().add(new AutoEContentAdapter());
+	}
+
+	private void loadEPackages()
+	{
+		for(IModelExtension extension : IModelExtension.EXTENSIONS)
+		{
+			for (EPackage ePackage : extension.getEPackages())
+			{
+				// Load factories
+				ePackage.eClass();
+				System.out.println("\tLoad EPackage: " + ePackage.getName());
+			}
+		}
 	}
 }

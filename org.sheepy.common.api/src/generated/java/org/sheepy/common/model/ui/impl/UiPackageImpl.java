@@ -18,9 +18,6 @@ import org.sheepy.common.model.application.ApplicationPackage;
 import org.sheepy.common.model.inference.InferencePackage;
 
 import org.sheepy.common.model.presentation.PresentationPackage;
-
-import org.sheepy.common.model.resolver.ResolverPackage;
-
 import org.sheepy.common.model.root.RootPackage;
 
 import org.sheepy.common.model.types.TypesPackage;
@@ -37,7 +34,6 @@ import org.sheepy.common.model.ui.TextField;
 import org.sheepy.common.model.ui.UiFactory;
 import org.sheepy.common.model.ui.UiPackage;
 import org.sheepy.common.model.ui.VariableLabel;
-
 import org.sheepy.common.model.variable.VariablePackage;
 
 /**
@@ -176,7 +172,6 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		ActionPackage.eINSTANCE.eClass();
 		TypesPackage.eINSTANCE.eClass();
 		ApplicationPackage.eINSTANCE.eClass();
-		ResolverPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theUiPackage.createPackageContents();
@@ -207,7 +202,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAbstractLabel_Label()
+	public EAttribute getAbstractLabel_Text()
 	{
 		return (EAttribute)abstractLabelEClass.getEStructuralFeatures().get(0);
 	}
@@ -310,16 +305,6 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	public EAttribute getAbstractButton_Text()
 	{
 		return (EAttribute)abstractButtonEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getAbstractButton_Pressed()
-	{
-		return (EAttribute)abstractButtonEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -493,7 +478,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 
 		// Create classes and their features
 		abstractLabelEClass = createEClass(ABSTRACT_LABEL);
-		createEAttribute(abstractLabelEClass, ABSTRACT_LABEL__LABEL);
+		createEAttribute(abstractLabelEClass, ABSTRACT_LABEL__TEXT);
 		createEAttribute(abstractLabelEClass, ABSTRACT_LABEL__FONT_SCALE);
 
 		dynamicRowLayoutEClass = createEClass(DYNAMIC_ROW_LAYOUT);
@@ -509,7 +494,6 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 
 		abstractButtonEClass = createEClass(ABSTRACT_BUTTON);
 		createEAttribute(abstractButtonEClass, ABSTRACT_BUTTON__TEXT);
-		createEAttribute(abstractButtonEClass, ABSTRACT_BUTTON__PRESSED);
 
 		buttonEClass = createEClass(BUTTON);
 		createEAttribute(buttonEClass, BUTTON__SHORTCUT);
@@ -580,23 +564,22 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(abstractLabelEClass, AbstractLabel.class, "AbstractLabel", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAbstractLabel_Label(), theEcorePackage.getEString(), "label", "", 0, 1, AbstractLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractLabel_Text(), theEcorePackage.getEString(), "text", "", 0, 1, AbstractLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractLabel_FontScale(), theEcorePackage.getEFloat(), "fontScale", "1", 0, 1, AbstractLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dynamicRowLayoutEClass, DynamicRowLayout.class, "DynamicRowLayout", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDynamicRowLayout_ColumnCount(), theEcorePackage.getEInt(), "columnCount", null, 0, 1, DynamicRowLayout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(variableLabelEClass, VariableLabel.class, "VariableLabel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getVariableLabel_VariableResolver(), theVariablePackage.getVariableResolver(), null, "variableResolver", null, 0, 1, VariableLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVariableLabel_VariableResolver(), theVariablePackage.getAbstractVariableResolver(), null, "variableResolver", null, 0, 1, VariableLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(labelEClass, Label.class, "Label", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(textFieldEClass, TextField.class, "TextField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTextField_VariableResolver(), theVariablePackage.getVariableResolver(), null, "variableResolver", null, 0, 1, TextField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTextField_VariableResolver(), theVariablePackage.getAbstractVariableResolver(), null, "variableResolver", null, 0, 1, TextField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractButtonEClass, AbstractButton.class, "AbstractButton", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAbstractButton_Text(), theEcorePackage.getEString(), "text", null, 0, 1, AbstractButton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAbstractButton_Pressed(), theEcorePackage.getEBoolean(), "pressed", "false", 0, 1, AbstractButton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractButton_Text(), theEcorePackage.getEString(), "text", "", 0, 1, AbstractButton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(buttonEClass, Button.class, "Button", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getButton_Shortcut(), theEcorePackage.getEInt(), "shortcut", null, 0, 1, Button.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -612,7 +595,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		initEAttribute(getAbstractBooleanButton_TextWhenFalse(), theEcorePackage.getEString(), "textWhenFalse", null, 0, 1, AbstractBooleanButton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(booleanButtonEClass, BooleanButton.class, "BooleanButton", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBooleanButton_VariableResolver(), theVariablePackage.getVariableResolver(), null, "variableResolver", null, 0, 1, BooleanButton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBooleanButton_VariableResolver(), theVariablePackage.getAbstractVariableResolver(), null, "variableResolver", null, 0, 1, BooleanButton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(booleanActionButtonEClass, BooleanActionButton.class, "BooleanActionButton", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBooleanActionButton_ActionWhenTrue(), theActionPackage.getAction(), null, "actionWhenTrue", null, 0, 1, BooleanActionButton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

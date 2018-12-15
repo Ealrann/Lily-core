@@ -79,10 +79,18 @@ public class VariableSwitch<T1> extends Switch<T1>
 	{
 		switch (classifierID)
 		{
-			case VariablePackage.VARIABLE_RESOLVER:
+			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER:
 			{
-				VariableResolver variableResolver = (VariableResolver)theEObject;
-				T1 result = caseVariableResolver(variableResolver);
+				AbstractVariableResolver abstractVariableResolver = (AbstractVariableResolver)theEObject;
+				T1 result = caseAbstractVariableResolver(abstractVariableResolver);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case VariablePackage.DIRECT_VARIABLE_RESOLVER:
+			{
+				DirectVariableResolver directVariableResolver = (DirectVariableResolver)theEObject;
+				T1 result = caseDirectVariableResolver(directVariableResolver);
+				if (result == null) result = caseAbstractVariableResolver(directVariableResolver);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -161,17 +169,33 @@ public class VariableSwitch<T1> extends Switch<T1>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Resolver</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Variable Resolver</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Resolver</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Variable Resolver</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseVariableResolver(VariableResolver object)
+	public T1 caseAbstractVariableResolver(AbstractVariableResolver object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Direct Variable Resolver</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Direct Variable Resolver</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseDirectVariableResolver(DirectVariableResolver object)
 	{
 		return null;
 	}

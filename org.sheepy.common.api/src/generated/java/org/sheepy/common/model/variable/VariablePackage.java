@@ -5,7 +5,6 @@ package org.sheepy.common.model.variable;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -63,23 +62,14 @@ public interface VariablePackage extends EPackage
 	VariablePackage eINSTANCE = org.sheepy.common.model.variable.impl.VariablePackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.variable.impl.VariableResolverImpl <em>Resolver</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.common.model.variable.impl.AbstractVariableResolverImpl <em>Abstract Variable Resolver</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.variable.impl.VariableResolverImpl
-	 * @see org.sheepy.common.model.variable.impl.VariablePackageImpl#getVariableResolver()
+	 * @see org.sheepy.common.model.variable.impl.AbstractVariableResolverImpl
+	 * @see org.sheepy.common.model.variable.impl.VariablePackageImpl#getAbstractVariableResolver()
 	 * @generated
 	 */
-	int VARIABLE_RESOLVER = 0;
-
-	/**
-	 * The feature id for the '<em><b>Resolver</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_RESOLVER__RESOLVER = 0;
+	int ABSTRACT_VARIABLE_RESOLVER = 0;
 
 	/**
 	 * The feature id for the '<em><b>Variable Definition</b></em>' attribute.
@@ -88,43 +78,71 @@ public interface VariablePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_RESOLVER__VARIABLE_DEFINITION = 1;
+	int ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION = 0;
 
 	/**
-	 * The feature id for the '<em><b>Emf Attributes</b></em>' attribute.
+	 * The number of structural features of the '<em>Abstract Variable Resolver</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_RESOLVER__EMF_ATTRIBUTES = 2;
+	int ABSTRACT_VARIABLE_RESOLVER_FEATURE_COUNT = 1;
 
 	/**
-	 * The number of structural features of the '<em>Resolver</em>' class.
+	 * The number of operations of the '<em>Abstract Variable Resolver</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_RESOLVER_FEATURE_COUNT = 3;
+	int ABSTRACT_VARIABLE_RESOLVER_OPERATION_COUNT = 0;
 
 	/**
-	 * The operation id for the '<em>LEMF Attributes</em>' operation.
+	 * The meta object id for the '{@link org.sheepy.common.model.variable.impl.DirectVariableResolverImpl <em>Direct Variable Resolver</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.common.model.variable.impl.DirectVariableResolverImpl
+	 * @see org.sheepy.common.model.variable.impl.VariablePackageImpl#getDirectVariableResolver()
+	 * @generated
+	 */
+	int DIRECT_VARIABLE_RESOLVER = 1;
+
+	/**
+	 * The feature id for the '<em><b>Variable Definition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_RESOLVER___LEMF_ATTRIBUTES = 0;
+	int DIRECT_VARIABLE_RESOLVER__VARIABLE_DEFINITION = ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION;
 
 	/**
-	 * The number of operations of the '<em>Resolver</em>' class.
+	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_RESOLVER_OPERATION_COUNT = 1;
+	int DIRECT_VARIABLE_RESOLVER__TARGET = ABSTRACT_VARIABLE_RESOLVER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Direct Variable Resolver</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECT_VARIABLE_RESOLVER_FEATURE_COUNT = ABSTRACT_VARIABLE_RESOLVER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Direct Variable Resolver</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECT_VARIABLE_RESOLVER_OPERATION_COUNT = ABSTRACT_VARIABLE_RESOLVER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.variable.impl.VarChangeActionImpl <em>Var Change Action</em>}' class.
@@ -134,7 +152,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.common.model.variable.impl.VariablePackageImpl#getVarChangeAction()
 	 * @generated
 	 */
-	int VAR_CHANGE_ACTION = 1;
+	int VAR_CHANGE_ACTION = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -180,7 +198,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.common.model.variable.impl.VariablePackageImpl#getBooleanChangeAction()
 	 * @generated
 	 */
-	int BOOLEAN_CHANGE_ACTION = 2;
+	int BOOLEAN_CHANGE_ACTION = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -226,7 +244,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.common.model.variable.impl.VariablePackageImpl#getVarChangeActionPkg()
 	 * @generated
 	 */
-	int VAR_CHANGE_ACTION_PKG = 3;
+	int VAR_CHANGE_ACTION_PKG = 4;
 
 	/**
 	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
@@ -263,7 +281,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.common.model.variable.impl.VariablePackageImpl#getIncrementAction()
 	 * @generated
 	 */
-	int INCREMENT_ACTION = 4;
+	int INCREMENT_ACTION = 5;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -318,7 +336,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.common.model.variable.impl.VariablePackageImpl#getSetString()
 	 * @generated
 	 */
-	int SET_STRING = 5;
+	int SET_STRING = 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -364,7 +382,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.common.model.variable.impl.VariablePackageImpl#getSetBoolean()
 	 * @generated
 	 */
-	int SET_BOOLEAN = 6;
+	int SET_BOOLEAN = 7;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -410,7 +428,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.common.model.variable.impl.VariablePackageImpl#getSetNumber()
 	 * @generated
 	 */
-	int SET_NUMBER = 7;
+	int SET_NUMBER = 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -456,7 +474,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.common.model.variable.impl.VariablePackageImpl#getLResolvedVariableFeature()
 	 * @generated
 	 */
-	int LRESOLVED_VARIABLE_FEATURE = 8;
+	int LRESOLVED_VARIABLE_FEATURE = 9;
 
 	/**
 	 * The meta object id for the '<em>Definition</em>' data type.
@@ -466,61 +484,50 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.common.model.variable.impl.VariablePackageImpl#getVariableDefinition()
 	 * @generated
 	 */
-	int VARIABLE_DEFINITION = 9;
+	int VARIABLE_DEFINITION = 10;
 
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.variable.VariableResolver <em>Resolver</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.common.model.variable.AbstractVariableResolver <em>Abstract Variable Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Resolver</em>'.
-	 * @see org.sheepy.common.model.variable.VariableResolver
+	 * @return the meta object for class '<em>Abstract Variable Resolver</em>'.
+	 * @see org.sheepy.common.model.variable.AbstractVariableResolver
 	 * @generated
 	 */
-	EClass getVariableResolver();
+	EClass getAbstractVariableResolver();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.sheepy.common.model.variable.VariableResolver#getResolver <em>Resolver</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Resolver</em>'.
-	 * @see org.sheepy.common.model.variable.VariableResolver#getResolver()
-	 * @see #getVariableResolver()
-	 * @generated
-	 */
-	EReference getVariableResolver_Resolver();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.variable.VariableResolver#getVariableDefinition <em>Variable Definition</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.variable.AbstractVariableResolver#getVariableDefinition <em>Variable Definition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Variable Definition</em>'.
-	 * @see org.sheepy.common.model.variable.VariableResolver#getVariableDefinition()
-	 * @see #getVariableResolver()
+	 * @see org.sheepy.common.model.variable.AbstractVariableResolver#getVariableDefinition()
+	 * @see #getAbstractVariableResolver()
 	 * @generated
 	 */
-	EAttribute getVariableResolver_VariableDefinition();
+	EAttribute getAbstractVariableResolver_VariableDefinition();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.variable.VariableResolver#getEmfAttributes <em>Emf Attributes</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.common.model.variable.DirectVariableResolver <em>Direct Variable Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Emf Attributes</em>'.
-	 * @see org.sheepy.common.model.variable.VariableResolver#getEmfAttributes()
-	 * @see #getVariableResolver()
+	 * @return the meta object for class '<em>Direct Variable Resolver</em>'.
+	 * @see org.sheepy.common.model.variable.DirectVariableResolver
 	 * @generated
 	 */
-	EAttribute getVariableResolver_EmfAttributes();
+	EClass getDirectVariableResolver();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.common.model.variable.VariableResolver#lEMFAttributes() <em>LEMF Attributes</em>}' operation.
+	 * Returns the meta object for the reference '{@link org.sheepy.common.model.variable.DirectVariableResolver#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>LEMF Attributes</em>' operation.
-	 * @see org.sheepy.common.model.variable.VariableResolver#lEMFAttributes()
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see org.sheepy.common.model.variable.DirectVariableResolver#getTarget()
+	 * @see #getDirectVariableResolver()
 	 * @generated
 	 */
-	EOperation getVariableResolver__LEMFAttributes();
+	EReference getDirectVariableResolver_Target();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.common.model.variable.VarChangeAction <em>Var Change Action</em>}'.
@@ -672,22 +679,14 @@ public interface VariablePackage extends EPackage
 	interface Literals
 	{
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.variable.impl.VariableResolverImpl <em>Resolver</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.common.model.variable.impl.AbstractVariableResolverImpl <em>Abstract Variable Resolver</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.variable.impl.VariableResolverImpl
-		 * @see org.sheepy.common.model.variable.impl.VariablePackageImpl#getVariableResolver()
+		 * @see org.sheepy.common.model.variable.impl.AbstractVariableResolverImpl
+		 * @see org.sheepy.common.model.variable.impl.VariablePackageImpl#getAbstractVariableResolver()
 		 * @generated
 		 */
-		EClass VARIABLE_RESOLVER = eINSTANCE.getVariableResolver();
-
-		/**
-		 * The meta object literal for the '<em><b>Resolver</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference VARIABLE_RESOLVER__RESOLVER = eINSTANCE.getVariableResolver_Resolver();
+		EClass ABSTRACT_VARIABLE_RESOLVER = eINSTANCE.getAbstractVariableResolver();
 
 		/**
 		 * The meta object literal for the '<em><b>Variable Definition</b></em>' attribute feature.
@@ -695,23 +694,25 @@ public interface VariablePackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute VARIABLE_RESOLVER__VARIABLE_DEFINITION = eINSTANCE.getVariableResolver_VariableDefinition();
+		EAttribute ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION = eINSTANCE.getAbstractVariableResolver_VariableDefinition();
 
 		/**
-		 * The meta object literal for the '<em><b>Emf Attributes</b></em>' attribute feature.
+		 * The meta object literal for the '{@link org.sheepy.common.model.variable.impl.DirectVariableResolverImpl <em>Direct Variable Resolver</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.common.model.variable.impl.DirectVariableResolverImpl
+		 * @see org.sheepy.common.model.variable.impl.VariablePackageImpl#getDirectVariableResolver()
+		 * @generated
+		 */
+		EClass DIRECT_VARIABLE_RESOLVER = eINSTANCE.getDirectVariableResolver();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute VARIABLE_RESOLVER__EMF_ATTRIBUTES = eINSTANCE.getVariableResolver_EmfAttributes();
-
-		/**
-		 * The meta object literal for the '<em><b>LEMF Attributes</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation VARIABLE_RESOLVER___LEMF_ATTRIBUTES = eINSTANCE.getVariableResolver__LEMFAttributes();
+		EReference DIRECT_VARIABLE_RESOLVER__TARGET = eINSTANCE.getDirectVariableResolver_Target();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.common.model.variable.impl.VarChangeActionImpl <em>Var Change Action</em>}' class.

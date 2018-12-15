@@ -13,7 +13,7 @@ import org.sheepy.common.model.presentation.Control;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.ui.AbstractLabel#getLabel <em>Label</em>}</li>
+ *   <li>{@link org.sheepy.common.model.ui.AbstractLabel#getText <em>Text</em>}</li>
  *   <li>{@link org.sheepy.common.model.ui.AbstractLabel#getFontScale <em>Font Scale</em>}</li>
  * </ul>
  *
@@ -24,31 +24,31 @@ import org.sheepy.common.model.presentation.Control;
 public interface AbstractLabel extends Control
 {
 	/**
-	 * Returns the value of the '<em><b>Label</b></em>' attribute.
+	 * Returns the value of the '<em><b>Text</b></em>' attribute.
 	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Label</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Text</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Label</em>' attribute.
-	 * @see #setLabel(String)
-	 * @see org.sheepy.common.model.ui.UiPackage#getAbstractLabel_Label()
+	 * @return the value of the '<em>Text</em>' attribute.
+	 * @see #setText(String)
+	 * @see org.sheepy.common.model.ui.UiPackage#getAbstractLabel_Text()
 	 * @model default="" unique="false"
 	 * @generated
 	 */
-	String getLabel();
+	String getText();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.ui.AbstractLabel#getLabel <em>Label</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.common.model.ui.AbstractLabel#getText <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Label</em>' attribute.
-	 * @see #getLabel()
+	 * @param value the new value of the '<em>Text</em>' attribute.
+	 * @see #getText()
 	 * @generated
 	 */
-	void setLabel(String value);
+	void setText(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Font Scale</b></em>' attribute.

@@ -2,12 +2,12 @@ package org.sheepy.common.api.cadence;
 
 import java.util.Collection;
 import java.util.EventListener;
+import java.util.ServiceLoader;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.sheepy.common.api.service.IService;
-import org.sheepy.common.api.service.ServiceManager;
 import org.sheepy.common.model.root.LObject;
 
 public interface ICadencer extends IService
@@ -58,8 +58,5 @@ public interface ICadencer extends IService
 		void onUnitRemove(LObject unit);
 	}
 
-	static ICadencer getService()
-	{
-		return ServiceManager.getService(ICadencer.class);
-	}
+	static ICadencer INSTANCE = ServiceLoader.load(ICadencer.class).findFirst().get();
 }

@@ -12,10 +12,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.sheepy.common.model.action.impl.ActionImpl;
 
+import org.sheepy.common.model.variable.AbstractVariableResolver;
 import org.sheepy.common.model.variable.SetString;
 import org.sheepy.common.model.variable.VarChangeAction;
 import org.sheepy.common.model.variable.VariablePackage;
-import org.sheepy.common.model.variable.VariableResolver;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,7 +40,7 @@ public class SetStringImpl extends ActionImpl implements SetString
 	 * @generated
 	 * @ordered
 	 */
-	protected VariableResolver variableResolver;
+	protected AbstractVariableResolver variableResolver;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,7 +68,7 @@ public class SetStringImpl extends ActionImpl implements SetString
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public VariableResolver getVariableResolver()
+	public AbstractVariableResolver getVariableResolver()
 	{
 		return variableResolver;
 	}
@@ -78,9 +78,9 @@ public class SetStringImpl extends ActionImpl implements SetString
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetVariableResolver(VariableResolver newVariableResolver, NotificationChain msgs)
+	public NotificationChain basicSetVariableResolver(AbstractVariableResolver newVariableResolver, NotificationChain msgs)
 	{
-		VariableResolver oldVariableResolver = variableResolver;
+		AbstractVariableResolver oldVariableResolver = variableResolver;
 		variableResolver = newVariableResolver;
 		if (eNotificationRequired())
 		{
@@ -95,7 +95,7 @@ public class SetStringImpl extends ActionImpl implements SetString
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setVariableResolver(VariableResolver newVariableResolver)
+	public void setVariableResolver(AbstractVariableResolver newVariableResolver)
 	{
 		if (newVariableResolver != variableResolver)
 		{
@@ -154,7 +154,7 @@ public class SetStringImpl extends ActionImpl implements SetString
 		switch (featureID)
 		{
 			case VariablePackage.SET_STRING__VARIABLE_RESOLVER:
-				setVariableResolver((VariableResolver)newValue);
+				setVariableResolver((AbstractVariableResolver)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -171,7 +171,7 @@ public class SetStringImpl extends ActionImpl implements SetString
 		switch (featureID)
 		{
 			case VariablePackage.SET_STRING__VARIABLE_RESOLVER:
-				setVariableResolver((VariableResolver)null);
+				setVariableResolver((AbstractVariableResolver)null);
 				return;
 		}
 		super.eUnset(featureID);

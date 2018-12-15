@@ -17,7 +17,8 @@ Export-Package: org.sheepy.common.model.action.provider,
  org.sheepy.common.model.root.provider,
  org.sheepy.common.model.types.provider,
  org.sheepy.common.model.ui.provider,
- org.sheepy.common.model.variable.provider
+ org.sheepy.common.model.variable.provider,
+ org.sheepy.common.model.command.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.sheepy.common.model;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,

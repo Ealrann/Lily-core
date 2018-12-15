@@ -1,8 +1,9 @@
 package org.sheepy.common.api.action;
 
+import java.util.ServiceLoader;
+
 import org.sheepy.common.api.action.context.ExecutionContext;
 import org.sheepy.common.api.service.IService;
-import org.sheepy.common.api.service.ServiceManager;
 
 public interface IActionDispatcher extends IService
 {
@@ -12,8 +13,6 @@ public interface IActionDispatcher extends IService
 	// void bindActionHandler(IActionHandler handler);
 	// void unbindActionHandler(IActionHandler handler);
 
-	static IActionDispatcher getService()
-	{
-		return ServiceManager.getService(IActionDispatcher.class);
-	}
+	static IActionDispatcher INSTANCE = ServiceLoader.load(IActionDispatcher.class).findFirst()
+			.get();
 }

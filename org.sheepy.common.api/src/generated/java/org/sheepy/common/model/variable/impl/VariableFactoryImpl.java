@@ -67,7 +67,7 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	{
 		switch (eClass.getClassifierID())
 		{
-			case VariablePackage.VARIABLE_RESOLVER: return createVariableResolver();
+			case VariablePackage.DIRECT_VARIABLE_RESOLVER: return createDirectVariableResolver();
 			case VariablePackage.BOOLEAN_CHANGE_ACTION: return createBooleanChangeAction();
 			case VariablePackage.VAR_CHANGE_ACTION_PKG: return createVarChangeActionPkg();
 			case VariablePackage.INCREMENT_ACTION: return createIncrementAction();
@@ -122,10 +122,10 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public VariableResolver createVariableResolver()
+	public DirectVariableResolver createDirectVariableResolver()
 	{
-		VariableResolverImpl variableResolver = new VariableResolverImpl();
-		return variableResolver;
+		DirectVariableResolverImpl directVariableResolver = new DirectVariableResolverImpl();
+		return directVariableResolver;
 	}
 
 	/**

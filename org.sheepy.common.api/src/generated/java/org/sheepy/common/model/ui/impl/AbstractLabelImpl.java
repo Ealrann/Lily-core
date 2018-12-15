@@ -21,7 +21,7 @@ import org.sheepy.common.model.ui.UiPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.ui.impl.AbstractLabelImpl#getLabel <em>Label</em>}</li>
+ *   <li>{@link org.sheepy.common.model.ui.impl.AbstractLabelImpl#getText <em>Text</em>}</li>
  *   <li>{@link org.sheepy.common.model.ui.impl.AbstractLabelImpl#getFontScale <em>Font Scale</em>}</li>
  * </ul>
  *
@@ -30,24 +30,24 @@ import org.sheepy.common.model.ui.UiPackage;
 public abstract class AbstractLabelImpl extends ControlImpl implements AbstractLabel
 {
 	/**
-	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
+	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLabel()
+	 * @see #getText()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String LABEL_EDEFAULT = "";
+	protected static final String TEXT_EDEFAULT = "";
 
 	/**
-	 * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
+	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getLabel()
+	 * @see #getText()
 	 * @generated
 	 * @ordered
 	 */
-	protected String label = LABEL_EDEFAULT;
+	protected String text = TEXT_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getFontScale() <em>Font Scale</em>}' attribute.
@@ -95,9 +95,9 @@ public abstract class AbstractLabelImpl extends ControlImpl implements AbstractL
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getLabel()
+	public String getText()
 	{
-		return label;
+		return text;
 	}
 
 	/**
@@ -105,12 +105,12 @@ public abstract class AbstractLabelImpl extends ControlImpl implements AbstractL
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLabel(String newLabel)
+	public void setText(String newText)
 	{
-		String oldLabel = label;
-		label = newLabel;
+		String oldText = text;
+		text = newText;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.ABSTRACT_LABEL__LABEL, oldLabel, label));
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.ABSTRACT_LABEL__TEXT, oldText, text));
 	}
 
 	/**
@@ -146,8 +146,8 @@ public abstract class AbstractLabelImpl extends ControlImpl implements AbstractL
 	{
 		switch (featureID)
 		{
-			case UiPackage.ABSTRACT_LABEL__LABEL:
-				return getLabel();
+			case UiPackage.ABSTRACT_LABEL__TEXT:
+				return getText();
 			case UiPackage.ABSTRACT_LABEL__FONT_SCALE:
 				return getFontScale();
 		}
@@ -164,8 +164,8 @@ public abstract class AbstractLabelImpl extends ControlImpl implements AbstractL
 	{
 		switch (featureID)
 		{
-			case UiPackage.ABSTRACT_LABEL__LABEL:
-				setLabel((String)newValue);
+			case UiPackage.ABSTRACT_LABEL__TEXT:
+				setText((String)newValue);
 				return;
 			case UiPackage.ABSTRACT_LABEL__FONT_SCALE:
 				setFontScale((Float)newValue);
@@ -184,8 +184,8 @@ public abstract class AbstractLabelImpl extends ControlImpl implements AbstractL
 	{
 		switch (featureID)
 		{
-			case UiPackage.ABSTRACT_LABEL__LABEL:
-				setLabel(LABEL_EDEFAULT);
+			case UiPackage.ABSTRACT_LABEL__TEXT:
+				setText(TEXT_EDEFAULT);
 				return;
 			case UiPackage.ABSTRACT_LABEL__FONT_SCALE:
 				setFontScale(FONT_SCALE_EDEFAULT);
@@ -204,8 +204,8 @@ public abstract class AbstractLabelImpl extends ControlImpl implements AbstractL
 	{
 		switch (featureID)
 		{
-			case UiPackage.ABSTRACT_LABEL__LABEL:
-				return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+			case UiPackage.ABSTRACT_LABEL__TEXT:
+				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
 			case UiPackage.ABSTRACT_LABEL__FONT_SCALE:
 				return fontScale != FONT_SCALE_EDEFAULT;
 		}
@@ -223,8 +223,8 @@ public abstract class AbstractLabelImpl extends ControlImpl implements AbstractL
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (label: ");
-		result.append(label);
+		result.append(" (text: ");
+		result.append(text);
 		result.append(", fontScale: ");
 		result.append(fontScale);
 		result.append(')');

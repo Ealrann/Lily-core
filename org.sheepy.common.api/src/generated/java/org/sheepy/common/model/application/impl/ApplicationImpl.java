@@ -25,6 +25,8 @@ import org.sheepy.common.model.application.IEngine;
 import org.sheepy.common.model.application.IView;
 
 import org.sheepy.common.model.root.impl.LObjectImpl;
+import org.sheepy.common.model.types.TypesFactory;
+import org.sheepy.common.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -136,7 +138,7 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String TITLE_EDEFAULT = null;
+	protected static final String TITLE_EDEFAULT = "Vulkan Application";
 
 	/**
 	 * The cached value of the '{@link #getTitle() <em>Title</em>}' attribute.
@@ -156,7 +158,7 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * @generated
 	 * @ordered
 	 */
-	protected static final SVector2i SIZE_EDEFAULT = null;
+	protected static final SVector2i SIZE_EDEFAULT = (SVector2i)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getSVector2i(), "400,400");
 
 	/**
 	 * The cached value of the '{@link #getSize() <em>Size</em>}' attribute.

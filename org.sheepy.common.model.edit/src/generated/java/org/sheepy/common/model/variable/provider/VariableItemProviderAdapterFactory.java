@@ -100,28 +100,28 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.variable.VariableResolver} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.variable.DirectVariableResolver} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected VariableResolverItemProvider variableResolverItemProvider;
+	protected DirectVariableResolverItemProvider directVariableResolverItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.variable.VariableResolver}.
+	 * This creates an adapter for a {@link org.sheepy.common.model.variable.DirectVariableResolver}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createVariableResolverAdapter()
+	public Adapter createDirectVariableResolverAdapter()
 	{
-		if (variableResolverItemProvider == null)
+		if (directVariableResolverItemProvider == null)
 		{
-			variableResolverItemProvider = new VariableResolverItemProvider(this);
+			directVariableResolverItemProvider = new DirectVariableResolverItemProvider(this);
 		}
 
-		return variableResolverItemProvider;
+		return directVariableResolverItemProvider;
 	}
 
 	/**
@@ -415,7 +415,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	 */
 	public void dispose()
 	{
-		if (variableResolverItemProvider != null) variableResolverItemProvider.dispose();
+		if (directVariableResolverItemProvider != null) directVariableResolverItemProvider.dispose();
 		if (booleanChangeActionItemProvider != null) booleanChangeActionItemProvider.dispose();
 		if (varChangeActionPkgItemProvider != null) varChangeActionPkgItemProvider.dispose();
 		if (incrementActionItemProvider != null) incrementActionItemProvider.dispose();

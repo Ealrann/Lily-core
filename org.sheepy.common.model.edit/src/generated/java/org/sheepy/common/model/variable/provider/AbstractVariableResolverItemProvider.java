@@ -10,9 +10,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
-import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -24,18 +21,16 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.sheepy.common.model.resolver.ResolverFactory;
+import org.sheepy.common.model.variable.AbstractVariableResolver;
 import org.sheepy.common.model.variable.VariablePackage;
-import org.sheepy.common.model.variable.VariableResolver;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.common.model.variable.VariableResolver} object.
+ * This is the item provider adapter for a {@link org.sheepy.common.model.variable.AbstractVariableResolver} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class VariableResolverItemProvider 
+public class AbstractVariableResolverItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -50,7 +45,7 @@ public class VariableResolverItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public VariableResolverItemProvider(AdapterFactory adapterFactory)
+	public AbstractVariableResolverItemProvider(AdapterFactory adapterFactory)
 	{
 		super(adapterFactory);
 	}
@@ -85,60 +80,15 @@ public class VariableResolverItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_VariableResolver_variableDefinition_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_VariableResolver_variableDefinition_feature", "_UI_VariableResolver_type"),
-				 VariablePackage.Literals.VARIABLE_RESOLVER__VARIABLE_DEFINITION,
+				 getString("_UI_AbstractVariableResolver_variableDefinition_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractVariableResolver_variableDefinition_feature", "_UI_AbstractVariableResolver_type"),
+				 VariablePackage.Literals.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION,
 				 true,
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
-	}
-
-	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object)
-	{
-		if (childrenFeatures == null)
-		{
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(VariablePackage.Literals.VARIABLE_RESOLVER__RESOLVER);
-		}
-		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child)
-	{
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
-	}
-
-	/**
-	 * This returns VariableResolver.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object getImage(Object object)
-	{
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/VariableResolver"));
 	}
 
 	/**
@@ -150,10 +100,10 @@ public class VariableResolverItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((VariableResolver)object).getVariableDefinition();
+		String label = ((AbstractVariableResolver)object).getVariableDefinition();
 		return label == null || label.length() == 0 ?
-			getString("_UI_VariableResolver_type") :
-			getString("_UI_VariableResolver_type") + " " + label;
+			getString("_UI_AbstractVariableResolver_type") :
+			getString("_UI_AbstractVariableResolver_type") + " " + label;
 	}
 
 
@@ -169,14 +119,10 @@ public class VariableResolverItemProvider
 	{
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(VariableResolver.class))
+		switch (notification.getFeatureID(AbstractVariableResolver.class))
 		{
-			case VariablePackage.VARIABLE_RESOLVER__VARIABLE_DEFINITION:
-			case VariablePackage.VARIABLE_RESOLVER__EMF_ATTRIBUTES:
+			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case VariablePackage.VARIABLE_RESOLVER__RESOLVER:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -193,16 +139,6 @@ public class VariableResolverItemProvider
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(VariablePackage.Literals.VARIABLE_RESOLVER__RESOLVER,
-				 ResolverFactory.eINSTANCE.createEReferenceResolver()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(VariablePackage.Literals.VARIABLE_RESOLVER__RESOLVER,
-				 ResolverFactory.eINSTANCE.createChainResolver()));
 	}
 
 	/**

@@ -155,7 +155,7 @@ public class TextFieldItemProvider extends ControlItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UiPackage.Literals.TEXT_FIELD__VARIABLE_RESOLVER,
-				 VariableFactory.eINSTANCE.createVariableResolver()));
+				 VariableFactory.eINSTANCE.createDirectVariableResolver()));
 	}
 
 }

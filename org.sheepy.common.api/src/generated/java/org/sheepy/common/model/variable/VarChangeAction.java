@@ -31,12 +31,12 @@ public interface VarChangeAction extends Action
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variable Resolver</em>' containment reference.
-	 * @see #setVariableResolver(VariableResolver)
+	 * @see #setVariableResolver(AbstractVariableResolver)
 	 * @see org.sheepy.common.model.variable.VariablePackage#getVarChangeAction_VariableResolver()
 	 * @model containment="true"
 	 * @generated
 	 */
-	VariableResolver getVariableResolver();
+	AbstractVariableResolver getVariableResolver();
 
 	/**
 	 * Sets the value of the '{@link org.sheepy.common.model.variable.VarChangeAction#getVariableResolver <em>Variable Resolver</em>}' containment reference.
@@ -46,6 +46,6 @@ public interface VarChangeAction extends Action
 	 * @see #getVariableResolver()
 	 * @generated
 	 */
-	void setVariableResolver(VariableResolver value);
+	void setVariableResolver(AbstractVariableResolver value);
 
 } // VarChangeAction

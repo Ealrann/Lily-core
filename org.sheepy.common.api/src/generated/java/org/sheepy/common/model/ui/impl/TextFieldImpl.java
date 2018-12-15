@@ -14,8 +14,7 @@ import org.sheepy.common.model.presentation.impl.ControlImpl;
 
 import org.sheepy.common.model.ui.TextField;
 import org.sheepy.common.model.ui.UiPackage;
-
-import org.sheepy.common.model.variable.VariableResolver;
+import org.sheepy.common.model.variable.AbstractVariableResolver;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,7 +39,7 @@ public class TextFieldImpl extends ControlImpl implements TextField
 	 * @generated
 	 * @ordered
 	 */
-	protected VariableResolver variableResolver;
+	protected AbstractVariableResolver variableResolver;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,7 +67,7 @@ public class TextFieldImpl extends ControlImpl implements TextField
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public VariableResolver getVariableResolver()
+	public AbstractVariableResolver getVariableResolver()
 	{
 		return variableResolver;
 	}
@@ -78,9 +77,9 @@ public class TextFieldImpl extends ControlImpl implements TextField
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetVariableResolver(VariableResolver newVariableResolver, NotificationChain msgs)
+	public NotificationChain basicSetVariableResolver(AbstractVariableResolver newVariableResolver, NotificationChain msgs)
 	{
-		VariableResolver oldVariableResolver = variableResolver;
+		AbstractVariableResolver oldVariableResolver = variableResolver;
 		variableResolver = newVariableResolver;
 		if (eNotificationRequired())
 		{
@@ -95,7 +94,7 @@ public class TextFieldImpl extends ControlImpl implements TextField
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setVariableResolver(VariableResolver newVariableResolver)
+	public void setVariableResolver(AbstractVariableResolver newVariableResolver)
 	{
 		if (newVariableResolver != variableResolver)
 		{
@@ -154,7 +153,7 @@ public class TextFieldImpl extends ControlImpl implements TextField
 		switch (featureID)
 		{
 			case UiPackage.TEXT_FIELD__VARIABLE_RESOLVER:
-				setVariableResolver((VariableResolver)newValue);
+				setVariableResolver((AbstractVariableResolver)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -171,7 +170,7 @@ public class TextFieldImpl extends ControlImpl implements TextField
 		switch (featureID)
 		{
 			case UiPackage.TEXT_FIELD__VARIABLE_RESOLVER:
-				setVariableResolver((VariableResolver)null);
+				setVariableResolver((AbstractVariableResolver)null);
 				return;
 		}
 		super.eUnset(featureID);

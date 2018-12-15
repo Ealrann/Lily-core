@@ -82,9 +82,14 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 		new VariableSwitch<Adapter>()
 		{
 			@Override
-			public Adapter caseVariableResolver(VariableResolver object)
+			public Adapter caseAbstractVariableResolver(AbstractVariableResolver object)
 			{
-				return createVariableResolverAdapter();
+				return createAbstractVariableResolverAdapter();
+			}
+			@Override
+			public Adapter caseDirectVariableResolver(DirectVariableResolver object)
+			{
+				return createDirectVariableResolverAdapter();
 			}
 			@Override
 			public Adapter caseVarChangeAction(VarChangeAction object)
@@ -159,16 +164,31 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.VariableResolver <em>Resolver</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.AbstractVariableResolver <em>Abstract Variable Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.variable.VariableResolver
+	 * @see org.sheepy.common.model.variable.AbstractVariableResolver
 	 * @generated
 	 */
-	public Adapter createVariableResolverAdapter()
+	public Adapter createAbstractVariableResolverAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.DirectVariableResolver <em>Direct Variable Resolver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.common.model.variable.DirectVariableResolver
+	 * @generated
+	 */
+	public Adapter createDirectVariableResolverAdapter()
 	{
 		return null;
 	}

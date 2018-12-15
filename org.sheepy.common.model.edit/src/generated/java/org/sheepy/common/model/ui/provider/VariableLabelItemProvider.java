@@ -153,7 +153,7 @@ public class VariableLabelItemProvider extends AbstractLabelItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UiPackage.Literals.VARIABLE_LABEL__VARIABLE_RESOLVER,
-				 VariableFactory.eINSTANCE.createVariableResolver()));
+				 VariableFactory.eINSTANCE.createDirectVariableResolver()));
 	}
 
 }

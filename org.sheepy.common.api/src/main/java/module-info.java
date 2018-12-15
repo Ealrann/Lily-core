@@ -1,5 +1,11 @@
+import org.sheepy.common.api.action.IActionDispatcher;
 import org.sheepy.common.api.adapter.ISingletonAdapter;
+import org.sheepy.common.api.cadence.ICadencer;
+import org.sheepy.common.api.cadence.IStatistics;
 import org.sheepy.common.api.input.IInputManager;
+import org.sheepy.common.api.resource.CoreModelExtension;
+import org.sheepy.common.api.resource.IModelExtension;
+import org.sheepy.common.api.resource.IResourceManager;
 
 module org.sheepy.common.api
 {
@@ -18,6 +24,7 @@ module org.sheepy.common.api
 	exports org.sheepy.common.api.service;
 	exports org.sheepy.common.api.types;
 	exports org.sheepy.common.api.util;
+	exports org.sheepy.common.api.variable;
 
 	exports org.sheepy.common.model.action;
 	exports org.sheepy.common.model.action.impl;
@@ -37,7 +44,14 @@ module org.sheepy.common.api
 	exports org.sheepy.common.model.ui.impl;
 	exports org.sheepy.common.model.variable;
 	exports org.sheepy.common.model.variable.impl;
-	
+
+	provides IModelExtension with CoreModelExtension;
+
+	uses IActionDispatcher;
+	uses ICadencer;
 	uses IInputManager;
+	uses IModelExtension;
+	uses IResourceManager;
 	uses ISingletonAdapter;
+	uses IStatistics;
 }

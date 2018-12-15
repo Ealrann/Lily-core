@@ -5,17 +5,17 @@
 
 package org.sheepy.common.model.ui
 
+import org.sheepy.common.model.action.Action
 import org.sheepy.common.model.action.ActionList
 import org.sheepy.common.model.application.IView
 import org.sheepy.common.model.presentation.Control
 import org.sheepy.common.model.root.LObject
 import org.sheepy.common.model.types.EKeyState
-import org.sheepy.common.model.variable.VariableResolver
-import org.sheepy.common.model.action.Action
+import org.sheepy.common.model.variable.AbstractVariableResolver
 
 abstract class AbstractLabel extends Control
 {
-	String label = ""
+	String text = ""
 	float fontScale = "1"
 }
 
@@ -26,7 +26,7 @@ class DynamicRowLayout extends Control
 
 class VariableLabel extends AbstractLabel
 {
-	contains VariableResolver variableResolver
+	contains AbstractVariableResolver variableResolver
 }
 
 class Label extends AbstractLabel
@@ -35,13 +35,12 @@ class Label extends AbstractLabel
 
 class TextField extends Control
 {
-	contains VariableResolver variableResolver
+	contains AbstractVariableResolver variableResolver
 }
 
 abstract class AbstractButton extends Control
 {
-	String text
-	boolean pressed = "false"
+	String text = ""
 }
 
 class Button extends AbstractButton
@@ -76,7 +75,7 @@ abstract class AbstractBooleanButton extends AbstractButton
 
 class BooleanButton extends AbstractBooleanButton
 {
-	contains VariableResolver variableResolver
+	contains AbstractVariableResolver variableResolver
 }
 
 class BooleanActionButton extends AbstractBooleanButton

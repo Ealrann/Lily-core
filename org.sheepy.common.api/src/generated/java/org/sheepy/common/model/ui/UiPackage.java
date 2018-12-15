@@ -126,13 +126,13 @@ public interface UiPackage extends EPackage
 	int ABSTRACT_LABEL__HORIZONTAL_RELATIVE = PresentationPackage.CONTROL__HORIZONTAL_RELATIVE;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL__LABEL = PresentationPackage.CONTROL_FEATURE_COUNT + 0;
+	int ABSTRACT_LABEL__TEXT = PresentationPackage.CONTROL_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Font Scale</b></em>' attribute.
@@ -407,13 +407,13 @@ public interface UiPackage extends EPackage
 	int VARIABLE_LABEL__HORIZONTAL_RELATIVE = ABSTRACT_LABEL__HORIZONTAL_RELATIVE;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_LABEL__LABEL = ABSTRACT_LABEL__LABEL;
+	int VARIABLE_LABEL__TEXT = ABSTRACT_LABEL__TEXT;
 
 	/**
 	 * The feature id for the '<em><b>Font Scale</b></em>' attribute.
@@ -561,13 +561,13 @@ public interface UiPackage extends EPackage
 	int LABEL__HORIZONTAL_RELATIVE = ABSTRACT_LABEL__HORIZONTAL_RELATIVE;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL__LABEL = ABSTRACT_LABEL__LABEL;
+	int LABEL__TEXT = ABSTRACT_LABEL__TEXT;
 
 	/**
 	 * The feature id for the '<em><b>Font Scale</b></em>' attribute.
@@ -851,22 +851,13 @@ public interface UiPackage extends EPackage
 	int ABSTRACT_BUTTON__TEXT = PresentationPackage.CONTROL_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Pressed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BUTTON__PRESSED = PresentationPackage.CONTROL_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Abstract Button</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON_FEATURE_COUNT = PresentationPackage.CONTROL_FEATURE_COUNT + 2;
+	int ABSTRACT_BUTTON_FEATURE_COUNT = PresentationPackage.CONTROL_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -994,15 +985,6 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int BUTTON__TEXT = ABSTRACT_BUTTON__TEXT;
-
-	/**
-	 * The feature id for the '<em><b>Pressed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUTTON__PRESSED = ABSTRACT_BUTTON__PRESSED;
 
 	/**
 	 * The feature id for the '<em><b>Shortcut</b></em>' attribute.
@@ -1186,15 +1168,6 @@ public interface UiPackage extends EPackage
 	int ABSTRACT_BOOLEAN_BUTTON__TEXT = ABSTRACT_BUTTON__TEXT;
 
 	/**
-	 * The feature id for the '<em><b>Pressed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BOOLEAN_BUTTON__PRESSED = ABSTRACT_BUTTON__PRESSED;
-
-	/**
 	 * The feature id for the '<em><b>Text When True</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1347,15 +1320,6 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int BOOLEAN_BUTTON__TEXT = ABSTRACT_BOOLEAN_BUTTON__TEXT;
-
-	/**
-	 * The feature id for the '<em><b>Pressed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_BUTTON__PRESSED = ABSTRACT_BOOLEAN_BUTTON__PRESSED;
 
 	/**
 	 * The feature id for the '<em><b>Text When True</b></em>' attribute.
@@ -1521,15 +1485,6 @@ public interface UiPackage extends EPackage
 	int BOOLEAN_ACTION_BUTTON__TEXT = ABSTRACT_BOOLEAN_BUTTON__TEXT;
 
 	/**
-	 * The feature id for the '<em><b>Pressed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_ACTION_BUTTON__PRESSED = ABSTRACT_BOOLEAN_BUTTON__PRESSED;
-
-	/**
 	 * The feature id for the '<em><b>Text When True</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1640,15 +1595,15 @@ public interface UiPackage extends EPackage
 	EClass getAbstractLabel();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.AbstractLabel#getLabel <em>Label</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.AbstractLabel#getText <em>Text</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Label</em>'.
-	 * @see org.sheepy.common.model.ui.AbstractLabel#getLabel()
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see org.sheepy.common.model.ui.AbstractLabel#getText()
 	 * @see #getAbstractLabel()
 	 * @generated
 	 */
-	EAttribute getAbstractLabel_Label();
+	EAttribute getAbstractLabel_Text();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.AbstractLabel#getFontScale <em>Font Scale</em>}'.
@@ -1754,17 +1709,6 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	EAttribute getAbstractButton_Text();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.AbstractButton#isPressed <em>Pressed</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Pressed</em>'.
-	 * @see org.sheepy.common.model.ui.AbstractButton#isPressed()
-	 * @see #getAbstractButton()
-	 * @generated
-	 */
-	EAttribute getAbstractButton_Pressed();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.Button <em>Button</em>}'.
@@ -1949,12 +1893,12 @@ public interface UiPackage extends EPackage
 		EClass ABSTRACT_LABEL = eINSTANCE.getAbstractLabel();
 
 		/**
-		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ABSTRACT_LABEL__LABEL = eINSTANCE.getAbstractLabel_Label();
+		EAttribute ABSTRACT_LABEL__TEXT = eINSTANCE.getAbstractLabel_Text();
 
 		/**
 		 * The meta object literal for the '<em><b>Font Scale</b></em>' attribute feature.
@@ -2045,14 +1989,6 @@ public interface UiPackage extends EPackage
 		 * @generated
 		 */
 		EAttribute ABSTRACT_BUTTON__TEXT = eINSTANCE.getAbstractButton_Text();
-
-		/**
-		 * The meta object literal for the '<em><b>Pressed</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ABSTRACT_BUTTON__PRESSED = eINSTANCE.getAbstractButton_Pressed();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.ButtonImpl <em>Button</em>}' class.

@@ -180,7 +180,7 @@ public class IncrementActionItemProvider extends ActionItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(VariablePackage.Literals.VAR_CHANGE_ACTION__VARIABLE_RESOLVER,
-				 VariableFactory.eINSTANCE.createVariableResolver()));
+				 VariableFactory.eINSTANCE.createDirectVariableResolver()));
 	}
 
 }

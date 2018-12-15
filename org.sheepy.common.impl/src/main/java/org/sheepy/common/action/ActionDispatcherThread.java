@@ -35,16 +35,16 @@ public class ActionDispatcherThread implements ITicker
 
 	public void postAction(ExecutionContext action)
 	{
-		if (cadencer.getCadencedThreadsId()
-				.contains(Thread.currentThread().getId()))
-		{
+//		if (cadencer.getCadencedThreadsId()
+//				.contains(Thread.currentThread().getId()))
+//		{
 			run(action);
-		}
-		else
-		{
-			// If not a CadencerThread
-			externalActions.add(action);
-		}
+//		}
+//		else
+//		{
+//			// If not a CadencerThread
+//			externalActions.add(action);
+//		}
 	}
 
 	// public void postActions(Collection<IExecutionContext> actions)

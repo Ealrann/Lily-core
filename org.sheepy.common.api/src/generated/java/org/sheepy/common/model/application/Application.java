@@ -148,6 +148,7 @@ public interface Application extends LObject
 
 	/**
 	 * Returns the value of the '<em><b>Title</b></em>' attribute.
+	 * The default value is <code>"Vulkan Application"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Title</em>' attribute isn't clear,
@@ -157,7 +158,7 @@ public interface Application extends LObject
 	 * @return the value of the '<em>Title</em>' attribute.
 	 * @see #setTitle(String)
 	 * @see org.sheepy.common.model.application.ApplicationPackage#getApplication_Title()
-	 * @model unique="false"
+	 * @model default="Vulkan Application" unique="false"
 	 * @generated
 	 */
 	String getTitle();
@@ -174,6 +175,7 @@ public interface Application extends LObject
 
 	/**
 	 * Returns the value of the '<em><b>Size</b></em>' attribute.
+	 * The default value is <code>"400,400"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Size</em>' attribute isn't clear,
@@ -183,7 +185,7 @@ public interface Application extends LObject
 	 * @return the value of the '<em>Size</em>' attribute.
 	 * @see #setSize(SVector2i)
 	 * @see org.sheepy.common.model.application.ApplicationPackage#getApplication_Size()
-	 * @model unique="false" dataType="org.sheepy.common.model.types.SVector2i"
+	 * @model default="400,400" unique="false" dataType="org.sheepy.common.model.types.SVector2i"
 	 * @generated
 	 */
 	SVector2i getSize();
