@@ -29,6 +29,15 @@ public class CadencerStatistics implements IStatistics
 	private final HashSet<String> accumulatedThisTurn = new HashSet<>();
 
 	@Override
+	public void clear()
+	{
+		currentStatTime = 0;		
+		tickersTime.clear();
+		accumulatorsTime.clear();
+		accumulatedThisTurn.clear();
+	}
+	
+	@Override
 	public void update()
 	{
 		accumulatedThisTurn.clear();
@@ -42,7 +51,7 @@ public class CadencerStatistics implements IStatistics
 
 				long sum = 0;
 				long max = 0;
-				for (int i = 0; i<  times.size(); i++)
+				for (int i = 0; i < times.size(); i++)
 				{
 					Long l = times.get(i);
 					l /= 1000;
@@ -53,10 +62,8 @@ public class CadencerStatistics implements IStatistics
 					}
 				}
 				e.getValue().durationMaxUs = max;
-				if (times.isEmpty() == false)
-					e.getValue().durationUs = sum / times.size();
-				else
-					e.getValue().durationUs = 0;
+				if (times.isEmpty() == false) e.getValue().durationUs = sum / times.size();
+				else e.getValue().durationUs = 0;
 				e.getValue().total += sum;
 
 				times.clear();
@@ -88,14 +95,12 @@ public class CadencerStatistics implements IStatistics
 
 		for (Entry<String, AccumulatorTime> e : accumulatorsTime.entrySet())
 		{
-			System.out.format("%s ; %d ms \n", e.getKey(),
-					e.getValue().total / 1000);
+			System.out.format("%s ; %d ms \n", e.getKey(), e.getValue().total / 1000);
 		}
 
 		for (Entry<String, Long> entry : tickersTime.entrySet())
 		{
-			System.out.format("%s : %d ms\n", entry.getKey(),
-					entry.getValue() / 1_000_000);
+			System.out.format("%s : %d ms\n", entry.getKey(), entry.getValue() / 1_000_000);
 		}
 		System.out.println("===============================================");
 	}

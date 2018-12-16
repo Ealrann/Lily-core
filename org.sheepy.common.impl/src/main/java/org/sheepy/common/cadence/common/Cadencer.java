@@ -4,9 +4,6 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.emf.ecore.EObject;
@@ -15,13 +12,17 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.sheepy.common.action.ActionDispatcherThread;
+import org.sheepy.common.api.action.context.ExecutionContext;
 import org.sheepy.common.api.adapter.IServiceAdapterFactory;
 import org.sheepy.common.api.cadence.ICadencer;
 import org.sheepy.common.api.cadence.IMainLoop;
 import org.sheepy.common.api.cadence.IStatistics;
 import org.sheepy.common.api.cadence.ITicker;
+import org.sheepy.common.api.input.IInputManager;
 import org.sheepy.common.api.resource.IModelExtension;
 import org.sheepy.common.api.service.ServiceManager;
+import org.sheepy.common.cadence.execution.CommandStack;
 import org.sheepy.common.model.application.Application;
 
 public class Cadencer implements ICadencer
@@ -29,18 +30,27 @@ public class Cadencer implements ICadencer
 	protected Application application;
 	protected List<TickerWrapper> tickers = new ArrayList<>();
 
-	protected CommandStack commandStack = new CommandStack();
-	protected IServiceAdapterFactory adapterFactory = IServiceAdapterFactory.INSTANCE;
-	protected ECrossReferenceAdapter crossReferencer = new ECrossReferenceAdapter();
+	protected final CommandStack commandStack = new CommandStack();
+	protected final ECrossReferenceAdapter crossReferencer = new ECrossReferenceAdapter();
+
+	protected final IServiceAdapterFactory adapterFactory = IServiceAdapterFactory.INSTANCE;
+	protected final IInputManager inputManager = IInputManager.INSTANCE;
+	protected final IMainLoop mainloop = IMainLoop.INSTANCE;
 
 	private Deque<AbstractCadencedWrapper> course = new ArrayDeque<>();
 	private Deque<AbstractCadencedWrapper> nextCourse = new ArrayDeque<>();
 	private Long mainThread = null;
-	private ExecutorService mainExecutor = null;
 
 	private final AtomicBoolean stop = new AtomicBoolean(false);
 
 	private final IStatistics statistics = ServiceManager.getService(IStatistics.class);
+
+	private ActionDispatcherThread dispatcher;
+
+	public Cadencer(Application application)
+	{
+		this.application = application;
+	}
 
 	@Override
 	@SuppressWarnings("unchecked")
@@ -64,92 +74,82 @@ public class Cadencer implements ICadencer
 
 		EcoreUtil.remove(eo);
 	}
-
-	@Override
-	public void start(Application application)
+	
+	public void load()
 	{
 		stop.set(false);
+		mainThread = Thread.currentThread().getId();
+
+		dispatcher = new ActionDispatcherThread(commandStack, mainThread);
+		addTicker(dispatcher, -1);
+
 		loadEPackages();
 		IServiceAdapterFactory.INSTANCE.setupAutoAdapters(application);
-		this.application = application;
-		try
+
+		if (mainloop != null)
 		{
-			IMainLoop mainloop = IMainLoop.INSTANCE;
-			mainExecutor = Executors.newSingleThreadExecutor();
-			mainExecutor.submit(new Runnable()
-			{
-				@Override
-				public void run()
-				{
-					try
-					{
-						mainThread = Thread.currentThread().getId();
-						run(application);
-					} catch (Exception e)
-					{
-						e.printStackTrace();
-					}
-
-				}
-
-				private void run(Application application)
-				{
-
-					if (mainloop != null)
-					{
-						mainloop.load(application);
-					}
-					while (stop.get() == false)
-					{
-						tick(application.getCadenceInHz());
-
-						if (mainloop != null)
-						{
-							mainloop.step(application);
-							if (mainloop.shouldClose())
-							{
-								stop.set(true);
-							}
-						}
-					}
-
-					if (mainloop != null)
-					{
-						mainloop.dispose(application);
-					}
-
-					IServiceAdapterFactory.INSTANCE.disposeAutoAdapters(application);
-				}
-			});
-		} catch (Exception e)
-		{
-			e.printStackTrace();
+			mainloop.load(application);
 		}
-
-		System.out.println("[Cadencer] start");
 	}
-
-	@Override
-	public void stop()
+	
+	private void dispose()
 	{
-		stop.set(true);
-		if (mainExecutor != null)
-		{
-			try
-			{
-				mainExecutor.shutdown();
-				mainExecutor.awaitTermination(2, TimeUnit.SECONDS);
-			} catch (InterruptedException e)
-			{
-				e.printStackTrace();
-				mainExecutor.shutdownNow();
-			}
-		}
+		removeTicker(dispatcher, -1);
 
 		statistics.printTickersTime();
+		statistics.clear();
 		getCommandStack().printStats();
 
 		mainThread = null;
+
+		if (mainloop != null)
+		{
+			mainloop.dispose(application);
+		}
+
+		IServiceAdapterFactory.INSTANCE.disposeAutoAdapters(application);
+	}
+
+	public void start()
+	{
+		while (stop.get() == false)
+		{
+			if (inputManager != null)
+			{
+				inputManager.pollInputs();
+			}
+
+			tick(application.getCadenceInHz());
+
+			if (mainloop != null)
+			{
+				mainloop.step(application);
+				if (mainloop.shouldClose())
+				{
+					stop.set(true);
+				}
+			}
+		}
+
+		dispose();
+	}
+
+	private static void loadEPackages()
+	{
+		for (IModelExtension extension : IModelExtension.EXTENSIONS)
+		{
+			for (EPackage ePackage : extension.getEPackages())
+			{
+				// Load factories
+				ePackage.eClass();
+				System.out.println("\tLoad EPackage: " + ePackage.getName());
+			}
+		}
+	}
+
+	public void stop()
+	{
+		stop.set(true);
 	}
 
 	public void tick(long stepNano)
@@ -245,17 +245,15 @@ public class Cadencer implements ICadencer
 		statistics.update();
 	}
 
-	private void loadEPackages()
+	@Override
+	public void postAction(ExecutionContext ec)
 	{
-		for (IModelExtension extension : IModelExtension.EXTENSIONS)
+		if (dispatcher == null)
 		{
-			for (EPackage ePackage : extension.getEPackages())
-			{
-				// Load factories
-				ePackage.eClass();
-				System.out.println("\tLoad EPackage: " + ePackage.getName());
-			}
+			new AssertionError("No action dispatcher. Is cadencer running?");
 		}
+
+		dispatcher.postAction(ec);
 	}
 
 	@Override

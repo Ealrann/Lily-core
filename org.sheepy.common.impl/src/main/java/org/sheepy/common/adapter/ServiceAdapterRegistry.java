@@ -10,12 +10,12 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.eclipse.emf.ecore.EClass;
 import org.sheepy.common.api.adapter.IAutoAdapter;
 import org.sheepy.common.api.adapter.IServiceAdapterFactory;
-import org.sheepy.common.api.adapter.ISingletonAdapter;
+import org.sheepy.common.api.adapter.IAdapter;
 import org.sheepy.common.api.service.ServiceManager;
 
 public class ServiceAdapterRegistry
 {
-	private final List<ISingletonAdapter> serviceAdapters;
+	private final List<IAdapter> serviceAdapters;
 	private final List<IAutoAdapter> autoServiceAdapters;
 
 	private final Set<EClass> mappedEClasses = ConcurrentHashMap.newKeySet();
@@ -27,10 +27,10 @@ public class ServiceAdapterRegistry
 	ServiceAdapterRegistry(IServiceAdapterFactory adapterFactory)
 	{
 		this.adapterFactory = adapterFactory;
-		List<ISingletonAdapter> foundAdapters = new ArrayList<>();
+		List<IAdapter> foundAdapters = new ArrayList<>();
 		List<IAutoAdapter> foundAutoAdapters = new ArrayList<>();
 
-		for (var adapterService : ServiceManager.getServices(ISingletonAdapter.class))
+		for (var adapterService : ServiceManager.getServices(IAdapter.class))
 		{
 			initAdapter(adapterService);
 			foundAdapters.add(adapterService);
@@ -49,12 +49,12 @@ public class ServiceAdapterRegistry
 		autoServiceAdapters = List.copyOf(foundAutoAdapters);
 	}
 
-	private void initAdapter(ISingletonAdapter adapterService)
+	private void initAdapter(IAdapter adapterService)
 	{
 		adapterService.setAdapterFactory(adapterFactory);
 	}
 
-	public List<ISingletonAdapter> getRegisteredAdapters()
+	public List<IAdapter> getRegisteredAdapters()
 	{
 		return serviceAdapters;
 	}
@@ -106,7 +106,7 @@ public class ServiceAdapterRegistry
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T extends ISingletonAdapter> T getAdapterFor(EClass targetEClass, Class<T> type)
+	public <T extends IAdapter> T getAdapterFor(EClass targetEClass, Class<T> type)
 	{
 		T res = null;
 

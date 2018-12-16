@@ -13,6 +13,8 @@ public interface IInputManager extends IService
 
 	void addMouseListener(IMouseListener listener);
 	void removeMouseListener(IMouseListener listener);
+	
+	void pollInputs();
 
 	interface IMouseListener extends EventListener
 	{

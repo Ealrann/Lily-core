@@ -8,7 +8,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.sheepy.common.api.adapter.IAutoAdapter;
 import org.sheepy.common.api.adapter.IServiceAdapterFactory;
-import org.sheepy.common.api.adapter.ISingletonAdapter;
+import org.sheepy.common.api.adapter.IAdapter;
 import org.sheepy.common.api.adapter.IStatefullAdapter;
 import org.sheepy.common.api.util.ReflectivityUtils;
 
@@ -18,7 +18,7 @@ public class ServiceAdapterFactory implements IServiceAdapterFactory
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T extends ISingletonAdapter> T adapt(EObject target, Class<T> type)
+	public <T extends IAdapter> T adapt(EObject target, Class<T> type)
 	{
 		T res = null;
 

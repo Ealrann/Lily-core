@@ -10,7 +10,7 @@ public interface IServiceAdapterFactory extends IService
 	static final IServiceAdapterFactory INSTANCE = ServiceLoader.load(IServiceAdapterFactory.class)
 			.findFirst().get();
 
-	<T extends ISingletonAdapter> T adapt(EObject lilyObject, Class<T> classifier);
+	<T extends IAdapter> T adapt(EObject lilyObject, Class<T> classifier);
 
 	void setupAutoAdapters(EObject root);
 	void disposeAutoAdapters(EObject root);

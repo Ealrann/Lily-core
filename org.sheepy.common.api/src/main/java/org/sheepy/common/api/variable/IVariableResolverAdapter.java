@@ -1,11 +1,11 @@
 package org.sheepy.common.api.variable;
 
 import org.sheepy.common.api.adapter.IServiceAdapterFactory;
-import org.sheepy.common.api.adapter.ISingletonAdapter;
+import org.sheepy.common.api.adapter.IAdapter;
 import org.sheepy.common.model.variable.AbstractVariableResolver;
 
 public interface IVariableResolverAdapter<T extends AbstractVariableResolver>
-		extends ISingletonAdapter
+		extends IAdapter
 {
 	String getValue(T variableResolver);
 

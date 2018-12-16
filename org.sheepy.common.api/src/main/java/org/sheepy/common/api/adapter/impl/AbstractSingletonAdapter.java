@@ -1,9 +1,9 @@
 package org.sheepy.common.api.adapter.impl;
 
 import org.sheepy.common.api.adapter.IServiceAdapterFactory;
-import org.sheepy.common.api.adapter.ISingletonAdapter;
+import org.sheepy.common.api.adapter.IAdapter;
 
-public abstract class AbstractSingletonAdapter implements ISingletonAdapter
+public abstract class AbstractSingletonAdapter implements IAdapter
 {
 	protected IServiceAdapterFactory adapterFactory;
 
@@ -25,7 +25,7 @@ public abstract class AbstractSingletonAdapter implements ISingletonAdapter
 	}
 
 	@Override
-	public boolean isAdapterForType(Class<? extends ISingletonAdapter> type)
+	public boolean isAdapterForType(Class<? extends IAdapter> type)
 	{
 		return ((Class<?>) type).isInstance(this);
 	}

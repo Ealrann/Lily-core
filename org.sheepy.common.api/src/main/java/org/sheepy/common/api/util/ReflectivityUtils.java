@@ -2,14 +2,14 @@ package org.sheepy.common.api.util;
 
 import java.lang.reflect.Constructor;
 
-import org.sheepy.common.api.adapter.ISingletonAdapter;
+import org.sheepy.common.api.adapter.IAdapter;
 
 public class ReflectivityUtils
 {
 	private static final Class<?>[] NO_TYPES = new Class<?>[0];
 	private static final Object[] NO_OBJECTS = new Object[0];
 
-	public static <T extends ISingletonAdapter> T constructNew(Class<T> classifier)
+	public static <T extends IAdapter> T constructNew(Class<T> classifier)
 	{
 		T res = null;
 		try

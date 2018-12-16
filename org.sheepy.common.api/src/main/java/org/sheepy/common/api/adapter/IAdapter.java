@@ -6,9 +6,9 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EClass;
 import org.sheepy.common.api.service.IService;
 
-public interface ISingletonAdapter extends Adapter, IService
+public interface IAdapter extends Adapter, IService
 {
-	boolean isAdapterForType(Class<? extends ISingletonAdapter> type);
+	boolean isAdapterForType(Class<? extends IAdapter> type);
 
 	boolean isApplicable(EClass eClass);
 
@@ -35,7 +35,7 @@ public interface ISingletonAdapter extends Adapter, IService
 	default boolean isAdapterForType(Object type)
 	{
 		if (type instanceof Class<?>)
-			return isAdapterForType((Class<? extends ISingletonAdapter>) type);
+			return isAdapterForType((Class<? extends IAdapter>) type);
 		else return false;
 	}
 }

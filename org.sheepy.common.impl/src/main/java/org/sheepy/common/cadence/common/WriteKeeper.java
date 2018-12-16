@@ -5,6 +5,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.sheepy.common.cadence.execution.CommandStack;
+import org.sheepy.common.cadence.execution.ILilyTransaction;
 
 public class WriteKeeper extends EContentAdapter
 {

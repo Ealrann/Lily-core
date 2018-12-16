@@ -2,7 +2,7 @@ package org.sheepy.common.api.adapter.impl;
 
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
-import org.sheepy.common.api.adapter.ISingletonAdapter;
+import org.sheepy.common.api.adapter.IAdapter;
 import org.sheepy.common.api.adapter.IStatefullAdapter;
 
 public abstract class AbstractStatefullAdapter extends AbstractSingletonAdapter implements IStatefullAdapter
@@ -33,7 +33,7 @@ public abstract class AbstractStatefullAdapter extends AbstractSingletonAdapter 
 	}
 
 	@Override
-	public boolean isAdapterForType(Class<? extends ISingletonAdapter> type)
+	public boolean isAdapterForType(Class<? extends IAdapter> type)
 	{
 		return ((Class<?>) type).isInstance(this);
 	}

@@ -12,6 +12,8 @@ public interface IStatistics extends IService
 	void addTickerTime(String label, long durationNs);
 
 	void update();
+	
+	void clear();
 
 	void addAccumulatedDuration(String label, long duration);
 	void sumAccumulatedDuration(String label, long duration);

@@ -2,7 +2,7 @@ package org.sheepy.common.api.inference;
 
 import org.eclipse.emf.ecore.EClass;
 import org.sheepy.common.api.adapter.IServiceAdapterFactory;
-import org.sheepy.common.api.adapter.ISingletonAdapter;
+import org.sheepy.common.api.adapter.IAdapter;
 import org.sheepy.common.model.inference.IInferenceObject;
 import org.sheepy.common.model.inference.Inferer;
 import org.sheepy.common.model.inference.LNotification;
@@ -10,7 +10,7 @@ import org.sheepy.common.model.inference.ParameteredNotification;
 import org.sheepy.common.model.root.LObject;
 import org.sheepy.common.model.types.Parameter;
 
-public interface IInferenceAdapter extends ISingletonAdapter
+public interface IInferenceAdapter extends IAdapter
 {
 	void postNotification(LObject unit, LNotification notification);
 

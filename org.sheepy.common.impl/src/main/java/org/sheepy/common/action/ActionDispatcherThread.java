@@ -6,8 +6,8 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 import org.sheepy.common.api.action.IActionHandler;
 import org.sheepy.common.api.action.context.ExecutionContext;
 import org.sheepy.common.api.cadence.EditingCommand;
-import org.sheepy.common.api.cadence.ICadencer;
 import org.sheepy.common.api.cadence.ITicker;
+import org.sheepy.common.cadence.execution.CommandStack;
 import org.sheepy.common.model.action.Action;
 import org.sheepy.common.model.action.TypeInjectorAction;
 import org.sheepy.common.model.action.XAction;
@@ -16,25 +16,20 @@ public class ActionDispatcherThread implements ITicker
 {
 	private final ConcurrentLinkedDeque<ExecutionContext> externalActions = new ConcurrentLinkedDeque<>();
 
-	private final ICadencer cadencer;
-	private final ActionHandlerRegistry registry;
+	private final ActionHandlerRegistry registry = new ActionHandlerRegistry();
 
-	public ActionDispatcherThread(ICadencer cadencer, ActionHandlerRegistry registry)
+	private final CommandStack commandStack;
+	private final long threadId;
+
+	public ActionDispatcherThread(CommandStack commandStack, long threadId)
 	{
-		this.cadencer = cadencer;
-		this.registry = registry;
-
-		cadencer.addTicker(this, -1);
-	}
-
-	public void dispose()
-	{
-		cadencer.removeTicker(this, -1);
+		this.commandStack = commandStack;
+		this.threadId = threadId;
 	}
 
 	public void postAction(ExecutionContext action)
 	{
-		if (cadencer.getThreadId() == (Thread.currentThread().getId()))
+		if (threadId == (Thread.currentThread().getId()))
 		{
 			run(action);
 		}
@@ -73,7 +68,6 @@ public class ActionDispatcherThread implements ITicker
 
 	public void run(ExecutionContext context)
 	{
-
 		if (context.getAction() != null)
 		{
 			Action action = context.getAction();
@@ -91,7 +85,7 @@ public class ActionDispatcherThread implements ITicker
 			{
 				final ExecutionContext _context = context;
 				final XAction xAction = (XAction) action;
-				cadencer.getCommandStack().add(new EditingCommand()
+				commandStack.add(new EditingCommand()
 				{
 					@Override
 					public void execute()

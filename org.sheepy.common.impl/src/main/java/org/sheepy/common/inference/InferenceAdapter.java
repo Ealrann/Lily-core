@@ -6,11 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
-import org.sheepy.common.api.action.IActionDispatcher;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.sheepy.common.api.action.context.ExecutionContext;
 import org.sheepy.common.api.adapter.impl.AbstractStatefullAdapter;
+import org.sheepy.common.api.application.IApplicationAdapter;
 import org.sheepy.common.api.inference.IInferenceAdapter;
-import org.sheepy.common.api.service.ServiceManager;
+import org.sheepy.common.model.application.Application;
 import org.sheepy.common.model.inference.AbstractNotification;
 import org.sheepy.common.model.inference.Condition;
 import org.sheepy.common.model.inference.Inferer;
@@ -20,11 +21,8 @@ import org.sheepy.common.model.inference.ParameteredNotification;
 import org.sheepy.common.model.root.LObject;
 import org.sheepy.common.model.types.Parameter;
 
-
 public class InferenceAdapter extends AbstractStatefullAdapter implements IInferenceAdapter
 {
-	private volatile IActionDispatcher actionDispatcher = ServiceManager.getService(IActionDispatcher.class);
-
 	public InferenceGraph ruleGraph = new InferenceGraph();
 	private final Map<EClass, List<INotificationListener>> listeners = new HashMap<>();
 
@@ -101,7 +99,10 @@ public class InferenceAdapter extends AbstractStatefullAdapter implements IInfer
 					// TODO si actionDispatcher est null, il faut mettre de coté
 					// les notif pour
 					// les executer plus tard
-					if (actionDispatcher != null) actionDispatcher.postAction(ec);
+
+					var application = (Application) EcoreUtil.getRootContainer(adaptedEntity);
+					var adapter = IApplicationAdapter.adapt(application);
+					adapter.getCadencer().postAction(ec);
 				}
 			}
 		}
@@ -111,7 +112,7 @@ public class InferenceAdapter extends AbstractStatefullAdapter implements IInfer
 	public void addNotificationListener(EClass clazz, INotificationListener listener)
 	{
 		List<INotificationListener> list = listeners.get(clazz);
-		if(list == null)
+		if (list == null)
 		{
 			list = new ArrayList<>();
 			listeners.put(clazz, list);
