@@ -19,8 +19,7 @@ public class ActionDispatcherThread implements ITicker
 	private final ICadencer cadencer;
 	private final ActionHandlerRegistry registry;
 
-	public ActionDispatcherThread(ICadencer cadencer,
-			ActionHandlerRegistry registry)
+	public ActionDispatcherThread(ICadencer cadencer, ActionHandlerRegistry registry)
 	{
 		this.cadencer = cadencer;
 		this.registry = registry;
@@ -35,16 +34,15 @@ public class ActionDispatcherThread implements ITicker
 
 	public void postAction(ExecutionContext action)
 	{
-//		if (cadencer.getCadencedThreadsId()
-//				.contains(Thread.currentThread().getId()))
-//		{
+		if (cadencer.getThreadId() == (Thread.currentThread().getId()))
+		{
 			run(action);
-//		}
-//		else
-//		{
-//			// If not a CadencerThread
-//			externalActions.add(action);
-//		}
+		}
+		else
+		{
+			// If not a CadencerThread
+			externalActions.add(action);
+		}
 	}
 
 	// public void postActions(Collection<IExecutionContext> actions)
@@ -64,7 +62,6 @@ public class ActionDispatcherThread implements ITicker
 	@Override
 	public void tick(long stepNano)
 	{
-
 		Iterator<ExecutionContext> it = externalActions.iterator();
 		while (it.hasNext())
 		{
@@ -72,7 +69,6 @@ public class ActionDispatcherThread implements ITicker
 			run(context);
 			it.remove();
 		}
-
 	}
 
 	public void run(ExecutionContext context)
@@ -126,8 +122,8 @@ public class ActionDispatcherThread implements ITicker
 				}
 				else
 				{
-					System.err.println("Handler not found for "
-							+ context.getAction().eClass().getName());
+					System.err.println(
+							"Handler not found for " + context.getAction().eClass().getName());
 				}
 			}
 		}

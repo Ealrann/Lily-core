@@ -32,5 +32,5 @@ public interface IInputManager extends IService
 	}
 
 	static IInputManager INSTANCE = ServiceLoader.load(IInputManager.class).findFirst()
-			.get();
+			.orElseGet(() -> null);
 }

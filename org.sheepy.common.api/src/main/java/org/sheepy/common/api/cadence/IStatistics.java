@@ -1,7 +1,6 @@
 package org.sheepy.common.api.cadence;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.ServiceLoader;
 
 import org.sheepy.common.api.service.IService;
@@ -23,8 +22,5 @@ public interface IStatistics extends IService
 
 	Collection<String> getAccumulatorsLabels();
 
-	static Iterator<IStatistics> getServices()
-	{
-		return ServiceLoader.load(IStatistics.class).iterator();
-	}
+	static final IStatistics INSTANCE = ServiceLoader.load(IStatistics.class).findFirst().get();
 }

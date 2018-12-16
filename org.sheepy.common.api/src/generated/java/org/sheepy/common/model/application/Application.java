@@ -25,6 +25,7 @@ import org.sheepy.common.model.root.LObject;
  *   <li>{@link org.sheepy.common.model.application.Application#getTitle <em>Title</em>}</li>
  *   <li>{@link org.sheepy.common.model.application.Application#getSize <em>Size</em>}</li>
  *   <li>{@link org.sheepy.common.model.application.Application#getCurrentView <em>Current View</em>}</li>
+ *   <li>{@link org.sheepy.common.model.application.Application#getCadenceInHz <em>Cadence In Hz</em>}</li>
  * </ul>
  *
  * @see org.sheepy.common.model.application.ApplicationPackage#getApplication()
@@ -225,5 +226,32 @@ public interface Application extends LObject
 	 * @generated
 	 */
 	void setCurrentView(IView value);
+
+	/**
+	 * Returns the value of the '<em><b>Cadence In Hz</b></em>' attribute.
+	 * The default value is <code>"60"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Cadence In Hz</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cadence In Hz</em>' attribute.
+	 * @see #setCadenceInHz(int)
+	 * @see org.sheepy.common.model.application.ApplicationPackage#getApplication_CadenceInHz()
+	 * @model default="60" unique="false"
+	 * @generated
+	 */
+	int getCadenceInHz();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.common.model.application.Application#getCadenceInHz <em>Cadence In Hz</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cadence In Hz</em>' attribute.
+	 * @see #getCadenceInHz()
+	 * @generated
+	 */
+	void setCadenceInHz(int value);
 
 } // Application

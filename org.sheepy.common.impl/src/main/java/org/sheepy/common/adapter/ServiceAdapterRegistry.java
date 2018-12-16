@@ -1,4 +1,4 @@
-package org.sheepy.common.api.adapter.internal;
+package org.sheepy.common.adapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;

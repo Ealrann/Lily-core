@@ -152,13 +152,22 @@ public interface ApplicationPackage extends EPackage
 	int APPLICATION__CURRENT_VIEW = RootPackage.LOBJECT_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Cadence In Hz</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION__CADENCE_IN_HZ = RootPackage.LOBJECT_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>Application</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_FEATURE_COUNT = RootPackage.LOBJECT_FEATURE_COUNT + 8;
+	int APPLICATION_FEATURE_COUNT = RootPackage.LOBJECT_FEATURE_COUNT + 9;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -478,6 +487,17 @@ public interface ApplicationPackage extends EPackage
 	EReference getApplication_CurrentView();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.application.Application#getCadenceInHz <em>Cadence In Hz</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cadence In Hz</em>'.
+	 * @see org.sheepy.common.model.application.Application#getCadenceInHz()
+	 * @see #getApplication()
+	 * @generated
+	 */
+	EAttribute getApplication_CadenceInHz();
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.common.model.application.IEngine <em>IEngine</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -594,6 +614,14 @@ public interface ApplicationPackage extends EPackage
 		 * @generated
 		 */
 		EReference APPLICATION__CURRENT_VIEW = eINSTANCE.getApplication_CurrentView();
+
+		/**
+		 * The meta object literal for the '<em><b>Cadence In Hz</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute APPLICATION__CADENCE_IN_HZ = eINSTANCE.getApplication_CadenceInHz();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.common.model.application.IEngine <em>IEngine</em>}' class.

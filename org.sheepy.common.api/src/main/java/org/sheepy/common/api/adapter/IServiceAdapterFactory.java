@@ -1,13 +1,17 @@
 package org.sheepy.common.api.adapter;
 
-import org.eclipse.emf.ecore.EObject;
-import org.sheepy.common.api.adapter.internal.ServiceAdapterFactory;
+import java.util.ServiceLoader;
 
-public interface IServiceAdapterFactory
+import org.eclipse.emf.ecore.EObject;
+import org.sheepy.common.api.service.IService;
+
+public interface IServiceAdapterFactory extends IService
 {
-	public static final IServiceAdapterFactory INSTANCE = ServiceAdapterFactory.INSTANCE;
-	
+	static final IServiceAdapterFactory INSTANCE = ServiceLoader.load(IServiceAdapterFactory.class)
+			.findFirst().get();
+
 	<T extends ISingletonAdapter> T adapt(EObject lilyObject, Class<T> classifier);
-	
-	void setupRootForAutoAdapters(EObject root);
+
+	void setupAutoAdapters(EObject root);
+	void disposeAutoAdapters(EObject root);
 }

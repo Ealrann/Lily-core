@@ -44,6 +44,7 @@ import org.sheepy.common.model.types.TypesPackage;
  *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#getSize <em>Size</em>}</li>
  *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#getCurrentView <em>Current View</em>}</li>
+ *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#getCadenceInHz <em>Cadence In Hz</em>}</li>
  * </ul>
  *
  * @generated
@@ -179,6 +180,26 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * @ordered
 	 */
 	protected IView currentView;
+
+	/**
+	 * The default value of the '{@link #getCadenceInHz() <em>Cadence In Hz</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCadenceInHz()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int CADENCE_IN_HZ_EDEFAULT = 60;
+
+	/**
+	 * The cached value of the '{@link #getCadenceInHz() <em>Cadence In Hz</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCadenceInHz()
+	 * @generated
+	 * @ordered
+	 */
+	protected int cadenceInHz = CADENCE_IN_HZ_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -392,6 +413,29 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public int getCadenceInHz()
+	{
+		return cadenceInHz;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCadenceInHz(int newCadenceInHz)
+	{
+		int oldCadenceInHz = cadenceInHz;
+		cadenceInHz = newCadenceInHz;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__CADENCE_IN_HZ, oldCadenceInHz, cadenceInHz));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
@@ -432,6 +476,8 @@ public class ApplicationImpl extends LObjectImpl implements Application
 			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
 				if (resolve) return getCurrentView();
 				return basicGetCurrentView();
+			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
+				return getCadenceInHz();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -473,6 +519,9 @@ public class ApplicationImpl extends LObjectImpl implements Application
 			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
 				setCurrentView((IView)newValue);
 				return;
+			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
+				setCadenceInHz((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -511,6 +560,9 @@ public class ApplicationImpl extends LObjectImpl implements Application
 			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
 				setCurrentView((IView)null);
 				return;
+			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
+				setCadenceInHz(CADENCE_IN_HZ_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -541,6 +593,8 @@ public class ApplicationImpl extends LObjectImpl implements Application
 				return SIZE_EDEFAULT == null ? size != null : !SIZE_EDEFAULT.equals(size);
 			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
 				return currentView != null;
+			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
+				return cadenceInHz != CADENCE_IN_HZ_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -566,6 +620,8 @@ public class ApplicationImpl extends LObjectImpl implements Application
 		result.append(title);
 		result.append(", size: ");
 		result.append(size);
+		result.append(", cadenceInHz: ");
+		result.append(cadenceInHz);
 		result.append(')');
 		return result.toString();
 	}

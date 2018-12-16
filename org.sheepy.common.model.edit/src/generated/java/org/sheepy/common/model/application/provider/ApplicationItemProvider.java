@@ -61,6 +61,7 @@ public class ApplicationItemProvider
 			addTitlePropertyDescriptor(object);
 			addSizePropertyDescriptor(object);
 			addCurrentViewPropertyDescriptor(object);
+			addCadenceInHzPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -204,6 +205,29 @@ public class ApplicationItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Cadence In Hz feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCadenceInHzPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Application_cadenceInHz_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Application_cadenceInHz_feature", "_UI_Application_type"),
+				 ApplicationPackage.Literals.APPLICATION__CADENCE_IN_HZ,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -285,6 +309,7 @@ public class ApplicationItemProvider
 			case ApplicationPackage.APPLICATION__DEBUG:
 			case ApplicationPackage.APPLICATION__TITLE:
 			case ApplicationPackage.APPLICATION__SIZE:
+			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ApplicationPackage.APPLICATION__VIEWS:

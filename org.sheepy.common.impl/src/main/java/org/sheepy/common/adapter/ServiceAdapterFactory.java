@@ -1,25 +1,20 @@
-package org.sheepy.common.api.adapter.internal;
+package org.sheepy.common.adapter;
 
+import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.sheepy.common.api.adapter.IAutoAdapter;
 import org.sheepy.common.api.adapter.IServiceAdapterFactory;
 import org.sheepy.common.api.adapter.ISingletonAdapter;
 import org.sheepy.common.api.adapter.IStatefullAdapter;
-import org.sheepy.common.api.adapter.impl.AutoEContentAdapter;
-import org.sheepy.common.api.resource.IModelExtension;
 import org.sheepy.common.api.util.ReflectivityUtils;
 
 public class ServiceAdapterFactory implements IServiceAdapterFactory
 {
-	public static final ServiceAdapterFactory INSTANCE = new ServiceAdapterFactory();
-
 	private final ServiceAdapterRegistry registry = new ServiceAdapterRegistry(this);
-
-	private ServiceAdapterFactory()
-	{}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -60,47 +55,63 @@ public class ServiceAdapterFactory implements IServiceAdapterFactory
 		return res;
 	}
 
-	public void loadAutoAdapters(EObject target)
-	{
-		List<IAutoAdapter> autoAdapters = registry.getAutoAdapters(target.eClass());
-		if (autoAdapters != null)
-		{
-			for (IAutoAdapter adapter : autoAdapters)
-			{
-				adapt(target, adapter.getClass()).load(target);
-			}
-		}
-	}
-
-	public void disposeAutoAdapters(EObject target)
-	{
-		List<IAutoAdapter> autoAdapters = registry.getAutoAdapters(target.eClass());
-		if (autoAdapters != null)
-		{
-			for (IAutoAdapter adapter : autoAdapters)
-			{
-				adapt(target, adapter.getClass()).dispose(target);
-			}
-		}
-	}
-
 	@Override
-	public void setupRootForAutoAdapters(EObject root)
+	public void setupAutoAdapters(EObject root)
 	{
-		loadEPackages();
-		
 		root.eAdapters().add(new AutoEContentAdapter());
 	}
 
-	private void loadEPackages()
+	@Override
+	public void disposeAutoAdapters(EObject root)
 	{
-		for(IModelExtension extension : IModelExtension.EXTENSIONS)
+		Iterator<Adapter> it = root.eAdapters().iterator();
+		while (it.hasNext())
 		{
-			for (EPackage ePackage : extension.getEPackages())
+			Adapter next = it.next();
+			if (next instanceof AutoEContentAdapter)
 			{
-				// Load factories
-				ePackage.eClass();
-				System.out.println("\tLoad EPackage: " + ePackage.getName());
+				it.remove();
+			}
+		}
+	}
+
+	class AutoEContentAdapter extends EContentAdapter
+	{
+		@Override
+		protected void setTarget(EObject target)
+		{
+			loadAutoAdapters(target);
+			super.setTarget(target);
+		}
+
+		@Override
+		protected void unsetTarget(EObject target)
+		{
+			super.unsetTarget(target);
+			disposeAutoAdapters(target);
+		}
+
+		private void loadAutoAdapters(EObject target)
+		{
+			List<IAutoAdapter> autoAdapters = registry.getAutoAdapters(target.eClass());
+			if (autoAdapters != null)
+			{
+				for (IAutoAdapter adapter : autoAdapters)
+				{
+					adapt(target, adapter.getClass()).load(target);
+				}
+			}
+		}
+
+		private void disposeAutoAdapters(EObject target)
+		{
+			List<IAutoAdapter> autoAdapters = registry.getAutoAdapters(target.eClass());
+			if (autoAdapters != null)
+			{
+				for (IAutoAdapter adapter : autoAdapters)
+				{
+					adapt(target, adapter.getClass()).dispose(target);
+				}
 			}
 		}
 	}

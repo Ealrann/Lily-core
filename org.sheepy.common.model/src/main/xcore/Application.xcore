@@ -19,6 +19,8 @@ class Application extends LObject
 	String title = "Vulkan Application"
 	SVector2i size = "400,400"
 	refers IView currentView
+	
+	int cadenceInHz = "60"
 }
 
 interface IEngine extends LObject
