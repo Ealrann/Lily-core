@@ -5,6 +5,7 @@ package org.sheepy.common.model.variable.provider;
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 import org.sheepy.common.model.action.provider.ActionEditPlugin;
 import org.sheepy.common.model.inference.provider.InferenceEditPlugin;
 import org.sheepy.common.model.root.provider.RootEditPlugin;
@@ -45,6 +46,7 @@ public final class VariableEditPlugin extends EMFPlugin
 		super
 		  (new ResourceLocator [] 
 		   {
+		     EcoreEditPlugin.INSTANCE,
 		     ActionEditPlugin.INSTANCE,
 		     RootEditPlugin.INSTANCE,
 		     TypesEditPlugin.INSTANCE,

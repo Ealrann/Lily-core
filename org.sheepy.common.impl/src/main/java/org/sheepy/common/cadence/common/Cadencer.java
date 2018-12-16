@@ -19,11 +19,13 @@ import org.sheepy.common.api.cadence.ICadencer;
 import org.sheepy.common.api.cadence.IMainLoop;
 import org.sheepy.common.api.cadence.IStatistics;
 import org.sheepy.common.api.cadence.ITicker;
+import org.sheepy.common.api.engine.IEngineAdapter;
 import org.sheepy.common.api.input.IInputManager;
 import org.sheepy.common.api.resource.IModelExtension;
 import org.sheepy.common.api.service.ServiceManager;
 import org.sheepy.common.cadence.execution.CommandStack;
 import org.sheepy.common.model.application.Application;
+import org.sheepy.common.model.application.IEngine;
 
 public class Cadencer implements ICadencer
 {
@@ -34,9 +36,9 @@ public class Cadencer implements ICadencer
 	protected final ECrossReferenceAdapter crossReferencer = new ECrossReferenceAdapter();
 
 	protected final IServiceAdapterFactory adapterFactory = IServiceAdapterFactory.INSTANCE;
-	protected final IInputManager inputManager = IInputManager.INSTANCE;
 	protected final IMainLoop mainloop = IMainLoop.INSTANCE;
 
+	protected IInputManager inputManager = null;
 	private Deque<AbstractCadencedWrapper> course = new ArrayDeque<>();
 	private Deque<AbstractCadencedWrapper> nextCourse = new ArrayDeque<>();
 	private Long mainThread = null;
@@ -74,7 +76,7 @@ public class Cadencer implements ICadencer
 
 		EcoreUtil.remove(eo);
 	}
-	
+
 	public void load()
 	{
 		stop.set(false);
@@ -86,12 +88,21 @@ public class Cadencer implements ICadencer
 		loadEPackages();
 		IServiceAdapterFactory.INSTANCE.setupAutoAdapters(application);
 
+		for (IEngine engine : application.getEngines())
+		{
+			inputManager = IEngineAdapter.adapt(engine).getInputManager();
+			if(inputManager != null)
+			{
+				break;
+			}
+		}
+
 		if (mainloop != null)
 		{
 			mainloop.load(application);
 		}
 	}
-	
+
 	private void dispose()
 	{
 		removeTicker(dispatcher, -1);
@@ -286,5 +297,11 @@ public class Cadencer implements ICadencer
 	public long getThreadId()
 	{
 		return mainThread;
+	}
+
+	@Override
+	public IInputManager getInputManager()
+	{
+		return inputManager;
 	}
 }

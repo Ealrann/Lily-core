@@ -1,38 +1,38 @@
 package org.sheepy.common.api.input;
 
 import java.util.EventListener;
-import java.util.ServiceLoader;
 
-import org.sheepy.common.api.service.IService;
+import org.sheepy.common.api.input.event.CharEvent;
+import org.sheepy.common.api.input.event.KeyEvent;
+import org.sheepy.common.api.input.event.MouseButtonEvent;
+import org.sheepy.common.api.input.event.MouseLocationEvent;
+import org.sheepy.common.api.input.event.ScrollEvent;
 import org.sheepy.common.api.types.SVector2f;
-import org.sheepy.common.model.types.EMouseButton;
 
-public interface IInputManager extends IService
+public interface IInputManager
 {
 	SVector2f getMouseLocation();
 
-	void addMouseListener(IMouseListener listener);
-	void removeMouseListener(IMouseListener listener);
-	
+	void addListener(IInputListener listener);
+	void removeListener(IInputListener listener);
+
 	void pollInputs();
 
-	interface IMouseListener extends EventListener
+	interface IInputListener extends EventListener
 	{
-		void onMouseClick(SVector2f location, MouseEvent event);
+		default void onCharEvent(CharEvent event)
+		{}
+
+		default void onKeyEvent(KeyEvent event)
+		{}
+
+		default void onMouseClickEvent(SVector2f location, MouseButtonEvent event)
+		{}
+
+		default void onMouseLocationEvent(MouseLocationEvent event)
+		{}
+
+		default void onScrollEvent(ScrollEvent event)
+		{}
 	}
-
-	static class MouseEvent
-	{
-		public final EMouseButton button;
-		public final boolean pressed;
-
-		public MouseEvent(EMouseButton button, boolean pressed)
-		{
-			this.button = button;
-			this.pressed = pressed;
-		}
-	}
-
-	static IInputManager INSTANCE = ServiceLoader.load(IInputManager.class).findFirst()
-			.orElseGet(() -> null);
 }

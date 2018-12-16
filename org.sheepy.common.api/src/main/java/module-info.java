@@ -3,7 +3,6 @@ import org.sheepy.common.api.adapter.IServiceAdapterFactory;
 import org.sheepy.common.api.application.IApplicationAdapter;
 import org.sheepy.common.api.cadence.IMainLoop;
 import org.sheepy.common.api.cadence.IStatistics;
-import org.sheepy.common.api.input.IInputManager;
 import org.sheepy.common.api.resource.CoreModelExtension;
 import org.sheepy.common.api.resource.IModelExtension;
 import org.sheepy.common.api.resource.IResourceLoader;
@@ -19,8 +18,10 @@ module org.sheepy.common.api
 	exports org.sheepy.common.api.adapter.impl;
 	exports org.sheepy.common.api.application;
 	exports org.sheepy.common.api.cadence;
+	exports org.sheepy.common.api.engine;
 	exports org.sheepy.common.api.inference;
 	exports org.sheepy.common.api.input;
+	exports org.sheepy.common.api.input.event;
 	exports org.sheepy.common.api.resource;
 	exports org.sheepy.common.api.service;
 	exports org.sheepy.common.api.types;
@@ -49,7 +50,6 @@ module org.sheepy.common.api
 	provides IModelExtension with CoreModelExtension;
 
 	uses IApplicationAdapter;
-	uses IInputManager;
 	uses IMainLoop;
 	uses IModelExtension;
 	uses IResourceLoader;

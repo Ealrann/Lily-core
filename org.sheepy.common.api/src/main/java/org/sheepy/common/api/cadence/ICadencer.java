@@ -2,6 +2,7 @@ package org.sheepy.common.api.cadence;
 
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.common.api.action.context.ExecutionContext;
+import org.sheepy.common.api.input.IInputManager;
 
 public interface ICadencer
 {
@@ -13,6 +14,7 @@ public interface ICadencer
 	long getThreadId();
 
 	ICommandStack getCommandStack();
+	IInputManager getInputManager();
 
 	void postAction(ExecutionContext ec);
 

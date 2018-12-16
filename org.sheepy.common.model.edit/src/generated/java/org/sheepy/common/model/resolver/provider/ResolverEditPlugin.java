@@ -5,6 +5,7 @@ package org.sheepy.common.model.resolver.provider;
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 import org.sheepy.common.model.action.provider.ActionEditPlugin;
 
 import org.sheepy.common.model.inference.provider.InferenceEditPlugin;
@@ -49,6 +50,7 @@ public final class ResolverEditPlugin extends EMFPlugin
 		  (new ResourceLocator [] 
 		   {
 		     RootEditPlugin.INSTANCE,
+		     EcoreEditPlugin.INSTANCE,
 		     InferenceEditPlugin.INSTANCE,
 		     ActionEditPlugin.INSTANCE,
 		     TypesEditPlugin.INSTANCE,

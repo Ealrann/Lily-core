@@ -8,12 +8,12 @@ import org.sheepy.common.model.application.Application;
 public interface IApplicationAdapter extends IAdapter
 {
 	ICadencer getCadencer();
-	
+
 	void launch(Application application);
 	void stop(Application application);
 
-	static IApplicationAdapter adapt(Application part)
+	static IApplicationAdapter adapt(Application application)
 	{
-		return IServiceAdapterFactory.INSTANCE.adapt(part, IApplicationAdapter.class);
+		return IServiceAdapterFactory.INSTANCE.adapt(application, IApplicationAdapter.class);
 	}
 }
