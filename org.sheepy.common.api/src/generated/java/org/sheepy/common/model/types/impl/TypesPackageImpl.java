@@ -28,6 +28,7 @@ import org.sheepy.common.model.types.ENumberComparisonType;
 import org.sheepy.common.model.types.ETimeUnit;
 import org.sheepy.common.model.types.EVerticalRelative;
 import org.sheepy.common.model.types.FloatParameter;
+import org.sheepy.common.model.types.LNamedElement;
 import org.sheepy.common.model.types.NativeParameter;
 import org.sheepy.common.model.types.Parameter;
 import org.sheepy.common.model.types.PositionFParameter;
@@ -44,6 +45,13 @@ import org.sheepy.common.model.types.TypesPackage;
  */
 public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass lNamedElementEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -241,6 +249,29 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EClass getLNamedElement()
+	{
+		return lNamedElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getLNamedElement_Name()
+	{
+		return (EAttribute)lNamedElementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getParameter()
 	{
 		return parameterEClass;
@@ -251,6 +282,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPositionParameter()
 	{
 		return positionParameterEClass;
@@ -261,6 +293,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getPositionParameter__GetPosition()
 	{
 		return positionParameterEClass.getEOperations().get(0);
@@ -271,6 +304,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPositionFParameter()
 	{
 		return positionFParameterEClass;
@@ -281,6 +315,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getPositionFParameter__GetPosition()
 	{
 		return positionFParameterEClass.getEOperations().get(0);
@@ -291,6 +326,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getNativeParameter()
 	{
 		return nativeParameterEClass;
@@ -301,6 +337,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getNativeParameter__GetNativeValue()
 	{
 		return nativeParameterEClass.getEOperations().get(0);
@@ -311,6 +348,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getFloatParameter()
 	{
 		return floatParameterEClass;
@@ -321,6 +359,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getFloatParameter_Value()
 	{
 		return (EAttribute)floatParameterEClass.getEStructuralFeatures().get(0);
@@ -331,6 +370,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getFloatParameter__GetNativeValue()
 	{
 		return floatParameterEClass.getEOperations().get(0);
@@ -341,6 +381,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getStringParameter()
 	{
 		return stringParameterEClass;
@@ -351,6 +392,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getStringParameter_Value()
 	{
 		return (EAttribute)stringParameterEClass.getEStructuralFeatures().get(0);
@@ -361,6 +403,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getStringParameter__GetNativeValue()
 	{
 		return stringParameterEClass.getEOperations().get(0);
@@ -371,6 +414,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getBooleanParameter()
 	{
 		return booleanParameterEClass;
@@ -381,6 +425,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getBooleanParameter_Value()
 	{
 		return (EAttribute)booleanParameterEClass.getEStructuralFeatures().get(0);
@@ -391,6 +436,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getBooleanParameter__GetNativeValue()
 	{
 		return booleanParameterEClass.getEOperations().get(0);
@@ -401,6 +447,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getENotificationDirection()
 	{
 		return eNotificationDirectionEEnum;
@@ -411,6 +458,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getEMoveState()
 	{
 		return eMoveStateEEnum;
@@ -421,6 +469,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getEDirection()
 	{
 		return eDirectionEEnum;
@@ -431,6 +480,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getETimeUnit()
 	{
 		return eTimeUnitEEnum;
@@ -441,6 +491,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getENumberComparisonType()
 	{
 		return eNumberComparisonTypeEEnum;
@@ -451,6 +502,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getEVerticalRelative()
 	{
 		return eVerticalRelativeEEnum;
@@ -461,6 +513,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getEHorizontalRelative()
 	{
 		return eHorizontalRelativeEEnum;
@@ -471,6 +524,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getEMouseButton()
 	{
 		return eMouseButtonEEnum;
@@ -481,6 +535,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EEnum getEKeyState()
 	{
 		return eKeyStateEEnum;
@@ -491,6 +546,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EDataType getSVector2f()
 	{
 		return sVector2fEDataType;
@@ -501,6 +557,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EDataType getSVector2i()
 	{
 		return sVector2iEDataType;
@@ -511,6 +568,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TypesFactory getTypesFactory()
 	{
 		return (TypesFactory)getEFactoryInstance();
@@ -536,6 +594,9 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		isCreated = true;
 
 		// Create classes and their features
+		lNamedElementEClass = createEClass(LNAMED_ELEMENT);
+		createEAttribute(lNamedElementEClass, LNAMED_ELEMENT__NAME);
+
 		parameterEClass = createEClass(PARAMETER);
 
 		positionParameterEClass = createEClass(POSITION_PARAMETER);
@@ -625,6 +686,9 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		booleanParameterEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes, features, and operations; add parameters
+		initEClass(lNamedElementEClass, LNamedElement.class, "LNamedElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLNamedElement_Name(), theEcorePackage.getEString(), "name", null, 0, 1, LNamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(parameterEClass, Parameter.class, "Parameter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(positionParameterEClass, PositionParameter.class, "PositionParameter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

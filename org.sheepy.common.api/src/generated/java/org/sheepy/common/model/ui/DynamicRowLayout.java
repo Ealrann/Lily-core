@@ -2,7 +2,7 @@
  */
 package org.sheepy.common.model.ui;
 
-import org.sheepy.common.model.presentation.Control;
+import org.sheepy.common.model.presentation.IControl;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,6 +13,7 @@ import org.sheepy.common.model.presentation.Control;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.sheepy.common.model.ui.DynamicRowLayout#getHeight <em>Height</em>}</li>
  *   <li>{@link org.sheepy.common.model.ui.DynamicRowLayout#getColumnCount <em>Column Count</em>}</li>
  * </ul>
  *
@@ -20,8 +21,35 @@ import org.sheepy.common.model.presentation.Control;
  * @model
  * @generated
  */
-public interface DynamicRowLayout extends Control
+public interface DynamicRowLayout extends IControl
 {
+	/**
+	 * Returns the value of the '<em><b>Height</b></em>' attribute.
+	 * The default value is <code>"16"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Height</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Height</em>' attribute.
+	 * @see #setHeight(int)
+	 * @see org.sheepy.common.model.ui.UiPackage#getDynamicRowLayout_Height()
+	 * @model default="16" unique="false"
+	 * @generated
+	 */
+	int getHeight();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.common.model.ui.DynamicRowLayout#getHeight <em>Height</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Height</em>' attribute.
+	 * @see #getHeight()
+	 * @generated
+	 */
+	void setHeight(int value);
+
 	/**
 	 * Returns the value of the '<em><b>Column Count</b></em>' attribute.
 	 * <!-- begin-user-doc -->

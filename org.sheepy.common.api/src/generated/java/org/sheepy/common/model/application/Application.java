@@ -19,6 +19,7 @@ import org.sheepy.common.model.root.LObject;
  * <ul>
  *   <li>{@link org.sheepy.common.model.application.Application#getViews <em>Views</em>}</li>
  *   <li>{@link org.sheepy.common.model.application.Application#getEngines <em>Engines</em>}</li>
+ *   <li>{@link org.sheepy.common.model.application.Application#isRun <em>Run</em>}</li>
  *   <li>{@link org.sheepy.common.model.application.Application#isFullscreen <em>Fullscreen</em>}</li>
  *   <li>{@link org.sheepy.common.model.application.Application#isResizeable <em>Resizeable</em>}</li>
  *   <li>{@link org.sheepy.common.model.application.Application#isDebug <em>Debug</em>}</li>
@@ -65,6 +66,33 @@ public interface Application extends LObject
 	 * @generated
 	 */
 	EList<IEngine> getEngines();
+
+	/**
+	 * Returns the value of the '<em><b>Run</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Run</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Run</em>' attribute.
+	 * @see #setRun(boolean)
+	 * @see org.sheepy.common.model.application.ApplicationPackage#getApplication_Run()
+	 * @model default="true" unique="false"
+	 * @generated
+	 */
+	boolean isRun();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.common.model.application.Application#isRun <em>Run</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Run</em>' attribute.
+	 * @see #isRun()
+	 * @generated
+	 */
+	void setRun(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Fullscreen</b></em>' attribute.

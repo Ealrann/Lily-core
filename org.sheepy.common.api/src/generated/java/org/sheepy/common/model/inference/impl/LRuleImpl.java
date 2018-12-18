@@ -98,6 +98,7 @@ public class LRuleImpl extends MinimalEObjectImpl.Container implements LRule
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AbstractNotification getNotification()
 	{
 		return notification;
@@ -125,6 +126,7 @@ public class LRuleImpl extends MinimalEObjectImpl.Container implements LRule
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setNotification(AbstractNotification newNotification)
 	{
 		if (newNotification != notification)
@@ -146,6 +148,7 @@ public class LRuleImpl extends MinimalEObjectImpl.Container implements LRule
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Action getAction()
 	{
 		if (action != null && action.eIsProxy())
@@ -176,6 +179,7 @@ public class LRuleImpl extends MinimalEObjectImpl.Container implements LRule
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAction(Action newAction)
 	{
 		Action oldAction = action;
@@ -189,6 +193,7 @@ public class LRuleImpl extends MinimalEObjectImpl.Container implements LRule
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Condition<?>> getConditions()
 	{
 		if (conditions == null)

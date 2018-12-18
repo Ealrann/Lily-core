@@ -7,9 +7,13 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
+import org.sheepy.common.model.action.Action;
+
 import org.sheepy.common.model.inference.IInferenceObject;
 
 import org.sheepy.common.model.root.*;
+
+import org.sheepy.common.model.types.LNamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -82,10 +86,12 @@ public class RootSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case RootPackage.LNAMED_ELEMENT:
+			case RootPackage.XACTION:
 			{
-				LNamedElement lNamedElement = (LNamedElement)theEObject;
-				T result = caseLNamedElement(lNamedElement);
+				XAction xAction = (XAction)theEObject;
+				T result = caseXAction(xAction);
+				if (result == null) result = caseAction(xAction);
+				if (result == null) result = caseLNamedElement(xAction);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -110,17 +116,17 @@ public class RootSwitch<T> extends Switch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>LNamed Element</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>XAction</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>LNamed Element</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>XAction</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseLNamedElement(LNamedElement object)
+	public T caseXAction(XAction object)
 	{
 		return null;
 	}
@@ -137,6 +143,38 @@ public class RootSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseIInferenceObject(IInferenceObject object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LNamed Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LNamed Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLNamedElement(LNamedElement object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Action</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAction(Action object)
 	{
 		return null;
 	}

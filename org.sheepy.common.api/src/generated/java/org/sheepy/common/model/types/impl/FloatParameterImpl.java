@@ -77,6 +77,7 @@ public class FloatParameterImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Float getValue()
 	{
 		return value;
@@ -87,6 +88,7 @@ public class FloatParameterImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(Float newValue)
 	{
 		Float oldValue = value;
@@ -100,6 +102,7 @@ public class FloatParameterImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Float getNativeValue()
 	{
 		return this.getValue();

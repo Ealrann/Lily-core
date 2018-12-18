@@ -5,7 +5,6 @@ package org.sheepy.common.model.root.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -15,6 +14,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import org.sheepy.common.api.util.LTreeIterator;
 
 import org.sheepy.common.model.root.*;
 
@@ -143,10 +144,9 @@ public class RootFactoryImpl extends EFactoryImpl implements RootFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	public TreeIterator<LObject> createLTreeIteratorFromString(EDataType eDataType, String initialValue)
+	public LTreeIterator createLTreeIteratorFromString(EDataType eDataType, String initialValue)
 	{
-		return (TreeIterator<LObject>)super.createFromString(initialValue);
+		return (LTreeIterator)super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -156,7 +156,7 @@ public class RootFactoryImpl extends EFactoryImpl implements RootFactory
 	 */
 	public String convertLTreeIteratorToString(EDataType eDataType, Object instanceValue)
 	{
-		return super.convertToString(instanceValue);
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**
@@ -185,6 +185,7 @@ public class RootFactoryImpl extends EFactoryImpl implements RootFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RootPackage getRootPackage()
 	{
 		return (RootPackage)getEPackage();

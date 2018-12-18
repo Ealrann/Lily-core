@@ -24,7 +24,7 @@ import org.sheepy.common.model.application.IView;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface ISizedView extends IPresentationElement, IView
+public interface ISizedView extends ISizedElement, IView
 {
 	/**
 	 * Returns the value of the '<em><b>Moveable</b></em>' attribute.

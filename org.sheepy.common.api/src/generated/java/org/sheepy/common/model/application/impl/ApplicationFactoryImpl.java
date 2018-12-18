@@ -75,6 +75,7 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Application createApplication()
 	{
 		ApplicationImpl application = new ApplicationImpl();
@@ -86,6 +87,7 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ApplicationPackage getApplicationPackage()
 	{
 		return (ApplicationPackage)getEPackage();

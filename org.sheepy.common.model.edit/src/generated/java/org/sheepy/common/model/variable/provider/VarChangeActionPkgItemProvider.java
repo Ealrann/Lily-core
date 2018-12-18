@@ -165,26 +165,6 @@ public class VarChangeActionPkgItemProvider
 			(createChildParameter
 				(VariablePackage.Literals.VAR_CHANGE_ACTION_PKG__ACTIONS,
 				 VariableFactory.eINSTANCE.createBooleanChangeAction()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(VariablePackage.Literals.VAR_CHANGE_ACTION_PKG__ACTIONS,
-				 VariableFactory.eINSTANCE.createIncrementAction()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(VariablePackage.Literals.VAR_CHANGE_ACTION_PKG__ACTIONS,
-				 VariableFactory.eINSTANCE.createSetString()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(VariablePackage.Literals.VAR_CHANGE_ACTION_PKG__ACTIONS,
-				 VariableFactory.eINSTANCE.createSetBoolean()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(VariablePackage.Literals.VAR_CHANGE_ACTION_PKG__ACTIONS,
-				 VariableFactory.eINSTANCE.createSetNumber()));
 	}
 
 	/**

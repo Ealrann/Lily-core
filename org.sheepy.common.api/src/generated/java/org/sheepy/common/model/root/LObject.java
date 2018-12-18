@@ -3,9 +3,10 @@
 package org.sheepy.common.model.root;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 
 import org.eclipse.emf.ecore.EClass;
+
+import org.sheepy.common.api.util.LTreeIterator;
 
 import org.sheepy.common.model.inference.IInferenceObject;
 
@@ -22,7 +23,7 @@ import org.sheepy.common.model.inference.IInferenceObject;
  * </ul>
  *
  * @see org.sheepy.common.model.root.RootPackage#getLObject()
- * @model abstract="true"
+ * @model interface="true" abstract="true"
  * @generated
  */
 public interface LObject extends IInferenceObject
@@ -84,6 +85,6 @@ public interface LObject extends IInferenceObject
 	 * @model dataType="org.sheepy.common.model.root.LTreeIterator" unique="false"
 	 * @generated
 	 */
-	TreeIterator<LObject> lAllUnits();
+	LTreeIterator lAllContents();
 
 } // LObject

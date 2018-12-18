@@ -81,6 +81,7 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DynamicRowLayout createDynamicRowLayout()
 	{
 		DynamicRowLayoutImpl dynamicRowLayout = new DynamicRowLayoutImpl();
@@ -92,6 +93,7 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VariableLabel createVariableLabel()
 	{
 		VariableLabelImpl variableLabel = new VariableLabelImpl();
@@ -103,6 +105,7 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Label createLabel()
 	{
 		LabelImpl label = new LabelImpl();
@@ -114,6 +117,7 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TextField createTextField()
 	{
 		TextFieldImpl textField = new TextFieldImpl();
@@ -125,6 +129,7 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Button createButton()
 	{
 		ButtonImpl button = new ButtonImpl();
@@ -136,6 +141,7 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BooleanButton createBooleanButton()
 	{
 		BooleanButtonImpl booleanButton = new BooleanButtonImpl();
@@ -147,6 +153,7 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BooleanActionButton createBooleanActionButton()
 	{
 		BooleanActionButtonImpl booleanActionButton = new BooleanActionButtonImpl();
@@ -158,6 +165,7 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public UiPackage getUiPackage()
 	{
 		return (UiPackage)getEPackage();

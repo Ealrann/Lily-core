@@ -1,6 +1,6 @@
 @GenModel(modelDirectory="/org.sheepy.common.model/src/generated/java")
 @GenModel(editDirectory="/org.sheepy.common.model.edit/src/generated/java")
-@GenModel(publicConstructors="true")
+@GenModel(publicConstructors="true", complianceLevel="11.0", resource="XMI")
 @GenModel(extensibleProviderFactory="true", childCreationExtenders="true")
 
 package org.sheepy.common.model.ui
@@ -8,19 +8,21 @@ package org.sheepy.common.model.ui
 import org.sheepy.common.model.action.Action
 import org.sheepy.common.model.action.ActionList
 import org.sheepy.common.model.application.IView
-import org.sheepy.common.model.presentation.Control
+import org.sheepy.common.model.presentation.IControl
 import org.sheepy.common.model.root.LObject
 import org.sheepy.common.model.types.EKeyState
 import org.sheepy.common.model.variable.AbstractVariableResolver
+import org.sheepy.common.model.presentation.Widget
 
-abstract class AbstractLabel extends Control
+abstract class AbstractLabel extends org.sheepy.common.model.presentation.Widget
 {
 	String text = ""
 	float fontScale = "1"
 }
 
-class DynamicRowLayout extends Control
+class DynamicRowLayout extends IControl
 {
+	int height = "16"
 	int columnCount
 }
 
@@ -33,12 +35,12 @@ class Label extends AbstractLabel
 {
 }
 
-class TextField extends Control
+class TextField extends Widget
 {
 	contains AbstractVariableResolver variableResolver
 }
 
-abstract class AbstractButton extends Control
+abstract class AbstractButton extends Widget
 {
 	String text = ""
 }

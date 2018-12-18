@@ -3,7 +3,8 @@
 package org.sheepy.common.model.presentation;
 
 import org.eclipse.emf.common.util.EList;
-import org.sheepy.common.model.root.LNamedElement;
+
+import org.sheepy.common.model.types.LNamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,11 +22,11 @@ import org.sheepy.common.model.root.LNamedElement;
  * @model
  * @generated
  */
-public interface Panel extends UIElement, LNamedElement
+public interface Panel extends IUIElement, LNamedElement, IRelativeElement, ISizedElement
 {
 	/**
 	 * Returns the value of the '<em><b>Controls</b></em>' containment reference list.
-	 * The list contents are of type {@link org.sheepy.common.model.presentation.Control}.
+	 * The list contents are of type {@link org.sheepy.common.model.presentation.IControl}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Controls</em>' containment reference list isn't clear,
@@ -37,6 +38,6 @@ public interface Panel extends UIElement, LNamedElement
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Control> getControls();
+	EList<IControl> getControls();
 
 } // Panel

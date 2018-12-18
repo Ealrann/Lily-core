@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -17,6 +16,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.sheepy.common.model.root.LObject;
 import org.sheepy.common.model.ui.BooleanButton;
 import org.sheepy.common.model.ui.UiPackage;
+
 import org.sheepy.common.model.variable.VariableFactory;
 
 /**

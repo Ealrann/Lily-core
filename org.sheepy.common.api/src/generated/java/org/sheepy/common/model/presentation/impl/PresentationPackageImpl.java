@@ -16,17 +16,19 @@ import org.sheepy.common.model.application.ApplicationPackage;
 
 import org.sheepy.common.model.inference.InferencePackage;
 
-import org.sheepy.common.model.presentation.Control;
+import org.sheepy.common.model.presentation.IControl;
 import org.sheepy.common.model.presentation.IMusicView;
-import org.sheepy.common.model.presentation.IPresentationElement;
+import org.sheepy.common.model.presentation.IRelativeElement;
+import org.sheepy.common.model.presentation.ISizedElement;
 import org.sheepy.common.model.presentation.ISizedView;
+import org.sheepy.common.model.presentation.IUIElement;
 import org.sheepy.common.model.presentation.IUIView;
 import org.sheepy.common.model.presentation.Panel;
 import org.sheepy.common.model.presentation.PresentationFactory;
 import org.sheepy.common.model.presentation.PresentationPackage;
 import org.sheepy.common.model.presentation.TranparentUIView;
-import org.sheepy.common.model.presentation.UIElement;
 import org.sheepy.common.model.presentation.UIPage;
+import org.sheepy.common.model.presentation.Widget;
 
 import org.sheepy.common.model.root.RootPackage;
 
@@ -45,7 +47,14 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass iPresentationElementEClass = null;
+	private EClass iSizedElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iRelativeElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -80,7 +89,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass uiElementEClass = null;
+	private EClass iuiElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -101,7 +110,14 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass controlEClass = null;
+	private EClass iControlEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass widgetEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -153,11 +169,11 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 		isInited = true;
 
 		// Initialize simple dependencies
+		RootPackage.eINSTANCE.eClass();
+		InferencePackage.eINSTANCE.eClass();
 		TypesPackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
 		ApplicationPackage.eINSTANCE.eClass();
-		RootPackage.eINSTANCE.eClass();
-		InferencePackage.eINSTANCE.eClass();
 		ActionPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -179,9 +195,10 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getIPresentationElement()
+	@Override
+	public EClass getISizedElement()
 	{
-		return iPresentationElementEClass;
+		return iSizedElementEClass;
 	}
 
 	/**
@@ -189,9 +206,10 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getIPresentationElement_Position()
+	@Override
+	public EAttribute getISizedElement_Position()
 	{
-		return (EAttribute)iPresentationElementEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)iSizedElementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -199,9 +217,10 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getIPresentationElement_Width()
+	@Override
+	public EAttribute getISizedElement_Width()
 	{
-		return (EAttribute)iPresentationElementEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)iSizedElementEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -209,9 +228,10 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getIPresentationElement_Height()
+	@Override
+	public EAttribute getISizedElement_Height()
 	{
-		return (EAttribute)iPresentationElementEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)iSizedElementEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -219,6 +239,40 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EClass getIRelativeElement()
+	{
+		return iRelativeElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIRelativeElement_VerticalRelative()
+	{
+		return (EAttribute)iRelativeElementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIRelativeElement_HorizontalRelative()
+	{
+		return (EAttribute)iRelativeElementEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getIUIView()
 	{
 		return iuiViewEClass;
@@ -229,6 +283,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getIUIView_UiPages()
 	{
 		return (EReference)iuiViewEClass.getEStructuralFeatures().get(0);
@@ -239,6 +294,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getIUIView_CurrentUIPage()
 	{
 		return (EReference)iuiViewEClass.getEStructuralFeatures().get(1);
@@ -249,6 +305,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTranparentUIView()
 	{
 		return tranparentUIViewEClass;
@@ -259,6 +316,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getIMusicView()
 	{
 		return iMusicViewEClass;
@@ -269,6 +327,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getIMusicView_MusicPath()
 	{
 		return (EAttribute)iMusicViewEClass.getEStructuralFeatures().get(0);
@@ -279,6 +338,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getISizedView()
 	{
 		return iSizedViewEClass;
@@ -289,6 +349,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getISizedView_Moveable()
 	{
 		return (EAttribute)iSizedViewEClass.getEStructuralFeatures().get(0);
@@ -299,6 +360,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getISizedView_Closeable()
 	{
 		return (EAttribute)iSizedViewEClass.getEStructuralFeatures().get(1);
@@ -309,6 +371,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getISizedView_Scalable()
 	{
 		return (EAttribute)iSizedViewEClass.getEStructuralFeatures().get(2);
@@ -319,6 +382,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getISizedView_ShowTitle()
 	{
 		return (EAttribute)iSizedViewEClass.getEStructuralFeatures().get(3);
@@ -329,6 +393,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getISizedView_Fullscreen()
 	{
 		return (EAttribute)iSizedViewEClass.getEStructuralFeatures().get(4);
@@ -339,9 +404,10 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getUIElement()
+	@Override
+	public EClass getIUIElement()
 	{
-		return uiElementEClass;
+		return iuiElementEClass;
 	}
 
 	/**
@@ -349,26 +415,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getUIElement_VerticalRelative()
-	{
-		return (EAttribute)uiElementEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getUIElement_HorizontalRelative()
-	{
-		return (EAttribute)uiElementEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public EClass getUIPage()
 	{
 		return uiPageEClass;
@@ -379,6 +426,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getUIPage_Panels()
 	{
 		return (EReference)uiPageEClass.getEStructuralFeatures().get(0);
@@ -389,6 +437,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getPanel()
 	{
 		return panelEClass;
@@ -399,6 +448,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getPanel_Controls()
 	{
 		return (EReference)panelEClass.getEStructuralFeatures().get(0);
@@ -409,9 +459,10 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getControl()
+	@Override
+	public EClass getIControl()
 	{
-		return controlEClass;
+		return iControlEClass;
 	}
 
 	/**
@@ -419,6 +470,18 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EClass getWidget()
+	{
+		return widgetEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public PresentationFactory getPresentationFactory()
 	{
 		return (PresentationFactory)getEFactoryInstance();
@@ -444,10 +507,14 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 		isCreated = true;
 
 		// Create classes and their features
-		iPresentationElementEClass = createEClass(IPRESENTATION_ELEMENT);
-		createEAttribute(iPresentationElementEClass, IPRESENTATION_ELEMENT__POSITION);
-		createEAttribute(iPresentationElementEClass, IPRESENTATION_ELEMENT__WIDTH);
-		createEAttribute(iPresentationElementEClass, IPRESENTATION_ELEMENT__HEIGHT);
+		iSizedElementEClass = createEClass(ISIZED_ELEMENT);
+		createEAttribute(iSizedElementEClass, ISIZED_ELEMENT__POSITION);
+		createEAttribute(iSizedElementEClass, ISIZED_ELEMENT__WIDTH);
+		createEAttribute(iSizedElementEClass, ISIZED_ELEMENT__HEIGHT);
+
+		iRelativeElementEClass = createEClass(IRELATIVE_ELEMENT);
+		createEAttribute(iRelativeElementEClass, IRELATIVE_ELEMENT__VERTICAL_RELATIVE);
+		createEAttribute(iRelativeElementEClass, IRELATIVE_ELEMENT__HORIZONTAL_RELATIVE);
 
 		iuiViewEClass = createEClass(IUI_VIEW);
 		createEReference(iuiViewEClass, IUI_VIEW__UI_PAGES);
@@ -465,9 +532,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 		createEAttribute(iSizedViewEClass, ISIZED_VIEW__SHOW_TITLE);
 		createEAttribute(iSizedViewEClass, ISIZED_VIEW__FULLSCREEN);
 
-		uiElementEClass = createEClass(UI_ELEMENT);
-		createEAttribute(uiElementEClass, UI_ELEMENT__VERTICAL_RELATIVE);
-		createEAttribute(uiElementEClass, UI_ELEMENT__HORIZONTAL_RELATIVE);
+		iuiElementEClass = createEClass(IUI_ELEMENT);
 
 		uiPageEClass = createEClass(UI_PAGE);
 		createEReference(uiPageEClass, UI_PAGE__PANELS);
@@ -475,7 +540,9 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 		panelEClass = createEClass(PANEL);
 		createEReference(panelEClass, PANEL__CONTROLS);
 
-		controlEClass = createEClass(CONTROL);
+		iControlEClass = createEClass(ICONTROL);
+
+		widgetEClass = createEClass(WIDGET);
 	}
 
 	/**
@@ -503,34 +570,44 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
+		RootPackage theRootPackage = (RootPackage)EPackage.Registry.INSTANCE.getEPackage(RootPackage.eNS_URI);
 		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 		ApplicationPackage theApplicationPackage = (ApplicationPackage)EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
-		RootPackage theRootPackage = (RootPackage)EPackage.Registry.INSTANCE.getEPackage(RootPackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		iSizedElementEClass.getESuperTypes().add(theRootPackage.getLObject());
+		iRelativeElementEClass.getESuperTypes().add(theRootPackage.getLObject());
 		iuiViewEClass.getESuperTypes().add(theApplicationPackage.getIView());
 		tranparentUIViewEClass.getESuperTypes().add(this.getIUIView());
 		iMusicViewEClass.getESuperTypes().add(theApplicationPackage.getIView());
-		iSizedViewEClass.getESuperTypes().add(this.getIPresentationElement());
+		iSizedViewEClass.getESuperTypes().add(this.getISizedElement());
 		iSizedViewEClass.getESuperTypes().add(theApplicationPackage.getIView());
-		uiElementEClass.getESuperTypes().add(theRootPackage.getLObject());
-		uiElementEClass.getESuperTypes().add(this.getIPresentationElement());
-		uiPageEClass.getESuperTypes().add(theRootPackage.getLObject());
-		uiPageEClass.getESuperTypes().add(this.getIPresentationElement());
-		panelEClass.getESuperTypes().add(this.getUIElement());
-		panelEClass.getESuperTypes().add(theRootPackage.getLNamedElement());
-		controlEClass.getESuperTypes().add(this.getUIElement());
+		iuiElementEClass.getESuperTypes().add(theRootPackage.getLObject());
+		uiPageEClass.getESuperTypes().add(this.getISizedElement());
+		panelEClass.getESuperTypes().add(this.getIUIElement());
+		panelEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
+		panelEClass.getESuperTypes().add(this.getIRelativeElement());
+		panelEClass.getESuperTypes().add(this.getISizedElement());
+		iControlEClass.getESuperTypes().add(this.getIUIElement());
+		widgetEClass.getESuperTypes().add(this.getIControl());
+		widgetEClass.getESuperTypes().add(this.getIUIElement());
+		widgetEClass.getESuperTypes().add(this.getIRelativeElement());
+		widgetEClass.getESuperTypes().add(this.getISizedElement());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(iPresentationElementEClass, IPresentationElement.class, "IPresentationElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIPresentationElement_Position(), theTypesPackage.getSVector2i(), "position", "0;0", 0, 1, IPresentationElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIPresentationElement_Width(), theEcorePackage.getEInt(), "width", null, 0, 1, IPresentationElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIPresentationElement_Height(), theEcorePackage.getEInt(), "height", null, 0, 1, IPresentationElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(iSizedElementEClass, ISizedElement.class, "ISizedElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getISizedElement_Position(), theTypesPackage.getSVector2i(), "position", "0;0", 0, 1, ISizedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getISizedElement_Width(), theEcorePackage.getEInt(), "width", null, 0, 1, ISizedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getISizedElement_Height(), theEcorePackage.getEInt(), "height", null, 0, 1, ISizedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(iRelativeElementEClass, IRelativeElement.class, "IRelativeElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIRelativeElement_VerticalRelative(), theTypesPackage.getEVerticalRelative(), "verticalRelative", "TOP", 0, 1, IRelativeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIRelativeElement_HorizontalRelative(), theTypesPackage.getEHorizontalRelative(), "horizontalRelative", "LEFT", 0, 1, IRelativeElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iuiViewEClass, IUIView.class, "IUIView", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getIUIView_UiPages(), this.getUIPage(), null, "uiPages", null, 0, -1, IUIView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -548,17 +625,17 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 		initEAttribute(getISizedView_ShowTitle(), theEcorePackage.getEBoolean(), "showTitle", "false", 0, 1, ISizedView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getISizedView_Fullscreen(), theEcorePackage.getEBoolean(), "fullscreen", "true", 0, 1, ISizedView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(uiElementEClass, UIElement.class, "UIElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getUIElement_VerticalRelative(), theTypesPackage.getEVerticalRelative(), "verticalRelative", "TOP", 0, 1, UIElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUIElement_HorizontalRelative(), theTypesPackage.getEHorizontalRelative(), "horizontalRelative", "LEFT", 0, 1, UIElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(iuiElementEClass, IUIElement.class, "IUIElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(uiPageEClass, UIPage.class, "UIPage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUIPage_Panels(), this.getPanel(), null, "panels", null, 0, -1, UIPage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(panelEClass, Panel.class, "Panel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPanel_Controls(), this.getControl(), null, "controls", null, 0, -1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPanel_Controls(), this.getIControl(), null, "controls", null, 0, -1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(controlEClass, Control.class, "Control", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(iControlEClass, IControl.class, "IControl", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(widgetEClass, Widget.class, "Widget", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

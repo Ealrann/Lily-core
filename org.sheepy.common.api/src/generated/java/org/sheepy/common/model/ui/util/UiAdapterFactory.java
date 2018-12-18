@@ -11,9 +11,11 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.sheepy.common.model.inference.IInferenceObject;
 
-import org.sheepy.common.model.presentation.Control;
-import org.sheepy.common.model.presentation.IPresentationElement;
-import org.sheepy.common.model.presentation.UIElement;
+import org.sheepy.common.model.presentation.IControl;
+import org.sheepy.common.model.presentation.IRelativeElement;
+import org.sheepy.common.model.presentation.ISizedElement;
+import org.sheepy.common.model.presentation.IUIElement;
+import org.sheepy.common.model.presentation.Widget;
 
 import org.sheepy.common.model.root.LObject;
 
@@ -143,19 +145,29 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 				return createLObjectAdapter();
 			}
 			@Override
-			public Adapter caseIPresentationElement(IPresentationElement object)
+			public Adapter caseIUIElement(IUIElement object)
 			{
-				return createIPresentationElementAdapter();
+				return createIUIElementAdapter();
 			}
 			@Override
-			public Adapter caseUIElement(UIElement object)
+			public Adapter caseIControl(IControl object)
 			{
-				return createUIElementAdapter();
+				return createIControlAdapter();
 			}
 			@Override
-			public Adapter caseControl(Control object)
+			public Adapter caseIRelativeElement(IRelativeElement object)
 			{
-				return createControlAdapter();
+				return createIRelativeElementAdapter();
+			}
+			@Override
+			public Adapter caseISizedElement(ISizedElement object)
+			{
+				return createISizedElementAdapter();
+			}
+			@Override
+			public Adapter caseWidget(Widget object)
+			{
+				return createWidgetAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object)
@@ -360,46 +372,76 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.IPresentationElement <em>IPresentation Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.IUIElement <em>IUI Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.presentation.IPresentationElement
+	 * @see org.sheepy.common.model.presentation.IUIElement
 	 * @generated
 	 */
-	public Adapter createIPresentationElementAdapter()
+	public Adapter createIUIElementAdapter()
 	{
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.UIElement <em>UI Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.IControl <em>IControl</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.presentation.UIElement
+	 * @see org.sheepy.common.model.presentation.IControl
 	 * @generated
 	 */
-	public Adapter createUIElementAdapter()
+	public Adapter createIControlAdapter()
 	{
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.Control <em>Control</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.IRelativeElement <em>IRelative Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.presentation.Control
+	 * @see org.sheepy.common.model.presentation.IRelativeElement
 	 * @generated
 	 */
-	public Adapter createControlAdapter()
+	public Adapter createIRelativeElementAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.ISizedElement <em>ISized Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.common.model.presentation.ISizedElement
+	 * @generated
+	 */
+	public Adapter createISizedElementAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.Widget <em>Widget</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.common.model.presentation.Widget
+	 * @generated
+	 */
+	public Adapter createWidgetAdapter()
 	{
 		return null;
 	}

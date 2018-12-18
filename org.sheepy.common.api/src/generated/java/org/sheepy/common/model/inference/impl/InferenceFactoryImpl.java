@@ -75,6 +75,7 @@ public class InferenceFactoryImpl extends EFactoryImpl implements InferenceFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LRule createLRule()
 	{
 		LRuleImpl lRule = new LRuleImpl();
@@ -86,6 +87,7 @@ public class InferenceFactoryImpl extends EFactoryImpl implements InferenceFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InferencePackage getInferencePackage()
 	{
 		return (InferencePackage)getEPackage();

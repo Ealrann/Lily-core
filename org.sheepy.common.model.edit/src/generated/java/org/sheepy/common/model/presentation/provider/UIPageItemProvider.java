@@ -10,17 +10,27 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IChildCreationExtender;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
 import org.sheepy.common.model.presentation.PresentationFactory;
 import org.sheepy.common.model.presentation.PresentationPackage;
 import org.sheepy.common.model.presentation.UIPage;
+
 import org.sheepy.common.model.root.LObject;
-import org.sheepy.common.model.root.provider.LObjectItemProvider;
 
 /**
  * This is the item provider adapter for a {@link org.sheepy.common.model.presentation.UIPage} object.
@@ -28,7 +38,7 @@ import org.sheepy.common.model.root.provider.LObjectItemProvider;
  * <!-- end-user-doc -->
  * @generated
  */
-public class UIPageItemProvider extends LObjectItemProvider
+public class UIPageItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -73,9 +83,9 @@ public class UIPageItemProvider extends LObjectItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_IPresentationElement_position_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IPresentationElement_position_feature", "_UI_IPresentationElement_type"),
-				 PresentationPackage.Literals.IPRESENTATION_ELEMENT__POSITION,
+				 getString("_UI_ISizedElement_position_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_position_feature", "_UI_ISizedElement_type"),
+				 PresentationPackage.Literals.ISIZED_ELEMENT__POSITION,
 				 true,
 				 false,
 				 false,
@@ -96,9 +106,9 @@ public class UIPageItemProvider extends LObjectItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_IPresentationElement_width_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IPresentationElement_width_feature", "_UI_IPresentationElement_type"),
-				 PresentationPackage.Literals.IPRESENTATION_ELEMENT__WIDTH,
+				 getString("_UI_ISizedElement_width_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_width_feature", "_UI_ISizedElement_type"),
+				 PresentationPackage.Literals.ISIZED_ELEMENT__WIDTH,
 				 true,
 				 false,
 				 false,
@@ -119,9 +129,9 @@ public class UIPageItemProvider extends LObjectItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_IPresentationElement_height_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IPresentationElement_height_feature", "_UI_IPresentationElement_type"),
-				 PresentationPackage.Literals.IPRESENTATION_ELEMENT__HEIGHT,
+				 getString("_UI_ISizedElement_height_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_height_feature", "_UI_ISizedElement_type"),
+				 PresentationPackage.Literals.ISIZED_ELEMENT__HEIGHT,
 				 true,
 				 false,
 				 false,
@@ -206,6 +216,7 @@ public class UIPageItemProvider extends LObjectItemProvider
 
 		switch (notification.getFeatureID(UIPage.class))
 		{
+			case PresentationPackage.UI_PAGE__CONTENT_OBJECTS:
 			case PresentationPackage.UI_PAGE__POSITION:
 			case PresentationPackage.UI_PAGE__WIDTH:
 			case PresentationPackage.UI_PAGE__HEIGHT:
@@ -234,6 +245,18 @@ public class UIPageItemProvider extends LObjectItemProvider
 			(createChildParameter
 				(PresentationPackage.Literals.UI_PAGE__PANELS,
 				 PresentationFactory.eINSTANCE.createPanel()));
+	}
+
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator()
+	{
+		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
 	}
 
 }

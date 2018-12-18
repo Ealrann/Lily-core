@@ -77,6 +77,7 @@ public class ChainResolverImpl extends MinimalEObjectImpl.Container implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ILObjectResolver> getResolvers()
 	{
 		if (resolvers == null)
@@ -91,6 +92,7 @@ public class ChainResolverImpl extends MinimalEObjectImpl.Container implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void collectUnits(final LObject source, final Collection<LObject> collected)
 	{
 		Deque<LObject> course = new ArrayDeque<LObject>();

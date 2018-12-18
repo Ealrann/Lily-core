@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.sheepy.common.model.ui.BooleanButton;
 import org.sheepy.common.model.ui.UiPackage;
+
 import org.sheepy.common.model.variable.AbstractVariableResolver;
 
 /**
@@ -65,6 +66,7 @@ public class BooleanButtonImpl extends AbstractBooleanButtonImpl implements Bool
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AbstractVariableResolver getVariableResolver()
 	{
 		return variableResolver;
@@ -92,6 +94,7 @@ public class BooleanButtonImpl extends AbstractBooleanButtonImpl implements Bool
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVariableResolver(AbstractVariableResolver newVariableResolver)
 	{
 		if (newVariableResolver != variableResolver)

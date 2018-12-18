@@ -75,6 +75,11 @@ public class TypesAdapterFactory extends AdapterFactoryImpl
 		new TypesSwitch<Adapter>()
 		{
 			@Override
+			public Adapter caseLNamedElement(LNamedElement object)
+			{
+				return createLNamedElementAdapter();
+			}
+			@Override
 			public Adapter caseParameter(Parameter object)
 			{
 				return createParameterAdapter();
@@ -130,6 +135,21 @@ public class TypesAdapterFactory extends AdapterFactoryImpl
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.types.LNamedElement <em>LNamed Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.common.model.types.LNamedElement
+	 * @generated
+	 */
+	public Adapter createLNamedElementAdapter()
+	{
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.types.Parameter <em>Parameter</em>}'.

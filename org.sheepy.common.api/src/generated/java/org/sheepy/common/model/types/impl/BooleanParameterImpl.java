@@ -77,6 +77,7 @@ public class BooleanParameterImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Boolean getValue()
 	{
 		return value;
@@ -87,6 +88,7 @@ public class BooleanParameterImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(Boolean newValue)
 	{
 		Boolean oldValue = value;
@@ -100,6 +102,7 @@ public class BooleanParameterImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Boolean getNativeValue()
 	{
 		return this.getValue();

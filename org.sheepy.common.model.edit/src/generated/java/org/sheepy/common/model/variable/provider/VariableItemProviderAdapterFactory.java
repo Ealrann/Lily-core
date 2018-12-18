@@ -11,9 +11,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.eclipse.emf.edit.provider.ChangeNotifier;
@@ -29,14 +26,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
-import org.sheepy.common.model.action.ActionPackage;
-import org.sheepy.common.model.action.ActionsPkg;
-import org.sheepy.common.model.action.ParameteredActionsPkg;
-import org.sheepy.common.model.action.TypeInjectorAction;
-import org.sheepy.common.model.action.util.ActionSwitch;
-import org.sheepy.common.model.types.Parameter;
-import org.sheepy.common.model.variable.VariableFactory;
 import org.sheepy.common.model.variable.VariablePackage;
 
 import org.sheepy.common.model.variable.util.VariableAdapterFactory;
@@ -175,111 +164,12 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.variable.IncrementAction} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IncrementActionItemProvider incrementActionItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.variable.IncrementAction}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createIncrementActionAdapter()
-	{
-		if (incrementActionItemProvider == null)
-		{
-			incrementActionItemProvider = new IncrementActionItemProvider(this);
-		}
-
-		return incrementActionItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.variable.SetString} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SetStringItemProvider setStringItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.variable.SetString}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSetStringAdapter()
-	{
-		if (setStringItemProvider == null)
-		{
-			setStringItemProvider = new SetStringItemProvider(this);
-		}
-
-		return setStringItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.variable.SetBoolean} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SetBooleanItemProvider setBooleanItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.variable.SetBoolean}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSetBooleanAdapter()
-	{
-		if (setBooleanItemProvider == null)
-		{
-			setBooleanItemProvider = new SetBooleanItemProvider(this);
-		}
-
-		return setBooleanItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.variable.SetNumber} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected SetNumberItemProvider setNumberItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.variable.SetNumber}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createSetNumberAdapter()
-	{
-		if (setNumberItemProvider == null)
-		{
-			setNumberItemProvider = new SetNumberItemProvider(this);
-		}
-
-		return setNumberItemProvider;
-	}
-
-	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory()
 	{
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
@@ -291,6 +181,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory)
 	{
 		this.parentAdapterFactory = parentAdapterFactory;
@@ -375,6 +266,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener)
 	{
 		changeNotifier.addListener(notifyChangedListener);
@@ -386,6 +278,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener)
 	{
 		changeNotifier.removeListener(notifyChangedListener);
@@ -397,6 +290,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void fireNotifyChanged(Notification notification)
 	{
 		changeNotifier.fireNotifyChanged(notification);
@@ -413,191 +307,12 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void dispose()
 	{
 		if (directVariableResolverItemProvider != null) directVariableResolverItemProvider.dispose();
 		if (booleanChangeActionItemProvider != null) booleanChangeActionItemProvider.dispose();
 		if (varChangeActionPkgItemProvider != null) varChangeActionPkgItemProvider.dispose();
-		if (incrementActionItemProvider != null) incrementActionItemProvider.dispose();
-		if (setStringItemProvider != null) setStringItemProvider.dispose();
-		if (setBooleanItemProvider != null) setBooleanItemProvider.dispose();
-		if (setNumberItemProvider != null) setNumberItemProvider.dispose();
-	}
-
-	/**
-	 * A child creation extender for the {@link ActionPackage}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static class ActionChildCreationExtender implements IChildCreationExtender
-	{
-		/**
-		 * The switch for creating child descriptors specific to each extended class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		protected static class CreationSwitch extends ActionSwitch<Object>
-		{
-			/**
-			 * The child descriptors being populated.
-			 * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-			 * @generated
-			 */
-			protected List<Object> newChildDescriptors;
-
-			/**
-			 * The domain in which to create the children.
-			 * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-			 * @generated
-			 */
-			protected EditingDomain editingDomain;
-
-			/**
-			 * Creates the a switch for populating child descriptors in the given domain.
-			 * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-			 * @generated
-			 */
-			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) 
-			{
-				this.newChildDescriptors = newChildDescriptors;
-				this.editingDomain = editingDomain;
-			}
-			/**
-			 * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-			 * @generated
-			 */
-			@Override
-			public <T extends Parameter> Object caseTypeInjectorAction(TypeInjectorAction<T> object)
-			{
-				newChildDescriptors.add
-					(createChildParameter
-						(ActionPackage.Literals.TYPE_INJECTOR_ACTION__ACTION,
-						 VariableFactory.eINSTANCE.createIncrementAction()));
-
-				newChildDescriptors.add
-					(createChildParameter
-						(ActionPackage.Literals.TYPE_INJECTOR_ACTION__ACTION,
-						 VariableFactory.eINSTANCE.createSetString()));
-
-				newChildDescriptors.add
-					(createChildParameter
-						(ActionPackage.Literals.TYPE_INJECTOR_ACTION__ACTION,
-						 VariableFactory.eINSTANCE.createSetBoolean()));
-
-				newChildDescriptors.add
-					(createChildParameter
-						(ActionPackage.Literals.TYPE_INJECTOR_ACTION__ACTION,
-						 VariableFactory.eINSTANCE.createSetNumber()));
-
-				return null;
-			}
- 
-			/**
-			 * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-			 * @generated
-			 */
-			@Override
-			public <T extends Parameter> Object caseParameteredActionsPkg(ParameteredActionsPkg<T> object)
-			{
-				newChildDescriptors.add
-					(createChildParameter
-						(ActionPackage.Literals.PARAMETERED_ACTIONS_PKG__ACTIONS,
-						 VariableFactory.eINSTANCE.createIncrementAction()));
-
-				newChildDescriptors.add
-					(createChildParameter
-						(ActionPackage.Literals.PARAMETERED_ACTIONS_PKG__ACTIONS,
-						 VariableFactory.eINSTANCE.createSetString()));
-
-				newChildDescriptors.add
-					(createChildParameter
-						(ActionPackage.Literals.PARAMETERED_ACTIONS_PKG__ACTIONS,
-						 VariableFactory.eINSTANCE.createSetBoolean()));
-
-				newChildDescriptors.add
-					(createChildParameter
-						(ActionPackage.Literals.PARAMETERED_ACTIONS_PKG__ACTIONS,
-						 VariableFactory.eINSTANCE.createSetNumber()));
-
-				return null;
-			}
- 
-			/**
-			 * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-			 * @generated
-			 */
-			@Override
-			public Object caseActionsPkg(ActionsPkg object)
-			{
-				newChildDescriptors.add
-					(createChildParameter
-						(ActionPackage.Literals.ACTIONS_PKG__ACTIONS,
-						 VariableFactory.eINSTANCE.createBooleanChangeAction()));
-
-				newChildDescriptors.add
-					(createChildParameter
-						(ActionPackage.Literals.ACTIONS_PKG__ACTIONS,
-						 VariableFactory.eINSTANCE.createIncrementAction()));
-
-				newChildDescriptors.add
-					(createChildParameter
-						(ActionPackage.Literals.ACTIONS_PKG__ACTIONS,
-						 VariableFactory.eINSTANCE.createSetString()));
-
-				newChildDescriptors.add
-					(createChildParameter
-						(ActionPackage.Literals.ACTIONS_PKG__ACTIONS,
-						 VariableFactory.eINSTANCE.createSetBoolean()));
-
-				newChildDescriptors.add
-					(createChildParameter
-						(ActionPackage.Literals.ACTIONS_PKG__ACTIONS,
-						 VariableFactory.eINSTANCE.createSetNumber()));
-
-				return null;
-			}
- 
-			/**
-			 * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-			 * @generated
-			 */
-			protected CommandParameter createChildParameter(Object feature, Object child)
-			{
-				return new CommandParameter(null, feature, child);
-			}
-
-		}
-
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain)
-		{
-			ArrayList<Object> result = new ArrayList<Object>();
-			new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
-			return result;
-		}
-
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public ResourceLocator getResourceLocator()
-		{
-			return VariableEditPlugin.INSTANCE;
-		}
 	}
 
 }

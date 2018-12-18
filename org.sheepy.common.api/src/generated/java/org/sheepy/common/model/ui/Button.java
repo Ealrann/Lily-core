@@ -3,7 +3,6 @@
 package org.sheepy.common.model.ui;
 
 import java.util.List;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.sheepy.common.model.action.Action;

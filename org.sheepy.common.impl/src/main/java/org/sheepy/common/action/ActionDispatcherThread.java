@@ -9,8 +9,7 @@ import org.sheepy.common.api.cadence.EditingCommand;
 import org.sheepy.common.api.cadence.ITicker;
 import org.sheepy.common.cadence.execution.CommandStack;
 import org.sheepy.common.model.action.Action;
-import org.sheepy.common.model.action.TypeInjectorAction;
-import org.sheepy.common.model.action.XAction;
+import org.sheepy.common.model.root.XAction;
 
 public class ActionDispatcherThread implements ITicker
 {
@@ -73,13 +72,14 @@ public class ActionDispatcherThread implements ITicker
 			Action action = context.getAction();
 
 			// Injector redirection
-			if (action instanceof TypeInjectorAction<?>)
-			{
-				action = ((TypeInjectorAction<?>) action).getAction();
-
-				context = new ExecutionContext(context.getLUnit(), action,
-						((TypeInjectorAction<?>) action).getInjectedValue());
-			}
+			// wait for https://bugs.eclipse.org/bugs/show_bug.cgi?id=542872
+			// if (action instanceof TypeInjectorAction<?>)
+			// {
+			// action = ((TypeInjectorAction<?>) action).getAction();
+			//
+			// context = new ExecutionContext(context.getLUnit(), action,
+			// ((TypeInjectorAction<?>) action).getInjectedValue());
+			// }
 
 			if (action instanceof XAction)
 			{

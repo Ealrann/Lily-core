@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -16,10 +15,10 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.sheepy.common.model.action.ActionFactory;
 import org.sheepy.common.model.root.LObject;
 import org.sheepy.common.model.ui.Button;
 import org.sheepy.common.model.ui.UiPackage;
+
 import org.sheepy.common.model.variable.VariableFactory;
 
 /**
@@ -209,36 +208,6 @@ public class ButtonItemProvider extends AbstractButtonItemProvider
 			(createChildParameter
 				(UiPackage.Literals.BUTTON__ACTIONS,
 				 VariableFactory.eINSTANCE.createBooleanChangeAction()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UiPackage.Literals.BUTTON__ACTIONS,
-				 VariableFactory.eINSTANCE.createIncrementAction()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UiPackage.Literals.BUTTON__ACTIONS,
-				 VariableFactory.eINSTANCE.createSetString()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UiPackage.Literals.BUTTON__ACTIONS,
-				 VariableFactory.eINSTANCE.createSetBoolean()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UiPackage.Literals.BUTTON__ACTIONS,
-				 VariableFactory.eINSTANCE.createSetNumber()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UiPackage.Literals.BUTTON__ACTIONS,
-				 ActionFactory.eINSTANCE.createStringInjector()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UiPackage.Literals.BUTTON__ACTIONS,
-				 ActionFactory.eINSTANCE.createNumberInjector()));
 	}
 
 }

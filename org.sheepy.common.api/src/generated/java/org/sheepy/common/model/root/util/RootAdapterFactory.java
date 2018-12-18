@@ -9,9 +9,13 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.sheepy.common.model.action.Action;
+
 import org.sheepy.common.model.inference.IInferenceObject;
 
 import org.sheepy.common.model.root.*;
+
+import org.sheepy.common.model.types.LNamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -82,14 +86,24 @@ public class RootAdapterFactory extends AdapterFactoryImpl
 				return createLObjectAdapter();
 			}
 			@Override
-			public Adapter caseLNamedElement(LNamedElement object)
+			public Adapter caseXAction(XAction object)
 			{
-				return createLNamedElementAdapter();
+				return createXActionAdapter();
 			}
 			@Override
 			public Adapter caseIInferenceObject(IInferenceObject object)
 			{
 				return createIInferenceObjectAdapter();
+			}
+			@Override
+			public Adapter caseLNamedElement(LNamedElement object)
+			{
+				return createLNamedElementAdapter();
+			}
+			@Override
+			public Adapter caseAction(Action object)
+			{
+				return createActionAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object)
@@ -129,16 +143,16 @@ public class RootAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.root.LNamedElement <em>LNamed Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.root.XAction <em>XAction</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.root.LNamedElement
+	 * @see org.sheepy.common.model.root.XAction
 	 * @generated
 	 */
-	public Adapter createLNamedElementAdapter()
+	public Adapter createXActionAdapter()
 	{
 		return null;
 	}
@@ -154,6 +168,36 @@ public class RootAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createIInferenceObjectAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.types.LNamedElement <em>LNamed Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.common.model.types.LNamedElement
+	 * @generated
+	 */
+	public Adapter createLNamedElementAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.action.Action <em>Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.common.model.action.Action
+	 * @generated
+	 */
+	public Adapter createActionAdapter()
 	{
 		return null;
 	}

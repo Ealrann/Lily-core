@@ -72,6 +72,13 @@ public class TypesSwitch<T1> extends Switch<T1>
 	{
 		switch (classifierID)
 		{
+			case TypesPackage.LNAMED_ELEMENT:
+			{
+				LNamedElement lNamedElement = (LNamedElement)theEObject;
+				T1 result = caseLNamedElement(lNamedElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case TypesPackage.PARAMETER:
 			{
 				Parameter parameter = (Parameter)theEObject;
@@ -132,6 +139,22 @@ public class TypesSwitch<T1> extends Switch<T1>
 			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LNamed Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LNamed Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T1 caseLNamedElement(LNamedElement object)
+	{
+		return null;
 	}
 
 	/**

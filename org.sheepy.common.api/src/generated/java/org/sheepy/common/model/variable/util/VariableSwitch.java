@@ -8,12 +8,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import org.sheepy.common.model.action.Action;
-import org.sheepy.common.model.action.ParameteredAction;
-
-import org.sheepy.common.model.root.LNamedElement;
-
-import org.sheepy.common.model.types.Parameter;
-
+import org.sheepy.common.model.types.LNamedElement;
 import org.sheepy.common.model.variable.*;
 
 /**
@@ -29,7 +24,7 @@ import org.sheepy.common.model.variable.*;
  * @see org.sheepy.common.model.variable.VariablePackage
  * @generated
  */
-public class VariableSwitch<T1> extends Switch<T1>
+public class VariableSwitch<T> extends Switch<T>
 {
 	/**
 	 * The cached model package
@@ -75,21 +70,21 @@ public class VariableSwitch<T1> extends Switch<T1>
 	 * @generated
 	 */
 	@Override
-	protected T1 doSwitch(int classifierID, EObject theEObject)
+	protected T doSwitch(int classifierID, EObject theEObject)
 	{
 		switch (classifierID)
 		{
 			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER:
 			{
 				AbstractVariableResolver abstractVariableResolver = (AbstractVariableResolver)theEObject;
-				T1 result = caseAbstractVariableResolver(abstractVariableResolver);
+				T result = caseAbstractVariableResolver(abstractVariableResolver);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case VariablePackage.DIRECT_VARIABLE_RESOLVER:
 			{
 				DirectVariableResolver directVariableResolver = (DirectVariableResolver)theEObject;
-				T1 result = caseDirectVariableResolver(directVariableResolver);
+				T result = caseDirectVariableResolver(directVariableResolver);
 				if (result == null) result = caseAbstractVariableResolver(directVariableResolver);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -97,7 +92,7 @@ public class VariableSwitch<T1> extends Switch<T1>
 			case VariablePackage.VAR_CHANGE_ACTION:
 			{
 				VarChangeAction varChangeAction = (VarChangeAction)theEObject;
-				T1 result = caseVarChangeAction(varChangeAction);
+				T result = caseVarChangeAction(varChangeAction);
 				if (result == null) result = caseAction(varChangeAction);
 				if (result == null) result = caseLNamedElement(varChangeAction);
 				if (result == null) result = defaultCase(theEObject);
@@ -106,7 +101,7 @@ public class VariableSwitch<T1> extends Switch<T1>
 			case VariablePackage.BOOLEAN_CHANGE_ACTION:
 			{
 				BooleanChangeAction booleanChangeAction = (BooleanChangeAction)theEObject;
-				T1 result = caseBooleanChangeAction(booleanChangeAction);
+				T result = caseBooleanChangeAction(booleanChangeAction);
 				if (result == null) result = caseVarChangeAction(booleanChangeAction);
 				if (result == null) result = caseAction(booleanChangeAction);
 				if (result == null) result = caseLNamedElement(booleanChangeAction);
@@ -116,51 +111,7 @@ public class VariableSwitch<T1> extends Switch<T1>
 			case VariablePackage.VAR_CHANGE_ACTION_PKG:
 			{
 				VarChangeActionPkg varChangeActionPkg = (VarChangeActionPkg)theEObject;
-				T1 result = caseVarChangeActionPkg(varChangeActionPkg);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case VariablePackage.INCREMENT_ACTION:
-			{
-				IncrementAction incrementAction = (IncrementAction)theEObject;
-				T1 result = caseIncrementAction(incrementAction);
-				if (result == null) result = caseParameteredAction(incrementAction);
-				if (result == null) result = caseVarChangeAction(incrementAction);
-				if (result == null) result = caseAction(incrementAction);
-				if (result == null) result = caseLNamedElement(incrementAction);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case VariablePackage.SET_STRING:
-			{
-				SetString setString = (SetString)theEObject;
-				T1 result = caseSetString(setString);
-				if (result == null) result = caseParameteredAction(setString);
-				if (result == null) result = caseVarChangeAction(setString);
-				if (result == null) result = caseAction(setString);
-				if (result == null) result = caseLNamedElement(setString);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case VariablePackage.SET_BOOLEAN:
-			{
-				SetBoolean setBoolean = (SetBoolean)theEObject;
-				T1 result = caseSetBoolean(setBoolean);
-				if (result == null) result = caseParameteredAction(setBoolean);
-				if (result == null) result = caseVarChangeAction(setBoolean);
-				if (result == null) result = caseAction(setBoolean);
-				if (result == null) result = caseLNamedElement(setBoolean);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case VariablePackage.SET_NUMBER:
-			{
-				SetNumber setNumber = (SetNumber)theEObject;
-				T1 result = caseSetNumber(setNumber);
-				if (result == null) result = caseParameteredAction(setNumber);
-				if (result == null) result = caseVarChangeAction(setNumber);
-				if (result == null) result = caseAction(setNumber);
-				if (result == null) result = caseLNamedElement(setNumber);
+				T result = caseVarChangeActionPkg(varChangeActionPkg);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -179,7 +130,7 @@ public class VariableSwitch<T1> extends Switch<T1>
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseAbstractVariableResolver(AbstractVariableResolver object)
+	public T caseAbstractVariableResolver(AbstractVariableResolver object)
 	{
 		return null;
 	}
@@ -195,7 +146,7 @@ public class VariableSwitch<T1> extends Switch<T1>
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseDirectVariableResolver(DirectVariableResolver object)
+	public T caseDirectVariableResolver(DirectVariableResolver object)
 	{
 		return null;
 	}
@@ -211,7 +162,7 @@ public class VariableSwitch<T1> extends Switch<T1>
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseVarChangeAction(VarChangeAction object)
+	public T caseVarChangeAction(VarChangeAction object)
 	{
 		return null;
 	}
@@ -227,7 +178,7 @@ public class VariableSwitch<T1> extends Switch<T1>
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseBooleanChangeAction(BooleanChangeAction object)
+	public T caseBooleanChangeAction(BooleanChangeAction object)
 	{
 		return null;
 	}
@@ -243,71 +194,7 @@ public class VariableSwitch<T1> extends Switch<T1>
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseVarChangeActionPkg(VarChangeActionPkg object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Increment Action</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Increment Action</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseIncrementAction(IncrementAction object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Set String</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Set String</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseSetString(SetString object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Set Boolean</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Set Boolean</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseSetBoolean(SetBoolean object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Set Number</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Set Number</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseSetNumber(SetNumber object)
+	public T caseVarChangeActionPkg(VarChangeActionPkg object)
 	{
 		return null;
 	}
@@ -323,7 +210,7 @@ public class VariableSwitch<T1> extends Switch<T1>
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseLNamedElement(LNamedElement object)
+	public T caseLNamedElement(LNamedElement object)
 	{
 		return null;
 	}
@@ -339,23 +226,7 @@ public class VariableSwitch<T1> extends Switch<T1>
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseAction(Action object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Parametered Action</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Parametered Action</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public <T extends Parameter> T1 caseParameteredAction(ParameteredAction<T> object)
+	public T caseAction(Action object)
 	{
 		return null;
 	}
@@ -372,7 +243,7 @@ public class VariableSwitch<T1> extends Switch<T1>
 	 * @generated
 	 */
 	@Override
-	public T1 defaultCase(EObject object)
+	public T defaultCase(EObject object)
 	{
 		return null;
 	}

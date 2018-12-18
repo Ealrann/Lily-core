@@ -8,14 +8,20 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IChildCreationExtender;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.sheepy.common.model.presentation.provider.ControlItemProvider;
-
+import org.sheepy.common.model.presentation.PresentationPackage;
 import org.sheepy.common.model.root.LObject;
 import org.sheepy.common.model.ui.AbstractLabel;
 import org.sheepy.common.model.ui.UiPackage;
@@ -26,7 +32,7 @@ import org.sheepy.common.model.ui.UiPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class AbstractLabelItemProvider extends ControlItemProvider
+public class AbstractLabelItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -52,10 +58,130 @@ public class AbstractLabelItemProvider extends ControlItemProvider
 		{
 			super.getPropertyDescriptors(object);
 
+			addVerticalRelativePropertyDescriptor(object);
+			addHorizontalRelativePropertyDescriptor(object);
+			addPositionPropertyDescriptor(object);
+			addWidthPropertyDescriptor(object);
+			addHeightPropertyDescriptor(object);
 			addTextPropertyDescriptor(object);
 			addFontScalePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Position feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPositionPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ISizedElement_position_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_position_feature", "_UI_ISizedElement_type"),
+				 PresentationPackage.Literals.ISIZED_ELEMENT__POSITION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Width feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addWidthPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ISizedElement_width_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_width_feature", "_UI_ISizedElement_type"),
+				 PresentationPackage.Literals.ISIZED_ELEMENT__WIDTH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Height feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHeightPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ISizedElement_height_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_height_feature", "_UI_ISizedElement_type"),
+				 PresentationPackage.Literals.ISIZED_ELEMENT__HEIGHT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Vertical Relative feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVerticalRelativePropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_IRelativeElement_verticalRelative_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IRelativeElement_verticalRelative_feature", "_UI_IRelativeElement_type"),
+				 PresentationPackage.Literals.IRELATIVE_ELEMENT__VERTICAL_RELATIVE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Horizontal Relative feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHorizontalRelativePropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_IRelativeElement_horizontalRelative_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IRelativeElement_horizontalRelative_feature", "_UI_IRelativeElement_type"),
+				 PresentationPackage.Literals.IRELATIVE_ELEMENT__HORIZONTAL_RELATIVE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -135,6 +261,12 @@ public class AbstractLabelItemProvider extends ControlItemProvider
 
 		switch (notification.getFeatureID(AbstractLabel.class))
 		{
+			case UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS:
+			case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE:
+			case UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE:
+			case UiPackage.ABSTRACT_LABEL__POSITION:
+			case UiPackage.ABSTRACT_LABEL__WIDTH:
+			case UiPackage.ABSTRACT_LABEL__HEIGHT:
 			case UiPackage.ABSTRACT_LABEL__TEXT:
 			case UiPackage.ABSTRACT_LABEL__FONT_SCALE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
@@ -154,6 +286,18 @@ public class AbstractLabelItemProvider extends ControlItemProvider
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
+
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator()
+	{
+		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
 	}
 
 }

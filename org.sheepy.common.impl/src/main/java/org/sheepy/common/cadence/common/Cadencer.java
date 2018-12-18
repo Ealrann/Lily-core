@@ -113,11 +113,6 @@ public class Cadencer implements ICadencer
 
 		mainThread = null;
 
-		if (mainloop != null)
-		{
-			mainloop.dispose(application);
-		}
-
 		IServiceAdapterFactory.INSTANCE.disposeAutoAdapters(application);
 	}
 
@@ -135,10 +130,6 @@ public class Cadencer implements ICadencer
 			if (mainloop != null)
 			{
 				mainloop.step(application);
-				if (mainloop.shouldClose())
-				{
-					stop.set(true);
-				}
 			}
 		}
 

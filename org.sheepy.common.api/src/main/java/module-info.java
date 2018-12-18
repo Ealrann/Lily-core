@@ -11,6 +11,7 @@ module org.sheepy.common.api
 {
 	requires transitive org.eclipse.emf.common;
 	requires transitive org.eclipse.emf.ecore;
+	requires transitive org.eclipse.emf.ecore.xmi;
 
 	exports org.sheepy.common.api.action;
 	exports org.sheepy.common.api.action.context;

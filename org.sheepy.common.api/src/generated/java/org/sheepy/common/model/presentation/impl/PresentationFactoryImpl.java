@@ -77,6 +77,7 @@ public class PresentationFactoryImpl extends EFactoryImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TranparentUIView createTranparentUIView()
 	{
 		TranparentUIViewImpl tranparentUIView = new TranparentUIViewImpl();
@@ -88,6 +89,7 @@ public class PresentationFactoryImpl extends EFactoryImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public UIPage createUIPage()
 	{
 		UIPageImpl uiPage = new UIPageImpl();
@@ -99,6 +101,7 @@ public class PresentationFactoryImpl extends EFactoryImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Panel createPanel()
 	{
 		PanelImpl panel = new PanelImpl();
@@ -110,6 +113,7 @@ public class PresentationFactoryImpl extends EFactoryImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PresentationPackage getPresentationPackage()
 	{
 		return (PresentationPackage)getEPackage();

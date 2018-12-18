@@ -11,10 +11,18 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IChildCreationExtender;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.sheepy.common.model.presentation.PresentationFactory;
@@ -23,15 +31,13 @@ import org.sheepy.common.model.presentation.TranparentUIView;
 
 import org.sheepy.common.model.root.LObject;
 
-import org.sheepy.common.model.root.provider.LObjectItemProvider;
-
 /**
  * This is the item provider adapter for a {@link org.sheepy.common.model.presentation.TranparentUIView} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class TranparentUIViewItemProvider extends LObjectItemProvider
+public class TranparentUIViewItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -161,6 +167,9 @@ public class TranparentUIViewItemProvider extends LObjectItemProvider
 
 		switch (notification.getFeatureID(TranparentUIView.class))
 		{
+			case PresentationPackage.TRANPARENT_UI_VIEW__CONTENT_OBJECTS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case PresentationPackage.TRANPARENT_UI_VIEW__UI_PAGES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -184,6 +193,18 @@ public class TranparentUIViewItemProvider extends LObjectItemProvider
 			(createChildParameter
 				(PresentationPackage.Literals.IUI_VIEW__UI_PAGES,
 				 PresentationFactory.eINSTANCE.createUIPage()));
+	}
+
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator()
+	{
+		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
 	}
 
 }

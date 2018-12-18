@@ -8,16 +8,15 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.sheepy.common.model.action.ActionFactory;
 import org.sheepy.common.model.root.LObject;
 import org.sheepy.common.model.ui.BooleanActionButton;
 import org.sheepy.common.model.ui.UiPackage;
+
 import org.sheepy.common.model.variable.VariableFactory;
 
 /**
@@ -160,68 +159,8 @@ public class BooleanActionButtonItemProvider extends AbstractBooleanButtonItemPr
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE,
-				 VariableFactory.eINSTANCE.createIncrementAction()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE,
-				 VariableFactory.eINSTANCE.createSetString()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE,
-				 VariableFactory.eINSTANCE.createSetBoolean()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE,
-				 VariableFactory.eINSTANCE.createSetNumber()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE,
-				 ActionFactory.eINSTANCE.createStringInjector()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE,
-				 ActionFactory.eINSTANCE.createNumberInjector()));
-
-		newChildDescriptors.add
-			(createChildParameter
 				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE,
 				 VariableFactory.eINSTANCE.createBooleanChangeAction()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE,
-				 VariableFactory.eINSTANCE.createIncrementAction()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE,
-				 VariableFactory.eINSTANCE.createSetString()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE,
-				 VariableFactory.eINSTANCE.createSetBoolean()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE,
-				 VariableFactory.eINSTANCE.createSetNumber()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE,
-				 ActionFactory.eINSTANCE.createStringInjector()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE,
-				 ActionFactory.eINSTANCE.createNumberInjector()));
 	}
 
 	/**

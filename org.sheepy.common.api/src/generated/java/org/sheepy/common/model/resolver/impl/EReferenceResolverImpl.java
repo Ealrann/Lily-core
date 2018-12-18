@@ -116,6 +116,7 @@ public class EReferenceResolverImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getReferenceName()
 	{
 		return referenceName;
@@ -126,6 +127,7 @@ public class EReferenceResolverImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setReferenceName(String newReferenceName)
 	{
 		String oldReferenceName = referenceName;
@@ -139,6 +141,7 @@ public class EReferenceResolverImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getClassName()
 	{
 		return className;
@@ -149,6 +152,7 @@ public class EReferenceResolverImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setClassName(String newClassName)
 	{
 		String oldClassName = className;
@@ -162,6 +166,7 @@ public class EReferenceResolverImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getInternalReference()
 	{
 		if (internalReference != null && internalReference.eIsProxy())
@@ -192,6 +197,7 @@ public class EReferenceResolverImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInternalReference(EReference newInternalReference)
 	{
 		EReference oldInternalReference = internalReference;
@@ -205,6 +211,7 @@ public class EReferenceResolverImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void collectUnits(final LObject source, final Collection<LObject> collected)
 	{
 		EReference _internalReference = this.getInternalReference();

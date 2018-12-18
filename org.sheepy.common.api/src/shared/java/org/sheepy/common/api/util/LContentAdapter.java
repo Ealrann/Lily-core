@@ -64,7 +64,7 @@ public class LContentAdapter extends EContentAdapter
 	{
 		unitAdded(unit);
 
-		TreeIterator<LObject> it = unit.lAllUnits();
+		TreeIterator<LObject> it = unit.lAllContents();
 		while (it.hasNext())
 		{
 			unitAdded(it.next());
@@ -75,7 +75,7 @@ public class LContentAdapter extends EContentAdapter
 	{
 		LinkedList<LObject> reverseOrder = new LinkedList<>();
 
-		TreeIterator<LObject> it = removedUnit.lAllUnits();
+		TreeIterator<LObject> it = removedUnit.lAllContents();
 		while (it.hasNext())
 		{
 			reverseOrder.addFirst(it.next());

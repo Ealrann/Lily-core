@@ -1,22 +1,16 @@
 @GenModel(modelDirectory="/org.sheepy.common.model/src/generated/java")
 @GenModel(editDirectory="/org.sheepy.common.model.edit/src/generated/java")
-@GenModel(publicConstructors="true")
+@GenModel(publicConstructors="true", complianceLevel="11.0", resource="XMI")
 @GenModel(extensibleProviderFactory="true", childCreationExtenders="true")
-
 package org.sheepy.common.model.variable
 
+import org.eclipse.emf.ecore.EObject
 import org.sheepy.common.api.util.ResolvedVariableFeature
 import org.sheepy.common.model.action.Action
-import org.sheepy.common.model.action.ParameteredAction
-import org.sheepy.common.model.types.BooleanParameter
-import org.sheepy.common.model.types.FloatParameter
-import org.sheepy.common.model.types.StringParameter
-import org.eclipse.emf.ecore.EObject
 
 abstract class AbstractVariableResolver 
 {
 //	contains ILObjectResolver resolver
-	
 	VariableDefinition variableDefinition
 //	
 //	@GenModel(property="None")
@@ -29,7 +23,6 @@ abstract class AbstractVariableResolver
 //			
 //		return emfAttributes
 //	}
-	
 //	op boolean match(LUnit unit) 
 //	{
 //		val ResolvedVariableAttribute resolved = lEMFAttributes()
@@ -60,12 +53,10 @@ type VariableDefinition wraps String
 // =====================
 // Action
 // =====================
-
 abstract class VarChangeAction extends Action 
 {
 	contains AbstractVariableResolver variableResolver
 }
-
 
 class BooleanChangeAction extends VarChangeAction, Action
 {
@@ -75,22 +66,22 @@ class VarChangeActionPkg {
 	contains VarChangeAction[] actions
 }
 
-class IncrementAction extends ParameteredAction<FloatParameter>, VarChangeAction
-{
-	int increment = "1"
-}
-
-class SetString extends ParameteredAction<StringParameter>, VarChangeAction
-{
-}
-
-class SetBoolean extends ParameteredAction<BooleanParameter>, VarChangeAction
-{
-}
-
-class SetNumber extends ParameteredAction<FloatParameter>, VarChangeAction
-{
-}
+//class IncrementAction extends ParameteredAction<FloatParameter>, VarChangeAction
+//{
+//	int increment = "1"
+//}
+//
+//class SetString extends ParameteredAction<StringParameter>, VarChangeAction
+//{
+//}
+//
+//class SetBoolean extends ParameteredAction<BooleanParameter>, VarChangeAction
+//{
+//}
+//
+//class SetNumber extends ParameteredAction<FloatParameter>, VarChangeAction
+//{
+//}
 
 
 // =====================

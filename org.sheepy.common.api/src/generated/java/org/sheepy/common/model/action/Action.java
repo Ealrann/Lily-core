@@ -2,7 +2,7 @@
  */
 package org.sheepy.common.model.action;
 
-import org.sheepy.common.model.root.LNamedElement;
+import org.sheepy.common.model.types.LNamedElement;
 
 /**
  * <!-- begin-user-doc -->

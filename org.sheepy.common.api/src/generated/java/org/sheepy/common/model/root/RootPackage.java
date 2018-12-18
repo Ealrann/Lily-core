@@ -8,6 +8,8 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 
+import org.sheepy.common.model.action.ActionPackage;
+
 import org.sheepy.common.model.inference.InferencePackage;
 
 /**
@@ -24,7 +26,7 @@ import org.sheepy.common.model.inference.InferencePackage;
  * <!-- end-user-doc -->
  * @see org.sheepy.common.model.root.RootFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.common.model/src/generated/java' editDirectory='/org.sheepy.common.model.edit/src/generated/java' publicConstructors='true' extensibleProviderFactory='true' childCreationExtenders='true' basePackage='org.sheepy.common.model'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.common.model/src/generated/java' editDirectory='/org.sheepy.common.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' extensibleProviderFactory='true' childCreationExtenders='true' basePackage='org.sheepy.common.model'"
  * @generated
  */
 public interface RootPackage extends EPackage
@@ -62,10 +64,10 @@ public interface RootPackage extends EPackage
 	RootPackage eINSTANCE = org.sheepy.common.model.root.impl.RootPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.root.impl.LObjectImpl <em>LObject</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.common.model.root.LObject <em>LObject</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.root.impl.LObjectImpl
+	 * @see org.sheepy.common.model.root.LObject
 	 * @see org.sheepy.common.model.root.impl.RootPackageImpl#getLObject()
 	 * @generated
 	 */
@@ -126,13 +128,13 @@ public interface RootPackage extends EPackage
 	int LOBJECT___LPARENT = InferencePackage.IINFERENCE_OBJECT_OPERATION_COUNT + 2;
 
 	/**
-	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * The operation id for the '<em>LAll Contents</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LOBJECT___LALL_UNITS = InferencePackage.IINFERENCE_OBJECT_OPERATION_COUNT + 3;
+	int LOBJECT___LALL_CONTENTS = InferencePackage.IINFERENCE_OBJECT_OPERATION_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>LObject</em>' class.
@@ -144,14 +146,14 @@ public interface RootPackage extends EPackage
 	int LOBJECT_OPERATION_COUNT = InferencePackage.IINFERENCE_OBJECT_OPERATION_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.root.LNamedElement <em>LNamed Element</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.common.model.root.impl.XActionImpl <em>XAction</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.root.LNamedElement
-	 * @see org.sheepy.common.model.root.impl.RootPackageImpl#getLNamedElement()
+	 * @see org.sheepy.common.model.root.impl.XActionImpl
+	 * @see org.sheepy.common.model.root.impl.RootPackageImpl#getXAction()
 	 * @generated
 	 */
-	int LNAMED_ELEMENT = 1;
+	int XACTION = 1;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -160,25 +162,34 @@ public interface RootPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int LNAMED_ELEMENT__NAME = 0;
+	int XACTION__NAME = ActionPackage.ACTION__NAME;
 
 	/**
-	 * The number of structural features of the '<em>LNamed Element</em>' class.
+	 * The number of structural features of the '<em>XAction</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LNAMED_ELEMENT_FEATURE_COUNT = 1;
+	int XACTION_FEATURE_COUNT = ActionPackage.ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>LNamed Element</em>' class.
+	 * The operation id for the '<em>Execute</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LNAMED_ELEMENT_OPERATION_COUNT = 0;
+	int XACTION___EXECUTE__LOBJECT = ActionPackage.ACTION_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>XAction</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int XACTION_OPERATION_COUNT = ActionPackage.ACTION_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '<em>LContent List</em>' data type.
@@ -194,7 +205,7 @@ public interface RootPackage extends EPackage
 	 * The meta object id for the '<em>LTree Iterator</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.common.util.TreeIterator
+	 * @see org.sheepy.common.api.util.LTreeIterator
 	 * @see org.sheepy.common.model.root.impl.RootPackageImpl#getLTreeIterator()
 	 * @generated
 	 */
@@ -263,35 +274,34 @@ public interface RootPackage extends EPackage
 	EOperation getLObject__LParent();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.common.model.root.LObject#lAllUnits() <em>LAll Units</em>}' operation.
+	 * Returns the meta object for the '{@link org.sheepy.common.model.root.LObject#lAllContents() <em>LAll Contents</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>LAll Units</em>' operation.
-	 * @see org.sheepy.common.model.root.LObject#lAllUnits()
+	 * @return the meta object for the '<em>LAll Contents</em>' operation.
+	 * @see org.sheepy.common.model.root.LObject#lAllContents()
 	 * @generated
 	 */
-	EOperation getLObject__LAllUnits();
+	EOperation getLObject__LAllContents();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.root.LNamedElement <em>LNamed Element</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.common.model.root.XAction <em>XAction</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>LNamed Element</em>'.
-	 * @see org.sheepy.common.model.root.LNamedElement
+	 * @return the meta object for class '<em>XAction</em>'.
+	 * @see org.sheepy.common.model.root.XAction
 	 * @generated
 	 */
-	EClass getLNamedElement();
+	EClass getXAction();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.root.LNamedElement#getName <em>Name</em>}'.
+	 * Returns the meta object for the '{@link org.sheepy.common.model.root.XAction#execute(org.sheepy.common.model.root.LObject) <em>Execute</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.sheepy.common.model.root.LNamedElement#getName()
-	 * @see #getLNamedElement()
+	 * @return the meta object for the '<em>Execute</em>' operation.
+	 * @see org.sheepy.common.model.root.XAction#execute(org.sheepy.common.model.root.LObject)
 	 * @generated
 	 */
-	EAttribute getLNamedElement_Name();
+	EOperation getXAction__Execute__LObject();
 
 	/**
 	 * Returns the meta object for data type '{@link org.eclipse.emf.common.util.EList <em>LContent List</em>}'.
@@ -305,12 +315,12 @@ public interface RootPackage extends EPackage
 	EDataType getLContentList();
 
 	/**
-	 * Returns the meta object for data type '{@link org.eclipse.emf.common.util.TreeIterator <em>LTree Iterator</em>}'.
+	 * Returns the meta object for data type '{@link org.sheepy.common.api.util.LTreeIterator <em>LTree Iterator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>LTree Iterator</em>'.
-	 * @see org.eclipse.emf.common.util.TreeIterator
-	 * @model instanceClass="org.eclipse.emf.common.util.TreeIterator&lt;org.sheepy.common.model.root.LObject&gt;"
+	 * @see org.sheepy.common.api.util.LTreeIterator
+	 * @model instanceClass="org.sheepy.common.api.util.LTreeIterator"
 	 * @generated
 	 */
 	EDataType getLTreeIterator();
@@ -351,10 +361,10 @@ public interface RootPackage extends EPackage
 	interface Literals
 	{
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.root.impl.LObjectImpl <em>LObject</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.common.model.root.LObject <em>LObject</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.root.impl.LObjectImpl
+		 * @see org.sheepy.common.model.root.LObject
 		 * @see org.sheepy.common.model.root.impl.RootPackageImpl#getLObject()
 		 * @generated
 		 */
@@ -393,30 +403,30 @@ public interface RootPackage extends EPackage
 		EOperation LOBJECT___LPARENT = eINSTANCE.getLObject__LParent();
 
 		/**
-		 * The meta object literal for the '<em><b>LAll Units</b></em>' operation.
+		 * The meta object literal for the '<em><b>LAll Contents</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation LOBJECT___LALL_UNITS = eINSTANCE.getLObject__LAllUnits();
+		EOperation LOBJECT___LALL_CONTENTS = eINSTANCE.getLObject__LAllContents();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.root.LNamedElement <em>LNamed Element</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.common.model.root.impl.XActionImpl <em>XAction</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.root.LNamedElement
-		 * @see org.sheepy.common.model.root.impl.RootPackageImpl#getLNamedElement()
+		 * @see org.sheepy.common.model.root.impl.XActionImpl
+		 * @see org.sheepy.common.model.root.impl.RootPackageImpl#getXAction()
 		 * @generated
 		 */
-		EClass LNAMED_ELEMENT = eINSTANCE.getLNamedElement();
+		EClass XACTION = eINSTANCE.getXAction();
 
 		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Execute</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute LNAMED_ELEMENT__NAME = eINSTANCE.getLNamedElement_Name();
+		EOperation XACTION___EXECUTE__LOBJECT = eINSTANCE.getXAction__Execute__LObject();
 
 		/**
 		 * The meta object literal for the '<em>LContent List</em>' data type.
@@ -432,7 +442,7 @@ public interface RootPackage extends EPackage
 		 * The meta object literal for the '<em>LTree Iterator</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.common.util.TreeIterator
+		 * @see org.sheepy.common.api.util.LTreeIterator
 		 * @see org.sheepy.common.model.root.impl.RootPackageImpl#getLTreeIterator()
 		 * @generated
 		 */

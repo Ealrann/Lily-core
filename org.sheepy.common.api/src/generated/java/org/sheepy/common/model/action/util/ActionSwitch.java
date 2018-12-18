@@ -9,9 +9,7 @@ import org.eclipse.emf.ecore.util.Switch;
 
 import org.sheepy.common.model.action.*;
 
-import org.sheepy.common.model.root.LNamedElement;
-
-import org.sheepy.common.model.types.Parameter;
+import org.sheepy.common.model.types.LNamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +24,7 @@ import org.sheepy.common.model.types.Parameter;
  * @see org.sheepy.common.model.action.ActionPackage
  * @generated
  */
-public class ActionSwitch<T1> extends Switch<T1>
+public class ActionSwitch<T> extends Switch<T>
 {
 	/**
 	 * The cached model package
@@ -72,76 +70,15 @@ public class ActionSwitch<T1> extends Switch<T1>
 	 * @generated
 	 */
 	@Override
-	protected T1 doSwitch(int classifierID, EObject theEObject)
+	protected T doSwitch(int classifierID, EObject theEObject)
 	{
 		switch (classifierID)
 		{
 			case ActionPackage.ACTION:
 			{
 				Action action = (Action)theEObject;
-				T1 result = caseAction(action);
+				T result = caseAction(action);
 				if (result == null) result = caseLNamedElement(action);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ActionPackage.XACTION:
-			{
-				XAction xAction = (XAction)theEObject;
-				T1 result = caseXAction(xAction);
-				if (result == null) result = caseAction(xAction);
-				if (result == null) result = caseLNamedElement(xAction);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ActionPackage.PARAMETERED_ACTION:
-			{
-				ParameteredAction<?> parameteredAction = (ParameteredAction<?>)theEObject;
-				T1 result = caseParameteredAction(parameteredAction);
-				if (result == null) result = caseAction(parameteredAction);
-				if (result == null) result = caseLNamedElement(parameteredAction);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ActionPackage.TYPE_INJECTOR_ACTION:
-			{
-				TypeInjectorAction<?> typeInjectorAction = (TypeInjectorAction<?>)theEObject;
-				T1 result = caseTypeInjectorAction(typeInjectorAction);
-				if (result == null) result = caseAction(typeInjectorAction);
-				if (result == null) result = caseLNamedElement(typeInjectorAction);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ActionPackage.STRING_INJECTOR:
-			{
-				StringInjector stringInjector = (StringInjector)theEObject;
-				T1 result = caseStringInjector(stringInjector);
-				if (result == null) result = caseTypeInjectorAction(stringInjector);
-				if (result == null) result = caseAction(stringInjector);
-				if (result == null) result = caseLNamedElement(stringInjector);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ActionPackage.NUMBER_INJECTOR:
-			{
-				NumberInjector numberInjector = (NumberInjector)theEObject;
-				T1 result = caseNumberInjector(numberInjector);
-				if (result == null) result = caseTypeInjectorAction(numberInjector);
-				if (result == null) result = caseAction(numberInjector);
-				if (result == null) result = caseLNamedElement(numberInjector);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ActionPackage.PARAMETERED_ACTIONS_PKG:
-			{
-				ParameteredActionsPkg<?> parameteredActionsPkg = (ParameteredActionsPkg<?>)theEObject;
-				T1 result = caseParameteredActionsPkg(parameteredActionsPkg);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ActionPackage.ACTIONS_PKG:
-			{
-				ActionsPkg actionsPkg = (ActionsPkg)theEObject;
-				T1 result = caseActionsPkg(actionsPkg);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -160,119 +97,7 @@ public class ActionSwitch<T1> extends Switch<T1>
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseAction(Action object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>XAction</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>XAction</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseXAction(XAction object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Parametered Action</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Parametered Action</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public <T extends Parameter> T1 caseParameteredAction(ParameteredAction<T> object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Type Injector Action</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Type Injector Action</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public <T extends Parameter> T1 caseTypeInjectorAction(TypeInjectorAction<T> object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>String Injector</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>String Injector</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseStringInjector(StringInjector object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Number Injector</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Number Injector</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseNumberInjector(NumberInjector object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Parametered Actions Pkg</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Parametered Actions Pkg</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public <T extends Parameter> T1 caseParameteredActionsPkg(ParameteredActionsPkg<T> object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Actions Pkg</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Actions Pkg</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T1 caseActionsPkg(ActionsPkg object)
+	public T caseAction(Action object)
 	{
 		return null;
 	}
@@ -288,7 +113,7 @@ public class ActionSwitch<T1> extends Switch<T1>
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T1 caseLNamedElement(LNamedElement object)
+	public T caseLNamedElement(LNamedElement object)
 	{
 		return null;
 	}
@@ -305,7 +130,7 @@ public class ActionSwitch<T1> extends Switch<T1>
 	 * @generated
 	 */
 	@Override
-	public T1 defaultCase(EObject object)
+	public T defaultCase(EObject object)
 	{
 		return null;
 	}

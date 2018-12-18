@@ -24,7 +24,7 @@ import org.sheepy.common.model.presentation.PresentationPackage;
  * <!-- end-user-doc -->
  * @see org.sheepy.common.model.ui.UiFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.common.model/src/generated/java' editDirectory='/org.sheepy.common.model.edit/src/generated/java' publicConstructors='true' extensibleProviderFactory='true' childCreationExtenders='true' basePackage='org.sheepy.common.model'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.common.model/src/generated/java' editDirectory='/org.sheepy.common.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' extensibleProviderFactory='true' childCreationExtenders='true' basePackage='org.sheepy.common.model'"
  * @generated
  */
 public interface UiPackage extends EPackage
@@ -78,34 +78,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL__CONTENT_OBJECTS = PresentationPackage.CONTROL__CONTENT_OBJECTS;
-
-	/**
-	 * The feature id for the '<em><b>Position</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_LABEL__POSITION = PresentationPackage.CONTROL__POSITION;
-
-	/**
-	 * The feature id for the '<em><b>Width</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_LABEL__WIDTH = PresentationPackage.CONTROL__WIDTH;
-
-	/**
-	 * The feature id for the '<em><b>Height</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_LABEL__HEIGHT = PresentationPackage.CONTROL__HEIGHT;
+	int ABSTRACT_LABEL__CONTENT_OBJECTS = PresentationPackage.WIDGET__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
@@ -114,7 +87,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL__VERTICAL_RELATIVE = PresentationPackage.CONTROL__VERTICAL_RELATIVE;
+	int ABSTRACT_LABEL__VERTICAL_RELATIVE = PresentationPackage.WIDGET__VERTICAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
@@ -123,7 +96,34 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL__HORIZONTAL_RELATIVE = PresentationPackage.CONTROL__HORIZONTAL_RELATIVE;
+	int ABSTRACT_LABEL__HORIZONTAL_RELATIVE = PresentationPackage.WIDGET__HORIZONTAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__POSITION = PresentationPackage.WIDGET__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__WIDTH = PresentationPackage.WIDGET__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__HEIGHT = PresentationPackage.WIDGET__HEIGHT;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -132,7 +132,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL__TEXT = PresentationPackage.CONTROL_FEATURE_COUNT + 0;
+	int ABSTRACT_LABEL__TEXT = PresentationPackage.WIDGET_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Font Scale</b></em>' attribute.
@@ -141,7 +141,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL__FONT_SCALE = PresentationPackage.CONTROL_FEATURE_COUNT + 1;
+	int ABSTRACT_LABEL__FONT_SCALE = PresentationPackage.WIDGET_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Label</em>' class.
@@ -150,7 +150,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL_FEATURE_COUNT = PresentationPackage.CONTROL_FEATURE_COUNT + 2;
+	int ABSTRACT_LABEL_FEATURE_COUNT = PresentationPackage.WIDGET_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -159,7 +159,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL___LINFERENCE_OBJECT = PresentationPackage.CONTROL___LINFERENCE_OBJECT;
+	int ABSTRACT_LABEL___LINFERENCE_OBJECT = PresentationPackage.WIDGET___LINFERENCE_OBJECT;
 
 	/**
 	 * The operation id for the '<em>Create Containment EList</em>' operation.
@@ -168,7 +168,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.CONTROL___CREATE_CONTAINMENT_ELIST__ECLASS;
+	int ABSTRACT_LABEL___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
 
 	/**
 	 * The operation id for the '<em>LContents</em>' operation.
@@ -177,7 +177,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL___LCONTENTS = PresentationPackage.CONTROL___LCONTENTS;
+	int ABSTRACT_LABEL___LCONTENTS = PresentationPackage.WIDGET___LCONTENTS;
 
 	/**
 	 * The operation id for the '<em>LParent</em>' operation.
@@ -186,16 +186,16 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL___LPARENT = PresentationPackage.CONTROL___LPARENT;
+	int ABSTRACT_LABEL___LPARENT = PresentationPackage.WIDGET___LPARENT;
 
 	/**
-	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * The operation id for the '<em>LAll Contents</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL___LALL_UNITS = PresentationPackage.CONTROL___LALL_UNITS;
+	int ABSTRACT_LABEL___LALL_CONTENTS = PresentationPackage.WIDGET___LALL_CONTENTS;
 
 	/**
 	 * The number of operations of the '<em>Abstract Label</em>' class.
@@ -204,7 +204,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL_OPERATION_COUNT = PresentationPackage.CONTROL_OPERATION_COUNT + 0;
+	int ABSTRACT_LABEL_OPERATION_COUNT = PresentationPackage.WIDGET_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.DynamicRowLayoutImpl <em>Dynamic Row Layout</em>}' class.
@@ -223,25 +223,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT__CONTENT_OBJECTS = PresentationPackage.CONTROL__CONTENT_OBJECTS;
-
-	/**
-	 * The feature id for the '<em><b>Position</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DYNAMIC_ROW_LAYOUT__POSITION = PresentationPackage.CONTROL__POSITION;
-
-	/**
-	 * The feature id for the '<em><b>Width</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DYNAMIC_ROW_LAYOUT__WIDTH = PresentationPackage.CONTROL__WIDTH;
+	int DYNAMIC_ROW_LAYOUT__CONTENT_OBJECTS = PresentationPackage.ICONTROL__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
@@ -250,25 +232,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT__HEIGHT = PresentationPackage.CONTROL__HEIGHT;
-
-	/**
-	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DYNAMIC_ROW_LAYOUT__VERTICAL_RELATIVE = PresentationPackage.CONTROL__VERTICAL_RELATIVE;
-
-	/**
-	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DYNAMIC_ROW_LAYOUT__HORIZONTAL_RELATIVE = PresentationPackage.CONTROL__HORIZONTAL_RELATIVE;
+	int DYNAMIC_ROW_LAYOUT__HEIGHT = PresentationPackage.ICONTROL_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Column Count</b></em>' attribute.
@@ -277,7 +241,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT__COLUMN_COUNT = PresentationPackage.CONTROL_FEATURE_COUNT + 0;
+	int DYNAMIC_ROW_LAYOUT__COLUMN_COUNT = PresentationPackage.ICONTROL_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Dynamic Row Layout</em>' class.
@@ -286,7 +250,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT_FEATURE_COUNT = PresentationPackage.CONTROL_FEATURE_COUNT + 1;
+	int DYNAMIC_ROW_LAYOUT_FEATURE_COUNT = PresentationPackage.ICONTROL_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -295,7 +259,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT___LINFERENCE_OBJECT = PresentationPackage.CONTROL___LINFERENCE_OBJECT;
+	int DYNAMIC_ROW_LAYOUT___LINFERENCE_OBJECT = PresentationPackage.ICONTROL___LINFERENCE_OBJECT;
 
 	/**
 	 * The operation id for the '<em>Create Containment EList</em>' operation.
@@ -304,7 +268,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.CONTROL___CREATE_CONTAINMENT_ELIST__ECLASS;
+	int DYNAMIC_ROW_LAYOUT___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.ICONTROL___CREATE_CONTAINMENT_ELIST__ECLASS;
 
 	/**
 	 * The operation id for the '<em>LContents</em>' operation.
@@ -313,7 +277,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT___LCONTENTS = PresentationPackage.CONTROL___LCONTENTS;
+	int DYNAMIC_ROW_LAYOUT___LCONTENTS = PresentationPackage.ICONTROL___LCONTENTS;
 
 	/**
 	 * The operation id for the '<em>LParent</em>' operation.
@@ -322,16 +286,16 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT___LPARENT = PresentationPackage.CONTROL___LPARENT;
+	int DYNAMIC_ROW_LAYOUT___LPARENT = PresentationPackage.ICONTROL___LPARENT;
 
 	/**
-	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * The operation id for the '<em>LAll Contents</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT___LALL_UNITS = PresentationPackage.CONTROL___LALL_UNITS;
+	int DYNAMIC_ROW_LAYOUT___LALL_CONTENTS = PresentationPackage.ICONTROL___LALL_CONTENTS;
 
 	/**
 	 * The number of operations of the '<em>Dynamic Row Layout</em>' class.
@@ -340,7 +304,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT_OPERATION_COUNT = PresentationPackage.CONTROL_OPERATION_COUNT + 0;
+	int DYNAMIC_ROW_LAYOUT_OPERATION_COUNT = PresentationPackage.ICONTROL_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.VariableLabelImpl <em>Variable Label</em>}' class.
@@ -360,6 +324,24 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int VARIABLE_LABEL__CONTENT_OBJECTS = ABSTRACT_LABEL__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL__VERTICAL_RELATIVE = ABSTRACT_LABEL__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL__HORIZONTAL_RELATIVE = ABSTRACT_LABEL__HORIZONTAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -387,24 +369,6 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int VARIABLE_LABEL__HEIGHT = ABSTRACT_LABEL__HEIGHT;
-
-	/**
-	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_LABEL__VERTICAL_RELATIVE = ABSTRACT_LABEL__VERTICAL_RELATIVE;
-
-	/**
-	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_LABEL__HORIZONTAL_RELATIVE = ABSTRACT_LABEL__HORIZONTAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -479,13 +443,13 @@ public interface UiPackage extends EPackage
 	int VARIABLE_LABEL___LPARENT = ABSTRACT_LABEL___LPARENT;
 
 	/**
-	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * The operation id for the '<em>LAll Contents</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_LABEL___LALL_UNITS = ABSTRACT_LABEL___LALL_UNITS;
+	int VARIABLE_LABEL___LALL_CONTENTS = ABSTRACT_LABEL___LALL_CONTENTS;
 
 	/**
 	 * The number of operations of the '<em>Variable Label</em>' class.
@@ -516,6 +480,24 @@ public interface UiPackage extends EPackage
 	int LABEL__CONTENT_OBJECTS = ABSTRACT_LABEL__CONTENT_OBJECTS;
 
 	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__VERTICAL_RELATIVE = ABSTRACT_LABEL__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__HORIZONTAL_RELATIVE = ABSTRACT_LABEL__HORIZONTAL_RELATIVE;
+
+	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -541,24 +523,6 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int LABEL__HEIGHT = ABSTRACT_LABEL__HEIGHT;
-
-	/**
-	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LABEL__VERTICAL_RELATIVE = ABSTRACT_LABEL__VERTICAL_RELATIVE;
-
-	/**
-	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LABEL__HORIZONTAL_RELATIVE = ABSTRACT_LABEL__HORIZONTAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -624,13 +588,13 @@ public interface UiPackage extends EPackage
 	int LABEL___LPARENT = ABSTRACT_LABEL___LPARENT;
 
 	/**
-	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * The operation id for the '<em>LAll Contents</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL___LALL_UNITS = ABSTRACT_LABEL___LALL_UNITS;
+	int LABEL___LALL_CONTENTS = ABSTRACT_LABEL___LALL_CONTENTS;
 
 	/**
 	 * The number of operations of the '<em>Label</em>' class.
@@ -658,34 +622,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD__CONTENT_OBJECTS = PresentationPackage.CONTROL__CONTENT_OBJECTS;
-
-	/**
-	 * The feature id for the '<em><b>Position</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEXT_FIELD__POSITION = PresentationPackage.CONTROL__POSITION;
-
-	/**
-	 * The feature id for the '<em><b>Width</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEXT_FIELD__WIDTH = PresentationPackage.CONTROL__WIDTH;
-
-	/**
-	 * The feature id for the '<em><b>Height</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEXT_FIELD__HEIGHT = PresentationPackage.CONTROL__HEIGHT;
+	int TEXT_FIELD__CONTENT_OBJECTS = PresentationPackage.WIDGET__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
@@ -694,7 +631,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD__VERTICAL_RELATIVE = PresentationPackage.CONTROL__VERTICAL_RELATIVE;
+	int TEXT_FIELD__VERTICAL_RELATIVE = PresentationPackage.WIDGET__VERTICAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
@@ -703,7 +640,34 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD__HORIZONTAL_RELATIVE = PresentationPackage.CONTROL__HORIZONTAL_RELATIVE;
+	int TEXT_FIELD__HORIZONTAL_RELATIVE = PresentationPackage.WIDGET__HORIZONTAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD__POSITION = PresentationPackage.WIDGET__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD__WIDTH = PresentationPackage.WIDGET__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD__HEIGHT = PresentationPackage.WIDGET__HEIGHT;
 
 	/**
 	 * The feature id for the '<em><b>Variable Resolver</b></em>' containment reference.
@@ -712,7 +676,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD__VARIABLE_RESOLVER = PresentationPackage.CONTROL_FEATURE_COUNT + 0;
+	int TEXT_FIELD__VARIABLE_RESOLVER = PresentationPackage.WIDGET_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Text Field</em>' class.
@@ -721,7 +685,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD_FEATURE_COUNT = PresentationPackage.CONTROL_FEATURE_COUNT + 1;
+	int TEXT_FIELD_FEATURE_COUNT = PresentationPackage.WIDGET_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -730,7 +694,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD___LINFERENCE_OBJECT = PresentationPackage.CONTROL___LINFERENCE_OBJECT;
+	int TEXT_FIELD___LINFERENCE_OBJECT = PresentationPackage.WIDGET___LINFERENCE_OBJECT;
 
 	/**
 	 * The operation id for the '<em>Create Containment EList</em>' operation.
@@ -739,7 +703,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.CONTROL___CREATE_CONTAINMENT_ELIST__ECLASS;
+	int TEXT_FIELD___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
 
 	/**
 	 * The operation id for the '<em>LContents</em>' operation.
@@ -748,7 +712,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD___LCONTENTS = PresentationPackage.CONTROL___LCONTENTS;
+	int TEXT_FIELD___LCONTENTS = PresentationPackage.WIDGET___LCONTENTS;
 
 	/**
 	 * The operation id for the '<em>LParent</em>' operation.
@@ -757,16 +721,16 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD___LPARENT = PresentationPackage.CONTROL___LPARENT;
+	int TEXT_FIELD___LPARENT = PresentationPackage.WIDGET___LPARENT;
 
 	/**
-	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * The operation id for the '<em>LAll Contents</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD___LALL_UNITS = PresentationPackage.CONTROL___LALL_UNITS;
+	int TEXT_FIELD___LALL_CONTENTS = PresentationPackage.WIDGET___LALL_CONTENTS;
 
 	/**
 	 * The number of operations of the '<em>Text Field</em>' class.
@@ -775,7 +739,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD_OPERATION_COUNT = PresentationPackage.CONTROL_OPERATION_COUNT + 0;
+	int TEXT_FIELD_OPERATION_COUNT = PresentationPackage.WIDGET_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.AbstractButtonImpl <em>Abstract Button</em>}' class.
@@ -794,34 +758,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON__CONTENT_OBJECTS = PresentationPackage.CONTROL__CONTENT_OBJECTS;
-
-	/**
-	 * The feature id for the '<em><b>Position</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BUTTON__POSITION = PresentationPackage.CONTROL__POSITION;
-
-	/**
-	 * The feature id for the '<em><b>Width</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BUTTON__WIDTH = PresentationPackage.CONTROL__WIDTH;
-
-	/**
-	 * The feature id for the '<em><b>Height</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BUTTON__HEIGHT = PresentationPackage.CONTROL__HEIGHT;
+	int ABSTRACT_BUTTON__CONTENT_OBJECTS = PresentationPackage.WIDGET__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
@@ -830,7 +767,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON__VERTICAL_RELATIVE = PresentationPackage.CONTROL__VERTICAL_RELATIVE;
+	int ABSTRACT_BUTTON__VERTICAL_RELATIVE = PresentationPackage.WIDGET__VERTICAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
@@ -839,7 +776,34 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON__HORIZONTAL_RELATIVE = PresentationPackage.CONTROL__HORIZONTAL_RELATIVE;
+	int ABSTRACT_BUTTON__HORIZONTAL_RELATIVE = PresentationPackage.WIDGET__HORIZONTAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON__POSITION = PresentationPackage.WIDGET__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON__WIDTH = PresentationPackage.WIDGET__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON__HEIGHT = PresentationPackage.WIDGET__HEIGHT;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -848,7 +812,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON__TEXT = PresentationPackage.CONTROL_FEATURE_COUNT + 0;
+	int ABSTRACT_BUTTON__TEXT = PresentationPackage.WIDGET_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Button</em>' class.
@@ -857,7 +821,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON_FEATURE_COUNT = PresentationPackage.CONTROL_FEATURE_COUNT + 1;
+	int ABSTRACT_BUTTON_FEATURE_COUNT = PresentationPackage.WIDGET_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -866,7 +830,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON___LINFERENCE_OBJECT = PresentationPackage.CONTROL___LINFERENCE_OBJECT;
+	int ABSTRACT_BUTTON___LINFERENCE_OBJECT = PresentationPackage.WIDGET___LINFERENCE_OBJECT;
 
 	/**
 	 * The operation id for the '<em>Create Containment EList</em>' operation.
@@ -875,7 +839,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.CONTROL___CREATE_CONTAINMENT_ELIST__ECLASS;
+	int ABSTRACT_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
 
 	/**
 	 * The operation id for the '<em>LContents</em>' operation.
@@ -884,7 +848,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON___LCONTENTS = PresentationPackage.CONTROL___LCONTENTS;
+	int ABSTRACT_BUTTON___LCONTENTS = PresentationPackage.WIDGET___LCONTENTS;
 
 	/**
 	 * The operation id for the '<em>LParent</em>' operation.
@@ -893,16 +857,16 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON___LPARENT = PresentationPackage.CONTROL___LPARENT;
+	int ABSTRACT_BUTTON___LPARENT = PresentationPackage.WIDGET___LPARENT;
 
 	/**
-	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * The operation id for the '<em>LAll Contents</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON___LALL_UNITS = PresentationPackage.CONTROL___LALL_UNITS;
+	int ABSTRACT_BUTTON___LALL_CONTENTS = PresentationPackage.WIDGET___LALL_CONTENTS;
 
 	/**
 	 * The number of operations of the '<em>Abstract Button</em>' class.
@@ -911,7 +875,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON_OPERATION_COUNT = PresentationPackage.CONTROL_OPERATION_COUNT + 0;
+	int ABSTRACT_BUTTON_OPERATION_COUNT = PresentationPackage.WIDGET_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.ButtonImpl <em>Button</em>}' class.
@@ -931,6 +895,24 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int BUTTON__CONTENT_OBJECTS = ABSTRACT_BUTTON__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON__VERTICAL_RELATIVE = ABSTRACT_BUTTON__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON__HORIZONTAL_RELATIVE = ABSTRACT_BUTTON__HORIZONTAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -958,24 +940,6 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int BUTTON__HEIGHT = ABSTRACT_BUTTON__HEIGHT;
-
-	/**
-	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUTTON__VERTICAL_RELATIVE = ABSTRACT_BUTTON__VERTICAL_RELATIVE;
-
-	/**
-	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUTTON__HORIZONTAL_RELATIVE = ABSTRACT_BUTTON__HORIZONTAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -1059,13 +1023,13 @@ public interface UiPackage extends EPackage
 	int BUTTON___LPARENT = ABSTRACT_BUTTON___LPARENT;
 
 	/**
-	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * The operation id for the '<em>LAll Contents</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BUTTON___LALL_UNITS = ABSTRACT_BUTTON___LALL_UNITS;
+	int BUTTON___LALL_CONTENTS = ABSTRACT_BUTTON___LALL_CONTENTS;
 
 	/**
 	 * The operation id for the '<em>LActions</em>' operation.
@@ -1114,6 +1078,24 @@ public interface UiPackage extends EPackage
 	int ABSTRACT_BOOLEAN_BUTTON__CONTENT_OBJECTS = ABSTRACT_BUTTON__CONTENT_OBJECTS;
 
 	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON__VERTICAL_RELATIVE = ABSTRACT_BUTTON__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON__HORIZONTAL_RELATIVE = ABSTRACT_BUTTON__HORIZONTAL_RELATIVE;
+
+	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1139,24 +1121,6 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int ABSTRACT_BOOLEAN_BUTTON__HEIGHT = ABSTRACT_BUTTON__HEIGHT;
-
-	/**
-	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BOOLEAN_BUTTON__VERTICAL_RELATIVE = ABSTRACT_BUTTON__VERTICAL_RELATIVE;
-
-	/**
-	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BOOLEAN_BUTTON__HORIZONTAL_RELATIVE = ABSTRACT_BUTTON__HORIZONTAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -1231,13 +1195,13 @@ public interface UiPackage extends EPackage
 	int ABSTRACT_BOOLEAN_BUTTON___LPARENT = ABSTRACT_BUTTON___LPARENT;
 
 	/**
-	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * The operation id for the '<em>LAll Contents</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BOOLEAN_BUTTON___LALL_UNITS = ABSTRACT_BUTTON___LALL_UNITS;
+	int ABSTRACT_BOOLEAN_BUTTON___LALL_CONTENTS = ABSTRACT_BUTTON___LALL_CONTENTS;
 
 	/**
 	 * The number of operations of the '<em>Abstract Boolean Button</em>' class.
@@ -1268,6 +1232,24 @@ public interface UiPackage extends EPackage
 	int BOOLEAN_BUTTON__CONTENT_OBJECTS = ABSTRACT_BOOLEAN_BUTTON__CONTENT_OBJECTS;
 
 	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON__VERTICAL_RELATIVE = ABSTRACT_BOOLEAN_BUTTON__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON__HORIZONTAL_RELATIVE = ABSTRACT_BOOLEAN_BUTTON__HORIZONTAL_RELATIVE;
+
+	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1293,24 +1275,6 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int BOOLEAN_BUTTON__HEIGHT = ABSTRACT_BOOLEAN_BUTTON__HEIGHT;
-
-	/**
-	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_BUTTON__VERTICAL_RELATIVE = ABSTRACT_BOOLEAN_BUTTON__VERTICAL_RELATIVE;
-
-	/**
-	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_BUTTON__HORIZONTAL_RELATIVE = ABSTRACT_BOOLEAN_BUTTON__HORIZONTAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -1394,13 +1358,13 @@ public interface UiPackage extends EPackage
 	int BOOLEAN_BUTTON___LPARENT = ABSTRACT_BOOLEAN_BUTTON___LPARENT;
 
 	/**
-	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * The operation id for the '<em>LAll Contents</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_BUTTON___LALL_UNITS = ABSTRACT_BOOLEAN_BUTTON___LALL_UNITS;
+	int BOOLEAN_BUTTON___LALL_CONTENTS = ABSTRACT_BOOLEAN_BUTTON___LALL_CONTENTS;
 
 	/**
 	 * The number of operations of the '<em>Boolean Button</em>' class.
@@ -1431,6 +1395,24 @@ public interface UiPackage extends EPackage
 	int BOOLEAN_ACTION_BUTTON__CONTENT_OBJECTS = ABSTRACT_BOOLEAN_BUTTON__CONTENT_OBJECTS;
 
 	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON__VERTICAL_RELATIVE = ABSTRACT_BOOLEAN_BUTTON__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON__HORIZONTAL_RELATIVE = ABSTRACT_BOOLEAN_BUTTON__HORIZONTAL_RELATIVE;
+
+	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1456,24 +1438,6 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int BOOLEAN_ACTION_BUTTON__HEIGHT = ABSTRACT_BOOLEAN_BUTTON__HEIGHT;
-
-	/**
-	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_ACTION_BUTTON__VERTICAL_RELATIVE = ABSTRACT_BOOLEAN_BUTTON__VERTICAL_RELATIVE;
-
-	/**
-	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_ACTION_BUTTON__HORIZONTAL_RELATIVE = ABSTRACT_BOOLEAN_BUTTON__HORIZONTAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -1566,13 +1530,13 @@ public interface UiPackage extends EPackage
 	int BOOLEAN_ACTION_BUTTON___LPARENT = ABSTRACT_BOOLEAN_BUTTON___LPARENT;
 
 	/**
-	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * The operation id for the '<em>LAll Contents</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_ACTION_BUTTON___LALL_UNITS = ABSTRACT_BOOLEAN_BUTTON___LALL_UNITS;
+	int BOOLEAN_ACTION_BUTTON___LALL_CONTENTS = ABSTRACT_BOOLEAN_BUTTON___LALL_CONTENTS;
 
 	/**
 	 * The number of operations of the '<em>Boolean Action Button</em>' class.
@@ -1625,6 +1589,17 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	EClass getDynamicRowLayout();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.DynamicRowLayout#getHeight <em>Height</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Height</em>'.
+	 * @see org.sheepy.common.model.ui.DynamicRowLayout#getHeight()
+	 * @see #getDynamicRowLayout()
+	 * @generated
+	 */
+	EAttribute getDynamicRowLayout_Height();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.DynamicRowLayout#getColumnCount <em>Column Count</em>}'.
@@ -1917,6 +1892,14 @@ public interface UiPackage extends EPackage
 		 * @generated
 		 */
 		EClass DYNAMIC_ROW_LAYOUT = eINSTANCE.getDynamicRowLayout();
+
+		/**
+		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DYNAMIC_ROW_LAYOUT__HEIGHT = eINSTANCE.getDynamicRowLayout_Height();
 
 		/**
 		 * The meta object literal for the '<em><b>Column Count</b></em>' attribute feature.

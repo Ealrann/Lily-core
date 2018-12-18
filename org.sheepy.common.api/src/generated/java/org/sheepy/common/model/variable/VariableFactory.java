@@ -50,42 +50,6 @@ public interface VariableFactory extends EFactory
 	VarChangeActionPkg createVarChangeActionPkg();
 
 	/**
-	 * Returns a new object of class '<em>Increment Action</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Increment Action</em>'.
-	 * @generated
-	 */
-	IncrementAction createIncrementAction();
-
-	/**
-	 * Returns a new object of class '<em>Set String</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Set String</em>'.
-	 * @generated
-	 */
-	SetString createSetString();
-
-	/**
-	 * Returns a new object of class '<em>Set Boolean</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Set Boolean</em>'.
-	 * @generated
-	 */
-	SetBoolean createSetBoolean();
-
-	/**
-	 * Returns a new object of class '<em>Set Number</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Set Number</em>'.
-	 * @generated
-	 */
-	SetNumber createSetNumber();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

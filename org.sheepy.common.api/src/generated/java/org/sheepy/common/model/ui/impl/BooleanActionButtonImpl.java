@@ -77,6 +77,7 @@ public class BooleanActionButtonImpl extends AbstractBooleanButtonImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Action getActionWhenTrue()
 	{
 		return actionWhenTrue;
@@ -104,6 +105,7 @@ public class BooleanActionButtonImpl extends AbstractBooleanButtonImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setActionWhenTrue(Action newActionWhenTrue)
 	{
 		if (newActionWhenTrue != actionWhenTrue)
@@ -125,6 +127,7 @@ public class BooleanActionButtonImpl extends AbstractBooleanButtonImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Action getActionWhenFalse()
 	{
 		return actionWhenFalse;
@@ -152,6 +155,7 @@ public class BooleanActionButtonImpl extends AbstractBooleanButtonImpl implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setActionWhenFalse(Action newActionWhenFalse)
 	{
 		if (newActionWhenFalse != actionWhenFalse)

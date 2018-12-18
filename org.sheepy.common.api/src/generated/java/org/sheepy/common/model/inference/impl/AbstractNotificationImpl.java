@@ -48,6 +48,7 @@ public abstract class AbstractNotificationImpl extends MinimalEObjectImpl.Contai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean match(final AbstractNotification compareTo)
 	{
 		return this.eClass().equals(compareTo.eClass());

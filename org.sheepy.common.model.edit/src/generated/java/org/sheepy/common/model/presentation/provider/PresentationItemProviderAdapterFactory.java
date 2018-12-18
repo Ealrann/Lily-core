@@ -13,7 +13,9 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.edit.command.CommandParameter;
+
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.eclipse.emf.edit.provider.ChangeNotifier;
@@ -32,7 +34,9 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 import org.sheepy.common.model.application.Application;
 import org.sheepy.common.model.application.ApplicationPackage;
+
 import org.sheepy.common.model.application.util.ApplicationSwitch;
+
 import org.sheepy.common.model.presentation.PresentationFactory;
 import org.sheepy.common.model.presentation.PresentationPackage;
 
@@ -177,6 +181,7 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory()
 	{
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
@@ -188,6 +193,7 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory)
 	{
 		this.parentAdapterFactory = parentAdapterFactory;
@@ -272,6 +278,7 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener)
 	{
 		changeNotifier.addListener(notifyChangedListener);
@@ -283,6 +290,7 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener)
 	{
 		changeNotifier.removeListener(notifyChangedListener);
@@ -294,6 +302,7 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void fireNotifyChanged(Notification notification)
 	{
 		changeNotifier.fireNotifyChanged(notification);
@@ -310,6 +319,7 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void dispose()
 	{
 		if (tranparentUIViewItemProvider != null) tranparentUIViewItemProvider.dispose();

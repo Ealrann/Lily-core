@@ -2,7 +2,7 @@
  */
 package org.sheepy.common.model.ui;
 
-import org.sheepy.common.model.presentation.Control;
+import org.sheepy.common.model.presentation.Widget;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +21,7 @@ import org.sheepy.common.model.presentation.Control;
  * @model abstract="true"
  * @generated
  */
-public interface AbstractLabel extends Control
+public interface AbstractLabel extends Widget
 {
 	/**
 	 * Returns the value of the '<em><b>Text</b></em>' attribute.

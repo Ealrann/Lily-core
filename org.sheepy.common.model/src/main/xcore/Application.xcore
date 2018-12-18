@@ -1,8 +1,7 @@
 @GenModel(modelDirectory="/org.sheepy.common.model/src/generated/java")
 @GenModel(editDirectory="/org.sheepy.common.model.edit/src/generated/java")
-@GenModel(publicConstructors="true")
+@GenModel(publicConstructors="true", complianceLevel="11.0", resource="XMI")
 @GenModel(extensibleProviderFactory="true", childCreationExtenders="true")
-
 package org.sheepy.common.model.application
 
 import org.sheepy.common.model.types.SVector2i
@@ -12,14 +11,13 @@ class Application extends LObject
 {
 	resolving contains IView[] views
 	resolving contains IEngine[] engines
-	
+	boolean run = "true"
 	boolean fullscreen = "false"
 	boolean resizeable = "false"
 	boolean debug = "false"
 	String title = "Vulkan Application"
 	SVector2i size = "400,400"
 	refers IView currentView
-	
 	int cadenceInHz = "60"
 }
 

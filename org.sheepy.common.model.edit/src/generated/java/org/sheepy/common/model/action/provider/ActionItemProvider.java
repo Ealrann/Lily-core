@@ -22,9 +22,11 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
 import org.sheepy.common.model.action.Action;
 import org.sheepy.common.model.action.ActionPackage;
-import org.sheepy.common.model.root.RootPackage;
+
+import org.sheepy.common.model.types.TypesPackage;
 
 /**
  * This is the item provider adapter for a {@link org.sheepy.common.model.action.Action} object.
@@ -32,7 +34,14 @@ import org.sheepy.common.model.root.RootPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ActionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
+public class ActionItemProvider 
+	extends ItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -77,7 +86,7 @@ public class ActionItemProvider extends ItemProviderAdapter implements IEditingD
 				 getResourceLocator(),
 				 getString("_UI_LNamedElement_name_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_LNamedElement_name_feature", "_UI_LNamedElement_type"),
-				 RootPackage.Literals.LNAMED_ELEMENT__NAME,
+				 TypesPackage.Literals.LNAMED_ELEMENT__NAME,
 				 true,
 				 false,
 				 false,

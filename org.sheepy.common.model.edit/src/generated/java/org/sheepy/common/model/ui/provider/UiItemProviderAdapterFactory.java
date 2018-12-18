@@ -34,6 +34,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
 import org.sheepy.common.model.presentation.Panel;
 import org.sheepy.common.model.presentation.PresentationPackage;
+
 import org.sheepy.common.model.presentation.util.PresentationSwitch;
 
 import org.sheepy.common.model.ui.UiFactory;
@@ -280,6 +281,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory()
 	{
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
@@ -291,6 +293,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory)
 	{
 		this.parentAdapterFactory = parentAdapterFactory;
@@ -375,6 +378,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener)
 	{
 		changeNotifier.addListener(notifyChangedListener);
@@ -386,6 +390,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener)
 	{
 		changeNotifier.removeListener(notifyChangedListener);
@@ -397,6 +402,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void fireNotifyChanged(Notification notification)
 	{
 		changeNotifier.fireNotifyChanged(notification);
@@ -413,6 +419,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void dispose()
 	{
 		if (dynamicRowLayoutItemProvider != null) dynamicRowLayoutItemProvider.dispose();
@@ -512,6 +519,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 
 				return null;
 			}
+ 
 			/**
 			 * <!-- begin-user-doc -->
 			 * <!-- end-user-doc -->

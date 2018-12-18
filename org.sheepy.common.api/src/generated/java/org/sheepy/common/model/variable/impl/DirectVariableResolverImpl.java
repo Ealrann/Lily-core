@@ -64,6 +64,7 @@ public class DirectVariableResolverImpl extends AbstractVariableResolverImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject getTarget()
 	{
 		if (target != null && target.eIsProxy())
@@ -94,6 +95,7 @@ public class DirectVariableResolverImpl extends AbstractVariableResolverImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTarget(EObject newTarget)
 	{
 		EObject oldTarget = target;

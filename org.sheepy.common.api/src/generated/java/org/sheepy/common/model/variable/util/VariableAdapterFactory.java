@@ -10,12 +10,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import org.sheepy.common.model.action.Action;
-import org.sheepy.common.model.action.ParameteredAction;
-
-import org.sheepy.common.model.root.LNamedElement;
-
-import org.sheepy.common.model.types.Parameter;
-
+import org.sheepy.common.model.types.LNamedElement;
 import org.sheepy.common.model.variable.*;
 
 /**
@@ -107,26 +102,6 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 				return createVarChangeActionPkgAdapter();
 			}
 			@Override
-			public Adapter caseIncrementAction(IncrementAction object)
-			{
-				return createIncrementActionAdapter();
-			}
-			@Override
-			public Adapter caseSetString(SetString object)
-			{
-				return createSetStringAdapter();
-			}
-			@Override
-			public Adapter caseSetBoolean(SetBoolean object)
-			{
-				return createSetBooleanAdapter();
-			}
-			@Override
-			public Adapter caseSetNumber(SetNumber object)
-			{
-				return createSetNumberAdapter();
-			}
-			@Override
 			public Adapter caseLNamedElement(LNamedElement object)
 			{
 				return createLNamedElementAdapter();
@@ -135,11 +110,6 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 			public Adapter caseAction(Action object)
 			{
 				return createActionAdapter();
-			}
-			@Override
-			public <T extends Parameter> Adapter caseParameteredAction(ParameteredAction<T> object)
-			{
-				return createParameteredActionAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object)
@@ -239,73 +209,13 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.IncrementAction <em>Increment Action</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.types.LNamedElement <em>LNamed Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.variable.IncrementAction
-	 * @generated
-	 */
-	public Adapter createIncrementActionAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.SetString <em>Set String</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.sheepy.common.model.variable.SetString
-	 * @generated
-	 */
-	public Adapter createSetStringAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.SetBoolean <em>Set Boolean</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.sheepy.common.model.variable.SetBoolean
-	 * @generated
-	 */
-	public Adapter createSetBooleanAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.SetNumber <em>Set Number</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.sheepy.common.model.variable.SetNumber
-	 * @generated
-	 */
-	public Adapter createSetNumberAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.root.LNamedElement <em>LNamed Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.sheepy.common.model.root.LNamedElement
+	 * @see org.sheepy.common.model.types.LNamedElement
 	 * @generated
 	 */
 	public Adapter createLNamedElementAdapter()
@@ -324,21 +234,6 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createActionAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.action.ParameteredAction <em>Parametered Action</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.sheepy.common.model.action.ParameteredAction
-	 * @generated
-	 */
-	public Adapter createParameteredActionAdapter()
 	{
 		return null;
 	}

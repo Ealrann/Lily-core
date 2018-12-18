@@ -5,6 +5,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.sheepy.common.api.adapter.impl.AbstractStatefullAdapter;
 import org.sheepy.common.api.application.IApplicationAdapter;
@@ -17,6 +18,28 @@ public class ApplicationAdapter extends AbstractStatefullAdapter implements IApp
 {
 	private Cadencer cadencer = null;
 	private ExecutorService mainExecutor = null;
+
+	private boolean launched = false;
+
+	@Override
+	public void notifyChanged(Notification notification)
+	{
+		ApplicationAdapter that = this;
+		if (notification.getFeature() == ApplicationPackage.Literals.APPLICATION__RUN)
+		{
+			if (launched == true && notification.getNewBooleanValue() == false)
+			{
+				new Thread()
+				{
+					@Override
+					public void run()
+					{
+						that.stop((Application) notification.getNotifier());
+					}
+				}.start();
+			}
+		}
+	}
 
 	@Override
 	public void launch(Application application)
@@ -42,6 +65,8 @@ public class ApplicationAdapter extends AbstractStatefullAdapter implements IApp
 			}
 		});
 
+		launched = true;
+
 		while (loaded.get())
 		{
 			try
@@ -58,6 +83,7 @@ public class ApplicationAdapter extends AbstractStatefullAdapter implements IApp
 	public void stop(Application application)
 	{
 		cadencer.stop();
+
 		if (mainExecutor != null)
 		{
 			try
@@ -67,9 +93,16 @@ public class ApplicationAdapter extends AbstractStatefullAdapter implements IApp
 			} catch (InterruptedException e)
 			{
 				e.printStackTrace();
-				mainExecutor.shutdownNow();
+			} finally
+			{
+				if (mainExecutor.isShutdown() == false)
+				{
+					System.err.println("Cadencer didn't stop");
+					mainExecutor.shutdownNow();
+				}
 			}
 		}
+
 		cadencer = null;
 	}
 

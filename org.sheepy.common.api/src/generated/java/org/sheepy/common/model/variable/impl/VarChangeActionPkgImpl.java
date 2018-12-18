@@ -71,6 +71,7 @@ public class VarChangeActionPkgImpl extends MinimalEObjectImpl.Container impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<VarChangeAction> getActions()
 	{
 		if (actions == null)

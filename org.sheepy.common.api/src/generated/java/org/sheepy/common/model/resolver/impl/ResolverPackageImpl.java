@@ -129,6 +129,7 @@ public class ResolverPackageImpl extends EPackageImpl implements ResolverPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getILObjectResolver()
 	{
 		return ilObjectResolverEClass;
@@ -139,6 +140,7 @@ public class ResolverPackageImpl extends EPackageImpl implements ResolverPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getILObjectResolver__CollectUnits__LObject_Collection()
 	{
 		return ilObjectResolverEClass.getEOperations().get(0);
@@ -149,6 +151,7 @@ public class ResolverPackageImpl extends EPackageImpl implements ResolverPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getEReferenceResolver()
 	{
 		return eReferenceResolverEClass;
@@ -159,6 +162,7 @@ public class ResolverPackageImpl extends EPackageImpl implements ResolverPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEReferenceResolver_ReferenceName()
 	{
 		return (EAttribute)eReferenceResolverEClass.getEStructuralFeatures().get(0);
@@ -169,6 +173,7 @@ public class ResolverPackageImpl extends EPackageImpl implements ResolverPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEReferenceResolver_ClassName()
 	{
 		return (EAttribute)eReferenceResolverEClass.getEStructuralFeatures().get(1);
@@ -179,6 +184,7 @@ public class ResolverPackageImpl extends EPackageImpl implements ResolverPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getEReferenceResolver_InternalReference()
 	{
 		return (EReference)eReferenceResolverEClass.getEStructuralFeatures().get(2);
@@ -189,6 +195,7 @@ public class ResolverPackageImpl extends EPackageImpl implements ResolverPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getEReferenceResolver__CollectUnits__LObject_Collection()
 	{
 		return eReferenceResolverEClass.getEOperations().get(0);
@@ -199,6 +206,7 @@ public class ResolverPackageImpl extends EPackageImpl implements ResolverPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getChainResolver()
 	{
 		return chainResolverEClass;
@@ -209,6 +217,7 @@ public class ResolverPackageImpl extends EPackageImpl implements ResolverPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getChainResolver_Resolvers()
 	{
 		return (EReference)chainResolverEClass.getEStructuralFeatures().get(0);
@@ -219,6 +228,7 @@ public class ResolverPackageImpl extends EPackageImpl implements ResolverPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getChainResolver__CollectUnits__LObject_Collection()
 	{
 		return chainResolverEClass.getEOperations().get(0);
@@ -229,6 +239,7 @@ public class ResolverPackageImpl extends EPackageImpl implements ResolverPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResolverFactory getResolverFactory()
 	{
 		return (ResolverFactory)getEFactoryInstance();

@@ -2,7 +2,8 @@
  */
 package org.sheepy.common.model.ui;
 
-import org.sheepy.common.model.presentation.Control;
+import org.sheepy.common.model.presentation.Widget;
+
 import org.sheepy.common.model.variable.AbstractVariableResolver;
 
 /**
@@ -21,7 +22,7 @@ import org.sheepy.common.model.variable.AbstractVariableResolver;
  * @model
  * @generated
  */
-public interface TextField extends Control
+public interface TextField extends Widget
 {
 	/**
 	 * Returns the value of the '<em><b>Variable Resolver</b></em>' containment reference.

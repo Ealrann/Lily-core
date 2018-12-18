@@ -15,8 +15,9 @@ import org.sheepy.common.model.inference.IInferenceObject;
 
 import org.sheepy.common.model.presentation.*;
 
-import org.sheepy.common.model.root.LNamedElement;
 import org.sheepy.common.model.root.LObject;
+
+import org.sheepy.common.model.types.LNamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -82,9 +83,14 @@ public class PresentationAdapterFactory extends AdapterFactoryImpl
 		new PresentationSwitch<Adapter>()
 		{
 			@Override
-			public Adapter caseIPresentationElement(IPresentationElement object)
+			public Adapter caseISizedElement(ISizedElement object)
 			{
-				return createIPresentationElementAdapter();
+				return createISizedElementAdapter();
+			}
+			@Override
+			public Adapter caseIRelativeElement(IRelativeElement object)
+			{
+				return createIRelativeElementAdapter();
 			}
 			@Override
 			public Adapter caseIUIView(IUIView object)
@@ -107,9 +113,9 @@ public class PresentationAdapterFactory extends AdapterFactoryImpl
 				return createISizedViewAdapter();
 			}
 			@Override
-			public Adapter caseUIElement(UIElement object)
+			public Adapter caseIUIElement(IUIElement object)
 			{
-				return createUIElementAdapter();
+				return createIUIElementAdapter();
 			}
 			@Override
 			public Adapter caseUIPage(UIPage object)
@@ -122,9 +128,14 @@ public class PresentationAdapterFactory extends AdapterFactoryImpl
 				return createPanelAdapter();
 			}
 			@Override
-			public Adapter caseControl(Control object)
+			public Adapter caseIControl(IControl object)
 			{
-				return createControlAdapter();
+				return createIControlAdapter();
+			}
+			@Override
+			public Adapter caseWidget(Widget object)
+			{
+				return createWidgetAdapter();
 			}
 			@Override
 			public Adapter caseIInferenceObject(IInferenceObject object)
@@ -169,16 +180,31 @@ public class PresentationAdapterFactory extends AdapterFactoryImpl
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.IPresentationElement <em>IPresentation Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.ISizedElement <em>ISized Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.presentation.IPresentationElement
+	 * @see org.sheepy.common.model.presentation.ISizedElement
 	 * @generated
 	 */
-	public Adapter createIPresentationElementAdapter()
+	public Adapter createISizedElementAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.IRelativeElement <em>IRelative Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.common.model.presentation.IRelativeElement
+	 * @generated
+	 */
+	public Adapter createIRelativeElementAdapter()
 	{
 		return null;
 	}
@@ -244,16 +270,16 @@ public class PresentationAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.UIElement <em>UI Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.IUIElement <em>IUI Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.presentation.UIElement
+	 * @see org.sheepy.common.model.presentation.IUIElement
 	 * @generated
 	 */
-	public Adapter createUIElementAdapter()
+	public Adapter createIUIElementAdapter()
 	{
 		return null;
 	}
@@ -289,16 +315,31 @@ public class PresentationAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.Control <em>Control</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.IControl <em>IControl</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.presentation.Control
+	 * @see org.sheepy.common.model.presentation.IControl
 	 * @generated
 	 */
-	public Adapter createControlAdapter()
+	public Adapter createIControlAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.Widget <em>Widget</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.common.model.presentation.Widget
+	 * @generated
+	 */
+	public Adapter createWidgetAdapter()
 	{
 		return null;
 	}
@@ -349,13 +390,13 @@ public class PresentationAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.root.LNamedElement <em>LNamed Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.types.LNamedElement <em>LNamed Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.root.LNamedElement
+	 * @see org.sheepy.common.model.types.LNamedElement
 	 * @generated
 	 */
 	public Adapter createLNamedElementAdapter()

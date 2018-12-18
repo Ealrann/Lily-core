@@ -70,10 +70,6 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 			case VariablePackage.DIRECT_VARIABLE_RESOLVER: return createDirectVariableResolver();
 			case VariablePackage.BOOLEAN_CHANGE_ACTION: return createBooleanChangeAction();
 			case VariablePackage.VAR_CHANGE_ACTION_PKG: return createVarChangeActionPkg();
-			case VariablePackage.INCREMENT_ACTION: return createIncrementAction();
-			case VariablePackage.SET_STRING: return createSetString();
-			case VariablePackage.SET_BOOLEAN: return createSetBoolean();
-			case VariablePackage.SET_NUMBER: return createSetNumber();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -122,6 +118,7 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DirectVariableResolver createDirectVariableResolver()
 	{
 		DirectVariableResolverImpl directVariableResolver = new DirectVariableResolverImpl();
@@ -133,6 +130,7 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BooleanChangeAction createBooleanChangeAction()
 	{
 		BooleanChangeActionImpl booleanChangeAction = new BooleanChangeActionImpl();
@@ -144,54 +142,11 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VarChangeActionPkg createVarChangeActionPkg()
 	{
 		VarChangeActionPkgImpl varChangeActionPkg = new VarChangeActionPkgImpl();
 		return varChangeActionPkg;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public IncrementAction createIncrementAction()
-	{
-		IncrementActionImpl incrementAction = new IncrementActionImpl();
-		return incrementAction;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SetString createSetString()
-	{
-		SetStringImpl setString = new SetStringImpl();
-		return setString;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SetBoolean createSetBoolean()
-	{
-		SetBooleanImpl setBoolean = new SetBooleanImpl();
-		return setBoolean;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SetNumber createSetNumber()
-	{
-		SetNumberImpl setNumber = new SetNumberImpl();
-		return setNumber;
 	}
 
 	/**
@@ -239,6 +194,7 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VariablePackage getVariablePackage()
 	{
 		return (VariablePackage)getEPackage();

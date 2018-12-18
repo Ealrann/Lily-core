@@ -49,6 +49,7 @@ public abstract class SensorImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IInferenceObject lInferenceObject()
 	{
 		return this;

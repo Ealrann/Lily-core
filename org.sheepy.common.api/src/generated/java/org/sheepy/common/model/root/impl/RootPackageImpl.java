@@ -5,7 +5,6 @@ package org.sheepy.common.model.root.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -18,18 +17,16 @@ import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.sheepy.common.model.action.ActionPackage;
+import org.sheepy.common.api.util.LTreeIterator;
 
-import org.sheepy.common.model.action.impl.ActionPackageImpl;
+import org.sheepy.common.model.action.ActionPackage;
 
 import org.sheepy.common.model.inference.InferencePackage;
 
-import org.sheepy.common.model.inference.impl.InferencePackageImpl;
-
-import org.sheepy.common.model.root.LNamedElement;
 import org.sheepy.common.model.root.LObject;
 import org.sheepy.common.model.root.RootFactory;
 import org.sheepy.common.model.root.RootPackage;
+import org.sheepy.common.model.root.XAction;
 
 import org.sheepy.common.model.types.TypesPackage;
 
@@ -53,7 +50,7 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass lNamedElementEClass = null;
+	private EClass xActionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -126,24 +123,16 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 		isInited = true;
 
 		// Initialize simple dependencies
+		InferencePackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
+		ActionPackage.eINSTANCE.eClass();
 		TypesPackage.eINSTANCE.eClass();
-
-		// Obtain or create and register interdependencies
-		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
-		InferencePackageImpl theInferencePackage = (InferencePackageImpl)(registeredPackage instanceof InferencePackageImpl ? registeredPackage : InferencePackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
-		ActionPackageImpl theActionPackage = (ActionPackageImpl)(registeredPackage instanceof ActionPackageImpl ? registeredPackage : ActionPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theRootPackage.createPackageContents();
-		theInferencePackage.createPackageContents();
-		theActionPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theRootPackage.initializePackageContents();
-		theInferencePackage.initializePackageContents();
-		theActionPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theRootPackage.freeze();
@@ -158,6 +147,7 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLObject()
 	{
 		return lObjectEClass;
@@ -168,6 +158,7 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getLObject_ContentObjects()
 	{
 		return (EAttribute)lObjectEClass.getEStructuralFeatures().get(0);
@@ -178,6 +169,7 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getLObject__CreateContainmentEList__EClass()
 	{
 		return lObjectEClass.getEOperations().get(0);
@@ -188,6 +180,7 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getLObject__LContents()
 	{
 		return lObjectEClass.getEOperations().get(1);
@@ -198,6 +191,7 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getLObject__LParent()
 	{
 		return lObjectEClass.getEOperations().get(2);
@@ -208,7 +202,8 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EOperation getLObject__LAllUnits()
+	@Override
+	public EOperation getLObject__LAllContents()
 	{
 		return lObjectEClass.getEOperations().get(3);
 	}
@@ -218,9 +213,10 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getLNamedElement()
+	@Override
+	public EClass getXAction()
 	{
-		return lNamedElementEClass;
+		return xActionEClass;
 	}
 
 	/**
@@ -228,9 +224,10 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getLNamedElement_Name()
+	@Override
+	public EOperation getXAction__Execute__LObject()
 	{
-		return (EAttribute)lNamedElementEClass.getEStructuralFeatures().get(0);
+		return xActionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -238,6 +235,7 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EDataType getLContentList()
 	{
 		return lContentListEDataType;
@@ -248,6 +246,7 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EDataType getLTreeIterator()
 	{
 		return lTreeIteratorEDataType;
@@ -258,6 +257,7 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EDataType getLCollection()
 	{
 		return lCollectionEDataType;
@@ -268,6 +268,7 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RootFactory getRootFactory()
 	{
 		return (RootFactory)getEFactoryInstance();
@@ -298,10 +299,10 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 		createEOperation(lObjectEClass, LOBJECT___CREATE_CONTAINMENT_ELIST__ECLASS);
 		createEOperation(lObjectEClass, LOBJECT___LCONTENTS);
 		createEOperation(lObjectEClass, LOBJECT___LPARENT);
-		createEOperation(lObjectEClass, LOBJECT___LALL_UNITS);
+		createEOperation(lObjectEClass, LOBJECT___LALL_CONTENTS);
 
-		lNamedElementEClass = createEClass(LNAMED_ELEMENT);
-		createEAttribute(lNamedElementEClass, LNAMED_ELEMENT__NAME);
+		xActionEClass = createEClass(XACTION);
+		createEOperation(xActionEClass, XACTION___EXECUTE__LOBJECT);
 
 		// Create data types
 		lContentListEDataType = createEDataType(LCONTENT_LIST);
@@ -336,6 +337,7 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 		// Obtain other dependent packages
 		InferencePackage theInferencePackage = (InferencePackage)EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+		ActionPackage theActionPackage = (ActionPackage)EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -343,9 +345,10 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 
 		// Add supertypes to classes
 		lObjectEClass.getESuperTypes().add(theInferencePackage.getIInferenceObject());
+		xActionEClass.getESuperTypes().add(theActionPackage.getAction());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(lObjectEClass, LObject.class, "LObject", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(lObjectEClass, LObject.class, "LObject", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLObject_ContentObjects(), this.getLContentList(), "contentObjects", null, 0, 1, LObject.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = initEOperation(getLObject__CreateContainmentEList__EClass(), null, "createContainmentEList", 0, -1, !IS_UNIQUE, IS_ORDERED);
@@ -360,14 +363,16 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 
 		initEOperation(getLObject__LParent(), this.getLObject(), "lParent", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getLObject__LAllUnits(), this.getLTreeIterator(), "lAllUnits", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getLObject__LAllContents(), this.getLTreeIterator(), "lAllContents", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(lNamedElementEClass, LNamedElement.class, "LNamedElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLNamedElement_Name(), theEcorePackage.getEString(), "name", null, 0, 1, LNamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(xActionEClass, XAction.class, "XAction", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		op = initEOperation(getXAction__Execute__LObject(), null, "execute", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getLObject(), "object", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(lContentListEDataType, EList.class, "LContentList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "org.eclipse.emf.common.util.EList<org.sheepy.common.model.root.LObject>");
-		initEDataType(lTreeIteratorEDataType, TreeIterator.class, "LTreeIterator", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "org.eclipse.emf.common.util.TreeIterator<org.sheepy.common.model.root.LObject>");
+		initEDataType(lTreeIteratorEDataType, LTreeIterator.class, "LTreeIterator", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(lCollectionEDataType, Collection.class, "LCollection", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.Collection<org.sheepy.common.model.root.LObject>");
 
 		// Create resource

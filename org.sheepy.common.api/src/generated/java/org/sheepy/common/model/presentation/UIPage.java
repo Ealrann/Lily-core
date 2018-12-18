@@ -3,7 +3,6 @@
 package org.sheepy.common.model.presentation;
 
 import org.eclipse.emf.common.util.EList;
-import org.sheepy.common.model.root.LObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +20,7 @@ import org.sheepy.common.model.root.LObject;
  * @model
  * @generated
  */
-public interface UIPage extends LObject, IPresentationElement
+public interface UIPage extends ISizedElement
 {
 	/**
 	 * Returns the value of the '<em><b>Panels</b></em>' containment reference list.

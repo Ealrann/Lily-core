@@ -3,9 +3,12 @@
 package org.sheepy.common.model.variable.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.sheepy.common.model.variable.AbstractVariableResolver;
 import org.sheepy.common.model.variable.VariablePackage;
 
@@ -70,6 +73,7 @@ public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVariableDefinition()
 	{
 		return variableDefinition;
@@ -80,6 +84,7 @@ public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVariableDefinition(String newVariableDefinition)
 	{
 		String oldVariableDefinition = variableDefinition;

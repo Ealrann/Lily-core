@@ -10,9 +10,6 @@ public interface IMainLoop extends IService
 	
 	void load(Application application);
 	void step(Application application);
-	void dispose(Application application);
-
-	boolean shouldClose();
 
 	static IMainLoop INSTANCE = ServiceLoader.load(IMainLoop.class).findFirst()
 			.orElseGet(() -> null);

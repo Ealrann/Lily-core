@@ -14,12 +14,26 @@
             genModel="src/main/xcore/Types.xcore"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Types -->
+      <parser
+            type="types"
+            class="org.sheepy.common.model.types.util.TypesResourceFactoryImpl"/>
+   </extension>
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated Application -->
       <package
             uri="org.sheepy.common.model.application"
             class="org.sheepy.common.model.application.ApplicationPackage"
             genModel="src/main/xcore/Application.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Application -->
+      <parser
+            type="application"
+            class="org.sheepy.common.model.application.util.ApplicationResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
@@ -30,12 +44,26 @@
             genModel="src/main/xcore/Presentation.xcore"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Presentation -->
+      <parser
+            type="presentation"
+            class="org.sheepy.common.model.presentation.util.PresentationResourceFactoryImpl"/>
+   </extension>
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated Root -->
       <package
             uri="org.sheepy.common.model.root"
             class="org.sheepy.common.model.root.RootPackage"
             genModel="src/main/xcore/Root.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Root -->
+      <parser
+            type="root"
+            class="org.sheepy.common.model.root.util.RootResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
@@ -46,12 +74,26 @@
             genModel="src/main/xcore/UI.xcore"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated UI -->
+      <parser
+            type="ui"
+            class="org.sheepy.common.model.ui.util.UiResourceFactoryImpl"/>
+   </extension>
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated Inference -->
       <package
             uri="org.sheepy.common.model.inference"
             class="org.sheepy.common.model.inference.InferencePackage"
             genModel="src/main/xcore/Inference.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Inference -->
+      <parser
+            type="inference"
+            class="org.sheepy.common.model.inference.util.InferenceResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
@@ -62,6 +104,13 @@
             genModel="src/main/xcore/Variable.xcore"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Variable -->
+      <parser
+            type="variable"
+            class="org.sheepy.common.model.variable.util.VariableResourceFactoryImpl"/>
+   </extension>
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated Action -->
       <package
@@ -70,12 +119,26 @@
             genModel="src/main/xcore/Action.xcore"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Action -->
+      <parser
+            type="action"
+            class="org.sheepy.common.model.action.util.ActionResourceFactoryImpl"/>
+   </extension>
+
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated Resolver -->
       <package
             uri="org.sheepy.common.model.resolver"
             class="org.sheepy.common.model.resolver.ResolverPackage"
             genModel="src/main/xcore/Resolver.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Resolver -->
+      <parser
+            type="resolver"
+            class="org.sheepy.common.model.resolver.util.ResolverResourceFactoryImpl"/>
    </extension>
 
 </plugin>

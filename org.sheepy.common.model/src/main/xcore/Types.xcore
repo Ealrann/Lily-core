@@ -1,12 +1,17 @@
 @GenModel(modelDirectory="/org.sheepy.common.model/src/generated/java")
 @GenModel(editDirectory="/org.sheepy.common.model.edit/src/generated/java")
-@GenModel(publicConstructors="true")
-@GenModel(updateClasspath="false")
+@GenModel(publicConstructors="true", complianceLevel="11.0", resource="XMI")
 
 package org.sheepy.common.model.types
 
 import org.sheepy.common.api.types.SVector2f
 import org.sheepy.common.api.types.SVector2i
+
+
+interface LNamedElement
+{
+	String name
+}
 
 type SVector2f wraps SVector2f
 create

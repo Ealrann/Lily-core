@@ -91,111 +91,12 @@ public class ActionItemProviderAdapterFactory extends ActionAdapterFactory imple
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.action.StringInjector} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected StringInjectorItemProvider stringInjectorItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.action.StringInjector}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createStringInjectorAdapter()
-	{
-		if (stringInjectorItemProvider == null)
-		{
-			stringInjectorItemProvider = new StringInjectorItemProvider(this);
-		}
-
-		return stringInjectorItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.action.NumberInjector} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected NumberInjectorItemProvider numberInjectorItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.action.NumberInjector}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createNumberInjectorAdapter()
-	{
-		if (numberInjectorItemProvider == null)
-		{
-			numberInjectorItemProvider = new NumberInjectorItemProvider(this);
-		}
-
-		return numberInjectorItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.action.ParameteredActionsPkg} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ParameteredActionsPkgItemProvider parameteredActionsPkgItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.action.ParameteredActionsPkg}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createParameteredActionsPkgAdapter()
-	{
-		if (parameteredActionsPkgItemProvider == null)
-		{
-			parameteredActionsPkgItemProvider = new ParameteredActionsPkgItemProvider(this);
-		}
-
-		return parameteredActionsPkgItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.action.ActionsPkg} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected ActionsPkgItemProvider actionsPkgItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.action.ActionsPkg}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createActionsPkgAdapter()
-	{
-		if (actionsPkgItemProvider == null)
-		{
-			actionsPkgItemProvider = new ActionsPkgItemProvider(this);
-		}
-
-		return actionsPkgItemProvider;
-	}
-
-	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory()
 	{
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
@@ -207,6 +108,7 @@ public class ActionItemProviderAdapterFactory extends ActionAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory)
 	{
 		this.parentAdapterFactory = parentAdapterFactory;
@@ -291,6 +193,7 @@ public class ActionItemProviderAdapterFactory extends ActionAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener)
 	{
 		changeNotifier.addListener(notifyChangedListener);
@@ -302,6 +205,7 @@ public class ActionItemProviderAdapterFactory extends ActionAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener)
 	{
 		changeNotifier.removeListener(notifyChangedListener);
@@ -313,6 +217,7 @@ public class ActionItemProviderAdapterFactory extends ActionAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void fireNotifyChanged(Notification notification)
 	{
 		changeNotifier.fireNotifyChanged(notification);
@@ -329,12 +234,9 @@ public class ActionItemProviderAdapterFactory extends ActionAdapterFactory imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void dispose()
 	{
-		if (stringInjectorItemProvider != null) stringInjectorItemProvider.dispose();
-		if (numberInjectorItemProvider != null) numberInjectorItemProvider.dispose();
-		if (parameteredActionsPkgItemProvider != null) parameteredActionsPkgItemProvider.dispose();
-		if (actionsPkgItemProvider != null) actionsPkgItemProvider.dispose();
 	}
 
 }

@@ -128,6 +128,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getApplication()
 	{
 		return applicationEClass;
@@ -138,6 +139,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getApplication_Views()
 	{
 		return (EReference)applicationEClass.getEStructuralFeatures().get(0);
@@ -148,6 +150,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getApplication_Engines()
 	{
 		return (EReference)applicationEClass.getEStructuralFeatures().get(1);
@@ -158,7 +161,8 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getApplication_Fullscreen()
+	@Override
+	public EAttribute getApplication_Run()
 	{
 		return (EAttribute)applicationEClass.getEStructuralFeatures().get(2);
 	}
@@ -168,7 +172,8 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getApplication_Resizeable()
+	@Override
+	public EAttribute getApplication_Fullscreen()
 	{
 		return (EAttribute)applicationEClass.getEStructuralFeatures().get(3);
 	}
@@ -178,7 +183,8 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getApplication_Debug()
+	@Override
+	public EAttribute getApplication_Resizeable()
 	{
 		return (EAttribute)applicationEClass.getEStructuralFeatures().get(4);
 	}
@@ -188,7 +194,8 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getApplication_Title()
+	@Override
+	public EAttribute getApplication_Debug()
 	{
 		return (EAttribute)applicationEClass.getEStructuralFeatures().get(5);
 	}
@@ -198,7 +205,8 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getApplication_Size()
+	@Override
+	public EAttribute getApplication_Title()
 	{
 		return (EAttribute)applicationEClass.getEStructuralFeatures().get(6);
 	}
@@ -208,9 +216,21 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EAttribute getApplication_Size()
+	{
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getApplication_CurrentView()
 	{
-		return (EReference)applicationEClass.getEStructuralFeatures().get(7);
+		return (EReference)applicationEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -218,9 +238,10 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getApplication_CadenceInHz()
 	{
-		return (EAttribute)applicationEClass.getEStructuralFeatures().get(8);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -228,6 +249,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getIEngine()
 	{
 		return iEngineEClass;
@@ -238,6 +260,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getIView()
 	{
 		return iViewEClass;
@@ -248,6 +271,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ApplicationFactory getApplicationFactory()
 	{
 		return (ApplicationFactory)getEFactoryInstance();
@@ -276,6 +300,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		applicationEClass = createEClass(APPLICATION);
 		createEReference(applicationEClass, APPLICATION__VIEWS);
 		createEReference(applicationEClass, APPLICATION__ENGINES);
+		createEAttribute(applicationEClass, APPLICATION__RUN);
 		createEAttribute(applicationEClass, APPLICATION__FULLSCREEN);
 		createEAttribute(applicationEClass, APPLICATION__RESIZEABLE);
 		createEAttribute(applicationEClass, APPLICATION__DEBUG);
@@ -331,6 +356,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEClass(applicationEClass, Application.class, "Application", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getApplication_Views(), this.getIView(), null, "views", null, 0, -1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_Engines(), this.getIEngine(), null, "engines", null, 0, -1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_Run(), theEcorePackage.getEBoolean(), "run", "true", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplication_Fullscreen(), theEcorePackage.getEBoolean(), "fullscreen", "false", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplication_Resizeable(), theEcorePackage.getEBoolean(), "resizeable", "false", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplication_Debug(), theEcorePackage.getEBoolean(), "debug", "false", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

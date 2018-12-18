@@ -18,6 +18,7 @@ import org.sheepy.common.model.application.ApplicationPackage;
 import org.sheepy.common.model.inference.InferencePackage;
 
 import org.sheepy.common.model.presentation.PresentationPackage;
+
 import org.sheepy.common.model.root.RootPackage;
 
 import org.sheepy.common.model.types.TypesPackage;
@@ -34,6 +35,7 @@ import org.sheepy.common.model.ui.TextField;
 import org.sheepy.common.model.ui.UiFactory;
 import org.sheepy.common.model.ui.UiPackage;
 import org.sheepy.common.model.ui.VariableLabel;
+
 import org.sheepy.common.model.variable.VariablePackage;
 
 /**
@@ -192,6 +194,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAbstractLabel()
 	{
 		return abstractLabelEClass;
@@ -202,6 +205,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAbstractLabel_Text()
 	{
 		return (EAttribute)abstractLabelEClass.getEStructuralFeatures().get(0);
@@ -212,6 +216,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAbstractLabel_FontScale()
 	{
 		return (EAttribute)abstractLabelEClass.getEStructuralFeatures().get(1);
@@ -222,6 +227,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDynamicRowLayout()
 	{
 		return dynamicRowLayoutEClass;
@@ -232,7 +238,8 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDynamicRowLayout_ColumnCount()
+	@Override
+	public EAttribute getDynamicRowLayout_Height()
 	{
 		return (EAttribute)dynamicRowLayoutEClass.getEStructuralFeatures().get(0);
 	}
@@ -242,6 +249,18 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EAttribute getDynamicRowLayout_ColumnCount()
+	{
+		return (EAttribute)dynamicRowLayoutEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getVariableLabel()
 	{
 		return variableLabelEClass;
@@ -252,6 +271,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getVariableLabel_VariableResolver()
 	{
 		return (EReference)variableLabelEClass.getEStructuralFeatures().get(0);
@@ -262,6 +282,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLabel()
 	{
 		return labelEClass;
@@ -272,6 +293,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getTextField()
 	{
 		return textFieldEClass;
@@ -282,6 +304,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getTextField_VariableResolver()
 	{
 		return (EReference)textFieldEClass.getEStructuralFeatures().get(0);
@@ -292,6 +315,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAbstractButton()
 	{
 		return abstractButtonEClass;
@@ -302,6 +326,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAbstractButton_Text()
 	{
 		return (EAttribute)abstractButtonEClass.getEStructuralFeatures().get(0);
@@ -312,6 +337,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getButton()
 	{
 		return buttonEClass;
@@ -322,6 +348,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getButton_Shortcut()
 	{
 		return (EAttribute)buttonEClass.getEStructuralFeatures().get(0);
@@ -332,6 +359,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getButton_State()
 	{
 		return (EAttribute)buttonEClass.getEStructuralFeatures().get(1);
@@ -342,6 +370,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getButton_Actions()
 	{
 		return (EReference)buttonEClass.getEStructuralFeatures().get(2);
@@ -352,6 +381,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getButton__LActions()
 	{
 		return buttonEClass.getEOperations().get(0);
@@ -362,6 +392,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getButton__GetExecutor()
 	{
 		return buttonEClass.getEOperations().get(1);
@@ -372,6 +403,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAbstractBooleanButton()
 	{
 		return abstractBooleanButtonEClass;
@@ -382,6 +414,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAbstractBooleanButton_TextWhenTrue()
 	{
 		return (EAttribute)abstractBooleanButtonEClass.getEStructuralFeatures().get(0);
@@ -392,6 +425,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAbstractBooleanButton_TextWhenFalse()
 	{
 		return (EAttribute)abstractBooleanButtonEClass.getEStructuralFeatures().get(1);
@@ -402,6 +436,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getBooleanButton()
 	{
 		return booleanButtonEClass;
@@ -412,6 +447,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getBooleanButton_VariableResolver()
 	{
 		return (EReference)booleanButtonEClass.getEStructuralFeatures().get(0);
@@ -422,6 +458,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getBooleanActionButton()
 	{
 		return booleanActionButtonEClass;
@@ -432,6 +469,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getBooleanActionButton_ActionWhenTrue()
 	{
 		return (EReference)booleanActionButtonEClass.getEStructuralFeatures().get(0);
@@ -442,6 +480,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getBooleanActionButton_ActionWhenFalse()
 	{
 		return (EReference)booleanActionButtonEClass.getEStructuralFeatures().get(1);
@@ -452,6 +491,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public UiFactory getUiFactory()
 	{
 		return (UiFactory)getEFactoryInstance();
@@ -482,6 +522,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		createEAttribute(abstractLabelEClass, ABSTRACT_LABEL__FONT_SCALE);
 
 		dynamicRowLayoutEClass = createEClass(DYNAMIC_ROW_LAYOUT);
+		createEAttribute(dynamicRowLayoutEClass, DYNAMIC_ROW_LAYOUT__HEIGHT);
 		createEAttribute(dynamicRowLayoutEClass, DYNAMIC_ROW_LAYOUT__COLUMN_COUNT);
 
 		variableLabelEClass = createEClass(VARIABLE_LABEL);
@@ -551,12 +592,12 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		abstractLabelEClass.getESuperTypes().add(thePresentationPackage.getControl());
-		dynamicRowLayoutEClass.getESuperTypes().add(thePresentationPackage.getControl());
+		abstractLabelEClass.getESuperTypes().add(thePresentationPackage.getWidget());
+		dynamicRowLayoutEClass.getESuperTypes().add(thePresentationPackage.getIControl());
 		variableLabelEClass.getESuperTypes().add(this.getAbstractLabel());
 		labelEClass.getESuperTypes().add(this.getAbstractLabel());
-		textFieldEClass.getESuperTypes().add(thePresentationPackage.getControl());
-		abstractButtonEClass.getESuperTypes().add(thePresentationPackage.getControl());
+		textFieldEClass.getESuperTypes().add(thePresentationPackage.getWidget());
+		abstractButtonEClass.getESuperTypes().add(thePresentationPackage.getWidget());
 		buttonEClass.getESuperTypes().add(this.getAbstractButton());
 		abstractBooleanButtonEClass.getESuperTypes().add(this.getAbstractButton());
 		booleanButtonEClass.getESuperTypes().add(this.getAbstractBooleanButton());
@@ -568,6 +609,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		initEAttribute(getAbstractLabel_FontScale(), theEcorePackage.getEFloat(), "fontScale", "1", 0, 1, AbstractLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dynamicRowLayoutEClass, DynamicRowLayout.class, "DynamicRowLayout", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDynamicRowLayout_Height(), theEcorePackage.getEInt(), "height", "16", 0, 1, DynamicRowLayout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getDynamicRowLayout_ColumnCount(), theEcorePackage.getEInt(), "columnCount", null, 0, 1, DynamicRowLayout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(variableLabelEClass, VariableLabel.class, "VariableLabel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

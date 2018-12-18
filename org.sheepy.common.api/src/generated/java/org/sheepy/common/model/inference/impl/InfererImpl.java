@@ -74,6 +74,7 @@ public abstract class InfererImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<LRule> getRules()
 	{
 		if (rules == null)
@@ -88,6 +89,7 @@ public abstract class InfererImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IInferenceObject lExecutor()
 	{
 		return this;
@@ -98,6 +100,7 @@ public abstract class InfererImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IInferenceObject lInferenceObject()
 	{
 		return this;

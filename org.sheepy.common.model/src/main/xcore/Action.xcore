@@ -1,85 +1,69 @@
 @GenModel(modelDirectory="/org.sheepy.common.model/src/generated/java")
 @GenModel(editDirectory="/org.sheepy.common.model.edit/src/generated/java")
-@GenModel(publicConstructors="true")
+@GenModel(publicConstructors="true", complianceLevel="11.0", resource="XMI")
 @GenModel(extensibleProviderFactory="true", childCreationExtenders="true")
-
 package org.sheepy.common.model.action
 
-
-// ===================
-// Action
-// ===================
-
-import org.sheepy.common.model.root.LNamedElement
-import org.sheepy.common.model.root.LObject
-import org.eclipse.emf.ecore.EClass
 import java.util.List
-import org.sheepy.common.model.types.Parameter
-import org.sheepy.common.model.types.StringParameter
-import org.sheepy.common.model.types.TypesFactory
-import org.sheepy.common.model.types.FloatParameter
+import org.sheepy.common.model.types.LNamedElement
 
 abstract class Action extends LNamedElement
 {
 }
 
-abstract class XAction extends Action
-{
-	// Must be overrided
-	op void execute(LObject object)
-}
-
-// Wrapped due to the "? extends Action" (does not exists in XCore for now)
 type ActionList wraps List<? extends Action>
 
-interface ParameteredAction<T extends Parameter> extends Action
-{
-}
 
-interface TypeInjectorAction<T extends Parameter> extends Action
-{
-	contains ParameteredAction<T> action
-	
-	// Must be overided
-	op T getInjectedValue()	{
-		throw new UnsupportedOperationException
-	}
-}
-
-class StringInjector extends TypeInjectorAction<StringParameter>
-{
-	String value
-	
-	op StringParameter getInjectedValue()	{
-		val StringParameter res = TypesFactory.eINSTANCE.createStringParameter
-		res.value = value
-		return res
-	}
-}
-
-class NumberInjector extends TypeInjectorAction<FloatParameter>
-{
-	float value
-	
-	op FloatParameter getInjectedValue()	{
-		val FloatParameter res = TypesFactory.eINSTANCE.createFloatParameter
-		res.value = value
-		return res
-	}
-}
-
-/* The parameter is only used on the edit class :
- * we only want ParameteredAction that can run with this parameter
- * (and not actions that need this specific parameter). 
- */
-class ParameteredActionsPkg<T extends Parameter>
-{
-	contains ParameteredAction<?>[] actions
-	
-	op EClass getParameterClassifier()
-}
-
-class ActionsPkg
-{
-	contains Action[] actions
-}
+// wait for bug https://bugs.eclipse.org/bugs/show_bug.cgi?id=542872
+//
+//interface ParameteredAction<T extends Parameter> extends Action
+//{
+//}
+//
+//interface TypeInjectorAction<T extends Parameter> extends Action
+//{
+//	contains ParameteredAction<T> action
+//	
+//	// Must be overided
+//	op T getInjectedValue()	{
+//		throw new UnsupportedOperationException
+//	}
+//}
+//
+//class StringInjector extends TypeInjectorAction<StringParameter>
+//{
+//	String value
+//	
+//	op StringParameter getInjectedValue()	{
+//		val StringParameter res = TypesFactory.eINSTANCE.createStringParameter
+//		res.value = value
+//		return res
+//	}
+//}
+//
+//class NumberInjector extends TypeInjectorAction<FloatParameter>
+//{
+//	float value
+//	
+//	op FloatParameter getInjectedValue()	{
+//		val FloatParameter res = TypesFactory.eINSTANCE.createFloatParameter
+//		res.value = value
+//		return res
+//	}
+//}
+//
+///* The parameter is only used on the edit class :
+// * we only want ParameteredAction that can run with this parameter
+// * (and not actions that need this specific parameter). 
+// */
+//class ParameteredActionsPkg<T extends Parameter>
+//{
+//	contains ParameteredAction<?>[] actions
+//	
+//	op EClass getParameterClassifier()
+//}
+//
+//class ActionsPkg
+//{
+//	contains Action[] actions
+//}

@@ -6,7 +6,6 @@ import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -124,6 +123,7 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getShortcut()
 	{
 		return shortcut;
@@ -134,6 +134,7 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setShortcut(int newShortcut)
 	{
 		int oldShortcut = shortcut;
@@ -147,6 +148,7 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EKeyState getState()
 	{
 		return state;
@@ -157,6 +159,7 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setState(EKeyState newState)
 	{
 		EKeyState oldState = state;
@@ -170,6 +173,7 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Action> getActions()
 	{
 		if (actions == null)
@@ -184,6 +188,7 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public List<? extends Action> lActions()
 	{
 		return this.getActions();
@@ -194,6 +199,7 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public LObject getExecutor()
 	{
 		LObject unit = this;

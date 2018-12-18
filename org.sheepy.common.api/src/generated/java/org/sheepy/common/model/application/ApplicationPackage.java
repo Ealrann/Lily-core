@@ -23,7 +23,7 @@ import org.sheepy.common.model.root.RootPackage;
  * <!-- end-user-doc -->
  * @see org.sheepy.common.model.application.ApplicationFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.common.model/src/generated/java' editDirectory='/org.sheepy.common.model.edit/src/generated/java' publicConstructors='true' extensibleProviderFactory='true' childCreationExtenders='true' basePackage='org.sheepy.common.model'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.common.model/src/generated/java' editDirectory='/org.sheepy.common.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' extensibleProviderFactory='true' childCreationExtenders='true' basePackage='org.sheepy.common.model'"
  * @generated
  */
 public interface ApplicationPackage extends EPackage
@@ -98,13 +98,22 @@ public interface ApplicationPackage extends EPackage
 	int APPLICATION__ENGINES = RootPackage.LOBJECT_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Run</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION__RUN = RootPackage.LOBJECT_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Fullscreen</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__FULLSCREEN = RootPackage.LOBJECT_FEATURE_COUNT + 2;
+	int APPLICATION__FULLSCREEN = RootPackage.LOBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Resizeable</b></em>' attribute.
@@ -113,7 +122,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__RESIZEABLE = RootPackage.LOBJECT_FEATURE_COUNT + 3;
+	int APPLICATION__RESIZEABLE = RootPackage.LOBJECT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Debug</b></em>' attribute.
@@ -122,7 +131,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__DEBUG = RootPackage.LOBJECT_FEATURE_COUNT + 4;
+	int APPLICATION__DEBUG = RootPackage.LOBJECT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -131,7 +140,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__TITLE = RootPackage.LOBJECT_FEATURE_COUNT + 5;
+	int APPLICATION__TITLE = RootPackage.LOBJECT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Size</b></em>' attribute.
@@ -140,7 +149,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__SIZE = RootPackage.LOBJECT_FEATURE_COUNT + 6;
+	int APPLICATION__SIZE = RootPackage.LOBJECT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Current View</b></em>' reference.
@@ -149,7 +158,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__CURRENT_VIEW = RootPackage.LOBJECT_FEATURE_COUNT + 7;
+	int APPLICATION__CURRENT_VIEW = RootPackage.LOBJECT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Cadence In Hz</b></em>' attribute.
@@ -158,7 +167,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__CADENCE_IN_HZ = RootPackage.LOBJECT_FEATURE_COUNT + 8;
+	int APPLICATION__CADENCE_IN_HZ = RootPackage.LOBJECT_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Application</em>' class.
@@ -167,7 +176,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_FEATURE_COUNT = RootPackage.LOBJECT_FEATURE_COUNT + 9;
+	int APPLICATION_FEATURE_COUNT = RootPackage.LOBJECT_FEATURE_COUNT + 10;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -206,13 +215,13 @@ public interface ApplicationPackage extends EPackage
 	int APPLICATION___LPARENT = RootPackage.LOBJECT___LPARENT;
 
 	/**
-	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * The operation id for the '<em>LAll Contents</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION___LALL_UNITS = RootPackage.LOBJECT___LALL_UNITS;
+	int APPLICATION___LALL_CONTENTS = RootPackage.LOBJECT___LALL_CONTENTS;
 
 	/**
 	 * The number of operations of the '<em>Application</em>' class.
@@ -288,13 +297,13 @@ public interface ApplicationPackage extends EPackage
 	int IENGINE___LPARENT = RootPackage.LOBJECT___LPARENT;
 
 	/**
-	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * The operation id for the '<em>LAll Contents</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IENGINE___LALL_UNITS = RootPackage.LOBJECT___LALL_UNITS;
+	int IENGINE___LALL_CONTENTS = RootPackage.LOBJECT___LALL_CONTENTS;
 
 	/**
 	 * The number of operations of the '<em>IEngine</em>' class.
@@ -370,13 +379,13 @@ public interface ApplicationPackage extends EPackage
 	int IVIEW___LPARENT = RootPackage.LOBJECT___LPARENT;
 
 	/**
-	 * The operation id for the '<em>LAll Units</em>' operation.
+	 * The operation id for the '<em>LAll Contents</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IVIEW___LALL_UNITS = RootPackage.LOBJECT___LALL_UNITS;
+	int IVIEW___LALL_CONTENTS = RootPackage.LOBJECT___LALL_CONTENTS;
 
 	/**
 	 * The number of operations of the '<em>IView</em>' class.
@@ -419,6 +428,17 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 */
 	EReference getApplication_Engines();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.application.Application#isRun <em>Run</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Run</em>'.
+	 * @see org.sheepy.common.model.application.Application#isRun()
+	 * @see #getApplication()
+	 * @generated
+	 */
+	EAttribute getApplication_Run();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.application.Application#isFullscreen <em>Fullscreen</em>}'.
@@ -566,6 +586,14 @@ public interface ApplicationPackage extends EPackage
 		 * @generated
 		 */
 		EReference APPLICATION__ENGINES = eINSTANCE.getApplication_Engines();
+
+		/**
+		 * The meta object literal for the '<em><b>Run</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute APPLICATION__RUN = eINSTANCE.getApplication_Run();
 
 		/**
 		 * The meta object literal for the '<em><b>Fullscreen</b></em>' attribute feature.

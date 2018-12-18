@@ -3,7 +3,6 @@
 package org.sheepy.common.model.action.impl;
 
 import java.util.List;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
@@ -14,8 +13,6 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import org.sheepy.common.model.action.*;
-
-import org.sheepy.common.model.types.Parameter;
 
 /**
  * <!-- begin-user-doc -->
@@ -69,10 +66,6 @@ public class ActionFactoryImpl extends EFactoryImpl implements ActionFactory
 	{
 		switch (eClass.getClassifierID())
 		{
-			case ActionPackage.STRING_INJECTOR: return createStringInjector();
-			case ActionPackage.NUMBER_INJECTOR: return createNumberInjector();
-			case ActionPackage.PARAMETERED_ACTIONS_PKG: return createParameteredActionsPkg();
-			case ActionPackage.ACTIONS_PKG: return createActionsPkg();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -117,50 +110,6 @@ public class ActionFactoryImpl extends EFactoryImpl implements ActionFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StringInjector createStringInjector()
-	{
-		StringInjectorImpl stringInjector = new StringInjectorImpl();
-		return stringInjector;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NumberInjector createNumberInjector()
-	{
-		NumberInjectorImpl numberInjector = new NumberInjectorImpl();
-		return numberInjector;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public <T extends Parameter> ParameteredActionsPkg<T> createParameteredActionsPkg()
-	{
-		ParameteredActionsPkgImpl<T> parameteredActionsPkg = new ParameteredActionsPkgImpl<T>();
-		return parameteredActionsPkg;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ActionsPkg createActionsPkg()
-	{
-		ActionsPkgImpl actionsPkg = new ActionsPkgImpl();
-		return actionsPkg;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@SuppressWarnings("unchecked")
 	public List<? extends Action> createActionListFromString(EDataType eDataType, String initialValue)
 	{
@@ -182,6 +131,7 @@ public class ActionFactoryImpl extends EFactoryImpl implements ActionFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ActionPackage getActionPackage()
 	{
 		return (ActionPackage)getEPackage();

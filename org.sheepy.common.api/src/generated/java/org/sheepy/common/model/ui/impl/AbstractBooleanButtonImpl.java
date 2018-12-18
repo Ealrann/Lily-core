@@ -93,6 +93,7 @@ public abstract class AbstractBooleanButtonImpl extends AbstractButtonImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getTextWhenTrue()
 	{
 		return textWhenTrue;
@@ -103,6 +104,7 @@ public abstract class AbstractBooleanButtonImpl extends AbstractButtonImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTextWhenTrue(String newTextWhenTrue)
 	{
 		String oldTextWhenTrue = textWhenTrue;
@@ -116,6 +118,7 @@ public abstract class AbstractBooleanButtonImpl extends AbstractButtonImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getTextWhenFalse()
 	{
 		return textWhenFalse;
@@ -126,6 +129,7 @@ public abstract class AbstractBooleanButtonImpl extends AbstractButtonImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTextWhenFalse(String newTextWhenFalse)
 	{
 		String oldTextWhenFalse = textWhenFalse;

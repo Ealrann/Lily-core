@@ -76,6 +76,7 @@ public class ResolverFactoryImpl extends EFactoryImpl implements ResolverFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReferenceResolver createEReferenceResolver()
 	{
 		EReferenceResolverImpl eReferenceResolver = new EReferenceResolverImpl();
@@ -87,6 +88,7 @@ public class ResolverFactoryImpl extends EFactoryImpl implements ResolverFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ChainResolver createChainResolver()
 	{
 		ChainResolverImpl chainResolver = new ChainResolverImpl();
@@ -98,6 +100,7 @@ public class ResolverFactoryImpl extends EFactoryImpl implements ResolverFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResolverPackage getResolverPackage()
 	{
 		return (ResolverPackage)getEPackage();

@@ -14,8 +14,6 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.sheepy.common.model.action.ActionPackage;
 
-import org.sheepy.common.model.action.impl.ActionPackageImpl;
-
 import org.sheepy.common.model.inference.AbstractNotification;
 import org.sheepy.common.model.inference.Condition;
 import org.sheepy.common.model.inference.IInferenceObject;
@@ -26,10 +24,6 @@ import org.sheepy.common.model.inference.LNotification;
 import org.sheepy.common.model.inference.LRule;
 import org.sheepy.common.model.inference.ParameteredNotification;
 import org.sheepy.common.model.inference.Sensor;
-
-import org.sheepy.common.model.root.RootPackage;
-
-import org.sheepy.common.model.root.impl.RootPackageImpl;
 
 import org.sheepy.common.model.types.TypesPackage;
 
@@ -147,24 +141,15 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 		isInited = true;
 
 		// Initialize simple dependencies
+		ActionPackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
 		TypesPackage.eINSTANCE.eClass();
 
-		// Obtain or create and register interdependencies
-		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
-		ActionPackageImpl theActionPackage = (ActionPackageImpl)(registeredPackage instanceof ActionPackageImpl ? registeredPackage : ActionPackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(RootPackage.eNS_URI);
-		RootPackageImpl theRootPackage = (RootPackageImpl)(registeredPackage instanceof RootPackageImpl ? registeredPackage : RootPackage.eINSTANCE);
-
 		// Create package meta-data objects
 		theInferencePackage.createPackageContents();
-		theActionPackage.createPackageContents();
-		theRootPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theInferencePackage.initializePackageContents();
-		theActionPackage.initializePackageContents();
-		theRootPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theInferencePackage.freeze();
@@ -179,6 +164,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getIInferenceObject()
 	{
 		return iInferenceObjectEClass;
@@ -189,6 +175,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getIInferenceObject__LInferenceObject()
 	{
 		return iInferenceObjectEClass.getEOperations().get(0);
@@ -199,6 +186,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getInferer()
 	{
 		return infererEClass;
@@ -209,6 +197,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getInferer_Rules()
 	{
 		return (EReference)infererEClass.getEStructuralFeatures().get(0);
@@ -219,6 +208,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getInferer__LExecutor()
 	{
 		return infererEClass.getEOperations().get(0);
@@ -229,6 +219,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getSensor()
 	{
 		return sensorEClass;
@@ -239,6 +230,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLRule()
 	{
 		return lRuleEClass;
@@ -249,6 +241,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLRule_Notification()
 	{
 		return (EReference)lRuleEClass.getEStructuralFeatures().get(0);
@@ -259,6 +252,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLRule_Action()
 	{
 		return (EReference)lRuleEClass.getEStructuralFeatures().get(1);
@@ -269,6 +263,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getLRule_Conditions()
 	{
 		return (EReference)lRuleEClass.getEStructuralFeatures().get(2);
@@ -279,6 +274,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAbstractNotification()
 	{
 		return abstractNotificationEClass;
@@ -289,6 +285,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getAbstractNotification__Match__AbstractNotification()
 	{
 		return abstractNotificationEClass.getEOperations().get(0);
@@ -299,6 +296,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getLNotification()
 	{
 		return lNotificationEClass;
@@ -309,6 +307,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getParameteredNotification()
 	{
 		return parameteredNotificationEClass;
@@ -319,6 +318,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCondition()
 	{
 		return conditionEClass;
@@ -329,6 +329,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCondition_Value()
 	{
 		return (EReference)conditionEClass.getEStructuralFeatures().get(0);
@@ -339,6 +340,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCondition_Definition()
 	{
 		return (EReference)conditionEClass.getEStructuralFeatures().get(1);
@@ -349,6 +351,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getCondition__GetType()
 	{
 		return conditionEClass.getEOperations().get(0);
@@ -359,6 +362,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EOperation getCondition__Match__Parameter()
 	{
 		return conditionEClass.getEOperations().get(1);
@@ -369,6 +373,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public InferenceFactory getInferenceFactory()
 	{
 		return (InferenceFactory)getEFactoryInstance();

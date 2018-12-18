@@ -155,6 +155,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FloatParameter createFloatParameter()
 	{
 		FloatParameterImpl floatParameter = new FloatParameterImpl();
@@ -166,6 +167,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public StringParameter createStringParameter()
 	{
 		StringParameterImpl stringParameter = new StringParameterImpl();
@@ -177,6 +179,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BooleanParameter createBooleanParameter()
 	{
 		BooleanParameterImpl booleanParameter = new BooleanParameterImpl();
@@ -492,6 +495,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TypesPackage getTypesPackage()
 	{
 		return (TypesPackage)getEPackage();

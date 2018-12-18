@@ -5,7 +5,6 @@ package org.sheepy.common.model.variable.impl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -16,18 +15,11 @@ import org.sheepy.common.api.util.ResolvedVariableFeature;
 
 import org.sheepy.common.model.action.ActionPackage;
 
-import org.sheepy.common.model.inference.InferencePackage;
-import org.sheepy.common.model.root.RootPackage;
-
 import org.sheepy.common.model.types.TypesPackage;
 
 import org.sheepy.common.model.variable.AbstractVariableResolver;
 import org.sheepy.common.model.variable.BooleanChangeAction;
 import org.sheepy.common.model.variable.DirectVariableResolver;
-import org.sheepy.common.model.variable.IncrementAction;
-import org.sheepy.common.model.variable.SetBoolean;
-import org.sheepy.common.model.variable.SetNumber;
-import org.sheepy.common.model.variable.SetString;
 import org.sheepy.common.model.variable.VarChangeAction;
 import org.sheepy.common.model.variable.VarChangeActionPkg;
 import org.sheepy.common.model.variable.VariableFactory;
@@ -75,34 +67,6 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * @generated
 	 */
 	private EClass varChangeActionPkgEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass incrementActionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass setStringEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass setBooleanEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass setNumberEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -170,9 +134,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		// Initialize simple dependencies
 		EcorePackage.eINSTANCE.eClass();
 		ActionPackage.eINSTANCE.eClass();
-		RootPackage.eINSTANCE.eClass();
 		TypesPackage.eINSTANCE.eClass();
-		InferencePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theVariablePackage.createPackageContents();
@@ -193,6 +155,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getAbstractVariableResolver()
 	{
 		return abstractVariableResolverEClass;
@@ -203,6 +166,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getAbstractVariableResolver_VariableDefinition()
 	{
 		return (EAttribute)abstractVariableResolverEClass.getEStructuralFeatures().get(0);
@@ -213,6 +177,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDirectVariableResolver()
 	{
 		return directVariableResolverEClass;
@@ -223,6 +188,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDirectVariableResolver_Target()
 	{
 		return (EReference)directVariableResolverEClass.getEStructuralFeatures().get(0);
@@ -233,6 +199,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getVarChangeAction()
 	{
 		return varChangeActionEClass;
@@ -243,6 +210,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getVarChangeAction_VariableResolver()
 	{
 		return (EReference)varChangeActionEClass.getEStructuralFeatures().get(0);
@@ -253,6 +221,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getBooleanChangeAction()
 	{
 		return booleanChangeActionEClass;
@@ -263,6 +232,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getVarChangeActionPkg()
 	{
 		return varChangeActionPkgEClass;
@@ -273,6 +243,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getVarChangeActionPkg_Actions()
 	{
 		return (EReference)varChangeActionPkgEClass.getEStructuralFeatures().get(0);
@@ -283,56 +254,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getIncrementAction()
-	{
-		return incrementActionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getIncrementAction_Increment()
-	{
-		return (EAttribute)incrementActionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getSetString()
-	{
-		return setStringEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getSetBoolean()
-	{
-		return setBooleanEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getSetNumber()
-	{
-		return setNumberEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public EDataType getLResolvedVariableFeature()
 	{
 		return lResolvedVariableFeatureEDataType;
@@ -343,6 +265,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EDataType getVariableDefinition()
 	{
 		return variableDefinitionEDataType;
@@ -353,6 +276,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VariableFactory getVariableFactory()
 	{
 		return (VariableFactory)getEFactoryInstance();
@@ -392,15 +316,6 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		varChangeActionPkgEClass = createEClass(VAR_CHANGE_ACTION_PKG);
 		createEReference(varChangeActionPkgEClass, VAR_CHANGE_ACTION_PKG__ACTIONS);
 
-		incrementActionEClass = createEClass(INCREMENT_ACTION);
-		createEAttribute(incrementActionEClass, INCREMENT_ACTION__INCREMENT);
-
-		setStringEClass = createEClass(SET_STRING);
-
-		setBooleanEClass = createEClass(SET_BOOLEAN);
-
-		setNumberEClass = createEClass(SET_NUMBER);
-
 		// Create data types
 		lResolvedVariableFeatureEDataType = createEDataType(LRESOLVED_VARIABLE_FEATURE);
 		variableDefinitionEDataType = createEDataType(VARIABLE_DEFINITION);
@@ -433,7 +348,6 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		// Obtain other dependent packages
 		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
 		ActionPackage theActionPackage = (ActionPackage)EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
-		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -444,30 +358,6 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		varChangeActionEClass.getESuperTypes().add(theActionPackage.getAction());
 		booleanChangeActionEClass.getESuperTypes().add(this.getVarChangeAction());
 		booleanChangeActionEClass.getESuperTypes().add(theActionPackage.getAction());
-		EGenericType g1 = createEGenericType(theActionPackage.getParameteredAction());
-		EGenericType g2 = createEGenericType(theTypesPackage.getFloatParameter());
-		g1.getETypeArguments().add(g2);
-		incrementActionEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(this.getVarChangeAction());
-		incrementActionEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(theActionPackage.getParameteredAction());
-		g2 = createEGenericType(theTypesPackage.getStringParameter());
-		g1.getETypeArguments().add(g2);
-		setStringEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(this.getVarChangeAction());
-		setStringEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(theActionPackage.getParameteredAction());
-		g2 = createEGenericType(theTypesPackage.getBooleanParameter());
-		g1.getETypeArguments().add(g2);
-		setBooleanEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(this.getVarChangeAction());
-		setBooleanEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(theActionPackage.getParameteredAction());
-		g2 = createEGenericType(theTypesPackage.getFloatParameter());
-		g1.getETypeArguments().add(g2);
-		setNumberEClass.getEGenericSuperTypes().add(g1);
-		g1 = createEGenericType(this.getVarChangeAction());
-		setNumberEClass.getEGenericSuperTypes().add(g1);
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(abstractVariableResolverEClass, AbstractVariableResolver.class, "AbstractVariableResolver", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -483,15 +373,6 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 
 		initEClass(varChangeActionPkgEClass, VarChangeActionPkg.class, "VarChangeActionPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getVarChangeActionPkg_Actions(), this.getVarChangeAction(), null, "actions", null, 0, -1, VarChangeActionPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(incrementActionEClass, IncrementAction.class, "IncrementAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIncrementAction_Increment(), theEcorePackage.getEInt(), "increment", "1", 0, 1, IncrementAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(setStringEClass, SetString.class, "SetString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(setBooleanEClass, SetBoolean.class, "SetBoolean", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(setNumberEClass, SetNumber.class, "SetNumber", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize data types
 		initEDataType(lResolvedVariableFeatureEDataType, ResolvedVariableFeature.class, "LResolvedVariableFeature", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

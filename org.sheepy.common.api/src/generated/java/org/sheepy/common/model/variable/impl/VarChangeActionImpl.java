@@ -67,6 +67,7 @@ public abstract class VarChangeActionImpl extends ActionImpl implements VarChang
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AbstractVariableResolver getVariableResolver()
 	{
 		return variableResolver;
@@ -94,6 +95,7 @@ public abstract class VarChangeActionImpl extends ActionImpl implements VarChang
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVariableResolver(AbstractVariableResolver newVariableResolver)
 	{
 		if (newVariableResolver != variableResolver)

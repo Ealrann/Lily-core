@@ -2,29 +2,47 @@
  */
 package org.sheepy.common.model.application.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.sheepy.common.api.types.SVector2i;
+
+import org.sheepy.common.api.util.LTreeIterator;
 
 import org.sheepy.common.model.application.Application;
 import org.sheepy.common.model.application.ApplicationPackage;
 import org.sheepy.common.model.application.IEngine;
 import org.sheepy.common.model.application.IView;
 
-import org.sheepy.common.model.root.impl.LObjectImpl;
+import org.sheepy.common.model.inference.IInferenceObject;
+
+import org.sheepy.common.model.root.LObject;
+
+import org.sheepy.common.model.root.RootPackage.Literals;
+
 import org.sheepy.common.model.types.TypesFactory;
 import org.sheepy.common.model.types.TypesPackage;
 
@@ -36,8 +54,10 @@ import org.sheepy.common.model.types.TypesPackage;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#getContentObjects <em>Content Objects</em>}</li>
  *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#getViews <em>Views</em>}</li>
  *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#getEngines <em>Engines</em>}</li>
+ *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#isRun <em>Run</em>}</li>
  *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#isFullscreen <em>Fullscreen</em>}</li>
  *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#isResizeable <em>Resizeable</em>}</li>
  *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#isDebug <em>Debug</em>}</li>
@@ -49,8 +69,18 @@ import org.sheepy.common.model.types.TypesPackage;
  *
  * @generated
  */
-public class ApplicationImpl extends LObjectImpl implements Application
+public class ApplicationImpl extends MinimalEObjectImpl.Container implements Application
 {
+	/**
+	 * The cached value of the '{@link #getContentObjects() <em>Content Objects</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContentObjects()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LObject> contentObjects;
+
 	/**
 	 * The cached value of the '{@link #getViews() <em>Views</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -70,6 +100,26 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * @ordered
 	 */
 	protected EList<IEngine> engines;
+
+	/**
+	 * The default value of the '{@link #isRun() <em>Run</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRun()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean RUN_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isRun() <em>Run</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isRun()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean run = RUN_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isFullscreen() <em>Fullscreen</em>}' attribute.
@@ -227,6 +277,32 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EList<LObject> getContentObjects()
+	{
+		return contentObjects;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setContentObjects(EList<LObject> newContentObjects)
+	{
+		EList<LObject> oldContentObjects = contentObjects;
+		contentObjects = newContentObjects;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__CONTENT_OBJECTS, oldContentObjects, contentObjects));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EList<IView> getViews()
 	{
 		if (views == null)
@@ -241,6 +317,7 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<IEngine> getEngines()
 	{
 		if (engines == null)
@@ -255,6 +332,32 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public boolean isRun()
+	{
+		return run;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setRun(boolean newRun)
+	{
+		boolean oldRun = run;
+		run = newRun;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__RUN, oldRun, run));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public boolean isFullscreen()
 	{
 		return fullscreen;
@@ -265,6 +368,7 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFullscreen(boolean newFullscreen)
 	{
 		boolean oldFullscreen = fullscreen;
@@ -278,6 +382,7 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isResizeable()
 	{
 		return resizeable;
@@ -288,6 +393,7 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setResizeable(boolean newResizeable)
 	{
 		boolean oldResizeable = resizeable;
@@ -301,6 +407,7 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isDebug()
 	{
 		return debug;
@@ -311,6 +418,7 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDebug(boolean newDebug)
 	{
 		boolean oldDebug = debug;
@@ -324,6 +432,7 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getTitle()
 	{
 		return title;
@@ -334,6 +443,7 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTitle(String newTitle)
 	{
 		String oldTitle = title;
@@ -347,6 +457,7 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SVector2i getSize()
 	{
 		return size;
@@ -357,6 +468,7 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSize(SVector2i newSize)
 	{
 		SVector2i oldSize = size;
@@ -370,6 +482,7 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IView getCurrentView()
 	{
 		if (currentView != null && currentView.eIsProxy())
@@ -400,6 +513,7 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCurrentView(IView newCurrentView)
 	{
 		IView oldCurrentView = currentView;
@@ -413,6 +527,7 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getCadenceInHz()
 	{
 		return cadenceInHz;
@@ -423,12 +538,107 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCadenceInHz(int newCadenceInHz)
 	{
 		int oldCadenceInHz = cadenceInHz;
 		cadenceInHz = newCadenceInHz;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__CADENCE_IN_HZ, oldCadenceInHz, cadenceInHz));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public <T extends LObject> EList<T> createContainmentEList(final EClass targetEClass)
+	{
+		EList<T> res = null;
+		final List<EStructuralFeature> unitRefs = new ArrayList<EStructuralFeature>();
+		EList<EReference> _eAllContainments = this.eClass().getEAllContainments();
+		for (final EReference ref : _eAllContainments)
+		{
+			EClassifier _eType = ref.getEType();
+			boolean _isSuperTypeOf = targetEClass.isSuperTypeOf(((EClass) _eType));
+			if (_isSuperTypeOf)
+			{
+				unitRefs.add(ref);
+			}
+		}
+		boolean _isEmpty = unitRefs.isEmpty();
+		if (_isEmpty)
+		{
+			res = ECollections.<T>emptyEList();
+		}
+		else
+		{
+			EContentsEList<T> _eContentsEList = new EContentsEList<T>(this, unitRefs);
+			res = _eContentsEList;
+		}
+		return res;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<LObject> lContents()
+	{
+		EList<LObject> _xblockexpression = null;
+		{
+			EList<LObject> _contentObjects = this.getContentObjects();
+			boolean _tripleEquals = (_contentObjects == null);
+			if (_tripleEquals)
+			{
+				this.setContentObjects(this.<LObject>createContainmentEList(Literals.LOBJECT));
+			}
+			_xblockexpression = this.getContentObjects();
+		}
+		return _xblockexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public LObject lParent()
+	{
+		LObject _xifexpression = null;
+		EObject _eContainer = this.eContainer();
+		if ((_eContainer instanceof LObject))
+		{
+			EObject _eContainer_1 = this.eContainer();
+			_xifexpression = ((LObject) _eContainer_1);
+		}
+		return _xifexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public LTreeIterator lAllContents()
+	{
+		return new LTreeIterator(this);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public IInferenceObject lInferenceObject()
+	{
+		return this;
 	}
 
 	/**
@@ -459,10 +669,14 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	{
 		switch (featureID)
 		{
+			case ApplicationPackage.APPLICATION__CONTENT_OBJECTS:
+				return getContentObjects();
 			case ApplicationPackage.APPLICATION__VIEWS:
 				return getViews();
 			case ApplicationPackage.APPLICATION__ENGINES:
 				return getEngines();
+			case ApplicationPackage.APPLICATION__RUN:
+				return isRun();
 			case ApplicationPackage.APPLICATION__FULLSCREEN:
 				return isFullscreen();
 			case ApplicationPackage.APPLICATION__RESIZEABLE:
@@ -493,6 +707,9 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	{
 		switch (featureID)
 		{
+			case ApplicationPackage.APPLICATION__CONTENT_OBJECTS:
+				setContentObjects((EList<LObject>)newValue);
+				return;
 			case ApplicationPackage.APPLICATION__VIEWS:
 				getViews().clear();
 				getViews().addAll((Collection<? extends IView>)newValue);
@@ -500,6 +717,9 @@ public class ApplicationImpl extends LObjectImpl implements Application
 			case ApplicationPackage.APPLICATION__ENGINES:
 				getEngines().clear();
 				getEngines().addAll((Collection<? extends IEngine>)newValue);
+				return;
+			case ApplicationPackage.APPLICATION__RUN:
+				setRun((Boolean)newValue);
 				return;
 			case ApplicationPackage.APPLICATION__FULLSCREEN:
 				setFullscreen((Boolean)newValue);
@@ -536,11 +756,17 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	{
 		switch (featureID)
 		{
+			case ApplicationPackage.APPLICATION__CONTENT_OBJECTS:
+				setContentObjects((EList<LObject>)null);
+				return;
 			case ApplicationPackage.APPLICATION__VIEWS:
 				getViews().clear();
 				return;
 			case ApplicationPackage.APPLICATION__ENGINES:
 				getEngines().clear();
+				return;
+			case ApplicationPackage.APPLICATION__RUN:
+				setRun(RUN_EDEFAULT);
 				return;
 			case ApplicationPackage.APPLICATION__FULLSCREEN:
 				setFullscreen(FULLSCREEN_EDEFAULT);
@@ -577,10 +803,14 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	{
 		switch (featureID)
 		{
+			case ApplicationPackage.APPLICATION__CONTENT_OBJECTS:
+				return contentObjects != null;
 			case ApplicationPackage.APPLICATION__VIEWS:
 				return views != null && !views.isEmpty();
 			case ApplicationPackage.APPLICATION__ENGINES:
 				return engines != null && !engines.isEmpty();
+			case ApplicationPackage.APPLICATION__RUN:
+				return run != RUN_EDEFAULT;
 			case ApplicationPackage.APPLICATION__FULLSCREEN:
 				return fullscreen != FULLSCREEN_EDEFAULT;
 			case ApplicationPackage.APPLICATION__RESIZEABLE:
@@ -605,12 +835,40 @@ public class ApplicationImpl extends LObjectImpl implements Application
 	 * @generated
 	 */
 	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
+	{
+		switch (operationID)
+		{
+			case ApplicationPackage.APPLICATION___CREATE_CONTAINMENT_ELIST__ECLASS:
+				return createContainmentEList((EClass)arguments.get(0));
+			case ApplicationPackage.APPLICATION___LCONTENTS:
+				return lContents();
+			case ApplicationPackage.APPLICATION___LPARENT:
+				return lParent();
+			case ApplicationPackage.APPLICATION___LALL_CONTENTS:
+				return lAllContents();
+			case ApplicationPackage.APPLICATION___LINFERENCE_OBJECT:
+				return lInferenceObject();
+		}
+		return super.eInvoke(operationID, arguments);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String toString()
 	{
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (fullscreen: ");
+		result.append(" (contentObjects: ");
+		result.append(contentObjects);
+		result.append(", run: ");
+		result.append(run);
+		result.append(", fullscreen: ");
 		result.append(fullscreen);
 		result.append(", resizeable: ");
 		result.append(resizeable);

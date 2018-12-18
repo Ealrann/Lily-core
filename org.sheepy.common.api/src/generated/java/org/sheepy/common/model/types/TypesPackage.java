@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EPackage;
  * <!-- end-user-doc -->
  * @see org.sheepy.common.model.types.TypesFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.common.model/src/generated/java' editDirectory='/org.sheepy.common.model.edit/src/generated/java' publicConstructors='true' updateClasspath='false' basePackage='org.sheepy.common.model'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.common.model/src/generated/java' editDirectory='/org.sheepy.common.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' basePackage='org.sheepy.common.model'"
  * @generated
  */
 public interface TypesPackage extends EPackage
@@ -61,6 +61,43 @@ public interface TypesPackage extends EPackage
 	TypesPackage eINSTANCE = org.sheepy.common.model.types.impl.TypesPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.common.model.types.LNamedElement <em>LNamed Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.common.model.types.LNamedElement
+	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getLNamedElement()
+	 * @generated
+	 */
+	int LNAMED_ELEMENT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LNAMED_ELEMENT__NAME = 0;
+
+	/**
+	 * The number of structural features of the '<em>LNamed Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LNAMED_ELEMENT_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>LNamed Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LNAMED_ELEMENT_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.types.Parameter <em>Parameter</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -68,7 +105,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getParameter()
 	 * @generated
 	 */
-	int PARAMETER = 0;
+	int PARAMETER = 1;
 
 	/**
 	 * The number of structural features of the '<em>Parameter</em>' class.
@@ -96,7 +133,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getPositionParameter()
 	 * @generated
 	 */
-	int POSITION_PARAMETER = 1;
+	int POSITION_PARAMETER = 2;
 
 	/**
 	 * The number of structural features of the '<em>Position Parameter</em>' class.
@@ -133,7 +170,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getPositionFParameter()
 	 * @generated
 	 */
-	int POSITION_FPARAMETER = 2;
+	int POSITION_FPARAMETER = 3;
 
 	/**
 	 * The number of structural features of the '<em>Position FParameter</em>' class.
@@ -170,7 +207,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getNativeParameter()
 	 * @generated
 	 */
-	int NATIVE_PARAMETER = 3;
+	int NATIVE_PARAMETER = 4;
 
 	/**
 	 * The number of structural features of the '<em>Native Parameter</em>' class.
@@ -207,7 +244,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getFloatParameter()
 	 * @generated
 	 */
-	int FLOAT_PARAMETER = 4;
+	int FLOAT_PARAMETER = 5;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -253,7 +290,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getStringParameter()
 	 * @generated
 	 */
-	int STRING_PARAMETER = 5;
+	int STRING_PARAMETER = 6;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -299,7 +336,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getBooleanParameter()
 	 * @generated
 	 */
-	int BOOLEAN_PARAMETER = 6;
+	int BOOLEAN_PARAMETER = 7;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -345,7 +382,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getENotificationDirection()
 	 * @generated
 	 */
-	int ENOTIFICATION_DIRECTION = 7;
+	int ENOTIFICATION_DIRECTION = 8;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.types.EMoveState <em>EMove State</em>}' enum.
@@ -355,7 +392,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getEMoveState()
 	 * @generated
 	 */
-	int EMOVE_STATE = 8;
+	int EMOVE_STATE = 9;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.types.EDirection <em>EDirection</em>}' enum.
@@ -365,7 +402,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getEDirection()
 	 * @generated
 	 */
-	int EDIRECTION = 9;
+	int EDIRECTION = 10;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.types.ETimeUnit <em>ETime Unit</em>}' enum.
@@ -375,7 +412,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getETimeUnit()
 	 * @generated
 	 */
-	int ETIME_UNIT = 10;
+	int ETIME_UNIT = 11;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.types.ENumberComparisonType <em>ENumber Comparison Type</em>}' enum.
@@ -385,7 +422,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getENumberComparisonType()
 	 * @generated
 	 */
-	int ENUMBER_COMPARISON_TYPE = 11;
+	int ENUMBER_COMPARISON_TYPE = 12;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.types.EVerticalRelative <em>EVertical Relative</em>}' enum.
@@ -395,7 +432,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getEVerticalRelative()
 	 * @generated
 	 */
-	int EVERTICAL_RELATIVE = 12;
+	int EVERTICAL_RELATIVE = 13;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.types.EHorizontalRelative <em>EHorizontal Relative</em>}' enum.
@@ -405,7 +442,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getEHorizontalRelative()
 	 * @generated
 	 */
-	int EHORIZONTAL_RELATIVE = 13;
+	int EHORIZONTAL_RELATIVE = 14;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.types.EMouseButton <em>EMouse Button</em>}' enum.
@@ -415,7 +452,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getEMouseButton()
 	 * @generated
 	 */
-	int EMOUSE_BUTTON = 14;
+	int EMOUSE_BUTTON = 15;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.types.EKeyState <em>EKey State</em>}' enum.
@@ -425,7 +462,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getEKeyState()
 	 * @generated
 	 */
-	int EKEY_STATE = 15;
+	int EKEY_STATE = 16;
 
 	/**
 	 * The meta object id for the '<em>SVector2f</em>' data type.
@@ -435,7 +472,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getSVector2f()
 	 * @generated
 	 */
-	int SVECTOR2F = 16;
+	int SVECTOR2F = 17;
 
 	/**
 	 * The meta object id for the '<em>SVector2i</em>' data type.
@@ -445,8 +482,29 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getSVector2i()
 	 * @generated
 	 */
-	int SVECTOR2I = 17;
+	int SVECTOR2I = 18;
 
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.common.model.types.LNamedElement <em>LNamed Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>LNamed Element</em>'.
+	 * @see org.sheepy.common.model.types.LNamedElement
+	 * @generated
+	 */
+	EClass getLNamedElement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.types.LNamedElement#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.sheepy.common.model.types.LNamedElement#getName()
+	 * @see #getLNamedElement()
+	 * @generated
+	 */
+	EAttribute getLNamedElement_Name();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.common.model.types.Parameter <em>Parameter</em>}'.
@@ -749,6 +807,24 @@ public interface TypesPackage extends EPackage
 	 */
 	interface Literals
 	{
+		/**
+		 * The meta object literal for the '{@link org.sheepy.common.model.types.LNamedElement <em>LNamed Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.common.model.types.LNamedElement
+		 * @see org.sheepy.common.model.types.impl.TypesPackageImpl#getLNamedElement()
+		 * @generated
+		 */
+		EClass LNAMED_ELEMENT = eINSTANCE.getLNamedElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LNAMED_ELEMENT__NAME = eINSTANCE.getLNamedElement_Name();
+
 		/**
 		 * The meta object literal for the '{@link org.sheepy.common.model.types.Parameter <em>Parameter</em>}' class.
 		 * <!-- begin-user-doc -->
