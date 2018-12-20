@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
@@ -21,7 +20,6 @@ import org.sheepy.common.api.cadence.IStatistics;
 import org.sheepy.common.api.cadence.ITicker;
 import org.sheepy.common.api.engine.IEngineAdapter;
 import org.sheepy.common.api.input.IInputManager;
-import org.sheepy.common.api.resource.IModelExtension;
 import org.sheepy.common.api.service.ServiceManager;
 import org.sheepy.common.cadence.execution.CommandStack;
 import org.sheepy.common.model.application.Application;
@@ -85,13 +83,12 @@ public class Cadencer implements ICadencer
 		dispatcher = new ActionDispatcherThread(commandStack, mainThread);
 		addTicker(dispatcher, -1);
 
-		loadEPackages();
 		IServiceAdapterFactory.INSTANCE.setupAutoAdapters(application);
 
 		for (IEngine engine : application.getEngines())
 		{
 			inputManager = IEngineAdapter.adapt(engine).getInputManager();
-			if(inputManager != null)
+			if (inputManager != null)
 			{
 				break;
 			}
@@ -134,19 +131,6 @@ public class Cadencer implements ICadencer
 		}
 
 		dispose();
-	}
-
-	private static void loadEPackages()
-	{
-		for (IModelExtension extension : IModelExtension.EXTENSIONS)
-		{
-			for (EPackage ePackage : extension.getEPackages())
-			{
-				// Load factories
-				ePackage.eClass();
-				System.out.println("\tLoad EPackage: " + ePackage.getName());
-			}
-		}
 	}
 
 	public void stop()

@@ -10,11 +10,15 @@ import org.sheepy.common.api.adapter.IAutoAdapter;
 import org.sheepy.common.api.adapter.IServiceAdapterFactory;
 import org.sheepy.common.api.adapter.IAdapter;
 import org.sheepy.common.api.adapter.IStatefullAdapter;
+import org.sheepy.common.api.resource.IResourceLoader;
 import org.sheepy.common.api.util.ReflectivityUtils;
 
 public class ServiceAdapterFactory implements IServiceAdapterFactory
 {
 	private final ServiceAdapterRegistry registry = new ServiceAdapterRegistry(this);
+	
+	// Force the ResourceLoader to be loaded
+	static final IResourceLoader instance = IResourceLoader.INSTANCE;
 
 	@SuppressWarnings("unchecked")
 	@Override
