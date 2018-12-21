@@ -115,6 +115,6 @@ public class ApplicationAdapter extends AbstractStatefullAdapter implements IApp
 	@Override
 	public boolean isApplicable(EClass eClass)
 	{
-		return ApplicationPackage.Literals.APPLICATION == eClass;
+		return ApplicationPackage.Literals.APPLICATION.isSuperTypeOf(eClass);
 	}
 }
