@@ -53,6 +53,7 @@ public interface StringParameter extends NativeParameter<String>
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
+	@Override
 	String getNativeValue();
 
 } // StringParameter

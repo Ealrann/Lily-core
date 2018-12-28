@@ -53,6 +53,7 @@ public interface FloatParameter extends NativeParameter<Float>
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
+	@Override
 	Float getNativeValue();
 
 } // FloatParameter

@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.sheepy.common.model.edit;singleton:=true
 Automatic-Module-Name: org.sheepy.common.model.edit
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: org.sheepy.common.model.application.provider.ApplicationEditPlugin$Implementation
+Bundle-Activator: org.sheepy.common.model.resolver.provider.ResolverEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.sheepy.common.model.types.provider,

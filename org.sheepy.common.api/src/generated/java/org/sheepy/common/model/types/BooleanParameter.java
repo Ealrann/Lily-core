@@ -53,6 +53,7 @@ public interface BooleanParameter extends NativeParameter<Boolean>
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
+	@Override
 	Boolean getNativeValue();
 
 } // BooleanParameter

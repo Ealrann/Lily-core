@@ -24,6 +24,7 @@ class EReferenceResolver extends ILObjectResolver
 	String className
 	@GenModel(property="None")
 	refers transient EReference internalReference
+
 	op void collectUnits(LObject source, LCollection collected) {
 		if (internalReference === null) {
 			for (EReference ref : source.eClass.EAllReferences) {

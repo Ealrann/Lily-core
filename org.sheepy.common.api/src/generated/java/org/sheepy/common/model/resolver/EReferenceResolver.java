@@ -113,6 +113,7 @@ public interface EReferenceResolver extends ILObjectResolver
 	 * @model sourceUnique="false" collectedDataType="org.sheepy.common.model.root.LCollection" collectedUnique="false"
 	 * @generated
 	 */
+	@Override
 	void collectUnits(LObject source, Collection<LObject> collected);
 
 } // EReferenceResolver
