@@ -20,16 +20,6 @@ import org.eclipse.emf.common.util.Enumerator;
 public enum EKeyState implements Enumerator
 {
 	/**
-	 * The '<em><b>PRESSED</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #PRESSED_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	PRESSED(0, "PRESSED", "PRESSED"),
-
-	/**
 	 * The '<em><b>RELEASED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -37,22 +27,15 @@ public enum EKeyState implements Enumerator
 	 * @generated
 	 * @ordered
 	 */
-	RELEASED(1, "RELEASED", "RELEASED");
-
-	/**
-	 * The '<em><b>PRESSED</b></em>' literal value.
+	RELEASED(0, "RELEASED", "RELEASED"), /**
+	 * The '<em><b>PRESSED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>PRESSED</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #PRESSED
-	 * @model
+	 * @see #PRESSED_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PRESSED_VALUE = 0;
+	PRESSED(1, "PRESSED", "PRESSED");
 
 	/**
 	 * The '<em><b>RELEASED</b></em>' literal value.
@@ -67,7 +50,22 @@ public enum EKeyState implements Enumerator
 	 * @generated
 	 * @ordered
 	 */
-	public static final int RELEASED_VALUE = 1;
+	public static final int RELEASED_VALUE = 0;
+
+	/**
+	 * The '<em><b>PRESSED</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>PRESSED</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #PRESSED
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int PRESSED_VALUE = 1;
 
 	/**
 	 * An array of all the '<em><b>EKey State</b></em>' enumerators.
@@ -78,8 +76,8 @@ public enum EKeyState implements Enumerator
 	private static final EKeyState[] VALUES_ARRAY =
 		new EKeyState[]
 		{
-			PRESSED,
 			RELEASED,
+			PRESSED,
 		};
 
 	/**
@@ -144,8 +142,8 @@ public enum EKeyState implements Enumerator
 	{
 		switch (value)
 		{
-			case PRESSED_VALUE: return PRESSED;
 			case RELEASED_VALUE: return RELEASED;
+			case PRESSED_VALUE: return PRESSED;
 		}
 		return null;
 	}

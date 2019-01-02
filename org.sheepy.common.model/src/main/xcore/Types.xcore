@@ -166,6 +166,6 @@ enum EMouseButton {
 }
 
 enum EKeyState {
-	PRESSED = 0
-	RELEASED = 1
+	RELEASED = 0
+	PRESSED = 1
 }

@@ -766,8 +766,8 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		addEEnumLiteral(eMouseButtonEEnum, EMouseButton.MIDDLE);
 
 		initEEnum(eKeyStateEEnum, EKeyState.class, "EKeyState");
-		addEEnumLiteral(eKeyStateEEnum, EKeyState.PRESSED);
 		addEEnumLiteral(eKeyStateEEnum, EKeyState.RELEASED);
+		addEEnumLiteral(eKeyStateEEnum, EKeyState.PRESSED);
 
 		// Initialize data types
 		initEDataType(sVector2fEDataType, SVector2f.class, "SVector2f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

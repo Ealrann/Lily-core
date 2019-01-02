@@ -15,7 +15,7 @@ import org.sheepy.common.model.types.EKeyState
 import org.sheepy.common.model.variable.AbstractVariableResolver
 import org.sheepy.common.model.presentation.Widget
 
-abstract class AbstractLabel extends org.sheepy.common.model.presentation.Widget
+abstract class AbstractLabel extends Widget
 {
 	String text = ""
 	float fontScale = "1"

@@ -75,7 +75,7 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 	 * @generated
 	 * @ordered
 	 */
-	protected static final EKeyState STATE_EDEFAULT = EKeyState.PRESSED;
+	protected static final EKeyState STATE_EDEFAULT = EKeyState.RELEASED;
 
 	/**
 	 * The cached value of the '{@link #getState() <em>State</em>}' attribute.
