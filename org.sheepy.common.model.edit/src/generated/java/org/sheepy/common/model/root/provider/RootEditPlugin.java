@@ -6,9 +6,7 @@ import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.sheepy.common.model.action.provider.ActionEditPlugin;
-
 import org.sheepy.common.model.inference.provider.InferenceEditPlugin;
-
 import org.sheepy.common.model.types.provider.TypesEditPlugin;
 
 /**

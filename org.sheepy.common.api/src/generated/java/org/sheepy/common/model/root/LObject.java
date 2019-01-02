@@ -5,9 +5,7 @@ package org.sheepy.common.model.root;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.sheepy.common.api.util.LTreeIterator;
-
 import org.sheepy.common.model.inference.IInferenceObject;
 
 /**

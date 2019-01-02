@@ -7,9 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.sheepy.common.model.action.ActionPackage;
-
 import org.sheepy.common.model.inference.InferencePackage;
 
 /**

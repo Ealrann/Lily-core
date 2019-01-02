@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.sheepy.common.model.edit;singleton:=true
 Automatic-Module-Name: org.sheepy.common.model.edit
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: org.sheepy.common.model.resolver.provider.ResolverEditPlugin$Implementation
+Bundle-Activator: org.sheepy.common.model.root.provider.RootEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.sheepy.common.model.types.provider,
@@ -22,6 +22,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.sheepy.common.model;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
  org.sheepy.common.model.edit;visibility:=reexport,
+ missingOverride.edit;visibility:=reexport,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy

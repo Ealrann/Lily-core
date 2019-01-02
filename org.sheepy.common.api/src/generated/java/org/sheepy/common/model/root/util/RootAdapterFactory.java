@@ -8,13 +8,9 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
-
 import org.sheepy.common.model.action.Action;
-
 import org.sheepy.common.model.inference.IInferenceObject;
-
 import org.sheepy.common.model.root.*;
-
 import org.sheepy.common.model.types.LNamedElement;
 
 /**

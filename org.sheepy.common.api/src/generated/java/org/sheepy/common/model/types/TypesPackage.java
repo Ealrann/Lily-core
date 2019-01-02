@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EPackage;
  * <!-- end-user-doc -->
  * @see org.sheepy.common.model.types.TypesFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.common.model/src/generated/java' editDirectory='/org.sheepy.common.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' basePackage='org.sheepy.common.model'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.common.model/src/generated/java' editDirectory='/org.sheepy.common.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' updateClasspath='false' basePackage='org.sheepy.common.model'"
  * @generated
  */
 public interface TypesPackage extends EPackage

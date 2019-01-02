@@ -6,13 +6,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
-
 import org.sheepy.common.model.action.Action;
-
 import org.sheepy.common.model.inference.IInferenceObject;
-
 import org.sheepy.common.model.root.*;
-
 import org.sheepy.common.model.types.LNamedElement;
 
 /**

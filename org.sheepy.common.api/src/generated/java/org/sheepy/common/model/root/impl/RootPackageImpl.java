@@ -16,18 +16,13 @@ import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.sheepy.common.api.util.LTreeIterator;
-
 import org.sheepy.common.model.action.ActionPackage;
-
 import org.sheepy.common.model.inference.InferencePackage;
-
 import org.sheepy.common.model.root.LObject;
 import org.sheepy.common.model.root.RootFactory;
 import org.sheepy.common.model.root.RootPackage;
 import org.sheepy.common.model.root.XAction;
-
 import org.sheepy.common.model.types.TypesPackage;
 
 /**
