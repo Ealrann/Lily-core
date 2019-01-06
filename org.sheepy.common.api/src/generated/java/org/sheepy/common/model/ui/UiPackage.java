@@ -606,6 +606,169 @@ public interface UiPackage extends EPackage
 	int LABEL_OPERATION_COUNT = ABSTRACT_LABEL_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.SliderImpl <em>Slider</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.common.model.ui.impl.SliderImpl
+	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getSlider()
+	 * @generated
+	 */
+	int SLIDER = 4;
+
+	/**
+	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER__CONTENT_OBJECTS = PresentationPackage.WIDGET__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER__VERTICAL_RELATIVE = PresentationPackage.WIDGET__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER__HORIZONTAL_RELATIVE = PresentationPackage.WIDGET__HORIZONTAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER__POSITION = PresentationPackage.WIDGET__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER__WIDTH = PresentationPackage.WIDGET__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER__HEIGHT = PresentationPackage.WIDGET__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Min Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER__MIN_VALUE = PresentationPackage.WIDGET_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Max Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER__MAX_VALUE = PresentationPackage.WIDGET_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Step</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER__STEP = PresentationPackage.WIDGET_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Variable Resolver</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER__VARIABLE_RESOLVER = PresentationPackage.WIDGET_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Slider</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER_FEATURE_COUNT = PresentationPackage.WIDGET_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER___LINFERENCE_OBJECT = PresentationPackage.WIDGET___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER___LCONTENTS = PresentationPackage.WIDGET___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER___LPARENT = PresentationPackage.WIDGET___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER___LALL_CONTENTS = PresentationPackage.WIDGET___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>Slider</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER_OPERATION_COUNT = PresentationPackage.WIDGET_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.TextFieldImpl <em>Text Field</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -613,7 +776,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getTextField()
 	 * @generated
 	 */
-	int TEXT_FIELD = 4;
+	int TEXT_FIELD = 5;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -749,7 +912,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getAbstractButton()
 	 * @generated
 	 */
-	int ABSTRACT_BUTTON = 5;
+	int ABSTRACT_BUTTON = 6;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -885,7 +1048,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getButton()
 	 * @generated
 	 */
-	int BUTTON = 6;
+	int BUTTON = 7;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -1066,7 +1229,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getAbstractBooleanButton()
 	 * @generated
 	 */
-	int ABSTRACT_BOOLEAN_BUTTON = 7;
+	int ABSTRACT_BOOLEAN_BUTTON = 8;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -1220,7 +1383,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getBooleanButton()
 	 * @generated
 	 */
-	int BOOLEAN_BUTTON = 8;
+	int BOOLEAN_BUTTON = 9;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -1383,7 +1546,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getBooleanActionButton()
 	 * @generated
 	 */
-	int BOOLEAN_ACTION_BUTTON = 9;
+	int BOOLEAN_ACTION_BUTTON = 10;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -1642,6 +1805,60 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	EClass getLabel();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.Slider <em>Slider</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Slider</em>'.
+	 * @see org.sheepy.common.model.ui.Slider
+	 * @generated
+	 */
+	EClass getSlider();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.Slider#getMinValue <em>Min Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Min Value</em>'.
+	 * @see org.sheepy.common.model.ui.Slider#getMinValue()
+	 * @see #getSlider()
+	 * @generated
+	 */
+	EAttribute getSlider_MinValue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.Slider#getMaxValue <em>Max Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max Value</em>'.
+	 * @see org.sheepy.common.model.ui.Slider#getMaxValue()
+	 * @see #getSlider()
+	 * @generated
+	 */
+	EAttribute getSlider_MaxValue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.Slider#getStep <em>Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Step</em>'.
+	 * @see org.sheepy.common.model.ui.Slider#getStep()
+	 * @see #getSlider()
+	 * @generated
+	 */
+	EAttribute getSlider_Step();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.sheepy.common.model.ui.Slider#getVariableResolver <em>Variable Resolver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Variable Resolver</em>'.
+	 * @see org.sheepy.common.model.ui.Slider#getVariableResolver()
+	 * @see #getSlider()
+	 * @generated
+	 */
+	EReference getSlider_VariableResolver();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.TextField <em>Text Field</em>}'.
@@ -1936,6 +2153,48 @@ public interface UiPackage extends EPackage
 		 * @generated
 		 */
 		EClass LABEL = eINSTANCE.getLabel();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.SliderImpl <em>Slider</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.common.model.ui.impl.SliderImpl
+		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getSlider()
+		 * @generated
+		 */
+		EClass SLIDER = eINSTANCE.getSlider();
+
+		/**
+		 * The meta object literal for the '<em><b>Min Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SLIDER__MIN_VALUE = eINSTANCE.getSlider_MinValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Max Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SLIDER__MAX_VALUE = eINSTANCE.getSlider_MaxValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Step</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SLIDER__STEP = eINSTANCE.getSlider_Step();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable Resolver</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SLIDER__VARIABLE_RESOLVER = eINSTANCE.getSlider_VariableResolver();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.TextFieldImpl <em>Text Field</em>}' class.

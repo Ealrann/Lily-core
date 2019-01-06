@@ -3,17 +3,16 @@
 @GenModel(publicConstructors="true", complianceLevel="11.0", resource="XMI")
 @GenModel(extensibleProviderFactory="true", childCreationExtenders="true")
 @GenModel(updateClasspath="false")
-
 package org.sheepy.common.model.ui
 
 import org.sheepy.common.model.action.Action
 import org.sheepy.common.model.action.ActionList
 import org.sheepy.common.model.application.IView
 import org.sheepy.common.model.presentation.IControl
+import org.sheepy.common.model.presentation.Widget
 import org.sheepy.common.model.root.LObject
 import org.sheepy.common.model.types.EKeyState
 import org.sheepy.common.model.variable.AbstractVariableResolver
-import org.sheepy.common.model.presentation.Widget
 
 abstract class AbstractLabel extends Widget
 {
@@ -36,6 +35,14 @@ class Label extends AbstractLabel
 {
 }
 
+class Slider extends Widget
+{
+	int minValue = "0"
+	int maxValue = "10"
+	int step = "1"
+	contains AbstractVariableResolver[1..1] variableResolver
+}
+
 class TextField extends Widget
 {
 	contains AbstractVariableResolver variableResolver
@@ -50,22 +57,17 @@ class Button extends AbstractButton
 {
 	int shortcut
 	EKeyState state
-
 	contains Action[] actions
-	
-	op ActionList lActions()
-	{
+	op ActionList lActions() {
 		actions
 	}
-	
 	// Will execute actions on the view
-	op LObject getExecutor()
-	{
+	op LObject getExecutor() {
 		var LObject unit = this
-		
-		while(unit instanceof IView == false)
+
+		while (unit instanceof IView == false)
 			unit = unit.lParent
-		
+
 		return unit
 	}
 }

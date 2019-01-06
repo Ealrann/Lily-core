@@ -67,6 +67,7 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 			case UiPackage.DYNAMIC_ROW_LAYOUT: return createDynamicRowLayout();
 			case UiPackage.VARIABLE_LABEL: return createVariableLabel();
 			case UiPackage.LABEL: return createLabel();
+			case UiPackage.SLIDER: return createSlider();
 			case UiPackage.TEXT_FIELD: return createTextField();
 			case UiPackage.BUTTON: return createButton();
 			case UiPackage.BOOLEAN_BUTTON: return createBooleanButton();
@@ -110,6 +111,18 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 	{
 		LabelImpl label = new LabelImpl();
 		return label;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Slider createSlider()
+	{
+		SliderImpl slider = new SliderImpl();
+		return slider;
 	}
 
 	/**

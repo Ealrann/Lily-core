@@ -31,6 +31,7 @@ import org.sheepy.common.model.ui.BooleanButton;
 import org.sheepy.common.model.ui.Button;
 import org.sheepy.common.model.ui.DynamicRowLayout;
 import org.sheepy.common.model.ui.Label;
+import org.sheepy.common.model.ui.Slider;
 import org.sheepy.common.model.ui.TextField;
 import org.sheepy.common.model.ui.UiFactory;
 import org.sheepy.common.model.ui.UiPackage;
@@ -73,6 +74,13 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * @generated
 	 */
 	private EClass labelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass sliderEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -286,6 +294,61 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	public EClass getLabel()
 	{
 		return labelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getSlider()
+	{
+		return sliderEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSlider_MinValue()
+	{
+		return (EAttribute)sliderEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSlider_MaxValue()
+	{
+		return (EAttribute)sliderEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSlider_Step()
+	{
+		return (EAttribute)sliderEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSlider_VariableResolver()
+	{
+		return (EReference)sliderEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -530,6 +593,12 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 
 		labelEClass = createEClass(LABEL);
 
+		sliderEClass = createEClass(SLIDER);
+		createEAttribute(sliderEClass, SLIDER__MIN_VALUE);
+		createEAttribute(sliderEClass, SLIDER__MAX_VALUE);
+		createEAttribute(sliderEClass, SLIDER__STEP);
+		createEReference(sliderEClass, SLIDER__VARIABLE_RESOLVER);
+
 		textFieldEClass = createEClass(TEXT_FIELD);
 		createEReference(textFieldEClass, TEXT_FIELD__VARIABLE_RESOLVER);
 
@@ -596,6 +665,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		dynamicRowLayoutEClass.getESuperTypes().add(thePresentationPackage.getIControl());
 		variableLabelEClass.getESuperTypes().add(this.getAbstractLabel());
 		labelEClass.getESuperTypes().add(this.getAbstractLabel());
+		sliderEClass.getESuperTypes().add(thePresentationPackage.getWidget());
 		textFieldEClass.getESuperTypes().add(thePresentationPackage.getWidget());
 		abstractButtonEClass.getESuperTypes().add(thePresentationPackage.getWidget());
 		buttonEClass.getESuperTypes().add(this.getAbstractButton());
@@ -616,6 +686,12 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		initEReference(getVariableLabel_VariableResolver(), theVariablePackage.getAbstractVariableResolver(), null, "variableResolver", null, 0, 1, VariableLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(labelEClass, Label.class, "Label", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(sliderEClass, Slider.class, "Slider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSlider_MinValue(), theEcorePackage.getEInt(), "minValue", "0", 0, 1, Slider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSlider_MaxValue(), theEcorePackage.getEInt(), "maxValue", "10", 0, 1, Slider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSlider_Step(), theEcorePackage.getEInt(), "step", "1", 0, 1, Slider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSlider_VariableResolver(), theVariablePackage.getAbstractVariableResolver(), null, "variableResolver", null, 1, 1, Slider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(textFieldEClass, TextField.class, "TextField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTextField_VariableResolver(), theVariablePackage.getAbstractVariableResolver(), null, "variableResolver", null, 0, 1, TextField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -50,6 +50,15 @@ public interface UiFactory extends EFactory
 	Label createLabel();
 
 	/**
+	 * Returns a new object of class '<em>Slider</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Slider</em>'.
+	 * @generated
+	 */
+	Slider createSlider();
+
+	/**
 	 * Returns a new object of class '<em>Text Field</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

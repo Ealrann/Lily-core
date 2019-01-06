@@ -137,6 +137,20 @@ public class UiSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case UiPackage.SLIDER:
+			{
+				Slider slider = (Slider)theEObject;
+				T result = caseSlider(slider);
+				if (result == null) result = caseWidget(slider);
+				if (result == null) result = caseIControl(slider);
+				if (result == null) result = caseIRelativeElement(slider);
+				if (result == null) result = caseISizedElement(slider);
+				if (result == null) result = caseIUIElement(slider);
+				if (result == null) result = caseLObject(slider);
+				if (result == null) result = caseIInferenceObject(slider);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case UiPackage.TEXT_FIELD:
 			{
 				TextField textField = (TextField)theEObject;
@@ -291,6 +305,22 @@ public class UiSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseLabel(Label object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Slider</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Slider</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSlider(Slider object)
 	{
 		return null;
 	}

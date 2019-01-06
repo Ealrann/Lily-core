@@ -176,6 +176,31 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.ui.Slider} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SliderItemProvider sliderItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.common.model.ui.Slider}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSliderAdapter()
+	{
+		if (sliderItemProvider == null)
+		{
+			sliderItemProvider = new SliderItemProvider(this);
+		}
+
+		return sliderItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.ui.TextField} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -425,6 +450,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 		if (dynamicRowLayoutItemProvider != null) dynamicRowLayoutItemProvider.dispose();
 		if (variableLabelItemProvider != null) variableLabelItemProvider.dispose();
 		if (labelItemProvider != null) labelItemProvider.dispose();
+		if (sliderItemProvider != null) sliderItemProvider.dispose();
 		if (textFieldItemProvider != null) textFieldItemProvider.dispose();
 		if (buttonItemProvider != null) buttonItemProvider.dispose();
 		if (booleanButtonItemProvider != null) booleanButtonItemProvider.dispose();
@@ -496,6 +522,11 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 					(createChildParameter
 						(PresentationPackage.Literals.PANEL__CONTROLS,
 						 UiFactory.eINSTANCE.createLabel()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(PresentationPackage.Literals.PANEL__CONTROLS,
+						 UiFactory.eINSTANCE.createSlider()));
 
 				newChildDescriptors.add
 					(createChildParameter
