@@ -10,9 +10,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.sheepy.common.api.util.ResolvedVariableFeature;
-
+import org.sheepy.common.api.util.FeatureDefinition;
 import org.sheepy.common.model.variable.*;
 
 /**
@@ -154,9 +152,9 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ResolvedVariableFeature createLResolvedVariableFeatureFromString(EDataType eDataType, String initialValue)
+	public FeatureDefinition createLResolvedVariableFeatureFromString(EDataType eDataType, String initialValue)
 	{
-		return (ResolvedVariableFeature)super.createFromString(eDataType, initialValue);
+		return (FeatureDefinition)super.createFromString(eDataType, initialValue);
 	}
 
 	/**

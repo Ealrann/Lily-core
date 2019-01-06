@@ -276,7 +276,7 @@ public interface VariablePackage extends EPackage
 	 * The meta object id for the '<em>LResolved Variable Feature</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.api.util.ResolvedVariableFeature
+	 * @see org.sheepy.common.api.util.FeatureDefinition
 	 * @see org.sheepy.common.model.variable.impl.VariablePackageImpl#getLResolvedVariableFeature()
 	 * @generated
 	 */
@@ -388,12 +388,12 @@ public interface VariablePackage extends EPackage
 	EReference getVarChangeActionPkg_Actions();
 
 	/**
-	 * Returns the meta object for data type '{@link org.sheepy.common.api.util.ResolvedVariableFeature <em>LResolved Variable Feature</em>}'.
+	 * Returns the meta object for data type '{@link org.sheepy.common.api.util.FeatureDefinition <em>LResolved Variable Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>LResolved Variable Feature</em>'.
-	 * @see org.sheepy.common.api.util.ResolvedVariableFeature
-	 * @model instanceClass="org.sheepy.common.api.util.ResolvedVariableFeature"
+	 * @see org.sheepy.common.api.util.FeatureDefinition
+	 * @model instanceClass="org.sheepy.common.api.util.FeatureDefinition"
 	 * @generated
 	 */
 	EDataType getLResolvedVariableFeature();
@@ -519,7 +519,7 @@ public interface VariablePackage extends EPackage
 		 * The meta object literal for the '<em>LResolved Variable Feature</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.api.util.ResolvedVariableFeature
+		 * @see org.sheepy.common.api.util.FeatureDefinition
 		 * @see org.sheepy.common.model.variable.impl.VariablePackageImpl#getLResolvedVariableFeature()
 		 * @generated
 		 */

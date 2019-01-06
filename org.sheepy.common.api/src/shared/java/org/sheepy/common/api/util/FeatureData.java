@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 
 import org.eclipse.emf.ecore.EAttribute;
 
-public class VariableFeature
+public class FeatureData
 {
 	public String nsURI;
 	public String className;
@@ -12,7 +12,7 @@ public class VariableFeature
 
 	public String definition;
 
-	public VariableFeature(String def)
+	public FeatureData(String def)
 	{
 		this.definition = def;
 		String[] split = def.split(Pattern.quote("#"));
@@ -21,7 +21,7 @@ public class VariableFeature
 		featureName = split[2];
 	}
 
-	public VariableFeature(EAttribute attribute)
+	public FeatureData(EAttribute attribute)
 	{
 		featureName = attribute.getName();
 		className = attribute.getEContainingClass().getName();

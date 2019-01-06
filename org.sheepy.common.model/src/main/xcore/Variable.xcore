@@ -3,11 +3,10 @@
 @GenModel(publicConstructors="true", complianceLevel="11.0", resource="XMI")
 @GenModel(extensibleProviderFactory="true", childCreationExtenders="true")
 @GenModel(updateClasspath="false")
-
 package org.sheepy.common.model.variable
 
 import org.eclipse.emf.ecore.EObject
-import org.sheepy.common.api.util.ResolvedVariableFeature
+import org.sheepy.common.api.util.FeatureDefinition
 import org.sheepy.common.model.action.Action
 
 abstract class AbstractVariableResolver 
@@ -48,7 +47,7 @@ class DirectVariableResolver extends AbstractVariableResolver
 	refers EObject target
 }
 
-type LResolvedVariableFeature wraps ResolvedVariableFeature
+type LResolvedVariableFeature wraps FeatureDefinition
 
 type VariableDefinition wraps String
 
