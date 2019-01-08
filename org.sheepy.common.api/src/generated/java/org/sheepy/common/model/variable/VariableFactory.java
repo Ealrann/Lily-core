@@ -23,6 +23,24 @@ public interface VariableFactory extends EFactory
 	VariableFactory eINSTANCE = org.sheepy.common.model.variable.impl.VariableFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Chain Variable Resolver</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Chain Variable Resolver</em>'.
+	 * @generated
+	 */
+	ChainVariableResolver createChainVariableResolver();
+
+	/**
+	 * Returns a new object of class '<em>Chain Resolver</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Chain Resolver</em>'.
+	 * @generated
+	 */
+	ChainResolver createChainResolver();
+
+	/**
 	 * Returns a new object of class '<em>Direct Variable Resolver</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -3,8 +3,7 @@
 package org.sheepy.common.model.ui;
 
 import org.sheepy.common.model.presentation.Widget;
-
-import org.sheepy.common.model.variable.AbstractVariableResolver;
+import org.sheepy.common.model.variable.IVariableResolver;
 
 /**
  * <!-- begin-user-doc -->
@@ -117,12 +116,12 @@ public interface Slider extends Widget
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variable Resolver</em>' containment reference.
-	 * @see #setVariableResolver(AbstractVariableResolver)
+	 * @see #setVariableResolver(IVariableResolver)
 	 * @see org.sheepy.common.model.ui.UiPackage#getSlider_VariableResolver()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	AbstractVariableResolver getVariableResolver();
+	IVariableResolver getVariableResolver();
 
 	/**
 	 * Sets the value of the '{@link org.sheepy.common.model.ui.Slider#getVariableResolver <em>Variable Resolver</em>}' containment reference.
@@ -132,6 +131,6 @@ public interface Slider extends Widget
 	 * @see #getVariableResolver()
 	 * @generated
 	 */
-	void setVariableResolver(AbstractVariableResolver value);
+	void setVariableResolver(IVariableResolver value);
 
 } // Slider

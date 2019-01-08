@@ -77,6 +77,26 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 		new VariableSwitch<Adapter>()
 		{
 			@Override
+			public Adapter caseIVariableResolver(IVariableResolver object)
+			{
+				return createIVariableResolverAdapter();
+			}
+			@Override
+			public Adapter caseIDefinitionContainer(IDefinitionContainer object)
+			{
+				return createIDefinitionContainerAdapter();
+			}
+			@Override
+			public Adapter caseChainVariableResolver(ChainVariableResolver object)
+			{
+				return createChainVariableResolverAdapter();
+			}
+			@Override
+			public Adapter caseChainResolver(ChainResolver object)
+			{
+				return createChainResolverAdapter();
+			}
+			@Override
 			public Adapter caseAbstractVariableResolver(AbstractVariableResolver object)
 			{
 				return createAbstractVariableResolverAdapter();
@@ -132,6 +152,66 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.IVariableResolver <em>IVariable Resolver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.common.model.variable.IVariableResolver
+	 * @generated
+	 */
+	public Adapter createIVariableResolverAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.IDefinitionContainer <em>IDefinition Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.common.model.variable.IDefinitionContainer
+	 * @generated
+	 */
+	public Adapter createIDefinitionContainerAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.ChainVariableResolver <em>Chain Variable Resolver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.common.model.variable.ChainVariableResolver
+	 * @generated
+	 */
+	public Adapter createChainVariableResolverAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.ChainResolver <em>Chain Resolver</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.common.model.variable.ChainResolver
+	 * @generated
+	 */
+	public Adapter createChainResolverAdapter()
+	{
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.AbstractVariableResolver <em>Abstract Variable Resolver</em>}'.

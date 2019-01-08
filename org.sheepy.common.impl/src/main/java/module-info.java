@@ -6,6 +6,7 @@ import org.sheepy.common.api.resource.IResourceLoader;
 import org.sheepy.common.application.ApplicationAdapter;
 import org.sheepy.common.cadence.CadencerStatistics;
 import org.sheepy.common.resource.ResourceLoader;
+import org.sheepy.common.variable.ChainVariableResolverAdapter;
 import org.sheepy.common.variable.DirectVariableResolverAdapter;
 
 module org.sheepy.common.impl
@@ -22,5 +23,6 @@ module org.sheepy.common.impl
 	provides IResourceLoader with ResourceLoader;
 	provides IServiceAdapterFactory with ServiceAdapterFactory;
 	provides IStatistics with CadencerStatistics;
-	provides IAdapter with DirectVariableResolverAdapter, ApplicationAdapter;
+	provides IAdapter
+			with DirectVariableResolverAdapter, ChainVariableResolverAdapter, ApplicationAdapter;
 }

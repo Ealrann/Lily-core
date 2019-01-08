@@ -52,6 +52,7 @@ public interface DynamicRowLayout extends IControl
 
 	/**
 	 * Returns the value of the '<em><b>Column Count</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Column Count</em>' attribute isn't clear,
@@ -61,7 +62,7 @@ public interface DynamicRowLayout extends IControl
 	 * @return the value of the '<em>Column Count</em>' attribute.
 	 * @see #setColumnCount(int)
 	 * @see org.sheepy.common.model.ui.UiPackage#getDynamicRowLayout_ColumnCount()
-	 * @model unique="false"
+	 * @model default="1" unique="false"
 	 * @generated
 	 */
 	int getColumnCount();

@@ -74,10 +74,42 @@ public class VariableSwitch<T> extends Switch<T>
 	{
 		switch (classifierID)
 		{
+			case VariablePackage.IVARIABLE_RESOLVER:
+			{
+				IVariableResolver iVariableResolver = (IVariableResolver)theEObject;
+				T result = caseIVariableResolver(iVariableResolver);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case VariablePackage.IDEFINITION_CONTAINER:
+			{
+				IDefinitionContainer iDefinitionContainer = (IDefinitionContainer)theEObject;
+				T result = caseIDefinitionContainer(iDefinitionContainer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case VariablePackage.CHAIN_VARIABLE_RESOLVER:
+			{
+				ChainVariableResolver chainVariableResolver = (ChainVariableResolver)theEObject;
+				T result = caseChainVariableResolver(chainVariableResolver);
+				if (result == null) result = caseIVariableResolver(chainVariableResolver);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case VariablePackage.CHAIN_RESOLVER:
+			{
+				ChainResolver chainResolver = (ChainResolver)theEObject;
+				T result = caseChainResolver(chainResolver);
+				if (result == null) result = caseIDefinitionContainer(chainResolver);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER:
 			{
 				AbstractVariableResolver abstractVariableResolver = (AbstractVariableResolver)theEObject;
 				T result = caseAbstractVariableResolver(abstractVariableResolver);
+				if (result == null) result = caseIVariableResolver(abstractVariableResolver);
+				if (result == null) result = caseIDefinitionContainer(abstractVariableResolver);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -86,6 +118,8 @@ public class VariableSwitch<T> extends Switch<T>
 				DirectVariableResolver directVariableResolver = (DirectVariableResolver)theEObject;
 				T result = caseDirectVariableResolver(directVariableResolver);
 				if (result == null) result = caseAbstractVariableResolver(directVariableResolver);
+				if (result == null) result = caseIVariableResolver(directVariableResolver);
+				if (result == null) result = caseIDefinitionContainer(directVariableResolver);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -117,6 +151,70 @@ public class VariableSwitch<T> extends Switch<T>
 			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IVariable Resolver</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IVariable Resolver</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIVariableResolver(IVariableResolver object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IDefinition Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IDefinition Container</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIDefinitionContainer(IDefinitionContainer object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Chain Variable Resolver</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Chain Variable Resolver</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseChainVariableResolver(ChainVariableResolver object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Chain Resolver</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Chain Resolver</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseChainResolver(ChainResolver object)
+	{
+		return null;
 	}
 
 	/**

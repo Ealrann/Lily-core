@@ -17,7 +17,11 @@ import org.sheepy.common.model.types.TypesPackage;
 
 import org.sheepy.common.model.variable.AbstractVariableResolver;
 import org.sheepy.common.model.variable.BooleanChangeAction;
+import org.sheepy.common.model.variable.ChainResolver;
+import org.sheepy.common.model.variable.ChainVariableResolver;
 import org.sheepy.common.model.variable.DirectVariableResolver;
+import org.sheepy.common.model.variable.IDefinitionContainer;
+import org.sheepy.common.model.variable.IVariableResolver;
 import org.sheepy.common.model.variable.VarChangeAction;
 import org.sheepy.common.model.variable.VarChangeActionPkg;
 import org.sheepy.common.model.variable.VariableFactory;
@@ -31,6 +35,34 @@ import org.sheepy.common.model.variable.VariablePackage;
  */
 public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iVariableResolverEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iDefinitionContainerEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass chainVariableResolverEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass chainResolverEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -154,9 +186,9 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * @generated
 	 */
 	@Override
-	public EClass getAbstractVariableResolver()
+	public EClass getIVariableResolver()
 	{
-		return abstractVariableResolverEClass;
+		return iVariableResolverEClass;
 	}
 
 	/**
@@ -165,9 +197,75 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getAbstractVariableResolver_VariableDefinition()
+	public EClass getIDefinitionContainer()
 	{
-		return (EAttribute)abstractVariableResolverEClass.getEStructuralFeatures().get(0);
+		return iDefinitionContainerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIDefinitionContainer_VariableDefinition()
+	{
+		return (EAttribute)iDefinitionContainerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getChainVariableResolver()
+	{
+		return chainVariableResolverEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getChainVariableResolver_FirstResolver()
+	{
+		return (EReference)chainVariableResolverEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getChainVariableResolver_SubResolvers()
+	{
+		return (EReference)chainVariableResolverEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getChainResolver()
+	{
+		return chainResolverEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAbstractVariableResolver()
+	{
+		return abstractVariableResolverEClass;
 	}
 
 	/**
@@ -300,8 +398,18 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		isCreated = true;
 
 		// Create classes and their features
+		iVariableResolverEClass = createEClass(IVARIABLE_RESOLVER);
+
+		iDefinitionContainerEClass = createEClass(IDEFINITION_CONTAINER);
+		createEAttribute(iDefinitionContainerEClass, IDEFINITION_CONTAINER__VARIABLE_DEFINITION);
+
+		chainVariableResolverEClass = createEClass(CHAIN_VARIABLE_RESOLVER);
+		createEReference(chainVariableResolverEClass, CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER);
+		createEReference(chainVariableResolverEClass, CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS);
+
+		chainResolverEClass = createEClass(CHAIN_RESOLVER);
+
 		abstractVariableResolverEClass = createEClass(ABSTRACT_VARIABLE_RESOLVER);
-		createEAttribute(abstractVariableResolverEClass, ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION);
 
 		directVariableResolverEClass = createEClass(DIRECT_VARIABLE_RESOLVER);
 		createEReference(directVariableResolverEClass, DIRECT_VARIABLE_RESOLVER__TARGET);
@@ -352,14 +460,28 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		chainVariableResolverEClass.getESuperTypes().add(this.getIVariableResolver());
+		chainResolverEClass.getESuperTypes().add(this.getIDefinitionContainer());
+		abstractVariableResolverEClass.getESuperTypes().add(this.getIVariableResolver());
+		abstractVariableResolverEClass.getESuperTypes().add(this.getIDefinitionContainer());
 		directVariableResolverEClass.getESuperTypes().add(this.getAbstractVariableResolver());
 		varChangeActionEClass.getESuperTypes().add(theActionPackage.getAction());
 		booleanChangeActionEClass.getESuperTypes().add(this.getVarChangeAction());
 		booleanChangeActionEClass.getESuperTypes().add(theActionPackage.getAction());
 
 		// Initialize classes, features, and operations; add parameters
+		initEClass(iVariableResolverEClass, IVariableResolver.class, "IVariableResolver", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(iDefinitionContainerEClass, IDefinitionContainer.class, "IDefinitionContainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIDefinitionContainer_VariableDefinition(), this.getVariableDefinition(), "variableDefinition", null, 1, 1, IDefinitionContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(chainVariableResolverEClass, ChainVariableResolver.class, "ChainVariableResolver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getChainVariableResolver_FirstResolver(), this.getIVariableResolver(), null, "firstResolver", null, 1, 1, ChainVariableResolver.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChainVariableResolver_SubResolvers(), this.getChainResolver(), null, "subResolvers", null, 1, -1, ChainVariableResolver.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(chainResolverEClass, ChainResolver.class, "ChainResolver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(abstractVariableResolverEClass, AbstractVariableResolver.class, "AbstractVariableResolver", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAbstractVariableResolver_VariableDefinition(), this.getVariableDefinition(), "variableDefinition", null, 0, 1, AbstractVariableResolver.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(directVariableResolverEClass, DirectVariableResolver.class, "DirectVariableResolver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDirectVariableResolver_Target(), theEcorePackage.getEObject(), null, "target", null, 0, 1, DirectVariableResolver.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

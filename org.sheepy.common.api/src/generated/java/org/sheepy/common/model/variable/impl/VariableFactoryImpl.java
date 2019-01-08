@@ -65,6 +65,8 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	{
 		switch (eClass.getClassifierID())
 		{
+			case VariablePackage.CHAIN_VARIABLE_RESOLVER: return createChainVariableResolver();
+			case VariablePackage.CHAIN_RESOLVER: return createChainResolver();
 			case VariablePackage.DIRECT_VARIABLE_RESOLVER: return createDirectVariableResolver();
 			case VariablePackage.BOOLEAN_CHANGE_ACTION: return createBooleanChangeAction();
 			case VariablePackage.VAR_CHANGE_ACTION_PKG: return createVarChangeActionPkg();
@@ -109,6 +111,30 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ChainVariableResolver createChainVariableResolver()
+	{
+		ChainVariableResolverImpl chainVariableResolver = new ChainVariableResolverImpl();
+		return chainVariableResolver;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ChainResolver createChainResolver()
+	{
+		ChainResolverImpl chainResolver = new ChainResolverImpl();
+		return chainResolver;
 	}
 
 	/**

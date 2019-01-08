@@ -89,6 +89,56 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.variable.ChainVariableResolver} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ChainVariableResolverItemProvider chainVariableResolverItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.common.model.variable.ChainVariableResolver}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createChainVariableResolverAdapter()
+	{
+		if (chainVariableResolverItemProvider == null)
+		{
+			chainVariableResolverItemProvider = new ChainVariableResolverItemProvider(this);
+		}
+
+		return chainVariableResolverItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.variable.ChainResolver} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ChainResolverItemProvider chainResolverItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.common.model.variable.ChainResolver}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createChainResolverAdapter()
+	{
+		if (chainResolverItemProvider == null)
+		{
+			chainResolverItemProvider = new ChainResolverItemProvider(this);
+		}
+
+		return chainResolverItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.variable.DirectVariableResolver} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -310,6 +360,8 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	@Override
 	public void dispose()
 	{
+		if (chainVariableResolverItemProvider != null) chainVariableResolverItemProvider.dispose();
+		if (chainResolverItemProvider != null) chainResolverItemProvider.dispose();
 		if (directVariableResolverItemProvider != null) directVariableResolverItemProvider.dispose();
 		if (booleanChangeActionItemProvider != null) booleanChangeActionItemProvider.dispose();
 		if (varChangeActionPkgItemProvider != null) varChangeActionPkgItemProvider.dispose();

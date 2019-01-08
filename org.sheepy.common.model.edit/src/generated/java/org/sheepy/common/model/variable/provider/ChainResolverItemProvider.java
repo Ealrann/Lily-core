@@ -23,16 +23,16 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.common.model.variable.AbstractVariableResolver;
+import org.sheepy.common.model.variable.ChainResolver;
 import org.sheepy.common.model.variable.VariablePackage;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.common.model.variable.AbstractVariableResolver} object.
+ * This is the item provider adapter for a {@link org.sheepy.common.model.variable.ChainResolver} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class AbstractVariableResolverItemProvider 
+public class ChainResolverItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -47,7 +47,7 @@ public class AbstractVariableResolverItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AbstractVariableResolverItemProvider(AdapterFactory adapterFactory)
+	public ChainResolverItemProvider(AdapterFactory adapterFactory)
 	{
 		super(adapterFactory);
 	}
@@ -94,6 +94,18 @@ public class AbstractVariableResolverItemProvider
 	}
 
 	/**
+	 * This returns ChainResolver.gif.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object getImage(Object object)
+	{
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ChainResolver"));
+	}
+
+	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -102,10 +114,10 @@ public class AbstractVariableResolverItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((AbstractVariableResolver)object).getVariableDefinition();
+		String label = ((ChainResolver)object).getVariableDefinition();
 		return label == null || label.length() == 0 ?
-			getString("_UI_AbstractVariableResolver_type") :
-			getString("_UI_AbstractVariableResolver_type") + " " + label;
+			getString("_UI_ChainResolver_type") :
+			getString("_UI_ChainResolver_type") + " " + label;
 	}
 
 
@@ -121,9 +133,9 @@ public class AbstractVariableResolverItemProvider
 	{
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(AbstractVariableResolver.class))
+		switch (notification.getFeatureID(ChainResolver.class))
 		{
-			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
+			case VariablePackage.CHAIN_RESOLVER__VARIABLE_DEFINITION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

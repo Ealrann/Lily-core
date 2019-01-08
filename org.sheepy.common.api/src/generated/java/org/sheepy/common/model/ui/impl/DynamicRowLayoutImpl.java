@@ -89,7 +89,7 @@ public class DynamicRowLayoutImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int COLUMN_COUNT_EDEFAULT = 0;
+	protected static final int COLUMN_COUNT_EDEFAULT = 1;
 
 	/**
 	 * The cached value of the '{@link #getColumnCount() <em>Column Count</em>}' attribute.

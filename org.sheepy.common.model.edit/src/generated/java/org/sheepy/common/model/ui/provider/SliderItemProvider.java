@@ -379,6 +379,11 @@ public class SliderItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UiPackage.Literals.SLIDER__VARIABLE_RESOLVER,
+				 VariableFactory.eINSTANCE.createChainVariableResolver()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.SLIDER__VARIABLE_RESOLVER,
 				 VariableFactory.eINSTANCE.createDirectVariableResolver()));
 	}
 

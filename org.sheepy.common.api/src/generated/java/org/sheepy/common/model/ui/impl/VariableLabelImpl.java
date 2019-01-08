@@ -12,8 +12,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.sheepy.common.model.ui.UiPackage;
 import org.sheepy.common.model.ui.VariableLabel;
-
-import org.sheepy.common.model.variable.AbstractVariableResolver;
+import org.sheepy.common.model.variable.IVariableResolver;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,7 +37,7 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 	 * @generated
 	 * @ordered
 	 */
-	protected AbstractVariableResolver variableResolver;
+	protected IVariableResolver variableResolver;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -67,7 +66,7 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 	 * @generated
 	 */
 	@Override
-	public AbstractVariableResolver getVariableResolver()
+	public IVariableResolver getVariableResolver()
 	{
 		return variableResolver;
 	}
@@ -77,9 +76,9 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetVariableResolver(AbstractVariableResolver newVariableResolver, NotificationChain msgs)
+	public NotificationChain basicSetVariableResolver(IVariableResolver newVariableResolver, NotificationChain msgs)
 	{
-		AbstractVariableResolver oldVariableResolver = variableResolver;
+		IVariableResolver oldVariableResolver = variableResolver;
 		variableResolver = newVariableResolver;
 		if (eNotificationRequired())
 		{
@@ -95,7 +94,7 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 	 * @generated
 	 */
 	@Override
-	public void setVariableResolver(AbstractVariableResolver newVariableResolver)
+	public void setVariableResolver(IVariableResolver newVariableResolver)
 	{
 		if (newVariableResolver != variableResolver)
 		{
@@ -154,7 +153,7 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 		switch (featureID)
 		{
 			case UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER:
-				setVariableResolver((AbstractVariableResolver)newValue);
+				setVariableResolver((IVariableResolver)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -171,7 +170,7 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 		switch (featureID)
 		{
 			case UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER:
-				setVariableResolver((AbstractVariableResolver)null);
+				setVariableResolver((IVariableResolver)null);
 				return;
 		}
 		super.eUnset(featureID);

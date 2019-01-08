@@ -3,14 +3,12 @@ package org.sheepy.common.variable;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.sheepy.common.api.adapter.impl.AbstractStatefullAdapter;
 import org.sheepy.common.api.util.FeatureDefinition;
-import org.sheepy.common.api.variable.IVariableResolverAdapter;
 import org.sheepy.common.model.variable.DirectVariableResolver;
 import org.sheepy.common.model.variable.VariablePackage;
 
-public class DirectVariableResolverAdapter extends AbstractStatefullAdapter
-		implements IVariableResolverAdapter<DirectVariableResolver>
+public class DirectVariableResolverAdapter
+		extends AbstractVariableResolverAdapter<DirectVariableResolver>
 {
 	private FeatureDefinition resolvedDefinition;
 
@@ -41,15 +39,15 @@ public class DirectVariableResolverAdapter extends AbstractStatefullAdapter
 	}
 
 	@Override
-	public EObject getTarget(DirectVariableResolver variableResolver)
+	protected FeatureDefinition getFeatureDefinition()
 	{
-		return variableResolver.getTarget();
+		return resolvedDefinition;
 	}
 
 	@Override
-	public FeatureDefinition getFeatureDefinition(DirectVariableResolver variableResolver)
+	protected EObject getResolvedTarget()
 	{
-		return resolvedDefinition;
+		return ((DirectVariableResolver) target).getTarget();
 	}
 
 	@Override

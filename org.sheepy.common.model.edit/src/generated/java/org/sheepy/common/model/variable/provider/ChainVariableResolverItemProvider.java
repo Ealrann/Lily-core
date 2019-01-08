@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui.provider;
+package org.sheepy.common.model.variable.provider;
 
 
 import java.util.Collection;
@@ -8,24 +8,39 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.IChildCreationExtender;
+import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.IItemPropertySource;
+import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
+import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.sheepy.common.model.root.LObject;
-import org.sheepy.common.model.ui.UiPackage;
-import org.sheepy.common.model.ui.VariableLabel;
 
+import org.sheepy.common.model.variable.ChainVariableResolver;
 import org.sheepy.common.model.variable.VariableFactory;
+import org.sheepy.common.model.variable.VariablePackage;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.common.model.ui.VariableLabel} object.
+ * This is the item provider adapter for a {@link org.sheepy.common.model.variable.ChainVariableResolver} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class VariableLabelItemProvider extends AbstractLabelItemProvider
+public class ChainVariableResolverItemProvider 
+	extends ItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -33,7 +48,7 @@ public class VariableLabelItemProvider extends AbstractLabelItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public VariableLabelItemProvider(AdapterFactory adapterFactory)
+	public ChainVariableResolverItemProvider(AdapterFactory adapterFactory)
 	{
 		super(adapterFactory);
 	}
@@ -69,7 +84,8 @@ public class VariableLabelItemProvider extends AbstractLabelItemProvider
 		if (childrenFeatures == null)
 		{
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UiPackage.Literals.VARIABLE_LABEL__VARIABLE_RESOLVER);
+			childrenFeatures.add(VariablePackage.Literals.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER);
+			childrenFeatures.add(VariablePackage.Literals.CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS);
 		}
 		return childrenFeatures;
 	}
@@ -89,7 +105,7 @@ public class VariableLabelItemProvider extends AbstractLabelItemProvider
 	}
 
 	/**
-	 * This returns VariableLabel.gif.
+	 * This returns ChainVariableResolver.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -97,7 +113,7 @@ public class VariableLabelItemProvider extends AbstractLabelItemProvider
 	@Override
 	public Object getImage(Object object)
 	{
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/VariableLabel"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ChainVariableResolver"));
 	}
 
 	/**
@@ -109,11 +125,7 @@ public class VariableLabelItemProvider extends AbstractLabelItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((VariableLabel)object).getContentObjects();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_VariableLabel_type") :
-			getString("_UI_VariableLabel_type") + " " + label;
+		return getString("_UI_ChainVariableResolver_type");
 	}
 
 
@@ -129,9 +141,10 @@ public class VariableLabelItemProvider extends AbstractLabelItemProvider
 	{
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(VariableLabel.class))
+		switch (notification.getFeatureID(ChainVariableResolver.class))
 		{
-			case UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER:
+			case VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER:
+			case VariablePackage.CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -152,13 +165,30 @@ public class VariableLabelItemProvider extends AbstractLabelItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UiPackage.Literals.VARIABLE_LABEL__VARIABLE_RESOLVER,
+				(VariablePackage.Literals.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER,
 				 VariableFactory.eINSTANCE.createChainVariableResolver()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UiPackage.Literals.VARIABLE_LABEL__VARIABLE_RESOLVER,
+				(VariablePackage.Literals.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER,
 				 VariableFactory.eINSTANCE.createDirectVariableResolver()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(VariablePackage.Literals.CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS,
+				 VariableFactory.eINSTANCE.createChainResolver()));
+	}
+
+	/**
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourceLocator getResourceLocator()
+	{
+		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
 	}
 
 }

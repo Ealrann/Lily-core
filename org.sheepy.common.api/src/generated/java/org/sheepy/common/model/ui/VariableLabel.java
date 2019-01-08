@@ -2,7 +2,7 @@
  */
 package org.sheepy.common.model.ui;
 
-import org.sheepy.common.model.variable.AbstractVariableResolver;
+import org.sheepy.common.model.variable.IVariableResolver;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,12 +31,12 @@ public interface VariableLabel extends AbstractLabel
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variable Resolver</em>' containment reference.
-	 * @see #setVariableResolver(AbstractVariableResolver)
+	 * @see #setVariableResolver(IVariableResolver)
 	 * @see org.sheepy.common.model.ui.UiPackage#getVariableLabel_VariableResolver()
-	 * @model containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	AbstractVariableResolver getVariableResolver();
+	IVariableResolver getVariableResolver();
 
 	/**
 	 * Sets the value of the '{@link org.sheepy.common.model.ui.VariableLabel#getVariableResolver <em>Variable Resolver</em>}' containment reference.
@@ -46,6 +46,6 @@ public interface VariableLabel extends AbstractLabel
 	 * @see #getVariableResolver()
 	 * @generated
 	 */
-	void setVariableResolver(AbstractVariableResolver value);
+	void setVariableResolver(IVariableResolver value);
 
 } // VariableLabel

@@ -9,10 +9,28 @@ import org.eclipse.emf.ecore.EObject
 import org.sheepy.common.api.util.FeatureDefinition
 import org.sheepy.common.model.action.Action
 
-abstract class AbstractVariableResolver 
+interface IVariableResolver
+{
+}
+
+interface IDefinitionContainer
+{
+	VariableDefinition[1..1] variableDefinition
+}
+
+class ChainVariableResolver extends IVariableResolver
+{
+	contains IVariableResolver[1..1] firstResolver
+	contains ChainResolver[1..*] subResolvers
+}
+
+class ChainResolver extends IDefinitionContainer
+{
+}
+
+abstract class AbstractVariableResolver extends IVariableResolver, IDefinitionContainer
 {
 //	contains ILObjectResolver resolver
-	VariableDefinition variableDefinition
 //	
 //	@GenModel(property="None")
 //	transient LResolvedVariableFeature emfAttributes

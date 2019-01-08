@@ -13,6 +13,7 @@ import org.sheepy.common.model.presentation.Widget
 import org.sheepy.common.model.root.LObject
 import org.sheepy.common.model.types.EKeyState
 import org.sheepy.common.model.variable.AbstractVariableResolver
+import org.sheepy.common.model.variable.IVariableResolver
 
 abstract class AbstractLabel extends Widget
 {
@@ -23,12 +24,12 @@ abstract class AbstractLabel extends Widget
 class DynamicRowLayout extends IControl
 {
 	int height = "16"
-	int columnCount
+	int columnCount = "1"
 }
 
 class VariableLabel extends AbstractLabel
 {
-	contains AbstractVariableResolver variableResolver
+	contains IVariableResolver[1..1] variableResolver
 }
 
 class Label extends AbstractLabel
@@ -40,7 +41,7 @@ class Slider extends Widget
 	int minValue = "0"
 	int maxValue = "10"
 	int step = "1"
-	contains AbstractVariableResolver[1..1] variableResolver
+	contains IVariableResolver[1..1] variableResolver
 }
 
 class TextField extends Widget

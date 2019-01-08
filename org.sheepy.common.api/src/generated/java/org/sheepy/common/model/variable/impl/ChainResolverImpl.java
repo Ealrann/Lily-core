@@ -9,24 +9,23 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.sheepy.common.model.variable.AbstractVariableResolver;
-import org.sheepy.common.model.variable.IDefinitionContainer;
+import org.sheepy.common.model.variable.ChainResolver;
 import org.sheepy.common.model.variable.VariablePackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Abstract Variable Resolver</b></em>'.
+ * An implementation of the model object '<em><b>Chain Resolver</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.variable.impl.AbstractVariableResolverImpl#getVariableDefinition <em>Variable Definition</em>}</li>
+ *   <li>{@link org.sheepy.common.model.variable.impl.ChainResolverImpl#getVariableDefinition <em>Variable Definition</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Container implements AbstractVariableResolver
+public class ChainResolverImpl extends MinimalEObjectImpl.Container implements ChainResolver
 {
 	/**
 	 * The default value of the '{@link #getVariableDefinition() <em>Variable Definition</em>}' attribute.
@@ -53,7 +52,7 @@ public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AbstractVariableResolverImpl()
+	public ChainResolverImpl()
 	{
 		super();
 	}
@@ -66,7 +65,7 @@ public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Co
 	@Override
 	protected EClass eStaticClass()
 	{
-		return VariablePackage.Literals.ABSTRACT_VARIABLE_RESOLVER;
+		return VariablePackage.Literals.CHAIN_RESOLVER;
 	}
 
 	/**
@@ -91,7 +90,7 @@ public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Co
 		String oldVariableDefinition = variableDefinition;
 		variableDefinition = newVariableDefinition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION, oldVariableDefinition, variableDefinition));
+			eNotify(new ENotificationImpl(this, Notification.SET, VariablePackage.CHAIN_RESOLVER__VARIABLE_DEFINITION, oldVariableDefinition, variableDefinition));
 	}
 
 	/**
@@ -104,7 +103,7 @@ public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Co
 	{
 		switch (featureID)
 		{
-			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
+			case VariablePackage.CHAIN_RESOLVER__VARIABLE_DEFINITION:
 				return getVariableDefinition();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -120,7 +119,7 @@ public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Co
 	{
 		switch (featureID)
 		{
-			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
+			case VariablePackage.CHAIN_RESOLVER__VARIABLE_DEFINITION:
 				setVariableDefinition((String)newValue);
 				return;
 		}
@@ -137,7 +136,7 @@ public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Co
 	{
 		switch (featureID)
 		{
-			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
+			case VariablePackage.CHAIN_RESOLVER__VARIABLE_DEFINITION:
 				setVariableDefinition(VARIABLE_DEFINITION_EDEFAULT);
 				return;
 		}
@@ -154,48 +153,10 @@ public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Co
 	{
 		switch (featureID)
 		{
-			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
+			case VariablePackage.CHAIN_RESOLVER__VARIABLE_DEFINITION:
 				return VARIABLE_DEFINITION_EDEFAULT == null ? variableDefinition != null : !VARIABLE_DEFINITION_EDEFAULT.equals(variableDefinition);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
-	{
-		if (baseClass == IDefinitionContainer.class)
-		{
-			switch (derivedFeatureID)
-			{
-				case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION: return VariablePackage.IDEFINITION_CONTAINER__VARIABLE_DEFINITION;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
-	{
-		if (baseClass == IDefinitionContainer.class)
-		{
-			switch (baseFeatureID)
-			{
-				case VariablePackage.IDEFINITION_CONTAINER__VARIABLE_DEFINITION: return VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
@@ -215,4 +176,4 @@ public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Co
 		return result.toString();
 	}
 
-} //AbstractVariableResolverImpl
+} //ChainResolverImpl
