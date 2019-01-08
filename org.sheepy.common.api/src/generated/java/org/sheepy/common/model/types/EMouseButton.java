@@ -37,7 +37,7 @@ public enum EMouseButton implements Enumerator
 	 * @generated
 	 * @ordered
 	 */
-	LEFT(1, "LEFT", "LEFT"),
+	LEFT(0, "LEFT", "LEFT"),
 
 	/**
 	 * The '<em><b>MIDDLE</b></em>' literal object.
@@ -47,7 +47,47 @@ public enum EMouseButton implements Enumerator
 	 * @generated
 	 * @ordered
 	 */
-	MIDDLE(2, "MIDDLE", "MIDDLE");
+	MIDDLE(0, "MIDDLE", "MIDDLE"), /**
+	 * The '<em><b>4</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #_4_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	_4(0, "_4", "_4"), /**
+	 * The '<em><b>5</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #_5_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	_5(0, "_5", "_5"), /**
+	 * The '<em><b>6</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #_6_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	_6(0, "_6", "_6"), /**
+	 * The '<em><b>7</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #_7_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	_7(0, "_7", "_7"), /**
+	 * The '<em><b>8</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #_8_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	_8(0, "_8", "_8");
 
 	/**
 	 * The '<em><b>RIGHT</b></em>' literal value.
@@ -77,7 +117,7 @@ public enum EMouseButton implements Enumerator
 	 * @generated
 	 * @ordered
 	 */
-	public static final int LEFT_VALUE = 1;
+	public static final int LEFT_VALUE = 0;
 
 	/**
 	 * The '<em><b>MIDDLE</b></em>' literal value.
@@ -92,7 +132,82 @@ public enum EMouseButton implements Enumerator
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MIDDLE_VALUE = 2;
+	public static final int MIDDLE_VALUE = 0;
+
+	/**
+	 * The '<em><b>4</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>4</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #_4
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int _4_VALUE = 0;
+
+	/**
+	 * The '<em><b>5</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>5</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #_5
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int _5_VALUE = 0;
+
+	/**
+	 * The '<em><b>6</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>6</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #_6
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int _6_VALUE = 0;
+
+	/**
+	 * The '<em><b>7</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>7</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #_7
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int _7_VALUE = 0;
+
+	/**
+	 * The '<em><b>8</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>8</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #_8
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int _8_VALUE = 0;
 
 	/**
 	 * An array of all the '<em><b>EMouse Button</b></em>' enumerators.
@@ -106,6 +221,11 @@ public enum EMouseButton implements Enumerator
 			RIGHT,
 			LEFT,
 			MIDDLE,
+			_4,
+			_5,
+			_6,
+			_7,
+			_8,
 		};
 
 	/**
@@ -171,8 +291,6 @@ public enum EMouseButton implements Enumerator
 		switch (value)
 		{
 			case RIGHT_VALUE: return RIGHT;
-			case LEFT_VALUE: return LEFT;
-			case MIDDLE_VALUE: return MIDDLE;
 		}
 		return null;
 	}

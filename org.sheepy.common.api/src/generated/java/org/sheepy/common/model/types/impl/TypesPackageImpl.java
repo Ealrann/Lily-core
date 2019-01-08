@@ -764,6 +764,11 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		addEEnumLiteral(eMouseButtonEEnum, EMouseButton.RIGHT);
 		addEEnumLiteral(eMouseButtonEEnum, EMouseButton.LEFT);
 		addEEnumLiteral(eMouseButtonEEnum, EMouseButton.MIDDLE);
+		addEEnumLiteral(eMouseButtonEEnum, EMouseButton._4);
+		addEEnumLiteral(eMouseButtonEEnum, EMouseButton._5);
+		addEEnumLiteral(eMouseButtonEEnum, EMouseButton._6);
+		addEEnumLiteral(eMouseButtonEEnum, EMouseButton._7);
+		addEEnumLiteral(eMouseButtonEEnum, EMouseButton._8);
 
 		initEEnum(eKeyStateEEnum, EKeyState.class, "EKeyState");
 		addEEnumLiteral(eKeyStateEEnum, EKeyState.RELEASED);

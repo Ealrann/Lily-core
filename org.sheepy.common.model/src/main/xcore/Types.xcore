@@ -160,9 +160,14 @@ enum EHorizontalRelative
 }
 
 enum EMouseButton {
-	RIGHT = 0
-	LEFT = 1
-	MIDDLE = 2
+	RIGHT
+	LEFT
+	MIDDLE
+	_4
+	_5
+	_6
+	_7
+	_8
 }
 
 enum EKeyState {
