@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.presentation.impl;
+package org.sheepy.common.model.ui.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -33,22 +32,26 @@ import org.sheepy.common.api.types.SVector2i;
 import org.sheepy.common.api.util.LTreeIterator;
 
 import org.sheepy.common.model.inference.IInferenceObject;
+import org.sheepy.common.model.inference.InferencePackage;
 
-import org.sheepy.common.model.presentation.IControl;
-import org.sheepy.common.model.presentation.IRelativeElement;
+import org.sheepy.common.model.presentation.IPositionElement;
 import org.sheepy.common.model.presentation.ISizedElement;
-import org.sheepy.common.model.presentation.Panel;
+import org.sheepy.common.model.presentation.IUIElement;
 import org.sheepy.common.model.presentation.PresentationPackage;
 
 import org.sheepy.common.model.root.LObject;
+import org.sheepy.common.model.root.RootPackage;
 
 import org.sheepy.common.model.root.RootPackage.Literals;
 
 import org.sheepy.common.model.types.EHorizontalRelative;
 import org.sheepy.common.model.types.EVerticalRelative;
-import org.sheepy.common.model.types.LNamedElement;
 import org.sheepy.common.model.types.TypesFactory;
 import org.sheepy.common.model.types.TypesPackage;
+
+import org.sheepy.common.model.ui.IControl;
+import org.sheepy.common.model.ui.Panel;
+import org.sheepy.common.model.ui.UiPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -58,30 +61,22 @@ import org.sheepy.common.model.types.TypesPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.presentation.impl.PanelImpl#getContentObjects <em>Content Objects</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.impl.PanelImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.impl.PanelImpl#getVerticalRelative <em>Vertical Relative</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.impl.PanelImpl#getHorizontalRelative <em>Horizontal Relative</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.impl.PanelImpl#getPosition <em>Position</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.impl.PanelImpl#getWidth <em>Width</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.impl.PanelImpl#getHeight <em>Height</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.impl.PanelImpl#getControls <em>Controls</em>}</li>
+ *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#getContentObjects <em>Content Objects</em>}</li>
+ *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#getPosition <em>Position</em>}</li>
+ *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#getVerticalRelative <em>Vertical Relative</em>}</li>
+ *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#getHorizontalRelative <em>Horizontal Relative</em>}</li>
+ *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#getWidth <em>Width</em>}</li>
+ *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#getHeight <em>Height</em>}</li>
+ *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#getControls <em>Controls</em>}</li>
+ *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#isShowTitle <em>Show Title</em>}</li>
+ *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#isMinimizable <em>Minimizable</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 {
-	/**
-	 * The cached value of the '{@link #getContentObjects() <em>Content Objects</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContentObjects()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<LObject> contentObjects;
-
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -101,6 +96,36 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getContentObjects() <em>Content Objects</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getContentObjects()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<LObject> contentObjects;
+
+	/**
+	 * The default value of the '{@link #getPosition() <em>Position</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPosition()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final SVector2i POSITION_EDEFAULT = (SVector2i)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getSVector2i(), "0;0");
+
+	/**
+	 * The cached value of the '{@link #getPosition() <em>Position</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPosition()
+	 * @generated
+	 * @ordered
+	 */
+	protected SVector2i position = POSITION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getVerticalRelative() <em>Vertical Relative</em>}' attribute.
@@ -141,26 +166,6 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	 * @ordered
 	 */
 	protected EHorizontalRelative horizontalRelative = HORIZONTAL_RELATIVE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getPosition() <em>Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPosition()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final SVector2i POSITION_EDEFAULT = (SVector2i)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getSVector2i(), "0;0");
-
-	/**
-	 * The cached value of the '{@link #getPosition() <em>Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPosition()
-	 * @generated
-	 * @ordered
-	 */
-	protected SVector2i position = POSITION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
@@ -213,6 +218,46 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	protected EList<IControl> controls;
 
 	/**
+	 * The default value of the '{@link #isShowTitle() <em>Show Title</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isShowTitle()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean SHOW_TITLE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isShowTitle() <em>Show Title</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isShowTitle()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean showTitle = SHOW_TITLE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMinimizable() <em>Minimizable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMinimizable()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MINIMIZABLE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMinimizable() <em>Minimizable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMinimizable()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean minimizable = MINIMIZABLE_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -230,32 +275,7 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	@Override
 	protected EClass eStaticClass()
 	{
-		return PresentationPackage.Literals.PANEL;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<LObject> getContentObjects()
-	{
-		return contentObjects;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setContentObjects(EList<LObject> newContentObjects)
-	{
-		EList<LObject> oldContentObjects = contentObjects;
-		contentObjects = newContentObjects;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.PANEL__CONTENT_OBJECTS, oldContentObjects, contentObjects));
+		return UiPackage.Literals.PANEL;
 	}
 
 	/**
@@ -280,7 +300,32 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 		String oldName = name;
 		name = newName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.PANEL__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<LObject> getContentObjects()
+	{
+		return contentObjects;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setContentObjects(EList<LObject> newContentObjects)
+	{
+		EList<LObject> oldContentObjects = contentObjects;
+		contentObjects = newContentObjects;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__CONTENT_OBJECTS, oldContentObjects, contentObjects));
 	}
 
 	/**
@@ -305,7 +350,7 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 		EVerticalRelative oldVerticalRelative = verticalRelative;
 		verticalRelative = newVerticalRelative == null ? VERTICAL_RELATIVE_EDEFAULT : newVerticalRelative;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.PANEL__VERTICAL_RELATIVE, oldVerticalRelative, verticalRelative));
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__VERTICAL_RELATIVE, oldVerticalRelative, verticalRelative));
 	}
 
 	/**
@@ -330,7 +375,7 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 		EHorizontalRelative oldHorizontalRelative = horizontalRelative;
 		horizontalRelative = newHorizontalRelative == null ? HORIZONTAL_RELATIVE_EDEFAULT : newHorizontalRelative;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.PANEL__HORIZONTAL_RELATIVE, oldHorizontalRelative, horizontalRelative));
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__HORIZONTAL_RELATIVE, oldHorizontalRelative, horizontalRelative));
 	}
 
 	/**
@@ -355,7 +400,7 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 		SVector2i oldPosition = position;
 		position = newPosition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.PANEL__POSITION, oldPosition, position));
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__POSITION, oldPosition, position));
 	}
 
 	/**
@@ -380,7 +425,7 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 		int oldWidth = width;
 		width = newWidth;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.PANEL__WIDTH, oldWidth, width));
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__WIDTH, oldWidth, width));
 	}
 
 	/**
@@ -405,7 +450,7 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 		int oldHeight = height;
 		height = newHeight;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.PANEL__HEIGHT, oldHeight, height));
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__HEIGHT, oldHeight, height));
 	}
 
 	/**
@@ -418,9 +463,59 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	{
 		if (controls == null)
 		{
-			controls = new EObjectContainmentEList<IControl>(IControl.class, this, PresentationPackage.PANEL__CONTROLS);
+			controls = new EObjectContainmentEList<IControl>(IControl.class, this, UiPackage.PANEL__CONTROLS);
 		}
 		return controls;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isShowTitle()
+	{
+		return showTitle;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setShowTitle(boolean newShowTitle)
+	{
+		boolean oldShowTitle = showTitle;
+		showTitle = newShowTitle;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__SHOW_TITLE, oldShowTitle, showTitle));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isMinimizable()
+	{
+		return minimizable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setMinimizable(boolean newMinimizable)
+	{
+		boolean oldMinimizable = minimizable;
+		minimizable = newMinimizable;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__MINIMIZABLE, oldMinimizable, minimizable));
 	}
 
 	/**
@@ -527,7 +622,7 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.PANEL__CONTROLS:
+			case UiPackage.PANEL__CONTROLS:
 				return ((InternalEList<?>)getControls()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -543,22 +638,26 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.PANEL__CONTENT_OBJECTS:
-				return getContentObjects();
-			case PresentationPackage.PANEL__NAME:
+			case UiPackage.PANEL__NAME:
 				return getName();
-			case PresentationPackage.PANEL__VERTICAL_RELATIVE:
-				return getVerticalRelative();
-			case PresentationPackage.PANEL__HORIZONTAL_RELATIVE:
-				return getHorizontalRelative();
-			case PresentationPackage.PANEL__POSITION:
+			case UiPackage.PANEL__CONTENT_OBJECTS:
+				return getContentObjects();
+			case UiPackage.PANEL__POSITION:
 				return getPosition();
-			case PresentationPackage.PANEL__WIDTH:
+			case UiPackage.PANEL__VERTICAL_RELATIVE:
+				return getVerticalRelative();
+			case UiPackage.PANEL__HORIZONTAL_RELATIVE:
+				return getHorizontalRelative();
+			case UiPackage.PANEL__WIDTH:
 				return getWidth();
-			case PresentationPackage.PANEL__HEIGHT:
+			case UiPackage.PANEL__HEIGHT:
 				return getHeight();
-			case PresentationPackage.PANEL__CONTROLS:
+			case UiPackage.PANEL__CONTROLS:
 				return getControls();
+			case UiPackage.PANEL__SHOW_TITLE:
+				return isShowTitle();
+			case UiPackage.PANEL__MINIMIZABLE:
+				return isMinimizable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -574,30 +673,36 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.PANEL__CONTENT_OBJECTS:
-				setContentObjects((EList<LObject>)newValue);
-				return;
-			case PresentationPackage.PANEL__NAME:
+			case UiPackage.PANEL__NAME:
 				setName((String)newValue);
 				return;
-			case PresentationPackage.PANEL__VERTICAL_RELATIVE:
-				setVerticalRelative((EVerticalRelative)newValue);
+			case UiPackage.PANEL__CONTENT_OBJECTS:
+				setContentObjects((EList<LObject>)newValue);
 				return;
-			case PresentationPackage.PANEL__HORIZONTAL_RELATIVE:
-				setHorizontalRelative((EHorizontalRelative)newValue);
-				return;
-			case PresentationPackage.PANEL__POSITION:
+			case UiPackage.PANEL__POSITION:
 				setPosition((SVector2i)newValue);
 				return;
-			case PresentationPackage.PANEL__WIDTH:
+			case UiPackage.PANEL__VERTICAL_RELATIVE:
+				setVerticalRelative((EVerticalRelative)newValue);
+				return;
+			case UiPackage.PANEL__HORIZONTAL_RELATIVE:
+				setHorizontalRelative((EHorizontalRelative)newValue);
+				return;
+			case UiPackage.PANEL__WIDTH:
 				setWidth((Integer)newValue);
 				return;
-			case PresentationPackage.PANEL__HEIGHT:
+			case UiPackage.PANEL__HEIGHT:
 				setHeight((Integer)newValue);
 				return;
-			case PresentationPackage.PANEL__CONTROLS:
+			case UiPackage.PANEL__CONTROLS:
 				getControls().clear();
 				getControls().addAll((Collection<? extends IControl>)newValue);
+				return;
+			case UiPackage.PANEL__SHOW_TITLE:
+				setShowTitle((Boolean)newValue);
+				return;
+			case UiPackage.PANEL__MINIMIZABLE:
+				setMinimizable((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -613,29 +718,35 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.PANEL__CONTENT_OBJECTS:
-				setContentObjects((EList<LObject>)null);
-				return;
-			case PresentationPackage.PANEL__NAME:
+			case UiPackage.PANEL__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case PresentationPackage.PANEL__VERTICAL_RELATIVE:
-				setVerticalRelative(VERTICAL_RELATIVE_EDEFAULT);
+			case UiPackage.PANEL__CONTENT_OBJECTS:
+				setContentObjects((EList<LObject>)null);
 				return;
-			case PresentationPackage.PANEL__HORIZONTAL_RELATIVE:
-				setHorizontalRelative(HORIZONTAL_RELATIVE_EDEFAULT);
-				return;
-			case PresentationPackage.PANEL__POSITION:
+			case UiPackage.PANEL__POSITION:
 				setPosition(POSITION_EDEFAULT);
 				return;
-			case PresentationPackage.PANEL__WIDTH:
+			case UiPackage.PANEL__VERTICAL_RELATIVE:
+				setVerticalRelative(VERTICAL_RELATIVE_EDEFAULT);
+				return;
+			case UiPackage.PANEL__HORIZONTAL_RELATIVE:
+				setHorizontalRelative(HORIZONTAL_RELATIVE_EDEFAULT);
+				return;
+			case UiPackage.PANEL__WIDTH:
 				setWidth(WIDTH_EDEFAULT);
 				return;
-			case PresentationPackage.PANEL__HEIGHT:
+			case UiPackage.PANEL__HEIGHT:
 				setHeight(HEIGHT_EDEFAULT);
 				return;
-			case PresentationPackage.PANEL__CONTROLS:
+			case UiPackage.PANEL__CONTROLS:
 				getControls().clear();
+				return;
+			case UiPackage.PANEL__SHOW_TITLE:
+				setShowTitle(SHOW_TITLE_EDEFAULT);
+				return;
+			case UiPackage.PANEL__MINIMIZABLE:
+				setMinimizable(MINIMIZABLE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -651,22 +762,26 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.PANEL__CONTENT_OBJECTS:
-				return contentObjects != null;
-			case PresentationPackage.PANEL__NAME:
+			case UiPackage.PANEL__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case PresentationPackage.PANEL__VERTICAL_RELATIVE:
-				return verticalRelative != VERTICAL_RELATIVE_EDEFAULT;
-			case PresentationPackage.PANEL__HORIZONTAL_RELATIVE:
-				return horizontalRelative != HORIZONTAL_RELATIVE_EDEFAULT;
-			case PresentationPackage.PANEL__POSITION:
+			case UiPackage.PANEL__CONTENT_OBJECTS:
+				return contentObjects != null;
+			case UiPackage.PANEL__POSITION:
 				return POSITION_EDEFAULT == null ? position != null : !POSITION_EDEFAULT.equals(position);
-			case PresentationPackage.PANEL__WIDTH:
+			case UiPackage.PANEL__VERTICAL_RELATIVE:
+				return verticalRelative != VERTICAL_RELATIVE_EDEFAULT;
+			case UiPackage.PANEL__HORIZONTAL_RELATIVE:
+				return horizontalRelative != HORIZONTAL_RELATIVE_EDEFAULT;
+			case UiPackage.PANEL__WIDTH:
 				return width != WIDTH_EDEFAULT;
-			case PresentationPackage.PANEL__HEIGHT:
+			case UiPackage.PANEL__HEIGHT:
 				return height != HEIGHT_EDEFAULT;
-			case PresentationPackage.PANEL__CONTROLS:
+			case UiPackage.PANEL__CONTROLS:
 				return controls != null && !controls.isEmpty();
+			case UiPackage.PANEL__SHOW_TITLE:
+				return showTitle != SHOW_TITLE_EDEFAULT;
+			case UiPackage.PANEL__MINIMIZABLE:
+				return minimizable != MINIMIZABLE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -679,20 +794,35 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
 	{
-		if (baseClass == LNamedElement.class)
+		if (baseClass == IInferenceObject.class)
 		{
 			switch (derivedFeatureID)
 			{
-				case PresentationPackage.PANEL__NAME: return TypesPackage.LNAMED_ELEMENT__NAME;
 				default: return -1;
 			}
 		}
-		if (baseClass == IRelativeElement.class)
+		if (baseClass == LObject.class)
 		{
 			switch (derivedFeatureID)
 			{
-				case PresentationPackage.PANEL__VERTICAL_RELATIVE: return PresentationPackage.IRELATIVE_ELEMENT__VERTICAL_RELATIVE;
-				case PresentationPackage.PANEL__HORIZONTAL_RELATIVE: return PresentationPackage.IRELATIVE_ELEMENT__HORIZONTAL_RELATIVE;
+				case UiPackage.PANEL__CONTENT_OBJECTS: return RootPackage.LOBJECT__CONTENT_OBJECTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == IUIElement.class)
+		{
+			switch (derivedFeatureID)
+			{
+				default: return -1;
+			}
+		}
+		if (baseClass == IPositionElement.class)
+		{
+			switch (derivedFeatureID)
+			{
+				case UiPackage.PANEL__POSITION: return PresentationPackage.IPOSITION_ELEMENT__POSITION;
+				case UiPackage.PANEL__VERTICAL_RELATIVE: return PresentationPackage.IPOSITION_ELEMENT__VERTICAL_RELATIVE;
+				case UiPackage.PANEL__HORIZONTAL_RELATIVE: return PresentationPackage.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE;
 				default: return -1;
 			}
 		}
@@ -700,9 +830,8 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 		{
 			switch (derivedFeatureID)
 			{
-				case PresentationPackage.PANEL__POSITION: return PresentationPackage.ISIZED_ELEMENT__POSITION;
-				case PresentationPackage.PANEL__WIDTH: return PresentationPackage.ISIZED_ELEMENT__WIDTH;
-				case PresentationPackage.PANEL__HEIGHT: return PresentationPackage.ISIZED_ELEMENT__HEIGHT;
+				case UiPackage.PANEL__WIDTH: return PresentationPackage.ISIZED_ELEMENT__WIDTH;
+				case UiPackage.PANEL__HEIGHT: return PresentationPackage.ISIZED_ELEMENT__HEIGHT;
 				default: return -1;
 			}
 		}
@@ -717,20 +846,35 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
 	{
-		if (baseClass == LNamedElement.class)
+		if (baseClass == IInferenceObject.class)
 		{
 			switch (baseFeatureID)
 			{
-				case TypesPackage.LNAMED_ELEMENT__NAME: return PresentationPackage.PANEL__NAME;
 				default: return -1;
 			}
 		}
-		if (baseClass == IRelativeElement.class)
+		if (baseClass == LObject.class)
 		{
 			switch (baseFeatureID)
 			{
-				case PresentationPackage.IRELATIVE_ELEMENT__VERTICAL_RELATIVE: return PresentationPackage.PANEL__VERTICAL_RELATIVE;
-				case PresentationPackage.IRELATIVE_ELEMENT__HORIZONTAL_RELATIVE: return PresentationPackage.PANEL__HORIZONTAL_RELATIVE;
+				case RootPackage.LOBJECT__CONTENT_OBJECTS: return UiPackage.PANEL__CONTENT_OBJECTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == IUIElement.class)
+		{
+			switch (baseFeatureID)
+			{
+				default: return -1;
+			}
+		}
+		if (baseClass == IPositionElement.class)
+		{
+			switch (baseFeatureID)
+			{
+				case PresentationPackage.IPOSITION_ELEMENT__POSITION: return UiPackage.PANEL__POSITION;
+				case PresentationPackage.IPOSITION_ELEMENT__VERTICAL_RELATIVE: return UiPackage.PANEL__VERTICAL_RELATIVE;
+				case PresentationPackage.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE: return UiPackage.PANEL__HORIZONTAL_RELATIVE;
 				default: return -1;
 			}
 		}
@@ -738,9 +882,8 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 		{
 			switch (baseFeatureID)
 			{
-				case PresentationPackage.ISIZED_ELEMENT__POSITION: return PresentationPackage.PANEL__POSITION;
-				case PresentationPackage.ISIZED_ELEMENT__WIDTH: return PresentationPackage.PANEL__WIDTH;
-				case PresentationPackage.ISIZED_ELEMENT__HEIGHT: return PresentationPackage.PANEL__HEIGHT;
+				case PresentationPackage.ISIZED_ELEMENT__WIDTH: return UiPackage.PANEL__WIDTH;
+				case PresentationPackage.ISIZED_ELEMENT__HEIGHT: return UiPackage.PANEL__HEIGHT;
 				default: return -1;
 			}
 		}
@@ -753,19 +896,70 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	 * @generated
 	 */
 	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass)
+	{
+		if (baseClass == IInferenceObject.class)
+		{
+			switch (baseOperationID)
+			{
+				case InferencePackage.IINFERENCE_OBJECT___LINFERENCE_OBJECT: return UiPackage.PANEL___LINFERENCE_OBJECT;
+				default: return -1;
+			}
+		}
+		if (baseClass == LObject.class)
+		{
+			switch (baseOperationID)
+			{
+				case RootPackage.LOBJECT___CREATE_CONTAINMENT_ELIST__ECLASS: return UiPackage.PANEL___CREATE_CONTAINMENT_ELIST__ECLASS;
+				case RootPackage.LOBJECT___LCONTENTS: return UiPackage.PANEL___LCONTENTS;
+				case RootPackage.LOBJECT___LPARENT: return UiPackage.PANEL___LPARENT;
+				case RootPackage.LOBJECT___LALL_CONTENTS: return UiPackage.PANEL___LALL_CONTENTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == IUIElement.class)
+		{
+			switch (baseOperationID)
+			{
+				default: return -1;
+			}
+		}
+		if (baseClass == IPositionElement.class)
+		{
+			switch (baseOperationID)
+			{
+				default: return -1;
+			}
+		}
+		if (baseClass == ISizedElement.class)
+		{
+			switch (baseOperationID)
+			{
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
 	{
 		switch (operationID)
 		{
-			case PresentationPackage.PANEL___CREATE_CONTAINMENT_ELIST__ECLASS:
+			case UiPackage.PANEL___CREATE_CONTAINMENT_ELIST__ECLASS:
 				return createContainmentEList((EClass)arguments.get(0));
-			case PresentationPackage.PANEL___LCONTENTS:
+			case UiPackage.PANEL___LCONTENTS:
 				return lContents();
-			case PresentationPackage.PANEL___LPARENT:
+			case UiPackage.PANEL___LPARENT:
 				return lParent();
-			case PresentationPackage.PANEL___LALL_CONTENTS:
+			case UiPackage.PANEL___LALL_CONTENTS:
 				return lAllContents();
-			case PresentationPackage.PANEL___LINFERENCE_OBJECT:
+			case UiPackage.PANEL___LINFERENCE_OBJECT:
 				return lInferenceObject();
 		}
 		return super.eInvoke(operationID, arguments);
@@ -782,20 +976,24 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (contentObjects: ");
-		result.append(contentObjects);
-		result.append(", name: ");
+		result.append(" (name: ");
 		result.append(name);
+		result.append(", contentObjects: ");
+		result.append(contentObjects);
+		result.append(", position: ");
+		result.append(position);
 		result.append(", verticalRelative: ");
 		result.append(verticalRelative);
 		result.append(", horizontalRelative: ");
 		result.append(horizontalRelative);
-		result.append(", position: ");
-		result.append(position);
 		result.append(", width: ");
 		result.append(width);
 		result.append(", height: ");
 		result.append(height);
+		result.append(", showTitle: ");
+		result.append(showTitle);
+		result.append(", minimizable: ");
+		result.append(minimizable);
 		result.append(')');
 		return result.toString();
 	}

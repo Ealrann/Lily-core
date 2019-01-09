@@ -13,17 +13,17 @@ import org.sheepy.common.model.types.EVerticalRelative
 import org.sheepy.common.model.types.LNamedElement
 import org.sheepy.common.model.types.SVector2i
 
-interface ISizedElement extends LObject
+interface IPositionElement extends LObject
 {
 	SVector2i position = "0;0"
-	int width
-	int height
-}
-
-interface IRelativeElement extends LObject
-{
 	EVerticalRelative verticalRelative = "TOP"
 	EHorizontalRelative horizontalRelative = "LEFT"
+}
+
+interface ISizedElement extends IPositionElement
+{
+	int width
+	int height
 }
 
 interface IUIView extends IView
@@ -56,18 +56,8 @@ interface IUIElement extends LObject
 
 class UIPage extends ISizedElement
 {
-	contains Panel[] panels
+	contains IPanel[] panels
 }
 
-class Panel extends IUIElement, LNamedElement, IRelativeElement, ISizedElement
-{
-	contains IControl[] controls
-}
-
-interface IControl extends IUIElement
-{
-}
-
-interface Widget extends IControl, IUIElement, IRelativeElement, ISizedElement
-{
-}
+interface IPanel extends LNamedElement, IUIElement, IPositionElement
+{}

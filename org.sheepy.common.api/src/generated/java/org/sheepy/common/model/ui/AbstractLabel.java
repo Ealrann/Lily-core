@@ -2,8 +2,6 @@
  */
 package org.sheepy.common.model.ui;
 
-import org.sheepy.common.model.presentation.Widget;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Abstract Label</b></em>'.

@@ -151,31 +151,6 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.presentation.Panel} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected PanelItemProvider panelItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.presentation.Panel}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createPanelAdapter()
-	{
-		if (panelItemProvider == null)
-		{
-			panelItemProvider = new PanelItemProvider(this);
-		}
-
-		return panelItemProvider;
-	}
-
-	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -324,7 +299,6 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 	{
 		if (tranparentUIViewItemProvider != null) tranparentUIViewItemProvider.dispose();
 		if (uiPageItemProvider != null) uiPageItemProvider.dispose();
-		if (panelItemProvider != null) panelItemProvider.dispose();
 	}
 
 	/**

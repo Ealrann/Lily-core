@@ -61,9 +61,9 @@ public class TextFieldItemProvider extends ItemProviderAdapter implements IEditi
 		{
 			super.getPropertyDescriptors(object);
 
+			addPositionPropertyDescriptor(object);
 			addVerticalRelativePropertyDescriptor(object);
 			addHorizontalRelativePropertyDescriptor(object);
-			addPositionPropertyDescriptor(object);
 			addWidthPropertyDescriptor(object);
 			addHeightPropertyDescriptor(object);
 		}
@@ -82,9 +82,9 @@ public class TextFieldItemProvider extends ItemProviderAdapter implements IEditi
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ISizedElement_position_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_position_feature", "_UI_ISizedElement_type"),
-				 PresentationPackage.Literals.ISIZED_ELEMENT__POSITION,
+				 getString("_UI_IPositionElement_position_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_position_feature", "_UI_IPositionElement_type"),
+				 PresentationPackage.Literals.IPOSITION_ELEMENT__POSITION,
 				 true,
 				 false,
 				 false,
@@ -151,9 +151,9 @@ public class TextFieldItemProvider extends ItemProviderAdapter implements IEditi
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_IRelativeElement_verticalRelative_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IRelativeElement_verticalRelative_feature", "_UI_IRelativeElement_type"),
-				 PresentationPackage.Literals.IRELATIVE_ELEMENT__VERTICAL_RELATIVE,
+				 getString("_UI_IPositionElement_verticalRelative_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_verticalRelative_feature", "_UI_IPositionElement_type"),
+				 PresentationPackage.Literals.IPOSITION_ELEMENT__VERTICAL_RELATIVE,
 				 true,
 				 false,
 				 false,
@@ -174,9 +174,9 @@ public class TextFieldItemProvider extends ItemProviderAdapter implements IEditi
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_IRelativeElement_horizontalRelative_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IRelativeElement_horizontalRelative_feature", "_UI_IRelativeElement_type"),
-				 PresentationPackage.Literals.IRELATIVE_ELEMENT__HORIZONTAL_RELATIVE,
+				 getString("_UI_IPositionElement_horizontalRelative_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_horizontalRelative_feature", "_UI_IPositionElement_type"),
+				 PresentationPackage.Literals.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE,
 				 true,
 				 false,
 				 false,
@@ -262,9 +262,9 @@ public class TextFieldItemProvider extends ItemProviderAdapter implements IEditi
 		switch (notification.getFeatureID(TextField.class))
 		{
 			case UiPackage.TEXT_FIELD__CONTENT_OBJECTS:
+			case UiPackage.TEXT_FIELD__POSITION:
 			case UiPackage.TEXT_FIELD__VERTICAL_RELATIVE:
 			case UiPackage.TEXT_FIELD__HORIZONTAL_RELATIVE:
-			case UiPackage.TEXT_FIELD__POSITION:
 			case UiPackage.TEXT_FIELD__WIDTH:
 			case UiPackage.TEXT_FIELD__HEIGHT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

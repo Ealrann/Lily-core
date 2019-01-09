@@ -23,6 +23,15 @@ public interface UiFactory extends EFactory
 	UiFactory eINSTANCE = org.sheepy.common.model.ui.impl.UiFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Panel</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Panel</em>'.
+	 * @generated
+	 */
+	Panel createPanel();
+
+	/**
 	 * Returns a new object of class '<em>Dynamic Row Layout</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

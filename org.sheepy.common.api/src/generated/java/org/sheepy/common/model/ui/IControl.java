@@ -1,7 +1,8 @@
 /**
  */
-package org.sheepy.common.model.presentation;
+package org.sheepy.common.model.ui;
 
+import org.sheepy.common.model.presentation.IUIElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -9,7 +10,7 @@ package org.sheepy.common.model.presentation;
  * <!-- end-user-doc -->
  *
  *
- * @see org.sheepy.common.model.presentation.PresentationPackage#getIControl()
+ * @see org.sheepy.common.model.ui.UiPackage#getIControl()
  * @model interface="true" abstract="true"
  * @generated
  */

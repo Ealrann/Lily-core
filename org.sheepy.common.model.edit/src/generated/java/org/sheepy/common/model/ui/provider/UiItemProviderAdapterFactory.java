@@ -11,11 +11,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.emf.edit.command.CommandParameter;
-
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.eclipse.emf.edit.provider.ChangeNotifier;
@@ -31,12 +28,9 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
-import org.sheepy.common.model.presentation.Panel;
 import org.sheepy.common.model.presentation.PresentationPackage;
-
+import org.sheepy.common.model.presentation.UIPage;
 import org.sheepy.common.model.presentation.util.PresentationSwitch;
-
 import org.sheepy.common.model.ui.UiFactory;
 import org.sheepy.common.model.ui.UiPackage;
 
@@ -98,6 +92,31 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 		supportedTypes.add(ITreeItemContentProvider.class);
 		supportedTypes.add(IItemLabelProvider.class);
 		supportedTypes.add(IItemPropertySource.class);
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.ui.Panel} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PanelItemProvider panelItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.common.model.ui.Panel}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPanelAdapter()
+	{
+		if (panelItemProvider == null)
+		{
+			panelItemProvider = new PanelItemProvider(this);
+		}
+
+		return panelItemProvider;
 	}
 
 	/**
@@ -447,6 +466,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	@Override
 	public void dispose()
 	{
+		if (panelItemProvider != null) panelItemProvider.dispose();
 		if (dynamicRowLayoutItemProvider != null) dynamicRowLayoutItemProvider.dispose();
 		if (variableLabelItemProvider != null) variableLabelItemProvider.dispose();
 		if (labelItemProvider != null) labelItemProvider.dispose();
@@ -506,47 +526,12 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 			 * @generated
 			 */
 			@Override
-			public Object casePanel(Panel object)
+			public Object caseUIPage(UIPage object)
 			{
 				newChildDescriptors.add
 					(createChildParameter
-						(PresentationPackage.Literals.PANEL__CONTROLS,
-						 UiFactory.eINSTANCE.createDynamicRowLayout()));
-
-				newChildDescriptors.add
-					(createChildParameter
-						(PresentationPackage.Literals.PANEL__CONTROLS,
-						 UiFactory.eINSTANCE.createVariableLabel()));
-
-				newChildDescriptors.add
-					(createChildParameter
-						(PresentationPackage.Literals.PANEL__CONTROLS,
-						 UiFactory.eINSTANCE.createLabel()));
-
-				newChildDescriptors.add
-					(createChildParameter
-						(PresentationPackage.Literals.PANEL__CONTROLS,
-						 UiFactory.eINSTANCE.createSlider()));
-
-				newChildDescriptors.add
-					(createChildParameter
-						(PresentationPackage.Literals.PANEL__CONTROLS,
-						 UiFactory.eINSTANCE.createTextField()));
-
-				newChildDescriptors.add
-					(createChildParameter
-						(PresentationPackage.Literals.PANEL__CONTROLS,
-						 UiFactory.eINSTANCE.createButton()));
-
-				newChildDescriptors.add
-					(createChildParameter
-						(PresentationPackage.Literals.PANEL__CONTROLS,
-						 UiFactory.eINSTANCE.createBooleanButton()));
-
-				newChildDescriptors.add
-					(createChildParameter
-						(PresentationPackage.Literals.PANEL__CONTROLS,
-						 UiFactory.eINSTANCE.createBooleanActionButton()));
+						(PresentationPackage.Literals.UI_PAGE__PANELS,
+						 UiFactory.eINSTANCE.createPanel()));
 
 				return null;
 			}

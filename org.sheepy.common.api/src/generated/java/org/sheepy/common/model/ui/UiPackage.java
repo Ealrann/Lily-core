@@ -7,7 +7,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.sheepy.common.model.presentation.PresentationPackage;
 
 /**
@@ -62,14 +61,23 @@ public interface UiPackage extends EPackage
 	UiPackage eINSTANCE = org.sheepy.common.model.ui.impl.UiPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.AbstractLabelImpl <em>Abstract Label</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.PanelImpl <em>Panel</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.ui.impl.AbstractLabelImpl
-	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getAbstractLabel()
+	 * @see org.sheepy.common.model.ui.impl.PanelImpl
+	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getPanel()
 	 * @generated
 	 */
-	int ABSTRACT_LABEL = 0;
+	int PANEL = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANEL__NAME = PresentationPackage.IPANEL__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -78,25 +86,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL__CONTENT_OBJECTS = PresentationPackage.WIDGET__CONTENT_OBJECTS;
-
-	/**
-	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_LABEL__VERTICAL_RELATIVE = PresentationPackage.WIDGET__VERTICAL_RELATIVE;
-
-	/**
-	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_LABEL__HORIZONTAL_RELATIVE = PresentationPackage.WIDGET__HORIZONTAL_RELATIVE;
+	int PANEL__CONTENT_OBJECTS = PresentationPackage.IPANEL__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -105,7 +95,25 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL__POSITION = PresentationPackage.WIDGET__POSITION;
+	int PANEL__POSITION = PresentationPackage.IPANEL__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANEL__VERTICAL_RELATIVE = PresentationPackage.IPANEL__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANEL__HORIZONTAL_RELATIVE = PresentationPackage.IPANEL__HORIZONTAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -114,7 +122,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL__WIDTH = PresentationPackage.WIDGET__WIDTH;
+	int PANEL__WIDTH = PresentationPackage.IPANEL_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
@@ -123,34 +131,43 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL__HEIGHT = PresentationPackage.WIDGET__HEIGHT;
+	int PANEL__HEIGHT = PresentationPackage.IPANEL_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * The feature id for the '<em><b>Controls</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL__TEXT = PresentationPackage.WIDGET_FEATURE_COUNT + 0;
+	int PANEL__CONTROLS = PresentationPackage.IPANEL_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Font Scale</b></em>' attribute.
+	 * The feature id for the '<em><b>Show Title</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL__FONT_SCALE = PresentationPackage.WIDGET_FEATURE_COUNT + 1;
+	int PANEL__SHOW_TITLE = PresentationPackage.IPANEL_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the '<em>Abstract Label</em>' class.
+	 * The feature id for the '<em><b>Minimizable</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL_FEATURE_COUNT = PresentationPackage.WIDGET_FEATURE_COUNT + 2;
+	int PANEL__MINIMIZABLE = PresentationPackage.IPANEL_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Panel</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANEL_FEATURE_COUNT = PresentationPackage.IPANEL_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -159,7 +176,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL___LINFERENCE_OBJECT = PresentationPackage.WIDGET___LINFERENCE_OBJECT;
+	int PANEL___LINFERENCE_OBJECT = PresentationPackage.IPANEL___LINFERENCE_OBJECT;
 
 	/**
 	 * The operation id for the '<em>Create Containment EList</em>' operation.
@@ -168,7 +185,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
+	int PANEL___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.IPANEL___CREATE_CONTAINMENT_ELIST__ECLASS;
 
 	/**
 	 * The operation id for the '<em>LContents</em>' operation.
@@ -177,7 +194,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL___LCONTENTS = PresentationPackage.WIDGET___LCONTENTS;
+	int PANEL___LCONTENTS = PresentationPackage.IPANEL___LCONTENTS;
 
 	/**
 	 * The operation id for the '<em>LParent</em>' operation.
@@ -186,7 +203,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL___LPARENT = PresentationPackage.WIDGET___LPARENT;
+	int PANEL___LPARENT = PresentationPackage.IPANEL___LPARENT;
 
 	/**
 	 * The operation id for the '<em>LAll Contents</em>' operation.
@@ -195,7 +212,361 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL___LALL_CONTENTS = PresentationPackage.WIDGET___LALL_CONTENTS;
+	int PANEL___LALL_CONTENTS = PresentationPackage.IPANEL___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>Panel</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANEL_OPERATION_COUNT = PresentationPackage.IPANEL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.common.model.ui.IControl <em>IControl</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.common.model.ui.IControl
+	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getIControl()
+	 * @generated
+	 */
+	int ICONTROL = 1;
+
+	/**
+	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICONTROL__CONTENT_OBJECTS = PresentationPackage.IUI_ELEMENT__CONTENT_OBJECTS;
+
+	/**
+	 * The number of structural features of the '<em>IControl</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICONTROL_FEATURE_COUNT = PresentationPackage.IUI_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICONTROL___LINFERENCE_OBJECT = PresentationPackage.IUI_ELEMENT___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICONTROL___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.IUI_ELEMENT___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICONTROL___LCONTENTS = PresentationPackage.IUI_ELEMENT___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICONTROL___LPARENT = PresentationPackage.IUI_ELEMENT___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICONTROL___LALL_CONTENTS = PresentationPackage.IUI_ELEMENT___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>IControl</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICONTROL_OPERATION_COUNT = PresentationPackage.IUI_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.common.model.ui.Widget <em>Widget</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.common.model.ui.Widget
+	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getWidget()
+	 * @generated
+	 */
+	int WIDGET = 2;
+
+	/**
+	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET__CONTENT_OBJECTS = ICONTROL__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET__POSITION = ICONTROL_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET__VERTICAL_RELATIVE = ICONTROL_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET__HORIZONTAL_RELATIVE = ICONTROL_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET__WIDTH = ICONTROL_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET__HEIGHT = ICONTROL_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Widget</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET_FEATURE_COUNT = ICONTROL_FEATURE_COUNT + 5;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET___LINFERENCE_OBJECT = ICONTROL___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS = ICONTROL___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET___LCONTENTS = ICONTROL___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET___LPARENT = ICONTROL___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET___LALL_CONTENTS = ICONTROL___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>Widget</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET_OPERATION_COUNT = ICONTROL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.AbstractLabelImpl <em>Abstract Label</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.common.model.ui.impl.AbstractLabelImpl
+	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getAbstractLabel()
+	 * @generated
+	 */
+	int ABSTRACT_LABEL = 3;
+
+	/**
+	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__CONTENT_OBJECTS = WIDGET__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__POSITION = WIDGET__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__VERTICAL_RELATIVE = WIDGET__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__HORIZONTAL_RELATIVE = WIDGET__HORIZONTAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__WIDTH = WIDGET__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__HEIGHT = WIDGET__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__TEXT = WIDGET_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Font Scale</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__FONT_SCALE = WIDGET_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Label</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL_FEATURE_COUNT = WIDGET_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL___LINFERENCE_OBJECT = WIDGET___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL___CREATE_CONTAINMENT_ELIST__ECLASS = WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL___LCONTENTS = WIDGET___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL___LPARENT = WIDGET___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL___LALL_CONTENTS = WIDGET___LALL_CONTENTS;
 
 	/**
 	 * The number of operations of the '<em>Abstract Label</em>' class.
@@ -204,7 +575,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL_OPERATION_COUNT = PresentationPackage.WIDGET_OPERATION_COUNT + 0;
+	int ABSTRACT_LABEL_OPERATION_COUNT = WIDGET_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.DynamicRowLayoutImpl <em>Dynamic Row Layout</em>}' class.
@@ -214,7 +585,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getDynamicRowLayout()
 	 * @generated
 	 */
-	int DYNAMIC_ROW_LAYOUT = 1;
+	int DYNAMIC_ROW_LAYOUT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -223,7 +594,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT__CONTENT_OBJECTS = PresentationPackage.ICONTROL__CONTENT_OBJECTS;
+	int DYNAMIC_ROW_LAYOUT__CONTENT_OBJECTS = ICONTROL__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
@@ -232,7 +603,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT__HEIGHT = PresentationPackage.ICONTROL_FEATURE_COUNT + 0;
+	int DYNAMIC_ROW_LAYOUT__HEIGHT = ICONTROL_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Column Count</b></em>' attribute.
@@ -241,7 +612,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT__COLUMN_COUNT = PresentationPackage.ICONTROL_FEATURE_COUNT + 1;
+	int DYNAMIC_ROW_LAYOUT__COLUMN_COUNT = ICONTROL_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Dynamic Row Layout</em>' class.
@@ -250,7 +621,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT_FEATURE_COUNT = PresentationPackage.ICONTROL_FEATURE_COUNT + 2;
+	int DYNAMIC_ROW_LAYOUT_FEATURE_COUNT = ICONTROL_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -259,7 +630,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT___LINFERENCE_OBJECT = PresentationPackage.ICONTROL___LINFERENCE_OBJECT;
+	int DYNAMIC_ROW_LAYOUT___LINFERENCE_OBJECT = ICONTROL___LINFERENCE_OBJECT;
 
 	/**
 	 * The operation id for the '<em>Create Containment EList</em>' operation.
@@ -268,7 +639,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.ICONTROL___CREATE_CONTAINMENT_ELIST__ECLASS;
+	int DYNAMIC_ROW_LAYOUT___CREATE_CONTAINMENT_ELIST__ECLASS = ICONTROL___CREATE_CONTAINMENT_ELIST__ECLASS;
 
 	/**
 	 * The operation id for the '<em>LContents</em>' operation.
@@ -277,7 +648,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT___LCONTENTS = PresentationPackage.ICONTROL___LCONTENTS;
+	int DYNAMIC_ROW_LAYOUT___LCONTENTS = ICONTROL___LCONTENTS;
 
 	/**
 	 * The operation id for the '<em>LParent</em>' operation.
@@ -286,7 +657,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT___LPARENT = PresentationPackage.ICONTROL___LPARENT;
+	int DYNAMIC_ROW_LAYOUT___LPARENT = ICONTROL___LPARENT;
 
 	/**
 	 * The operation id for the '<em>LAll Contents</em>' operation.
@@ -295,7 +666,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT___LALL_CONTENTS = PresentationPackage.ICONTROL___LALL_CONTENTS;
+	int DYNAMIC_ROW_LAYOUT___LALL_CONTENTS = ICONTROL___LALL_CONTENTS;
 
 	/**
 	 * The number of operations of the '<em>Dynamic Row Layout</em>' class.
@@ -304,7 +675,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DYNAMIC_ROW_LAYOUT_OPERATION_COUNT = PresentationPackage.ICONTROL_OPERATION_COUNT + 0;
+	int DYNAMIC_ROW_LAYOUT_OPERATION_COUNT = ICONTROL_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.VariableLabelImpl <em>Variable Label</em>}' class.
@@ -314,7 +685,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getVariableLabel()
 	 * @generated
 	 */
-	int VARIABLE_LABEL = 2;
+	int VARIABLE_LABEL = 5;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -324,6 +695,15 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int VARIABLE_LABEL__CONTENT_OBJECTS = ABSTRACT_LABEL__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL__POSITION = ABSTRACT_LABEL__POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
@@ -342,15 +722,6 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int VARIABLE_LABEL__HORIZONTAL_RELATIVE = ABSTRACT_LABEL__HORIZONTAL_RELATIVE;
-
-	/**
-	 * The feature id for the '<em><b>Position</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_LABEL__POSITION = ABSTRACT_LABEL__POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -468,7 +839,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getLabel()
 	 * @generated
 	 */
-	int LABEL = 3;
+	int LABEL = 6;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -478,6 +849,15 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int LABEL__CONTENT_OBJECTS = ABSTRACT_LABEL__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__POSITION = ABSTRACT_LABEL__POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
@@ -496,15 +876,6 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int LABEL__HORIZONTAL_RELATIVE = ABSTRACT_LABEL__HORIZONTAL_RELATIVE;
-
-	/**
-	 * The feature id for the '<em><b>Position</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LABEL__POSITION = ABSTRACT_LABEL__POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -613,7 +984,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getSlider()
 	 * @generated
 	 */
-	int SLIDER = 4;
+	int SLIDER = 7;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -622,25 +993,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER__CONTENT_OBJECTS = PresentationPackage.WIDGET__CONTENT_OBJECTS;
-
-	/**
-	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SLIDER__VERTICAL_RELATIVE = PresentationPackage.WIDGET__VERTICAL_RELATIVE;
-
-	/**
-	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SLIDER__HORIZONTAL_RELATIVE = PresentationPackage.WIDGET__HORIZONTAL_RELATIVE;
+	int SLIDER__CONTENT_OBJECTS = WIDGET__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -649,7 +1002,25 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER__POSITION = PresentationPackage.WIDGET__POSITION;
+	int SLIDER__POSITION = WIDGET__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER__VERTICAL_RELATIVE = WIDGET__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER__HORIZONTAL_RELATIVE = WIDGET__HORIZONTAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -658,7 +1029,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER__WIDTH = PresentationPackage.WIDGET__WIDTH;
+	int SLIDER__WIDTH = WIDGET__WIDTH;
 
 	/**
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
@@ -667,7 +1038,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER__HEIGHT = PresentationPackage.WIDGET__HEIGHT;
+	int SLIDER__HEIGHT = WIDGET__HEIGHT;
 
 	/**
 	 * The feature id for the '<em><b>Min Value</b></em>' attribute.
@@ -676,7 +1047,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER__MIN_VALUE = PresentationPackage.WIDGET_FEATURE_COUNT + 0;
+	int SLIDER__MIN_VALUE = WIDGET_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Max Value</b></em>' attribute.
@@ -685,7 +1056,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER__MAX_VALUE = PresentationPackage.WIDGET_FEATURE_COUNT + 1;
+	int SLIDER__MAX_VALUE = WIDGET_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Step</b></em>' attribute.
@@ -694,7 +1065,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER__STEP = PresentationPackage.WIDGET_FEATURE_COUNT + 2;
+	int SLIDER__STEP = WIDGET_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Variable Resolver</b></em>' containment reference.
@@ -703,7 +1074,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER__VARIABLE_RESOLVER = PresentationPackage.WIDGET_FEATURE_COUNT + 3;
+	int SLIDER__VARIABLE_RESOLVER = WIDGET_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Slider</em>' class.
@@ -712,7 +1083,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER_FEATURE_COUNT = PresentationPackage.WIDGET_FEATURE_COUNT + 4;
+	int SLIDER_FEATURE_COUNT = WIDGET_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -721,7 +1092,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER___LINFERENCE_OBJECT = PresentationPackage.WIDGET___LINFERENCE_OBJECT;
+	int SLIDER___LINFERENCE_OBJECT = WIDGET___LINFERENCE_OBJECT;
 
 	/**
 	 * The operation id for the '<em>Create Containment EList</em>' operation.
@@ -730,7 +1101,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
+	int SLIDER___CREATE_CONTAINMENT_ELIST__ECLASS = WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
 
 	/**
 	 * The operation id for the '<em>LContents</em>' operation.
@@ -739,7 +1110,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER___LCONTENTS = PresentationPackage.WIDGET___LCONTENTS;
+	int SLIDER___LCONTENTS = WIDGET___LCONTENTS;
 
 	/**
 	 * The operation id for the '<em>LParent</em>' operation.
@@ -748,7 +1119,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER___LPARENT = PresentationPackage.WIDGET___LPARENT;
+	int SLIDER___LPARENT = WIDGET___LPARENT;
 
 	/**
 	 * The operation id for the '<em>LAll Contents</em>' operation.
@@ -757,7 +1128,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER___LALL_CONTENTS = PresentationPackage.WIDGET___LALL_CONTENTS;
+	int SLIDER___LALL_CONTENTS = WIDGET___LALL_CONTENTS;
 
 	/**
 	 * The number of operations of the '<em>Slider</em>' class.
@@ -766,7 +1137,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER_OPERATION_COUNT = PresentationPackage.WIDGET_OPERATION_COUNT + 0;
+	int SLIDER_OPERATION_COUNT = WIDGET_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.TextFieldImpl <em>Text Field</em>}' class.
@@ -776,7 +1147,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getTextField()
 	 * @generated
 	 */
-	int TEXT_FIELD = 5;
+	int TEXT_FIELD = 8;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -785,25 +1156,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD__CONTENT_OBJECTS = PresentationPackage.WIDGET__CONTENT_OBJECTS;
-
-	/**
-	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEXT_FIELD__VERTICAL_RELATIVE = PresentationPackage.WIDGET__VERTICAL_RELATIVE;
-
-	/**
-	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEXT_FIELD__HORIZONTAL_RELATIVE = PresentationPackage.WIDGET__HORIZONTAL_RELATIVE;
+	int TEXT_FIELD__CONTENT_OBJECTS = WIDGET__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -812,7 +1165,25 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD__POSITION = PresentationPackage.WIDGET__POSITION;
+	int TEXT_FIELD__POSITION = WIDGET__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD__VERTICAL_RELATIVE = WIDGET__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD__HORIZONTAL_RELATIVE = WIDGET__HORIZONTAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -821,7 +1192,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD__WIDTH = PresentationPackage.WIDGET__WIDTH;
+	int TEXT_FIELD__WIDTH = WIDGET__WIDTH;
 
 	/**
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
@@ -830,7 +1201,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD__HEIGHT = PresentationPackage.WIDGET__HEIGHT;
+	int TEXT_FIELD__HEIGHT = WIDGET__HEIGHT;
 
 	/**
 	 * The feature id for the '<em><b>Variable Resolver</b></em>' containment reference.
@@ -839,7 +1210,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD__VARIABLE_RESOLVER = PresentationPackage.WIDGET_FEATURE_COUNT + 0;
+	int TEXT_FIELD__VARIABLE_RESOLVER = WIDGET_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Text Field</em>' class.
@@ -848,7 +1219,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD_FEATURE_COUNT = PresentationPackage.WIDGET_FEATURE_COUNT + 1;
+	int TEXT_FIELD_FEATURE_COUNT = WIDGET_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -857,7 +1228,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD___LINFERENCE_OBJECT = PresentationPackage.WIDGET___LINFERENCE_OBJECT;
+	int TEXT_FIELD___LINFERENCE_OBJECT = WIDGET___LINFERENCE_OBJECT;
 
 	/**
 	 * The operation id for the '<em>Create Containment EList</em>' operation.
@@ -866,7 +1237,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
+	int TEXT_FIELD___CREATE_CONTAINMENT_ELIST__ECLASS = WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
 
 	/**
 	 * The operation id for the '<em>LContents</em>' operation.
@@ -875,7 +1246,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD___LCONTENTS = PresentationPackage.WIDGET___LCONTENTS;
+	int TEXT_FIELD___LCONTENTS = WIDGET___LCONTENTS;
 
 	/**
 	 * The operation id for the '<em>LParent</em>' operation.
@@ -884,7 +1255,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD___LPARENT = PresentationPackage.WIDGET___LPARENT;
+	int TEXT_FIELD___LPARENT = WIDGET___LPARENT;
 
 	/**
 	 * The operation id for the '<em>LAll Contents</em>' operation.
@@ -893,7 +1264,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD___LALL_CONTENTS = PresentationPackage.WIDGET___LALL_CONTENTS;
+	int TEXT_FIELD___LALL_CONTENTS = WIDGET___LALL_CONTENTS;
 
 	/**
 	 * The number of operations of the '<em>Text Field</em>' class.
@@ -902,7 +1273,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD_OPERATION_COUNT = PresentationPackage.WIDGET_OPERATION_COUNT + 0;
+	int TEXT_FIELD_OPERATION_COUNT = WIDGET_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.AbstractButtonImpl <em>Abstract Button</em>}' class.
@@ -912,7 +1283,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getAbstractButton()
 	 * @generated
 	 */
-	int ABSTRACT_BUTTON = 6;
+	int ABSTRACT_BUTTON = 9;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -921,25 +1292,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON__CONTENT_OBJECTS = PresentationPackage.WIDGET__CONTENT_OBJECTS;
-
-	/**
-	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BUTTON__VERTICAL_RELATIVE = PresentationPackage.WIDGET__VERTICAL_RELATIVE;
-
-	/**
-	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BUTTON__HORIZONTAL_RELATIVE = PresentationPackage.WIDGET__HORIZONTAL_RELATIVE;
+	int ABSTRACT_BUTTON__CONTENT_OBJECTS = WIDGET__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -948,7 +1301,25 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON__POSITION = PresentationPackage.WIDGET__POSITION;
+	int ABSTRACT_BUTTON__POSITION = WIDGET__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON__VERTICAL_RELATIVE = WIDGET__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON__HORIZONTAL_RELATIVE = WIDGET__HORIZONTAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -957,7 +1328,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON__WIDTH = PresentationPackage.WIDGET__WIDTH;
+	int ABSTRACT_BUTTON__WIDTH = WIDGET__WIDTH;
 
 	/**
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
@@ -966,7 +1337,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON__HEIGHT = PresentationPackage.WIDGET__HEIGHT;
+	int ABSTRACT_BUTTON__HEIGHT = WIDGET__HEIGHT;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -975,7 +1346,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON__TEXT = PresentationPackage.WIDGET_FEATURE_COUNT + 0;
+	int ABSTRACT_BUTTON__TEXT = WIDGET_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Button</em>' class.
@@ -984,7 +1355,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON_FEATURE_COUNT = PresentationPackage.WIDGET_FEATURE_COUNT + 1;
+	int ABSTRACT_BUTTON_FEATURE_COUNT = WIDGET_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -993,7 +1364,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON___LINFERENCE_OBJECT = PresentationPackage.WIDGET___LINFERENCE_OBJECT;
+	int ABSTRACT_BUTTON___LINFERENCE_OBJECT = WIDGET___LINFERENCE_OBJECT;
 
 	/**
 	 * The operation id for the '<em>Create Containment EList</em>' operation.
@@ -1002,7 +1373,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
+	int ABSTRACT_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS = WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
 
 	/**
 	 * The operation id for the '<em>LContents</em>' operation.
@@ -1011,7 +1382,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON___LCONTENTS = PresentationPackage.WIDGET___LCONTENTS;
+	int ABSTRACT_BUTTON___LCONTENTS = WIDGET___LCONTENTS;
 
 	/**
 	 * The operation id for the '<em>LParent</em>' operation.
@@ -1020,7 +1391,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON___LPARENT = PresentationPackage.WIDGET___LPARENT;
+	int ABSTRACT_BUTTON___LPARENT = WIDGET___LPARENT;
 
 	/**
 	 * The operation id for the '<em>LAll Contents</em>' operation.
@@ -1029,7 +1400,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON___LALL_CONTENTS = PresentationPackage.WIDGET___LALL_CONTENTS;
+	int ABSTRACT_BUTTON___LALL_CONTENTS = WIDGET___LALL_CONTENTS;
 
 	/**
 	 * The number of operations of the '<em>Abstract Button</em>' class.
@@ -1038,7 +1409,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON_OPERATION_COUNT = PresentationPackage.WIDGET_OPERATION_COUNT + 0;
+	int ABSTRACT_BUTTON_OPERATION_COUNT = WIDGET_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.ButtonImpl <em>Button</em>}' class.
@@ -1048,7 +1419,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getButton()
 	 * @generated
 	 */
-	int BUTTON = 7;
+	int BUTTON = 10;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -1058,6 +1429,15 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int BUTTON__CONTENT_OBJECTS = ABSTRACT_BUTTON__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON__POSITION = ABSTRACT_BUTTON__POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
@@ -1076,15 +1456,6 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int BUTTON__HORIZONTAL_RELATIVE = ABSTRACT_BUTTON__HORIZONTAL_RELATIVE;
-
-	/**
-	 * The feature id for the '<em><b>Position</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUTTON__POSITION = ABSTRACT_BUTTON__POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -1229,7 +1600,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getAbstractBooleanButton()
 	 * @generated
 	 */
-	int ABSTRACT_BOOLEAN_BUTTON = 8;
+	int ABSTRACT_BOOLEAN_BUTTON = 11;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -1239,6 +1610,15 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int ABSTRACT_BOOLEAN_BUTTON__CONTENT_OBJECTS = ABSTRACT_BUTTON__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON__POSITION = ABSTRACT_BUTTON__POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
@@ -1257,15 +1637,6 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int ABSTRACT_BOOLEAN_BUTTON__HORIZONTAL_RELATIVE = ABSTRACT_BUTTON__HORIZONTAL_RELATIVE;
-
-	/**
-	 * The feature id for the '<em><b>Position</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BOOLEAN_BUTTON__POSITION = ABSTRACT_BUTTON__POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -1383,7 +1754,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getBooleanButton()
 	 * @generated
 	 */
-	int BOOLEAN_BUTTON = 9;
+	int BOOLEAN_BUTTON = 12;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -1393,6 +1764,15 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int BOOLEAN_BUTTON__CONTENT_OBJECTS = ABSTRACT_BOOLEAN_BUTTON__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON__POSITION = ABSTRACT_BOOLEAN_BUTTON__POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
@@ -1411,15 +1791,6 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int BOOLEAN_BUTTON__HORIZONTAL_RELATIVE = ABSTRACT_BOOLEAN_BUTTON__HORIZONTAL_RELATIVE;
-
-	/**
-	 * The feature id for the '<em><b>Position</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_BUTTON__POSITION = ABSTRACT_BOOLEAN_BUTTON__POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -1546,7 +1917,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getBooleanActionButton()
 	 * @generated
 	 */
-	int BOOLEAN_ACTION_BUTTON = 10;
+	int BOOLEAN_ACTION_BUTTON = 13;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -1556,6 +1927,15 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int BOOLEAN_ACTION_BUTTON__CONTENT_OBJECTS = ABSTRACT_BOOLEAN_BUTTON__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON__POSITION = ABSTRACT_BOOLEAN_BUTTON__POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
@@ -1574,15 +1954,6 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int BOOLEAN_ACTION_BUTTON__HORIZONTAL_RELATIVE = ABSTRACT_BOOLEAN_BUTTON__HORIZONTAL_RELATIVE;
-
-	/**
-	 * The feature id for the '<em><b>Position</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_ACTION_BUTTON__POSITION = ABSTRACT_BOOLEAN_BUTTON__POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -1710,6 +2081,69 @@ public interface UiPackage extends EPackage
 	 */
 	int BOOLEAN_ACTION_BUTTON_OPERATION_COUNT = ABSTRACT_BOOLEAN_BUTTON_OPERATION_COUNT + 0;
 
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.Panel <em>Panel</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Panel</em>'.
+	 * @see org.sheepy.common.model.ui.Panel
+	 * @generated
+	 */
+	EClass getPanel();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.common.model.ui.Panel#getControls <em>Controls</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Controls</em>'.
+	 * @see org.sheepy.common.model.ui.Panel#getControls()
+	 * @see #getPanel()
+	 * @generated
+	 */
+	EReference getPanel_Controls();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.Panel#isShowTitle <em>Show Title</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Show Title</em>'.
+	 * @see org.sheepy.common.model.ui.Panel#isShowTitle()
+	 * @see #getPanel()
+	 * @generated
+	 */
+	EAttribute getPanel_ShowTitle();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.Panel#isMinimizable <em>Minimizable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Minimizable</em>'.
+	 * @see org.sheepy.common.model.ui.Panel#isMinimizable()
+	 * @see #getPanel()
+	 * @generated
+	 */
+	EAttribute getPanel_Minimizable();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.IControl <em>IControl</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IControl</em>'.
+	 * @see org.sheepy.common.model.ui.IControl
+	 * @generated
+	 */
+	EClass getIControl();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.Widget <em>Widget</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Widget</em>'.
+	 * @see org.sheepy.common.model.ui.Widget
+	 * @generated
+	 */
+	EClass getWidget();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.AbstractLabel <em>Abstract Label</em>}'.
@@ -2074,6 +2508,60 @@ public interface UiPackage extends EPackage
 	 */
 	interface Literals
 	{
+		/**
+		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.PanelImpl <em>Panel</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.common.model.ui.impl.PanelImpl
+		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getPanel()
+		 * @generated
+		 */
+		EClass PANEL = eINSTANCE.getPanel();
+
+		/**
+		 * The meta object literal for the '<em><b>Controls</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANEL__CONTROLS = eINSTANCE.getPanel_Controls();
+
+		/**
+		 * The meta object literal for the '<em><b>Show Title</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PANEL__SHOW_TITLE = eINSTANCE.getPanel_ShowTitle();
+
+		/**
+		 * The meta object literal for the '<em><b>Minimizable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PANEL__MINIMIZABLE = eINSTANCE.getPanel_Minimizable();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.common.model.ui.IControl <em>IControl</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.common.model.ui.IControl
+		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getIControl()
+		 * @generated
+		 */
+		EClass ICONTROL = eINSTANCE.getIControl();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.common.model.ui.Widget <em>Widget</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.common.model.ui.Widget
+		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getWidget()
+		 * @generated
+		 */
+		EClass WIDGET = eINSTANCE.getWidget();
+
 		/**
 		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.AbstractLabelImpl <em>Abstract Label</em>}' class.
 		 * <!-- begin-user-doc -->

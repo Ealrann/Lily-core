@@ -24,7 +24,7 @@ public interface UIPage extends ISizedElement
 {
 	/**
 	 * Returns the value of the '<em><b>Panels</b></em>' containment reference list.
-	 * The list contents are of type {@link org.sheepy.common.model.presentation.Panel}.
+	 * The list contents are of type {@link org.sheepy.common.model.presentation.IPanel}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Panels</em>' containment reference list isn't clear,
@@ -36,6 +36,6 @@ public interface UIPage extends ISizedElement
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Panel> getPanels();
+	EList<IPanel> getPanels();
 
 } // UIPage

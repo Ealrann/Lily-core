@@ -64,6 +64,7 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 	{
 		switch (eClass.getClassifierID())
 		{
+			case UiPackage.PANEL: return createPanel();
 			case UiPackage.DYNAMIC_ROW_LAYOUT: return createDynamicRowLayout();
 			case UiPackage.VARIABLE_LABEL: return createVariableLabel();
 			case UiPackage.LABEL: return createLabel();
@@ -75,6 +76,18 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Panel createPanel()
+	{
+		PanelImpl panel = new PanelImpl();
+		return panel;
 	}
 
 	/**

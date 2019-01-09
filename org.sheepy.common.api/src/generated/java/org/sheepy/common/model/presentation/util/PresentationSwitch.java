@@ -80,21 +80,22 @@ public class PresentationSwitch<T> extends Switch<T>
 	{
 		switch (classifierID)
 		{
+			case PresentationPackage.IPOSITION_ELEMENT:
+			{
+				IPositionElement iPositionElement = (IPositionElement)theEObject;
+				T result = caseIPositionElement(iPositionElement);
+				if (result == null) result = caseLObject(iPositionElement);
+				if (result == null) result = caseIInferenceObject(iPositionElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case PresentationPackage.ISIZED_ELEMENT:
 			{
 				ISizedElement iSizedElement = (ISizedElement)theEObject;
 				T result = caseISizedElement(iSizedElement);
+				if (result == null) result = caseIPositionElement(iSizedElement);
 				if (result == null) result = caseLObject(iSizedElement);
 				if (result == null) result = caseIInferenceObject(iSizedElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PresentationPackage.IRELATIVE_ELEMENT:
-			{
-				IRelativeElement iRelativeElement = (IRelativeElement)theEObject;
-				T result = caseIRelativeElement(iRelativeElement);
-				if (result == null) result = caseLObject(iRelativeElement);
-				if (result == null) result = caseIInferenceObject(iRelativeElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -135,6 +136,7 @@ public class PresentationSwitch<T> extends Switch<T>
 				T result = caseISizedView(iSizedView);
 				if (result == null) result = caseISizedElement(iSizedView);
 				if (result == null) result = caseIView(iSizedView);
+				if (result == null) result = caseIPositionElement(iSizedView);
 				if (result == null) result = caseLObject(iSizedView);
 				if (result == null) result = caseIInferenceObject(iSizedView);
 				if (result == null) result = defaultCase(theEObject);
@@ -154,49 +156,42 @@ public class PresentationSwitch<T> extends Switch<T>
 				UIPage uiPage = (UIPage)theEObject;
 				T result = caseUIPage(uiPage);
 				if (result == null) result = caseISizedElement(uiPage);
+				if (result == null) result = caseIPositionElement(uiPage);
 				if (result == null) result = caseLObject(uiPage);
 				if (result == null) result = caseIInferenceObject(uiPage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PresentationPackage.PANEL:
+			case PresentationPackage.IPANEL:
 			{
-				Panel panel = (Panel)theEObject;
-				T result = casePanel(panel);
-				if (result == null) result = caseIUIElement(panel);
-				if (result == null) result = caseLNamedElement(panel);
-				if (result == null) result = caseIRelativeElement(panel);
-				if (result == null) result = caseISizedElement(panel);
-				if (result == null) result = caseLObject(panel);
-				if (result == null) result = caseIInferenceObject(panel);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PresentationPackage.ICONTROL:
-			{
-				IControl iControl = (IControl)theEObject;
-				T result = caseIControl(iControl);
-				if (result == null) result = caseIUIElement(iControl);
-				if (result == null) result = caseLObject(iControl);
-				if (result == null) result = caseIInferenceObject(iControl);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PresentationPackage.WIDGET:
-			{
-				Widget widget = (Widget)theEObject;
-				T result = caseWidget(widget);
-				if (result == null) result = caseIControl(widget);
-				if (result == null) result = caseIRelativeElement(widget);
-				if (result == null) result = caseISizedElement(widget);
-				if (result == null) result = caseIUIElement(widget);
-				if (result == null) result = caseLObject(widget);
-				if (result == null) result = caseIInferenceObject(widget);
+				IPanel iPanel = (IPanel)theEObject;
+				T result = caseIPanel(iPanel);
+				if (result == null) result = caseLNamedElement(iPanel);
+				if (result == null) result = caseIUIElement(iPanel);
+				if (result == null) result = caseIPositionElement(iPanel);
+				if (result == null) result = caseLObject(iPanel);
+				if (result == null) result = caseIInferenceObject(iPanel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IPosition Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IPosition Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIPositionElement(IPositionElement object)
+	{
+		return null;
 	}
 
 	/**
@@ -211,22 +206,6 @@ public class PresentationSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseISizedElement(ISizedElement object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>IRelative Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>IRelative Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIRelativeElement(IRelativeElement object)
 	{
 		return null;
 	}
@@ -328,49 +307,17 @@ public class PresentationSwitch<T> extends Switch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Panel</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>IPanel</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Panel</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>IPanel</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T casePanel(Panel object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>IControl</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>IControl</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIControl(IControl object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Widget</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Widget</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseWidget(Widget object)
+	public T caseIPanel(IPanel object)
 	{
 		return null;
 	}

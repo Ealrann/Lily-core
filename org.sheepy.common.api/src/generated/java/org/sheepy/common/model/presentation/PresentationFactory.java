@@ -41,15 +41,6 @@ public interface PresentationFactory extends EFactory
 	UIPage createUIPage();
 
 	/**
-	 * Returns a new object of class '<em>Panel</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Panel</em>'.
-	 * @generated
-	 */
-	Panel createPanel();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

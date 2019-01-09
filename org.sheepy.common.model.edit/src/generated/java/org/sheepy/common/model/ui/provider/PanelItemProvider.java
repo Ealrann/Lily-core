@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.presentation.provider;
+package org.sheepy.common.model.ui.provider;
 
 
 import java.util.Collection;
@@ -8,8 +8,8 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
@@ -24,13 +24,14 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.common.model.presentation.Panel;
 import org.sheepy.common.model.presentation.PresentationPackage;
-
 import org.sheepy.common.model.types.TypesPackage;
+import org.sheepy.common.model.ui.Panel;
+import org.sheepy.common.model.ui.UiFactory;
+import org.sheepy.common.model.ui.UiPackage;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.common.model.presentation.Panel} object.
+ * This is the item provider adapter for a {@link org.sheepy.common.model.ui.Panel} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -62,13 +63,84 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addPositionPropertyDescriptor(object);
 			addVerticalRelativePropertyDescriptor(object);
 			addHorizontalRelativePropertyDescriptor(object);
-			addPositionPropertyDescriptor(object);
 			addWidthPropertyDescriptor(object);
 			addHeightPropertyDescriptor(object);
+			addShowTitlePropertyDescriptor(object);
+			addMinimizablePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LNamedElement_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LNamedElement_name_feature", "_UI_LNamedElement_type"),
+				 TypesPackage.Literals.LNAMED_ELEMENT__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Vertical Relative feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVerticalRelativePropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_IPositionElement_verticalRelative_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_verticalRelative_feature", "_UI_IPositionElement_type"),
+				 PresentationPackage.Literals.IPOSITION_ELEMENT__VERTICAL_RELATIVE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Horizontal Relative feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHorizontalRelativePropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_IPositionElement_horizontalRelative_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_horizontalRelative_feature", "_UI_IPositionElement_type"),
+				 PresentationPackage.Literals.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -83,9 +155,9 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ISizedElement_position_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_position_feature", "_UI_ISizedElement_type"),
-				 PresentationPackage.Literals.ISIZED_ELEMENT__POSITION,
+				 getString("_UI_IPositionElement_position_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_position_feature", "_UI_IPositionElement_type"),
+				 PresentationPackage.Literals.IPOSITION_ELEMENT__POSITION,
 				 true,
 				 false,
 				 false,
@@ -141,70 +213,47 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 	}
 
 	/**
-	 * This adds a property descriptor for the Name feature.
+	 * This adds a property descriptor for the Show Title feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addNamePropertyDescriptor(Object object)
+	protected void addShowTitlePropertyDescriptor(Object object)
 	{
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LNamedElement_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LNamedElement_name_feature", "_UI_LNamedElement_type"),
-				 TypesPackage.Literals.LNAMED_ELEMENT__NAME,
+				 getString("_UI_Panel_showTitle_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Panel_showTitle_feature", "_UI_Panel_type"),
+				 UiPackage.Literals.PANEL__SHOW_TITLE,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This adds a property descriptor for the Vertical Relative feature.
+	 * This adds a property descriptor for the Minimizable feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addVerticalRelativePropertyDescriptor(Object object)
+	protected void addMinimizablePropertyDescriptor(Object object)
 	{
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_IRelativeElement_verticalRelative_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IRelativeElement_verticalRelative_feature", "_UI_IRelativeElement_type"),
-				 PresentationPackage.Literals.IRELATIVE_ELEMENT__VERTICAL_RELATIVE,
+				 getString("_UI_Panel_minimizable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Panel_minimizable_feature", "_UI_Panel_type"),
+				 UiPackage.Literals.PANEL__MINIMIZABLE,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Horizontal Relative feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addHorizontalRelativePropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_IRelativeElement_horizontalRelative_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IRelativeElement_horizontalRelative_feature", "_UI_IRelativeElement_type"),
-				 PresentationPackage.Literals.IRELATIVE_ELEMENT__HORIZONTAL_RELATIVE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -223,7 +272,7 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 		if (childrenFeatures == null)
 		{
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(PresentationPackage.Literals.PANEL__CONTROLS);
+			childrenFeatures.add(UiPackage.Literals.PANEL__CONTROLS);
 		}
 		return childrenFeatures;
 	}
@@ -284,16 +333,18 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 
 		switch (notification.getFeatureID(Panel.class))
 		{
-			case PresentationPackage.PANEL__CONTENT_OBJECTS:
-			case PresentationPackage.PANEL__NAME:
-			case PresentationPackage.PANEL__VERTICAL_RELATIVE:
-			case PresentationPackage.PANEL__HORIZONTAL_RELATIVE:
-			case PresentationPackage.PANEL__POSITION:
-			case PresentationPackage.PANEL__WIDTH:
-			case PresentationPackage.PANEL__HEIGHT:
+			case UiPackage.PANEL__NAME:
+			case UiPackage.PANEL__CONTENT_OBJECTS:
+			case UiPackage.PANEL__POSITION:
+			case UiPackage.PANEL__VERTICAL_RELATIVE:
+			case UiPackage.PANEL__HORIZONTAL_RELATIVE:
+			case UiPackage.PANEL__WIDTH:
+			case UiPackage.PANEL__HEIGHT:
+			case UiPackage.PANEL__SHOW_TITLE:
+			case UiPackage.PANEL__MINIMIZABLE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case PresentationPackage.PANEL__CONTROLS:
+			case UiPackage.PANEL__CONTROLS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -311,6 +362,46 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.PANEL__CONTROLS,
+				 UiFactory.eINSTANCE.createDynamicRowLayout()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.PANEL__CONTROLS,
+				 UiFactory.eINSTANCE.createVariableLabel()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.PANEL__CONTROLS,
+				 UiFactory.eINSTANCE.createLabel()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.PANEL__CONTROLS,
+				 UiFactory.eINSTANCE.createSlider()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.PANEL__CONTROLS,
+				 UiFactory.eINSTANCE.createTextField()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.PANEL__CONTROLS,
+				 UiFactory.eINSTANCE.createButton()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.PANEL__CONTROLS,
+				 UiFactory.eINSTANCE.createBooleanButton()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.PANEL__CONTROLS,
+				 UiFactory.eINSTANCE.createBooleanActionButton()));
 	}
 
 	/**

@@ -55,11 +55,11 @@ public final class UiEditPlugin extends EMFPlugin
 		  (new ResourceLocator [] 
 		   {
 		     PresentationEditPlugin.INSTANCE,
+		     TypesEditPlugin.INSTANCE,
 		     RootEditPlugin.INSTANCE,
 		     InferenceEditPlugin.INSTANCE,
 		     VariableEditPlugin.INSTANCE,
 		     ActionEditPlugin.INSTANCE,
-		     TypesEditPlugin.INSTANCE,
 		     ApplicationEditPlugin.INSTANCE,
 		   });
 	}

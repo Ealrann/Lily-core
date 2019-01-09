@@ -2,6 +2,8 @@
  */
 package org.sheepy.common.model.presentation;
 
+import org.sheepy.common.api.types.SVector2i;
+
 import org.sheepy.common.model.root.LObject;
 
 import org.sheepy.common.model.types.EHorizontalRelative;
@@ -9,23 +11,51 @@ import org.sheepy.common.model.types.EVerticalRelative;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>IRelative Element</b></em>'.
+ * A representation of the model object '<em><b>IPosition Element</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.presentation.IRelativeElement#getVerticalRelative <em>Vertical Relative</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.IRelativeElement#getHorizontalRelative <em>Horizontal Relative</em>}</li>
+ *   <li>{@link org.sheepy.common.model.presentation.IPositionElement#getPosition <em>Position</em>}</li>
+ *   <li>{@link org.sheepy.common.model.presentation.IPositionElement#getVerticalRelative <em>Vertical Relative</em>}</li>
+ *   <li>{@link org.sheepy.common.model.presentation.IPositionElement#getHorizontalRelative <em>Horizontal Relative</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.presentation.PresentationPackage#getIRelativeElement()
+ * @see org.sheepy.common.model.presentation.PresentationPackage#getIPositionElement()
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface IRelativeElement extends LObject
+public interface IPositionElement extends LObject
 {
+	/**
+	 * Returns the value of the '<em><b>Position</b></em>' attribute.
+	 * The default value is <code>"0;0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Position</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Position</em>' attribute.
+	 * @see #setPosition(SVector2i)
+	 * @see org.sheepy.common.model.presentation.PresentationPackage#getIPositionElement_Position()
+	 * @model default="0;0" unique="false" dataType="org.sheepy.common.model.types.SVector2i"
+	 * @generated
+	 */
+	SVector2i getPosition();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.common.model.presentation.IPositionElement#getPosition <em>Position</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Position</em>' attribute.
+	 * @see #getPosition()
+	 * @generated
+	 */
+	void setPosition(SVector2i value);
+
 	/**
 	 * Returns the value of the '<em><b>Vertical Relative</b></em>' attribute.
 	 * The default value is <code>"TOP"</code>.
@@ -39,14 +69,14 @@ public interface IRelativeElement extends LObject
 	 * @return the value of the '<em>Vertical Relative</em>' attribute.
 	 * @see org.sheepy.common.model.types.EVerticalRelative
 	 * @see #setVerticalRelative(EVerticalRelative)
-	 * @see org.sheepy.common.model.presentation.PresentationPackage#getIRelativeElement_VerticalRelative()
+	 * @see org.sheepy.common.model.presentation.PresentationPackage#getIPositionElement_VerticalRelative()
 	 * @model default="TOP" unique="false"
 	 * @generated
 	 */
 	EVerticalRelative getVerticalRelative();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.presentation.IRelativeElement#getVerticalRelative <em>Vertical Relative</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.common.model.presentation.IPositionElement#getVerticalRelative <em>Vertical Relative</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Vertical Relative</em>' attribute.
@@ -69,14 +99,14 @@ public interface IRelativeElement extends LObject
 	 * @return the value of the '<em>Horizontal Relative</em>' attribute.
 	 * @see org.sheepy.common.model.types.EHorizontalRelative
 	 * @see #setHorizontalRelative(EHorizontalRelative)
-	 * @see org.sheepy.common.model.presentation.PresentationPackage#getIRelativeElement_HorizontalRelative()
+	 * @see org.sheepy.common.model.presentation.PresentationPackage#getIPositionElement_HorizontalRelative()
 	 * @model default="LEFT" unique="false"
 	 * @generated
 	 */
 	EHorizontalRelative getHorizontalRelative();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.presentation.IRelativeElement#getHorizontalRelative <em>Horizontal Relative</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.common.model.presentation.IPositionElement#getHorizontalRelative <em>Horizontal Relative</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Horizontal Relative</em>' attribute.
@@ -86,4 +116,4 @@ public interface IRelativeElement extends LObject
 	 */
 	void setHorizontalRelative(EHorizontalRelative value);
 
-} // IRelativeElement
+} // IPositionElement

@@ -2,7 +2,6 @@
  */
 package org.sheepy.common.model.ui;
 
-import org.sheepy.common.model.presentation.Widget;
 import org.sheepy.common.model.variable.IVariableResolver;
 
 /**

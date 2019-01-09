@@ -34,7 +34,7 @@ import org.sheepy.common.api.util.LTreeIterator;
 
 import org.sheepy.common.model.inference.IInferenceObject;
 
-import org.sheepy.common.model.presentation.Panel;
+import org.sheepy.common.model.presentation.IPanel;
 import org.sheepy.common.model.presentation.PresentationPackage;
 import org.sheepy.common.model.presentation.UIPage;
 
@@ -42,6 +42,8 @@ import org.sheepy.common.model.root.LObject;
 
 import org.sheepy.common.model.root.RootPackage.Literals;
 
+import org.sheepy.common.model.types.EHorizontalRelative;
+import org.sheepy.common.model.types.EVerticalRelative;
 import org.sheepy.common.model.types.TypesFactory;
 import org.sheepy.common.model.types.TypesPackage;
 
@@ -55,6 +57,8 @@ import org.sheepy.common.model.types.TypesPackage;
  * <ul>
  *   <li>{@link org.sheepy.common.model.presentation.impl.UIPageImpl#getContentObjects <em>Content Objects</em>}</li>
  *   <li>{@link org.sheepy.common.model.presentation.impl.UIPageImpl#getPosition <em>Position</em>}</li>
+ *   <li>{@link org.sheepy.common.model.presentation.impl.UIPageImpl#getVerticalRelative <em>Vertical Relative</em>}</li>
+ *   <li>{@link org.sheepy.common.model.presentation.impl.UIPageImpl#getHorizontalRelative <em>Horizontal Relative</em>}</li>
  *   <li>{@link org.sheepy.common.model.presentation.impl.UIPageImpl#getWidth <em>Width</em>}</li>
  *   <li>{@link org.sheepy.common.model.presentation.impl.UIPageImpl#getHeight <em>Height</em>}</li>
  *   <li>{@link org.sheepy.common.model.presentation.impl.UIPageImpl#getPanels <em>Panels</em>}</li>
@@ -93,6 +97,46 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 	 * @ordered
 	 */
 	protected SVector2i position = POSITION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getVerticalRelative() <em>Vertical Relative</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVerticalRelative()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final EVerticalRelative VERTICAL_RELATIVE_EDEFAULT = EVerticalRelative.TOP;
+
+	/**
+	 * The cached value of the '{@link #getVerticalRelative() <em>Vertical Relative</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVerticalRelative()
+	 * @generated
+	 * @ordered
+	 */
+	protected EVerticalRelative verticalRelative = VERTICAL_RELATIVE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getHorizontalRelative() <em>Horizontal Relative</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHorizontalRelative()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final EHorizontalRelative HORIZONTAL_RELATIVE_EDEFAULT = EHorizontalRelative.LEFT;
+
+	/**
+	 * The cached value of the '{@link #getHorizontalRelative() <em>Horizontal Relative</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHorizontalRelative()
+	 * @generated
+	 * @ordered
+	 */
+	protected EHorizontalRelative horizontalRelative = HORIZONTAL_RELATIVE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
@@ -142,7 +186,7 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Panel> panels;
+	protected EList<IPanel> panels;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -221,6 +265,56 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 	 * @generated
 	 */
 	@Override
+	public EVerticalRelative getVerticalRelative()
+	{
+		return verticalRelative;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setVerticalRelative(EVerticalRelative newVerticalRelative)
+	{
+		EVerticalRelative oldVerticalRelative = verticalRelative;
+		verticalRelative = newVerticalRelative == null ? VERTICAL_RELATIVE_EDEFAULT : newVerticalRelative;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.UI_PAGE__VERTICAL_RELATIVE, oldVerticalRelative, verticalRelative));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EHorizontalRelative getHorizontalRelative()
+	{
+		return horizontalRelative;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setHorizontalRelative(EHorizontalRelative newHorizontalRelative)
+	{
+		EHorizontalRelative oldHorizontalRelative = horizontalRelative;
+		horizontalRelative = newHorizontalRelative == null ? HORIZONTAL_RELATIVE_EDEFAULT : newHorizontalRelative;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE, oldHorizontalRelative, horizontalRelative));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public int getWidth()
 	{
 		return width;
@@ -271,11 +365,11 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 	 * @generated
 	 */
 	@Override
-	public EList<Panel> getPanels()
+	public EList<IPanel> getPanels()
 	{
 		if (panels == null)
 		{
-			panels = new EObjectContainmentEList<Panel>(Panel.class, this, PresentationPackage.UI_PAGE__PANELS);
+			panels = new EObjectContainmentEList<IPanel>(IPanel.class, this, PresentationPackage.UI_PAGE__PANELS);
 		}
 		return panels;
 	}
@@ -404,6 +498,10 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 				return getContentObjects();
 			case PresentationPackage.UI_PAGE__POSITION:
 				return getPosition();
+			case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
+				return getVerticalRelative();
+			case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
+				return getHorizontalRelative();
 			case PresentationPackage.UI_PAGE__WIDTH:
 				return getWidth();
 			case PresentationPackage.UI_PAGE__HEIGHT:
@@ -431,6 +529,12 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 			case PresentationPackage.UI_PAGE__POSITION:
 				setPosition((SVector2i)newValue);
 				return;
+			case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
+				setVerticalRelative((EVerticalRelative)newValue);
+				return;
+			case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
+				setHorizontalRelative((EHorizontalRelative)newValue);
+				return;
 			case PresentationPackage.UI_PAGE__WIDTH:
 				setWidth((Integer)newValue);
 				return;
@@ -439,7 +543,7 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 				return;
 			case PresentationPackage.UI_PAGE__PANELS:
 				getPanels().clear();
-				getPanels().addAll((Collection<? extends Panel>)newValue);
+				getPanels().addAll((Collection<? extends IPanel>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -460,6 +564,12 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 				return;
 			case PresentationPackage.UI_PAGE__POSITION:
 				setPosition(POSITION_EDEFAULT);
+				return;
+			case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
+				setVerticalRelative(VERTICAL_RELATIVE_EDEFAULT);
+				return;
+			case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
+				setHorizontalRelative(HORIZONTAL_RELATIVE_EDEFAULT);
 				return;
 			case PresentationPackage.UI_PAGE__WIDTH:
 				setWidth(WIDTH_EDEFAULT);
@@ -488,6 +598,10 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 				return contentObjects != null;
 			case PresentationPackage.UI_PAGE__POSITION:
 				return POSITION_EDEFAULT == null ? position != null : !POSITION_EDEFAULT.equals(position);
+			case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
+				return verticalRelative != VERTICAL_RELATIVE_EDEFAULT;
+			case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
+				return horizontalRelative != HORIZONTAL_RELATIVE_EDEFAULT;
 			case PresentationPackage.UI_PAGE__WIDTH:
 				return width != WIDTH_EDEFAULT;
 			case PresentationPackage.UI_PAGE__HEIGHT:
@@ -537,6 +651,10 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 		result.append(contentObjects);
 		result.append(", position: ");
 		result.append(position);
+		result.append(", verticalRelative: ");
+		result.append(verticalRelative);
+		result.append(", horizontalRelative: ");
+		result.append(horizontalRelative);
 		result.append(", width: ");
 		result.append(width);
 		result.append(", height: ");

@@ -30,13 +30,16 @@ import org.sheepy.common.model.ui.BooleanActionButton;
 import org.sheepy.common.model.ui.BooleanButton;
 import org.sheepy.common.model.ui.Button;
 import org.sheepy.common.model.ui.DynamicRowLayout;
+import org.sheepy.common.model.ui.IControl;
 import org.sheepy.common.model.ui.Label;
+import org.sheepy.common.model.ui.Panel;
 import org.sheepy.common.model.ui.Slider;
 import org.sheepy.common.model.ui.TextField;
 import org.sheepy.common.model.ui.UiFactory;
 import org.sheepy.common.model.ui.UiPackage;
 import org.sheepy.common.model.ui.VariableLabel;
 
+import org.sheepy.common.model.ui.Widget;
 import org.sheepy.common.model.variable.VariablePackage;
 
 /**
@@ -47,6 +50,27 @@ import org.sheepy.common.model.variable.VariablePackage;
  */
 public class UiPackageImpl extends EPackageImpl implements UiPackage
 {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass panelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iControlEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass widgetEClass = null;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -175,12 +199,12 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 
 		// Initialize simple dependencies
 		PresentationPackage.eINSTANCE.eClass();
+		TypesPackage.eINSTANCE.eClass();
 		RootPackage.eINSTANCE.eClass();
 		InferencePackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
 		VariablePackage.eINSTANCE.eClass();
 		ActionPackage.eINSTANCE.eClass();
-		TypesPackage.eINSTANCE.eClass();
 		ApplicationPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -195,6 +219,72 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(UiPackage.eNS_URI, theUiPackage);
 		return theUiPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getPanel()
+	{
+		return panelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getPanel_Controls()
+	{
+		return (EReference)panelEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPanel_ShowTitle()
+	{
+		return (EAttribute)panelEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPanel_Minimizable()
+	{
+		return (EAttribute)panelEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getIControl()
+	{
+		return iControlEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getWidget()
+	{
+		return widgetEClass;
 	}
 
 	/**
@@ -580,6 +670,15 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		isCreated = true;
 
 		// Create classes and their features
+		panelEClass = createEClass(PANEL);
+		createEReference(panelEClass, PANEL__CONTROLS);
+		createEAttribute(panelEClass, PANEL__SHOW_TITLE);
+		createEAttribute(panelEClass, PANEL__MINIMIZABLE);
+
+		iControlEClass = createEClass(ICONTROL);
+
+		widgetEClass = createEClass(WIDGET);
+
 		abstractLabelEClass = createEClass(ABSTRACT_LABEL);
 		createEAttribute(abstractLabelEClass, ABSTRACT_LABEL__TEXT);
 		createEAttribute(abstractLabelEClass, ABSTRACT_LABEL__FONT_SCALE);
@@ -661,19 +760,34 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		abstractLabelEClass.getESuperTypes().add(thePresentationPackage.getWidget());
-		dynamicRowLayoutEClass.getESuperTypes().add(thePresentationPackage.getIControl());
+		panelEClass.getESuperTypes().add(thePresentationPackage.getIPanel());
+		panelEClass.getESuperTypes().add(thePresentationPackage.getISizedElement());
+		iControlEClass.getESuperTypes().add(thePresentationPackage.getIUIElement());
+		widgetEClass.getESuperTypes().add(this.getIControl());
+		widgetEClass.getESuperTypes().add(thePresentationPackage.getIUIElement());
+		widgetEClass.getESuperTypes().add(thePresentationPackage.getISizedElement());
+		abstractLabelEClass.getESuperTypes().add(this.getWidget());
+		dynamicRowLayoutEClass.getESuperTypes().add(this.getIControl());
 		variableLabelEClass.getESuperTypes().add(this.getAbstractLabel());
 		labelEClass.getESuperTypes().add(this.getAbstractLabel());
-		sliderEClass.getESuperTypes().add(thePresentationPackage.getWidget());
-		textFieldEClass.getESuperTypes().add(thePresentationPackage.getWidget());
-		abstractButtonEClass.getESuperTypes().add(thePresentationPackage.getWidget());
+		sliderEClass.getESuperTypes().add(this.getWidget());
+		textFieldEClass.getESuperTypes().add(this.getWidget());
+		abstractButtonEClass.getESuperTypes().add(this.getWidget());
 		buttonEClass.getESuperTypes().add(this.getAbstractButton());
 		abstractBooleanButtonEClass.getESuperTypes().add(this.getAbstractButton());
 		booleanButtonEClass.getESuperTypes().add(this.getAbstractBooleanButton());
 		booleanActionButtonEClass.getESuperTypes().add(this.getAbstractBooleanButton());
 
 		// Initialize classes, features, and operations; add parameters
+		initEClass(panelEClass, Panel.class, "Panel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPanel_Controls(), this.getIControl(), null, "controls", null, 0, -1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPanel_ShowTitle(), theEcorePackage.getEBoolean(), "showTitle", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPanel_Minimizable(), theEcorePackage.getEBoolean(), "minimizable", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(iControlEClass, IControl.class, "IControl", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(widgetEClass, Widget.class, "Widget", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(abstractLabelEClass, AbstractLabel.class, "AbstractLabel", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAbstractLabel_Text(), theEcorePackage.getEString(), "text", "", 0, 1, AbstractLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAbstractLabel_FontScale(), theEcorePackage.getEFloat(), "fontScale", "1", 0, 1, AbstractLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

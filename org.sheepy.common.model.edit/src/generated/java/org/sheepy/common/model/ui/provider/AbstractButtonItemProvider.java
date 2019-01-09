@@ -58,9 +58,9 @@ public class AbstractButtonItemProvider extends ItemProviderAdapter implements I
 		{
 			super.getPropertyDescriptors(object);
 
+			addPositionPropertyDescriptor(object);
 			addVerticalRelativePropertyDescriptor(object);
 			addHorizontalRelativePropertyDescriptor(object);
-			addPositionPropertyDescriptor(object);
 			addWidthPropertyDescriptor(object);
 			addHeightPropertyDescriptor(object);
 			addTextPropertyDescriptor(object);
@@ -80,9 +80,9 @@ public class AbstractButtonItemProvider extends ItemProviderAdapter implements I
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ISizedElement_position_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_position_feature", "_UI_ISizedElement_type"),
-				 PresentationPackage.Literals.ISIZED_ELEMENT__POSITION,
+				 getString("_UI_IPositionElement_position_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_position_feature", "_UI_IPositionElement_type"),
+				 PresentationPackage.Literals.IPOSITION_ELEMENT__POSITION,
 				 true,
 				 false,
 				 false,
@@ -149,9 +149,9 @@ public class AbstractButtonItemProvider extends ItemProviderAdapter implements I
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_IRelativeElement_verticalRelative_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IRelativeElement_verticalRelative_feature", "_UI_IRelativeElement_type"),
-				 PresentationPackage.Literals.IRELATIVE_ELEMENT__VERTICAL_RELATIVE,
+				 getString("_UI_IPositionElement_verticalRelative_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_verticalRelative_feature", "_UI_IPositionElement_type"),
+				 PresentationPackage.Literals.IPOSITION_ELEMENT__VERTICAL_RELATIVE,
 				 true,
 				 false,
 				 false,
@@ -172,9 +172,9 @@ public class AbstractButtonItemProvider extends ItemProviderAdapter implements I
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_IRelativeElement_horizontalRelative_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IRelativeElement_horizontalRelative_feature", "_UI_IRelativeElement_type"),
-				 PresentationPackage.Literals.IRELATIVE_ELEMENT__HORIZONTAL_RELATIVE,
+				 getString("_UI_IPositionElement_horizontalRelative_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_horizontalRelative_feature", "_UI_IPositionElement_type"),
+				 PresentationPackage.Literals.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE,
 				 true,
 				 false,
 				 false,
@@ -238,9 +238,9 @@ public class AbstractButtonItemProvider extends ItemProviderAdapter implements I
 		switch (notification.getFeatureID(AbstractButton.class))
 		{
 			case UiPackage.ABSTRACT_BUTTON__CONTENT_OBJECTS:
+			case UiPackage.ABSTRACT_BUTTON__POSITION:
 			case UiPackage.ABSTRACT_BUTTON__VERTICAL_RELATIVE:
 			case UiPackage.ABSTRACT_BUTTON__HORIZONTAL_RELATIVE:
-			case UiPackage.ABSTRACT_BUTTON__POSITION:
 			case UiPackage.ABSTRACT_BUTTON__WIDTH:
 			case UiPackage.ABSTRACT_BUTTON__HEIGHT:
 			case UiPackage.ABSTRACT_BUTTON__TEXT:

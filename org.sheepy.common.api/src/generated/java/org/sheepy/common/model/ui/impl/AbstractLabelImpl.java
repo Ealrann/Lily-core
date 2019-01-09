@@ -29,7 +29,7 @@ import org.sheepy.common.api.util.LTreeIterator;
 
 import org.sheepy.common.model.inference.IInferenceObject;
 
-import org.sheepy.common.model.presentation.IRelativeElement;
+import org.sheepy.common.model.presentation.IPositionElement;
 import org.sheepy.common.model.presentation.ISizedElement;
 import org.sheepy.common.model.presentation.PresentationPackage;
 
@@ -54,9 +54,9 @@ import org.sheepy.common.model.ui.UiPackage;
  * </p>
  * <ul>
  *   <li>{@link org.sheepy.common.model.ui.impl.AbstractLabelImpl#getContentObjects <em>Content Objects</em>}</li>
+ *   <li>{@link org.sheepy.common.model.ui.impl.AbstractLabelImpl#getPosition <em>Position</em>}</li>
  *   <li>{@link org.sheepy.common.model.ui.impl.AbstractLabelImpl#getVerticalRelative <em>Vertical Relative</em>}</li>
  *   <li>{@link org.sheepy.common.model.ui.impl.AbstractLabelImpl#getHorizontalRelative <em>Horizontal Relative</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.AbstractLabelImpl#getPosition <em>Position</em>}</li>
  *   <li>{@link org.sheepy.common.model.ui.impl.AbstractLabelImpl#getWidth <em>Width</em>}</li>
  *   <li>{@link org.sheepy.common.model.ui.impl.AbstractLabelImpl#getHeight <em>Height</em>}</li>
  *   <li>{@link org.sheepy.common.model.ui.impl.AbstractLabelImpl#getText <em>Text</em>}</li>
@@ -76,6 +76,26 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container imp
 	 * @ordered
 	 */
 	protected EList<LObject> contentObjects;
+
+	/**
+	 * The default value of the '{@link #getPosition() <em>Position</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPosition()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final SVector2i POSITION_EDEFAULT = (SVector2i)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getSVector2i(), "0;0");
+
+	/**
+	 * The cached value of the '{@link #getPosition() <em>Position</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPosition()
+	 * @generated
+	 * @ordered
+	 */
+	protected SVector2i position = POSITION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getVerticalRelative() <em>Vertical Relative</em>}' attribute.
@@ -116,26 +136,6 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container imp
 	 * @ordered
 	 */
 	protected EHorizontalRelative horizontalRelative = HORIZONTAL_RELATIVE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getPosition() <em>Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPosition()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final SVector2i POSITION_EDEFAULT = (SVector2i)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getSVector2i(), "0;0");
-
-	/**
-	 * The cached value of the '{@link #getPosition() <em>Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPosition()
-	 * @generated
-	 * @ordered
-	 */
-	protected SVector2i position = POSITION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
@@ -544,12 +544,12 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container imp
 		{
 			case UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS:
 				return getContentObjects();
+			case UiPackage.ABSTRACT_LABEL__POSITION:
+				return getPosition();
 			case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE:
 				return getVerticalRelative();
 			case UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE:
 				return getHorizontalRelative();
-			case UiPackage.ABSTRACT_LABEL__POSITION:
-				return getPosition();
 			case UiPackage.ABSTRACT_LABEL__WIDTH:
 				return getWidth();
 			case UiPackage.ABSTRACT_LABEL__HEIGHT:
@@ -576,14 +576,14 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container imp
 			case UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS:
 				setContentObjects((EList<LObject>)newValue);
 				return;
+			case UiPackage.ABSTRACT_LABEL__POSITION:
+				setPosition((SVector2i)newValue);
+				return;
 			case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE:
 				setVerticalRelative((EVerticalRelative)newValue);
 				return;
 			case UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE:
 				setHorizontalRelative((EHorizontalRelative)newValue);
-				return;
-			case UiPackage.ABSTRACT_LABEL__POSITION:
-				setPosition((SVector2i)newValue);
 				return;
 			case UiPackage.ABSTRACT_LABEL__WIDTH:
 				setWidth((Integer)newValue);
@@ -614,14 +614,14 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container imp
 			case UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS:
 				setContentObjects((EList<LObject>)null);
 				return;
+			case UiPackage.ABSTRACT_LABEL__POSITION:
+				setPosition(POSITION_EDEFAULT);
+				return;
 			case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE:
 				setVerticalRelative(VERTICAL_RELATIVE_EDEFAULT);
 				return;
 			case UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE:
 				setHorizontalRelative(HORIZONTAL_RELATIVE_EDEFAULT);
-				return;
-			case UiPackage.ABSTRACT_LABEL__POSITION:
-				setPosition(POSITION_EDEFAULT);
 				return;
 			case UiPackage.ABSTRACT_LABEL__WIDTH:
 				setWidth(WIDTH_EDEFAULT);
@@ -651,12 +651,12 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container imp
 		{
 			case UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS:
 				return contentObjects != null;
+			case UiPackage.ABSTRACT_LABEL__POSITION:
+				return POSITION_EDEFAULT == null ? position != null : !POSITION_EDEFAULT.equals(position);
 			case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE:
 				return verticalRelative != VERTICAL_RELATIVE_EDEFAULT;
 			case UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE:
 				return horizontalRelative != HORIZONTAL_RELATIVE_EDEFAULT;
-			case UiPackage.ABSTRACT_LABEL__POSITION:
-				return POSITION_EDEFAULT == null ? position != null : !POSITION_EDEFAULT.equals(position);
 			case UiPackage.ABSTRACT_LABEL__WIDTH:
 				return width != WIDTH_EDEFAULT;
 			case UiPackage.ABSTRACT_LABEL__HEIGHT:
@@ -677,12 +677,13 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container imp
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
 	{
-		if (baseClass == IRelativeElement.class)
+		if (baseClass == IPositionElement.class)
 		{
 			switch (derivedFeatureID)
 			{
-				case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE: return PresentationPackage.IRELATIVE_ELEMENT__VERTICAL_RELATIVE;
-				case UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE: return PresentationPackage.IRELATIVE_ELEMENT__HORIZONTAL_RELATIVE;
+				case UiPackage.ABSTRACT_LABEL__POSITION: return PresentationPackage.IPOSITION_ELEMENT__POSITION;
+				case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE: return PresentationPackage.IPOSITION_ELEMENT__VERTICAL_RELATIVE;
+				case UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE: return PresentationPackage.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE;
 				default: return -1;
 			}
 		}
@@ -690,7 +691,6 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container imp
 		{
 			switch (derivedFeatureID)
 			{
-				case UiPackage.ABSTRACT_LABEL__POSITION: return PresentationPackage.ISIZED_ELEMENT__POSITION;
 				case UiPackage.ABSTRACT_LABEL__WIDTH: return PresentationPackage.ISIZED_ELEMENT__WIDTH;
 				case UiPackage.ABSTRACT_LABEL__HEIGHT: return PresentationPackage.ISIZED_ELEMENT__HEIGHT;
 				default: return -1;
@@ -707,12 +707,13 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container imp
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
 	{
-		if (baseClass == IRelativeElement.class)
+		if (baseClass == IPositionElement.class)
 		{
 			switch (baseFeatureID)
 			{
-				case PresentationPackage.IRELATIVE_ELEMENT__VERTICAL_RELATIVE: return UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE;
-				case PresentationPackage.IRELATIVE_ELEMENT__HORIZONTAL_RELATIVE: return UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE;
+				case PresentationPackage.IPOSITION_ELEMENT__POSITION: return UiPackage.ABSTRACT_LABEL__POSITION;
+				case PresentationPackage.IPOSITION_ELEMENT__VERTICAL_RELATIVE: return UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE;
+				case PresentationPackage.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE: return UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE;
 				default: return -1;
 			}
 		}
@@ -720,7 +721,6 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container imp
 		{
 			switch (baseFeatureID)
 			{
-				case PresentationPackage.ISIZED_ELEMENT__POSITION: return UiPackage.ABSTRACT_LABEL__POSITION;
 				case PresentationPackage.ISIZED_ELEMENT__WIDTH: return UiPackage.ABSTRACT_LABEL__WIDTH;
 				case PresentationPackage.ISIZED_ELEMENT__HEIGHT: return UiPackage.ABSTRACT_LABEL__HEIGHT;
 				default: return -1;
@@ -766,12 +766,12 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container imp
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (contentObjects: ");
 		result.append(contentObjects);
+		result.append(", position: ");
+		result.append(position);
 		result.append(", verticalRelative: ");
 		result.append(verticalRelative);
 		result.append(", horizontalRelative: ");
 		result.append(horizontalRelative);
-		result.append(", position: ");
-		result.append(position);
 		result.append(", width: ");
 		result.append(width);
 		result.append(", height: ");

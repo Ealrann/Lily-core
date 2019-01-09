@@ -10,15 +10,13 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import org.sheepy.common.model.inference.IInferenceObject;
-
-import org.sheepy.common.model.presentation.IControl;
-import org.sheepy.common.model.presentation.IRelativeElement;
+import org.sheepy.common.model.presentation.IPanel;
+import org.sheepy.common.model.presentation.IPositionElement;
 import org.sheepy.common.model.presentation.ISizedElement;
 import org.sheepy.common.model.presentation.IUIElement;
-import org.sheepy.common.model.presentation.Widget;
-
 import org.sheepy.common.model.root.LObject;
 
+import org.sheepy.common.model.types.LNamedElement;
 import org.sheepy.common.model.ui.*;
 
 /**
@@ -85,6 +83,21 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 		new UiSwitch<Adapter>()
 		{
 			@Override
+			public Adapter casePanel(Panel object)
+			{
+				return createPanelAdapter();
+			}
+			@Override
+			public Adapter caseIControl(IControl object)
+			{
+				return createIControlAdapter();
+			}
+			@Override
+			public Adapter caseWidget(Widget object)
+			{
+				return createWidgetAdapter();
+			}
+			@Override
 			public Adapter caseAbstractLabel(AbstractLabel object)
 			{
 				return createAbstractLabelAdapter();
@@ -140,6 +153,11 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 				return createBooleanActionButtonAdapter();
 			}
 			@Override
+			public Adapter caseLNamedElement(LNamedElement object)
+			{
+				return createLNamedElementAdapter();
+			}
+			@Override
 			public Adapter caseIInferenceObject(IInferenceObject object)
 			{
 				return createIInferenceObjectAdapter();
@@ -155,24 +173,19 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 				return createIUIElementAdapter();
 			}
 			@Override
-			public Adapter caseIControl(IControl object)
+			public Adapter caseIPositionElement(IPositionElement object)
 			{
-				return createIControlAdapter();
+				return createIPositionElementAdapter();
 			}
 			@Override
-			public Adapter caseIRelativeElement(IRelativeElement object)
+			public Adapter caseIPanel(IPanel object)
 			{
-				return createIRelativeElementAdapter();
+				return createIPanelAdapter();
 			}
 			@Override
 			public Adapter caseISizedElement(ISizedElement object)
 			{
 				return createISizedElementAdapter();
-			}
-			@Override
-			public Adapter caseWidget(Widget object)
-			{
-				return createWidgetAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object)
@@ -195,6 +208,21 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.ui.Panel <em>Panel</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.common.model.ui.Panel
+	 * @generated
+	 */
+	public Adapter createPanelAdapter()
+	{
+		return null;
+	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.ui.AbstractLabel <em>Abstract Label</em>}'.
@@ -362,6 +390,21 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.types.LNamedElement <em>LNamed Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.common.model.types.LNamedElement
+	 * @generated
+	 */
+	public Adapter createLNamedElementAdapter()
+	{
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.inference.IInferenceObject <em>IInference Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -407,13 +450,28 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.IControl <em>IControl</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.IPositionElement <em>IPosition Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.presentation.IControl
+	 * @see org.sheepy.common.model.presentation.IPositionElement
+	 * @generated
+	 */
+	public Adapter createIPositionElementAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.ui.IControl <em>IControl</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.common.model.ui.IControl
 	 * @generated
 	 */
 	public Adapter createIControlAdapter()
@@ -422,16 +480,16 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.IRelativeElement <em>IRelative Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.IPanel <em>IPanel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.presentation.IRelativeElement
+	 * @see org.sheepy.common.model.presentation.IPanel
 	 * @generated
 	 */
-	public Adapter createIRelativeElementAdapter()
+	public Adapter createIPanelAdapter()
 	{
 		return null;
 	}
@@ -452,13 +510,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.Widget <em>Widget</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.ui.Widget <em>Widget</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.presentation.Widget
+	 * @see org.sheepy.common.model.ui.Widget
 	 * @generated
 	 */
 	public Adapter createWidgetAdapter()

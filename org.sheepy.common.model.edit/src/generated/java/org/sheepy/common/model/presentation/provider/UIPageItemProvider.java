@@ -25,8 +25,6 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.sheepy.common.model.presentation.PresentationFactory;
 import org.sheepy.common.model.presentation.PresentationPackage;
 import org.sheepy.common.model.presentation.UIPage;
 
@@ -65,6 +63,8 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 			super.getPropertyDescriptors(object);
 
 			addPositionPropertyDescriptor(object);
+			addVerticalRelativePropertyDescriptor(object);
+			addHorizontalRelativePropertyDescriptor(object);
 			addWidthPropertyDescriptor(object);
 			addHeightPropertyDescriptor(object);
 		}
@@ -83,9 +83,55 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ISizedElement_position_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_position_feature", "_UI_ISizedElement_type"),
-				 PresentationPackage.Literals.ISIZED_ELEMENT__POSITION,
+				 getString("_UI_IPositionElement_position_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_position_feature", "_UI_IPositionElement_type"),
+				 PresentationPackage.Literals.IPOSITION_ELEMENT__POSITION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Vertical Relative feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVerticalRelativePropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_IPositionElement_verticalRelative_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_verticalRelative_feature", "_UI_IPositionElement_type"),
+				 PresentationPackage.Literals.IPOSITION_ELEMENT__VERTICAL_RELATIVE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Horizontal Relative feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addHorizontalRelativePropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_IPositionElement_horizontalRelative_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_horizontalRelative_feature", "_UI_IPositionElement_type"),
+				 PresentationPackage.Literals.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE,
 				 true,
 				 false,
 				 false,
@@ -218,6 +264,8 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 		{
 			case PresentationPackage.UI_PAGE__CONTENT_OBJECTS:
 			case PresentationPackage.UI_PAGE__POSITION:
+			case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
+			case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
 			case PresentationPackage.UI_PAGE__WIDTH:
 			case PresentationPackage.UI_PAGE__HEIGHT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
@@ -240,11 +288,6 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(PresentationPackage.Literals.UI_PAGE__PANELS,
-				 PresentationFactory.eINSTANCE.createPanel()));
 	}
 
 	/**

@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.sheepy.common.model.application.ApplicationPackage;
 
 import org.sheepy.common.model.root.RootPackage;
+import org.sheepy.common.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -63,14 +64,14 @@ public interface PresentationPackage extends EPackage
 	PresentationPackage eINSTANCE = org.sheepy.common.model.presentation.impl.PresentationPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.presentation.ISizedElement <em>ISized Element</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.common.model.presentation.IPositionElement <em>IPosition Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.presentation.ISizedElement
-	 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getISizedElement()
+	 * @see org.sheepy.common.model.presentation.IPositionElement
+	 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getIPositionElement()
 	 * @generated
 	 */
-	int ISIZED_ELEMENT = 0;
+	int IPOSITION_ELEMENT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -79,7 +80,7 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ISIZED_ELEMENT__CONTENT_OBJECTS = RootPackage.LOBJECT__CONTENT_OBJECTS;
+	int IPOSITION_ELEMENT__CONTENT_OBJECTS = RootPackage.LOBJECT__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -88,107 +89,7 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ISIZED_ELEMENT__POSITION = RootPackage.LOBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Width</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_ELEMENT__WIDTH = RootPackage.LOBJECT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Height</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_ELEMENT__HEIGHT = RootPackage.LOBJECT_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>ISized Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_ELEMENT_FEATURE_COUNT = RootPackage.LOBJECT_FEATURE_COUNT + 3;
-
-	/**
-	 * The operation id for the '<em>LInference Object</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_ELEMENT___LINFERENCE_OBJECT = RootPackage.LOBJECT___LINFERENCE_OBJECT;
-
-	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_ELEMENT___CREATE_CONTAINMENT_ELIST__ECLASS = RootPackage.LOBJECT___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_ELEMENT___LCONTENTS = RootPackage.LOBJECT___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_ELEMENT___LPARENT = RootPackage.LOBJECT___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_ELEMENT___LALL_CONTENTS = RootPackage.LOBJECT___LALL_CONTENTS;
-
-	/**
-	 * The number of operations of the '<em>ISized Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_ELEMENT_OPERATION_COUNT = RootPackage.LOBJECT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.presentation.IRelativeElement <em>IRelative Element</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.presentation.IRelativeElement
-	 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getIRelativeElement()
-	 * @generated
-	 */
-	int IRELATIVE_ELEMENT = 1;
-
-	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IRELATIVE_ELEMENT__CONTENT_OBJECTS = RootPackage.LOBJECT__CONTENT_OBJECTS;
+	int IPOSITION_ELEMENT__POSITION = RootPackage.LOBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
@@ -197,7 +98,7 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IRELATIVE_ELEMENT__VERTICAL_RELATIVE = RootPackage.LOBJECT_FEATURE_COUNT + 0;
+	int IPOSITION_ELEMENT__VERTICAL_RELATIVE = RootPackage.LOBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
@@ -206,16 +107,16 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IRELATIVE_ELEMENT__HORIZONTAL_RELATIVE = RootPackage.LOBJECT_FEATURE_COUNT + 1;
+	int IPOSITION_ELEMENT__HORIZONTAL_RELATIVE = RootPackage.LOBJECT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>IRelative Element</em>' class.
+	 * The number of structural features of the '<em>IPosition Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IRELATIVE_ELEMENT_FEATURE_COUNT = RootPackage.LOBJECT_FEATURE_COUNT + 2;
+	int IPOSITION_ELEMENT_FEATURE_COUNT = RootPackage.LOBJECT_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -224,7 +125,7 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IRELATIVE_ELEMENT___LINFERENCE_OBJECT = RootPackage.LOBJECT___LINFERENCE_OBJECT;
+	int IPOSITION_ELEMENT___LINFERENCE_OBJECT = RootPackage.LOBJECT___LINFERENCE_OBJECT;
 
 	/**
 	 * The operation id for the '<em>Create Containment EList</em>' operation.
@@ -233,7 +134,7 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IRELATIVE_ELEMENT___CREATE_CONTAINMENT_ELIST__ECLASS = RootPackage.LOBJECT___CREATE_CONTAINMENT_ELIST__ECLASS;
+	int IPOSITION_ELEMENT___CREATE_CONTAINMENT_ELIST__ECLASS = RootPackage.LOBJECT___CREATE_CONTAINMENT_ELIST__ECLASS;
 
 	/**
 	 * The operation id for the '<em>LContents</em>' operation.
@@ -242,7 +143,7 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IRELATIVE_ELEMENT___LCONTENTS = RootPackage.LOBJECT___LCONTENTS;
+	int IPOSITION_ELEMENT___LCONTENTS = RootPackage.LOBJECT___LCONTENTS;
 
 	/**
 	 * The operation id for the '<em>LParent</em>' operation.
@@ -251,7 +152,7 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IRELATIVE_ELEMENT___LPARENT = RootPackage.LOBJECT___LPARENT;
+	int IPOSITION_ELEMENT___LPARENT = RootPackage.LOBJECT___LPARENT;
 
 	/**
 	 * The operation id for the '<em>LAll Contents</em>' operation.
@@ -260,16 +161,143 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IRELATIVE_ELEMENT___LALL_CONTENTS = RootPackage.LOBJECT___LALL_CONTENTS;
+	int IPOSITION_ELEMENT___LALL_CONTENTS = RootPackage.LOBJECT___LALL_CONTENTS;
 
 	/**
-	 * The number of operations of the '<em>IRelative Element</em>' class.
+	 * The number of operations of the '<em>IPosition Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IRELATIVE_ELEMENT_OPERATION_COUNT = RootPackage.LOBJECT_OPERATION_COUNT + 0;
+	int IPOSITION_ELEMENT_OPERATION_COUNT = RootPackage.LOBJECT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.common.model.presentation.ISizedElement <em>ISized Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.common.model.presentation.ISizedElement
+	 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getISizedElement()
+	 * @generated
+	 */
+	int ISIZED_ELEMENT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_ELEMENT__CONTENT_OBJECTS = IPOSITION_ELEMENT__CONTENT_OBJECTS;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_ELEMENT__POSITION = IPOSITION_ELEMENT__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_ELEMENT__VERTICAL_RELATIVE = IPOSITION_ELEMENT__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_ELEMENT__HORIZONTAL_RELATIVE = IPOSITION_ELEMENT__HORIZONTAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_ELEMENT__WIDTH = IPOSITION_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_ELEMENT__HEIGHT = IPOSITION_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>ISized Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_ELEMENT_FEATURE_COUNT = IPOSITION_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_ELEMENT___LINFERENCE_OBJECT = IPOSITION_ELEMENT___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_ELEMENT___CREATE_CONTAINMENT_ELIST__ECLASS = IPOSITION_ELEMENT___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_ELEMENT___LCONTENTS = IPOSITION_ELEMENT___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_ELEMENT___LPARENT = IPOSITION_ELEMENT___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_ELEMENT___LALL_CONTENTS = IPOSITION_ELEMENT___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>ISized Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_ELEMENT_OPERATION_COUNT = IPOSITION_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.common.model.presentation.IUIView <em>IUI View</em>}' class.
@@ -591,6 +619,24 @@ public interface PresentationPackage extends EPackage
 	int ISIZED_VIEW__POSITION = ISIZED_ELEMENT__POSITION;
 
 	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_VIEW__VERTICAL_RELATIVE = ISIZED_ELEMENT__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_VIEW__HORIZONTAL_RELATIVE = ISIZED_ELEMENT__HORIZONTAL_RELATIVE;
+
+	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -827,6 +873,24 @@ public interface PresentationPackage extends EPackage
 	int UI_PAGE__POSITION = ISIZED_ELEMENT__POSITION;
 
 	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_PAGE__VERTICAL_RELATIVE = ISIZED_ELEMENT__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_PAGE__HORIZONTAL_RELATIVE = ISIZED_ELEMENT__HORIZONTAL_RELATIVE;
+
+	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -917,23 +981,14 @@ public interface PresentationPackage extends EPackage
 	int UI_PAGE_OPERATION_COUNT = ISIZED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.presentation.impl.PanelImpl <em>Panel</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.common.model.presentation.IPanel <em>IPanel</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.presentation.impl.PanelImpl
-	 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getPanel()
+	 * @see org.sheepy.common.model.presentation.IPanel
+	 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getIPanel()
 	 * @generated
 	 */
-	int PANEL = 8;
-
-	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANEL__CONTENT_OBJECTS = IUI_ELEMENT__CONTENT_OBJECTS;
+	int IPANEL = 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -942,134 +997,7 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PANEL__NAME = IUI_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANEL__VERTICAL_RELATIVE = IUI_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANEL__HORIZONTAL_RELATIVE = IUI_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Position</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANEL__POSITION = IUI_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Width</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANEL__WIDTH = IUI_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Height</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANEL__HEIGHT = IUI_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Controls</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANEL__CONTROLS = IUI_ELEMENT_FEATURE_COUNT + 6;
-
-	/**
-	 * The number of structural features of the '<em>Panel</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANEL_FEATURE_COUNT = IUI_ELEMENT_FEATURE_COUNT + 7;
-
-	/**
-	 * The operation id for the '<em>LInference Object</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANEL___LINFERENCE_OBJECT = IUI_ELEMENT___LINFERENCE_OBJECT;
-
-	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANEL___CREATE_CONTAINMENT_ELIST__ECLASS = IUI_ELEMENT___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANEL___LCONTENTS = IUI_ELEMENT___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANEL___LPARENT = IUI_ELEMENT___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANEL___LALL_CONTENTS = IUI_ELEMENT___LALL_CONTENTS;
-
-	/**
-	 * The number of operations of the '<em>Panel</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANEL_OPERATION_COUNT = IUI_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.presentation.IControl <em>IControl</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.presentation.IControl
-	 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getIControl()
-	 * @generated
-	 */
-	int ICONTROL = 9;
+	int IPANEL__NAME = TypesPackage.LNAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -1078,107 +1006,7 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ICONTROL__CONTENT_OBJECTS = IUI_ELEMENT__CONTENT_OBJECTS;
-
-	/**
-	 * The number of structural features of the '<em>IControl</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ICONTROL_FEATURE_COUNT = IUI_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>LInference Object</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ICONTROL___LINFERENCE_OBJECT = IUI_ELEMENT___LINFERENCE_OBJECT;
-
-	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ICONTROL___CREATE_CONTAINMENT_ELIST__ECLASS = IUI_ELEMENT___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ICONTROL___LCONTENTS = IUI_ELEMENT___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ICONTROL___LPARENT = IUI_ELEMENT___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ICONTROL___LALL_CONTENTS = IUI_ELEMENT___LALL_CONTENTS;
-
-	/**
-	 * The number of operations of the '<em>IControl</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ICONTROL_OPERATION_COUNT = IUI_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.presentation.Widget <em>Widget</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.presentation.Widget
-	 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getWidget()
-	 * @generated
-	 */
-	int WIDGET = 10;
-
-	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WIDGET__CONTENT_OBJECTS = ICONTROL__CONTENT_OBJECTS;
-
-	/**
-	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WIDGET__VERTICAL_RELATIVE = ICONTROL_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WIDGET__HORIZONTAL_RELATIVE = ICONTROL_FEATURE_COUNT + 1;
+	int IPANEL__CONTENT_OBJECTS = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -1187,34 +1015,34 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int WIDGET__POSITION = ICONTROL_FEATURE_COUNT + 2;
+	int IPANEL__POSITION = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WIDGET__WIDTH = ICONTROL_FEATURE_COUNT + 3;
+	int IPANEL__VERTICAL_RELATIVE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WIDGET__HEIGHT = ICONTROL_FEATURE_COUNT + 4;
+	int IPANEL__HORIZONTAL_RELATIVE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of structural features of the '<em>Widget</em>' class.
+	 * The number of structural features of the '<em>IPanel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WIDGET_FEATURE_COUNT = ICONTROL_FEATURE_COUNT + 5;
+	int IPANEL_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -1223,7 +1051,7 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int WIDGET___LINFERENCE_OBJECT = ICONTROL___LINFERENCE_OBJECT;
+	int IPANEL___LINFERENCE_OBJECT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>Create Containment EList</em>' operation.
@@ -1232,7 +1060,7 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS = ICONTROL___CREATE_CONTAINMENT_ELIST__ECLASS;
+	int IPANEL___CREATE_CONTAINMENT_ELIST__ECLASS = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>LContents</em>' operation.
@@ -1241,7 +1069,7 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int WIDGET___LCONTENTS = ICONTROL___LCONTENTS;
+	int IPANEL___LCONTENTS = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>LParent</em>' operation.
@@ -1250,7 +1078,7 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int WIDGET___LPARENT = ICONTROL___LPARENT;
+	int IPANEL___LPARENT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>LAll Contents</em>' operation.
@@ -1259,17 +1087,59 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int WIDGET___LALL_CONTENTS = ICONTROL___LALL_CONTENTS;
+	int IPANEL___LALL_CONTENTS = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 4;
 
 	/**
-	 * The number of operations of the '<em>Widget</em>' class.
+	 * The number of operations of the '<em>IPanel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WIDGET_OPERATION_COUNT = ICONTROL_OPERATION_COUNT + 0;
+	int IPANEL_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 5;
 
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.common.model.presentation.IPositionElement <em>IPosition Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IPosition Element</em>'.
+	 * @see org.sheepy.common.model.presentation.IPositionElement
+	 * @generated
+	 */
+	EClass getIPositionElement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.presentation.IPositionElement#getPosition <em>Position</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Position</em>'.
+	 * @see org.sheepy.common.model.presentation.IPositionElement#getPosition()
+	 * @see #getIPositionElement()
+	 * @generated
+	 */
+	EAttribute getIPositionElement_Position();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.presentation.IPositionElement#getVerticalRelative <em>Vertical Relative</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Vertical Relative</em>'.
+	 * @see org.sheepy.common.model.presentation.IPositionElement#getVerticalRelative()
+	 * @see #getIPositionElement()
+	 * @generated
+	 */
+	EAttribute getIPositionElement_VerticalRelative();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.presentation.IPositionElement#getHorizontalRelative <em>Horizontal Relative</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Horizontal Relative</em>'.
+	 * @see org.sheepy.common.model.presentation.IPositionElement#getHorizontalRelative()
+	 * @see #getIPositionElement()
+	 * @generated
+	 */
+	EAttribute getIPositionElement_HorizontalRelative();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.common.model.presentation.ISizedElement <em>ISized Element</em>}'.
@@ -1280,17 +1150,6 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 */
 	EClass getISizedElement();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.presentation.ISizedElement#getPosition <em>Position</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Position</em>'.
-	 * @see org.sheepy.common.model.presentation.ISizedElement#getPosition()
-	 * @see #getISizedElement()
-	 * @generated
-	 */
-	EAttribute getISizedElement_Position();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.presentation.ISizedElement#getWidth <em>Width</em>}'.
@@ -1313,38 +1172,6 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 */
 	EAttribute getISizedElement_Height();
-
-	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.presentation.IRelativeElement <em>IRelative Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>IRelative Element</em>'.
-	 * @see org.sheepy.common.model.presentation.IRelativeElement
-	 * @generated
-	 */
-	EClass getIRelativeElement();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.presentation.IRelativeElement#getVerticalRelative <em>Vertical Relative</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Vertical Relative</em>'.
-	 * @see org.sheepy.common.model.presentation.IRelativeElement#getVerticalRelative()
-	 * @see #getIRelativeElement()
-	 * @generated
-	 */
-	EAttribute getIRelativeElement_VerticalRelative();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.presentation.IRelativeElement#getHorizontalRelative <em>Horizontal Relative</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Horizontal Relative</em>'.
-	 * @see org.sheepy.common.model.presentation.IRelativeElement#getHorizontalRelative()
-	 * @see #getIRelativeElement()
-	 * @generated
-	 */
-	EAttribute getIRelativeElement_HorizontalRelative();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.common.model.presentation.IUIView <em>IUI View</em>}'.
@@ -1506,45 +1333,14 @@ public interface PresentationPackage extends EPackage
 	EReference getUIPage_Panels();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.presentation.Panel <em>Panel</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.common.model.presentation.IPanel <em>IPanel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Panel</em>'.
-	 * @see org.sheepy.common.model.presentation.Panel
+	 * @return the meta object for class '<em>IPanel</em>'.
+	 * @see org.sheepy.common.model.presentation.IPanel
 	 * @generated
 	 */
-	EClass getPanel();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.sheepy.common.model.presentation.Panel#getControls <em>Controls</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Controls</em>'.
-	 * @see org.sheepy.common.model.presentation.Panel#getControls()
-	 * @see #getPanel()
-	 * @generated
-	 */
-	EReference getPanel_Controls();
-
-	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.presentation.IControl <em>IControl</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>IControl</em>'.
-	 * @see org.sheepy.common.model.presentation.IControl
-	 * @generated
-	 */
-	EClass getIControl();
-
-	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.presentation.Widget <em>Widget</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Widget</em>'.
-	 * @see org.sheepy.common.model.presentation.Widget
-	 * @generated
-	 */
-	EClass getWidget();
+	EClass getIPanel();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1571,6 +1367,40 @@ public interface PresentationPackage extends EPackage
 	interface Literals
 	{
 		/**
+		 * The meta object literal for the '{@link org.sheepy.common.model.presentation.IPositionElement <em>IPosition Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.common.model.presentation.IPositionElement
+		 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getIPositionElement()
+		 * @generated
+		 */
+		EClass IPOSITION_ELEMENT = eINSTANCE.getIPositionElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Position</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IPOSITION_ELEMENT__POSITION = eINSTANCE.getIPositionElement_Position();
+
+		/**
+		 * The meta object literal for the '<em><b>Vertical Relative</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IPOSITION_ELEMENT__VERTICAL_RELATIVE = eINSTANCE.getIPositionElement_VerticalRelative();
+
+		/**
+		 * The meta object literal for the '<em><b>Horizontal Relative</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IPOSITION_ELEMENT__HORIZONTAL_RELATIVE = eINSTANCE.getIPositionElement_HorizontalRelative();
+
+		/**
 		 * The meta object literal for the '{@link org.sheepy.common.model.presentation.ISizedElement <em>ISized Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1579,14 +1409,6 @@ public interface PresentationPackage extends EPackage
 		 * @generated
 		 */
 		EClass ISIZED_ELEMENT = eINSTANCE.getISizedElement();
-
-		/**
-		 * The meta object literal for the '<em><b>Position</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ISIZED_ELEMENT__POSITION = eINSTANCE.getISizedElement_Position();
 
 		/**
 		 * The meta object literal for the '<em><b>Width</b></em>' attribute feature.
@@ -1603,32 +1425,6 @@ public interface PresentationPackage extends EPackage
 		 * @generated
 		 */
 		EAttribute ISIZED_ELEMENT__HEIGHT = eINSTANCE.getISizedElement_Height();
-
-		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.presentation.IRelativeElement <em>IRelative Element</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.presentation.IRelativeElement
-		 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getIRelativeElement()
-		 * @generated
-		 */
-		EClass IRELATIVE_ELEMENT = eINSTANCE.getIRelativeElement();
-
-		/**
-		 * The meta object literal for the '<em><b>Vertical Relative</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute IRELATIVE_ELEMENT__VERTICAL_RELATIVE = eINSTANCE.getIRelativeElement_VerticalRelative();
-
-		/**
-		 * The meta object literal for the '<em><b>Horizontal Relative</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute IRELATIVE_ELEMENT__HORIZONTAL_RELATIVE = eINSTANCE.getIRelativeElement_HorizontalRelative();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.common.model.presentation.IUIView <em>IUI View</em>}' class.
@@ -1763,42 +1559,14 @@ public interface PresentationPackage extends EPackage
 		EReference UI_PAGE__PANELS = eINSTANCE.getUIPage_Panels();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.presentation.impl.PanelImpl <em>Panel</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.common.model.presentation.IPanel <em>IPanel</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.presentation.impl.PanelImpl
-		 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getPanel()
+		 * @see org.sheepy.common.model.presentation.IPanel
+		 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getIPanel()
 		 * @generated
 		 */
-		EClass PANEL = eINSTANCE.getPanel();
-
-		/**
-		 * The meta object literal for the '<em><b>Controls</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PANEL__CONTROLS = eINSTANCE.getPanel_Controls();
-
-		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.presentation.IControl <em>IControl</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.presentation.IControl
-		 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getIControl()
-		 * @generated
-		 */
-		EClass ICONTROL = eINSTANCE.getIControl();
-
-		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.presentation.Widget <em>Widget</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.presentation.Widget
-		 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getWidget()
-		 * @generated
-		 */
-		EClass WIDGET = eINSTANCE.getWidget();
+		EClass IPANEL = eINSTANCE.getIPanel();
 
 	}
 
