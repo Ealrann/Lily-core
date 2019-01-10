@@ -161,13 +161,31 @@ public interface UiPackage extends EPackage
 	int PANEL__MINIMIZABLE = PresentationPackage.IPANEL_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Movable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANEL__MOVABLE = PresentationPackage.IPANEL_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Minimized</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANEL__MINIMIZED = PresentationPackage.IPANEL_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>Panel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANEL_FEATURE_COUNT = PresentationPackage.IPANEL_FEATURE_COUNT + 5;
+	int PANEL_FEATURE_COUNT = PresentationPackage.IPANEL_FEATURE_COUNT + 7;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -2126,6 +2144,28 @@ public interface UiPackage extends EPackage
 	EAttribute getPanel_Minimizable();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.Panel#isMovable <em>Movable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Movable</em>'.
+	 * @see org.sheepy.common.model.ui.Panel#isMovable()
+	 * @see #getPanel()
+	 * @generated
+	 */
+	EAttribute getPanel_Movable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.Panel#isMinimized <em>Minimized</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Minimized</em>'.
+	 * @see org.sheepy.common.model.ui.Panel#isMinimized()
+	 * @see #getPanel()
+	 * @generated
+	 */
+	EAttribute getPanel_Minimized();
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.IControl <em>IControl</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2541,6 +2581,22 @@ public interface UiPackage extends EPackage
 		 * @generated
 		 */
 		EAttribute PANEL__MINIMIZABLE = eINSTANCE.getPanel_Minimizable();
+
+		/**
+		 * The meta object literal for the '<em><b>Movable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PANEL__MOVABLE = eINSTANCE.getPanel_Movable();
+
+		/**
+		 * The meta object literal for the '<em><b>Minimized</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PANEL__MINIMIZED = eINSTANCE.getPanel_Minimized();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.common.model.ui.IControl <em>IControl</em>}' class.

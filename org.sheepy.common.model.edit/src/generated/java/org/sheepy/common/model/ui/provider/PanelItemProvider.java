@@ -70,6 +70,8 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 			addHeightPropertyDescriptor(object);
 			addShowTitlePropertyDescriptor(object);
 			addMinimizablePropertyDescriptor(object);
+			addMovablePropertyDescriptor(object);
+			addMinimizedPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -259,6 +261,52 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 	}
 
 	/**
+	 * This adds a property descriptor for the Movable feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMovablePropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Panel_movable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Panel_movable_feature", "_UI_Panel_type"),
+				 UiPackage.Literals.PANEL__MOVABLE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Minimized feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMinimizedPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Panel_minimized_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Panel_minimized_feature", "_UI_Panel_type"),
+				 UiPackage.Literals.PANEL__MINIMIZED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -342,6 +390,8 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 			case UiPackage.PANEL__HEIGHT:
 			case UiPackage.PANEL__SHOW_TITLE:
 			case UiPackage.PANEL__MINIMIZABLE:
+			case UiPackage.PANEL__MOVABLE:
+			case UiPackage.PANEL__MINIMIZED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case UiPackage.PANEL__CONTROLS:

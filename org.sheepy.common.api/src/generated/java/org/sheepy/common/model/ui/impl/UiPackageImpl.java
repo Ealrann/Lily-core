@@ -271,6 +271,28 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * @generated
 	 */
 	@Override
+	public EAttribute getPanel_Movable()
+	{
+		return (EAttribute)panelEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getPanel_Minimized()
+	{
+		return (EAttribute)panelEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getIControl()
 	{
 		return iControlEClass;
@@ -674,6 +696,8 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		createEReference(panelEClass, PANEL__CONTROLS);
 		createEAttribute(panelEClass, PANEL__SHOW_TITLE);
 		createEAttribute(panelEClass, PANEL__MINIMIZABLE);
+		createEAttribute(panelEClass, PANEL__MOVABLE);
+		createEAttribute(panelEClass, PANEL__MINIMIZED);
 
 		iControlEClass = createEClass(ICONTROL);
 
@@ -783,6 +807,8 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		initEReference(getPanel_Controls(), this.getIControl(), null, "controls", null, 0, -1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPanel_ShowTitle(), theEcorePackage.getEBoolean(), "showTitle", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPanel_Minimizable(), theEcorePackage.getEBoolean(), "minimizable", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPanel_Movable(), theEcorePackage.getEBoolean(), "movable", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPanel_Minimized(), theEcorePackage.getEBoolean(), "minimized", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iControlEClass, IControl.class, "IControl", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

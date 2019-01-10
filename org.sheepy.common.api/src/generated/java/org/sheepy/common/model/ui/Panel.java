@@ -18,6 +18,8 @@ import org.sheepy.common.model.presentation.ISizedElement;
  *   <li>{@link org.sheepy.common.model.ui.Panel#getControls <em>Controls</em>}</li>
  *   <li>{@link org.sheepy.common.model.ui.Panel#isShowTitle <em>Show Title</em>}</li>
  *   <li>{@link org.sheepy.common.model.ui.Panel#isMinimizable <em>Minimizable</em>}</li>
+ *   <li>{@link org.sheepy.common.model.ui.Panel#isMovable <em>Movable</em>}</li>
+ *   <li>{@link org.sheepy.common.model.ui.Panel#isMinimized <em>Minimized</em>}</li>
  * </ul>
  *
  * @see org.sheepy.common.model.ui.UiPackage#getPanel()
@@ -95,5 +97,59 @@ public interface Panel extends IPanel, ISizedElement
 	 * @generated
 	 */
 	void setMinimizable(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Movable</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Movable</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Movable</em>' attribute.
+	 * @see #setMovable(boolean)
+	 * @see org.sheepy.common.model.ui.UiPackage#getPanel_Movable()
+	 * @model default="false" unique="false"
+	 * @generated
+	 */
+	boolean isMovable();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.common.model.ui.Panel#isMovable <em>Movable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Movable</em>' attribute.
+	 * @see #isMovable()
+	 * @generated
+	 */
+	void setMovable(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Minimized</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Minimized</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Minimized</em>' attribute.
+	 * @see #setMinimized(boolean)
+	 * @see org.sheepy.common.model.ui.UiPackage#getPanel_Minimized()
+	 * @model default="false" unique="false"
+	 * @generated
+	 */
+	boolean isMinimized();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.common.model.ui.Panel#isMinimized <em>Minimized</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Minimized</em>' attribute.
+	 * @see #isMinimized()
+	 * @generated
+	 */
+	void setMinimized(boolean value);
 
 } // Panel

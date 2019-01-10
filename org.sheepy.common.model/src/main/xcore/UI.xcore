@@ -22,6 +22,9 @@ class Panel extends IPanel, ISizedElement
 	
 	boolean showTitle = "false"
 	boolean minimizable = "false"
+	boolean movable = "false"
+	
+	boolean minimized = "false"
 }
 
 interface IControl extends IUIElement

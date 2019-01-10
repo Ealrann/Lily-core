@@ -71,6 +71,8 @@ import org.sheepy.common.model.ui.UiPackage;
  *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#getControls <em>Controls</em>}</li>
  *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#isShowTitle <em>Show Title</em>}</li>
  *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#isMinimizable <em>Minimizable</em>}</li>
+ *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#isMovable <em>Movable</em>}</li>
+ *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#isMinimized <em>Minimized</em>}</li>
  * </ul>
  *
  * @generated
@@ -256,6 +258,46 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	 * @ordered
 	 */
 	protected boolean minimizable = MINIMIZABLE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMovable() <em>Movable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMovable()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MOVABLE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMovable() <em>Movable</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMovable()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean movable = MOVABLE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isMinimized() <em>Minimized</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMinimized()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean MINIMIZED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isMinimized() <em>Minimized</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isMinimized()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean minimized = MINIMIZED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -524,6 +566,56 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	 * @generated
 	 */
 	@Override
+	public boolean isMovable()
+	{
+		return movable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setMovable(boolean newMovable)
+	{
+		boolean oldMovable = movable;
+		movable = newMovable;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__MOVABLE, oldMovable, movable));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isMinimized()
+	{
+		return minimized;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setMinimized(boolean newMinimized)
+	{
+		boolean oldMinimized = minimized;
+		minimized = newMinimized;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__MINIMIZED, oldMinimized, minimized));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public <T extends LObject> EList<T> createContainmentEList(final EClass targetEClass)
 	{
 		EList<T> res = null;
@@ -658,6 +750,10 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 				return isShowTitle();
 			case UiPackage.PANEL__MINIMIZABLE:
 				return isMinimizable();
+			case UiPackage.PANEL__MOVABLE:
+				return isMovable();
+			case UiPackage.PANEL__MINIMIZED:
+				return isMinimized();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -704,6 +800,12 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 			case UiPackage.PANEL__MINIMIZABLE:
 				setMinimizable((Boolean)newValue);
 				return;
+			case UiPackage.PANEL__MOVABLE:
+				setMovable((Boolean)newValue);
+				return;
+			case UiPackage.PANEL__MINIMIZED:
+				setMinimized((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -748,6 +850,12 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 			case UiPackage.PANEL__MINIMIZABLE:
 				setMinimizable(MINIMIZABLE_EDEFAULT);
 				return;
+			case UiPackage.PANEL__MOVABLE:
+				setMovable(MOVABLE_EDEFAULT);
+				return;
+			case UiPackage.PANEL__MINIMIZED:
+				setMinimized(MINIMIZED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -782,6 +890,10 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 				return showTitle != SHOW_TITLE_EDEFAULT;
 			case UiPackage.PANEL__MINIMIZABLE:
 				return minimizable != MINIMIZABLE_EDEFAULT;
+			case UiPackage.PANEL__MOVABLE:
+				return movable != MOVABLE_EDEFAULT;
+			case UiPackage.PANEL__MINIMIZED:
+				return minimized != MINIMIZED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -994,6 +1106,10 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 		result.append(showTitle);
 		result.append(", minimizable: ");
 		result.append(minimizable);
+		result.append(", movable: ");
+		result.append(movable);
+		result.append(", minimized: ");
+		result.append(minimized);
 		result.append(')');
 		return result.toString();
 	}
