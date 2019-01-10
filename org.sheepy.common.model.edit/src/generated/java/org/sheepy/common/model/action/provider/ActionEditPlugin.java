@@ -5,6 +5,7 @@ package org.sheepy.common.model.action.provider;
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 import org.sheepy.common.model.types.provider.TypesEditPlugin;
 
 /**
@@ -43,6 +44,7 @@ public final class ActionEditPlugin extends EMFPlugin
 		  (new ResourceLocator [] 
 		   {
 		     TypesEditPlugin.INSTANCE,
+		     EcoreEditPlugin.INSTANCE,
 		   });
 	}
 
