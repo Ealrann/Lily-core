@@ -58,7 +58,7 @@ public class ApplicationAdapter extends AbstractStatefullAdapter implements IApp
 					cadencer.load();
 					loaded.set(false);
 					cadencer.start();
-				} catch (Exception e)
+				} catch (Throwable e)
 				{
 					e.printStackTrace();
 				}
