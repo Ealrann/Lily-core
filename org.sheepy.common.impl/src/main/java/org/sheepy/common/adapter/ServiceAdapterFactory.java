@@ -16,7 +16,7 @@ import org.sheepy.common.api.util.ReflectivityUtils;
 public class ServiceAdapterFactory implements IServiceAdapterFactory
 {
 	private final ServiceAdapterRegistry registry = new ServiceAdapterRegistry(this);
-	
+
 	// Force the ResourceLoader to be loaded
 	static final IResourceLoader instance = IResourceLoader.INSTANCE;
 
