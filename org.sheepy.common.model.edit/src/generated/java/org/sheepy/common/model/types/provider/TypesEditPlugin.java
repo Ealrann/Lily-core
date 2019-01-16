@@ -5,7 +5,6 @@ package org.sheepy.common.model.types.provider;
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 
 /**
  * This is the central singleton for the Types edit plugin.
@@ -42,7 +41,6 @@ public final class TypesEditPlugin extends EMFPlugin
 		super
 		  (new ResourceLocator [] 
 		   {
-		     EcoreEditPlugin.INSTANCE,
 		   });
 	}
 

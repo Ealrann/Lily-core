@@ -35,7 +35,15 @@ public enum EKeyState implements Enumerator
 	 * @generated
 	 * @ordered
 	 */
-	PRESSED(1, "PRESSED", "PRESSED");
+	PRESSED(1, "PRESSED", "PRESSED"), /**
+	 * The '<em><b>REPEATED</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #REPEATED_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	REPEATED(2, "REPEATED", "REPEATED");
 
 	/**
 	 * The '<em><b>RELEASED</b></em>' literal value.
@@ -68,6 +76,21 @@ public enum EKeyState implements Enumerator
 	public static final int PRESSED_VALUE = 1;
 
 	/**
+	 * The '<em><b>REPEATED</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>REPEATED</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #REPEATED
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int REPEATED_VALUE = 2;
+
+	/**
 	 * An array of all the '<em><b>EKey State</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -78,6 +101,7 @@ public enum EKeyState implements Enumerator
 		{
 			RELEASED,
 			PRESSED,
+			REPEATED,
 		};
 
 	/**
@@ -144,6 +168,7 @@ public enum EKeyState implements Enumerator
 		{
 			case RELEASED_VALUE: return RELEASED;
 			case PRESSED_VALUE: return PRESSED;
+			case REPEATED_VALUE: return REPEATED;
 		}
 		return null;
 	}
