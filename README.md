@@ -1,4 +1,4 @@
-# Sheepy common code
+# Lily core
 
 This project include common tools and models, with minimal dependency.
 
