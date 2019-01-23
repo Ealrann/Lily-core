@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.resolver;
+package org.sheepy.lily.core.model.resolver;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.resolver.ResolverPackage
+ * @see org.sheepy.lily.core.model.resolver.ResolverPackage
  * @generated
  */
 public interface ResolverFactory extends EFactory
@@ -20,7 +20,7 @@ public interface ResolverFactory extends EFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ResolverFactory eINSTANCE = org.sheepy.common.model.resolver.impl.ResolverFactoryImpl.init();
+	ResolverFactory eINSTANCE = org.sheepy.lily.core.model.resolver.impl.ResolverFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>EReference Resolver</em>'.

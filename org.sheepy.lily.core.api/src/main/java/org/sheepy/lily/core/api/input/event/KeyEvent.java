@@ -1,6 +1,6 @@
-package org.sheepy.common.api.input.event;
+package org.sheepy.lily.core.api.input.event;
 
-import org.sheepy.common.model.types.EKeyState;
+import org.sheepy.lily.core.model.types.EKeyState;
 
 public class KeyEvent implements IInputEvent
 {

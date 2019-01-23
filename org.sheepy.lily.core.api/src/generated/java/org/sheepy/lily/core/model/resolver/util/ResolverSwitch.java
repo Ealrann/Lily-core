@@ -1,13 +1,13 @@
 /**
  */
-package org.sheepy.common.model.resolver.util;
+package org.sheepy.lily.core.model.resolver.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.sheepy.common.model.resolver.*;
+import org.sheepy.lily.core.model.resolver.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,7 +19,7 @@ import org.sheepy.common.model.resolver.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.resolver.ResolverPackage
+ * @see org.sheepy.lily.core.model.resolver.ResolverPackage
  * @generated
  */
 public class ResolverSwitch<T> extends Switch<T>

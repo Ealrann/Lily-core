@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.variable;
+package org.sheepy.lily.core.model.variable;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.variable.VariablePackage
+ * @see org.sheepy.lily.core.model.variable.VariablePackage
  * @generated
  */
 public interface VariableFactory extends EFactory
@@ -20,7 +20,7 @@ public interface VariableFactory extends EFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	VariableFactory eINSTANCE = org.sheepy.common.model.variable.impl.VariableFactoryImpl.init();
+	VariableFactory eINSTANCE = org.sheepy.lily.core.model.variable.impl.VariableFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Chain Variable Resolver</em>'.

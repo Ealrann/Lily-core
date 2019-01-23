@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.resolver.impl;
+package org.sheepy.lily.core.model.resolver.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -11,19 +11,19 @@ import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.sheepy.common.model.action.ActionPackage;
+import org.sheepy.lily.core.model.action.ActionPackage;
 
-import org.sheepy.common.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.inference.InferencePackage;
 
-import org.sheepy.common.model.resolver.ChainResolver;
-import org.sheepy.common.model.resolver.EReferenceResolver;
-import org.sheepy.common.model.resolver.ILObjectResolver;
-import org.sheepy.common.model.resolver.ResolverFactory;
-import org.sheepy.common.model.resolver.ResolverPackage;
+import org.sheepy.lily.core.model.resolver.ChainResolver;
+import org.sheepy.lily.core.model.resolver.EReferenceResolver;
+import org.sheepy.lily.core.model.resolver.ILObjectResolver;
+import org.sheepy.lily.core.model.resolver.ResolverFactory;
+import org.sheepy.lily.core.model.resolver.ResolverPackage;
 
-import org.sheepy.common.model.root.RootPackage;
+import org.sheepy.lily.core.model.root.RootPackage;
 
-import org.sheepy.common.model.types.TypesPackage;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -65,7 +65,7 @@ public class ResolverPackageImpl extends EPackageImpl implements ResolverPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.sheepy.common.model.resolver.ResolverPackage#eNS_URI
+	 * @see org.sheepy.lily.core.model.resolver.ResolverPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */

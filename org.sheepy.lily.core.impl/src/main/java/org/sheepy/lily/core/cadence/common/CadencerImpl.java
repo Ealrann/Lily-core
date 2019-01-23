@@ -1,4 +1,4 @@
-//package org.sheepy.common.cadence.common;
+//package org.sheepy.lily.core.cadence.common;
 //
 //import java.util.concurrent.ExecutorService;
 //import java.util.concurrent.Executors;
@@ -6,10 +6,10 @@
 //import java.util.concurrent.atomic.AtomicBoolean;
 //
 //import org.eclipse.emf.ecore.resource.Resource;
-//import org.sheepy.common.api.adapter.IServiceAdapterFactory;
-//import org.sheepy.common.api.cadence.ICadencer;
-//import org.sheepy.common.api.resource.IConfigurationService;
-//import org.sheepy.common.api.resource.IResourceManager;
+//import org.sheepy.lily.core.api.adapter.IServiceAdapterFactory;
+//import org.sheepy.lily.core.api.cadence.ICadencer;
+//import org.sheepy.lily.core.api.resource.IConfigurationService;
+//import org.sheepy.lily.core.api.resource.IResourceManager;
 //
 //public class CadencerImpl extends AbstractBasicCadencer implements ICadencer
 //{

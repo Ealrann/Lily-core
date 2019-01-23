@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.types;
+package org.sheepy.lily.core.model.types;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.types.TypesPackage
+ * @see org.sheepy.lily.core.model.types.TypesPackage
  * @generated
  */
 public interface TypesFactory extends EFactory
@@ -20,7 +20,7 @@ public interface TypesFactory extends EFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	TypesFactory eINSTANCE = org.sheepy.common.model.types.impl.TypesFactoryImpl.init();
+	TypesFactory eINSTANCE = org.sheepy.lily.core.model.types.impl.TypesFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Float Parameter</em>'.

@@ -1,18 +1,18 @@
-package org.sheepy.common.api.resource;
+package org.sheepy.lily.core.api.resource;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.sheepy.common.model.action.ActionPackage;
-import org.sheepy.common.model.application.ApplicationPackage;
-import org.sheepy.common.model.inference.InferencePackage;
-import org.sheepy.common.model.presentation.PresentationPackage;
-import org.sheepy.common.model.resolver.ResolverPackage;
-import org.sheepy.common.model.root.RootPackage;
-import org.sheepy.common.model.types.TypesPackage;
-import org.sheepy.common.model.ui.UiPackage;
-import org.sheepy.common.model.variable.VariablePackage;
+import org.sheepy.lily.core.model.action.ActionPackage;
+import org.sheepy.lily.core.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.resolver.ResolverPackage;
+import org.sheepy.lily.core.model.root.RootPackage;
+import org.sheepy.lily.core.model.types.TypesPackage;
+import org.sheepy.lily.core.model.ui.UiPackage;
+import org.sheepy.lily.core.model.variable.VariablePackage;
 
 public class CoreModelExtension implements IModelExtension
 {

@@ -1,8 +1,8 @@
 /**
  */
-package org.sheepy.common.model.action;
+package org.sheepy.lily.core.model.action;
 
-import org.sheepy.common.model.types.LNamedElement;
+import org.sheepy.lily.core.model.types.LNamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -10,7 +10,7 @@ import org.sheepy.common.model.types.LNamedElement;
  * <!-- end-user-doc -->
  *
  *
- * @see org.sheepy.common.model.action.ActionPackage#getAction()
+ * @see org.sheepy.lily.core.model.action.ActionPackage#getAction()
  * @model abstract="true"
  * @generated
  */

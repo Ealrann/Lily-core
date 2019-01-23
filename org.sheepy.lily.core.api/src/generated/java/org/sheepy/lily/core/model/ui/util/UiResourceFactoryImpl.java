@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui.util;
+package org.sheepy.lily.core.model.ui.util;
 
 import org.eclipse.emf.common.util.URI;
 
@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
  * <!-- begin-user-doc -->
  * The <b>Resource Factory</b> associated with the package.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.ui.util.UiResourceImpl
+ * @see org.sheepy.lily.core.model.ui.util.UiResourceImpl
  * @generated
  */
 public class UiResourceFactoryImpl extends ResourceFactoryImpl

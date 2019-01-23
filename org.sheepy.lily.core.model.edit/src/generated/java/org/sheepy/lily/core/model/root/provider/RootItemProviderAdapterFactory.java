@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.root.provider;
+package org.sheepy.lily.core.model.root.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,9 +28,9 @@ import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-import org.sheepy.common.model.root.RootPackage;
+import org.sheepy.lily.core.model.root.RootPackage;
 
-import org.sheepy.common.model.root.util.RootAdapterFactory;
+import org.sheepy.lily.core.model.root.util.RootAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.

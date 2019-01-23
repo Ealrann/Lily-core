@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui.provider;
+package org.sheepy.lily.core.model.ui.provider;
 
 
 import java.util.Collection;
@@ -13,12 +13,12 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.sheepy.common.model.root.LObject;
-import org.sheepy.common.model.ui.AbstractBooleanButton;
-import org.sheepy.common.model.ui.UiPackage;
+import org.sheepy.lily.core.model.root.LObject;
+import org.sheepy.lily.core.model.ui.AbstractBooleanButton;
+import org.sheepy.lily.core.model.ui.UiPackage;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.common.model.ui.AbstractBooleanButton} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.ui.AbstractBooleanButton} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

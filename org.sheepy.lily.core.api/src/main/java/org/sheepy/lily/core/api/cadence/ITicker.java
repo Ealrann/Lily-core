@@ -1,4 +1,4 @@
-package org.sheepy.common.api.cadence;
+package org.sheepy.lily.core.api.cadence;
 
 public interface ITicker
 {

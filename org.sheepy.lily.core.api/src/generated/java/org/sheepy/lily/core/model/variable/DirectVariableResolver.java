@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.variable;
+package org.sheepy.lily.core.model.variable;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.variable.DirectVariableResolver#getTarget <em>Target</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.variable.DirectVariableResolver#getTarget <em>Target</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.variable.VariablePackage#getDirectVariableResolver()
+ * @see org.sheepy.lily.core.model.variable.VariablePackage#getDirectVariableResolver()
  * @model
  * @generated
  */
@@ -32,14 +32,14 @@ public interface DirectVariableResolver extends AbstractVariableResolver
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see #setTarget(EObject)
-	 * @see org.sheepy.common.model.variable.VariablePackage#getDirectVariableResolver_Target()
+	 * @see org.sheepy.lily.core.model.variable.VariablePackage#getDirectVariableResolver_Target()
 	 * @model
 	 * @generated
 	 */
 	EObject getTarget();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.variable.DirectVariableResolver#getTarget <em>Target</em>}' reference.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.variable.DirectVariableResolver#getTarget <em>Target</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Target</em>' reference.

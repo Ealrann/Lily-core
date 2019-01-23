@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.presentation.impl;
+package org.sheepy.lily.core.model.presentation.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -28,17 +28,17 @@ import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.sheepy.common.api.util.LTreeIterator;
+import org.sheepy.lily.core.api.util.LTreeIterator;
 
-import org.sheepy.common.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.inference.IInferenceObject;
 
-import org.sheepy.common.model.presentation.PresentationPackage;
-import org.sheepy.common.model.presentation.TranparentUIView;
-import org.sheepy.common.model.presentation.UIPage;
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.presentation.TranparentUIView;
+import org.sheepy.lily.core.model.presentation.UIPage;
 
-import org.sheepy.common.model.root.LObject;
+import org.sheepy.lily.core.model.root.LObject;
 
-import org.sheepy.common.model.root.RootPackage.Literals;
+import org.sheepy.lily.core.model.root.RootPackage.Literals;
 
 /**
  * <!-- begin-user-doc -->
@@ -48,9 +48,9 @@ import org.sheepy.common.model.root.RootPackage.Literals;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.presentation.impl.TranparentUIViewImpl#getContentObjects <em>Content Objects</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.impl.TranparentUIViewImpl#getUiPages <em>Ui Pages</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.impl.TranparentUIViewImpl#getCurrentUIPage <em>Current UI Page</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.presentation.impl.TranparentUIViewImpl#getContentObjects <em>Content Objects</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.presentation.impl.TranparentUIViewImpl#getUiPages <em>Ui Pages</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.presentation.impl.TranparentUIViewImpl#getCurrentUIPage <em>Current UI Page</em>}</li>
  * </ul>
  *
  * @generated

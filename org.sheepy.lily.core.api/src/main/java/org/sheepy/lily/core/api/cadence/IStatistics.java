@@ -1,9 +1,9 @@
-package org.sheepy.common.api.cadence;
+package org.sheepy.lily.core.api.cadence;
 
 import java.util.Collection;
 import java.util.ServiceLoader;
 
-import org.sheepy.common.api.service.IService;
+import org.sheepy.lily.core.api.service.IService;
 
 public interface IStatistics extends IService
 {

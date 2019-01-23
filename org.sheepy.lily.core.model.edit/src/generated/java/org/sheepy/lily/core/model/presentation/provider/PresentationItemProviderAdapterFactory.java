@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.presentation.provider;
+package org.sheepy.lily.core.model.presentation.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -32,15 +32,15 @@ import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-import org.sheepy.common.model.application.Application;
-import org.sheepy.common.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.application.Application;
+import org.sheepy.lily.core.model.application.ApplicationPackage;
 
-import org.sheepy.common.model.application.util.ApplicationSwitch;
+import org.sheepy.lily.core.model.application.util.ApplicationSwitch;
 
-import org.sheepy.common.model.presentation.PresentationFactory;
-import org.sheepy.common.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.presentation.PresentationFactory;
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
 
-import org.sheepy.common.model.presentation.util.PresentationAdapterFactory;
+import org.sheepy.lily.core.model.presentation.util.PresentationAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -101,7 +101,7 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.presentation.TranparentUIView} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.presentation.TranparentUIView} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -109,7 +109,7 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 	protected TranparentUIViewItemProvider tranparentUIViewItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.presentation.TranparentUIView}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.presentation.TranparentUIView}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -126,7 +126,7 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.presentation.UIPage} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.presentation.UIPage} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -134,7 +134,7 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 	protected UIPageItemProvider uiPageItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.presentation.UIPage}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.presentation.UIPage}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

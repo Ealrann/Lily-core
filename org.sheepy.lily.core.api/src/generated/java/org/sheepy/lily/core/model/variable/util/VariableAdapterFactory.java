@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.variable.util;
+package org.sheepy.lily.core.model.variable.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -9,16 +9,16 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.sheepy.common.model.action.Action;
-import org.sheepy.common.model.types.LNamedElement;
-import org.sheepy.common.model.variable.*;
+import org.sheepy.lily.core.model.action.Action;
+import org.sheepy.lily.core.model.types.LNamedElement;
+import org.sheepy.lily.core.model.variable.*;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.variable.VariablePackage
+ * @see org.sheepy.lily.core.model.variable.VariablePackage
  * @generated
  */
 public class VariableAdapterFactory extends AdapterFactoryImpl
@@ -154,13 +154,13 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.IVariableResolver <em>IVariable Resolver</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.IVariableResolver <em>IVariable Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.variable.IVariableResolver
+	 * @see org.sheepy.lily.core.model.variable.IVariableResolver
 	 * @generated
 	 */
 	public Adapter createIVariableResolverAdapter()
@@ -169,13 +169,13 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.IDefinitionContainer <em>IDefinition Container</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.IDefinitionContainer <em>IDefinition Container</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.variable.IDefinitionContainer
+	 * @see org.sheepy.lily.core.model.variable.IDefinitionContainer
 	 * @generated
 	 */
 	public Adapter createIDefinitionContainerAdapter()
@@ -184,13 +184,13 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.ChainVariableResolver <em>Chain Variable Resolver</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.ChainVariableResolver <em>Chain Variable Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.variable.ChainVariableResolver
+	 * @see org.sheepy.lily.core.model.variable.ChainVariableResolver
 	 * @generated
 	 */
 	public Adapter createChainVariableResolverAdapter()
@@ -199,13 +199,13 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.ChainResolver <em>Chain Resolver</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.ChainResolver <em>Chain Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.variable.ChainResolver
+	 * @see org.sheepy.lily.core.model.variable.ChainResolver
 	 * @generated
 	 */
 	public Adapter createChainResolverAdapter()
@@ -214,13 +214,13 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.AbstractVariableResolver <em>Abstract Variable Resolver</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.AbstractVariableResolver <em>Abstract Variable Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.variable.AbstractVariableResolver
+	 * @see org.sheepy.lily.core.model.variable.AbstractVariableResolver
 	 * @generated
 	 */
 	public Adapter createAbstractVariableResolverAdapter()
@@ -229,13 +229,13 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.DirectVariableResolver <em>Direct Variable Resolver</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.DirectVariableResolver <em>Direct Variable Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.variable.DirectVariableResolver
+	 * @see org.sheepy.lily.core.model.variable.DirectVariableResolver
 	 * @generated
 	 */
 	public Adapter createDirectVariableResolverAdapter()
@@ -244,13 +244,13 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.VarChangeAction <em>Var Change Action</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.VarChangeAction <em>Var Change Action</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.variable.VarChangeAction
+	 * @see org.sheepy.lily.core.model.variable.VarChangeAction
 	 * @generated
 	 */
 	public Adapter createVarChangeActionAdapter()
@@ -259,13 +259,13 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.BooleanChangeAction <em>Boolean Change Action</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.BooleanChangeAction <em>Boolean Change Action</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.variable.BooleanChangeAction
+	 * @see org.sheepy.lily.core.model.variable.BooleanChangeAction
 	 * @generated
 	 */
 	public Adapter createBooleanChangeActionAdapter()
@@ -274,13 +274,13 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.variable.VarChangeActionPkg <em>Var Change Action Pkg</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.VarChangeActionPkg <em>Var Change Action Pkg</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.variable.VarChangeActionPkg
+	 * @see org.sheepy.lily.core.model.variable.VarChangeActionPkg
 	 * @generated
 	 */
 	public Adapter createVarChangeActionPkgAdapter()
@@ -289,13 +289,13 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.types.LNamedElement <em>LNamed Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.types.LNamedElement <em>LNamed Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.types.LNamedElement
+	 * @see org.sheepy.lily.core.model.types.LNamedElement
 	 * @generated
 	 */
 	public Adapter createLNamedElementAdapter()
@@ -304,13 +304,13 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.action.Action <em>Action</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.action.Action <em>Action</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.action.Action
+	 * @see org.sheepy.lily.core.model.action.Action
 	 * @generated
 	 */
 	public Adapter createActionAdapter()

@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.resolver.impl;
+package org.sheepy.lily.core.model.resolver.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -18,10 +18,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.sheepy.common.model.resolver.EReferenceResolver;
-import org.sheepy.common.model.resolver.ResolverPackage;
+import org.sheepy.lily.core.model.resolver.EReferenceResolver;
+import org.sheepy.lily.core.model.resolver.ResolverPackage;
 
-import org.sheepy.common.model.root.LObject;
+import org.sheepy.lily.core.model.root.LObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,9 +31,9 @@ import org.sheepy.common.model.root.LObject;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.resolver.impl.EReferenceResolverImpl#getReferenceName <em>Reference Name</em>}</li>
- *   <li>{@link org.sheepy.common.model.resolver.impl.EReferenceResolverImpl#getClassName <em>Class Name</em>}</li>
- *   <li>{@link org.sheepy.common.model.resolver.impl.EReferenceResolverImpl#getInternalReference <em>Internal Reference</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.resolver.impl.EReferenceResolverImpl#getReferenceName <em>Reference Name</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.resolver.impl.EReferenceResolverImpl#getClassName <em>Class Name</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.resolver.impl.EReferenceResolverImpl#getInternalReference <em>Internal Reference</em>}</li>
  * </ul>
  *
  * @generated

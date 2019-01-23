@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.variable.impl;
+package org.sheepy.lily.core.model.variable.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -10,22 +10,22 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.sheepy.common.api.util.FeatureDefinition;
-import org.sheepy.common.model.action.ActionPackage;
+import org.sheepy.lily.core.api.util.FeatureDefinition;
+import org.sheepy.lily.core.model.action.ActionPackage;
 
-import org.sheepy.common.model.types.TypesPackage;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
-import org.sheepy.common.model.variable.AbstractVariableResolver;
-import org.sheepy.common.model.variable.BooleanChangeAction;
-import org.sheepy.common.model.variable.ChainResolver;
-import org.sheepy.common.model.variable.ChainVariableResolver;
-import org.sheepy.common.model.variable.DirectVariableResolver;
-import org.sheepy.common.model.variable.IDefinitionContainer;
-import org.sheepy.common.model.variable.IVariableResolver;
-import org.sheepy.common.model.variable.VarChangeAction;
-import org.sheepy.common.model.variable.VarChangeActionPkg;
-import org.sheepy.common.model.variable.VariableFactory;
-import org.sheepy.common.model.variable.VariablePackage;
+import org.sheepy.lily.core.model.variable.AbstractVariableResolver;
+import org.sheepy.lily.core.model.variable.BooleanChangeAction;
+import org.sheepy.lily.core.model.variable.ChainResolver;
+import org.sheepy.lily.core.model.variable.ChainVariableResolver;
+import org.sheepy.lily.core.model.variable.DirectVariableResolver;
+import org.sheepy.lily.core.model.variable.IDefinitionContainer;
+import org.sheepy.lily.core.model.variable.IVariableResolver;
+import org.sheepy.lily.core.model.variable.VarChangeAction;
+import org.sheepy.lily.core.model.variable.VarChangeActionPkg;
+import org.sheepy.lily.core.model.variable.VariableFactory;
+import org.sheepy.lily.core.model.variable.VariablePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -123,7 +123,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.sheepy.common.model.variable.VariablePackage#eNS_URI
+	 * @see org.sheepy.lily.core.model.variable.VariablePackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */

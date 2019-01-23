@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.inference;
+package org.sheepy.lily.core.model.inference;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  *
- * @see org.sheepy.common.model.inference.InferencePackage#getIInferenceObject()
+ * @see org.sheepy.lily.core.model.inference.InferencePackage#getIInferenceObject()
  * @model interface="true" abstract="true"
  * @generated
  */

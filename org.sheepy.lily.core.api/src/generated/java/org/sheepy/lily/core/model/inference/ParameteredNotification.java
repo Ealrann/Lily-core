@@ -1,8 +1,8 @@
 /**
  */
-package org.sheepy.common.model.inference;
+package org.sheepy.lily.core.model.inference;
 
-import org.sheepy.common.model.types.Parameter;
+import org.sheepy.lily.core.model.types.Parameter;
 
 /**
  * <!-- begin-user-doc -->
@@ -10,7 +10,7 @@ import org.sheepy.common.model.types.Parameter;
  * <!-- end-user-doc -->
  *
  *
- * @see org.sheepy.common.model.inference.InferencePackage#getParameteredNotification()
+ * @see org.sheepy.lily.core.model.inference.InferencePackage#getParameteredNotification()
  * @model abstract="true"
  * @generated
  */

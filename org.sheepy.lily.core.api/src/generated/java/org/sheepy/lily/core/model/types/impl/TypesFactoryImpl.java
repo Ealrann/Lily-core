@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.types.impl;
+package org.sheepy.lily.core.model.types.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -11,10 +11,10 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.sheepy.common.api.types.SVector2f;
-import org.sheepy.common.api.types.SVector2i;
+import org.sheepy.lily.core.api.types.SVector2f;
+import org.sheepy.lily.core.api.types.SVector2i;
 
-import org.sheepy.common.model.types.*;
+import org.sheepy.lily.core.model.types.*;
 
 /**
  * <!-- begin-user-doc -->

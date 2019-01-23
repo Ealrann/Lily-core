@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.variable;
+package org.sheepy.lily.core.model.variable;
 
 
 /**
@@ -9,7 +9,7 @@ package org.sheepy.common.model.variable;
  * <!-- end-user-doc -->
  *
  *
- * @see org.sheepy.common.model.variable.VariablePackage#getChainResolver()
+ * @see org.sheepy.lily.core.model.variable.VariablePackage#getChainResolver()
  * @model
  * @generated
  */

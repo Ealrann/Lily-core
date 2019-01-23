@@ -1,8 +1,8 @@
 /**
  */
-package org.sheepy.common.model.presentation;
+package org.sheepy.lily.core.model.presentation;
 
-import org.sheepy.common.model.types.LNamedElement;
+import org.sheepy.lily.core.model.types.LNamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -10,7 +10,7 @@ import org.sheepy.common.model.types.LNamedElement;
  * <!-- end-user-doc -->
  *
  *
- * @see org.sheepy.common.model.presentation.PresentationPackage#getIPanel()
+ * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getIPanel()
  * @model interface="true" abstract="true"
  * @generated
  */

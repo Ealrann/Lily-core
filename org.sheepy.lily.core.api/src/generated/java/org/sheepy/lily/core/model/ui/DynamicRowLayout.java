@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui;
+package org.sheepy.lily.core.model.ui;
 
 /**
  * <!-- begin-user-doc -->
@@ -11,11 +11,11 @@ package org.sheepy.common.model.ui;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.ui.DynamicRowLayout#getHeight <em>Height</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.DynamicRowLayout#getColumnCount <em>Column Count</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.DynamicRowLayout#getHeight <em>Height</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.DynamicRowLayout#getColumnCount <em>Column Count</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.ui.UiPackage#getDynamicRowLayout()
+ * @see org.sheepy.lily.core.model.ui.UiPackage#getDynamicRowLayout()
  * @model
  * @generated
  */
@@ -32,14 +32,14 @@ public interface DynamicRowLayout extends IControl
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Height</em>' attribute.
 	 * @see #setHeight(int)
-	 * @see org.sheepy.common.model.ui.UiPackage#getDynamicRowLayout_Height()
+	 * @see org.sheepy.lily.core.model.ui.UiPackage#getDynamicRowLayout_Height()
 	 * @model default="16" unique="false"
 	 * @generated
 	 */
 	int getHeight();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.ui.DynamicRowLayout#getHeight <em>Height</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.ui.DynamicRowLayout#getHeight <em>Height</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Height</em>' attribute.
@@ -59,14 +59,14 @@ public interface DynamicRowLayout extends IControl
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Column Count</em>' attribute.
 	 * @see #setColumnCount(int)
-	 * @see org.sheepy.common.model.ui.UiPackage#getDynamicRowLayout_ColumnCount()
+	 * @see org.sheepy.lily.core.model.ui.UiPackage#getDynamicRowLayout_ColumnCount()
 	 * @model default="1" unique="false"
 	 * @generated
 	 */
 	int getColumnCount();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.ui.DynamicRowLayout#getColumnCount <em>Column Count</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.ui.DynamicRowLayout#getColumnCount <em>Column Count</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Column Count</em>' attribute.

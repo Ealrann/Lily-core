@@ -1,6 +1,6 @@
-package org.sheepy.common.api.input.event;
+package org.sheepy.lily.core.api.input.event;
 
-import org.sheepy.common.model.types.EMouseButton;
+import org.sheepy.lily.core.model.types.EMouseButton;
 
 public class MouseButtonEvent implements IInputEvent
 {

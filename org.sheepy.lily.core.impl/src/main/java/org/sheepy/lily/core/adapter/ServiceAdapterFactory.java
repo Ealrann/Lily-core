@@ -1,4 +1,4 @@
-package org.sheepy.common.adapter;
+package org.sheepy.lily.core.adapter;
 
 import java.util.Iterator;
 import java.util.List;
@@ -6,12 +6,12 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
-import org.sheepy.common.api.adapter.IAutoAdapter;
-import org.sheepy.common.api.adapter.IServiceAdapterFactory;
-import org.sheepy.common.api.adapter.IAdapter;
-import org.sheepy.common.api.adapter.IStatefullAdapter;
-import org.sheepy.common.api.resource.IResourceLoader;
-import org.sheepy.common.api.util.ReflectivityUtils;
+import org.sheepy.lily.core.api.adapter.IAutoAdapter;
+import org.sheepy.lily.core.api.adapter.IServiceAdapterFactory;
+import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.IStatefullAdapter;
+import org.sheepy.lily.core.api.resource.IResourceLoader;
+import org.sheepy.lily.core.api.util.ReflectivityUtils;
 
 public class ServiceAdapterFactory implements IServiceAdapterFactory
 {

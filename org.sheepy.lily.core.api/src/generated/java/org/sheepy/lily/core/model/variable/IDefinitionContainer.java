@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.variable;
+package org.sheepy.lily.core.model.variable;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.variable.IDefinitionContainer#getVariableDefinition <em>Variable Definition</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.variable.IDefinitionContainer#getVariableDefinition <em>Variable Definition</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.variable.VariablePackage#getIDefinitionContainer()
+ * @see org.sheepy.lily.core.model.variable.VariablePackage#getIDefinitionContainer()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -32,14 +32,14 @@ public interface IDefinitionContainer extends EObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variable Definition</em>' attribute.
 	 * @see #setVariableDefinition(String)
-	 * @see org.sheepy.common.model.variable.VariablePackage#getIDefinitionContainer_VariableDefinition()
-	 * @model unique="false" dataType="org.sheepy.common.model.variable.VariableDefinition" required="true"
+	 * @see org.sheepy.lily.core.model.variable.VariablePackage#getIDefinitionContainer_VariableDefinition()
+	 * @model unique="false" dataType="org.sheepy.lily.core.model.variable.VariableDefinition" required="true"
 	 * @generated
 	 */
 	String getVariableDefinition();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.variable.IDefinitionContainer#getVariableDefinition <em>Variable Definition</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.variable.IDefinitionContainer#getVariableDefinition <em>Variable Definition</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Variable Definition</em>' attribute.

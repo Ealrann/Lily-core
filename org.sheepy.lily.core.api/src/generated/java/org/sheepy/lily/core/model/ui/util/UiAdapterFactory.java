@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui.util;
+package org.sheepy.lily.core.model.ui.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -9,22 +9,22 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.sheepy.common.model.inference.IInferenceObject;
-import org.sheepy.common.model.presentation.IPanel;
-import org.sheepy.common.model.presentation.IPositionElement;
-import org.sheepy.common.model.presentation.ISizedElement;
-import org.sheepy.common.model.presentation.IUIElement;
-import org.sheepy.common.model.root.LObject;
+import org.sheepy.lily.core.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.presentation.IPanel;
+import org.sheepy.lily.core.model.presentation.IPositionElement;
+import org.sheepy.lily.core.model.presentation.ISizedElement;
+import org.sheepy.lily.core.model.presentation.IUIElement;
+import org.sheepy.lily.core.model.root.LObject;
 
-import org.sheepy.common.model.types.LNamedElement;
-import org.sheepy.common.model.ui.*;
+import org.sheepy.lily.core.model.types.LNamedElement;
+import org.sheepy.lily.core.model.ui.*;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.ui.UiPackage
+ * @see org.sheepy.lily.core.model.ui.UiPackage
  * @generated
  */
 public class UiAdapterFactory extends AdapterFactoryImpl
@@ -210,13 +210,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.ui.Panel <em>Panel</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.Panel <em>Panel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.ui.Panel
+	 * @see org.sheepy.lily.core.model.ui.Panel
 	 * @generated
 	 */
 	public Adapter createPanelAdapter()
@@ -225,13 +225,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.ui.AbstractLabel <em>Abstract Label</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.AbstractLabel <em>Abstract Label</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.ui.AbstractLabel
+	 * @see org.sheepy.lily.core.model.ui.AbstractLabel
 	 * @generated
 	 */
 	public Adapter createAbstractLabelAdapter()
@@ -240,13 +240,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.ui.DynamicRowLayout <em>Dynamic Row Layout</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.DynamicRowLayout <em>Dynamic Row Layout</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.ui.DynamicRowLayout
+	 * @see org.sheepy.lily.core.model.ui.DynamicRowLayout
 	 * @generated
 	 */
 	public Adapter createDynamicRowLayoutAdapter()
@@ -255,13 +255,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.ui.VariableLabel <em>Variable Label</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.VariableLabel <em>Variable Label</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.ui.VariableLabel
+	 * @see org.sheepy.lily.core.model.ui.VariableLabel
 	 * @generated
 	 */
 	public Adapter createVariableLabelAdapter()
@@ -270,13 +270,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.ui.Label <em>Label</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.Label <em>Label</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.ui.Label
+	 * @see org.sheepy.lily.core.model.ui.Label
 	 * @generated
 	 */
 	public Adapter createLabelAdapter()
@@ -285,13 +285,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.ui.Slider <em>Slider</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.Slider <em>Slider</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.ui.Slider
+	 * @see org.sheepy.lily.core.model.ui.Slider
 	 * @generated
 	 */
 	public Adapter createSliderAdapter()
@@ -300,13 +300,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.ui.TextField <em>Text Field</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.TextField <em>Text Field</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.ui.TextField
+	 * @see org.sheepy.lily.core.model.ui.TextField
 	 * @generated
 	 */
 	public Adapter createTextFieldAdapter()
@@ -315,13 +315,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.ui.AbstractButton <em>Abstract Button</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.AbstractButton <em>Abstract Button</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.ui.AbstractButton
+	 * @see org.sheepy.lily.core.model.ui.AbstractButton
 	 * @generated
 	 */
 	public Adapter createAbstractButtonAdapter()
@@ -330,13 +330,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.ui.Button <em>Button</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.Button <em>Button</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.ui.Button
+	 * @see org.sheepy.lily.core.model.ui.Button
 	 * @generated
 	 */
 	public Adapter createButtonAdapter()
@@ -345,13 +345,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.ui.AbstractBooleanButton <em>Abstract Boolean Button</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.AbstractBooleanButton <em>Abstract Boolean Button</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.ui.AbstractBooleanButton
+	 * @see org.sheepy.lily.core.model.ui.AbstractBooleanButton
 	 * @generated
 	 */
 	public Adapter createAbstractBooleanButtonAdapter()
@@ -360,13 +360,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.ui.BooleanButton <em>Boolean Button</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.BooleanButton <em>Boolean Button</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.ui.BooleanButton
+	 * @see org.sheepy.lily.core.model.ui.BooleanButton
 	 * @generated
 	 */
 	public Adapter createBooleanButtonAdapter()
@@ -375,13 +375,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.ui.BooleanActionButton <em>Boolean Action Button</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.BooleanActionButton <em>Boolean Action Button</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.ui.BooleanActionButton
+	 * @see org.sheepy.lily.core.model.ui.BooleanActionButton
 	 * @generated
 	 */
 	public Adapter createBooleanActionButtonAdapter()
@@ -390,13 +390,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.types.LNamedElement <em>LNamed Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.types.LNamedElement <em>LNamed Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.types.LNamedElement
+	 * @see org.sheepy.lily.core.model.types.LNamedElement
 	 * @generated
 	 */
 	public Adapter createLNamedElementAdapter()
@@ -405,13 +405,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.inference.IInferenceObject <em>IInference Object</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.inference.IInferenceObject <em>IInference Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.inference.IInferenceObject
+	 * @see org.sheepy.lily.core.model.inference.IInferenceObject
 	 * @generated
 	 */
 	public Adapter createIInferenceObjectAdapter()
@@ -420,13 +420,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.root.LObject <em>LObject</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.root.LObject <em>LObject</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.root.LObject
+	 * @see org.sheepy.lily.core.model.root.LObject
 	 * @generated
 	 */
 	public Adapter createLObjectAdapter()
@@ -435,13 +435,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.IUIElement <em>IUI Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.presentation.IUIElement <em>IUI Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.presentation.IUIElement
+	 * @see org.sheepy.lily.core.model.presentation.IUIElement
 	 * @generated
 	 */
 	public Adapter createIUIElementAdapter()
@@ -450,13 +450,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.IPositionElement <em>IPosition Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.presentation.IPositionElement <em>IPosition Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.presentation.IPositionElement
+	 * @see org.sheepy.lily.core.model.presentation.IPositionElement
 	 * @generated
 	 */
 	public Adapter createIPositionElementAdapter()
@@ -465,13 +465,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.ui.IControl <em>IControl</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.IControl <em>IControl</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.ui.IControl
+	 * @see org.sheepy.lily.core.model.ui.IControl
 	 * @generated
 	 */
 	public Adapter createIControlAdapter()
@@ -480,13 +480,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.IPanel <em>IPanel</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.presentation.IPanel <em>IPanel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.presentation.IPanel
+	 * @see org.sheepy.lily.core.model.presentation.IPanel
 	 * @generated
 	 */
 	public Adapter createIPanelAdapter()
@@ -495,13 +495,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.presentation.ISizedElement <em>ISized Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.presentation.ISizedElement <em>ISized Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.presentation.ISizedElement
+	 * @see org.sheepy.lily.core.model.presentation.ISizedElement
 	 * @generated
 	 */
 	public Adapter createISizedElementAdapter()
@@ -510,13 +510,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.ui.Widget <em>Widget</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.Widget <em>Widget</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.ui.Widget
+	 * @see org.sheepy.lily.core.model.ui.Widget
 	 * @generated
 	 */
 	public Adapter createWidgetAdapter()

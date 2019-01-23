@@ -1,8 +1,8 @@
 /**
  */
-package org.sheepy.common.model.ui;
+package org.sheepy.lily.core.model.ui;
 
-import org.sheepy.common.model.variable.AbstractVariableResolver;
+import org.sheepy.lily.core.model.variable.AbstractVariableResolver;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,10 +13,10 @@ import org.sheepy.common.model.variable.AbstractVariableResolver;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.ui.BooleanButton#getVariableResolver <em>Variable Resolver</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.BooleanButton#getVariableResolver <em>Variable Resolver</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.ui.UiPackage#getBooleanButton()
+ * @see org.sheepy.lily.core.model.ui.UiPackage#getBooleanButton()
  * @model
  * @generated
  */
@@ -32,14 +32,14 @@ public interface BooleanButton extends AbstractBooleanButton
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variable Resolver</em>' containment reference.
 	 * @see #setVariableResolver(AbstractVariableResolver)
-	 * @see org.sheepy.common.model.ui.UiPackage#getBooleanButton_VariableResolver()
+	 * @see org.sheepy.lily.core.model.ui.UiPackage#getBooleanButton_VariableResolver()
 	 * @model containment="true"
 	 * @generated
 	 */
 	AbstractVariableResolver getVariableResolver();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.ui.BooleanButton#getVariableResolver <em>Variable Resolver</em>}' containment reference.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.ui.BooleanButton#getVariableResolver <em>Variable Resolver</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Variable Resolver</em>' containment reference.

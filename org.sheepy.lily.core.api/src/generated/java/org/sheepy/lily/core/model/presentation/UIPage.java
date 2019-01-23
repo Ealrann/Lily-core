@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.presentation;
+package org.sheepy.lily.core.model.presentation;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -13,10 +13,10 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.presentation.UIPage#getPanels <em>Panels</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.presentation.UIPage#getPanels <em>Panels</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.presentation.PresentationPackage#getUIPage()
+ * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getUIPage()
  * @model
  * @generated
  */
@@ -24,7 +24,7 @@ public interface UIPage extends ISizedElement
 {
 	/**
 	 * Returns the value of the '<em><b>Panels</b></em>' containment reference list.
-	 * The list contents are of type {@link org.sheepy.common.model.presentation.IPanel}.
+	 * The list contents are of type {@link org.sheepy.lily.core.model.presentation.IPanel}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Panels</em>' containment reference list isn't clear,
@@ -32,7 +32,7 @@ public interface UIPage extends ISizedElement
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Panels</em>' containment reference list.
-	 * @see org.sheepy.common.model.presentation.PresentationPackage#getUIPage_Panels()
+	 * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getUIPage_Panels()
 	 * @model containment="true"
 	 * @generated
 	 */

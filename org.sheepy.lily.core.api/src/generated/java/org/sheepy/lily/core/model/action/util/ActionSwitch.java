@@ -1,15 +1,15 @@
 /**
  */
-package org.sheepy.common.model.action.util;
+package org.sheepy.lily.core.model.action.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.sheepy.common.model.action.*;
+import org.sheepy.lily.core.model.action.*;
 
-import org.sheepy.common.model.types.LNamedElement;
+import org.sheepy.lily.core.model.types.LNamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +21,7 @@ import org.sheepy.common.model.types.LNamedElement;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.action.ActionPackage
+ * @see org.sheepy.lily.core.model.action.ActionPackage
  * @generated
  */
 public class ActionSwitch<T> extends Switch<T>

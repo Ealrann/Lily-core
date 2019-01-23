@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.types.impl;
+package org.sheepy.lily.core.model.types.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -13,8 +13,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.sheepy.common.model.types.FloatParameter;
-import org.sheepy.common.model.types.TypesPackage;
+import org.sheepy.lily.core.model.types.FloatParameter;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +24,7 @@ import org.sheepy.common.model.types.TypesPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.types.impl.FloatParameterImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.types.impl.FloatParameterImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated

@@ -1,4 +1,4 @@
-package org.sheepy.common.api.adapter;
+package org.sheepy.lily.core.api.adapter;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;

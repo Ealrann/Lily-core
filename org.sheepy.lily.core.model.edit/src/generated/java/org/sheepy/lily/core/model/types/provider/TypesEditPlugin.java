@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.types.provider;
+package org.sheepy.lily.core.model.types.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
 

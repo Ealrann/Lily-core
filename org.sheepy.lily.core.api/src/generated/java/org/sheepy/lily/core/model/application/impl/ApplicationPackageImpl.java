@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.application.impl;
+package org.sheepy.lily.core.model.application.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -10,19 +10,19 @@ import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.sheepy.common.model.action.ActionPackage;
+import org.sheepy.lily.core.model.action.ActionPackage;
 
-import org.sheepy.common.model.application.Application;
-import org.sheepy.common.model.application.ApplicationFactory;
-import org.sheepy.common.model.application.ApplicationPackage;
-import org.sheepy.common.model.application.IEngine;
-import org.sheepy.common.model.application.IView;
+import org.sheepy.lily.core.model.application.Application;
+import org.sheepy.lily.core.model.application.ApplicationFactory;
+import org.sheepy.lily.core.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.application.IEngine;
+import org.sheepy.lily.core.model.application.IView;
 
-import org.sheepy.common.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.inference.InferencePackage;
 
-import org.sheepy.common.model.root.RootPackage;
+import org.sheepy.lily.core.model.root.RootPackage;
 
-import org.sheepy.common.model.types.TypesPackage;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -64,7 +64,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.sheepy.common.model.application.ApplicationPackage#eNS_URI
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */

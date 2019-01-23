@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.root.impl;
+package org.sheepy.lily.core.model.root.impl;
 
 import java.util.Collection;
 
@@ -14,8 +14,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.sheepy.common.api.util.LTreeIterator;
-import org.sheepy.common.model.root.*;
+import org.sheepy.lily.core.api.util.LTreeIterator;
+import org.sheepy.lily.core.model.root.*;
 
 /**
  * <!-- begin-user-doc -->

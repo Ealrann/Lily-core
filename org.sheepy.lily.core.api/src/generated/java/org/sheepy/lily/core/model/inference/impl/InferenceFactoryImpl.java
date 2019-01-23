@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.inference.impl;
+package org.sheepy.lily.core.model.inference.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.sheepy.common.model.inference.*;
+import org.sheepy.lily.core.model.inference.*;
 
 /**
  * <!-- begin-user-doc -->

@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.inference.provider;
+package org.sheepy.lily.core.model.inference.provider;
 
 
 import java.util.Collection;
@@ -23,11 +23,11 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.common.model.inference.InferencePackage;
-import org.sheepy.common.model.inference.Inferer;
+import org.sheepy.lily.core.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.inference.Inferer;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.common.model.inference.Inferer} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.inference.Inferer} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

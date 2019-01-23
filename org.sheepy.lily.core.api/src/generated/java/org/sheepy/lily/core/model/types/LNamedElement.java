@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.types;
+package org.sheepy.lily.core.model.types;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.types.LNamedElement#getName <em>Name</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.types.LNamedElement#getName <em>Name</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.types.TypesPackage#getLNamedElement()
+ * @see org.sheepy.lily.core.model.types.TypesPackage#getLNamedElement()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -32,14 +32,14 @@ public interface LNamedElement extends EObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see org.sheepy.common.model.types.TypesPackage#getLNamedElement_Name()
+	 * @see org.sheepy.lily.core.model.types.TypesPackage#getLNamedElement_Name()
 	 * @model unique="false"
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.types.LNamedElement#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.types.LNamedElement#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.

@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui;
+package org.sheepy.lily.core.model.ui;
 
 /**
  * <!-- begin-user-doc -->
@@ -11,10 +11,10 @@ package org.sheepy.common.model.ui;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.ui.AbstractButton#getText <em>Text</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.AbstractButton#getText <em>Text</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.ui.UiPackage#getAbstractButton()
+ * @see org.sheepy.lily.core.model.ui.UiPackage#getAbstractButton()
  * @model abstract="true"
  * @generated
  */
@@ -31,14 +31,14 @@ public interface AbstractButton extends Widget
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Text</em>' attribute.
 	 * @see #setText(String)
-	 * @see org.sheepy.common.model.ui.UiPackage#getAbstractButton_Text()
+	 * @see org.sheepy.lily.core.model.ui.UiPackage#getAbstractButton_Text()
 	 * @model default="" unique="false"
 	 * @generated
 	 */
 	String getText();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.ui.AbstractButton#getText <em>Text</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.ui.AbstractButton#getText <em>Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Text</em>' attribute.

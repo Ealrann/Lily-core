@@ -1,24 +1,24 @@
-import org.sheepy.common.adapter.ServiceAdapterFactory;
-import org.sheepy.common.api.adapter.IAdapter;
-import org.sheepy.common.api.adapter.IServiceAdapterFactory;
-import org.sheepy.common.api.cadence.IStatistics;
-import org.sheepy.common.api.resource.IResourceLoader;
-import org.sheepy.common.application.ApplicationAdapter;
-import org.sheepy.common.cadence.CadencerStatistics;
-import org.sheepy.common.resource.ResourceLoader;
-import org.sheepy.common.variable.ChainVariableResolverAdapter;
-import org.sheepy.common.variable.DirectVariableResolverAdapter;
+import org.sheepy.lily.core.adapter.ServiceAdapterFactory;
+import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.IServiceAdapterFactory;
+import org.sheepy.lily.core.api.cadence.IStatistics;
+import org.sheepy.lily.core.api.resource.IResourceLoader;
+import org.sheepy.lily.core.application.ApplicationAdapter;
+import org.sheepy.lily.core.cadence.CadencerStatistics;
+import org.sheepy.lily.core.resource.ResourceLoader;
+import org.sheepy.lily.core.variable.ChainVariableResolverAdapter;
+import org.sheepy.lily.core.variable.DirectVariableResolverAdapter;
 
-module org.sheepy.common.impl
+module org.sheepy.lily.core.impl
 {
-	requires transitive org.sheepy.common.api;
+	requires transitive org.sheepy.lily.core.api;
 
-	exports org.sheepy.common.inference;
-	exports org.sheepy.common.cadence.common;
-	exports org.sheepy.common.cadence.execution;
+	exports org.sheepy.lily.core.inference;
+	exports org.sheepy.lily.core.cadence.common;
+	exports org.sheepy.lily.core.cadence.execution;
 
-	opens org.sheepy.common.application;
-	opens org.sheepy.common.variable;
+	opens org.sheepy.lily.core.application;
+	opens org.sheepy.lily.core.variable;
 
 	provides IResourceLoader with ResourceLoader;
 	provides IServiceAdapterFactory with ServiceAdapterFactory;

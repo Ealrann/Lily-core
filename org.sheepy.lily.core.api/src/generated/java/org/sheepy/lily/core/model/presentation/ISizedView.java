@@ -1,8 +1,8 @@
 /**
  */
-package org.sheepy.common.model.presentation;
+package org.sheepy.lily.core.model.presentation;
 
-import org.sheepy.common.model.application.IView;
+import org.sheepy.lily.core.model.application.IView;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,14 +13,14 @@ import org.sheepy.common.model.application.IView;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.presentation.ISizedView#isMoveable <em>Moveable</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.ISizedView#isCloseable <em>Closeable</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.ISizedView#isScalable <em>Scalable</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.ISizedView#isShowTitle <em>Show Title</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.ISizedView#isFullscreen <em>Fullscreen</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.presentation.ISizedView#isMoveable <em>Moveable</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.presentation.ISizedView#isCloseable <em>Closeable</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.presentation.ISizedView#isScalable <em>Scalable</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.presentation.ISizedView#isShowTitle <em>Show Title</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.presentation.ISizedView#isFullscreen <em>Fullscreen</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.presentation.PresentationPackage#getISizedView()
+ * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getISizedView()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -37,14 +37,14 @@ public interface ISizedView extends ISizedElement, IView
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Moveable</em>' attribute.
 	 * @see #setMoveable(boolean)
-	 * @see org.sheepy.common.model.presentation.PresentationPackage#getISizedView_Moveable()
+	 * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getISizedView_Moveable()
 	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isMoveable();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.presentation.ISizedView#isMoveable <em>Moveable</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.presentation.ISizedView#isMoveable <em>Moveable</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Moveable</em>' attribute.
@@ -64,14 +64,14 @@ public interface ISizedView extends ISizedElement, IView
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Closeable</em>' attribute.
 	 * @see #setCloseable(boolean)
-	 * @see org.sheepy.common.model.presentation.PresentationPackage#getISizedView_Closeable()
+	 * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getISizedView_Closeable()
 	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isCloseable();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.presentation.ISizedView#isCloseable <em>Closeable</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.presentation.ISizedView#isCloseable <em>Closeable</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Closeable</em>' attribute.
@@ -91,14 +91,14 @@ public interface ISizedView extends ISizedElement, IView
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scalable</em>' attribute.
 	 * @see #setScalable(boolean)
-	 * @see org.sheepy.common.model.presentation.PresentationPackage#getISizedView_Scalable()
+	 * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getISizedView_Scalable()
 	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isScalable();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.presentation.ISizedView#isScalable <em>Scalable</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.presentation.ISizedView#isScalable <em>Scalable</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Scalable</em>' attribute.
@@ -118,14 +118,14 @@ public interface ISizedView extends ISizedElement, IView
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Show Title</em>' attribute.
 	 * @see #setShowTitle(boolean)
-	 * @see org.sheepy.common.model.presentation.PresentationPackage#getISizedView_ShowTitle()
+	 * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getISizedView_ShowTitle()
 	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isShowTitle();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.presentation.ISizedView#isShowTitle <em>Show Title</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.presentation.ISizedView#isShowTitle <em>Show Title</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Show Title</em>' attribute.
@@ -145,14 +145,14 @@ public interface ISizedView extends ISizedElement, IView
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Fullscreen</em>' attribute.
 	 * @see #setFullscreen(boolean)
-	 * @see org.sheepy.common.model.presentation.PresentationPackage#getISizedView_Fullscreen()
+	 * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getISizedView_Fullscreen()
 	 * @model default="true" unique="false"
 	 * @generated
 	 */
 	boolean isFullscreen();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.presentation.ISizedView#isFullscreen <em>Fullscreen</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.presentation.ISizedView#isFullscreen <em>Fullscreen</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Fullscreen</em>' attribute.

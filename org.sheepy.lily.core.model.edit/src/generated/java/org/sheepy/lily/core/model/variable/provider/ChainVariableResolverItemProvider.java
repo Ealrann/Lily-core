@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.variable.provider;
+package org.sheepy.lily.core.model.variable.provider;
 
 
 import java.util.Collection;
@@ -23,12 +23,12 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.common.model.variable.ChainVariableResolver;
-import org.sheepy.common.model.variable.VariableFactory;
-import org.sheepy.common.model.variable.VariablePackage;
+import org.sheepy.lily.core.model.variable.ChainVariableResolver;
+import org.sheepy.lily.core.model.variable.VariableFactory;
+import org.sheepy.lily.core.model.variable.VariablePackage;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.common.model.variable.ChainVariableResolver} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.variable.ChainVariableResolver} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

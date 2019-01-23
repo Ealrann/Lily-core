@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui.provider;
+package org.sheepy.lily.core.model.ui.provider;
 
 
 import java.util.Collection;
@@ -10,11 +10,11 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.sheepy.common.model.root.LObject;
-import org.sheepy.common.model.ui.Label;
+import org.sheepy.lily.core.model.root.LObject;
+import org.sheepy.lily.core.model.ui.Label;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.common.model.ui.Label} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.ui.Label} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

@@ -1,13 +1,13 @@
-@GenModel(modelDirectory="/org.sheepy.common.model/src/generated/java")
-@GenModel(editDirectory="/org.sheepy.common.model.edit/src/generated/java")
+@GenModel(modelDirectory="/org.sheepy.lily.core.model/src/generated/java")
+@GenModel(editDirectory="/org.sheepy.lily.core.model.edit/src/generated/java")
 @GenModel(publicConstructors="true", complianceLevel="11.0", resource="XMI")
 @GenModel(extensibleProviderFactory="true", childCreationExtenders="true")
 @GenModel(updateClasspath="false")
 
-package org.sheepy.common.model.action
+package org.sheepy.lily.core.model.action
 
 import java.util.List
-import org.sheepy.common.model.types.LNamedElement
+import org.sheepy.lily.core.model.types.LNamedElement
 
 abstract class Action extends LNamedElement
 {

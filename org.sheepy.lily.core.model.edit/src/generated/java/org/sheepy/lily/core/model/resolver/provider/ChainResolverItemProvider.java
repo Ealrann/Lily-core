@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.resolver.provider;
+package org.sheepy.lily.core.model.resolver.provider;
 
 
 import java.util.Collection;
@@ -23,12 +23,12 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.common.model.resolver.ChainResolver;
-import org.sheepy.common.model.resolver.ResolverFactory;
-import org.sheepy.common.model.resolver.ResolverPackage;
+import org.sheepy.lily.core.model.resolver.ChainResolver;
+import org.sheepy.lily.core.model.resolver.ResolverFactory;
+import org.sheepy.lily.core.model.resolver.ResolverPackage;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.common.model.resolver.ChainResolver} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.resolver.ChainResolver} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

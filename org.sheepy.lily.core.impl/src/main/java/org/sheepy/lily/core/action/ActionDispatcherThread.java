@@ -1,15 +1,15 @@
-package org.sheepy.common.action;
+package org.sheepy.lily.core.action;
 
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
-import org.sheepy.common.api.action.IActionHandler;
-import org.sheepy.common.api.action.context.ExecutionContext;
-import org.sheepy.common.api.cadence.EditingCommand;
-import org.sheepy.common.api.cadence.ITicker;
-import org.sheepy.common.cadence.execution.CommandStack;
-import org.sheepy.common.model.action.Action;
-import org.sheepy.common.model.root.XAction;
+import org.sheepy.lily.core.api.action.IActionHandler;
+import org.sheepy.lily.core.api.action.context.ExecutionContext;
+import org.sheepy.lily.core.api.cadence.EditingCommand;
+import org.sheepy.lily.core.api.cadence.ITicker;
+import org.sheepy.lily.core.cadence.execution.CommandStack;
+import org.sheepy.lily.core.model.action.Action;
+import org.sheepy.lily.core.model.root.XAction;
 
 public class ActionDispatcherThread implements ITicker
 {

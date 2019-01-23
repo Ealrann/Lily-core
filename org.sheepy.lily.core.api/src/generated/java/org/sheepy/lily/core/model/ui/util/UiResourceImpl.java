@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui.util;
+package org.sheepy.lily.core.model.ui.util;
 
 import org.eclipse.emf.common.util.URI;
 
@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
  * <!-- begin-user-doc -->
  * The <b>Resource </b> associated with the package.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.ui.util.UiResourceFactoryImpl
+ * @see org.sheepy.lily.core.model.ui.util.UiResourceFactoryImpl
  * @generated
  */
 public class UiResourceImpl extends XMIResourceImpl

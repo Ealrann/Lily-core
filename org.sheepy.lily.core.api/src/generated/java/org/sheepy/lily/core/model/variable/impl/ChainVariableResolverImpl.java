@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.variable.impl;
+package org.sheepy.lily.core.model.variable.impl;
 
 import java.util.Collection;
 
@@ -18,10 +18,10 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.sheepy.common.model.variable.ChainResolver;
-import org.sheepy.common.model.variable.ChainVariableResolver;
-import org.sheepy.common.model.variable.IVariableResolver;
-import org.sheepy.common.model.variable.VariablePackage;
+import org.sheepy.lily.core.model.variable.ChainResolver;
+import org.sheepy.lily.core.model.variable.ChainVariableResolver;
+import org.sheepy.lily.core.model.variable.IVariableResolver;
+import org.sheepy.lily.core.model.variable.VariablePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,8 +31,8 @@ import org.sheepy.common.model.variable.VariablePackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.variable.impl.ChainVariableResolverImpl#getFirstResolver <em>First Resolver</em>}</li>
- *   <li>{@link org.sheepy.common.model.variable.impl.ChainVariableResolverImpl#getSubResolvers <em>Sub Resolvers</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.variable.impl.ChainVariableResolverImpl#getFirstResolver <em>First Resolver</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.variable.impl.ChainVariableResolverImpl#getSubResolvers <em>Sub Resolvers</em>}</li>
  * </ul>
  *
  * @generated

@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.application.provider;
+package org.sheepy.lily.core.model.application.provider;
 
 
 import java.util.Collection;
@@ -26,13 +26,13 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.common.model.application.Application;
-import org.sheepy.common.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.application.Application;
+import org.sheepy.lily.core.model.application.ApplicationPackage;
 
-import org.sheepy.common.model.root.LObject;
+import org.sheepy.lily.core.model.root.LObject;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.common.model.application.Application} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.application.Application} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

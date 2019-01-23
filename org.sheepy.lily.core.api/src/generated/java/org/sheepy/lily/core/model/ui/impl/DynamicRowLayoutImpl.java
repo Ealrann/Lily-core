@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui.impl;
+package org.sheepy.lily.core.model.ui.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -23,16 +23,16 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EContentsEList;
 
-import org.sheepy.common.api.util.LTreeIterator;
+import org.sheepy.lily.core.api.util.LTreeIterator;
 
-import org.sheepy.common.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.inference.IInferenceObject;
 
-import org.sheepy.common.model.root.LObject;
+import org.sheepy.lily.core.model.root.LObject;
 
-import org.sheepy.common.model.root.RootPackage.Literals;
+import org.sheepy.lily.core.model.root.RootPackage.Literals;
 
-import org.sheepy.common.model.ui.DynamicRowLayout;
-import org.sheepy.common.model.ui.UiPackage;
+import org.sheepy.lily.core.model.ui.DynamicRowLayout;
+import org.sheepy.lily.core.model.ui.UiPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,9 +42,9 @@ import org.sheepy.common.model.ui.UiPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.ui.impl.DynamicRowLayoutImpl#getContentObjects <em>Content Objects</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.DynamicRowLayoutImpl#getHeight <em>Height</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.DynamicRowLayoutImpl#getColumnCount <em>Column Count</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.DynamicRowLayoutImpl#getContentObjects <em>Content Objects</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.DynamicRowLayoutImpl#getHeight <em>Height</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.DynamicRowLayoutImpl#getColumnCount <em>Column Count</em>}</li>
  * </ul>
  *
  * @generated

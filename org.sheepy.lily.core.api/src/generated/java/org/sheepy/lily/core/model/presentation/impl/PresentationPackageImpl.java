@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.presentation.impl;
+package org.sheepy.lily.core.model.presentation.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -10,25 +10,25 @@ import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.sheepy.common.model.action.ActionPackage;
+import org.sheepy.lily.core.model.action.ActionPackage;
 
-import org.sheepy.common.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.application.ApplicationPackage;
 
-import org.sheepy.common.model.inference.InferencePackage;
-import org.sheepy.common.model.presentation.IMusicView;
-import org.sheepy.common.model.presentation.IPanel;
-import org.sheepy.common.model.presentation.IPositionElement;
-import org.sheepy.common.model.presentation.ISizedElement;
-import org.sheepy.common.model.presentation.ISizedView;
-import org.sheepy.common.model.presentation.IUIElement;
-import org.sheepy.common.model.presentation.IUIView;
-import org.sheepy.common.model.presentation.PresentationFactory;
-import org.sheepy.common.model.presentation.PresentationPackage;
-import org.sheepy.common.model.presentation.TranparentUIView;
-import org.sheepy.common.model.presentation.UIPage;
-import org.sheepy.common.model.root.RootPackage;
+import org.sheepy.lily.core.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.presentation.IMusicView;
+import org.sheepy.lily.core.model.presentation.IPanel;
+import org.sheepy.lily.core.model.presentation.IPositionElement;
+import org.sheepy.lily.core.model.presentation.ISizedElement;
+import org.sheepy.lily.core.model.presentation.ISizedView;
+import org.sheepy.lily.core.model.presentation.IUIElement;
+import org.sheepy.lily.core.model.presentation.IUIView;
+import org.sheepy.lily.core.model.presentation.PresentationFactory;
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.presentation.TranparentUIView;
+import org.sheepy.lily.core.model.presentation.UIPage;
+import org.sheepy.lily.core.model.root.RootPackage;
 
-import org.sheepy.common.model.types.TypesPackage;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -112,7 +112,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.sheepy.common.model.presentation.PresentationPackage#eNS_URI
+	 * @see org.sheepy.lily.core.model.presentation.PresentationPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */

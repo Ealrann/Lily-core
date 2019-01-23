@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui.impl;
+package org.sheepy.lily.core.model.ui.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -19,16 +19,16 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.sheepy.common.model.action.Action;
+import org.sheepy.lily.core.model.action.Action;
 
-import org.sheepy.common.model.application.IView;
+import org.sheepy.lily.core.model.application.IView;
 
-import org.sheepy.common.model.root.LObject;
+import org.sheepy.lily.core.model.root.LObject;
 
-import org.sheepy.common.model.types.EKeyState;
+import org.sheepy.lily.core.model.types.EKeyState;
 
-import org.sheepy.common.model.ui.Button;
-import org.sheepy.common.model.ui.UiPackage;
+import org.sheepy.lily.core.model.ui.Button;
+import org.sheepy.lily.core.model.ui.UiPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,9 +38,9 @@ import org.sheepy.common.model.ui.UiPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.ui.impl.ButtonImpl#getShortcut <em>Shortcut</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.ButtonImpl#getState <em>State</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.ButtonImpl#getActions <em>Actions</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.ButtonImpl#getShortcut <em>Shortcut</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.ButtonImpl#getState <em>State</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.ButtonImpl#getActions <em>Actions</em>}</li>
  * </ul>
  *
  * @generated

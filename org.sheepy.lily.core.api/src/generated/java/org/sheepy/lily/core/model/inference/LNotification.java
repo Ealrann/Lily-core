@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.inference;
+package org.sheepy.lily.core.model.inference;
 
 
 /**
@@ -9,7 +9,7 @@ package org.sheepy.common.model.inference;
  * <!-- end-user-doc -->
  *
  *
- * @see org.sheepy.common.model.inference.InferencePackage#getLNotification()
+ * @see org.sheepy.lily.core.model.inference.InferencePackage#getLNotification()
  * @model abstract="true"
  * @generated
  */

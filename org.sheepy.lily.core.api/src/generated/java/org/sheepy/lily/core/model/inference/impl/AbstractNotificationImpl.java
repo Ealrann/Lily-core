@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.inference.impl;
+package org.sheepy.lily.core.model.inference.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -10,8 +10,8 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.sheepy.common.model.inference.AbstractNotification;
-import org.sheepy.common.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.inference.AbstractNotification;
+import org.sheepy.lily.core.model.inference.InferencePackage;
 
 /**
  * <!-- begin-user-doc -->

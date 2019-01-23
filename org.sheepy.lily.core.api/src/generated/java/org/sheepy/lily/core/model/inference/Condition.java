@@ -1,10 +1,10 @@
 /**
  */
-package org.sheepy.common.model.inference;
+package org.sheepy.lily.core.model.inference;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.sheepy.common.model.types.Parameter;
+import org.sheepy.lily.core.model.types.Parameter;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,11 +15,11 @@ import org.sheepy.common.model.types.Parameter;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.inference.Condition#getValue <em>Value</em>}</li>
- *   <li>{@link org.sheepy.common.model.inference.Condition#getDefinition <em>Definition</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.inference.Condition#getValue <em>Value</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.inference.Condition#getDefinition <em>Definition</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.inference.InferencePackage#getCondition()
+ * @see org.sheepy.lily.core.model.inference.InferencePackage#getCondition()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -35,14 +35,14 @@ public interface Condition<T extends Parameter> extends EObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' containment reference.
 	 * @see #setValue(Parameter)
-	 * @see org.sheepy.common.model.inference.InferencePackage#getCondition_Value()
+	 * @see org.sheepy.lily.core.model.inference.InferencePackage#getCondition_Value()
 	 * @model containment="true"
 	 * @generated
 	 */
 	T getValue();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.inference.Condition#getValue <em>Value</em>}' containment reference.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.inference.Condition#getValue <em>Value</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' containment reference.
@@ -61,14 +61,14 @@ public interface Condition<T extends Parameter> extends EObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Definition</em>' reference.
 	 * @see #setDefinition(LNotification)
-	 * @see org.sheepy.common.model.inference.InferencePackage#getCondition_Definition()
+	 * @see org.sheepy.lily.core.model.inference.InferencePackage#getCondition_Definition()
 	 * @model
 	 * @generated
 	 */
 	LNotification getDefinition();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.inference.Condition#getDefinition <em>Definition</em>}' reference.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.inference.Condition#getDefinition <em>Definition</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Definition</em>' reference.

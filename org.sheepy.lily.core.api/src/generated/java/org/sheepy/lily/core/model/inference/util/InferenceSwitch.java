@@ -1,15 +1,15 @@
 /**
  */
-package org.sheepy.common.model.inference.util;
+package org.sheepy.lily.core.model.inference.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.sheepy.common.model.inference.*;
+import org.sheepy.lily.core.model.inference.*;
 
-import org.sheepy.common.model.types.Parameter;
+import org.sheepy.lily.core.model.types.Parameter;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +21,7 @@ import org.sheepy.common.model.types.Parameter;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.inference.InferencePackage
+ * @see org.sheepy.lily.core.model.inference.InferencePackage
  * @generated
  */
 public class InferenceSwitch<T1> extends Switch<T1>

@@ -1,8 +1,8 @@
 /**
  */
-package org.sheepy.common.model.root;
+package org.sheepy.lily.core.model.root;
 
-import org.sheepy.common.model.action.Action;
+import org.sheepy.lily.core.model.action.Action;
 
 /**
  * <!-- begin-user-doc -->
@@ -10,7 +10,7 @@ import org.sheepy.common.model.action.Action;
  * <!-- end-user-doc -->
  *
  *
- * @see org.sheepy.common.model.root.RootPackage#getXAction()
+ * @see org.sheepy.lily.core.model.root.RootPackage#getXAction()
  * @model abstract="true"
  * @generated
  */

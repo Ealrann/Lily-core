@@ -1,12 +1,12 @@
 /**
  */
-package org.sheepy.common.model.root;
+package org.sheepy.lily.core.model.root;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.sheepy.common.api.util.LTreeIterator;
-import org.sheepy.common.model.inference.IInferenceObject;
+import org.sheepy.lily.core.api.util.LTreeIterator;
+import org.sheepy.lily.core.model.inference.IInferenceObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,10 +17,10 @@ import org.sheepy.common.model.inference.IInferenceObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.root.LObject#getContentObjects <em>Content Objects</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.root.LObject#getContentObjects <em>Content Objects</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.root.RootPackage#getLObject()
+ * @see org.sheepy.lily.core.model.root.RootPackage#getLObject()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -36,15 +36,15 @@ public interface LObject extends IInferenceObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Content Objects</em>' attribute.
 	 * @see #setContentObjects(EList)
-	 * @see org.sheepy.common.model.root.RootPackage#getLObject_ContentObjects()
-	 * @model unique="false" dataType="org.sheepy.common.model.root.LContentList" transient="true"
+	 * @see org.sheepy.lily.core.model.root.RootPackage#getLObject_ContentObjects()
+	 * @model unique="false" dataType="org.sheepy.lily.core.model.root.LContentList" transient="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='None'"
 	 * @generated
 	 */
 	EList<LObject> getContentObjects();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.root.LObject#getContentObjects <em>Content Objects</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.root.LObject#getContentObjects <em>Content Objects</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Content Objects</em>' attribute.
@@ -80,7 +80,7 @@ public interface LObject extends IInferenceObject
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model dataType="org.sheepy.common.model.root.LTreeIterator" unique="false"
+	 * @model dataType="org.sheepy.lily.core.model.root.LTreeIterator" unique="false"
 	 * @generated
 	 */
 	LTreeIterator lAllContents();

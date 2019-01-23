@@ -1,10 +1,10 @@
-package org.sheepy.common.api.resource;
+package org.sheepy.lily.core.api.resource;
 
 import java.io.InputStream;
 import java.util.ServiceLoader;
 
 import org.eclipse.emf.ecore.resource.Resource;
-import org.sheepy.common.api.service.IService;
+import org.sheepy.lily.core.api.service.IService;
 
 public interface IResourceLoader extends IService
 {

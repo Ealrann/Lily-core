@@ -1,8 +1,8 @@
-package org.sheepy.common.api.cadence;
+package org.sheepy.lily.core.api.cadence;
 
 import org.eclipse.emf.ecore.EObject;
-import org.sheepy.common.api.action.context.ExecutionContext;
-import org.sheepy.common.api.input.IInputManager;
+import org.sheepy.lily.core.api.action.context.ExecutionContext;
+import org.sheepy.lily.core.api.input.IInputManager;
 
 public interface ICadencer
 {

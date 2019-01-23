@@ -1,11 +1,11 @@
 /**
  */
-package org.sheepy.common.model.action;
+package org.sheepy.lily.core.model.action;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
-import org.sheepy.common.model.types.TypesPackage;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,9 +19,9 @@ import org.sheepy.common.model.types.TypesPackage;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.action.ActionFactory
+ * @see org.sheepy.lily.core.model.action.ActionFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.common.model/src/generated/java' editDirectory='/org.sheepy.common.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' extensibleProviderFactory='true' childCreationExtenders='true' updateClasspath='false' basePackage='org.sheepy.common.model'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.lily.core.model/src/generated/java' editDirectory='/org.sheepy.lily.core.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' extensibleProviderFactory='true' childCreationExtenders='true' updateClasspath='false' basePackage='org.sheepy.lily.core.model'"
  * @generated
  */
 public interface ActionPackage extends EPackage
@@ -40,7 +40,7 @@ public interface ActionPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "org.sheepy.common.model.action";
+	String eNS_URI = "org.sheepy.lily.core.model.action";
 
 	/**
 	 * The package namespace name.
@@ -56,14 +56,14 @@ public interface ActionPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ActionPackage eINSTANCE = org.sheepy.common.model.action.impl.ActionPackageImpl.init();
+	ActionPackage eINSTANCE = org.sheepy.lily.core.model.action.impl.ActionPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.action.impl.ActionImpl <em>Action</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.action.impl.ActionImpl <em>Action</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.action.impl.ActionImpl
-	 * @see org.sheepy.common.model.action.impl.ActionPackageImpl#getAction()
+	 * @see org.sheepy.lily.core.model.action.impl.ActionImpl
+	 * @see org.sheepy.lily.core.model.action.impl.ActionPackageImpl#getAction()
 	 * @generated
 	 */
 	int ACTION = 0;
@@ -100,17 +100,17 @@ public interface ActionPackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see java.util.List
-	 * @see org.sheepy.common.model.action.impl.ActionPackageImpl#getActionList()
+	 * @see org.sheepy.lily.core.model.action.impl.ActionPackageImpl#getActionList()
 	 * @generated
 	 */
 	int ACTION_LIST = 1;
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.action.Action <em>Action</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.action.Action <em>Action</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Action</em>'.
-	 * @see org.sheepy.common.model.action.Action
+	 * @see org.sheepy.lily.core.model.action.Action
 	 * @generated
 	 */
 	EClass getAction();
@@ -121,7 +121,7 @@ public interface ActionPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>List</em>'.
 	 * @see java.util.List
-	 * @model instanceClass="java.util.List&lt;? extends org.sheepy.common.model.action.Action&gt;"
+	 * @model instanceClass="java.util.List&lt;? extends org.sheepy.lily.core.model.action.Action&gt;"
 	 * @generated
 	 */
 	EDataType getActionList();
@@ -151,11 +151,11 @@ public interface ActionPackage extends EPackage
 	interface Literals
 	{
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.action.impl.ActionImpl <em>Action</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.action.impl.ActionImpl <em>Action</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.action.impl.ActionImpl
-		 * @see org.sheepy.common.model.action.impl.ActionPackageImpl#getAction()
+		 * @see org.sheepy.lily.core.model.action.impl.ActionImpl
+		 * @see org.sheepy.lily.core.model.action.impl.ActionPackageImpl#getAction()
 		 * @generated
 		 */
 		EClass ACTION = eINSTANCE.getAction();
@@ -164,7 +164,7 @@ public interface ActionPackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see java.util.List
-		 * @see org.sheepy.common.model.action.impl.ActionPackageImpl#getActionList()
+		 * @see org.sheepy.lily.core.model.action.impl.ActionPackageImpl#getActionList()
 		 * @generated
 		 */
 		EDataType ACTION_LIST = eINSTANCE.getActionList();

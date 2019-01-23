@@ -1,4 +1,4 @@
-package org.sheepy.common.api.util;
+package org.sheepy.lily.core.api.util;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -9,8 +9,8 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EContentAdapter;
-import org.sheepy.common.model.root.LObject;
-import org.sheepy.common.model.root.RootPackage;
+import org.sheepy.lily.core.model.root.LObject;
+import org.sheepy.lily.core.model.root.RootPackage;
 
 public class LContentAdapter extends EContentAdapter
 {

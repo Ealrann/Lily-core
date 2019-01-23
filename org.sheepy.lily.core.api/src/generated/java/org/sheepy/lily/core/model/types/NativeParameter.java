@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.types;
+package org.sheepy.lily.core.model.types;
 
 
 /**
@@ -9,7 +9,7 @@ package org.sheepy.common.model.types;
  * <!-- end-user-doc -->
  *
  *
- * @see org.sheepy.common.model.types.TypesPackage#getNativeParameter()
+ * @see org.sheepy.lily.core.model.types.TypesPackage#getNativeParameter()
  * @model interface="true" abstract="true"
  * @generated
  */

@@ -1,4 +1,4 @@
-package org.sheepy.common.cadence.common;
+package org.sheepy.lily.core.cadence.common;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -11,19 +11,19 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.sheepy.common.action.ActionDispatcherThread;
-import org.sheepy.common.api.action.context.ExecutionContext;
-import org.sheepy.common.api.adapter.IServiceAdapterFactory;
-import org.sheepy.common.api.cadence.ICadencer;
-import org.sheepy.common.api.cadence.IMainLoop;
-import org.sheepy.common.api.cadence.IStatistics;
-import org.sheepy.common.api.cadence.ITicker;
-import org.sheepy.common.api.engine.IEngineAdapter;
-import org.sheepy.common.api.input.IInputManager;
-import org.sheepy.common.api.service.ServiceManager;
-import org.sheepy.common.cadence.execution.CommandStack;
-import org.sheepy.common.model.application.Application;
-import org.sheepy.common.model.application.IEngine;
+import org.sheepy.lily.core.action.ActionDispatcherThread;
+import org.sheepy.lily.core.api.action.context.ExecutionContext;
+import org.sheepy.lily.core.api.adapter.IServiceAdapterFactory;
+import org.sheepy.lily.core.api.cadence.ICadencer;
+import org.sheepy.lily.core.api.cadence.IMainLoop;
+import org.sheepy.lily.core.api.cadence.IStatistics;
+import org.sheepy.lily.core.api.cadence.ITicker;
+import org.sheepy.lily.core.api.engine.IEngineAdapter;
+import org.sheepy.lily.core.api.input.IInputManager;
+import org.sheepy.lily.core.api.service.ServiceManager;
+import org.sheepy.lily.core.cadence.execution.CommandStack;
+import org.sheepy.lily.core.model.application.Application;
+import org.sheepy.lily.core.model.application.IEngine;
 
 public class Cadencer implements ICadencer
 {

@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.types;
+package org.sheepy.lily.core.model.types;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -13,7 +13,7 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>ENumber Comparison Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.types.TypesPackage#getENumberComparisonType()
+ * @see org.sheepy.lily.core.model.types.TypesPackage#getENumberComparisonType()
  * @model
  * @generated
  */

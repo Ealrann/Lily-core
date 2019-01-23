@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.variable;
+package org.sheepy.lily.core.model.variable;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -15,10 +15,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.variable.VarChangeActionPkg#getActions <em>Actions</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.variable.VarChangeActionPkg#getActions <em>Actions</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.variable.VariablePackage#getVarChangeActionPkg()
+ * @see org.sheepy.lily.core.model.variable.VariablePackage#getVarChangeActionPkg()
  * @model
  * @generated
  */
@@ -26,7 +26,7 @@ public interface VarChangeActionPkg extends EObject
 {
 	/**
 	 * Returns the value of the '<em><b>Actions</b></em>' containment reference list.
-	 * The list contents are of type {@link org.sheepy.common.model.variable.VarChangeAction}.
+	 * The list contents are of type {@link org.sheepy.lily.core.model.variable.VarChangeAction}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Actions</em>' containment reference list isn't clear,
@@ -34,7 +34,7 @@ public interface VarChangeActionPkg extends EObject
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Actions</em>' containment reference list.
-	 * @see org.sheepy.common.model.variable.VariablePackage#getVarChangeActionPkg_Actions()
+	 * @see org.sheepy.lily.core.model.variable.VariablePackage#getVarChangeActionPkg_Actions()
 	 * @model containment="true"
 	 * @generated
 	 */

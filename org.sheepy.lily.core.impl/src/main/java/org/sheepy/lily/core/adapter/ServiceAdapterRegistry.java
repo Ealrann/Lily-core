@@ -1,4 +1,4 @@
-package org.sheepy.common.adapter;
+package org.sheepy.lily.core.adapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,10 +8,10 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.emf.ecore.EClass;
-import org.sheepy.common.api.adapter.IAutoAdapter;
-import org.sheepy.common.api.adapter.IServiceAdapterFactory;
-import org.sheepy.common.api.adapter.IAdapter;
-import org.sheepy.common.api.service.ServiceManager;
+import org.sheepy.lily.core.api.adapter.IAutoAdapter;
+import org.sheepy.lily.core.api.adapter.IServiceAdapterFactory;
+import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.service.ServiceManager;
 
 public class ServiceAdapterRegistry
 {

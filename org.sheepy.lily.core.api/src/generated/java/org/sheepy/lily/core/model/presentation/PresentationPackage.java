@@ -1,16 +1,16 @@
 /**
  */
-package org.sheepy.common.model.presentation;
+package org.sheepy.lily.core.model.presentation;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
-import org.sheepy.common.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.application.ApplicationPackage;
 
-import org.sheepy.common.model.root.RootPackage;
-import org.sheepy.common.model.types.TypesPackage;
+import org.sheepy.lily.core.model.root.RootPackage;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,9 +24,9 @@ import org.sheepy.common.model.types.TypesPackage;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.presentation.PresentationFactory
+ * @see org.sheepy.lily.core.model.presentation.PresentationFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.common.model/src/generated/java' editDirectory='/org.sheepy.common.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' extensibleProviderFactory='true' childCreationExtenders='true' updateClasspath='false' basePackage='org.sheepy.common.model'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.lily.core.model/src/generated/java' editDirectory='/org.sheepy.lily.core.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' extensibleProviderFactory='true' childCreationExtenders='true' updateClasspath='false' basePackage='org.sheepy.lily.core.model'"
  * @generated
  */
 public interface PresentationPackage extends EPackage
@@ -45,7 +45,7 @@ public interface PresentationPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "org.sheepy.common.model.presentation";
+	String eNS_URI = "org.sheepy.lily.core.model.presentation";
 
 	/**
 	 * The package namespace name.
@@ -61,14 +61,14 @@ public interface PresentationPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	PresentationPackage eINSTANCE = org.sheepy.common.model.presentation.impl.PresentationPackageImpl.init();
+	PresentationPackage eINSTANCE = org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.presentation.IPositionElement <em>IPosition Element</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.IPositionElement <em>IPosition Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.presentation.IPositionElement
-	 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getIPositionElement()
+	 * @see org.sheepy.lily.core.model.presentation.IPositionElement
+	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getIPositionElement()
 	 * @generated
 	 */
 	int IPOSITION_ELEMENT = 0;
@@ -173,11 +173,11 @@ public interface PresentationPackage extends EPackage
 	int IPOSITION_ELEMENT_OPERATION_COUNT = RootPackage.LOBJECT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.presentation.ISizedElement <em>ISized Element</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.ISizedElement <em>ISized Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.presentation.ISizedElement
-	 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getISizedElement()
+	 * @see org.sheepy.lily.core.model.presentation.ISizedElement
+	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getISizedElement()
 	 * @generated
 	 */
 	int ISIZED_ELEMENT = 1;
@@ -300,11 +300,11 @@ public interface PresentationPackage extends EPackage
 	int ISIZED_ELEMENT_OPERATION_COUNT = IPOSITION_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.presentation.IUIView <em>IUI View</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.IUIView <em>IUI View</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.presentation.IUIView
-	 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getIUIView()
+	 * @see org.sheepy.lily.core.model.presentation.IUIView
+	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getIUIView()
 	 * @generated
 	 */
 	int IUI_VIEW = 2;
@@ -400,11 +400,11 @@ public interface PresentationPackage extends EPackage
 	int IUI_VIEW_OPERATION_COUNT = ApplicationPackage.IVIEW_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.presentation.impl.TranparentUIViewImpl <em>Tranparent UI View</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.impl.TranparentUIViewImpl <em>Tranparent UI View</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.presentation.impl.TranparentUIViewImpl
-	 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getTranparentUIView()
+	 * @see org.sheepy.lily.core.model.presentation.impl.TranparentUIViewImpl
+	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getTranparentUIView()
 	 * @generated
 	 */
 	int TRANPARENT_UI_VIEW = 3;
@@ -500,11 +500,11 @@ public interface PresentationPackage extends EPackage
 	int TRANPARENT_UI_VIEW_OPERATION_COUNT = IUI_VIEW_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.presentation.IMusicView <em>IMusic View</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.IMusicView <em>IMusic View</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.presentation.IMusicView
-	 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getIMusicView()
+	 * @see org.sheepy.lily.core.model.presentation.IMusicView
+	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getIMusicView()
 	 * @generated
 	 */
 	int IMUSIC_VIEW = 4;
@@ -591,11 +591,11 @@ public interface PresentationPackage extends EPackage
 	int IMUSIC_VIEW_OPERATION_COUNT = ApplicationPackage.IVIEW_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.presentation.ISizedView <em>ISized View</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.ISizedView <em>ISized View</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.presentation.ISizedView
-	 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getISizedView()
+	 * @see org.sheepy.lily.core.model.presentation.ISizedView
+	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getISizedView()
 	 * @generated
 	 */
 	int ISIZED_VIEW = 5;
@@ -763,11 +763,11 @@ public interface PresentationPackage extends EPackage
 	int ISIZED_VIEW_OPERATION_COUNT = ISIZED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.presentation.IUIElement <em>IUI Element</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.IUIElement <em>IUI Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.presentation.IUIElement
-	 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getIUIElement()
+	 * @see org.sheepy.lily.core.model.presentation.IUIElement
+	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getIUIElement()
 	 * @generated
 	 */
 	int IUI_ELEMENT = 6;
@@ -845,11 +845,11 @@ public interface PresentationPackage extends EPackage
 	int IUI_ELEMENT_OPERATION_COUNT = RootPackage.LOBJECT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.presentation.impl.UIPageImpl <em>UI Page</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl <em>UI Page</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.presentation.impl.UIPageImpl
-	 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getUIPage()
+	 * @see org.sheepy.lily.core.model.presentation.impl.UIPageImpl
+	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getUIPage()
 	 * @generated
 	 */
 	int UI_PAGE = 7;
@@ -981,11 +981,11 @@ public interface PresentationPackage extends EPackage
 	int UI_PAGE_OPERATION_COUNT = ISIZED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.presentation.IPanel <em>IPanel</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.IPanel <em>IPanel</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.presentation.IPanel
-	 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getIPanel()
+	 * @see org.sheepy.lily.core.model.presentation.IPanel
+	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getIPanel()
 	 * @generated
 	 */
 	int IPANEL = 8;
@@ -1099,245 +1099,245 @@ public interface PresentationPackage extends EPackage
 	int IPANEL_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 5;
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.presentation.IPositionElement <em>IPosition Element</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.IPositionElement <em>IPosition Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>IPosition Element</em>'.
-	 * @see org.sheepy.common.model.presentation.IPositionElement
+	 * @see org.sheepy.lily.core.model.presentation.IPositionElement
 	 * @generated
 	 */
 	EClass getIPositionElement();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.presentation.IPositionElement#getPosition <em>Position</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.presentation.IPositionElement#getPosition <em>Position</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Position</em>'.
-	 * @see org.sheepy.common.model.presentation.IPositionElement#getPosition()
+	 * @see org.sheepy.lily.core.model.presentation.IPositionElement#getPosition()
 	 * @see #getIPositionElement()
 	 * @generated
 	 */
 	EAttribute getIPositionElement_Position();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.presentation.IPositionElement#getVerticalRelative <em>Vertical Relative</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.presentation.IPositionElement#getVerticalRelative <em>Vertical Relative</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Vertical Relative</em>'.
-	 * @see org.sheepy.common.model.presentation.IPositionElement#getVerticalRelative()
+	 * @see org.sheepy.lily.core.model.presentation.IPositionElement#getVerticalRelative()
 	 * @see #getIPositionElement()
 	 * @generated
 	 */
 	EAttribute getIPositionElement_VerticalRelative();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.presentation.IPositionElement#getHorizontalRelative <em>Horizontal Relative</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.presentation.IPositionElement#getHorizontalRelative <em>Horizontal Relative</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Horizontal Relative</em>'.
-	 * @see org.sheepy.common.model.presentation.IPositionElement#getHorizontalRelative()
+	 * @see org.sheepy.lily.core.model.presentation.IPositionElement#getHorizontalRelative()
 	 * @see #getIPositionElement()
 	 * @generated
 	 */
 	EAttribute getIPositionElement_HorizontalRelative();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.presentation.ISizedElement <em>ISized Element</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.ISizedElement <em>ISized Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>ISized Element</em>'.
-	 * @see org.sheepy.common.model.presentation.ISizedElement
+	 * @see org.sheepy.lily.core.model.presentation.ISizedElement
 	 * @generated
 	 */
 	EClass getISizedElement();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.presentation.ISizedElement#getWidth <em>Width</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.presentation.ISizedElement#getWidth <em>Width</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Width</em>'.
-	 * @see org.sheepy.common.model.presentation.ISizedElement#getWidth()
+	 * @see org.sheepy.lily.core.model.presentation.ISizedElement#getWidth()
 	 * @see #getISizedElement()
 	 * @generated
 	 */
 	EAttribute getISizedElement_Width();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.presentation.ISizedElement#getHeight <em>Height</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.presentation.ISizedElement#getHeight <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Height</em>'.
-	 * @see org.sheepy.common.model.presentation.ISizedElement#getHeight()
+	 * @see org.sheepy.lily.core.model.presentation.ISizedElement#getHeight()
 	 * @see #getISizedElement()
 	 * @generated
 	 */
 	EAttribute getISizedElement_Height();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.presentation.IUIView <em>IUI View</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.IUIView <em>IUI View</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>IUI View</em>'.
-	 * @see org.sheepy.common.model.presentation.IUIView
+	 * @see org.sheepy.lily.core.model.presentation.IUIView
 	 * @generated
 	 */
 	EClass getIUIView();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.sheepy.common.model.presentation.IUIView#getUiPages <em>Ui Pages</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.presentation.IUIView#getUiPages <em>Ui Pages</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Ui Pages</em>'.
-	 * @see org.sheepy.common.model.presentation.IUIView#getUiPages()
+	 * @see org.sheepy.lily.core.model.presentation.IUIView#getUiPages()
 	 * @see #getIUIView()
 	 * @generated
 	 */
 	EReference getIUIView_UiPages();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.sheepy.common.model.presentation.IUIView#getCurrentUIPage <em>Current UI Page</em>}'.
+	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.presentation.IUIView#getCurrentUIPage <em>Current UI Page</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Current UI Page</em>'.
-	 * @see org.sheepy.common.model.presentation.IUIView#getCurrentUIPage()
+	 * @see org.sheepy.lily.core.model.presentation.IUIView#getCurrentUIPage()
 	 * @see #getIUIView()
 	 * @generated
 	 */
 	EReference getIUIView_CurrentUIPage();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.presentation.TranparentUIView <em>Tranparent UI View</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.TranparentUIView <em>Tranparent UI View</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Tranparent UI View</em>'.
-	 * @see org.sheepy.common.model.presentation.TranparentUIView
+	 * @see org.sheepy.lily.core.model.presentation.TranparentUIView
 	 * @generated
 	 */
 	EClass getTranparentUIView();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.presentation.IMusicView <em>IMusic View</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.IMusicView <em>IMusic View</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>IMusic View</em>'.
-	 * @see org.sheepy.common.model.presentation.IMusicView
+	 * @see org.sheepy.lily.core.model.presentation.IMusicView
 	 * @generated
 	 */
 	EClass getIMusicView();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.presentation.IMusicView#getMusicPath <em>Music Path</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.presentation.IMusicView#getMusicPath <em>Music Path</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Music Path</em>'.
-	 * @see org.sheepy.common.model.presentation.IMusicView#getMusicPath()
+	 * @see org.sheepy.lily.core.model.presentation.IMusicView#getMusicPath()
 	 * @see #getIMusicView()
 	 * @generated
 	 */
 	EAttribute getIMusicView_MusicPath();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.presentation.ISizedView <em>ISized View</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.ISizedView <em>ISized View</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>ISized View</em>'.
-	 * @see org.sheepy.common.model.presentation.ISizedView
+	 * @see org.sheepy.lily.core.model.presentation.ISizedView
 	 * @generated
 	 */
 	EClass getISizedView();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.presentation.ISizedView#isMoveable <em>Moveable</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.presentation.ISizedView#isMoveable <em>Moveable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Moveable</em>'.
-	 * @see org.sheepy.common.model.presentation.ISizedView#isMoveable()
+	 * @see org.sheepy.lily.core.model.presentation.ISizedView#isMoveable()
 	 * @see #getISizedView()
 	 * @generated
 	 */
 	EAttribute getISizedView_Moveable();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.presentation.ISizedView#isCloseable <em>Closeable</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.presentation.ISizedView#isCloseable <em>Closeable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Closeable</em>'.
-	 * @see org.sheepy.common.model.presentation.ISizedView#isCloseable()
+	 * @see org.sheepy.lily.core.model.presentation.ISizedView#isCloseable()
 	 * @see #getISizedView()
 	 * @generated
 	 */
 	EAttribute getISizedView_Closeable();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.presentation.ISizedView#isScalable <em>Scalable</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.presentation.ISizedView#isScalable <em>Scalable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Scalable</em>'.
-	 * @see org.sheepy.common.model.presentation.ISizedView#isScalable()
+	 * @see org.sheepy.lily.core.model.presentation.ISizedView#isScalable()
 	 * @see #getISizedView()
 	 * @generated
 	 */
 	EAttribute getISizedView_Scalable();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.presentation.ISizedView#isShowTitle <em>Show Title</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.presentation.ISizedView#isShowTitle <em>Show Title</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Show Title</em>'.
-	 * @see org.sheepy.common.model.presentation.ISizedView#isShowTitle()
+	 * @see org.sheepy.lily.core.model.presentation.ISizedView#isShowTitle()
 	 * @see #getISizedView()
 	 * @generated
 	 */
 	EAttribute getISizedView_ShowTitle();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.presentation.ISizedView#isFullscreen <em>Fullscreen</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.presentation.ISizedView#isFullscreen <em>Fullscreen</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Fullscreen</em>'.
-	 * @see org.sheepy.common.model.presentation.ISizedView#isFullscreen()
+	 * @see org.sheepy.lily.core.model.presentation.ISizedView#isFullscreen()
 	 * @see #getISizedView()
 	 * @generated
 	 */
 	EAttribute getISizedView_Fullscreen();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.presentation.IUIElement <em>IUI Element</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.IUIElement <em>IUI Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>IUI Element</em>'.
-	 * @see org.sheepy.common.model.presentation.IUIElement
+	 * @see org.sheepy.lily.core.model.presentation.IUIElement
 	 * @generated
 	 */
 	EClass getIUIElement();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.presentation.UIPage <em>UI Page</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.UIPage <em>UI Page</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>UI Page</em>'.
-	 * @see org.sheepy.common.model.presentation.UIPage
+	 * @see org.sheepy.lily.core.model.presentation.UIPage
 	 * @generated
 	 */
 	EClass getUIPage();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.sheepy.common.model.presentation.UIPage#getPanels <em>Panels</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.presentation.UIPage#getPanels <em>Panels</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Panels</em>'.
-	 * @see org.sheepy.common.model.presentation.UIPage#getPanels()
+	 * @see org.sheepy.lily.core.model.presentation.UIPage#getPanels()
 	 * @see #getUIPage()
 	 * @generated
 	 */
 	EReference getUIPage_Panels();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.presentation.IPanel <em>IPanel</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.IPanel <em>IPanel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>IPanel</em>'.
-	 * @see org.sheepy.common.model.presentation.IPanel
+	 * @see org.sheepy.lily.core.model.presentation.IPanel
 	 * @generated
 	 */
 	EClass getIPanel();
@@ -1367,11 +1367,11 @@ public interface PresentationPackage extends EPackage
 	interface Literals
 	{
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.presentation.IPositionElement <em>IPosition Element</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.IPositionElement <em>IPosition Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.presentation.IPositionElement
-		 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getIPositionElement()
+		 * @see org.sheepy.lily.core.model.presentation.IPositionElement
+		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getIPositionElement()
 		 * @generated
 		 */
 		EClass IPOSITION_ELEMENT = eINSTANCE.getIPositionElement();
@@ -1401,11 +1401,11 @@ public interface PresentationPackage extends EPackage
 		EAttribute IPOSITION_ELEMENT__HORIZONTAL_RELATIVE = eINSTANCE.getIPositionElement_HorizontalRelative();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.presentation.ISizedElement <em>ISized Element</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.ISizedElement <em>ISized Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.presentation.ISizedElement
-		 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getISizedElement()
+		 * @see org.sheepy.lily.core.model.presentation.ISizedElement
+		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getISizedElement()
 		 * @generated
 		 */
 		EClass ISIZED_ELEMENT = eINSTANCE.getISizedElement();
@@ -1427,11 +1427,11 @@ public interface PresentationPackage extends EPackage
 		EAttribute ISIZED_ELEMENT__HEIGHT = eINSTANCE.getISizedElement_Height();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.presentation.IUIView <em>IUI View</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.IUIView <em>IUI View</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.presentation.IUIView
-		 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getIUIView()
+		 * @see org.sheepy.lily.core.model.presentation.IUIView
+		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getIUIView()
 		 * @generated
 		 */
 		EClass IUI_VIEW = eINSTANCE.getIUIView();
@@ -1453,21 +1453,21 @@ public interface PresentationPackage extends EPackage
 		EReference IUI_VIEW__CURRENT_UI_PAGE = eINSTANCE.getIUIView_CurrentUIPage();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.presentation.impl.TranparentUIViewImpl <em>Tranparent UI View</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.impl.TranparentUIViewImpl <em>Tranparent UI View</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.presentation.impl.TranparentUIViewImpl
-		 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getTranparentUIView()
+		 * @see org.sheepy.lily.core.model.presentation.impl.TranparentUIViewImpl
+		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getTranparentUIView()
 		 * @generated
 		 */
 		EClass TRANPARENT_UI_VIEW = eINSTANCE.getTranparentUIView();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.presentation.IMusicView <em>IMusic View</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.IMusicView <em>IMusic View</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.presentation.IMusicView
-		 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getIMusicView()
+		 * @see org.sheepy.lily.core.model.presentation.IMusicView
+		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getIMusicView()
 		 * @generated
 		 */
 		EClass IMUSIC_VIEW = eINSTANCE.getIMusicView();
@@ -1481,11 +1481,11 @@ public interface PresentationPackage extends EPackage
 		EAttribute IMUSIC_VIEW__MUSIC_PATH = eINSTANCE.getIMusicView_MusicPath();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.presentation.ISizedView <em>ISized View</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.ISizedView <em>ISized View</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.presentation.ISizedView
-		 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getISizedView()
+		 * @see org.sheepy.lily.core.model.presentation.ISizedView
+		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getISizedView()
 		 * @generated
 		 */
 		EClass ISIZED_VIEW = eINSTANCE.getISizedView();
@@ -1531,21 +1531,21 @@ public interface PresentationPackage extends EPackage
 		EAttribute ISIZED_VIEW__FULLSCREEN = eINSTANCE.getISizedView_Fullscreen();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.presentation.IUIElement <em>IUI Element</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.IUIElement <em>IUI Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.presentation.IUIElement
-		 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getIUIElement()
+		 * @see org.sheepy.lily.core.model.presentation.IUIElement
+		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getIUIElement()
 		 * @generated
 		 */
 		EClass IUI_ELEMENT = eINSTANCE.getIUIElement();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.presentation.impl.UIPageImpl <em>UI Page</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl <em>UI Page</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.presentation.impl.UIPageImpl
-		 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getUIPage()
+		 * @see org.sheepy.lily.core.model.presentation.impl.UIPageImpl
+		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getUIPage()
 		 * @generated
 		 */
 		EClass UI_PAGE = eINSTANCE.getUIPage();
@@ -1559,11 +1559,11 @@ public interface PresentationPackage extends EPackage
 		EReference UI_PAGE__PANELS = eINSTANCE.getUIPage_Panels();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.presentation.IPanel <em>IPanel</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.IPanel <em>IPanel</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.presentation.IPanel
-		 * @see org.sheepy.common.model.presentation.impl.PresentationPackageImpl#getIPanel()
+		 * @see org.sheepy.lily.core.model.presentation.IPanel
+		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getIPanel()
 		 * @generated
 		 */
 		EClass IPANEL = eINSTANCE.getIPanel();

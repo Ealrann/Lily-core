@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.variable;
+package org.sheepy.lily.core.model.variable;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  *
- * @see org.sheepy.common.model.variable.VariablePackage#getIVariableResolver()
+ * @see org.sheepy.lily.core.model.variable.VariablePackage#getIVariableResolver()
  * @model interface="true" abstract="true"
  * @generated
  */

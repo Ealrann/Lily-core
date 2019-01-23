@@ -1,4 +1,4 @@
-package org.sheepy.common.application;
+package org.sheepy.lily.core.application;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -7,12 +7,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-import org.sheepy.common.api.adapter.impl.AbstractStatefullAdapter;
-import org.sheepy.common.api.application.IApplicationAdapter;
-import org.sheepy.common.api.cadence.ICadencer;
-import org.sheepy.common.cadence.common.Cadencer;
-import org.sheepy.common.model.application.Application;
-import org.sheepy.common.model.application.ApplicationPackage;
+import org.sheepy.lily.core.api.adapter.impl.AbstractStatefullAdapter;
+import org.sheepy.lily.core.api.application.IApplicationAdapter;
+import org.sheepy.lily.core.api.cadence.ICadencer;
+import org.sheepy.lily.core.cadence.common.Cadencer;
+import org.sheepy.lily.core.model.application.Application;
+import org.sheepy.lily.core.model.application.ApplicationPackage;
 
 public class ApplicationAdapter extends AbstractStatefullAdapter implements IApplicationAdapter
 {

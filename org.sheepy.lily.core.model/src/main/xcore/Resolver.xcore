@@ -1,18 +1,18 @@
-@GenModel(modelDirectory="/org.sheepy.common.model/src/generated/java")
-@GenModel(editDirectory="/org.sheepy.common.model.edit/src/generated/java")
+@GenModel(modelDirectory="/org.sheepy.lily.core.model/src/generated/java")
+@GenModel(editDirectory="/org.sheepy.lily.core.model.edit/src/generated/java")
 @GenModel(publicConstructors="true", complianceLevel="11.0", resource="XMI")
 @GenModel(extensibleProviderFactory="true", childCreationExtenders="true")
 @GenModel(updateClasspath="false")
 
-package org.sheepy.common.model.resolver
+package org.sheepy.lily.core.model.resolver
 
 import java.util.ArrayDeque
 import java.util.Deque
 import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
-import org.sheepy.common.model.root.LCollection
-import org.sheepy.common.model.root.LObject
+import org.sheepy.lily.core.model.root.LCollection
+import org.sheepy.lily.core.model.root.LObject
 
 interface ILObjectResolver
 {

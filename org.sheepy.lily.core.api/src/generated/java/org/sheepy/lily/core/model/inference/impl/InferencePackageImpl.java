@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.inference.impl;
+package org.sheepy.lily.core.model.inference.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EGenericType;
@@ -12,20 +12,20 @@ import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.sheepy.common.model.action.ActionPackage;
+import org.sheepy.lily.core.model.action.ActionPackage;
 
-import org.sheepy.common.model.inference.AbstractNotification;
-import org.sheepy.common.model.inference.Condition;
-import org.sheepy.common.model.inference.IInferenceObject;
-import org.sheepy.common.model.inference.InferenceFactory;
-import org.sheepy.common.model.inference.InferencePackage;
-import org.sheepy.common.model.inference.Inferer;
-import org.sheepy.common.model.inference.LNotification;
-import org.sheepy.common.model.inference.LRule;
-import org.sheepy.common.model.inference.ParameteredNotification;
-import org.sheepy.common.model.inference.Sensor;
+import org.sheepy.lily.core.model.inference.AbstractNotification;
+import org.sheepy.lily.core.model.inference.Condition;
+import org.sheepy.lily.core.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.inference.InferenceFactory;
+import org.sheepy.lily.core.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.inference.Inferer;
+import org.sheepy.lily.core.model.inference.LNotification;
+import org.sheepy.lily.core.model.inference.LRule;
+import org.sheepy.lily.core.model.inference.ParameteredNotification;
+import org.sheepy.lily.core.model.inference.Sensor;
 
-import org.sheepy.common.model.types.TypesPackage;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -102,7 +102,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.sheepy.common.model.inference.InferencePackage#eNS_URI
+	 * @see org.sheepy.lily.core.model.inference.InferencePackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */

@@ -1,4 +1,4 @@
-package org.sheepy.common.cadence.execution;
+package org.sheepy.lily.core.cadence.execution;
 
 import java.util.ArrayList;
 import java.util.Deque;
@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
-import org.sheepy.common.api.cadence.EditingCommand;
-import org.sheepy.common.api.cadence.ICommandStack;
+import org.sheepy.lily.core.api.cadence.EditingCommand;
+import org.sheepy.lily.core.api.cadence.ICommandStack;
 
 public class CommandStack implements ICommandStack
 {

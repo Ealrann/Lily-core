@@ -1,9 +1,9 @@
-package org.sheepy.common.api.adapter;
+package org.sheepy.lily.core.api.adapter;
 
 import java.util.ServiceLoader;
 
 import org.eclipse.emf.ecore.EObject;
-import org.sheepy.common.api.service.IService;
+import org.sheepy.lily.core.api.service.IService;
 
 public interface IServiceAdapterFactory extends IService
 {

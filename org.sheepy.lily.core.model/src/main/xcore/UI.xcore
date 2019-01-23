@@ -1,20 +1,20 @@
-@GenModel(modelDirectory="/org.sheepy.common.model/src/generated/java")
-@GenModel(editDirectory="/org.sheepy.common.model.edit/src/generated/java")
+@GenModel(modelDirectory="/org.sheepy.lily.core.model/src/generated/java")
+@GenModel(editDirectory="/org.sheepy.lily.core.model.edit/src/generated/java")
 @GenModel(publicConstructors="true", complianceLevel="11.0", resource="XMI")
 @GenModel(extensibleProviderFactory="true", childCreationExtenders="true")
 @GenModel(updateClasspath="false")
-package org.sheepy.common.model.ui
+package org.sheepy.lily.core.model.ui
 
-import org.sheepy.common.model.action.Action
-import org.sheepy.common.model.action.ActionList
-import org.sheepy.common.model.application.IView
-import org.sheepy.common.model.presentation.IPanel
-import org.sheepy.common.model.presentation.ISizedElement
-import org.sheepy.common.model.presentation.IUIElement
-import org.sheepy.common.model.root.LObject
-import org.sheepy.common.model.types.EKeyState
-import org.sheepy.common.model.variable.AbstractVariableResolver
-import org.sheepy.common.model.variable.IVariableResolver
+import org.sheepy.lily.core.model.action.Action
+import org.sheepy.lily.core.model.action.ActionList
+import org.sheepy.lily.core.model.application.IView
+import org.sheepy.lily.core.model.presentation.IPanel
+import org.sheepy.lily.core.model.presentation.ISizedElement
+import org.sheepy.lily.core.model.presentation.IUIElement
+import org.sheepy.lily.core.model.root.LObject
+import org.sheepy.lily.core.model.types.EKeyState
+import org.sheepy.lily.core.model.variable.AbstractVariableResolver
+import org.sheepy.lily.core.model.variable.IVariableResolver
 
 class Panel extends IPanel, ISizedElement
 {

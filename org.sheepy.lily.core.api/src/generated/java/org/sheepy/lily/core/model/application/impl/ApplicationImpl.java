@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.application.impl;
+package org.sheepy.lily.core.model.application.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -28,23 +28,23 @@ import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.sheepy.common.api.types.SVector2i;
+import org.sheepy.lily.core.api.types.SVector2i;
 
-import org.sheepy.common.api.util.LTreeIterator;
+import org.sheepy.lily.core.api.util.LTreeIterator;
 
-import org.sheepy.common.model.application.Application;
-import org.sheepy.common.model.application.ApplicationPackage;
-import org.sheepy.common.model.application.IEngine;
-import org.sheepy.common.model.application.IView;
+import org.sheepy.lily.core.model.application.Application;
+import org.sheepy.lily.core.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.application.IEngine;
+import org.sheepy.lily.core.model.application.IView;
 
-import org.sheepy.common.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.inference.IInferenceObject;
 
-import org.sheepy.common.model.root.LObject;
+import org.sheepy.lily.core.model.root.LObject;
 
-import org.sheepy.common.model.root.RootPackage.Literals;
+import org.sheepy.lily.core.model.root.RootPackage.Literals;
 
-import org.sheepy.common.model.types.TypesFactory;
-import org.sheepy.common.model.types.TypesPackage;
+import org.sheepy.lily.core.model.types.TypesFactory;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -54,17 +54,17 @@ import org.sheepy.common.model.types.TypesPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#getContentObjects <em>Content Objects</em>}</li>
- *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#getViews <em>Views</em>}</li>
- *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#getEngines <em>Engines</em>}</li>
- *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#isRun <em>Run</em>}</li>
- *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#isFullscreen <em>Fullscreen</em>}</li>
- *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#isResizeable <em>Resizeable</em>}</li>
- *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#isDebug <em>Debug</em>}</li>
- *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#getTitle <em>Title</em>}</li>
- *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#getSize <em>Size</em>}</li>
- *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#getCurrentView <em>Current View</em>}</li>
- *   <li>{@link org.sheepy.common.model.application.impl.ApplicationImpl#getCadenceInHz <em>Cadence In Hz</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getContentObjects <em>Content Objects</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getViews <em>Views</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getEngines <em>Engines</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#isRun <em>Run</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#isFullscreen <em>Fullscreen</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#isResizeable <em>Resizeable</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#isDebug <em>Debug</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getTitle <em>Title</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getSize <em>Size</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getCurrentView <em>Current View</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getCadenceInHz <em>Cadence In Hz</em>}</li>
  * </ul>
  *
  * @generated

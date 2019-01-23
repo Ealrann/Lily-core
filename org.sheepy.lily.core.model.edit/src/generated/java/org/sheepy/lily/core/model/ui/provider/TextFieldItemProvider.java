@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui.provider;
+package org.sheepy.lily.core.model.ui.provider;
 
 
 import java.util.Collection;
@@ -22,15 +22,15 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.sheepy.common.model.presentation.PresentationPackage;
-import org.sheepy.common.model.root.LObject;
-import org.sheepy.common.model.ui.TextField;
-import org.sheepy.common.model.ui.UiPackage;
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.root.LObject;
+import org.sheepy.lily.core.model.ui.TextField;
+import org.sheepy.lily.core.model.ui.UiPackage;
 
-import org.sheepy.common.model.variable.VariableFactory;
+import org.sheepy.lily.core.model.variable.VariableFactory;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.common.model.ui.TextField} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.ui.TextField} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

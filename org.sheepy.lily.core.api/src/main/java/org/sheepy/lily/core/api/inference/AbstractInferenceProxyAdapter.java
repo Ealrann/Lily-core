@@ -1,15 +1,15 @@
-package org.sheepy.common.api.inference;
+package org.sheepy.lily.core.api.inference;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.sheepy.common.api.adapter.IAutoAdapter;
-import org.sheepy.common.api.adapter.impl.AbstractStatefullAdapter;
-import org.sheepy.common.api.inference.IInferenceAdapter.INotificationListener;
-import org.sheepy.common.model.inference.IInferenceObject;
-import org.sheepy.common.model.inference.LNotification;
-import org.sheepy.common.model.inference.ParameteredNotification;
-import org.sheepy.common.model.root.LObject;
-import org.sheepy.common.model.types.Parameter;
+import org.sheepy.lily.core.api.adapter.IAutoAdapter;
+import org.sheepy.lily.core.api.adapter.impl.AbstractStatefullAdapter;
+import org.sheepy.lily.core.api.inference.IInferenceAdapter.INotificationListener;
+import org.sheepy.lily.core.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.inference.LNotification;
+import org.sheepy.lily.core.model.inference.ParameteredNotification;
+import org.sheepy.lily.core.model.root.LObject;
+import org.sheepy.lily.core.model.types.Parameter;
 
 /**
  * Will redirect Notifications from a source to the target inferenceObject

@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.variable.provider;
+package org.sheepy.lily.core.model.variable.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,9 +26,9 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.sheepy.common.model.variable.VariablePackage;
+import org.sheepy.lily.core.model.variable.VariablePackage;
 
-import org.sheepy.common.model.variable.util.VariableAdapterFactory;
+import org.sheepy.lily.core.model.variable.util.VariableAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -89,7 +89,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.variable.ChainVariableResolver} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.variable.ChainVariableResolver} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -97,7 +97,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	protected ChainVariableResolverItemProvider chainVariableResolverItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.variable.ChainVariableResolver}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.variable.ChainVariableResolver}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -114,7 +114,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.variable.ChainResolver} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.variable.ChainResolver} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -122,7 +122,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	protected ChainResolverItemProvider chainResolverItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.variable.ChainResolver}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.variable.ChainResolver}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -139,7 +139,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.variable.DirectVariableResolver} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.variable.DirectVariableResolver} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -147,7 +147,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	protected DirectVariableResolverItemProvider directVariableResolverItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.variable.DirectVariableResolver}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.variable.DirectVariableResolver}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -164,7 +164,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.variable.BooleanChangeAction} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.variable.BooleanChangeAction} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -172,7 +172,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	protected BooleanChangeActionItemProvider booleanChangeActionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.variable.BooleanChangeAction}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.variable.BooleanChangeAction}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -189,7 +189,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.variable.VarChangeActionPkg} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.variable.VarChangeActionPkg} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -197,7 +197,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	protected VarChangeActionPkgItemProvider varChangeActionPkgItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.variable.VarChangeActionPkg}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.variable.VarChangeActionPkg}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

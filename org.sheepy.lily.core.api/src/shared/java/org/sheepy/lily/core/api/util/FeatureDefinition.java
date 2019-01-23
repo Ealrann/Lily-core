@@ -1,4 +1,4 @@
-package org.sheepy.common.api.util;
+package org.sheepy.lily.core.api.util;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;

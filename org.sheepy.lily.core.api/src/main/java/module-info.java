@@ -1,52 +1,52 @@
-import org.sheepy.common.api.adapter.IAdapter;
-import org.sheepy.common.api.adapter.IServiceAdapterFactory;
-import org.sheepy.common.api.application.IApplicationAdapter;
-import org.sheepy.common.api.cadence.IMainLoop;
-import org.sheepy.common.api.cadence.IStatistics;
-import org.sheepy.common.api.resource.CoreModelExtension;
-import org.sheepy.common.api.resource.IModelExtension;
-import org.sheepy.common.api.resource.IResourceLoader;
+import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.IServiceAdapterFactory;
+import org.sheepy.lily.core.api.application.IApplicationAdapter;
+import org.sheepy.lily.core.api.cadence.IMainLoop;
+import org.sheepy.lily.core.api.cadence.IStatistics;
+import org.sheepy.lily.core.api.resource.CoreModelExtension;
+import org.sheepy.lily.core.api.resource.IModelExtension;
+import org.sheepy.lily.core.api.resource.IResourceLoader;
 
-module org.sheepy.common.api
+module org.sheepy.lily.core.api
 {
 	requires transitive org.eclipse.emf.common;
 	requires transitive org.eclipse.emf.ecore;
 	requires transitive org.eclipse.emf.ecore.xmi;
 
-	exports org.sheepy.common.api.action;
-	exports org.sheepy.common.api.action.context;
-	exports org.sheepy.common.api.adapter;
-	exports org.sheepy.common.api.adapter.impl;
-	exports org.sheepy.common.api.application;
-	exports org.sheepy.common.api.cadence;
-	exports org.sheepy.common.api.engine;
-	exports org.sheepy.common.api.inference;
-	exports org.sheepy.common.api.input;
-	exports org.sheepy.common.api.input.event;
-	exports org.sheepy.common.api.resource;
-	exports org.sheepy.common.api.service;
-	exports org.sheepy.common.api.types;
-	exports org.sheepy.common.api.util;
-	exports org.sheepy.common.api.variable;
+	exports org.sheepy.lily.core.api.action;
+	exports org.sheepy.lily.core.api.action.context;
+	exports org.sheepy.lily.core.api.adapter;
+	exports org.sheepy.lily.core.api.adapter.impl;
+	exports org.sheepy.lily.core.api.application;
+	exports org.sheepy.lily.core.api.cadence;
+	exports org.sheepy.lily.core.api.engine;
+	exports org.sheepy.lily.core.api.inference;
+	exports org.sheepy.lily.core.api.input;
+	exports org.sheepy.lily.core.api.input.event;
+	exports org.sheepy.lily.core.api.resource;
+	exports org.sheepy.lily.core.api.service;
+	exports org.sheepy.lily.core.api.types;
+	exports org.sheepy.lily.core.api.util;
+	exports org.sheepy.lily.core.api.variable;
 
-	exports org.sheepy.common.model.action;
-	exports org.sheepy.common.model.action.impl;
-	exports org.sheepy.common.model.application;
-	exports org.sheepy.common.model.application.impl;
-	exports org.sheepy.common.model.inference;
-	exports org.sheepy.common.model.inference.impl;
-	exports org.sheepy.common.model.presentation;
-	exports org.sheepy.common.model.presentation.impl;
-	exports org.sheepy.common.model.resolver;
-	exports org.sheepy.common.model.resolver.impl;
-	exports org.sheepy.common.model.root;
-	exports org.sheepy.common.model.root.impl;
-	exports org.sheepy.common.model.types;
-	exports org.sheepy.common.model.types.impl;
-	exports org.sheepy.common.model.ui;
-	exports org.sheepy.common.model.ui.impl;
-	exports org.sheepy.common.model.variable;
-	exports org.sheepy.common.model.variable.impl;
+	exports org.sheepy.lily.core.model.action;
+	exports org.sheepy.lily.core.model.action.impl;
+	exports org.sheepy.lily.core.model.application;
+	exports org.sheepy.lily.core.model.application.impl;
+	exports org.sheepy.lily.core.model.inference;
+	exports org.sheepy.lily.core.model.inference.impl;
+	exports org.sheepy.lily.core.model.presentation;
+	exports org.sheepy.lily.core.model.presentation.impl;
+	exports org.sheepy.lily.core.model.resolver;
+	exports org.sheepy.lily.core.model.resolver.impl;
+	exports org.sheepy.lily.core.model.root;
+	exports org.sheepy.lily.core.model.root.impl;
+	exports org.sheepy.lily.core.model.types;
+	exports org.sheepy.lily.core.model.types.impl;
+	exports org.sheepy.lily.core.model.ui;
+	exports org.sheepy.lily.core.model.ui.impl;
+	exports org.sheepy.lily.core.model.variable;
+	exports org.sheepy.lily.core.model.variable.impl;
 
 	provides IModelExtension with CoreModelExtension;
 

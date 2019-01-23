@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.variable.impl;
+package org.sheepy.lily.core.model.variable.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -9,8 +9,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.sheepy.common.model.variable.ChainResolver;
-import org.sheepy.common.model.variable.VariablePackage;
+import org.sheepy.lily.core.model.variable.ChainResolver;
+import org.sheepy.lily.core.model.variable.VariablePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +20,7 @@ import org.sheepy.common.model.variable.VariablePackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.variable.impl.ChainResolverImpl#getVariableDefinition <em>Variable Definition</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.variable.impl.ChainResolverImpl#getVariableDefinition <em>Variable Definition</em>}</li>
  * </ul>
  *
  * @generated

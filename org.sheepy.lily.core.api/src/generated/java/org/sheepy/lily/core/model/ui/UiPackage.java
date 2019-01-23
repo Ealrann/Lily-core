@@ -1,13 +1,13 @@
 /**
  */
-package org.sheepy.common.model.ui;
+package org.sheepy.lily.core.model.ui;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.sheepy.common.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,9 +21,9 @@ import org.sheepy.common.model.presentation.PresentationPackage;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.ui.UiFactory
+ * @see org.sheepy.lily.core.model.ui.UiFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.common.model/src/generated/java' editDirectory='/org.sheepy.common.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' extensibleProviderFactory='true' childCreationExtenders='true' updateClasspath='false' basePackage='org.sheepy.common.model'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.lily.core.model/src/generated/java' editDirectory='/org.sheepy.lily.core.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' extensibleProviderFactory='true' childCreationExtenders='true' updateClasspath='false' basePackage='org.sheepy.lily.core.model'"
  * @generated
  */
 public interface UiPackage extends EPackage
@@ -42,7 +42,7 @@ public interface UiPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "org.sheepy.common.model.ui";
+	String eNS_URI = "org.sheepy.lily.core.model.ui";
 
 	/**
 	 * The package namespace name.
@@ -58,14 +58,14 @@ public interface UiPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	UiPackage eINSTANCE = org.sheepy.common.model.ui.impl.UiPackageImpl.init();
+	UiPackage eINSTANCE = org.sheepy.lily.core.model.ui.impl.UiPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.PanelImpl <em>Panel</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.PanelImpl <em>Panel</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.ui.impl.PanelImpl
-	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getPanel()
+	 * @see org.sheepy.lily.core.model.ui.impl.PanelImpl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getPanel()
 	 * @generated
 	 */
 	int PANEL = 0;
@@ -242,11 +242,11 @@ public interface UiPackage extends EPackage
 	int PANEL_OPERATION_COUNT = PresentationPackage.IPANEL_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.ui.IControl <em>IControl</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.IControl <em>IControl</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.ui.IControl
-	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getIControl()
+	 * @see org.sheepy.lily.core.model.ui.IControl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getIControl()
 	 * @generated
 	 */
 	int ICONTROL = 1;
@@ -324,11 +324,11 @@ public interface UiPackage extends EPackage
 	int ICONTROL_OPERATION_COUNT = PresentationPackage.IUI_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.ui.Widget <em>Widget</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.Widget <em>Widget</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.ui.Widget
-	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getWidget()
+	 * @see org.sheepy.lily.core.model.ui.Widget
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getWidget()
 	 * @generated
 	 */
 	int WIDGET = 2;
@@ -451,11 +451,11 @@ public interface UiPackage extends EPackage
 	int WIDGET_OPERATION_COUNT = ICONTROL_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.AbstractLabelImpl <em>Abstract Label</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.AbstractLabelImpl <em>Abstract Label</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.ui.impl.AbstractLabelImpl
-	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getAbstractLabel()
+	 * @see org.sheepy.lily.core.model.ui.impl.AbstractLabelImpl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getAbstractLabel()
 	 * @generated
 	 */
 	int ABSTRACT_LABEL = 3;
@@ -596,11 +596,11 @@ public interface UiPackage extends EPackage
 	int ABSTRACT_LABEL_OPERATION_COUNT = WIDGET_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.DynamicRowLayoutImpl <em>Dynamic Row Layout</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.DynamicRowLayoutImpl <em>Dynamic Row Layout</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.ui.impl.DynamicRowLayoutImpl
-	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getDynamicRowLayout()
+	 * @see org.sheepy.lily.core.model.ui.impl.DynamicRowLayoutImpl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getDynamicRowLayout()
 	 * @generated
 	 */
 	int DYNAMIC_ROW_LAYOUT = 4;
@@ -696,11 +696,11 @@ public interface UiPackage extends EPackage
 	int DYNAMIC_ROW_LAYOUT_OPERATION_COUNT = ICONTROL_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.VariableLabelImpl <em>Variable Label</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.VariableLabelImpl <em>Variable Label</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.ui.impl.VariableLabelImpl
-	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getVariableLabel()
+	 * @see org.sheepy.lily.core.model.ui.impl.VariableLabelImpl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getVariableLabel()
 	 * @generated
 	 */
 	int VARIABLE_LABEL = 5;
@@ -850,11 +850,11 @@ public interface UiPackage extends EPackage
 	int VARIABLE_LABEL_OPERATION_COUNT = ABSTRACT_LABEL_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.LabelImpl <em>Label</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.LabelImpl <em>Label</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.ui.impl.LabelImpl
-	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getLabel()
+	 * @see org.sheepy.lily.core.model.ui.impl.LabelImpl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getLabel()
 	 * @generated
 	 */
 	int LABEL = 6;
@@ -995,11 +995,11 @@ public interface UiPackage extends EPackage
 	int LABEL_OPERATION_COUNT = ABSTRACT_LABEL_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.SliderImpl <em>Slider</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.SliderImpl <em>Slider</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.ui.impl.SliderImpl
-	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getSlider()
+	 * @see org.sheepy.lily.core.model.ui.impl.SliderImpl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getSlider()
 	 * @generated
 	 */
 	int SLIDER = 7;
@@ -1158,11 +1158,11 @@ public interface UiPackage extends EPackage
 	int SLIDER_OPERATION_COUNT = WIDGET_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.TextFieldImpl <em>Text Field</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.TextFieldImpl <em>Text Field</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.ui.impl.TextFieldImpl
-	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getTextField()
+	 * @see org.sheepy.lily.core.model.ui.impl.TextFieldImpl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getTextField()
 	 * @generated
 	 */
 	int TEXT_FIELD = 8;
@@ -1294,11 +1294,11 @@ public interface UiPackage extends EPackage
 	int TEXT_FIELD_OPERATION_COUNT = WIDGET_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.AbstractButtonImpl <em>Abstract Button</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.AbstractButtonImpl <em>Abstract Button</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.ui.impl.AbstractButtonImpl
-	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getAbstractButton()
+	 * @see org.sheepy.lily.core.model.ui.impl.AbstractButtonImpl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getAbstractButton()
 	 * @generated
 	 */
 	int ABSTRACT_BUTTON = 9;
@@ -1430,11 +1430,11 @@ public interface UiPackage extends EPackage
 	int ABSTRACT_BUTTON_OPERATION_COUNT = WIDGET_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.ButtonImpl <em>Button</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.ButtonImpl <em>Button</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.ui.impl.ButtonImpl
-	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getButton()
+	 * @see org.sheepy.lily.core.model.ui.impl.ButtonImpl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getButton()
 	 * @generated
 	 */
 	int BUTTON = 10;
@@ -1611,11 +1611,11 @@ public interface UiPackage extends EPackage
 	int BUTTON_OPERATION_COUNT = ABSTRACT_BUTTON_OPERATION_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.AbstractBooleanButtonImpl <em>Abstract Boolean Button</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.AbstractBooleanButtonImpl <em>Abstract Boolean Button</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.ui.impl.AbstractBooleanButtonImpl
-	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getAbstractBooleanButton()
+	 * @see org.sheepy.lily.core.model.ui.impl.AbstractBooleanButtonImpl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getAbstractBooleanButton()
 	 * @generated
 	 */
 	int ABSTRACT_BOOLEAN_BUTTON = 11;
@@ -1765,11 +1765,11 @@ public interface UiPackage extends EPackage
 	int ABSTRACT_BOOLEAN_BUTTON_OPERATION_COUNT = ABSTRACT_BUTTON_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.BooleanButtonImpl <em>Boolean Button</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.BooleanButtonImpl <em>Boolean Button</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.ui.impl.BooleanButtonImpl
-	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getBooleanButton()
+	 * @see org.sheepy.lily.core.model.ui.impl.BooleanButtonImpl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getBooleanButton()
 	 * @generated
 	 */
 	int BOOLEAN_BUTTON = 12;
@@ -1928,11 +1928,11 @@ public interface UiPackage extends EPackage
 	int BOOLEAN_BUTTON_OPERATION_COUNT = ABSTRACT_BOOLEAN_BUTTON_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.ui.impl.BooleanActionButtonImpl <em>Boolean Action Button</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.BooleanActionButtonImpl <em>Boolean Action Button</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.ui.impl.BooleanActionButtonImpl
-	 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getBooleanActionButton()
+	 * @see org.sheepy.lily.core.model.ui.impl.BooleanActionButtonImpl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getBooleanActionButton()
 	 * @generated
 	 */
 	int BOOLEAN_ACTION_BUTTON = 13;
@@ -2101,424 +2101,424 @@ public interface UiPackage extends EPackage
 
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.Panel <em>Panel</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.Panel <em>Panel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Panel</em>'.
-	 * @see org.sheepy.common.model.ui.Panel
+	 * @see org.sheepy.lily.core.model.ui.Panel
 	 * @generated
 	 */
 	EClass getPanel();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.sheepy.common.model.ui.Panel#getControls <em>Controls</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.ui.Panel#getControls <em>Controls</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Controls</em>'.
-	 * @see org.sheepy.common.model.ui.Panel#getControls()
+	 * @see org.sheepy.lily.core.model.ui.Panel#getControls()
 	 * @see #getPanel()
 	 * @generated
 	 */
 	EReference getPanel_Controls();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.Panel#isShowTitle <em>Show Title</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.Panel#isShowTitle <em>Show Title</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Show Title</em>'.
-	 * @see org.sheepy.common.model.ui.Panel#isShowTitle()
+	 * @see org.sheepy.lily.core.model.ui.Panel#isShowTitle()
 	 * @see #getPanel()
 	 * @generated
 	 */
 	EAttribute getPanel_ShowTitle();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.Panel#isMinimizable <em>Minimizable</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.Panel#isMinimizable <em>Minimizable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Minimizable</em>'.
-	 * @see org.sheepy.common.model.ui.Panel#isMinimizable()
+	 * @see org.sheepy.lily.core.model.ui.Panel#isMinimizable()
 	 * @see #getPanel()
 	 * @generated
 	 */
 	EAttribute getPanel_Minimizable();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.Panel#isMovable <em>Movable</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.Panel#isMovable <em>Movable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Movable</em>'.
-	 * @see org.sheepy.common.model.ui.Panel#isMovable()
+	 * @see org.sheepy.lily.core.model.ui.Panel#isMovable()
 	 * @see #getPanel()
 	 * @generated
 	 */
 	EAttribute getPanel_Movable();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.Panel#isMinimized <em>Minimized</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.Panel#isMinimized <em>Minimized</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Minimized</em>'.
-	 * @see org.sheepy.common.model.ui.Panel#isMinimized()
+	 * @see org.sheepy.lily.core.model.ui.Panel#isMinimized()
 	 * @see #getPanel()
 	 * @generated
 	 */
 	EAttribute getPanel_Minimized();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.IControl <em>IControl</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.IControl <em>IControl</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>IControl</em>'.
-	 * @see org.sheepy.common.model.ui.IControl
+	 * @see org.sheepy.lily.core.model.ui.IControl
 	 * @generated
 	 */
 	EClass getIControl();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.Widget <em>Widget</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.Widget <em>Widget</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Widget</em>'.
-	 * @see org.sheepy.common.model.ui.Widget
+	 * @see org.sheepy.lily.core.model.ui.Widget
 	 * @generated
 	 */
 	EClass getWidget();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.AbstractLabel <em>Abstract Label</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.AbstractLabel <em>Abstract Label</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Abstract Label</em>'.
-	 * @see org.sheepy.common.model.ui.AbstractLabel
+	 * @see org.sheepy.lily.core.model.ui.AbstractLabel
 	 * @generated
 	 */
 	EClass getAbstractLabel();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.AbstractLabel#getText <em>Text</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.AbstractLabel#getText <em>Text</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Text</em>'.
-	 * @see org.sheepy.common.model.ui.AbstractLabel#getText()
+	 * @see org.sheepy.lily.core.model.ui.AbstractLabel#getText()
 	 * @see #getAbstractLabel()
 	 * @generated
 	 */
 	EAttribute getAbstractLabel_Text();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.AbstractLabel#getFontScale <em>Font Scale</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.AbstractLabel#getFontScale <em>Font Scale</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Font Scale</em>'.
-	 * @see org.sheepy.common.model.ui.AbstractLabel#getFontScale()
+	 * @see org.sheepy.lily.core.model.ui.AbstractLabel#getFontScale()
 	 * @see #getAbstractLabel()
 	 * @generated
 	 */
 	EAttribute getAbstractLabel_FontScale();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.DynamicRowLayout <em>Dynamic Row Layout</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.DynamicRowLayout <em>Dynamic Row Layout</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Dynamic Row Layout</em>'.
-	 * @see org.sheepy.common.model.ui.DynamicRowLayout
+	 * @see org.sheepy.lily.core.model.ui.DynamicRowLayout
 	 * @generated
 	 */
 	EClass getDynamicRowLayout();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.DynamicRowLayout#getHeight <em>Height</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.DynamicRowLayout#getHeight <em>Height</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Height</em>'.
-	 * @see org.sheepy.common.model.ui.DynamicRowLayout#getHeight()
+	 * @see org.sheepy.lily.core.model.ui.DynamicRowLayout#getHeight()
 	 * @see #getDynamicRowLayout()
 	 * @generated
 	 */
 	EAttribute getDynamicRowLayout_Height();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.DynamicRowLayout#getColumnCount <em>Column Count</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.DynamicRowLayout#getColumnCount <em>Column Count</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Column Count</em>'.
-	 * @see org.sheepy.common.model.ui.DynamicRowLayout#getColumnCount()
+	 * @see org.sheepy.lily.core.model.ui.DynamicRowLayout#getColumnCount()
 	 * @see #getDynamicRowLayout()
 	 * @generated
 	 */
 	EAttribute getDynamicRowLayout_ColumnCount();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.VariableLabel <em>Variable Label</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.VariableLabel <em>Variable Label</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Variable Label</em>'.
-	 * @see org.sheepy.common.model.ui.VariableLabel
+	 * @see org.sheepy.lily.core.model.ui.VariableLabel
 	 * @generated
 	 */
 	EClass getVariableLabel();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.sheepy.common.model.ui.VariableLabel#getVariableResolver <em>Variable Resolver</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.ui.VariableLabel#getVariableResolver <em>Variable Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Variable Resolver</em>'.
-	 * @see org.sheepy.common.model.ui.VariableLabel#getVariableResolver()
+	 * @see org.sheepy.lily.core.model.ui.VariableLabel#getVariableResolver()
 	 * @see #getVariableLabel()
 	 * @generated
 	 */
 	EReference getVariableLabel_VariableResolver();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.Label <em>Label</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.Label <em>Label</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Label</em>'.
-	 * @see org.sheepy.common.model.ui.Label
+	 * @see org.sheepy.lily.core.model.ui.Label
 	 * @generated
 	 */
 	EClass getLabel();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.Slider <em>Slider</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.Slider <em>Slider</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Slider</em>'.
-	 * @see org.sheepy.common.model.ui.Slider
+	 * @see org.sheepy.lily.core.model.ui.Slider
 	 * @generated
 	 */
 	EClass getSlider();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.Slider#getMinValue <em>Min Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.Slider#getMinValue <em>Min Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Min Value</em>'.
-	 * @see org.sheepy.common.model.ui.Slider#getMinValue()
+	 * @see org.sheepy.lily.core.model.ui.Slider#getMinValue()
 	 * @see #getSlider()
 	 * @generated
 	 */
 	EAttribute getSlider_MinValue();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.Slider#getMaxValue <em>Max Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.Slider#getMaxValue <em>Max Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Max Value</em>'.
-	 * @see org.sheepy.common.model.ui.Slider#getMaxValue()
+	 * @see org.sheepy.lily.core.model.ui.Slider#getMaxValue()
 	 * @see #getSlider()
 	 * @generated
 	 */
 	EAttribute getSlider_MaxValue();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.Slider#getStep <em>Step</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.Slider#getStep <em>Step</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Step</em>'.
-	 * @see org.sheepy.common.model.ui.Slider#getStep()
+	 * @see org.sheepy.lily.core.model.ui.Slider#getStep()
 	 * @see #getSlider()
 	 * @generated
 	 */
 	EAttribute getSlider_Step();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.sheepy.common.model.ui.Slider#getVariableResolver <em>Variable Resolver</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.ui.Slider#getVariableResolver <em>Variable Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Variable Resolver</em>'.
-	 * @see org.sheepy.common.model.ui.Slider#getVariableResolver()
+	 * @see org.sheepy.lily.core.model.ui.Slider#getVariableResolver()
 	 * @see #getSlider()
 	 * @generated
 	 */
 	EReference getSlider_VariableResolver();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.TextField <em>Text Field</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.TextField <em>Text Field</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Text Field</em>'.
-	 * @see org.sheepy.common.model.ui.TextField
+	 * @see org.sheepy.lily.core.model.ui.TextField
 	 * @generated
 	 */
 	EClass getTextField();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.sheepy.common.model.ui.TextField#getVariableResolver <em>Variable Resolver</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.ui.TextField#getVariableResolver <em>Variable Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Variable Resolver</em>'.
-	 * @see org.sheepy.common.model.ui.TextField#getVariableResolver()
+	 * @see org.sheepy.lily.core.model.ui.TextField#getVariableResolver()
 	 * @see #getTextField()
 	 * @generated
 	 */
 	EReference getTextField_VariableResolver();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.AbstractButton <em>Abstract Button</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.AbstractButton <em>Abstract Button</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Abstract Button</em>'.
-	 * @see org.sheepy.common.model.ui.AbstractButton
+	 * @see org.sheepy.lily.core.model.ui.AbstractButton
 	 * @generated
 	 */
 	EClass getAbstractButton();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.AbstractButton#getText <em>Text</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.AbstractButton#getText <em>Text</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Text</em>'.
-	 * @see org.sheepy.common.model.ui.AbstractButton#getText()
+	 * @see org.sheepy.lily.core.model.ui.AbstractButton#getText()
 	 * @see #getAbstractButton()
 	 * @generated
 	 */
 	EAttribute getAbstractButton_Text();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.Button <em>Button</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.Button <em>Button</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Button</em>'.
-	 * @see org.sheepy.common.model.ui.Button
+	 * @see org.sheepy.lily.core.model.ui.Button
 	 * @generated
 	 */
 	EClass getButton();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.Button#getShortcut <em>Shortcut</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.Button#getShortcut <em>Shortcut</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Shortcut</em>'.
-	 * @see org.sheepy.common.model.ui.Button#getShortcut()
+	 * @see org.sheepy.lily.core.model.ui.Button#getShortcut()
 	 * @see #getButton()
 	 * @generated
 	 */
 	EAttribute getButton_Shortcut();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.Button#getState <em>State</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.Button#getState <em>State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>State</em>'.
-	 * @see org.sheepy.common.model.ui.Button#getState()
+	 * @see org.sheepy.lily.core.model.ui.Button#getState()
 	 * @see #getButton()
 	 * @generated
 	 */
 	EAttribute getButton_State();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.sheepy.common.model.ui.Button#getActions <em>Actions</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.ui.Button#getActions <em>Actions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Actions</em>'.
-	 * @see org.sheepy.common.model.ui.Button#getActions()
+	 * @see org.sheepy.lily.core.model.ui.Button#getActions()
 	 * @see #getButton()
 	 * @generated
 	 */
 	EReference getButton_Actions();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.common.model.ui.Button#lActions() <em>LActions</em>}' operation.
+	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.ui.Button#lActions() <em>LActions</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>LActions</em>' operation.
-	 * @see org.sheepy.common.model.ui.Button#lActions()
+	 * @see org.sheepy.lily.core.model.ui.Button#lActions()
 	 * @generated
 	 */
 	EOperation getButton__LActions();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.common.model.ui.Button#getExecutor() <em>Get Executor</em>}' operation.
+	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.ui.Button#getExecutor() <em>Get Executor</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Executor</em>' operation.
-	 * @see org.sheepy.common.model.ui.Button#getExecutor()
+	 * @see org.sheepy.lily.core.model.ui.Button#getExecutor()
 	 * @generated
 	 */
 	EOperation getButton__GetExecutor();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.AbstractBooleanButton <em>Abstract Boolean Button</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.AbstractBooleanButton <em>Abstract Boolean Button</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Abstract Boolean Button</em>'.
-	 * @see org.sheepy.common.model.ui.AbstractBooleanButton
+	 * @see org.sheepy.lily.core.model.ui.AbstractBooleanButton
 	 * @generated
 	 */
 	EClass getAbstractBooleanButton();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.AbstractBooleanButton#getTextWhenTrue <em>Text When True</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.AbstractBooleanButton#getTextWhenTrue <em>Text When True</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Text When True</em>'.
-	 * @see org.sheepy.common.model.ui.AbstractBooleanButton#getTextWhenTrue()
+	 * @see org.sheepy.lily.core.model.ui.AbstractBooleanButton#getTextWhenTrue()
 	 * @see #getAbstractBooleanButton()
 	 * @generated
 	 */
 	EAttribute getAbstractBooleanButton_TextWhenTrue();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.ui.AbstractBooleanButton#getTextWhenFalse <em>Text When False</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.AbstractBooleanButton#getTextWhenFalse <em>Text When False</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Text When False</em>'.
-	 * @see org.sheepy.common.model.ui.AbstractBooleanButton#getTextWhenFalse()
+	 * @see org.sheepy.lily.core.model.ui.AbstractBooleanButton#getTextWhenFalse()
 	 * @see #getAbstractBooleanButton()
 	 * @generated
 	 */
 	EAttribute getAbstractBooleanButton_TextWhenFalse();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.BooleanButton <em>Boolean Button</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.BooleanButton <em>Boolean Button</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Boolean Button</em>'.
-	 * @see org.sheepy.common.model.ui.BooleanButton
+	 * @see org.sheepy.lily.core.model.ui.BooleanButton
 	 * @generated
 	 */
 	EClass getBooleanButton();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.sheepy.common.model.ui.BooleanButton#getVariableResolver <em>Variable Resolver</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.ui.BooleanButton#getVariableResolver <em>Variable Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Variable Resolver</em>'.
-	 * @see org.sheepy.common.model.ui.BooleanButton#getVariableResolver()
+	 * @see org.sheepy.lily.core.model.ui.BooleanButton#getVariableResolver()
 	 * @see #getBooleanButton()
 	 * @generated
 	 */
 	EReference getBooleanButton_VariableResolver();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.ui.BooleanActionButton <em>Boolean Action Button</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.BooleanActionButton <em>Boolean Action Button</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Boolean Action Button</em>'.
-	 * @see org.sheepy.common.model.ui.BooleanActionButton
+	 * @see org.sheepy.lily.core.model.ui.BooleanActionButton
 	 * @generated
 	 */
 	EClass getBooleanActionButton();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.sheepy.common.model.ui.BooleanActionButton#getActionWhenTrue <em>Action When True</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.ui.BooleanActionButton#getActionWhenTrue <em>Action When True</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Action When True</em>'.
-	 * @see org.sheepy.common.model.ui.BooleanActionButton#getActionWhenTrue()
+	 * @see org.sheepy.lily.core.model.ui.BooleanActionButton#getActionWhenTrue()
 	 * @see #getBooleanActionButton()
 	 * @generated
 	 */
 	EReference getBooleanActionButton_ActionWhenTrue();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.sheepy.common.model.ui.BooleanActionButton#getActionWhenFalse <em>Action When False</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.ui.BooleanActionButton#getActionWhenFalse <em>Action When False</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Action When False</em>'.
-	 * @see org.sheepy.common.model.ui.BooleanActionButton#getActionWhenFalse()
+	 * @see org.sheepy.lily.core.model.ui.BooleanActionButton#getActionWhenFalse()
 	 * @see #getBooleanActionButton()
 	 * @generated
 	 */
@@ -2549,11 +2549,11 @@ public interface UiPackage extends EPackage
 	interface Literals
 	{
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.PanelImpl <em>Panel</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.PanelImpl <em>Panel</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.ui.impl.PanelImpl
-		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getPanel()
+		 * @see org.sheepy.lily.core.model.ui.impl.PanelImpl
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getPanel()
 		 * @generated
 		 */
 		EClass PANEL = eINSTANCE.getPanel();
@@ -2599,31 +2599,31 @@ public interface UiPackage extends EPackage
 		EAttribute PANEL__MINIMIZED = eINSTANCE.getPanel_Minimized();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.ui.IControl <em>IControl</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.IControl <em>IControl</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.ui.IControl
-		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getIControl()
+		 * @see org.sheepy.lily.core.model.ui.IControl
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getIControl()
 		 * @generated
 		 */
 		EClass ICONTROL = eINSTANCE.getIControl();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.ui.Widget <em>Widget</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.Widget <em>Widget</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.ui.Widget
-		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getWidget()
+		 * @see org.sheepy.lily.core.model.ui.Widget
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getWidget()
 		 * @generated
 		 */
 		EClass WIDGET = eINSTANCE.getWidget();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.AbstractLabelImpl <em>Abstract Label</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.AbstractLabelImpl <em>Abstract Label</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.ui.impl.AbstractLabelImpl
-		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getAbstractLabel()
+		 * @see org.sheepy.lily.core.model.ui.impl.AbstractLabelImpl
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getAbstractLabel()
 		 * @generated
 		 */
 		EClass ABSTRACT_LABEL = eINSTANCE.getAbstractLabel();
@@ -2645,11 +2645,11 @@ public interface UiPackage extends EPackage
 		EAttribute ABSTRACT_LABEL__FONT_SCALE = eINSTANCE.getAbstractLabel_FontScale();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.DynamicRowLayoutImpl <em>Dynamic Row Layout</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.DynamicRowLayoutImpl <em>Dynamic Row Layout</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.ui.impl.DynamicRowLayoutImpl
-		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getDynamicRowLayout()
+		 * @see org.sheepy.lily.core.model.ui.impl.DynamicRowLayoutImpl
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getDynamicRowLayout()
 		 * @generated
 		 */
 		EClass DYNAMIC_ROW_LAYOUT = eINSTANCE.getDynamicRowLayout();
@@ -2671,11 +2671,11 @@ public interface UiPackage extends EPackage
 		EAttribute DYNAMIC_ROW_LAYOUT__COLUMN_COUNT = eINSTANCE.getDynamicRowLayout_ColumnCount();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.VariableLabelImpl <em>Variable Label</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.VariableLabelImpl <em>Variable Label</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.ui.impl.VariableLabelImpl
-		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getVariableLabel()
+		 * @see org.sheepy.lily.core.model.ui.impl.VariableLabelImpl
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getVariableLabel()
 		 * @generated
 		 */
 		EClass VARIABLE_LABEL = eINSTANCE.getVariableLabel();
@@ -2689,21 +2689,21 @@ public interface UiPackage extends EPackage
 		EReference VARIABLE_LABEL__VARIABLE_RESOLVER = eINSTANCE.getVariableLabel_VariableResolver();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.LabelImpl <em>Label</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.LabelImpl <em>Label</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.ui.impl.LabelImpl
-		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getLabel()
+		 * @see org.sheepy.lily.core.model.ui.impl.LabelImpl
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getLabel()
 		 * @generated
 		 */
 		EClass LABEL = eINSTANCE.getLabel();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.SliderImpl <em>Slider</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.SliderImpl <em>Slider</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.ui.impl.SliderImpl
-		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getSlider()
+		 * @see org.sheepy.lily.core.model.ui.impl.SliderImpl
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getSlider()
 		 * @generated
 		 */
 		EClass SLIDER = eINSTANCE.getSlider();
@@ -2741,11 +2741,11 @@ public interface UiPackage extends EPackage
 		EReference SLIDER__VARIABLE_RESOLVER = eINSTANCE.getSlider_VariableResolver();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.TextFieldImpl <em>Text Field</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.TextFieldImpl <em>Text Field</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.ui.impl.TextFieldImpl
-		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getTextField()
+		 * @see org.sheepy.lily.core.model.ui.impl.TextFieldImpl
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getTextField()
 		 * @generated
 		 */
 		EClass TEXT_FIELD = eINSTANCE.getTextField();
@@ -2759,11 +2759,11 @@ public interface UiPackage extends EPackage
 		EReference TEXT_FIELD__VARIABLE_RESOLVER = eINSTANCE.getTextField_VariableResolver();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.AbstractButtonImpl <em>Abstract Button</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.AbstractButtonImpl <em>Abstract Button</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.ui.impl.AbstractButtonImpl
-		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getAbstractButton()
+		 * @see org.sheepy.lily.core.model.ui.impl.AbstractButtonImpl
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getAbstractButton()
 		 * @generated
 		 */
 		EClass ABSTRACT_BUTTON = eINSTANCE.getAbstractButton();
@@ -2777,11 +2777,11 @@ public interface UiPackage extends EPackage
 		EAttribute ABSTRACT_BUTTON__TEXT = eINSTANCE.getAbstractButton_Text();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.ButtonImpl <em>Button</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.ButtonImpl <em>Button</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.ui.impl.ButtonImpl
-		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getButton()
+		 * @see org.sheepy.lily.core.model.ui.impl.ButtonImpl
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getButton()
 		 * @generated
 		 */
 		EClass BUTTON = eINSTANCE.getButton();
@@ -2827,11 +2827,11 @@ public interface UiPackage extends EPackage
 		EOperation BUTTON___GET_EXECUTOR = eINSTANCE.getButton__GetExecutor();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.AbstractBooleanButtonImpl <em>Abstract Boolean Button</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.AbstractBooleanButtonImpl <em>Abstract Boolean Button</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.ui.impl.AbstractBooleanButtonImpl
-		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getAbstractBooleanButton()
+		 * @see org.sheepy.lily.core.model.ui.impl.AbstractBooleanButtonImpl
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getAbstractBooleanButton()
 		 * @generated
 		 */
 		EClass ABSTRACT_BOOLEAN_BUTTON = eINSTANCE.getAbstractBooleanButton();
@@ -2853,11 +2853,11 @@ public interface UiPackage extends EPackage
 		EAttribute ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE = eINSTANCE.getAbstractBooleanButton_TextWhenFalse();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.BooleanButtonImpl <em>Boolean Button</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.BooleanButtonImpl <em>Boolean Button</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.ui.impl.BooleanButtonImpl
-		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getBooleanButton()
+		 * @see org.sheepy.lily.core.model.ui.impl.BooleanButtonImpl
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getBooleanButton()
 		 * @generated
 		 */
 		EClass BOOLEAN_BUTTON = eINSTANCE.getBooleanButton();
@@ -2871,11 +2871,11 @@ public interface UiPackage extends EPackage
 		EReference BOOLEAN_BUTTON__VARIABLE_RESOLVER = eINSTANCE.getBooleanButton_VariableResolver();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.ui.impl.BooleanActionButtonImpl <em>Boolean Action Button</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.BooleanActionButtonImpl <em>Boolean Action Button</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.ui.impl.BooleanActionButtonImpl
-		 * @see org.sheepy.common.model.ui.impl.UiPackageImpl#getBooleanActionButton()
+		 * @see org.sheepy.lily.core.model.ui.impl.BooleanActionButtonImpl
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getBooleanActionButton()
 		 * @generated
 		 */
 		EClass BOOLEAN_ACTION_BUTTON = eINSTANCE.getBooleanActionButton();

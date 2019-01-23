@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.resolver.util;
+package org.sheepy.lily.core.model.resolver.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -9,14 +9,14 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.sheepy.common.model.resolver.*;
+import org.sheepy.lily.core.model.resolver.*;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.resolver.ResolverPackage
+ * @see org.sheepy.lily.core.model.resolver.ResolverPackage
  * @generated
  */
 public class ResolverAdapterFactory extends AdapterFactoryImpl
@@ -112,13 +112,13 @@ public class ResolverAdapterFactory extends AdapterFactoryImpl
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.resolver.ILObjectResolver <em>IL Object Resolver</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.resolver.ILObjectResolver <em>IL Object Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.resolver.ILObjectResolver
+	 * @see org.sheepy.lily.core.model.resolver.ILObjectResolver
 	 * @generated
 	 */
 	public Adapter createILObjectResolverAdapter()
@@ -127,13 +127,13 @@ public class ResolverAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.resolver.EReferenceResolver <em>EReference Resolver</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.resolver.EReferenceResolver <em>EReference Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.resolver.EReferenceResolver
+	 * @see org.sheepy.lily.core.model.resolver.EReferenceResolver
 	 * @generated
 	 */
 	public Adapter createEReferenceResolverAdapter()
@@ -142,13 +142,13 @@ public class ResolverAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.resolver.ChainResolver <em>Chain Resolver</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.resolver.ChainResolver <em>Chain Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.resolver.ChainResolver
+	 * @see org.sheepy.lily.core.model.resolver.ChainResolver
 	 * @generated
 	 */
 	public Adapter createChainResolverAdapter()

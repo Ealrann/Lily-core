@@ -1,8 +1,8 @@
 /**
  */
-package org.sheepy.common.model.application;
+package org.sheepy.lily.core.model.application;
 
-import org.sheepy.common.model.root.LObject;
+import org.sheepy.lily.core.model.root.LObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -10,7 +10,7 @@ import org.sheepy.common.model.root.LObject;
  * <!-- end-user-doc -->
  *
  *
- * @see org.sheepy.common.model.application.ApplicationPackage#getIView()
+ * @see org.sheepy.lily.core.model.application.ApplicationPackage#getIView()
  * @model interface="true" abstract="true"
  * @generated
  */

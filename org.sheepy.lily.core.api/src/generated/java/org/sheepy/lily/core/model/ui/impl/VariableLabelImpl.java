@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui.impl;
+package org.sheepy.lily.core.model.ui.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -10,9 +10,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.sheepy.common.model.ui.UiPackage;
-import org.sheepy.common.model.ui.VariableLabel;
-import org.sheepy.common.model.variable.IVariableResolver;
+import org.sheepy.lily.core.model.ui.UiPackage;
+import org.sheepy.lily.core.model.ui.VariableLabel;
+import org.sheepy.lily.core.model.variable.IVariableResolver;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +22,7 @@ import org.sheepy.common.model.variable.IVariableResolver;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.ui.impl.VariableLabelImpl#getVariableResolver <em>Variable Resolver</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.VariableLabelImpl#getVariableResolver <em>Variable Resolver</em>}</li>
  * </ul>
  *
  * @generated

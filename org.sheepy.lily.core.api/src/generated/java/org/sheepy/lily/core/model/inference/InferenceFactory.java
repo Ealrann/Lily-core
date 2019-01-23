@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.inference;
+package org.sheepy.lily.core.model.inference;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.inference.InferencePackage
+ * @see org.sheepy.lily.core.model.inference.InferencePackage
  * @generated
  */
 public interface InferenceFactory extends EFactory
@@ -20,7 +20,7 @@ public interface InferenceFactory extends EFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	InferenceFactory eINSTANCE = org.sheepy.common.model.inference.impl.InferenceFactoryImpl.init();
+	InferenceFactory eINSTANCE = org.sheepy.lily.core.model.inference.impl.InferenceFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>LRule</em>'.

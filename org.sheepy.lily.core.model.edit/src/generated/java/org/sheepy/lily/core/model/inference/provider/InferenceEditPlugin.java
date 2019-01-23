@@ -1,14 +1,14 @@
 /**
  */
-package org.sheepy.common.model.inference.provider;
+package org.sheepy.lily.core.model.inference.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
-import org.sheepy.common.model.action.provider.ActionEditPlugin;
+import org.sheepy.lily.core.model.action.provider.ActionEditPlugin;
 
-import org.sheepy.common.model.types.provider.TypesEditPlugin;
+import org.sheepy.lily.core.model.types.provider.TypesEditPlugin;
 
 /**
  * This is the central singleton for the Inference edit plugin.

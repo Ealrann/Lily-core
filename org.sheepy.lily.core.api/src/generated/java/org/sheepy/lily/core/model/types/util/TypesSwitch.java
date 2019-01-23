@@ -1,13 +1,13 @@
 /**
  */
-package org.sheepy.common.model.types.util;
+package org.sheepy.lily.core.model.types.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.sheepy.common.model.types.*;
+import org.sheepy.lily.core.model.types.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,7 +19,7 @@ import org.sheepy.common.model.types.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.types.TypesPackage
+ * @see org.sheepy.lily.core.model.types.TypesPackage
  * @generated
  */
 public class TypesSwitch<T1> extends Switch<T1>

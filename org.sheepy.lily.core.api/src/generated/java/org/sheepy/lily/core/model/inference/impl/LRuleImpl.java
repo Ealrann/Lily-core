@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.inference.impl;
+package org.sheepy.lily.core.model.inference.impl;
 
 import java.util.Collection;
 
@@ -18,12 +18,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.sheepy.common.model.action.Action;
+import org.sheepy.lily.core.model.action.Action;
 
-import org.sheepy.common.model.inference.AbstractNotification;
-import org.sheepy.common.model.inference.Condition;
-import org.sheepy.common.model.inference.InferencePackage;
-import org.sheepy.common.model.inference.LRule;
+import org.sheepy.lily.core.model.inference.AbstractNotification;
+import org.sheepy.lily.core.model.inference.Condition;
+import org.sheepy.lily.core.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.inference.LRule;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,9 +33,9 @@ import org.sheepy.common.model.inference.LRule;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.inference.impl.LRuleImpl#getNotification <em>Notification</em>}</li>
- *   <li>{@link org.sheepy.common.model.inference.impl.LRuleImpl#getAction <em>Action</em>}</li>
- *   <li>{@link org.sheepy.common.model.inference.impl.LRuleImpl#getConditions <em>Conditions</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.inference.impl.LRuleImpl#getNotification <em>Notification</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.inference.impl.LRuleImpl#getAction <em>Action</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.inference.impl.LRuleImpl#getConditions <em>Conditions</em>}</li>
  * </ul>
  *
  * @generated

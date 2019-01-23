@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.types.util;
+package org.sheepy.lily.core.model.types.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -9,14 +9,14 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.sheepy.common.model.types.*;
+import org.sheepy.lily.core.model.types.*;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.types.TypesPackage
+ * @see org.sheepy.lily.core.model.types.TypesPackage
  * @generated
  */
 public class TypesAdapterFactory extends AdapterFactoryImpl
@@ -137,13 +137,13 @@ public class TypesAdapterFactory extends AdapterFactoryImpl
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.types.LNamedElement <em>LNamed Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.types.LNamedElement <em>LNamed Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.types.LNamedElement
+	 * @see org.sheepy.lily.core.model.types.LNamedElement
 	 * @generated
 	 */
 	public Adapter createLNamedElementAdapter()
@@ -152,13 +152,13 @@ public class TypesAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.types.Parameter <em>Parameter</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.types.Parameter <em>Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.types.Parameter
+	 * @see org.sheepy.lily.core.model.types.Parameter
 	 * @generated
 	 */
 	public Adapter createParameterAdapter()
@@ -167,13 +167,13 @@ public class TypesAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.types.PositionParameter <em>Position Parameter</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.types.PositionParameter <em>Position Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.types.PositionParameter
+	 * @see org.sheepy.lily.core.model.types.PositionParameter
 	 * @generated
 	 */
 	public Adapter createPositionParameterAdapter()
@@ -182,13 +182,13 @@ public class TypesAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.types.PositionFParameter <em>Position FParameter</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.types.PositionFParameter <em>Position FParameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.types.PositionFParameter
+	 * @see org.sheepy.lily.core.model.types.PositionFParameter
 	 * @generated
 	 */
 	public Adapter createPositionFParameterAdapter()
@@ -197,13 +197,13 @@ public class TypesAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.types.NativeParameter <em>Native Parameter</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.types.NativeParameter <em>Native Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.types.NativeParameter
+	 * @see org.sheepy.lily.core.model.types.NativeParameter
 	 * @generated
 	 */
 	public Adapter createNativeParameterAdapter()
@@ -212,13 +212,13 @@ public class TypesAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.types.FloatParameter <em>Float Parameter</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.types.FloatParameter <em>Float Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.types.FloatParameter
+	 * @see org.sheepy.lily.core.model.types.FloatParameter
 	 * @generated
 	 */
 	public Adapter createFloatParameterAdapter()
@@ -227,13 +227,13 @@ public class TypesAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.types.StringParameter <em>String Parameter</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.types.StringParameter <em>String Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.types.StringParameter
+	 * @see org.sheepy.lily.core.model.types.StringParameter
 	 * @generated
 	 */
 	public Adapter createStringParameterAdapter()
@@ -242,13 +242,13 @@ public class TypesAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.types.BooleanParameter <em>Boolean Parameter</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.types.BooleanParameter <em>Boolean Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.types.BooleanParameter
+	 * @see org.sheepy.lily.core.model.types.BooleanParameter
 	 * @generated
 	 */
 	public Adapter createBooleanParameterAdapter()

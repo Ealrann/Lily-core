@@ -1,13 +1,13 @@
 /**
  */
-package org.sheepy.common.model.inference.impl;
+package org.sheepy.lily.core.model.inference.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.sheepy.common.model.inference.InferencePackage;
-import org.sheepy.common.model.inference.ParameteredNotification;
+import org.sheepy.lily.core.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.inference.ParameteredNotification;
 
-import org.sheepy.common.model.types.Parameter;
+import org.sheepy.lily.core.model.types.Parameter;
 
 /**
  * <!-- begin-user-doc -->

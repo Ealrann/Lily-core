@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.root.impl;
+package org.sheepy.lily.core.model.root.impl;
 
 import java.util.Collection;
 
@@ -16,14 +16,14 @@ import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-import org.sheepy.common.api.util.LTreeIterator;
-import org.sheepy.common.model.action.ActionPackage;
-import org.sheepy.common.model.inference.InferencePackage;
-import org.sheepy.common.model.root.LObject;
-import org.sheepy.common.model.root.RootFactory;
-import org.sheepy.common.model.root.RootPackage;
-import org.sheepy.common.model.root.XAction;
-import org.sheepy.common.model.types.TypesPackage;
+import org.sheepy.lily.core.api.util.LTreeIterator;
+import org.sheepy.lily.core.model.action.ActionPackage;
+import org.sheepy.lily.core.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.root.LObject;
+import org.sheepy.lily.core.model.root.RootFactory;
+import org.sheepy.lily.core.model.root.RootPackage;
+import org.sheepy.lily.core.model.root.XAction;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -79,7 +79,7 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.sheepy.common.model.root.RootPackage#eNS_URI
+	 * @see org.sheepy.lily.core.model.root.RootPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
@@ -366,9 +366,9 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 		addEParameter(op, this.getLObject(), "object", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		// Initialize data types
-		initEDataType(lContentListEDataType, EList.class, "LContentList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "org.eclipse.emf.common.util.EList<org.sheepy.common.model.root.LObject>");
+		initEDataType(lContentListEDataType, EList.class, "LContentList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "org.eclipse.emf.common.util.EList<org.sheepy.lily.core.model.root.LObject>");
 		initEDataType(lTreeIteratorEDataType, LTreeIterator.class, "LTreeIterator", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(lCollectionEDataType, Collection.class, "LCollection", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.Collection<org.sheepy.common.model.root.LObject>");
+		initEDataType(lCollectionEDataType, Collection.class, "LCollection", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.Collection<org.sheepy.lily.core.model.root.LObject>");
 
 		// Create resource
 		createResource(eNS_URI);

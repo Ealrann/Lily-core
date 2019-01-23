@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.variable.util;
+package org.sheepy.lily.core.model.variable.util;
 
 import java.util.Map;
 
@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 
-import org.sheepy.common.model.variable.VariablePackage;
+import org.sheepy.lily.core.model.variable.VariablePackage;
 
 /**
  * This class contains helper methods to serialize and deserialize XML documents

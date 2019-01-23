@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.variable;
+package org.sheepy.lily.core.model.variable;
 
 /**
  * <!-- begin-user-doc -->
@@ -8,7 +8,7 @@ package org.sheepy.common.model.variable;
  * <!-- end-user-doc -->
  *
  *
- * @see org.sheepy.common.model.variable.VariablePackage#getAbstractVariableResolver()
+ * @see org.sheepy.lily.core.model.variable.VariablePackage#getAbstractVariableResolver()
  * @model abstract="true"
  * @generated
  */

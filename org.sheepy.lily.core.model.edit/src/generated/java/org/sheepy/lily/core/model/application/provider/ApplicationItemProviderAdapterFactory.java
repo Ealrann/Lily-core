@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.application.provider;
+package org.sheepy.lily.core.model.application.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,9 +28,9 @@ import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-import org.sheepy.common.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.application.ApplicationPackage;
 
-import org.sheepy.common.model.application.util.ApplicationAdapterFactory;
+import org.sheepy.lily.core.model.application.util.ApplicationAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -91,7 +91,7 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.application.Application} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.application.Application} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -99,7 +99,7 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 	protected ApplicationItemProvider applicationItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.application.Application}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.application.Application}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

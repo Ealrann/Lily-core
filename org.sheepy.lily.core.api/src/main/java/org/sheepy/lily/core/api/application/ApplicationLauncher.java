@@ -1,6 +1,6 @@
-package org.sheepy.common.api.application;
+package org.sheepy.lily.core.api.application;
 
-import org.sheepy.common.model.application.Application;
+import org.sheepy.lily.core.model.application.Application;
 
 public class ApplicationLauncher
 {

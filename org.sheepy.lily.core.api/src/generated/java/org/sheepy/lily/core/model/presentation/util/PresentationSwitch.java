@@ -1,21 +1,21 @@
 /**
  */
-package org.sheepy.common.model.presentation.util;
+package org.sheepy.lily.core.model.presentation.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.sheepy.common.model.application.IView;
+import org.sheepy.lily.core.model.application.IView;
 
-import org.sheepy.common.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.inference.IInferenceObject;
 
-import org.sheepy.common.model.presentation.*;
+import org.sheepy.lily.core.model.presentation.*;
 
-import org.sheepy.common.model.root.LObject;
+import org.sheepy.lily.core.model.root.LObject;
 
-import org.sheepy.common.model.types.LNamedElement;
+import org.sheepy.lily.core.model.types.LNamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +27,7 @@ import org.sheepy.common.model.types.LNamedElement;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.presentation.PresentationPackage
+ * @see org.sheepy.lily.core.model.presentation.PresentationPackage
  * @generated
  */
 public class PresentationSwitch<T> extends Switch<T>

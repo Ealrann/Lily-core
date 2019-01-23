@@ -1,16 +1,16 @@
 /**
  */
-package org.sheepy.common.model.root.impl;
+package org.sheepy.lily.core.model.root.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.sheepy.common.model.action.impl.ActionImpl;
-import org.sheepy.common.model.root.LObject;
-import org.sheepy.common.model.root.RootPackage;
-import org.sheepy.common.model.root.XAction;
+import org.sheepy.lily.core.model.action.impl.ActionImpl;
+import org.sheepy.lily.core.model.root.LObject;
+import org.sheepy.lily.core.model.root.RootPackage;
+import org.sheepy.lily.core.model.root.XAction;
 
 /**
  * <!-- begin-user-doc -->

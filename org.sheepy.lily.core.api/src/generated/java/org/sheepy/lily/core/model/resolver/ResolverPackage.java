@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.resolver;
+package org.sheepy.lily.core.model.resolver;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -20,9 +20,9 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.resolver.ResolverFactory
+ * @see org.sheepy.lily.core.model.resolver.ResolverFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.common.model/src/generated/java' editDirectory='/org.sheepy.common.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' extensibleProviderFactory='true' childCreationExtenders='true' updateClasspath='false' basePackage='org.sheepy.common.model'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.lily.core.model/src/generated/java' editDirectory='/org.sheepy.lily.core.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' extensibleProviderFactory='true' childCreationExtenders='true' updateClasspath='false' basePackage='org.sheepy.lily.core.model'"
  * @generated
  */
 public interface ResolverPackage extends EPackage
@@ -41,7 +41,7 @@ public interface ResolverPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "org.sheepy.common.model.resolver";
+	String eNS_URI = "org.sheepy.lily.core.model.resolver";
 
 	/**
 	 * The package namespace name.
@@ -57,14 +57,14 @@ public interface ResolverPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ResolverPackage eINSTANCE = org.sheepy.common.model.resolver.impl.ResolverPackageImpl.init();
+	ResolverPackage eINSTANCE = org.sheepy.lily.core.model.resolver.impl.ResolverPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.resolver.ILObjectResolver <em>IL Object Resolver</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.resolver.ILObjectResolver <em>IL Object Resolver</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.resolver.ILObjectResolver
-	 * @see org.sheepy.common.model.resolver.impl.ResolverPackageImpl#getILObjectResolver()
+	 * @see org.sheepy.lily.core.model.resolver.ILObjectResolver
+	 * @see org.sheepy.lily.core.model.resolver.impl.ResolverPackageImpl#getILObjectResolver()
 	 * @generated
 	 */
 	int IL_OBJECT_RESOLVER = 0;
@@ -97,11 +97,11 @@ public interface ResolverPackage extends EPackage
 	int IL_OBJECT_RESOLVER_OPERATION_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.resolver.impl.EReferenceResolverImpl <em>EReference Resolver</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.resolver.impl.EReferenceResolverImpl <em>EReference Resolver</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.resolver.impl.EReferenceResolverImpl
-	 * @see org.sheepy.common.model.resolver.impl.ResolverPackageImpl#getEReferenceResolver()
+	 * @see org.sheepy.lily.core.model.resolver.impl.EReferenceResolverImpl
+	 * @see org.sheepy.lily.core.model.resolver.impl.ResolverPackageImpl#getEReferenceResolver()
 	 * @generated
 	 */
 	int EREFERENCE_RESOLVER = 1;
@@ -161,11 +161,11 @@ public interface ResolverPackage extends EPackage
 	int EREFERENCE_RESOLVER_OPERATION_COUNT = IL_OBJECT_RESOLVER_OPERATION_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.resolver.impl.ChainResolverImpl <em>Chain Resolver</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.resolver.impl.ChainResolverImpl <em>Chain Resolver</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.resolver.impl.ChainResolverImpl
-	 * @see org.sheepy.common.model.resolver.impl.ResolverPackageImpl#getChainResolver()
+	 * @see org.sheepy.lily.core.model.resolver.impl.ChainResolverImpl
+	 * @see org.sheepy.lily.core.model.resolver.impl.ResolverPackageImpl#getChainResolver()
 	 * @generated
 	 */
 	int CHAIN_RESOLVER = 2;
@@ -208,105 +208,105 @@ public interface ResolverPackage extends EPackage
 
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.resolver.ILObjectResolver <em>IL Object Resolver</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.resolver.ILObjectResolver <em>IL Object Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>IL Object Resolver</em>'.
-	 * @see org.sheepy.common.model.resolver.ILObjectResolver
+	 * @see org.sheepy.lily.core.model.resolver.ILObjectResolver
 	 * @generated
 	 */
 	EClass getILObjectResolver();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.common.model.resolver.ILObjectResolver#collectUnits(org.sheepy.common.model.root.LObject, java.util.Collection) <em>Collect Units</em>}' operation.
+	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.resolver.ILObjectResolver#collectUnits(org.sheepy.lily.core.model.root.LObject, java.util.Collection) <em>Collect Units</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Collect Units</em>' operation.
-	 * @see org.sheepy.common.model.resolver.ILObjectResolver#collectUnits(org.sheepy.common.model.root.LObject, java.util.Collection)
+	 * @see org.sheepy.lily.core.model.resolver.ILObjectResolver#collectUnits(org.sheepy.lily.core.model.root.LObject, java.util.Collection)
 	 * @generated
 	 */
 	EOperation getILObjectResolver__CollectUnits__LObject_Collection();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.resolver.EReferenceResolver <em>EReference Resolver</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.resolver.EReferenceResolver <em>EReference Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>EReference Resolver</em>'.
-	 * @see org.sheepy.common.model.resolver.EReferenceResolver
+	 * @see org.sheepy.lily.core.model.resolver.EReferenceResolver
 	 * @generated
 	 */
 	EClass getEReferenceResolver();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.resolver.EReferenceResolver#getReferenceName <em>Reference Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.resolver.EReferenceResolver#getReferenceName <em>Reference Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Reference Name</em>'.
-	 * @see org.sheepy.common.model.resolver.EReferenceResolver#getReferenceName()
+	 * @see org.sheepy.lily.core.model.resolver.EReferenceResolver#getReferenceName()
 	 * @see #getEReferenceResolver()
 	 * @generated
 	 */
 	EAttribute getEReferenceResolver_ReferenceName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.resolver.EReferenceResolver#getClassName <em>Class Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.resolver.EReferenceResolver#getClassName <em>Class Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Class Name</em>'.
-	 * @see org.sheepy.common.model.resolver.EReferenceResolver#getClassName()
+	 * @see org.sheepy.lily.core.model.resolver.EReferenceResolver#getClassName()
 	 * @see #getEReferenceResolver()
 	 * @generated
 	 */
 	EAttribute getEReferenceResolver_ClassName();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.sheepy.common.model.resolver.EReferenceResolver#getInternalReference <em>Internal Reference</em>}'.
+	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.resolver.EReferenceResolver#getInternalReference <em>Internal Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Internal Reference</em>'.
-	 * @see org.sheepy.common.model.resolver.EReferenceResolver#getInternalReference()
+	 * @see org.sheepy.lily.core.model.resolver.EReferenceResolver#getInternalReference()
 	 * @see #getEReferenceResolver()
 	 * @generated
 	 */
 	EReference getEReferenceResolver_InternalReference();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.common.model.resolver.EReferenceResolver#collectUnits(org.sheepy.common.model.root.LObject, java.util.Collection) <em>Collect Units</em>}' operation.
+	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.resolver.EReferenceResolver#collectUnits(org.sheepy.lily.core.model.root.LObject, java.util.Collection) <em>Collect Units</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Collect Units</em>' operation.
-	 * @see org.sheepy.common.model.resolver.EReferenceResolver#collectUnits(org.sheepy.common.model.root.LObject, java.util.Collection)
+	 * @see org.sheepy.lily.core.model.resolver.EReferenceResolver#collectUnits(org.sheepy.lily.core.model.root.LObject, java.util.Collection)
 	 * @generated
 	 */
 	EOperation getEReferenceResolver__CollectUnits__LObject_Collection();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.resolver.ChainResolver <em>Chain Resolver</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.resolver.ChainResolver <em>Chain Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Chain Resolver</em>'.
-	 * @see org.sheepy.common.model.resolver.ChainResolver
+	 * @see org.sheepy.lily.core.model.resolver.ChainResolver
 	 * @generated
 	 */
 	EClass getChainResolver();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.sheepy.common.model.resolver.ChainResolver#getResolvers <em>Resolvers</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.resolver.ChainResolver#getResolvers <em>Resolvers</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Resolvers</em>'.
-	 * @see org.sheepy.common.model.resolver.ChainResolver#getResolvers()
+	 * @see org.sheepy.lily.core.model.resolver.ChainResolver#getResolvers()
 	 * @see #getChainResolver()
 	 * @generated
 	 */
 	EReference getChainResolver_Resolvers();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.common.model.resolver.ChainResolver#collectUnits(org.sheepy.common.model.root.LObject, java.util.Collection) <em>Collect Units</em>}' operation.
+	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.resolver.ChainResolver#collectUnits(org.sheepy.lily.core.model.root.LObject, java.util.Collection) <em>Collect Units</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Collect Units</em>' operation.
-	 * @see org.sheepy.common.model.resolver.ChainResolver#collectUnits(org.sheepy.common.model.root.LObject, java.util.Collection)
+	 * @see org.sheepy.lily.core.model.resolver.ChainResolver#collectUnits(org.sheepy.lily.core.model.root.LObject, java.util.Collection)
 	 * @generated
 	 */
 	EOperation getChainResolver__CollectUnits__LObject_Collection();
@@ -336,11 +336,11 @@ public interface ResolverPackage extends EPackage
 	interface Literals
 	{
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.resolver.ILObjectResolver <em>IL Object Resolver</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.resolver.ILObjectResolver <em>IL Object Resolver</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.resolver.ILObjectResolver
-		 * @see org.sheepy.common.model.resolver.impl.ResolverPackageImpl#getILObjectResolver()
+		 * @see org.sheepy.lily.core.model.resolver.ILObjectResolver
+		 * @see org.sheepy.lily.core.model.resolver.impl.ResolverPackageImpl#getILObjectResolver()
 		 * @generated
 		 */
 		EClass IL_OBJECT_RESOLVER = eINSTANCE.getILObjectResolver();
@@ -354,11 +354,11 @@ public interface ResolverPackage extends EPackage
 		EOperation IL_OBJECT_RESOLVER___COLLECT_UNITS__LOBJECT_COLLECTION = eINSTANCE.getILObjectResolver__CollectUnits__LObject_Collection();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.resolver.impl.EReferenceResolverImpl <em>EReference Resolver</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.resolver.impl.EReferenceResolverImpl <em>EReference Resolver</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.resolver.impl.EReferenceResolverImpl
-		 * @see org.sheepy.common.model.resolver.impl.ResolverPackageImpl#getEReferenceResolver()
+		 * @see org.sheepy.lily.core.model.resolver.impl.EReferenceResolverImpl
+		 * @see org.sheepy.lily.core.model.resolver.impl.ResolverPackageImpl#getEReferenceResolver()
 		 * @generated
 		 */
 		EClass EREFERENCE_RESOLVER = eINSTANCE.getEReferenceResolver();
@@ -396,11 +396,11 @@ public interface ResolverPackage extends EPackage
 		EOperation EREFERENCE_RESOLVER___COLLECT_UNITS__LOBJECT_COLLECTION = eINSTANCE.getEReferenceResolver__CollectUnits__LObject_Collection();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.resolver.impl.ChainResolverImpl <em>Chain Resolver</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.resolver.impl.ChainResolverImpl <em>Chain Resolver</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.resolver.impl.ChainResolverImpl
-		 * @see org.sheepy.common.model.resolver.impl.ResolverPackageImpl#getChainResolver()
+		 * @see org.sheepy.lily.core.model.resolver.impl.ChainResolverImpl
+		 * @see org.sheepy.lily.core.model.resolver.impl.ResolverPackageImpl#getChainResolver()
 		 * @generated
 		 */
 		EClass CHAIN_RESOLVER = eINSTANCE.getChainResolver();

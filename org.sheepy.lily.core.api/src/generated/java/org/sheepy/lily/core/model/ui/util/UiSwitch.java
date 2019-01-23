@@ -1,21 +1,21 @@
 /**
  */
-package org.sheepy.common.model.ui.util;
+package org.sheepy.lily.core.model.ui.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.sheepy.common.model.inference.IInferenceObject;
-import org.sheepy.common.model.presentation.IPanel;
-import org.sheepy.common.model.presentation.IPositionElement;
-import org.sheepy.common.model.presentation.ISizedElement;
-import org.sheepy.common.model.presentation.IUIElement;
-import org.sheepy.common.model.root.LObject;
+import org.sheepy.lily.core.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.presentation.IPanel;
+import org.sheepy.lily.core.model.presentation.IPositionElement;
+import org.sheepy.lily.core.model.presentation.ISizedElement;
+import org.sheepy.lily.core.model.presentation.IUIElement;
+import org.sheepy.lily.core.model.root.LObject;
 
-import org.sheepy.common.model.types.LNamedElement;
-import org.sheepy.common.model.ui.*;
+import org.sheepy.lily.core.model.types.LNamedElement;
+import org.sheepy.lily.core.model.ui.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +27,7 @@ import org.sheepy.common.model.ui.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.ui.UiPackage
+ * @see org.sheepy.lily.core.model.ui.UiPackage
  * @generated
  */
 public class UiSwitch<T> extends Switch<T>

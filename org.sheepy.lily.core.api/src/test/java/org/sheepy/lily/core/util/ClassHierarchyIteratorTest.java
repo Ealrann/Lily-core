@@ -1,9 +1,9 @@
-package org.sheepy.common.util;
+package org.sheepy.lily.core.util;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import org.sheepy.common.api.util.ClassHierarchyIterator;
+import org.sheepy.lily.core.api.util.ClassHierarchyIterator;
 
 public class ClassHierarchyIteratorTest
 {

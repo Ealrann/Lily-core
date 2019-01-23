@@ -1,13 +1,13 @@
 /**
  */
-package org.sheepy.common.model.application;
+package org.sheepy.lily.core.model.application;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
-import org.sheepy.common.model.root.RootPackage;
+import org.sheepy.lily.core.model.root.RootPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,9 +21,9 @@ import org.sheepy.common.model.root.RootPackage;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.application.ApplicationFactory
+ * @see org.sheepy.lily.core.model.application.ApplicationFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.common.model/src/generated/java' editDirectory='/org.sheepy.common.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' extensibleProviderFactory='true' childCreationExtenders='true' updateClasspath='false' basePackage='org.sheepy.common.model'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.lily.core.model/src/generated/java' editDirectory='/org.sheepy.lily.core.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' extensibleProviderFactory='true' childCreationExtenders='true' updateClasspath='false' basePackage='org.sheepy.lily.core.model'"
  * @generated
  */
 public interface ApplicationPackage extends EPackage
@@ -42,7 +42,7 @@ public interface ApplicationPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "org.sheepy.common.model.application";
+	String eNS_URI = "org.sheepy.lily.core.model.application";
 
 	/**
 	 * The package namespace name.
@@ -58,14 +58,14 @@ public interface ApplicationPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ApplicationPackage eINSTANCE = org.sheepy.common.model.application.impl.ApplicationPackageImpl.init();
+	ApplicationPackage eINSTANCE = org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.application.impl.ApplicationImpl <em>Application</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl <em>Application</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.application.impl.ApplicationImpl
-	 * @see org.sheepy.common.model.application.impl.ApplicationPackageImpl#getApplication()
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationImpl
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getApplication()
 	 * @generated
 	 */
 	int APPLICATION = 0;
@@ -233,11 +233,11 @@ public interface ApplicationPackage extends EPackage
 	int APPLICATION_OPERATION_COUNT = RootPackage.LOBJECT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.application.IEngine <em>IEngine</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.IEngine <em>IEngine</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.application.IEngine
-	 * @see org.sheepy.common.model.application.impl.ApplicationPackageImpl#getIEngine()
+	 * @see org.sheepy.lily.core.model.application.IEngine
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIEngine()
 	 * @generated
 	 */
 	int IENGINE = 1;
@@ -315,11 +315,11 @@ public interface ApplicationPackage extends EPackage
 	int IENGINE_OPERATION_COUNT = RootPackage.LOBJECT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.application.IView <em>IView</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.IView <em>IView</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.application.IView
-	 * @see org.sheepy.common.model.application.impl.ApplicationPackageImpl#getIView()
+	 * @see org.sheepy.lily.core.model.application.IView
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIView()
 	 * @generated
 	 */
 	int IVIEW = 2;
@@ -398,141 +398,141 @@ public interface ApplicationPackage extends EPackage
 
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.application.Application <em>Application</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.Application <em>Application</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Application</em>'.
-	 * @see org.sheepy.common.model.application.Application
+	 * @see org.sheepy.lily.core.model.application.Application
 	 * @generated
 	 */
 	EClass getApplication();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.sheepy.common.model.application.Application#getViews <em>Views</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.application.Application#getViews <em>Views</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Views</em>'.
-	 * @see org.sheepy.common.model.application.Application#getViews()
+	 * @see org.sheepy.lily.core.model.application.Application#getViews()
 	 * @see #getApplication()
 	 * @generated
 	 */
 	EReference getApplication_Views();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.sheepy.common.model.application.Application#getEngines <em>Engines</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.application.Application#getEngines <em>Engines</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Engines</em>'.
-	 * @see org.sheepy.common.model.application.Application#getEngines()
+	 * @see org.sheepy.lily.core.model.application.Application#getEngines()
 	 * @see #getApplication()
 	 * @generated
 	 */
 	EReference getApplication_Engines();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.application.Application#isRun <em>Run</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Application#isRun <em>Run</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Run</em>'.
-	 * @see org.sheepy.common.model.application.Application#isRun()
+	 * @see org.sheepy.lily.core.model.application.Application#isRun()
 	 * @see #getApplication()
 	 * @generated
 	 */
 	EAttribute getApplication_Run();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.application.Application#isFullscreen <em>Fullscreen</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Application#isFullscreen <em>Fullscreen</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Fullscreen</em>'.
-	 * @see org.sheepy.common.model.application.Application#isFullscreen()
+	 * @see org.sheepy.lily.core.model.application.Application#isFullscreen()
 	 * @see #getApplication()
 	 * @generated
 	 */
 	EAttribute getApplication_Fullscreen();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.application.Application#isResizeable <em>Resizeable</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Application#isResizeable <em>Resizeable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Resizeable</em>'.
-	 * @see org.sheepy.common.model.application.Application#isResizeable()
+	 * @see org.sheepy.lily.core.model.application.Application#isResizeable()
 	 * @see #getApplication()
 	 * @generated
 	 */
 	EAttribute getApplication_Resizeable();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.application.Application#isDebug <em>Debug</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Application#isDebug <em>Debug</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Debug</em>'.
-	 * @see org.sheepy.common.model.application.Application#isDebug()
+	 * @see org.sheepy.lily.core.model.application.Application#isDebug()
 	 * @see #getApplication()
 	 * @generated
 	 */
 	EAttribute getApplication_Debug();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.application.Application#getTitle <em>Title</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Application#getTitle <em>Title</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Title</em>'.
-	 * @see org.sheepy.common.model.application.Application#getTitle()
+	 * @see org.sheepy.lily.core.model.application.Application#getTitle()
 	 * @see #getApplication()
 	 * @generated
 	 */
 	EAttribute getApplication_Title();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.application.Application#getSize <em>Size</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Application#getSize <em>Size</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Size</em>'.
-	 * @see org.sheepy.common.model.application.Application#getSize()
+	 * @see org.sheepy.lily.core.model.application.Application#getSize()
 	 * @see #getApplication()
 	 * @generated
 	 */
 	EAttribute getApplication_Size();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.sheepy.common.model.application.Application#getCurrentView <em>Current View</em>}'.
+	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.application.Application#getCurrentView <em>Current View</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Current View</em>'.
-	 * @see org.sheepy.common.model.application.Application#getCurrentView()
+	 * @see org.sheepy.lily.core.model.application.Application#getCurrentView()
 	 * @see #getApplication()
 	 * @generated
 	 */
 	EReference getApplication_CurrentView();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.application.Application#getCadenceInHz <em>Cadence In Hz</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Application#getCadenceInHz <em>Cadence In Hz</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Cadence In Hz</em>'.
-	 * @see org.sheepy.common.model.application.Application#getCadenceInHz()
+	 * @see org.sheepy.lily.core.model.application.Application#getCadenceInHz()
 	 * @see #getApplication()
 	 * @generated
 	 */
 	EAttribute getApplication_CadenceInHz();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.application.IEngine <em>IEngine</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.IEngine <em>IEngine</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>IEngine</em>'.
-	 * @see org.sheepy.common.model.application.IEngine
+	 * @see org.sheepy.lily.core.model.application.IEngine
 	 * @generated
 	 */
 	EClass getIEngine();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.application.IView <em>IView</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.IView <em>IView</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>IView</em>'.
-	 * @see org.sheepy.common.model.application.IView
+	 * @see org.sheepy.lily.core.model.application.IView
 	 * @generated
 	 */
 	EClass getIView();
@@ -562,11 +562,11 @@ public interface ApplicationPackage extends EPackage
 	interface Literals
 	{
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.application.impl.ApplicationImpl <em>Application</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl <em>Application</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.application.impl.ApplicationImpl
-		 * @see org.sheepy.common.model.application.impl.ApplicationPackageImpl#getApplication()
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationImpl
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getApplication()
 		 * @generated
 		 */
 		EClass APPLICATION = eINSTANCE.getApplication();
@@ -652,21 +652,21 @@ public interface ApplicationPackage extends EPackage
 		EAttribute APPLICATION__CADENCE_IN_HZ = eINSTANCE.getApplication_CadenceInHz();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.application.IEngine <em>IEngine</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.IEngine <em>IEngine</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.application.IEngine
-		 * @see org.sheepy.common.model.application.impl.ApplicationPackageImpl#getIEngine()
+		 * @see org.sheepy.lily.core.model.application.IEngine
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIEngine()
 		 * @generated
 		 */
 		EClass IENGINE = eINSTANCE.getIEngine();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.application.IView <em>IView</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.IView <em>IView</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.application.IView
-		 * @see org.sheepy.common.model.application.impl.ApplicationPackageImpl#getIView()
+		 * @see org.sheepy.lily.core.model.application.IView
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIView()
 		 * @generated
 		 */
 		EClass IVIEW = eINSTANCE.getIView();

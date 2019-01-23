@@ -1,4 +1,4 @@
-package org.sheepy.common.api.util;
+package org.sheepy.lily.core.api.util;
 
 import java.util.concurrent.TimeUnit;
 

@@ -1,4 +1,4 @@
-package org.sheepy.common.api.service;
+package org.sheepy.lily.core.api.service;
 
 public interface IService {
 

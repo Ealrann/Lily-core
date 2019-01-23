@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.inference.impl;
+package org.sheepy.lily.core.model.inference.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -18,10 +18,10 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.sheepy.common.model.inference.IInferenceObject;
-import org.sheepy.common.model.inference.InferencePackage;
-import org.sheepy.common.model.inference.Inferer;
-import org.sheepy.common.model.inference.LRule;
+import org.sheepy.lily.core.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.inference.Inferer;
+import org.sheepy.lily.core.model.inference.LRule;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,7 +31,7 @@ import org.sheepy.common.model.inference.LRule;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.inference.impl.InfererImpl#getRules <em>Rules</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.inference.impl.InfererImpl#getRules <em>Rules</em>}</li>
  * </ul>
  *
  * @generated

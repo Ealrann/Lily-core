@@ -1,4 +1,4 @@
-package org.sheepy.common.inference;
+package org.sheepy.lily.core.inference;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
-import org.sheepy.common.model.inference.AbstractNotification;
-import org.sheepy.common.model.inference.Inferer;
-import org.sheepy.common.model.inference.LRule;
+import org.sheepy.lily.core.model.inference.AbstractNotification;
+import org.sheepy.lily.core.model.inference.Inferer;
+import org.sheepy.lily.core.model.inference.LRule;
 
 /**
  * @author ealrann

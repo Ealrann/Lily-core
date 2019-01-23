@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.types.provider;
+package org.sheepy.lily.core.model.types.provider;
 
 
 import java.util.Collection;
@@ -22,11 +22,11 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.common.model.types.StringParameter;
-import org.sheepy.common.model.types.TypesPackage;
+import org.sheepy.lily.core.model.types.StringParameter;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.common.model.types.StringParameter} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.types.StringParameter} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

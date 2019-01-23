@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.presentation.provider;
+package org.sheepy.lily.core.model.presentation.provider;
 
 
 import java.util.Collection;
@@ -25,14 +25,14 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.common.model.presentation.PresentationFactory;
-import org.sheepy.common.model.presentation.PresentationPackage;
-import org.sheepy.common.model.presentation.TranparentUIView;
+import org.sheepy.lily.core.model.presentation.PresentationFactory;
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.presentation.TranparentUIView;
 
-import org.sheepy.common.model.root.LObject;
+import org.sheepy.lily.core.model.root.LObject;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.common.model.presentation.TranparentUIView} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.presentation.TranparentUIView} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

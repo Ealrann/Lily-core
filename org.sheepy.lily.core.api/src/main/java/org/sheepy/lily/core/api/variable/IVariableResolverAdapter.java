@@ -1,8 +1,8 @@
-package org.sheepy.common.api.variable;
+package org.sheepy.lily.core.api.variable;
 
-import org.sheepy.common.api.adapter.IAdapter;
-import org.sheepy.common.api.adapter.IServiceAdapterFactory;
-import org.sheepy.common.model.variable.IVariableResolver;
+import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.IServiceAdapterFactory;
+import org.sheepy.lily.core.model.variable.IVariableResolver;
 
 public interface IVariableResolverAdapter<T extends IVariableResolver> extends IAdapter
 {

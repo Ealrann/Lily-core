@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.variable.provider;
+package org.sheepy.lily.core.model.variable.provider;
 
 
 import java.util.Collection;
@@ -11,10 +11,10 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
-import org.sheepy.common.model.variable.BooleanChangeAction;
+import org.sheepy.lily.core.model.variable.BooleanChangeAction;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.common.model.variable.BooleanChangeAction} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.variable.BooleanChangeAction} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

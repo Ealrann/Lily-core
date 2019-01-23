@@ -1,9 +1,9 @@
-package org.sheepy.common.api.util;
+package org.sheepy.lily.core.api.util;
 
 import java.util.Iterator;
 
 import org.eclipse.emf.common.util.AbstractTreeIterator;
-import org.sheepy.common.model.root.LObject;
+import org.sheepy.lily.core.model.root.LObject;
 
 public class LTreeIterator extends AbstractTreeIterator<LObject>
 {

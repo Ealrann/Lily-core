@@ -1,4 +1,4 @@
-package org.sheepy.common.api.types;
+package org.sheepy.lily.core.api.types;
 
 public class Rectangle
 {

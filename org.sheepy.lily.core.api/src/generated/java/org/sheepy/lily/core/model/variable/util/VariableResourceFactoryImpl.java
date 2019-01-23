@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.variable.util;
+package org.sheepy.lily.core.model.variable.util;
 
 import org.eclipse.emf.common.util.URI;
 
@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
  * <!-- begin-user-doc -->
  * The <b>Resource Factory</b> associated with the package.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.variable.util.VariableResourceImpl
+ * @see org.sheepy.lily.core.model.variable.util.VariableResourceImpl
  * @generated
  */
 public class VariableResourceFactoryImpl extends ResourceFactoryImpl

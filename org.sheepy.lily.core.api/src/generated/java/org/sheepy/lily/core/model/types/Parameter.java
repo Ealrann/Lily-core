@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.types;
+package org.sheepy.lily.core.model.types;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  *
- * @see org.sheepy.common.model.types.TypesPackage#getParameter()
+ * @see org.sheepy.lily.core.model.types.TypesPackage#getParameter()
  * @model interface="true" abstract="true"
  * @generated
  */

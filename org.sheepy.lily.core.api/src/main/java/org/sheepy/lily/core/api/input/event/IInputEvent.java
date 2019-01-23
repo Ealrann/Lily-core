@@ -1,4 +1,4 @@
-package org.sheepy.common.api.input.event;
+package org.sheepy.lily.core.api.input.event;
 
 public interface IInputEvent
 {

@@ -1,10 +1,10 @@
-package org.sheepy.common.api.adapter;
+package org.sheepy.lily.core.api.adapter;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EClass;
-import org.sheepy.common.api.service.IService;
+import org.sheepy.lily.core.api.service.IService;
 
 public interface IAdapter extends Adapter, IService
 {

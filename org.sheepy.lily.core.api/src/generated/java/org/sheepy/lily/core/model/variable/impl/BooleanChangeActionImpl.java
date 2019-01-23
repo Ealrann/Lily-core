@@ -1,11 +1,11 @@
 /**
  */
-package org.sheepy.common.model.variable.impl;
+package org.sheepy.lily.core.model.variable.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.sheepy.common.model.variable.BooleanChangeAction;
-import org.sheepy.common.model.variable.VariablePackage;
+import org.sheepy.lily.core.model.variable.BooleanChangeAction;
+import org.sheepy.lily.core.model.variable.VariablePackage;
 
 /**
  * <!-- begin-user-doc -->

@@ -1,4 +1,4 @@
-package org.sheepy.common.variable;
+package org.sheepy.lily.core.variable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,11 +6,11 @@ import java.util.Map;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.sheepy.common.api.util.FeatureDefinition;
-import org.sheepy.common.api.variable.IVariableResolverAdapter;
-import org.sheepy.common.model.variable.ChainResolver;
-import org.sheepy.common.model.variable.ChainVariableResolver;
-import org.sheepy.common.model.variable.VariablePackage;
+import org.sheepy.lily.core.api.util.FeatureDefinition;
+import org.sheepy.lily.core.api.variable.IVariableResolverAdapter;
+import org.sheepy.lily.core.model.variable.ChainResolver;
+import org.sheepy.lily.core.model.variable.ChainVariableResolver;
+import org.sheepy.lily.core.model.variable.VariablePackage;
 
 public class ChainVariableResolverAdapter
 		extends AbstractVariableResolverAdapter<ChainVariableResolver>

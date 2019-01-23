@@ -1,14 +1,14 @@
 /**
  */
-package org.sheepy.common.model.root;
+package org.sheepy.lily.core.model.root;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
-import org.sheepy.common.model.action.ActionPackage;
-import org.sheepy.common.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.action.ActionPackage;
+import org.sheepy.lily.core.model.inference.InferencePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,9 +22,9 @@ import org.sheepy.common.model.inference.InferencePackage;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.root.RootFactory
+ * @see org.sheepy.lily.core.model.root.RootFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.common.model/src/generated/java' editDirectory='/org.sheepy.common.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' extensibleProviderFactory='true' childCreationExtenders='true' basePackage='org.sheepy.common.model'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.lily.core.model/src/generated/java' editDirectory='/org.sheepy.lily.core.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' extensibleProviderFactory='true' childCreationExtenders='true' basePackage='org.sheepy.lily.core.model'"
  * @generated
  */
 public interface RootPackage extends EPackage
@@ -43,7 +43,7 @@ public interface RootPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "org.sheepy.common.model.root";
+	String eNS_URI = "org.sheepy.lily.core.model.root";
 
 	/**
 	 * The package namespace name.
@@ -59,14 +59,14 @@ public interface RootPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	RootPackage eINSTANCE = org.sheepy.common.model.root.impl.RootPackageImpl.init();
+	RootPackage eINSTANCE = org.sheepy.lily.core.model.root.impl.RootPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.root.LObject <em>LObject</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.root.LObject <em>LObject</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.root.LObject
-	 * @see org.sheepy.common.model.root.impl.RootPackageImpl#getLObject()
+	 * @see org.sheepy.lily.core.model.root.LObject
+	 * @see org.sheepy.lily.core.model.root.impl.RootPackageImpl#getLObject()
 	 * @generated
 	 */
 	int LOBJECT = 0;
@@ -144,11 +144,11 @@ public interface RootPackage extends EPackage
 	int LOBJECT_OPERATION_COUNT = InferencePackage.IINFERENCE_OBJECT_OPERATION_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.root.impl.XActionImpl <em>XAction</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.root.impl.XActionImpl <em>XAction</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.root.impl.XActionImpl
-	 * @see org.sheepy.common.model.root.impl.RootPackageImpl#getXAction()
+	 * @see org.sheepy.lily.core.model.root.impl.XActionImpl
+	 * @see org.sheepy.lily.core.model.root.impl.RootPackageImpl#getXAction()
 	 * @generated
 	 */
 	int XACTION = 1;
@@ -194,7 +194,7 @@ public interface RootPackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.common.util.EList
-	 * @see org.sheepy.common.model.root.impl.RootPackageImpl#getLContentList()
+	 * @see org.sheepy.lily.core.model.root.impl.RootPackageImpl#getLContentList()
 	 * @generated
 	 */
 	int LCONTENT_LIST = 2;
@@ -203,8 +203,8 @@ public interface RootPackage extends EPackage
 	 * The meta object id for the '<em>LTree Iterator</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.api.util.LTreeIterator
-	 * @see org.sheepy.common.model.root.impl.RootPackageImpl#getLTreeIterator()
+	 * @see org.sheepy.lily.core.api.util.LTreeIterator
+	 * @see org.sheepy.lily.core.model.root.impl.RootPackageImpl#getLTreeIterator()
 	 * @generated
 	 */
 	int LTREE_ITERATOR = 3;
@@ -214,89 +214,89 @@ public interface RootPackage extends EPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see java.util.Collection
-	 * @see org.sheepy.common.model.root.impl.RootPackageImpl#getLCollection()
+	 * @see org.sheepy.lily.core.model.root.impl.RootPackageImpl#getLCollection()
 	 * @generated
 	 */
 	int LCOLLECTION = 4;
 
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.root.LObject <em>LObject</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.root.LObject <em>LObject</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>LObject</em>'.
-	 * @see org.sheepy.common.model.root.LObject
+	 * @see org.sheepy.lily.core.model.root.LObject
 	 * @generated
 	 */
 	EClass getLObject();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.common.model.root.LObject#getContentObjects <em>Content Objects</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.root.LObject#getContentObjects <em>Content Objects</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Content Objects</em>'.
-	 * @see org.sheepy.common.model.root.LObject#getContentObjects()
+	 * @see org.sheepy.lily.core.model.root.LObject#getContentObjects()
 	 * @see #getLObject()
 	 * @generated
 	 */
 	EAttribute getLObject_ContentObjects();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.common.model.root.LObject#createContainmentEList(org.eclipse.emf.ecore.EClass) <em>Create Containment EList</em>}' operation.
+	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.root.LObject#createContainmentEList(org.eclipse.emf.ecore.EClass) <em>Create Containment EList</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Create Containment EList</em>' operation.
-	 * @see org.sheepy.common.model.root.LObject#createContainmentEList(org.eclipse.emf.ecore.EClass)
+	 * @see org.sheepy.lily.core.model.root.LObject#createContainmentEList(org.eclipse.emf.ecore.EClass)
 	 * @generated
 	 */
 	EOperation getLObject__CreateContainmentEList__EClass();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.common.model.root.LObject#lContents() <em>LContents</em>}' operation.
+	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.root.LObject#lContents() <em>LContents</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>LContents</em>' operation.
-	 * @see org.sheepy.common.model.root.LObject#lContents()
+	 * @see org.sheepy.lily.core.model.root.LObject#lContents()
 	 * @generated
 	 */
 	EOperation getLObject__LContents();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.common.model.root.LObject#lParent() <em>LParent</em>}' operation.
+	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.root.LObject#lParent() <em>LParent</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>LParent</em>' operation.
-	 * @see org.sheepy.common.model.root.LObject#lParent()
+	 * @see org.sheepy.lily.core.model.root.LObject#lParent()
 	 * @generated
 	 */
 	EOperation getLObject__LParent();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.common.model.root.LObject#lAllContents() <em>LAll Contents</em>}' operation.
+	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.root.LObject#lAllContents() <em>LAll Contents</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>LAll Contents</em>' operation.
-	 * @see org.sheepy.common.model.root.LObject#lAllContents()
+	 * @see org.sheepy.lily.core.model.root.LObject#lAllContents()
 	 * @generated
 	 */
 	EOperation getLObject__LAllContents();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.root.XAction <em>XAction</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.root.XAction <em>XAction</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>XAction</em>'.
-	 * @see org.sheepy.common.model.root.XAction
+	 * @see org.sheepy.lily.core.model.root.XAction
 	 * @generated
 	 */
 	EClass getXAction();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.common.model.root.XAction#execute(org.sheepy.common.model.root.LObject) <em>Execute</em>}' operation.
+	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.root.XAction#execute(org.sheepy.lily.core.model.root.LObject) <em>Execute</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Execute</em>' operation.
-	 * @see org.sheepy.common.model.root.XAction#execute(org.sheepy.common.model.root.LObject)
+	 * @see org.sheepy.lily.core.model.root.XAction#execute(org.sheepy.lily.core.model.root.LObject)
 	 * @generated
 	 */
 	EOperation getXAction__Execute__LObject();
@@ -307,18 +307,18 @@ public interface RootPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>LContent List</em>'.
 	 * @see org.eclipse.emf.common.util.EList
-	 * @model instanceClass="org.eclipse.emf.common.util.EList&lt;org.sheepy.common.model.root.LObject&gt;"
+	 * @model instanceClass="org.eclipse.emf.common.util.EList&lt;org.sheepy.lily.core.model.root.LObject&gt;"
 	 * @generated
 	 */
 	EDataType getLContentList();
 
 	/**
-	 * Returns the meta object for data type '{@link org.sheepy.common.api.util.LTreeIterator <em>LTree Iterator</em>}'.
+	 * Returns the meta object for data type '{@link org.sheepy.lily.core.api.util.LTreeIterator <em>LTree Iterator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>LTree Iterator</em>'.
-	 * @see org.sheepy.common.api.util.LTreeIterator
-	 * @model instanceClass="org.sheepy.common.api.util.LTreeIterator"
+	 * @see org.sheepy.lily.core.api.util.LTreeIterator
+	 * @model instanceClass="org.sheepy.lily.core.api.util.LTreeIterator"
 	 * @generated
 	 */
 	EDataType getLTreeIterator();
@@ -329,7 +329,7 @@ public interface RootPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>LCollection</em>'.
 	 * @see java.util.Collection
-	 * @model instanceClass="java.util.Collection&lt;org.sheepy.common.model.root.LObject&gt;"
+	 * @model instanceClass="java.util.Collection&lt;org.sheepy.lily.core.model.root.LObject&gt;"
 	 * @generated
 	 */
 	EDataType getLCollection();
@@ -359,11 +359,11 @@ public interface RootPackage extends EPackage
 	interface Literals
 	{
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.root.LObject <em>LObject</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.root.LObject <em>LObject</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.root.LObject
-		 * @see org.sheepy.common.model.root.impl.RootPackageImpl#getLObject()
+		 * @see org.sheepy.lily.core.model.root.LObject
+		 * @see org.sheepy.lily.core.model.root.impl.RootPackageImpl#getLObject()
 		 * @generated
 		 */
 		EClass LOBJECT = eINSTANCE.getLObject();
@@ -409,11 +409,11 @@ public interface RootPackage extends EPackage
 		EOperation LOBJECT___LALL_CONTENTS = eINSTANCE.getLObject__LAllContents();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.root.impl.XActionImpl <em>XAction</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.root.impl.XActionImpl <em>XAction</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.root.impl.XActionImpl
-		 * @see org.sheepy.common.model.root.impl.RootPackageImpl#getXAction()
+		 * @see org.sheepy.lily.core.model.root.impl.XActionImpl
+		 * @see org.sheepy.lily.core.model.root.impl.RootPackageImpl#getXAction()
 		 * @generated
 		 */
 		EClass XACTION = eINSTANCE.getXAction();
@@ -431,7 +431,7 @@ public interface RootPackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see org.eclipse.emf.common.util.EList
-		 * @see org.sheepy.common.model.root.impl.RootPackageImpl#getLContentList()
+		 * @see org.sheepy.lily.core.model.root.impl.RootPackageImpl#getLContentList()
 		 * @generated
 		 */
 		EDataType LCONTENT_LIST = eINSTANCE.getLContentList();
@@ -440,8 +440,8 @@ public interface RootPackage extends EPackage
 		 * The meta object literal for the '<em>LTree Iterator</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.api.util.LTreeIterator
-		 * @see org.sheepy.common.model.root.impl.RootPackageImpl#getLTreeIterator()
+		 * @see org.sheepy.lily.core.api.util.LTreeIterator
+		 * @see org.sheepy.lily.core.model.root.impl.RootPackageImpl#getLTreeIterator()
 		 * @generated
 		 */
 		EDataType LTREE_ITERATOR = eINSTANCE.getLTreeIterator();
@@ -451,7 +451,7 @@ public interface RootPackage extends EPackage
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see java.util.Collection
-		 * @see org.sheepy.common.model.root.impl.RootPackageImpl#getLCollection()
+		 * @see org.sheepy.lily.core.model.root.impl.RootPackageImpl#getLCollection()
 		 * @generated
 		 */
 		EDataType LCOLLECTION = eINSTANCE.getLCollection();

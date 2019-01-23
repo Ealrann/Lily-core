@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.resolver.provider;
+package org.sheepy.lily.core.model.resolver.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,9 +28,9 @@ import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-import org.sheepy.common.model.resolver.ResolverPackage;
+import org.sheepy.lily.core.model.resolver.ResolverPackage;
 
-import org.sheepy.common.model.resolver.util.ResolverAdapterFactory;
+import org.sheepy.lily.core.model.resolver.util.ResolverAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -91,7 +91,7 @@ public class ResolverItemProviderAdapterFactory extends ResolverAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.resolver.EReferenceResolver} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.resolver.EReferenceResolver} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -99,7 +99,7 @@ public class ResolverItemProviderAdapterFactory extends ResolverAdapterFactory i
 	protected EReferenceResolverItemProvider eReferenceResolverItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.resolver.EReferenceResolver}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.resolver.EReferenceResolver}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -116,7 +116,7 @@ public class ResolverItemProviderAdapterFactory extends ResolverAdapterFactory i
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.resolver.ChainResolver} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.resolver.ChainResolver} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -124,7 +124,7 @@ public class ResolverItemProviderAdapterFactory extends ResolverAdapterFactory i
 	protected ChainResolverItemProvider chainResolverItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.resolver.ChainResolver}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.resolver.ChainResolver}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

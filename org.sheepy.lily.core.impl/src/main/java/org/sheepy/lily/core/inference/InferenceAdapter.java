@@ -1,4 +1,4 @@
-package org.sheepy.common.inference;
+package org.sheepy.lily.core.inference;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,19 +7,19 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.sheepy.common.api.action.context.ExecutionContext;
-import org.sheepy.common.api.adapter.impl.AbstractStatefullAdapter;
-import org.sheepy.common.api.application.IApplicationAdapter;
-import org.sheepy.common.api.inference.IInferenceAdapter;
-import org.sheepy.common.model.application.Application;
-import org.sheepy.common.model.inference.AbstractNotification;
-import org.sheepy.common.model.inference.Condition;
-import org.sheepy.common.model.inference.Inferer;
-import org.sheepy.common.model.inference.LNotification;
-import org.sheepy.common.model.inference.LRule;
-import org.sheepy.common.model.inference.ParameteredNotification;
-import org.sheepy.common.model.root.LObject;
-import org.sheepy.common.model.types.Parameter;
+import org.sheepy.lily.core.api.action.context.ExecutionContext;
+import org.sheepy.lily.core.api.adapter.impl.AbstractStatefullAdapter;
+import org.sheepy.lily.core.api.application.IApplicationAdapter;
+import org.sheepy.lily.core.api.inference.IInferenceAdapter;
+import org.sheepy.lily.core.model.application.Application;
+import org.sheepy.lily.core.model.inference.AbstractNotification;
+import org.sheepy.lily.core.model.inference.Condition;
+import org.sheepy.lily.core.model.inference.Inferer;
+import org.sheepy.lily.core.model.inference.LNotification;
+import org.sheepy.lily.core.model.inference.LRule;
+import org.sheepy.lily.core.model.inference.ParameteredNotification;
+import org.sheepy.lily.core.model.root.LObject;
+import org.sheepy.lily.core.model.types.Parameter;
 
 public class InferenceAdapter extends AbstractStatefullAdapter implements IInferenceAdapter
 {

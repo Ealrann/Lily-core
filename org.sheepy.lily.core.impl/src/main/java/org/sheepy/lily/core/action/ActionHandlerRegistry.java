@@ -1,10 +1,10 @@
-package org.sheepy.common.action;
+package org.sheepy.lily.core.action;
 
 import java.util.List;
 
-import org.sheepy.common.api.action.IActionHandler;
-import org.sheepy.common.api.service.ServiceManager;
-import org.sheepy.common.model.action.Action;
+import org.sheepy.lily.core.api.action.IActionHandler;
+import org.sheepy.lily.core.api.service.ServiceManager;
+import org.sheepy.lily.core.model.action.Action;
 
 public class ActionHandlerRegistry
 {

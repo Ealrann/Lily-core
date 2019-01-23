@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.action.impl;
+package org.sheepy.lily.core.model.action.impl;
 
 import java.util.List;
 import org.eclipse.emf.ecore.EClass;
@@ -10,10 +10,10 @@ import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.sheepy.common.model.action.Action;
-import org.sheepy.common.model.action.ActionFactory;
-import org.sheepy.common.model.action.ActionPackage;
-import org.sheepy.common.model.types.TypesPackage;
+import org.sheepy.lily.core.model.action.Action;
+import org.sheepy.lily.core.model.action.ActionFactory;
+import org.sheepy.lily.core.model.action.ActionPackage;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -48,7 +48,7 @@ public class ActionPackageImpl extends EPackageImpl implements ActionPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.sheepy.common.model.action.ActionPackage#eNS_URI
+	 * @see org.sheepy.lily.core.model.action.ActionPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
@@ -201,7 +201,7 @@ public class ActionPackageImpl extends EPackageImpl implements ActionPackage
 		initEClass(actionEClass, Action.class, "Action", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize data types
-		initEDataType(actionListEDataType, List.class, "ActionList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<? extends org.sheepy.common.model.action.Action>");
+		initEDataType(actionListEDataType, List.class, "ActionList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<? extends org.sheepy.lily.core.model.action.Action>");
 
 		// Create resource
 		createResource(eNS_URI);

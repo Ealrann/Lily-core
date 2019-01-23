@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.inference.util;
+package org.sheepy.lily.core.model.inference.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -9,16 +9,16 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.sheepy.common.model.inference.*;
+import org.sheepy.lily.core.model.inference.*;
 
-import org.sheepy.common.model.types.Parameter;
+import org.sheepy.lily.core.model.types.Parameter;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.inference.InferencePackage
+ * @see org.sheepy.lily.core.model.inference.InferencePackage
  * @generated
  */
 public class InferenceAdapterFactory extends AdapterFactoryImpl
@@ -139,13 +139,13 @@ public class InferenceAdapterFactory extends AdapterFactoryImpl
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.inference.IInferenceObject <em>IInference Object</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.inference.IInferenceObject <em>IInference Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.inference.IInferenceObject
+	 * @see org.sheepy.lily.core.model.inference.IInferenceObject
 	 * @generated
 	 */
 	public Adapter createIInferenceObjectAdapter()
@@ -154,13 +154,13 @@ public class InferenceAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.inference.Inferer <em>Inferer</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.inference.Inferer <em>Inferer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.inference.Inferer
+	 * @see org.sheepy.lily.core.model.inference.Inferer
 	 * @generated
 	 */
 	public Adapter createInfererAdapter()
@@ -169,13 +169,13 @@ public class InferenceAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.inference.Sensor <em>Sensor</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.inference.Sensor <em>Sensor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.inference.Sensor
+	 * @see org.sheepy.lily.core.model.inference.Sensor
 	 * @generated
 	 */
 	public Adapter createSensorAdapter()
@@ -184,13 +184,13 @@ public class InferenceAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.inference.LRule <em>LRule</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.inference.LRule <em>LRule</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.inference.LRule
+	 * @see org.sheepy.lily.core.model.inference.LRule
 	 * @generated
 	 */
 	public Adapter createLRuleAdapter()
@@ -199,13 +199,13 @@ public class InferenceAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.inference.AbstractNotification <em>Abstract Notification</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.inference.AbstractNotification <em>Abstract Notification</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.inference.AbstractNotification
+	 * @see org.sheepy.lily.core.model.inference.AbstractNotification
 	 * @generated
 	 */
 	public Adapter createAbstractNotificationAdapter()
@@ -214,13 +214,13 @@ public class InferenceAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.inference.LNotification <em>LNotification</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.inference.LNotification <em>LNotification</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.inference.LNotification
+	 * @see org.sheepy.lily.core.model.inference.LNotification
 	 * @generated
 	 */
 	public Adapter createLNotificationAdapter()
@@ -229,13 +229,13 @@ public class InferenceAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.inference.ParameteredNotification <em>Parametered Notification</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.inference.ParameteredNotification <em>Parametered Notification</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.inference.ParameteredNotification
+	 * @see org.sheepy.lily.core.model.inference.ParameteredNotification
 	 * @generated
 	 */
 	public Adapter createParameteredNotificationAdapter()
@@ -244,13 +244,13 @@ public class InferenceAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.inference.Condition <em>Condition</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.inference.Condition <em>Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.inference.Condition
+	 * @see org.sheepy.lily.core.model.inference.Condition
 	 * @generated
 	 */
 	public Adapter createConditionAdapter()

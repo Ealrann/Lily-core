@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.variable.provider;
+package org.sheepy.lily.core.model.variable.provider;
 
 
 import java.util.Collection;
@@ -14,14 +14,14 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.common.model.action.provider.ActionItemProvider;
+import org.sheepy.lily.core.model.action.provider.ActionItemProvider;
 
-import org.sheepy.common.model.variable.VarChangeAction;
-import org.sheepy.common.model.variable.VariableFactory;
-import org.sheepy.common.model.variable.VariablePackage;
+import org.sheepy.lily.core.model.variable.VarChangeAction;
+import org.sheepy.lily.core.model.variable.VariableFactory;
+import org.sheepy.lily.core.model.variable.VariablePackage;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.common.model.variable.VarChangeAction} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.variable.VarChangeAction} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

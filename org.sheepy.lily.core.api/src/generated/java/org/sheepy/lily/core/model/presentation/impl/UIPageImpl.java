@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.presentation.impl;
+package org.sheepy.lily.core.model.presentation.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -28,24 +28,24 @@ import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.sheepy.common.api.types.SVector2i;
+import org.sheepy.lily.core.api.types.SVector2i;
 
-import org.sheepy.common.api.util.LTreeIterator;
+import org.sheepy.lily.core.api.util.LTreeIterator;
 
-import org.sheepy.common.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.inference.IInferenceObject;
 
-import org.sheepy.common.model.presentation.IPanel;
-import org.sheepy.common.model.presentation.PresentationPackage;
-import org.sheepy.common.model.presentation.UIPage;
+import org.sheepy.lily.core.model.presentation.IPanel;
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.presentation.UIPage;
 
-import org.sheepy.common.model.root.LObject;
+import org.sheepy.lily.core.model.root.LObject;
 
-import org.sheepy.common.model.root.RootPackage.Literals;
+import org.sheepy.lily.core.model.root.RootPackage.Literals;
 
-import org.sheepy.common.model.types.EHorizontalRelative;
-import org.sheepy.common.model.types.EVerticalRelative;
-import org.sheepy.common.model.types.TypesFactory;
-import org.sheepy.common.model.types.TypesPackage;
+import org.sheepy.lily.core.model.types.EHorizontalRelative;
+import org.sheepy.lily.core.model.types.EVerticalRelative;
+import org.sheepy.lily.core.model.types.TypesFactory;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -55,13 +55,13 @@ import org.sheepy.common.model.types.TypesPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.presentation.impl.UIPageImpl#getContentObjects <em>Content Objects</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.impl.UIPageImpl#getPosition <em>Position</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.impl.UIPageImpl#getVerticalRelative <em>Vertical Relative</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.impl.UIPageImpl#getHorizontalRelative <em>Horizontal Relative</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.impl.UIPageImpl#getWidth <em>Width</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.impl.UIPageImpl#getHeight <em>Height</em>}</li>
- *   <li>{@link org.sheepy.common.model.presentation.impl.UIPageImpl#getPanels <em>Panels</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl#getContentObjects <em>Content Objects</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl#getPosition <em>Position</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl#getVerticalRelative <em>Vertical Relative</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl#getHorizontalRelative <em>Horizontal Relative</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl#getWidth <em>Width</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl#getHeight <em>Height</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl#getPanels <em>Panels</em>}</li>
  * </ul>
  *
  * @generated

@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.inference.provider;
+package org.sheepy.lily.core.model.inference.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,9 +28,9 @@ import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-import org.sheepy.common.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.inference.InferencePackage;
 
-import org.sheepy.common.model.inference.util.InferenceAdapterFactory;
+import org.sheepy.lily.core.model.inference.util.InferenceAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -91,7 +91,7 @@ public class InferenceItemProviderAdapterFactory extends InferenceAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.inference.LRule} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.inference.LRule} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -99,7 +99,7 @@ public class InferenceItemProviderAdapterFactory extends InferenceAdapterFactory
 	protected LRuleItemProvider lRuleItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.inference.LRule}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.inference.LRule}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

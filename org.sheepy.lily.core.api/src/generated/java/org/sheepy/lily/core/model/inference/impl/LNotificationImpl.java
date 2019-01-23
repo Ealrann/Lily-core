@@ -1,11 +1,11 @@
 /**
  */
-package org.sheepy.common.model.inference.impl;
+package org.sheepy.lily.core.model.inference.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.sheepy.common.model.inference.InferencePackage;
-import org.sheepy.common.model.inference.LNotification;
+import org.sheepy.lily.core.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.inference.LNotification;
 
 /**
  * <!-- begin-user-doc -->

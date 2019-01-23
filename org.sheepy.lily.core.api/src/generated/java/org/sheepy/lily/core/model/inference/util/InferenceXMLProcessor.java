@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.inference.util;
+package org.sheepy.lily.core.model.inference.util;
 
 import java.util.Map;
 
@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.emf.ecore.xmi.util.XMLProcessor;
 
-import org.sheepy.common.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.inference.InferencePackage;
 
 /**
  * This class contains helper methods to serialize and deserialize XML documents

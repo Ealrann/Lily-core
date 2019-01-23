@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.types;
+package org.sheepy.lily.core.model.types;
 
 
 /**
@@ -12,11 +12,11 @@ package org.sheepy.common.model.types;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.types.FloatParameter#getValue <em>Value</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.types.FloatParameter#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.types.TypesPackage#getFloatParameter()
- * @model superTypes="org.sheepy.common.model.types.NativeParameter&lt;org.eclipse.emf.ecore.EFloatObject&gt;"
+ * @see org.sheepy.lily.core.model.types.TypesPackage#getFloatParameter()
+ * @model superTypes="org.sheepy.lily.core.model.types.NativeParameter&lt;org.eclipse.emf.ecore.EFloatObject&gt;"
  * @generated
  */
 public interface FloatParameter extends NativeParameter<Float>
@@ -31,14 +31,14 @@ public interface FloatParameter extends NativeParameter<Float>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(Float)
-	 * @see org.sheepy.common.model.types.TypesPackage#getFloatParameter_Value()
+	 * @see org.sheepy.lily.core.model.types.TypesPackage#getFloatParameter_Value()
 	 * @model unique="false"
 	 * @generated
 	 */
 	Float getValue();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.types.FloatParameter#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.types.FloatParameter#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.

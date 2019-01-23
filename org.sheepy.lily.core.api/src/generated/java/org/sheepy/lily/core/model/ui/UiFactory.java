@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui;
+package org.sheepy.lily.core.model.ui;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.ui.UiPackage
+ * @see org.sheepy.lily.core.model.ui.UiPackage
  * @generated
  */
 public interface UiFactory extends EFactory
@@ -20,7 +20,7 @@ public interface UiFactory extends EFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	UiFactory eINSTANCE = org.sheepy.common.model.ui.impl.UiFactoryImpl.init();
+	UiFactory eINSTANCE = org.sheepy.lily.core.model.ui.impl.UiFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Panel</em>'.

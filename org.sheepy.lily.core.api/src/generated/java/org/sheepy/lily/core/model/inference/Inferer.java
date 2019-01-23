@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.inference;
+package org.sheepy.lily.core.model.inference;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -18,10 +18,10 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.inference.Inferer#getRules <em>Rules</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.inference.Inferer#getRules <em>Rules</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.inference.InferencePackage#getInferer()
+ * @see org.sheepy.lily.core.model.inference.InferencePackage#getInferer()
  * @model abstract="true"
  * @generated
  */
@@ -29,7 +29,7 @@ public interface Inferer extends IInferenceObject
 {
 	/**
 	 * Returns the value of the '<em><b>Rules</b></em>' containment reference list.
-	 * The list contents are of type {@link org.sheepy.common.model.inference.LRule}.
+	 * The list contents are of type {@link org.sheepy.lily.core.model.inference.LRule}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Rules</em>' containment reference list isn't clear,
@@ -37,7 +37,7 @@ public interface Inferer extends IInferenceObject
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Rules</em>' containment reference list.
-	 * @see org.sheepy.common.model.inference.InferencePackage#getInferer_Rules()
+	 * @see org.sheepy.lily.core.model.inference.InferencePackage#getInferer_Rules()
 	 * @model containment="true"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel createChild='false'"
 	 * @generated

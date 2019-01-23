@@ -1,8 +1,8 @@
 /**
  */
-package org.sheepy.common.model.variable;
+package org.sheepy.lily.core.model.variable;
 
-import org.sheepy.common.model.action.Action;
+import org.sheepy.lily.core.model.action.Action;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,10 +13,10 @@ import org.sheepy.common.model.action.Action;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.variable.VarChangeAction#getVariableResolver <em>Variable Resolver</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.variable.VarChangeAction#getVariableResolver <em>Variable Resolver</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.variable.VariablePackage#getVarChangeAction()
+ * @see org.sheepy.lily.core.model.variable.VariablePackage#getVarChangeAction()
  * @model abstract="true"
  * @generated
  */
@@ -32,14 +32,14 @@ public interface VarChangeAction extends Action
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variable Resolver</em>' containment reference.
 	 * @see #setVariableResolver(AbstractVariableResolver)
-	 * @see org.sheepy.common.model.variable.VariablePackage#getVarChangeAction_VariableResolver()
+	 * @see org.sheepy.lily.core.model.variable.VariablePackage#getVarChangeAction_VariableResolver()
 	 * @model containment="true"
 	 * @generated
 	 */
 	AbstractVariableResolver getVariableResolver();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.variable.VarChangeAction#getVariableResolver <em>Variable Resolver</em>}' containment reference.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.variable.VarChangeAction#getVariableResolver <em>Variable Resolver</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Variable Resolver</em>' containment reference.

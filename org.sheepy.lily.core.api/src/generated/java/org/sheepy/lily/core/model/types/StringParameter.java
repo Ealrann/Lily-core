@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.types;
+package org.sheepy.lily.core.model.types;
 
 
 /**
@@ -12,11 +12,11 @@ package org.sheepy.common.model.types;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.types.StringParameter#getValue <em>Value</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.types.StringParameter#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.types.TypesPackage#getStringParameter()
- * @model superTypes="org.sheepy.common.model.types.NativeParameter&lt;org.eclipse.emf.ecore.EString&gt;"
+ * @see org.sheepy.lily.core.model.types.TypesPackage#getStringParameter()
+ * @model superTypes="org.sheepy.lily.core.model.types.NativeParameter&lt;org.eclipse.emf.ecore.EString&gt;"
  * @generated
  */
 public interface StringParameter extends NativeParameter<String>
@@ -31,14 +31,14 @@ public interface StringParameter extends NativeParameter<String>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(String)
-	 * @see org.sheepy.common.model.types.TypesPackage#getStringParameter_Value()
+	 * @see org.sheepy.lily.core.model.types.TypesPackage#getStringParameter_Value()
 	 * @model unique="false"
 	 * @generated
 	 */
 	String getValue();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.types.StringParameter#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.types.StringParameter#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Value</em>' attribute.

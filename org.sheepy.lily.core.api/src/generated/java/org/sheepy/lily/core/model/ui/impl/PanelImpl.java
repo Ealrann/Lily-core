@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui.impl;
+package org.sheepy.lily.core.model.ui.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -27,31 +27,31 @@ import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.sheepy.common.api.types.SVector2i;
+import org.sheepy.lily.core.api.types.SVector2i;
 
-import org.sheepy.common.api.util.LTreeIterator;
+import org.sheepy.lily.core.api.util.LTreeIterator;
 
-import org.sheepy.common.model.inference.IInferenceObject;
-import org.sheepy.common.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.inference.InferencePackage;
 
-import org.sheepy.common.model.presentation.IPositionElement;
-import org.sheepy.common.model.presentation.ISizedElement;
-import org.sheepy.common.model.presentation.IUIElement;
-import org.sheepy.common.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.presentation.IPositionElement;
+import org.sheepy.lily.core.model.presentation.ISizedElement;
+import org.sheepy.lily.core.model.presentation.IUIElement;
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
 
-import org.sheepy.common.model.root.LObject;
-import org.sheepy.common.model.root.RootPackage;
+import org.sheepy.lily.core.model.root.LObject;
+import org.sheepy.lily.core.model.root.RootPackage;
 
-import org.sheepy.common.model.root.RootPackage.Literals;
+import org.sheepy.lily.core.model.root.RootPackage.Literals;
 
-import org.sheepy.common.model.types.EHorizontalRelative;
-import org.sheepy.common.model.types.EVerticalRelative;
-import org.sheepy.common.model.types.TypesFactory;
-import org.sheepy.common.model.types.TypesPackage;
+import org.sheepy.lily.core.model.types.EHorizontalRelative;
+import org.sheepy.lily.core.model.types.EVerticalRelative;
+import org.sheepy.lily.core.model.types.TypesFactory;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
-import org.sheepy.common.model.ui.IControl;
-import org.sheepy.common.model.ui.Panel;
-import org.sheepy.common.model.ui.UiPackage;
+import org.sheepy.lily.core.model.ui.IControl;
+import org.sheepy.lily.core.model.ui.Panel;
+import org.sheepy.lily.core.model.ui.UiPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -61,18 +61,18 @@ import org.sheepy.common.model.ui.UiPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#getContentObjects <em>Content Objects</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#getPosition <em>Position</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#getVerticalRelative <em>Vertical Relative</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#getHorizontalRelative <em>Horizontal Relative</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#getWidth <em>Width</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#getHeight <em>Height</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#getControls <em>Controls</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#isShowTitle <em>Show Title</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#isMinimizable <em>Minimizable</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#isMovable <em>Movable</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.PanelImpl#isMinimized <em>Minimized</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getContentObjects <em>Content Objects</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getPosition <em>Position</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getVerticalRelative <em>Vertical Relative</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getHorizontalRelative <em>Horizontal Relative</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getWidth <em>Width</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getHeight <em>Height</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getControls <em>Controls</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#isShowTitle <em>Show Title</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#isMinimizable <em>Minimizable</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#isMovable <em>Movable</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#isMinimized <em>Minimized</em>}</li>
  * </ul>
  *
  * @generated

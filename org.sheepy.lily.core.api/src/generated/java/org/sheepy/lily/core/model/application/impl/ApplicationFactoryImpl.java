@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.application.impl;
+package org.sheepy.lily.core.model.application.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.sheepy.common.model.application.*;
+import org.sheepy.lily.core.model.application.*;
 
 /**
  * <!-- begin-user-doc -->

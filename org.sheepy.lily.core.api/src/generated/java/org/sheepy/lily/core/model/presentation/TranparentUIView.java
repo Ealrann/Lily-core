@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.presentation;
+package org.sheepy.lily.core.model.presentation;
 
 
 /**
@@ -9,7 +9,7 @@ package org.sheepy.common.model.presentation;
  * <!-- end-user-doc -->
  *
  *
- * @see org.sheepy.common.model.presentation.PresentationPackage#getTranparentUIView()
+ * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getTranparentUIView()
  * @model
  * @generated
  */

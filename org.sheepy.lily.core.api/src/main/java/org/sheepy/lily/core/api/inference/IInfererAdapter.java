@@ -1,8 +1,8 @@
-package org.sheepy.common.api.inference;
+package org.sheepy.lily.core.api.inference;
 
 import org.eclipse.emf.ecore.EObject;
-import org.sheepy.common.api.adapter.IAutoAdapter;
-import org.sheepy.common.model.inference.Inferer;
+import org.sheepy.lily.core.api.adapter.IAutoAdapter;
+import org.sheepy.lily.core.model.inference.Inferer;
 
 public interface IInfererAdapter extends IAutoAdapter
 {

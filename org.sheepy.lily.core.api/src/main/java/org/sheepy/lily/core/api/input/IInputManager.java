@@ -1,13 +1,13 @@
-package org.sheepy.common.api.input;
+package org.sheepy.lily.core.api.input;
 
 import java.util.EventListener;
 
-import org.sheepy.common.api.input.event.CharEvent;
-import org.sheepy.common.api.input.event.KeyEvent;
-import org.sheepy.common.api.input.event.MouseButtonEvent;
-import org.sheepy.common.api.input.event.MouseLocationEvent;
-import org.sheepy.common.api.input.event.ScrollEvent;
-import org.sheepy.common.api.types.SVector2f;
+import org.sheepy.lily.core.api.input.event.CharEvent;
+import org.sheepy.lily.core.api.input.event.KeyEvent;
+import org.sheepy.lily.core.api.input.event.MouseButtonEvent;
+import org.sheepy.lily.core.api.input.event.MouseLocationEvent;
+import org.sheepy.lily.core.api.input.event.ScrollEvent;
+import org.sheepy.lily.core.api.types.SVector2f;
 
 public interface IInputManager
 {

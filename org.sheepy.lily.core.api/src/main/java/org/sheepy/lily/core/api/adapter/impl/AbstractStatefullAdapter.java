@@ -1,9 +1,9 @@
-package org.sheepy.common.api.adapter.impl;
+package org.sheepy.lily.core.api.adapter.impl;
 
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
-import org.sheepy.common.api.adapter.IAdapter;
-import org.sheepy.common.api.adapter.IStatefullAdapter;
+import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.IStatefullAdapter;
 
 public abstract class AbstractStatefullAdapter extends AbstractSingletonAdapter implements IStatefullAdapter
 {

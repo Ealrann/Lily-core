@@ -1,17 +1,17 @@
 /**
  */
-package org.sheepy.common.model.application.util;
+package org.sheepy.lily.core.model.application.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.sheepy.common.model.application.*;
+import org.sheepy.lily.core.model.application.*;
 
-import org.sheepy.common.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.inference.IInferenceObject;
 
-import org.sheepy.common.model.root.LObject;
+import org.sheepy.lily.core.model.root.LObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +23,7 @@ import org.sheepy.common.model.root.LObject;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.application.ApplicationPackage
+ * @see org.sheepy.lily.core.model.application.ApplicationPackage
  * @generated
  */
 public class ApplicationSwitch<T> extends Switch<T>

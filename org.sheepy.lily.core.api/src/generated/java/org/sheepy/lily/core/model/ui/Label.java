@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui;
+package org.sheepy.lily.core.model.ui;
 
 
 /**
@@ -9,7 +9,7 @@ package org.sheepy.common.model.ui;
  * <!-- end-user-doc -->
  *
  *
- * @see org.sheepy.common.model.ui.UiPackage#getLabel()
+ * @see org.sheepy.lily.core.model.ui.UiPackage#getLabel()
  * @model
  * @generated
  */

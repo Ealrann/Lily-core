@@ -1,8 +1,8 @@
 /**
  */
-package org.sheepy.common.model.types;
+package org.sheepy.lily.core.model.types;
 
-import org.sheepy.common.api.types.SVector2i;
+import org.sheepy.lily.core.api.types.SVector2i;
 
 /**
  * <!-- begin-user-doc -->
@@ -10,7 +10,7 @@ import org.sheepy.common.api.types.SVector2i;
  * <!-- end-user-doc -->
  *
  *
- * @see org.sheepy.common.model.types.TypesPackage#getPositionParameter()
+ * @see org.sheepy.lily.core.model.types.TypesPackage#getPositionParameter()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -19,7 +19,7 @@ public interface PositionParameter extends Parameter
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation" dataType="org.sheepy.common.model.types.SVector2i" unique="false"
+	 * @model kind="operation" dataType="org.sheepy.lily.core.model.types.SVector2i" unique="false"
 	 * @generated
 	 */
 	SVector2i getPosition();

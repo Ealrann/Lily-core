@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.application.util;
+package org.sheepy.lily.core.model.application.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -9,18 +9,18 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.sheepy.common.model.application.*;
+import org.sheepy.lily.core.model.application.*;
 
-import org.sheepy.common.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.inference.IInferenceObject;
 
-import org.sheepy.common.model.root.LObject;
+import org.sheepy.lily.core.model.root.LObject;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.application.ApplicationPackage
+ * @see org.sheepy.lily.core.model.application.ApplicationPackage
  * @generated
  */
 public class ApplicationAdapterFactory extends AdapterFactoryImpl
@@ -126,13 +126,13 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.application.Application <em>Application</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.Application <em>Application</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.application.Application
+	 * @see org.sheepy.lily.core.model.application.Application
 	 * @generated
 	 */
 	public Adapter createApplicationAdapter()
@@ -141,13 +141,13 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.application.IEngine <em>IEngine</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.IEngine <em>IEngine</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.application.IEngine
+	 * @see org.sheepy.lily.core.model.application.IEngine
 	 * @generated
 	 */
 	public Adapter createIEngineAdapter()
@@ -156,13 +156,13 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.application.IView <em>IView</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.IView <em>IView</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.application.IView
+	 * @see org.sheepy.lily.core.model.application.IView
 	 * @generated
 	 */
 	public Adapter createIViewAdapter()
@@ -171,13 +171,13 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.inference.IInferenceObject <em>IInference Object</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.inference.IInferenceObject <em>IInference Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.inference.IInferenceObject
+	 * @see org.sheepy.lily.core.model.inference.IInferenceObject
 	 * @generated
 	 */
 	public Adapter createIInferenceObjectAdapter()
@@ -186,13 +186,13 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.common.model.root.LObject <em>LObject</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.root.LObject <em>LObject</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.common.model.root.LObject
+	 * @see org.sheepy.lily.core.model.root.LObject
 	 * @generated
 	 */
 	public Adapter createLObjectAdapter()

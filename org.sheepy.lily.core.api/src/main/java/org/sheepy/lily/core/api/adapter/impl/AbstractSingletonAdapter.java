@@ -1,7 +1,7 @@
-package org.sheepy.common.api.adapter.impl;
+package org.sheepy.lily.core.api.adapter.impl;
 
-import org.sheepy.common.api.adapter.IServiceAdapterFactory;
-import org.sheepy.common.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.IServiceAdapterFactory;
+import org.sheepy.lily.core.api.adapter.IAdapter;
 
 public abstract class AbstractSingletonAdapter implements IAdapter
 {

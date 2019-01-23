@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui.provider;
+package org.sheepy.lily.core.model.ui.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,13 +28,13 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.sheepy.common.model.presentation.PresentationPackage;
-import org.sheepy.common.model.presentation.UIPage;
-import org.sheepy.common.model.presentation.util.PresentationSwitch;
-import org.sheepy.common.model.ui.UiFactory;
-import org.sheepy.common.model.ui.UiPackage;
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.presentation.UIPage;
+import org.sheepy.lily.core.model.presentation.util.PresentationSwitch;
+import org.sheepy.lily.core.model.ui.UiFactory;
+import org.sheepy.lily.core.model.ui.UiPackage;
 
-import org.sheepy.common.model.ui.util.UiAdapterFactory;
+import org.sheepy.lily.core.model.ui.util.UiAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -95,7 +95,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.ui.Panel} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.ui.Panel} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -103,7 +103,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	protected PanelItemProvider panelItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.ui.Panel}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.ui.Panel}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -120,7 +120,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.ui.DynamicRowLayout} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.ui.DynamicRowLayout} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -128,7 +128,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	protected DynamicRowLayoutItemProvider dynamicRowLayoutItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.ui.DynamicRowLayout}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.ui.DynamicRowLayout}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -145,7 +145,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.ui.VariableLabel} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.ui.VariableLabel} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -153,7 +153,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	protected VariableLabelItemProvider variableLabelItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.ui.VariableLabel}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.ui.VariableLabel}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -170,7 +170,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.ui.Label} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.ui.Label} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -178,7 +178,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	protected LabelItemProvider labelItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.ui.Label}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.ui.Label}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -195,7 +195,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.ui.Slider} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.ui.Slider} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -203,7 +203,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	protected SliderItemProvider sliderItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.ui.Slider}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.ui.Slider}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -220,7 +220,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.ui.TextField} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.ui.TextField} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -228,7 +228,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	protected TextFieldItemProvider textFieldItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.ui.TextField}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.ui.TextField}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -245,7 +245,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.ui.Button} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.ui.Button} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -253,7 +253,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	protected ButtonItemProvider buttonItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.ui.Button}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.ui.Button}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -270,7 +270,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.ui.BooleanButton} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.ui.BooleanButton} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -278,7 +278,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	protected BooleanButtonItemProvider booleanButtonItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.ui.BooleanButton}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.ui.BooleanButton}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -295,7 +295,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.ui.BooleanActionButton} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.ui.BooleanActionButton} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -303,7 +303,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	protected BooleanActionButtonItemProvider booleanActionButtonItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.ui.BooleanActionButton}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.ui.BooleanActionButton}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

@@ -1,13 +1,13 @@
-@GenModel(modelDirectory="/org.sheepy.common.model/src/generated/java")
-@GenModel(editDirectory="/org.sheepy.common.model.edit/src/generated/java")
+@GenModel(modelDirectory="/org.sheepy.lily.core.model/src/generated/java")
+@GenModel(editDirectory="/org.sheepy.lily.core.model.edit/src/generated/java")
 @GenModel(publicConstructors="true", complianceLevel="11.0", resource="XMI")
 @GenModel(extensibleProviderFactory="true", childCreationExtenders="true")
 @GenModel(updateClasspath="false")
-package org.sheepy.common.model.variable
+package org.sheepy.lily.core.model.variable
 
 import org.eclipse.emf.ecore.EObject
-import org.sheepy.common.api.util.FeatureDefinition
-import org.sheepy.common.model.action.Action
+import org.sheepy.lily.core.api.util.FeatureDefinition
+import org.sheepy.lily.core.model.action.Action
 
 interface IVariableResolver
 {

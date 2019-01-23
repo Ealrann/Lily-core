@@ -1,11 +1,11 @@
-package org.sheepy.common.inference;
+package org.sheepy.lily.core.inference;
 
 import org.eclipse.emf.ecore.EClass;
-import org.sheepy.common.api.adapter.impl.AbstractSingletonAdapter;
-import org.sheepy.common.api.inference.IInferenceAdapter;
-import org.sheepy.common.api.inference.IInfererAdapter;
-import org.sheepy.common.model.inference.InferencePackage;
-import org.sheepy.common.model.inference.Inferer;
+import org.sheepy.lily.core.api.adapter.impl.AbstractSingletonAdapter;
+import org.sheepy.lily.core.api.inference.IInferenceAdapter;
+import org.sheepy.lily.core.api.inference.IInfererAdapter;
+import org.sheepy.lily.core.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.inference.Inferer;
 
 public class InfererAdapter extends AbstractSingletonAdapter implements IInfererAdapter
 {

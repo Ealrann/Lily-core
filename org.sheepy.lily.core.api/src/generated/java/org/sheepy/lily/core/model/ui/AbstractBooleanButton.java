@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui;
+package org.sheepy.lily.core.model.ui;
 
 
 /**
@@ -12,11 +12,11 @@ package org.sheepy.common.model.ui;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.ui.AbstractBooleanButton#getTextWhenTrue <em>Text When True</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.AbstractBooleanButton#getTextWhenFalse <em>Text When False</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.AbstractBooleanButton#getTextWhenTrue <em>Text When True</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.AbstractBooleanButton#getTextWhenFalse <em>Text When False</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.ui.UiPackage#getAbstractBooleanButton()
+ * @see org.sheepy.lily.core.model.ui.UiPackage#getAbstractBooleanButton()
  * @model abstract="true"
  * @generated
  */
@@ -32,14 +32,14 @@ public interface AbstractBooleanButton extends AbstractButton
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Text When True</em>' attribute.
 	 * @see #setTextWhenTrue(String)
-	 * @see org.sheepy.common.model.ui.UiPackage#getAbstractBooleanButton_TextWhenTrue()
+	 * @see org.sheepy.lily.core.model.ui.UiPackage#getAbstractBooleanButton_TextWhenTrue()
 	 * @model unique="false"
 	 * @generated
 	 */
 	String getTextWhenTrue();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.ui.AbstractBooleanButton#getTextWhenTrue <em>Text When True</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.ui.AbstractBooleanButton#getTextWhenTrue <em>Text When True</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Text When True</em>' attribute.
@@ -58,14 +58,14 @@ public interface AbstractBooleanButton extends AbstractButton
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Text When False</em>' attribute.
 	 * @see #setTextWhenFalse(String)
-	 * @see org.sheepy.common.model.ui.UiPackage#getAbstractBooleanButton_TextWhenFalse()
+	 * @see org.sheepy.lily.core.model.ui.UiPackage#getAbstractBooleanButton_TextWhenFalse()
 	 * @model unique="false"
 	 * @generated
 	 */
 	String getTextWhenFalse();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.ui.AbstractBooleanButton#getTextWhenFalse <em>Text When False</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.ui.AbstractBooleanButton#getTextWhenFalse <em>Text When False</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Text When False</em>' attribute.

@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.types.provider;
+package org.sheepy.lily.core.model.types.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,7 +21,7 @@ import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-import org.sheepy.common.model.types.util.TypesAdapterFactory;
+import org.sheepy.lily.core.model.types.util.TypesAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -74,7 +74,7 @@ public class TypesItemProviderAdapterFactory extends TypesAdapterFactory impleme
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.types.FloatParameter} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.types.FloatParameter} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -82,7 +82,7 @@ public class TypesItemProviderAdapterFactory extends TypesAdapterFactory impleme
 	protected FloatParameterItemProvider floatParameterItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.types.FloatParameter}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.types.FloatParameter}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -99,7 +99,7 @@ public class TypesItemProviderAdapterFactory extends TypesAdapterFactory impleme
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.types.StringParameter} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.types.StringParameter} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -107,7 +107,7 @@ public class TypesItemProviderAdapterFactory extends TypesAdapterFactory impleme
 	protected StringParameterItemProvider stringParameterItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.types.StringParameter}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.types.StringParameter}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -124,7 +124,7 @@ public class TypesItemProviderAdapterFactory extends TypesAdapterFactory impleme
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.common.model.types.BooleanParameter} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.types.BooleanParameter} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -132,7 +132,7 @@ public class TypesItemProviderAdapterFactory extends TypesAdapterFactory impleme
 	protected BooleanParameterItemProvider booleanParameterItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.common.model.types.BooleanParameter}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.types.BooleanParameter}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

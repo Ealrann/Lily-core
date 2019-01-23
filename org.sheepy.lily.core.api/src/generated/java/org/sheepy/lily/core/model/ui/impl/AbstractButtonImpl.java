@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui.impl;
+package org.sheepy.lily.core.model.ui.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -23,27 +23,27 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EContentsEList;
 
-import org.sheepy.common.api.types.SVector2i;
+import org.sheepy.lily.core.api.types.SVector2i;
 
-import org.sheepy.common.api.util.LTreeIterator;
+import org.sheepy.lily.core.api.util.LTreeIterator;
 
-import org.sheepy.common.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.inference.IInferenceObject;
 
-import org.sheepy.common.model.presentation.IPositionElement;
-import org.sheepy.common.model.presentation.ISizedElement;
-import org.sheepy.common.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.presentation.IPositionElement;
+import org.sheepy.lily.core.model.presentation.ISizedElement;
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
 
-import org.sheepy.common.model.root.LObject;
+import org.sheepy.lily.core.model.root.LObject;
 
-import org.sheepy.common.model.root.RootPackage.Literals;
+import org.sheepy.lily.core.model.root.RootPackage.Literals;
 
-import org.sheepy.common.model.types.EHorizontalRelative;
-import org.sheepy.common.model.types.EVerticalRelative;
-import org.sheepy.common.model.types.TypesFactory;
-import org.sheepy.common.model.types.TypesPackage;
+import org.sheepy.lily.core.model.types.EHorizontalRelative;
+import org.sheepy.lily.core.model.types.EVerticalRelative;
+import org.sheepy.lily.core.model.types.TypesFactory;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
-import org.sheepy.common.model.ui.AbstractButton;
-import org.sheepy.common.model.ui.UiPackage;
+import org.sheepy.lily.core.model.ui.AbstractButton;
+import org.sheepy.lily.core.model.ui.UiPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,13 +53,13 @@ import org.sheepy.common.model.ui.UiPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.ui.impl.AbstractButtonImpl#getContentObjects <em>Content Objects</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.AbstractButtonImpl#getPosition <em>Position</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.AbstractButtonImpl#getVerticalRelative <em>Vertical Relative</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.AbstractButtonImpl#getHorizontalRelative <em>Horizontal Relative</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.AbstractButtonImpl#getWidth <em>Width</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.AbstractButtonImpl#getHeight <em>Height</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.AbstractButtonImpl#getText <em>Text</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.AbstractButtonImpl#getContentObjects <em>Content Objects</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.AbstractButtonImpl#getPosition <em>Position</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.AbstractButtonImpl#getVerticalRelative <em>Vertical Relative</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.AbstractButtonImpl#getHorizontalRelative <em>Horizontal Relative</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.AbstractButtonImpl#getWidth <em>Width</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.AbstractButtonImpl#getHeight <em>Height</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.AbstractButtonImpl#getText <em>Text</em>}</li>
  * </ul>
  *
  * @generated

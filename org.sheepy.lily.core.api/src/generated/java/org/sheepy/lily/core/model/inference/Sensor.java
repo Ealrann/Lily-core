@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.inference;
+package org.sheepy.lily.core.model.inference;
 
 
 /**
@@ -14,7 +14,7 @@ package org.sheepy.common.model.inference;
  * <!-- end-model-doc -->
  *
  *
- * @see org.sheepy.common.model.inference.InferencePackage#getSensor()
+ * @see org.sheepy.lily.core.model.inference.InferencePackage#getSensor()
  * @model abstract="true"
  * @generated
  */

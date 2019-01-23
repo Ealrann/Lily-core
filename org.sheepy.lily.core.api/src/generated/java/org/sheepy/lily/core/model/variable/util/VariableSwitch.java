@@ -1,15 +1,15 @@
 /**
  */
-package org.sheepy.common.model.variable.util;
+package org.sheepy.lily.core.model.variable.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.sheepy.common.model.action.Action;
-import org.sheepy.common.model.types.LNamedElement;
-import org.sheepy.common.model.variable.*;
+import org.sheepy.lily.core.model.action.Action;
+import org.sheepy.lily.core.model.types.LNamedElement;
+import org.sheepy.lily.core.model.variable.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +21,7 @@ import org.sheepy.common.model.variable.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.variable.VariablePackage
+ * @see org.sheepy.lily.core.model.variable.VariablePackage
  * @generated
  */
 public class VariableSwitch<T> extends Switch<T>

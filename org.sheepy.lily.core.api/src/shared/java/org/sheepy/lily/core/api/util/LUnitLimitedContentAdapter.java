@@ -1,9 +1,9 @@
-package org.sheepy.common.api.util;
+package org.sheepy.lily.core.api.util;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
-import org.sheepy.common.model.root.LObject;
+import org.sheepy.lily.core.model.root.LObject;
 
 /**
  * 

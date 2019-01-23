@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.action.impl;
+package org.sheepy.lily.core.model.action.impl;
 
 import java.util.List;
 import org.eclipse.emf.ecore.EClass;
@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.sheepy.common.model.action.*;
+import org.sheepy.lily.core.model.action.*;
 
 /**
  * <!-- begin-user-doc -->

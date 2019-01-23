@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.variable.provider;
+package org.sheepy.lily.core.model.variable.provider;
 
 
 import java.util.Collection;
@@ -12,11 +12,11 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
-import org.sheepy.common.model.variable.DirectVariableResolver;
-import org.sheepy.common.model.variable.VariablePackage;
+import org.sheepy.lily.core.model.variable.DirectVariableResolver;
+import org.sheepy.lily.core.model.variable.VariablePackage;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.common.model.variable.DirectVariableResolver} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.variable.DirectVariableResolver} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

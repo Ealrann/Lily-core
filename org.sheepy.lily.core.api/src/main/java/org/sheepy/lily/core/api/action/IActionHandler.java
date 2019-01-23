@@ -1,4 +1,4 @@
-package org.sheepy.common.api.action;
+package org.sheepy.lily.core.api.action;
 
 import java.util.List;
 import java.util.ServiceLoader;
@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import org.eclipse.emf.ecore.EClass;
-import org.sheepy.common.api.action.context.ExecutionContext;
-import org.sheepy.common.api.service.IService;
+import org.sheepy.lily.core.api.action.context.ExecutionContext;
+import org.sheepy.lily.core.api.service.IService;
 
 public interface IActionHandler extends IService
 {

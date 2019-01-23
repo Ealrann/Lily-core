@@ -1,9 +1,9 @@
-package org.sheepy.common.api.cadence;
+package org.sheepy.lily.core.api.cadence;
 
 import java.util.ServiceLoader;
 
-import org.sheepy.common.api.service.IService;
-import org.sheepy.common.model.application.Application;
+import org.sheepy.lily.core.api.service.IService;
+import org.sheepy.lily.core.model.application.Application;
 
 public interface IMainLoop extends IService
 {

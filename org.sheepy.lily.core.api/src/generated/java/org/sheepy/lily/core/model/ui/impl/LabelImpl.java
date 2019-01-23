@@ -1,11 +1,11 @@
 /**
  */
-package org.sheepy.common.model.ui.impl;
+package org.sheepy.lily.core.model.ui.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.sheepy.common.model.ui.Label;
-import org.sheepy.common.model.ui.UiPackage;
+import org.sheepy.lily.core.model.ui.Label;
+import org.sheepy.lily.core.model.ui.UiPackage;
 
 /**
  * <!-- begin-user-doc -->

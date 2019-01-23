@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui.impl;
+package org.sheepy.lily.core.model.ui.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -11,36 +11,36 @@ import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.sheepy.common.model.action.ActionPackage;
+import org.sheepy.lily.core.model.action.ActionPackage;
 
-import org.sheepy.common.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.application.ApplicationPackage;
 
-import org.sheepy.common.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.inference.InferencePackage;
 
-import org.sheepy.common.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
 
-import org.sheepy.common.model.root.RootPackage;
+import org.sheepy.lily.core.model.root.RootPackage;
 
-import org.sheepy.common.model.types.TypesPackage;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
-import org.sheepy.common.model.ui.AbstractBooleanButton;
-import org.sheepy.common.model.ui.AbstractButton;
-import org.sheepy.common.model.ui.AbstractLabel;
-import org.sheepy.common.model.ui.BooleanActionButton;
-import org.sheepy.common.model.ui.BooleanButton;
-import org.sheepy.common.model.ui.Button;
-import org.sheepy.common.model.ui.DynamicRowLayout;
-import org.sheepy.common.model.ui.IControl;
-import org.sheepy.common.model.ui.Label;
-import org.sheepy.common.model.ui.Panel;
-import org.sheepy.common.model.ui.Slider;
-import org.sheepy.common.model.ui.TextField;
-import org.sheepy.common.model.ui.UiFactory;
-import org.sheepy.common.model.ui.UiPackage;
-import org.sheepy.common.model.ui.VariableLabel;
+import org.sheepy.lily.core.model.ui.AbstractBooleanButton;
+import org.sheepy.lily.core.model.ui.AbstractButton;
+import org.sheepy.lily.core.model.ui.AbstractLabel;
+import org.sheepy.lily.core.model.ui.BooleanActionButton;
+import org.sheepy.lily.core.model.ui.BooleanButton;
+import org.sheepy.lily.core.model.ui.Button;
+import org.sheepy.lily.core.model.ui.DynamicRowLayout;
+import org.sheepy.lily.core.model.ui.IControl;
+import org.sheepy.lily.core.model.ui.Label;
+import org.sheepy.lily.core.model.ui.Panel;
+import org.sheepy.lily.core.model.ui.Slider;
+import org.sheepy.lily.core.model.ui.TextField;
+import org.sheepy.lily.core.model.ui.UiFactory;
+import org.sheepy.lily.core.model.ui.UiPackage;
+import org.sheepy.lily.core.model.ui.VariableLabel;
 
-import org.sheepy.common.model.ui.Widget;
-import org.sheepy.common.model.variable.VariablePackage;
+import org.sheepy.lily.core.model.ui.Widget;
+import org.sheepy.lily.core.model.variable.VariablePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -159,7 +159,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.sheepy.common.model.ui.UiPackage#eNS_URI
+	 * @see org.sheepy.lily.core.model.ui.UiPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */

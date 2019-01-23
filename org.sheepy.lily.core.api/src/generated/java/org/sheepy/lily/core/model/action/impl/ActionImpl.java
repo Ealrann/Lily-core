@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.action.impl;
+package org.sheepy.lily.core.model.action.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -9,8 +9,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.sheepy.common.model.action.Action;
-import org.sheepy.common.model.action.ActionPackage;
+import org.sheepy.lily.core.model.action.Action;
+import org.sheepy.lily.core.model.action.ActionPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +20,7 @@ import org.sheepy.common.model.action.ActionPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.action.impl.ActionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.action.impl.ActionImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated

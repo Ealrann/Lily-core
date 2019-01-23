@@ -1,14 +1,14 @@
-package org.sheepy.common.api.inference;
+package org.sheepy.lily.core.api.inference;
 
 import org.eclipse.emf.ecore.EClass;
-import org.sheepy.common.api.adapter.IServiceAdapterFactory;
-import org.sheepy.common.api.adapter.IAdapter;
-import org.sheepy.common.model.inference.IInferenceObject;
-import org.sheepy.common.model.inference.Inferer;
-import org.sheepy.common.model.inference.LNotification;
-import org.sheepy.common.model.inference.ParameteredNotification;
-import org.sheepy.common.model.root.LObject;
-import org.sheepy.common.model.types.Parameter;
+import org.sheepy.lily.core.api.adapter.IServiceAdapterFactory;
+import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.inference.Inferer;
+import org.sheepy.lily.core.model.inference.LNotification;
+import org.sheepy.lily.core.model.inference.ParameteredNotification;
+import org.sheepy.lily.core.model.root.LObject;
+import org.sheepy.lily.core.model.types.Parameter;
 
 public interface IInferenceAdapter extends IAdapter
 {

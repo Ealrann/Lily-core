@@ -1,8 +1,8 @@
-package org.sheepy.common.api.action.context;
+package org.sheepy.lily.core.api.action.context;
 
-import org.sheepy.common.model.action.Action;
-import org.sheepy.common.model.root.LObject;
-import org.sheepy.common.model.types.Parameter;
+import org.sheepy.lily.core.model.action.Action;
+import org.sheepy.lily.core.model.root.LObject;
+import org.sheepy.lily.core.model.types.Parameter;
 
 public class ExecutionContext
 {

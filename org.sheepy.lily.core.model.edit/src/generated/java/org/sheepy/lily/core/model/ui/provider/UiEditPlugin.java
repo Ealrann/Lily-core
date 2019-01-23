@@ -1,24 +1,24 @@
 /**
  */
-package org.sheepy.common.model.ui.provider;
+package org.sheepy.lily.core.model.ui.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
-import org.sheepy.common.model.action.provider.ActionEditPlugin;
+import org.sheepy.lily.core.model.action.provider.ActionEditPlugin;
 
-import org.sheepy.common.model.application.provider.ApplicationEditPlugin;
+import org.sheepy.lily.core.model.application.provider.ApplicationEditPlugin;
 
-import org.sheepy.common.model.inference.provider.InferenceEditPlugin;
+import org.sheepy.lily.core.model.inference.provider.InferenceEditPlugin;
 
-import org.sheepy.common.model.presentation.provider.PresentationEditPlugin;
+import org.sheepy.lily.core.model.presentation.provider.PresentationEditPlugin;
 
-import org.sheepy.common.model.root.provider.RootEditPlugin;
+import org.sheepy.lily.core.model.root.provider.RootEditPlugin;
 
-import org.sheepy.common.model.types.provider.TypesEditPlugin;
+import org.sheepy.lily.core.model.types.provider.TypesEditPlugin;
 
-import org.sheepy.common.model.variable.provider.VariableEditPlugin;
+import org.sheepy.lily.core.model.variable.provider.VariableEditPlugin;
 
 /**
  * This is the central singleton for the Ui edit plugin.

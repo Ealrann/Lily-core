@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.ui.impl;
+package org.sheepy.lily.core.model.ui.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -8,8 +8,8 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.sheepy.common.model.ui.AbstractBooleanButton;
-import org.sheepy.common.model.ui.UiPackage;
+import org.sheepy.lily.core.model.ui.AbstractBooleanButton;
+import org.sheepy.lily.core.model.ui.UiPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,8 +19,8 @@ import org.sheepy.common.model.ui.UiPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.ui.impl.AbstractBooleanButtonImpl#getTextWhenTrue <em>Text When True</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.impl.AbstractBooleanButtonImpl#getTextWhenFalse <em>Text When False</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.AbstractBooleanButtonImpl#getTextWhenTrue <em>Text When True</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.AbstractBooleanButtonImpl#getTextWhenFalse <em>Text When False</em>}</li>
  * </ul>
  *
  * @generated

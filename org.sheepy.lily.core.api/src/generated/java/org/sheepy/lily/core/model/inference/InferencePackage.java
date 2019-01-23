@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.inference;
+package org.sheepy.lily.core.model.inference;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
@@ -19,9 +19,9 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see org.sheepy.common.model.inference.InferenceFactory
+ * @see org.sheepy.lily.core.model.inference.InferenceFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.common.model/src/generated/java' editDirectory='/org.sheepy.common.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' extensibleProviderFactory='true' childCreationExtenders='true' updateClasspath='false' basePackage='org.sheepy.common.model'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.lily.core.model/src/generated/java' editDirectory='/org.sheepy.lily.core.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' extensibleProviderFactory='true' childCreationExtenders='true' updateClasspath='false' basePackage='org.sheepy.lily.core.model'"
  * @generated
  */
 public interface InferencePackage extends EPackage
@@ -40,7 +40,7 @@ public interface InferencePackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "org.sheepy.common.model.inference";
+	String eNS_URI = "org.sheepy.lily.core.model.inference";
 
 	/**
 	 * The package namespace name.
@@ -56,14 +56,14 @@ public interface InferencePackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	InferencePackage eINSTANCE = org.sheepy.common.model.inference.impl.InferencePackageImpl.init();
+	InferencePackage eINSTANCE = org.sheepy.lily.core.model.inference.impl.InferencePackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.inference.IInferenceObject <em>IInference Object</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.inference.IInferenceObject <em>IInference Object</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.inference.IInferenceObject
-	 * @see org.sheepy.common.model.inference.impl.InferencePackageImpl#getIInferenceObject()
+	 * @see org.sheepy.lily.core.model.inference.IInferenceObject
+	 * @see org.sheepy.lily.core.model.inference.impl.InferencePackageImpl#getIInferenceObject()
 	 * @generated
 	 */
 	int IINFERENCE_OBJECT = 0;
@@ -96,11 +96,11 @@ public interface InferencePackage extends EPackage
 	int IINFERENCE_OBJECT_OPERATION_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.inference.impl.InfererImpl <em>Inferer</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.inference.impl.InfererImpl <em>Inferer</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.inference.impl.InfererImpl
-	 * @see org.sheepy.common.model.inference.impl.InferencePackageImpl#getInferer()
+	 * @see org.sheepy.lily.core.model.inference.impl.InfererImpl
+	 * @see org.sheepy.lily.core.model.inference.impl.InferencePackageImpl#getInferer()
 	 * @generated
 	 */
 	int INFERER = 1;
@@ -151,11 +151,11 @@ public interface InferencePackage extends EPackage
 	int INFERER_OPERATION_COUNT = IINFERENCE_OBJECT_OPERATION_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.inference.impl.SensorImpl <em>Sensor</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.inference.impl.SensorImpl <em>Sensor</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.inference.impl.SensorImpl
-	 * @see org.sheepy.common.model.inference.impl.InferencePackageImpl#getSensor()
+	 * @see org.sheepy.lily.core.model.inference.impl.SensorImpl
+	 * @see org.sheepy.lily.core.model.inference.impl.InferencePackageImpl#getSensor()
 	 * @generated
 	 */
 	int SENSOR = 2;
@@ -188,11 +188,11 @@ public interface InferencePackage extends EPackage
 	int SENSOR_OPERATION_COUNT = IINFERENCE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.inference.impl.LRuleImpl <em>LRule</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.inference.impl.LRuleImpl <em>LRule</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.inference.impl.LRuleImpl
-	 * @see org.sheepy.common.model.inference.impl.InferencePackageImpl#getLRule()
+	 * @see org.sheepy.lily.core.model.inference.impl.LRuleImpl
+	 * @see org.sheepy.lily.core.model.inference.impl.InferencePackageImpl#getLRule()
 	 * @generated
 	 */
 	int LRULE = 3;
@@ -243,11 +243,11 @@ public interface InferencePackage extends EPackage
 	int LRULE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.inference.impl.AbstractNotificationImpl <em>Abstract Notification</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.inference.impl.AbstractNotificationImpl <em>Abstract Notification</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.inference.impl.AbstractNotificationImpl
-	 * @see org.sheepy.common.model.inference.impl.InferencePackageImpl#getAbstractNotification()
+	 * @see org.sheepy.lily.core.model.inference.impl.AbstractNotificationImpl
+	 * @see org.sheepy.lily.core.model.inference.impl.InferencePackageImpl#getAbstractNotification()
 	 * @generated
 	 */
 	int ABSTRACT_NOTIFICATION = 4;
@@ -280,11 +280,11 @@ public interface InferencePackage extends EPackage
 	int ABSTRACT_NOTIFICATION_OPERATION_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.inference.impl.LNotificationImpl <em>LNotification</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.inference.impl.LNotificationImpl <em>LNotification</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.inference.impl.LNotificationImpl
-	 * @see org.sheepy.common.model.inference.impl.InferencePackageImpl#getLNotification()
+	 * @see org.sheepy.lily.core.model.inference.impl.LNotificationImpl
+	 * @see org.sheepy.lily.core.model.inference.impl.InferencePackageImpl#getLNotification()
 	 * @generated
 	 */
 	int LNOTIFICATION = 5;
@@ -317,11 +317,11 @@ public interface InferencePackage extends EPackage
 	int LNOTIFICATION_OPERATION_COUNT = ABSTRACT_NOTIFICATION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.inference.impl.ParameteredNotificationImpl <em>Parametered Notification</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.inference.impl.ParameteredNotificationImpl <em>Parametered Notification</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.inference.impl.ParameteredNotificationImpl
-	 * @see org.sheepy.common.model.inference.impl.InferencePackageImpl#getParameteredNotification()
+	 * @see org.sheepy.lily.core.model.inference.impl.ParameteredNotificationImpl
+	 * @see org.sheepy.lily.core.model.inference.impl.InferencePackageImpl#getParameteredNotification()
 	 * @generated
 	 */
 	int PARAMETERED_NOTIFICATION = 6;
@@ -354,11 +354,11 @@ public interface InferencePackage extends EPackage
 	int PARAMETERED_NOTIFICATION_OPERATION_COUNT = ABSTRACT_NOTIFICATION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.common.model.inference.Condition <em>Condition</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.inference.Condition <em>Condition</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.common.model.inference.Condition
-	 * @see org.sheepy.common.model.inference.impl.InferencePackageImpl#getCondition()
+	 * @see org.sheepy.lily.core.model.inference.Condition
+	 * @see org.sheepy.lily.core.model.inference.impl.InferencePackageImpl#getCondition()
 	 * @generated
 	 */
 	int CONDITION = 7;
@@ -419,197 +419,197 @@ public interface InferencePackage extends EPackage
 
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.inference.IInferenceObject <em>IInference Object</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.inference.IInferenceObject <em>IInference Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>IInference Object</em>'.
-	 * @see org.sheepy.common.model.inference.IInferenceObject
+	 * @see org.sheepy.lily.core.model.inference.IInferenceObject
 	 * @generated
 	 */
 	EClass getIInferenceObject();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.common.model.inference.IInferenceObject#lInferenceObject() <em>LInference Object</em>}' operation.
+	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.inference.IInferenceObject#lInferenceObject() <em>LInference Object</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>LInference Object</em>' operation.
-	 * @see org.sheepy.common.model.inference.IInferenceObject#lInferenceObject()
+	 * @see org.sheepy.lily.core.model.inference.IInferenceObject#lInferenceObject()
 	 * @generated
 	 */
 	EOperation getIInferenceObject__LInferenceObject();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.inference.Inferer <em>Inferer</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.inference.Inferer <em>Inferer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Inferer</em>'.
-	 * @see org.sheepy.common.model.inference.Inferer
+	 * @see org.sheepy.lily.core.model.inference.Inferer
 	 * @generated
 	 */
 	EClass getInferer();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.sheepy.common.model.inference.Inferer#getRules <em>Rules</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.inference.Inferer#getRules <em>Rules</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Rules</em>'.
-	 * @see org.sheepy.common.model.inference.Inferer#getRules()
+	 * @see org.sheepy.lily.core.model.inference.Inferer#getRules()
 	 * @see #getInferer()
 	 * @generated
 	 */
 	EReference getInferer_Rules();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.common.model.inference.Inferer#lExecutor() <em>LExecutor</em>}' operation.
+	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.inference.Inferer#lExecutor() <em>LExecutor</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>LExecutor</em>' operation.
-	 * @see org.sheepy.common.model.inference.Inferer#lExecutor()
+	 * @see org.sheepy.lily.core.model.inference.Inferer#lExecutor()
 	 * @generated
 	 */
 	EOperation getInferer__LExecutor();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.inference.Sensor <em>Sensor</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.inference.Sensor <em>Sensor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Sensor</em>'.
-	 * @see org.sheepy.common.model.inference.Sensor
+	 * @see org.sheepy.lily.core.model.inference.Sensor
 	 * @generated
 	 */
 	EClass getSensor();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.inference.LRule <em>LRule</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.inference.LRule <em>LRule</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>LRule</em>'.
-	 * @see org.sheepy.common.model.inference.LRule
+	 * @see org.sheepy.lily.core.model.inference.LRule
 	 * @generated
 	 */
 	EClass getLRule();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.sheepy.common.model.inference.LRule#getNotification <em>Notification</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.inference.LRule#getNotification <em>Notification</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Notification</em>'.
-	 * @see org.sheepy.common.model.inference.LRule#getNotification()
+	 * @see org.sheepy.lily.core.model.inference.LRule#getNotification()
 	 * @see #getLRule()
 	 * @generated
 	 */
 	EReference getLRule_Notification();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.sheepy.common.model.inference.LRule#getAction <em>Action</em>}'.
+	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.inference.LRule#getAction <em>Action</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Action</em>'.
-	 * @see org.sheepy.common.model.inference.LRule#getAction()
+	 * @see org.sheepy.lily.core.model.inference.LRule#getAction()
 	 * @see #getLRule()
 	 * @generated
 	 */
 	EReference getLRule_Action();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.sheepy.common.model.inference.LRule#getConditions <em>Conditions</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.inference.LRule#getConditions <em>Conditions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Conditions</em>'.
-	 * @see org.sheepy.common.model.inference.LRule#getConditions()
+	 * @see org.sheepy.lily.core.model.inference.LRule#getConditions()
 	 * @see #getLRule()
 	 * @generated
 	 */
 	EReference getLRule_Conditions();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.inference.AbstractNotification <em>Abstract Notification</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.inference.AbstractNotification <em>Abstract Notification</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Abstract Notification</em>'.
-	 * @see org.sheepy.common.model.inference.AbstractNotification
+	 * @see org.sheepy.lily.core.model.inference.AbstractNotification
 	 * @generated
 	 */
 	EClass getAbstractNotification();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.common.model.inference.AbstractNotification#match(org.sheepy.common.model.inference.AbstractNotification) <em>Match</em>}' operation.
+	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.inference.AbstractNotification#match(org.sheepy.lily.core.model.inference.AbstractNotification) <em>Match</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Match</em>' operation.
-	 * @see org.sheepy.common.model.inference.AbstractNotification#match(org.sheepy.common.model.inference.AbstractNotification)
+	 * @see org.sheepy.lily.core.model.inference.AbstractNotification#match(org.sheepy.lily.core.model.inference.AbstractNotification)
 	 * @generated
 	 */
 	EOperation getAbstractNotification__Match__AbstractNotification();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.inference.LNotification <em>LNotification</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.inference.LNotification <em>LNotification</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>LNotification</em>'.
-	 * @see org.sheepy.common.model.inference.LNotification
+	 * @see org.sheepy.lily.core.model.inference.LNotification
 	 * @generated
 	 */
 	EClass getLNotification();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.inference.ParameteredNotification <em>Parametered Notification</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.inference.ParameteredNotification <em>Parametered Notification</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Parametered Notification</em>'.
-	 * @see org.sheepy.common.model.inference.ParameteredNotification
+	 * @see org.sheepy.lily.core.model.inference.ParameteredNotification
 	 * @generated
 	 */
 	EClass getParameteredNotification();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.common.model.inference.Condition <em>Condition</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.inference.Condition <em>Condition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Condition</em>'.
-	 * @see org.sheepy.common.model.inference.Condition
+	 * @see org.sheepy.lily.core.model.inference.Condition
 	 * @generated
 	 */
 	EClass getCondition();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.sheepy.common.model.inference.Condition#getValue <em>Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.inference.Condition#getValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Value</em>'.
-	 * @see org.sheepy.common.model.inference.Condition#getValue()
+	 * @see org.sheepy.lily.core.model.inference.Condition#getValue()
 	 * @see #getCondition()
 	 * @generated
 	 */
 	EReference getCondition_Value();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.sheepy.common.model.inference.Condition#getDefinition <em>Definition</em>}'.
+	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.inference.Condition#getDefinition <em>Definition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Definition</em>'.
-	 * @see org.sheepy.common.model.inference.Condition#getDefinition()
+	 * @see org.sheepy.lily.core.model.inference.Condition#getDefinition()
 	 * @see #getCondition()
 	 * @generated
 	 */
 	EReference getCondition_Definition();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.common.model.inference.Condition#getType() <em>Get Type</em>}' operation.
+	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.inference.Condition#getType() <em>Get Type</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Get Type</em>' operation.
-	 * @see org.sheepy.common.model.inference.Condition#getType()
+	 * @see org.sheepy.lily.core.model.inference.Condition#getType()
 	 * @generated
 	 */
 	EOperation getCondition__GetType();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.common.model.inference.Condition#match(org.sheepy.common.model.types.Parameter) <em>Match</em>}' operation.
+	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.inference.Condition#match(org.sheepy.lily.core.model.types.Parameter) <em>Match</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Match</em>' operation.
-	 * @see org.sheepy.common.model.inference.Condition#match(org.sheepy.common.model.types.Parameter)
+	 * @see org.sheepy.lily.core.model.inference.Condition#match(org.sheepy.lily.core.model.types.Parameter)
 	 * @generated
 	 */
 	EOperation getCondition__Match__Parameter();
@@ -639,11 +639,11 @@ public interface InferencePackage extends EPackage
 	interface Literals
 	{
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.inference.IInferenceObject <em>IInference Object</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.inference.IInferenceObject <em>IInference Object</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.inference.IInferenceObject
-		 * @see org.sheepy.common.model.inference.impl.InferencePackageImpl#getIInferenceObject()
+		 * @see org.sheepy.lily.core.model.inference.IInferenceObject
+		 * @see org.sheepy.lily.core.model.inference.impl.InferencePackageImpl#getIInferenceObject()
 		 * @generated
 		 */
 		EClass IINFERENCE_OBJECT = eINSTANCE.getIInferenceObject();
@@ -657,11 +657,11 @@ public interface InferencePackage extends EPackage
 		EOperation IINFERENCE_OBJECT___LINFERENCE_OBJECT = eINSTANCE.getIInferenceObject__LInferenceObject();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.inference.impl.InfererImpl <em>Inferer</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.inference.impl.InfererImpl <em>Inferer</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.inference.impl.InfererImpl
-		 * @see org.sheepy.common.model.inference.impl.InferencePackageImpl#getInferer()
+		 * @see org.sheepy.lily.core.model.inference.impl.InfererImpl
+		 * @see org.sheepy.lily.core.model.inference.impl.InferencePackageImpl#getInferer()
 		 * @generated
 		 */
 		EClass INFERER = eINSTANCE.getInferer();
@@ -683,21 +683,21 @@ public interface InferencePackage extends EPackage
 		EOperation INFERER___LEXECUTOR = eINSTANCE.getInferer__LExecutor();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.inference.impl.SensorImpl <em>Sensor</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.inference.impl.SensorImpl <em>Sensor</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.inference.impl.SensorImpl
-		 * @see org.sheepy.common.model.inference.impl.InferencePackageImpl#getSensor()
+		 * @see org.sheepy.lily.core.model.inference.impl.SensorImpl
+		 * @see org.sheepy.lily.core.model.inference.impl.InferencePackageImpl#getSensor()
 		 * @generated
 		 */
 		EClass SENSOR = eINSTANCE.getSensor();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.inference.impl.LRuleImpl <em>LRule</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.inference.impl.LRuleImpl <em>LRule</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.inference.impl.LRuleImpl
-		 * @see org.sheepy.common.model.inference.impl.InferencePackageImpl#getLRule()
+		 * @see org.sheepy.lily.core.model.inference.impl.LRuleImpl
+		 * @see org.sheepy.lily.core.model.inference.impl.InferencePackageImpl#getLRule()
 		 * @generated
 		 */
 		EClass LRULE = eINSTANCE.getLRule();
@@ -727,11 +727,11 @@ public interface InferencePackage extends EPackage
 		EReference LRULE__CONDITIONS = eINSTANCE.getLRule_Conditions();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.inference.impl.AbstractNotificationImpl <em>Abstract Notification</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.inference.impl.AbstractNotificationImpl <em>Abstract Notification</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.inference.impl.AbstractNotificationImpl
-		 * @see org.sheepy.common.model.inference.impl.InferencePackageImpl#getAbstractNotification()
+		 * @see org.sheepy.lily.core.model.inference.impl.AbstractNotificationImpl
+		 * @see org.sheepy.lily.core.model.inference.impl.InferencePackageImpl#getAbstractNotification()
 		 * @generated
 		 */
 		EClass ABSTRACT_NOTIFICATION = eINSTANCE.getAbstractNotification();
@@ -745,31 +745,31 @@ public interface InferencePackage extends EPackage
 		EOperation ABSTRACT_NOTIFICATION___MATCH__ABSTRACTNOTIFICATION = eINSTANCE.getAbstractNotification__Match__AbstractNotification();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.inference.impl.LNotificationImpl <em>LNotification</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.inference.impl.LNotificationImpl <em>LNotification</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.inference.impl.LNotificationImpl
-		 * @see org.sheepy.common.model.inference.impl.InferencePackageImpl#getLNotification()
+		 * @see org.sheepy.lily.core.model.inference.impl.LNotificationImpl
+		 * @see org.sheepy.lily.core.model.inference.impl.InferencePackageImpl#getLNotification()
 		 * @generated
 		 */
 		EClass LNOTIFICATION = eINSTANCE.getLNotification();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.inference.impl.ParameteredNotificationImpl <em>Parametered Notification</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.inference.impl.ParameteredNotificationImpl <em>Parametered Notification</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.inference.impl.ParameteredNotificationImpl
-		 * @see org.sheepy.common.model.inference.impl.InferencePackageImpl#getParameteredNotification()
+		 * @see org.sheepy.lily.core.model.inference.impl.ParameteredNotificationImpl
+		 * @see org.sheepy.lily.core.model.inference.impl.InferencePackageImpl#getParameteredNotification()
 		 * @generated
 		 */
 		EClass PARAMETERED_NOTIFICATION = eINSTANCE.getParameteredNotification();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.common.model.inference.Condition <em>Condition</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.inference.Condition <em>Condition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.common.model.inference.Condition
-		 * @see org.sheepy.common.model.inference.impl.InferencePackageImpl#getCondition()
+		 * @see org.sheepy.lily.core.model.inference.Condition
+		 * @see org.sheepy.lily.core.model.inference.impl.InferencePackageImpl#getCondition()
 		 * @generated
 		 */
 		EClass CONDITION = eINSTANCE.getCondition();

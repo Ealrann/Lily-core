@@ -1,4 +1,4 @@
-package org.sheepy.common.api.resource;
+package org.sheepy.lily.core.api.resource;
 
 import java.io.File;
 import java.util.ArrayList;

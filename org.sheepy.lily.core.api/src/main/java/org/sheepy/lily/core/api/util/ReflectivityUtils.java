@@ -1,8 +1,8 @@
-package org.sheepy.common.api.util;
+package org.sheepy.lily.core.api.util;
 
 import java.lang.reflect.Constructor;
 
-import org.sheepy.common.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.IAdapter;
 
 public class ReflectivityUtils
 {

@@ -1,4 +1,4 @@
-package org.sheepy.common.cadence;
+package org.sheepy.lily.core.cadence;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map.Entry;
 
-import org.sheepy.common.api.cadence.IStatistics;
+import org.sheepy.lily.core.api.cadence.IStatistics;
 
 public class CadencerStatistics implements IStatistics
 {

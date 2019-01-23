@@ -1,4 +1,4 @@
-package org.sheepy.common.api.resource;
+package org.sheepy.lily.core.api.resource;
 
 import java.util.Collection;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.sheepy.common.api.service.IService;
+import org.sheepy.lily.core.api.service.IService;
 
 public interface IModelExtension extends IService
 {

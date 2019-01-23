@@ -1,11 +1,11 @@
-package org.sheepy.common.variable;
+package org.sheepy.lily.core.variable;
 
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.sheepy.common.api.util.FeatureDefinition;
-import org.sheepy.common.model.variable.DirectVariableResolver;
-import org.sheepy.common.model.variable.VariablePackage;
+import org.sheepy.lily.core.api.util.FeatureDefinition;
+import org.sheepy.lily.core.model.variable.DirectVariableResolver;
+import org.sheepy.lily.core.model.variable.VariablePackage;
 
 public class DirectVariableResolverAdapter
 		extends AbstractVariableResolverAdapter<DirectVariableResolver>

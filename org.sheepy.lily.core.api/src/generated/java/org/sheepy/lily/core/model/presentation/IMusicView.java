@@ -1,8 +1,8 @@
 /**
  */
-package org.sheepy.common.model.presentation;
+package org.sheepy.lily.core.model.presentation;
 
-import org.sheepy.common.model.application.IView;
+import org.sheepy.lily.core.model.application.IView;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,10 +13,10 @@ import org.sheepy.common.model.application.IView;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.presentation.IMusicView#getMusicPath <em>Music Path</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.presentation.IMusicView#getMusicPath <em>Music Path</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.presentation.PresentationPackage#getIMusicView()
+ * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getIMusicView()
  * @model interface="true" abstract="true"
  * @generated
  */
@@ -33,14 +33,14 @@ public interface IMusicView extends IView
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Music Path</em>' attribute.
 	 * @see #setMusicPath(String)
-	 * @see org.sheepy.common.model.presentation.PresentationPackage#getIMusicView_MusicPath()
+	 * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getIMusicView_MusicPath()
 	 * @model default="" unique="false"
 	 * @generated
 	 */
 	String getMusicPath();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.presentation.IMusicView#getMusicPath <em>Music Path</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.presentation.IMusicView#getMusicPath <em>Music Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Music Path</em>' attribute.

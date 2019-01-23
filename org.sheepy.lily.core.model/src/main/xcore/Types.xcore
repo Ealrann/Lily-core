@@ -1,12 +1,12 @@
-@GenModel(modelDirectory="/org.sheepy.common.model/src/generated/java")
-@GenModel(editDirectory="/org.sheepy.common.model.edit/src/generated/java")
+@GenModel(modelDirectory="/org.sheepy.lily.core.model/src/generated/java")
+@GenModel(editDirectory="/org.sheepy.lily.core.model.edit/src/generated/java")
 @GenModel(publicConstructors="true", complianceLevel="11.0", resource="XMI")
 @GenModel(updateClasspath="false")
 
-package org.sheepy.common.model.types
+package org.sheepy.lily.core.model.types
 
-import org.sheepy.common.api.types.SVector2f
-import org.sheepy.common.api.types.SVector2i
+import org.sheepy.lily.core.api.types.SVector2f
+import org.sheepy.lily.core.api.types.SVector2i
 
 
 interface LNamedElement

@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.types.impl;
+package org.sheepy.lily.core.model.types.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -14,28 +14,28 @@ import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.sheepy.common.api.types.SVector2f;
-import org.sheepy.common.api.types.SVector2i;
+import org.sheepy.lily.core.api.types.SVector2f;
+import org.sheepy.lily.core.api.types.SVector2i;
 
-import org.sheepy.common.model.types.BooleanParameter;
-import org.sheepy.common.model.types.EDirection;
-import org.sheepy.common.model.types.EHorizontalRelative;
-import org.sheepy.common.model.types.EKeyState;
-import org.sheepy.common.model.types.EMouseButton;
-import org.sheepy.common.model.types.EMoveState;
-import org.sheepy.common.model.types.ENotificationDirection;
-import org.sheepy.common.model.types.ENumberComparisonType;
-import org.sheepy.common.model.types.ETimeUnit;
-import org.sheepy.common.model.types.EVerticalRelative;
-import org.sheepy.common.model.types.FloatParameter;
-import org.sheepy.common.model.types.LNamedElement;
-import org.sheepy.common.model.types.NativeParameter;
-import org.sheepy.common.model.types.Parameter;
-import org.sheepy.common.model.types.PositionFParameter;
-import org.sheepy.common.model.types.PositionParameter;
-import org.sheepy.common.model.types.StringParameter;
-import org.sheepy.common.model.types.TypesFactory;
-import org.sheepy.common.model.types.TypesPackage;
+import org.sheepy.lily.core.model.types.BooleanParameter;
+import org.sheepy.lily.core.model.types.EDirection;
+import org.sheepy.lily.core.model.types.EHorizontalRelative;
+import org.sheepy.lily.core.model.types.EKeyState;
+import org.sheepy.lily.core.model.types.EMouseButton;
+import org.sheepy.lily.core.model.types.EMoveState;
+import org.sheepy.lily.core.model.types.ENotificationDirection;
+import org.sheepy.lily.core.model.types.ENumberComparisonType;
+import org.sheepy.lily.core.model.types.ETimeUnit;
+import org.sheepy.lily.core.model.types.EVerticalRelative;
+import org.sheepy.lily.core.model.types.FloatParameter;
+import org.sheepy.lily.core.model.types.LNamedElement;
+import org.sheepy.lily.core.model.types.NativeParameter;
+import org.sheepy.lily.core.model.types.Parameter;
+import org.sheepy.lily.core.model.types.PositionFParameter;
+import org.sheepy.lily.core.model.types.PositionParameter;
+import org.sheepy.lily.core.model.types.StringParameter;
+import org.sheepy.lily.core.model.types.TypesFactory;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -189,7 +189,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.sheepy.common.model.types.TypesPackage#eNS_URI
+	 * @see org.sheepy.lily.core.model.types.TypesPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */

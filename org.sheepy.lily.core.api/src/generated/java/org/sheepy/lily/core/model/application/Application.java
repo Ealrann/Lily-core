@@ -1,12 +1,12 @@
 /**
  */
-package org.sheepy.common.model.application;
+package org.sheepy.lily.core.model.application;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.sheepy.common.api.types.SVector2i;
+import org.sheepy.lily.core.api.types.SVector2i;
 
-import org.sheepy.common.model.root.LObject;
+import org.sheepy.lily.core.model.root.LObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -17,19 +17,19 @@ import org.sheepy.common.model.root.LObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.application.Application#getViews <em>Views</em>}</li>
- *   <li>{@link org.sheepy.common.model.application.Application#getEngines <em>Engines</em>}</li>
- *   <li>{@link org.sheepy.common.model.application.Application#isRun <em>Run</em>}</li>
- *   <li>{@link org.sheepy.common.model.application.Application#isFullscreen <em>Fullscreen</em>}</li>
- *   <li>{@link org.sheepy.common.model.application.Application#isResizeable <em>Resizeable</em>}</li>
- *   <li>{@link org.sheepy.common.model.application.Application#isDebug <em>Debug</em>}</li>
- *   <li>{@link org.sheepy.common.model.application.Application#getTitle <em>Title</em>}</li>
- *   <li>{@link org.sheepy.common.model.application.Application#getSize <em>Size</em>}</li>
- *   <li>{@link org.sheepy.common.model.application.Application#getCurrentView <em>Current View</em>}</li>
- *   <li>{@link org.sheepy.common.model.application.Application#getCadenceInHz <em>Cadence In Hz</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Application#getViews <em>Views</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Application#getEngines <em>Engines</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Application#isRun <em>Run</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Application#isFullscreen <em>Fullscreen</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Application#isResizeable <em>Resizeable</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Application#isDebug <em>Debug</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Application#getTitle <em>Title</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Application#getSize <em>Size</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Application#getCurrentView <em>Current View</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Application#getCadenceInHz <em>Cadence In Hz</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.application.ApplicationPackage#getApplication()
+ * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication()
  * @model
  * @generated
  */
@@ -37,7 +37,7 @@ public interface Application extends LObject
 {
 	/**
 	 * Returns the value of the '<em><b>Views</b></em>' containment reference list.
-	 * The list contents are of type {@link org.sheepy.common.model.application.IView}.
+	 * The list contents are of type {@link org.sheepy.lily.core.model.application.IView}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Views</em>' containment reference list isn't clear,
@@ -45,7 +45,7 @@ public interface Application extends LObject
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Views</em>' containment reference list.
-	 * @see org.sheepy.common.model.application.ApplicationPackage#getApplication_Views()
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Views()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
@@ -53,7 +53,7 @@ public interface Application extends LObject
 
 	/**
 	 * Returns the value of the '<em><b>Engines</b></em>' containment reference list.
-	 * The list contents are of type {@link org.sheepy.common.model.application.IEngine}.
+	 * The list contents are of type {@link org.sheepy.lily.core.model.application.IEngine}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Engines</em>' containment reference list isn't clear,
@@ -61,7 +61,7 @@ public interface Application extends LObject
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Engines</em>' containment reference list.
-	 * @see org.sheepy.common.model.application.ApplicationPackage#getApplication_Engines()
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Engines()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
@@ -78,14 +78,14 @@ public interface Application extends LObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Run</em>' attribute.
 	 * @see #setRun(boolean)
-	 * @see org.sheepy.common.model.application.ApplicationPackage#getApplication_Run()
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Run()
 	 * @model default="true" unique="false"
 	 * @generated
 	 */
 	boolean isRun();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.application.Application#isRun <em>Run</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#isRun <em>Run</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Run</em>' attribute.
@@ -105,14 +105,14 @@ public interface Application extends LObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Fullscreen</em>' attribute.
 	 * @see #setFullscreen(boolean)
-	 * @see org.sheepy.common.model.application.ApplicationPackage#getApplication_Fullscreen()
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Fullscreen()
 	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isFullscreen();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.application.Application#isFullscreen <em>Fullscreen</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#isFullscreen <em>Fullscreen</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Fullscreen</em>' attribute.
@@ -132,14 +132,14 @@ public interface Application extends LObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Resizeable</em>' attribute.
 	 * @see #setResizeable(boolean)
-	 * @see org.sheepy.common.model.application.ApplicationPackage#getApplication_Resizeable()
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Resizeable()
 	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isResizeable();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.application.Application#isResizeable <em>Resizeable</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#isResizeable <em>Resizeable</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Resizeable</em>' attribute.
@@ -159,14 +159,14 @@ public interface Application extends LObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Debug</em>' attribute.
 	 * @see #setDebug(boolean)
-	 * @see org.sheepy.common.model.application.ApplicationPackage#getApplication_Debug()
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Debug()
 	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isDebug();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.application.Application#isDebug <em>Debug</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#isDebug <em>Debug</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Debug</em>' attribute.
@@ -186,14 +186,14 @@ public interface Application extends LObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Title</em>' attribute.
 	 * @see #setTitle(String)
-	 * @see org.sheepy.common.model.application.ApplicationPackage#getApplication_Title()
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Title()
 	 * @model default="Vulkan Application" unique="false"
 	 * @generated
 	 */
 	String getTitle();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.application.Application#getTitle <em>Title</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#getTitle <em>Title</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Title</em>' attribute.
@@ -213,14 +213,14 @@ public interface Application extends LObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Size</em>' attribute.
 	 * @see #setSize(SVector2i)
-	 * @see org.sheepy.common.model.application.ApplicationPackage#getApplication_Size()
-	 * @model default="400,400" unique="false" dataType="org.sheepy.common.model.types.SVector2i"
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Size()
+	 * @model default="400,400" unique="false" dataType="org.sheepy.lily.core.model.types.SVector2i"
 	 * @generated
 	 */
 	SVector2i getSize();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.application.Application#getSize <em>Size</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#getSize <em>Size</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Size</em>' attribute.
@@ -239,14 +239,14 @@ public interface Application extends LObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Current View</em>' reference.
 	 * @see #setCurrentView(IView)
-	 * @see org.sheepy.common.model.application.ApplicationPackage#getApplication_CurrentView()
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_CurrentView()
 	 * @model
 	 * @generated
 	 */
 	IView getCurrentView();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.application.Application#getCurrentView <em>Current View</em>}' reference.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#getCurrentView <em>Current View</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Current View</em>' reference.
@@ -266,14 +266,14 @@ public interface Application extends LObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cadence In Hz</em>' attribute.
 	 * @see #setCadenceInHz(int)
-	 * @see org.sheepy.common.model.application.ApplicationPackage#getApplication_CadenceInHz()
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_CadenceInHz()
 	 * @model default="60" unique="false"
 	 * @generated
 	 */
 	int getCadenceInHz();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.application.Application#getCadenceInHz <em>Cadence In Hz</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#getCadenceInHz <em>Cadence In Hz</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Cadence In Hz</em>' attribute.

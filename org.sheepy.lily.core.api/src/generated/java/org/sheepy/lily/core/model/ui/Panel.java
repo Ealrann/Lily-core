@@ -1,10 +1,10 @@
 /**
  */
-package org.sheepy.common.model.ui;
+package org.sheepy.lily.core.model.ui;
 
 import org.eclipse.emf.common.util.EList;
-import org.sheepy.common.model.presentation.IPanel;
-import org.sheepy.common.model.presentation.ISizedElement;
+import org.sheepy.lily.core.model.presentation.IPanel;
+import org.sheepy.lily.core.model.presentation.ISizedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,14 +15,14 @@ import org.sheepy.common.model.presentation.ISizedElement;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.common.model.ui.Panel#getControls <em>Controls</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.Panel#isShowTitle <em>Show Title</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.Panel#isMinimizable <em>Minimizable</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.Panel#isMovable <em>Movable</em>}</li>
- *   <li>{@link org.sheepy.common.model.ui.Panel#isMinimized <em>Minimized</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.Panel#getControls <em>Controls</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.Panel#isShowTitle <em>Show Title</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.Panel#isMinimizable <em>Minimizable</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.Panel#isMovable <em>Movable</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.Panel#isMinimized <em>Minimized</em>}</li>
  * </ul>
  *
- * @see org.sheepy.common.model.ui.UiPackage#getPanel()
+ * @see org.sheepy.lily.core.model.ui.UiPackage#getPanel()
  * @model
  * @generated
  */
@@ -30,7 +30,7 @@ public interface Panel extends IPanel, ISizedElement
 {
 	/**
 	 * Returns the value of the '<em><b>Controls</b></em>' containment reference list.
-	 * The list contents are of type {@link org.sheepy.common.model.ui.IControl}.
+	 * The list contents are of type {@link org.sheepy.lily.core.model.ui.IControl}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Controls</em>' containment reference list isn't clear,
@@ -38,7 +38,7 @@ public interface Panel extends IPanel, ISizedElement
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Controls</em>' containment reference list.
-	 * @see org.sheepy.common.model.ui.UiPackage#getPanel_Controls()
+	 * @see org.sheepy.lily.core.model.ui.UiPackage#getPanel_Controls()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -55,14 +55,14 @@ public interface Panel extends IPanel, ISizedElement
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Show Title</em>' attribute.
 	 * @see #setShowTitle(boolean)
-	 * @see org.sheepy.common.model.ui.UiPackage#getPanel_ShowTitle()
+	 * @see org.sheepy.lily.core.model.ui.UiPackage#getPanel_ShowTitle()
 	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isShowTitle();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.ui.Panel#isShowTitle <em>Show Title</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.ui.Panel#isShowTitle <em>Show Title</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Show Title</em>' attribute.
@@ -82,14 +82,14 @@ public interface Panel extends IPanel, ISizedElement
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Minimizable</em>' attribute.
 	 * @see #setMinimizable(boolean)
-	 * @see org.sheepy.common.model.ui.UiPackage#getPanel_Minimizable()
+	 * @see org.sheepy.lily.core.model.ui.UiPackage#getPanel_Minimizable()
 	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isMinimizable();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.ui.Panel#isMinimizable <em>Minimizable</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.ui.Panel#isMinimizable <em>Minimizable</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Minimizable</em>' attribute.
@@ -109,14 +109,14 @@ public interface Panel extends IPanel, ISizedElement
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Movable</em>' attribute.
 	 * @see #setMovable(boolean)
-	 * @see org.sheepy.common.model.ui.UiPackage#getPanel_Movable()
+	 * @see org.sheepy.lily.core.model.ui.UiPackage#getPanel_Movable()
 	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isMovable();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.ui.Panel#isMovable <em>Movable</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.ui.Panel#isMovable <em>Movable</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Movable</em>' attribute.
@@ -136,14 +136,14 @@ public interface Panel extends IPanel, ISizedElement
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Minimized</em>' attribute.
 	 * @see #setMinimized(boolean)
-	 * @see org.sheepy.common.model.ui.UiPackage#getPanel_Minimized()
+	 * @see org.sheepy.lily.core.model.ui.UiPackage#getPanel_Minimized()
 	 * @model default="false" unique="false"
 	 * @generated
 	 */
 	boolean isMinimized();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.common.model.ui.Panel#isMinimized <em>Minimized</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.ui.Panel#isMinimized <em>Minimized</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Minimized</em>' attribute.

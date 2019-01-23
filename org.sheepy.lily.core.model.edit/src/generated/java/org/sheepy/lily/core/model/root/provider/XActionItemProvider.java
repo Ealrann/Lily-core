@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.common.model.root.provider;
+package org.sheepy.lily.core.model.root.provider;
 
 
 import java.util.Collection;
@@ -9,11 +9,11 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.sheepy.common.model.action.provider.ActionItemProvider;
-import org.sheepy.common.model.root.XAction;
+import org.sheepy.lily.core.model.action.provider.ActionItemProvider;
+import org.sheepy.lily.core.model.root.XAction;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.common.model.root.XAction} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.root.XAction} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

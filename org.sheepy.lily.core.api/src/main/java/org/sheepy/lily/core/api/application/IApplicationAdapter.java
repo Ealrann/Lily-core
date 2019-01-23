@@ -1,9 +1,9 @@
-package org.sheepy.common.api.application;
+package org.sheepy.lily.core.api.application;
 
-import org.sheepy.common.api.adapter.IAdapter;
-import org.sheepy.common.api.adapter.IServiceAdapterFactory;
-import org.sheepy.common.api.cadence.ICadencer;
-import org.sheepy.common.model.application.Application;
+import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.IServiceAdapterFactory;
+import org.sheepy.lily.core.api.cadence.ICadencer;
+import org.sheepy.lily.core.model.application.Application;
 
 public interface IApplicationAdapter extends IAdapter
 {
