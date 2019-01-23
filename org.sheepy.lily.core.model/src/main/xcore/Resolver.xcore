@@ -1,0 +1,80 @@
+@GenModel(modelDirectory="/org.sheepy.lily.core.model/src/generated/java")
+@GenModel(editDirectory="/org.sheepy.lily.core.model.edit/src/generated/java")
+@GenModel(publicConstructors="true", complianceLevel="11.0", resource="XMI")
+@GenModel(extensibleProviderFactory="true", childCreationExtenders="true")
+@GenModel(updateClasspath="false")
+
+package org.sheepy.lily.core.model.resolver
+
+import java.util.ArrayDeque
+import java.util.Deque
+import org.eclipse.emf.common.util.EList
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.EReference
+import org.sheepy.lily.core.model.root.LCollection
+import org.sheepy.lily.core.model.root.LObject
+
+interface ILObjectResolver
+{
+	// Must be overrided
+	op void collectUnits(LObject source, LCollection collected)
+}
+
+class EReferenceResolver extends ILObjectResolver
+{
+	String referenceName
+	String className
+	@GenModel(property="None")
+	refers transient EReference internalReference
+
+	op void collectUnits(LObject source, LCollection collected) {
+		if (internalReference === null) {
+			for (EReference ref : source.eClass.EAllReferences) {
+				if (ref.name.equals(referenceName)) {
+					internalReference = ref
+				}
+			}
+		}
+
+		if (internalReference !== null) {
+			if (internalReference.many) {
+				for (Object obj : source.eGet(internalReference) as EList<?>) {
+					if (className === null || (obj as EObject).eClass.name.equals(className)) {
+						collected.add(obj as LObject)
+					}
+				}
+			} else {
+				val LObject target = source.eGet(internalReference) as LObject
+				if (className === null || target.eClass.name.equals(className)) {
+					collected.add(target)
+				}
+			}
+		}
+	}
+}
+
+class ChainResolver extends ILObjectResolver
+{
+	contains ILObjectResolver[] resolvers
+	op void collectUnits(LObject source, LCollection collected) {
+		var Deque<LObject> course = new ArrayDeque
+		var Deque<LObject> next = new ArrayDeque
+		var Deque<LObject> temp = null
+
+		next.add(source)
+
+		for (ILObjectResolver resolver : resolvers) {
+			temp = course
+			course = next
+			next = temp
+
+			while (course.isEmpty == false) {
+				val LObject object = course.poll
+
+				resolver.collectUnits(object, next)
+			}
+		}
+
+		collected.addAll(next)
+	}
+}

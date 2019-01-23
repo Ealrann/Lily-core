@@ -1,0 +1,111 @@
+@GenModel(modelDirectory="/org.sheepy.lily.core.model/src/generated/java")
+@GenModel(editDirectory="/org.sheepy.lily.core.model.edit/src/generated/java")
+@GenModel(publicConstructors="true", complianceLevel="11.0", resource="XMI")
+@GenModel(extensibleProviderFactory="true", childCreationExtenders="true")
+@GenModel(updateClasspath="false")
+package org.sheepy.lily.core.model.ui
+
+import org.sheepy.lily.core.model.action.Action
+import org.sheepy.lily.core.model.action.ActionList
+import org.sheepy.lily.core.model.application.IView
+import org.sheepy.lily.core.model.presentation.IPanel
+import org.sheepy.lily.core.model.presentation.ISizedElement
+import org.sheepy.lily.core.model.presentation.IUIElement
+import org.sheepy.lily.core.model.root.LObject
+import org.sheepy.lily.core.model.types.EKeyState
+import org.sheepy.lily.core.model.variable.AbstractVariableResolver
+import org.sheepy.lily.core.model.variable.IVariableResolver
+
+class Panel extends IPanel, ISizedElement
+{
+	contains IControl[] controls
+	
+	boolean showTitle = "false"
+	boolean minimizable = "false"
+	boolean movable = "false"
+	
+	boolean minimized = "false"
+}
+
+interface IControl extends IUIElement
+{
+}
+
+interface Widget extends IControl, IUIElement, ISizedElement
+{
+}
+
+abstract class AbstractLabel extends Widget
+{
+	String text = ""
+	float fontScale = "1"
+}
+
+class DynamicRowLayout extends IControl
+{
+	int height = "16"
+	int columnCount = "1"
+}
+
+class VariableLabel extends AbstractLabel
+{
+	contains IVariableResolver[1..1] variableResolver
+}
+
+class Label extends AbstractLabel
+{
+}
+
+class Slider extends Widget
+{
+	int minValue = "0"
+	int maxValue = "10"
+	int step = "1"
+	contains IVariableResolver[1..1] variableResolver
+}
+
+class TextField extends Widget
+{
+	contains AbstractVariableResolver variableResolver
+}
+
+abstract class AbstractButton extends Widget
+{
+	String text = ""
+}
+
+class Button extends AbstractButton
+{
+	int shortcut
+	EKeyState state
+	contains Action[] actions
+	op ActionList lActions() {
+		actions
+	}
+	// Will execute actions on the view
+	op LObject getExecutor() {
+		var LObject unit = this
+
+		while (unit instanceof IView == false)
+			unit = unit.lParent
+
+		return unit
+	}
+}
+
+abstract class AbstractBooleanButton extends AbstractButton
+{
+	String textWhenTrue
+	String textWhenFalse
+}
+
+class BooleanButton extends AbstractBooleanButton
+{
+	contains AbstractVariableResolver variableResolver
+}
+
+class BooleanActionButton extends AbstractBooleanButton
+{
+	contains Action actionWhenTrue
+	contains Action actionWhenFalse
+}
