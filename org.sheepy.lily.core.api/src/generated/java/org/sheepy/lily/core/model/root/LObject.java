@@ -3,7 +3,6 @@
 package org.sheepy.lily.core.model.root;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.sheepy.lily.core.api.util.LTreeIterator;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
