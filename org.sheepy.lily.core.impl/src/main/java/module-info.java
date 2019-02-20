@@ -13,12 +13,12 @@ module org.sheepy.lily.core.impl
 {
 	requires transitive org.sheepy.lily.core.api;
 
-	exports org.sheepy.lily.core.inference;
 	exports org.sheepy.lily.core.cadence.common;
 	exports org.sheepy.lily.core.cadence.execution;
 
-	opens org.sheepy.lily.core.application;
-	opens org.sheepy.lily.core.variable;
+	opens org.sheepy.lily.core.application to org.sheepy.lily.core.api;
+	opens org.sheepy.lily.core.inference to org.sheepy.lily.core.api;
+	opens org.sheepy.lily.core.variable to org.sheepy.lily.core.api;
 
 	provides IResourceLoader with ResourceLoader;
 	provides IServiceAdapterFactory with ServiceAdapterFactory;
