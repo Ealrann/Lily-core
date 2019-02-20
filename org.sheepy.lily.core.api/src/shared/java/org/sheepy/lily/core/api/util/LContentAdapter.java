@@ -18,7 +18,9 @@ public class LContentAdapter extends EContentAdapter
 	protected void addAdapter(Notifier notifier)
 	{
 		if (notifier instanceof LObject)
+		{
 			super.addAdapter(notifier);
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -26,35 +28,35 @@ public class LContentAdapter extends EContentAdapter
 	public void notifyChanged(Notification notification)
 	{
 		super.notifyChanged(notification);
+		var feature = notification.getFeature();
 
-		if (notification.getFeature() instanceof EReference
-				&& ((EReference) notification.getFeature()).isContainment()
-				&& RootPackage.Literals.LOBJECT
-						.isSuperTypeOf(((EReference) notification.getFeature())
-								.getEReferenceType()))
+		if (feature instanceof EReference)
 		{
-			if (notification.getEventType() == Notification.ADD)
+			var eReference = (EReference) feature;
+			if (eReference.isContainment()
+					&& RootPackage.Literals.LOBJECT.isSuperTypeOf(eReference.getEReferenceType()))
 			{
-				unitAddedInternal((LObject) notification.getNewValue());
-			}
-			else if (notification.getEventType() == Notification.ADD_MANY)
-			{
-				for (EObject eo : (List<EObject>) notification.getNewValue())
+				switch (notification.getEventType())
 				{
-					unitAddedInternal((LObject) eo);
-				}
-			}
-			else if (notification.getEventType() == Notification.REMOVE)
-			{
-				unitRemovedInternal(notification.getNotifier(),
-						(LObject) notification.getOldValue());
-			}
-			else if (notification.getEventType() == Notification.REMOVE_MANY)
-			{
-				for (EObject eo : (List<EObject>) notification.getOldValue())
-				{
-					unitRemovedInternal((LObject) notification.getNotifier(),
-							(LObject) eo);
+				case Notification.ADD:
+					unitAddedInternal((LObject) notification.getNewValue());
+					break;
+				case Notification.ADD_MANY:
+					for (EObject eo : (List<EObject>) notification.getNewValue())
+					{
+						unitAddedInternal((LObject) eo);
+					}
+					break;
+				case Notification.REMOVE:
+					unitRemovedInternal(notification.getNotifier(),
+							(LObject) notification.getOldValue());
+					break;
+				case Notification.REMOVE_MANY:
+					for (EObject eo : (List<EObject>) notification.getOldValue())
+					{
+						unitRemovedInternal((LObject) notification.getNotifier(), (LObject) eo);
+					}
+					break;
 				}
 			}
 		}
@@ -85,18 +87,23 @@ public class LContentAdapter extends EContentAdapter
 		for (LObject lUnit : reverseOrder)
 		{
 			if (lUnit != removedUnit)
+			{
 				unitRemoved(lUnit.eContainer(), lUnit);
+			}
 			else
+			{
 				unitRemoved(container, removedUnit);
+			}
 		}
 	}
 
-	protected void unitAdded(LObject unit)
+	protected void unitAdded(@SuppressWarnings("unused") LObject unit)
 	{
 		// Nothing by default
 	}
 
-	protected void unitRemoved(Object oldContainer, LObject removedUnit)
+	protected void unitRemoved(	@SuppressWarnings("unused") Object oldContainer,
+								@SuppressWarnings("unused") LObject removedUnit)
 	{
 		// Nothing by default
 	}
