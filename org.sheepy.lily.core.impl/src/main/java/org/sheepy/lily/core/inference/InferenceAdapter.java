@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.sheepy.lily.core.api.action.context.ExecutionContext;
+import org.sheepy.lily.core.api.action.context.ActionExecutionContext;
 import org.sheepy.lily.core.api.adapter.impl.AbstractStatefullAdapter;
 import org.sheepy.lily.core.api.application.IApplicationAdapter;
 import org.sheepy.lily.core.api.inference.IInferenceAdapter;
@@ -92,7 +92,7 @@ public class InferenceAdapter extends AbstractStatefullAdapter implements IInfer
 
 				if (match)
 				{
-					ExecutionContext ec = new ExecutionContext(
+					ActionExecutionContext ec = new ActionExecutionContext(
 							(LObject) ((Inferer) rule.eContainer()).lExecutor(), rule.getAction(),
 							parameter);
 

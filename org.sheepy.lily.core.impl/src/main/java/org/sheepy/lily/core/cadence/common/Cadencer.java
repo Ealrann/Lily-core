@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.sheepy.lily.core.action.ActionDispatcherThread;
-import org.sheepy.lily.core.api.action.context.ExecutionContext;
+import org.sheepy.lily.core.api.action.context.ActionExecutionContext;
 import org.sheepy.lily.core.api.adapter.IServiceAdapterFactory;
 import org.sheepy.lily.core.api.cadence.ICadencer;
 import org.sheepy.lily.core.api.cadence.IMainLoop;
@@ -232,7 +232,7 @@ public class Cadencer implements ICadencer
 	}
 
 	@Override
-	public void postAction(ExecutionContext ec)
+	public void postAction(ActionExecutionContext ec)
 	{
 		if (dispatcher == null)
 		{

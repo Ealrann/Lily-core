@@ -1,7 +1,7 @@
 package org.sheepy.lily.core.api.cadence;
 
 import org.eclipse.emf.ecore.EObject;
-import org.sheepy.lily.core.api.action.context.ExecutionContext;
+import org.sheepy.lily.core.api.action.context.ActionExecutionContext;
 import org.sheepy.lily.core.api.input.IInputManager;
 
 public interface ICadencer
@@ -16,7 +16,7 @@ public interface ICadencer
 	ICommandStack getCommandStack();
 	IInputManager getInputManager();
 
-	void postAction(ExecutionContext ec);
+	void postAction(ActionExecutionContext ec);
 
 	/**
 	 * Delete with crossreferences

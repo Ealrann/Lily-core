@@ -46,7 +46,7 @@ public class ApplicationAdapter extends AbstractStatefullAdapter implements IApp
 	{
 		cadencer = new Cadencer((Application) target);
 
-		AtomicBoolean loaded = new AtomicBoolean(true);
+		AtomicBoolean loaded = new AtomicBoolean(false);
 		mainExecutor = Executors.newSingleThreadExecutor();
 		mainExecutor.submit(new Runnable()
 		{
@@ -56,7 +56,7 @@ public class ApplicationAdapter extends AbstractStatefullAdapter implements IApp
 				try
 				{
 					cadencer.load();
-					loaded.set(false);
+					loaded.set(true);
 					cadencer.start();
 				} catch (Throwable e)
 				{
@@ -67,7 +67,7 @@ public class ApplicationAdapter extends AbstractStatefullAdapter implements IApp
 
 		launched = true;
 
-		while (loaded.get())
+		while (loaded.get() == false)
 		{
 			try
 			{

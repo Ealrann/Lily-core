@@ -5,13 +5,16 @@ public class SVector2f implements Cloneable, Comparable<SVector2f>
 	public float x;
 	public float y;
 
-	
 	public static final SVector2f ZERO_POINT = new SVector2f(0, 0);
-	
+
 	public SVector2f()
 	{
-		x = 0;
-		y = 0;
+		this(0, 0);
+	}
+
+	public SVector2f(SVector2f vector)
+	{
+		this(vector.x, vector.y);
 	}
 
 	public SVector2f(float x, float y)
@@ -54,23 +57,21 @@ public class SVector2f implements Cloneable, Comparable<SVector2f>
 			y /= length;
 		}
 	}
-	
+
 	public float computeOrientationToDegrees()
 	{
 		float orientation = (float) Math.acos(-y);
-		if (x < 0)
-			orientation *= -1;
+		if (x < 0) orientation *= -1;
 
 		orientation = (float) Math.toDegrees(orientation);
 
 		return orientation;
 	}
-	
+
 	public float computeOrientationToRadians()
 	{
 		float orientation = (float) Math.acos(-y);
-		if (x < 0)
-			orientation *= -1;
+		if (x < 0) orientation *= -1;
 
 		return orientation;
 	}
@@ -91,13 +92,13 @@ public class SVector2f implements Cloneable, Comparable<SVector2f>
 	public String toString()
 	{
 		StringBuilder sb = new StringBuilder();
-		
+
 		sb.append("PointF [x=");
 		sb.append(x);
 		sb.append(", y=");
 		sb.append(y);
 		sb.append("]");
-		
+
 		return sb.toString();
 	}
 
@@ -120,27 +121,21 @@ public class SVector2f implements Cloneable, Comparable<SVector2f>
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		if (this == obj) return true;
+		if (obj == null) return false;
+		if (getClass() != obj.getClass()) return false;
 		SVector2f other = (SVector2f) obj;
-		if (Float.floatToIntBits(x) != Float.floatToIntBits(other.x))
-			return false;
-		if (Float.floatToIntBits(y) != Float.floatToIntBits(other.y))
-			return false;
+		if (Float.floatToIntBits(x) != Float.floatToIntBits(other.x)) return false;
+		if (Float.floatToIntBits(y) != Float.floatToIntBits(other.y)) return false;
 		return true;
 	}
 
 	public static int compare(SVector2f o1, SVector2f o2)
 	{
 		int res = Float.compare(o2.y, o1.y);
-		
-		if(res == 0)
-			res = Float.compare(o2.x, o1.x);
-		
+
+		if (res == 0) res = Float.compare(o2.x, o1.x);
+
 		return res;
 	}
 

@@ -4,13 +4,13 @@ import org.sheepy.lily.core.model.action.Action;
 import org.sheepy.lily.core.model.root.LObject;
 import org.sheepy.lily.core.model.types.Parameter;
 
-public class ExecutionContext
+public class ActionExecutionContext
 {
 	private final Action action;
 	private final Parameter parameter;
 	private final LObject unit;
 
-	public ExecutionContext(LObject unit, Action action, Parameter parameter)
+	public ActionExecutionContext(LObject unit, Action action, Parameter parameter)
 	{
 		this.action = action;
 		this.parameter = parameter;

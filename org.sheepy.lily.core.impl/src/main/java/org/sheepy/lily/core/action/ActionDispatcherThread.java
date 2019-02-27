@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 import org.sheepy.lily.core.api.action.IActionHandler;
-import org.sheepy.lily.core.api.action.context.ExecutionContext;
+import org.sheepy.lily.core.api.action.context.ActionExecutionContext;
 import org.sheepy.lily.core.api.cadence.EditingCommand;
 import org.sheepy.lily.core.api.cadence.ITicker;
 import org.sheepy.lily.core.cadence.execution.CommandStack;
@@ -13,7 +13,7 @@ import org.sheepy.lily.core.model.root.XAction;
 
 public class ActionDispatcherThread implements ITicker
 {
-	private final ConcurrentLinkedDeque<ExecutionContext> externalActions = new ConcurrentLinkedDeque<>();
+	private final ConcurrentLinkedDeque<ActionExecutionContext> externalActions = new ConcurrentLinkedDeque<>();
 
 	private final ActionHandlerRegistry registry = new ActionHandlerRegistry();
 
@@ -26,7 +26,7 @@ public class ActionDispatcherThread implements ITicker
 		this.threadId = threadId;
 	}
 
-	public void postAction(ExecutionContext action)
+	public void postAction(ActionExecutionContext action)
 	{
 		if (threadId == (Thread.currentThread().getId()))
 		{
@@ -56,16 +56,16 @@ public class ActionDispatcherThread implements ITicker
 	@Override
 	public void tick(long stepNano)
 	{
-		Iterator<ExecutionContext> it = externalActions.iterator();
+		Iterator<ActionExecutionContext> it = externalActions.iterator();
 		while (it.hasNext())
 		{
-			ExecutionContext context = it.next();
+			ActionExecutionContext context = it.next();
 			run(context);
 			it.remove();
 		}
 	}
 
-	public void run(ExecutionContext context)
+	public void run(ActionExecutionContext context)
 	{
 		if (context.getAction() != null)
 		{
@@ -83,7 +83,7 @@ public class ActionDispatcherThread implements ITicker
 
 			if (action instanceof XAction)
 			{
-				final ExecutionContext _context = context;
+				final ActionExecutionContext _context = context;
 				final XAction xAction = (XAction) action;
 				commandStack.add(new EditingCommand()
 				{
