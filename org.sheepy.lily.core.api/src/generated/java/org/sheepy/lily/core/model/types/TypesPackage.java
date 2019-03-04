@@ -465,34 +465,44 @@ public interface TypesPackage extends EPackage
 	int EKEY_STATE = 16;
 
 	/**
-	 * The meta object id for the '<em>SVector3f</em>' data type.
+	 * The meta object id for the '<em>Vector3f</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.lily.core.api.types.SVector3f
-	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getSVector3f()
+	 * @see org.joml.Vector3f
+	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3f()
 	 * @generated
 	 */
-	int SVECTOR3F = 17;
+	int VECTOR3F = 17;
 
 	/**
-	 * The meta object id for the '<em>SVector2f</em>' data type.
+	 * The meta object id for the '<em>Vector3i</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.lily.core.api.types.SVector2f
-	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getSVector2f()
+	 * @see org.joml.Vector3i
+	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3i()
 	 * @generated
 	 */
-	int SVECTOR2F = 18;
+	int VECTOR3I = 18;
 
 	/**
-	 * The meta object id for the '<em>SVector2i</em>' data type.
+	 * The meta object id for the '<em>Vector2f</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.lily.core.api.types.SVector2i
-	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getSVector2i()
+	 * @see org.joml.Vector2f
+	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2f()
 	 * @generated
 	 */
-	int SVECTOR2I = 19;
+	int VECTOR2F = 19;
+
+	/**
+	 * The meta object id for the '<em>Vector2i</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.joml.Vector2i
+	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2i()
+	 * @generated
+	 */
+	int VECTOR2I = 20;
 
 
 	/**
@@ -770,40 +780,52 @@ public interface TypesPackage extends EPackage
 	EEnum getEKeyState();
 
 	/**
-	 * Returns the meta object for data type '{@link org.sheepy.lily.core.api.types.SVector3f <em>SVector3f</em>}'.
+	 * Returns the meta object for data type '{@link org.joml.Vector3f <em>Vector3f</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>SVector3f</em>'.
-	 * @see org.sheepy.lily.core.api.types.SVector3f
-	 * @model instanceClass="org.sheepy.lily.core.api.types.SVector3f"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel create='if ((it != null))\n{\n\tfinal &lt;%java.lang.String%&gt;[] split = it.split(\";\");\n\tint _length = split.length;\n\tboolean _equals = (_length == 3);\n\tif (_equals)\n\t{\n\t\t&lt;%java.lang.Float%&gt; _valueOf = &lt;%java.lang.Float%&gt;.valueOf(split[0]);\n\t\t&lt;%java.lang.Float%&gt; _valueOf_1 = &lt;%java.lang.Float%&gt;.valueOf(split[1]);\n\t\t&lt;%java.lang.Float%&gt; _valueOf_2 = &lt;%java.lang.Float%&gt;.valueOf(split[2]);\n\t\treturn new &lt;%org.sheepy.lily.core.api.types.SVector3f%&gt;((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue());\n\t}\n}\nreturn new &lt;%org.sheepy.lily.core.api.types.SVector3f%&gt;(0, 0, 0);' convert='&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Float%&gt;.valueOf(it.x) + \";\");\n&lt;%java.lang.String%&gt; _plus_1 = (_plus + &lt;%java.lang.Float%&gt;.valueOf(it.y));\n&lt;%java.lang.String%&gt; _plus_2 = (_plus_1 + \";\");\nreturn (_plus_2 + &lt;%java.lang.Float%&gt;.valueOf(it.z));'"
+	 * @return the meta object for data type '<em>Vector3f</em>'.
+	 * @see org.joml.Vector3f
+	 * @model instanceClass="org.joml.Vector3f"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel create='if ((it != null))\n{\n\tfinal &lt;%java.lang.String%&gt;[] split = it.split(\";\");\n\tint _length = split.length;\n\tboolean _equals = (_length == 3);\n\tif (_equals)\n\t{\n\t\t&lt;%java.lang.Float%&gt; _valueOf = &lt;%java.lang.Float%&gt;.valueOf(split[0]);\n\t\t&lt;%java.lang.Float%&gt; _valueOf_1 = &lt;%java.lang.Float%&gt;.valueOf(split[1]);\n\t\t&lt;%java.lang.Float%&gt; _valueOf_2 = &lt;%java.lang.Float%&gt;.valueOf(split[2]);\n\t\treturn new &lt;%org.joml.Vector3f%&gt;((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue());\n\t}\n}\nreturn new &lt;%org.joml.Vector3f%&gt;(0, 0, 0);' convert='&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Float%&gt;.valueOf(it.x) + \";\");\n&lt;%java.lang.String%&gt; _plus_1 = (_plus + &lt;%java.lang.Float%&gt;.valueOf(it.y));\n&lt;%java.lang.String%&gt; _plus_2 = (_plus_1 + \";\");\nreturn (_plus_2 + &lt;%java.lang.Float%&gt;.valueOf(it.z));'"
 	 * @generated
 	 */
-	EDataType getSVector3f();
+	EDataType getVector3f();
 
 	/**
-	 * Returns the meta object for data type '{@link org.sheepy.lily.core.api.types.SVector2f <em>SVector2f</em>}'.
+	 * Returns the meta object for data type '{@link org.joml.Vector3i <em>Vector3i</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>SVector2f</em>'.
-	 * @see org.sheepy.lily.core.api.types.SVector2f
-	 * @model instanceClass="org.sheepy.lily.core.api.types.SVector2f"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel create='if ((it != null))\n{\n\tfinal &lt;%java.lang.String%&gt;[] split = it.split(\";\");\n\tint _length = split.length;\n\tboolean _equals = (_length == 2);\n\tif (_equals)\n\t{\n\t\t&lt;%java.lang.Float%&gt; _valueOf = &lt;%java.lang.Float%&gt;.valueOf(split[0]);\n\t\t&lt;%java.lang.Float%&gt; _valueOf_1 = &lt;%java.lang.Float%&gt;.valueOf(split[1]);\n\t\treturn new &lt;%org.sheepy.lily.core.api.types.SVector2f%&gt;((_valueOf).floatValue(), (_valueOf_1).floatValue());\n\t}\n}\nreturn new &lt;%org.sheepy.lily.core.api.types.SVector2f%&gt;(0, 0);' convert='&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Float%&gt;.valueOf(it.x) + \";\");\nreturn (_plus + &lt;%java.lang.Float%&gt;.valueOf(it.y));'"
+	 * @return the meta object for data type '<em>Vector3i</em>'.
+	 * @see org.joml.Vector3i
+	 * @model instanceClass="org.joml.Vector3i"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel create='if ((it != null))\n{\n\tfinal &lt;%java.lang.String%&gt;[] split = it.split(\";\");\n\tint _length = split.length;\n\tboolean _equals = (_length == 3);\n\tif (_equals)\n\t{\n\t\t&lt;%java.lang.Integer%&gt; _valueOf = &lt;%java.lang.Integer%&gt;.valueOf(split[0]);\n\t\t&lt;%java.lang.Integer%&gt; _valueOf_1 = &lt;%java.lang.Integer%&gt;.valueOf(split[1]);\n\t\t&lt;%java.lang.Integer%&gt; _valueOf_2 = &lt;%java.lang.Integer%&gt;.valueOf(split[2]);\n\t\treturn new &lt;%org.joml.Vector3i%&gt;((_valueOf).intValue(), (_valueOf_1).intValue(), (_valueOf_2).intValue());\n\t}\n}\nreturn new &lt;%org.joml.Vector3i%&gt;(0, 0, 0);' convert='&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Integer%&gt;.valueOf(it.x) + \";\");\n&lt;%java.lang.String%&gt; _plus_1 = (_plus + &lt;%java.lang.Integer%&gt;.valueOf(it.y));\n&lt;%java.lang.String%&gt; _plus_2 = (_plus_1 + \";\");\nreturn (_plus_2 + &lt;%java.lang.Integer%&gt;.valueOf(it.z));'"
 	 * @generated
 	 */
-	EDataType getSVector2f();
+	EDataType getVector3i();
 
 	/**
-	 * Returns the meta object for data type '{@link org.sheepy.lily.core.api.types.SVector2i <em>SVector2i</em>}'.
+	 * Returns the meta object for data type '{@link org.joml.Vector2f <em>Vector2f</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>SVector2i</em>'.
-	 * @see org.sheepy.lily.core.api.types.SVector2i
-	 * @model instanceClass="org.sheepy.lily.core.api.types.SVector2i"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel create='if ((it != null))\n{\n\tfinal &lt;%java.lang.String%&gt;[] split = it.split(\";\");\n\tint _length = split.length;\n\tboolean _equals = (_length == 2);\n\tif (_equals)\n\t{\n\t\t&lt;%java.lang.Integer%&gt; _valueOf = &lt;%java.lang.Integer%&gt;.valueOf(split[0]);\n\t\t&lt;%java.lang.Integer%&gt; _valueOf_1 = &lt;%java.lang.Integer%&gt;.valueOf(split[1]);\n\t\treturn new &lt;%org.sheepy.lily.core.api.types.SVector2i%&gt;((_valueOf).intValue(), (_valueOf_1).intValue());\n\t}\n}\nreturn new &lt;%org.sheepy.lily.core.api.types.SVector2i%&gt;(0, 0);' convert='&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Integer%&gt;.valueOf(it.x) + \";\");\nreturn (_plus + &lt;%java.lang.Integer%&gt;.valueOf(it.y));'"
+	 * @return the meta object for data type '<em>Vector2f</em>'.
+	 * @see org.joml.Vector2f
+	 * @model instanceClass="org.joml.Vector2f"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel create='if ((it != null))\n{\n\tfinal &lt;%java.lang.String%&gt;[] split = it.split(\";\");\n\tint _length = split.length;\n\tboolean _equals = (_length == 2);\n\tif (_equals)\n\t{\n\t\t&lt;%java.lang.Float%&gt; _valueOf = &lt;%java.lang.Float%&gt;.valueOf(split[0]);\n\t\t&lt;%java.lang.Float%&gt; _valueOf_1 = &lt;%java.lang.Float%&gt;.valueOf(split[1]);\n\t\treturn new &lt;%org.joml.Vector2f%&gt;((_valueOf).floatValue(), (_valueOf_1).floatValue());\n\t}\n}\nreturn new &lt;%org.joml.Vector2f%&gt;(0, 0);' convert='&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Float%&gt;.valueOf(it.x) + \";\");\nreturn (_plus + &lt;%java.lang.Float%&gt;.valueOf(it.y));'"
 	 * @generated
 	 */
-	EDataType getSVector2i();
+	EDataType getVector2f();
+
+	/**
+	 * Returns the meta object for data type '{@link org.joml.Vector2i <em>Vector2i</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Vector2i</em>'.
+	 * @see org.joml.Vector2i
+	 * @model instanceClass="org.joml.Vector2i"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel create='if ((it != null))\n{\n\tfinal &lt;%java.lang.String%&gt;[] split = it.split(\";\");\n\tint _length = split.length;\n\tboolean _equals = (_length == 2);\n\tif (_equals)\n\t{\n\t\t&lt;%java.lang.Integer%&gt; _valueOf = &lt;%java.lang.Integer%&gt;.valueOf(split[0]);\n\t\t&lt;%java.lang.Integer%&gt; _valueOf_1 = &lt;%java.lang.Integer%&gt;.valueOf(split[1]);\n\t\treturn new &lt;%org.joml.Vector2i%&gt;((_valueOf).intValue(), (_valueOf_1).intValue());\n\t}\n}\nreturn new &lt;%org.joml.Vector2i%&gt;(0, 0);' convert='&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Integer%&gt;.valueOf(it.x) + \";\");\nreturn (_plus + &lt;%java.lang.Integer%&gt;.valueOf(it.y));'"
+	 * @generated
+	 */
+	EDataType getVector2i();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1080,34 +1102,44 @@ public interface TypesPackage extends EPackage
 		EEnum EKEY_STATE = eINSTANCE.getEKeyState();
 
 		/**
-		 * The meta object literal for the '<em>SVector3f</em>' data type.
+		 * The meta object literal for the '<em>Vector3f</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.lily.core.api.types.SVector3f
-		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getSVector3f()
+		 * @see org.joml.Vector3f
+		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3f()
 		 * @generated
 		 */
-		EDataType SVECTOR3F = eINSTANCE.getSVector3f();
+		EDataType VECTOR3F = eINSTANCE.getVector3f();
 
 		/**
-		 * The meta object literal for the '<em>SVector2f</em>' data type.
+		 * The meta object literal for the '<em>Vector3i</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.lily.core.api.types.SVector2f
-		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getSVector2f()
+		 * @see org.joml.Vector3i
+		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3i()
 		 * @generated
 		 */
-		EDataType SVECTOR2F = eINSTANCE.getSVector2f();
+		EDataType VECTOR3I = eINSTANCE.getVector3i();
 
 		/**
-		 * The meta object literal for the '<em>SVector2i</em>' data type.
+		 * The meta object literal for the '<em>Vector2f</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.lily.core.api.types.SVector2i
-		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getSVector2i()
+		 * @see org.joml.Vector2f
+		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2f()
 		 * @generated
 		 */
-		EDataType SVECTOR2I = eINSTANCE.getSVector2i();
+		EDataType VECTOR2F = eINSTANCE.getVector2f();
+
+		/**
+		 * The meta object literal for the '<em>Vector2i</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.joml.Vector2i
+		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2i()
+		 * @generated
+		 */
+		EDataType VECTOR2I = eINSTANCE.getVector2i();
 
 	}
 

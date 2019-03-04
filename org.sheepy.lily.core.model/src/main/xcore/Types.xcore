@@ -4,16 +4,17 @@
 @GenModel(updateClasspath="false")
 package org.sheepy.lily.core.model.types
 
-import org.sheepy.lily.core.api.types.SVector2f
-import org.sheepy.lily.core.api.types.SVector2i
-import org.sheepy.lily.core.api.types.SVector3f
+import org.joml.Vector2f
+import org.joml.Vector2i
+import org.joml.Vector3f
+import org.joml.Vector3i
 
 interface LNamedElement
 {
 	String name
 }
 
-type SVector3f wraps SVector3f
+type Vector3f wraps Vector3f
 create
 {
 	if(it !== null)
@@ -21,18 +22,37 @@ create
 		val String[] split = it.split(";")
 		if(split.length == 3)
 		{
-			return new SVector3f(Float.valueOf(split.get(0)), Float.valueOf(split.get(1)),
+			return new Vector3f(Float.valueOf(split.get(0)), Float.valueOf(split.get(1)),
 				Float.valueOf(split.get(2)))
 		}
 	}
-	return new SVector3f(0, 0, 0)
+	return new Vector3f(0, 0, 0)
 }
 convert
 {
 	it.x + ";" + it.y + ";" + it.z
 }
 
-type SVector2f wraps SVector2f
+type Vector3i wraps Vector3i
+create
+{
+	if(it !== null)
+	{
+		val String[] split = it.split(";")
+		if(split.length == 3)
+		{
+			return new Vector3i(Integer.valueOf(split.get(0)), Integer.valueOf(split.get(1)),
+				Integer.valueOf(split.get(2)))
+		}
+	}
+	return new Vector3i(0, 0, 0)
+}
+convert
+{
+	it.x + ";" + it.y + ";" + it.z
+}
+
+type Vector2f wraps Vector2f
 create
 {
 	if(it !== null)
@@ -40,17 +60,17 @@ create
 		val String[] split = it.split(";")
 		if(split.length == 2)
 		{
-			return new SVector2f(Float.valueOf(split.get(0)), Float.valueOf(split.get(1)))
+			return new Vector2f(Float.valueOf(split.get(0)), Float.valueOf(split.get(1)))
 		}
 	}
-	return new SVector2f(0, 0)
+	return new Vector2f(0, 0)
 }
 convert
 {
 	it.x + ";" + it.y
 }
 
-type SVector2i wraps SVector2i
+type Vector2i wraps Vector2i
 create
 {
 	if(it !== null)
@@ -58,10 +78,10 @@ create
 		val String[] split = it.split(";")
 		if(split.length == 2)
 		{
-			return new SVector2i(Integer.valueOf(split.get(0)), Integer.valueOf(split.get(1)))
+			return new Vector2i(Integer.valueOf(split.get(0)), Integer.valueOf(split.get(1)))
 		}
 	}
-	return new SVector2i(0, 0)
+	return new Vector2i(0, 0)
 }
 convert
 {
@@ -77,12 +97,12 @@ interface Parameter
 
 interface PositionParameter extends Parameter
 {
-	op SVector2i getPosition()
+	op Vector2i getPosition()
 }
 
 interface PositionFParameter extends Parameter
 {
-	op SVector2f getPosition()
+	op Vector2f getPosition()
 }
 
 interface NativeParameter<T> extends Parameter

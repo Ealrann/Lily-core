@@ -13,6 +13,8 @@ module org.sheepy.lily.core.api
 	requires transitive org.eclipse.emf.ecore;
 	requires transitive org.eclipse.emf.ecore.xmi;
 
+	requires transitive org.joml;
+
 	exports org.sheepy.lily.core.api.action;
 	exports org.sheepy.lily.core.api.action.context;
 	exports org.sheepy.lily.core.api.adapter;
@@ -25,7 +27,6 @@ module org.sheepy.lily.core.api
 	exports org.sheepy.lily.core.api.input.event;
 	exports org.sheepy.lily.core.api.resource;
 	exports org.sheepy.lily.core.api.service;
-	exports org.sheepy.lily.core.api.types;
 	exports org.sheepy.lily.core.api.util;
 	exports org.sheepy.lily.core.api.variable;
 

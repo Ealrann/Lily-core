@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.sheepy.lily.core.api.types.SVector2f;
-import org.sheepy.lily.core.api.types.SVector2i;
-
-import org.sheepy.lily.core.api.types.SVector3f;
+import org.joml.Vector2f;
+import org.joml.Vector2i;
+import org.joml.Vector3f;
+import org.joml.Vector3i;
 import org.sheepy.lily.core.model.types.BooleanParameter;
 import org.sheepy.lily.core.model.types.EDirection;
 import org.sheepy.lily.core.model.types.EHorizontalRelative;
@@ -169,21 +169,28 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType sVector3fEDataType = null;
+	private EDataType vector3fEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType sVector2fEDataType = null;
+	private EDataType vector3iEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType sVector2iEDataType = null;
+	private EDataType vector2fEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType vector2iEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -554,9 +561,9 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	@Override
-	public EDataType getSVector3f()
+	public EDataType getVector3f()
 	{
-		return sVector3fEDataType;
+		return vector3fEDataType;
 	}
 
 	/**
@@ -565,9 +572,9 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	@Override
-	public EDataType getSVector2f()
+	public EDataType getVector3i()
 	{
-		return sVector2fEDataType;
+		return vector3iEDataType;
 	}
 
 	/**
@@ -576,9 +583,20 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	@Override
-	public EDataType getSVector2i()
+	public EDataType getVector2f()
 	{
-		return sVector2iEDataType;
+		return vector2fEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EDataType getVector2i()
+	{
+		return vector2iEDataType;
 	}
 
 	/**
@@ -650,9 +668,10 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		eKeyStateEEnum = createEEnum(EKEY_STATE);
 
 		// Create data types
-		sVector3fEDataType = createEDataType(SVECTOR3F);
-		sVector2fEDataType = createEDataType(SVECTOR2F);
-		sVector2iEDataType = createEDataType(SVECTOR2I);
+		vector3fEDataType = createEDataType(VECTOR3F);
+		vector3iEDataType = createEDataType(VECTOR3I);
+		vector2fEDataType = createEDataType(VECTOR2F);
+		vector2iEDataType = createEDataType(VECTOR2I);
 	}
 
 	/**
@@ -712,11 +731,11 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 
 		initEClass(positionParameterEClass, PositionParameter.class, "PositionParameter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getPositionParameter__GetPosition(), this.getSVector2i(), "getPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getPositionParameter__GetPosition(), this.getVector2i(), "getPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(positionFParameterEClass, PositionFParameter.class, "PositionFParameter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getPositionFParameter__GetPosition(), this.getSVector2f(), "getPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getPositionFParameter__GetPosition(), this.getVector2f(), "getPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(nativeParameterEClass, NativeParameter.class, "NativeParameter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -795,9 +814,10 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		addEEnumLiteral(eKeyStateEEnum, EKeyState.REPEATED);
 
 		// Initialize data types
-		initEDataType(sVector3fEDataType, SVector3f.class, "SVector3f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(sVector2fEDataType, SVector2f.class, "SVector2f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(sVector2iEDataType, SVector2i.class, "SVector2i", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(vector3fEDataType, Vector3f.class, "Vector3f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(vector3iEDataType, Vector3i.class, "Vector3i", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(vector2fEDataType, Vector2f.class, "Vector2f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(vector2iEDataType, Vector2i.class, "Vector2i", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

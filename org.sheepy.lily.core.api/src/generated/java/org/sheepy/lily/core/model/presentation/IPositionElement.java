@@ -2,8 +2,7 @@
  */
 package org.sheepy.lily.core.model.presentation;
 
-import org.sheepy.lily.core.api.types.SVector2i;
-
+import org.joml.Vector2i;
 import org.sheepy.lily.core.model.root.LObject;
 
 import org.sheepy.lily.core.model.types.EHorizontalRelative;
@@ -39,12 +38,12 @@ public interface IPositionElement extends LObject
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Position</em>' attribute.
-	 * @see #setPosition(SVector2i)
+	 * @see #setPosition(Vector2i)
 	 * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getIPositionElement_Position()
-	 * @model default="0;0" unique="false" dataType="org.sheepy.lily.core.model.types.SVector2i"
+	 * @model default="0;0" unique="false" dataType="org.sheepy.lily.core.model.types.Vector2i"
 	 * @generated
 	 */
-	SVector2i getPosition();
+	Vector2i getPosition();
 
 	/**
 	 * Sets the value of the '{@link org.sheepy.lily.core.model.presentation.IPositionElement#getPosition <em>Position</em>}' attribute.
@@ -54,7 +53,7 @@ public interface IPositionElement extends LObject
 	 * @see #getPosition()
 	 * @generated
 	 */
-	void setPosition(SVector2i value);
+	void setPosition(Vector2i value);
 
 	/**
 	 * Returns the value of the '<em><b>Vertical Relative</b></em>' attribute.

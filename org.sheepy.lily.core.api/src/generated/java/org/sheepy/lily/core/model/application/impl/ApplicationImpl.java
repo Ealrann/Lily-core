@@ -28,8 +28,7 @@ import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.sheepy.lily.core.api.types.SVector2i;
-
+import org.joml.Vector2i;
 import org.sheepy.lily.core.api.util.LTreeIterator;
 
 import org.sheepy.lily.core.model.application.Application;
@@ -209,7 +208,7 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	 * @generated
 	 * @ordered
 	 */
-	protected static final SVector2i SIZE_EDEFAULT = (SVector2i)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getSVector2i(), "400,400");
+	protected static final Vector2i SIZE_EDEFAULT = (Vector2i)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getVector2i(), "400,400");
 
 	/**
 	 * The cached value of the '{@link #getSize() <em>Size</em>}' attribute.
@@ -219,7 +218,7 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	 * @generated
 	 * @ordered
 	 */
-	protected SVector2i size = SIZE_EDEFAULT;
+	protected Vector2i size = SIZE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getCurrentView() <em>Current View</em>}' reference.
@@ -458,7 +457,7 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	 * @generated
 	 */
 	@Override
-	public SVector2i getSize()
+	public Vector2i getSize()
 	{
 		return size;
 	}
@@ -469,9 +468,9 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	 * @generated
 	 */
 	@Override
-	public void setSize(SVector2i newSize)
+	public void setSize(Vector2i newSize)
 	{
-		SVector2i oldSize = size;
+		Vector2i oldSize = size;
 		size = newSize;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__SIZE, oldSize, size));
@@ -734,7 +733,7 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 				setTitle((String)newValue);
 				return;
 			case ApplicationPackage.APPLICATION__SIZE:
-				setSize((SVector2i)newValue);
+				setSize((Vector2i)newValue);
 				return;
 			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
 				setCurrentView((IView)newValue);

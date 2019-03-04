@@ -27,8 +27,7 @@ import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.sheepy.lily.core.api.types.SVector2i;
-
+import org.joml.Vector2i;
 import org.sheepy.lily.core.api.util.LTreeIterator;
 
 import org.sheepy.lily.core.model.inference.IInferenceObject;
@@ -117,7 +116,7 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	 * @generated
 	 * @ordered
 	 */
-	protected static final SVector2i POSITION_EDEFAULT = (SVector2i)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getSVector2i(), "0;0");
+	protected static final Vector2i POSITION_EDEFAULT = (Vector2i)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getVector2i(), "0;0");
 
 	/**
 	 * The cached value of the '{@link #getPosition() <em>Position</em>}' attribute.
@@ -127,7 +126,7 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	 * @generated
 	 * @ordered
 	 */
-	protected SVector2i position = POSITION_EDEFAULT;
+	protected Vector2i position = POSITION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getVerticalRelative() <em>Vertical Relative</em>}' attribute.
@@ -426,7 +425,7 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	 * @generated
 	 */
 	@Override
-	public SVector2i getPosition()
+	public Vector2i getPosition()
 	{
 		return position;
 	}
@@ -437,9 +436,9 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	 * @generated
 	 */
 	@Override
-	public void setPosition(SVector2i newPosition)
+	public void setPosition(Vector2i newPosition)
 	{
-		SVector2i oldPosition = position;
+		Vector2i oldPosition = position;
 		position = newPosition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__POSITION, oldPosition, position));
@@ -776,7 +775,7 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 				setContentObjects((EList<LObject>)newValue);
 				return;
 			case UiPackage.PANEL__POSITION:
-				setPosition((SVector2i)newValue);
+				setPosition((Vector2i)newValue);
 				return;
 			case UiPackage.PANEL__VERTICAL_RELATIVE:
 				setVerticalRelative((EVerticalRelative)newValue);

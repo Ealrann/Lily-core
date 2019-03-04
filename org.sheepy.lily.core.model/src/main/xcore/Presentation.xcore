@@ -11,11 +11,10 @@ import org.sheepy.lily.core.model.root.LObject
 import org.sheepy.lily.core.model.types.EHorizontalRelative
 import org.sheepy.lily.core.model.types.EVerticalRelative
 import org.sheepy.lily.core.model.types.LNamedElement
-import org.sheepy.lily.core.model.types.SVector2i
 
 interface IPositionElement extends LObject
 {
-	SVector2i position = "0;0"
+	org.sheepy.lily.core.model.types.Vector2i position = "0;0"
 	EVerticalRelative verticalRelative = "TOP"
 	EHorizontalRelative horizontalRelative = "LEFT"
 }

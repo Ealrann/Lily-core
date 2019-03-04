@@ -2,7 +2,7 @@
  */
 package org.sheepy.lily.core.model.types;
 
-import org.sheepy.lily.core.api.types.SVector2i;
+import org.joml.Vector2i;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,9 +19,9 @@ public interface PositionParameter extends Parameter
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @model kind="operation" dataType="org.sheepy.lily.core.model.types.SVector2i" unique="false"
+	 * @model kind="operation" dataType="org.sheepy.lily.core.model.types.Vector2i" unique="false"
 	 * @generated
 	 */
-	SVector2i getPosition();
+	Vector2i getPosition();
 
 } // PositionParameter

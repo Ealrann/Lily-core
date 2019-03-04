@@ -8,7 +8,7 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-11
-Export-Package: org.sheepy.lily.core.api.types,
+Export-Package: org.joml,
  org.sheepy.lily.core.api.util,
  org.sheepy.lily.core.model.action,
  org.sheepy.lily.core.model.action.impl,

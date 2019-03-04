@@ -4,8 +4,7 @@ package org.sheepy.lily.core.model.application;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.sheepy.lily.core.api.types.SVector2i;
-
+import org.joml.Vector2i;
 import org.sheepy.lily.core.model.root.LObject;
 
 /**
@@ -212,12 +211,12 @@ public interface Application extends LObject
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Size</em>' attribute.
-	 * @see #setSize(SVector2i)
+	 * @see #setSize(Vector2i)
 	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Size()
-	 * @model default="400,400" unique="false" dataType="org.sheepy.lily.core.model.types.SVector2i"
+	 * @model default="400,400" unique="false" dataType="org.sheepy.lily.core.model.types.Vector2i"
 	 * @generated
 	 */
-	SVector2i getSize();
+	Vector2i getSize();
 
 	/**
 	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#getSize <em>Size</em>}' attribute.
@@ -227,7 +226,7 @@ public interface Application extends LObject
 	 * @see #getSize()
 	 * @generated
 	 */
-	void setSize(SVector2i value);
+	void setSize(Vector2i value);
 
 	/**
 	 * Returns the value of the '<em><b>Current View</b></em>' reference.
