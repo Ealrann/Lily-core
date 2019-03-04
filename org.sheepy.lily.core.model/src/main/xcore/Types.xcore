@@ -2,16 +2,34 @@
 @GenModel(editDirectory="/org.sheepy.lily.core.model.edit/src/generated/java")
 @GenModel(publicConstructors="true", complianceLevel="11.0", resource="XMI")
 @GenModel(updateClasspath="false")
-
 package org.sheepy.lily.core.model.types
 
 import org.sheepy.lily.core.api.types.SVector2f
 import org.sheepy.lily.core.api.types.SVector2i
-
+import org.sheepy.lily.core.api.types.SVector3f
 
 interface LNamedElement
 {
 	String name
+}
+
+type SVector3f wraps SVector3f
+create
+{
+	if(it !== null)
+	{
+		val String[] split = it.split(";")
+		if(split.length == 3)
+		{
+			return new SVector3f(Float.valueOf(split.get(0)), Float.valueOf(split.get(1)),
+				Float.valueOf(split.get(2)))
+		}
+	}
+	return new SVector3f(0, 0, 0)
+}
+convert
+{
+	it.x + ";" + it.y + ";" + it.z
 }
 
 type SVector2f wraps SVector2f
@@ -53,7 +71,6 @@ convert
 // ===================
 // Parameter
 // ===================
-
 interface Parameter
 {
 }
@@ -76,9 +93,7 @@ interface NativeParameter<T> extends Parameter
 class FloatParameter extends NativeParameter<Float>
 {
 	Float value
-	
-	op Float getNativeValue()
-	{
+	op Float getNativeValue() {
 		value
 	}
 }
@@ -86,9 +101,7 @@ class FloatParameter extends NativeParameter<Float>
 class StringParameter extends NativeParameter<String>
 {
 	String value
-	
-	op String getNativeValue()
-	{
+	op String getNativeValue() {
 		value
 	}
 }
@@ -96,9 +109,7 @@ class StringParameter extends NativeParameter<String>
 class BooleanParameter extends NativeParameter<Boolean>
 {
 	Boolean value
-	
-	op Boolean getNativeValue()
-	{
+	op Boolean getNativeValue() {
 		value
 	}
 }

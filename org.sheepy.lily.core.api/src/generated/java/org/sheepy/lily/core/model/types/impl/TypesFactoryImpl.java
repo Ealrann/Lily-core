@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.sheepy.lily.core.api.types.SVector2f;
 import org.sheepy.lily.core.api.types.SVector2i;
 
+import org.sheepy.lily.core.api.types.SVector3f;
 import org.sheepy.lily.core.model.types.*;
 
 /**
@@ -104,6 +105,8 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				return createEMouseButtonFromString(eDataType, initialValue);
 			case TypesPackage.EKEY_STATE:
 				return createEKeyStateFromString(eDataType, initialValue);
+			case TypesPackage.SVECTOR3F:
+				return createSVector3fFromString(eDataType, initialValue);
 			case TypesPackage.SVECTOR2F:
 				return createSVector2fFromString(eDataType, initialValue);
 			case TypesPackage.SVECTOR2I:
@@ -141,6 +144,8 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				return convertEMouseButtonToString(eDataType, instanceValue);
 			case TypesPackage.EKEY_STATE:
 				return convertEKeyStateToString(eDataType, instanceValue);
+			case TypesPackage.SVECTOR3F:
+				return convertSVector3fToString(eDataType, instanceValue);
 			case TypesPackage.SVECTOR2F:
 				return convertSVector2fToString(eDataType, instanceValue);
 			case TypesPackage.SVECTOR2I:
@@ -382,6 +387,62 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	public String convertEKeyStateToString(EDataType eDataType, Object instanceValue)
 	{
 		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SVector3f createSVector3f(final String it)
+	{
+		if ((it != null))
+		{
+			final String[] split = it.split(";");
+			int _length = split.length;
+			boolean _equals = (_length == 3);
+			if (_equals)
+			{
+				Float _valueOf = Float.valueOf(split[0]);
+				Float _valueOf_1 = Float.valueOf(split[1]);
+				Float _valueOf_2 = Float.valueOf(split[2]);
+				return new SVector3f((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue());
+			}
+		}
+		return new SVector3f(0, 0, 0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SVector3f createSVector3fFromString(EDataType eDataType, String initialValue)
+	{
+		return createSVector3f(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSVector3f(final SVector3f it)
+	{
+		String _plus = (Float.valueOf(it.x) + ";");
+		String _plus_1 = (_plus + Float.valueOf(it.y));
+		String _plus_2 = (_plus_1 + ";");
+		return (_plus_2 + Float.valueOf(it.z));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertSVector3fToString(EDataType eDataType, Object instanceValue)
+	{
+		return convertSVector3f((SVector3f)instanceValue);
 	}
 
 	/**

@@ -465,6 +465,16 @@ public interface TypesPackage extends EPackage
 	int EKEY_STATE = 16;
 
 	/**
+	 * The meta object id for the '<em>SVector3f</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.api.types.SVector3f
+	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getSVector3f()
+	 * @generated
+	 */
+	int SVECTOR3F = 17;
+
+	/**
 	 * The meta object id for the '<em>SVector2f</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -472,7 +482,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getSVector2f()
 	 * @generated
 	 */
-	int SVECTOR2F = 17;
+	int SVECTOR2F = 18;
 
 	/**
 	 * The meta object id for the '<em>SVector2i</em>' data type.
@@ -482,7 +492,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getSVector2i()
 	 * @generated
 	 */
-	int SVECTOR2I = 18;
+	int SVECTOR2I = 19;
 
 
 	/**
@@ -758,6 +768,18 @@ public interface TypesPackage extends EPackage
 	 * @generated
 	 */
 	EEnum getEKeyState();
+
+	/**
+	 * Returns the meta object for data type '{@link org.sheepy.lily.core.api.types.SVector3f <em>SVector3f</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>SVector3f</em>'.
+	 * @see org.sheepy.lily.core.api.types.SVector3f
+	 * @model instanceClass="org.sheepy.lily.core.api.types.SVector3f"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel create='if ((it != null))\n{\n\tfinal &lt;%java.lang.String%&gt;[] split = it.split(\";\");\n\tint _length = split.length;\n\tboolean _equals = (_length == 3);\n\tif (_equals)\n\t{\n\t\t&lt;%java.lang.Float%&gt; _valueOf = &lt;%java.lang.Float%&gt;.valueOf(split[0]);\n\t\t&lt;%java.lang.Float%&gt; _valueOf_1 = &lt;%java.lang.Float%&gt;.valueOf(split[1]);\n\t\t&lt;%java.lang.Float%&gt; _valueOf_2 = &lt;%java.lang.Float%&gt;.valueOf(split[2]);\n\t\treturn new &lt;%org.sheepy.lily.core.api.types.SVector3f%&gt;((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue());\n\t}\n}\nreturn new &lt;%org.sheepy.lily.core.api.types.SVector3f%&gt;(0, 0, 0);' convert='&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Float%&gt;.valueOf(it.x) + \";\");\n&lt;%java.lang.String%&gt; _plus_1 = (_plus + &lt;%java.lang.Float%&gt;.valueOf(it.y));\n&lt;%java.lang.String%&gt; _plus_2 = (_plus_1 + \";\");\nreturn (_plus_2 + &lt;%java.lang.Float%&gt;.valueOf(it.z));'"
+	 * @generated
+	 */
+	EDataType getSVector3f();
 
 	/**
 	 * Returns the meta object for data type '{@link org.sheepy.lily.core.api.types.SVector2f <em>SVector2f</em>}'.
@@ -1056,6 +1078,16 @@ public interface TypesPackage extends EPackage
 		 * @generated
 		 */
 		EEnum EKEY_STATE = eINSTANCE.getEKeyState();
+
+		/**
+		 * The meta object literal for the '<em>SVector3f</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.api.types.SVector3f
+		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getSVector3f()
+		 * @generated
+		 */
+		EDataType SVECTOR3F = eINSTANCE.getSVector3f();
 
 		/**
 		 * The meta object literal for the '<em>SVector2f</em>' data type.

@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.sheepy.lily.core.api.types.SVector2f;
 import org.sheepy.lily.core.api.types.SVector2i;
 
+import org.sheepy.lily.core.api.types.SVector3f;
 import org.sheepy.lily.core.model.types.BooleanParameter;
 import org.sheepy.lily.core.model.types.EDirection;
 import org.sheepy.lily.core.model.types.EHorizontalRelative;
@@ -162,6 +163,13 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	private EEnum eKeyStateEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType sVector3fEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -546,6 +554,17 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	@Override
+	public EDataType getSVector3f()
+	{
+		return sVector3fEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EDataType getSVector2f()
 	{
 		return sVector2fEDataType;
@@ -631,6 +650,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		eKeyStateEEnum = createEEnum(EKEY_STATE);
 
 		// Create data types
+		sVector3fEDataType = createEDataType(SVECTOR3F);
 		sVector2fEDataType = createEDataType(SVECTOR2F);
 		sVector2iEDataType = createEDataType(SVECTOR2I);
 	}
@@ -775,6 +795,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		addEEnumLiteral(eKeyStateEEnum, EKeyState.REPEATED);
 
 		// Initialize data types
+		initEDataType(sVector3fEDataType, SVector3f.class, "SVector3f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(sVector2fEDataType, SVector2f.class, "SVector2f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(sVector2iEDataType, SVector2i.class, "SVector2i", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
