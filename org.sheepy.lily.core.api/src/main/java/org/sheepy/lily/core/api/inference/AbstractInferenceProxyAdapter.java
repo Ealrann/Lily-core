@@ -2,8 +2,10 @@ package org.sheepy.lily.core.api.inference;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.sheepy.lily.core.api.adapter.IAutoAdapter;
-import org.sheepy.lily.core.api.adapter.impl.AbstractStatefullAdapter;
+import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.annotation.Autorun;
+import org.sheepy.lily.core.api.adapter.annotation.Dispose;
+import org.sheepy.lily.core.api.adapter.annotation.Statefull;
 import org.sheepy.lily.core.api.inference.IInferenceAdapter.INotificationListener;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 import org.sheepy.lily.core.model.inference.LNotification;
@@ -13,28 +15,24 @@ import org.sheepy.lily.core.model.types.Parameter;
 
 /**
  * Will redirect Notifications from a source to the target inferenceObject
- * 
- * @author ealrann
- *
  */
-public abstract class AbstractInferenceProxyAdapter extends AbstractStatefullAdapter
-		implements IAutoAdapter, INotificationListener
+@Statefull
+public abstract class AbstractInferenceProxyAdapter implements IAdapter, INotificationListener
 {
 	private IInferenceObject initialInferenceObject = null;
 
-	@Override
+	@Autorun
 	public void load(EObject unit)
 	{
 		initialInferenceObject = (IInferenceObject) unit;
 
 		LObject sourceNotificationObject = getNotificationSourceObject(initialInferenceObject);
 
-		IInferenceAdapter adapter = adapterFactory.adapt(sourceNotificationObject,
-				IInferenceAdapter.class);
+		var adapter = IInferenceAdapter.adapt(sourceNotificationObject);
 		adapter.addNotificationListener(getNotificationEClassToRedirect(), this);
 	}
 
-	@Override
+	@Dispose
 	public void dispose(EObject unit)
 	{
 		LObject sourceNotificationObject = getNotificationSourceObject(initialInferenceObject);
@@ -59,8 +57,7 @@ public abstract class AbstractInferenceProxyAdapter extends AbstractStatefullAda
 														ParameteredNotification<T> notification,
 														T parameter)
 	{
-		IInferenceAdapter adapter = adapterFactory.adapt(initialInferenceObject.lInferenceObject(),
-				IInferenceAdapter.class);
+		var adapter = IInferenceAdapter.adapt(initialInferenceObject.lInferenceObject());
 
 		adapter.postNotification(sourceNotified, notification, parameter);
 	}

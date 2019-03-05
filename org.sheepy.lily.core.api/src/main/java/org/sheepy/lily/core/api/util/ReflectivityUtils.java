@@ -22,4 +22,18 @@ public class ReflectivityUtils
 		}
 		return res;
 	}
+
+	public static boolean isSuperType(Class<?> type, Class<?> isSuper)
+	{
+		ClassHierarchyIterator it = new ClassHierarchyIterator(isSuper);
+		while (it.hasNext())
+		{
+			if (it.next() == type)
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
 }

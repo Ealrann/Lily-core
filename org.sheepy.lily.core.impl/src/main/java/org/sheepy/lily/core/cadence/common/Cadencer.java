@@ -83,7 +83,7 @@ public class Cadencer implements ICadencer
 		dispatcher = new ActionDispatcherThread(commandStack, mainThread);
 		addTicker(dispatcher, -1);
 
-		IServiceAdapterFactory.INSTANCE.setupAutoAdapters(application);
+		IServiceAdapterFactory.INSTANCE.setupRoot(application);
 
 		for (IEngine engine : application.getEngines())
 		{
@@ -110,7 +110,7 @@ public class Cadencer implements ICadencer
 
 		mainThread = null;
 
-		IServiceAdapterFactory.INSTANCE.disposeAutoAdapters(application);
+		IServiceAdapterFactory.INSTANCE.uninstallRoot(application);
 	}
 
 	public void start()

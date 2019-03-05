@@ -12,6 +12,6 @@ public interface IServiceAdapterFactory extends IService
 
 	<T extends IAdapter> T adapt(EObject lilyObject, Class<T> classifier);
 
-	void setupAutoAdapters(EObject root);
-	void disposeAutoAdapters(EObject root);
+	void setupRoot(EObject root);
+	void uninstallRoot(EObject root);
 }

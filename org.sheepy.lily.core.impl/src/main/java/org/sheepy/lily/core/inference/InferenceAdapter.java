@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.sheepy.lily.core.api.action.context.ActionExecutionContext;
-import org.sheepy.lily.core.api.adapter.impl.AbstractStatefullAdapter;
+import org.sheepy.lily.core.api.adapter.annotation.Adapter;
+import org.sheepy.lily.core.api.adapter.annotation.Statefull;
 import org.sheepy.lily.core.api.application.IApplicationAdapter;
 import org.sheepy.lily.core.api.inference.IInferenceAdapter;
 import org.sheepy.lily.core.model.application.Application;
@@ -21,7 +23,9 @@ import org.sheepy.lily.core.model.inference.ParameteredNotification;
 import org.sheepy.lily.core.model.root.LObject;
 import org.sheepy.lily.core.model.types.Parameter;
 
-public class InferenceAdapter extends AbstractStatefullAdapter implements IInferenceAdapter
+@Statefull
+@Adapter(scope = EObject.class, scopeInheritance = true)
+public class InferenceAdapter implements IInferenceAdapter
 {
 	public InferenceGraph ruleGraph = new InferenceGraph();
 	private final Map<EClass, List<INotificationListener>> listeners = new HashMap<>();
@@ -124,11 +128,5 @@ public class InferenceAdapter extends AbstractStatefullAdapter implements IInfer
 	public void removeNotificationListener(EClass clazz, INotificationListener listener)
 	{
 		listeners.remove(clazz, listener);
-	}
-
-	@Override
-	public boolean isApplicable(EClass eClass)
-	{
-		return true;
 	}
 }

@@ -1,6 +1,6 @@
 import org.sheepy.lily.core.adapter.ServiceAdapterFactory;
-import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.IServiceAdapterFactory;
+import org.sheepy.lily.core.api.adapter.annotation.Adapters;
 import org.sheepy.lily.core.api.cadence.IStatistics;
 import org.sheepy.lily.core.api.resource.IResourceLoader;
 import org.sheepy.lily.core.application.ApplicationAdapter;
@@ -8,6 +8,12 @@ import org.sheepy.lily.core.cadence.CadencerStatistics;
 import org.sheepy.lily.core.resource.ResourceLoader;
 import org.sheepy.lily.core.variable.ChainVariableResolverAdapter;
 import org.sheepy.lily.core.variable.DirectVariableResolverAdapter;
+
+@Adapters(classifiers = {
+		DirectVariableResolverAdapter.class,
+		ChainVariableResolverAdapter.class,
+		ApplicationAdapter.class
+})
 
 module org.sheepy.lily.core.impl
 {
@@ -23,6 +29,4 @@ module org.sheepy.lily.core.impl
 	provides IResourceLoader with ResourceLoader;
 	provides IServiceAdapterFactory with ServiceAdapterFactory;
 	provides IStatistics with CadencerStatistics;
-	provides IAdapter
-			with DirectVariableResolverAdapter, ChainVariableResolverAdapter, ApplicationAdapter;
 }

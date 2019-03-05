@@ -6,22 +6,25 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EClass;
-import org.sheepy.lily.core.api.adapter.impl.AbstractStatefullAdapter;
+import org.sheepy.lily.core.api.adapter.annotation.Adapter;
+import org.sheepy.lily.core.api.adapter.annotation.NotifyChanged;
+import org.sheepy.lily.core.api.adapter.annotation.Statefull;
 import org.sheepy.lily.core.api.application.IApplicationAdapter;
 import org.sheepy.lily.core.api.cadence.ICadencer;
 import org.sheepy.lily.core.cadence.common.Cadencer;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 
-public class ApplicationAdapter extends AbstractStatefullAdapter implements IApplicationAdapter
+@Statefull
+@Adapter(scope = Application.class, scopeInheritance = true)
+public class ApplicationAdapter implements IApplicationAdapter
 {
 	private Cadencer cadencer = null;
 	private ExecutorService mainExecutor = null;
 
 	private boolean launched = false;
 
-	@Override
+	@NotifyChanged
 	public void notifyChanged(Notification notification)
 	{
 		ApplicationAdapter that = this;
@@ -44,7 +47,7 @@ public class ApplicationAdapter extends AbstractStatefullAdapter implements IApp
 	@Override
 	public void launch(Application application)
 	{
-		cadencer = new Cadencer((Application) target);
+		cadencer = new Cadencer(application);
 
 		AtomicBoolean loaded = new AtomicBoolean(false);
 		mainExecutor = Executors.newSingleThreadExecutor();
@@ -110,11 +113,5 @@ public class ApplicationAdapter extends AbstractStatefullAdapter implements IApp
 	public ICadencer getCadencer()
 	{
 		return cadencer;
-	}
-
-	@Override
-	public boolean isApplicable(EClass eClass)
-	{
-		return ApplicationPackage.Literals.APPLICATION.isSuperTypeOf(eClass);
 	}
 }

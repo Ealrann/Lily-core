@@ -8,19 +8,21 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.sheepy.lily.core.api.adapter.impl.AbstractStatefullAdapter;
+import org.sheepy.lily.core.api.adapter.annotation.Dispose;
+import org.sheepy.lily.core.api.adapter.annotation.Statefull;
 import org.sheepy.lily.core.api.util.FeatureDefinition;
 import org.sheepy.lily.core.api.variable.IVariableResolverAdapter;
 import org.sheepy.lily.core.model.variable.IVariableResolver;
 
+@Statefull
 public abstract class AbstractVariableResolverAdapter<T extends IVariableResolver>
-		extends AbstractStatefullAdapter implements IVariableResolverAdapter<T>
+		implements IVariableResolverAdapter<T>
 {
 	private Adapter adapter = null;
 	private List<IVariableListener> listeners;
 	private EObject resolvedTarget;
 
-	@Override
+	@Dispose
 	public void unsetTarget(Notifier oldTarget)
 	{
 		if (adapter != null)
@@ -76,5 +78,6 @@ public abstract class AbstractVariableResolverAdapter<T extends IVariableResolve
 	}
 
 	protected abstract FeatureDefinition getFeatureDefinition();
+
 	protected abstract EObject getResolvedTarget();
 }

@@ -18,7 +18,7 @@ module org.sheepy.lily.core.api
 	exports org.sheepy.lily.core.api.action;
 	exports org.sheepy.lily.core.api.action.context;
 	exports org.sheepy.lily.core.api.adapter;
-	exports org.sheepy.lily.core.api.adapter.impl;
+	exports org.sheepy.lily.core.api.adapter.annotation;
 	exports org.sheepy.lily.core.api.application;
 	exports org.sheepy.lily.core.api.cadence;
 	exports org.sheepy.lily.core.api.engine;

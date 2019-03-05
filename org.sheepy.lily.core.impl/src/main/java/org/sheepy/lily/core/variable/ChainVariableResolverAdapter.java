@@ -3,26 +3,23 @@ package org.sheepy.lily.core.variable;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.util.FeatureDefinition;
 import org.sheepy.lily.core.api.variable.IVariableResolverAdapter;
 import org.sheepy.lily.core.model.variable.ChainResolver;
 import org.sheepy.lily.core.model.variable.ChainVariableResolver;
-import org.sheepy.lily.core.model.variable.VariablePackage;
 
+@Adapter(scope = ChainVariableResolver.class)
 public class ChainVariableResolverAdapter
 		extends AbstractVariableResolverAdapter<ChainVariableResolver>
 {
 	private final Map<String, FeatureDefinition> definitionMap = new HashMap<>();
+	private final ChainVariableResolver resolver;
 
-	@Override
-	public void setTarget(Notifier newTarget)
+	public ChainVariableResolverAdapter(ChainVariableResolver resolver)
 	{
-		super.setTarget(newTarget);
-
-		var resolver = (ChainVariableResolver) newTarget;
+		this.resolver = resolver;
 		for (ChainResolver chainResolver : resolver.getSubResolvers())
 		{
 			var variableDefinition = chainResolver.getVariableDefinition();
@@ -76,7 +73,7 @@ public class ChainVariableResolverAdapter
 	@Override
 	protected FeatureDefinition getFeatureDefinition()
 	{
-		var subResolvers = ((ChainVariableResolver) target).getSubResolvers();
+		var subResolvers = resolver.getSubResolvers();
 		var lastResolver = subResolvers.get(subResolvers.size() - 1);
 		var featureDefinition = definitionMap.get(lastResolver.getVariableDefinition());
 		return featureDefinition;
@@ -85,12 +82,6 @@ public class ChainVariableResolverAdapter
 	@Override
 	protected EObject getResolvedTarget()
 	{
-		return resolveTargetObject(((ChainVariableResolver) target));
-	}
-
-	@Override
-	public boolean isApplicable(EClass eClass)
-	{
-		return VariablePackage.Literals.CHAIN_VARIABLE_RESOLVER == eClass;
+		return resolveTargetObject(resolver);
 	}
 }

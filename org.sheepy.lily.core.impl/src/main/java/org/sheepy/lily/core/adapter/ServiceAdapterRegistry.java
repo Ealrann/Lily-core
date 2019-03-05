@@ -8,58 +8,53 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.emf.ecore.EClass;
-import org.sheepy.lily.core.api.adapter.IAutoAdapter;
-import org.sheepy.lily.core.api.adapter.IServiceAdapterFactory;
 import org.sheepy.lily.core.api.adapter.IAdapter;
-import org.sheepy.lily.core.api.service.ServiceManager;
+import org.sheepy.lily.core.api.adapter.annotation.Adapters;
 
 public class ServiceAdapterRegistry
 {
-	private final List<IAdapter> serviceAdapters;
-	private final List<IAutoAdapter> autoServiceAdapters;
-
+	private final List<AdapterDefinition> serviceAdapters;
+	private final List<AdapterDefinition> autoAdapters;
 	private final Set<EClass> mappedEClasses = ConcurrentHashMap.newKeySet();
+	private final Map<EClass, List<AdapterDefinition>> autoAdapterMap = new HashMap<>();
 
-	private final Map<EClass, List<IAutoAdapter>> autoAdapterMap = new HashMap<>();
-
-	private final IServiceAdapterFactory adapterFactory;
-
-	ServiceAdapterRegistry(IServiceAdapterFactory adapterFactory)
+	ServiceAdapterRegistry()
 	{
-		this.adapterFactory = adapterFactory;
-		List<IAdapter> foundAdapters = new ArrayList<>();
-		List<IAutoAdapter> foundAutoAdapters = new ArrayList<>();
+		List<AdapterDefinition> foundAdapters = new ArrayList<>();
+		List<AdapterDefinition> foundAutoAdapters = new ArrayList<>();
 
-		for (var adapterService : ServiceManager.getServices(IAdapter.class))
+		for (Module module : ModuleLayer.boot().modules())
 		{
-			initAdapter(adapterService);
-			foundAdapters.add(adapterService);
-
-			if (adapterService instanceof IAutoAdapter)
+			Adapters adapters = module.getAnnotation(Adapters.class);
+			if (adapters != null)
 			{
-				foundAutoAdapters.add((IAutoAdapter) adapterService);
-				addAutoAdapter((IAutoAdapter) adapterService);
-			}
+				for (Class<? extends IAdapter> adapterClass : adapters.classifiers())
+				{
+					var wrapper = new AdapterDefinition(adapterClass);
+					foundAdapters.add(wrapper);
 
-			// var name = adapterService.getClass().getSimpleName();
-			// System.out.println("\tRegistered Adapter : " + name);
+					if (wrapper.isAutoAdapter())
+					{
+						foundAutoAdapters.add(wrapper);
+						addAutoAdapter(wrapper);
+					}
+
+					// var name = adapterService.getClass().getSimpleName();
+					// System.out.println("\tRegistered Adapter : " + name);
+				}
+			}
 		}
 
 		serviceAdapters = List.copyOf(foundAdapters);
-		autoServiceAdapters = List.copyOf(foundAutoAdapters);
+		autoAdapters = List.copyOf(foundAutoAdapters);
 	}
 
-	private void initAdapter(IAdapter adapterService)
-	{
-		adapterService.setAdapterFactory(adapterFactory);
-	}
-
-	public List<IAdapter> getRegisteredAdapters()
+	public List<AdapterDefinition> getRegisteredAdapters()
 	{
 		return serviceAdapters;
 	}
 
-	public List<IAutoAdapter> getAutoAdapters(EClass eClass)
+	public List<AdapterDefinition> getAutoAdapters(EClass eClass)
 	{
 		if (mappedEClasses.contains(eClass) == false)
 		{
@@ -71,9 +66,9 @@ public class ServiceAdapterRegistry
 
 	private void computeAutoAdaptersMap(EClass eClass)
 	{
-		for (int i = 0; i < autoServiceAdapters.size(); i++)
+		for (int i = 0; i < autoAdapters.size(); i++)
 		{
-			IAutoAdapter adapter = autoServiceAdapters.get(i);
+			AdapterDefinition adapter = autoAdapters.get(i);
 			if (adapter.isApplicable(eClass))
 			{
 				addAutoAdapter(eClass, adapter);
@@ -83,7 +78,7 @@ public class ServiceAdapterRegistry
 		mappedEClasses.add(eClass);
 	}
 
-	private void addAutoAdapter(IAutoAdapter adapter)
+	private void addAutoAdapter(AdapterDefinition adapter)
 	{
 		for (EClass eClass : mappedEClasses)
 		{
@@ -94,9 +89,9 @@ public class ServiceAdapterRegistry
 		}
 	}
 
-	private void addAutoAdapter(EClass eClass, IAutoAdapter adapter)
+	private void addAutoAdapter(EClass eClass, AdapterDefinition adapter)
 	{
-		List<IAutoAdapter> list = autoAdapterMap.get(eClass);
+		List<AdapterDefinition> list = autoAdapterMap.get(eClass);
 		if (list == null)
 		{
 			list = new ArrayList<>();
@@ -105,17 +100,16 @@ public class ServiceAdapterRegistry
 		list.add(adapter);
 	}
 
-	@SuppressWarnings("unchecked")
-	public <T extends IAdapter> T getAdapterFor(EClass targetEClass, Class<T> type)
+	public AdapterDefinition getAdapterFor(EClass targetEClass, Class<? extends IAdapter> type)
 	{
-		T res = null;
+		AdapterDefinition res = null;
 
 		for (int i = 0; i < serviceAdapters.size(); i++)
 		{
 			var adapter = serviceAdapters.get(i);
 			if (adapter.isAdapterForType(type) && adapter.isApplicable(targetEClass))
 			{
-				res = (T) adapter;
+				res = adapter;
 				break;
 			}
 		}

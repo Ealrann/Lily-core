@@ -1,24 +1,21 @@
 package org.sheepy.lily.core.variable;
 
-import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.util.FeatureDefinition;
 import org.sheepy.lily.core.model.variable.DirectVariableResolver;
-import org.sheepy.lily.core.model.variable.VariablePackage;
 
+@Adapter(scope = DirectVariableResolver.class)
 public class DirectVariableResolverAdapter
 		extends AbstractVariableResolverAdapter<DirectVariableResolver>
 {
-	private FeatureDefinition resolvedDefinition;
+	private final FeatureDefinition resolvedDefinition;
+	private final DirectVariableResolver resolver;
 
-	@Override
-	public void setTarget(Notifier newTarget)
+	public DirectVariableResolverAdapter(DirectVariableResolver resolver)
 	{
-		super.setTarget(newTarget);
-
-		DirectVariableResolver variableResolver = (DirectVariableResolver) target;
-		String variableDefinition = variableResolver.getVariableDefinition();
+		this.resolver = resolver;
+		String variableDefinition = resolver.getVariableDefinition();
 		resolvedDefinition = new FeatureDefinition(variableDefinition);
 	}
 
@@ -26,9 +23,7 @@ public class DirectVariableResolverAdapter
 	public Object getValue(DirectVariableResolver variableResolver)
 	{
 		EObject target = variableResolver.getTarget();
-		Object value = target.eGet(resolvedDefinition.feature);
-
-		return value;
+		return target.eGet(resolvedDefinition.feature);
 	}
 
 	@Override
@@ -47,12 +42,6 @@ public class DirectVariableResolverAdapter
 	@Override
 	protected EObject getResolvedTarget()
 	{
-		return ((DirectVariableResolver) target).getTarget();
-	}
-
-	@Override
-	public boolean isApplicable(EClass eClass)
-	{
-		return VariablePackage.Literals.DIRECT_VARIABLE_RESOLVER == eClass;
+		return resolver.getTarget();
 	}
 }
