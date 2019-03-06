@@ -43,12 +43,24 @@ class AdapterManager extends EContentAdapter
 	@Override
 	protected void unsetTarget(EObject target)
 	{
-		super.unsetTarget(target);
 		disposeAutoAdapters();
+		super.unsetTarget(target);
+	}
+
+	public <T extends IAdapter> T adapt(Class<T> type)
+	{
+		T res = findAdapter(type);
+
+		if (res == null)
+		{
+			res = createAdapter(type, res);
+		}
+
+		return res;
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T extends IAdapter> T adapt(Class<T> type)
+	private <T extends IAdapter> T findAdapter(Class<T> type)
 	{
 		T res = null;
 		for (int i = 0; i < adapters.size(); i++)
@@ -60,18 +72,19 @@ class AdapterManager extends EContentAdapter
 				break;
 			}
 		}
+		return res;
+	}
 
-		if (res == null)
+	@SuppressWarnings("unchecked")
+	private <T extends IAdapter> T createAdapter(Class<T> type, T res)
+	{
+		final var definition = registry.getAdapterFor(target.eClass(), type);
+		if (definition != null)
 		{
-			final var definition = registry.getAdapterFor(target.eClass(), type);
-			if (definition != null)
-			{
-				res = (T) definition.create(target);
-				adapters.add(new Container(definition, res));
-				definition.load(target, res);
-			}
+			res = (T) definition.create(target);
+			adapters.add(new Container(definition, res));
+			definition.load(target, res);
 		}
-
 		return res;
 	}
 
@@ -105,25 +118,31 @@ class AdapterManager extends EContentAdapter
 
 	private void loadAutoAdapters()
 	{
-		List<AdapterDefinition> autoAdapters = registry.getAutoAdapters(target.eClass());
+		List<AdapterDefinition> autoAdapters = registry.getAdaptersFor(target.eClass());
 		if (autoAdapters != null)
 		{
 			for (AdapterDefinition definition : autoAdapters)
 			{
-				adapt(definition.getType());
+				if (definition.isAutoAdapter())
+				{
+					adapt(definition.getType());
+				}
 			}
 		}
 	}
 
 	private void disposeAutoAdapters()
 	{
-		List<AdapterDefinition> autoAdapters = registry.getAutoAdapters(target.eClass());
+		List<AdapterDefinition> autoAdapters = registry.getAdaptersFor(target.eClass());
 		if (autoAdapters != null)
 		{
 			for (AdapterDefinition definition : autoAdapters)
 			{
-				var adapter = adapt(definition.getType());
-				definition.destroy(target, adapter);
+				var adapter = findAdapter(definition.getType());
+				if (adapter != null)
+				{
+					definition.destroy(target, adapter);
+				}
 			}
 		}
 	}
