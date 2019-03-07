@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.ServiceLoader;
 
+import org.sheepy.lily.core.api.util.DebugUtil;
+
 public class ServiceManager
 {
 	/**
@@ -93,7 +95,7 @@ public class ServiceManager
 		// If the build list is empty : we activate treeServices
 		if (serviceBuildDeque.isEmpty())
 		{
-//			activateTreeServices();
+			// activateTreeServices();
 		}
 	}
 
@@ -121,9 +123,12 @@ public class ServiceManager
 
 		Collections.sort(res, priorityComparator);
 
-		for (IService service : res)
+		if (DebugUtil.DEBUG_ENABLED)
 		{
-			log(serviceClass, service);
+			for (IService service : res)
+			{
+				log(serviceClass, service);
+			}
 		}
 
 		return res;

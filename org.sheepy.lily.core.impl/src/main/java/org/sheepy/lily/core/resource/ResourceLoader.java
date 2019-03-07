@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.sheepy.lily.core.api.resource.IModelExtension;
 import org.sheepy.lily.core.api.resource.IResourceLoader;
+import org.sheepy.lily.core.api.util.DebugUtil;
 
 public class ResourceLoader implements IResourceLoader
 {
@@ -21,7 +22,11 @@ public class ResourceLoader implements IResourceLoader
 			{
 				// Load factories
 				ePackage.eClass();
-				System.out.println("\tLoad EPackage: " + ePackage.getName());
+
+				if (DebugUtil.DEBUG_ENABLED)
+				{
+					System.out.println("\tLoad EPackage: " + ePackage.getName());
+				}
 			}
 		}
 	}
