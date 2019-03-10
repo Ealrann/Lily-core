@@ -103,6 +103,11 @@ public class Cadencer implements ICadencer
 
 	private void dispose()
 	{
+		if (mainloop != null)
+		{
+			mainloop.free(application);
+		}
+
 		removeTicker(dispatcher, -1);
 
 		statistics.printTickersTime();
