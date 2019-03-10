@@ -6,6 +6,7 @@ import org.sheepy.lily.core.api.adapter.annotation.NotifyChanged;
 import org.sheepy.lily.core.api.adapter.annotation.Statefull;
 import org.sheepy.lily.core.api.application.IApplicationAdapter;
 import org.sheepy.lily.core.api.cadence.ICadencer;
+import org.sheepy.lily.core.api.cadence.IMainLoop;
 import org.sheepy.lily.core.cadence.common.Cadencer;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
@@ -21,34 +22,26 @@ public class ApplicationAdapter implements IApplicationAdapter
 	@NotifyChanged
 	public void notifyChanged(Notification notification)
 	{
-		ApplicationAdapter that = this;
 		if (notification.getFeature() == ApplicationPackage.Literals.APPLICATION__RUN)
 		{
 			if (launched == true && notification.getNewBooleanValue() == false)
 			{
-				new Thread()
-				{
-					@Override
-					public void run()
-					{
-						that.stop((Application) notification.getNotifier());
-					}
-				}.start();
+				stop((Application) notification.getNotifier());
 			}
 		}
 	}
 
 	@Override
-	public void launch(Application application)
+	public void launch(Application application, IMainLoop mainLoop)
 	{
-		cadencer = new Cadencer(application);
+		cadencer = new Cadencer(application, mainLoop);
 
 		cadencer.load();
 		launched = true;
 
 		try
 		{
-			cadencer.start();
+			cadencer.run();
 		} catch (Throwable e)
 		{
 			e.printStackTrace();
@@ -58,8 +51,12 @@ public class ApplicationAdapter implements IApplicationAdapter
 	@Override
 	public void stop(Application application)
 	{
-		cadencer.stop();
-		cadencer = null;
+		if (launched == true)
+		{
+			cadencer.stop();
+			cadencer = null;
+			launched = false;
+		}
 	}
 
 	@Override

@@ -34,7 +34,7 @@ public class Cadencer implements ICadencer
 	protected final ECrossReferenceAdapter crossReferencer = new ECrossReferenceAdapter();
 
 	protected final IServiceAdapterFactory adapterFactory = IServiceAdapterFactory.INSTANCE;
-	protected final IMainLoop mainloop = IMainLoop.INSTANCE;
+	protected final IMainLoop mainloop;
 
 	protected IInputManager inputManager = null;
 	private Deque<AbstractCadencedWrapper> course = new ArrayDeque<>();
@@ -47,9 +47,10 @@ public class Cadencer implements ICadencer
 
 	private ActionDispatcherThread dispatcher;
 
-	public Cadencer(Application application)
+	public Cadencer(Application application, IMainLoop mainloop)
 	{
 		this.application = application;
+		this.mainloop = mainloop;
 	}
 
 	@Override
@@ -113,7 +114,7 @@ public class Cadencer implements ICadencer
 		IServiceAdapterFactory.INSTANCE.uninstallRoot(application);
 	}
 
-	public void start()
+	public void run()
 	{
 		while (stop.get() == false)
 		{
