@@ -1,9 +1,7 @@
 package org.sheepy.lily.core.adapter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.sheepy.lily.core.api.adapter.IAdapter;
@@ -12,7 +10,6 @@ import org.sheepy.lily.core.api.adapter.annotation.Adapters;
 public class ServiceAdapterRegistry
 {
 	private final List<AdapterDefinition> serviceAdapters;
-	private final Map<EClass, List<AdapterDefinition>> autoAdapterMap = new HashMap<>();
 
 	ServiceAdapterRegistry()
 	{
