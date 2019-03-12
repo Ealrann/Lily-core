@@ -226,7 +226,8 @@ public class AdapterDefinition
 			} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException e)
 			{
-				e.printStackTrace();
+				new Exception("Cannot instanciate " + adapterClass.getSimpleName(), e)
+						.printStackTrace();
 			}
 		}
 
@@ -250,7 +251,9 @@ public class AdapterDefinition
 			} catch (IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException e)
 			{
-				e.printStackTrace();
+				String message = String.format("Cannot call @Autorun method %s.%s()",
+						adapterClass.getSimpleName(), loadMethod.getName());
+				new Exception(message, e).printStackTrace();
 			}
 		}
 	}
@@ -272,7 +275,9 @@ public class AdapterDefinition
 			} catch (IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException e)
 			{
-				e.printStackTrace();
+				String message = String.format("Cannot call @Dispose method %s.%s()",
+						adapterClass.getSimpleName(), loadMethod.getName());
+				new Exception(message, e).printStackTrace();
 			}
 		}
 	}
@@ -294,7 +299,9 @@ public class AdapterDefinition
 			} catch (IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException e)
 			{
-				e.printStackTrace();
+				String message = String.format("Cannot call @NotifyChanged method %s.%s()",
+						adapterClass.getSimpleName(), loadMethod.getName());
+				new Exception(message, e).printStackTrace();
 			}
 		}
 	}
