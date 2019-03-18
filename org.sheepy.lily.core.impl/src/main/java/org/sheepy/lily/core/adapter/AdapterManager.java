@@ -78,7 +78,7 @@ class AdapterManager extends EContentAdapter
 	@SuppressWarnings("unchecked")
 	private <T extends IAdapter> T createAdapter(Class<T> type, T res)
 	{
-		final var definition = registry.getAdapterFor(target.eClass(), type);
+		final var definition = registry.getAdapterFor(target, type);
 		if (definition != null)
 		{
 			res = (T) definition.create(target);
@@ -125,7 +125,7 @@ class AdapterManager extends EContentAdapter
 			{
 				if (definition.isAutoAdapter())
 				{
-					adapt(definition.getType());
+					adapt(definition.domain.type);
 				}
 			}
 		}
@@ -138,7 +138,7 @@ class AdapterManager extends EContentAdapter
 		{
 			for (AdapterDefinition definition : autoAdapters)
 			{
-				var adapter = findAdapter(definition.getType());
+				var adapter = findAdapter(definition.domain.type);
 				if (adapter != null)
 				{
 					definition.destroy(target, adapter);

@@ -3,13 +3,13 @@ package org.sheepy.lily.core.adapter;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.annotation.Adapters;
 
 public class ServiceAdapterRegistry
 {
-	private final List<AdapterDefinition> serviceAdapters;
+	private final List<AdapterDefinition> adapters;
 
 	ServiceAdapterRegistry()
 	{
@@ -31,41 +31,41 @@ public class ServiceAdapterRegistry
 			}
 		}
 
-		serviceAdapters = List.copyOf(foundAdapters);
+		adapters = List.copyOf(foundAdapters);
 	}
 
-	public List<AdapterDefinition> getRegisteredAdapters()
-	{
-		return serviceAdapters;
-	}
-
-	public AdapterDefinition getAdapterFor(EClass targetEClass, Class<? extends IAdapter> type)
+	public AdapterDefinition getAdapterFor(EObject eObject, Class<? extends IAdapter> type)
 	{
 		AdapterDefinition res = null;
 
-		for (int i = 0; i < serviceAdapters.size(); i++)
+		for (AdapterDefinition definition : adapters)
 		{
-			var adapter = serviceAdapters.get(i);
-			if (adapter.isAdapterForType(type) && adapter.isApplicable(targetEClass))
+			if (definition.isAdapterForType(type) && definition.isApplicable(eObject))
 			{
-				res = adapter;
-				break;
+				res = definition;
+
+				if (res.isNamedAdapter())
+				{
+					break;
+				}
 			}
 		}
 
 		return res;
 	}
 
-	public List<AdapterDefinition> getAdaptersFor(EClass targetEClass)
+	public List<AdapterDefinition> getAdaptersFor(EObject eobject)
 	{
 		List<AdapterDefinition> res = new ArrayList<>();
 
-		for (int i = 0; i < serviceAdapters.size(); i++)
+		for (AdapterDefinition adapter : adapters)
 		{
-			var adapter = serviceAdapters.get(i);
-			if (adapter.isApplicable(targetEClass))
+			if (adapter.isApplicable(eobject))
 			{
-				res.add(adapter);
+				if (adapter.isNamedAdapter())
+				{
+					res.add(adapter);
+				}
 			}
 		}
 

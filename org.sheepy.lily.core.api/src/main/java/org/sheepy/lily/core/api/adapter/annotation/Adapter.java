@@ -12,5 +12,6 @@ import org.eclipse.emf.ecore.EObject;
 public @interface Adapter
 {
 	Class<? extends EObject> scope();
+	String name() default "";
 	boolean scopeInheritance() default false;
 }
