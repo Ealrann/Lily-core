@@ -118,7 +118,7 @@ class AdapterManager extends EContentAdapter
 
 	private void loadAutoAdapters()
 	{
-		List<AdapterDefinition> autoAdapters = registry.getAdaptersFor(target.eClass());
+		List<AdapterDefinition> autoAdapters = registry.getAdaptersFor(target);
 		if (autoAdapters != null)
 		{
 			for (AdapterDefinition definition : autoAdapters)
@@ -133,7 +133,7 @@ class AdapterManager extends EContentAdapter
 
 	private void disposeAutoAdapters()
 	{
-		List<AdapterDefinition> autoAdapters = registry.getAdaptersFor(target.eClass());
+		List<AdapterDefinition> autoAdapters = registry.getAdaptersFor(target);
 		if (autoAdapters != null)
 		{
 			for (AdapterDefinition definition : autoAdapters)

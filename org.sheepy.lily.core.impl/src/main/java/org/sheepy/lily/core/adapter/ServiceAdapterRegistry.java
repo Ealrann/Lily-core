@@ -62,10 +62,7 @@ public class ServiceAdapterRegistry
 		{
 			if (adapter.isApplicable(eobject))
 			{
-				if (adapter.isNamedAdapter())
-				{
-					res.add(adapter);
-				}
+				res.add(adapter);
 			}
 		}
 
