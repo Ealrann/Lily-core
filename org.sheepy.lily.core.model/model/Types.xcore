@@ -8,10 +8,68 @@ import org.joml.Vector2f
 import org.joml.Vector2i
 import org.joml.Vector3f
 import org.joml.Vector3i
+import org.joml.Vector4f
 
 interface LNamedElement
 {
 	String name
+}
+
+type Vector4f wraps Vector4f
+create
+{
+	if(it !== null)
+	{
+		val String[] split = it.split(";")
+		if(split.length == 4)
+		{
+			return new Vector4f(Float.valueOf(split.get(0)), Float.valueOf(split.get(1)),
+				Float.valueOf(split.get(2)), Float.valueOf(split.get(3)))
+		}
+	}
+	return new Vector4f(0, 0, 0, 0)
+}
+convert
+{
+	it.x + ";" + it.y + ";" + it.z + ";" + it.w
+}
+
+type Color4f wraps Vector4f
+create
+{
+	if(it !== null)
+	{
+		val String[] split = it.split(";")
+		if(split.length == 4)
+		{
+			return new Vector4f(Float.valueOf(split.get(0)), Float.valueOf(split.get(1)),
+				Float.valueOf(split.get(2)), Float.valueOf(split.get(3)))
+		}
+	}
+	return new Vector4f(0, 0, 0, 0)
+}
+convert
+{
+	it.x + ";" + it.y + ";" + it.z + ";" + it.w
+}
+
+type Color3f wraps Vector3f
+create
+{
+	if(it !== null)
+	{
+		val String[] split = it.split(";")
+		if(split.length == 3)
+		{
+			return new Vector3f(Float.valueOf(split.get(0)), Float.valueOf(split.get(1)),
+				Float.valueOf(split.get(2)))
+		}
+	}
+	return new Vector3f(0, 0, 0)
+}
+convert
+{
+	it.x + ";" + it.y + ";" + it.z
 }
 
 type Vector3f wraps Vector3f

@@ -17,6 +17,7 @@ import org.joml.Vector2f;
 import org.joml.Vector2i;
 import org.joml.Vector3f;
 import org.joml.Vector3i;
+import org.joml.Vector4f;
 import org.sheepy.lily.core.model.types.BooleanParameter;
 import org.sheepy.lily.core.model.types.EDirection;
 import org.sheepy.lily.core.model.types.EHorizontalRelative;
@@ -163,6 +164,27 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	private EEnum eKeyStateEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType vector4fEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType color4fEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType color3fEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -561,6 +583,39 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	@Override
+	public EDataType getVector4f()
+	{
+		return vector4fEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EDataType getColor4f()
+	{
+		return color4fEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EDataType getColor3f()
+	{
+		return color3fEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EDataType getVector3f()
 	{
 		return vector3fEDataType;
@@ -668,6 +723,9 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		eKeyStateEEnum = createEEnum(EKEY_STATE);
 
 		// Create data types
+		vector4fEDataType = createEDataType(VECTOR4F);
+		color4fEDataType = createEDataType(COLOR4F);
+		color3fEDataType = createEDataType(COLOR3F);
 		vector3fEDataType = createEDataType(VECTOR3F);
 		vector3iEDataType = createEDataType(VECTOR3I);
 		vector2fEDataType = createEDataType(VECTOR2F);
@@ -814,6 +872,9 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		addEEnumLiteral(eKeyStateEEnum, EKeyState.REPEATED);
 
 		// Initialize data types
+		initEDataType(vector4fEDataType, Vector4f.class, "Vector4f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(color4fEDataType, Vector4f.class, "Color4f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(color3fEDataType, Vector3f.class, "Color3f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(vector3fEDataType, Vector3f.class, "Vector3f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(vector3iEDataType, Vector3i.class, "Vector3i", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(vector2fEDataType, Vector2f.class, "Vector2f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

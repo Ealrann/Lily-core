@@ -15,6 +15,7 @@ import org.joml.Vector2f;
 import org.joml.Vector2i;
 import org.joml.Vector3f;
 import org.joml.Vector3i;
+import org.joml.Vector4f;
 import org.sheepy.lily.core.model.types.*;
 
 /**
@@ -105,6 +106,12 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				return createEMouseButtonFromString(eDataType, initialValue);
 			case TypesPackage.EKEY_STATE:
 				return createEKeyStateFromString(eDataType, initialValue);
+			case TypesPackage.VECTOR4F:
+				return createVector4fFromString(eDataType, initialValue);
+			case TypesPackage.COLOR4F:
+				return createColor4fFromString(eDataType, initialValue);
+			case TypesPackage.COLOR3F:
+				return createColor3fFromString(eDataType, initialValue);
 			case TypesPackage.VECTOR3F:
 				return createVector3fFromString(eDataType, initialValue);
 			case TypesPackage.VECTOR3I:
@@ -146,6 +153,12 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				return convertEMouseButtonToString(eDataType, instanceValue);
 			case TypesPackage.EKEY_STATE:
 				return convertEKeyStateToString(eDataType, instanceValue);
+			case TypesPackage.VECTOR4F:
+				return convertVector4fToString(eDataType, instanceValue);
+			case TypesPackage.COLOR4F:
+				return convertColor4fToString(eDataType, instanceValue);
+			case TypesPackage.COLOR3F:
+				return convertColor3fToString(eDataType, instanceValue);
 			case TypesPackage.VECTOR3F:
 				return convertVector3fToString(eDataType, instanceValue);
 			case TypesPackage.VECTOR3I:
@@ -391,6 +404,180 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	public String convertEKeyStateToString(EDataType eDataType, Object instanceValue)
 	{
 		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Vector4f createVector4f(final String it)
+	{
+		if ((it != null))
+		{
+			final String[] split = it.split(";");
+			int _length = split.length;
+			boolean _equals = (_length == 4);
+			if (_equals)
+			{
+				Float _valueOf = Float.valueOf(split[0]);
+				Float _valueOf_1 = Float.valueOf(split[1]);
+				Float _valueOf_2 = Float.valueOf(split[2]);
+				Float _valueOf_3 = Float.valueOf(split[3]);
+				return new Vector4f((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue(), (_valueOf_3).floatValue());
+			}
+		}
+		return new Vector4f(0, 0, 0, 0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Vector4f createVector4fFromString(EDataType eDataType, String initialValue)
+	{
+		return createVector4f(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertVector4f(final Vector4f it)
+	{
+		String _plus = (Float.valueOf(it.x) + ";");
+		String _plus_1 = (_plus + Float.valueOf(it.y));
+		String _plus_2 = (_plus_1 + ";");
+		String _plus_3 = (_plus_2 + Float.valueOf(it.z));
+		String _plus_4 = (_plus_3 + ";");
+		return (_plus_4 + Float.valueOf(it.w));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertVector4fToString(EDataType eDataType, Object instanceValue)
+	{
+		return convertVector4f((Vector4f)instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Vector4f createColor4f(final String it)
+	{
+		if ((it != null))
+		{
+			final String[] split = it.split(";");
+			int _length = split.length;
+			boolean _equals = (_length == 4);
+			if (_equals)
+			{
+				Float _valueOf = Float.valueOf(split[0]);
+				Float _valueOf_1 = Float.valueOf(split[1]);
+				Float _valueOf_2 = Float.valueOf(split[2]);
+				Float _valueOf_3 = Float.valueOf(split[3]);
+				return new Vector4f((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue(), (_valueOf_3).floatValue());
+			}
+		}
+		return new Vector4f(0, 0, 0, 0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Vector4f createColor4fFromString(EDataType eDataType, String initialValue)
+	{
+		return createColor4f(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertColor4f(final Vector4f it)
+	{
+		String _plus = (Float.valueOf(it.x) + ";");
+		String _plus_1 = (_plus + Float.valueOf(it.y));
+		String _plus_2 = (_plus_1 + ";");
+		String _plus_3 = (_plus_2 + Float.valueOf(it.z));
+		String _plus_4 = (_plus_3 + ";");
+		return (_plus_4 + Float.valueOf(it.w));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertColor4fToString(EDataType eDataType, Object instanceValue)
+	{
+		return convertColor4f((Vector4f)instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Vector3f createColor3f(final String it)
+	{
+		if ((it != null))
+		{
+			final String[] split = it.split(";");
+			int _length = split.length;
+			boolean _equals = (_length == 3);
+			if (_equals)
+			{
+				Float _valueOf = Float.valueOf(split[0]);
+				Float _valueOf_1 = Float.valueOf(split[1]);
+				Float _valueOf_2 = Float.valueOf(split[2]);
+				return new Vector3f((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue());
+			}
+		}
+		return new Vector3f(0, 0, 0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Vector3f createColor3fFromString(EDataType eDataType, String initialValue)
+	{
+		return createColor3f(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertColor3f(final Vector3f it)
+	{
+		String _plus = (Float.valueOf(it.x) + ";");
+		String _plus_1 = (_plus + Float.valueOf(it.y));
+		String _plus_2 = (_plus_1 + ";");
+		return (_plus_2 + Float.valueOf(it.z));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertColor3fToString(EDataType eDataType, Object instanceValue)
+	{
+		return convertColor3f((Vector3f)instanceValue);
 	}
 
 	/**

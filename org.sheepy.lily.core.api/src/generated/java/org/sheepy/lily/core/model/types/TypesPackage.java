@@ -465,6 +465,36 @@ public interface TypesPackage extends EPackage
 	int EKEY_STATE = 16;
 
 	/**
+	 * The meta object id for the '<em>Vector4f</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.joml.Vector4f
+	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector4f()
+	 * @generated
+	 */
+	int VECTOR4F = 17;
+
+	/**
+	 * The meta object id for the '<em>Color4f</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.joml.Vector4f
+	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getColor4f()
+	 * @generated
+	 */
+	int COLOR4F = 18;
+
+	/**
+	 * The meta object id for the '<em>Color3f</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.joml.Vector3f
+	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getColor3f()
+	 * @generated
+	 */
+	int COLOR3F = 19;
+
+	/**
 	 * The meta object id for the '<em>Vector3f</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -472,7 +502,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3f()
 	 * @generated
 	 */
-	int VECTOR3F = 17;
+	int VECTOR3F = 20;
 
 	/**
 	 * The meta object id for the '<em>Vector3i</em>' data type.
@@ -482,7 +512,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3i()
 	 * @generated
 	 */
-	int VECTOR3I = 18;
+	int VECTOR3I = 21;
 
 	/**
 	 * The meta object id for the '<em>Vector2f</em>' data type.
@@ -492,7 +522,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2f()
 	 * @generated
 	 */
-	int VECTOR2F = 19;
+	int VECTOR2F = 22;
 
 	/**
 	 * The meta object id for the '<em>Vector2i</em>' data type.
@@ -502,7 +532,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2i()
 	 * @generated
 	 */
-	int VECTOR2I = 20;
+	int VECTOR2I = 23;
 
 
 	/**
@@ -778,6 +808,42 @@ public interface TypesPackage extends EPackage
 	 * @generated
 	 */
 	EEnum getEKeyState();
+
+	/**
+	 * Returns the meta object for data type '{@link org.joml.Vector4f <em>Vector4f</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Vector4f</em>'.
+	 * @see org.joml.Vector4f
+	 * @model instanceClass="org.joml.Vector4f"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel create='if ((it != null))\n{\n\tfinal &lt;%java.lang.String%&gt;[] split = it.split(\";\");\n\tint _length = split.length;\n\tboolean _equals = (_length == 4);\n\tif (_equals)\n\t{\n\t\t&lt;%java.lang.Float%&gt; _valueOf = &lt;%java.lang.Float%&gt;.valueOf(split[0]);\n\t\t&lt;%java.lang.Float%&gt; _valueOf_1 = &lt;%java.lang.Float%&gt;.valueOf(split[1]);\n\t\t&lt;%java.lang.Float%&gt; _valueOf_2 = &lt;%java.lang.Float%&gt;.valueOf(split[2]);\n\t\t&lt;%java.lang.Float%&gt; _valueOf_3 = &lt;%java.lang.Float%&gt;.valueOf(split[3]);\n\t\treturn new &lt;%org.joml.Vector4f%&gt;((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue(), (_valueOf_3).floatValue());\n\t}\n}\nreturn new &lt;%org.joml.Vector4f%&gt;(0, 0, 0, 0);' convert='&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Float%&gt;.valueOf(it.x) + \";\");\n&lt;%java.lang.String%&gt; _plus_1 = (_plus + &lt;%java.lang.Float%&gt;.valueOf(it.y));\n&lt;%java.lang.String%&gt; _plus_2 = (_plus_1 + \";\");\n&lt;%java.lang.String%&gt; _plus_3 = (_plus_2 + &lt;%java.lang.Float%&gt;.valueOf(it.z));\n&lt;%java.lang.String%&gt; _plus_4 = (_plus_3 + \";\");\nreturn (_plus_4 + &lt;%java.lang.Float%&gt;.valueOf(it.w));'"
+	 * @generated
+	 */
+	EDataType getVector4f();
+
+	/**
+	 * Returns the meta object for data type '{@link org.joml.Vector4f <em>Color4f</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Color4f</em>'.
+	 * @see org.joml.Vector4f
+	 * @model instanceClass="org.joml.Vector4f"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel create='if ((it != null))\n{\n\tfinal &lt;%java.lang.String%&gt;[] split = it.split(\";\");\n\tint _length = split.length;\n\tboolean _equals = (_length == 4);\n\tif (_equals)\n\t{\n\t\t&lt;%java.lang.Float%&gt; _valueOf = &lt;%java.lang.Float%&gt;.valueOf(split[0]);\n\t\t&lt;%java.lang.Float%&gt; _valueOf_1 = &lt;%java.lang.Float%&gt;.valueOf(split[1]);\n\t\t&lt;%java.lang.Float%&gt; _valueOf_2 = &lt;%java.lang.Float%&gt;.valueOf(split[2]);\n\t\t&lt;%java.lang.Float%&gt; _valueOf_3 = &lt;%java.lang.Float%&gt;.valueOf(split[3]);\n\t\treturn new &lt;%org.joml.Vector4f%&gt;((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue(), (_valueOf_3).floatValue());\n\t}\n}\nreturn new &lt;%org.joml.Vector4f%&gt;(0, 0, 0, 0);' convert='&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Float%&gt;.valueOf(it.x) + \";\");\n&lt;%java.lang.String%&gt; _plus_1 = (_plus + &lt;%java.lang.Float%&gt;.valueOf(it.y));\n&lt;%java.lang.String%&gt; _plus_2 = (_plus_1 + \";\");\n&lt;%java.lang.String%&gt; _plus_3 = (_plus_2 + &lt;%java.lang.Float%&gt;.valueOf(it.z));\n&lt;%java.lang.String%&gt; _plus_4 = (_plus_3 + \";\");\nreturn (_plus_4 + &lt;%java.lang.Float%&gt;.valueOf(it.w));'"
+	 * @generated
+	 */
+	EDataType getColor4f();
+
+	/**
+	 * Returns the meta object for data type '{@link org.joml.Vector3f <em>Color3f</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Color3f</em>'.
+	 * @see org.joml.Vector3f
+	 * @model instanceClass="org.joml.Vector3f"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel create='if ((it != null))\n{\n\tfinal &lt;%java.lang.String%&gt;[] split = it.split(\";\");\n\tint _length = split.length;\n\tboolean _equals = (_length == 3);\n\tif (_equals)\n\t{\n\t\t&lt;%java.lang.Float%&gt; _valueOf = &lt;%java.lang.Float%&gt;.valueOf(split[0]);\n\t\t&lt;%java.lang.Float%&gt; _valueOf_1 = &lt;%java.lang.Float%&gt;.valueOf(split[1]);\n\t\t&lt;%java.lang.Float%&gt; _valueOf_2 = &lt;%java.lang.Float%&gt;.valueOf(split[2]);\n\t\treturn new &lt;%org.joml.Vector3f%&gt;((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue());\n\t}\n}\nreturn new &lt;%org.joml.Vector3f%&gt;(0, 0, 0);' convert='&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Float%&gt;.valueOf(it.x) + \";\");\n&lt;%java.lang.String%&gt; _plus_1 = (_plus + &lt;%java.lang.Float%&gt;.valueOf(it.y));\n&lt;%java.lang.String%&gt; _plus_2 = (_plus_1 + \";\");\nreturn (_plus_2 + &lt;%java.lang.Float%&gt;.valueOf(it.z));'"
+	 * @generated
+	 */
+	EDataType getColor3f();
 
 	/**
 	 * Returns the meta object for data type '{@link org.joml.Vector3f <em>Vector3f</em>}'.
@@ -1100,6 +1166,36 @@ public interface TypesPackage extends EPackage
 		 * @generated
 		 */
 		EEnum EKEY_STATE = eINSTANCE.getEKeyState();
+
+		/**
+		 * The meta object literal for the '<em>Vector4f</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.joml.Vector4f
+		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector4f()
+		 * @generated
+		 */
+		EDataType VECTOR4F = eINSTANCE.getVector4f();
+
+		/**
+		 * The meta object literal for the '<em>Color4f</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.joml.Vector4f
+		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getColor4f()
+		 * @generated
+		 */
+		EDataType COLOR4F = eINSTANCE.getColor4f();
+
+		/**
+		 * The meta object literal for the '<em>Color3f</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.joml.Vector3f
+		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getColor3f()
+		 * @generated
+		 */
+		EDataType COLOR3F = eINSTANCE.getColor3f();
 
 		/**
 		 * The meta object literal for the '<em>Vector3f</em>' data type.
