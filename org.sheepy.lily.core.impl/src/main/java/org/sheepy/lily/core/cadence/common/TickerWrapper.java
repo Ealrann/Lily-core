@@ -38,4 +38,10 @@ public class TickerWrapper extends AbstractTickerWrapper
 	{
 		return frequency;
 	}
+
+	@Override
+	public int getPriority()
+	{
+		return ticker.getPriority();
+	}
 }

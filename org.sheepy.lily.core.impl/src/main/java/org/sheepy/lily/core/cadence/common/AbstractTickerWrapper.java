@@ -1,16 +1,29 @@
 package org.sheepy.lily.core.cadence.common;
 
+import java.util.Comparator;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class AbstractTickerWrapper
 {
-	protected long tickerStep = 0;
+	public static final Comparator<AbstractTickerWrapper> COMPARATOR = new Comparator<>()
+	{
+		@Override
+		public int compare(AbstractTickerWrapper o1, AbstractTickerWrapper o2)
+		{
+			return Integer.compare(o2.getPriority(), o1.getPriority());
+		}
+	};
+
+	protected final float frequency;
+	protected final long tickerStep;
+
 	protected long accumulator = 0;
 
 	public final AtomicBoolean stop = new AtomicBoolean(false);
 
 	public AbstractTickerWrapper(float frequency)
 	{
+		this.frequency = frequency;
 		// We planify the next tick
 		if (frequency > 0)
 		{
@@ -55,4 +68,6 @@ public abstract class AbstractTickerWrapper
 	public abstract Object getTicker();
 
 	public abstract float getFrequency();
+
+	public abstract int getPriority();
 }

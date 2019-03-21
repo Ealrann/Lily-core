@@ -1,8 +1,7 @@
 package org.sheepy.lily.core.cadence.common;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -33,8 +32,9 @@ public class Cadencer implements ICadencer
 	private static final String CADENCER_TICK = "Cadencer Tick";
 	private static final String MODEL_COMMANDS = "Model Commands";
 
-	protected Application application;
-	protected List<AbstractTickerWrapper> tickers = new ArrayList<>();
+	private final Application application;
+	private final List<AbstractTickerWrapper> tickers = new ArrayList<>();
+	private final List<AbstractTickerWrapper> course = new ArrayList<>();
 
 	protected final CommandStack commandStack = new CommandStack();
 	protected final ECrossReferenceAdapter crossReferencer = new ECrossReferenceAdapter();
@@ -43,8 +43,6 @@ public class Cadencer implements ICadencer
 	protected final IMainLoop mainloop;
 
 	protected IInputManager inputManager = null;
-	private Deque<AbstractTickerWrapper> course = new ArrayDeque<>();
-	private Deque<AbstractTickerWrapper> nextCourse = new ArrayDeque<>();
 	private Long mainThread = null;
 
 	private final AtomicBoolean stop = new AtomicBoolean(false);
@@ -134,6 +132,8 @@ public class Cadencer implements ICadencer
 
 	public void run()
 	{
+		final long stepNs = (long) (1. / application.getCadenceInHz() * 1e9);
+		
 		while (stop.get() == false)
 		{
 			if (inputManager != null)
@@ -141,7 +141,7 @@ public class Cadencer implements ICadencer
 				inputManager.pollInputs();
 			}
 
-			tick(application.getCadenceInHz());
+			tick(stepNs);
 
 			if (mainloop != null)
 			{
@@ -171,9 +171,11 @@ public class Cadencer implements ICadencer
 
 			if (ticker.shouldTick())
 			{
-				nextCourse.add(ticker);
+				course.add(ticker);
 			}
 		}
+
+		Collections.sort(course, AbstractTickerWrapper.COMPARATOR);
 
 		long blockingDuration = System.nanoTime();
 		commandStack.execute();
@@ -184,17 +186,14 @@ public class Cadencer implements ICadencer
 		// =========
 		// Execute tickers
 		// =========
-		while (nextCourse.isEmpty() == false)
+		int index = 0;
+		while (index < course.size())
 		{
-			final Deque<AbstractTickerWrapper> temp = course;
-			course = nextCourse;
-			nextCourse = temp;
+			final AbstractTickerWrapper ticker = course.get(index++);
 
-			while (course.isEmpty() == false)
+			try
 			{
-				final AbstractTickerWrapper ticker = course.poll();
-
-				try
+				do
 				{
 					if (ticker.stop.get())
 					{
@@ -208,28 +207,23 @@ public class Cadencer implements ICadencer
 
 						statistics.addTime(ticker.getLabel(), System.nanoTime() - d);
 					}
-
-				} catch (final Exception e)
-				{
-					e.printStackTrace();
-				}
-
-				if (ticker.shouldTick())
-				{
-					nextCourse.add(ticker);
-				}
+				} while (ticker.shouldTick());
+			} catch (final Throwable e)
+			{
+				e.printStackTrace();
 			}
-
-			// =========
-			// Execute Models Commands
-			// =========
-
-			blockingDuration = System.nanoTime();
-			commandStack.execute();
-			blockingDuration = System.nanoTime() - blockingDuration;
-
-			statistics.addTime(MODEL_COMMANDS, blockingDuration);
 		}
+		course.clear();
+
+		// =========
+		// Execute Models Commands
+		// =========
+
+		blockingDuration = System.nanoTime();
+		commandStack.execute();
+		blockingDuration = System.nanoTime() - blockingDuration;
+
+		statistics.addTime(MODEL_COMMANDS, blockingDuration);
 
 		statistics.addTime(CADENCER_TICK, System.nanoTime() - duration);
 	}
@@ -292,7 +286,7 @@ public class Cadencer implements ICadencer
 
 			for (final ITickDescriptor ticker : tickDescriptors)
 			{
-				final var wrapper = new AdapterTickerWrapper(ticker.getFrequency(), ticker);
+				final var wrapper = new AdapterTickerWrapper(ticker);
 				tickers.add(wrapper);
 			}
 

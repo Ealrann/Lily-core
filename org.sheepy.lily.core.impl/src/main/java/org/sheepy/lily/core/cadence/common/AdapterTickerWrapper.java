@@ -5,19 +5,19 @@ import org.sheepy.lily.core.adapter.ITickDescriptor;
 public class AdapterTickerWrapper extends AbstractTickerWrapper
 {
 	private final ITickDescriptor tickDescriptor;
-	private final int frequency;
+	private final int priority;
 
-	public AdapterTickerWrapper(int frequency, ITickDescriptor tickDescriptor)
+	public AdapterTickerWrapper(ITickDescriptor tickDescriptor)
 	{
-		super(frequency);
-		this.frequency = frequency;
+		super(tickDescriptor.getFrequency());
 		this.tickDescriptor = tickDescriptor;
+		priority = tickDescriptor.getPriority();
 	}
 
 	@Override
 	public void doTick(long stepNano)
 	{
-		tickDescriptor.tick(frequency);
+		tickDescriptor.tick(stepNano);
 	}
 
 	@Override
@@ -38,4 +38,9 @@ public class AdapterTickerWrapper extends AbstractTickerWrapper
 		return frequency;
 	}
 
+	@Override
+	public int getPriority()
+	{
+		return priority;
+	}
 }

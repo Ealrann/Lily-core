@@ -26,6 +26,7 @@ public class AdapterDefinition
 	private final boolean isSingleton;
 	private final Constructor<IAdapter> constructor;
 	private final Integer tickFrequency;
+	private final Integer tickPriority;
 	private final Method loadMethod;
 	private final Method tickMethod;
 	private final Method disposeMethod;
@@ -52,10 +53,12 @@ public class AdapterDefinition
 		{
 			final Tick tickAnnotation = gatherMethodAnnotation(Tick.class);
 			tickFrequency = tickAnnotation.frequency();
+			tickPriority = tickAnnotation.priority();
 		}
 		else
 		{
 			tickFrequency = null;
+			tickPriority = null;
 		}
 
 		pattern = loadPattern();
@@ -227,7 +230,7 @@ public class AdapterDefinition
 	{
 		if (loadMethod != null)
 		{
-			invokeMethod(loadMethod, adapter, target);
+			invokeMethod(loadMethod, adapter, target, null);
 		}
 	}
 
@@ -235,7 +238,7 @@ public class AdapterDefinition
 	{
 		if (disposeMethod != null)
 		{
-			invokeMethod(disposeMethod, adapter, target);
+			invokeMethod(disposeMethod, adapter, target, null);
 		}
 	}
 
@@ -243,29 +246,33 @@ public class AdapterDefinition
 	{
 		if (notifyMethod != null)
 		{
-			invokeMethod(notifyMethod, adapter, notification);
+			invokeMethod(notifyMethod, adapter, notification, null);
 		}
 	}
 
-	public void tick(EObject target, IAdapter adapter)
+	public void tick(EObject target, IAdapter adapter, long stepNs)
 	{
 		if (tickMethod != null)
 		{
-			invokeMethod(tickMethod, adapter, target);
+			invokeMethod(tickMethod, adapter, target, stepNs);
 		}
 	}
 
-	private void invokeMethod(Method method, IAdapter executor, Object parameter)
+	private void invokeMethod(Method method, IAdapter executor, Object param1, Object param2)
 	{
 		try
 		{
-			if (method.getParameterCount() == 0)
+			switch (method.getParameterCount())
 			{
+			case 0:
 				method.invoke(executor, NO_PARAMETERS);
-			}
-			else
-			{
-				method.invoke(executor, parameter);
+				break;
+			case 1:
+				method.invoke(executor, param1);
+				break;
+			case 2:
+				method.invoke(executor, param1, param2);
+				break;
 			}
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
 		{
@@ -303,5 +310,10 @@ public class AdapterDefinition
 	public boolean isAdapterForType(Class<? extends IAdapter> type)
 	{
 		return domain.isAdapterForType(type);
+	}
+
+	public int getTickPriority()
+	{
+		return tickPriority;
 	}
 }

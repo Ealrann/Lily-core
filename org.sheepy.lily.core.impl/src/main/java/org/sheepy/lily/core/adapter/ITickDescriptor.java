@@ -4,7 +4,9 @@ public interface ITickDescriptor
 {
 	int getFrequency();
 
-	void tick(int frequencyToTick);
+	void tick(long stepNano);
 
 	String getName();
+
+	int getPriority();
 }

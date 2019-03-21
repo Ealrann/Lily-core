@@ -34,7 +34,7 @@ public class CadencerStatistics implements IStatistics
 		System.out.println("===============================================");
 		System.out.println("Tickers times :");
 
-		final String messagePattern = "%30s: Average: %5.2f ms, Max: %5.2f, Total: %5.2f ms \n";
+		final String messagePattern = "%30s: Average: %5.2f ms, Max: %5.2f ms, Total: %5.2f ms \n";
 
 		for (final Entry<String, AccumulatorTime> e : accumulatorsTime.entrySet())
 		{

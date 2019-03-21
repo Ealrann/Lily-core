@@ -185,15 +185,21 @@ class AdapterManager extends EContentAdapter
 		}
 
 		@Override
-		public void tick(int frequencyToTick)
+		public void tick(long stepNs)
 		{
-			container.definition.tick(target, container.adapter);
+			container.definition.tick(target, container.adapter, stepNs);
 		}
 
 		@Override
 		public String getName()
 		{
 			return container.adapter.getClass().getSimpleName();
+		}
+
+		@Override
+		public int getPriority()
+		{
+			return container.definition.getTickPriority();
 		}
 
 	}

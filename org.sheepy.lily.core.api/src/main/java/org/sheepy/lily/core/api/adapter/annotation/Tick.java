@@ -16,4 +16,6 @@ public @interface Tick
 	 * @return
 	 */
 	int frequency() default 0;
+
+	int priority() default 0;
 }
