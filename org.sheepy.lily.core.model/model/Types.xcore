@@ -31,7 +31,10 @@ create
 }
 convert
 {
-	it.x + ";" + it.y + ";" + it.z + ";" + it.w
+	if (it !== null)
+		return it.x + ";" + it.y + ";" + it.z + ";" + it.w
+	else
+		return "0;0;0;0"
 }
 
 type Color4f wraps Vector4f
@@ -50,7 +53,10 @@ create
 }
 convert
 {
-	it.x + ";" + it.y + ";" + it.z + ";" + it.w
+	if (it !== null)
+		return it.x + ";" + it.y + ";" + it.z + ";" + it.w
+	else
+		return "0;0;0;0"
 }
 
 type Color3f wraps Vector3f
@@ -69,7 +75,10 @@ create
 }
 convert
 {
-	it.x + ";" + it.y + ";" + it.z
+	if (it !== null)
+		return it.x + ";" + it.y + ";" + it.z
+	else
+		return "0;0;0"
 }
 
 type Vector3f wraps Vector3f
@@ -88,7 +97,10 @@ create
 }
 convert
 {
-	it.x + ";" + it.y + ";" + it.z
+	if (it !== null)
+		return it.x + ";" + it.y + ";" + it.z
+	else
+		return "0;0;0"
 }
 
 type Vector3i wraps Vector3i
@@ -107,7 +119,10 @@ create
 }
 convert
 {
-	it.x + ";" + it.y + ";" + it.z
+	if (it !== null)
+		return it.x + ";" + it.y + ";" + it.z
+	else
+		return "0;0;0"
 }
 
 type Vector2f wraps Vector2f
@@ -125,7 +140,10 @@ create
 }
 convert
 {
-	it.x + ";" + it.y
+	if (it !== null)
+		return it.x + ";" + it.y
+	else
+		return "0;0"
 }
 
 type Vector2i wraps Vector2i
@@ -143,7 +161,10 @@ create
 }
 convert
 {
-	it.x + ";" + it.y
+	if (it !== null)
+		return it.x + ";" + it.y
+	else
+		return "0;0"
 }
 
 // ===================

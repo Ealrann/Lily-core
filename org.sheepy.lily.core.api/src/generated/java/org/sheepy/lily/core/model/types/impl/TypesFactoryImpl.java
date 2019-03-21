@@ -447,12 +447,19 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector4f(final Vector4f it)
 	{
-		String _plus = (Float.valueOf(it.x) + ";");
-		String _plus_1 = (_plus + Float.valueOf(it.y));
-		String _plus_2 = (_plus_1 + ";");
-		String _plus_3 = (_plus_2 + Float.valueOf(it.z));
-		String _plus_4 = (_plus_3 + ";");
-		return (_plus_4 + Float.valueOf(it.w));
+		if ((it != null))
+		{
+			String _plus = (Float.valueOf(it.x) + ";");
+			String _plus_1 = (_plus + Float.valueOf(it.y));
+			String _plus_2 = (_plus_1 + ";");
+			String _plus_3 = (_plus_2 + Float.valueOf(it.z));
+			String _plus_4 = (_plus_3 + ";");
+			return (_plus_4 + Float.valueOf(it.w));
+		}
+		else
+		{
+			return "0;0;0;0";
+		}
 	}
 
 	/**
@@ -506,12 +513,19 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertColor4f(final Vector4f it)
 	{
-		String _plus = (Float.valueOf(it.x) + ";");
-		String _plus_1 = (_plus + Float.valueOf(it.y));
-		String _plus_2 = (_plus_1 + ";");
-		String _plus_3 = (_plus_2 + Float.valueOf(it.z));
-		String _plus_4 = (_plus_3 + ";");
-		return (_plus_4 + Float.valueOf(it.w));
+		if ((it != null))
+		{
+			String _plus = (Float.valueOf(it.x) + ";");
+			String _plus_1 = (_plus + Float.valueOf(it.y));
+			String _plus_2 = (_plus_1 + ";");
+			String _plus_3 = (_plus_2 + Float.valueOf(it.z));
+			String _plus_4 = (_plus_3 + ";");
+			return (_plus_4 + Float.valueOf(it.w));
+		}
+		else
+		{
+			return "0;0;0;0";
+		}
 	}
 
 	/**
@@ -564,10 +578,17 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertColor3f(final Vector3f it)
 	{
-		String _plus = (Float.valueOf(it.x) + ";");
-		String _plus_1 = (_plus + Float.valueOf(it.y));
-		String _plus_2 = (_plus_1 + ";");
-		return (_plus_2 + Float.valueOf(it.z));
+		if ((it != null))
+		{
+			String _plus = (Float.valueOf(it.x) + ";");
+			String _plus_1 = (_plus + Float.valueOf(it.y));
+			String _plus_2 = (_plus_1 + ";");
+			return (_plus_2 + Float.valueOf(it.z));
+		}
+		else
+		{
+			return "0;0;0";
+		}
 	}
 
 	/**
@@ -620,10 +641,17 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector3f(final Vector3f it)
 	{
-		String _plus = (Float.valueOf(it.x) + ";");
-		String _plus_1 = (_plus + Float.valueOf(it.y));
-		String _plus_2 = (_plus_1 + ";");
-		return (_plus_2 + Float.valueOf(it.z));
+		if ((it != null))
+		{
+			String _plus = (Float.valueOf(it.x) + ";");
+			String _plus_1 = (_plus + Float.valueOf(it.y));
+			String _plus_2 = (_plus_1 + ";");
+			return (_plus_2 + Float.valueOf(it.z));
+		}
+		else
+		{
+			return "0;0;0";
+		}
 	}
 
 	/**
@@ -676,10 +704,17 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector3i(final Vector3i it)
 	{
-		String _plus = (Integer.valueOf(it.x) + ";");
-		String _plus_1 = (_plus + Integer.valueOf(it.y));
-		String _plus_2 = (_plus_1 + ";");
-		return (_plus_2 + Integer.valueOf(it.z));
+		if ((it != null))
+		{
+			String _plus = (Integer.valueOf(it.x) + ";");
+			String _plus_1 = (_plus + Integer.valueOf(it.y));
+			String _plus_2 = (_plus_1 + ";");
+			return (_plus_2 + Integer.valueOf(it.z));
+		}
+		else
+		{
+			return "0;0;0";
+		}
 	}
 
 	/**
@@ -731,8 +766,15 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector2f(final Vector2f it)
 	{
-		String _plus = (Float.valueOf(it.x) + ";");
-		return (_plus + Float.valueOf(it.y));
+		if ((it != null))
+		{
+			String _plus = (Float.valueOf(it.x) + ";");
+			return (_plus + Float.valueOf(it.y));
+		}
+		else
+		{
+			return "0;0";
+		}
 	}
 
 	/**
@@ -784,8 +826,15 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector2i(final Vector2i it)
 	{
-		String _plus = (Integer.valueOf(it.x) + ";");
-		return (_plus + Integer.valueOf(it.y));
+		if ((it != null))
+		{
+			String _plus = (Integer.valueOf(it.x) + ";");
+			return (_plus + Integer.valueOf(it.y));
+		}
+		else
+		{
+			return "0;0";
+		}
 	}
 
 	/**
