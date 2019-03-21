@@ -1,5 +1,5 @@
-import org.sheepy.lily.core.adapter.ServiceAdapterFactory;
-import org.sheepy.lily.core.api.adapter.IServiceAdapterFactory;
+import org.sheepy.lily.core.adapter.impl.BasicAdapterFactory;
+import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
 import org.sheepy.lily.core.api.adapter.annotation.Adapters;
 import org.sheepy.lily.core.api.cadence.IStatistics;
 import org.sheepy.lily.core.api.resource.IResourceLoader;
@@ -19,14 +19,11 @@ module org.sheepy.lily.core.impl
 {
 	requires transitive org.sheepy.lily.core.api;
 
-	exports org.sheepy.lily.core.cadence.common;
-	exports org.sheepy.lily.core.cadence.execution;
-
 	opens org.sheepy.lily.core.application to org.sheepy.lily.core.api;
 	opens org.sheepy.lily.core.inference to org.sheepy.lily.core.api;
 	opens org.sheepy.lily.core.variable to org.sheepy.lily.core.api;
 
 	provides IResourceLoader with ResourceLoader;
-	provides IServiceAdapterFactory with ServiceAdapterFactory;
+	provides IAdapterFactoryService with BasicAdapterFactory;
 	provides IStatistics with CadencerStatistics;
 }

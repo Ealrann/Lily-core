@@ -1,4 +1,4 @@
-package org.sheepy.lily.core.adapter;
+package org.sheepy.lily.core.adapter.impl;
 
 import java.util.ArrayList;
 import java.util.List;

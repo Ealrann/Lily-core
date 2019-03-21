@@ -1,5 +1,5 @@
 import org.sheepy.lily.core.api.adapter.IAdapter;
-import org.sheepy.lily.core.api.adapter.IServiceAdapterFactory;
+import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
 import org.sheepy.lily.core.api.application.IApplicationAdapter;
 import org.sheepy.lily.core.api.cadence.IMainLoop;
 import org.sheepy.lily.core.api.cadence.IStatistics;
@@ -55,7 +55,7 @@ module org.sheepy.lily.core.api
 	uses IMainLoop;
 	uses IModelExtension;
 	uses IResourceLoader;
-	uses IServiceAdapterFactory;
+	uses IAdapterFactoryService;
 	uses IAdapter;
 	uses IStatistics;
 }

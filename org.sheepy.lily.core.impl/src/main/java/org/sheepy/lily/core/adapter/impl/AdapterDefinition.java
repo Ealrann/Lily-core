@@ -1,4 +1,4 @@
-package org.sheepy.lily.core.adapter;
+package org.sheepy.lily.core.adapter.impl;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
@@ -14,6 +14,7 @@ import org.sheepy.lily.core.api.adapter.annotation.Autorun;
 import org.sheepy.lily.core.api.adapter.annotation.Dispose;
 import org.sheepy.lily.core.api.adapter.annotation.NotifyChanged;
 import org.sheepy.lily.core.api.adapter.annotation.Statefull;
+import org.sheepy.lily.core.api.adapter.annotation.Tick;
 import org.sheepy.lily.core.api.util.ReflectivityUtils;
 
 public class AdapterDefinition
@@ -24,14 +25,16 @@ public class AdapterDefinition
 	private final IAdapter pattern;
 	private final boolean isSingleton;
 	private final Constructor<IAdapter> constructor;
+	private final Integer tickFrequency;
 	private final Method loadMethod;
+	private final Method tickMethod;
 	private final Method disposeMethod;
 	private final Method notifyMethod;
 
 	public AdapterDefinition(Class<? extends IAdapter> adapterClass)
 	{
-		var adapterAnnotation = gatherAnnotation(Adapter.class, adapterClass);
-		var statefullAnnotation = gatherAnnotation(Statefull.class, adapterClass);
+		final var adapterAnnotation = gatherTypeAnnotation(Adapter.class, adapterClass);
+		final var statefullAnnotation = gatherTypeAnnotation(Statefull.class, adapterClass);
 		if (adapterAnnotation == null)
 		{
 			throwNoAdapterAnnotationError();
@@ -43,6 +46,18 @@ public class AdapterDefinition
 		loadMethod = gatherMethod(Autorun.class);
 		disposeMethod = gatherMethod(Dispose.class);
 		notifyMethod = gatherMethod(NotifyChanged.class);
+		tickMethod = gatherMethod(Tick.class);
+
+		if (tickMethod != null)
+		{
+			final Tick tickAnnotation = gatherMethodAnnotation(Tick.class);
+			tickFrequency = tickAnnotation.frequency();
+		}
+		else
+		{
+			tickFrequency = null;
+		}
+
 		pattern = loadPattern();
 
 		analyze();
@@ -68,14 +83,34 @@ public class AdapterDefinition
 	private Method gatherMethod(Class<? extends Annotation> annotationClass)
 	{
 		Method res = null;
-		var methods = domain.type.getDeclaredMethods();
-		for (Method method : methods)
+		final var methods = domain.type.getDeclaredMethods();
+		for (final Method method : methods)
 		{
-			for (Annotation annotation : method.getAnnotations())
+			for (final Annotation annotation : method.getAnnotations())
 			{
 				if (annotation.annotationType() == annotationClass)
 				{
 					res = method;
+					break;
+				}
+			}
+		}
+
+		return res;
+	}
+
+	@SuppressWarnings("unchecked")
+	private <T extends Annotation> T gatherMethodAnnotation(Class<? extends T> annotationClass)
+	{
+		T res = null;
+		final var methods = domain.type.getDeclaredMethods();
+		for (final Method method : methods)
+		{
+			for (final Annotation annotation : method.getAnnotations())
+			{
+				if (annotation.annotationType() == annotationClass)
+				{
+					res = (T) annotation;
 					break;
 				}
 			}
@@ -87,10 +122,10 @@ public class AdapterDefinition
 	private Constructor<IAdapter> gatherConstructor()
 	{
 		Constructor<IAdapter> res = null;
-		var constructors = domain.type.getConstructors();
-		Class<?> applicableClass = domain.targetClassifier.getInstanceClass();
+		final var constructors = domain.type.getConstructors();
+		final Class<?> applicableClass = domain.targetClassifier.getInstanceClass();
 
-		for (Constructor<?> constructor : constructors)
+		for (final Constructor<?> constructor : constructors)
 		{
 			if (isSingleton)
 			{
@@ -104,7 +139,7 @@ public class AdapterDefinition
 			{
 				if (constructor.getParameterCount() == 1)
 				{
-					Parameter parameter = constructor.getParameters()[0];
+					final Parameter parameter = constructor.getParameters()[0];
 					if (ReflectivityUtils.isSuperType(parameter.getType(), applicableClass))
 					{
 						res = (Constructor<IAdapter>) constructor;
@@ -128,18 +163,18 @@ public class AdapterDefinition
 
 	private void constructorNotFoundError()
 	{
-		String message = "The class [%s] should define a public constructor with no paramters, "
+		final String message = "The class [%s] should define a public constructor with no paramters, "
 				+ "or (if statefull), a constructor with one parameter, typed with the applicable class";
-		String errorMessage = String.format(message, domain.type.getSimpleName());
+		final String errorMessage = String.format(message, domain.type.getSimpleName());
 		throw new AssertionError(errorMessage);
 	}
 
 	@SuppressWarnings("unchecked")
-	private static <T extends Annotation> T gatherAnnotation(	Class<T> annotationClass,
-																Class<?> type)
+	private static <T extends Annotation> T gatherTypeAnnotation(	Class<T> annotationClass,
+																	Class<?> type)
 	{
 		T res = null;
-		for (Annotation annotation : type.getAnnotations())
+		for (final Annotation annotation : type.getAnnotations())
 		{
 			if (annotation.annotationType() == annotationClass)
 			{
@@ -153,10 +188,10 @@ public class AdapterDefinition
 
 	private void throwNoAdapterAnnotationError() throws AssertionError
 	{
-		String adapterName = domain.type.getSimpleName();
-		String annotationName = Adapter.class.getSimpleName();
-		String message = "The class [%s] is not annoted with @%s";
-		String errorMessage = String.format(message, adapterName, annotationName);
+		final String adapterName = domain.type.getSimpleName();
+		final String annotationName = Adapter.class.getSimpleName();
+		final String message = "The class [%s] is not annoted with @%s";
+		final String errorMessage = String.format(message, adapterName, annotationName);
 		throw new AssertionError(errorMessage);
 	}
 
@@ -200,24 +235,7 @@ public class AdapterDefinition
 	{
 		if (loadMethod != null)
 		{
-			try
-			{
-				if (loadMethod.getParameterCount() == 0)
-				{
-					loadMethod.invoke(adapter, NO_PARAMETERS);
-				}
-				else
-				{
-					loadMethod.invoke(adapter,
-							domain.targetClassifier.getInstanceClass().cast(target));
-				}
-			} catch (IllegalAccessException | IllegalArgumentException
-					| InvocationTargetException e)
-			{
-				String message = String.format("Cannot call @Autorun method %s.%s()",
-						domain.type.getSimpleName(), loadMethod.getName());
-				new Exception(message, e).printStackTrace();
-			}
+			invokeMethod(target, adapter, loadMethod);
 		}
 	}
 
@@ -225,24 +243,7 @@ public class AdapterDefinition
 	{
 		if (disposeMethod != null)
 		{
-			try
-			{
-				if (disposeMethod.getParameterCount() == 0)
-				{
-					disposeMethod.invoke(adapter, NO_PARAMETERS);
-				}
-				else
-				{
-					disposeMethod.invoke(adapter,
-							domain.targetClassifier.getInstanceClass().cast(target));
-				}
-			} catch (IllegalAccessException | IllegalArgumentException
-					| InvocationTargetException e)
-			{
-				String message = String.format("Cannot call @Dispose method %s.%s()",
-						domain.type.getSimpleName(), loadMethod.getName());
-				new Exception(message, e).printStackTrace();
-			}
+			invokeMethod(target, adapter, disposeMethod);
 		}
 	}
 
@@ -263,16 +264,54 @@ public class AdapterDefinition
 			} catch (IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException e)
 			{
-				String message = String.format("Cannot call @NotifyChanged method %s.%s()",
+				final String message = String.format("Cannot call @NotifyChanged method %s.%s()",
 						domain.type.getSimpleName(), loadMethod.getName());
 				new Exception(message, e).printStackTrace();
 			}
 		}
 	}
 
+	public void tick(EObject target, IAdapter adapter)
+	{
+		if (tickMethod != null)
+		{
+			invokeMethod(target, adapter, tickMethod);
+		}
+	}
+
+	private void invokeMethod(EObject target, IAdapter adapter, Method method)
+	{
+		try
+		{
+			if (method.getParameterCount() == 0)
+			{
+				method.invoke(adapter, NO_PARAMETERS);
+			}
+			else
+			{
+				method.invoke(adapter, domain.targetClassifier.getInstanceClass().cast(target));
+			}
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
+		{
+			final String message = String.format("Cannot call %s method %s.%s()", method.getName(),
+					domain.type.getSimpleName(), loadMethod.getName());
+			new Exception(message, e).printStackTrace();
+		}
+	}
+
+	public boolean isTicker()
+	{
+		return tickFrequency != null;
+	}
+
+	public int getTickFrequency()
+	{
+		return tickFrequency;
+	}
+
 	public boolean isAutoAdapter()
 	{
-		return loadMethod != null;
+		return loadMethod != null || isTicker();
 	}
 
 	public boolean isNamedAdapter()

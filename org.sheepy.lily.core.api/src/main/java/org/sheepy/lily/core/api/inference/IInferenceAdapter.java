@@ -1,8 +1,8 @@
 package org.sheepy.lily.core.api.inference;
 
 import org.eclipse.emf.ecore.EClass;
-import org.sheepy.lily.core.api.adapter.IServiceAdapterFactory;
 import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 import org.sheepy.lily.core.model.inference.Inferer;
 import org.sheepy.lily.core.model.inference.LNotification;
@@ -19,6 +19,7 @@ public interface IInferenceAdapter extends IAdapter
 												T parameter);
 
 	void addInferer(Inferer inferer);
+
 	void removeInferer(Inferer inferer);
 
 	/**
@@ -38,6 +39,7 @@ public interface IInferenceAdapter extends IAdapter
 	public interface INotificationListener
 	{
 		void onNotification(LObject unit, LNotification notification);
+
 		<T extends Parameter> void onNotification(	LObject unit,
 													ParameteredNotification<T> notification,
 													T parameter);
@@ -45,6 +47,6 @@ public interface IInferenceAdapter extends IAdapter
 
 	static IInferenceAdapter adapt(IInferenceObject part)
 	{
-		return IServiceAdapterFactory.INSTANCE.adapt(part, IInferenceAdapter.class);
+		return IAdapterFactoryService.INSTANCE.adapt(part, IInferenceAdapter.class);
 	}
 }

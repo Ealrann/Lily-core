@@ -9,11 +9,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.sheepy.lily.core.action.ActionDispatcherThread;
+import org.sheepy.lily.core.adapter.IBasicAdapterFactory;
 import org.sheepy.lily.core.api.action.context.ActionExecutionContext;
-import org.sheepy.lily.core.api.adapter.IServiceAdapterFactory;
+import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
 import org.sheepy.lily.core.api.cadence.ICadencer;
 import org.sheepy.lily.core.api.cadence.IMainLoop;
 import org.sheepy.lily.core.api.cadence.IStatistics;
@@ -27,18 +29,21 @@ import org.sheepy.lily.core.model.application.IEngine;
 
 public class Cadencer implements ICadencer
 {
+	private static final String CADENCER_TICK = "Cadencer Tick";
+	private static final String MODEL_COMMANDS = "Model Commands";
+
 	protected Application application;
-	protected List<TickerWrapper> tickers = new ArrayList<>();
+	protected List<AbstractTickerWrapper> tickers = new ArrayList<>();
 
 	protected final CommandStack commandStack = new CommandStack();
 	protected final ECrossReferenceAdapter crossReferencer = new ECrossReferenceAdapter();
 
-	protected final IServiceAdapterFactory adapterFactory = IServiceAdapterFactory.INSTANCE;
+	protected final IBasicAdapterFactory adapterFactory = (IBasicAdapterFactory) IBasicAdapterFactory.INSTANCE;
 	protected final IMainLoop mainloop;
 
 	protected IInputManager inputManager = null;
-	private Deque<AbstractCadencedWrapper> course = new ArrayDeque<>();
-	private Deque<AbstractCadencedWrapper> nextCourse = new ArrayDeque<>();
+	private Deque<AbstractTickerWrapper> course = new ArrayDeque<>();
+	private Deque<AbstractTickerWrapper> nextCourse = new ArrayDeque<>();
 	private Long mainThread = null;
 
 	private final AtomicBoolean stop = new AtomicBoolean(false);
@@ -46,6 +51,7 @@ public class Cadencer implements ICadencer
 	private final IStatistics statistics = ServiceManager.getService(IStatistics.class);
 
 	private ActionDispatcherThread dispatcher;
+	private CadenceContentAdater cadenceContentAdapter;
 
 	public Cadencer(Application application, IMainLoop mainloop)
 	{
@@ -57,14 +63,14 @@ public class Cadencer implements ICadencer
 	@SuppressWarnings("unchecked")
 	public void deleteObject(EObject eo)
 	{
-		for (Setting seting : crossReferencer.getInverseReferences(eo))
+		for (final Setting seting : crossReferencer.getInverseReferences(eo))
 		{
-			EObject referencer = seting.getEObject();
-			EStructuralFeature feature = seting.getEStructuralFeature();
+			final EObject referencer = seting.getEObject();
+			final EStructuralFeature feature = seting.getEStructuralFeature();
 
 			if (feature.isMany())
 			{
-				List<EObject> list = (List<EObject>) referencer.eGet(feature);
+				final List<EObject> list = (List<EObject>) referencer.eGet(feature);
 				list.remove(eo);
 			}
 			else
@@ -84,9 +90,9 @@ public class Cadencer implements ICadencer
 		dispatcher = new ActionDispatcherThread(commandStack, mainThread);
 		addTicker(dispatcher, -1);
 
-		IServiceAdapterFactory.INSTANCE.setupRoot(application);
+		IAdapterFactoryService.INSTANCE.setupRoot(application);
 
-		for (IEngine engine : application.getEngines())
+		for (final IEngine engine : application.getEngines())
 		{
 			inputManager = IEngineAdapter.adapt(engine).getInputManager();
 			if (inputManager != null)
@@ -94,6 +100,9 @@ public class Cadencer implements ICadencer
 				break;
 			}
 		}
+
+		cadenceContentAdapter = new CadenceContentAdater();
+		application.eAdapters().add(cadenceContentAdapter);
 
 		if (mainloop != null)
 		{
@@ -108,15 +117,18 @@ public class Cadencer implements ICadencer
 			mainloop.free(application);
 		}
 
+		application.eAdapters().remove(cadenceContentAdapter);
+		cadenceContentAdapter = null;
+
 		removeTicker(dispatcher, -1);
 
-		statistics.printTickersTime();
+		statistics.printTimes();
 		statistics.clear();
-		getCommandStack().printStats();
+		// getCommandStack().printStats();
 
 		mainThread = null;
 
-		IServiceAdapterFactory.INSTANCE.uninstallRoot(application);
+		IAdapterFactoryService.INSTANCE.uninstallRoot(application);
 	}
 
 	public void run()
@@ -146,14 +158,14 @@ public class Cadencer implements ICadencer
 
 	public void tick(long stepNano)
 	{
-		long duration = System.nanoTime();
+		final long duration = System.nanoTime();
 
 		// =========
 		// Compute tickers to execute
 		// =========
 		for (int i = 0; i < tickers.size(); i++)
 		{
-			AbstractCadencedWrapper ticker = tickers.get(i);
+			final AbstractTickerWrapper ticker = tickers.get(i);
 			ticker.accumulate(stepNano);
 
 			if (ticker.shouldTick())
@@ -162,39 +174,24 @@ public class Cadencer implements ICadencer
 			}
 		}
 
-		// =========
-		// Compute processors to execute
-		// =========
-
-		// for (int i = 0; i < cadencedProcessors.size(); i++)
-		// {
-		// ProcessorTickerWrapper wrapper = cadencedProcessors.get(i);
-		// wrapper.accumulate(stepNano);
-		//
-		// if (wrapper.shouldTick())
-		// {
-		// nextCourse.add(wrapper);
-		// }
-		// }
-
 		long blockingDuration = System.nanoTime();
 		commandStack.execute();
 		blockingDuration = System.nanoTime() - blockingDuration;
 
-		statistics.addAccumulatedDuration("Model Commands", blockingDuration);
+		statistics.addTime(MODEL_COMMANDS, blockingDuration);
 
 		// =========
 		// Execute tickers
 		// =========
 		while (nextCourse.isEmpty() == false)
 		{
-			Deque<AbstractCadencedWrapper> temp = course;
+			final Deque<AbstractTickerWrapper> temp = course;
 			course = nextCourse;
 			nextCourse = temp;
 
 			while (course.isEmpty() == false)
 			{
-				AbstractCadencedWrapper ticker = course.poll();
+				final AbstractTickerWrapper ticker = course.poll();
 
 				try
 				{
@@ -204,14 +201,14 @@ public class Cadencer implements ICadencer
 					}
 					else
 					{
-						long d = System.nanoTime();
+						final long d = System.nanoTime();
 
 						ticker.tick();
 
-						statistics.addTickerTime(ticker.getLabel(), System.nanoTime() - d);
+						statistics.addTime(ticker.getLabel(), System.nanoTime() - d);
 					}
 
-				} catch (Exception e)
+				} catch (final Exception e)
 				{
 					e.printStackTrace();
 				}
@@ -230,11 +227,10 @@ public class Cadencer implements ICadencer
 			commandStack.execute();
 			blockingDuration = System.nanoTime() - blockingDuration;
 
-			statistics.addAccumulatedDuration("Model Commands", blockingDuration);
+			statistics.addTime(MODEL_COMMANDS, blockingDuration);
 		}
 
-		statistics.addAccumulatedDuration("Cadencer Tick", System.nanoTime() - duration);
-		statistics.update();
+		statistics.addTime(CADENCER_TICK, System.nanoTime() - duration);
 	}
 
 	@Override
@@ -251,7 +247,7 @@ public class Cadencer implements ICadencer
 	@Override
 	public void addTicker(ITicker ticker, int frequency)
 	{
-		TickerWrapper tw = new TickerWrapper(ticker, frequency);
+		final TickerWrapper tw = new TickerWrapper(ticker, frequency);
 
 		tickers.add(tw);
 	}
@@ -259,9 +255,9 @@ public class Cadencer implements ICadencer
 	@Override
 	public void removeTicker(ITicker ticker, int frequency)
 	{
-		for (TickerWrapper tickerWrapper : tickers)
+		for (final AbstractTickerWrapper tickerWrapper : tickers)
 		{
-			if (tickerWrapper.getFrequency() == frequency && tickerWrapper.ticker == ticker)
+			if (tickerWrapper.getFrequency() == frequency && tickerWrapper.getTicker() == ticker)
 			{
 				tickerWrapper.stop.set(true);
 			}
@@ -285,4 +281,43 @@ public class Cadencer implements ICadencer
 	{
 		return inputManager;
 	}
+
+	private class CadenceContentAdater extends EContentAdapter
+	{
+		@Override
+		protected void setTarget(EObject target)
+		{
+			final var tickDescriptor = adapterFactory.getTickDescriptor(target);
+
+			if (tickDescriptor.isTicker())
+			{
+				for (final int frequency : tickDescriptor.getTickFrequencies())
+				{
+					final var wrapper = new AdapterTickerWrapper(frequency, tickDescriptor);
+					tickers.add(wrapper);
+				}
+			}
+
+			super.setTarget(target);
+		}
+
+		@Override
+		protected void unsetTarget(EObject target)
+		{
+			final var tickDescriptor = adapterFactory.getTickDescriptor(target);
+
+			final var it = tickers.iterator();
+			while (it.hasNext())
+			{
+				final var next = it.next();
+				if (next.getTicker() == tickDescriptor)
+				{
+					next.stop.set(true);
+				}
+			}
+
+			super.unsetTarget(target);
+		}
+	};
+
 }

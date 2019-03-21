@@ -1,8 +1,11 @@
-package org.sheepy.lily.core.adapter;
+package org.sheepy.lily.core.adapter.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
@@ -10,13 +13,17 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.sheepy.lily.core.adapter.ITickDescriptor;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 
-class AdapterManager extends EContentAdapter
+class AdapterManager extends EContentAdapter implements ITickDescriptor
 {
 	private final ServiceAdapterRegistry registry;
 	private EObject target;
 	private final List<Container> adapters = new ArrayList<>();
+	private final Map<Integer, List<AdapterDefinition>> tickers = new HashMap<>();
+
+	private boolean isTicker = false;
 
 	public AdapterManager(ServiceAdapterRegistry registry)
 	{
@@ -26,7 +33,7 @@ class AdapterManager extends EContentAdapter
 	@Override
 	public void notifyChanged(Notification notification)
 	{
-		for (Container container : adapters)
+		for (final Container container : adapters)
 		{
 			container.definition.notifyChanged(container.adapter, notification);
 		}
@@ -65,7 +72,7 @@ class AdapterManager extends EContentAdapter
 		T res = null;
 		for (int i = 0; i < adapters.size(); i++)
 		{
-			var container = adapters.get(i);
+			final var container = adapters.get(i);
 			if (container.definition.isAdapterForType(type))
 			{
 				res = (T) container.adapter;
@@ -84,6 +91,20 @@ class AdapterManager extends EContentAdapter
 			res = (T) definition.create(target);
 			adapters.add(new Container(definition, res));
 			definition.load(target, res);
+
+			if (definition.isTicker())
+			{
+				isTicker = true;
+
+				final int frequency = definition.getTickFrequency();
+				List<AdapterDefinition> list = tickers.get(frequency);
+				if (list == null)
+				{
+					list = new ArrayList<>(1);
+					tickers.put(frequency, list);
+				}
+				list.add(definition);
+			}
 		}
 		return res;
 	}
@@ -91,8 +112,8 @@ class AdapterManager extends EContentAdapter
 	@Override
 	protected void addAdapter(Notifier notifier)
 	{
-		EList<Adapter> eAdapters = notifier.eAdapters();
-		for (Adapter adapter : eAdapters)
+		final EList<Adapter> eAdapters = notifier.eAdapters();
+		for (final Adapter adapter : eAdapters)
 		{
 			if (adapter instanceof AdapterManager)
 			{
@@ -105,7 +126,7 @@ class AdapterManager extends EContentAdapter
 	@Override
 	protected void removeAdapter(Notifier notifier)
 	{
-		Iterator<Adapter> it = notifier.eAdapters().iterator();
+		final Iterator<Adapter> it = notifier.eAdapters().iterator();
 		while (it.hasNext())
 		{
 			if (it.next() instanceof AdapterManager)
@@ -118,10 +139,10 @@ class AdapterManager extends EContentAdapter
 
 	private void loadAutoAdapters()
 	{
-		List<AdapterDefinition> autoAdapters = registry.getAdaptersFor(target);
+		final List<AdapterDefinition> autoAdapters = registry.getAdaptersFor(target);
 		if (autoAdapters != null)
 		{
-			for (AdapterDefinition definition : autoAdapters)
+			for (final AdapterDefinition definition : autoAdapters)
 			{
 				if (definition.isAutoAdapter())
 				{
@@ -133,12 +154,12 @@ class AdapterManager extends EContentAdapter
 
 	private void disposeAutoAdapters()
 	{
-		List<AdapterDefinition> autoAdapters = registry.getAdaptersFor(target);
+		final List<AdapterDefinition> autoAdapters = registry.getAdaptersFor(target);
 		if (autoAdapters != null)
 		{
-			for (AdapterDefinition definition : autoAdapters)
+			for (final AdapterDefinition definition : autoAdapters)
 			{
-				var adapter = findAdapter(definition.domain.type);
+				final var adapter = findAdapter(definition.domain.type);
 				if (adapter != null)
 				{
 					definition.destroy(target, adapter);
@@ -157,5 +178,33 @@ class AdapterManager extends EContentAdapter
 			this.definition = definition;
 			this.adapter = adapter;
 		}
+	}
+
+	@Override
+	public boolean isTicker()
+	{
+		return isTicker;
+	}
+
+	@Override
+	public Collection<Integer> getTickFrequencies()
+	{
+		return tickers.keySet();
+	}
+
+	@Override
+	public void tick(int frequencyToTick)
+	{
+		for (final AdapterDefinition definition : tickers.get(frequencyToTick))
+		{
+			final var adapter = adapt(definition.domain.type);
+			definition.tick(target, adapter);
+		}
+	}
+
+	@Override
+	public String getName()
+	{
+		return target.eClass().getName();
 	}
 }

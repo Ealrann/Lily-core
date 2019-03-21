@@ -1,4 +1,4 @@
-package org.sheepy.lily.core.adapter;
+package org.sheepy.lily.core.adapter.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;

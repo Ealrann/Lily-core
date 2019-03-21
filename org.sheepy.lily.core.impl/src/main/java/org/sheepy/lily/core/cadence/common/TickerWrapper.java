@@ -2,11 +2,10 @@ package org.sheepy.lily.core.cadence.common;
 
 import org.sheepy.lily.core.api.cadence.ITicker;
 
-public class TickerWrapper extends AbstractCadencedWrapper
+public class TickerWrapper extends AbstractTickerWrapper
 {
-	public ITicker ticker;
-
-	protected float frequency;
+	private final ITicker ticker;
+	private final float frequency;
 
 	public TickerWrapper(ITicker ticker, int frequency)
 	{
@@ -27,7 +26,14 @@ public class TickerWrapper extends AbstractCadencedWrapper
 	{
 		return ticker.getLabel();
 	}
-	
+
+	@Override
+	public Object getTicker()
+	{
+		return ticker;
+	}
+
+	@Override
 	public float getFrequency()
 	{
 		return frequency;

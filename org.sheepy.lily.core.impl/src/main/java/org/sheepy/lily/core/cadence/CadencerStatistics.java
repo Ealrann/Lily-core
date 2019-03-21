@@ -1,170 +1,100 @@
 package org.sheepy.lily.core.cadence;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map.Entry;
 
 import org.sheepy.lily.core.api.cadence.IStatistics;
 
 public class CadencerStatistics implements IStatistics
 {
-	// in ms
-	private final int statDuration = 1000;
-	private long currentStatTime = 0;
-
-	private final HashMap<String, Long> tickersTime = new HashMap<>();
-
 	private final HashMap<String, AccumulatorTime> accumulatorsTime = new HashMap<>();
-
-	private class AccumulatorTime
-	{
-		ArrayList<Long> list = new ArrayList<>();
-		long durationUs = 0;
-		long durationMaxUs = 0;
-		long total = 0;
-	}
-
-	private final HashSet<String> accumulatedThisTurn = new HashSet<>();
 
 	@Override
 	public void clear()
 	{
-		currentStatTime = 0;		
-		tickersTime.clear();
 		accumulatorsTime.clear();
-		accumulatedThisTurn.clear();
 	}
-	
+
 	@Override
-	public void update()
+	public void addTime(String label, long durationNs)
 	{
-		accumulatedThisTurn.clear();
-
-		if (System.currentTimeMillis() > currentStatTime + statDuration)
+		var accumulator = accumulatorsTime.get(label);
+		if (accumulator == null)
 		{
-
-			for (Entry<String, AccumulatorTime> e : accumulatorsTime.entrySet())
-			{
-				ArrayList<Long> times = e.getValue().list;
-
-				long sum = 0;
-				long max = 0;
-				for (int i = 0; i < times.size(); i++)
-				{
-					Long l = times.get(i);
-					l /= 1000;
-					sum += l;
-					if (l > max)
-					{
-						max = l;
-					}
-				}
-				e.getValue().durationMaxUs = max;
-				if (times.isEmpty() == false) e.getValue().durationUs = sum / times.size();
-				else e.getValue().durationUs = 0;
-				e.getValue().total += sum;
-
-				times.clear();
-			}
-
-			currentStatTime = System.currentTimeMillis();
+			accumulator = new AccumulatorTime();
+			accumulatorsTime.put(label, accumulator);
 		}
+
+		accumulator.tick(durationNs);
 	}
 
 	@Override
-	public void addTickerTime(String label, long durationNs)
-	{
-		Long totalDuration = tickersTime.get(label);
-		if (totalDuration == null)
-		{
-			tickersTime.put(label, durationNs);
-		}
-		else
-		{
-			tickersTime.put(label, totalDuration + durationNs);
-		}
-	}
-
-	@Override
-	public void printTickersTime()
+	public void printTimes()
 	{
 		System.out.println("===============================================");
 		System.out.println("Tickers times :");
 
-		for (Entry<String, AccumulatorTime> e : accumulatorsTime.entrySet())
-		{
-			System.out.format("%s ; %d ms \n", e.getKey(), e.getValue().total / 1000);
-		}
+		final String messagePattern = "%30s: Average: %5.2f ms, Max: %5.2f, Total: %5.2f ms \n";
 
-		for (Entry<String, Long> entry : tickersTime.entrySet())
+		for (final Entry<String, AccumulatorTime> e : accumulatorsTime.entrySet())
 		{
-			System.out.format("%s : %d ms\n", entry.getKey(), entry.getValue() / 1_000_000);
+			final var label = e.getKey();
+			final var accu = e.getValue();
+			final double total = accu.totalNs / 1e6;
+			final double average = accu.averageNs / 1e6;
+			final double max = accu.maxNS / 1e6;
+			System.out.format(messagePattern, label, average, max, total);
 		}
 		System.out.println("===============================================");
 	}
 
-	@Override
-	public Collection<String> getAccumulatorsLabels()
+	private class AccumulatorTime
 	{
-		return accumulatorsTime.keySet();
-	}
+		private static final int TICK_STACK_COUNT = 10;
+		Long[] tickStack = new Long[TICK_STACK_COUNT];
+		long averageNs = 0;
+		long totalNs = 0;
+		long maxNS = 0;
 
-	@Override
-	public void addAccumulatedDuration(String label, long duration)
-	{
-		AccumulatorTime ac = accumulatorsTime.get(label);
-		if (ac == null)
-		{
-			ac = new AccumulatorTime();
-			accumulatorsTime.put(label, ac);
-		}
+		private int index = 0;
 
-		ac.list.add(duration);
-		accumulatedThisTurn.add(label);
-	}
-
-	@Override
-	public void sumAccumulatedDuration(String label, long duration)
-	{
-		if (accumulatedThisTurn.contains(label) == false)
+		public void tick(long durationNs)
 		{
-			addAccumulatedDuration(label, duration);
-		}
-		else
-		{
-			AccumulatorTime ac = accumulatorsTime.get(label);
-			if (ac == null)
+			if (durationNs > maxNS)
 			{
-				ac = new AccumulatorTime();
-				accumulatorsTime.put(label, ac);
+				maxNS = durationNs;
 			}
 
-			long last = ac.list.get(ac.list.size() - 1);
-			ac.list.set(ac.list.size() - 1, last + duration);
-		}
-	}
+			tickStack[index] = durationNs;
 
-	@Override
-	public long getMedianDurationUs(String label)
-	{
-		AccumulatorTime ac = accumulatorsTime.get(label);
-		if (ac != null)
-		{
-			return ac.durationUs;
-		}
-		return -1;
-	}
+			index++;
 
-	@Override
-	public long getMedianDurationMaxUs(String label)
-	{
-		AccumulatorTime ac = accumulatorsTime.get(label);
-		if (ac != null)
-		{
-			return ac.durationMaxUs;
+			if (index >= TICK_STACK_COUNT)
+			{
+				summerize();
+				index = 0;
+			}
 		}
-		return -1;
+
+		private void summerize()
+		{
+			long total = 0;
+			for (int i = 0; i < TICK_STACK_COUNT; i++)
+			{
+				total += tickStack[i];
+			}
+
+			totalNs += total;
+
+			final long average = total / TICK_STACK_COUNT;
+			if (averageNs == 0)
+			{
+				averageNs = average;
+			}
+			else
+			{
+				averageNs = (averageNs + average) / 2;
+			}
+		}
 	}
 }

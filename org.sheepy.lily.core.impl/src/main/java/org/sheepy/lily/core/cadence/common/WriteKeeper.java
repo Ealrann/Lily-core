@@ -32,7 +32,7 @@ public class WriteKeeper extends EContentAdapter
 					&& ((EStructuralFeature) notification.getFeature()).isTransient())
 				return;
 
-			ILilyTransaction tx = commandStack.getCurrentTransaction();
+			final ILilyTransaction tx = commandStack.getCurrentTransaction();
 			if ((tx == null) || (tx.getOwner() != Thread.currentThread()))
 			{
 				throw new IllegalStateException(

@@ -2,14 +2,14 @@ package org.sheepy.lily.core.cadence.common;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public abstract class AbstractCadencedWrapper
+public abstract class AbstractTickerWrapper
 {
 	protected long tickerStep = 0;
 	protected long accumulator = 0;
 
-	public AtomicBoolean stop = new AtomicBoolean(false);
+	public final AtomicBoolean stop = new AtomicBoolean(false);
 
-	public AbstractCadencedWrapper(float frequency)
+	public AbstractTickerWrapper(float frequency)
 	{
 		// We planify the next tick
 		if (frequency > 0)
@@ -51,4 +51,8 @@ public abstract class AbstractCadencedWrapper
 	public abstract void doTick(long stepNano);
 
 	public abstract String getLabel();
+
+	public abstract Object getTicker();
+
+	public abstract float getFrequency();
 }

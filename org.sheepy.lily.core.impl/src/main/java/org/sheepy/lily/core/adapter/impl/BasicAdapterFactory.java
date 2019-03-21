@@ -1,14 +1,15 @@
-package org.sheepy.lily.core.adapter;
+package org.sheepy.lily.core.adapter.impl;
 
 import java.util.Iterator;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EObject;
+import org.sheepy.lily.core.adapter.IBasicAdapterFactory;
+import org.sheepy.lily.core.adapter.ITickDescriptor;
 import org.sheepy.lily.core.api.adapter.IAdapter;
-import org.sheepy.lily.core.api.adapter.IServiceAdapterFactory;
 import org.sheepy.lily.core.api.resource.IResourceLoader;
 
-public class ServiceAdapterFactory implements IServiceAdapterFactory
+public class BasicAdapterFactory implements IBasicAdapterFactory
 {
 	private final ServiceAdapterRegistry registry = new ServiceAdapterRegistry();
 
@@ -20,7 +21,7 @@ public class ServiceAdapterFactory implements IServiceAdapterFactory
 	{
 		T res = null;
 
-		AdapterManager manager = getOrCreateManager(target);
+		final AdapterManager manager = getOrCreateManager(target);
 		res = manager.adapt(type);
 
 		return res;
@@ -29,7 +30,7 @@ public class ServiceAdapterFactory implements IServiceAdapterFactory
 	private AdapterManager getOrCreateManager(EObject target)
 	{
 		AdapterManager res = null;
-		for (Adapter adapter : target.eAdapters())
+		for (final Adapter adapter : target.eAdapters())
 		{
 			if (adapter instanceof AdapterManager)
 			{
@@ -56,15 +57,21 @@ public class ServiceAdapterFactory implements IServiceAdapterFactory
 	@Override
 	public void uninstallRoot(EObject root)
 	{
-		Iterator<Adapter> it = root.eAdapters().iterator();
+		final Iterator<Adapter> it = root.eAdapters().iterator();
 		while (it.hasNext())
 		{
-			Adapter next = it.next();
+			final Adapter next = it.next();
 			if (next instanceof AdapterManager)
 			{
 				it.remove();
 			}
 		}
+	}
+
+	@Override
+	public ITickDescriptor getTickDescriptor(EObject eObject)
+	{
+		return getOrCreateManager(eObject);
 	}
 
 }

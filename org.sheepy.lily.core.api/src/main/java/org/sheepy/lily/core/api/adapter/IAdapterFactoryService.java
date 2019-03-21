@@ -5,9 +5,9 @@ import java.util.ServiceLoader;
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.api.service.IService;
 
-public interface IServiceAdapterFactory extends IService
+public interface IAdapterFactoryService extends IService
 {
-	static final IServiceAdapterFactory INSTANCE = ServiceLoader.load(IServiceAdapterFactory.class)
+	static final IAdapterFactoryService INSTANCE = ServiceLoader.load(IAdapterFactoryService.class)
 			.findFirst().get();
 
 	<T extends IAdapter> T adapt(EObject lilyObject, Class<T> classifier);
