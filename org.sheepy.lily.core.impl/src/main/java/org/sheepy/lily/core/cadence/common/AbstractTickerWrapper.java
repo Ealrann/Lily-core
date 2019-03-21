@@ -61,13 +61,16 @@ public abstract class AbstractTickerWrapper
 		}
 	}
 
+	public float getFrequency()
+	{
+		return frequency;
+	}
+
 	public abstract void doTick(long stepNano);
 
 	public abstract String getLabel();
 
 	public abstract Object getTicker();
-
-	public abstract float getFrequency();
 
 	public abstract int getPriority();
 }

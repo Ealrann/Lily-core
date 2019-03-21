@@ -33,12 +33,6 @@ public class AdapterTickerWrapper extends AbstractTickerWrapper
 	}
 
 	@Override
-	public float getFrequency()
-	{
-		return frequency;
-	}
-
-	@Override
 	public int getPriority()
 	{
 		return priority;
