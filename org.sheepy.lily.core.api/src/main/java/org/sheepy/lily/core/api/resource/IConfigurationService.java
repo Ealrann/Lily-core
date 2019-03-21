@@ -1,7 +1,8 @@
 package org.sheepy.lily.core.api.resource;
 
+import java.util.ServiceLoader;
+
 import org.sheepy.lily.core.api.service.IService;
-import org.sheepy.lily.core.api.service.ServiceManager;
 
 public interface IConfigurationService extends IService
 {
@@ -23,8 +24,6 @@ public interface IConfigurationService extends IService
 	// TODO ça n'est pas du core...
 	String getAssetsPath();
 
-	static IConfigurationService getService()
-	{
-		return ServiceManager.getService(IConfigurationService.class);
-	}
+	static final IConfigurationService INSTANCE = ServiceLoader.load(IConfigurationService.class)
+			.findFirst().get();
 }

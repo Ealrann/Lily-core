@@ -3,7 +3,6 @@ package org.sheepy.lily.core.action;
 import java.util.List;
 
 import org.sheepy.lily.core.api.action.IActionHandler;
-import org.sheepy.lily.core.api.service.ServiceManager;
 import org.sheepy.lily.core.model.action.Action;
 
 public class ActionHandlerRegistry
@@ -14,10 +13,10 @@ public class ActionHandlerRegistry
 	{
 		if (handlers == null)
 		{
-			handlers = ServiceManager.getServices(IActionHandler.class);
+			handlers = IActionHandler.HANDLERS;
 		}
 
-		for (IActionHandler handler : handlers)
+		for (final IActionHandler handler : handlers)
 		{
 			if (handler.getSupportedAction() == action.eClass()
 					|| handler.getSupportedAction().isSuperTypeOf(action.eClass()))

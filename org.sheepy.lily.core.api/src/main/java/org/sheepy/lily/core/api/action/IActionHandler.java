@@ -7,6 +7,7 @@ import java.util.stream.StreamSupport;
 
 import org.eclipse.emf.ecore.EClass;
 import org.sheepy.lily.core.api.action.context.ActionExecutionContext;
+import org.sheepy.lily.core.api.resource.IConfigurationService;
 import org.sheepy.lily.core.api.service.IService;
 
 public interface IActionHandler extends IService

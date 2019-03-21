@@ -22,7 +22,6 @@ import org.sheepy.lily.core.api.cadence.IStatistics;
 import org.sheepy.lily.core.api.cadence.ITicker;
 import org.sheepy.lily.core.api.engine.IEngineAdapter;
 import org.sheepy.lily.core.api.input.IInputManager;
-import org.sheepy.lily.core.api.service.ServiceManager;
 import org.sheepy.lily.core.cadence.execution.CommandStack;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.IEngine;
@@ -48,7 +47,7 @@ public class Cadencer implements ICadencer
 
 	private final AtomicBoolean stop = new AtomicBoolean(false);
 
-	private final IStatistics statistics = ServiceManager.getService(IStatistics.class);
+	private final IStatistics statistics = IStatistics.INSTANCE;
 
 	private ActionDispatcherThread dispatcher;
 	private CadenceContentAdater cadenceContentAdapter;
