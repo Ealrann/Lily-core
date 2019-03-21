@@ -1,6 +1,5 @@
 package org.sheepy.lily.core.adapter.impl;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -15,8 +14,7 @@ import org.sheepy.lily.core.api.adapter.annotation.Dispose;
 import org.sheepy.lily.core.api.adapter.annotation.NotifyChanged;
 import org.sheepy.lily.core.api.adapter.annotation.Statefull;
 import org.sheepy.lily.core.api.adapter.annotation.Tick;
-import org.sheepy.lily.core.api.util.ClassHierarchyIterator;
-import org.sheepy.lily.core.api.util.ReflectivityUtils;
+import org.sheepy.lily.core.api.util.ReflectUtils;
 
 public class AdapterDefinition
 {
@@ -35,8 +33,8 @@ public class AdapterDefinition
 
 	public AdapterDefinition(Class<? extends IAdapter> adapterClass)
 	{
-		final var adapterAnnotation = gatherTypeAnnotation(Adapter.class, adapterClass);
-		final var statefullAnnotation = gatherTypeAnnotation(Statefull.class, adapterClass);
+		final var adapterAnnotation = ReflectUtils.gatherType(adapterClass, Adapter.class);
+		final var statefullAnnotation = ReflectUtils.gatherType(adapterClass, Statefull.class);
 		if (adapterAnnotation == null)
 		{
 			throwNoAdapterAnnotationError();
@@ -45,21 +43,24 @@ public class AdapterDefinition
 		domain = new AdapterDomain(adapterAnnotation, adapterClass);
 		isSingleton = statefullAnnotation == null;
 		constructor = gatherConstructor();
-		loadMethod = gatherMethod(Autorun.class);
-		disposeMethod = gatherMethod(Dispose.class);
-		notifyMethod = gatherMethod(NotifyChanged.class);
-		tickMethod = gatherMethod(Tick.class);
+		loadMethod = ReflectUtils.gatherMethod(adapterClass, Autorun.class);
+		disposeMethod = ReflectUtils.gatherMethod(adapterClass, Dispose.class);
+		notifyMethod = ReflectUtils.gatherMethod(adapterClass, NotifyChanged.class);
 
-		if (tickMethod != null)
+		final var tickMethodAnnotation = ReflectUtils.gatherMethodAnnotation(adapterClass,
+				Tick.class);
+		if (tickMethodAnnotation != null)
 		{
-			final Tick tickAnnotation = gatherMethodAnnotation(Tick.class);
+			final Tick tickAnnotation = tickMethodAnnotation.annotation;
 			tickFrequency = tickAnnotation.frequency();
 			tickPriority = tickAnnotation.priority();
+			tickMethod = tickMethodAnnotation.method;
 		}
 		else
 		{
 			tickFrequency = null;
 			tickPriority = null;
+			tickMethod = null;
 		}
 
 		pattern = loadPattern();
@@ -80,55 +81,6 @@ public class AdapterDefinition
 			}
 		}
 		return pattern;
-	}
-
-	private Method gatherMethod(Class<? extends Annotation> annotationClass)
-	{
-		Method res = null;
-
-		final ClassHierarchyIterator it = new ClassHierarchyIterator(domain.type);
-		FOUND: while (it.hasNext())
-		{
-			final var methods = it.next().getDeclaredMethods();
-			for (final Method method : methods)
-			{
-				for (final Annotation annotation : method.getAnnotations())
-				{
-					if (annotation.annotationType() == annotationClass)
-					{
-						res = method;
-						break FOUND;
-					}
-				}
-			}
-		}
-
-		return res;
-	}
-
-	@SuppressWarnings("unchecked")
-	private <T extends Annotation> T gatherMethodAnnotation(Class<? extends T> annotationClass)
-	{
-		T res = null;
-
-		final ClassHierarchyIterator it = new ClassHierarchyIterator(domain.type);
-		FOUND: while (it.hasNext())
-		{
-			final var methods = it.next().getDeclaredMethods();
-			for (final Method method : methods)
-			{
-				for (final Annotation annotation : method.getAnnotations())
-				{
-					if (annotation.annotationType() == annotationClass)
-					{
-						res = (T) annotation;
-						break FOUND;
-					}
-				}
-			}
-		}
-
-		return res;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -153,7 +105,7 @@ public class AdapterDefinition
 				if (constructor.getParameterCount() == 1)
 				{
 					final Parameter parameter = constructor.getParameters()[0];
-					if (ReflectivityUtils.isSuperType(parameter.getType(), applicableClass))
+					if (ReflectUtils.isSuperType(parameter.getType(), applicableClass))
 					{
 						res = (Constructor<IAdapter>) constructor;
 						break;
@@ -180,23 +132,6 @@ public class AdapterDefinition
 				+ "or (if statefull), a constructor with one parameter, typed with the applicable class";
 		final String errorMessage = String.format(message, domain.type.getSimpleName());
 		throw new AssertionError(errorMessage);
-	}
-
-	@SuppressWarnings("unchecked")
-	private static <T extends Annotation> T gatherTypeAnnotation(	Class<T> annotationClass,
-																	Class<?> type)
-	{
-		T res = null;
-		for (final Annotation annotation : type.getAnnotations())
-		{
-			if (annotation.annotationType() == annotationClass)
-			{
-				res = (T) annotation;
-				break;
-			}
-		}
-
-		return res;
 	}
 
 	private void throwNoAdapterAnnotationError() throws AssertionError
