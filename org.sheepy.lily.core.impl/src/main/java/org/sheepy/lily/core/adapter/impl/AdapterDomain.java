@@ -6,7 +6,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.resource.IModelExtension;
-import org.sheepy.lily.core.api.util.ClassHierarchyIterator;
 import org.sheepy.lily.core.model.types.LNamedElement;
 
 public class AdapterDomain
@@ -20,7 +19,7 @@ public class AdapterDomain
 	{
 		this.type = type;
 
-		var classifier = adapterAnnotation.scope();
+		final var classifier = adapterAnnotation.scope();
 		inheritance = adapterAnnotation.scopeInheritance();
 		targetClassifier = gatherEclass(classifier);
 		targetName = adapterAnnotation.name();
@@ -29,10 +28,11 @@ public class AdapterDomain
 	private static EClass gatherEclass(Class<? extends EObject> classifier)
 	{
 		EClass res = null;
-		String name = classifier.getSimpleName();
-		EXT_LOOP: for (IModelExtension extension : IModelExtension.EXTENSIONS)
+
+		final String name = classifier.getSimpleName();
+		EXT_LOOP: for (final IModelExtension extension : IModelExtension.EXTENSIONS)
 		{
-			for (EPackage ePackage : extension.getEPackages())
+			for (final EPackage ePackage : extension.getEPackages())
 			{
 				res = (EClass) ePackage.getEClassifier(name);
 				if (res != null)
@@ -52,29 +52,20 @@ public class AdapterDomain
 
 	public boolean isAdapterForType(Class<? extends IAdapter> type)
 	{
-		ClassHierarchyIterator it = new ClassHierarchyIterator(this.type);
-		while (it.hasNext())
-		{
-			if (it.next() == type)
-			{
-				return true;
-			}
-		}
-
-		return false;
+		return type.isAssignableFrom(this.type);
 	}
 
 	private static void eClassNotFoundError(String name) throws AssertionError
 	{
-		String message = "Cannot find any EClass matching with %s";
-		String errorMessage = String.format(message, name);
+		final String message = "Cannot find any EClass matching with %s";
+		final String errorMessage = String.format(message, name);
 		throw new AssertionError(errorMessage);
 	}
 
 	public boolean isApplicable(EObject eObject)
 	{
 		boolean res = false;
-		var eClass = eObject.eClass();
+		final var eClass = eObject.eClass();
 
 		if (inheritance)
 		{

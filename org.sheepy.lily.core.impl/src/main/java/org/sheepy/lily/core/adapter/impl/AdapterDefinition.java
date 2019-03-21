@@ -105,7 +105,7 @@ public class AdapterDefinition
 				if (constructor.getParameterCount() == 1)
 				{
 					final Parameter parameter = constructor.getParameters()[0];
-					if (ReflectUtils.isSuperType(parameter.getType(), applicableClass))
+					if (parameter.getType().isAssignableFrom(applicableClass))
 					{
 						res = (Constructor<IAdapter>) constructor;
 						break;
