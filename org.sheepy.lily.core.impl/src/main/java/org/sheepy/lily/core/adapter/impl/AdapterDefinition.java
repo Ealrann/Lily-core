@@ -15,6 +15,7 @@ import org.sheepy.lily.core.api.adapter.annotation.Dispose;
 import org.sheepy.lily.core.api.adapter.annotation.NotifyChanged;
 import org.sheepy.lily.core.api.adapter.annotation.Statefull;
 import org.sheepy.lily.core.api.adapter.annotation.Tick;
+import org.sheepy.lily.core.api.util.ClassHierarchyIterator;
 import org.sheepy.lily.core.api.util.ReflectivityUtils;
 
 public class AdapterDefinition
@@ -84,15 +85,20 @@ public class AdapterDefinition
 	private Method gatherMethod(Class<? extends Annotation> annotationClass)
 	{
 		Method res = null;
-		final var methods = domain.type.getDeclaredMethods();
-		for (final Method method : methods)
+
+		final ClassHierarchyIterator it = new ClassHierarchyIterator(domain.type);
+		FOUND: while (it.hasNext())
 		{
-			for (final Annotation annotation : method.getAnnotations())
+			final var methods = it.next().getDeclaredMethods();
+			for (final Method method : methods)
 			{
-				if (annotation.annotationType() == annotationClass)
+				for (final Annotation annotation : method.getAnnotations())
 				{
-					res = method;
-					break;
+					if (annotation.annotationType() == annotationClass)
+					{
+						res = method;
+						break FOUND;
+					}
 				}
 			}
 		}
@@ -104,18 +110,24 @@ public class AdapterDefinition
 	private <T extends Annotation> T gatherMethodAnnotation(Class<? extends T> annotationClass)
 	{
 		T res = null;
-		final var methods = domain.type.getDeclaredMethods();
-		for (final Method method : methods)
+
+		final ClassHierarchyIterator it = new ClassHierarchyIterator(domain.type);
+		FOUND: while (it.hasNext())
 		{
-			for (final Annotation annotation : method.getAnnotations())
+			final var methods = it.next().getDeclaredMethods();
+			for (final Method method : methods)
 			{
-				if (annotation.annotationType() == annotationClass)
+				for (final Annotation annotation : method.getAnnotations())
 				{
-					res = (T) annotation;
-					break;
+					if (annotation.annotationType() == annotationClass)
+					{
+						res = (T) annotation;
+						break FOUND;
+					}
 				}
 			}
 		}
+
 		return res;
 	}
 
@@ -277,7 +289,7 @@ public class AdapterDefinition
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
 		{
 			final String message = String.format("Cannot call %s method %s.%s()", method.getName(),
-					domain.type.getSimpleName(), loadMethod.getName());
+					domain.type.getSimpleName(), method.getName());
 			new Exception(message, e).printStackTrace();
 		}
 	}
