@@ -29,6 +29,7 @@ import org.sheepy.lily.core.model.application.IEngine;
 
 public class Cadencer implements ICadencer
 {
+	private static final String MAIN_LOOP = "Main Loop";
 	private static final String CADENCER_TICK = "Cadencer Tick";
 	private static final String MODEL_COMMANDS = "Model Commands";
 
@@ -133,7 +134,7 @@ public class Cadencer implements ICadencer
 	public void run()
 	{
 		final long stepNs = (long) (1. / application.getCadenceInHz() * 1e9);
-		
+
 		while (stop.get() == false)
 		{
 			if (inputManager != null)
@@ -145,7 +146,9 @@ public class Cadencer implements ICadencer
 
 			if (mainloop != null)
 			{
+				final long duration = System.nanoTime();
 				mainloop.step(application);
+				statistics.addTime(MAIN_LOOP, System.nanoTime() - duration);
 			}
 		}
 
