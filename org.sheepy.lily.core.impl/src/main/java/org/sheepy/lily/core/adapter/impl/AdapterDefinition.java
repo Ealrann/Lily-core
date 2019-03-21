@@ -59,8 +59,6 @@ public class AdapterDefinition
 		}
 
 		pattern = loadPattern();
-
-		analyze();
 	}
 
 	private IAdapter loadPattern()
@@ -195,11 +193,6 @@ public class AdapterDefinition
 		throw new AssertionError(errorMessage);
 	}
 
-	private void analyze()
-	{
-
-	}
-
 	public IAdapter create(EObject target)
 	{
 		IAdapter res = null;
@@ -217,8 +210,7 @@ public class AdapterDefinition
 				}
 				else
 				{
-					res = constructor
-							.newInstance(domain.targetClassifier.getInstanceClass().cast(target));
+					res = constructor.newInstance(target);
 				}
 			} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException e)
@@ -235,7 +227,7 @@ public class AdapterDefinition
 	{
 		if (loadMethod != null)
 		{
-			invokeMethod(target, adapter, loadMethod);
+			invokeMethod(loadMethod, adapter, target);
 		}
 	}
 
@@ -243,7 +235,7 @@ public class AdapterDefinition
 	{
 		if (disposeMethod != null)
 		{
-			invokeMethod(target, adapter, disposeMethod);
+			invokeMethod(disposeMethod, adapter, target);
 		}
 	}
 
@@ -251,23 +243,7 @@ public class AdapterDefinition
 	{
 		if (notifyMethod != null)
 		{
-			try
-			{
-				if (notifyMethod.getParameterCount() == 0)
-				{
-					notifyMethod.invoke(adapter, NO_PARAMETERS);
-				}
-				else
-				{
-					notifyMethod.invoke(adapter, notification);
-				}
-			} catch (IllegalAccessException | IllegalArgumentException
-					| InvocationTargetException e)
-			{
-				final String message = String.format("Cannot call @NotifyChanged method %s.%s()",
-						domain.type.getSimpleName(), loadMethod.getName());
-				new Exception(message, e).printStackTrace();
-			}
+			invokeMethod(notifyMethod, adapter, notification);
 		}
 	}
 
@@ -275,21 +251,21 @@ public class AdapterDefinition
 	{
 		if (tickMethod != null)
 		{
-			invokeMethod(target, adapter, tickMethod);
+			invokeMethod(tickMethod, adapter, target);
 		}
 	}
 
-	private void invokeMethod(EObject target, IAdapter adapter, Method method)
+	private void invokeMethod(Method method, IAdapter executor, Object parameter)
 	{
 		try
 		{
 			if (method.getParameterCount() == 0)
 			{
-				method.invoke(adapter, NO_PARAMETERS);
+				method.invoke(executor, NO_PARAMETERS);
 			}
 			else
 			{
-				method.invoke(adapter, domain.targetClassifier.getInstanceClass().cast(target));
+				method.invoke(executor, parameter);
 			}
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
 		{

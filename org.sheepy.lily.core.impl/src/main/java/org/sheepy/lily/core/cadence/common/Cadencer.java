@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.sheepy.lily.core.action.ActionDispatcherThread;
 import org.sheepy.lily.core.adapter.IBasicAdapterFactory;
+import org.sheepy.lily.core.adapter.ITickDescriptor;
 import org.sheepy.lily.core.api.action.context.ActionExecutionContext;
 import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
 import org.sheepy.lily.core.api.cadence.ICadencer;
@@ -287,15 +288,12 @@ public class Cadencer implements ICadencer
 		@Override
 		protected void setTarget(EObject target)
 		{
-			final var tickDescriptor = adapterFactory.getTickDescriptor(target);
+			final var tickDescriptors = adapterFactory.getTickDescriptors(target);
 
-			if (tickDescriptor.isTicker())
+			for (final ITickDescriptor ticker : tickDescriptors)
 			{
-				for (final int frequency : tickDescriptor.getTickFrequencies())
-				{
-					final var wrapper = new AdapterTickerWrapper(frequency, tickDescriptor);
-					tickers.add(wrapper);
-				}
+				final var wrapper = new AdapterTickerWrapper(ticker.getFrequency(), ticker);
+				tickers.add(wrapper);
 			}
 
 			super.setTarget(target);
@@ -304,13 +302,13 @@ public class Cadencer implements ICadencer
 		@Override
 		protected void unsetTarget(EObject target)
 		{
-			final var tickDescriptor = adapterFactory.getTickDescriptor(target);
+			final var tickDescriptors = adapterFactory.getTickDescriptors(target);
 
 			final var it = tickers.iterator();
 			while (it.hasNext())
 			{
 				final var next = it.next();
-				if (next.getTicker() == tickDescriptor)
+				if (tickDescriptors.contains(next.getTicker()))
 				{
 					next.stop.set(true);
 				}

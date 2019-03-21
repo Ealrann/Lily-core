@@ -13,16 +13,16 @@ public class ServiceAdapterRegistry
 
 	ServiceAdapterRegistry()
 	{
-		List<AdapterDefinition> foundAdapters = new ArrayList<>();
+		final List<AdapterDefinition> foundAdapters = new ArrayList<>();
 
-		for (Module module : ModuleLayer.boot().modules())
+		for (final Module module : ModuleLayer.boot().modules())
 		{
-			Adapters adapters = module.getAnnotation(Adapters.class);
+			final Adapters adapters = module.getAnnotation(Adapters.class);
 			if (adapters != null)
 			{
-				for (Class<? extends IAdapter> adapterClass : adapters.classifiers())
+				for (final Class<? extends IAdapter> adapterClass : adapters.classifiers())
 				{
-					var wrapper = new AdapterDefinition(adapterClass);
+					final var wrapper = new AdapterDefinition(adapterClass);
 					foundAdapters.add(wrapper);
 
 					// var name = adapterService.getClass().getSimpleName();
@@ -34,11 +34,11 @@ public class ServiceAdapterRegistry
 		adapters = List.copyOf(foundAdapters);
 	}
 
-	public AdapterDefinition getAdapterFor(EObject eObject, Class<? extends IAdapter> type)
+	public AdapterDefinition getDefinitionFor(EObject eObject, Class<? extends IAdapter> type)
 	{
 		AdapterDefinition res = null;
 
-		for (AdapterDefinition definition : adapters)
+		for (final AdapterDefinition definition : adapters)
 		{
 			if (definition.isAdapterForType(type) && definition.isApplicable(eObject))
 			{
@@ -54,11 +54,11 @@ public class ServiceAdapterRegistry
 		return res;
 	}
 
-	public List<AdapterDefinition> getAdaptersFor(EObject eobject)
+	public List<AdapterDefinition> getDefinitionsFor(EObject eobject)
 	{
-		List<AdapterDefinition> res = new ArrayList<>();
+		final List<AdapterDefinition> res = new ArrayList<>();
 
-		for (AdapterDefinition adapter : adapters)
+		for (final AdapterDefinition adapter : adapters)
 		{
 			if (adapter.isApplicable(eobject))
 			{

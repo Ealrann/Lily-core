@@ -5,7 +5,6 @@ package org.sheepy.lily.core.model.inference.provider;
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 import org.sheepy.lily.core.model.action.provider.ActionEditPlugin;
 
 import org.sheepy.lily.core.model.types.provider.TypesEditPlugin;
@@ -46,7 +45,6 @@ public final class InferenceEditPlugin extends EMFPlugin
 		  (new ResourceLocator [] 
 		   {
 		     ActionEditPlugin.INSTANCE,
-		     EcoreEditPlugin.INSTANCE,
 		     TypesEditPlugin.INSTANCE,
 		   });
 	}

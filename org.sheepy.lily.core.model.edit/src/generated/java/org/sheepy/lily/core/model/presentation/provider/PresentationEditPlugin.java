@@ -5,7 +5,6 @@ package org.sheepy.lily.core.model.presentation.provider;
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 import org.sheepy.lily.core.model.action.provider.ActionEditPlugin;
 
 import org.sheepy.lily.core.model.application.provider.ApplicationEditPlugin;
@@ -54,7 +53,6 @@ public final class PresentationEditPlugin extends EMFPlugin
 		     RootEditPlugin.INSTANCE,
 		     InferenceEditPlugin.INSTANCE,
 		     TypesEditPlugin.INSTANCE,
-		     EcoreEditPlugin.INSTANCE,
 		     ApplicationEditPlugin.INSTANCE,
 		     ActionEditPlugin.INSTANCE,
 		   });

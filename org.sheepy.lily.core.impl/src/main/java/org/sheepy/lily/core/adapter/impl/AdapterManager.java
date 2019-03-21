@@ -1,11 +1,8 @@
 package org.sheepy.lily.core.adapter.impl;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
@@ -16,14 +13,12 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 
-class AdapterManager extends EContentAdapter implements ITickDescriptor
+class AdapterManager extends EContentAdapter
 {
 	private final ServiceAdapterRegistry registry;
 	private EObject target;
 	private final List<Container> adapters = new ArrayList<>();
-	private final Map<Integer, List<AdapterDefinition>> tickers = new HashMap<>();
-
-	private boolean isTicker = false;
+	public final List<ITickDescriptor> tickers = new ArrayList<>();
 
 	public AdapterManager(ServiceAdapterRegistry registry)
 	{
@@ -85,25 +80,17 @@ class AdapterManager extends EContentAdapter implements ITickDescriptor
 	@SuppressWarnings("unchecked")
 	private <T extends IAdapter> T createAdapter(Class<T> type, T res)
 	{
-		final var definition = registry.getAdapterFor(target, type);
+		final var definition = registry.getDefinitionFor(target, type);
 		if (definition != null)
 		{
 			res = (T) definition.create(target);
-			adapters.add(new Container(definition, res));
+			final var container = new Container(definition, res);
+			adapters.add(container);
 			definition.load(target, res);
 
 			if (definition.isTicker())
 			{
-				isTicker = true;
-
-				final int frequency = definition.getTickFrequency();
-				List<AdapterDefinition> list = tickers.get(frequency);
-				if (list == null)
-				{
-					list = new ArrayList<>(1);
-					tickers.put(frequency, list);
-				}
-				list.add(definition);
+				tickers.add(new TickDescriptor(container, target));
 			}
 		}
 		return res;
@@ -139,7 +126,7 @@ class AdapterManager extends EContentAdapter implements ITickDescriptor
 
 	private void loadAutoAdapters()
 	{
-		final List<AdapterDefinition> autoAdapters = registry.getAdaptersFor(target);
+		final List<AdapterDefinition> autoAdapters = registry.getDefinitionsFor(target);
 		if (autoAdapters != null)
 		{
 			for (final AdapterDefinition definition : autoAdapters)
@@ -154,7 +141,7 @@ class AdapterManager extends EContentAdapter implements ITickDescriptor
 
 	private void disposeAutoAdapters()
 	{
-		final List<AdapterDefinition> autoAdapters = registry.getAdaptersFor(target);
+		final List<AdapterDefinition> autoAdapters = registry.getDefinitionsFor(target);
 		if (autoAdapters != null)
 		{
 			for (final AdapterDefinition definition : autoAdapters)
@@ -180,31 +167,34 @@ class AdapterManager extends EContentAdapter implements ITickDescriptor
 		}
 	}
 
-	@Override
-	public boolean isTicker()
+	class TickDescriptor implements ITickDescriptor
 	{
-		return isTicker;
-	}
+		private final Container container;
+		private final EObject target;
 
-	@Override
-	public Collection<Integer> getTickFrequencies()
-	{
-		return tickers.keySet();
-	}
-
-	@Override
-	public void tick(int frequencyToTick)
-	{
-		for (final AdapterDefinition definition : tickers.get(frequencyToTick))
+		TickDescriptor(Container container, EObject target)
 		{
-			final var adapter = adapt(definition.domain.type);
-			definition.tick(target, adapter);
+			this.container = container;
+			this.target = target;
 		}
-	}
 
-	@Override
-	public String getName()
-	{
-		return target.eClass().getName();
+		@Override
+		public int getFrequency()
+		{
+			return container.definition.getTickFrequency();
+		}
+
+		@Override
+		public void tick(int frequencyToTick)
+		{
+			container.definition.tick(target, container.adapter);
+		}
+
+		@Override
+		public String getName()
+		{
+			return container.adapter.getClass().getSimpleName();
+		}
+
 	}
 }

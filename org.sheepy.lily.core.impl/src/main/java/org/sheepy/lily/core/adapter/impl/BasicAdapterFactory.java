@@ -1,6 +1,7 @@
 package org.sheepy.lily.core.adapter.impl;
 
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EObject;
@@ -69,9 +70,9 @@ public class BasicAdapterFactory implements IBasicAdapterFactory
 	}
 
 	@Override
-	public ITickDescriptor getTickDescriptor(EObject eObject)
+	public List<ITickDescriptor> getTickDescriptors(EObject eObject)
 	{
-		return getOrCreateManager(eObject);
+		return getOrCreateManager(eObject).tickers;
 	}
 
 }

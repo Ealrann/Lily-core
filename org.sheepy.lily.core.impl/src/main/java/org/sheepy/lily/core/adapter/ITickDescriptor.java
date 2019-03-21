@@ -1,12 +1,8 @@
 package org.sheepy.lily.core.adapter;
 
-import java.util.Collection;
-
 public interface ITickDescriptor
 {
-	boolean isTicker();
-
-	Collection<Integer> getTickFrequencies();
+	int getFrequency();
 
 	void tick(int frequencyToTick);
 
