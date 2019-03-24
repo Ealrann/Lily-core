@@ -31,8 +31,11 @@ public class BasicAdapterFactory implements IBasicAdapterFactory
 	private AdapterManager getOrCreateManager(EObject target)
 	{
 		AdapterManager res = null;
-		for (final Adapter adapter : target.eAdapters())
+
+		final var adapters = target.eAdapters();
+		for (int i = 0; i < adapters.size(); i++)
 		{
+			final Adapter adapter = adapters.get(i);
 			if (adapter instanceof AdapterManager)
 			{
 				res = (AdapterManager) adapter;
