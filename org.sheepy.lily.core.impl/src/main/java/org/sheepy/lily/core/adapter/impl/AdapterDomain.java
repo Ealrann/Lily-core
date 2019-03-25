@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.resource.IModelExtension;
+import org.sheepy.lily.core.api.util.ReflectUtils;
 import org.sheepy.lily.core.model.types.LNamedElement;
 
 public class AdapterDomain
@@ -14,10 +15,13 @@ public class AdapterDomain
 	public final EClass targetClassifier;
 	public final boolean inheritance;
 	public final String targetName;
+	public final Adapter adapterAnnotation;
 
-	public AdapterDomain(Adapter adapterAnnotation, Class<? extends IAdapter> type)
+	public AdapterDomain(Class<? extends IAdapter> type)
 	{
 		this.type = type;
+
+		adapterAnnotation = ReflectUtils.gatherType(type, Adapter.class);
 
 		final var classifier = adapterAnnotation.scope();
 		inheritance = adapterAnnotation.scopeInheritance();

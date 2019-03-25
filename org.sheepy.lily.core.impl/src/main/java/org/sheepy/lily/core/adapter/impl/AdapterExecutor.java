@@ -1,7 +1,6 @@
 package org.sheepy.lily.core.adapter.impl;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 
@@ -16,8 +15,10 @@ import org.sheepy.lily.core.api.adapter.annotation.Statefull;
 import org.sheepy.lily.core.api.adapter.annotation.Tick;
 import org.sheepy.lily.core.api.util.ReflectUtils;
 
-public class AdapterDefinition
+public class AdapterExecutor
 {
+	private static final String CANNOT_CALL_METHOD = "Cannot call %s method %s.%s()";
+
 	private static final Object[] NO_PARAMETERS = new Object[0];
 
 	public final AdapterDomain domain;
@@ -31,24 +32,25 @@ public class AdapterDefinition
 	private final Method disposeMethod;
 	private final Method notifyMethod;
 
-	public AdapterDefinition(Class<? extends IAdapter> adapterClass)
+	public AdapterExecutor(AdapterDomain domain)
 	{
-		final var adapterAnnotation = ReflectUtils.gatherType(adapterClass, Adapter.class);
-		final var statefullAnnotation = ReflectUtils.gatherType(adapterClass, Statefull.class);
+		this.domain = domain;
+
+		final var type = domain.type;
+		final var adapterAnnotation = ReflectUtils.gatherType(type, Adapter.class);
+		final var statefullAnnotation = ReflectUtils.gatherType(type, Statefull.class);
 		if (adapterAnnotation == null)
 		{
 			throwNoAdapterAnnotationError();
 		}
 
-		domain = new AdapterDomain(adapterAnnotation, adapterClass);
 		isSingleton = statefullAnnotation == null;
 		constructor = gatherConstructor();
-		loadMethod = ReflectUtils.gatherMethod(adapterClass, Autorun.class);
-		disposeMethod = ReflectUtils.gatherMethod(adapterClass, Dispose.class);
-		notifyMethod = ReflectUtils.gatherMethod(adapterClass, NotifyChanged.class);
+		loadMethod = ReflectUtils.gatherMethod(type, Autorun.class);
+		disposeMethod = ReflectUtils.gatherMethod(type, Dispose.class);
+		notifyMethod = ReflectUtils.gatherMethod(type, NotifyChanged.class);
 
-		final var tickMethodAnnotation = ReflectUtils.gatherMethodAnnotation(adapterClass,
-				Tick.class);
+		final var tickMethodAnnotation = ReflectUtils.gatherMethodAnnotation(type, Tick.class);
 		if (tickMethodAnnotation != null)
 		{
 			final Tick tickAnnotation = tickMethodAnnotation.annotation;
@@ -74,8 +76,7 @@ public class AdapterDefinition
 			try
 			{
 				pattern = constructor.newInstance(NO_PARAMETERS);
-			} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
-					| InvocationTargetException e)
+			} catch (ReflectiveOperationException | IllegalArgumentException e)
 			{
 				e.printStackTrace();
 			}
@@ -162,8 +163,7 @@ public class AdapterDefinition
 				{
 					res = constructor.newInstance(target);
 				}
-			} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
-					| InvocationTargetException e)
+			} catch (ReflectiveOperationException | IllegalArgumentException e)
 			{
 				new Exception("Cannot instanciate " + domain.type.getSimpleName(), e)
 						.printStackTrace();
@@ -221,9 +221,9 @@ public class AdapterDefinition
 				method.invoke(executor, param1, param2);
 				break;
 			}
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
+		} catch (ReflectiveOperationException | IllegalArgumentException e)
 		{
-			final String message = String.format("Cannot call %s method %s.%s()", method.getName(),
+			final String message = String.format(CANNOT_CALL_METHOD, method.getName(),
 					domain.type.getSimpleName(), method.getName());
 			new Exception(message, e).printStackTrace();
 		}
@@ -242,21 +242,6 @@ public class AdapterDefinition
 	public boolean isAutoAdapter()
 	{
 		return loadMethod != null || isTicker();
-	}
-
-	public boolean isNamedAdapter()
-	{
-		return domain.targetName.isEmpty() == false;
-	}
-
-	public boolean isApplicable(EObject eObject)
-	{
-		return domain.isApplicable(eObject);
-	}
-
-	public boolean isAdapterForType(Class<? extends IAdapter> type)
-	{
-		return domain.isAdapterForType(type);
 	}
 
 	public int getTickPriority()

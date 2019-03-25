@@ -7,7 +7,6 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
@@ -16,9 +15,10 @@ import org.sheepy.lily.core.api.adapter.IAdapter;
 class AdapterManager extends EContentAdapter
 {
 	private final ServiceAdapterRegistry registry;
-	private EObject target;
 	private final List<Container> adapters = new ArrayList<>();
 	public final List<ITickDescriptor> tickers = new ArrayList<>();
+
+	private EObject target;
 
 	public AdapterManager(ServiceAdapterRegistry registry)
 	{
@@ -28,9 +28,11 @@ class AdapterManager extends EContentAdapter
 	@Override
 	public void notifyChanged(Notification notification)
 	{
-		for (final Container container : adapters)
+		super.notifyChanged(notification);
+		for (int i = 0; i < adapters.size(); i++)
 		{
-			container.definition.notifyChanged(container.adapter, notification);
+			final Container container = adapters.get(i);
+			container.notifyChanged(notification);
 		}
 	}
 
@@ -49,65 +51,70 @@ class AdapterManager extends EContentAdapter
 		super.unsetTarget(target);
 	}
 
+	@SuppressWarnings("unchecked")
 	public <T extends IAdapter> T adapt(Class<T> type)
 	{
-		T res = findAdapter(type);
+		T res = (T) findAdapter(type);
 
 		if (res == null)
 		{
-			res = createAdapter(type, res);
+			res = (T) createAdapter(type);
 		}
 
 		return res;
 	}
 
-	@SuppressWarnings("unchecked")
-	private <T extends IAdapter> T findAdapter(Class<T> type)
+	private IAdapter findAdapter(Class<? extends IAdapter> type)
 	{
-		T res = null;
+		IAdapter res = null;
 		for (int i = 0; i < adapters.size(); i++)
 		{
 			final var container = adapters.get(i);
-			if (container.definition.isAdapterForType(type))
+			if (container.domain.isAdapterForType(type))
 			{
-				res = (T) container.adapter;
+				res = container.adapter;
 				break;
 			}
 		}
 		return res;
 	}
 
-	@SuppressWarnings("unchecked")
-	private <T extends IAdapter> T createAdapter(Class<T> type, T res)
+	private IAdapter createAdapter(Class<? extends IAdapter> type)
 	{
-		final var definition = registry.getDefinitionFor(target, type);
-		if (definition != null)
-		{
-			res = (T) definition.create(target);
-			final var container = new Container(definition, res);
-			adapters.add(container);
-			definition.load(target, res);
+		IAdapter res = null;
 
-			if (definition.isTicker())
+		final var descriptor = registry.getDescriptorFor(target, type);
+		if (descriptor != null)
+		{
+			res = descriptor.executor.create(target);
+			final var container = new Container(descriptor, res);
+			adapters.add(container);
+			container.executor.load(target, res);
+
+			if (container.executor.isTicker())
 			{
 				tickers.add(new TickDescriptor(container, target));
 			}
 		}
+
 		return res;
 	}
 
 	@Override
 	protected void addAdapter(Notifier notifier)
 	{
-		final EList<Adapter> eAdapters = notifier.eAdapters();
-		for (final Adapter adapter : eAdapters)
+		final var adapters = notifier.eAdapters();
+
+		for (int i = 0; i < adapters.size(); i++)
 		{
+			final var adapter = adapters.get(i);
 			if (adapter instanceof AdapterManager)
 			{
 				return;
 			}
 		}
-		eAdapters.add(new AdapterManager(registry));
+
+		adapters.add(new AdapterManager(registry));
 	}
 
 	@Override
@@ -126,14 +133,15 @@ class AdapterManager extends EContentAdapter
 
 	private void loadAutoAdapters()
 	{
-		final List<AdapterDefinition> autoAdapters = registry.getDefinitionsFor(target);
+		final var autoAdapters = registry.getDefinitionsFor(target);
 		if (autoAdapters != null)
 		{
-			for (final AdapterDefinition definition : autoAdapters)
+			for (int i = 0; i < autoAdapters.size(); i++)
 			{
-				if (definition.isAutoAdapter())
+				final var descriptor = autoAdapters.get(i);
+				if (descriptor.executor.isAutoAdapter())
 				{
-					adapt(definition.domain.type);
+					adapt(descriptor.domain.type);
 				}
 			}
 		}
@@ -141,29 +149,34 @@ class AdapterManager extends EContentAdapter
 
 	private void disposeAutoAdapters()
 	{
-		final List<AdapterDefinition> autoAdapters = registry.getDefinitionsFor(target);
+		final var autoAdapters = registry.getDefinitionsFor(target);
 		if (autoAdapters != null)
 		{
-			for (final AdapterDefinition definition : autoAdapters)
+			for (int i = 0; i < autoAdapters.size(); i++)
 			{
-				final var adapter = findAdapter(definition.domain.type);
+				final var descriptor = autoAdapters.get(i);
+				final var adapter = findAdapter(descriptor.domain.type);
 				if (adapter != null)
 				{
-					definition.destroy(target, adapter);
+					descriptor.executor.destroy(target, adapter);
 				}
 			}
 		}
 	}
 
-	class Container
+	class Container extends AdapterDescriptor
 	{
-		public final AdapterDefinition definition;
 		public final IAdapter adapter;
 
-		Container(AdapterDefinition definition, IAdapter adapter)
+		Container(AdapterDescriptor descriptor, IAdapter adapter)
 		{
-			this.definition = definition;
+			super(descriptor.domain, descriptor.executor);
 			this.adapter = adapter;
+		}
+
+		public void notifyChanged(Notification notification)
+		{
+			executor.notifyChanged(adapter, notification);
 		}
 	}
 
@@ -181,13 +194,13 @@ class AdapterManager extends EContentAdapter
 		@Override
 		public int getFrequency()
 		{
-			return container.definition.getTickFrequency();
+			return container.executor.getTickFrequency();
 		}
 
 		@Override
 		public void tick(long stepNs)
 		{
-			container.definition.tick(target, container.adapter, stepNs);
+			container.executor.tick(target, container.adapter, stepNs);
 		}
 
 		@Override
@@ -199,7 +212,7 @@ class AdapterManager extends EContentAdapter
 		@Override
 		public int getPriority()
 		{
-			return container.definition.getTickPriority();
+			return container.executor.getTickPriority();
 		}
 
 	}
