@@ -59,7 +59,6 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#isRun <em>Run</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#isFullscreen <em>Fullscreen</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#isResizeable <em>Resizeable</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#isDebug <em>Debug</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getSize <em>Size</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getCurrentView <em>Current View</em>}</li>
@@ -159,26 +158,6 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	 * @ordered
 	 */
 	protected boolean resizeable = RESIZEABLE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isDebug() <em>Debug</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isDebug()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean DEBUG_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isDebug() <em>Debug</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isDebug()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean debug = DEBUG_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
@@ -399,31 +378,6 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 		resizeable = newResizeable;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__RESIZEABLE, oldResizeable, resizeable));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean isDebug()
-	{
-		return debug;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setDebug(boolean newDebug)
-	{
-		boolean oldDebug = debug;
-		debug = newDebug;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__DEBUG, oldDebug, debug));
 	}
 
 	/**
@@ -680,8 +634,6 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 				return isFullscreen();
 			case ApplicationPackage.APPLICATION__RESIZEABLE:
 				return isResizeable();
-			case ApplicationPackage.APPLICATION__DEBUG:
-				return isDebug();
 			case ApplicationPackage.APPLICATION__TITLE:
 				return getTitle();
 			case ApplicationPackage.APPLICATION__SIZE:
@@ -725,9 +677,6 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 				return;
 			case ApplicationPackage.APPLICATION__RESIZEABLE:
 				setResizeable((Boolean)newValue);
-				return;
-			case ApplicationPackage.APPLICATION__DEBUG:
-				setDebug((Boolean)newValue);
 				return;
 			case ApplicationPackage.APPLICATION__TITLE:
 				setTitle((String)newValue);
@@ -773,9 +722,6 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 			case ApplicationPackage.APPLICATION__RESIZEABLE:
 				setResizeable(RESIZEABLE_EDEFAULT);
 				return;
-			case ApplicationPackage.APPLICATION__DEBUG:
-				setDebug(DEBUG_EDEFAULT);
-				return;
 			case ApplicationPackage.APPLICATION__TITLE:
 				setTitle(TITLE_EDEFAULT);
 				return;
@@ -814,8 +760,6 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 				return fullscreen != FULLSCREEN_EDEFAULT;
 			case ApplicationPackage.APPLICATION__RESIZEABLE:
 				return resizeable != RESIZEABLE_EDEFAULT;
-			case ApplicationPackage.APPLICATION__DEBUG:
-				return debug != DEBUG_EDEFAULT;
 			case ApplicationPackage.APPLICATION__TITLE:
 				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
 			case ApplicationPackage.APPLICATION__SIZE:
@@ -871,8 +815,6 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 		result.append(fullscreen);
 		result.append(", resizeable: ");
 		result.append(resizeable);
-		result.append(", debug: ");
-		result.append(debug);
 		result.append(", title: ");
 		result.append(title);
 		result.append(", size: ");

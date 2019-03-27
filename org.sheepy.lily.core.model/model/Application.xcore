@@ -7,6 +7,7 @@
 package org.sheepy.lily.core.model.application
 
 import org.sheepy.lily.core.model.root.LObject
+import org.sheepy.lily.core.model.types.Vector2i
 
 class Application extends LObject
 {
@@ -15,9 +16,8 @@ class Application extends LObject
 	boolean run = "true"
 	boolean fullscreen = "false"
 	boolean resizeable = "false"
-	boolean debug = "false"
 	String title = "Vulkan Application"
-	org.sheepy.lily.core.model.types.Vector2i size = "400,400"
+	Vector2i size = "400,400"
 	refers IView currentView
 	int cadenceInHz = "60"
 }

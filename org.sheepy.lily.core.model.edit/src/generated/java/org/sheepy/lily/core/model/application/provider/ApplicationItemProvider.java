@@ -66,7 +66,6 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 			addRunPropertyDescriptor(object);
 			addFullscreenPropertyDescriptor(object);
 			addResizeablePropertyDescriptor(object);
-			addDebugPropertyDescriptor(object);
 			addTitlePropertyDescriptor(object);
 			addSizePropertyDescriptor(object);
 			addCurrentViewPropertyDescriptor(object);
@@ -136,29 +135,6 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 				 getString("_UI_Application_resizeable_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Application_resizeable_feature", "_UI_Application_type"),
 				 ApplicationPackage.Literals.APPLICATION__RESIZEABLE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Debug feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDebugPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Application_debug_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Application_debug_feature", "_UI_Application_type"),
-				 ApplicationPackage.Literals.APPLICATION__DEBUG,
 				 true,
 				 false,
 				 false,
@@ -340,7 +316,6 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 			case ApplicationPackage.APPLICATION__RUN:
 			case ApplicationPackage.APPLICATION__FULLSCREEN:
 			case ApplicationPackage.APPLICATION__RESIZEABLE:
-			case ApplicationPackage.APPLICATION__DEBUG:
 			case ApplicationPackage.APPLICATION__TITLE:
 			case ApplicationPackage.APPLICATION__SIZE:
 			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:

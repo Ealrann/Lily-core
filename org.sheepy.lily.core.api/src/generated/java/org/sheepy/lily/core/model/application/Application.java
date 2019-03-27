@@ -21,7 +21,6 @@ import org.sheepy.lily.core.model.root.LObject;
  *   <li>{@link org.sheepy.lily.core.model.application.Application#isRun <em>Run</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#isFullscreen <em>Fullscreen</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#isResizeable <em>Resizeable</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.Application#isDebug <em>Debug</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getTitle <em>Title</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getSize <em>Size</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getCurrentView <em>Current View</em>}</li>
@@ -146,33 +145,6 @@ public interface Application extends LObject
 	 * @generated
 	 */
 	void setResizeable(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Debug</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Debug</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Debug</em>' attribute.
-	 * @see #setDebug(boolean)
-	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Debug()
-	 * @model default="false" unique="false"
-	 * @generated
-	 */
-	boolean isDebug();
-
-	/**
-	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#isDebug <em>Debug</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Debug</em>' attribute.
-	 * @see #isDebug()
-	 * @generated
-	 */
-	void setDebug(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Title</b></em>' attribute.
