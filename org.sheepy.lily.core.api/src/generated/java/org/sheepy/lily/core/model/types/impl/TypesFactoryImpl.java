@@ -11,10 +11,13 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
+import org.joml.Vector2d;
 import org.joml.Vector2f;
 import org.joml.Vector2i;
+import org.joml.Vector3d;
 import org.joml.Vector3f;
 import org.joml.Vector3i;
+import org.joml.Vector4d;
 import org.joml.Vector4f;
 import org.sheepy.lily.core.model.types.*;
 
@@ -106,12 +109,16 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				return createEMouseButtonFromString(eDataType, initialValue);
 			case TypesPackage.EKEY_STATE:
 				return createEKeyStateFromString(eDataType, initialValue);
+			case TypesPackage.VECTOR4D:
+				return createVector4dFromString(eDataType, initialValue);
 			case TypesPackage.VECTOR4F:
 				return createVector4fFromString(eDataType, initialValue);
 			case TypesPackage.COLOR4F:
 				return createColor4fFromString(eDataType, initialValue);
 			case TypesPackage.COLOR3F:
 				return createColor3fFromString(eDataType, initialValue);
+			case TypesPackage.VECTOR3D:
+				return createVector3dFromString(eDataType, initialValue);
 			case TypesPackage.VECTOR3F:
 				return createVector3fFromString(eDataType, initialValue);
 			case TypesPackage.VECTOR3I:
@@ -120,6 +127,8 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				return createVector2fFromString(eDataType, initialValue);
 			case TypesPackage.VECTOR2I:
 				return createVector2iFromString(eDataType, initialValue);
+			case TypesPackage.VECTOR2D:
+				return createVector2dFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -153,12 +162,16 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				return convertEMouseButtonToString(eDataType, instanceValue);
 			case TypesPackage.EKEY_STATE:
 				return convertEKeyStateToString(eDataType, instanceValue);
+			case TypesPackage.VECTOR4D:
+				return convertVector4dToString(eDataType, instanceValue);
 			case TypesPackage.VECTOR4F:
 				return convertVector4fToString(eDataType, instanceValue);
 			case TypesPackage.COLOR4F:
 				return convertColor4fToString(eDataType, instanceValue);
 			case TypesPackage.COLOR3F:
 				return convertColor3fToString(eDataType, instanceValue);
+			case TypesPackage.VECTOR3D:
+				return convertVector3dToString(eDataType, instanceValue);
 			case TypesPackage.VECTOR3F:
 				return convertVector3fToString(eDataType, instanceValue);
 			case TypesPackage.VECTOR3I:
@@ -167,6 +180,8 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				return convertVector2fToString(eDataType, instanceValue);
 			case TypesPackage.VECTOR2I:
 				return convertVector2iToString(eDataType, instanceValue);
+			case TypesPackage.VECTOR2D:
+				return convertVector2dToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -411,6 +426,72 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Vector4d createVector4d(final String it)
+	{
+		if ((it != null))
+		{
+			final String[] split = it.split(";");
+			int _length = split.length;
+			boolean _equals = (_length == 4);
+			if (_equals)
+			{
+				Double _valueOf = Double.valueOf(split[0]);
+				Double _valueOf_1 = Double.valueOf(split[1]);
+				Double _valueOf_2 = Double.valueOf(split[2]);
+				Double _valueOf_3 = Double.valueOf(split[3]);
+				return new Vector4d((_valueOf).doubleValue(), (_valueOf_1).doubleValue(), (_valueOf_2).doubleValue(), (_valueOf_3).doubleValue());
+			}
+		}
+		return new Vector4d(0, 0, 0, 0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Vector4d createVector4dFromString(EDataType eDataType, String initialValue)
+	{
+		return createVector4d(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertVector4d(final Vector4d it)
+	{
+		if ((it != null))
+		{
+			String _plus = (Double.valueOf(it.x) + ";");
+			String _plus_1 = (_plus + Double.valueOf(it.y));
+			String _plus_2 = (_plus_1 + ";");
+			String _plus_3 = (_plus_2 + Double.valueOf(it.z));
+			String _plus_4 = (_plus_3 + ";");
+			return (_plus_4 + Double.valueOf(it.w));
+		}
+		else
+		{
+			return "0;0;0;0";
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertVector4dToString(EDataType eDataType, Object instanceValue)
+	{
+		return convertVector4d((Vector4d)instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Vector4f createVector4f(final String it)
 	{
 		if ((it != null))
@@ -599,6 +680,69 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	public String convertColor3fToString(EDataType eDataType, Object instanceValue)
 	{
 		return convertColor3f((Vector3f)instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Vector3d createVector3d(final String it)
+	{
+		if ((it != null))
+		{
+			final String[] split = it.split(";");
+			int _length = split.length;
+			boolean _equals = (_length == 3);
+			if (_equals)
+			{
+				Double _valueOf = Double.valueOf(split[0]);
+				Double _valueOf_1 = Double.valueOf(split[1]);
+				Double _valueOf_2 = Double.valueOf(split[2]);
+				return new Vector3d((_valueOf).doubleValue(), (_valueOf_1).doubleValue(), (_valueOf_2).doubleValue());
+			}
+		}
+		return new Vector3d(0, 0, 0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Vector3d createVector3dFromString(EDataType eDataType, String initialValue)
+	{
+		return createVector3d(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertVector3d(final Vector3d it)
+	{
+		if ((it != null))
+		{
+			String _plus = (Double.valueOf(it.x) + ";");
+			String _plus_1 = (_plus + Double.valueOf(it.y));
+			String _plus_2 = (_plus_1 + ";");
+			return (_plus_2 + Double.valueOf(it.z));
+		}
+		else
+		{
+			return "0;0;0";
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertVector3dToString(EDataType eDataType, Object instanceValue)
+	{
+		return convertVector3d((Vector3d)instanceValue);
 	}
 
 	/**
@@ -845,6 +989,66 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	public String convertVector2iToString(EDataType eDataType, Object instanceValue)
 	{
 		return convertVector2i((Vector2i)instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Vector2d createVector2d(final String it)
+	{
+		if ((it != null))
+		{
+			final String[] split = it.split(";");
+			int _length = split.length;
+			boolean _equals = (_length == 2);
+			if (_equals)
+			{
+				Double _valueOf = Double.valueOf(split[0]);
+				Double _valueOf_1 = Double.valueOf(split[1]);
+				return new Vector2d((_valueOf).doubleValue(), (_valueOf_1).doubleValue());
+			}
+		}
+		return new Vector2d(0, 0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Vector2d createVector2dFromString(EDataType eDataType, String initialValue)
+	{
+		return createVector2d(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertVector2d(final Vector2d it)
+	{
+		if ((it != null))
+		{
+			String _plus = (Double.valueOf(it.x) + ";");
+			return (_plus + Double.valueOf(it.y));
+		}
+		else
+		{
+			return "0;0";
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertVector2dToString(EDataType eDataType, Object instanceValue)
+	{
+		return convertVector2d((Vector2d)instanceValue);
 	}
 
 	/**

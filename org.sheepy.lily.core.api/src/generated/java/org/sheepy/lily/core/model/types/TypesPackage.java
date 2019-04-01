@@ -465,6 +465,16 @@ public interface TypesPackage extends EPackage
 	int EKEY_STATE = 16;
 
 	/**
+	 * The meta object id for the '<em>Vector4d</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.joml.Vector4d
+	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector4d()
+	 * @generated
+	 */
+	int VECTOR4D = 17;
+
+	/**
 	 * The meta object id for the '<em>Vector4f</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -472,7 +482,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector4f()
 	 * @generated
 	 */
-	int VECTOR4F = 17;
+	int VECTOR4F = 18;
 
 	/**
 	 * The meta object id for the '<em>Color4f</em>' data type.
@@ -482,7 +492,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getColor4f()
 	 * @generated
 	 */
-	int COLOR4F = 18;
+	int COLOR4F = 19;
 
 	/**
 	 * The meta object id for the '<em>Color3f</em>' data type.
@@ -492,7 +502,17 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getColor3f()
 	 * @generated
 	 */
-	int COLOR3F = 19;
+	int COLOR3F = 20;
+
+	/**
+	 * The meta object id for the '<em>Vector3d</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.joml.Vector3d
+	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3d()
+	 * @generated
+	 */
+	int VECTOR3D = 21;
 
 	/**
 	 * The meta object id for the '<em>Vector3f</em>' data type.
@@ -502,7 +522,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3f()
 	 * @generated
 	 */
-	int VECTOR3F = 20;
+	int VECTOR3F = 22;
 
 	/**
 	 * The meta object id for the '<em>Vector3i</em>' data type.
@@ -512,7 +532,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3i()
 	 * @generated
 	 */
-	int VECTOR3I = 21;
+	int VECTOR3I = 23;
 
 	/**
 	 * The meta object id for the '<em>Vector2f</em>' data type.
@@ -522,7 +542,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2f()
 	 * @generated
 	 */
-	int VECTOR2F = 22;
+	int VECTOR2F = 24;
 
 	/**
 	 * The meta object id for the '<em>Vector2i</em>' data type.
@@ -532,7 +552,18 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2i()
 	 * @generated
 	 */
-	int VECTOR2I = 23;
+	int VECTOR2I = 25;
+
+
+	/**
+	 * The meta object id for the '<em>Vector2d</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.joml.Vector2d
+	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2d()
+	 * @generated
+	 */
+	int VECTOR2D = 26;
 
 
 	/**
@@ -810,6 +841,18 @@ public interface TypesPackage extends EPackage
 	EEnum getEKeyState();
 
 	/**
+	 * Returns the meta object for data type '{@link org.joml.Vector4d <em>Vector4d</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Vector4d</em>'.
+	 * @see org.joml.Vector4d
+	 * @model instanceClass="org.joml.Vector4d"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel create='if ((it != null))\n{\n\tfinal &lt;%java.lang.String%&gt;[] split = it.split(\";\");\n\tint _length = split.length;\n\tboolean _equals = (_length == 4);\n\tif (_equals)\n\t{\n\t\t&lt;%java.lang.Double%&gt; _valueOf = &lt;%java.lang.Double%&gt;.valueOf(split[0]);\n\t\t&lt;%java.lang.Double%&gt; _valueOf_1 = &lt;%java.lang.Double%&gt;.valueOf(split[1]);\n\t\t&lt;%java.lang.Double%&gt; _valueOf_2 = &lt;%java.lang.Double%&gt;.valueOf(split[2]);\n\t\t&lt;%java.lang.Double%&gt; _valueOf_3 = &lt;%java.lang.Double%&gt;.valueOf(split[3]);\n\t\treturn new &lt;%org.joml.Vector4d%&gt;((_valueOf).doubleValue(), (_valueOf_1).doubleValue(), (_valueOf_2).doubleValue(), (_valueOf_3).doubleValue());\n\t}\n}\nreturn new &lt;%org.joml.Vector4d%&gt;(0, 0, 0, 0);' convert='if ((it != null))\n{\n\t&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Double%&gt;.valueOf(it.x) + \";\");\n\t&lt;%java.lang.String%&gt; _plus_1 = (_plus + &lt;%java.lang.Double%&gt;.valueOf(it.y));\n\t&lt;%java.lang.String%&gt; _plus_2 = (_plus_1 + \";\");\n\t&lt;%java.lang.String%&gt; _plus_3 = (_plus_2 + &lt;%java.lang.Double%&gt;.valueOf(it.z));\n\t&lt;%java.lang.String%&gt; _plus_4 = (_plus_3 + \";\");\n\treturn (_plus_4 + &lt;%java.lang.Double%&gt;.valueOf(it.w));\n}\nelse\n{\n\treturn \"0;0;0;0\";\n}'"
+	 * @generated
+	 */
+	EDataType getVector4d();
+
+	/**
 	 * Returns the meta object for data type '{@link org.joml.Vector4f <em>Vector4f</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -844,6 +887,18 @@ public interface TypesPackage extends EPackage
 	 * @generated
 	 */
 	EDataType getColor3f();
+
+	/**
+	 * Returns the meta object for data type '{@link org.joml.Vector3d <em>Vector3d</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Vector3d</em>'.
+	 * @see org.joml.Vector3d
+	 * @model instanceClass="org.joml.Vector3d"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel create='if ((it != null))\n{\n\tfinal &lt;%java.lang.String%&gt;[] split = it.split(\";\");\n\tint _length = split.length;\n\tboolean _equals = (_length == 3);\n\tif (_equals)\n\t{\n\t\t&lt;%java.lang.Double%&gt; _valueOf = &lt;%java.lang.Double%&gt;.valueOf(split[0]);\n\t\t&lt;%java.lang.Double%&gt; _valueOf_1 = &lt;%java.lang.Double%&gt;.valueOf(split[1]);\n\t\t&lt;%java.lang.Double%&gt; _valueOf_2 = &lt;%java.lang.Double%&gt;.valueOf(split[2]);\n\t\treturn new &lt;%org.joml.Vector3d%&gt;((_valueOf).doubleValue(), (_valueOf_1).doubleValue(), (_valueOf_2).doubleValue());\n\t}\n}\nreturn new &lt;%org.joml.Vector3d%&gt;(0, 0, 0);' convert='if ((it != null))\n{\n\t&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Double%&gt;.valueOf(it.x) + \";\");\n\t&lt;%java.lang.String%&gt; _plus_1 = (_plus + &lt;%java.lang.Double%&gt;.valueOf(it.y));\n\t&lt;%java.lang.String%&gt; _plus_2 = (_plus_1 + \";\");\n\treturn (_plus_2 + &lt;%java.lang.Double%&gt;.valueOf(it.z));\n}\nelse\n{\n\treturn \"0;0;0\";\n}'"
+	 * @generated
+	 */
+	EDataType getVector3d();
 
 	/**
 	 * Returns the meta object for data type '{@link org.joml.Vector3f <em>Vector3f</em>}'.
@@ -892,6 +947,18 @@ public interface TypesPackage extends EPackage
 	 * @generated
 	 */
 	EDataType getVector2i();
+
+	/**
+	 * Returns the meta object for data type '{@link org.joml.Vector2d <em>Vector2d</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Vector2d</em>'.
+	 * @see org.joml.Vector2d
+	 * @model instanceClass="org.joml.Vector2d"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel create='if ((it != null))\n{\n\tfinal &lt;%java.lang.String%&gt;[] split = it.split(\";\");\n\tint _length = split.length;\n\tboolean _equals = (_length == 2);\n\tif (_equals)\n\t{\n\t\t&lt;%java.lang.Double%&gt; _valueOf = &lt;%java.lang.Double%&gt;.valueOf(split[0]);\n\t\t&lt;%java.lang.Double%&gt; _valueOf_1 = &lt;%java.lang.Double%&gt;.valueOf(split[1]);\n\t\treturn new &lt;%org.joml.Vector2d%&gt;((_valueOf).doubleValue(), (_valueOf_1).doubleValue());\n\t}\n}\nreturn new &lt;%org.joml.Vector2d%&gt;(0, 0);' convert='if ((it != null))\n{\n\t&lt;%java.lang.String%&gt; _plus = (&lt;%java.lang.Double%&gt;.valueOf(it.x) + \";\");\n\treturn (_plus + &lt;%java.lang.Double%&gt;.valueOf(it.y));\n}\nelse\n{\n\treturn \"0;0\";\n}'"
+	 * @generated
+	 */
+	EDataType getVector2d();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1168,6 +1235,16 @@ public interface TypesPackage extends EPackage
 		EEnum EKEY_STATE = eINSTANCE.getEKeyState();
 
 		/**
+		 * The meta object literal for the '<em>Vector4d</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.joml.Vector4d
+		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector4d()
+		 * @generated
+		 */
+		EDataType VECTOR4D = eINSTANCE.getVector4d();
+
+		/**
 		 * The meta object literal for the '<em>Vector4f</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1196,6 +1273,16 @@ public interface TypesPackage extends EPackage
 		 * @generated
 		 */
 		EDataType COLOR3F = eINSTANCE.getColor3f();
+
+		/**
+		 * The meta object literal for the '<em>Vector3d</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.joml.Vector3d
+		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3d()
+		 * @generated
+		 */
+		EDataType VECTOR3D = eINSTANCE.getVector3d();
 
 		/**
 		 * The meta object literal for the '<em>Vector3f</em>' data type.
@@ -1236,6 +1323,16 @@ public interface TypesPackage extends EPackage
 		 * @generated
 		 */
 		EDataType VECTOR2I = eINSTANCE.getVector2i();
+
+		/**
+		 * The meta object literal for the '<em>Vector2d</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.joml.Vector2d
+		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2d()
+		 * @generated
+		 */
+		EDataType VECTOR2D = eINSTANCE.getVector2d();
 
 	}
 
