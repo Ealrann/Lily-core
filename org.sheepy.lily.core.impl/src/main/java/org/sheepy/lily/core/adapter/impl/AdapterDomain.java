@@ -9,6 +9,8 @@ import org.sheepy.lily.core.api.resource.IModelExtension;
 import org.sheepy.lily.core.api.util.ReflectUtils;
 import org.sheepy.lily.core.model.types.LNamedElement;
 
+import org.eclipse.emf.ecore.EcorePackage;
+
 public class AdapterDomain
 {
 	public final Class<? extends IAdapter> type;
@@ -25,11 +27,11 @@ public class AdapterDomain
 
 		final var classifier = adapterAnnotation.scope();
 		inheritance = adapterAnnotation.scopeInheritance();
-		targetClassifier = gatherEclass(classifier);
+		targetClassifier = gatherEClass(classifier);
 		targetName = adapterAnnotation.name();
 	}
 
-	private static EClass gatherEclass(Class<? extends EObject> classifier)
+	private static EClass gatherEClass(Class<? extends EObject> classifier)
 	{
 		EClass res = null;
 
@@ -44,6 +46,11 @@ public class AdapterDomain
 					break EXT_LOOP;
 				}
 			}
+		}
+
+		if (res == null)
+		{
+			res = (EClass) EcorePackage.eINSTANCE.getEClassifier(name);
 		}
 
 		if (res == null)
