@@ -1,4 +1,4 @@
-package org.sheepy.lily.core.util;
+package org.sheepy.lily.core.api.util;
 
 import static org.junit.jupiter.api.Assertions.*;
 
