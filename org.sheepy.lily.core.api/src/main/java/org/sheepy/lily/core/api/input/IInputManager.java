@@ -38,6 +38,8 @@ public interface IInputManager
 
 		default void onScrollEvent(ScrollEvent event)
 		{}
-	}
 
+		default void onMouseOverUI(boolean overUI)
+		{}
+	}
 }
