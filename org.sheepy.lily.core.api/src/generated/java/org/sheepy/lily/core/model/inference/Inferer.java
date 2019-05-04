@@ -39,7 +39,6 @@ public interface Inferer extends IInferenceObject
 	 * @return the value of the '<em>Rules</em>' containment reference list.
 	 * @see org.sheepy.lily.core.model.inference.InferencePackage#getInferer_Rules()
 	 * @model containment="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel createChild='false'"
 	 * @generated
 	 */
 	EList<LRule> getRules();

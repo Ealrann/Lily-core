@@ -37,7 +37,6 @@ public interface LObject extends IInferenceObject
 	 * @see #setContentObjects(EList)
 	 * @see org.sheepy.lily.core.model.root.RootPackage#getLObject_ContentObjects()
 	 * @model unique="false" dataType="org.sheepy.lily.core.model.root.LContentList" transient="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='None'"
 	 * @generated
 	 */
 	EList<LObject> getContentObjects();

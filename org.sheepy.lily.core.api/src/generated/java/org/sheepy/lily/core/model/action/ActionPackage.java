@@ -21,7 +21,6 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  * <!-- end-user-doc -->
  * @see org.sheepy.lily.core.model.action.ActionFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel modelDirectory='/org.sheepy.lily.core.model/src/generated/java' editDirectory='/org.sheepy.lily.core.model.edit/src/generated/java' publicConstructors='true' complianceLevel='11.0' resource='XMI' extensibleProviderFactory='true' childCreationExtenders='true' updateClasspath='false' basePackage='org.sheepy.lily.core.model'"
  * @generated
  */
 public interface ActionPackage extends EPackage

@@ -92,7 +92,6 @@ public interface EReferenceResolver extends ILObjectResolver
 	 * @see #setInternalReference(EReference)
 	 * @see org.sheepy.lily.core.model.resolver.ResolverPackage#getEReferenceResolver_InternalReference()
 	 * @model transient="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel property='None'"
 	 * @generated
 	 */
 	EReference getInternalReference();
