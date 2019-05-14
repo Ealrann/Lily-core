@@ -165,8 +165,10 @@ public class AdapterExecutor
 				}
 			} catch (ReflectiveOperationException | IllegalArgumentException e)
 			{
-				new Exception("Cannot instanciate " + domain.type.getSimpleName(), e)
-						.printStackTrace();
+				System.err.println("Cannot instanciate " + domain.type.getSimpleName());
+				final var cause = e.getCause();
+				if (cause != null) cause.printStackTrace();
+				else e.printStackTrace();
 			}
 		}
 
