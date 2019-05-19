@@ -14,9 +14,10 @@ import org.sheepy.lily.core.api.adapter.IAdapter;
 
 class AdapterManager extends EContentAdapter
 {
-	private final ServiceAdapterRegistry registry;
-	private final List<Container> adapters = new ArrayList<>();
 	public final List<ITickDescriptor> tickers = new ArrayList<>();
+
+	private final ServiceAdapterRegistry registry;
+	private final List<Container<?>> adapters = new ArrayList<>();
 
 	private EObject target;
 
@@ -31,7 +32,7 @@ class AdapterManager extends EContentAdapter
 		super.notifyChanged(notification);
 		for (int i = 0; i < adapters.size(); i++)
 		{
-			final Container container = adapters.get(i);
+			final var container = adapters.get(i);
 			container.notifyChanged(notification);
 		}
 	}
@@ -51,43 +52,42 @@ class AdapterManager extends EContentAdapter
 		super.unsetTarget(target);
 	}
 
-	@SuppressWarnings("unchecked")
 	public <T extends IAdapter> T adapt(Class<T> type)
 	{
-		T res = (T) findAdapter(type);
+		T res = findAdapter(type);
 
 		if (res == null)
 		{
-			res = (T) createAdapter(type);
+			res = createAdapter(type);
 		}
 
 		return res;
 	}
 
-	private IAdapter findAdapter(Class<? extends IAdapter> type)
+	private <T extends IAdapter> T findAdapter(Class<T> type)
 	{
-		IAdapter res = null;
+		T res = null;
 		for (int i = 0; i < adapters.size(); i++)
 		{
 			final var container = adapters.get(i);
 			if (container.domain.isAdapterForType(type))
 			{
-				res = container.adapter;
+				res = type.cast(container.adapter);
 				break;
 			}
 		}
 		return res;
 	}
 
-	private IAdapter createAdapter(Class<? extends IAdapter> type)
+	private <T extends IAdapter> T createAdapter(Class<T> type)
 	{
-		IAdapter res = null;
+		T res = null;
 
 		final var descriptor = registry.getDescriptorFor(target, type);
 		if (descriptor != null)
 		{
 			res = descriptor.executor.create(target);
-			final var container = new Container(descriptor, res);
+			final var container = new Container<>(descriptor, res);
 			adapters.add(container);
 			container.executor.load(target, res);
 
@@ -164,11 +164,11 @@ class AdapterManager extends EContentAdapter
 		}
 	}
 
-	class Container extends AdapterDescriptor
+	private static class Container<T extends IAdapter> extends AdapterDescriptor<T>
 	{
 		public final IAdapter adapter;
 
-		Container(AdapterDescriptor descriptor, IAdapter adapter)
+		Container(AdapterDescriptor<T> descriptor, IAdapter adapter)
 		{
 			super(descriptor.domain, descriptor.executor);
 			this.adapter = adapter;
@@ -180,12 +180,12 @@ class AdapterManager extends EContentAdapter
 		}
 	}
 
-	class TickDescriptor implements ITickDescriptor
+	private static class TickDescriptor implements ITickDescriptor
 	{
-		private final Container container;
+		private final Container<?> container;
 		private final EObject target;
 
-		TickDescriptor(Container container, EObject target)
+		TickDescriptor(Container<?> container, EObject target)
 		{
 			this.container = container;
 			this.target = target;

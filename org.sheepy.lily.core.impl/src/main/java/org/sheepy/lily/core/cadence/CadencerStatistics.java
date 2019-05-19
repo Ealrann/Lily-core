@@ -48,7 +48,7 @@ public class CadencerStatistics implements IStatistics
 		System.out.println("===============================================");
 	}
 
-	private class AccumulatorTime
+	private static class AccumulatorTime
 	{
 		private static final int TICK_STACK_COUNT = 10;
 		Long[] tickStack = new Long[TICK_STACK_COUNT];

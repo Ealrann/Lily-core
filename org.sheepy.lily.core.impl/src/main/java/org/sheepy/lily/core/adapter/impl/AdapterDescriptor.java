@@ -1,11 +1,13 @@
 package org.sheepy.lily.core.adapter.impl;
 
-class AdapterDescriptor
-{
-	public final AdapterDomain domain;
-	public final AdapterExecutor executor;
+import org.sheepy.lily.core.api.adapter.IAdapter;
 
-	public AdapterDescriptor(AdapterDomain domain, AdapterExecutor executor)
+class AdapterDescriptor<T extends IAdapter>
+{
+	public final AdapterDomain<T> domain;
+	public final AdapterExecutor<T> executor;
+
+	public AdapterDescriptor(AdapterDomain<T> domain, AdapterExecutor<T> executor)
 	{
 		this.domain = domain;
 		this.executor = executor;

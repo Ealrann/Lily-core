@@ -15,16 +15,16 @@ import org.sheepy.lily.core.api.adapter.annotation.Statefull;
 import org.sheepy.lily.core.api.adapter.annotation.Tick;
 import org.sheepy.lily.core.api.util.ReflectUtils;
 
-public class AdapterExecutor
+public class AdapterExecutor<T extends IAdapter>
 {
 	private static final String CANNOT_CALL_METHOD = "Cannot call %s method %s.%s()";
 
 	private static final Object[] NO_PARAMETERS = new Object[0];
 
-	public final AdapterDomain domain;
-	private final IAdapter pattern;
+	public final AdapterDomain<T> domain;
+	private final T singleton;
 	private final boolean isSingleton;
-	private final Constructor<IAdapter> constructor;
+	private final Constructor<T> constructor;
 	private final Integer tickFrequency;
 	private final Integer tickPriority;
 	private final Method loadMethod;
@@ -32,7 +32,7 @@ public class AdapterExecutor
 	private final Method disposeMethod;
 	private final Method notifyMethod;
 
-	public AdapterExecutor(AdapterDomain domain)
+	public AdapterExecutor(AdapterDomain<T> domain)
 	{
 		this.domain = domain;
 
@@ -65,29 +65,36 @@ public class AdapterExecutor
 			tickMethod = null;
 		}
 
-		pattern = loadPattern();
+		if(isSingleton)
+		{
+			singleton = createSingleton();
+		}
+		else
+		{
+			singleton = null;
+		}
 	}
 
-	private IAdapter loadPattern()
+	private T createSingleton()
 	{
-		IAdapter pattern = null;
+		T res = null;
 		if (isSingleton)
 		{
 			try
 			{
-				pattern = constructor.newInstance(NO_PARAMETERS);
+				res = constructor.newInstance(NO_PARAMETERS);
 			} catch (ReflectiveOperationException | IllegalArgumentException e)
 			{
 				e.printStackTrace();
 			}
 		}
-		return pattern;
+		return res;
 	}
 
 	@SuppressWarnings("unchecked")
-	private Constructor<IAdapter> gatherConstructor()
+	private Constructor<T> gatherConstructor()
 	{
-		Constructor<IAdapter> res = null;
+		Constructor<T> res = null;
 		final var constructors = domain.type.getConstructors();
 		final Class<?> applicableClass = domain.targetClassifier.getInstanceClass();
 
@@ -97,7 +104,7 @@ public class AdapterExecutor
 			{
 				if (constructor.getParameterCount() == 0)
 				{
-					res = (Constructor<IAdapter>) constructor;
+					res = (Constructor<T>) constructor;
 					break;
 				}
 			}
@@ -108,13 +115,13 @@ public class AdapterExecutor
 					final Parameter parameter = constructor.getParameters()[0];
 					if (parameter.getType().isAssignableFrom(applicableClass))
 					{
-						res = (Constructor<IAdapter>) constructor;
+						res = (Constructor<T>) constructor;
 						break;
 					}
 				}
 				else if (constructor.getParameterCount() == 0)
 				{
-					res = (Constructor<IAdapter>) constructor;
+					res = (Constructor<T>) constructor;
 				}
 			}
 		}
@@ -144,12 +151,12 @@ public class AdapterExecutor
 		throw new AssertionError(errorMessage);
 	}
 
-	public IAdapter create(EObject target)
+	public T create(EObject target)
 	{
-		IAdapter res = null;
+		T res = null;
 		if (isSingleton == true)
 		{
-			res = pattern;
+			res = singleton;
 		}
 		else
 		{

@@ -9,11 +9,11 @@ import org.sheepy.lily.core.api.adapter.annotation.Adapters;
 
 public class ServiceAdapterRegistry
 {
-	private final List<AdapterDescriptor> descriptors;
+	private final List<AdapterDescriptor<?>> descriptors;
 
 	ServiceAdapterRegistry()
 	{
-		final List<AdapterDescriptor> foundDescriptors = new ArrayList<>();
+		final List<AdapterDescriptor<?>> foundDescriptors = new ArrayList<>();
 
 		for (final Module module : ModuleLayer.boot().modules())
 		{
@@ -22,11 +22,7 @@ public class ServiceAdapterRegistry
 			{
 				for (final Class<? extends IAdapter> adapterClass : adapters.classifiers())
 				{
-					final var domain = new AdapterDomain(adapterClass);
-					final var definition = new AdapterExecutor(domain);
-					final var container = new AdapterDescriptor(domain, definition);
-
-					foundDescriptors.add(container);
+					foundDescriptors.add(createDescriptor(adapterClass));
 				}
 			}
 		}
@@ -34,17 +30,24 @@ public class ServiceAdapterRegistry
 		descriptors = List.copyOf(foundDescriptors);
 	}
 
-	public AdapterDescriptor getDescriptorFor(EObject eObject, Class<? extends IAdapter> type)
+	private static <T extends IAdapter> AdapterDescriptor<T> createDescriptor(final Class<T> adapterClass)
 	{
-		AdapterDescriptor res = null;
+		final var domain = new AdapterDomain<>(adapterClass);
+		final var definition = new AdapterExecutor<>(domain);
+		return new AdapterDescriptor<>(domain, definition);
+	}
 
-		for (final AdapterDescriptor descriptor : descriptors)
+	@SuppressWarnings("unchecked")
+	public <T extends IAdapter> AdapterDescriptor<T> getDescriptorFor(EObject eObject, Class<T> type)
+	{
+		AdapterDescriptor<T> res = null;
+
+		for (final var descriptor : descriptors)
 		{
 			final var domain = descriptor.domain;
 			if (domain.isAdapterForType(type) && domain.isApplicable(eObject))
 			{
-				res = descriptor;
-
+				res = (AdapterDescriptor<T>) descriptor;
 				if (res.isNamedAdapter())
 				{
 					break;
@@ -55,11 +58,11 @@ public class ServiceAdapterRegistry
 		return res;
 	}
 
-	public List<AdapterDescriptor> getDefinitionsFor(EObject eobject)
+	public List<AdapterDescriptor<?>> getDefinitionsFor(EObject eobject)
 	{
-		final List<AdapterDescriptor> res = new ArrayList<>();
+		final List<AdapterDescriptor<?>> res = new ArrayList<>();
 
-		for (final AdapterDescriptor descriptor : descriptors)
+		for (final var descriptor : descriptors)
 		{
 			final var domain = descriptor.domain;
 			if (domain.isApplicable(eobject))

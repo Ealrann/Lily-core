@@ -11,15 +11,15 @@ import org.sheepy.lily.core.model.types.LNamedElement;
 
 import org.eclipse.emf.ecore.EcorePackage;
 
-public class AdapterDomain
+public class AdapterDomain<T extends IAdapter>
 {
-	public final Class<? extends IAdapter> type;
+	public final Class<T> type;
 	public final EClass targetClassifier;
 	public final boolean inheritance;
 	public final String targetName;
 	public final Adapter adapterAnnotation;
 
-	public AdapterDomain(Class<? extends IAdapter> type)
+	public AdapterDomain(Class<T> type)
 	{
 		this.type = type;
 
