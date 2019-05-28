@@ -1,0 +1,15 @@
+@GenModel(modelDirectory="/org.sheepy.lily.core.model/src/generated/java")
+@GenModel(editDirectory="/org.sheepy.lily.core.model.edit/src/generated/java")
+@GenModel(publicConstructors="true", complianceLevel="11.0", resource="XMI")
+@GenModel(extensibleProviderFactory="true")
+
+package org.sheepy.lily.core.model.builder
+
+interface Buildable<T extends Buildable<T>>
+{
+	contains Builder<T> builder
+}
+
+interface Builder<T extends Buildable<T>>
+{
+}
