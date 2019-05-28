@@ -15,16 +15,15 @@ public class FeatureDefinition extends FeatureData
 	{
 		super(def);
 
-		ePackage = EPackage.Registry.INSTANCE.getEPackage(nsURI);
-
-		if (ePackage != null)
+		try
 		{
+			ePackage = EPackage.Registry.INSTANCE.getEPackage(nsURI);
 			eClass = (EClass) ePackage.getEClassifier(className);
 			feature = eClass.getEStructuralFeature(featureName);
-		}
-		else
+		} catch (final Exception e)
 		{
-			System.err.println("Cannot resolve the nsURI [" + nsURI + "]");
+			System.err.println("Cannot resolve the feature ref [" + def + "]");
+			e.printStackTrace();
 		}
 	}
 
