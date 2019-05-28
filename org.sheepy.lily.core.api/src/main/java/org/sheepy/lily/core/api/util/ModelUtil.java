@@ -46,6 +46,16 @@ public class ModelUtil
 		return res;
 	}
 
+	public static final <T> T findParent(EObject eo, Class<T> classifier)
+	{
+		while (classifier.isInstance(eo) == false && eo != null)
+		{
+			eo = eo.eContainer();
+		}
+
+		return classifier.cast(eo);
+	}
+
 	public static void gatherChildren(EObject eo, Collection<EObject> gatherIn)
 	{
 		gatherChildren(eo, EObject.class, gatherIn);
