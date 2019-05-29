@@ -19,7 +19,6 @@ project.ext.jomlVersion = "1.9.14"
 
 subprojects {
 
-	apply plugin: 'java'
 	apply plugin: 'eclipse'
 	apply plugin: "org.javamodularity.moduleplugin"
 
