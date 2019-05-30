@@ -256,7 +256,7 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SliderImpl()
+	protected SliderImpl()
 	{
 		super();
 	}

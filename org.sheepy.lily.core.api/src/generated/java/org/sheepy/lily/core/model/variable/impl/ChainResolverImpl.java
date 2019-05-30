@@ -52,7 +52,7 @@ public class ChainResolverImpl extends MinimalEObjectImpl.Container implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ChainResolverImpl()
+	protected ChainResolverImpl()
 	{
 		super();
 	}

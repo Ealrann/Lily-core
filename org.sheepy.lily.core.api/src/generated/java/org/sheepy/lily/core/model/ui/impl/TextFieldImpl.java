@@ -194,7 +194,7 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TextFieldImpl()
+	protected TextFieldImpl()
 	{
 		super();
 	}

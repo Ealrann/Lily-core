@@ -56,7 +56,7 @@ public class BooleanParameterImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BooleanParameterImpl()
+	protected BooleanParameterImpl()
 	{
 		super();
 	}

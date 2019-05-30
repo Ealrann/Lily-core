@@ -106,7 +106,7 @@ public class DynamicRowLayoutImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DynamicRowLayoutImpl()
+	protected DynamicRowLayoutImpl()
 	{
 		super();
 	}

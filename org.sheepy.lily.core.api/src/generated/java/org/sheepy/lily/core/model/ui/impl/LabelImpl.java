@@ -21,7 +21,7 @@ public class LabelImpl extends AbstractLabelImpl implements Label
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LabelImpl()
+	protected LabelImpl()
 	{
 		super();
 	}

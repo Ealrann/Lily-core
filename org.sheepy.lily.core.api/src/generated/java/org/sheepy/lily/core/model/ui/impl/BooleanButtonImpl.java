@@ -45,7 +45,7 @@ public class BooleanButtonImpl extends AbstractBooleanButtonImpl implements Bool
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BooleanButtonImpl()
+	protected BooleanButtonImpl()
 	{
 		super();
 	}

@@ -21,7 +21,7 @@ public class BooleanChangeActionImpl extends VarChangeActionImpl implements Bool
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BooleanChangeActionImpl()
+	protected BooleanChangeActionImpl()
 	{
 		super();
 	}

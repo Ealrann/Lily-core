@@ -102,7 +102,7 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ButtonImpl()
+	protected ButtonImpl()
 	{
 		super();
 	}

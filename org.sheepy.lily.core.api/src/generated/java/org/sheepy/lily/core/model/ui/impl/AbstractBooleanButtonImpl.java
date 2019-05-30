@@ -72,7 +72,7 @@ public abstract class AbstractBooleanButtonImpl extends AbstractButtonImpl imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AbstractBooleanButtonImpl()
+	protected AbstractBooleanButtonImpl()
 	{
 		super();
 	}

@@ -234,7 +234,7 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ApplicationImpl()
+	protected ApplicationImpl()
 	{
 		super();
 	}

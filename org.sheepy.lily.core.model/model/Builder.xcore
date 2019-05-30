@@ -1,7 +1,8 @@
 @GenModel(modelDirectory="/org.sheepy.lily.core.model/src/generated/java")
 @GenModel(editDirectory="/org.sheepy.lily.core.model.edit/src/generated/java")
-@GenModel(publicConstructors="true", complianceLevel="11.0", resource="XMI")
+@GenModel(complianceLevel="11.0", resource="XMI")
 @GenModel(extensibleProviderFactory="true")
+@GenModel(updateClasspath="false")
 
 package org.sheepy.lily.core.model.builder
 

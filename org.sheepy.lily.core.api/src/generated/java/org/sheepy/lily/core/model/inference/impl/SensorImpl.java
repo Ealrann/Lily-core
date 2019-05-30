@@ -28,7 +28,7 @@ public abstract class SensorImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SensorImpl()
+	protected SensorImpl()
 	{
 		super();
 	}

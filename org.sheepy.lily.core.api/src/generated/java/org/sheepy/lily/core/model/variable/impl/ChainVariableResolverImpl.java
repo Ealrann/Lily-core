@@ -64,7 +64,7 @@ public class ChainVariableResolverImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ChainVariableResolverImpl()
+	protected ChainVariableResolverImpl()
 	{
 		super();
 	}

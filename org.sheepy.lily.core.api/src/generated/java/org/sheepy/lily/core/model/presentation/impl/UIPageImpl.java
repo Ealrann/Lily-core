@@ -192,7 +192,7 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public UIPageImpl()
+	protected UIPageImpl()
 	{
 		super();
 	}

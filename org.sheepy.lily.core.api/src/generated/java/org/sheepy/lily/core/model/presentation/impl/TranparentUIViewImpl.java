@@ -88,7 +88,7 @@ public class TranparentUIViewImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TranparentUIViewImpl()
+	protected TranparentUIViewImpl()
 	{
 		super();
 	}

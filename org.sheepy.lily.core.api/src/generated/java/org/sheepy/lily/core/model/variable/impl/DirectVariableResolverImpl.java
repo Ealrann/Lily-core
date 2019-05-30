@@ -43,7 +43,7 @@ public class DirectVariableResolverImpl extends AbstractVariableResolverImpl imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DirectVariableResolverImpl()
+	protected DirectVariableResolverImpl()
 	{
 		super();
 	}

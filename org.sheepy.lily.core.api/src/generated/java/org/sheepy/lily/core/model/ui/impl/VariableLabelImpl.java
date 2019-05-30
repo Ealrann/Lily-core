@@ -44,7 +44,7 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public VariableLabelImpl()
+	protected VariableLabelImpl()
 	{
 		super();
 	}

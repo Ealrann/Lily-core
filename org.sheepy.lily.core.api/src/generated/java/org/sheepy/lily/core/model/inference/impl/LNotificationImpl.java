@@ -21,7 +21,7 @@ public abstract class LNotificationImpl extends AbstractNotificationImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LNotificationImpl()
+	protected LNotificationImpl()
 	{
 		super();
 	}

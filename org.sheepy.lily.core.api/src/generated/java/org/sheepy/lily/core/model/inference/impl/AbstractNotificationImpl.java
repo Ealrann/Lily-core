@@ -27,7 +27,7 @@ public abstract class AbstractNotificationImpl extends MinimalEObjectImpl.Contai
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AbstractNotificationImpl()
+	protected AbstractNotificationImpl()
 	{
 		super();
 	}

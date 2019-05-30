@@ -56,7 +56,7 @@ public class StringParameterImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StringParameterImpl()
+	protected StringParameterImpl()
 	{
 		super();
 	}

@@ -303,7 +303,7 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PanelImpl()
+	protected PanelImpl()
 	{
 		super();
 	}

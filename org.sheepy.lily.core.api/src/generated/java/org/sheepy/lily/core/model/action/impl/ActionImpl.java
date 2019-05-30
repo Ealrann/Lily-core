@@ -52,7 +52,7 @@ public abstract class ActionImpl extends MinimalEObjectImpl.Container implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActionImpl()
+	protected ActionImpl()
 	{
 		super();
 	}

@@ -53,7 +53,7 @@ public abstract class InfererImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InfererImpl()
+	protected InfererImpl()
 	{
 		super();
 	}

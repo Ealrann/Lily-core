@@ -26,7 +26,7 @@ public abstract class XActionImpl extends ActionImpl implements XAction
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public XActionImpl()
+	protected XActionImpl()
 	{
 		super();
 	}

@@ -77,7 +77,7 @@ public class LRuleImpl extends MinimalEObjectImpl.Container implements LRule
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LRuleImpl()
+	protected LRuleImpl()
 	{
 		super();
 	}

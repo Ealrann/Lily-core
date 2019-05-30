@@ -23,7 +23,7 @@ public abstract class ParameteredNotificationImpl<T extends Parameter> extends A
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ParameteredNotificationImpl()
+	protected ParameteredNotificationImpl()
 	{
 		super();
 	}

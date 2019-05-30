@@ -56,7 +56,7 @@ public class FloatParameterImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FloatParameterImpl()
+	protected FloatParameterImpl()
 	{
 		super();
 	}

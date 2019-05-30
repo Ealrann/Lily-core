@@ -200,7 +200,7 @@ public abstract class AbstractButtonImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AbstractButtonImpl()
+	protected AbstractButtonImpl()
 	{
 		super();
 	}

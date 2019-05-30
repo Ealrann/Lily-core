@@ -46,7 +46,7 @@ public abstract class VarChangeActionImpl extends ActionImpl implements VarChang
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public VarChangeActionImpl()
+	protected VarChangeActionImpl()
 	{
 		super();
 	}

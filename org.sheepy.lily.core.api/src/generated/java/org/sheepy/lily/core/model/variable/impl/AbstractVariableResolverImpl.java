@@ -53,7 +53,7 @@ public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AbstractVariableResolverImpl()
+	protected AbstractVariableResolverImpl()
 	{
 		super();
 	}

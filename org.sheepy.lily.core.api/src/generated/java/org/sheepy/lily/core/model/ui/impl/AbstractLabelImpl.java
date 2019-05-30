@@ -221,7 +221,7 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AbstractLabelImpl()
+	protected AbstractLabelImpl()
 	{
 		super();
 	}
