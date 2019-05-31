@@ -1,18 +1,18 @@
 /**
  */
-package org.sheepy.lily.core.model.builder.provider;
+package org.sheepy.lily.core.model.maintainer.provider;
 
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * This is the central singleton for the Builder edit plugin.
+ * This is the central singleton for the Maintainer edit plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public final class BuilderEditPlugin extends EMFPlugin
+public final class MaintainerEditPlugin extends EMFPlugin
 {
 	/**
 	 * Keep track of the singleton.
@@ -20,7 +20,7 @@ public final class BuilderEditPlugin extends EMFPlugin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final BuilderEditPlugin INSTANCE = new BuilderEditPlugin();
+	public static final MaintainerEditPlugin INSTANCE = new MaintainerEditPlugin();
 
 	/**
 	 * Keep track of the singleton.
@@ -36,7 +36,7 @@ public final class BuilderEditPlugin extends EMFPlugin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BuilderEditPlugin()
+	public MaintainerEditPlugin()
 	{
 		super
 		  (new ResourceLocator [] 

@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.builder;
+package org.sheepy.lily.core.model.maintainer;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -9,10 +9,10 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see org.sheepy.lily.core.model.builder.BuilderPackage
+ * @see org.sheepy.lily.core.model.maintainer.MaintainerPackage
  * @generated
  */
-public interface BuilderFactory extends EFactory
+public interface MaintainerFactory extends EFactory
 {
 	/**
 	 * The singleton instance of the factory.
@@ -20,7 +20,7 @@ public interface BuilderFactory extends EFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	BuilderFactory eINSTANCE = org.sheepy.lily.core.model.builder.impl.BuilderFactoryImpl.init();
+	MaintainerFactory eINSTANCE = org.sheepy.lily.core.model.maintainer.impl.MaintainerFactoryImpl.init();
 
 	/**
 	 * Returns the package supported by this factory.
@@ -29,6 +29,6 @@ public interface BuilderFactory extends EFactory
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	BuilderPackage getBuilderPackage();
+	MaintainerPackage getMaintainerPackage();
 
-} //BuilderFactory
+} //MaintainerFactory

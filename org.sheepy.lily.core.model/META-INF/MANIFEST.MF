@@ -37,9 +37,9 @@ Export-Package: org.joml,
  org.sheepy.lily.core.model.variable,
  org.sheepy.lily.core.model.variable.impl,
  org.sheepy.lily.core.model.variable.util,
- org.sheepy.lily.core.model.builder,
- org.sheepy.lily.core.model.builder.impl,
- org.sheepy.lily.core.model.builder.util
+ org.sheepy.lily.core.model.maintainer,
+ org.sheepy.lily.core.model.maintainer.impl,
+ org.sheepy.lily.core.model.maintainer.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.xtext.xbase.lib,

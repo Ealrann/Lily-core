@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.builder.impl;
+package org.sheepy.lily.core.model.maintainer.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.sheepy.lily.core.model.builder.*;
+import org.sheepy.lily.core.model.maintainer.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,7 +18,7 @@ import org.sheepy.lily.core.model.builder.*;
  * <!-- end-user-doc -->
  * @generated
  */
-public class BuilderFactoryImpl extends EFactoryImpl implements BuilderFactory
+public class MaintainerFactoryImpl extends EFactoryImpl implements MaintainerFactory
 {
 	/**
 	 * Creates the default factory implementation.
@@ -26,21 +26,21 @@ public class BuilderFactoryImpl extends EFactoryImpl implements BuilderFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static BuilderFactory init()
+	public static MaintainerFactory init()
 	{
 		try
 		{
-			BuilderFactory theBuilderFactory = (BuilderFactory)EPackage.Registry.INSTANCE.getEFactory(BuilderPackage.eNS_URI);
-			if (theBuilderFactory != null)
+			MaintainerFactory theMaintainerFactory = (MaintainerFactory)EPackage.Registry.INSTANCE.getEFactory(MaintainerPackage.eNS_URI);
+			if (theMaintainerFactory != null)
 			{
-				return theBuilderFactory;
+				return theMaintainerFactory;
 			}
 		}
 		catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new BuilderFactoryImpl();
+		return new MaintainerFactoryImpl();
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class BuilderFactoryImpl extends EFactoryImpl implements BuilderFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BuilderFactoryImpl()
+	public MaintainerFactoryImpl()
 	{
 		super();
 	}
@@ -75,9 +75,9 @@ public class BuilderFactoryImpl extends EFactoryImpl implements BuilderFactory
 	 * @generated
 	 */
 	@Override
-	public BuilderPackage getBuilderPackage()
+	public MaintainerPackage getMaintainerPackage()
 	{
-		return (BuilderPackage)getEPackage();
+		return (MaintainerPackage)getEPackage();
 	}
 
 	/**
@@ -87,9 +87,9 @@ public class BuilderFactoryImpl extends EFactoryImpl implements BuilderFactory
 	 * @generated
 	 */
 	@Deprecated
-	public static BuilderPackage getPackage()
+	public static MaintainerPackage getPackage()
 	{
-		return BuilderPackage.eINSTANCE;
+		return MaintainerPackage.eINSTANCE;
 	}
 
-} //BuilderFactoryImpl
+} //MaintainerFactoryImpl

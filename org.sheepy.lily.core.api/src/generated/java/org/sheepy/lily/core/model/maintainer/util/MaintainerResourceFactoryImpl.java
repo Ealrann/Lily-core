@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.builder.util;
+package org.sheepy.lily.core.model.maintainer.util;
 
 import org.eclipse.emf.common.util.URI;
 
@@ -12,10 +12,10 @@ import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
  * <!-- begin-user-doc -->
  * The <b>Resource Factory</b> associated with the package.
  * <!-- end-user-doc -->
- * @see org.sheepy.lily.core.model.builder.util.BuilderResourceImpl
+ * @see org.sheepy.lily.core.model.maintainer.util.MaintainerResourceImpl
  * @generated
  */
-public class BuilderResourceFactoryImpl extends ResourceFactoryImpl
+public class MaintainerResourceFactoryImpl extends ResourceFactoryImpl
 {
 	/**
 	 * Creates an instance of the resource factory.
@@ -23,7 +23,7 @@ public class BuilderResourceFactoryImpl extends ResourceFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BuilderResourceFactoryImpl()
+	public MaintainerResourceFactoryImpl()
 	{
 		super();
 	}
@@ -37,8 +37,8 @@ public class BuilderResourceFactoryImpl extends ResourceFactoryImpl
 	@Override
 	public Resource createResource(URI uri)
 	{
-		Resource result = new BuilderResourceImpl(uri);
+		Resource result = new MaintainerResourceImpl(uri);
 		return result;
 	}
 
-} //BuilderResourceFactoryImpl
+} //MaintainerResourceFactoryImpl

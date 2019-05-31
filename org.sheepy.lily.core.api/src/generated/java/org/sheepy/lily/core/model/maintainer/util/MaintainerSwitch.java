@@ -1,13 +1,13 @@
 /**
  */
-package org.sheepy.lily.core.model.builder.util;
+package org.sheepy.lily.core.model.maintainer.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.sheepy.lily.core.model.builder.*;
+import org.sheepy.lily.core.model.maintainer.*;
 
 /**
  * <!-- begin-user-doc -->
@@ -19,10 +19,10 @@ import org.sheepy.lily.core.model.builder.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see org.sheepy.lily.core.model.builder.BuilderPackage
+ * @see org.sheepy.lily.core.model.maintainer.MaintainerPackage
  * @generated
  */
-public class BuilderSwitch<T1> extends Switch<T1>
+public class MaintainerSwitch<T1> extends Switch<T1>
 {
 	/**
 	 * The cached model package
@@ -30,7 +30,7 @@ public class BuilderSwitch<T1> extends Switch<T1>
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static BuilderPackage modelPackage;
+	protected static MaintainerPackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -38,11 +38,11 @@ public class BuilderSwitch<T1> extends Switch<T1>
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BuilderSwitch()
+	public MaintainerSwitch()
 	{
 		if (modelPackage == null)
 		{
-			modelPackage = BuilderPackage.eINSTANCE;
+			modelPackage = MaintainerPackage.eINSTANCE;
 		}
 	}
 
@@ -72,17 +72,17 @@ public class BuilderSwitch<T1> extends Switch<T1>
 	{
 		switch (classifierID)
 		{
-			case BuilderPackage.BUILDABLE:
+			case MaintainerPackage.MAINTAINABLE:
 			{
-				Buildable<?> buildable = (Buildable<?>)theEObject;
-				T1 result = caseBuildable(buildable);
+				Maintainable<?> maintainable = (Maintainable<?>)theEObject;
+				T1 result = caseMaintainable(maintainable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case BuilderPackage.BUILDER:
+			case MaintainerPackage.MAINTAINER:
 			{
-				Builder<?> builder = (Builder<?>)theEObject;
-				T1 result = caseBuilder(builder);
+				Maintainer<?> maintainer = (Maintainer<?>)theEObject;
+				T1 result = caseMaintainer(maintainer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -91,33 +91,33 @@ public class BuilderSwitch<T1> extends Switch<T1>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Buildable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Maintainable</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Buildable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Maintainable</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public <T extends Buildable<T>> T1 caseBuildable(Buildable<T> object)
+	public <T extends Maintainable<T>> T1 caseMaintainable(Maintainable<T> object)
 	{
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Builder</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Maintainer</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Builder</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Maintainer</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public <T extends Buildable<T>> T1 caseBuilder(Builder<T> object)
+	public <T extends Maintainable<T>> T1 caseMaintainer(Maintainer<T> object)
 	{
 		return null;
 	}
@@ -139,4 +139,4 @@ public class BuilderSwitch<T1> extends Switch<T1>
 		return null;
 	}
 
-} //BuilderSwitch
+} //MaintainerSwitch

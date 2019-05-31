@@ -18,7 +18,7 @@ Export-Package: org.sheepy.lily.core.model.types.provider,
  org.sheepy.lily.core.model.resolver.provider,
  org.sheepy.lily.core.model.inference.provider,
  org.sheepy.lily.core.model.command.provider,
- org.sheepy.lily.core.model.builder.provider
+ org.sheepy.lily.core.model.maintainer.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.sheepy.lily.core.model;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,

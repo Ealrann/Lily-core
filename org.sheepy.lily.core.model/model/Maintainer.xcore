@@ -4,13 +4,13 @@
 @GenModel(extensibleProviderFactory="true")
 @GenModel(updateClasspath="false")
 
-package org.sheepy.lily.core.model.builder
+package org.sheepy.lily.core.model.maintainer
 
-interface Buildable<T extends Buildable<T>>
+interface Maintainable<T extends Maintainable<T>>
 {
-	contains Builder<T> builder
+	contains Maintainer<T> builder
 }
 
-interface Builder<T extends Buildable<T>>
+interface Maintainer<T extends Maintainable<T>>
 {
 }

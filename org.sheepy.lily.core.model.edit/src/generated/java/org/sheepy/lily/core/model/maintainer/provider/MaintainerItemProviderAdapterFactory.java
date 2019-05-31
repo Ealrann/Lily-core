@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.builder.provider;
+package org.sheepy.lily.core.model.maintainer.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,9 +28,9 @@ import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-import org.sheepy.lily.core.model.builder.BuilderPackage;
+import org.sheepy.lily.core.model.maintainer.MaintainerPackage;
 
-import org.sheepy.lily.core.model.builder.util.BuilderAdapterFactory;
+import org.sheepy.lily.core.model.maintainer.util.MaintainerAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -41,7 +41,7 @@ import org.sheepy.lily.core.model.builder.util.BuilderAdapterFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class BuilderItemProviderAdapterFactory extends BuilderAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender
+public class MaintainerItemProviderAdapterFactory extends MaintainerAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender
 {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
@@ -65,7 +65,7 @@ public class BuilderItemProviderAdapterFactory extends BuilderAdapterFactory imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(BuilderEditPlugin.INSTANCE, BuilderPackage.eNS_URI);
+	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(MaintainerEditPlugin.INSTANCE, MaintainerPackage.eNS_URI);
 
 	/**
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
@@ -81,7 +81,7 @@ public class BuilderItemProviderAdapterFactory extends BuilderAdapterFactory imp
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BuilderItemProviderAdapterFactory()
+	public MaintainerItemProviderAdapterFactory()
 	{
 		supportedTypes.add(IEditingDomainItemProvider.class);
 		supportedTypes.add(IStructuredItemContentProvider.class);

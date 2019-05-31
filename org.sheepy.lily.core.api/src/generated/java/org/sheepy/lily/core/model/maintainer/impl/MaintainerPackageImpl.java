@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.builder.impl;
+package org.sheepy.lily.core.model.maintainer.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EGenericType;
@@ -10,10 +10,10 @@ import org.eclipse.emf.ecore.ETypeParameter;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.sheepy.lily.core.model.builder.Buildable;
-import org.sheepy.lily.core.model.builder.Builder;
-import org.sheepy.lily.core.model.builder.BuilderFactory;
-import org.sheepy.lily.core.model.builder.BuilderPackage;
+import org.sheepy.lily.core.model.maintainer.Maintainable;
+import org.sheepy.lily.core.model.maintainer.Maintainer;
+import org.sheepy.lily.core.model.maintainer.MaintainerFactory;
+import org.sheepy.lily.core.model.maintainer.MaintainerPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,21 +21,21 @@ import org.sheepy.lily.core.model.builder.BuilderPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class BuilderPackageImpl extends EPackageImpl implements BuilderPackage
+public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPackage
 {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass buildableEClass = null;
+	private EClass maintainableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass builderEClass = null;
+	private EClass maintainerEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -48,13 +48,13 @@ public class BuilderPackageImpl extends EPackageImpl implements BuilderPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.sheepy.lily.core.model.builder.BuilderPackage#eNS_URI
+	 * @see org.sheepy.lily.core.model.maintainer.MaintainerPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private BuilderPackageImpl()
+	private MaintainerPackageImpl()
 	{
-		super(eNS_URI, BuilderFactory.eINSTANCE);
+		super(eNS_URI, MaintainerFactory.eINSTANCE);
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class BuilderPackageImpl extends EPackageImpl implements BuilderPackage
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 *
-	 * <p>This method is used to initialize {@link BuilderPackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link MaintainerPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -76,28 +76,28 @@ public class BuilderPackageImpl extends EPackageImpl implements BuilderPackage
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static BuilderPackage init()
+	public static MaintainerPackage init()
 	{
-		if (isInited) return (BuilderPackage)EPackage.Registry.INSTANCE.getEPackage(BuilderPackage.eNS_URI);
+		if (isInited) return (MaintainerPackage)EPackage.Registry.INSTANCE.getEPackage(MaintainerPackage.eNS_URI);
 
 		// Obtain or create and register package
-		Object registeredBuilderPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-		BuilderPackageImpl theBuilderPackage = registeredBuilderPackage instanceof BuilderPackageImpl ? (BuilderPackageImpl)registeredBuilderPackage : new BuilderPackageImpl();
+		Object registeredMaintainerPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		MaintainerPackageImpl theMaintainerPackage = registeredMaintainerPackage instanceof MaintainerPackageImpl ? (MaintainerPackageImpl)registeredMaintainerPackage : new MaintainerPackageImpl();
 
 		isInited = true;
 
 		// Create package meta-data objects
-		theBuilderPackage.createPackageContents();
+		theMaintainerPackage.createPackageContents();
 
 		// Initialize created meta-data
-		theBuilderPackage.initializePackageContents();
+		theMaintainerPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theBuilderPackage.freeze();
+		theMaintainerPackage.freeze();
 
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(BuilderPackage.eNS_URI, theBuilderPackage);
-		return theBuilderPackage;
+		EPackage.Registry.INSTANCE.put(MaintainerPackage.eNS_URI, theMaintainerPackage);
+		return theMaintainerPackage;
 	}
 
 	/**
@@ -106,9 +106,9 @@ public class BuilderPackageImpl extends EPackageImpl implements BuilderPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getBuildable()
+	public EClass getMaintainable()
 	{
-		return buildableEClass;
+		return maintainableEClass;
 	}
 
 	/**
@@ -117,9 +117,9 @@ public class BuilderPackageImpl extends EPackageImpl implements BuilderPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getBuildable_Builder()
+	public EReference getMaintainable_Builder()
 	{
-		return (EReference)buildableEClass.getEStructuralFeatures().get(0);
+		return (EReference)maintainableEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -128,9 +128,9 @@ public class BuilderPackageImpl extends EPackageImpl implements BuilderPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getBuilder()
+	public EClass getMaintainer()
 	{
-		return builderEClass;
+		return maintainerEClass;
 	}
 
 	/**
@@ -139,9 +139,9 @@ public class BuilderPackageImpl extends EPackageImpl implements BuilderPackage
 	 * @generated
 	 */
 	@Override
-	public BuilderFactory getBuilderFactory()
+	public MaintainerFactory getMaintainerFactory()
 	{
-		return (BuilderFactory)getEFactoryInstance();
+		return (MaintainerFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -164,10 +164,10 @@ public class BuilderPackageImpl extends EPackageImpl implements BuilderPackage
 		isCreated = true;
 
 		// Create classes and their features
-		buildableEClass = createEClass(BUILDABLE);
-		createEReference(buildableEClass, BUILDABLE__BUILDER);
+		maintainableEClass = createEClass(MAINTAINABLE);
+		createEReference(maintainableEClass, MAINTAINABLE__BUILDER);
 
-		builderEClass = createEClass(BUILDER);
+		maintainerEClass = createEClass(MAINTAINER);
 	}
 
 	/**
@@ -195,32 +195,32 @@ public class BuilderPackageImpl extends EPackageImpl implements BuilderPackage
 		setNsURI(eNS_URI);
 
 		// Create type parameters
-		ETypeParameter buildableEClass_T = addETypeParameter(buildableEClass, "T");
-		ETypeParameter builderEClass_T = addETypeParameter(builderEClass, "T");
+		ETypeParameter maintainableEClass_T = addETypeParameter(maintainableEClass, "T");
+		ETypeParameter maintainerEClass_T = addETypeParameter(maintainerEClass, "T");
 
 		// Set bounds for type parameters
-		EGenericType g1 = createEGenericType(this.getBuildable());
-		EGenericType g2 = createEGenericType(buildableEClass_T);
+		EGenericType g1 = createEGenericType(this.getMaintainable());
+		EGenericType g2 = createEGenericType(maintainableEClass_T);
 		g1.getETypeArguments().add(g2);
-		buildableEClass_T.getEBounds().add(g1);
-		g1 = createEGenericType(this.getBuildable());
-		g2 = createEGenericType(builderEClass_T);
+		maintainableEClass_T.getEBounds().add(g1);
+		g1 = createEGenericType(this.getMaintainable());
+		g2 = createEGenericType(maintainerEClass_T);
 		g1.getETypeArguments().add(g2);
-		builderEClass_T.getEBounds().add(g1);
+		maintainerEClass_T.getEBounds().add(g1);
 
 		// Add supertypes to classes
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(buildableEClass, Buildable.class, "Buildable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(this.getBuilder());
-		g2 = createEGenericType(buildableEClass_T);
+		initEClass(maintainableEClass, Maintainable.class, "Maintainable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		g1 = createEGenericType(this.getMaintainer());
+		g2 = createEGenericType(maintainableEClass_T);
 		g1.getETypeArguments().add(g2);
-		initEReference(getBuildable_Builder(), g1, null, "builder", null, 0, 1, Buildable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMaintainable_Builder(), g1, null, "builder", null, 0, 1, Maintainable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(builderEClass, Builder.class, "Builder", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(maintainerEClass, Maintainer.class, "Maintainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
 	}
 
-} //BuilderPackageImpl
+} //MaintainerPackageImpl

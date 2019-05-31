@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.builder.util;
+package org.sheepy.lily.core.model.maintainer.util;
 
 import org.eclipse.emf.common.util.URI;
 
@@ -10,10 +10,10 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
  * <!-- begin-user-doc -->
  * The <b>Resource </b> associated with the package.
  * <!-- end-user-doc -->
- * @see org.sheepy.lily.core.model.builder.util.BuilderResourceFactoryImpl
+ * @see org.sheepy.lily.core.model.maintainer.util.MaintainerResourceFactoryImpl
  * @generated
  */
-public class BuilderResourceImpl extends XMIResourceImpl
+public class MaintainerResourceImpl extends XMIResourceImpl
 {
 	/**
 	 * Creates an instance of the resource.
@@ -22,9 +22,9 @@ public class BuilderResourceImpl extends XMIResourceImpl
 	 * @param uri the URI of the new resource.
 	 * @generated
 	 */
-	public BuilderResourceImpl(URI uri)
+	public MaintainerResourceImpl(URI uri)
 	{
 		super(uri);
 	}
 
-} //BuilderResourceImpl
+} //MaintainerResourceImpl

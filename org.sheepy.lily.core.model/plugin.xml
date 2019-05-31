@@ -142,17 +142,17 @@
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated Builder -->
+      <!-- @generated Maintainer -->
       <package
-            uri="org.sheepy.lily.core.model.builder"
-            class="org.sheepy.lily.core.model.builder.BuilderPackage"
-            genModel="model/Builder.xcore"/>
+            uri="org.sheepy.lily.core.model.maintainer"
+            class="org.sheepy.lily.core.model.maintainer.MaintainerPackage"
+            genModel="model/Maintainer.xcore"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated Builder -->
+      <!-- @generated Maintainer -->
       <parser
-            type="builder"
-            class="org.sheepy.lily.core.model.builder.util.BuilderResourceFactoryImpl"/>
+            type="maintainer"
+            class="org.sheepy.lily.core.model.maintainer.util.MaintainerResourceFactoryImpl"/>
    </extension>
 </plugin>

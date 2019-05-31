@@ -34,10 +34,10 @@ module org.sheepy.lily.core.api
 	exports org.sheepy.lily.core.model.action.impl;
 	exports org.sheepy.lily.core.model.application;
 	exports org.sheepy.lily.core.model.application.impl;
-	exports org.sheepy.lily.core.model.builder;
-	exports org.sheepy.lily.core.model.builder.impl;
 	exports org.sheepy.lily.core.model.inference;
 	exports org.sheepy.lily.core.model.inference.impl;
+	exports org.sheepy.lily.core.model.maintainer;
+	exports org.sheepy.lily.core.model.maintainer.impl;
 	exports org.sheepy.lily.core.model.presentation;
 	exports org.sheepy.lily.core.model.presentation.impl;
 	exports org.sheepy.lily.core.model.resolver;

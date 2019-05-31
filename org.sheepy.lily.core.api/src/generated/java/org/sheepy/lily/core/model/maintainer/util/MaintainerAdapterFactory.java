@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.builder.util;
+package org.sheepy.lily.core.model.maintainer.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -9,17 +9,17 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.sheepy.lily.core.model.builder.*;
+import org.sheepy.lily.core.model.maintainer.*;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see org.sheepy.lily.core.model.builder.BuilderPackage
+ * @see org.sheepy.lily.core.model.maintainer.MaintainerPackage
  * @generated
  */
-public class BuilderAdapterFactory extends AdapterFactoryImpl
+public class MaintainerAdapterFactory extends AdapterFactoryImpl
 {
 	/**
 	 * The cached model package.
@@ -27,7 +27,7 @@ public class BuilderAdapterFactory extends AdapterFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static BuilderPackage modelPackage;
+	protected static MaintainerPackage modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -35,11 +35,11 @@ public class BuilderAdapterFactory extends AdapterFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BuilderAdapterFactory()
+	public MaintainerAdapterFactory()
 	{
 		if (modelPackage == null)
 		{
-			modelPackage = BuilderPackage.eINSTANCE;
+			modelPackage = MaintainerPackage.eINSTANCE;
 		}
 	}
 
@@ -71,18 +71,18 @@ public class BuilderAdapterFactory extends AdapterFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected BuilderSwitch<Adapter> modelSwitch =
-		new BuilderSwitch<Adapter>()
+	protected MaintainerSwitch<Adapter> modelSwitch =
+		new MaintainerSwitch<Adapter>()
 		{
 			@Override
-			public <T extends Buildable<T>> Adapter caseBuildable(Buildable<T> object)
+			public <T extends Maintainable<T>> Adapter caseMaintainable(Maintainable<T> object)
 			{
-				return createBuildableAdapter();
+				return createMaintainableAdapter();
 			}
 			@Override
-			public <T extends Buildable<T>> Adapter caseBuilder(Builder<T> object)
+			public <T extends Maintainable<T>> Adapter caseMaintainer(Maintainer<T> object)
 			{
-				return createBuilderAdapter();
+				return createMaintainerAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object)
@@ -107,31 +107,31 @@ public class BuilderAdapterFactory extends AdapterFactoryImpl
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.builder.Buildable <em>Buildable</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.maintainer.Maintainable <em>Maintainable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.lily.core.model.builder.Buildable
+	 * @see org.sheepy.lily.core.model.maintainer.Maintainable
 	 * @generated
 	 */
-	public Adapter createBuildableAdapter()
+	public Adapter createMaintainableAdapter()
 	{
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.builder.Builder <em>Builder</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.maintainer.Maintainer <em>Maintainer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.lily.core.model.builder.Builder
+	 * @see org.sheepy.lily.core.model.maintainer.Maintainer
 	 * @generated
 	 */
-	public Adapter createBuilderAdapter()
+	public Adapter createMaintainerAdapter()
 	{
 		return null;
 	}
@@ -149,4 +149,4 @@ public class BuilderAdapterFactory extends AdapterFactoryImpl
 		return null;
 	}
 
-} //BuilderAdapterFactory
+} //MaintainerAdapterFactory
