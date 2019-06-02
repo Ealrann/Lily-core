@@ -3,6 +3,7 @@ package org.sheepy.lily.core.api.input;
 import java.util.EventListener;
 
 import org.joml.Vector2f;
+import org.joml.Vector2fc;
 import org.sheepy.lily.core.api.input.event.CharEvent;
 import org.sheepy.lily.core.api.input.event.KeyEvent;
 import org.sheepy.lily.core.api.input.event.MouseButtonEvent;
@@ -15,7 +16,7 @@ public interface IInputManager
 	void showCursor(boolean show);
 
 	Vector2f getCursorPosition();
-	void setCursorPosition(Vector2f position);
+	void setCursorPosition(Vector2fc position);
 
 	void addListener(IInputListener listener);
 	void removeListener(IInputListener listener);
@@ -30,7 +31,7 @@ public interface IInputManager
 		default void onKeyEvent(KeyEvent event)
 		{}
 
-		default void onMouseClickEvent(Vector2f location, MouseButtonEvent event)
+		default void onMouseClickEvent(MouseButtonEvent event)
 		{}
 
 		default void onMouseLocationEvent(MouseLocationEvent event)
@@ -40,6 +41,9 @@ public interface IInputManager
 		{}
 
 		default void onMouseOverUI(boolean overUI)
+		{}
+		
+		default void afterPollInputs()
 		{}
 	}
 }

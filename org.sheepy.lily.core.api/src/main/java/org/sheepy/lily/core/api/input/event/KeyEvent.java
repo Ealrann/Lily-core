@@ -1,5 +1,6 @@
 package org.sheepy.lily.core.api.input.event;
 
+import org.sheepy.lily.core.api.input.IInputManager.IInputListener;
 import org.sheepy.lily.core.model.types.EKeyState;
 
 public class KeyEvent implements IInputEvent
@@ -13,5 +14,11 @@ public class KeyEvent implements IInputEvent
 		this.key = key;
 		this.state = state;
 		this.mode = mode;
+	}
+
+	@Override
+	public void fireEvent(IInputListener listener)
+	{
+		listener.onKeyEvent(this);
 	}
 }
