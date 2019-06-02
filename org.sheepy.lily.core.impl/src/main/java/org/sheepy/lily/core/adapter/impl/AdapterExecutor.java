@@ -25,6 +25,7 @@ public class AdapterExecutor<T extends IAdapter>
 	private final T singleton;
 	private final boolean isSingleton;
 	private final Constructor<T> constructor;
+	private final boolean autorunConstructor;
 	private final Integer tickFrequency;
 	private final Integer tickPriority;
 	private final Method loadMethod;
@@ -46,6 +47,7 @@ public class AdapterExecutor<T extends IAdapter>
 
 		isSingleton = statefullAnnotation == null;
 		constructor = gatherConstructor();
+		autorunConstructor = ReflectUtils.containsAnnotation(constructor, Autorun.class);
 		loadMethod = ReflectUtils.gatherMethod(type, Autorun.class);
 		disposeMethod = ReflectUtils.gatherMethod(type, Dispose.class);
 		notifyMethod = ReflectUtils.gatherMethod(type, NotifyChanged.class);
@@ -65,7 +67,7 @@ public class AdapterExecutor<T extends IAdapter>
 			tickMethod = null;
 		}
 
-		if(isSingleton)
+		if (isSingleton)
 		{
 			singleton = createSingleton();
 		}
@@ -96,9 +98,9 @@ public class AdapterExecutor<T extends IAdapter>
 	{
 		Constructor<T> res = null;
 		final var constructors = domain.type.getConstructors();
-		final Class<?> applicableClass = domain.targetClassifier.getInstanceClass();
+		final var applicableClass = domain.targetClassifier.getInstanceClass();
 
-		for (final Constructor<?> constructor : constructors)
+		for (final var constructor : constructors)
 		{
 			if (isSingleton)
 			{
@@ -116,12 +118,23 @@ public class AdapterExecutor<T extends IAdapter>
 					if (parameter.getType().isAssignableFrom(applicableClass))
 					{
 						res = (Constructor<T>) constructor;
-						break;
 					}
 				}
 				else if (constructor.getParameterCount() == 0)
 				{
-					res = (Constructor<T>) constructor;
+					if (res == null)
+					{
+						res = (Constructor<T>) constructor;
+					}
+				}
+
+				if (res != null)
+				{
+					if (ReflectUtils.containsAnnotation(constructor, Autorun.class))
+					{
+						// Autorun has priority
+						break;
+					}
 				}
 			}
 		}
@@ -250,7 +263,7 @@ public class AdapterExecutor<T extends IAdapter>
 
 	public boolean isAutoAdapter()
 	{
-		return loadMethod != null || isTicker();
+		return loadMethod != null || isTicker() || autorunConstructor;
 	}
 
 	public int getTickPriority()

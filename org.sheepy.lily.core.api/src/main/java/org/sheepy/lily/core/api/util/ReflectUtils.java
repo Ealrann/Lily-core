@@ -1,6 +1,7 @@
 package org.sheepy.lily.core.api.util;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
@@ -39,37 +40,58 @@ public class ReflectUtils
 		return res;
 	}
 
-	@SuppressWarnings("unchecked")
 	public static <T extends Annotation> MethodAnnotation<T> gatherMethodAnnotation(Class<?> type,
 																					Class<? extends T> annotationClass)
 	{
 		MethodAnnotation<T> res = null;
 
 		final var methods = type.getMethods();
-		FOUND: for (final Method method : methods)
+		for (final Method method : methods)
 		{
-			for (final Annotation annotation : method.getAnnotations())
+			final var annotation = searchAnnotation(method, annotationClass);
+
+			if (annotation != null)
 			{
-				if (annotation.annotationType() == annotationClass)
-				{
-					res = new MethodAnnotation<T>(method, (T) annotation);
-					break FOUND;
-				}
+				res = new MethodAnnotation<>(method, annotation);
+				break;
 			}
 		}
 
 		return res;
 	}
 
-	@SuppressWarnings("unchecked")
-	public static <T extends Annotation> T gatherType(Class<?> type, Class<T> annotationClass)
+	public static boolean containsAnnotation(	AccessibleObject accessible,
+												Class<? extends Annotation> annotationClass)
+	{
+		return searchAnnotation(accessible, annotationClass) != null;
+	}
+
+	public static <T extends Annotation> T searchAnnotation(AccessibleObject accessible,
+															Class<? extends T> annotationClass)
+	{
+		T res = null;
+
+		for (final Annotation annotation : accessible.getAnnotations())
+		{
+			if (annotation.annotationType() == annotationClass)
+			{
+				res = annotationClass.cast(annotation);
+				break;
+			}
+		}
+
+		return res;
+	}
+
+	public static <T extends Annotation> T gatherType(	Class<?> type,
+														Class<? extends T> annotationClass)
 	{
 		T res = null;
 		for (final Annotation annotation : type.getAnnotations())
 		{
 			if (annotation.annotationType() == annotationClass)
 			{
-				res = (T) annotation;
+				res = annotationClass.cast(annotation);
 				break;
 			}
 		}
