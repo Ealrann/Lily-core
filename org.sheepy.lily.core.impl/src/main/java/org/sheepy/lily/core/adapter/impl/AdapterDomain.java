@@ -3,13 +3,11 @@ package org.sheepy.lily.core.adapter.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.resource.IModelExtension;
-import org.sheepy.lily.core.api.util.ReflectUtils;
 import org.sheepy.lily.core.model.types.LNamedElement;
-
-import org.eclipse.emf.ecore.EcorePackage;
 
 public class AdapterDomain<T extends IAdapter>
 {
@@ -23,7 +21,7 @@ public class AdapterDomain<T extends IAdapter>
 	{
 		this.type = type;
 
-		adapterAnnotation = ReflectUtils.gatherType(type, Adapter.class);
+		adapterAnnotation = type.getAnnotation(Adapter.class);
 
 		final var classifier = adapterAnnotation.scope();
 		inheritance = adapterAnnotation.scopeInheritance();

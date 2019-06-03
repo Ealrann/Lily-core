@@ -1,7 +1,6 @@
 package org.sheepy.lily.core.api.util;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
@@ -48,50 +47,11 @@ public class ReflectUtils
 		final var methods = type.getMethods();
 		for (final Method method : methods)
 		{
-			final var annotation = searchAnnotation(method, annotationClass);
+			final var annotation = method.getAnnotation(annotationClass);
 
 			if (annotation != null)
 			{
 				res = new MethodAnnotation<>(method, annotation);
-				break;
-			}
-		}
-
-		return res;
-	}
-
-	public static boolean containsAnnotation(	AccessibleObject accessible,
-												Class<? extends Annotation> annotationClass)
-	{
-		return searchAnnotation(accessible, annotationClass) != null;
-	}
-
-	public static <T extends Annotation> T searchAnnotation(AccessibleObject accessible,
-															Class<? extends T> annotationClass)
-	{
-		T res = null;
-
-		for (final Annotation annotation : accessible.getAnnotations())
-		{
-			if (annotation.annotationType() == annotationClass)
-			{
-				res = annotationClass.cast(annotation);
-				break;
-			}
-		}
-
-		return res;
-	}
-
-	public static <T extends Annotation> T gatherType(	Class<?> type,
-														Class<? extends T> annotationClass)
-	{
-		T res = null;
-		for (final Annotation annotation : type.getAnnotations())
-		{
-			if (annotation.annotationType() == annotationClass)
-			{
-				res = annotationClass.cast(annotation);
 				break;
 			}
 		}

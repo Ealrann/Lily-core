@@ -38,16 +38,15 @@ public class AdapterExecutor<T extends IAdapter>
 		this.domain = domain;
 
 		final var type = domain.type;
-		final var adapterAnnotation = ReflectUtils.gatherType(type, Adapter.class);
-		final var statefullAnnotation = ReflectUtils.gatherType(type, Statefull.class);
+		final var adapterAnnotation = type.getAnnotation(Adapter.class);
 		if (adapterAnnotation == null)
 		{
 			throwNoAdapterAnnotationError();
 		}
 
-		isSingleton = statefullAnnotation == null;
+		isSingleton = !type.isAnnotationPresent(Statefull.class);
 		constructor = gatherConstructor();
-		autorunConstructor = ReflectUtils.containsAnnotation(constructor, Autorun.class);
+		autorunConstructor = constructor.isAnnotationPresent(Autorun.class);
 		loadMethod = ReflectUtils.gatherMethod(type, Autorun.class);
 		disposeMethod = ReflectUtils.gatherMethod(type, Dispose.class);
 		notifyMethod = ReflectUtils.gatherMethod(type, NotifyChanged.class);
@@ -93,11 +92,12 @@ public class AdapterExecutor<T extends IAdapter>
 		return res;
 	}
 
-	@SuppressWarnings("unchecked")
 	private Constructor<T> gatherConstructor()
 	{
 		Constructor<T> res = null;
-		final var constructors = domain.type.getConstructors();
+
+		@SuppressWarnings("unchecked")
+		final var constructors = (Constructor<T>[]) domain.type.getConstructors();
 		final var applicableClass = domain.targetClassifier.getInstanceClass();
 
 		for (final var constructor : constructors)
@@ -106,7 +106,7 @@ public class AdapterExecutor<T extends IAdapter>
 			{
 				if (constructor.getParameterCount() == 0)
 				{
-					res = (Constructor<T>) constructor;
+					res = constructor;
 					break;
 				}
 			}
@@ -117,20 +117,20 @@ public class AdapterExecutor<T extends IAdapter>
 					final Parameter parameter = constructor.getParameters()[0];
 					if (parameter.getType().isAssignableFrom(applicableClass))
 					{
-						res = (Constructor<T>) constructor;
+						res = constructor;
 					}
 				}
 				else if (constructor.getParameterCount() == 0)
 				{
 					if (res == null)
 					{
-						res = (Constructor<T>) constructor;
+						res = constructor;
 					}
 				}
 
 				if (res != null)
 				{
-					if (ReflectUtils.containsAnnotation(constructor, Autorun.class))
+					if (constructor.isAnnotationPresent(Autorun.class))
 					{
 						// Autorun has priority
 						break;
