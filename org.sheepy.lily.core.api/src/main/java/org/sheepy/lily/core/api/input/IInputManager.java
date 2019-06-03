@@ -2,7 +2,6 @@ package org.sheepy.lily.core.api.input;
 
 import java.util.EventListener;
 
-import org.joml.Vector2f;
 import org.joml.Vector2fc;
 import org.sheepy.lily.core.api.input.event.CharEvent;
 import org.sheepy.lily.core.api.input.event.KeyEvent;
@@ -15,7 +14,7 @@ public interface IInputManager
 
 	void showCursor(boolean show);
 
-	Vector2f getCursorPosition();
+	Vector2fc getCursorPosition();
 	void setCursorPosition(Vector2fc position);
 
 	void addListener(IInputListener listener);
