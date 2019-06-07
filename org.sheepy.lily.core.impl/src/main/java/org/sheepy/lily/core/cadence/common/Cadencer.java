@@ -22,6 +22,7 @@ import org.sheepy.lily.core.api.cadence.IStatistics;
 import org.sheepy.lily.core.api.cadence.ITicker;
 import org.sheepy.lily.core.api.engine.IEngineAdapter;
 import org.sheepy.lily.core.api.input.IInputManager;
+import org.sheepy.lily.core.api.util.DebugUtil;
 import org.sheepy.lily.core.cadence.execution.CommandStack;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.IEngine;
@@ -121,9 +122,11 @@ public class Cadencer implements ICadencer
 
 		removeTicker(dispatcher, -1);
 
-		statistics.printTimes();
+		if (DebugUtil.DEBUG_ENABLED)
+		{
+			statistics.printTimes();
+		}
 		statistics.clear();
-		// getCommandStack().printStats();
 
 		mainThread = null;
 
