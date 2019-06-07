@@ -263,7 +263,10 @@ public class AdapterExecutor<T extends IAdapter>
 
 	public boolean isAutoAdapter()
 	{
-		return loadMethod != null || isTicker() || autorunConstructor;
+		return loadMethod != null
+				|| isTicker()
+				|| autorunConstructor
+				|| (isSingleton && notifyMethod != null);
 	}
 
 	public int getTickPriority()
