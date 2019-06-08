@@ -114,7 +114,6 @@ public class DirectVariableResolverItemProvider extends AbstractVariableResolver
 	public void notifyChanged(Notification notification)
 	{
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**

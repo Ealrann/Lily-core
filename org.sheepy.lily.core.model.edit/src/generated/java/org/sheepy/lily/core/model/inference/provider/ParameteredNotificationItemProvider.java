@@ -71,7 +71,6 @@ public class ParameteredNotificationItemProvider extends AbstractNotificationIte
 	public void notifyChanged(Notification notification)
 	{
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**

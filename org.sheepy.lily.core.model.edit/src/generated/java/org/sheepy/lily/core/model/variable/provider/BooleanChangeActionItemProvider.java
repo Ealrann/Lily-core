@@ -88,7 +88,6 @@ public class BooleanChangeActionItemProvider extends VarChangeActionItemProvider
 	public void notifyChanged(Notification notification)
 	{
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**

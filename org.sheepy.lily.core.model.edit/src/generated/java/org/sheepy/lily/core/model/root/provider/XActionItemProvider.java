@@ -75,7 +75,6 @@ public class XActionItemProvider extends ActionItemProvider
 	public void notifyChanged(Notification notification)
 	{
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**

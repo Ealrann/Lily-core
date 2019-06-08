@@ -89,7 +89,6 @@ public class LabelItemProvider extends AbstractLabelItemProvider
 	public void notifyChanged(Notification notification)
 	{
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**
