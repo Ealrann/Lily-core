@@ -21,11 +21,6 @@ module org.sheepy.lily.core.impl
 {
 	requires transitive org.sheepy.lily.core.api;
 
-	opens org.sheepy.lily.core.application to org.sheepy.lily.core.api;
-	opens org.sheepy.lily.core.inference to org.sheepy.lily.core.api;
-	opens org.sheepy.lily.core.variable to org.sheepy.lily.core.api;
-	opens org.sheepy.lily.core.util to org.sheepy.lily.core.api;
-
 	provides IResourceLoader with ResourceLoader;
 	provides IAdapterFactoryService with BasicAdapterFactory;
 	provides IStatistics with CadencerStatistics;
