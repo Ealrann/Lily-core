@@ -24,4 +24,7 @@ module org.sheepy.lily.core.impl
 	provides IResourceLoader with ResourceLoader;
 	provides IAdapterFactoryService with BasicAdapterFactory;
 	provides IStatistics with CadencerStatistics;
+
+	opens org.sheepy.lily.core.application;
+	opens org.sheepy.lily.core.variable;
 }

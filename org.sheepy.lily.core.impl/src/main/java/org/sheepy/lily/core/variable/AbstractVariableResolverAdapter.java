@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.api.adapter.annotation.Dispose;
@@ -23,7 +22,7 @@ public abstract class AbstractVariableResolverAdapter<T extends IVariableResolve
 	private EObject resolvedTarget;
 
 	@Dispose
-	public void unsetTarget(Notifier oldTarget)
+	public void unsetTarget()
 	{
 		if (adapter != null)
 		{
@@ -62,7 +61,7 @@ public abstract class AbstractVariableResolverAdapter<T extends IVariableResolve
 
 	private void fireListeners(Notification notification)
 	{
-		for (IVariableListener listener : listeners)
+		for (final IVariableListener listener : listeners)
 		{
 			listener.onVariableChange(notification.getOldValue(), notification.getNewValue());
 		}

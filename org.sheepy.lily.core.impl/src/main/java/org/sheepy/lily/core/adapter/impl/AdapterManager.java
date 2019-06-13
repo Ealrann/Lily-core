@@ -1,10 +1,8 @@
 package org.sheepy.lily.core.adapter.impl;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
@@ -17,7 +15,7 @@ class AdapterManager extends EContentAdapter
 	public final List<ITickDescriptor> tickers = new ArrayList<>();
 
 	private final ServiceAdapterRegistry registry;
-	private final List<Container<?>> adapters = new ArrayList<>();
+	private final List<AdapterExecutor<?>> executors = new ArrayList<>();
 
 	private EObject target;
 
@@ -30,10 +28,10 @@ class AdapterManager extends EContentAdapter
 	public void notifyChanged(Notification notification)
 	{
 		super.notifyChanged(notification);
-		for (int i = 0; i < adapters.size(); i++)
+		for (int i = 0; i < executors.size(); i++)
 		{
-			final var container = adapters.get(i);
-			container.notifyChanged(notification);
+			final var executor = executors.get(i);
+			executor.notifyChanged(notification);
 		}
 	}
 
@@ -67,12 +65,12 @@ class AdapterManager extends EContentAdapter
 	private <T extends IAdapter> T findAdapter(Class<T> type)
 	{
 		T res = null;
-		for (int i = 0; i < adapters.size(); i++)
+		for (int i = 0; i < executors.size(); i++)
 		{
-			final var container = adapters.get(i);
-			if (container.domain.isAdapterForType(type))
+			final var executor = executors.get(i);
+			if (executor.domain.isAdapterForType(type))
 			{
-				res = type.cast(container.adapter);
+				res = type.cast(executor.adapter);
 				break;
 			}
 		}
@@ -86,14 +84,14 @@ class AdapterManager extends EContentAdapter
 		final var descriptor = registry.getDescriptorFor(target, type);
 		if (descriptor != null)
 		{
-			res = descriptor.executor.create(target);
-			final var container = new Container<>(descriptor, res);
-			adapters.add(container);
-			container.executor.load(target, res);
+			res = descriptor.info.create(target);
+			final var executor = new AdapterExecutor<>(descriptor, target, res);
+			executors.add(executor);
+			executor.load();
 
-			if (container.executor.isTicker())
+			if (executor.info.isTicker())
 			{
-				tickers.add(new TickDescriptor(container, target));
+				tickers.add(executor);
 			}
 		}
 
@@ -120,7 +118,7 @@ class AdapterManager extends EContentAdapter
 	@Override
 	protected void removeAdapter(Notifier notifier)
 	{
-		final Iterator<Adapter> it = notifier.eAdapters().iterator();
+		final var it = notifier.eAdapters().iterator();
 		while (it.hasNext())
 		{
 			if (it.next() instanceof AdapterManager)
@@ -139,7 +137,7 @@ class AdapterManager extends EContentAdapter
 			for (int i = 0; i < autoAdapters.size(); i++)
 			{
 				final var descriptor = autoAdapters.get(i);
-				if (descriptor.executor.isAutoAdapter())
+				if (descriptor.info.isAutoAdapter())
 				{
 					adapt(descriptor.domain.type);
 				}
@@ -149,71 +147,10 @@ class AdapterManager extends EContentAdapter
 
 	private void disposeAutoAdapters()
 	{
-		final var autoAdapters = registry.getDefinitionsFor(target);
-		if (autoAdapters != null)
+		for (int i = 0; i < executors.size(); i++)
 		{
-			for (int i = 0; i < autoAdapters.size(); i++)
-			{
-				final var descriptor = autoAdapters.get(i);
-				final var adapter = findAdapter(descriptor.domain.type);
-				if (adapter != null)
-				{
-					descriptor.executor.destroy(target, adapter);
-				}
-			}
+			final var executor = executors.get(i);
+			executor.dispose();
 		}
-	}
-
-	private static class Container<T extends IAdapter> extends AdapterDescriptor<T>
-	{
-		public final IAdapter adapter;
-
-		Container(AdapterDescriptor<T> descriptor, IAdapter adapter)
-		{
-			super(descriptor.domain, descriptor.executor);
-			this.adapter = adapter;
-		}
-
-		public void notifyChanged(Notification notification)
-		{
-			executor.notifyChanged(adapter, notification);
-		}
-	}
-
-	private static class TickDescriptor implements ITickDescriptor
-	{
-		private final Container<?> container;
-		private final EObject target;
-
-		TickDescriptor(Container<?> container, EObject target)
-		{
-			this.container = container;
-			this.target = target;
-		}
-
-		@Override
-		public int getFrequency()
-		{
-			return container.executor.getTickFrequency();
-		}
-
-		@Override
-		public void tick(long stepNs)
-		{
-			container.executor.tick(target, container.adapter, stepNs);
-		}
-
-		@Override
-		public String getName()
-		{
-			return container.adapter.getClass().getSimpleName();
-		}
-
-		@Override
-		public int getPriority()
-		{
-			return container.executor.getTickPriority();
-		}
-
 	}
 }

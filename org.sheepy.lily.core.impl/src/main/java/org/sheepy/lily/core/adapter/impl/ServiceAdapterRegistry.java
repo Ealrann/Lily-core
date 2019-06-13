@@ -33,12 +33,13 @@ public class ServiceAdapterRegistry
 	private static <T extends IAdapter> AdapterDescriptor<T> createDescriptor(final Class<T> adapterClass)
 	{
 		final var domain = new AdapterDomain<>(adapterClass);
-		final var definition = new AdapterExecutor<>(domain);
+		final var definition = new AdapterInfo<>(domain);
 		return new AdapterDescriptor<>(domain, definition);
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T extends IAdapter> AdapterDescriptor<T> getDescriptorFor(EObject eObject, Class<T> type)
+	public <T extends IAdapter> AdapterDescriptor<T> getDescriptorFor(	EObject eObject,
+																		Class<T> type)
 	{
 		AdapterDescriptor<T> res = null;
 
@@ -72,6 +73,23 @@ public class ServiceAdapterRegistry
 		}
 
 		return res;
+	}
+
+	public static class AdapterDescriptor<T extends IAdapter>
+	{
+		public final AdapterDomain<T> domain;
+		public final AdapterInfo<T> info;
+
+		public AdapterDescriptor(AdapterDomain<T> domain, AdapterInfo<T> executor)
+		{
+			this.domain = domain;
+			this.info = executor;
+		}
+
+		public boolean isNamedAdapter()
+		{
+			return domain.targetName.isEmpty() == false;
+		}
 	}
 
 }
