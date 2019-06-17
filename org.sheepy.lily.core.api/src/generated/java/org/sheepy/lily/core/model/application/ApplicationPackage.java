@@ -124,13 +124,22 @@ public interface ApplicationPackage extends EPackage
 	int APPLICATION__RESIZEABLE = RootPackage.LOBJECT_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Headless</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION__HEADLESS = RootPackage.LOBJECT_FEATURE_COUNT + 5;
+
+	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__TITLE = RootPackage.LOBJECT_FEATURE_COUNT + 5;
+	int APPLICATION__TITLE = RootPackage.LOBJECT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Size</b></em>' attribute.
@@ -139,7 +148,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__SIZE = RootPackage.LOBJECT_FEATURE_COUNT + 6;
+	int APPLICATION__SIZE = RootPackage.LOBJECT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Current View</b></em>' reference.
@@ -148,7 +157,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__CURRENT_VIEW = RootPackage.LOBJECT_FEATURE_COUNT + 7;
+	int APPLICATION__CURRENT_VIEW = RootPackage.LOBJECT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Cadence In Hz</b></em>' attribute.
@@ -157,7 +166,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__CADENCE_IN_HZ = RootPackage.LOBJECT_FEATURE_COUNT + 8;
+	int APPLICATION__CADENCE_IN_HZ = RootPackage.LOBJECT_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Application</em>' class.
@@ -166,7 +175,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_FEATURE_COUNT = RootPackage.LOBJECT_FEATURE_COUNT + 9;
+	int APPLICATION_FEATURE_COUNT = RootPackage.LOBJECT_FEATURE_COUNT + 10;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -453,6 +462,17 @@ public interface ApplicationPackage extends EPackage
 	EAttribute getApplication_Resizeable();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Application#isHeadless <em>Headless</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Headless</em>'.
+	 * @see org.sheepy.lily.core.model.application.Application#isHeadless()
+	 * @see #getApplication()
+	 * @generated
+	 */
+	EAttribute getApplication_Headless();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Application#getTitle <em>Title</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -589,6 +609,14 @@ public interface ApplicationPackage extends EPackage
 		 * @generated
 		 */
 		EAttribute APPLICATION__RESIZEABLE = eINSTANCE.getApplication_Resizeable();
+
+		/**
+		 * The meta object literal for the '<em><b>Headless</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute APPLICATION__HEADLESS = eINSTANCE.getApplication_Headless();
 
 		/**
 		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature.

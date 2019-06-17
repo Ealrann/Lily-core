@@ -16,6 +16,7 @@ class Application extends LObject
 	boolean run = "true"
 	boolean fullscreen = "false"
 	boolean resizeable = "false"
+	boolean headless = "false"
 	String title = "Vulkan Application"
 	Vector2i size = "400,400"
 	refers IView currentView

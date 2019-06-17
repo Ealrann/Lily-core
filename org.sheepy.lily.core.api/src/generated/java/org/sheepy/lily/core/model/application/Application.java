@@ -21,6 +21,7 @@ import org.sheepy.lily.core.model.root.LObject;
  *   <li>{@link org.sheepy.lily.core.model.application.Application#isRun <em>Run</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#isFullscreen <em>Fullscreen</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#isResizeable <em>Resizeable</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Application#isHeadless <em>Headless</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getTitle <em>Title</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getSize <em>Size</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getCurrentView <em>Current View</em>}</li>
@@ -145,6 +146,29 @@ public interface Application extends LObject
 	 * @generated
 	 */
 	void setResizeable(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Headless</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Headless</em>' attribute.
+	 * @see #setHeadless(boolean)
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Headless()
+	 * @model default="false" unique="false"
+	 * @generated
+	 */
+	boolean isHeadless();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#isHeadless <em>Headless</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Headless</em>' attribute.
+	 * @see #isHeadless()
+	 * @generated
+	 */
+	void setHeadless(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Title</b></em>' attribute.

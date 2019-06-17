@@ -5,7 +5,6 @@ package org.sheepy.lily.core.model.ui.provider;
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 import org.sheepy.lily.core.model.action.provider.ActionEditPlugin;
 
 import org.sheepy.lily.core.model.application.provider.ApplicationEditPlugin;
@@ -59,7 +58,6 @@ public final class UiEditPlugin extends EMFPlugin
 		     TypesEditPlugin.INSTANCE,
 		     RootEditPlugin.INSTANCE,
 		     InferenceEditPlugin.INSTANCE,
-		     EcoreEditPlugin.INSTANCE,
 		     VariableEditPlugin.INSTANCE,
 		     ActionEditPlugin.INSTANCE,
 		     ApplicationEditPlugin.INSTANCE,

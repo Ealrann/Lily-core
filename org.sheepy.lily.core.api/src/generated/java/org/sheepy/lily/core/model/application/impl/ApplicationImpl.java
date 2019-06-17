@@ -59,6 +59,7 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#isRun <em>Run</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#isFullscreen <em>Fullscreen</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#isResizeable <em>Resizeable</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#isHeadless <em>Headless</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getSize <em>Size</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getCurrentView <em>Current View</em>}</li>
@@ -158,6 +159,26 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	 * @ordered
 	 */
 	protected boolean resizeable = RESIZEABLE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isHeadless() <em>Headless</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isHeadless()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean HEADLESS_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isHeadless() <em>Headless</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isHeadless()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean headless = HEADLESS_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
@@ -378,6 +399,31 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 		resizeable = newResizeable;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__RESIZEABLE, oldResizeable, resizeable));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isHeadless()
+	{
+		return headless;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setHeadless(boolean newHeadless)
+	{
+		boolean oldHeadless = headless;
+		headless = newHeadless;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__HEADLESS, oldHeadless, headless));
 	}
 
 	/**
@@ -634,6 +680,8 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 				return isFullscreen();
 			case ApplicationPackage.APPLICATION__RESIZEABLE:
 				return isResizeable();
+			case ApplicationPackage.APPLICATION__HEADLESS:
+				return isHeadless();
 			case ApplicationPackage.APPLICATION__TITLE:
 				return getTitle();
 			case ApplicationPackage.APPLICATION__SIZE:
@@ -677,6 +725,9 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 				return;
 			case ApplicationPackage.APPLICATION__RESIZEABLE:
 				setResizeable((Boolean)newValue);
+				return;
+			case ApplicationPackage.APPLICATION__HEADLESS:
+				setHeadless((Boolean)newValue);
 				return;
 			case ApplicationPackage.APPLICATION__TITLE:
 				setTitle((String)newValue);
@@ -722,6 +773,9 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 			case ApplicationPackage.APPLICATION__RESIZEABLE:
 				setResizeable(RESIZEABLE_EDEFAULT);
 				return;
+			case ApplicationPackage.APPLICATION__HEADLESS:
+				setHeadless(HEADLESS_EDEFAULT);
+				return;
 			case ApplicationPackage.APPLICATION__TITLE:
 				setTitle(TITLE_EDEFAULT);
 				return;
@@ -760,6 +814,8 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 				return fullscreen != FULLSCREEN_EDEFAULT;
 			case ApplicationPackage.APPLICATION__RESIZEABLE:
 				return resizeable != RESIZEABLE_EDEFAULT;
+			case ApplicationPackage.APPLICATION__HEADLESS:
+				return headless != HEADLESS_EDEFAULT;
 			case ApplicationPackage.APPLICATION__TITLE:
 				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
 			case ApplicationPackage.APPLICATION__SIZE:
@@ -815,6 +871,8 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 		result.append(fullscreen);
 		result.append(", resizeable: ");
 		result.append(resizeable);
+		result.append(", headless: ");
+		result.append(headless);
 		result.append(", title: ");
 		result.append(title);
 		result.append(", size: ");

@@ -194,7 +194,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getApplication_Title()
+	public EAttribute getApplication_Headless()
 	{
 		return (EAttribute)applicationEClass.getEStructuralFeatures().get(5);
 	}
@@ -205,7 +205,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getApplication_Size()
+	public EAttribute getApplication_Title()
 	{
 		return (EAttribute)applicationEClass.getEStructuralFeatures().get(6);
 	}
@@ -216,9 +216,20 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
+	public EAttribute getApplication_Size()
+	{
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getApplication_CurrentView()
 	{
-		return (EReference)applicationEClass.getEStructuralFeatures().get(7);
+		return (EReference)applicationEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -229,7 +240,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	@Override
 	public EAttribute getApplication_CadenceInHz()
 	{
-		return (EAttribute)applicationEClass.getEStructuralFeatures().get(8);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -291,6 +302,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEAttribute(applicationEClass, APPLICATION__RUN);
 		createEAttribute(applicationEClass, APPLICATION__FULLSCREEN);
 		createEAttribute(applicationEClass, APPLICATION__RESIZEABLE);
+		createEAttribute(applicationEClass, APPLICATION__HEADLESS);
 		createEAttribute(applicationEClass, APPLICATION__TITLE);
 		createEAttribute(applicationEClass, APPLICATION__SIZE);
 		createEReference(applicationEClass, APPLICATION__CURRENT_VIEW);
@@ -346,6 +358,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEAttribute(getApplication_Run(), theEcorePackage.getEBoolean(), "run", "true", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplication_Fullscreen(), theEcorePackage.getEBoolean(), "fullscreen", "false", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplication_Resizeable(), theEcorePackage.getEBoolean(), "resizeable", "false", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_Headless(), theEcorePackage.getEBoolean(), "headless", "false", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplication_Title(), theEcorePackage.getEString(), "title", "Vulkan Application", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplication_Size(), theTypesPackage.getVector2i(), "size", "400,400", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_CurrentView(), this.getIView(), null, "currentView", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
