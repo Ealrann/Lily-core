@@ -3,7 +3,6 @@ buildscript {
 		mavenLocal()
 		mavenCentral()
 		maven { url "https://plugins.gradle.org/m2/" }
-		jcenter()
 	}
 	dependencies {
 		classpath "org.javamodularity:moduleplugin:1.5.0"
@@ -13,9 +12,14 @@ buildscript {
 repositories {
 	mavenLocal()
 	mavenCentral()
+	maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+	jcenter()
 }
 
-project.ext.jomlVersion = "1.9.14"
+project.ext.jomlVersion = "1.9.15"
+project.ext.emfEcoreVersion = "2.18.0"
+project.ext.emfCommonVersion = "2.16.0"
+project.ext.emfXmiVersion = "2.16.0"
 
 subprojects {
 
