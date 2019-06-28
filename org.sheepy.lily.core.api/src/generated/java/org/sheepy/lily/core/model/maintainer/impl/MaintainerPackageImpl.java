@@ -117,7 +117,7 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 	 * @generated
 	 */
 	@Override
-	public EReference getMaintainable_Builder()
+	public EReference getMaintainable_Maintainer()
 	{
 		return (EReference)maintainableEClass.getEStructuralFeatures().get(0);
 	}
@@ -131,6 +131,17 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 	public EClass getMaintainer()
 	{
 		return maintainerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMaintainer_Maintained()
+	{
+		return (EReference)maintainerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -165,9 +176,10 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 
 		// Create classes and their features
 		maintainableEClass = createEClass(MAINTAINABLE);
-		createEReference(maintainableEClass, MAINTAINABLE__BUILDER);
+		createEReference(maintainableEClass, MAINTAINABLE__MAINTAINER);
 
 		maintainerEClass = createEClass(MAINTAINER);
+		createEReference(maintainerEClass, MAINTAINER__MAINTAINED);
 	}
 
 	/**
@@ -215,9 +227,13 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 		g1 = createEGenericType(this.getMaintainer());
 		g2 = createEGenericType(maintainableEClass_T);
 		g1.getETypeArguments().add(g2);
-		initEReference(getMaintainable_Builder(), g1, null, "builder", null, 0, 1, Maintainable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMaintainable_Maintainer(), g1, this.getMaintainer_Maintained(), "maintainer", null, 0, 1, Maintainable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(maintainerEClass, Maintainer.class, "Maintainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		g1 = createEGenericType(this.getMaintainable());
+		g2 = createEGenericType(maintainerEClass_T);
+		g1.getETypeArguments().add(g2);
+		initEReference(getMaintainer_Maintained(), g1, this.getMaintainable_Maintainer(), "maintained", null, 0, -1, Maintainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

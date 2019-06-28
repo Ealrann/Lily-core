@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.maintainer.Maintainable#getBuilder <em>Builder</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.maintainer.Maintainable#getMaintainer <em>Maintainer</em>}</li>
  * </ul>
  *
  * @see org.sheepy.lily.core.model.maintainer.MaintainerPackage#getMaintainable()
@@ -23,25 +23,27 @@ import org.eclipse.emf.ecore.EObject;
 public interface Maintainable<T extends Maintainable<T>> extends EObject
 {
 	/**
-	 * Returns the value of the '<em><b>Builder</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Maintainer</b></em>' reference.
+	 * It is bidirectional and its opposite is '{@link org.sheepy.lily.core.model.maintainer.Maintainer#getMaintained <em>Maintained</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Builder</em>' containment reference.
-	 * @see #setBuilder(Maintainer)
-	 * @see org.sheepy.lily.core.model.maintainer.MaintainerPackage#getMaintainable_Builder()
-	 * @model containment="true"
+	 * @return the value of the '<em>Maintainer</em>' reference.
+	 * @see #setMaintainer(Maintainer)
+	 * @see org.sheepy.lily.core.model.maintainer.MaintainerPackage#getMaintainable_Maintainer()
+	 * @see org.sheepy.lily.core.model.maintainer.Maintainer#getMaintained
+	 * @model opposite="maintained"
 	 * @generated
 	 */
-	Maintainer<T> getBuilder();
+	Maintainer<T> getMaintainer();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.lily.core.model.maintainer.Maintainable#getBuilder <em>Builder</em>}' containment reference.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.maintainer.Maintainable#getMaintainer <em>Maintainer</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Builder</em>' containment reference.
-	 * @see #getBuilder()
+	 * @param value the new value of the '<em>Maintainer</em>' reference.
+	 * @see #getMaintainer()
 	 * @generated
 	 */
-	void setBuilder(Maintainer<T> value);
+	void setMaintainer(Maintainer<T> value);
 
 } // Maintainable

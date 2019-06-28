@@ -67,13 +67,13 @@ public interface MaintainerPackage extends EPackage
 	int MAINTAINABLE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Builder</b></em>' containment reference.
+	 * The feature id for the '<em><b>Maintainer</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MAINTAINABLE__BUILDER = 0;
+	int MAINTAINABLE__MAINTAINER = 0;
 
 	/**
 	 * The number of structural features of the '<em>Maintainable</em>' class.
@@ -104,13 +104,22 @@ public interface MaintainerPackage extends EPackage
 	int MAINTAINER = 1;
 
 	/**
+	 * The feature id for the '<em><b>Maintained</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MAINTAINER__MAINTAINED = 0;
+
+	/**
 	 * The number of structural features of the '<em>Maintainer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MAINTAINER_FEATURE_COUNT = 0;
+	int MAINTAINER_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Maintainer</em>' class.
@@ -133,15 +142,15 @@ public interface MaintainerPackage extends EPackage
 	EClass getMaintainable();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.maintainer.Maintainable#getBuilder <em>Builder</em>}'.
+	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.maintainer.Maintainable#getMaintainer <em>Maintainer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Builder</em>'.
-	 * @see org.sheepy.lily.core.model.maintainer.Maintainable#getBuilder()
+	 * @return the meta object for the reference '<em>Maintainer</em>'.
+	 * @see org.sheepy.lily.core.model.maintainer.Maintainable#getMaintainer()
 	 * @see #getMaintainable()
 	 * @generated
 	 */
-	EReference getMaintainable_Builder();
+	EReference getMaintainable_Maintainer();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.maintainer.Maintainer <em>Maintainer</em>}'.
@@ -152,6 +161,17 @@ public interface MaintainerPackage extends EPackage
 	 * @generated
 	 */
 	EClass getMaintainer();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.sheepy.lily.core.model.maintainer.Maintainer#getMaintained <em>Maintained</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Maintained</em>'.
+	 * @see org.sheepy.lily.core.model.maintainer.Maintainer#getMaintained()
+	 * @see #getMaintainer()
+	 * @generated
+	 */
+	EReference getMaintainer_Maintained();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -188,12 +208,12 @@ public interface MaintainerPackage extends EPackage
 		EClass MAINTAINABLE = eINSTANCE.getMaintainable();
 
 		/**
-		 * The meta object literal for the '<em><b>Builder</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Maintainer</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MAINTAINABLE__BUILDER = eINSTANCE.getMaintainable_Builder();
+		EReference MAINTAINABLE__MAINTAINER = eINSTANCE.getMaintainable_Maintainer();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.maintainer.Maintainer <em>Maintainer</em>}' class.
@@ -204,6 +224,14 @@ public interface MaintainerPackage extends EPackage
 		 * @generated
 		 */
 		EClass MAINTAINER = eINSTANCE.getMaintainer();
+
+		/**
+		 * The meta object literal for the '<em><b>Maintained</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MAINTAINER__MAINTAINED = eINSTANCE.getMaintainer_Maintained();
 
 	}
 

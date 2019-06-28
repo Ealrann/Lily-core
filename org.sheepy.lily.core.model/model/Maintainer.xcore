@@ -8,9 +8,12 @@ package org.sheepy.lily.core.model.maintainer
 
 interface Maintainable<T extends Maintainable<T>>
 {
-	contains Maintainer<T> builder
+ 	@GenModel(property="None")
+	refers Maintainer<T> maintainer opposite maintained
 }
 
 interface Maintainer<T extends Maintainable<T>>
 {
+ 	@GenModel(property="None")
+	refers Maintainable<T>[0..*] maintained opposite maintainer
 }
