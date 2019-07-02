@@ -4,13 +4,13 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
 import org.sheepy.lily.core.adapter.impl.ServiceAdapterRegistry.AdapterDescriptor;
+import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
 import org.sheepy.lily.core.api.adapter.IAdapter;
-import org.sheepy.lily.core.api.util.ExecutionHandle;
 
 public final class AdapterExecutor<T extends IAdapter>
 		extends ServiceAdapterRegistry.AdapterDescriptor<T> implements ITickDescriptor
 {
-	public final IAdapter adapter;
+	public final T adapter;
 	private final EObject target;
 
 	private final ExecutionHandle loadHandle;
@@ -18,7 +18,7 @@ public final class AdapterExecutor<T extends IAdapter>
 	private final ExecutionHandle tickHandle;
 	private final ExecutionHandle notifyHandle;
 
-	AdapterExecutor(AdapterDescriptor<T> descriptor, EObject target, IAdapter adapter)
+	AdapterExecutor(AdapterDescriptor<T> descriptor, EObject target, T adapter)
 	{
 		super(descriptor.domain, descriptor.info);
 		this.target = target;
@@ -30,7 +30,7 @@ public final class AdapterExecutor<T extends IAdapter>
 		notifyHandle = createHandle(descriptor.info.notifyHandleBuilder);
 	}
 
-	private ExecutionHandle createHandle(ExecutionHandle.Builder builder)
+	private ExecutionHandle createHandle(ExecutionHandle.Builder<T> builder)
 	{
 		ExecutionHandle res = null;
 		if (builder != null)

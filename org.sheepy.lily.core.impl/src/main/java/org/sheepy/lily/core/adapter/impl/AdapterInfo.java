@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 
 import org.eclipse.emf.ecore.EObject;
+import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.adapter.annotation.Autorun;
@@ -13,7 +14,6 @@ import org.sheepy.lily.core.api.adapter.annotation.Dispose;
 import org.sheepy.lily.core.api.adapter.annotation.NotifyChanged;
 import org.sheepy.lily.core.api.adapter.annotation.Statefull;
 import org.sheepy.lily.core.api.adapter.annotation.Tick;
-import org.sheepy.lily.core.api.util.ExecutionHandle;
 import org.sheepy.lily.core.api.util.ReflectUtils;
 
 public final class AdapterInfo<T extends IAdapter>
@@ -28,10 +28,10 @@ public final class AdapterInfo<T extends IAdapter>
 	private final Integer tickFrequency;
 	private final Integer tickPriority;
 
-	public final ExecutionHandle.Builder loadHandleBuilder;
-	public final ExecutionHandle.Builder disposeHandleBuilder;
-	public final ExecutionHandle.Builder tickHandleBuilder;
-	public final ExecutionHandle.Builder notifyHandleBuilder;
+	public final ExecutionHandle.Builder<T> loadHandleBuilder;
+	public final ExecutionHandle.Builder<T> disposeHandleBuilder;
+	public final ExecutionHandle.Builder<T> tickHandleBuilder;
+	public final ExecutionHandle.Builder<T> notifyHandleBuilder;
 
 	public AdapterInfo(AdapterDomain<T> domain)
 	{
@@ -57,7 +57,7 @@ public final class AdapterInfo<T extends IAdapter>
 			final Tick tickAnnotation = tickMethodAnnotation.annotation;
 			tickFrequency = tickAnnotation.frequency();
 			tickPriority = tickAnnotation.priority();
-			tickHandleBuilder = new ExecutionHandle.Builder(tickMethodAnnotation.method);
+			tickHandleBuilder = new ExecutionHandle.Builder<>(tickMethodAnnotation.method);
 		}
 		else
 		{
@@ -76,18 +76,18 @@ public final class AdapterInfo<T extends IAdapter>
 		}
 	}
 
-	private static final ExecutionHandle.Builder createHandleBuilder(	Class<?> type,
-																		Class<? extends Annotation> annotationClass)
+	private final ExecutionHandle.Builder<T> createHandleBuilder(	Class<?> type,
+																	Class<? extends Annotation> annotationClass)
 	{
 		final var method = ReflectUtils.gatherMethod(type, annotationClass);
 		return createHandleBuilder(method);
 	}
 
-	private static ExecutionHandle.Builder createHandleBuilder(Method method)
+	private ExecutionHandle.Builder<T> createHandleBuilder(Method method)
 	{
 		if (method != null)
 		{
-			return new ExecutionHandle.Builder(method);
+			return new ExecutionHandle.Builder<>(method);
 		}
 		else
 		{
