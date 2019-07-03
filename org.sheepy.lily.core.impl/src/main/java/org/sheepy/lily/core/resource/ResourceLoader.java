@@ -12,13 +12,12 @@ import org.sheepy.lily.core.api.util.DebugUtil;
 
 public class ResourceLoader implements IResourceLoader
 {
-
 	// Load all EPackages
 	static
 	{
-		for (IModelExtension extension : IModelExtension.EXTENSIONS)
+		for (final IModelExtension extension : IModelExtension.EXTENSIONS)
 		{
-			for (EPackage ePackage : extension.getEPackages())
+			for (final EPackage ePackage : extension.getEPackages())
 			{
 				// Load factories
 				ePackage.eClass();
@@ -34,12 +33,12 @@ public class ResourceLoader implements IResourceLoader
 	@Override
 	public Resource loadResource(InputStream inputStream)
 	{
-		Resource res = new XMIResourceImpl();
+		final Resource res = new XMIResourceImpl();
 
 		try
 		{
 			res.load(inputStream, null);
-		} catch (IOException e)
+		} catch (final IOException e)
 		{
 			e.printStackTrace();
 		}

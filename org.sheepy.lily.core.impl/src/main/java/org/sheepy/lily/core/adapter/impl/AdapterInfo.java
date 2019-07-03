@@ -21,17 +21,18 @@ public final class AdapterInfo<T extends IAdapter>
 	private static final Object[] NO_PARAMETERS = new Object[0];
 
 	public final AdapterDomain<T> domain;
+
+	public final ExecutionHandle.Builder<T> loadHandleBuilder;
+	public final ExecutionHandle.Builder<T> disposeHandleBuilder;
+	public final ExecutionHandle.Builder<T> tickHandleBuilder;
+	public final ExecutionHandle.Builder<T> notifyHandleBuilder;
+
 	private final T singleton;
 	private final boolean isSingleton;
 	private final Constructor<T> constructor;
 	private final boolean autorunConstructor;
 	private final Integer tickFrequency;
 	private final Integer tickPriority;
-
-	public final ExecutionHandle.Builder<T> loadHandleBuilder;
-	public final ExecutionHandle.Builder<T> disposeHandleBuilder;
-	public final ExecutionHandle.Builder<T> tickHandleBuilder;
-	public final ExecutionHandle.Builder<T> notifyHandleBuilder;
 
 	public AdapterInfo(AdapterDomain<T> domain)
 	{

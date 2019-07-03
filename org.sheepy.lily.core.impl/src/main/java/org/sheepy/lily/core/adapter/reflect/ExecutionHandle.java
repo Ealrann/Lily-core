@@ -74,15 +74,15 @@ public interface ExecutionHandle
 				thisModule.addReads(otherModule);
 			}
 
-			Lookup tmpLookup = null;
+			Lookup res = null;
 			try
 			{
-				tmpLookup = MethodHandles.privateLookupIn(sourceClass, MethodHandles.lookup());
+				res = MethodHandles.privateLookupIn(sourceClass, MethodHandles.lookup());
 			} catch (final IllegalAccessException e)
 			{
 				e.printStackTrace();
 			}
-			return tmpLookup;
+			return res;
 		}
 
 		private static final MethodHandle unreflect(Method method, Lookup lookup)
