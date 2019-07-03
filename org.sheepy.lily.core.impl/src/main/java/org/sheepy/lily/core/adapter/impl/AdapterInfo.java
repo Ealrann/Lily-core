@@ -163,6 +163,7 @@ public final class AdapterInfo<T extends IAdapter>
 			constructorNotFoundError();
 		}
 
+		res.setAccessible(true);
 		return res;
 	}
 
