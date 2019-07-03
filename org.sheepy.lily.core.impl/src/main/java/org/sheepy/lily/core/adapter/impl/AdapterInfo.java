@@ -173,7 +173,7 @@ public final class AdapterInfo<T extends IAdapter>
 		final String message = "The class [%s] should define a public constructor with no paramters, "
 				+ "or (if statefull), a constructor with one parameter, typed with the applicable class";
 		final String errorMessage = String.format(message, domain.type.getSimpleName());
-		throw new AssertionError(errorMessage);
+		throw new IllegalStateException(errorMessage);
 	}
 
 	private void throwNoAdapterAnnotationError() throws AssertionError
@@ -182,7 +182,7 @@ public final class AdapterInfo<T extends IAdapter>
 		final String annotationName = Adapter.class.getSimpleName();
 		final String message = "The class [%s] is not annoted with @%s";
 		final String errorMessage = String.format(message, adapterName, annotationName);
-		throw new AssertionError(errorMessage);
+		throw new IllegalStateException(errorMessage);
 	}
 
 	public T create(EObject target)
@@ -206,7 +206,7 @@ public final class AdapterInfo<T extends IAdapter>
 				}
 			} catch (ReflectiveOperationException | IllegalArgumentException e)
 			{
-				System.err.println("Cannot instanciate " + domain.type.getSimpleName());
+				System.err.println("Cannot instantiate " + domain.type.getSimpleName());
 				final var cause = e.getCause();
 				if (cause != null) cause.printStackTrace();
 				else e.printStackTrace();
