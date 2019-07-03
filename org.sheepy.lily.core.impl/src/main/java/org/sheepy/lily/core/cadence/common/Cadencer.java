@@ -196,27 +196,21 @@ public class Cadencer implements ICadencer
 		{
 			final AbstractTickerWrapper ticker = course.get(index++);
 
-			try
+			do
 			{
-				do
+				if (ticker.stop.get())
 				{
-					if (ticker.stop.get())
-					{
-						tickers.remove(ticker);
-					}
-					else
-					{
-						final long d = System.nanoTime();
+					tickers.remove(ticker);
+				}
+				else
+				{
+					final long d = System.nanoTime();
 
-						ticker.tick();
+					ticker.tick();
 
-						statistics.addTime(ticker.getLabel(), System.nanoTime() - d);
-					}
-				} while (ticker.shouldTick());
-			} catch (final Throwable e)
-			{
-				e.printStackTrace();
-			}
+					statistics.addTime(ticker.getLabel(), System.nanoTime() - d);
+				}
+			} while (ticker.shouldTick());
 		}
 		course.clear();
 

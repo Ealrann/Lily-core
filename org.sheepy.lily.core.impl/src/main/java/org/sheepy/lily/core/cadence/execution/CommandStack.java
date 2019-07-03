@@ -20,8 +20,7 @@ public class CommandStack implements ICommandStack
 	private final List<EditingCommand> keptCommands = new ArrayList<>();
 
 	public CommandStack()
-	{
-	}
+	{}
 
 	@Override
 	public void add(EditingCommand command)
@@ -33,41 +32,33 @@ public class CommandStack implements ICommandStack
 	{
 		if (commands.isEmpty() == false)
 		{
-			LilyTransaction previousTransaction = currentTransaction;
+			final LilyTransaction previousTransaction = currentTransaction;
 			currentTransaction = new LilyTransaction();
 			keptCommands.clear();
 
-			try
+			for (EditingCommand lilyEditingCommand; (lilyEditingCommand = commands.poll()) != null;)
 			{
-				for (EditingCommand lilyEditingCommand; (lilyEditingCommand = commands
-						.poll()) != null;)
+				long duration = System.nanoTime();
+				if (lilyEditingCommand.doPrepare())
 				{
-					long duration = System.nanoTime();
-					if (lilyEditingCommand.doPrepare())
-					{
-						lilyEditingCommand.execute();
-					}
-
-					if (lilyEditingCommand.keepInStack())
-					{
-						keptCommands.add(lilyEditingCommand);
-					}
-
-					duration = System.nanoTime() - duration;
-					Long totalDuration = times.get(lilyEditingCommand.getLabel());
-					if (totalDuration == null)
-					{
-						times.put(lilyEditingCommand.getLabel(), duration);
-					}
-					else
-					{
-						times.put(lilyEditingCommand.getLabel(), totalDuration + duration);
-					}
+					lilyEditingCommand.execute();
 				}
 
-			} catch (Exception e)
-			{
-				e.printStackTrace();
+				if (lilyEditingCommand.keepInStack())
+				{
+					keptCommands.add(lilyEditingCommand);
+				}
+
+				duration = System.nanoTime() - duration;
+				final Long totalDuration = times.get(lilyEditingCommand.getLabel());
+				if (totalDuration == null)
+				{
+					times.put(lilyEditingCommand.getLabel(), duration);
+				}
+				else
+				{
+					times.put(lilyEditingCommand.getLabel(), totalDuration + duration);
+				}
 			}
 
 			commands.addAll(keptCommands);
@@ -87,9 +78,9 @@ public class CommandStack implements ICommandStack
 		System.out.println("========================================");
 		System.out.println("Model commands times :");
 		int total = 0;
-		for (Entry<String, Long> entry : times.entrySet())
+		for (final Entry<String, Long> entry : times.entrySet())
 		{
-			int val = (int) (entry.getValue() / 1_000_000);
+			final int val = (int) (entry.getValue() / 1_000_000);
 			System.out.format("%s : %d ms\n", entry.getKey(), val);
 			total += val;
 		}

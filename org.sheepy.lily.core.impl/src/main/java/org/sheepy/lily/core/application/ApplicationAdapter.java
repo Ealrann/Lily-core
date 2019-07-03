@@ -39,13 +39,7 @@ public class ApplicationAdapter implements IApplicationAdapter
 		cadencer.load();
 		launched = true;
 
-		try
-		{
-			cadencer.run();
-		} catch (Throwable e)
-		{
-			e.printStackTrace();
-		}
+		cadencer.run();
 	}
 
 	@Override
