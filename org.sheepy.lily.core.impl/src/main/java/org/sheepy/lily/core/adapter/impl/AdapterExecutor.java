@@ -45,7 +45,7 @@ public final class AdapterExecutor<T extends IAdapter>
 	{
 		if (loadHandle != null)
 		{
-			loadHandle.invoke(target, null);
+			loadHandle.invoke(target);
 		}
 	}
 
@@ -53,7 +53,7 @@ public final class AdapterExecutor<T extends IAdapter>
 	{
 		if (disposeHandle != null)
 		{
-			disposeHandle.invoke(target, null);
+			disposeHandle.invoke(target);
 		}
 	}
 

@@ -57,7 +57,7 @@ public final class AdapterInfo<T extends IAdapter>
 			final Tick tickAnnotation = tickMethodAnnotation.annotation;
 			tickFrequency = tickAnnotation.frequency();
 			tickPriority = tickAnnotation.priority();
-			tickHandleBuilder = new ExecutionHandle.Builder<>(tickMethodAnnotation.method);
+			tickHandleBuilder = ExecutionHandle.Builder.fromMethod(tickMethodAnnotation.method);
 		}
 		else
 		{
@@ -87,7 +87,7 @@ public final class AdapterInfo<T extends IAdapter>
 	{
 		if (method != null)
 		{
-			return new ExecutionHandle.Builder<>(method);
+			return ExecutionHandle.Builder.fromMethod(method);
 		}
 		else
 		{
