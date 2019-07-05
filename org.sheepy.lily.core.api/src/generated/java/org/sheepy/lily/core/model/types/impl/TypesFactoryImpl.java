@@ -12,13 +12,21 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import org.joml.Vector2d;
+import org.joml.Vector2dc;
 import org.joml.Vector2f;
+import org.joml.Vector2fc;
 import org.joml.Vector2i;
+import org.joml.Vector2ic;
 import org.joml.Vector3d;
+import org.joml.Vector3dc;
 import org.joml.Vector3f;
+import org.joml.Vector3fc;
 import org.joml.Vector3i;
+import org.joml.Vector3ic;
 import org.joml.Vector4d;
+import org.joml.Vector4dc;
 import org.joml.Vector4f;
+import org.joml.Vector4fc;
 import org.sheepy.lily.core.model.types.*;
 
 /**
@@ -426,7 +434,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector4d createVector4d(final String it)
+	public Vector4dc createVector4d(final String it)
 	{
 		if ((it != null))
 		{
@@ -450,7 +458,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector4d createVector4dFromString(EDataType eDataType, String initialValue)
+	public Vector4dc createVector4dFromString(EDataType eDataType, String initialValue)
 	{
 		return createVector4d(initialValue);
 	}
@@ -460,16 +468,20 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertVector4d(final Vector4d it)
+	public String convertVector4d(final Vector4dc it)
 	{
 		if ((it != null))
 		{
-			String _plus = (Double.valueOf(it.x) + ";");
-			String _plus_1 = (_plus + Double.valueOf(it.y));
+			double _x = it.x();
+			String _plus = (Double.valueOf(_x) + ";");
+			double _y = it.y();
+			String _plus_1 = (_plus + Double.valueOf(_y));
 			String _plus_2 = (_plus_1 + ";");
-			String _plus_3 = (_plus_2 + Double.valueOf(it.z));
+			double _z = it.z();
+			String _plus_3 = (_plus_2 + Double.valueOf(_z));
 			String _plus_4 = (_plus_3 + ";");
-			return (_plus_4 + Double.valueOf(it.w));
+			double _w = it.w();
+			return (_plus_4 + Double.valueOf(_w));
 		}
 		else
 		{
@@ -484,7 +496,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector4dToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertVector4d((Vector4d)instanceValue);
+		return convertVector4d((Vector4dc)instanceValue);
 	}
 
 	/**
@@ -492,7 +504,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector4f createVector4f(final String it)
+	public Vector4fc createVector4f(final String it)
 	{
 		if ((it != null))
 		{
@@ -516,7 +528,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector4f createVector4fFromString(EDataType eDataType, String initialValue)
+	public Vector4fc createVector4fFromString(EDataType eDataType, String initialValue)
 	{
 		return createVector4f(initialValue);
 	}
@@ -526,16 +538,20 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertVector4f(final Vector4f it)
+	public String convertVector4f(final Vector4fc it)
 	{
 		if ((it != null))
 		{
-			String _plus = (Float.valueOf(it.x) + ";");
-			String _plus_1 = (_plus + Float.valueOf(it.y));
+			float _x = it.x();
+			String _plus = (Float.valueOf(_x) + ";");
+			float _y = it.y();
+			String _plus_1 = (_plus + Float.valueOf(_y));
 			String _plus_2 = (_plus_1 + ";");
-			String _plus_3 = (_plus_2 + Float.valueOf(it.z));
+			float _z = it.z();
+			String _plus_3 = (_plus_2 + Float.valueOf(_z));
 			String _plus_4 = (_plus_3 + ";");
-			return (_plus_4 + Float.valueOf(it.w));
+			float _w = it.w();
+			return (_plus_4 + Float.valueOf(_w));
 		}
 		else
 		{
@@ -550,7 +566,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector4fToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertVector4f((Vector4f)instanceValue);
+		return convertVector4f((Vector4fc)instanceValue);
 	}
 
 	/**
@@ -558,7 +574,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector4f createColor4f(final String it)
+	public Vector4fc createColor4f(final String it)
 	{
 		if ((it != null))
 		{
@@ -582,7 +598,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector4f createColor4fFromString(EDataType eDataType, String initialValue)
+	public Vector4fc createColor4fFromString(EDataType eDataType, String initialValue)
 	{
 		return createColor4f(initialValue);
 	}
@@ -592,16 +608,20 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertColor4f(final Vector4f it)
+	public String convertColor4f(final Vector4fc it)
 	{
 		if ((it != null))
 		{
-			String _plus = (Float.valueOf(it.x) + ";");
-			String _plus_1 = (_plus + Float.valueOf(it.y));
+			float _x = it.x();
+			String _plus = (Float.valueOf(_x) + ";");
+			float _y = it.y();
+			String _plus_1 = (_plus + Float.valueOf(_y));
 			String _plus_2 = (_plus_1 + ";");
-			String _plus_3 = (_plus_2 + Float.valueOf(it.z));
+			float _z = it.z();
+			String _plus_3 = (_plus_2 + Float.valueOf(_z));
 			String _plus_4 = (_plus_3 + ";");
-			return (_plus_4 + Float.valueOf(it.w));
+			float _w = it.w();
+			return (_plus_4 + Float.valueOf(_w));
 		}
 		else
 		{
@@ -616,7 +636,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertColor4fToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertColor4f((Vector4f)instanceValue);
+		return convertColor4f((Vector4fc)instanceValue);
 	}
 
 	/**
@@ -624,7 +644,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector3f createColor3f(final String it)
+	public Vector3fc createColor3f(final String it)
 	{
 		if ((it != null))
 		{
@@ -647,7 +667,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector3f createColor3fFromString(EDataType eDataType, String initialValue)
+	public Vector3fc createColor3fFromString(EDataType eDataType, String initialValue)
 	{
 		return createColor3f(initialValue);
 	}
@@ -657,14 +677,17 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertColor3f(final Vector3f it)
+	public String convertColor3f(final Vector3fc it)
 	{
 		if ((it != null))
 		{
-			String _plus = (Float.valueOf(it.x) + ";");
-			String _plus_1 = (_plus + Float.valueOf(it.y));
+			float _x = it.x();
+			String _plus = (Float.valueOf(_x) + ";");
+			float _y = it.y();
+			String _plus_1 = (_plus + Float.valueOf(_y));
 			String _plus_2 = (_plus_1 + ";");
-			return (_plus_2 + Float.valueOf(it.z));
+			float _z = it.z();
+			return (_plus_2 + Float.valueOf(_z));
 		}
 		else
 		{
@@ -679,7 +702,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertColor3fToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertColor3f((Vector3f)instanceValue);
+		return convertColor3f((Vector3fc)instanceValue);
 	}
 
 	/**
@@ -687,7 +710,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector3d createVector3d(final String it)
+	public Vector3dc createVector3d(final String it)
 	{
 		if ((it != null))
 		{
@@ -710,7 +733,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector3d createVector3dFromString(EDataType eDataType, String initialValue)
+	public Vector3dc createVector3dFromString(EDataType eDataType, String initialValue)
 	{
 		return createVector3d(initialValue);
 	}
@@ -720,14 +743,17 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertVector3d(final Vector3d it)
+	public String convertVector3d(final Vector3dc it)
 	{
 		if ((it != null))
 		{
-			String _plus = (Double.valueOf(it.x) + ";");
-			String _plus_1 = (_plus + Double.valueOf(it.y));
+			double _x = it.x();
+			String _plus = (Double.valueOf(_x) + ";");
+			double _y = it.y();
+			String _plus_1 = (_plus + Double.valueOf(_y));
 			String _plus_2 = (_plus_1 + ";");
-			return (_plus_2 + Double.valueOf(it.z));
+			double _z = it.z();
+			return (_plus_2 + Double.valueOf(_z));
 		}
 		else
 		{
@@ -742,7 +768,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector3dToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertVector3d((Vector3d)instanceValue);
+		return convertVector3d((Vector3dc)instanceValue);
 	}
 
 	/**
@@ -750,7 +776,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector3f createVector3f(final String it)
+	public Vector3fc createVector3f(final String it)
 	{
 		if ((it != null))
 		{
@@ -773,7 +799,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector3f createVector3fFromString(EDataType eDataType, String initialValue)
+	public Vector3fc createVector3fFromString(EDataType eDataType, String initialValue)
 	{
 		return createVector3f(initialValue);
 	}
@@ -783,14 +809,17 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertVector3f(final Vector3f it)
+	public String convertVector3f(final Vector3fc it)
 	{
 		if ((it != null))
 		{
-			String _plus = (Float.valueOf(it.x) + ";");
-			String _plus_1 = (_plus + Float.valueOf(it.y));
+			float _x = it.x();
+			String _plus = (Float.valueOf(_x) + ";");
+			float _y = it.y();
+			String _plus_1 = (_plus + Float.valueOf(_y));
 			String _plus_2 = (_plus_1 + ";");
-			return (_plus_2 + Float.valueOf(it.z));
+			float _z = it.z();
+			return (_plus_2 + Float.valueOf(_z));
 		}
 		else
 		{
@@ -805,7 +834,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector3fToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertVector3f((Vector3f)instanceValue);
+		return convertVector3f((Vector3fc)instanceValue);
 	}
 
 	/**
@@ -813,7 +842,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector3i createVector3i(final String it)
+	public Vector3ic createVector3i(final String it)
 	{
 		if ((it != null))
 		{
@@ -836,7 +865,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector3i createVector3iFromString(EDataType eDataType, String initialValue)
+	public Vector3ic createVector3iFromString(EDataType eDataType, String initialValue)
 	{
 		return createVector3i(initialValue);
 	}
@@ -846,14 +875,17 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertVector3i(final Vector3i it)
+	public String convertVector3i(final Vector3ic it)
 	{
 		if ((it != null))
 		{
-			String _plus = (Integer.valueOf(it.x) + ";");
-			String _plus_1 = (_plus + Integer.valueOf(it.y));
+			int _x = it.x();
+			String _plus = (Integer.valueOf(_x) + ";");
+			int _y = it.y();
+			String _plus_1 = (_plus + Integer.valueOf(_y));
 			String _plus_2 = (_plus_1 + ";");
-			return (_plus_2 + Integer.valueOf(it.z));
+			int _z = it.z();
+			return (_plus_2 + Integer.valueOf(_z));
 		}
 		else
 		{
@@ -868,7 +900,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector3iToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertVector3i((Vector3i)instanceValue);
+		return convertVector3i((Vector3ic)instanceValue);
 	}
 
 	/**
@@ -876,7 +908,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector2f createVector2f(final String it)
+	public Vector2fc createVector2f(final String it)
 	{
 		if ((it != null))
 		{
@@ -898,7 +930,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector2f createVector2fFromString(EDataType eDataType, String initialValue)
+	public Vector2fc createVector2fFromString(EDataType eDataType, String initialValue)
 	{
 		return createVector2f(initialValue);
 	}
@@ -908,12 +940,14 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertVector2f(final Vector2f it)
+	public String convertVector2f(final Vector2fc it)
 	{
 		if ((it != null))
 		{
-			String _plus = (Float.valueOf(it.x) + ";");
-			return (_plus + Float.valueOf(it.y));
+			float _x = it.x();
+			String _plus = (Float.valueOf(_x) + ";");
+			float _y = it.y();
+			return (_plus + Float.valueOf(_y));
 		}
 		else
 		{
@@ -928,7 +962,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector2fToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertVector2f((Vector2f)instanceValue);
+		return convertVector2f((Vector2fc)instanceValue);
 	}
 
 	/**
@@ -936,7 +970,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector2i createVector2i(final String it)
+	public Vector2ic createVector2i(final String it)
 	{
 		if ((it != null))
 		{
@@ -958,7 +992,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector2i createVector2iFromString(EDataType eDataType, String initialValue)
+	public Vector2ic createVector2iFromString(EDataType eDataType, String initialValue)
 	{
 		return createVector2i(initialValue);
 	}
@@ -968,12 +1002,14 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertVector2i(final Vector2i it)
+	public String convertVector2i(final Vector2ic it)
 	{
 		if ((it != null))
 		{
-			String _plus = (Integer.valueOf(it.x) + ";");
-			return (_plus + Integer.valueOf(it.y));
+			int _x = it.x();
+			String _plus = (Integer.valueOf(_x) + ";");
+			int _y = it.y();
+			return (_plus + Integer.valueOf(_y));
 		}
 		else
 		{
@@ -988,7 +1024,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector2iToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertVector2i((Vector2i)instanceValue);
+		return convertVector2i((Vector2ic)instanceValue);
 	}
 
 	/**
@@ -996,7 +1032,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector2d createVector2d(final String it)
+	public Vector2dc createVector2d(final String it)
 	{
 		if ((it != null))
 		{
@@ -1018,7 +1054,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Vector2d createVector2dFromString(EDataType eDataType, String initialValue)
+	public Vector2dc createVector2dFromString(EDataType eDataType, String initialValue)
 	{
 		return createVector2d(initialValue);
 	}
@@ -1028,12 +1064,14 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertVector2d(final Vector2d it)
+	public String convertVector2d(final Vector2dc it)
 	{
 		if ((it != null))
 		{
-			String _plus = (Double.valueOf(it.x) + ";");
-			return (_plus + Double.valueOf(it.y));
+			double _x = it.x();
+			String _plus = (Double.valueOf(_x) + ";");
+			double _y = it.y();
+			return (_plus + Double.valueOf(_y));
 		}
 		else
 		{
@@ -1048,7 +1086,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector2dToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertVector2d((Vector2d)instanceValue);
+		return convertVector2d((Vector2dc)instanceValue);
 	}
 
 	/**

@@ -467,7 +467,7 @@ public interface TypesPackage extends EPackage
 	 * The meta object id for the '<em>Vector4d</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.joml.Vector4d
+	 * @see org.joml.Vector4dc
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector4d()
 	 * @generated
 	 */
@@ -477,7 +477,7 @@ public interface TypesPackage extends EPackage
 	 * The meta object id for the '<em>Vector4f</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.joml.Vector4f
+	 * @see org.joml.Vector4fc
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector4f()
 	 * @generated
 	 */
@@ -487,7 +487,7 @@ public interface TypesPackage extends EPackage
 	 * The meta object id for the '<em>Color4f</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.joml.Vector4f
+	 * @see org.joml.Vector4fc
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getColor4f()
 	 * @generated
 	 */
@@ -497,7 +497,7 @@ public interface TypesPackage extends EPackage
 	 * The meta object id for the '<em>Color3f</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.joml.Vector3f
+	 * @see org.joml.Vector3fc
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getColor3f()
 	 * @generated
 	 */
@@ -507,7 +507,7 @@ public interface TypesPackage extends EPackage
 	 * The meta object id for the '<em>Vector3d</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.joml.Vector3d
+	 * @see org.joml.Vector3dc
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3d()
 	 * @generated
 	 */
@@ -517,7 +517,7 @@ public interface TypesPackage extends EPackage
 	 * The meta object id for the '<em>Vector3f</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.joml.Vector3f
+	 * @see org.joml.Vector3fc
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3f()
 	 * @generated
 	 */
@@ -527,7 +527,7 @@ public interface TypesPackage extends EPackage
 	 * The meta object id for the '<em>Vector3i</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.joml.Vector3i
+	 * @see org.joml.Vector3ic
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3i()
 	 * @generated
 	 */
@@ -537,7 +537,7 @@ public interface TypesPackage extends EPackage
 	 * The meta object id for the '<em>Vector2f</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.joml.Vector2f
+	 * @see org.joml.Vector2fc
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2f()
 	 * @generated
 	 */
@@ -547,7 +547,7 @@ public interface TypesPackage extends EPackage
 	 * The meta object id for the '<em>Vector2i</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.joml.Vector2i
+	 * @see org.joml.Vector2ic
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2i()
 	 * @generated
 	 */
@@ -558,7 +558,7 @@ public interface TypesPackage extends EPackage
 	 * The meta object id for the '<em>Vector2d</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.joml.Vector2d
+	 * @see org.joml.Vector2dc
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2d()
 	 * @generated
 	 */
@@ -840,111 +840,111 @@ public interface TypesPackage extends EPackage
 	EEnum getEKeyState();
 
 	/**
-	 * Returns the meta object for data type '{@link org.joml.Vector4d <em>Vector4d</em>}'.
+	 * Returns the meta object for data type '{@link org.joml.Vector4dc <em>Vector4d</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Vector4d</em>'.
-	 * @see org.joml.Vector4d
-	 * @model instanceClass="org.joml.Vector4d"
+	 * @see org.joml.Vector4dc
+	 * @model instanceClass="org.joml.Vector4dc"
 	 * @generated
 	 */
 	EDataType getVector4d();
 
 	/**
-	 * Returns the meta object for data type '{@link org.joml.Vector4f <em>Vector4f</em>}'.
+	 * Returns the meta object for data type '{@link org.joml.Vector4fc <em>Vector4f</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Vector4f</em>'.
-	 * @see org.joml.Vector4f
-	 * @model instanceClass="org.joml.Vector4f"
+	 * @see org.joml.Vector4fc
+	 * @model instanceClass="org.joml.Vector4fc"
 	 * @generated
 	 */
 	EDataType getVector4f();
 
 	/**
-	 * Returns the meta object for data type '{@link org.joml.Vector4f <em>Color4f</em>}'.
+	 * Returns the meta object for data type '{@link org.joml.Vector4fc <em>Color4f</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Color4f</em>'.
-	 * @see org.joml.Vector4f
-	 * @model instanceClass="org.joml.Vector4f"
+	 * @see org.joml.Vector4fc
+	 * @model instanceClass="org.joml.Vector4fc"
 	 * @generated
 	 */
 	EDataType getColor4f();
 
 	/**
-	 * Returns the meta object for data type '{@link org.joml.Vector3f <em>Color3f</em>}'.
+	 * Returns the meta object for data type '{@link org.joml.Vector3fc <em>Color3f</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Color3f</em>'.
-	 * @see org.joml.Vector3f
-	 * @model instanceClass="org.joml.Vector3f"
+	 * @see org.joml.Vector3fc
+	 * @model instanceClass="org.joml.Vector3fc"
 	 * @generated
 	 */
 	EDataType getColor3f();
 
 	/**
-	 * Returns the meta object for data type '{@link org.joml.Vector3d <em>Vector3d</em>}'.
+	 * Returns the meta object for data type '{@link org.joml.Vector3dc <em>Vector3d</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Vector3d</em>'.
-	 * @see org.joml.Vector3d
-	 * @model instanceClass="org.joml.Vector3d"
+	 * @see org.joml.Vector3dc
+	 * @model instanceClass="org.joml.Vector3dc"
 	 * @generated
 	 */
 	EDataType getVector3d();
 
 	/**
-	 * Returns the meta object for data type '{@link org.joml.Vector3f <em>Vector3f</em>}'.
+	 * Returns the meta object for data type '{@link org.joml.Vector3fc <em>Vector3f</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Vector3f</em>'.
-	 * @see org.joml.Vector3f
-	 * @model instanceClass="org.joml.Vector3f"
+	 * @see org.joml.Vector3fc
+	 * @model instanceClass="org.joml.Vector3fc"
 	 * @generated
 	 */
 	EDataType getVector3f();
 
 	/**
-	 * Returns the meta object for data type '{@link org.joml.Vector3i <em>Vector3i</em>}'.
+	 * Returns the meta object for data type '{@link org.joml.Vector3ic <em>Vector3i</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Vector3i</em>'.
-	 * @see org.joml.Vector3i
-	 * @model instanceClass="org.joml.Vector3i"
+	 * @see org.joml.Vector3ic
+	 * @model instanceClass="org.joml.Vector3ic"
 	 * @generated
 	 */
 	EDataType getVector3i();
 
 	/**
-	 * Returns the meta object for data type '{@link org.joml.Vector2f <em>Vector2f</em>}'.
+	 * Returns the meta object for data type '{@link org.joml.Vector2fc <em>Vector2f</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Vector2f</em>'.
-	 * @see org.joml.Vector2f
-	 * @model instanceClass="org.joml.Vector2f"
+	 * @see org.joml.Vector2fc
+	 * @model instanceClass="org.joml.Vector2fc"
 	 * @generated
 	 */
 	EDataType getVector2f();
 
 	/**
-	 * Returns the meta object for data type '{@link org.joml.Vector2i <em>Vector2i</em>}'.
+	 * Returns the meta object for data type '{@link org.joml.Vector2ic <em>Vector2i</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Vector2i</em>'.
-	 * @see org.joml.Vector2i
-	 * @model instanceClass="org.joml.Vector2i"
+	 * @see org.joml.Vector2ic
+	 * @model instanceClass="org.joml.Vector2ic"
 	 * @generated
 	 */
 	EDataType getVector2i();
 
 	/**
-	 * Returns the meta object for data type '{@link org.joml.Vector2d <em>Vector2d</em>}'.
+	 * Returns the meta object for data type '{@link org.joml.Vector2dc <em>Vector2d</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Vector2d</em>'.
-	 * @see org.joml.Vector2d
-	 * @model instanceClass="org.joml.Vector2d"
+	 * @see org.joml.Vector2dc
+	 * @model instanceClass="org.joml.Vector2dc"
 	 * @generated
 	 */
 	EDataType getVector2d();
@@ -1227,7 +1227,7 @@ public interface TypesPackage extends EPackage
 		 * The meta object literal for the '<em>Vector4d</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.joml.Vector4d
+		 * @see org.joml.Vector4dc
 		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector4d()
 		 * @generated
 		 */
@@ -1237,7 +1237,7 @@ public interface TypesPackage extends EPackage
 		 * The meta object literal for the '<em>Vector4f</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.joml.Vector4f
+		 * @see org.joml.Vector4fc
 		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector4f()
 		 * @generated
 		 */
@@ -1247,7 +1247,7 @@ public interface TypesPackage extends EPackage
 		 * The meta object literal for the '<em>Color4f</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.joml.Vector4f
+		 * @see org.joml.Vector4fc
 		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getColor4f()
 		 * @generated
 		 */
@@ -1257,7 +1257,7 @@ public interface TypesPackage extends EPackage
 		 * The meta object literal for the '<em>Color3f</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.joml.Vector3f
+		 * @see org.joml.Vector3fc
 		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getColor3f()
 		 * @generated
 		 */
@@ -1267,7 +1267,7 @@ public interface TypesPackage extends EPackage
 		 * The meta object literal for the '<em>Vector3d</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.joml.Vector3d
+		 * @see org.joml.Vector3dc
 		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3d()
 		 * @generated
 		 */
@@ -1277,7 +1277,7 @@ public interface TypesPackage extends EPackage
 		 * The meta object literal for the '<em>Vector3f</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.joml.Vector3f
+		 * @see org.joml.Vector3fc
 		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3f()
 		 * @generated
 		 */
@@ -1287,7 +1287,7 @@ public interface TypesPackage extends EPackage
 		 * The meta object literal for the '<em>Vector3i</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.joml.Vector3i
+		 * @see org.joml.Vector3ic
 		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3i()
 		 * @generated
 		 */
@@ -1297,7 +1297,7 @@ public interface TypesPackage extends EPackage
 		 * The meta object literal for the '<em>Vector2f</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.joml.Vector2f
+		 * @see org.joml.Vector2fc
 		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2f()
 		 * @generated
 		 */
@@ -1307,7 +1307,7 @@ public interface TypesPackage extends EPackage
 		 * The meta object literal for the '<em>Vector2i</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.joml.Vector2i
+		 * @see org.joml.Vector2ic
 		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2i()
 		 * @generated
 		 */
@@ -1317,7 +1317,7 @@ public interface TypesPackage extends EPackage
 		 * The meta object literal for the '<em>Vector2d</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.joml.Vector2d
+		 * @see org.joml.Vector2dc
 		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2d()
 		 * @generated
 		 */

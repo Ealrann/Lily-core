@@ -22,8 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EContentsEList;
-
-import org.joml.Vector2i;
+import org.joml.Vector2ic;
 import org.sheepy.lily.core.api.util.LTreeIterator;
 
 import org.sheepy.lily.core.model.inference.IInferenceObject;
@@ -84,7 +83,7 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Vector2i POSITION_EDEFAULT = (Vector2i)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getVector2i(), "0;0");
+	protected static final Vector2ic POSITION_EDEFAULT = (Vector2ic)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getVector2i(), "0;0");
 
 	/**
 	 * The cached value of the '{@link #getPosition() <em>Position</em>}' attribute.
@@ -94,7 +93,7 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 * @ordered
 	 */
-	protected Vector2i position = POSITION_EDEFAULT;
+	protected Vector2ic position = POSITION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getVerticalRelative() <em>Vertical Relative</em>}' attribute.
@@ -318,7 +317,7 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 */
 	@Override
-	public Vector2i getPosition()
+	public Vector2ic getPosition()
 	{
 		return position;
 	}
@@ -329,9 +328,9 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container imp
 	 * @generated
 	 */
 	@Override
-	public void setPosition(Vector2i newPosition)
+	public void setPosition(Vector2ic newPosition)
 	{
-		Vector2i oldPosition = position;
+		Vector2ic oldPosition = position;
 		position = newPosition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.ABSTRACT_LABEL__POSITION, oldPosition, position));
@@ -576,7 +575,7 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container imp
 				setContentObjects((EList<LObject>)newValue);
 				return;
 			case UiPackage.ABSTRACT_LABEL__POSITION:
-				setPosition((Vector2i)newValue);
+				setPosition((Vector2ic)newValue);
 				return;
 			case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE:
 				setVerticalRelative((EVerticalRelative)newValue);

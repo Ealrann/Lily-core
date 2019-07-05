@@ -5,21 +5,29 @@
 
 package org.sheepy.lily.core.model.types
 
-import org.joml.Vector2f
+import org.joml.Vector2fc
 import org.joml.Vector2i
 import org.joml.Vector3f
 import org.joml.Vector3i
 import org.joml.Vector4f
 import org.joml.Vector3d
-import org.joml.Vector2d
+import org.joml.Vector2dc
 import org.joml.Vector4d
+import org.joml.Vector2d
+import org.joml.Vector2f
+import org.joml.Vector4dc
+import org.joml.Vector4fc
+import org.joml.Vector3fc
+import org.joml.Vector3dc
+import org.joml.Vector3ic
+import org.joml.Vector2ic
 
 interface LNamedElement
 {
 	String name
 }
 
-type Vector4d wraps Vector4d
+type Vector4d wraps Vector4dc
 create
 {
 	if(it !== null)
@@ -41,7 +49,7 @@ convert
 		return "0;0;0;0"
 }
 
-type Vector4f wraps Vector4f
+type Vector4f wraps Vector4fc
 create
 {
 	if(it !== null)
@@ -63,7 +71,7 @@ convert
 		return "0;0;0;0"
 }
 
-type Color4f wraps Vector4f
+type Color4f wraps Vector4fc
 create
 {
 	if(it !== null)
@@ -85,7 +93,7 @@ convert
 		return "0;0;0;0"
 }
 
-type Color3f wraps Vector3f
+type Color3f wraps Vector3fc
 create
 {
 	if(it !== null)
@@ -107,7 +115,7 @@ convert
 		return "0;0;0"
 }
 
-type Vector3d wraps Vector3d
+type Vector3d wraps Vector3dc
 create
 {
 	if(it !== null)
@@ -129,7 +137,7 @@ convert
 		return "0;0;0"
 }
 
-type Vector3f wraps Vector3f
+type Vector3f wraps Vector3fc
 create
 {
 	if(it !== null)
@@ -151,7 +159,7 @@ convert
 		return "0;0;0"
 }
 
-type Vector3i wraps Vector3i
+type Vector3i wraps Vector3ic
 create
 {
 	if(it !== null)
@@ -173,7 +181,7 @@ convert
 		return "0;0;0"
 }
 
-type Vector2f wraps Vector2f
+type Vector2f wraps Vector2fc
 create
 {
 	if(it !== null)
@@ -194,7 +202,7 @@ convert
 		return "0;0"
 }
 
-type Vector2i wraps Vector2i
+type Vector2i wraps Vector2ic
 create
 {
 	if(it !== null)
@@ -215,7 +223,7 @@ convert
 		return "0;0"
 }
 
-type Vector2d wraps Vector2d
+type Vector2d wraps Vector2dc
 create
 {
 	if(it !== null)

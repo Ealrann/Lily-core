@@ -1,15 +1,33 @@
 package org.joml;
 
-public class Vector3f
+public class Vector3f implements Vector3fc
 {
-	public final float x;
-	public final float y;
-	public final float z;
+	private final float x;
+	private final float y;
+	private final float z;
 
 	public Vector3f(float x, float y, float z)
 	{
 		this.x = x;
 		this.y = y;
 		this.z = z;
+	}
+
+	@Override
+	public float x()
+	{
+		return x;
+	}
+
+	@Override
+	public float y()
+	{
+		return y;
+	}
+
+	@Override
+	public float z()
+	{
+		return z;
 	}
 }
