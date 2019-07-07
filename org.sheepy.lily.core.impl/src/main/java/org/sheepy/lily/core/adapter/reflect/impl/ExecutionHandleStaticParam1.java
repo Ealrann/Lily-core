@@ -2,7 +2,6 @@ package org.sheepy.lily.core.adapter.reflect.impl;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles.Lookup;
-import java.util.List;
 import java.util.function.Consumer;
 
 import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
@@ -28,9 +27,9 @@ public final class ExecutionHandleStaticParam1 implements ExecutionHandle
 	{
 		private final Consumer<Object> consumer;
 
-		public Builder(Lookup lookup, MethodHandle methodHandle, List<Class<?>> params)
+		public Builder(Lookup lookup, MethodHandle methodHandle)
 		{
-			this.consumer = ReflectUtil.createConsumer(lookup, methodHandle, params);
+			this.consumer = ReflectUtil.createConsumer(lookup, methodHandle);
 		}
 
 		@Override

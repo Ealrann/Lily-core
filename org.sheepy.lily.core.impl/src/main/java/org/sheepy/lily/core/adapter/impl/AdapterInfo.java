@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 
 import org.eclipse.emf.ecore.EObject;
+import org.sheepy.lily.core.adapter.reflect.ConstructorHandle;
 import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
@@ -18,9 +19,9 @@ import org.sheepy.lily.core.api.util.ReflectUtils;
 
 public final class AdapterInfo<T extends IAdapter>
 {
-	private static final Object[] NO_PARAMETERS = new Object[0];
-
 	public final AdapterDomain<T> domain;
+
+	private final ConstructorHandle<T> constructorHandle;
 
 	public final ExecutionHandle.Builder<T> loadHandleBuilder;
 	public final ExecutionHandle.Builder<T> disposeHandleBuilder;
@@ -29,7 +30,6 @@ public final class AdapterInfo<T extends IAdapter>
 
 	private final T singleton;
 	private final boolean isSingleton;
-	private final Constructor<T> constructor;
 	private final boolean autorunConstructor;
 	private final Integer tickFrequency;
 	private final Integer tickPriority;
@@ -46,7 +46,8 @@ public final class AdapterInfo<T extends IAdapter>
 		}
 
 		isSingleton = !type.isAnnotationPresent(Statefull.class);
-		constructor = gatherConstructor();
+		final var constructor = gatherConstructor();
+		constructorHandle = ConstructorHandle.Builder.fromMethod(constructor).build();
 		autorunConstructor = constructor.isAnnotationPresent(Autorun.class);
 		loadHandleBuilder = createHandleBuilder(type, Autorun.class);
 		disposeHandleBuilder = createHandleBuilder(type, Dispose.class);
@@ -98,18 +99,7 @@ public final class AdapterInfo<T extends IAdapter>
 
 	private T createSingleton()
 	{
-		T res = null;
-		if (isSingleton)
-		{
-			try
-			{
-				res = constructor.newInstance(NO_PARAMETERS);
-			} catch (ReflectiveOperationException | IllegalArgumentException e)
-			{
-				e.printStackTrace();
-			}
-		}
-		return res;
+		return constructorHandle.newInstance(null);
 	}
 
 	private Constructor<T> gatherConstructor()
@@ -194,23 +184,7 @@ public final class AdapterInfo<T extends IAdapter>
 		}
 		else
 		{
-			try
-			{
-				if (constructor.getParameterCount() == 0)
-				{
-					res = constructor.newInstance(NO_PARAMETERS);
-				}
-				else
-				{
-					res = constructor.newInstance(target);
-				}
-			} catch (ReflectiveOperationException | IllegalArgumentException e)
-			{
-				System.err.println("Cannot instantiate " + domain.type.getSimpleName());
-				final var cause = e.getCause();
-				if (cause != null) cause.printStackTrace();
-				else e.printStackTrace();
-			}
+			res = constructorHandle.newInstance(target);
 		}
 
 		return res;

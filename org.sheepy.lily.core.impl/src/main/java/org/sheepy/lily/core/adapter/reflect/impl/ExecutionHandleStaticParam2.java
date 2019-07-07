@@ -2,7 +2,6 @@ package org.sheepy.lily.core.adapter.reflect.impl;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles.Lookup;
-import java.util.List;
 import java.util.function.BiConsumer;
 
 import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
@@ -28,12 +27,9 @@ public final class ExecutionHandleStaticParam2 implements ExecutionHandle
 	{
 		private final BiConsumer<Object, Object> consumer;
 
-		public Builder(	Lookup lookup,
-						MethodHandle methodHandle,
-						List<Class<?>> sourceClassAndParams)
+		public Builder(Lookup lookup, MethodHandle methodHandle)
 		{
-			this.consumer = ReflectUtil.createBiConsumer(lookup, methodHandle,
-					sourceClassAndParams);
+			this.consumer = ReflectUtil.createBiConsumer(lookup, methodHandle);
 		}
 
 		@Override

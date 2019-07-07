@@ -2,7 +2,6 @@ package org.sheepy.lily.core.adapter.reflect.impl;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles.Lookup;
-import java.util.List;
 
 import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
 import org.sheepy.lily.core.adapter.reflect.util.ReflectUtil;
@@ -28,12 +27,9 @@ public final class ExecutionHandleParam2<T extends IAdapter> extends AbstractExe
 	{
 		private final TriConsumer<T, Object, Object> consumer;
 
-		public Builder(	Lookup lookup,
-						MethodHandle methodHandle,
-						List<Class<?>> sourceClassAndParams)
+		public Builder(Lookup lookup, MethodHandle methodHandle)
 		{
-			this.consumer = ReflectUtil.createTriConsumer(lookup, methodHandle,
-					sourceClassAndParams);
+			this.consumer = ReflectUtil.createTriConsumer(lookup, methodHandle);
 		}
 
 		@Override
