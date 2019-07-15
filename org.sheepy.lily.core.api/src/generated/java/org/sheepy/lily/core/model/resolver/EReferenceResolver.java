@@ -31,10 +31,6 @@ public interface EReferenceResolver extends ILObjectResolver
 	/**
 	 * Returns the value of the '<em><b>Reference Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Reference Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Reference Name</em>' attribute.
 	 * @see #setReferenceName(String)
@@ -57,10 +53,6 @@ public interface EReferenceResolver extends ILObjectResolver
 	/**
 	 * Returns the value of the '<em><b>Class Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Class Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Class Name</em>' attribute.
 	 * @see #setClassName(String)
@@ -83,10 +75,6 @@ public interface EReferenceResolver extends ILObjectResolver
 	/**
 	 * Returns the value of the '<em><b>Internal Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Internal Reference</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Internal Reference</em>' reference.
 	 * @see #setInternalReference(EReference)

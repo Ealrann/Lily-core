@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.presentation;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Tranparent UI View</b></em>'.
@@ -14,5 +13,4 @@ package org.sheepy.lily.core.model.presentation;
  * @generated
  */
 public interface TranparentUIView extends IUIView
-{
-} // TranparentUIView
+{} // TranparentUIView

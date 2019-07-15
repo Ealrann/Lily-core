@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.presentation.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -29,6 +28,7 @@ import org.sheepy.lily.core.model.presentation.PresentationPackage;
 import org.sheepy.lily.core.model.presentation.UIPage;
 
 import org.sheepy.lily.core.model.root.LObject;
+import org.sheepy.lily.core.model.ui.UiFactory;
 
 /**
  * This is the item provider adapter for a {@link org.sheepy.lily.core.model.presentation.UIPage} object.
@@ -36,7 +36,9 @@ import org.sheepy.lily.core.model.root.LObject;
  * <!-- end-user-doc -->
  * @generated
  */
-public class UIPageItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
+public class UIPageItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -79,19 +81,13 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 	 */
 	protected void addPositionPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_IPositionElement_position_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_position_feature", "_UI_IPositionElement_type"),
-				 PresentationPackage.Literals.IPOSITION_ELEMENT__POSITION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_IPositionElement_position_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_IPositionElement_position_feature", "_UI_IPositionElement_type"),
+				PresentationPackage.Literals.IPOSITION_ELEMENT__POSITION, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -102,19 +98,14 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 	 */
 	protected void addVerticalRelativePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_IPositionElement_verticalRelative_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_verticalRelative_feature", "_UI_IPositionElement_type"),
-				 PresentationPackage.Literals.IPOSITION_ELEMENT__VERTICAL_RELATIVE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_IPositionElement_verticalRelative_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_IPositionElement_verticalRelative_feature",
+						"_UI_IPositionElement_type"),
+				PresentationPackage.Literals.IPOSITION_ELEMENT__VERTICAL_RELATIVE, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -125,19 +116,14 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 	 */
 	protected void addHorizontalRelativePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_IPositionElement_horizontalRelative_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_horizontalRelative_feature", "_UI_IPositionElement_type"),
-				 PresentationPackage.Literals.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_IPositionElement_horizontalRelative_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_IPositionElement_horizontalRelative_feature",
+						"_UI_IPositionElement_type"),
+				PresentationPackage.Literals.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -148,19 +134,13 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 	 */
 	protected void addWidthPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ISizedElement_width_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_width_feature", "_UI_ISizedElement_type"),
-				 PresentationPackage.Literals.ISIZED_ELEMENT__WIDTH,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_ISizedElement_width_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_width_feature",
+						"_UI_ISizedElement_type"),
+				PresentationPackage.Literals.ISIZED_ELEMENT__WIDTH, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -171,19 +151,13 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 	 */
 	protected void addHeightPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ISizedElement_height_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_height_feature", "_UI_ISizedElement_type"),
-				 PresentationPackage.Literals.ISIZED_ELEMENT__HEIGHT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_ISizedElement_height_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_height_feature",
+						"_UI_ISizedElement_type"),
+				PresentationPackage.Literals.ISIZED_ELEMENT__HEIGHT, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -240,13 +214,12 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((UIPage)object).getContentObjects();
+		EList<LObject> labelValue = ((UIPage) object).getContentObjects();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_UIPage_type") :
-			getString("_UI_UIPage_type") + " " + label;
+		return label == null || label.length() == 0
+				? getString("_UI_UIPage_type")
+				: getString("_UI_UIPage_type") + " " + label;
 	}
-
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -262,17 +235,19 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 
 		switch (notification.getFeatureID(UIPage.class))
 		{
-			case PresentationPackage.UI_PAGE__CONTENT_OBJECTS:
-			case PresentationPackage.UI_PAGE__POSITION:
-			case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
-			case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
-			case PresentationPackage.UI_PAGE__WIDTH:
-			case PresentationPackage.UI_PAGE__HEIGHT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case PresentationPackage.UI_PAGE__PANELS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case PresentationPackage.UI_PAGE__CONTENT_OBJECTS:
+		case PresentationPackage.UI_PAGE__POSITION:
+		case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
+		case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
+		case PresentationPackage.UI_PAGE__WIDTH:
+		case PresentationPackage.UI_PAGE__HEIGHT:
+			fireNotifyChanged(
+					new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		case PresentationPackage.UI_PAGE__PANELS:
+			fireNotifyChanged(
+					new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -288,6 +263,9 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(PresentationPackage.Literals.UI_PAGE__PANELS,
+				UiFactory.eINSTANCE.createPanel()));
 	}
 
 	/**
@@ -299,7 +277,7 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 	@Override
 	public ResourceLocator getResourceLocator()
 	{
-		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
 	}
 
 }

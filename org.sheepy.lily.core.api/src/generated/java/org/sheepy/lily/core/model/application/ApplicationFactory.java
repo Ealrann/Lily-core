@@ -20,7 +20,8 @@ public interface ApplicationFactory extends EFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ApplicationFactory eINSTANCE = org.sheepy.lily.core.model.application.impl.ApplicationFactoryImpl.init();
+	ApplicationFactory eINSTANCE = org.sheepy.lily.core.model.application.impl.ApplicationFactoryImpl
+			.init();
 
 	/**
 	 * Returns a new object of class '<em>Application</em>'.

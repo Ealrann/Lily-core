@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.ui.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -109,13 +108,12 @@ public class BooleanButtonItemProvider extends AbstractBooleanButtonItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((BooleanButton)object).getContentObjects();
+		EList<LObject> labelValue = ((BooleanButton) object).getContentObjects();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_BooleanButton_type") :
-			getString("_UI_BooleanButton_type") + " " + label;
+		return label == null || label.length() == 0
+				? getString("_UI_BooleanButton_type")
+				: getString("_UI_BooleanButton_type") + " " + label;
 	}
-
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -131,9 +129,10 @@ public class BooleanButtonItemProvider extends AbstractBooleanButtonItemProvider
 
 		switch (notification.getFeatureID(BooleanButton.class))
 		{
-			case UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER:
+			fireNotifyChanged(
+					new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -150,10 +149,9 @@ public class BooleanButtonItemProvider extends AbstractBooleanButtonItemProvider
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-				(UiPackage.Literals.BOOLEAN_BUTTON__VARIABLE_RESOLVER,
-				 VariableFactory.eINSTANCE.createDirectVariableResolver()));
+		newChildDescriptors
+				.add(createChildParameter(UiPackage.Literals.BOOLEAN_BUTTON__VARIABLE_RESOLVER,
+						VariableFactory.eINSTANCE.createDirectVariableResolver()));
 	}
 
 }

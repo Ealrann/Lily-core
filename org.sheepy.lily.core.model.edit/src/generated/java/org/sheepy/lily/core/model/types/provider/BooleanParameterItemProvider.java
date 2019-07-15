@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.types.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -31,14 +30,9 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class BooleanParameterItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource
+public class BooleanParameterItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -77,19 +71,13 @@ public class BooleanParameterItemProvider
 	 */
 	protected void addValuePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_BooleanParameter_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_BooleanParameter_value_feature", "_UI_BooleanParameter_type"),
-				 TypesPackage.Literals.BOOLEAN_PARAMETER__VALUE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_BooleanParameter_value_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_BooleanParameter_value_feature", "_UI_BooleanParameter_type"),
+				TypesPackage.Literals.BOOLEAN_PARAMETER__VALUE, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -113,13 +101,12 @@ public class BooleanParameterItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		Boolean labelValue = ((BooleanParameter)object).getValue();
+		Boolean labelValue = ((BooleanParameter) object).getValue();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_BooleanParameter_type") :
-			getString("_UI_BooleanParameter_type") + " " + label;
+		return label == null || label.length() == 0
+				? getString("_UI_BooleanParameter_type")
+				: getString("_UI_BooleanParameter_type") + " " + label;
 	}
-
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -135,9 +122,10 @@ public class BooleanParameterItemProvider
 
 		switch (notification.getFeatureID(BooleanParameter.class))
 		{
-			case TypesPackage.BOOLEAN_PARAMETER__VALUE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case TypesPackage.BOOLEAN_PARAMETER__VALUE:
+			fireNotifyChanged(
+					new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -164,7 +152,7 @@ public class BooleanParameterItemProvider
 	@Override
 	public ResourceLocator getResourceLocator()
 	{
-		return TypesEditPlugin.INSTANCE;
+		return LilyEditPlugin.INSTANCE;
 	}
 
 }

@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.presentation.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -37,7 +36,9 @@ import org.sheepy.lily.core.model.root.LObject;
  * <!-- end-user-doc -->
  * @generated
  */
-public class TranparentUIViewItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
+public class TranparentUIViewItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -76,19 +77,13 @@ public class TranparentUIViewItemProvider extends ItemProviderAdapter implements
 	 */
 	protected void addCurrentUIPagePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_IUIView_currentUIPage_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IUIView_currentUIPage_feature", "_UI_IUIView_type"),
-				 PresentationPackage.Literals.IUI_VIEW__CURRENT_UI_PAGE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_IUIView_currentUIPage_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_IUIView_currentUIPage_feature",
+						"_UI_IUIView_type"),
+				PresentationPackage.Literals.IUI_VIEW__CURRENT_UI_PAGE, true, false, true, null,
+				null, null));
 	}
 
 	/**
@@ -145,13 +140,12 @@ public class TranparentUIViewItemProvider extends ItemProviderAdapter implements
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((TranparentUIView)object).getContentObjects();
+		EList<LObject> labelValue = ((TranparentUIView) object).getContentObjects();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_TranparentUIView_type") :
-			getString("_UI_TranparentUIView_type") + " " + label;
+		return label == null || label.length() == 0
+				? getString("_UI_TranparentUIView_type")
+				: getString("_UI_TranparentUIView_type") + " " + label;
 	}
-
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -167,12 +161,14 @@ public class TranparentUIViewItemProvider extends ItemProviderAdapter implements
 
 		switch (notification.getFeatureID(TranparentUIView.class))
 		{
-			case PresentationPackage.TRANPARENT_UI_VIEW__CONTENT_OBJECTS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case PresentationPackage.TRANPARENT_UI_VIEW__UI_PAGES:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case PresentationPackage.TRANPARENT_UI_VIEW__CONTENT_OBJECTS:
+			fireNotifyChanged(
+					new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		case PresentationPackage.TRANPARENT_UI_VIEW__UI_PAGES:
+			fireNotifyChanged(
+					new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -189,10 +185,9 @@ public class TranparentUIViewItemProvider extends ItemProviderAdapter implements
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-				(PresentationPackage.Literals.IUI_VIEW__UI_PAGES,
-				 PresentationFactory.eINSTANCE.createUIPage()));
+		newChildDescriptors
+				.add(createChildParameter(PresentationPackage.Literals.IUI_VIEW__UI_PAGES,
+						PresentationFactory.eINSTANCE.createUIPage()));
 	}
 
 	/**
@@ -204,7 +199,7 @@ public class TranparentUIViewItemProvider extends ItemProviderAdapter implements
 	@Override
 	public ResourceLocator getResourceLocator()
 	{
-		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
 	}
 
 }

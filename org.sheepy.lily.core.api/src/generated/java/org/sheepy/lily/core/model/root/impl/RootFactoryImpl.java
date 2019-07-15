@@ -14,7 +14,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
 import org.sheepy.lily.core.api.util.LTreeIterator;
+
 import org.sheepy.lily.core.model.root.*;
 
 /**
@@ -35,13 +37,13 @@ public class RootFactoryImpl extends EFactoryImpl implements RootFactory
 	{
 		try
 		{
-			RootFactory theRootFactory = (RootFactory)EPackage.Registry.INSTANCE.getEFactory(RootPackage.eNS_URI);
+			RootFactory theRootFactory = (RootFactory) EPackage.Registry.INSTANCE
+					.getEFactory(RootPackage.eNS_URI);
 			if (theRootFactory != null)
 			{
 				return theRootFactory;
 			}
-		}
-		catch (Exception exception)
+		} catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -69,8 +71,9 @@ public class RootFactoryImpl extends EFactoryImpl implements RootFactory
 	{
 		switch (eClass.getClassifierID())
 		{
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		default:
+			throw new IllegalArgumentException(
+					"The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -84,14 +87,15 @@ public class RootFactoryImpl extends EFactoryImpl implements RootFactory
 	{
 		switch (eDataType.getClassifierID())
 		{
-			case RootPackage.LCONTENT_LIST:
-				return createLContentListFromString(eDataType, initialValue);
-			case RootPackage.LTREE_ITERATOR:
-				return createLTreeIteratorFromString(eDataType, initialValue);
-			case RootPackage.LCOLLECTION:
-				return createLCollectionFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case RootPackage.LCONTENT_LIST:
+			return createLContentListFromString(eDataType, initialValue);
+		case RootPackage.LTREE_ITERATOR:
+			return createLTreeIteratorFromString(eDataType, initialValue);
+		case RootPackage.LCOLLECTION:
+			return createLCollectionFromString(eDataType, initialValue);
+		default:
+			throw new IllegalArgumentException(
+					"The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -105,14 +109,15 @@ public class RootFactoryImpl extends EFactoryImpl implements RootFactory
 	{
 		switch (eDataType.getClassifierID())
 		{
-			case RootPackage.LCONTENT_LIST:
-				return convertLContentListToString(eDataType, instanceValue);
-			case RootPackage.LTREE_ITERATOR:
-				return convertLTreeIteratorToString(eDataType, instanceValue);
-			case RootPackage.LCOLLECTION:
-				return convertLCollectionToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case RootPackage.LCONTENT_LIST:
+			return convertLContentListToString(eDataType, instanceValue);
+		case RootPackage.LTREE_ITERATOR:
+			return convertLTreeIteratorToString(eDataType, instanceValue);
+		case RootPackage.LCOLLECTION:
+			return convertLCollectionToString(eDataType, instanceValue);
+		default:
+			throw new IllegalArgumentException(
+					"The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -124,7 +129,7 @@ public class RootFactoryImpl extends EFactoryImpl implements RootFactory
 	@SuppressWarnings("unchecked")
 	public EList<LObject> createLContentListFromString(EDataType eDataType, String initialValue)
 	{
-		return (EList<LObject>)super.createFromString(initialValue);
+		return (EList<LObject>) super.createFromString(initialValue);
 	}
 
 	/**
@@ -144,7 +149,7 @@ public class RootFactoryImpl extends EFactoryImpl implements RootFactory
 	 */
 	public LTreeIterator createLTreeIteratorFromString(EDataType eDataType, String initialValue)
 	{
-		return (LTreeIterator)super.createFromString(eDataType, initialValue);
+		return (LTreeIterator) super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -165,7 +170,7 @@ public class RootFactoryImpl extends EFactoryImpl implements RootFactory
 	@SuppressWarnings("unchecked")
 	public Collection<LObject> createLCollectionFromString(EDataType eDataType, String initialValue)
 	{
-		return (Collection<LObject>)super.createFromString(initialValue);
+		return (Collection<LObject>) super.createFromString(initialValue);
 	}
 
 	/**
@@ -186,7 +191,7 @@ public class RootFactoryImpl extends EFactoryImpl implements RootFactory
 	@Override
 	public RootPackage getRootPackage()
 	{
-		return (RootPackage)getEPackage();
+		return (RootPackage) getEPackage();
 	}
 
 	/**

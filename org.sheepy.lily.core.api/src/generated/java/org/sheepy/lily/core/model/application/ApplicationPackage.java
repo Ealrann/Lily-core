@@ -57,7 +57,8 @@ public interface ApplicationPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ApplicationPackage eINSTANCE = org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl.init();
+	ApplicationPackage eINSTANCE = org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl
+			.init();
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl <em>Application</em>}' class.
@@ -178,60 +179,6 @@ public interface ApplicationPackage extends EPackage
 	int APPLICATION_FEATURE_COUNT = RootPackage.LOBJECT_FEATURE_COUNT + 10;
 
 	/**
-	 * The operation id for the '<em>LInference Object</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION___LINFERENCE_OBJECT = RootPackage.LOBJECT___LINFERENCE_OBJECT;
-
-	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION___CREATE_CONTAINMENT_ELIST__ECLASS = RootPackage.LOBJECT___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION___LCONTENTS = RootPackage.LOBJECT___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION___LPARENT = RootPackage.LOBJECT___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION___LALL_CONTENTS = RootPackage.LOBJECT___LALL_CONTENTS;
-
-	/**
-	 * The number of operations of the '<em>Application</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION_OPERATION_COUNT = RootPackage.LOBJECT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.IEngine <em>IEngine</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -260,60 +207,6 @@ public interface ApplicationPackage extends EPackage
 	int IENGINE_FEATURE_COUNT = RootPackage.LOBJECT_FEATURE_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>LInference Object</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IENGINE___LINFERENCE_OBJECT = RootPackage.LOBJECT___LINFERENCE_OBJECT;
-
-	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IENGINE___CREATE_CONTAINMENT_ELIST__ECLASS = RootPackage.LOBJECT___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IENGINE___LCONTENTS = RootPackage.LOBJECT___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IENGINE___LPARENT = RootPackage.LOBJECT___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IENGINE___LALL_CONTENTS = RootPackage.LOBJECT___LALL_CONTENTS;
-
-	/**
-	 * The number of operations of the '<em>IEngine</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IENGINE_OPERATION_COUNT = RootPackage.LOBJECT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.IView <em>IView</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -340,61 +233,6 @@ public interface ApplicationPackage extends EPackage
 	 * @ordered
 	 */
 	int IVIEW_FEATURE_COUNT = RootPackage.LOBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>LInference Object</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IVIEW___LINFERENCE_OBJECT = RootPackage.LOBJECT___LINFERENCE_OBJECT;
-
-	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IVIEW___CREATE_CONTAINMENT_ELIST__ECLASS = RootPackage.LOBJECT___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IVIEW___LCONTENTS = RootPackage.LOBJECT___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IVIEW___LPARENT = RootPackage.LOBJECT___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IVIEW___LALL_CONTENTS = RootPackage.LOBJECT___LALL_CONTENTS;
-
-	/**
-	 * The number of operations of the '<em>IView</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IVIEW_OPERATION_COUNT = RootPackage.LOBJECT_OPERATION_COUNT + 0;
-
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.Application <em>Application</em>}'.

@@ -62,10 +62,6 @@ public enum EDirection implements Enumerator
 	/**
 	 * The '<em><b>UP</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>UP</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #UP
 	 * @model
@@ -77,10 +73,6 @@ public enum EDirection implements Enumerator
 	/**
 	 * The '<em><b>LEFT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>LEFT</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #LEFT
 	 * @model
@@ -92,10 +84,6 @@ public enum EDirection implements Enumerator
 	/**
 	 * The '<em><b>RIGHT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>RIGHT</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #RIGHT
 	 * @model
@@ -107,10 +95,6 @@ public enum EDirection implements Enumerator
 	/**
 	 * The '<em><b>DOWN</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>DOWN</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #DOWN
 	 * @model
@@ -125,14 +109,9 @@ public enum EDirection implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final EDirection[] VALUES_ARRAY =
-		new EDirection[]
-		{
-			UP,
-			LEFT,
-			RIGHT,
-			DOWN,
-		};
+	private static final EDirection[] VALUES_ARRAY = new EDirection[] {
+			UP, LEFT, RIGHT, DOWN,
+	};
 
 	/**
 	 * A public read-only list of all the '<em><b>EDirection</b></em>' enumerators.
@@ -140,7 +119,8 @@ public enum EDirection implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<EDirection> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<EDirection> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>EDirection</b></em>' literal with the specified literal value.
@@ -196,7 +176,8 @@ public enum EDirection implements Enumerator
 	{
 		switch (value)
 		{
-			case UP_VALUE: return UP;
+		case UP_VALUE:
+			return UP;
 		}
 		return null;
 	}
@@ -243,7 +224,7 @@ public enum EDirection implements Enumerator
 	@Override
 	public int getValue()
 	{
-	  return value;
+		return value;
 	}
 
 	/**
@@ -254,7 +235,7 @@ public enum EDirection implements Enumerator
 	@Override
 	public String getName()
 	{
-	  return name;
+		return name;
 	}
 
 	/**
@@ -265,7 +246,7 @@ public enum EDirection implements Enumerator
 	@Override
 	public String getLiteral()
 	{
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -279,5 +260,5 @@ public enum EDirection implements Enumerator
 	{
 		return literal;
 	}
-	
+
 } //EDirection

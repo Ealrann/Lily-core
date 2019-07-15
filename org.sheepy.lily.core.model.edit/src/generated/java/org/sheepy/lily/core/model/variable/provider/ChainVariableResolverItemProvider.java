@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.variable.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -33,14 +32,9 @@ import org.sheepy.lily.core.model.variable.VariablePackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ChainVariableResolverItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource
+public class ChainVariableResolverItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -113,7 +107,8 @@ public class ChainVariableResolverItemProvider
 	@Override
 	public Object getImage(Object object)
 	{
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ChainVariableResolver"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/ChainVariableResolver"));
 	}
 
 	/**
@@ -127,7 +122,6 @@ public class ChainVariableResolverItemProvider
 	{
 		return getString("_UI_ChainVariableResolver_type");
 	}
-
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -143,10 +137,11 @@ public class ChainVariableResolverItemProvider
 
 		switch (notification.getFeatureID(ChainVariableResolver.class))
 		{
-			case VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER:
-			case VariablePackage.CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER:
+		case VariablePackage.CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS:
+			fireNotifyChanged(
+					new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -163,20 +158,17 @@ public class ChainVariableResolverItemProvider
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-				(VariablePackage.Literals.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER,
-				 VariableFactory.eINSTANCE.createChainVariableResolver()));
+		newChildDescriptors.add(createChildParameter(
+				VariablePackage.Literals.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER,
+				VariableFactory.eINSTANCE.createChainVariableResolver()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(VariablePackage.Literals.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER,
-				 VariableFactory.eINSTANCE.createDirectVariableResolver()));
+		newChildDescriptors.add(createChildParameter(
+				VariablePackage.Literals.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER,
+				VariableFactory.eINSTANCE.createDirectVariableResolver()));
 
-		newChildDescriptors.add
-			(createChildParameter
-				(VariablePackage.Literals.CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS,
-				 VariableFactory.eINSTANCE.createChainResolver()));
+		newChildDescriptors.add(createChildParameter(
+				VariablePackage.Literals.CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS,
+				VariableFactory.eINSTANCE.createChainResolver()));
 	}
 
 	/**
@@ -188,7 +180,7 @@ public class ChainVariableResolverItemProvider
 	@Override
 	public ResourceLocator getResourceLocator()
 	{
-		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
 	}
 
 }

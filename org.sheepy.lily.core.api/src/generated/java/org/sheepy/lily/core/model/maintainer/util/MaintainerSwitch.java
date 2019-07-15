@@ -72,21 +72,22 @@ public class MaintainerSwitch<T1> extends Switch<T1>
 	{
 		switch (classifierID)
 		{
-			case MaintainerPackage.MAINTAINABLE:
-			{
-				Maintainable<?> maintainable = (Maintainable<?>)theEObject;
-				T1 result = caseMaintainable(maintainable);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case MaintainerPackage.MAINTAINER:
-			{
-				Maintainer<?> maintainer = (Maintainer<?>)theEObject;
-				T1 result = caseMaintainer(maintainer);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			default: return defaultCase(theEObject);
+		case MaintainerPackage.MAINTAINABLE:
+		{
+			Maintainable<?> maintainable = (Maintainable<?>) theEObject;
+			T1 result = caseMaintainable(maintainable);
+			if (result == null) result = defaultCase(theEObject);
+			return result;
+		}
+		case MaintainerPackage.MAINTAINER:
+		{
+			Maintainer<?> maintainer = (Maintainer<?>) theEObject;
+			T1 result = caseMaintainer(maintainer);
+			if (result == null) result = defaultCase(theEObject);
+			return result;
+		}
+		default:
+			return defaultCase(theEObject);
 		}
 	}
 

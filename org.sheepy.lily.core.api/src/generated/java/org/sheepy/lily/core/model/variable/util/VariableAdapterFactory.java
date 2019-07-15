@@ -10,7 +10,9 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import org.sheepy.lily.core.model.action.Action;
+
 import org.sheepy.lily.core.model.types.LNamedElement;
+
 import org.sheepy.lily.core.model.variable.*;
 
 /**
@@ -62,7 +64,7 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 		}
 		if (object instanceof EObject)
 		{
-			return ((EObject)object).eClass().getEPackage() == modelPackage;
+			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -73,70 +75,69 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected VariableSwitch<Adapter> modelSwitch =
-		new VariableSwitch<Adapter>()
+	protected VariableSwitch<Adapter> modelSwitch = new VariableSwitch<Adapter>()
+	{
+		@Override
+		public Adapter caseIVariableResolver(IVariableResolver object)
 		{
-			@Override
-			public Adapter caseIVariableResolver(IVariableResolver object)
-			{
-				return createIVariableResolverAdapter();
-			}
-			@Override
-			public Adapter caseIDefinitionContainer(IDefinitionContainer object)
-			{
-				return createIDefinitionContainerAdapter();
-			}
-			@Override
-			public Adapter caseChainVariableResolver(ChainVariableResolver object)
-			{
-				return createChainVariableResolverAdapter();
-			}
-			@Override
-			public Adapter caseChainResolver(ChainResolver object)
-			{
-				return createChainResolverAdapter();
-			}
-			@Override
-			public Adapter caseAbstractVariableResolver(AbstractVariableResolver object)
-			{
-				return createAbstractVariableResolverAdapter();
-			}
-			@Override
-			public Adapter caseDirectVariableResolver(DirectVariableResolver object)
-			{
-				return createDirectVariableResolverAdapter();
-			}
-			@Override
-			public Adapter caseVarChangeAction(VarChangeAction object)
-			{
-				return createVarChangeActionAdapter();
-			}
-			@Override
-			public Adapter caseBooleanChangeAction(BooleanChangeAction object)
-			{
-				return createBooleanChangeActionAdapter();
-			}
-			@Override
-			public Adapter caseVarChangeActionPkg(VarChangeActionPkg object)
-			{
-				return createVarChangeActionPkgAdapter();
-			}
-			@Override
-			public Adapter caseLNamedElement(LNamedElement object)
-			{
-				return createLNamedElementAdapter();
-			}
-			@Override
-			public Adapter caseAction(Action object)
-			{
-				return createActionAdapter();
-			}
-			@Override
-			public Adapter defaultCase(EObject object)
-			{
-				return createEObjectAdapter();
-			}
-		};
+			return createIVariableResolverAdapter();
+		}
+		@Override
+		public Adapter caseIDefinitionContainer(IDefinitionContainer object)
+		{
+			return createIDefinitionContainerAdapter();
+		}
+		@Override
+		public Adapter caseChainVariableResolver(ChainVariableResolver object)
+		{
+			return createChainVariableResolverAdapter();
+		}
+		@Override
+		public Adapter caseChainResolver(ChainResolver object)
+		{
+			return createChainResolverAdapter();
+		}
+		@Override
+		public Adapter caseAbstractVariableResolver(AbstractVariableResolver object)
+		{
+			return createAbstractVariableResolverAdapter();
+		}
+		@Override
+		public Adapter caseDirectVariableResolver(DirectVariableResolver object)
+		{
+			return createDirectVariableResolverAdapter();
+		}
+		@Override
+		public Adapter caseVarChangeAction(VarChangeAction object)
+		{
+			return createVarChangeActionAdapter();
+		}
+		@Override
+		public Adapter caseBooleanChangeAction(BooleanChangeAction object)
+		{
+			return createBooleanChangeActionAdapter();
+		}
+		@Override
+		public Adapter caseVarChangeActionPkg(VarChangeActionPkg object)
+		{
+			return createVarChangeActionPkgAdapter();
+		}
+		@Override
+		public Adapter caseLNamedElement(LNamedElement object)
+		{
+			return createLNamedElementAdapter();
+		}
+		@Override
+		public Adapter caseAction(Action object)
+		{
+			return createActionAdapter();
+		}
+		@Override
+		public Adapter defaultCase(EObject object)
+		{
+			return createEObjectAdapter();
+		}
+	};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -149,9 +150,8 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	@Override
 	public Adapter createAdapter(Notifier target)
 	{
-		return modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject) target);
 	}
-
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.IVariableResolver <em>IVariable Resolver</em>}'.

@@ -3,16 +3,53 @@
 package org.sheepy.lily.core.model.action.impl;
 
 import java.util.List;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.sheepy.lily.core.model.action.Action;
 import org.sheepy.lily.core.model.action.ActionFactory;
 import org.sheepy.lily.core.model.action.ActionPackage;
+
+import org.sheepy.lily.core.model.application.ApplicationPackage;
+
+import org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl;
+
+import org.sheepy.lily.core.model.inference.InferencePackage;
+
+import org.sheepy.lily.core.model.inference.impl.InferencePackageImpl;
+
+import org.sheepy.lily.core.model.maintainer.MaintainerPackage;
+
+import org.sheepy.lily.core.model.maintainer.impl.MaintainerPackageImpl;
+
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
+
+import org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl;
+
+import org.sheepy.lily.core.model.resolver.ResolverPackage;
+
+import org.sheepy.lily.core.model.resolver.impl.ResolverPackageImpl;
+
+import org.sheepy.lily.core.model.root.RootPackage;
+
+import org.sheepy.lily.core.model.root.impl.RootPackageImpl;
+
 import org.sheepy.lily.core.model.types.TypesPackage;
+
+import org.sheepy.lily.core.model.types.impl.TypesPackageImpl;
+
+import org.sheepy.lily.core.model.ui.UiPackage;
+
+import org.sheepy.lily.core.model.ui.impl.UiPackageImpl;
+
+import org.sheepy.lily.core.model.variable.VariablePackage;
+
+import org.sheepy.lily.core.model.variable.impl.VariablePackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -77,23 +114,81 @@ public class ActionPackageImpl extends EPackageImpl implements ActionPackage
 	 */
 	public static ActionPackage init()
 	{
-		if (isInited) return (ActionPackage)EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
+		if (isInited)
+			return (ActionPackage) EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
 
 		// Obtain or create and register package
 		Object registeredActionPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-		ActionPackageImpl theActionPackage = registeredActionPackage instanceof ActionPackageImpl ? (ActionPackageImpl)registeredActionPackage : new ActionPackageImpl();
+		ActionPackageImpl theActionPackage = registeredActionPackage instanceof ActionPackageImpl
+				? (ActionPackageImpl) registeredActionPackage
+				: new ActionPackageImpl();
 
 		isInited = true;
 
 		// Initialize simple dependencies
-		TypesPackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
+
+		// Obtain or create and register interdependencies
+		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+		TypesPackageImpl theTypesPackage = (TypesPackageImpl) (registeredPackage instanceof TypesPackageImpl
+				? registeredPackage
+				: TypesPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
+		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl) (registeredPackage instanceof ApplicationPackageImpl
+				? registeredPackage
+				: ApplicationPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(RootPackage.eNS_URI);
+		RootPackageImpl theRootPackage = (RootPackageImpl) (registeredPackage instanceof RootPackageImpl
+				? registeredPackage
+				: RootPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
+		InferencePackageImpl theInferencePackage = (InferencePackageImpl) (registeredPackage instanceof InferencePackageImpl
+				? registeredPackage
+				: InferencePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(MaintainerPackage.eNS_URI);
+		MaintainerPackageImpl theMaintainerPackage = (MaintainerPackageImpl) (registeredPackage instanceof MaintainerPackageImpl
+				? registeredPackage
+				: MaintainerPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(PresentationPackage.eNS_URI);
+		PresentationPackageImpl thePresentationPackage = (PresentationPackageImpl) (registeredPackage instanceof PresentationPackageImpl
+				? registeredPackage
+				: PresentationPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ResolverPackage.eNS_URI);
+		ResolverPackageImpl theResolverPackage = (ResolverPackageImpl) (registeredPackage instanceof ResolverPackageImpl
+				? registeredPackage
+				: ResolverPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(UiPackage.eNS_URI);
+		UiPackageImpl theUiPackage = (UiPackageImpl) (registeredPackage instanceof UiPackageImpl
+				? registeredPackage
+				: UiPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(VariablePackage.eNS_URI);
+		VariablePackageImpl theVariablePackage = (VariablePackageImpl) (registeredPackage instanceof VariablePackageImpl
+				? registeredPackage
+				: VariablePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theActionPackage.createPackageContents();
+		theTypesPackage.createPackageContents();
+		theApplicationPackage.createPackageContents();
+		theRootPackage.createPackageContents();
+		theInferencePackage.createPackageContents();
+		theMaintainerPackage.createPackageContents();
+		thePresentationPackage.createPackageContents();
+		theResolverPackage.createPackageContents();
+		theUiPackage.createPackageContents();
+		theVariablePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theActionPackage.initializePackageContents();
+		theTypesPackage.initializePackageContents();
+		theApplicationPackage.initializePackageContents();
+		theRootPackage.initializePackageContents();
+		theInferencePackage.initializePackageContents();
+		theMaintainerPackage.initializePackageContents();
+		thePresentationPackage.initializePackageContents();
+		theResolverPackage.initializePackageContents();
+		theUiPackage.initializePackageContents();
+		theVariablePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theActionPackage.freeze();
@@ -133,7 +228,7 @@ public class ActionPackageImpl extends EPackageImpl implements ActionPackage
 	@Override
 	public ActionFactory getActionFactory()
 	{
-		return (ActionFactory)getEFactoryInstance();
+		return (ActionFactory) getEFactoryInstance();
 	}
 
 	/**
@@ -187,7 +282,8 @@ public class ActionPackageImpl extends EPackageImpl implements ActionPackage
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+		TypesPackage theTypesPackage = (TypesPackage) EPackage.Registry.INSTANCE
+				.getEPackage(TypesPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -196,11 +292,14 @@ public class ActionPackageImpl extends EPackageImpl implements ActionPackage
 		// Add supertypes to classes
 		actionEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
 
-		// Initialize classes, features, and operations; add parameters
-		initEClass(actionEClass, Action.class, "Action", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		// Initialize classes and features; add operations and parameters
+		initEClass(actionEClass, Action.class, "Action", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize data types
-		initEDataType(actionListEDataType, List.class, "ActionList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<? extends org.sheepy.lily.core.model.action.Action>");
+		initEDataType(actionListEDataType, List.class, "ActionList", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS,
+				"java.util.List<? extends org.sheepy.lily.core.model.action.Action>");
 
 		// Create resource
 		createResource(eNS_URI);

@@ -30,10 +30,6 @@ public interface ISizedView extends ISizedElement, IView
 	 * Returns the value of the '<em><b>Moveable</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Moveable</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Moveable</em>' attribute.
 	 * @see #setMoveable(boolean)
@@ -57,10 +53,6 @@ public interface ISizedView extends ISizedElement, IView
 	 * Returns the value of the '<em><b>Closeable</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Closeable</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Closeable</em>' attribute.
 	 * @see #setCloseable(boolean)
@@ -84,10 +76,6 @@ public interface ISizedView extends ISizedElement, IView
 	 * Returns the value of the '<em><b>Scalable</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Scalable</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scalable</em>' attribute.
 	 * @see #setScalable(boolean)
@@ -111,10 +99,6 @@ public interface ISizedView extends ISizedElement, IView
 	 * Returns the value of the '<em><b>Show Title</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Show Title</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Show Title</em>' attribute.
 	 * @see #setShowTitle(boolean)
@@ -138,10 +122,6 @@ public interface ISizedView extends ISizedElement, IView
 	 * Returns the value of the '<em><b>Fullscreen</b></em>' attribute.
 	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Fullscreen</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Fullscreen</em>' attribute.
 	 * @see #setFullscreen(boolean)

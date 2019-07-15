@@ -6,7 +6,6 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 
 /**
@@ -88,15 +87,6 @@ public interface TypesPackage extends EPackage
 	int LNAMED_ELEMENT_FEATURE_COUNT = 1;
 
 	/**
-	 * The number of operations of the '<em>LNamed Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LNAMED_ELEMENT_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.types.Parameter <em>Parameter</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -114,15 +104,6 @@ public interface TypesPackage extends EPackage
 	 * @ordered
 	 */
 	int PARAMETER_FEATURE_COUNT = 0;
-
-	/**
-	 * The number of operations of the '<em>Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.types.PositionParameter <em>Position Parameter</em>}' class.
@@ -144,24 +125,6 @@ public interface TypesPackage extends EPackage
 	int POSITION_PARAMETER_FEATURE_COUNT = PARAMETER_FEATURE_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Get Position</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int POSITION_PARAMETER___GET_POSITION = PARAMETER_OPERATION_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Position Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int POSITION_PARAMETER_OPERATION_COUNT = PARAMETER_OPERATION_COUNT + 1;
-
-	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.types.PositionFParameter <em>Position FParameter</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -181,24 +144,6 @@ public interface TypesPackage extends EPackage
 	int POSITION_FPARAMETER_FEATURE_COUNT = PARAMETER_FEATURE_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Get Position</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int POSITION_FPARAMETER___GET_POSITION = PARAMETER_OPERATION_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Position FParameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int POSITION_FPARAMETER_OPERATION_COUNT = PARAMETER_OPERATION_COUNT + 1;
-
-	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.types.NativeParameter <em>Native Parameter</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -216,24 +161,6 @@ public interface TypesPackage extends EPackage
 	 * @ordered
 	 */
 	int NATIVE_PARAMETER_FEATURE_COUNT = PARAMETER_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Get Native Value</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NATIVE_PARAMETER___GET_NATIVE_VALUE = PARAMETER_OPERATION_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Native Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NATIVE_PARAMETER_OPERATION_COUNT = PARAMETER_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.types.impl.FloatParameterImpl <em>Float Parameter</em>}' class.
@@ -264,24 +191,6 @@ public interface TypesPackage extends EPackage
 	int FLOAT_PARAMETER_FEATURE_COUNT = NATIVE_PARAMETER_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Get Native Value</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FLOAT_PARAMETER___GET_NATIVE_VALUE = NATIVE_PARAMETER_OPERATION_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Float Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FLOAT_PARAMETER_OPERATION_COUNT = NATIVE_PARAMETER_OPERATION_COUNT + 1;
-
-	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.types.impl.StringParameterImpl <em>String Parameter</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -310,24 +219,6 @@ public interface TypesPackage extends EPackage
 	int STRING_PARAMETER_FEATURE_COUNT = NATIVE_PARAMETER_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Get Native Value</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_PARAMETER___GET_NATIVE_VALUE = NATIVE_PARAMETER_OPERATION_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>String Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int STRING_PARAMETER_OPERATION_COUNT = NATIVE_PARAMETER_OPERATION_COUNT + 1;
-
-	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.types.impl.BooleanParameterImpl <em>Boolean Parameter</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -354,24 +245,6 @@ public interface TypesPackage extends EPackage
 	 * @ordered
 	 */
 	int BOOLEAN_PARAMETER_FEATURE_COUNT = NATIVE_PARAMETER_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>Get Native Value</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_PARAMETER___GET_NATIVE_VALUE = NATIVE_PARAMETER_OPERATION_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Boolean Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_PARAMETER_OPERATION_COUNT = NATIVE_PARAMETER_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.types.ENotificationDirection <em>ENotification Direction</em>}' enum.
@@ -553,7 +426,6 @@ public interface TypesPackage extends EPackage
 	 */
 	int VECTOR2I = 25;
 
-
 	/**
 	 * The meta object id for the '<em>Vector2d</em>' data type.
 	 * <!-- begin-user-doc -->
@@ -563,7 +435,6 @@ public interface TypesPackage extends EPackage
 	 * @generated
 	 */
 	int VECTOR2D = 26;
-
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.types.LNamedElement <em>LNamed Element</em>}'.
@@ -607,16 +478,6 @@ public interface TypesPackage extends EPackage
 	EClass getPositionParameter();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.types.PositionParameter#getPosition() <em>Get Position</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Position</em>' operation.
-	 * @see org.sheepy.lily.core.model.types.PositionParameter#getPosition()
-	 * @generated
-	 */
-	EOperation getPositionParameter__GetPosition();
-
-	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.types.PositionFParameter <em>Position FParameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -627,16 +488,6 @@ public interface TypesPackage extends EPackage
 	EClass getPositionFParameter();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.types.PositionFParameter#getPosition() <em>Get Position</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Position</em>' operation.
-	 * @see org.sheepy.lily.core.model.types.PositionFParameter#getPosition()
-	 * @generated
-	 */
-	EOperation getPositionFParameter__GetPosition();
-
-	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.types.NativeParameter <em>Native Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -645,16 +496,6 @@ public interface TypesPackage extends EPackage
 	 * @generated
 	 */
 	EClass getNativeParameter();
-
-	/**
-	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.types.NativeParameter#getNativeValue() <em>Get Native Value</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Native Value</em>' operation.
-	 * @see org.sheepy.lily.core.model.types.NativeParameter#getNativeValue()
-	 * @generated
-	 */
-	EOperation getNativeParameter__GetNativeValue();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.types.FloatParameter <em>Float Parameter</em>}'.
@@ -678,16 +519,6 @@ public interface TypesPackage extends EPackage
 	EAttribute getFloatParameter_Value();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.types.FloatParameter#getNativeValue() <em>Get Native Value</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Native Value</em>' operation.
-	 * @see org.sheepy.lily.core.model.types.FloatParameter#getNativeValue()
-	 * @generated
-	 */
-	EOperation getFloatParameter__GetNativeValue();
-
-	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.types.StringParameter <em>String Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -709,16 +540,6 @@ public interface TypesPackage extends EPackage
 	EAttribute getStringParameter_Value();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.types.StringParameter#getNativeValue() <em>Get Native Value</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Native Value</em>' operation.
-	 * @see org.sheepy.lily.core.model.types.StringParameter#getNativeValue()
-	 * @generated
-	 */
-	EOperation getStringParameter__GetNativeValue();
-
-	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.types.BooleanParameter <em>Boolean Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -738,16 +559,6 @@ public interface TypesPackage extends EPackage
 	 * @generated
 	 */
 	EAttribute getBooleanParameter_Value();
-
-	/**
-	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.types.BooleanParameter#getNativeValue() <em>Get Native Value</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Native Value</em>' operation.
-	 * @see org.sheepy.lily.core.model.types.BooleanParameter#getNativeValue()
-	 * @generated
-	 */
-	EOperation getBooleanParameter__GetNativeValue();
 
 	/**
 	 * Returns the meta object for enum '{@link org.sheepy.lily.core.model.types.ENotificationDirection <em>ENotification Direction</em>}'.
@@ -1012,14 +823,6 @@ public interface TypesPackage extends EPackage
 		EClass POSITION_PARAMETER = eINSTANCE.getPositionParameter();
 
 		/**
-		 * The meta object literal for the '<em><b>Get Position</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation POSITION_PARAMETER___GET_POSITION = eINSTANCE.getPositionParameter__GetPosition();
-
-		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.types.PositionFParameter <em>Position FParameter</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1030,14 +833,6 @@ public interface TypesPackage extends EPackage
 		EClass POSITION_FPARAMETER = eINSTANCE.getPositionFParameter();
 
 		/**
-		 * The meta object literal for the '<em><b>Get Position</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation POSITION_FPARAMETER___GET_POSITION = eINSTANCE.getPositionFParameter__GetPosition();
-
-		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.types.NativeParameter <em>Native Parameter</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1046,14 +841,6 @@ public interface TypesPackage extends EPackage
 		 * @generated
 		 */
 		EClass NATIVE_PARAMETER = eINSTANCE.getNativeParameter();
-
-		/**
-		 * The meta object literal for the '<em><b>Get Native Value</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation NATIVE_PARAMETER___GET_NATIVE_VALUE = eINSTANCE.getNativeParameter__GetNativeValue();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.types.impl.FloatParameterImpl <em>Float Parameter</em>}' class.
@@ -1074,14 +861,6 @@ public interface TypesPackage extends EPackage
 		EAttribute FLOAT_PARAMETER__VALUE = eINSTANCE.getFloatParameter_Value();
 
 		/**
-		 * The meta object literal for the '<em><b>Get Native Value</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation FLOAT_PARAMETER___GET_NATIVE_VALUE = eINSTANCE.getFloatParameter__GetNativeValue();
-
-		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.types.impl.StringParameterImpl <em>String Parameter</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1100,14 +879,6 @@ public interface TypesPackage extends EPackage
 		EAttribute STRING_PARAMETER__VALUE = eINSTANCE.getStringParameter_Value();
 
 		/**
-		 * The meta object literal for the '<em><b>Get Native Value</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation STRING_PARAMETER___GET_NATIVE_VALUE = eINSTANCE.getStringParameter__GetNativeValue();
-
-		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.types.impl.BooleanParameterImpl <em>Boolean Parameter</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1124,14 +895,6 @@ public interface TypesPackage extends EPackage
 		 * @generated
 		 */
 		EAttribute BOOLEAN_PARAMETER__VALUE = eINSTANCE.getBooleanParameter_Value();
-
-		/**
-		 * The meta object literal for the '<em><b>Get Native Value</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation BOOLEAN_PARAMETER___GET_NATIVE_VALUE = eINSTANCE.getBooleanParameter__GetNativeValue();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.types.ENotificationDirection <em>ENotification Direction</em>}' enum.

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="resolver" nsURI="org.sheepy.lily.core.model.resolver" nsPrefix="resolver">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="modelDirectory" value="/org.sheepy.lily.core.model/src/generated/java"/>
+    <details key="editDirectory" value="/org.sheepy.lily.core.model.edit/src/generated/java"/>
+    <details key="publicConstructors" value="true"/>
+    <details key="complianceLevel" value="11.0"/>
+    <details key="resource" value="XMI"/>
+    <details key="extensibleProviderFactory" value="true"/>
+    <details key="childCreationExtenders" value="true"/>
+    <details key="updateClasspath" value="false"/>
+    <details key="basePackage" value="org.sheepy.lily.core.model"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="ILObjectResolver" abstract="true" interface="true">
+    <eOperations name="collectUnits" unique="false">
+      <eParameters name="source" unique="false" eType="ecore:EClass root.ecore#//LObject"/>
+      <eParameters name="collected" unique="false" eType="ecore:EDataType root.ecore#//LCollection"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EReferenceResolver" eSuperTypes="#//ILObjectResolver">
+    <eOperations name="collectUnits" unique="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="&lt;%org.eclipse.emf.ecore.EReference%> _internalReference = this.getInternalReference();&#xA;boolean _tripleEquals = (_internalReference == null);&#xA;if (_tripleEquals)&#xA;{&#xA;&#x9;&lt;%org.eclipse.emf.common.util.EList%>&lt;&lt;%org.eclipse.emf.ecore.EReference%>> _eAllReferences = source.eClass().getEAllReferences();&#xA;&#x9;for (final &lt;%org.eclipse.emf.ecore.EReference%> ref : _eAllReferences)&#xA;&#x9;{&#xA;&#x9;&#x9;boolean _equals = ref.getName().equals(this.getReferenceName());&#xA;&#x9;&#x9;if (_equals)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;this.setInternalReference(ref);&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;}&#xA;&lt;%org.eclipse.emf.ecore.EReference%> _internalReference_1 = this.getInternalReference();&#xA;boolean _tripleNotEquals = (_internalReference_1 != null);&#xA;if (_tripleNotEquals)&#xA;{&#xA;&#x9;boolean _isMany = this.getInternalReference().isMany();&#xA;&#x9;if (_isMany)&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%java.lang.Object%> _eGet = source.eGet(this.getInternalReference());&#xA;&#x9;&#x9;for (final &lt;%java.lang.Object%> obj : ((&lt;%org.eclipse.emf.common.util.EList%>&lt;?>) _eGet))&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;if (((this.getClassName() == null) || ((&lt;%org.eclipse.emf.ecore.EObject%>) obj).eClass().getName().equals(this.getClassName())))&#xA;&#x9;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;&#x9;collected.add(((&lt;%org.sheepy.lily.core.model.root.LObject%>) obj));&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#x9;else&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%java.lang.Object%> _eGet_1 = source.eGet(this.getInternalReference());&#xA;&#x9;&#x9;final &lt;%org.sheepy.lily.core.model.root.LObject%> target = ((&lt;%org.sheepy.lily.core.model.root.LObject%>) _eGet_1);&#xA;&#x9;&#x9;if (((this.getClassName() == null) || target.eClass().getName().equals(this.getClassName())))&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;collected.add(target);&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;}"/>
+      </eAnnotations>
+      <eParameters name="source" unique="false" eType="ecore:EClass root.ecore#//LObject"/>
+      <eParameters name="collected" unique="false" eType="ecore:EDataType root.ecore#//LCollection"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="referenceName" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="className" unique="false"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="internalReference" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EReference"
+        transient="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="property" value="None"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ChainResolver" eSuperTypes="#//ILObjectResolver">
+    <eOperations name="collectUnits" unique="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="&lt;%java.util.Deque%>&lt;&lt;%org.sheepy.lily.core.model.root.LObject%>> course = new &lt;%java.util.ArrayDeque%>&lt;&lt;%org.sheepy.lily.core.model.root.LObject%>>();&#xA;&lt;%java.util.Deque%>&lt;&lt;%org.sheepy.lily.core.model.root.LObject%>> next = new &lt;%java.util.ArrayDeque%>&lt;&lt;%org.sheepy.lily.core.model.root.LObject%>>();&#xA;&lt;%java.util.Deque%>&lt;&lt;%org.sheepy.lily.core.model.root.LObject%>> temp = null;&#xA;next.add(source);&#xA;&lt;%org.eclipse.emf.common.util.EList%>&lt;&lt;%org.sheepy.lily.core.model.resolver.ILObjectResolver%>> _resolvers = this.getResolvers();&#xA;for (final &lt;%org.sheepy.lily.core.model.resolver.ILObjectResolver%> resolver : _resolvers)&#xA;{&#xA;&#x9;{&#xA;&#x9;&#x9;temp = course;&#xA;&#x9;&#x9;course = next;&#xA;&#x9;&#x9;next = temp;&#xA;&#x9;&#x9;while ((course.isEmpty() == false))&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;&#x9;final &lt;%org.sheepy.lily.core.model.root.LObject%> object = course.poll();&#xA;&#x9;&#x9;&#x9;&#x9;resolver.collectUnits(object, next);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;}&#xA;collected.addAll(next);"/>
+      </eAnnotations>
+      <eParameters name="source" unique="false" eType="ecore:EClass root.ecore#//LObject"/>
+      <eParameters name="collected" unique="false" eType="ecore:EDataType root.ecore#//LCollection"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resolvers" upperBound="-1"
+        eType="#//ILObjectResolver" containment="true" resolveProxies="false"/>
+  </eClassifiers>
+</ecore:EPackage>

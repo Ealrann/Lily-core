@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.ui.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -67,19 +66,13 @@ public class ButtonItemProvider extends AbstractButtonItemProvider
 	 */
 	protected void addShortcutPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Button_shortcut_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Button_shortcut_feature", "_UI_Button_type"),
-				 UiPackage.Literals.BUTTON__SHORTCUT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_Button_shortcut_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_Button_shortcut_feature",
+						"_UI_Button_type"),
+				UiPackage.Literals.BUTTON__SHORTCUT, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -90,19 +83,13 @@ public class ButtonItemProvider extends AbstractButtonItemProvider
 	 */
 	protected void addStatePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Button_state_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Button_state_feature", "_UI_Button_type"),
-				 UiPackage.Literals.BUTTON__STATE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_Button_state_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_Button_state_feature",
+						"_UI_Button_type"),
+				UiPackage.Literals.BUTTON__STATE, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -159,13 +146,12 @@ public class ButtonItemProvider extends AbstractButtonItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((Button)object).getContentObjects();
+		EList<LObject> labelValue = ((Button) object).getContentObjects();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Button_type") :
-			getString("_UI_Button_type") + " " + label;
+		return label == null || label.length() == 0
+				? getString("_UI_Button_type")
+				: getString("_UI_Button_type") + " " + label;
 	}
-
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -181,13 +167,15 @@ public class ButtonItemProvider extends AbstractButtonItemProvider
 
 		switch (notification.getFeatureID(Button.class))
 		{
-			case UiPackage.BUTTON__SHORTCUT:
-			case UiPackage.BUTTON__STATE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case UiPackage.BUTTON__ACTIONS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case UiPackage.BUTTON__SHORTCUT:
+		case UiPackage.BUTTON__STATE:
+			fireNotifyChanged(
+					new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		case UiPackage.BUTTON__ACTIONS:
+			fireNotifyChanged(
+					new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -204,10 +192,8 @@ public class ButtonItemProvider extends AbstractButtonItemProvider
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-				(UiPackage.Literals.BUTTON__ACTIONS,
-				 VariableFactory.eINSTANCE.createBooleanChangeAction()));
+		newChildDescriptors.add(createChildParameter(UiPackage.Literals.BUTTON__ACTIONS,
+				VariableFactory.eINSTANCE.createBooleanChangeAction()));
 	}
 
 }

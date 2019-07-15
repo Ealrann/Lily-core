@@ -26,10 +26,6 @@ public interface BooleanActionButton extends AbstractBooleanButton
 	/**
 	 * Returns the value of the '<em><b>Action When True</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Action When True</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Action When True</em>' containment reference.
 	 * @see #setActionWhenTrue(Action)
@@ -52,10 +48,6 @@ public interface BooleanActionButton extends AbstractBooleanButton
 	/**
 	 * Returns the value of the '<em><b>Action When False</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Action When False</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Action When False</em>' containment reference.
 	 * @see #setActionWhenFalse(Action)

@@ -8,11 +8,46 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.sheepy.lily.core.api.util.FeatureDefinition;
+
 import org.sheepy.lily.core.model.action.ActionPackage;
 
+import org.sheepy.lily.core.model.action.impl.ActionPackageImpl;
+
+import org.sheepy.lily.core.model.application.ApplicationPackage;
+
+import org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl;
+
+import org.sheepy.lily.core.model.inference.InferencePackage;
+
+import org.sheepy.lily.core.model.inference.impl.InferencePackageImpl;
+
+import org.sheepy.lily.core.model.maintainer.MaintainerPackage;
+
+import org.sheepy.lily.core.model.maintainer.impl.MaintainerPackageImpl;
+
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
+
+import org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl;
+
+import org.sheepy.lily.core.model.resolver.ResolverPackage;
+
+import org.sheepy.lily.core.model.resolver.impl.ResolverPackageImpl;
+
+import org.sheepy.lily.core.model.root.RootPackage;
+
+import org.sheepy.lily.core.model.root.impl.RootPackageImpl;
+
 import org.sheepy.lily.core.model.types.TypesPackage;
+
+import org.sheepy.lily.core.model.types.impl.TypesPackageImpl;
+
+import org.sheepy.lily.core.model.ui.UiPackage;
+
+import org.sheepy.lily.core.model.ui.impl.UiPackageImpl;
 
 import org.sheepy.lily.core.model.variable.AbstractVariableResolver;
 import org.sheepy.lily.core.model.variable.BooleanChangeAction;
@@ -152,24 +187,81 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 */
 	public static VariablePackage init()
 	{
-		if (isInited) return (VariablePackage)EPackage.Registry.INSTANCE.getEPackage(VariablePackage.eNS_URI);
+		if (isInited) return (VariablePackage) EPackage.Registry.INSTANCE
+				.getEPackage(VariablePackage.eNS_URI);
 
 		// Obtain or create and register package
 		Object registeredVariablePackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-		VariablePackageImpl theVariablePackage = registeredVariablePackage instanceof VariablePackageImpl ? (VariablePackageImpl)registeredVariablePackage : new VariablePackageImpl();
+		VariablePackageImpl theVariablePackage = registeredVariablePackage instanceof VariablePackageImpl
+				? (VariablePackageImpl) registeredVariablePackage
+				: new VariablePackageImpl();
 
 		isInited = true;
 
 		// Initialize simple dependencies
 		EcorePackage.eINSTANCE.eClass();
-		ActionPackage.eINSTANCE.eClass();
-		TypesPackage.eINSTANCE.eClass();
+
+		// Obtain or create and register interdependencies
+		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+		TypesPackageImpl theTypesPackage = (TypesPackageImpl) (registeredPackage instanceof TypesPackageImpl
+				? registeredPackage
+				: TypesPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
+		ActionPackageImpl theActionPackage = (ActionPackageImpl) (registeredPackage instanceof ActionPackageImpl
+				? registeredPackage
+				: ActionPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
+		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl) (registeredPackage instanceof ApplicationPackageImpl
+				? registeredPackage
+				: ApplicationPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(RootPackage.eNS_URI);
+		RootPackageImpl theRootPackage = (RootPackageImpl) (registeredPackage instanceof RootPackageImpl
+				? registeredPackage
+				: RootPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
+		InferencePackageImpl theInferencePackage = (InferencePackageImpl) (registeredPackage instanceof InferencePackageImpl
+				? registeredPackage
+				: InferencePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(MaintainerPackage.eNS_URI);
+		MaintainerPackageImpl theMaintainerPackage = (MaintainerPackageImpl) (registeredPackage instanceof MaintainerPackageImpl
+				? registeredPackage
+				: MaintainerPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(PresentationPackage.eNS_URI);
+		PresentationPackageImpl thePresentationPackage = (PresentationPackageImpl) (registeredPackage instanceof PresentationPackageImpl
+				? registeredPackage
+				: PresentationPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ResolverPackage.eNS_URI);
+		ResolverPackageImpl theResolverPackage = (ResolverPackageImpl) (registeredPackage instanceof ResolverPackageImpl
+				? registeredPackage
+				: ResolverPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(UiPackage.eNS_URI);
+		UiPackageImpl theUiPackage = (UiPackageImpl) (registeredPackage instanceof UiPackageImpl
+				? registeredPackage
+				: UiPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theVariablePackage.createPackageContents();
+		theTypesPackage.createPackageContents();
+		theActionPackage.createPackageContents();
+		theApplicationPackage.createPackageContents();
+		theRootPackage.createPackageContents();
+		theInferencePackage.createPackageContents();
+		theMaintainerPackage.createPackageContents();
+		thePresentationPackage.createPackageContents();
+		theResolverPackage.createPackageContents();
+		theUiPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theVariablePackage.initializePackageContents();
+		theTypesPackage.initializePackageContents();
+		theActionPackage.initializePackageContents();
+		theApplicationPackage.initializePackageContents();
+		theRootPackage.initializePackageContents();
+		theInferencePackage.initializePackageContents();
+		theMaintainerPackage.initializePackageContents();
+		thePresentationPackage.initializePackageContents();
+		theResolverPackage.initializePackageContents();
+		theUiPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theVariablePackage.freeze();
@@ -209,7 +301,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	@Override
 	public EAttribute getIDefinitionContainer_VariableDefinition()
 	{
-		return (EAttribute)iDefinitionContainerEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) iDefinitionContainerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -231,7 +323,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	@Override
 	public EReference getChainVariableResolver_FirstResolver()
 	{
-		return (EReference)chainVariableResolverEClass.getEStructuralFeatures().get(0);
+		return (EReference) chainVariableResolverEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -242,7 +334,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	@Override
 	public EReference getChainVariableResolver_SubResolvers()
 	{
-		return (EReference)chainVariableResolverEClass.getEStructuralFeatures().get(1);
+		return (EReference) chainVariableResolverEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -286,7 +378,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	@Override
 	public EReference getDirectVariableResolver_Target()
 	{
-		return (EReference)directVariableResolverEClass.getEStructuralFeatures().get(0);
+		return (EReference) directVariableResolverEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -308,7 +400,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	@Override
 	public EReference getVarChangeAction_VariableResolver()
 	{
-		return (EReference)varChangeActionEClass.getEStructuralFeatures().get(0);
+		return (EReference) varChangeActionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -341,7 +433,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	@Override
 	public EReference getVarChangeActionPkg_Actions()
 	{
-		return (EReference)varChangeActionPkgEClass.getEStructuralFeatures().get(0);
+		return (EReference) varChangeActionPkgEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -374,7 +466,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	@Override
 	public VariableFactory getVariableFactory()
 	{
-		return (VariableFactory)getEFactoryInstance();
+		return (VariableFactory) getEFactoryInstance();
 	}
 
 	/**
@@ -451,8 +543,10 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
-		ActionPackage theActionPackage = (ActionPackage)EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
+		EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE
+				.getEPackage(EcorePackage.eNS_URI);
+		ActionPackage theActionPackage = (ActionPackage) EPackage.Registry.INSTANCE
+				.getEPackage(ActionPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -468,34 +562,64 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		booleanChangeActionEClass.getESuperTypes().add(this.getVarChangeAction());
 		booleanChangeActionEClass.getESuperTypes().add(theActionPackage.getAction());
 
-		// Initialize classes, features, and operations; add parameters
-		initEClass(iVariableResolverEClass, IVariableResolver.class, "IVariableResolver", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		// Initialize classes and features; add operations and parameters
+		initEClass(iVariableResolverEClass, IVariableResolver.class, "IVariableResolver",
+				IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(iDefinitionContainerEClass, IDefinitionContainer.class, "IDefinitionContainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIDefinitionContainer_VariableDefinition(), this.getVariableDefinition(), "variableDefinition", null, 1, 1, IDefinitionContainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(iDefinitionContainerEClass, IDefinitionContainer.class, "IDefinitionContainer",
+				IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIDefinitionContainer_VariableDefinition(), this.getVariableDefinition(),
+				"variableDefinition", null, 1, 1, IDefinitionContainer.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
-		initEClass(chainVariableResolverEClass, ChainVariableResolver.class, "ChainVariableResolver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getChainVariableResolver_FirstResolver(), this.getIVariableResolver(), null, "firstResolver", null, 1, 1, ChainVariableResolver.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getChainVariableResolver_SubResolvers(), this.getChainResolver(), null, "subResolvers", null, 1, -1, ChainVariableResolver.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(chainVariableResolverEClass, ChainVariableResolver.class,
+				"ChainVariableResolver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getChainVariableResolver_FirstResolver(), this.getIVariableResolver(), null,
+				"firstResolver", null, 1, 1, ChainVariableResolver.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getChainVariableResolver_SubResolvers(), this.getChainResolver(), null,
+				"subResolvers", null, 1, -1, ChainVariableResolver.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(chainResolverEClass, ChainResolver.class, "ChainResolver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(chainResolverEClass, ChainResolver.class, "ChainResolver", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(abstractVariableResolverEClass, AbstractVariableResolver.class, "AbstractVariableResolver", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(abstractVariableResolverEClass, AbstractVariableResolver.class,
+				"AbstractVariableResolver", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(directVariableResolverEClass, DirectVariableResolver.class, "DirectVariableResolver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDirectVariableResolver_Target(), theEcorePackage.getEObject(), null, "target", null, 0, 1, DirectVariableResolver.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(directVariableResolverEClass, DirectVariableResolver.class,
+				"DirectVariableResolver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDirectVariableResolver_Target(), theEcorePackage.getEObject(), null,
+				"target", null, 0, 1, DirectVariableResolver.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
-		initEClass(varChangeActionEClass, VarChangeAction.class, "VarChangeAction", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getVarChangeAction_VariableResolver(), this.getAbstractVariableResolver(), null, "variableResolver", null, 0, 1, VarChangeAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(varChangeActionEClass, VarChangeAction.class, "VarChangeAction", IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getVarChangeAction_VariableResolver(), this.getAbstractVariableResolver(),
+				null, "variableResolver", null, 0, 1, VarChangeAction.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(booleanChangeActionEClass, BooleanChangeAction.class, "BooleanChangeAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(booleanChangeActionEClass, BooleanChangeAction.class, "BooleanChangeAction",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(varChangeActionPkgEClass, VarChangeActionPkg.class, "VarChangeActionPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getVarChangeActionPkg_Actions(), this.getVarChangeAction(), null, "actions", null, 0, -1, VarChangeActionPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(varChangeActionPkgEClass, VarChangeActionPkg.class, "VarChangeActionPkg",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getVarChangeActionPkg_Actions(), this.getVarChangeAction(), null, "actions",
+				null, 0, -1, VarChangeActionPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		// Initialize data types
-		initEDataType(lResolvedVariableFeatureEDataType, FeatureDefinition.class, "LResolvedVariableFeature", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(variableDefinitionEDataType, String.class, "VariableDefinition", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(lResolvedVariableFeatureEDataType, FeatureDefinition.class,
+				"LResolvedVariableFeature", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(variableDefinitionEDataType, String.class, "VariableDefinition",
+				IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

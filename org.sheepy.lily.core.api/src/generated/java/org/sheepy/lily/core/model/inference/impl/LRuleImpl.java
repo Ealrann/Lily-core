@@ -109,14 +109,17 @@ public class LRuleImpl extends MinimalEObjectImpl.Container implements LRule
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetNotification(AbstractNotification newNotification, NotificationChain msgs)
+	public NotificationChain basicSetNotification(	AbstractNotification newNotification,
+													NotificationChain msgs)
 	{
 		AbstractNotification oldNotification = notification;
 		notification = newNotification;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, InferencePackage.LRULE__NOTIFICATION, oldNotification, newNotification);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					InferencePackage.LRULE__NOTIFICATION, oldNotification, newNotification);
+			if (msgs == null) msgs = notification;
+			else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -132,15 +135,16 @@ public class LRuleImpl extends MinimalEObjectImpl.Container implements LRule
 		if (newNotification != notification)
 		{
 			NotificationChain msgs = null;
-			if (notification != null)
-				msgs = ((InternalEObject)notification).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - InferencePackage.LRULE__NOTIFICATION, null, msgs);
+			if (notification != null) msgs = ((InternalEObject) notification).eInverseRemove(this,
+					EOPPOSITE_FEATURE_BASE - InferencePackage.LRULE__NOTIFICATION, null, msgs);
 			if (newNotification != null)
-				msgs = ((InternalEObject)newNotification).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - InferencePackage.LRULE__NOTIFICATION, null, msgs);
+				msgs = ((InternalEObject) newNotification).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - InferencePackage.LRULE__NOTIFICATION, null, msgs);
 			msgs = basicSetNotification(newNotification, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InferencePackage.LRULE__NOTIFICATION, newNotification, newNotification));
+		else if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
+				InferencePackage.LRULE__NOTIFICATION, newNotification, newNotification));
 	}
 
 	/**
@@ -153,12 +157,12 @@ public class LRuleImpl extends MinimalEObjectImpl.Container implements LRule
 	{
 		if (action != null && action.eIsProxy())
 		{
-			InternalEObject oldAction = (InternalEObject)action;
-			action = (Action)eResolveProxy(oldAction);
+			InternalEObject oldAction = (InternalEObject) action;
+			action = (Action) eResolveProxy(oldAction);
 			if (action != oldAction)
 			{
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, InferencePackage.LRULE__ACTION, oldAction, action));
+				if (eNotificationRequired()) eNotify(new ENotificationImpl(this,
+						Notification.RESOLVE, InferencePackage.LRULE__ACTION, oldAction, action));
 			}
 		}
 		return action;
@@ -184,8 +188,8 @@ public class LRuleImpl extends MinimalEObjectImpl.Container implements LRule
 	{
 		Action oldAction = action;
 		action = newAction;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, InferencePackage.LRULE__ACTION, oldAction, action));
+		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
+				InferencePackage.LRULE__ACTION, oldAction, action));
 	}
 
 	/**
@@ -198,7 +202,8 @@ public class LRuleImpl extends MinimalEObjectImpl.Container implements LRule
 	{
 		if (conditions == null)
 		{
-			conditions = new EObjectContainmentEList<Condition<?>>(Condition.class, this, InferencePackage.LRULE__CONDITIONS);
+			conditions = new EObjectContainmentEList<Condition<?>>(Condition.class, this,
+					InferencePackage.LRULE__CONDITIONS);
 		}
 		return conditions;
 	}
@@ -209,14 +214,16 @@ public class LRuleImpl extends MinimalEObjectImpl.Container implements LRule
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+											int featureID,
+											NotificationChain msgs)
 	{
 		switch (featureID)
 		{
-			case InferencePackage.LRULE__NOTIFICATION:
-				return basicSetNotification(null, msgs);
-			case InferencePackage.LRULE__CONDITIONS:
-				return ((InternalEList<?>)getConditions()).basicRemove(otherEnd, msgs);
+		case InferencePackage.LRULE__NOTIFICATION:
+			return basicSetNotification(null, msgs);
+		case InferencePackage.LRULE__CONDITIONS:
+			return ((InternalEList<?>) getConditions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -231,13 +238,13 @@ public class LRuleImpl extends MinimalEObjectImpl.Container implements LRule
 	{
 		switch (featureID)
 		{
-			case InferencePackage.LRULE__NOTIFICATION:
-				return getNotification();
-			case InferencePackage.LRULE__ACTION:
-				if (resolve) return getAction();
-				return basicGetAction();
-			case InferencePackage.LRULE__CONDITIONS:
-				return getConditions();
+		case InferencePackage.LRULE__NOTIFICATION:
+			return getNotification();
+		case InferencePackage.LRULE__ACTION:
+			if (resolve) return getAction();
+			return basicGetAction();
+		case InferencePackage.LRULE__CONDITIONS:
+			return getConditions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -253,16 +260,16 @@ public class LRuleImpl extends MinimalEObjectImpl.Container implements LRule
 	{
 		switch (featureID)
 		{
-			case InferencePackage.LRULE__NOTIFICATION:
-				setNotification((AbstractNotification)newValue);
-				return;
-			case InferencePackage.LRULE__ACTION:
-				setAction((Action)newValue);
-				return;
-			case InferencePackage.LRULE__CONDITIONS:
-				getConditions().clear();
-				getConditions().addAll((Collection<? extends Condition<?>>)newValue);
-				return;
+		case InferencePackage.LRULE__NOTIFICATION:
+			setNotification((AbstractNotification) newValue);
+			return;
+		case InferencePackage.LRULE__ACTION:
+			setAction((Action) newValue);
+			return;
+		case InferencePackage.LRULE__CONDITIONS:
+			getConditions().clear();
+			getConditions().addAll((Collection<? extends Condition<?>>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -277,15 +284,15 @@ public class LRuleImpl extends MinimalEObjectImpl.Container implements LRule
 	{
 		switch (featureID)
 		{
-			case InferencePackage.LRULE__NOTIFICATION:
-				setNotification((AbstractNotification)null);
-				return;
-			case InferencePackage.LRULE__ACTION:
-				setAction((Action)null);
-				return;
-			case InferencePackage.LRULE__CONDITIONS:
-				getConditions().clear();
-				return;
+		case InferencePackage.LRULE__NOTIFICATION:
+			setNotification((AbstractNotification) null);
+			return;
+		case InferencePackage.LRULE__ACTION:
+			setAction((Action) null);
+			return;
+		case InferencePackage.LRULE__CONDITIONS:
+			getConditions().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -300,12 +307,12 @@ public class LRuleImpl extends MinimalEObjectImpl.Container implements LRule
 	{
 		switch (featureID)
 		{
-			case InferencePackage.LRULE__NOTIFICATION:
-				return notification != null;
-			case InferencePackage.LRULE__ACTION:
-				return action != null;
-			case InferencePackage.LRULE__CONDITIONS:
-				return conditions != null && !conditions.isEmpty();
+		case InferencePackage.LRULE__NOTIFICATION:
+			return notification != null;
+		case InferencePackage.LRULE__ACTION:
+			return action != null;
+		case InferencePackage.LRULE__CONDITIONS:
+			return conditions != null && !conditions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

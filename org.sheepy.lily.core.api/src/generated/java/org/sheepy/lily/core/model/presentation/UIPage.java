@@ -26,10 +26,6 @@ public interface UIPage extends ISizedElement
 	 * Returns the value of the '<em><b>Panels</b></em>' containment reference list.
 	 * The list contents are of type {@link org.sheepy.lily.core.model.presentation.IPanel}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Panels</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Panels</em>' containment reference list.
 	 * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getUIPage_Panels()

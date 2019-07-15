@@ -10,13 +10,16 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import org.sheepy.lily.core.model.inference.IInferenceObject;
+
 import org.sheepy.lily.core.model.presentation.IPanel;
 import org.sheepy.lily.core.model.presentation.IPositionElement;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
 import org.sheepy.lily.core.model.presentation.IUIElement;
+
 import org.sheepy.lily.core.model.root.LObject;
 
 import org.sheepy.lily.core.model.types.LNamedElement;
+
 import org.sheepy.lily.core.model.ui.*;
 
 /**
@@ -68,7 +71,7 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 		}
 		if (object instanceof EObject)
 		{
-			return ((EObject)object).eClass().getEPackage() == modelPackage;
+			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -79,120 +82,119 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected UiSwitch<Adapter> modelSwitch =
-		new UiSwitch<Adapter>()
+	protected UiSwitch<Adapter> modelSwitch = new UiSwitch<Adapter>()
+	{
+		@Override
+		public Adapter casePanel(Panel object)
 		{
-			@Override
-			public Adapter casePanel(Panel object)
-			{
-				return createPanelAdapter();
-			}
-			@Override
-			public Adapter caseIControl(IControl object)
-			{
-				return createIControlAdapter();
-			}
-			@Override
-			public Adapter caseWidget(Widget object)
-			{
-				return createWidgetAdapter();
-			}
-			@Override
-			public Adapter caseAbstractLabel(AbstractLabel object)
-			{
-				return createAbstractLabelAdapter();
-			}
-			@Override
-			public Adapter caseDynamicRowLayout(DynamicRowLayout object)
-			{
-				return createDynamicRowLayoutAdapter();
-			}
-			@Override
-			public Adapter caseVariableLabel(VariableLabel object)
-			{
-				return createVariableLabelAdapter();
-			}
-			@Override
-			public Adapter caseLabel(Label object)
-			{
-				return createLabelAdapter();
-			}
-			@Override
-			public Adapter caseSlider(Slider object)
-			{
-				return createSliderAdapter();
-			}
-			@Override
-			public Adapter caseTextField(TextField object)
-			{
-				return createTextFieldAdapter();
-			}
-			@Override
-			public Adapter caseAbstractButton(AbstractButton object)
-			{
-				return createAbstractButtonAdapter();
-			}
-			@Override
-			public Adapter caseButton(Button object)
-			{
-				return createButtonAdapter();
-			}
-			@Override
-			public Adapter caseAbstractBooleanButton(AbstractBooleanButton object)
-			{
-				return createAbstractBooleanButtonAdapter();
-			}
-			@Override
-			public Adapter caseBooleanButton(BooleanButton object)
-			{
-				return createBooleanButtonAdapter();
-			}
-			@Override
-			public Adapter caseBooleanActionButton(BooleanActionButton object)
-			{
-				return createBooleanActionButtonAdapter();
-			}
-			@Override
-			public Adapter caseLNamedElement(LNamedElement object)
-			{
-				return createLNamedElementAdapter();
-			}
-			@Override
-			public Adapter caseIInferenceObject(IInferenceObject object)
-			{
-				return createIInferenceObjectAdapter();
-			}
-			@Override
-			public Adapter caseLObject(LObject object)
-			{
-				return createLObjectAdapter();
-			}
-			@Override
-			public Adapter caseIUIElement(IUIElement object)
-			{
-				return createIUIElementAdapter();
-			}
-			@Override
-			public Adapter caseIPositionElement(IPositionElement object)
-			{
-				return createIPositionElementAdapter();
-			}
-			@Override
-			public Adapter caseIPanel(IPanel object)
-			{
-				return createIPanelAdapter();
-			}
-			@Override
-			public Adapter caseISizedElement(ISizedElement object)
-			{
-				return createISizedElementAdapter();
-			}
-			@Override
-			public Adapter defaultCase(EObject object)
-			{
-				return createEObjectAdapter();
-			}
-		};
+			return createPanelAdapter();
+		}
+		@Override
+		public Adapter caseIControl(IControl object)
+		{
+			return createIControlAdapter();
+		}
+		@Override
+		public Adapter caseWidget(Widget object)
+		{
+			return createWidgetAdapter();
+		}
+		@Override
+		public Adapter caseAbstractLabel(AbstractLabel object)
+		{
+			return createAbstractLabelAdapter();
+		}
+		@Override
+		public Adapter caseDynamicRowLayout(DynamicRowLayout object)
+		{
+			return createDynamicRowLayoutAdapter();
+		}
+		@Override
+		public Adapter caseVariableLabel(VariableLabel object)
+		{
+			return createVariableLabelAdapter();
+		}
+		@Override
+		public Adapter caseLabel(Label object)
+		{
+			return createLabelAdapter();
+		}
+		@Override
+		public Adapter caseSlider(Slider object)
+		{
+			return createSliderAdapter();
+		}
+		@Override
+		public Adapter caseTextField(TextField object)
+		{
+			return createTextFieldAdapter();
+		}
+		@Override
+		public Adapter caseAbstractButton(AbstractButton object)
+		{
+			return createAbstractButtonAdapter();
+		}
+		@Override
+		public Adapter caseButton(Button object)
+		{
+			return createButtonAdapter();
+		}
+		@Override
+		public Adapter caseAbstractBooleanButton(AbstractBooleanButton object)
+		{
+			return createAbstractBooleanButtonAdapter();
+		}
+		@Override
+		public Adapter caseBooleanButton(BooleanButton object)
+		{
+			return createBooleanButtonAdapter();
+		}
+		@Override
+		public Adapter caseBooleanActionButton(BooleanActionButton object)
+		{
+			return createBooleanActionButtonAdapter();
+		}
+		@Override
+		public Adapter caseLNamedElement(LNamedElement object)
+		{
+			return createLNamedElementAdapter();
+		}
+		@Override
+		public Adapter caseIInferenceObject(IInferenceObject object)
+		{
+			return createIInferenceObjectAdapter();
+		}
+		@Override
+		public Adapter caseLObject(LObject object)
+		{
+			return createLObjectAdapter();
+		}
+		@Override
+		public Adapter caseIUIElement(IUIElement object)
+		{
+			return createIUIElementAdapter();
+		}
+		@Override
+		public Adapter caseIPositionElement(IPositionElement object)
+		{
+			return createIPositionElementAdapter();
+		}
+		@Override
+		public Adapter caseIPanel(IPanel object)
+		{
+			return createIPanelAdapter();
+		}
+		@Override
+		public Adapter caseISizedElement(ISizedElement object)
+		{
+			return createISizedElementAdapter();
+		}
+		@Override
+		public Adapter defaultCase(EObject object)
+		{
+			return createEObjectAdapter();
+		}
+	};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -205,9 +207,8 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	@Override
 	public Adapter createAdapter(Notifier target)
 	{
-		return modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject) target);
 	}
-
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.Panel <em>Panel</em>}'.
@@ -220,6 +221,36 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createPanelAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.IControl <em>IControl</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.ui.IControl
+	 * @generated
+	 */
+	public Adapter createIControlAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.Widget <em>Widget</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.ui.Widget
+	 * @generated
+	 */
+	public Adapter createWidgetAdapter()
 	{
 		return null;
 	}
@@ -465,21 +496,6 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.IControl <em>IControl</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.sheepy.lily.core.model.ui.IControl
-	 * @generated
-	 */
-	public Adapter createIControlAdapter()
-	{
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.presentation.IPanel <em>IPanel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -505,21 +521,6 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createISizedElementAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.Widget <em>Widget</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.sheepy.lily.core.model.ui.Widget
-	 * @generated
-	 */
-	public Adapter createWidgetAdapter()
 	{
 		return null;
 	}

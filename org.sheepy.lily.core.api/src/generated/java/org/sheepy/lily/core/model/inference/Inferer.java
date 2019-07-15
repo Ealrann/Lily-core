@@ -31,10 +31,6 @@ public interface Inferer extends IInferenceObject
 	 * Returns the value of the '<em><b>Rules</b></em>' containment reference list.
 	 * The list contents are of type {@link org.sheepy.lily.core.model.inference.LRule}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Rules</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Rules</em>' containment reference list.
 	 * @see org.sheepy.lily.core.model.inference.InferencePackage#getInferer_Rules()

@@ -72,72 +72,73 @@ public class TypesSwitch<T1> extends Switch<T1>
 	{
 		switch (classifierID)
 		{
-			case TypesPackage.LNAMED_ELEMENT:
-			{
-				LNamedElement lNamedElement = (LNamedElement)theEObject;
-				T1 result = caseLNamedElement(lNamedElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case TypesPackage.PARAMETER:
-			{
-				Parameter parameter = (Parameter)theEObject;
-				T1 result = caseParameter(parameter);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case TypesPackage.POSITION_PARAMETER:
-			{
-				PositionParameter positionParameter = (PositionParameter)theEObject;
-				T1 result = casePositionParameter(positionParameter);
-				if (result == null) result = caseParameter(positionParameter);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case TypesPackage.POSITION_FPARAMETER:
-			{
-				PositionFParameter positionFParameter = (PositionFParameter)theEObject;
-				T1 result = casePositionFParameter(positionFParameter);
-				if (result == null) result = caseParameter(positionFParameter);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case TypesPackage.NATIVE_PARAMETER:
-			{
-				NativeParameter<?> nativeParameter = (NativeParameter<?>)theEObject;
-				T1 result = caseNativeParameter(nativeParameter);
-				if (result == null) result = caseParameter(nativeParameter);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case TypesPackage.FLOAT_PARAMETER:
-			{
-				FloatParameter floatParameter = (FloatParameter)theEObject;
-				T1 result = caseFloatParameter(floatParameter);
-				if (result == null) result = caseNativeParameter(floatParameter);
-				if (result == null) result = caseParameter(floatParameter);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case TypesPackage.STRING_PARAMETER:
-			{
-				StringParameter stringParameter = (StringParameter)theEObject;
-				T1 result = caseStringParameter(stringParameter);
-				if (result == null) result = caseNativeParameter(stringParameter);
-				if (result == null) result = caseParameter(stringParameter);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case TypesPackage.BOOLEAN_PARAMETER:
-			{
-				BooleanParameter booleanParameter = (BooleanParameter)theEObject;
-				T1 result = caseBooleanParameter(booleanParameter);
-				if (result == null) result = caseNativeParameter(booleanParameter);
-				if (result == null) result = caseParameter(booleanParameter);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			default: return defaultCase(theEObject);
+		case TypesPackage.LNAMED_ELEMENT:
+		{
+			LNamedElement lNamedElement = (LNamedElement) theEObject;
+			T1 result = caseLNamedElement(lNamedElement);
+			if (result == null) result = defaultCase(theEObject);
+			return result;
+		}
+		case TypesPackage.PARAMETER:
+		{
+			Parameter parameter = (Parameter) theEObject;
+			T1 result = caseParameter(parameter);
+			if (result == null) result = defaultCase(theEObject);
+			return result;
+		}
+		case TypesPackage.POSITION_PARAMETER:
+		{
+			PositionParameter positionParameter = (PositionParameter) theEObject;
+			T1 result = casePositionParameter(positionParameter);
+			if (result == null) result = caseParameter(positionParameter);
+			if (result == null) result = defaultCase(theEObject);
+			return result;
+		}
+		case TypesPackage.POSITION_FPARAMETER:
+		{
+			PositionFParameter positionFParameter = (PositionFParameter) theEObject;
+			T1 result = casePositionFParameter(positionFParameter);
+			if (result == null) result = caseParameter(positionFParameter);
+			if (result == null) result = defaultCase(theEObject);
+			return result;
+		}
+		case TypesPackage.NATIVE_PARAMETER:
+		{
+			NativeParameter<?> nativeParameter = (NativeParameter<?>) theEObject;
+			T1 result = caseNativeParameter(nativeParameter);
+			if (result == null) result = caseParameter(nativeParameter);
+			if (result == null) result = defaultCase(theEObject);
+			return result;
+		}
+		case TypesPackage.FLOAT_PARAMETER:
+		{
+			FloatParameter floatParameter = (FloatParameter) theEObject;
+			T1 result = caseFloatParameter(floatParameter);
+			if (result == null) result = caseNativeParameter(floatParameter);
+			if (result == null) result = caseParameter(floatParameter);
+			if (result == null) result = defaultCase(theEObject);
+			return result;
+		}
+		case TypesPackage.STRING_PARAMETER:
+		{
+			StringParameter stringParameter = (StringParameter) theEObject;
+			T1 result = caseStringParameter(stringParameter);
+			if (result == null) result = caseNativeParameter(stringParameter);
+			if (result == null) result = caseParameter(stringParameter);
+			if (result == null) result = defaultCase(theEObject);
+			return result;
+		}
+		case TypesPackage.BOOLEAN_PARAMETER:
+		{
+			BooleanParameter booleanParameter = (BooleanParameter) theEObject;
+			T1 result = caseBooleanParameter(booleanParameter);
+			if (result == null) result = caseNativeParameter(booleanParameter);
+			if (result == null) result = caseParameter(booleanParameter);
+			if (result == null) result = defaultCase(theEObject);
+			return result;
+		}
+		default:
+			return defaultCase(theEObject);
 		}
 	}
 

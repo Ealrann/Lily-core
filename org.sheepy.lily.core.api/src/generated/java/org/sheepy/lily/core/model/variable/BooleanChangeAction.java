@@ -15,5 +15,4 @@ import org.sheepy.lily.core.model.action.Action;
  * @generated
  */
 public interface BooleanChangeAction extends VarChangeAction, Action
-{
-} // BooleanChangeAction
+{} // BooleanChangeAction

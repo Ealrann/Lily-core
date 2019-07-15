@@ -62,10 +62,6 @@ public enum ETimeUnit implements Enumerator
 	/**
 	 * The '<em><b>MILLISECOND</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>MILLISECOND</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MILLISECOND
 	 * @model
@@ -77,10 +73,6 @@ public enum ETimeUnit implements Enumerator
 	/**
 	 * The '<em><b>SECOND</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>SECOND</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SECOND
 	 * @model
@@ -92,10 +84,6 @@ public enum ETimeUnit implements Enumerator
 	/**
 	 * The '<em><b>MINUTE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>MINUTE</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MINUTE
 	 * @model
@@ -107,10 +95,6 @@ public enum ETimeUnit implements Enumerator
 	/**
 	 * The '<em><b>HOUR</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>HOUR</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #HOUR
 	 * @model
@@ -125,14 +109,9 @@ public enum ETimeUnit implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ETimeUnit[] VALUES_ARRAY =
-		new ETimeUnit[]
-		{
-			MILLISECOND,
-			SECOND,
-			MINUTE,
-			HOUR,
-		};
+	private static final ETimeUnit[] VALUES_ARRAY = new ETimeUnit[] {
+			MILLISECOND, SECOND, MINUTE, HOUR,
+	};
 
 	/**
 	 * A public read-only list of all the '<em><b>ETime Unit</b></em>' enumerators.
@@ -140,7 +119,8 @@ public enum ETimeUnit implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<ETimeUnit> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ETimeUnit> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>ETime Unit</b></em>' literal with the specified literal value.
@@ -196,7 +176,8 @@ public enum ETimeUnit implements Enumerator
 	{
 		switch (value)
 		{
-			case MILLISECOND_VALUE: return MILLISECOND;
+		case MILLISECOND_VALUE:
+			return MILLISECOND;
 		}
 		return null;
 	}
@@ -243,7 +224,7 @@ public enum ETimeUnit implements Enumerator
 	@Override
 	public int getValue()
 	{
-	  return value;
+		return value;
 	}
 
 	/**
@@ -254,7 +235,7 @@ public enum ETimeUnit implements Enumerator
 	@Override
 	public String getName()
 	{
-	  return name;
+		return name;
 	}
 
 	/**
@@ -265,7 +246,7 @@ public enum ETimeUnit implements Enumerator
 	@Override
 	public String getLiteral()
 	{
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -279,5 +260,5 @@ public enum ETimeUnit implements Enumerator
 	{
 		return literal;
 	}
-	
+
 } //ETimeUnit

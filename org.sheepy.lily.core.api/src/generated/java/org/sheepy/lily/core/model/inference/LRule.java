@@ -31,10 +31,6 @@ public interface LRule extends EObject
 	/**
 	 * Returns the value of the '<em><b>Notification</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Notification</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Notification</em>' containment reference.
 	 * @see #setNotification(AbstractNotification)
@@ -57,10 +53,6 @@ public interface LRule extends EObject
 	/**
 	 * Returns the value of the '<em><b>Action</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Action</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Action</em>' reference.
 	 * @see #setAction(Action)
@@ -84,10 +76,6 @@ public interface LRule extends EObject
 	 * Returns the value of the '<em><b>Conditions</b></em>' containment reference list.
 	 * The list contents are of type {@link org.sheepy.lily.core.model.inference.Condition}<code>&lt;?&gt;</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Conditions</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Conditions</em>' containment reference list.
 	 * @see org.sheepy.lily.core.model.inference.InferencePackage#getLRule_Conditions()

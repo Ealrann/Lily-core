@@ -52,10 +52,6 @@ public enum EHorizontalRelative implements Enumerator
 	/**
 	 * The '<em><b>LEFT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>LEFT</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #LEFT
 	 * @model
@@ -67,10 +63,6 @@ public enum EHorizontalRelative implements Enumerator
 	/**
 	 * The '<em><b>MIDDLE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>MIDDLE</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MIDDLE
 	 * @model
@@ -82,10 +74,6 @@ public enum EHorizontalRelative implements Enumerator
 	/**
 	 * The '<em><b>RIGHT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>RIGHT</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #RIGHT
 	 * @model
@@ -100,13 +88,9 @@ public enum EHorizontalRelative implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final EHorizontalRelative[] VALUES_ARRAY =
-		new EHorizontalRelative[]
-		{
-			LEFT,
-			MIDDLE,
-			RIGHT,
-		};
+	private static final EHorizontalRelative[] VALUES_ARRAY = new EHorizontalRelative[] {
+			LEFT, MIDDLE, RIGHT,
+	};
 
 	/**
 	 * A public read-only list of all the '<em><b>EHorizontal Relative</b></em>' enumerators.
@@ -114,7 +98,8 @@ public enum EHorizontalRelative implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<EHorizontalRelative> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<EHorizontalRelative> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>EHorizontal Relative</b></em>' literal with the specified literal value.
@@ -170,7 +155,8 @@ public enum EHorizontalRelative implements Enumerator
 	{
 		switch (value)
 		{
-			case LEFT_VALUE: return LEFT;
+		case LEFT_VALUE:
+			return LEFT;
 		}
 		return null;
 	}
@@ -217,7 +203,7 @@ public enum EHorizontalRelative implements Enumerator
 	@Override
 	public int getValue()
 	{
-	  return value;
+		return value;
 	}
 
 	/**
@@ -228,7 +214,7 @@ public enum EHorizontalRelative implements Enumerator
 	@Override
 	public String getName()
 	{
-	  return name;
+		return name;
 	}
 
 	/**
@@ -239,7 +225,7 @@ public enum EHorizontalRelative implements Enumerator
 	@Override
 	public String getLiteral()
 	{
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -253,5 +239,5 @@ public enum EHorizontalRelative implements Enumerator
 	{
 		return literal;
 	}
-	
+
 } //EHorizontalRelative

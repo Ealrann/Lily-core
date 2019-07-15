@@ -16,5 +16,4 @@ import org.sheepy.lily.core.model.presentation.IUIElement;
  * @generated
  */
 public interface Widget extends IControl, IUIElement, ISizedElement
-{
-} // Widget
+{} // Widget

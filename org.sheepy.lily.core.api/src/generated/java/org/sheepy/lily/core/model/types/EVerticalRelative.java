@@ -52,10 +52,6 @@ public enum EVerticalRelative implements Enumerator
 	/**
 	 * The '<em><b>BOTTOM</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>BOTTOM</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #BOTTOM
 	 * @model
@@ -67,10 +63,6 @@ public enum EVerticalRelative implements Enumerator
 	/**
 	 * The '<em><b>MIDDLE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>MIDDLE</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MIDDLE
 	 * @model
@@ -82,10 +74,6 @@ public enum EVerticalRelative implements Enumerator
 	/**
 	 * The '<em><b>TOP</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>TOP</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #TOP
 	 * @model
@@ -100,13 +88,9 @@ public enum EVerticalRelative implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final EVerticalRelative[] VALUES_ARRAY =
-		new EVerticalRelative[]
-		{
-			BOTTOM,
-			MIDDLE,
-			TOP,
-		};
+	private static final EVerticalRelative[] VALUES_ARRAY = new EVerticalRelative[] {
+			BOTTOM, MIDDLE, TOP,
+	};
 
 	/**
 	 * A public read-only list of all the '<em><b>EVertical Relative</b></em>' enumerators.
@@ -114,7 +98,8 @@ public enum EVerticalRelative implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<EVerticalRelative> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<EVerticalRelative> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>EVertical Relative</b></em>' literal with the specified literal value.
@@ -170,7 +155,8 @@ public enum EVerticalRelative implements Enumerator
 	{
 		switch (value)
 		{
-			case BOTTOM_VALUE: return BOTTOM;
+		case BOTTOM_VALUE:
+			return BOTTOM;
 		}
 		return null;
 	}
@@ -217,7 +203,7 @@ public enum EVerticalRelative implements Enumerator
 	@Override
 	public int getValue()
 	{
-	  return value;
+		return value;
 	}
 
 	/**
@@ -228,7 +214,7 @@ public enum EVerticalRelative implements Enumerator
 	@Override
 	public String getName()
 	{
-	  return name;
+		return name;
 	}
 
 	/**
@@ -239,7 +225,7 @@ public enum EVerticalRelative implements Enumerator
 	@Override
 	public String getLiteral()
 	{
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -253,5 +239,5 @@ public enum EVerticalRelative implements Enumerator
 	{
 		return literal;
 	}
-	
+
 } //EVerticalRelative

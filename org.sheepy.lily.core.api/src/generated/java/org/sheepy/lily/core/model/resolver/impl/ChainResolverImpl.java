@@ -2,8 +2,6 @@
  */
 package org.sheepy.lily.core.model.resolver.impl;
 
-import java.lang.reflect.InvocationTargetException;
-
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Deque;
@@ -56,7 +54,7 @@ public class ChainResolverImpl extends MinimalEObjectImpl.Container implements C
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ChainResolverImpl()
+	protected ChainResolverImpl()
 	{
 		super();
 	}
@@ -82,7 +80,8 @@ public class ChainResolverImpl extends MinimalEObjectImpl.Container implements C
 	{
 		if (resolvers == null)
 		{
-			resolvers = new EObjectContainmentEList<ILObjectResolver>(ILObjectResolver.class, this, ResolverPackage.CHAIN_RESOLVER__RESOLVERS);
+			resolvers = new EObjectContainmentEList<ILObjectResolver>(ILObjectResolver.class, this,
+					ResolverPackage.CHAIN_RESOLVER__RESOLVERS);
 		}
 		return resolvers;
 	}
@@ -124,12 +123,14 @@ public class ChainResolverImpl extends MinimalEObjectImpl.Container implements C
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+											int featureID,
+											NotificationChain msgs)
 	{
 		switch (featureID)
 		{
-			case ResolverPackage.CHAIN_RESOLVER__RESOLVERS:
-				return ((InternalEList<?>)getResolvers()).basicRemove(otherEnd, msgs);
+		case ResolverPackage.CHAIN_RESOLVER__RESOLVERS:
+			return ((InternalEList<?>) getResolvers()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -144,8 +145,8 @@ public class ChainResolverImpl extends MinimalEObjectImpl.Container implements C
 	{
 		switch (featureID)
 		{
-			case ResolverPackage.CHAIN_RESOLVER__RESOLVERS:
-				return getResolvers();
+		case ResolverPackage.CHAIN_RESOLVER__RESOLVERS:
+			return getResolvers();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -161,10 +162,10 @@ public class ChainResolverImpl extends MinimalEObjectImpl.Container implements C
 	{
 		switch (featureID)
 		{
-			case ResolverPackage.CHAIN_RESOLVER__RESOLVERS:
-				getResolvers().clear();
-				getResolvers().addAll((Collection<? extends ILObjectResolver>)newValue);
-				return;
+		case ResolverPackage.CHAIN_RESOLVER__RESOLVERS:
+			getResolvers().clear();
+			getResolvers().addAll((Collection<? extends ILObjectResolver>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -179,9 +180,9 @@ public class ChainResolverImpl extends MinimalEObjectImpl.Container implements C
 	{
 		switch (featureID)
 		{
-			case ResolverPackage.CHAIN_RESOLVER__RESOLVERS:
-				getResolvers().clear();
-				return;
+		case ResolverPackage.CHAIN_RESOLVER__RESOLVERS:
+			getResolvers().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -196,28 +197,10 @@ public class ChainResolverImpl extends MinimalEObjectImpl.Container implements C
 	{
 		switch (featureID)
 		{
-			case ResolverPackage.CHAIN_RESOLVER__RESOLVERS:
-				return resolvers != null && !resolvers.isEmpty();
+		case ResolverPackage.CHAIN_RESOLVER__RESOLVERS:
+			return resolvers != null && !resolvers.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	@SuppressWarnings("unchecked")
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
-	{
-		switch (operationID)
-		{
-			case ResolverPackage.CHAIN_RESOLVER___COLLECT_UNITS__LOBJECT_COLLECTION:
-				collectUnits((LObject)arguments.get(0), (Collection<LObject>)arguments.get(1));
-				return null;
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 } //ChainResolverImpl

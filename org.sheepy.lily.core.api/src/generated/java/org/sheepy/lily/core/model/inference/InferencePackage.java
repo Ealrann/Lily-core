@@ -3,7 +3,6 @@
 package org.sheepy.lily.core.model.inference;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -55,7 +54,8 @@ public interface InferencePackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	InferencePackage eINSTANCE = org.sheepy.lily.core.model.inference.impl.InferencePackageImpl.init();
+	InferencePackage eINSTANCE = org.sheepy.lily.core.model.inference.impl.InferencePackageImpl
+			.init();
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.inference.IInferenceObject <em>IInference Object</em>}' class.
@@ -75,24 +75,6 @@ public interface InferencePackage extends EPackage
 	 * @ordered
 	 */
 	int IINFERENCE_OBJECT_FEATURE_COUNT = 0;
-
-	/**
-	 * The operation id for the '<em>LInference Object</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IINFERENCE_OBJECT___LINFERENCE_OBJECT = 0;
-
-	/**
-	 * The number of operations of the '<em>IInference Object</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IINFERENCE_OBJECT_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.inference.impl.InfererImpl <em>Inferer</em>}' class.
@@ -123,33 +105,6 @@ public interface InferencePackage extends EPackage
 	int INFERER_FEATURE_COUNT = IINFERENCE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>LInference Object</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INFERER___LINFERENCE_OBJECT = IINFERENCE_OBJECT___LINFERENCE_OBJECT;
-
-	/**
-	 * The operation id for the '<em>LExecutor</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INFERER___LEXECUTOR = IINFERENCE_OBJECT_OPERATION_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Inferer</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INFERER_OPERATION_COUNT = IINFERENCE_OBJECT_OPERATION_COUNT + 1;
-
-	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.inference.impl.SensorImpl <em>Sensor</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -167,24 +122,6 @@ public interface InferencePackage extends EPackage
 	 * @ordered
 	 */
 	int SENSOR_FEATURE_COUNT = IINFERENCE_OBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>LInference Object</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SENSOR___LINFERENCE_OBJECT = IINFERENCE_OBJECT___LINFERENCE_OBJECT;
-
-	/**
-	 * The number of operations of the '<em>Sensor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SENSOR_OPERATION_COUNT = IINFERENCE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.inference.impl.LRuleImpl <em>LRule</em>}' class.
@@ -233,15 +170,6 @@ public interface InferencePackage extends EPackage
 	int LRULE_FEATURE_COUNT = 3;
 
 	/**
-	 * The number of operations of the '<em>LRule</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LRULE_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.inference.impl.AbstractNotificationImpl <em>Abstract Notification</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -259,24 +187,6 @@ public interface InferencePackage extends EPackage
 	 * @ordered
 	 */
 	int ABSTRACT_NOTIFICATION_FEATURE_COUNT = 0;
-
-	/**
-	 * The operation id for the '<em>Match</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_NOTIFICATION___MATCH__ABSTRACTNOTIFICATION = 0;
-
-	/**
-	 * The number of operations of the '<em>Abstract Notification</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_NOTIFICATION_OPERATION_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.inference.impl.LNotificationImpl <em>LNotification</em>}' class.
@@ -298,24 +208,6 @@ public interface InferencePackage extends EPackage
 	int LNOTIFICATION_FEATURE_COUNT = ABSTRACT_NOTIFICATION_FEATURE_COUNT + 0;
 
 	/**
-	 * The operation id for the '<em>Match</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LNOTIFICATION___MATCH__ABSTRACTNOTIFICATION = ABSTRACT_NOTIFICATION___MATCH__ABSTRACTNOTIFICATION;
-
-	/**
-	 * The number of operations of the '<em>LNotification</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LNOTIFICATION_OPERATION_COUNT = ABSTRACT_NOTIFICATION_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.inference.impl.ParameteredNotificationImpl <em>Parametered Notification</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -333,24 +225,6 @@ public interface InferencePackage extends EPackage
 	 * @ordered
 	 */
 	int PARAMETERED_NOTIFICATION_FEATURE_COUNT = ABSTRACT_NOTIFICATION_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Match</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERED_NOTIFICATION___MATCH__ABSTRACTNOTIFICATION = ABSTRACT_NOTIFICATION___MATCH__ABSTRACTNOTIFICATION;
-
-	/**
-	 * The number of operations of the '<em>Parametered Notification</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETERED_NOTIFICATION_OPERATION_COUNT = ABSTRACT_NOTIFICATION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.inference.Condition <em>Condition</em>}' class.
@@ -390,34 +264,6 @@ public interface InferencePackage extends EPackage
 	int CONDITION_FEATURE_COUNT = 2;
 
 	/**
-	 * The operation id for the '<em>Get Type</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONDITION___GET_TYPE = 0;
-
-	/**
-	 * The operation id for the '<em>Match</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONDITION___MATCH__PARAMETER = 1;
-
-	/**
-	 * The number of operations of the '<em>Condition</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONDITION_OPERATION_COUNT = 2;
-
-
-	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.inference.IInferenceObject <em>IInference Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -426,16 +272,6 @@ public interface InferencePackage extends EPackage
 	 * @generated
 	 */
 	EClass getIInferenceObject();
-
-	/**
-	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.inference.IInferenceObject#lInferenceObject() <em>LInference Object</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>LInference Object</em>' operation.
-	 * @see org.sheepy.lily.core.model.inference.IInferenceObject#lInferenceObject()
-	 * @generated
-	 */
-	EOperation getIInferenceObject__LInferenceObject();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.inference.Inferer <em>Inferer</em>}'.
@@ -457,16 +293,6 @@ public interface InferencePackage extends EPackage
 	 * @generated
 	 */
 	EReference getInferer_Rules();
-
-	/**
-	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.inference.Inferer#lExecutor() <em>LExecutor</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>LExecutor</em>' operation.
-	 * @see org.sheepy.lily.core.model.inference.Inferer#lExecutor()
-	 * @generated
-	 */
-	EOperation getInferer__LExecutor();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.inference.Sensor <em>Sensor</em>}'.
@@ -532,16 +358,6 @@ public interface InferencePackage extends EPackage
 	EClass getAbstractNotification();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.inference.AbstractNotification#match(org.sheepy.lily.core.model.inference.AbstractNotification) <em>Match</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Match</em>' operation.
-	 * @see org.sheepy.lily.core.model.inference.AbstractNotification#match(org.sheepy.lily.core.model.inference.AbstractNotification)
-	 * @generated
-	 */
-	EOperation getAbstractNotification__Match__AbstractNotification();
-
-	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.inference.LNotification <em>LNotification</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -594,26 +410,6 @@ public interface InferencePackage extends EPackage
 	EReference getCondition_Definition();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.inference.Condition#getType() <em>Get Type</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Get Type</em>' operation.
-	 * @see org.sheepy.lily.core.model.inference.Condition#getType()
-	 * @generated
-	 */
-	EOperation getCondition__GetType();
-
-	/**
-	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.inference.Condition#match(org.sheepy.lily.core.model.types.Parameter) <em>Match</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Match</em>' operation.
-	 * @see org.sheepy.lily.core.model.inference.Condition#match(org.sheepy.lily.core.model.types.Parameter)
-	 * @generated
-	 */
-	EOperation getCondition__Match__Parameter();
-
-	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -648,14 +444,6 @@ public interface InferencePackage extends EPackage
 		EClass IINFERENCE_OBJECT = eINSTANCE.getIInferenceObject();
 
 		/**
-		 * The meta object literal for the '<em><b>LInference Object</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation IINFERENCE_OBJECT___LINFERENCE_OBJECT = eINSTANCE.getIInferenceObject__LInferenceObject();
-
-		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.inference.impl.InfererImpl <em>Inferer</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -672,14 +460,6 @@ public interface InferencePackage extends EPackage
 		 * @generated
 		 */
 		EReference INFERER__RULES = eINSTANCE.getInferer_Rules();
-
-		/**
-		 * The meta object literal for the '<em><b>LExecutor</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation INFERER___LEXECUTOR = eINSTANCE.getInferer__LExecutor();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.inference.impl.SensorImpl <em>Sensor</em>}' class.
@@ -736,14 +516,6 @@ public interface InferencePackage extends EPackage
 		EClass ABSTRACT_NOTIFICATION = eINSTANCE.getAbstractNotification();
 
 		/**
-		 * The meta object literal for the '<em><b>Match</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation ABSTRACT_NOTIFICATION___MATCH__ABSTRACTNOTIFICATION = eINSTANCE.getAbstractNotification__Match__AbstractNotification();
-
-		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.inference.impl.LNotificationImpl <em>LNotification</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -788,22 +560,6 @@ public interface InferencePackage extends EPackage
 		 * @generated
 		 */
 		EReference CONDITION__DEFINITION = eINSTANCE.getCondition_Definition();
-
-		/**
-		 * The meta object literal for the '<em><b>Get Type</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation CONDITION___GET_TYPE = eINSTANCE.getCondition__GetType();
-
-		/**
-		 * The meta object literal for the '<em><b>Match</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation CONDITION___MATCH__PARAMETER = eINSTANCE.getCondition__Match__Parameter();
 
 	}
 

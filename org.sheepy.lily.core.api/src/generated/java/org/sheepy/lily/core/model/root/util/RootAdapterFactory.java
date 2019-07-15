@@ -8,9 +8,13 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.sheepy.lily.core.model.action.Action;
+
 import org.sheepy.lily.core.model.inference.IInferenceObject;
+
 import org.sheepy.lily.core.model.root.*;
+
 import org.sheepy.lily.core.model.types.LNamedElement;
 
 /**
@@ -62,7 +66,7 @@ public class RootAdapterFactory extends AdapterFactoryImpl
 		}
 		if (object instanceof EObject)
 		{
-			return ((EObject)object).eClass().getEPackage() == modelPackage;
+			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -73,40 +77,39 @@ public class RootAdapterFactory extends AdapterFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected RootSwitch<Adapter> modelSwitch =
-		new RootSwitch<Adapter>()
+	protected RootSwitch<Adapter> modelSwitch = new RootSwitch<Adapter>()
+	{
+		@Override
+		public Adapter caseLObject(LObject object)
 		{
-			@Override
-			public Adapter caseLObject(LObject object)
-			{
-				return createLObjectAdapter();
-			}
-			@Override
-			public Adapter caseXAction(XAction object)
-			{
-				return createXActionAdapter();
-			}
-			@Override
-			public Adapter caseIInferenceObject(IInferenceObject object)
-			{
-				return createIInferenceObjectAdapter();
-			}
-			@Override
-			public Adapter caseLNamedElement(LNamedElement object)
-			{
-				return createLNamedElementAdapter();
-			}
-			@Override
-			public Adapter caseAction(Action object)
-			{
-				return createActionAdapter();
-			}
-			@Override
-			public Adapter defaultCase(EObject object)
-			{
-				return createEObjectAdapter();
-			}
-		};
+			return createLObjectAdapter();
+		}
+		@Override
+		public Adapter caseXAction(XAction object)
+		{
+			return createXActionAdapter();
+		}
+		@Override
+		public Adapter caseIInferenceObject(IInferenceObject object)
+		{
+			return createIInferenceObjectAdapter();
+		}
+		@Override
+		public Adapter caseLNamedElement(LNamedElement object)
+		{
+			return createLNamedElementAdapter();
+		}
+		@Override
+		public Adapter caseAction(Action object)
+		{
+			return createActionAdapter();
+		}
+		@Override
+		public Adapter defaultCase(EObject object)
+		{
+			return createEObjectAdapter();
+		}
+	};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -119,9 +122,8 @@ public class RootAdapterFactory extends AdapterFactoryImpl
 	@Override
 	public Adapter createAdapter(Notifier target)
 	{
-		return modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject) target);
 	}
-
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.root.LObject <em>LObject</em>}'.

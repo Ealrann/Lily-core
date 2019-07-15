@@ -13,6 +13,4 @@ package org.sheepy.lily.core.model.variable;
  * @generated
  */
 public interface AbstractVariableResolver extends IVariableResolver, IDefinitionContainer
-{
-
-} // AbstractVariableResolver
+{} // AbstractVariableResolver

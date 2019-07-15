@@ -32,7 +32,8 @@ import org.sheepy.lily.core.model.types.util.TypesAdapterFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class TypesItemProviderAdapterFactory extends TypesAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable
+public class TypesItemProviderAdapterFactory extends TypesAdapterFactory
+		implements ComposeableAdapterFactory, IChangeNotifier, IDisposable
 {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
@@ -206,7 +207,7 @@ public class TypesItemProviderAdapterFactory extends TypesAdapterFactory impleme
 		if (isFactoryForType(type))
 		{
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter)))
+			if (!(type instanceof Class<?>) || (((Class<?>) type).isInstance(adapter)))
 			{
 				return adapter;
 			}

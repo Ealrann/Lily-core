@@ -3,6 +3,7 @@
 package org.sheepy.lily.core.model.presentation;
 
 import org.joml.Vector2ic;
+
 import org.sheepy.lily.core.model.root.LObject;
 
 import org.sheepy.lily.core.model.types.EHorizontalRelative;
@@ -32,10 +33,6 @@ public interface IPositionElement extends LObject
 	 * Returns the value of the '<em><b>Position</b></em>' attribute.
 	 * The default value is <code>"0;0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Position</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Position</em>' attribute.
 	 * @see #setPosition(Vector2ic)
@@ -60,10 +57,6 @@ public interface IPositionElement extends LObject
 	 * The default value is <code>"TOP"</code>.
 	 * The literals are from the enumeration {@link org.sheepy.lily.core.model.types.EVerticalRelative}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Vertical Relative</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Vertical Relative</em>' attribute.
 	 * @see org.sheepy.lily.core.model.types.EVerticalRelative
@@ -90,10 +83,6 @@ public interface IPositionElement extends LObject
 	 * The default value is <code>"LEFT"</code>.
 	 * The literals are from the enumeration {@link org.sheepy.lily.core.model.types.EHorizontalRelative}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Horizontal Relative</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Horizontal Relative</em>' attribute.
 	 * @see org.sheepy.lily.core.model.types.EHorizontalRelative

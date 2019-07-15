@@ -27,7 +27,9 @@ public enum EKeyState implements Enumerator
 	 * @generated
 	 * @ordered
 	 */
-	RELEASED(0, "RELEASED", "RELEASED"), /**
+	RELEASED(0, "RELEASED", "RELEASED"),
+
+	/**
 	 * The '<em><b>PRESSED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -35,7 +37,9 @@ public enum EKeyState implements Enumerator
 	 * @generated
 	 * @ordered
 	 */
-	PRESSED(1, "PRESSED", "PRESSED"), /**
+	PRESSED(1, "PRESSED", "PRESSED"),
+
+	/**
 	 * The '<em><b>REPEATED</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -48,10 +52,6 @@ public enum EKeyState implements Enumerator
 	/**
 	 * The '<em><b>RELEASED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>RELEASED</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #RELEASED
 	 * @model
@@ -63,10 +63,6 @@ public enum EKeyState implements Enumerator
 	/**
 	 * The '<em><b>PRESSED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>PRESSED</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PRESSED
 	 * @model
@@ -78,10 +74,6 @@ public enum EKeyState implements Enumerator
 	/**
 	 * The '<em><b>REPEATED</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>REPEATED</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #REPEATED
 	 * @model
@@ -96,13 +88,9 @@ public enum EKeyState implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final EKeyState[] VALUES_ARRAY =
-		new EKeyState[]
-		{
-			RELEASED,
-			PRESSED,
-			REPEATED,
-		};
+	private static final EKeyState[] VALUES_ARRAY = new EKeyState[] {
+			RELEASED, PRESSED, REPEATED,
+	};
 
 	/**
 	 * A public read-only list of all the '<em><b>EKey State</b></em>' enumerators.
@@ -110,7 +98,8 @@ public enum EKeyState implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<EKeyState> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<EKeyState> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>EKey State</b></em>' literal with the specified literal value.
@@ -166,9 +155,12 @@ public enum EKeyState implements Enumerator
 	{
 		switch (value)
 		{
-			case RELEASED_VALUE: return RELEASED;
-			case PRESSED_VALUE: return PRESSED;
-			case REPEATED_VALUE: return REPEATED;
+		case RELEASED_VALUE:
+			return RELEASED;
+		case PRESSED_VALUE:
+			return PRESSED;
+		case REPEATED_VALUE:
+			return REPEATED;
 		}
 		return null;
 	}
@@ -215,7 +207,7 @@ public enum EKeyState implements Enumerator
 	@Override
 	public int getValue()
 	{
-	  return value;
+		return value;
 	}
 
 	/**
@@ -226,7 +218,7 @@ public enum EKeyState implements Enumerator
 	@Override
 	public String getName()
 	{
-	  return name;
+		return name;
 	}
 
 	/**
@@ -237,7 +229,7 @@ public enum EKeyState implements Enumerator
 	@Override
 	public String getLiteral()
 	{
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -251,5 +243,5 @@ public enum EKeyState implements Enumerator
 	{
 		return literal;
 	}
-	
+
 } //EKeyState

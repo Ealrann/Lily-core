@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.root.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -57,12 +56,11 @@ public class XActionItemProvider extends ActionItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((XAction)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_XAction_type") :
-			getString("_UI_XAction_type") + " " + label;
+		String label = ((XAction) object).getName();
+		return label == null || label.length() == 0
+				? getString("_UI_XAction_type")
+				: getString("_UI_XAction_type") + " " + label;
 	}
-
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

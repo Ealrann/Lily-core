@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.joml.Vector2dc;
@@ -21,6 +22,35 @@ import org.joml.Vector3fc;
 import org.joml.Vector3ic;
 import org.joml.Vector4dc;
 import org.joml.Vector4fc;
+
+import org.sheepy.lily.core.model.action.ActionPackage;
+
+import org.sheepy.lily.core.model.action.impl.ActionPackageImpl;
+
+import org.sheepy.lily.core.model.application.ApplicationPackage;
+
+import org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl;
+
+import org.sheepy.lily.core.model.inference.InferencePackage;
+
+import org.sheepy.lily.core.model.inference.impl.InferencePackageImpl;
+
+import org.sheepy.lily.core.model.maintainer.MaintainerPackage;
+
+import org.sheepy.lily.core.model.maintainer.impl.MaintainerPackageImpl;
+
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
+
+import org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl;
+
+import org.sheepy.lily.core.model.resolver.ResolverPackage;
+
+import org.sheepy.lily.core.model.resolver.impl.ResolverPackageImpl;
+
+import org.sheepy.lily.core.model.root.RootPackage;
+
+import org.sheepy.lily.core.model.root.impl.RootPackageImpl;
+
 import org.sheepy.lily.core.model.types.BooleanParameter;
 import org.sheepy.lily.core.model.types.EDirection;
 import org.sheepy.lily.core.model.types.EHorizontalRelative;
@@ -40,6 +70,14 @@ import org.sheepy.lily.core.model.types.PositionParameter;
 import org.sheepy.lily.core.model.types.StringParameter;
 import org.sheepy.lily.core.model.types.TypesFactory;
 import org.sheepy.lily.core.model.types.TypesPackage;
+
+import org.sheepy.lily.core.model.ui.UiPackage;
+
+import org.sheepy.lily.core.model.ui.impl.UiPackageImpl;
+
+import org.sheepy.lily.core.model.variable.VariablePackage;
+
+import org.sheepy.lily.core.model.variable.impl.VariablePackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -279,22 +317,81 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 */
 	public static TypesPackage init()
 	{
-		if (isInited) return (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+		if (isInited)
+			return (TypesPackage) EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
 
 		// Obtain or create and register package
 		Object registeredTypesPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-		TypesPackageImpl theTypesPackage = registeredTypesPackage instanceof TypesPackageImpl ? (TypesPackageImpl)registeredTypesPackage : new TypesPackageImpl();
+		TypesPackageImpl theTypesPackage = registeredTypesPackage instanceof TypesPackageImpl
+				? (TypesPackageImpl) registeredTypesPackage
+				: new TypesPackageImpl();
 
 		isInited = true;
 
 		// Initialize simple dependencies
 		EcorePackage.eINSTANCE.eClass();
 
+		// Obtain or create and register interdependencies
+		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
+		ActionPackageImpl theActionPackage = (ActionPackageImpl) (registeredPackage instanceof ActionPackageImpl
+				? registeredPackage
+				: ActionPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
+		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl) (registeredPackage instanceof ApplicationPackageImpl
+				? registeredPackage
+				: ApplicationPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(RootPackage.eNS_URI);
+		RootPackageImpl theRootPackage = (RootPackageImpl) (registeredPackage instanceof RootPackageImpl
+				? registeredPackage
+				: RootPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
+		InferencePackageImpl theInferencePackage = (InferencePackageImpl) (registeredPackage instanceof InferencePackageImpl
+				? registeredPackage
+				: InferencePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(MaintainerPackage.eNS_URI);
+		MaintainerPackageImpl theMaintainerPackage = (MaintainerPackageImpl) (registeredPackage instanceof MaintainerPackageImpl
+				? registeredPackage
+				: MaintainerPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(PresentationPackage.eNS_URI);
+		PresentationPackageImpl thePresentationPackage = (PresentationPackageImpl) (registeredPackage instanceof PresentationPackageImpl
+				? registeredPackage
+				: PresentationPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ResolverPackage.eNS_URI);
+		ResolverPackageImpl theResolverPackage = (ResolverPackageImpl) (registeredPackage instanceof ResolverPackageImpl
+				? registeredPackage
+				: ResolverPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(UiPackage.eNS_URI);
+		UiPackageImpl theUiPackage = (UiPackageImpl) (registeredPackage instanceof UiPackageImpl
+				? registeredPackage
+				: UiPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(VariablePackage.eNS_URI);
+		VariablePackageImpl theVariablePackage = (VariablePackageImpl) (registeredPackage instanceof VariablePackageImpl
+				? registeredPackage
+				: VariablePackage.eINSTANCE);
+
 		// Create package meta-data objects
 		theTypesPackage.createPackageContents();
+		theActionPackage.createPackageContents();
+		theApplicationPackage.createPackageContents();
+		theRootPackage.createPackageContents();
+		theInferencePackage.createPackageContents();
+		theMaintainerPackage.createPackageContents();
+		thePresentationPackage.createPackageContents();
+		theResolverPackage.createPackageContents();
+		theUiPackage.createPackageContents();
+		theVariablePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theTypesPackage.initializePackageContents();
+		theActionPackage.initializePackageContents();
+		theApplicationPackage.initializePackageContents();
+		theRootPackage.initializePackageContents();
+		theInferencePackage.initializePackageContents();
+		theMaintainerPackage.initializePackageContents();
+		thePresentationPackage.initializePackageContents();
+		theResolverPackage.initializePackageContents();
+		theUiPackage.initializePackageContents();
+		theVariablePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theTypesPackage.freeze();
@@ -323,7 +420,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	@Override
 	public EAttribute getLNamedElement_Name()
 	{
-		return (EAttribute)lNamedElementEClass.getEStructuralFeatures().get(0);
+		return (EAttribute) lNamedElementEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -354,17 +451,6 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	@Override
-	public EOperation getPositionParameter__GetPosition()
-	{
-		return positionParameterEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getPositionFParameter()
 	{
 		return positionFParameterEClass;
@@ -376,31 +462,9 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	@Override
-	public EOperation getPositionFParameter__GetPosition()
-	{
-		return positionFParameterEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getNativeParameter()
 	{
 		return nativeParameterEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EOperation getNativeParameter__GetNativeValue()
-	{
-		return nativeParameterEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -422,18 +486,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	@Override
 	public EAttribute getFloatParameter_Value()
 	{
-		return (EAttribute)floatParameterEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EOperation getFloatParameter__GetNativeValue()
-	{
-		return floatParameterEClass.getEOperations().get(0);
+		return (EAttribute) floatParameterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -455,18 +508,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	@Override
 	public EAttribute getStringParameter_Value()
 	{
-		return (EAttribute)stringParameterEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EOperation getStringParameter__GetNativeValue()
-	{
-		return stringParameterEClass.getEOperations().get(0);
+		return (EAttribute) stringParameterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -488,18 +530,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	@Override
 	public EAttribute getBooleanParameter_Value()
 	{
-		return (EAttribute)booleanParameterEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EOperation getBooleanParameter__GetNativeValue()
-	{
-		return booleanParameterEClass.getEOperations().get(0);
+		return (EAttribute) booleanParameterEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -719,7 +750,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	@Override
 	public TypesFactory getTypesFactory()
 	{
-		return (TypesFactory)getEFactoryInstance();
+		return (TypesFactory) getEFactoryInstance();
 	}
 
 	/**
@@ -748,25 +779,19 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		parameterEClass = createEClass(PARAMETER);
 
 		positionParameterEClass = createEClass(POSITION_PARAMETER);
-		createEOperation(positionParameterEClass, POSITION_PARAMETER___GET_POSITION);
 
 		positionFParameterEClass = createEClass(POSITION_FPARAMETER);
-		createEOperation(positionFParameterEClass, POSITION_FPARAMETER___GET_POSITION);
 
 		nativeParameterEClass = createEClass(NATIVE_PARAMETER);
-		createEOperation(nativeParameterEClass, NATIVE_PARAMETER___GET_NATIVE_VALUE);
 
 		floatParameterEClass = createEClass(FLOAT_PARAMETER);
 		createEAttribute(floatParameterEClass, FLOAT_PARAMETER__VALUE);
-		createEOperation(floatParameterEClass, FLOAT_PARAMETER___GET_NATIVE_VALUE);
 
 		stringParameterEClass = createEClass(STRING_PARAMETER);
 		createEAttribute(stringParameterEClass, STRING_PARAMETER__VALUE);
-		createEOperation(stringParameterEClass, STRING_PARAMETER___GET_NATIVE_VALUE);
 
 		booleanParameterEClass = createEClass(BOOLEAN_PARAMETER);
 		createEAttribute(booleanParameterEClass, BOOLEAN_PARAMETER__VALUE);
-		createEOperation(booleanParameterEClass, BOOLEAN_PARAMETER___GET_NATIVE_VALUE);
 
 		// Create enums
 		eNotificationDirectionEEnum = createEEnum(ENOTIFICATION_DIRECTION);
@@ -817,7 +842,8 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+		EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE
+				.getEPackage(EcorePackage.eNS_URI);
 
 		// Create type parameters
 		ETypeParameter nativeParameterEClass_T = addETypeParameter(nativeParameterEClass, "T");
@@ -841,43 +867,66 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		g1.getETypeArguments().add(g2);
 		booleanParameterEClass.getEGenericSuperTypes().add(g1);
 
-		// Initialize classes, features, and operations; add parameters
-		initEClass(lNamedElementEClass, LNamedElement.class, "LNamedElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLNamedElement_Name(), theEcorePackage.getEString(), "name", null, 0, 1, LNamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		// Initialize classes and features; add operations and parameters
+		initEClass(lNamedElementEClass, LNamedElement.class, "LNamedElement", IS_ABSTRACT,
+				IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLNamedElement_Name(), theEcorePackage.getEString(), "name", null, 0, 1,
+				LNamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(parameterEClass, Parameter.class, "Parameter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(parameterEClass, Parameter.class, "Parameter", IS_ABSTRACT, IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(positionParameterEClass, PositionParameter.class, "PositionParameter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(positionParameterEClass, PositionParameter.class, "PositionParameter",
+				IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getPositionParameter__GetPosition(), this.getVector2i(), "getPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEOperation(positionParameterEClass, this.getVector2i(), "getPosition", 0, 1, !IS_UNIQUE,
+				IS_ORDERED);
 
-		initEClass(positionFParameterEClass, PositionFParameter.class, "PositionFParameter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(positionFParameterEClass, PositionFParameter.class, "PositionFParameter",
+				IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEOperation(getPositionFParameter__GetPosition(), this.getVector2f(), "getPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEOperation(positionFParameterEClass, this.getVector2f(), "getPosition", 0, 1, !IS_UNIQUE,
+				IS_ORDERED);
 
-		initEClass(nativeParameterEClass, NativeParameter.class, "NativeParameter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(nativeParameterEClass, NativeParameter.class, "NativeParameter", IS_ABSTRACT,
+				IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		EOperation op = initEOperation(getNativeParameter__GetNativeValue(), null, "getNativeValue", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(nativeParameterEClass, null, "getNativeValue", 0, 1,
+				!IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(nativeParameterEClass_T);
 		initEOperation(op, g1);
 
-		initEClass(floatParameterEClass, FloatParameter.class, "FloatParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFloatParameter_Value(), theEcorePackage.getEFloatObject(), "value", null, 0, 1, FloatParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(floatParameterEClass, FloatParameter.class, "FloatParameter", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFloatParameter_Value(), theEcorePackage.getEFloatObject(), "value", null,
+				0, 1, FloatParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getFloatParameter__GetNativeValue(), theEcorePackage.getEFloatObject(), "getNativeValue", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEOperation(floatParameterEClass, theEcorePackage.getEFloatObject(), "getNativeValue", 0,
+				1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(stringParameterEClass, StringParameter.class, "StringParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStringParameter_Value(), theEcorePackage.getEString(), "value", null, 0, 1, StringParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(stringParameterEClass, StringParameter.class, "StringParameter", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStringParameter_Value(), theEcorePackage.getEString(), "value", null, 0,
+				1, StringParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getStringParameter__GetNativeValue(), theEcorePackage.getEString(), "getNativeValue", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEOperation(stringParameterEClass, theEcorePackage.getEString(), "getNativeValue", 0, 1,
+				!IS_UNIQUE, IS_ORDERED);
 
-		initEClass(booleanParameterEClass, BooleanParameter.class, "BooleanParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBooleanParameter_Value(), theEcorePackage.getEBooleanObject(), "value", null, 0, 1, BooleanParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(booleanParameterEClass, BooleanParameter.class, "BooleanParameter", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getBooleanParameter_Value(), theEcorePackage.getEBooleanObject(), "value",
+				null, 0, 1, BooleanParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEOperation(getBooleanParameter__GetNativeValue(), theEcorePackage.getEBooleanObject(), "getNativeValue", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEOperation(booleanParameterEClass, theEcorePackage.getEBooleanObject(), "getNativeValue",
+				0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(eNotificationDirectionEEnum, ENotificationDirection.class, "ENotificationDirection");
+		initEEnum(eNotificationDirectionEEnum, ENotificationDirection.class,
+				"ENotificationDirection");
 		addEEnumLiteral(eNotificationDirectionEEnum, ENotificationDirection.PARENT);
 		addEEnumLiteral(eNotificationDirectionEEnum, ENotificationDirection.CHILDREN);
 		addEEnumLiteral(eNotificationDirectionEEnum, ENotificationDirection.SELF);
@@ -932,16 +981,26 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		addEEnumLiteral(eKeyStateEEnum, EKeyState.REPEATED);
 
 		// Initialize data types
-		initEDataType(vector4dEDataType, Vector4dc.class, "Vector4d", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(vector4fEDataType, Vector4fc.class, "Vector4f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(color4fEDataType, Vector4fc.class, "Color4f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(color3fEDataType, Vector3fc.class, "Color3f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(vector3dEDataType, Vector3dc.class, "Vector3d", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(vector3fEDataType, Vector3fc.class, "Vector3f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(vector3iEDataType, Vector3ic.class, "Vector3i", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(vector2fEDataType, Vector2fc.class, "Vector2f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(vector2iEDataType, Vector2ic.class, "Vector2i", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(vector2dEDataType, Vector2dc.class, "Vector2d", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(vector4dEDataType, Vector4dc.class, "Vector4d", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(vector4fEDataType, Vector4fc.class, "Vector4f", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(color4fEDataType, Vector4fc.class, "Color4f", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(color3fEDataType, Vector3fc.class, "Color3f", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(vector3dEDataType, Vector3dc.class, "Vector3d", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(vector3fEDataType, Vector3fc.class, "Vector3f", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(vector3iEDataType, Vector3ic.class, "Vector3i", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(vector2fEDataType, Vector2fc.class, "Vector2f", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(vector2iEDataType, Vector2ic.class, "Vector2i", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(vector2dEDataType, Vector2dc.class, "Vector2d", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

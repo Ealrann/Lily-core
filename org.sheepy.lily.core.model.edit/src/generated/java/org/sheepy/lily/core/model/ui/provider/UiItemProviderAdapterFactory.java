@@ -11,8 +11,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.eclipse.emf.edit.provider.ChangeNotifier;
@@ -28,10 +26,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.sheepy.lily.core.model.presentation.PresentationPackage;
-import org.sheepy.lily.core.model.presentation.UIPage;
-import org.sheepy.lily.core.model.presentation.util.PresentationSwitch;
-import org.sheepy.lily.core.model.ui.UiFactory;
+import org.sheepy.lily.core.model.types.provider.LilyEditPlugin;
 import org.sheepy.lily.core.model.ui.UiPackage;
 
 import org.sheepy.lily.core.model.ui.util.UiAdapterFactory;
@@ -45,7 +40,8 @@ import org.sheepy.lily.core.model.ui.util.UiAdapterFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class UiItemProviderAdapterFactory extends UiAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender
+public class UiItemProviderAdapterFactory extends UiAdapterFactory
+		implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender
 {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
@@ -69,7 +65,8 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(UiEditPlugin.INSTANCE, UiPackage.eNS_URI);
+	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(
+			LilyEditPlugin.INSTANCE, UiPackage.eNS_URI);
 
 	/**
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
@@ -377,7 +374,7 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 		if (isFactoryForType(type))
 		{
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter)))
+			if (!(type instanceof Class<?>) || (((Class<?>) type).isInstance(adapter)))
 			{
 				return adapter;
 			}
@@ -475,100 +472,6 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory implements Co
 		if (buttonItemProvider != null) buttonItemProvider.dispose();
 		if (booleanButtonItemProvider != null) booleanButtonItemProvider.dispose();
 		if (booleanActionButtonItemProvider != null) booleanActionButtonItemProvider.dispose();
-	}
-
-	/**
-	 * A child creation extender for the {@link PresentationPackage}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public static class PresentationChildCreationExtender implements IChildCreationExtender
-	{
-		/**
-		 * The switch for creating child descriptors specific to each extended class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		protected static class CreationSwitch extends PresentationSwitch<Object>
-		{
-			/**
-			 * The child descriptors being populated.
-			 * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-			 * @generated
-			 */
-			protected List<Object> newChildDescriptors;
-
-			/**
-			 * The domain in which to create the children.
-			 * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-			 * @generated
-			 */
-			protected EditingDomain editingDomain;
-
-			/**
-			 * Creates the a switch for populating child descriptors in the given domain.
-			 * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-			 * @generated
-			 */
-			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) 
-			{
-				this.newChildDescriptors = newChildDescriptors;
-				this.editingDomain = editingDomain;
-			}
-			/**
-			 * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-			 * @generated
-			 */
-			@Override
-			public Object caseUIPage(UIPage object)
-			{
-				newChildDescriptors.add
-					(createChildParameter
-						(PresentationPackage.Literals.UI_PAGE__PANELS,
-						 UiFactory.eINSTANCE.createPanel()));
-
-				return null;
-			}
- 
-			/**
-			 * <!-- begin-user-doc -->
-			 * <!-- end-user-doc -->
-			 * @generated
-			 */
-			protected CommandParameter createChildParameter(Object feature, Object child)
-			{
-				return new CommandParameter(null, feature, child);
-			}
-
-		}
-
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain)
-		{
-			ArrayList<Object> result = new ArrayList<Object>();
-			new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
-			return result;
-		}
-
-		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		public ResourceLocator getResourceLocator()
-		{
-			return UiEditPlugin.INSTANCE;
-		}
 	}
 
 }

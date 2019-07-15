@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.variable;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Chain Resolver</b></em>'.
@@ -14,6 +13,4 @@ package org.sheepy.lily.core.model.variable;
  * @generated
  */
 public interface ChainResolver extends IDefinitionContainer
-{
-
-} // ChainResolver
+{} // ChainResolver

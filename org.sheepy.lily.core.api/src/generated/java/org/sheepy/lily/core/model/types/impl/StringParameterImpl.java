@@ -2,12 +2,7 @@
  */
 package org.sheepy.lily.core.model.types.impl;
 
-import java.lang.reflect.InvocationTargetException;
-
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -93,8 +88,8 @@ public class StringParameterImpl extends MinimalEObjectImpl.Container implements
 	{
 		String oldValue = value;
 		value = newValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.STRING_PARAMETER__VALUE, oldValue, value));
+		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
+				TypesPackage.STRING_PARAMETER__VALUE, oldValue, value));
 	}
 
 	/**
@@ -118,8 +113,8 @@ public class StringParameterImpl extends MinimalEObjectImpl.Container implements
 	{
 		switch (featureID)
 		{
-			case TypesPackage.STRING_PARAMETER__VALUE:
-				return getValue();
+		case TypesPackage.STRING_PARAMETER__VALUE:
+			return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -134,9 +129,9 @@ public class StringParameterImpl extends MinimalEObjectImpl.Container implements
 	{
 		switch (featureID)
 		{
-			case TypesPackage.STRING_PARAMETER__VALUE:
-				setValue((String)newValue);
-				return;
+		case TypesPackage.STRING_PARAMETER__VALUE:
+			setValue((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -151,9 +146,9 @@ public class StringParameterImpl extends MinimalEObjectImpl.Container implements
 	{
 		switch (featureID)
 		{
-			case TypesPackage.STRING_PARAMETER__VALUE:
-				setValue(VALUE_EDEFAULT);
-				return;
+		case TypesPackage.STRING_PARAMETER__VALUE:
+			setValue(VALUE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -168,26 +163,10 @@ public class StringParameterImpl extends MinimalEObjectImpl.Container implements
 	{
 		switch (featureID)
 		{
-			case TypesPackage.STRING_PARAMETER__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+		case TypesPackage.STRING_PARAMETER__VALUE:
+			return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
-	{
-		switch (operationID)
-		{
-			case TypesPackage.STRING_PARAMETER___GET_NATIVE_VALUE:
-				return getNativeValue();
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

@@ -10,7 +10,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
 import org.sheepy.lily.core.api.util.FeatureDefinition;
+
 import org.sheepy.lily.core.model.variable.*;
 
 /**
@@ -31,13 +33,13 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	{
 		try
 		{
-			VariableFactory theVariableFactory = (VariableFactory)EPackage.Registry.INSTANCE.getEFactory(VariablePackage.eNS_URI);
+			VariableFactory theVariableFactory = (VariableFactory) EPackage.Registry.INSTANCE
+					.getEFactory(VariablePackage.eNS_URI);
 			if (theVariableFactory != null)
 			{
 				return theVariableFactory;
 			}
-		}
-		catch (Exception exception)
+		} catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -65,13 +67,19 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	{
 		switch (eClass.getClassifierID())
 		{
-			case VariablePackage.CHAIN_VARIABLE_RESOLVER: return createChainVariableResolver();
-			case VariablePackage.CHAIN_RESOLVER: return createChainResolver();
-			case VariablePackage.DIRECT_VARIABLE_RESOLVER: return createDirectVariableResolver();
-			case VariablePackage.BOOLEAN_CHANGE_ACTION: return createBooleanChangeAction();
-			case VariablePackage.VAR_CHANGE_ACTION_PKG: return createVarChangeActionPkg();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case VariablePackage.CHAIN_VARIABLE_RESOLVER:
+			return createChainVariableResolver();
+		case VariablePackage.CHAIN_RESOLVER:
+			return createChainResolver();
+		case VariablePackage.DIRECT_VARIABLE_RESOLVER:
+			return createDirectVariableResolver();
+		case VariablePackage.BOOLEAN_CHANGE_ACTION:
+			return createBooleanChangeAction();
+		case VariablePackage.VAR_CHANGE_ACTION_PKG:
+			return createVarChangeActionPkg();
+		default:
+			throw new IllegalArgumentException(
+					"The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -85,12 +93,13 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	{
 		switch (eDataType.getClassifierID())
 		{
-			case VariablePackage.LRESOLVED_VARIABLE_FEATURE:
-				return createLResolvedVariableFeatureFromString(eDataType, initialValue);
-			case VariablePackage.VARIABLE_DEFINITION:
-				return createVariableDefinitionFromString(eDataType, initialValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case VariablePackage.LRESOLVED_VARIABLE_FEATURE:
+			return createLResolvedVariableFeatureFromString(eDataType, initialValue);
+		case VariablePackage.VARIABLE_DEFINITION:
+			return createVariableDefinitionFromString(eDataType, initialValue);
+		default:
+			throw new IllegalArgumentException(
+					"The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -104,12 +113,13 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	{
 		switch (eDataType.getClassifierID())
 		{
-			case VariablePackage.LRESOLVED_VARIABLE_FEATURE:
-				return convertLResolvedVariableFeatureToString(eDataType, instanceValue);
-			case VariablePackage.VARIABLE_DEFINITION:
-				return convertVariableDefinitionToString(eDataType, instanceValue);
-			default:
-				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		case VariablePackage.LRESOLVED_VARIABLE_FEATURE:
+			return convertLResolvedVariableFeatureToString(eDataType, instanceValue);
+		case VariablePackage.VARIABLE_DEFINITION:
+			return convertVariableDefinitionToString(eDataType, instanceValue);
+		default:
+			throw new IllegalArgumentException(
+					"The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -178,9 +188,10 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FeatureDefinition createLResolvedVariableFeatureFromString(EDataType eDataType, String initialValue)
+	public FeatureDefinition createLResolvedVariableFeatureFromString(	EDataType eDataType,
+																		String initialValue)
 	{
-		return (FeatureDefinition)super.createFromString(eDataType, initialValue);
+		return (FeatureDefinition) super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -200,7 +211,7 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	 */
 	public String createVariableDefinitionFromString(EDataType eDataType, String initialValue)
 	{
-		return (String)super.createFromString(eDataType, initialValue);
+		return (String) super.createFromString(eDataType, initialValue);
 	}
 
 	/**
@@ -221,7 +232,7 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	@Override
 	public VariablePackage getVariablePackage()
 	{
-		return (VariablePackage)getEPackage();
+		return (VariablePackage) getEPackage();
 	}
 
 	/**

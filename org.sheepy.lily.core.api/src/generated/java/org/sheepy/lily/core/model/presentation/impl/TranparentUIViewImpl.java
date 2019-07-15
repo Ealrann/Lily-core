@@ -2,12 +2,13 @@
  */
 package org.sheepy.lily.core.model.presentation.impl;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
@@ -20,6 +21,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -125,8 +127,9 @@ public class TranparentUIViewImpl extends MinimalEObjectImpl.Container implement
 	{
 		EList<LObject> oldContentObjects = contentObjects;
 		contentObjects = newContentObjects;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.TRANPARENT_UI_VIEW__CONTENT_OBJECTS, oldContentObjects, contentObjects));
+		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
+				PresentationPackage.TRANPARENT_UI_VIEW__CONTENT_OBJECTS, oldContentObjects,
+				contentObjects));
 	}
 
 	/**
@@ -139,7 +142,8 @@ public class TranparentUIViewImpl extends MinimalEObjectImpl.Container implement
 	{
 		if (uiPages == null)
 		{
-			uiPages = new EObjectContainmentEList<UIPage>(UIPage.class, this, PresentationPackage.TRANPARENT_UI_VIEW__UI_PAGES);
+			uiPages = new EObjectContainmentEList<UIPage>(UIPage.class, this,
+					PresentationPackage.TRANPARENT_UI_VIEW__UI_PAGES);
 		}
 		return uiPages;
 	}
@@ -154,12 +158,14 @@ public class TranparentUIViewImpl extends MinimalEObjectImpl.Container implement
 	{
 		if (currentUIPage != null && currentUIPage.eIsProxy())
 		{
-			InternalEObject oldCurrentUIPage = (InternalEObject)currentUIPage;
-			currentUIPage = (UIPage)eResolveProxy(oldCurrentUIPage);
+			InternalEObject oldCurrentUIPage = (InternalEObject) currentUIPage;
+			currentUIPage = (UIPage) eResolveProxy(oldCurrentUIPage);
 			if (currentUIPage != oldCurrentUIPage)
 			{
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PresentationPackage.TRANPARENT_UI_VIEW__CURRENT_UI_PAGE, oldCurrentUIPage, currentUIPage));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							PresentationPackage.TRANPARENT_UI_VIEW__CURRENT_UI_PAGE,
+							oldCurrentUIPage, currentUIPage));
 			}
 		}
 		return currentUIPage;
@@ -185,8 +191,9 @@ public class TranparentUIViewImpl extends MinimalEObjectImpl.Container implement
 	{
 		UIPage oldCurrentUIPage = currentUIPage;
 		currentUIPage = newCurrentUIPage;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.TRANPARENT_UI_VIEW__CURRENT_UI_PAGE, oldCurrentUIPage, currentUIPage));
+		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
+				PresentationPackage.TRANPARENT_UI_VIEW__CURRENT_UI_PAGE, oldCurrentUIPage,
+				currentUIPage));
 	}
 
 	/**
@@ -212,7 +219,7 @@ public class TranparentUIViewImpl extends MinimalEObjectImpl.Container implement
 		boolean _isEmpty = unitRefs.isEmpty();
 		if (_isEmpty)
 		{
-			res = ECollections.<T>emptyEList();
+			res = ECollections.<T> emptyEList();
 		}
 		else
 		{
@@ -236,7 +243,7 @@ public class TranparentUIViewImpl extends MinimalEObjectImpl.Container implement
 			boolean _tripleEquals = (_contentObjects == null);
 			if (_tripleEquals)
 			{
-				this.setContentObjects(this.<LObject>createContainmentEList(Literals.LOBJECT));
+				this.setContentObjects(this.<LObject> createContainmentEList(Literals.LOBJECT));
 			}
 			_xblockexpression = this.getContentObjects();
 		}
@@ -289,12 +296,14 @@ public class TranparentUIViewImpl extends MinimalEObjectImpl.Container implement
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+											int featureID,
+											NotificationChain msgs)
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.TRANPARENT_UI_VIEW__UI_PAGES:
-				return ((InternalEList<?>)getUiPages()).basicRemove(otherEnd, msgs);
+		case PresentationPackage.TRANPARENT_UI_VIEW__UI_PAGES:
+			return ((InternalEList<?>) getUiPages()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -309,13 +318,13 @@ public class TranparentUIViewImpl extends MinimalEObjectImpl.Container implement
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.TRANPARENT_UI_VIEW__CONTENT_OBJECTS:
-				return getContentObjects();
-			case PresentationPackage.TRANPARENT_UI_VIEW__UI_PAGES:
-				return getUiPages();
-			case PresentationPackage.TRANPARENT_UI_VIEW__CURRENT_UI_PAGE:
-				if (resolve) return getCurrentUIPage();
-				return basicGetCurrentUIPage();
+		case PresentationPackage.TRANPARENT_UI_VIEW__CONTENT_OBJECTS:
+			return getContentObjects();
+		case PresentationPackage.TRANPARENT_UI_VIEW__UI_PAGES:
+			return getUiPages();
+		case PresentationPackage.TRANPARENT_UI_VIEW__CURRENT_UI_PAGE:
+			if (resolve) return getCurrentUIPage();
+			return basicGetCurrentUIPage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -331,16 +340,16 @@ public class TranparentUIViewImpl extends MinimalEObjectImpl.Container implement
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.TRANPARENT_UI_VIEW__CONTENT_OBJECTS:
-				setContentObjects((EList<LObject>)newValue);
-				return;
-			case PresentationPackage.TRANPARENT_UI_VIEW__UI_PAGES:
-				getUiPages().clear();
-				getUiPages().addAll((Collection<? extends UIPage>)newValue);
-				return;
-			case PresentationPackage.TRANPARENT_UI_VIEW__CURRENT_UI_PAGE:
-				setCurrentUIPage((UIPage)newValue);
-				return;
+		case PresentationPackage.TRANPARENT_UI_VIEW__CONTENT_OBJECTS:
+			setContentObjects((EList<LObject>) newValue);
+			return;
+		case PresentationPackage.TRANPARENT_UI_VIEW__UI_PAGES:
+			getUiPages().clear();
+			getUiPages().addAll((Collection<? extends UIPage>) newValue);
+			return;
+		case PresentationPackage.TRANPARENT_UI_VIEW__CURRENT_UI_PAGE:
+			setCurrentUIPage((UIPage) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -355,15 +364,15 @@ public class TranparentUIViewImpl extends MinimalEObjectImpl.Container implement
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.TRANPARENT_UI_VIEW__CONTENT_OBJECTS:
-				setContentObjects((EList<LObject>)null);
-				return;
-			case PresentationPackage.TRANPARENT_UI_VIEW__UI_PAGES:
-				getUiPages().clear();
-				return;
-			case PresentationPackage.TRANPARENT_UI_VIEW__CURRENT_UI_PAGE:
-				setCurrentUIPage((UIPage)null);
-				return;
+		case PresentationPackage.TRANPARENT_UI_VIEW__CONTENT_OBJECTS:
+			setContentObjects((EList<LObject>) null);
+			return;
+		case PresentationPackage.TRANPARENT_UI_VIEW__UI_PAGES:
+			getUiPages().clear();
+			return;
+		case PresentationPackage.TRANPARENT_UI_VIEW__CURRENT_UI_PAGE:
+			setCurrentUIPage((UIPage) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -378,38 +387,14 @@ public class TranparentUIViewImpl extends MinimalEObjectImpl.Container implement
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.TRANPARENT_UI_VIEW__CONTENT_OBJECTS:
-				return contentObjects != null;
-			case PresentationPackage.TRANPARENT_UI_VIEW__UI_PAGES:
-				return uiPages != null && !uiPages.isEmpty();
-			case PresentationPackage.TRANPARENT_UI_VIEW__CURRENT_UI_PAGE:
-				return currentUIPage != null;
+		case PresentationPackage.TRANPARENT_UI_VIEW__CONTENT_OBJECTS:
+			return contentObjects != null;
+		case PresentationPackage.TRANPARENT_UI_VIEW__UI_PAGES:
+			return uiPages != null && !uiPages.isEmpty();
+		case PresentationPackage.TRANPARENT_UI_VIEW__CURRENT_UI_PAGE:
+			return currentUIPage != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
-	{
-		switch (operationID)
-		{
-			case PresentationPackage.TRANPARENT_UI_VIEW___CREATE_CONTAINMENT_ELIST__ECLASS:
-				return createContainmentEList((EClass)arguments.get(0));
-			case PresentationPackage.TRANPARENT_UI_VIEW___LCONTENTS:
-				return lContents();
-			case PresentationPackage.TRANPARENT_UI_VIEW___LPARENT:
-				return lParent();
-			case PresentationPackage.TRANPARENT_UI_VIEW___LALL_CONTENTS:
-				return lAllContents();
-			case PresentationPackage.TRANPARENT_UI_VIEW___LINFERENCE_OBJECT:
-				return lInferenceObject();
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

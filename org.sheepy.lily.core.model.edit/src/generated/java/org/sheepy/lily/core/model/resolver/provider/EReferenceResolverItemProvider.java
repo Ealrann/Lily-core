@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.resolver.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -32,14 +31,9 @@ import org.sheepy.lily.core.model.resolver.ResolverPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class EReferenceResolverItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource
+public class EReferenceResolverItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -79,19 +73,14 @@ public class EReferenceResolverItemProvider
 	 */
 	protected void addReferenceNamePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_EReferenceResolver_referenceName_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EReferenceResolver_referenceName_feature", "_UI_EReferenceResolver_type"),
-				 ResolverPackage.Literals.EREFERENCE_RESOLVER__REFERENCE_NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_EReferenceResolver_referenceName_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_EReferenceResolver_referenceName_feature",
+						"_UI_EReferenceResolver_type"),
+				ResolverPackage.Literals.EREFERENCE_RESOLVER__REFERENCE_NAME, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -102,19 +91,13 @@ public class EReferenceResolverItemProvider
 	 */
 	protected void addClassNamePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_EReferenceResolver_className_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_EReferenceResolver_className_feature", "_UI_EReferenceResolver_type"),
-				 ResolverPackage.Literals.EREFERENCE_RESOLVER__CLASS_NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_EReferenceResolver_className_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_EReferenceResolver_className_feature", "_UI_EReferenceResolver_type"),
+				ResolverPackage.Literals.EREFERENCE_RESOLVER__CLASS_NAME, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -138,12 +121,11 @@ public class EReferenceResolverItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((EReferenceResolver)object).getReferenceName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_EReferenceResolver_type") :
-			getString("_UI_EReferenceResolver_type") + " " + label;
+		String label = ((EReferenceResolver) object).getReferenceName();
+		return label == null || label.length() == 0
+				? getString("_UI_EReferenceResolver_type")
+				: getString("_UI_EReferenceResolver_type") + " " + label;
 	}
-
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -159,10 +141,11 @@ public class EReferenceResolverItemProvider
 
 		switch (notification.getFeatureID(EReferenceResolver.class))
 		{
-			case ResolverPackage.EREFERENCE_RESOLVER__REFERENCE_NAME:
-			case ResolverPackage.EREFERENCE_RESOLVER__CLASS_NAME:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case ResolverPackage.EREFERENCE_RESOLVER__REFERENCE_NAME:
+		case ResolverPackage.EREFERENCE_RESOLVER__CLASS_NAME:
+			fireNotifyChanged(
+					new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -189,7 +172,7 @@ public class EReferenceResolverItemProvider
 	@Override
 	public ResourceLocator getResourceLocator()
 	{
-		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
 	}
 
 }

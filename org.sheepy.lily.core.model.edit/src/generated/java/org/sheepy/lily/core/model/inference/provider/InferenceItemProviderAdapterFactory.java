@@ -31,6 +31,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.sheepy.lily.core.model.inference.InferencePackage;
 
 import org.sheepy.lily.core.model.inference.util.InferenceAdapterFactory;
+import org.sheepy.lily.core.model.types.provider.LilyEditPlugin;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -41,7 +42,8 @@ import org.sheepy.lily.core.model.inference.util.InferenceAdapterFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class InferenceItemProviderAdapterFactory extends InferenceAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender
+public class InferenceItemProviderAdapterFactory extends InferenceAdapterFactory
+		implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender
 {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
@@ -65,7 +67,8 @@ public class InferenceItemProviderAdapterFactory extends InferenceAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(InferenceEditPlugin.INSTANCE, InferencePackage.eNS_URI);
+	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(
+			LilyEditPlugin.INSTANCE, InferencePackage.eNS_URI);
 
 	/**
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
@@ -173,7 +176,7 @@ public class InferenceItemProviderAdapterFactory extends InferenceAdapterFactory
 		if (isFactoryForType(type))
 		{
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter)))
+			if (!(type instanceof Class<?>) || (((Class<?>) type).isInstance(adapter)))
 			{
 				return adapter;
 			}

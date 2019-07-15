@@ -30,13 +30,13 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 	{
 		try
 		{
-			UiFactory theUiFactory = (UiFactory)EPackage.Registry.INSTANCE.getEFactory(UiPackage.eNS_URI);
+			UiFactory theUiFactory = (UiFactory) EPackage.Registry.INSTANCE
+					.getEFactory(UiPackage.eNS_URI);
 			if (theUiFactory != null)
 			{
 				return theUiFactory;
 			}
-		}
-		catch (Exception exception)
+		} catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -64,17 +64,27 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 	{
 		switch (eClass.getClassifierID())
 		{
-			case UiPackage.PANEL: return createPanel();
-			case UiPackage.DYNAMIC_ROW_LAYOUT: return createDynamicRowLayout();
-			case UiPackage.VARIABLE_LABEL: return createVariableLabel();
-			case UiPackage.LABEL: return createLabel();
-			case UiPackage.SLIDER: return createSlider();
-			case UiPackage.TEXT_FIELD: return createTextField();
-			case UiPackage.BUTTON: return createButton();
-			case UiPackage.BOOLEAN_BUTTON: return createBooleanButton();
-			case UiPackage.BOOLEAN_ACTION_BUTTON: return createBooleanActionButton();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case UiPackage.PANEL:
+			return createPanel();
+		case UiPackage.DYNAMIC_ROW_LAYOUT:
+			return createDynamicRowLayout();
+		case UiPackage.VARIABLE_LABEL:
+			return createVariableLabel();
+		case UiPackage.LABEL:
+			return createLabel();
+		case UiPackage.SLIDER:
+			return createSlider();
+		case UiPackage.TEXT_FIELD:
+			return createTextField();
+		case UiPackage.BUTTON:
+			return createButton();
+		case UiPackage.BOOLEAN_BUTTON:
+			return createBooleanButton();
+		case UiPackage.BOOLEAN_ACTION_BUTTON:
+			return createBooleanActionButton();
+		default:
+			throw new IllegalArgumentException(
+					"The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -194,7 +204,7 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 	@Override
 	public UiPackage getUiPackage()
 	{
-		return (UiPackage)getEPackage();
+		return (UiPackage) getEPackage();
 	}
 
 	/**

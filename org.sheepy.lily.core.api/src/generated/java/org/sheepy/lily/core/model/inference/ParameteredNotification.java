@@ -15,5 +15,4 @@ import org.sheepy.lily.core.model.types.Parameter;
  * @generated
  */
 public interface ParameteredNotification<T extends Parameter> extends AbstractNotification
-{
-} // ParameteredNotification
+{} // ParameteredNotification

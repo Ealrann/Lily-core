@@ -3,6 +3,7 @@
 package org.sheepy.lily.core.model.ui;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.sheepy.lily.core.model.presentation.IPanel;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
 
@@ -32,10 +33,6 @@ public interface Panel extends IPanel, ISizedElement
 	 * Returns the value of the '<em><b>Controls</b></em>' containment reference list.
 	 * The list contents are of type {@link org.sheepy.lily.core.model.ui.IControl}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Controls</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Controls</em>' containment reference list.
 	 * @see org.sheepy.lily.core.model.ui.UiPackage#getPanel_Controls()
@@ -48,10 +45,6 @@ public interface Panel extends IPanel, ISizedElement
 	 * Returns the value of the '<em><b>Show Title</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Show Title</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Show Title</em>' attribute.
 	 * @see #setShowTitle(boolean)
@@ -75,10 +68,6 @@ public interface Panel extends IPanel, ISizedElement
 	 * Returns the value of the '<em><b>Minimizable</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Minimizable</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Minimizable</em>' attribute.
 	 * @see #setMinimizable(boolean)
@@ -102,10 +91,6 @@ public interface Panel extends IPanel, ISizedElement
 	 * Returns the value of the '<em><b>Movable</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Movable</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Movable</em>' attribute.
 	 * @see #setMovable(boolean)
@@ -129,10 +114,6 @@ public interface Panel extends IPanel, ISizedElement
 	 * Returns the value of the '<em><b>Minimized</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Minimized</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Minimized</em>' attribute.
 	 * @see #setMinimized(boolean)

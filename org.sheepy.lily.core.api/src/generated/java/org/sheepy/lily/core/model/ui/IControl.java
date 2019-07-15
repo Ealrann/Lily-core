@@ -15,5 +15,4 @@ import org.sheepy.lily.core.model.presentation.IUIElement;
  * @generated
  */
 public interface IControl extends IUIElement
-{
-} // IControl
+{} // IControl

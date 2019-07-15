@@ -78,14 +78,18 @@ public abstract class VarChangeActionImpl extends ActionImpl implements VarChang
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetVariableResolver(AbstractVariableResolver newVariableResolver, NotificationChain msgs)
+	public NotificationChain basicSetVariableResolver(	AbstractVariableResolver newVariableResolver,
+														NotificationChain msgs)
 	{
 		AbstractVariableResolver oldVariableResolver = variableResolver;
 		variableResolver = newVariableResolver;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER, oldVariableResolver, newVariableResolver);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER, oldVariableResolver,
+					newVariableResolver);
+			if (msgs == null) msgs = notification;
+			else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -101,15 +105,22 @@ public abstract class VarChangeActionImpl extends ActionImpl implements VarChang
 		if (newVariableResolver != variableResolver)
 		{
 			NotificationChain msgs = null;
-			if (variableResolver != null)
-				msgs = ((InternalEObject)variableResolver).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER, null, msgs);
-			if (newVariableResolver != null)
-				msgs = ((InternalEObject)newVariableResolver).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER, null, msgs);
+			if (variableResolver != null) msgs = ((InternalEObject) variableResolver)
+					.eInverseRemove(this,
+							EOPPOSITE_FEATURE_BASE
+									- VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER,
+							null, msgs);
+			if (newVariableResolver != null) msgs = ((InternalEObject) newVariableResolver)
+					.eInverseAdd(this,
+							EOPPOSITE_FEATURE_BASE
+									- VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER,
+							null, msgs);
 			msgs = basicSetVariableResolver(newVariableResolver, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER, newVariableResolver, newVariableResolver));
+		else if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
+				VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER, newVariableResolver,
+				newVariableResolver));
 	}
 
 	/**
@@ -118,12 +129,14 @@ public abstract class VarChangeActionImpl extends ActionImpl implements VarChang
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+											int featureID,
+											NotificationChain msgs)
 	{
 		switch (featureID)
 		{
-			case VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER:
-				return basicSetVariableResolver(null, msgs);
+		case VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER:
+			return basicSetVariableResolver(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -138,8 +151,8 @@ public abstract class VarChangeActionImpl extends ActionImpl implements VarChang
 	{
 		switch (featureID)
 		{
-			case VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER:
-				return getVariableResolver();
+		case VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER:
+			return getVariableResolver();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -154,9 +167,9 @@ public abstract class VarChangeActionImpl extends ActionImpl implements VarChang
 	{
 		switch (featureID)
 		{
-			case VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER:
-				setVariableResolver((AbstractVariableResolver)newValue);
-				return;
+		case VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER:
+			setVariableResolver((AbstractVariableResolver) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -171,9 +184,9 @@ public abstract class VarChangeActionImpl extends ActionImpl implements VarChang
 	{
 		switch (featureID)
 		{
-			case VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER:
-				setVariableResolver((AbstractVariableResolver)null);
-				return;
+		case VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER:
+			setVariableResolver((AbstractVariableResolver) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -188,8 +201,8 @@ public abstract class VarChangeActionImpl extends ActionImpl implements VarChang
 	{
 		switch (featureID)
 		{
-			case VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER:
-				return variableResolver != null;
+		case VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER:
+			return variableResolver != null;
 		}
 		return super.eIsSet(featureID);
 	}

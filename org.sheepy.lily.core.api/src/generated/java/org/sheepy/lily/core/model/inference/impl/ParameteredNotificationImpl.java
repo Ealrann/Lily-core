@@ -16,7 +16,8 @@ import org.sheepy.lily.core.model.types.Parameter;
  *
  * @generated
  */
-public abstract class ParameteredNotificationImpl<T extends Parameter> extends AbstractNotificationImpl implements ParameteredNotification<T>
+public abstract class ParameteredNotificationImpl<T extends Parameter>
+		extends AbstractNotificationImpl implements ParameteredNotification<T>
 {
 	/**
 	 * <!-- begin-user-doc -->

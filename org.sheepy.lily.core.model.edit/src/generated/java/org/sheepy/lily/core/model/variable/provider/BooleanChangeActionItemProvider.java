@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.variable.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -58,7 +57,8 @@ public class BooleanChangeActionItemProvider extends VarChangeActionItemProvider
 	@Override
 	public Object getImage(Object object)
 	{
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/BooleanChangeAction"));
+		return overlayImage(object,
+				getResourceLocator().getImage("full/obj16/BooleanChangeAction"));
 	}
 
 	/**
@@ -70,12 +70,11 @@ public class BooleanChangeActionItemProvider extends VarChangeActionItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((BooleanChangeAction)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_BooleanChangeAction_type") :
-			getString("_UI_BooleanChangeAction_type") + " " + label;
+		String label = ((BooleanChangeAction) object).getName();
+		return label == null || label.length() == 0
+				? getString("_UI_BooleanChangeAction_type")
+				: getString("_UI_BooleanChangeAction_type") + " " + label;
 	}
-
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

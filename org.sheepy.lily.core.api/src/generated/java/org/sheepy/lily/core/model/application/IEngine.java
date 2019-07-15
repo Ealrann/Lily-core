@@ -15,5 +15,4 @@ import org.sheepy.lily.core.model.root.LObject;
  * @generated
  */
 public interface IEngine extends LObject
-{
-} // IEngine
+{} // IEngine

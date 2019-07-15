@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.sheepy.lily.core.model.edit;singleton:=true
 Automatic-Module-Name: org.sheepy.lily.core.model.edit
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: org.sheepy.lily.core.model.root.provider.RootEditPlugin$Implementation
+Bundle-Activator: org.sheepy.lily.core.model.types.provider.LilyEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: org.sheepy.lily.core.model.types.provider,

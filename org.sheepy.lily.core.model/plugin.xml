@@ -7,152 +7,153 @@
 <plugin>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated Types -->
+      <!-- @generated Lily -->
       <package
             uri="org.sheepy.lily.core.model.types"
             class="org.sheepy.lily.core.model.types.TypesPackage"
-            genModel="model/Types.xcore"/>
+            genModel="model/Lily.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated Types -->
+      <!-- @generated Lily -->
       <parser
             type="types"
             class="org.sheepy.lily.core.model.types.util.TypesResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated Application -->
-      <package
-            uri="org.sheepy.lily.core.model.application"
-            class="org.sheepy.lily.core.model.application.ApplicationPackage"
-            genModel="model/Application.xcore"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated Application -->
-      <parser
-            type="application"
-            class="org.sheepy.lily.core.model.application.util.ApplicationResourceFactoryImpl"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated Presentation -->
-      <package
-            uri="org.sheepy.lily.core.model.presentation"
-            class="org.sheepy.lily.core.model.presentation.PresentationPackage"
-            genModel="model/Presentation.xcore"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated Presentation -->
-      <parser
-            type="presentation"
-            class="org.sheepy.lily.core.model.presentation.util.PresentationResourceFactoryImpl"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated Root -->
-      <package
-            uri="org.sheepy.lily.core.model.root"
-            class="org.sheepy.lily.core.model.root.RootPackage"
-            genModel="model/Root.xcore"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated Root -->
-      <parser
-            type="root"
-            class="org.sheepy.lily.core.model.root.util.RootResourceFactoryImpl"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated UI -->
-      <package
-            uri="org.sheepy.lily.core.model.ui"
-            class="org.sheepy.lily.core.model.ui.UiPackage"
-            genModel="model/UI.xcore"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated UI -->
-      <parser
-            type="ui"
-            class="org.sheepy.lily.core.model.ui.util.UiResourceFactoryImpl"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated Inference -->
-      <package
-            uri="org.sheepy.lily.core.model.inference"
-            class="org.sheepy.lily.core.model.inference.InferencePackage"
-            genModel="model/Inference.xcore"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated Inference -->
-      <parser
-            type="inference"
-            class="org.sheepy.lily.core.model.inference.util.InferenceResourceFactoryImpl"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated Variable -->
-      <package
-            uri="org.sheepy.lily.core.model.variable"
-            class="org.sheepy.lily.core.model.variable.VariablePackage"
-            genModel="model/Variable.xcore"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated Variable -->
-      <parser
-            type="variable"
-            class="org.sheepy.lily.core.model.variable.util.VariableResourceFactoryImpl"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated Action -->
+      <!-- @generated Lily -->
       <package
             uri="org.sheepy.lily.core.model.action"
             class="org.sheepy.lily.core.model.action.ActionPackage"
-            genModel="model/Action.xcore"/>
+            genModel="model/Lily.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated Action -->
+      <!-- @generated Lily -->
       <parser
             type="action"
             class="org.sheepy.lily.core.model.action.util.ActionResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated Resolver -->
+      <!-- @generated Lily -->
       <package
-            uri="org.sheepy.lily.core.model.resolver"
-            class="org.sheepy.lily.core.model.resolver.ResolverPackage"
-            genModel="model/Resolver.xcore"/>
+            uri="org.sheepy.lily.core.model.application"
+            class="org.sheepy.lily.core.model.application.ApplicationPackage"
+            genModel="model/Lily.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated Resolver -->
+      <!-- @generated Lily -->
+      <parser
+            type="application"
+            class="org.sheepy.lily.core.model.application.util.ApplicationResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Lily -->
+      <package
+            uri="org.sheepy.lily.core.model.root"
+            class="org.sheepy.lily.core.model.root.RootPackage"
+            genModel="model/Lily.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Lily -->
+      <parser
+            type="root"
+            class="org.sheepy.lily.core.model.root.util.RootResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Lily -->
+      <package
+            uri="org.sheepy.lily.core.model.inference"
+            class="org.sheepy.lily.core.model.inference.InferencePackage"
+            genModel="model/Lily.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Lily -->
+      <parser
+            type="inference"
+            class="org.sheepy.lily.core.model.inference.util.InferenceResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Lily -->
+      <package
+            uri="org.sheepy.lily.core.model.maintainer"
+            class="org.sheepy.lily.core.model.maintainer.MaintainerPackage"
+            genModel="model/Lily.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Lily -->
+      <parser
+            type="maintainer"
+            class="org.sheepy.lily.core.model.maintainer.util.MaintainerResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Lily -->
+      <package
+            uri="org.sheepy.lily.core.model.presentation"
+            class="org.sheepy.lily.core.model.presentation.PresentationPackage"
+            genModel="model/Lily.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Lily -->
+      <parser
+            type="presentation"
+            class="org.sheepy.lily.core.model.presentation.util.PresentationResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Lily -->
+      <package
+            uri="org.sheepy.lily.core.model.resolver"
+            class="org.sheepy.lily.core.model.resolver.ResolverPackage"
+            genModel="model/Lily.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Lily -->
       <parser
             type="resolver"
             class="org.sheepy.lily.core.model.resolver.util.ResolverResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated Maintainer -->
+      <!-- @generated Lily -->
       <package
-            uri="org.sheepy.lily.core.model.maintainer"
-            class="org.sheepy.lily.core.model.maintainer.MaintainerPackage"
-            genModel="model/Maintainer.xcore"/>
+            uri="org.sheepy.lily.core.model.ui"
+            class="org.sheepy.lily.core.model.ui.UiPackage"
+            genModel="model/Lily.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated Maintainer -->
+      <!-- @generated Lily -->
       <parser
-            type="maintainer"
-            class="org.sheepy.lily.core.model.maintainer.util.MaintainerResourceFactoryImpl"/>
+            type="ui"
+            class="org.sheepy.lily.core.model.ui.util.UiResourceFactoryImpl"/>
    </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Lily -->
+      <package
+            uri="org.sheepy.lily.core.model.variable"
+            class="org.sheepy.lily.core.model.variable.VariablePackage"
+            genModel="model/Lily.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated Lily -->
+      <parser
+            type="variable"
+            class="org.sheepy.lily.core.model.variable.util.VariableResourceFactoryImpl"/>
+   </extension>
+
 </plugin>

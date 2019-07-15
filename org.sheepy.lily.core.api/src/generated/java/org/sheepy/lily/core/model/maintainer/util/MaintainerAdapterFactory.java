@@ -60,7 +60,7 @@ public class MaintainerAdapterFactory extends AdapterFactoryImpl
 		}
 		if (object instanceof EObject)
 		{
-			return ((EObject)object).eClass().getEPackage() == modelPackage;
+			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -71,25 +71,24 @@ public class MaintainerAdapterFactory extends AdapterFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected MaintainerSwitch<Adapter> modelSwitch =
-		new MaintainerSwitch<Adapter>()
+	protected MaintainerSwitch<Adapter> modelSwitch = new MaintainerSwitch<Adapter>()
+	{
+		@Override
+		public <T extends Maintainable<T>> Adapter caseMaintainable(Maintainable<T> object)
 		{
-			@Override
-			public <T extends Maintainable<T>> Adapter caseMaintainable(Maintainable<T> object)
-			{
-				return createMaintainableAdapter();
-			}
-			@Override
-			public <T extends Maintainable<T>> Adapter caseMaintainer(Maintainer<T> object)
-			{
-				return createMaintainerAdapter();
-			}
-			@Override
-			public Adapter defaultCase(EObject object)
-			{
-				return createEObjectAdapter();
-			}
-		};
+			return createMaintainableAdapter();
+		}
+		@Override
+		public <T extends Maintainable<T>> Adapter caseMaintainer(Maintainer<T> object)
+		{
+			return createMaintainerAdapter();
+		}
+		@Override
+		public Adapter defaultCase(EObject object)
+		{
+			return createEObjectAdapter();
+		}
+	};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -102,9 +101,8 @@ public class MaintainerAdapterFactory extends AdapterFactoryImpl
 	@Override
 	public Adapter createAdapter(Notifier target)
 	{
-		return modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject) target);
 	}
-
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.maintainer.Maintainable <em>Maintainable</em>}'.

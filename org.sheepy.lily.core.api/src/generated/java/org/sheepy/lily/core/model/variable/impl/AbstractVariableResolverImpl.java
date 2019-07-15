@@ -26,7 +26,8 @@ import org.sheepy.lily.core.model.variable.VariablePackage;
  *
  * @generated
  */
-public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Container implements AbstractVariableResolver
+public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Container
+		implements AbstractVariableResolver
 {
 	/**
 	 * The default value of the '{@link #getVariableDefinition() <em>Variable Definition</em>}' attribute.
@@ -90,8 +91,9 @@ public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Co
 	{
 		String oldVariableDefinition = variableDefinition;
 		variableDefinition = newVariableDefinition;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION, oldVariableDefinition, variableDefinition));
+		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
+				VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION,
+				oldVariableDefinition, variableDefinition));
 	}
 
 	/**
@@ -104,8 +106,8 @@ public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Co
 	{
 		switch (featureID)
 		{
-			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
-				return getVariableDefinition();
+		case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
+			return getVariableDefinition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -120,9 +122,9 @@ public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Co
 	{
 		switch (featureID)
 		{
-			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
-				setVariableDefinition((String)newValue);
-				return;
+		case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
+			setVariableDefinition((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -137,9 +139,9 @@ public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Co
 	{
 		switch (featureID)
 		{
-			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
-				setVariableDefinition(VARIABLE_DEFINITION_EDEFAULT);
-				return;
+		case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
+			setVariableDefinition(VARIABLE_DEFINITION_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -154,8 +156,10 @@ public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Co
 	{
 		switch (featureID)
 		{
-			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
-				return VARIABLE_DEFINITION_EDEFAULT == null ? variableDefinition != null : !VARIABLE_DEFINITION_EDEFAULT.equals(variableDefinition);
+		case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
+			return VARIABLE_DEFINITION_EDEFAULT == null
+					? variableDefinition != null
+					: !VARIABLE_DEFINITION_EDEFAULT.equals(variableDefinition);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -172,8 +176,10 @@ public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Co
 		{
 			switch (derivedFeatureID)
 			{
-				case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION: return VariablePackage.IDEFINITION_CONTAINER__VARIABLE_DEFINITION;
-				default: return -1;
+			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
+				return VariablePackage.IDEFINITION_CONTAINER__VARIABLE_DEFINITION;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
@@ -191,8 +197,10 @@ public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Co
 		{
 			switch (baseFeatureID)
 			{
-				case VariablePackage.IDEFINITION_CONTAINER__VARIABLE_DEFINITION: return VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION;
-				default: return -1;
+			case VariablePackage.IDEFINITION_CONTAINER__VARIABLE_DEFINITION:
+				return VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

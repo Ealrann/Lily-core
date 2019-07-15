@@ -24,10 +24,6 @@ public interface ISizedElement extends IPositionElement
 	/**
 	 * Returns the value of the '<em><b>Width</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Width</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Width</em>' attribute.
 	 * @see #setWidth(int)
@@ -50,10 +46,6 @@ public interface ISizedElement extends IPositionElement
 	/**
 	 * Returns the value of the '<em><b>Height</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Height</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Height</em>' attribute.
 	 * @see #setHeight(int)

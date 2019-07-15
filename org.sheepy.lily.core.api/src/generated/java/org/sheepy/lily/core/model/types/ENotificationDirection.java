@@ -62,10 +62,6 @@ public enum ENotificationDirection implements Enumerator
 	/**
 	 * The '<em><b>Parent</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Parent</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #PARENT
 	 * @model name="Parent"
@@ -77,10 +73,6 @@ public enum ENotificationDirection implements Enumerator
 	/**
 	 * The '<em><b>Children</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Children</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #CHILDREN
 	 * @model name="Children"
@@ -92,10 +84,6 @@ public enum ENotificationDirection implements Enumerator
 	/**
 	 * The '<em><b>Self</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Self</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SELF
 	 * @model name="Self"
@@ -107,10 +95,6 @@ public enum ENotificationDirection implements Enumerator
 	/**
 	 * The '<em><b>All</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>All</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #ALL
 	 * @model name="All"
@@ -125,14 +109,9 @@ public enum ENotificationDirection implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ENotificationDirection[] VALUES_ARRAY =
-		new ENotificationDirection[]
-		{
-			PARENT,
-			CHILDREN,
-			SELF,
-			ALL,
-		};
+	private static final ENotificationDirection[] VALUES_ARRAY = new ENotificationDirection[] {
+			PARENT, CHILDREN, SELF, ALL,
+	};
 
 	/**
 	 * A public read-only list of all the '<em><b>ENotification Direction</b></em>' enumerators.
@@ -140,7 +119,8 @@ public enum ENotificationDirection implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<ENotificationDirection> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ENotificationDirection> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>ENotification Direction</b></em>' literal with the specified literal value.
@@ -196,7 +176,8 @@ public enum ENotificationDirection implements Enumerator
 	{
 		switch (value)
 		{
-			case PARENT_VALUE: return PARENT;
+		case PARENT_VALUE:
+			return PARENT;
 		}
 		return null;
 	}
@@ -243,7 +224,7 @@ public enum ENotificationDirection implements Enumerator
 	@Override
 	public int getValue()
 	{
-	  return value;
+		return value;
 	}
 
 	/**
@@ -254,7 +235,7 @@ public enum ENotificationDirection implements Enumerator
 	@Override
 	public String getName()
 	{
-	  return name;
+		return name;
 	}
 
 	/**
@@ -265,7 +246,7 @@ public enum ENotificationDirection implements Enumerator
 	@Override
 	public String getLiteral()
 	{
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -279,5 +260,5 @@ public enum ENotificationDirection implements Enumerator
 	{
 		return literal;
 	}
-	
+
 } //ENotificationDirection

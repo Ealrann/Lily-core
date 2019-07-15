@@ -72,10 +72,6 @@ public enum ENumberComparisonType implements Enumerator
 	/**
 	 * The '<em><b>Equal</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Equal</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #EQUAL
 	 * @model name="Equal"
@@ -87,10 +83,6 @@ public enum ENumberComparisonType implements Enumerator
 	/**
 	 * The '<em><b>Inf Or Equal</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Inf Or Equal</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #INF_OR_EQUAL
 	 * @model name="InfOrEqual"
@@ -102,10 +94,6 @@ public enum ENumberComparisonType implements Enumerator
 	/**
 	 * The '<em><b>Sup Or Equal</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Sup Or Equal</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SUP_OR_EQUAL
 	 * @model name="SupOrEqual"
@@ -117,10 +105,6 @@ public enum ENumberComparisonType implements Enumerator
 	/**
 	 * The '<em><b>Inf</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Inf</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #INF
 	 * @model name="Inf"
@@ -132,10 +116,6 @@ public enum ENumberComparisonType implements Enumerator
 	/**
 	 * The '<em><b>Sup</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Sup</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #SUP
 	 * @model name="Sup"
@@ -150,15 +130,9 @@ public enum ENumberComparisonType implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ENumberComparisonType[] VALUES_ARRAY =
-		new ENumberComparisonType[]
-		{
-			EQUAL,
-			INF_OR_EQUAL,
-			SUP_OR_EQUAL,
-			INF,
-			SUP,
-		};
+	private static final ENumberComparisonType[] VALUES_ARRAY = new ENumberComparisonType[] {
+			EQUAL, INF_OR_EQUAL, SUP_OR_EQUAL, INF, SUP,
+	};
 
 	/**
 	 * A public read-only list of all the '<em><b>ENumber Comparison Type</b></em>' enumerators.
@@ -166,7 +140,8 @@ public enum ENumberComparisonType implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<ENumberComparisonType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ENumberComparisonType> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>ENumber Comparison Type</b></em>' literal with the specified literal value.
@@ -222,7 +197,8 @@ public enum ENumberComparisonType implements Enumerator
 	{
 		switch (value)
 		{
-			case EQUAL_VALUE: return EQUAL;
+		case EQUAL_VALUE:
+			return EQUAL;
 		}
 		return null;
 	}
@@ -269,7 +245,7 @@ public enum ENumberComparisonType implements Enumerator
 	@Override
 	public int getValue()
 	{
-	  return value;
+		return value;
 	}
 
 	/**
@@ -280,7 +256,7 @@ public enum ENumberComparisonType implements Enumerator
 	@Override
 	public String getName()
 	{
-	  return name;
+		return name;
 	}
 
 	/**
@@ -291,7 +267,7 @@ public enum ENumberComparisonType implements Enumerator
 	@Override
 	public String getLiteral()
 	{
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -305,5 +281,5 @@ public enum ENumberComparisonType implements Enumerator
 	{
 		return literal;
 	}
-	
+
 } //ENumberComparisonType

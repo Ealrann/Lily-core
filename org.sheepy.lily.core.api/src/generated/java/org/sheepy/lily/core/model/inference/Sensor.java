@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.inference;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Sensor</b></em>'.
@@ -19,5 +18,4 @@ package org.sheepy.lily.core.model.inference;
  * @generated
  */
 public interface Sensor extends IInferenceObject
-{
-} // Sensor
+{} // Sensor

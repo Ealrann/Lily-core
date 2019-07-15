@@ -25,10 +25,6 @@ public interface DynamicRowLayout extends IControl
 	 * Returns the value of the '<em><b>Height</b></em>' attribute.
 	 * The default value is <code>"16"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Height</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Height</em>' attribute.
 	 * @see #setHeight(int)
@@ -52,10 +48,6 @@ public interface DynamicRowLayout extends IControl
 	 * Returns the value of the '<em><b>Column Count</b></em>' attribute.
 	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Column Count</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Column Count</em>' attribute.
 	 * @see #setColumnCount(int)

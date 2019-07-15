@@ -26,6 +26,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.sheepy.lily.core.model.types.provider.LilyEditPlugin;
 import org.sheepy.lily.core.model.variable.VariablePackage;
 
 import org.sheepy.lily.core.model.variable.util.VariableAdapterFactory;
@@ -39,7 +40,8 @@ import org.sheepy.lily.core.model.variable.util.VariableAdapterFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class VariableItemProviderAdapterFactory extends VariableAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender
+public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
+		implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender
 {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
@@ -63,7 +65,8 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(VariableEditPlugin.INSTANCE, VariablePackage.eNS_URI);
+	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(
+			LilyEditPlugin.INSTANCE, VariablePackage.eNS_URI);
 
 	/**
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
@@ -271,7 +274,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 		if (isFactoryForType(type))
 		{
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter)))
+			if (!(type instanceof Class<?>) || (((Class<?>) type).isInstance(adapter)))
 			{
 				return adapter;
 			}
@@ -362,7 +365,8 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory i
 	{
 		if (chainVariableResolverItemProvider != null) chainVariableResolverItemProvider.dispose();
 		if (chainResolverItemProvider != null) chainResolverItemProvider.dispose();
-		if (directVariableResolverItemProvider != null) directVariableResolverItemProvider.dispose();
+		if (directVariableResolverItemProvider != null)
+			directVariableResolverItemProvider.dispose();
 		if (booleanChangeActionItemProvider != null) booleanChangeActionItemProvider.dispose();
 		if (varChangeActionPkgItemProvider != null) varChangeActionPkgItemProvider.dispose();
 	}

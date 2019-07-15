@@ -54,7 +54,8 @@ public interface MaintainerPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	MaintainerPackage eINSTANCE = org.sheepy.lily.core.model.maintainer.impl.MaintainerPackageImpl.init();
+	MaintainerPackage eINSTANCE = org.sheepy.lily.core.model.maintainer.impl.MaintainerPackageImpl
+			.init();
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.maintainer.Maintainable <em>Maintainable</em>}' class.
@@ -85,15 +86,6 @@ public interface MaintainerPackage extends EPackage
 	int MAINTAINABLE_FEATURE_COUNT = 1;
 
 	/**
-	 * The number of operations of the '<em>Maintainable</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAINTAINABLE_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.maintainer.Maintainer <em>Maintainer</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -120,16 +112,6 @@ public interface MaintainerPackage extends EPackage
 	 * @ordered
 	 */
 	int MAINTAINER_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Maintainer</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MAINTAINER_OPERATION_COUNT = 0;
-
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.maintainer.Maintainable <em>Maintainable</em>}'.

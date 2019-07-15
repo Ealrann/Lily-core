@@ -29,10 +29,6 @@ public interface IUIView extends IView
 	 * Returns the value of the '<em><b>Ui Pages</b></em>' containment reference list.
 	 * The list contents are of type {@link org.sheepy.lily.core.model.presentation.UIPage}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Ui Pages</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ui Pages</em>' containment reference list.
 	 * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getIUIView_UiPages()
@@ -44,10 +40,6 @@ public interface IUIView extends IView
 	/**
 	 * Returns the value of the '<em><b>Current UI Page</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Current UI Page</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Current UI Page</em>' reference.
 	 * @see #setCurrentUIPage(UIPage)

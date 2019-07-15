@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.variable.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -33,14 +32,9 @@ import org.sheepy.lily.core.model.variable.VariablePackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class VarChangeActionPkgItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource
+public class VarChangeActionPkgItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -127,7 +121,6 @@ public class VarChangeActionPkgItemProvider
 		return getString("_UI_VarChangeActionPkg_type");
 	}
 
-
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
@@ -142,9 +135,10 @@ public class VarChangeActionPkgItemProvider
 
 		switch (notification.getFeatureID(VarChangeActionPkg.class))
 		{
-			case VariablePackage.VAR_CHANGE_ACTION_PKG__ACTIONS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case VariablePackage.VAR_CHANGE_ACTION_PKG__ACTIONS:
+			fireNotifyChanged(
+					new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -161,10 +155,9 @@ public class VarChangeActionPkgItemProvider
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-				(VariablePackage.Literals.VAR_CHANGE_ACTION_PKG__ACTIONS,
-				 VariableFactory.eINSTANCE.createBooleanChangeAction()));
+		newChildDescriptors
+				.add(createChildParameter(VariablePackage.Literals.VAR_CHANGE_ACTION_PKG__ACTIONS,
+						VariableFactory.eINSTANCE.createBooleanChangeAction()));
 	}
 
 	/**
@@ -176,7 +169,7 @@ public class VarChangeActionPkgItemProvider
 	@Override
 	public ResourceLocator getResourceLocator()
 	{
-		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
 	}
 
 }

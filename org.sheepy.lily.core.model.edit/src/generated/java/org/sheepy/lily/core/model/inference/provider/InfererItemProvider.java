@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.inference.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -32,14 +31,9 @@ import org.sheepy.lily.core.model.inference.Inferer;
  * <!-- end-user-doc -->
  * @generated
  */
-public class InfererItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource
+public class InfererItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -114,7 +108,6 @@ public class InfererItemProvider
 		return getString("_UI_Inferer_type");
 	}
 
-
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
@@ -129,9 +122,10 @@ public class InfererItemProvider
 
 		switch (notification.getFeatureID(Inferer.class))
 		{
-			case InferencePackage.INFERER__RULES:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case InferencePackage.INFERER__RULES:
+			fireNotifyChanged(
+					new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -158,7 +152,7 @@ public class InfererItemProvider
 	@Override
 	public ResourceLocator getResourceLocator()
 	{
-		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
 	}
 
 }

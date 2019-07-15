@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.inference.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -58,7 +57,6 @@ public class LNotificationItemProvider extends AbstractNotificationItemProvider
 	{
 		return getString("_UI_LNotification_type");
 	}
-
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

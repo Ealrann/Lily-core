@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.ui.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -70,13 +69,12 @@ public class LabelItemProvider extends AbstractLabelItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((Label)object).getContentObjects();
+		EList<LObject> labelValue = ((Label) object).getContentObjects();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Label_type") :
-			getString("_UI_Label_type") + " " + label;
+		return label == null || label.length() == 0
+				? getString("_UI_Label_type")
+				: getString("_UI_Label_type") + " " + label;
 	}
-
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached

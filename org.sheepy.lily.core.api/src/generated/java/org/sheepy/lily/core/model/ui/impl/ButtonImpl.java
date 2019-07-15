@@ -2,10 +2,9 @@
  */
 package org.sheepy.lily.core.model.ui.impl;
 
-import java.lang.reflect.InvocationTargetException;
-
 import java.util.Collection;
 import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -139,8 +138,8 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 	{
 		int oldShortcut = shortcut;
 		shortcut = newShortcut;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.BUTTON__SHORTCUT, oldShortcut, shortcut));
+		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
+				UiPackage.BUTTON__SHORTCUT, oldShortcut, shortcut));
 	}
 
 	/**
@@ -164,8 +163,8 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 	{
 		EKeyState oldState = state;
 		state = newState == null ? STATE_EDEFAULT : newState;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.BUTTON__STATE, oldState, state));
+		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
+				UiPackage.BUTTON__STATE, oldState, state));
 	}
 
 	/**
@@ -178,7 +177,8 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 	{
 		if (actions == null)
 		{
-			actions = new EObjectContainmentEList<Action>(Action.class, this, UiPackage.BUTTON__ACTIONS);
+			actions = new EObjectContainmentEList<Action>(Action.class, this,
+					UiPackage.BUTTON__ACTIONS);
 		}
 		return actions;
 	}
@@ -216,12 +216,14 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+											int featureID,
+											NotificationChain msgs)
 	{
 		switch (featureID)
 		{
-			case UiPackage.BUTTON__ACTIONS:
-				return ((InternalEList<?>)getActions()).basicRemove(otherEnd, msgs);
+		case UiPackage.BUTTON__ACTIONS:
+			return ((InternalEList<?>) getActions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -236,12 +238,12 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 	{
 		switch (featureID)
 		{
-			case UiPackage.BUTTON__SHORTCUT:
-				return getShortcut();
-			case UiPackage.BUTTON__STATE:
-				return getState();
-			case UiPackage.BUTTON__ACTIONS:
-				return getActions();
+		case UiPackage.BUTTON__SHORTCUT:
+			return getShortcut();
+		case UiPackage.BUTTON__STATE:
+			return getState();
+		case UiPackage.BUTTON__ACTIONS:
+			return getActions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -257,16 +259,16 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 	{
 		switch (featureID)
 		{
-			case UiPackage.BUTTON__SHORTCUT:
-				setShortcut((Integer)newValue);
-				return;
-			case UiPackage.BUTTON__STATE:
-				setState((EKeyState)newValue);
-				return;
-			case UiPackage.BUTTON__ACTIONS:
-				getActions().clear();
-				getActions().addAll((Collection<? extends Action>)newValue);
-				return;
+		case UiPackage.BUTTON__SHORTCUT:
+			setShortcut((Integer) newValue);
+			return;
+		case UiPackage.BUTTON__STATE:
+			setState((EKeyState) newValue);
+			return;
+		case UiPackage.BUTTON__ACTIONS:
+			getActions().clear();
+			getActions().addAll((Collection<? extends Action>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -281,15 +283,15 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 	{
 		switch (featureID)
 		{
-			case UiPackage.BUTTON__SHORTCUT:
-				setShortcut(SHORTCUT_EDEFAULT);
-				return;
-			case UiPackage.BUTTON__STATE:
-				setState(STATE_EDEFAULT);
-				return;
-			case UiPackage.BUTTON__ACTIONS:
-				getActions().clear();
-				return;
+		case UiPackage.BUTTON__SHORTCUT:
+			setShortcut(SHORTCUT_EDEFAULT);
+			return;
+		case UiPackage.BUTTON__STATE:
+			setState(STATE_EDEFAULT);
+			return;
+		case UiPackage.BUTTON__ACTIONS:
+			getActions().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -304,32 +306,14 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 	{
 		switch (featureID)
 		{
-			case UiPackage.BUTTON__SHORTCUT:
-				return shortcut != SHORTCUT_EDEFAULT;
-			case UiPackage.BUTTON__STATE:
-				return state != STATE_EDEFAULT;
-			case UiPackage.BUTTON__ACTIONS:
-				return actions != null && !actions.isEmpty();
+		case UiPackage.BUTTON__SHORTCUT:
+			return shortcut != SHORTCUT_EDEFAULT;
+		case UiPackage.BUTTON__STATE:
+			return state != STATE_EDEFAULT;
+		case UiPackage.BUTTON__ACTIONS:
+			return actions != null && !actions.isEmpty();
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
-	{
-		switch (operationID)
-		{
-			case UiPackage.BUTTON___LACTIONS:
-				return lActions();
-			case UiPackage.BUTTON___GET_EXECUTOR:
-				return getExecutor();
-		}
-		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

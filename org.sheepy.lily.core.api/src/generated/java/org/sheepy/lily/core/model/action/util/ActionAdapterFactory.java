@@ -62,7 +62,7 @@ public class ActionAdapterFactory extends AdapterFactoryImpl
 		}
 		if (object instanceof EObject)
 		{
-			return ((EObject)object).eClass().getEPackage() == modelPackage;
+			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -73,25 +73,24 @@ public class ActionAdapterFactory extends AdapterFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ActionSwitch<Adapter> modelSwitch =
-		new ActionSwitch<Adapter>()
+	protected ActionSwitch<Adapter> modelSwitch = new ActionSwitch<Adapter>()
+	{
+		@Override
+		public Adapter caseAction(Action object)
 		{
-			@Override
-			public Adapter caseAction(Action object)
-			{
-				return createActionAdapter();
-			}
-			@Override
-			public Adapter caseLNamedElement(LNamedElement object)
-			{
-				return createLNamedElementAdapter();
-			}
-			@Override
-			public Adapter defaultCase(EObject object)
-			{
-				return createEObjectAdapter();
-			}
-		};
+			return createActionAdapter();
+		}
+		@Override
+		public Adapter caseLNamedElement(LNamedElement object)
+		{
+			return createLNamedElementAdapter();
+		}
+		@Override
+		public Adapter defaultCase(EObject object)
+		{
+			return createEObjectAdapter();
+		}
+	};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -104,9 +103,8 @@ public class ActionAdapterFactory extends AdapterFactoryImpl
 	@Override
 	public Adapter createAdapter(Notifier target)
 	{
-		return modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject) target);
 	}
-
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.action.Action <em>Action</em>}'.

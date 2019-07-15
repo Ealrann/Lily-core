@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="types" nsURI="org.sheepy.lily.core.model.types" nsPrefix="types">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="modelDirectory" value="/org.sheepy.lily.core.model/src/generated/java"/>
+    <details key="editDirectory" value="/org.sheepy.lily.core.model.edit/src/generated/java"/>
+    <details key="complianceLevel" value="11.0"/>
+    <details key="resource" value="XMI"/>
+    <details key="updateClasspath" value="false"/>
+    <details key="basePackage" value="org.sheepy.lily.core.model"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="LNamedElement" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Vector4d" instanceClassName="org.joml.Vector4dc">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="create" value="if ((it != null))&#xA;{&#xA;&#x9;final &lt;%java.lang.String%>[] split = it.split(&quot;;&quot;);&#xA;&#x9;int _length = split.length;&#xA;&#x9;boolean _equals = (_length == 4);&#xA;&#x9;if (_equals)&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%java.lang.Double%> _valueOf = &lt;%java.lang.Double%>.valueOf(split[0]);&#xA;&#x9;&#x9;&lt;%java.lang.Double%> _valueOf_1 = &lt;%java.lang.Double%>.valueOf(split[1]);&#xA;&#x9;&#x9;&lt;%java.lang.Double%> _valueOf_2 = &lt;%java.lang.Double%>.valueOf(split[2]);&#xA;&#x9;&#x9;&lt;%java.lang.Double%> _valueOf_3 = &lt;%java.lang.Double%>.valueOf(split[3]);&#xA;&#x9;&#x9;return new &lt;%org.joml.Vector4d%>((_valueOf).doubleValue(), (_valueOf_1).doubleValue(), (_valueOf_2).doubleValue(), (_valueOf_3).doubleValue());&#xA;&#x9;}&#xA;}&#xA;return new &lt;%org.joml.Vector4d%>(0, 0, 0, 0);"/>
+      <details key="convert" value="if ((it != null))&#xA;{&#xA;&#x9;double _x = it.x();&#xA;&#x9;&lt;%java.lang.String%> _plus = (&lt;%java.lang.Double%>.valueOf(_x) + &quot;;&quot;);&#xA;&#x9;double _y = it.y();&#xA;&#x9;&lt;%java.lang.String%> _plus_1 = (_plus + &lt;%java.lang.Double%>.valueOf(_y));&#xA;&#x9;&lt;%java.lang.String%> _plus_2 = (_plus_1 + &quot;;&quot;);&#xA;&#x9;double _z = it.z();&#xA;&#x9;&lt;%java.lang.String%> _plus_3 = (_plus_2 + &lt;%java.lang.Double%>.valueOf(_z));&#xA;&#x9;&lt;%java.lang.String%> _plus_4 = (_plus_3 + &quot;;&quot;);&#xA;&#x9;double _w = it.w();&#xA;&#x9;return (_plus_4 + &lt;%java.lang.Double%>.valueOf(_w));&#xA;}&#xA;else&#xA;{&#xA;&#x9;return &quot;0;0;0;0&quot;;&#xA;}"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Vector4f" instanceClassName="org.joml.Vector4fc">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="create" value="if ((it != null))&#xA;{&#xA;&#x9;final &lt;%java.lang.String%>[] split = it.split(&quot;;&quot;);&#xA;&#x9;int _length = split.length;&#xA;&#x9;boolean _equals = (_length == 4);&#xA;&#x9;if (_equals)&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%java.lang.Float%> _valueOf = &lt;%java.lang.Float%>.valueOf(split[0]);&#xA;&#x9;&#x9;&lt;%java.lang.Float%> _valueOf_1 = &lt;%java.lang.Float%>.valueOf(split[1]);&#xA;&#x9;&#x9;&lt;%java.lang.Float%> _valueOf_2 = &lt;%java.lang.Float%>.valueOf(split[2]);&#xA;&#x9;&#x9;&lt;%java.lang.Float%> _valueOf_3 = &lt;%java.lang.Float%>.valueOf(split[3]);&#xA;&#x9;&#x9;return new &lt;%org.joml.Vector4f%>((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue(), (_valueOf_3).floatValue());&#xA;&#x9;}&#xA;}&#xA;return new &lt;%org.joml.Vector4f%>(0, 0, 0, 0);"/>
+      <details key="convert" value="if ((it != null))&#xA;{&#xA;&#x9;float _x = it.x();&#xA;&#x9;&lt;%java.lang.String%> _plus = (&lt;%java.lang.Float%>.valueOf(_x) + &quot;;&quot;);&#xA;&#x9;float _y = it.y();&#xA;&#x9;&lt;%java.lang.String%> _plus_1 = (_plus + &lt;%java.lang.Float%>.valueOf(_y));&#xA;&#x9;&lt;%java.lang.String%> _plus_2 = (_plus_1 + &quot;;&quot;);&#xA;&#x9;float _z = it.z();&#xA;&#x9;&lt;%java.lang.String%> _plus_3 = (_plus_2 + &lt;%java.lang.Float%>.valueOf(_z));&#xA;&#x9;&lt;%java.lang.String%> _plus_4 = (_plus_3 + &quot;;&quot;);&#xA;&#x9;float _w = it.w();&#xA;&#x9;return (_plus_4 + &lt;%java.lang.Float%>.valueOf(_w));&#xA;}&#xA;else&#xA;{&#xA;&#x9;return &quot;0;0;0;0&quot;;&#xA;}"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Color4f" instanceClassName="org.joml.Vector4fc">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="create" value="if ((it != null))&#xA;{&#xA;&#x9;final &lt;%java.lang.String%>[] split = it.split(&quot;;&quot;);&#xA;&#x9;int _length = split.length;&#xA;&#x9;boolean _equals = (_length == 4);&#xA;&#x9;if (_equals)&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%java.lang.Float%> _valueOf = &lt;%java.lang.Float%>.valueOf(split[0]);&#xA;&#x9;&#x9;&lt;%java.lang.Float%> _valueOf_1 = &lt;%java.lang.Float%>.valueOf(split[1]);&#xA;&#x9;&#x9;&lt;%java.lang.Float%> _valueOf_2 = &lt;%java.lang.Float%>.valueOf(split[2]);&#xA;&#x9;&#x9;&lt;%java.lang.Float%> _valueOf_3 = &lt;%java.lang.Float%>.valueOf(split[3]);&#xA;&#x9;&#x9;return new &lt;%org.joml.Vector4f%>((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue(), (_valueOf_3).floatValue());&#xA;&#x9;}&#xA;}&#xA;return new &lt;%org.joml.Vector4f%>(0, 0, 0, 0);"/>
+      <details key="convert" value="if ((it != null))&#xA;{&#xA;&#x9;float _x = it.x();&#xA;&#x9;&lt;%java.lang.String%> _plus = (&lt;%java.lang.Float%>.valueOf(_x) + &quot;;&quot;);&#xA;&#x9;float _y = it.y();&#xA;&#x9;&lt;%java.lang.String%> _plus_1 = (_plus + &lt;%java.lang.Float%>.valueOf(_y));&#xA;&#x9;&lt;%java.lang.String%> _plus_2 = (_plus_1 + &quot;;&quot;);&#xA;&#x9;float _z = it.z();&#xA;&#x9;&lt;%java.lang.String%> _plus_3 = (_plus_2 + &lt;%java.lang.Float%>.valueOf(_z));&#xA;&#x9;&lt;%java.lang.String%> _plus_4 = (_plus_3 + &quot;;&quot;);&#xA;&#x9;float _w = it.w();&#xA;&#x9;return (_plus_4 + &lt;%java.lang.Float%>.valueOf(_w));&#xA;}&#xA;else&#xA;{&#xA;&#x9;return &quot;0;0;0;0&quot;;&#xA;}"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Color3f" instanceClassName="org.joml.Vector3fc">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="create" value="if ((it != null))&#xA;{&#xA;&#x9;final &lt;%java.lang.String%>[] split = it.split(&quot;;&quot;);&#xA;&#x9;int _length = split.length;&#xA;&#x9;boolean _equals = (_length == 3);&#xA;&#x9;if (_equals)&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%java.lang.Float%> _valueOf = &lt;%java.lang.Float%>.valueOf(split[0]);&#xA;&#x9;&#x9;&lt;%java.lang.Float%> _valueOf_1 = &lt;%java.lang.Float%>.valueOf(split[1]);&#xA;&#x9;&#x9;&lt;%java.lang.Float%> _valueOf_2 = &lt;%java.lang.Float%>.valueOf(split[2]);&#xA;&#x9;&#x9;return new &lt;%org.joml.Vector3f%>((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue());&#xA;&#x9;}&#xA;}&#xA;return new &lt;%org.joml.Vector3f%>(0, 0, 0);"/>
+      <details key="convert" value="if ((it != null))&#xA;{&#xA;&#x9;float _x = it.x();&#xA;&#x9;&lt;%java.lang.String%> _plus = (&lt;%java.lang.Float%>.valueOf(_x) + &quot;;&quot;);&#xA;&#x9;float _y = it.y();&#xA;&#x9;&lt;%java.lang.String%> _plus_1 = (_plus + &lt;%java.lang.Float%>.valueOf(_y));&#xA;&#x9;&lt;%java.lang.String%> _plus_2 = (_plus_1 + &quot;;&quot;);&#xA;&#x9;float _z = it.z();&#xA;&#x9;return (_plus_2 + &lt;%java.lang.Float%>.valueOf(_z));&#xA;}&#xA;else&#xA;{&#xA;&#x9;return &quot;0;0;0&quot;;&#xA;}"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Vector3d" instanceClassName="org.joml.Vector3dc">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="create" value="if ((it != null))&#xA;{&#xA;&#x9;final &lt;%java.lang.String%>[] split = it.split(&quot;;&quot;);&#xA;&#x9;int _length = split.length;&#xA;&#x9;boolean _equals = (_length == 3);&#xA;&#x9;if (_equals)&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%java.lang.Double%> _valueOf = &lt;%java.lang.Double%>.valueOf(split[0]);&#xA;&#x9;&#x9;&lt;%java.lang.Double%> _valueOf_1 = &lt;%java.lang.Double%>.valueOf(split[1]);&#xA;&#x9;&#x9;&lt;%java.lang.Double%> _valueOf_2 = &lt;%java.lang.Double%>.valueOf(split[2]);&#xA;&#x9;&#x9;return new &lt;%org.joml.Vector3d%>((_valueOf).doubleValue(), (_valueOf_1).doubleValue(), (_valueOf_2).doubleValue());&#xA;&#x9;}&#xA;}&#xA;return new &lt;%org.joml.Vector3d%>(0, 0, 0);"/>
+      <details key="convert" value="if ((it != null))&#xA;{&#xA;&#x9;double _x = it.x();&#xA;&#x9;&lt;%java.lang.String%> _plus = (&lt;%java.lang.Double%>.valueOf(_x) + &quot;;&quot;);&#xA;&#x9;double _y = it.y();&#xA;&#x9;&lt;%java.lang.String%> _plus_1 = (_plus + &lt;%java.lang.Double%>.valueOf(_y));&#xA;&#x9;&lt;%java.lang.String%> _plus_2 = (_plus_1 + &quot;;&quot;);&#xA;&#x9;double _z = it.z();&#xA;&#x9;return (_plus_2 + &lt;%java.lang.Double%>.valueOf(_z));&#xA;}&#xA;else&#xA;{&#xA;&#x9;return &quot;0;0;0&quot;;&#xA;}"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Vector3f" instanceClassName="org.joml.Vector3fc">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="create" value="if ((it != null))&#xA;{&#xA;&#x9;final &lt;%java.lang.String%>[] split = it.split(&quot;;&quot;);&#xA;&#x9;int _length = split.length;&#xA;&#x9;boolean _equals = (_length == 3);&#xA;&#x9;if (_equals)&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%java.lang.Float%> _valueOf = &lt;%java.lang.Float%>.valueOf(split[0]);&#xA;&#x9;&#x9;&lt;%java.lang.Float%> _valueOf_1 = &lt;%java.lang.Float%>.valueOf(split[1]);&#xA;&#x9;&#x9;&lt;%java.lang.Float%> _valueOf_2 = &lt;%java.lang.Float%>.valueOf(split[2]);&#xA;&#x9;&#x9;return new &lt;%org.joml.Vector3f%>((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue());&#xA;&#x9;}&#xA;}&#xA;return new &lt;%org.joml.Vector3f%>(0, 0, 0);"/>
+      <details key="convert" value="if ((it != null))&#xA;{&#xA;&#x9;float _x = it.x();&#xA;&#x9;&lt;%java.lang.String%> _plus = (&lt;%java.lang.Float%>.valueOf(_x) + &quot;;&quot;);&#xA;&#x9;float _y = it.y();&#xA;&#x9;&lt;%java.lang.String%> _plus_1 = (_plus + &lt;%java.lang.Float%>.valueOf(_y));&#xA;&#x9;&lt;%java.lang.String%> _plus_2 = (_plus_1 + &quot;;&quot;);&#xA;&#x9;float _z = it.z();&#xA;&#x9;return (_plus_2 + &lt;%java.lang.Float%>.valueOf(_z));&#xA;}&#xA;else&#xA;{&#xA;&#x9;return &quot;0;0;0&quot;;&#xA;}"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Vector3i" instanceClassName="org.joml.Vector3ic">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="create" value="if ((it != null))&#xA;{&#xA;&#x9;final &lt;%java.lang.String%>[] split = it.split(&quot;;&quot;);&#xA;&#x9;int _length = split.length;&#xA;&#x9;boolean _equals = (_length == 3);&#xA;&#x9;if (_equals)&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%java.lang.Integer%> _valueOf = &lt;%java.lang.Integer%>.valueOf(split[0]);&#xA;&#x9;&#x9;&lt;%java.lang.Integer%> _valueOf_1 = &lt;%java.lang.Integer%>.valueOf(split[1]);&#xA;&#x9;&#x9;&lt;%java.lang.Integer%> _valueOf_2 = &lt;%java.lang.Integer%>.valueOf(split[2]);&#xA;&#x9;&#x9;return new &lt;%org.joml.Vector3i%>((_valueOf).intValue(), (_valueOf_1).intValue(), (_valueOf_2).intValue());&#xA;&#x9;}&#xA;}&#xA;return new &lt;%org.joml.Vector3i%>(0, 0, 0);"/>
+      <details key="convert" value="if ((it != null))&#xA;{&#xA;&#x9;int _x = it.x();&#xA;&#x9;&lt;%java.lang.String%> _plus = (&lt;%java.lang.Integer%>.valueOf(_x) + &quot;;&quot;);&#xA;&#x9;int _y = it.y();&#xA;&#x9;&lt;%java.lang.String%> _plus_1 = (_plus + &lt;%java.lang.Integer%>.valueOf(_y));&#xA;&#x9;&lt;%java.lang.String%> _plus_2 = (_plus_1 + &quot;;&quot;);&#xA;&#x9;int _z = it.z();&#xA;&#x9;return (_plus_2 + &lt;%java.lang.Integer%>.valueOf(_z));&#xA;}&#xA;else&#xA;{&#xA;&#x9;return &quot;0;0;0&quot;;&#xA;}"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Vector2f" instanceClassName="org.joml.Vector2fc">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="create" value="if ((it != null))&#xA;{&#xA;&#x9;final &lt;%java.lang.String%>[] split = it.split(&quot;;&quot;);&#xA;&#x9;int _length = split.length;&#xA;&#x9;boolean _equals = (_length == 2);&#xA;&#x9;if (_equals)&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%java.lang.Float%> _valueOf = &lt;%java.lang.Float%>.valueOf(split[0]);&#xA;&#x9;&#x9;&lt;%java.lang.Float%> _valueOf_1 = &lt;%java.lang.Float%>.valueOf(split[1]);&#xA;&#x9;&#x9;return new &lt;%org.joml.Vector2f%>((_valueOf).floatValue(), (_valueOf_1).floatValue());&#xA;&#x9;}&#xA;}&#xA;return new &lt;%org.joml.Vector2f%>(0, 0);"/>
+      <details key="convert" value="if ((it != null))&#xA;{&#xA;&#x9;float _x = it.x();&#xA;&#x9;&lt;%java.lang.String%> _plus = (&lt;%java.lang.Float%>.valueOf(_x) + &quot;;&quot;);&#xA;&#x9;float _y = it.y();&#xA;&#x9;return (_plus + &lt;%java.lang.Float%>.valueOf(_y));&#xA;}&#xA;else&#xA;{&#xA;&#x9;return &quot;0;0&quot;;&#xA;}"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Vector2i" instanceClassName="org.joml.Vector2ic">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="create" value="if ((it != null))&#xA;{&#xA;&#x9;final &lt;%java.lang.String%>[] split = it.split(&quot;;&quot;);&#xA;&#x9;int _length = split.length;&#xA;&#x9;boolean _equals = (_length == 2);&#xA;&#x9;if (_equals)&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%java.lang.Integer%> _valueOf = &lt;%java.lang.Integer%>.valueOf(split[0]);&#xA;&#x9;&#x9;&lt;%java.lang.Integer%> _valueOf_1 = &lt;%java.lang.Integer%>.valueOf(split[1]);&#xA;&#x9;&#x9;return new &lt;%org.joml.Vector2i%>((_valueOf).intValue(), (_valueOf_1).intValue());&#xA;&#x9;}&#xA;}&#xA;return new &lt;%org.joml.Vector2i%>(0, 0);"/>
+      <details key="convert" value="if ((it != null))&#xA;{&#xA;&#x9;int _x = it.x();&#xA;&#x9;&lt;%java.lang.String%> _plus = (&lt;%java.lang.Integer%>.valueOf(_x) + &quot;;&quot;);&#xA;&#x9;int _y = it.y();&#xA;&#x9;return (_plus + &lt;%java.lang.Integer%>.valueOf(_y));&#xA;}&#xA;else&#xA;{&#xA;&#x9;return &quot;0;0&quot;;&#xA;}"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="Vector2d" instanceClassName="org.joml.Vector2dc">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="create" value="if ((it != null))&#xA;{&#xA;&#x9;final &lt;%java.lang.String%>[] split = it.split(&quot;;&quot;);&#xA;&#x9;int _length = split.length;&#xA;&#x9;boolean _equals = (_length == 2);&#xA;&#x9;if (_equals)&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%java.lang.Double%> _valueOf = &lt;%java.lang.Double%>.valueOf(split[0]);&#xA;&#x9;&#x9;&lt;%java.lang.Double%> _valueOf_1 = &lt;%java.lang.Double%>.valueOf(split[1]);&#xA;&#x9;&#x9;return new &lt;%org.joml.Vector2d%>((_valueOf).doubleValue(), (_valueOf_1).doubleValue());&#xA;&#x9;}&#xA;}&#xA;return new &lt;%org.joml.Vector2d%>(0, 0);"/>
+      <details key="convert" value="if ((it != null))&#xA;{&#xA;&#x9;double _x = it.x();&#xA;&#x9;&lt;%java.lang.String%> _plus = (&lt;%java.lang.Double%>.valueOf(_x) + &quot;;&quot;);&#xA;&#x9;double _y = it.y();&#xA;&#x9;return (_plus + &lt;%java.lang.Double%>.valueOf(_y));&#xA;}&#xA;else&#xA;{&#xA;&#x9;return &quot;0;0&quot;;&#xA;}"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter" abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PositionParameter" abstract="true" interface="true"
+      eSuperTypes="#//Parameter">
+    <eOperations name="getPosition" unique="false" eType="#//Vector2i"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PositionFParameter" abstract="true"
+      interface="true" eSuperTypes="#//Parameter">
+    <eOperations name="getPosition" unique="false" eType="#//Vector2f"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NativeParameter" abstract="true" interface="true"
+      eSuperTypes="#//Parameter">
+    <eTypeParameters name="T"/>
+    <eOperations name="getNativeValue" unique="false">
+      <eGenericType eTypeParameter="#//NativeParameter/T"/>
+    </eOperations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FloatParameter">
+    <eOperations name="getNativeValue" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFloatObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getValue();"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFloatObject"/>
+    <eGenericSuperTypes eClassifier="#//NativeParameter">
+      <eTypeArguments eClassifier="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EFloatObject"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringParameter">
+    <eOperations name="getNativeValue" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getValue();"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    <eGenericSuperTypes eClassifier="#//NativeParameter">
+      <eTypeArguments eClassifier="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanParameter">
+    <eOperations name="getNativeValue" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBooleanObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="body" value="return this.getValue();"/>
+      </eAnnotations>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBooleanObject"/>
+    <eGenericSuperTypes eClassifier="#//NativeParameter">
+      <eTypeArguments eClassifier="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBooleanObject"/>
+    </eGenericSuperTypes>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ENotificationDirection">
+    <eLiterals name="Parent"/>
+    <eLiterals name="Children"/>
+    <eLiterals name="Self"/>
+    <eLiterals name="All"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EMoveState">
+    <eLiterals name="START_MOVING"/>
+    <eLiterals name="STOP_MOVING"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EDirection">
+    <eLiterals name="UP"/>
+    <eLiterals name="LEFT"/>
+    <eLiterals name="RIGHT"/>
+    <eLiterals name="DOWN"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ETimeUnit">
+    <eLiterals name="MILLISECOND"/>
+    <eLiterals name="SECOND"/>
+    <eLiterals name="MINUTE"/>
+    <eLiterals name="HOUR"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ENumberComparisonType">
+    <eLiterals name="Equal"/>
+    <eLiterals name="InfOrEqual"/>
+    <eLiterals name="SupOrEqual"/>
+    <eLiterals name="Inf"/>
+    <eLiterals name="Sup"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EVerticalRelative">
+    <eLiterals name="BOTTOM"/>
+    <eLiterals name="MIDDLE"/>
+    <eLiterals name="TOP"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EHorizontalRelative">
+    <eLiterals name="LEFT"/>
+    <eLiterals name="MIDDLE"/>
+    <eLiterals name="RIGHT"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EMouseButton">
+    <eLiterals name="RIGHT"/>
+    <eLiterals name="LEFT"/>
+    <eLiterals name="MIDDLE"/>
+    <eLiterals name="_4"/>
+    <eLiterals name="_5"/>
+    <eLiterals name="_6"/>
+    <eLiterals name="_7"/>
+    <eLiterals name="_8"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EKeyState">
+    <eLiterals name="RELEASED"/>
+    <eLiterals name="PRESSED" value="1"/>
+    <eLiterals name="REPEATED" value="2"/>
+  </eClassifiers>
+</ecore:EPackage>

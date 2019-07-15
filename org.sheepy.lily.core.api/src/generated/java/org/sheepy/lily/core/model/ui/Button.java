@@ -3,6 +3,7 @@
 package org.sheepy.lily.core.model.ui;
 
 import java.util.List;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.sheepy.lily.core.model.action.Action;
@@ -34,10 +35,6 @@ public interface Button extends AbstractButton
 	/**
 	 * Returns the value of the '<em><b>Shortcut</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Shortcut</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Shortcut</em>' attribute.
 	 * @see #setShortcut(int)
@@ -61,10 +58,6 @@ public interface Button extends AbstractButton
 	 * Returns the value of the '<em><b>State</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.sheepy.lily.core.model.types.EKeyState}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>State</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>State</em>' attribute.
 	 * @see org.sheepy.lily.core.model.types.EKeyState
@@ -90,10 +83,6 @@ public interface Button extends AbstractButton
 	 * Returns the value of the '<em><b>Actions</b></em>' containment reference list.
 	 * The list contents are of type {@link org.sheepy.lily.core.model.action.Action}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Actions</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Actions</em>' containment reference list.
 	 * @see org.sheepy.lily.core.model.ui.UiPackage#getButton_Actions()

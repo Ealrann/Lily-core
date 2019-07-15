@@ -47,7 +47,9 @@ public enum EMouseButton implements Enumerator
 	 * @generated
 	 * @ordered
 	 */
-	MIDDLE(0, "MIDDLE", "MIDDLE"), /**
+	MIDDLE(0, "MIDDLE", "MIDDLE"),
+
+	/**
 	 * The '<em><b>4</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -55,7 +57,9 @@ public enum EMouseButton implements Enumerator
 	 * @generated
 	 * @ordered
 	 */
-	_4(0, "_4", "_4"), /**
+	_4(0, "_4", "_4"),
+
+	/**
 	 * The '<em><b>5</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -63,7 +67,9 @@ public enum EMouseButton implements Enumerator
 	 * @generated
 	 * @ordered
 	 */
-	_5(0, "_5", "_5"), /**
+	_5(0, "_5", "_5"),
+
+	/**
 	 * The '<em><b>6</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -71,7 +77,9 @@ public enum EMouseButton implements Enumerator
 	 * @generated
 	 * @ordered
 	 */
-	_6(0, "_6", "_6"), /**
+	_6(0, "_6", "_6"),
+
+	/**
 	 * The '<em><b>7</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -79,7 +87,9 @@ public enum EMouseButton implements Enumerator
 	 * @generated
 	 * @ordered
 	 */
-	_7(0, "_7", "_7"), /**
+	_7(0, "_7", "_7"),
+
+	/**
 	 * The '<em><b>8</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -92,10 +102,6 @@ public enum EMouseButton implements Enumerator
 	/**
 	 * The '<em><b>RIGHT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>RIGHT</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #RIGHT
 	 * @model
@@ -107,10 +113,6 @@ public enum EMouseButton implements Enumerator
 	/**
 	 * The '<em><b>LEFT</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>LEFT</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #LEFT
 	 * @model
@@ -122,10 +124,6 @@ public enum EMouseButton implements Enumerator
 	/**
 	 * The '<em><b>MIDDLE</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>MIDDLE</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #MIDDLE
 	 * @model
@@ -137,10 +135,6 @@ public enum EMouseButton implements Enumerator
 	/**
 	 * The '<em><b>4</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>4</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_4
 	 * @model
@@ -152,10 +146,6 @@ public enum EMouseButton implements Enumerator
 	/**
 	 * The '<em><b>5</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>5</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_5
 	 * @model
@@ -167,10 +157,6 @@ public enum EMouseButton implements Enumerator
 	/**
 	 * The '<em><b>6</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>6</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_6
 	 * @model
@@ -182,10 +168,6 @@ public enum EMouseButton implements Enumerator
 	/**
 	 * The '<em><b>7</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>7</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_7
 	 * @model
@@ -197,10 +179,6 @@ public enum EMouseButton implements Enumerator
 	/**
 	 * The '<em><b>8</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>8</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #_8
 	 * @model
@@ -215,18 +193,9 @@ public enum EMouseButton implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final EMouseButton[] VALUES_ARRAY =
-		new EMouseButton[]
-		{
-			RIGHT,
-			LEFT,
-			MIDDLE,
-			_4,
-			_5,
-			_6,
-			_7,
-			_8,
-		};
+	private static final EMouseButton[] VALUES_ARRAY = new EMouseButton[] {
+			RIGHT, LEFT, MIDDLE, _4, _5, _6, _7, _8,
+	};
 
 	/**
 	 * A public read-only list of all the '<em><b>EMouse Button</b></em>' enumerators.
@@ -234,7 +203,8 @@ public enum EMouseButton implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<EMouseButton> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<EMouseButton> VALUES = Collections
+			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>EMouse Button</b></em>' literal with the specified literal value.
@@ -290,7 +260,8 @@ public enum EMouseButton implements Enumerator
 	{
 		switch (value)
 		{
-			case RIGHT_VALUE: return RIGHT;
+		case RIGHT_VALUE:
+			return RIGHT;
 		}
 		return null;
 	}
@@ -337,7 +308,7 @@ public enum EMouseButton implements Enumerator
 	@Override
 	public int getValue()
 	{
-	  return value;
+		return value;
 	}
 
 	/**
@@ -348,7 +319,7 @@ public enum EMouseButton implements Enumerator
 	@Override
 	public String getName()
 	{
-	  return name;
+		return name;
 	}
 
 	/**
@@ -359,7 +330,7 @@ public enum EMouseButton implements Enumerator
 	@Override
 	public String getLiteral()
 	{
-	  return literal;
+		return literal;
 	}
 
 	/**
@@ -373,5 +344,5 @@ public enum EMouseButton implements Enumerator
 	{
 		return literal;
 	}
-	
+
 } //EMouseButton

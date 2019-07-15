@@ -33,7 +33,8 @@ import org.sheepy.lily.core.model.variable.VariablePackage;
  *
  * @generated
  */
-public class VarChangeActionPkgImpl extends MinimalEObjectImpl.Container implements VarChangeActionPkg
+public class VarChangeActionPkgImpl extends MinimalEObjectImpl.Container
+		implements VarChangeActionPkg
 {
 	/**
 	 * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list.
@@ -76,7 +77,8 @@ public class VarChangeActionPkgImpl extends MinimalEObjectImpl.Container impleme
 	{
 		if (actions == null)
 		{
-			actions = new EObjectContainmentEList<VarChangeAction>(VarChangeAction.class, this, VariablePackage.VAR_CHANGE_ACTION_PKG__ACTIONS);
+			actions = new EObjectContainmentEList<VarChangeAction>(VarChangeAction.class, this,
+					VariablePackage.VAR_CHANGE_ACTION_PKG__ACTIONS);
 		}
 		return actions;
 	}
@@ -87,12 +89,14 @@ public class VarChangeActionPkgImpl extends MinimalEObjectImpl.Container impleme
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+											int featureID,
+											NotificationChain msgs)
 	{
 		switch (featureID)
 		{
-			case VariablePackage.VAR_CHANGE_ACTION_PKG__ACTIONS:
-				return ((InternalEList<?>)getActions()).basicRemove(otherEnd, msgs);
+		case VariablePackage.VAR_CHANGE_ACTION_PKG__ACTIONS:
+			return ((InternalEList<?>) getActions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -107,8 +111,8 @@ public class VarChangeActionPkgImpl extends MinimalEObjectImpl.Container impleme
 	{
 		switch (featureID)
 		{
-			case VariablePackage.VAR_CHANGE_ACTION_PKG__ACTIONS:
-				return getActions();
+		case VariablePackage.VAR_CHANGE_ACTION_PKG__ACTIONS:
+			return getActions();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -124,10 +128,10 @@ public class VarChangeActionPkgImpl extends MinimalEObjectImpl.Container impleme
 	{
 		switch (featureID)
 		{
-			case VariablePackage.VAR_CHANGE_ACTION_PKG__ACTIONS:
-				getActions().clear();
-				getActions().addAll((Collection<? extends VarChangeAction>)newValue);
-				return;
+		case VariablePackage.VAR_CHANGE_ACTION_PKG__ACTIONS:
+			getActions().clear();
+			getActions().addAll((Collection<? extends VarChangeAction>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -142,9 +146,9 @@ public class VarChangeActionPkgImpl extends MinimalEObjectImpl.Container impleme
 	{
 		switch (featureID)
 		{
-			case VariablePackage.VAR_CHANGE_ACTION_PKG__ACTIONS:
-				getActions().clear();
-				return;
+		case VariablePackage.VAR_CHANGE_ACTION_PKG__ACTIONS:
+			getActions().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -159,8 +163,8 @@ public class VarChangeActionPkgImpl extends MinimalEObjectImpl.Container impleme
 	{
 		switch (featureID)
 		{
-			case VariablePackage.VAR_CHANGE_ACTION_PKG__ACTIONS:
-				return actions != null && !actions.isEmpty();
+		case VariablePackage.VAR_CHANGE_ACTION_PKG__ACTIONS:
+			return actions != null && !actions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

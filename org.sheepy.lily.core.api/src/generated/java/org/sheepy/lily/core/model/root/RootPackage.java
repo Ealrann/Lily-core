@@ -5,9 +5,10 @@ package org.sheepy.lily.core.model.root;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.sheepy.lily.core.model.action.ActionPackage;
+
 import org.sheepy.lily.core.model.inference.InferencePackage;
 
 /**
@@ -89,60 +90,6 @@ public interface RootPackage extends EPackage
 	int LOBJECT_FEATURE_COUNT = InferencePackage.IINFERENCE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>LInference Object</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOBJECT___LINFERENCE_OBJECT = InferencePackage.IINFERENCE_OBJECT___LINFERENCE_OBJECT;
-
-	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOBJECT___CREATE_CONTAINMENT_ELIST__ECLASS = InferencePackage.IINFERENCE_OBJECT_OPERATION_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOBJECT___LCONTENTS = InferencePackage.IINFERENCE_OBJECT_OPERATION_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOBJECT___LPARENT = InferencePackage.IINFERENCE_OBJECT_OPERATION_COUNT + 2;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOBJECT___LALL_CONTENTS = InferencePackage.IINFERENCE_OBJECT_OPERATION_COUNT + 3;
-
-	/**
-	 * The number of operations of the '<em>LObject</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LOBJECT_OPERATION_COUNT = InferencePackage.IINFERENCE_OBJECT_OPERATION_COUNT + 4;
-
-	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.root.impl.XActionImpl <em>XAction</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -169,24 +116,6 @@ public interface RootPackage extends EPackage
 	 * @ordered
 	 */
 	int XACTION_FEATURE_COUNT = ActionPackage.ACTION_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>Execute</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XACTION___EXECUTE__LOBJECT = ActionPackage.ACTION_OPERATION_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>XAction</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int XACTION_OPERATION_COUNT = ActionPackage.ACTION_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '<em>LContent List</em>' data type.
@@ -218,7 +147,6 @@ public interface RootPackage extends EPackage
 	 */
 	int LCOLLECTION = 4;
 
-
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.root.LObject <em>LObject</em>}'.
 	 * <!-- begin-user-doc -->
@@ -241,46 +169,6 @@ public interface RootPackage extends EPackage
 	EAttribute getLObject_ContentObjects();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.root.LObject#createContainmentEList(org.eclipse.emf.ecore.EClass) <em>Create Containment EList</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Create Containment EList</em>' operation.
-	 * @see org.sheepy.lily.core.model.root.LObject#createContainmentEList(org.eclipse.emf.ecore.EClass)
-	 * @generated
-	 */
-	EOperation getLObject__CreateContainmentEList__EClass();
-
-	/**
-	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.root.LObject#lContents() <em>LContents</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>LContents</em>' operation.
-	 * @see org.sheepy.lily.core.model.root.LObject#lContents()
-	 * @generated
-	 */
-	EOperation getLObject__LContents();
-
-	/**
-	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.root.LObject#lParent() <em>LParent</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>LParent</em>' operation.
-	 * @see org.sheepy.lily.core.model.root.LObject#lParent()
-	 * @generated
-	 */
-	EOperation getLObject__LParent();
-
-	/**
-	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.root.LObject#lAllContents() <em>LAll Contents</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>LAll Contents</em>' operation.
-	 * @see org.sheepy.lily.core.model.root.LObject#lAllContents()
-	 * @generated
-	 */
-	EOperation getLObject__LAllContents();
-
-	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.root.XAction <em>XAction</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -289,16 +177,6 @@ public interface RootPackage extends EPackage
 	 * @generated
 	 */
 	EClass getXAction();
-
-	/**
-	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.root.XAction#execute(org.sheepy.lily.core.model.root.LObject) <em>Execute</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Execute</em>' operation.
-	 * @see org.sheepy.lily.core.model.root.XAction#execute(org.sheepy.lily.core.model.root.LObject)
-	 * @generated
-	 */
-	EOperation getXAction__Execute__LObject();
 
 	/**
 	 * Returns the meta object for data type '{@link org.eclipse.emf.common.util.EList <em>LContent List</em>}'.
@@ -376,38 +254,6 @@ public interface RootPackage extends EPackage
 		EAttribute LOBJECT__CONTENT_OBJECTS = eINSTANCE.getLObject_ContentObjects();
 
 		/**
-		 * The meta object literal for the '<em><b>Create Containment EList</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation LOBJECT___CREATE_CONTAINMENT_ELIST__ECLASS = eINSTANCE.getLObject__CreateContainmentEList__EClass();
-
-		/**
-		 * The meta object literal for the '<em><b>LContents</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation LOBJECT___LCONTENTS = eINSTANCE.getLObject__LContents();
-
-		/**
-		 * The meta object literal for the '<em><b>LParent</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation LOBJECT___LPARENT = eINSTANCE.getLObject__LParent();
-
-		/**
-		 * The meta object literal for the '<em><b>LAll Contents</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation LOBJECT___LALL_CONTENTS = eINSTANCE.getLObject__LAllContents();
-
-		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.root.impl.XActionImpl <em>XAction</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -416,14 +262,6 @@ public interface RootPackage extends EPackage
 		 * @generated
 		 */
 		EClass XACTION = eINSTANCE.getXAction();
-
-		/**
-		 * The meta object literal for the '<em><b>Execute</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation XACTION___EXECUTE__LOBJECT = eINSTANCE.getXAction__Execute__LObject();
 
 		/**
 		 * The meta object literal for the '<em>LContent List</em>' data type.

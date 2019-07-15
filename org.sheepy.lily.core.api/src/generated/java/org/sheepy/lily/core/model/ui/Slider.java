@@ -29,10 +29,6 @@ public interface Slider extends Widget
 	 * Returns the value of the '<em><b>Min Value</b></em>' attribute.
 	 * The default value is <code>"0"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Min Value</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Min Value</em>' attribute.
 	 * @see #setMinValue(int)
@@ -56,10 +52,6 @@ public interface Slider extends Widget
 	 * Returns the value of the '<em><b>Max Value</b></em>' attribute.
 	 * The default value is <code>"10"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Max Value</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Max Value</em>' attribute.
 	 * @see #setMaxValue(int)
@@ -83,10 +75,6 @@ public interface Slider extends Widget
 	 * Returns the value of the '<em><b>Step</b></em>' attribute.
 	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Step</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Step</em>' attribute.
 	 * @see #setStep(int)
@@ -109,10 +97,6 @@ public interface Slider extends Widget
 	/**
 	 * Returns the value of the '<em><b>Variable Resolver</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Variable Resolver</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variable Resolver</em>' containment reference.
 	 * @see #setVariableResolver(IVariableResolver)

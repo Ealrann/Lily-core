@@ -60,7 +60,7 @@ public class TypesAdapterFactory extends AdapterFactoryImpl
 		}
 		if (object instanceof EObject)
 		{
-			return ((EObject)object).eClass().getEPackage() == modelPackage;
+			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -71,55 +71,54 @@ public class TypesAdapterFactory extends AdapterFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TypesSwitch<Adapter> modelSwitch =
-		new TypesSwitch<Adapter>()
+	protected TypesSwitch<Adapter> modelSwitch = new TypesSwitch<Adapter>()
+	{
+		@Override
+		public Adapter caseLNamedElement(LNamedElement object)
 		{
-			@Override
-			public Adapter caseLNamedElement(LNamedElement object)
-			{
-				return createLNamedElementAdapter();
-			}
-			@Override
-			public Adapter caseParameter(Parameter object)
-			{
-				return createParameterAdapter();
-			}
-			@Override
-			public Adapter casePositionParameter(PositionParameter object)
-			{
-				return createPositionParameterAdapter();
-			}
-			@Override
-			public Adapter casePositionFParameter(PositionFParameter object)
-			{
-				return createPositionFParameterAdapter();
-			}
-			@Override
-			public <T> Adapter caseNativeParameter(NativeParameter<T> object)
-			{
-				return createNativeParameterAdapter();
-			}
-			@Override
-			public Adapter caseFloatParameter(FloatParameter object)
-			{
-				return createFloatParameterAdapter();
-			}
-			@Override
-			public Adapter caseStringParameter(StringParameter object)
-			{
-				return createStringParameterAdapter();
-			}
-			@Override
-			public Adapter caseBooleanParameter(BooleanParameter object)
-			{
-				return createBooleanParameterAdapter();
-			}
-			@Override
-			public Adapter defaultCase(EObject object)
-			{
-				return createEObjectAdapter();
-			}
-		};
+			return createLNamedElementAdapter();
+		}
+		@Override
+		public Adapter caseParameter(Parameter object)
+		{
+			return createParameterAdapter();
+		}
+		@Override
+		public Adapter casePositionParameter(PositionParameter object)
+		{
+			return createPositionParameterAdapter();
+		}
+		@Override
+		public Adapter casePositionFParameter(PositionFParameter object)
+		{
+			return createPositionFParameterAdapter();
+		}
+		@Override
+		public <T> Adapter caseNativeParameter(NativeParameter<T> object)
+		{
+			return createNativeParameterAdapter();
+		}
+		@Override
+		public Adapter caseFloatParameter(FloatParameter object)
+		{
+			return createFloatParameterAdapter();
+		}
+		@Override
+		public Adapter caseStringParameter(StringParameter object)
+		{
+			return createStringParameterAdapter();
+		}
+		@Override
+		public Adapter caseBooleanParameter(BooleanParameter object)
+		{
+			return createBooleanParameterAdapter();
+		}
+		@Override
+		public Adapter defaultCase(EObject object)
+		{
+			return createEObjectAdapter();
+		}
+	};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -132,9 +131,8 @@ public class TypesAdapterFactory extends AdapterFactoryImpl
 	@Override
 	public Adapter createAdapter(Notifier target)
 	{
-		return modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject) target);
 	}
-
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.types.LNamedElement <em>LNamed Element</em>}'.

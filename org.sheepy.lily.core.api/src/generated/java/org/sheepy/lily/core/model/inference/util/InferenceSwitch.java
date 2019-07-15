@@ -74,67 +74,68 @@ public class InferenceSwitch<T1> extends Switch<T1>
 	{
 		switch (classifierID)
 		{
-			case InferencePackage.IINFERENCE_OBJECT:
-			{
-				IInferenceObject iInferenceObject = (IInferenceObject)theEObject;
-				T1 result = caseIInferenceObject(iInferenceObject);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case InferencePackage.INFERER:
-			{
-				Inferer inferer = (Inferer)theEObject;
-				T1 result = caseInferer(inferer);
-				if (result == null) result = caseIInferenceObject(inferer);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case InferencePackage.SENSOR:
-			{
-				Sensor sensor = (Sensor)theEObject;
-				T1 result = caseSensor(sensor);
-				if (result == null) result = caseIInferenceObject(sensor);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case InferencePackage.LRULE:
-			{
-				LRule lRule = (LRule)theEObject;
-				T1 result = caseLRule(lRule);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case InferencePackage.ABSTRACT_NOTIFICATION:
-			{
-				AbstractNotification abstractNotification = (AbstractNotification)theEObject;
-				T1 result = caseAbstractNotification(abstractNotification);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case InferencePackage.LNOTIFICATION:
-			{
-				LNotification lNotification = (LNotification)theEObject;
-				T1 result = caseLNotification(lNotification);
-				if (result == null) result = caseAbstractNotification(lNotification);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case InferencePackage.PARAMETERED_NOTIFICATION:
-			{
-				ParameteredNotification<?> parameteredNotification = (ParameteredNotification<?>)theEObject;
-				T1 result = caseParameteredNotification(parameteredNotification);
-				if (result == null) result = caseAbstractNotification(parameteredNotification);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case InferencePackage.CONDITION:
-			{
-				Condition<?> condition = (Condition<?>)theEObject;
-				T1 result = caseCondition(condition);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			default: return defaultCase(theEObject);
+		case InferencePackage.IINFERENCE_OBJECT:
+		{
+			IInferenceObject iInferenceObject = (IInferenceObject) theEObject;
+			T1 result = caseIInferenceObject(iInferenceObject);
+			if (result == null) result = defaultCase(theEObject);
+			return result;
+		}
+		case InferencePackage.INFERER:
+		{
+			Inferer inferer = (Inferer) theEObject;
+			T1 result = caseInferer(inferer);
+			if (result == null) result = caseIInferenceObject(inferer);
+			if (result == null) result = defaultCase(theEObject);
+			return result;
+		}
+		case InferencePackage.SENSOR:
+		{
+			Sensor sensor = (Sensor) theEObject;
+			T1 result = caseSensor(sensor);
+			if (result == null) result = caseIInferenceObject(sensor);
+			if (result == null) result = defaultCase(theEObject);
+			return result;
+		}
+		case InferencePackage.LRULE:
+		{
+			LRule lRule = (LRule) theEObject;
+			T1 result = caseLRule(lRule);
+			if (result == null) result = defaultCase(theEObject);
+			return result;
+		}
+		case InferencePackage.ABSTRACT_NOTIFICATION:
+		{
+			AbstractNotification abstractNotification = (AbstractNotification) theEObject;
+			T1 result = caseAbstractNotification(abstractNotification);
+			if (result == null) result = defaultCase(theEObject);
+			return result;
+		}
+		case InferencePackage.LNOTIFICATION:
+		{
+			LNotification lNotification = (LNotification) theEObject;
+			T1 result = caseLNotification(lNotification);
+			if (result == null) result = caseAbstractNotification(lNotification);
+			if (result == null) result = defaultCase(theEObject);
+			return result;
+		}
+		case InferencePackage.PARAMETERED_NOTIFICATION:
+		{
+			ParameteredNotification<?> parameteredNotification = (ParameteredNotification<?>) theEObject;
+			T1 result = caseParameteredNotification(parameteredNotification);
+			if (result == null) result = caseAbstractNotification(parameteredNotification);
+			if (result == null) result = defaultCase(theEObject);
+			return result;
+		}
+		case InferencePackage.CONDITION:
+		{
+			Condition<?> condition = (Condition<?>) theEObject;
+			T1 result = caseCondition(condition);
+			if (result == null) result = defaultCase(theEObject);
+			return result;
+		}
+		default:
+			return defaultCase(theEObject);
 		}
 	}
 

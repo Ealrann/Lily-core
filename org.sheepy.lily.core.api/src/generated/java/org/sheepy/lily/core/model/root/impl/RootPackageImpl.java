@@ -14,15 +14,51 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.ETypeParameter;
 import org.eclipse.emf.ecore.EcorePackage;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.sheepy.lily.core.api.util.LTreeIterator;
+
 import org.sheepy.lily.core.model.action.ActionPackage;
+
+import org.sheepy.lily.core.model.action.impl.ActionPackageImpl;
+
+import org.sheepy.lily.core.model.application.ApplicationPackage;
+
+import org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl;
+
 import org.sheepy.lily.core.model.inference.InferencePackage;
+
+import org.sheepy.lily.core.model.inference.impl.InferencePackageImpl;
+
+import org.sheepy.lily.core.model.maintainer.MaintainerPackage;
+
+import org.sheepy.lily.core.model.maintainer.impl.MaintainerPackageImpl;
+
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
+
+import org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl;
+
+import org.sheepy.lily.core.model.resolver.ResolverPackage;
+
+import org.sheepy.lily.core.model.resolver.impl.ResolverPackageImpl;
+
 import org.sheepy.lily.core.model.root.LObject;
 import org.sheepy.lily.core.model.root.RootFactory;
 import org.sheepy.lily.core.model.root.RootPackage;
 import org.sheepy.lily.core.model.root.XAction;
+
 import org.sheepy.lily.core.model.types.TypesPackage;
+
+import org.sheepy.lily.core.model.types.impl.TypesPackageImpl;
+
+import org.sheepy.lily.core.model.ui.UiPackage;
+
+import org.sheepy.lily.core.model.ui.impl.UiPackageImpl;
+
+import org.sheepy.lily.core.model.variable.VariablePackage;
+
+import org.sheepy.lily.core.model.variable.impl.VariablePackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -108,25 +144,81 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	 */
 	public static RootPackage init()
 	{
-		if (isInited) return (RootPackage)EPackage.Registry.INSTANCE.getEPackage(RootPackage.eNS_URI);
+		if (isInited)
+			return (RootPackage) EPackage.Registry.INSTANCE.getEPackage(RootPackage.eNS_URI);
 
 		// Obtain or create and register package
 		Object registeredRootPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-		RootPackageImpl theRootPackage = registeredRootPackage instanceof RootPackageImpl ? (RootPackageImpl)registeredRootPackage : new RootPackageImpl();
+		RootPackageImpl theRootPackage = registeredRootPackage instanceof RootPackageImpl
+				? (RootPackageImpl) registeredRootPackage
+				: new RootPackageImpl();
 
 		isInited = true;
 
 		// Initialize simple dependencies
-		InferencePackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
-		ActionPackage.eINSTANCE.eClass();
-		TypesPackage.eINSTANCE.eClass();
+
+		// Obtain or create and register interdependencies
+		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+		TypesPackageImpl theTypesPackage = (TypesPackageImpl) (registeredPackage instanceof TypesPackageImpl
+				? registeredPackage
+				: TypesPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
+		ActionPackageImpl theActionPackage = (ActionPackageImpl) (registeredPackage instanceof ActionPackageImpl
+				? registeredPackage
+				: ActionPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
+		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl) (registeredPackage instanceof ApplicationPackageImpl
+				? registeredPackage
+				: ApplicationPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
+		InferencePackageImpl theInferencePackage = (InferencePackageImpl) (registeredPackage instanceof InferencePackageImpl
+				? registeredPackage
+				: InferencePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(MaintainerPackage.eNS_URI);
+		MaintainerPackageImpl theMaintainerPackage = (MaintainerPackageImpl) (registeredPackage instanceof MaintainerPackageImpl
+				? registeredPackage
+				: MaintainerPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(PresentationPackage.eNS_URI);
+		PresentationPackageImpl thePresentationPackage = (PresentationPackageImpl) (registeredPackage instanceof PresentationPackageImpl
+				? registeredPackage
+				: PresentationPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ResolverPackage.eNS_URI);
+		ResolverPackageImpl theResolverPackage = (ResolverPackageImpl) (registeredPackage instanceof ResolverPackageImpl
+				? registeredPackage
+				: ResolverPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(UiPackage.eNS_URI);
+		UiPackageImpl theUiPackage = (UiPackageImpl) (registeredPackage instanceof UiPackageImpl
+				? registeredPackage
+				: UiPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(VariablePackage.eNS_URI);
+		VariablePackageImpl theVariablePackage = (VariablePackageImpl) (registeredPackage instanceof VariablePackageImpl
+				? registeredPackage
+				: VariablePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theRootPackage.createPackageContents();
+		theTypesPackage.createPackageContents();
+		theActionPackage.createPackageContents();
+		theApplicationPackage.createPackageContents();
+		theInferencePackage.createPackageContents();
+		theMaintainerPackage.createPackageContents();
+		thePresentationPackage.createPackageContents();
+		theResolverPackage.createPackageContents();
+		theUiPackage.createPackageContents();
+		theVariablePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theRootPackage.initializePackageContents();
+		theTypesPackage.initializePackageContents();
+		theActionPackage.initializePackageContents();
+		theApplicationPackage.initializePackageContents();
+		theInferencePackage.initializePackageContents();
+		theMaintainerPackage.initializePackageContents();
+		thePresentationPackage.initializePackageContents();
+		theResolverPackage.initializePackageContents();
+		theUiPackage.initializePackageContents();
+		theVariablePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theRootPackage.freeze();
@@ -155,51 +247,7 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	@Override
 	public EAttribute getLObject_ContentObjects()
 	{
-		return (EAttribute)lObjectEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EOperation getLObject__CreateContainmentEList__EClass()
-	{
-		return lObjectEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EOperation getLObject__LContents()
-	{
-		return lObjectEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EOperation getLObject__LParent()
-	{
-		return lObjectEClass.getEOperations().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EOperation getLObject__LAllContents()
-	{
-		return lObjectEClass.getEOperations().get(3);
+		return (EAttribute) lObjectEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -211,17 +259,6 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	public EClass getXAction()
 	{
 		return xActionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EOperation getXAction__Execute__LObject()
-	{
-		return xActionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -265,7 +302,7 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	@Override
 	public RootFactory getRootFactory()
 	{
-		return (RootFactory)getEFactoryInstance();
+		return (RootFactory) getEFactoryInstance();
 	}
 
 	/**
@@ -290,13 +327,8 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 		// Create classes and their features
 		lObjectEClass = createEClass(LOBJECT);
 		createEAttribute(lObjectEClass, LOBJECT__CONTENT_OBJECTS);
-		createEOperation(lObjectEClass, LOBJECT___CREATE_CONTAINMENT_ELIST__ECLASS);
-		createEOperation(lObjectEClass, LOBJECT___LCONTENTS);
-		createEOperation(lObjectEClass, LOBJECT___LPARENT);
-		createEOperation(lObjectEClass, LOBJECT___LALL_CONTENTS);
 
 		xActionEClass = createEClass(XACTION);
-		createEOperation(xActionEClass, XACTION___EXECUTE__LOBJECT);
 
 		// Create data types
 		lContentListEDataType = createEDataType(LCONTENT_LIST);
@@ -329,9 +361,12 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		InferencePackage theInferencePackage = (InferencePackage)EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
-		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
-		ActionPackage theActionPackage = (ActionPackage)EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
+		InferencePackage theInferencePackage = (InferencePackage) EPackage.Registry.INSTANCE
+				.getEPackage(InferencePackage.eNS_URI);
+		EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE
+				.getEPackage(EcorePackage.eNS_URI);
+		ActionPackage theActionPackage = (ActionPackage) EPackage.Registry.INSTANCE
+				.getEPackage(ActionPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -341,33 +376,45 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 		lObjectEClass.getESuperTypes().add(theInferencePackage.getIInferenceObject());
 		xActionEClass.getESuperTypes().add(theActionPackage.getAction());
 
-		// Initialize classes, features, and operations; add parameters
-		initEClass(lObjectEClass, LObject.class, "LObject", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLObject_ContentObjects(), this.getLContentList(), "contentObjects", null, 0, 1, LObject.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		// Initialize classes and features; add operations and parameters
+		initEClass(lObjectEClass, LObject.class, "LObject", IS_ABSTRACT, IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLObject_ContentObjects(), this.getLContentList(), "contentObjects", null,
+				0, 1, LObject.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
+				!IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		EOperation op = initEOperation(getLObject__CreateContainmentEList__EClass(), null, "createContainmentEList", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(lObjectEClass, null, "createContainmentEList", 0, -1,
+				!IS_UNIQUE, IS_ORDERED);
 		ETypeParameter t1 = addETypeParameter(op, "T");
 		EGenericType g1 = createEGenericType(this.getLObject());
 		t1.getEBounds().add(g1);
-		addEParameter(op, theEcorePackage.getEClass(), "targetEClass", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, theEcorePackage.getEClass(), "targetEClass", 0, 1, !IS_UNIQUE,
+				IS_ORDERED);
 		g1 = createEGenericType(t1);
 		initEOperation(op, g1);
 
-		initEOperation(getLObject__LContents(), this.getLObject(), "lContents", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		addEOperation(lObjectEClass, this.getLObject(), "lContents", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getLObject__LParent(), this.getLObject(), "lParent", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEOperation(lObjectEClass, this.getLObject(), "lParent", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEOperation(getLObject__LAllContents(), this.getLTreeIterator(), "lAllContents", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEOperation(lObjectEClass, this.getLTreeIterator(), "lAllContents", 0, 1, !IS_UNIQUE,
+				IS_ORDERED);
 
-		initEClass(xActionEClass, XAction.class, "XAction", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(xActionEClass, XAction.class, "XAction", IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
 
-		op = initEOperation(getXAction__Execute__LObject(), null, "execute", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(xActionEClass, null, "execute", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getLObject(), "object", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		// Initialize data types
-		initEDataType(lContentListEDataType, EList.class, "LContentList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "org.eclipse.emf.common.util.EList<org.sheepy.lily.core.model.root.LObject>");
-		initEDataType(lTreeIteratorEDataType, LTreeIterator.class, "LTreeIterator", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(lCollectionEDataType, Collection.class, "LCollection", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.Collection<org.sheepy.lily.core.model.root.LObject>");
+		initEDataType(lContentListEDataType, EList.class, "LContentList", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS,
+				"org.eclipse.emf.common.util.EList<org.sheepy.lily.core.model.root.LObject>");
+		initEDataType(lTreeIteratorEDataType, LTreeIterator.class, "LTreeIterator", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(lCollectionEDataType, Collection.class, "LCollection", IS_SERIALIZABLE,
+				!IS_GENERATED_INSTANCE_CLASS,
+				"java.util.Collection<org.sheepy.lily.core.model.root.LObject>");
 
 		// Create resource
 		createResource(eNS_URI);

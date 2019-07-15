@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.ui;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Abstract Boolean Button</b></em>'.
@@ -25,10 +24,6 @@ public interface AbstractBooleanButton extends AbstractButton
 	/**
 	 * Returns the value of the '<em><b>Text When True</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Text When True</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Text When True</em>' attribute.
 	 * @see #setTextWhenTrue(String)
@@ -51,10 +46,6 @@ public interface AbstractBooleanButton extends AbstractButton
 	/**
 	 * Returns the value of the '<em><b>Text When False</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Text When False</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Text When False</em>' attribute.
 	 * @see #setTextWhenFalse(String)

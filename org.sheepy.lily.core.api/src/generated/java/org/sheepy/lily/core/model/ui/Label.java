@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.ui;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Label</b></em>'.
@@ -14,5 +13,4 @@ package org.sheepy.lily.core.model.ui;
  * @generated
  */
 public interface Label extends AbstractLabel
-{
-} // Label
+{} // Label

@@ -60,7 +60,7 @@ public class ResolverAdapterFactory extends AdapterFactoryImpl
 		}
 		if (object instanceof EObject)
 		{
-			return ((EObject)object).eClass().getEPackage() == modelPackage;
+			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -71,30 +71,29 @@ public class ResolverAdapterFactory extends AdapterFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ResolverSwitch<Adapter> modelSwitch =
-		new ResolverSwitch<Adapter>()
+	protected ResolverSwitch<Adapter> modelSwitch = new ResolverSwitch<Adapter>()
+	{
+		@Override
+		public Adapter caseILObjectResolver(ILObjectResolver object)
 		{
-			@Override
-			public Adapter caseILObjectResolver(ILObjectResolver object)
-			{
-				return createILObjectResolverAdapter();
-			}
-			@Override
-			public Adapter caseEReferenceResolver(EReferenceResolver object)
-			{
-				return createEReferenceResolverAdapter();
-			}
-			@Override
-			public Adapter caseChainResolver(ChainResolver object)
-			{
-				return createChainResolverAdapter();
-			}
-			@Override
-			public Adapter defaultCase(EObject object)
-			{
-				return createEObjectAdapter();
-			}
-		};
+			return createILObjectResolverAdapter();
+		}
+		@Override
+		public Adapter caseEReferenceResolver(EReferenceResolver object)
+		{
+			return createEReferenceResolverAdapter();
+		}
+		@Override
+		public Adapter caseChainResolver(ChainResolver object)
+		{
+			return createChainResolverAdapter();
+		}
+		@Override
+		public Adapter defaultCase(EObject object)
+		{
+			return createEObjectAdapter();
+		}
+	};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -107,9 +106,8 @@ public class ResolverAdapterFactory extends AdapterFactoryImpl
 	@Override
 	public Adapter createAdapter(Notifier target)
 	{
-		return modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject) target);
 	}
-
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.resolver.ILObjectResolver <em>IL Object Resolver</em>}'.

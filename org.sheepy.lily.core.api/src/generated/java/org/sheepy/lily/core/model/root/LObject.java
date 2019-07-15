@@ -3,8 +3,11 @@
 package org.sheepy.lily.core.model.root;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
+
 import org.sheepy.lily.core.api.util.LTreeIterator;
+
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 
 /**
@@ -28,10 +31,6 @@ public interface LObject extends IInferenceObject
 	/**
 	 * Returns the value of the '<em><b>Content Objects</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Content Objects</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Content Objects</em>' attribute.
 	 * @see #setContentObjects(EList)

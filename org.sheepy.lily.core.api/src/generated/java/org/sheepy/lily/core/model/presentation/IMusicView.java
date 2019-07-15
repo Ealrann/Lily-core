@@ -26,10 +26,6 @@ public interface IMusicView extends IView
 	 * Returns the value of the '<em><b>Music Path</b></em>' attribute.
 	 * The default value is <code>""</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Music Path</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Music Path</em>' attribute.
 	 * @see #setMusicPath(String)

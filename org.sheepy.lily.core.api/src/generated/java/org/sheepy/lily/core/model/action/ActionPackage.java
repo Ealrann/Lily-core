@@ -5,6 +5,7 @@ package org.sheepy.lily.core.model.action;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
@@ -86,15 +87,6 @@ public interface ActionPackage extends EPackage
 	int ACTION_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Action</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTION_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '<em>List</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -158,6 +150,7 @@ public interface ActionPackage extends EPackage
 		 * @generated
 		 */
 		EClass ACTION = eINSTANCE.getAction();
+
 		/**
 		 * The meta object literal for the '<em>List</em>' data type.
 		 * <!-- begin-user-doc -->

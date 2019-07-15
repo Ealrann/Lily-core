@@ -30,13 +30,13 @@ public class InferenceFactoryImpl extends EFactoryImpl implements InferenceFacto
 	{
 		try
 		{
-			InferenceFactory theInferenceFactory = (InferenceFactory)EPackage.Registry.INSTANCE.getEFactory(InferencePackage.eNS_URI);
+			InferenceFactory theInferenceFactory = (InferenceFactory) EPackage.Registry.INSTANCE
+					.getEFactory(InferencePackage.eNS_URI);
 			if (theInferenceFactory != null)
 			{
 				return theInferenceFactory;
 			}
-		}
-		catch (Exception exception)
+		} catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -64,9 +64,11 @@ public class InferenceFactoryImpl extends EFactoryImpl implements InferenceFacto
 	{
 		switch (eClass.getClassifierID())
 		{
-			case InferencePackage.LRULE: return createLRule();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case InferencePackage.LRULE:
+			return createLRule();
+		default:
+			throw new IllegalArgumentException(
+					"The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -90,7 +92,7 @@ public class InferenceFactoryImpl extends EFactoryImpl implements InferenceFacto
 	@Override
 	public InferencePackage getInferencePackage()
 	{
-		return (InferencePackage)getEPackage();
+		return (InferencePackage) getEPackage();
 	}
 
 	/**

@@ -4,7 +4,6 @@ package org.sheepy.lily.core.model.resolver;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -78,24 +77,6 @@ public interface ResolverPackage extends EPackage
 	int IL_OBJECT_RESOLVER_FEATURE_COUNT = 0;
 
 	/**
-	 * The operation id for the '<em>Collect Units</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IL_OBJECT_RESOLVER___COLLECT_UNITS__LOBJECT_COLLECTION = 0;
-
-	/**
-	 * The number of operations of the '<em>IL Object Resolver</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IL_OBJECT_RESOLVER_OPERATION_COUNT = 1;
-
-	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.resolver.impl.EReferenceResolverImpl <em>EReference Resolver</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -142,24 +123,6 @@ public interface ResolverPackage extends EPackage
 	int EREFERENCE_RESOLVER_FEATURE_COUNT = IL_OBJECT_RESOLVER_FEATURE_COUNT + 3;
 
 	/**
-	 * The operation id for the '<em>Collect Units</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EREFERENCE_RESOLVER___COLLECT_UNITS__LOBJECT_COLLECTION = IL_OBJECT_RESOLVER_OPERATION_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>EReference Resolver</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EREFERENCE_RESOLVER_OPERATION_COUNT = IL_OBJECT_RESOLVER_OPERATION_COUNT + 1;
-
-	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.resolver.impl.ChainResolverImpl <em>Chain Resolver</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -188,25 +151,6 @@ public interface ResolverPackage extends EPackage
 	int CHAIN_RESOLVER_FEATURE_COUNT = IL_OBJECT_RESOLVER_FEATURE_COUNT + 1;
 
 	/**
-	 * The operation id for the '<em>Collect Units</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHAIN_RESOLVER___COLLECT_UNITS__LOBJECT_COLLECTION = IL_OBJECT_RESOLVER_OPERATION_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Chain Resolver</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CHAIN_RESOLVER_OPERATION_COUNT = IL_OBJECT_RESOLVER_OPERATION_COUNT + 1;
-
-
-	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.resolver.ILObjectResolver <em>IL Object Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -215,16 +159,6 @@ public interface ResolverPackage extends EPackage
 	 * @generated
 	 */
 	EClass getILObjectResolver();
-
-	/**
-	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.resolver.ILObjectResolver#collectUnits(org.sheepy.lily.core.model.root.LObject, java.util.Collection) <em>Collect Units</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Collect Units</em>' operation.
-	 * @see org.sheepy.lily.core.model.resolver.ILObjectResolver#collectUnits(org.sheepy.lily.core.model.root.LObject, java.util.Collection)
-	 * @generated
-	 */
-	EOperation getILObjectResolver__CollectUnits__LObject_Collection();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.resolver.EReferenceResolver <em>EReference Resolver</em>}'.
@@ -270,16 +204,6 @@ public interface ResolverPackage extends EPackage
 	EReference getEReferenceResolver_InternalReference();
 
 	/**
-	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.resolver.EReferenceResolver#collectUnits(org.sheepy.lily.core.model.root.LObject, java.util.Collection) <em>Collect Units</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Collect Units</em>' operation.
-	 * @see org.sheepy.lily.core.model.resolver.EReferenceResolver#collectUnits(org.sheepy.lily.core.model.root.LObject, java.util.Collection)
-	 * @generated
-	 */
-	EOperation getEReferenceResolver__CollectUnits__LObject_Collection();
-
-	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.resolver.ChainResolver <em>Chain Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -299,16 +223,6 @@ public interface ResolverPackage extends EPackage
 	 * @generated
 	 */
 	EReference getChainResolver_Resolvers();
-
-	/**
-	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.resolver.ChainResolver#collectUnits(org.sheepy.lily.core.model.root.LObject, java.util.Collection) <em>Collect Units</em>}' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the '<em>Collect Units</em>' operation.
-	 * @see org.sheepy.lily.core.model.resolver.ChainResolver#collectUnits(org.sheepy.lily.core.model.root.LObject, java.util.Collection)
-	 * @generated
-	 */
-	EOperation getChainResolver__CollectUnits__LObject_Collection();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -345,14 +259,6 @@ public interface ResolverPackage extends EPackage
 		EClass IL_OBJECT_RESOLVER = eINSTANCE.getILObjectResolver();
 
 		/**
-		 * The meta object literal for the '<em><b>Collect Units</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation IL_OBJECT_RESOLVER___COLLECT_UNITS__LOBJECT_COLLECTION = eINSTANCE.getILObjectResolver__CollectUnits__LObject_Collection();
-
-		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.resolver.impl.EReferenceResolverImpl <em>EReference Resolver</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -368,7 +274,8 @@ public interface ResolverPackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute EREFERENCE_RESOLVER__REFERENCE_NAME = eINSTANCE.getEReferenceResolver_ReferenceName();
+		EAttribute EREFERENCE_RESOLVER__REFERENCE_NAME = eINSTANCE
+				.getEReferenceResolver_ReferenceName();
 
 		/**
 		 * The meta object literal for the '<em><b>Class Name</b></em>' attribute feature.
@@ -384,15 +291,8 @@ public interface ResolverPackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EREFERENCE_RESOLVER__INTERNAL_REFERENCE = eINSTANCE.getEReferenceResolver_InternalReference();
-
-		/**
-		 * The meta object literal for the '<em><b>Collect Units</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation EREFERENCE_RESOLVER___COLLECT_UNITS__LOBJECT_COLLECTION = eINSTANCE.getEReferenceResolver__CollectUnits__LObject_Collection();
+		EReference EREFERENCE_RESOLVER__INTERNAL_REFERENCE = eINSTANCE
+				.getEReferenceResolver_InternalReference();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.resolver.impl.ChainResolverImpl <em>Chain Resolver</em>}' class.
@@ -411,14 +311,6 @@ public interface ResolverPackage extends EPackage
 		 * @generated
 		 */
 		EReference CHAIN_RESOLVER__RESOLVERS = eINSTANCE.getChainResolver_Resolvers();
-
-		/**
-		 * The meta object literal for the '<em><b>Collect Units</b></em>' operation.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EOperation CHAIN_RESOLVER___COLLECT_UNITS__LOBJECT_COLLECTION = eINSTANCE.getChainResolver__CollectUnits__LObject_Collection();
 
 	}
 

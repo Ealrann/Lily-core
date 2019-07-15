@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.variable.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -32,14 +31,9 @@ import org.sheepy.lily.core.model.variable.VariablePackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ChainResolverItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource
+public class ChainResolverItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -78,19 +72,15 @@ public class ChainResolverItemProvider
 	 */
 	protected void addVariableDefinitionPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_IDefinitionContainer_variableDefinition_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IDefinitionContainer_variableDefinition_feature", "_UI_IDefinitionContainer_type"),
-				 VariablePackage.Literals.IDEFINITION_CONTAINER__VARIABLE_DEFINITION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_IDefinitionContainer_variableDefinition_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_IDefinitionContainer_variableDefinition_feature",
+						"_UI_IDefinitionContainer_type"),
+				VariablePackage.Literals.IDEFINITION_CONTAINER__VARIABLE_DEFINITION, true, false,
+				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -114,12 +104,11 @@ public class ChainResolverItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((ChainResolver)object).getVariableDefinition();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ChainResolver_type") :
-			getString("_UI_ChainResolver_type") + " " + label;
+		String label = ((ChainResolver) object).getVariableDefinition();
+		return label == null || label.length() == 0
+				? getString("_UI_ChainResolver_type")
+				: getString("_UI_ChainResolver_type") + " " + label;
 	}
-
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -135,9 +124,10 @@ public class ChainResolverItemProvider
 
 		switch (notification.getFeatureID(ChainResolver.class))
 		{
-			case VariablePackage.CHAIN_RESOLVER__VARIABLE_DEFINITION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case VariablePackage.CHAIN_RESOLVER__VARIABLE_DEFINITION:
+			fireNotifyChanged(
+					new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -164,7 +154,7 @@ public class ChainResolverItemProvider
 	@Override
 	public ResourceLocator getResourceLocator()
 	{
-		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
 	}
 
 }

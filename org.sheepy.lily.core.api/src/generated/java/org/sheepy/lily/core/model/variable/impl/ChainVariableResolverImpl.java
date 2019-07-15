@@ -37,7 +37,8 @@ import org.sheepy.lily.core.model.variable.VariablePackage;
  *
  * @generated
  */
-public class ChainVariableResolverImpl extends MinimalEObjectImpl.Container implements ChainVariableResolver
+public class ChainVariableResolverImpl extends MinimalEObjectImpl.Container
+		implements ChainVariableResolver
 {
 	/**
 	 * The cached value of the '{@link #getFirstResolver() <em>First Resolver</em>}' containment reference.
@@ -96,14 +97,18 @@ public class ChainVariableResolverImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetFirstResolver(IVariableResolver newFirstResolver, NotificationChain msgs)
+	public NotificationChain basicSetFirstResolver(	IVariableResolver newFirstResolver,
+													NotificationChain msgs)
 	{
 		IVariableResolver oldFirstResolver = firstResolver;
 		firstResolver = newFirstResolver;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER, oldFirstResolver, newFirstResolver);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER, oldFirstResolver,
+					newFirstResolver);
+			if (msgs == null) msgs = notification;
+			else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -120,14 +125,21 @@ public class ChainVariableResolverImpl extends MinimalEObjectImpl.Container impl
 		{
 			NotificationChain msgs = null;
 			if (firstResolver != null)
-				msgs = ((InternalEObject)firstResolver).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER, null, msgs);
+				msgs = ((InternalEObject) firstResolver).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE
+								- VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER,
+						null, msgs);
 			if (newFirstResolver != null)
-				msgs = ((InternalEObject)newFirstResolver).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER, null, msgs);
+				msgs = ((InternalEObject) newFirstResolver).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE
+								- VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER,
+						null, msgs);
 			msgs = basicSetFirstResolver(newFirstResolver, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER, newFirstResolver, newFirstResolver));
+		else if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
+				VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER, newFirstResolver,
+				newFirstResolver));
 	}
 
 	/**
@@ -140,7 +152,8 @@ public class ChainVariableResolverImpl extends MinimalEObjectImpl.Container impl
 	{
 		if (subResolvers == null)
 		{
-			subResolvers = new EObjectContainmentEList<ChainResolver>(ChainResolver.class, this, VariablePackage.CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS);
+			subResolvers = new EObjectContainmentEList<ChainResolver>(ChainResolver.class, this,
+					VariablePackage.CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS);
 		}
 		return subResolvers;
 	}
@@ -151,14 +164,16 @@ public class ChainVariableResolverImpl extends MinimalEObjectImpl.Container impl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+											int featureID,
+											NotificationChain msgs)
 	{
 		switch (featureID)
 		{
-			case VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER:
-				return basicSetFirstResolver(null, msgs);
-			case VariablePackage.CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS:
-				return ((InternalEList<?>)getSubResolvers()).basicRemove(otherEnd, msgs);
+		case VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER:
+			return basicSetFirstResolver(null, msgs);
+		case VariablePackage.CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS:
+			return ((InternalEList<?>) getSubResolvers()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -173,10 +188,10 @@ public class ChainVariableResolverImpl extends MinimalEObjectImpl.Container impl
 	{
 		switch (featureID)
 		{
-			case VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER:
-				return getFirstResolver();
-			case VariablePackage.CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS:
-				return getSubResolvers();
+		case VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER:
+			return getFirstResolver();
+		case VariablePackage.CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS:
+			return getSubResolvers();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -192,13 +207,13 @@ public class ChainVariableResolverImpl extends MinimalEObjectImpl.Container impl
 	{
 		switch (featureID)
 		{
-			case VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER:
-				setFirstResolver((IVariableResolver)newValue);
-				return;
-			case VariablePackage.CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS:
-				getSubResolvers().clear();
-				getSubResolvers().addAll((Collection<? extends ChainResolver>)newValue);
-				return;
+		case VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER:
+			setFirstResolver((IVariableResolver) newValue);
+			return;
+		case VariablePackage.CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS:
+			getSubResolvers().clear();
+			getSubResolvers().addAll((Collection<? extends ChainResolver>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -213,12 +228,12 @@ public class ChainVariableResolverImpl extends MinimalEObjectImpl.Container impl
 	{
 		switch (featureID)
 		{
-			case VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER:
-				setFirstResolver((IVariableResolver)null);
-				return;
-			case VariablePackage.CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS:
-				getSubResolvers().clear();
-				return;
+		case VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER:
+			setFirstResolver((IVariableResolver) null);
+			return;
+		case VariablePackage.CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS:
+			getSubResolvers().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -233,10 +248,10 @@ public class ChainVariableResolverImpl extends MinimalEObjectImpl.Container impl
 	{
 		switch (featureID)
 		{
-			case VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER:
-				return firstResolver != null;
-			case VariablePackage.CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS:
-				return subResolvers != null && !subResolvers.isEmpty();
+		case VariablePackage.CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER:
+			return firstResolver != null;
+		case VariablePackage.CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS:
+			return subResolvers != null && !subResolvers.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

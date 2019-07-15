@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.types.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -31,14 +30,9 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class StringParameterItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource
+public class StringParameterItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -77,19 +71,13 @@ public class StringParameterItemProvider
 	 */
 	protected void addValuePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_StringParameter_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_StringParameter_value_feature", "_UI_StringParameter_type"),
-				 TypesPackage.Literals.STRING_PARAMETER__VALUE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_StringParameter_value_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_StringParameter_value_feature",
+						"_UI_StringParameter_type"),
+				TypesPackage.Literals.STRING_PARAMETER__VALUE, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -113,12 +101,11 @@ public class StringParameterItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((StringParameter)object).getValue();
-		return label == null || label.length() == 0 ?
-			getString("_UI_StringParameter_type") :
-			getString("_UI_StringParameter_type") + " " + label;
+		String label = ((StringParameter) object).getValue();
+		return label == null || label.length() == 0
+				? getString("_UI_StringParameter_type")
+				: getString("_UI_StringParameter_type") + " " + label;
 	}
-
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -134,9 +121,10 @@ public class StringParameterItemProvider
 
 		switch (notification.getFeatureID(StringParameter.class))
 		{
-			case TypesPackage.STRING_PARAMETER__VALUE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case TypesPackage.STRING_PARAMETER__VALUE:
+			fireNotifyChanged(
+					new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -163,7 +151,7 @@ public class StringParameterItemProvider
 	@Override
 	public ResourceLocator getResourceLocator()
 	{
-		return TypesEditPlugin.INSTANCE;
+		return LilyEditPlugin.INSTANCE;
 	}
 
 }

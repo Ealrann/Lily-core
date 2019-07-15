@@ -2,7 +2,6 @@
  */
 package org.sheepy.lily.core.model.application.provider;
 
-
 import java.util.Collection;
 import java.util.List;
 
@@ -29,6 +28,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 
+import org.sheepy.lily.core.model.presentation.PresentationFactory;
 import org.sheepy.lily.core.model.root.LObject;
 
 /**
@@ -37,7 +37,9 @@ import org.sheepy.lily.core.model.root.LObject;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ApplicationItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
+public class ApplicationItemProvider extends ItemProviderAdapter
+		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
+		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -83,19 +85,13 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	protected void addRunPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Application_run_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Application_run_feature", "_UI_Application_type"),
-				 ApplicationPackage.Literals.APPLICATION__RUN,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_Application_run_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_Application_run_feature",
+						"_UI_Application_type"),
+				ApplicationPackage.Literals.APPLICATION__RUN, true, false, false,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -106,19 +102,13 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	protected void addFullscreenPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Application_fullscreen_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Application_fullscreen_feature", "_UI_Application_type"),
-				 ApplicationPackage.Literals.APPLICATION__FULLSCREEN,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_Application_fullscreen_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Application_fullscreen_feature", "_UI_Application_type"),
+				ApplicationPackage.Literals.APPLICATION__FULLSCREEN, true, false, false,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -129,19 +119,13 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	protected void addResizeablePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Application_resizeable_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Application_resizeable_feature", "_UI_Application_type"),
-				 ApplicationPackage.Literals.APPLICATION__RESIZEABLE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_Application_resizeable_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Application_resizeable_feature", "_UI_Application_type"),
+				ApplicationPackage.Literals.APPLICATION__RESIZEABLE, true, false, false,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -152,19 +136,13 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	protected void addHeadlessPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Application_headless_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Application_headless_feature", "_UI_Application_type"),
-				 ApplicationPackage.Literals.APPLICATION__HEADLESS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_Application_headless_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_Application_headless_feature",
+						"_UI_Application_type"),
+				ApplicationPackage.Literals.APPLICATION__HEADLESS, true, false, false,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -175,19 +153,13 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	protected void addTitlePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Application_title_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Application_title_feature", "_UI_Application_type"),
-				 ApplicationPackage.Literals.APPLICATION__TITLE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_Application_title_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_Application_title_feature",
+						"_UI_Application_type"),
+				ApplicationPackage.Literals.APPLICATION__TITLE, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -198,19 +170,13 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	protected void addSizePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Application_size_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Application_size_feature", "_UI_Application_type"),
-				 ApplicationPackage.Literals.APPLICATION__SIZE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_Application_size_feature"),
+				getString("_UI_PropertyDescriptor_description", "_UI_Application_size_feature",
+						"_UI_Application_type"),
+				ApplicationPackage.Literals.APPLICATION__SIZE, true, false, false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -221,19 +187,13 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	protected void addCurrentViewPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Application_currentView_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Application_currentView_feature", "_UI_Application_type"),
-				 ApplicationPackage.Literals.APPLICATION__CURRENT_VIEW,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_Application_currentView_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Application_currentView_feature", "_UI_Application_type"),
+				ApplicationPackage.Literals.APPLICATION__CURRENT_VIEW, true, false, true, null,
+				null, null));
 	}
 
 	/**
@@ -244,19 +204,13 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	protected void addCadenceInHzPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Application_cadenceInHz_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Application_cadenceInHz_feature", "_UI_Application_type"),
-				 ApplicationPackage.Literals.APPLICATION__CADENCE_IN_HZ,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(), getString("_UI_Application_cadenceInHz_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_Application_cadenceInHz_feature", "_UI_Application_type"),
+				ApplicationPackage.Literals.APPLICATION__CADENCE_IN_HZ, true, false, false,
+				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -314,13 +268,12 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((Application)object).getContentObjects();
+		EList<LObject> labelValue = ((Application) object).getContentObjects();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Application_type") :
-			getString("_UI_Application_type") + " " + label;
+		return label == null || label.length() == 0
+				? getString("_UI_Application_type")
+				: getString("_UI_Application_type") + " " + label;
 	}
-
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -336,20 +289,22 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 
 		switch (notification.getFeatureID(Application.class))
 		{
-			case ApplicationPackage.APPLICATION__CONTENT_OBJECTS:
-			case ApplicationPackage.APPLICATION__RUN:
-			case ApplicationPackage.APPLICATION__FULLSCREEN:
-			case ApplicationPackage.APPLICATION__RESIZEABLE:
-			case ApplicationPackage.APPLICATION__HEADLESS:
-			case ApplicationPackage.APPLICATION__TITLE:
-			case ApplicationPackage.APPLICATION__SIZE:
-			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case ApplicationPackage.APPLICATION__VIEWS:
-			case ApplicationPackage.APPLICATION__ENGINES:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case ApplicationPackage.APPLICATION__CONTENT_OBJECTS:
+		case ApplicationPackage.APPLICATION__RUN:
+		case ApplicationPackage.APPLICATION__FULLSCREEN:
+		case ApplicationPackage.APPLICATION__RESIZEABLE:
+		case ApplicationPackage.APPLICATION__HEADLESS:
+		case ApplicationPackage.APPLICATION__TITLE:
+		case ApplicationPackage.APPLICATION__SIZE:
+		case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
+			fireNotifyChanged(
+					new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		case ApplicationPackage.APPLICATION__VIEWS:
+		case ApplicationPackage.APPLICATION__ENGINES:
+			fireNotifyChanged(
+					new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -365,6 +320,9 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add(createChildParameter(ApplicationPackage.Literals.APPLICATION__VIEWS,
+				PresentationFactory.eINSTANCE.createTranparentUIView()));
 	}
 
 	/**
@@ -376,7 +334,7 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 	@Override
 	public ResourceLocator getResourceLocator()
 	{
-		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
 	}
 
 }

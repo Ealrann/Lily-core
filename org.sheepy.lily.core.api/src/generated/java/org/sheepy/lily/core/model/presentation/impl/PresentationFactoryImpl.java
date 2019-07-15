@@ -30,13 +30,13 @@ public class PresentationFactoryImpl extends EFactoryImpl implements Presentatio
 	{
 		try
 		{
-			PresentationFactory thePresentationFactory = (PresentationFactory)EPackage.Registry.INSTANCE.getEFactory(PresentationPackage.eNS_URI);
+			PresentationFactory thePresentationFactory = (PresentationFactory) EPackage.Registry.INSTANCE
+					.getEFactory(PresentationPackage.eNS_URI);
 			if (thePresentationFactory != null)
 			{
 				return thePresentationFactory;
 			}
-		}
-		catch (Exception exception)
+		} catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -64,10 +64,13 @@ public class PresentationFactoryImpl extends EFactoryImpl implements Presentatio
 	{
 		switch (eClass.getClassifierID())
 		{
-			case PresentationPackage.TRANPARENT_UI_VIEW: return createTranparentUIView();
-			case PresentationPackage.UI_PAGE: return createUIPage();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case PresentationPackage.TRANPARENT_UI_VIEW:
+			return createTranparentUIView();
+		case PresentationPackage.UI_PAGE:
+			return createUIPage();
+		default:
+			throw new IllegalArgumentException(
+					"The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -103,7 +106,7 @@ public class PresentationFactoryImpl extends EFactoryImpl implements Presentatio
 	@Override
 	public PresentationPackage getPresentationPackage()
 	{
-		return (PresentationPackage)getEPackage();
+		return (PresentationPackage) getEPackage();
 	}
 
 	/**

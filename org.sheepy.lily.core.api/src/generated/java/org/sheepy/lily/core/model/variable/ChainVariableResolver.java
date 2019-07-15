@@ -26,10 +26,6 @@ public interface ChainVariableResolver extends IVariableResolver
 	/**
 	 * Returns the value of the '<em><b>First Resolver</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>First Resolver</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>First Resolver</em>' containment reference.
 	 * @see #setFirstResolver(IVariableResolver)
@@ -53,10 +49,6 @@ public interface ChainVariableResolver extends IVariableResolver
 	 * Returns the value of the '<em><b>Sub Resolvers</b></em>' containment reference list.
 	 * The list contents are of type {@link org.sheepy.lily.core.model.variable.ChainResolver}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Sub Resolvers</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sub Resolvers</em>' containment reference list.
 	 * @see org.sheepy.lily.core.model.variable.VariablePackage#getChainVariableResolver_SubResolvers()

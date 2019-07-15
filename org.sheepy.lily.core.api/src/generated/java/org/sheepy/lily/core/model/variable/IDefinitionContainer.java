@@ -25,10 +25,6 @@ public interface IDefinitionContainer extends EObject
 	/**
 	 * Returns the value of the '<em><b>Variable Definition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Variable Definition</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variable Definition</em>' attribute.
 	 * @see #setVariableDefinition(String)

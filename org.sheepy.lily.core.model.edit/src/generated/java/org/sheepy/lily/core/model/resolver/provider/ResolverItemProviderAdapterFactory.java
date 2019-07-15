@@ -31,6 +31,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.sheepy.lily.core.model.resolver.ResolverPackage;
 
 import org.sheepy.lily.core.model.resolver.util.ResolverAdapterFactory;
+import org.sheepy.lily.core.model.types.provider.LilyEditPlugin;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -41,7 +42,8 @@ import org.sheepy.lily.core.model.resolver.util.ResolverAdapterFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ResolverItemProviderAdapterFactory extends ResolverAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender
+public class ResolverItemProviderAdapterFactory extends ResolverAdapterFactory
+		implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender
 {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
@@ -65,7 +67,8 @@ public class ResolverItemProviderAdapterFactory extends ResolverAdapterFactory i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(ResolverEditPlugin.INSTANCE, ResolverPackage.eNS_URI);
+	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(
+			LilyEditPlugin.INSTANCE, ResolverPackage.eNS_URI);
 
 	/**
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
@@ -198,7 +201,7 @@ public class ResolverItemProviderAdapterFactory extends ResolverAdapterFactory i
 		if (isFactoryForType(type))
 		{
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter)))
+			if (!(type instanceof Class<?>) || (((Class<?>) type).isInstance(adapter)))
 			{
 				return adapter;
 			}

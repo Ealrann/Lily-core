@@ -3,7 +3,9 @@
 package org.sheepy.lily.core.model.application;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.joml.Vector2ic;
+
 import org.sheepy.lily.core.model.root.LObject;
 
 /**
@@ -37,14 +39,10 @@ public interface Application extends LObject
 	 * Returns the value of the '<em><b>Views</b></em>' containment reference list.
 	 * The list contents are of type {@link org.sheepy.lily.core.model.application.IView}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Views</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Views</em>' containment reference list.
 	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Views()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<IView> getViews();
@@ -53,14 +51,10 @@ public interface Application extends LObject
 	 * Returns the value of the '<em><b>Engines</b></em>' containment reference list.
 	 * The list contents are of type {@link org.sheepy.lily.core.model.application.IEngine}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Engines</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Engines</em>' containment reference list.
 	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Engines()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<IEngine> getEngines();
@@ -69,10 +63,6 @@ public interface Application extends LObject
 	 * Returns the value of the '<em><b>Run</b></em>' attribute.
 	 * The default value is <code>"true"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Run</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Run</em>' attribute.
 	 * @see #setRun(boolean)
@@ -96,10 +86,6 @@ public interface Application extends LObject
 	 * Returns the value of the '<em><b>Fullscreen</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Fullscreen</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Fullscreen</em>' attribute.
 	 * @see #setFullscreen(boolean)
@@ -123,10 +109,6 @@ public interface Application extends LObject
 	 * Returns the value of the '<em><b>Resizeable</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Resizeable</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Resizeable</em>' attribute.
 	 * @see #setResizeable(boolean)
@@ -173,10 +155,6 @@ public interface Application extends LObject
 	 * Returns the value of the '<em><b>Title</b></em>' attribute.
 	 * The default value is <code>"Vulkan Application"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Title</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Title</em>' attribute.
 	 * @see #setTitle(String)
@@ -200,10 +178,6 @@ public interface Application extends LObject
 	 * Returns the value of the '<em><b>Size</b></em>' attribute.
 	 * The default value is <code>"400,400"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Size</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Size</em>' attribute.
 	 * @see #setSize(Vector2ic)
@@ -226,10 +200,6 @@ public interface Application extends LObject
 	/**
 	 * Returns the value of the '<em><b>Current View</b></em>' reference.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Current View</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Current View</em>' reference.
 	 * @see #setCurrentView(IView)
@@ -253,10 +223,6 @@ public interface Application extends LObject
 	 * Returns the value of the '<em><b>Cadence In Hz</b></em>' attribute.
 	 * The default value is <code>"60"</code>.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Cadence In Hz</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cadence In Hz</em>' attribute.
 	 * @see #setCadenceInHz(int)
