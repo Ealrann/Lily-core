@@ -34,14 +34,19 @@ public class AdapterDomain<T extends IAdapter>
 		EClass res = null;
 
 		final String name = classifier.getSimpleName();
+		final String pkgName = classifier.getPackageName();
 		EXT_LOOP: for (final IModelExtension extension : IModelExtension.EXTENSIONS)
 		{
 			for (final EPackage ePackage : extension.getEPackages())
 			{
-				res = (EClass) ePackage.getEClassifier(name);
-				if (res != null)
+				final var epkg = ePackage.getClass().getPackageName().replaceAll(".impl", "");
+				if (pkgName.equals(epkg))
 				{
-					break EXT_LOOP;
+					res = (EClass) ePackage.getEClassifier(name);
+					if (res != null)
+					{
+						break EXT_LOOP;
+					}
 				}
 			}
 		}
