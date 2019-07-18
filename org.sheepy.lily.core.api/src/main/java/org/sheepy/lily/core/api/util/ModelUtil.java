@@ -6,6 +6,8 @@ import java.util.Collection;
 import java.util.Deque;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
@@ -14,8 +16,7 @@ public class ModelUtil
 {
 	public static final Application getApplication(EObject eObject)
 	{
-		while (eObject != null
-				&& ApplicationPackage.Literals.APPLICATION.isInstance(eObject) == false)
+		while (eObject != null && ApplicationPackage.Literals.APPLICATION.isInstance(eObject) == false)
 		{
 			eObject = eObject.eContainer();
 		}
@@ -56,15 +57,50 @@ public class ModelUtil
 		return classifier.cast(eo);
 	}
 
+	public static final EClassifier resolveGenericType(EObject object, EClass genericHolder)
+	{
+		final EClassifier type = resolveGenericType(object.eClass(), genericHolder);
+		return type;
+	}
+
+	private static EClassifier resolveGenericType(EClass eClass, EClass genericHolder)
+	{
+		EClassifier res = null;
+		final var eGenericSuperTypes = eClass.getEGenericSuperTypes();
+
+		for (int i = 0; i < eGenericSuperTypes.size(); i++)
+		{
+			final var gType = eGenericSuperTypes.get(i);
+			final var classifier = gType.getEClassifier();
+			if (genericHolder == classifier)
+			{
+				res = gType.getETypeArguments().get(0).getERawType();
+				break;
+			}
+		}
+
+		if (res == null)
+		{
+			for (final EClass superType : eClass.getESuperTypes())
+			{
+				res = resolveGenericType(superType, genericHolder);
+				if (res != null)
+				{
+					break;
+				}
+			}
+		}
+
+		return res;
+	}
+
 	public static void gatherChildren(EObject eo, Collection<EObject> gatherIn)
 	{
 		gatherChildren(eo, EObject.class, gatherIn);
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T extends EObject> void gatherChildren(	EObject eo,
-															Class<T> type,
-															Collection<T> gatherIn)
+	public static <T extends EObject> void gatherChildren(EObject eo, Class<T> type, Collection<T> gatherIn)
 	{
 		final var containments = eo.eClass().getEAllContainments();
 		for (int i = 0; i < containments.size(); i++)

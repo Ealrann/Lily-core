@@ -25,6 +25,7 @@ module org.sheepy.lily.core.api
 	exports org.sheepy.lily.core.api.inference;
 	exports org.sheepy.lily.core.api.input;
 	exports org.sheepy.lily.core.api.input.event;
+	exports org.sheepy.lily.core.api.maintainer;
 	exports org.sheepy.lily.core.api.resource;
 	exports org.sheepy.lily.core.api.service;
 	exports org.sheepy.lily.core.api.util;
