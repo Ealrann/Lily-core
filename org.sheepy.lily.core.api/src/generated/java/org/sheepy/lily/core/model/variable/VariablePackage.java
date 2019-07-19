@@ -80,6 +80,15 @@ public interface VariablePackage extends EPackage
 	int IVARIABLE_RESOLVER_FEATURE_COUNT = 0;
 
 	/**
+	 * The number of operations of the '<em>IVariable Resolver</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IVARIABLE_RESOLVER_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.IDefinitionContainer <em>IDefinition Container</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -106,6 +115,15 @@ public interface VariablePackage extends EPackage
 	 * @ordered
 	 */
 	int IDEFINITION_CONTAINER_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>IDefinition Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDEFINITION_CONTAINER_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.ChainVariableResolverImpl <em>Chain Variable Resolver</em>}' class.
@@ -145,6 +163,15 @@ public interface VariablePackage extends EPackage
 	int CHAIN_VARIABLE_RESOLVER_FEATURE_COUNT = IVARIABLE_RESOLVER_FEATURE_COUNT + 2;
 
 	/**
+	 * The number of operations of the '<em>Chain Variable Resolver</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_VARIABLE_RESOLVER_OPERATION_COUNT = IVARIABLE_RESOLVER_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.ChainResolverImpl <em>Chain Resolver</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -173,6 +200,15 @@ public interface VariablePackage extends EPackage
 	int CHAIN_RESOLVER_FEATURE_COUNT = IDEFINITION_CONTAINER_FEATURE_COUNT + 0;
 
 	/**
+	 * The number of operations of the '<em>Chain Resolver</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CHAIN_RESOLVER_OPERATION_COUNT = IDEFINITION_CONTAINER_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.AbstractVariableResolverImpl <em>Abstract Variable Resolver</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -199,6 +235,15 @@ public interface VariablePackage extends EPackage
 	 * @ordered
 	 */
 	int ABSTRACT_VARIABLE_RESOLVER_FEATURE_COUNT = IVARIABLE_RESOLVER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Abstract Variable Resolver</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_VARIABLE_RESOLVER_OPERATION_COUNT = IVARIABLE_RESOLVER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.DirectVariableResolverImpl <em>Direct Variable Resolver</em>}' class.
@@ -238,6 +283,15 @@ public interface VariablePackage extends EPackage
 	int DIRECT_VARIABLE_RESOLVER_FEATURE_COUNT = ABSTRACT_VARIABLE_RESOLVER_FEATURE_COUNT + 1;
 
 	/**
+	 * The number of operations of the '<em>Direct Variable Resolver</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DIRECT_VARIABLE_RESOLVER_OPERATION_COUNT = ABSTRACT_VARIABLE_RESOLVER_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.VarChangeActionImpl <em>Var Change Action</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -273,6 +327,15 @@ public interface VariablePackage extends EPackage
 	 * @ordered
 	 */
 	int VAR_CHANGE_ACTION_FEATURE_COUNT = ActionPackage.ACTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Var Change Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VAR_CHANGE_ACTION_OPERATION_COUNT = ActionPackage.ACTION_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.BooleanChangeActionImpl <em>Boolean Change Action</em>}' class.
@@ -312,6 +375,15 @@ public interface VariablePackage extends EPackage
 	int BOOLEAN_CHANGE_ACTION_FEATURE_COUNT = VAR_CHANGE_ACTION_FEATURE_COUNT + 0;
 
 	/**
+	 * The number of operations of the '<em>Boolean Change Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_CHANGE_ACTION_OPERATION_COUNT = VAR_CHANGE_ACTION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.VarChangeActionPkgImpl <em>Var Change Action Pkg</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -338,6 +410,15 @@ public interface VariablePackage extends EPackage
 	 * @ordered
 	 */
 	int VAR_CHANGE_ACTION_PKG_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Var Change Action Pkg</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VAR_CHANGE_ACTION_PKG_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '<em>LResolved Variable Feature</em>' data type.

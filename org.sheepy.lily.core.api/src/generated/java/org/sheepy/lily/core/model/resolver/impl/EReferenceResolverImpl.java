@@ -2,6 +2,7 @@
  */
 package org.sheepy.lily.core.model.resolver.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -339,6 +340,24 @@ public class EReferenceResolverImpl extends MinimalEObjectImpl.Container impleme
 				return internalReference != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
+	{
+		switch (operationID)
+		{
+			case ResolverPackage.EREFERENCE_RESOLVER___COLLECT_UNITS__LOBJECT_COLLECTION:
+				collectUnits((LObject)arguments.get(0), (Collection<LObject>)arguments.get(1));
+				return null;
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

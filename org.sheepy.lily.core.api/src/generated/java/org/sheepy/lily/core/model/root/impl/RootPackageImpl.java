@@ -235,9 +235,64 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	 * @generated
 	 */
 	@Override
+	public EOperation getLObject__CreateContainmentEList__EClass()
+	{
+		return lObjectEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getLObject__LContents()
+	{
+		return lObjectEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getLObject__LParent()
+	{
+		return lObjectEClass.getEOperations().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getLObject__LAllContents()
+	{
+		return lObjectEClass.getEOperations().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getXAction()
 	{
 		return xActionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getXAction__Execute__LObject()
+	{
+		return xActionEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -306,8 +361,13 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 		// Create classes and their features
 		lObjectEClass = createEClass(LOBJECT);
 		createEAttribute(lObjectEClass, LOBJECT__CONTENT_OBJECTS);
+		createEOperation(lObjectEClass, LOBJECT___CREATE_CONTAINMENT_ELIST__ECLASS);
+		createEOperation(lObjectEClass, LOBJECT___LCONTENTS);
+		createEOperation(lObjectEClass, LOBJECT___LPARENT);
+		createEOperation(lObjectEClass, LOBJECT___LALL_CONTENTS);
 
 		xActionEClass = createEClass(XACTION);
+		createEOperation(xActionEClass, XACTION___EXECUTE__LOBJECT);
 
 		// Create data types
 		lContentListEDataType = createEDataType(LCONTENT_LIST);
@@ -352,11 +412,11 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 		lObjectEClass.getESuperTypes().add(theInferencePackage.getIInferenceObject());
 		xActionEClass.getESuperTypes().add(theActionPackage.getAction());
 
-		// Initialize classes and features; add operations and parameters
+		// Initialize classes, features, and operations; add parameters
 		initEClass(lObjectEClass, LObject.class, "LObject", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLObject_ContentObjects(), this.getLContentList(), "contentObjects", null, 0, 1, LObject.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		EOperation op = addEOperation(lObjectEClass, null, "createContainmentEList", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		EOperation op = initEOperation(getLObject__CreateContainmentEList__EClass(), null, "createContainmentEList", 0, -1, !IS_UNIQUE, IS_ORDERED);
 		ETypeParameter t1 = addETypeParameter(op, "T");
 		EGenericType g1 = createEGenericType(this.getLObject());
 		t1.getEBounds().add(g1);
@@ -364,15 +424,15 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 		g1 = createEGenericType(t1);
 		initEOperation(op, g1);
 
-		addEOperation(lObjectEClass, this.getLObject(), "lContents", 0, -1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getLObject__LContents(), this.getLObject(), "lContents", 0, -1, !IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(lObjectEClass, this.getLObject(), "lParent", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getLObject__LParent(), this.getLObject(), "lParent", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(lObjectEClass, this.getLTreeIterator(), "lAllContents", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getLObject__LAllContents(), this.getLTreeIterator(), "lAllContents", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(xActionEClass, XAction.class, "XAction", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		op = addEOperation(xActionEClass, null, "execute", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getXAction__Execute__LObject(), null, "execute", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getLObject(), "object", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		// Initialize data types

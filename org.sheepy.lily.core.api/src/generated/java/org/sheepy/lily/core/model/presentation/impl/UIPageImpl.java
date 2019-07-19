@@ -2,6 +2,7 @@
  */
 package org.sheepy.lily.core.model.presentation.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -608,6 +609,30 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 				return panels != null && !panels.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
+	{
+		switch (operationID)
+		{
+			case PresentationPackage.UI_PAGE___CREATE_CONTAINMENT_ELIST__ECLASS:
+				return createContainmentEList((EClass)arguments.get(0));
+			case PresentationPackage.UI_PAGE___LCONTENTS:
+				return lContents();
+			case PresentationPackage.UI_PAGE___LPARENT:
+				return lParent();
+			case PresentationPackage.UI_PAGE___LALL_CONTENTS:
+				return lAllContents();
+			case PresentationPackage.UI_PAGE___LINFERENCE_OBJECT:
+				return lInferenceObject();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

@@ -430,6 +430,17 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	@Override
+	public EOperation getPositionParameter__GetPosition()
+	{
+		return positionParameterEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getPositionFParameter()
 	{
 		return positionFParameterEClass;
@@ -441,9 +452,31 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	@Override
+	public EOperation getPositionFParameter__GetPosition()
+	{
+		return positionFParameterEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getNativeParameter()
 	{
 		return nativeParameterEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getNativeParameter__GetNativeValue()
+	{
+		return nativeParameterEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -474,6 +507,17 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	@Override
+	public EOperation getFloatParameter__GetNativeValue()
+	{
+		return floatParameterEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getStringParameter()
 	{
 		return stringParameterEClass;
@@ -496,6 +540,17 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	@Override
+	public EOperation getStringParameter__GetNativeValue()
+	{
+		return stringParameterEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getBooleanParameter()
 	{
 		return booleanParameterEClass;
@@ -510,6 +565,17 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	public EAttribute getBooleanParameter_Value()
 	{
 		return (EAttribute)booleanParameterEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getBooleanParameter__GetNativeValue()
+	{
+		return booleanParameterEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -758,19 +824,25 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		parameterEClass = createEClass(PARAMETER);
 
 		positionParameterEClass = createEClass(POSITION_PARAMETER);
+		createEOperation(positionParameterEClass, POSITION_PARAMETER___GET_POSITION);
 
 		positionFParameterEClass = createEClass(POSITION_FPARAMETER);
+		createEOperation(positionFParameterEClass, POSITION_FPARAMETER___GET_POSITION);
 
 		nativeParameterEClass = createEClass(NATIVE_PARAMETER);
+		createEOperation(nativeParameterEClass, NATIVE_PARAMETER___GET_NATIVE_VALUE);
 
 		floatParameterEClass = createEClass(FLOAT_PARAMETER);
 		createEAttribute(floatParameterEClass, FLOAT_PARAMETER__VALUE);
+		createEOperation(floatParameterEClass, FLOAT_PARAMETER___GET_NATIVE_VALUE);
 
 		stringParameterEClass = createEClass(STRING_PARAMETER);
 		createEAttribute(stringParameterEClass, STRING_PARAMETER__VALUE);
+		createEOperation(stringParameterEClass, STRING_PARAMETER___GET_NATIVE_VALUE);
 
 		booleanParameterEClass = createEClass(BOOLEAN_PARAMETER);
 		createEAttribute(booleanParameterEClass, BOOLEAN_PARAMETER__VALUE);
+		createEOperation(booleanParameterEClass, BOOLEAN_PARAMETER___GET_NATIVE_VALUE);
 
 		// Create enums
 		eNotificationDirectionEEnum = createEEnum(ENOTIFICATION_DIRECTION);
@@ -845,7 +917,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		g1.getETypeArguments().add(g2);
 		booleanParameterEClass.getEGenericSuperTypes().add(g1);
 
-		// Initialize classes and features; add operations and parameters
+		// Initialize classes, features, and operations; add parameters
 		initEClass(lNamedElementEClass, LNamedElement.class, "LNamedElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLNamedElement_Name(), theEcorePackage.getEString(), "name", null, 0, 1, LNamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -853,32 +925,32 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 
 		initEClass(positionParameterEClass, PositionParameter.class, "PositionParameter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(positionParameterEClass, this.getVector2i(), "getPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getPositionParameter__GetPosition(), this.getVector2i(), "getPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(positionFParameterEClass, PositionFParameter.class, "PositionFParameter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(positionFParameterEClass, this.getVector2f(), "getPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getPositionFParameter__GetPosition(), this.getVector2f(), "getPosition", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(nativeParameterEClass, NativeParameter.class, "NativeParameter", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		EOperation op = addEOperation(nativeParameterEClass, null, "getNativeValue", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		EOperation op = initEOperation(getNativeParameter__GetNativeValue(), null, "getNativeValue", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(nativeParameterEClass_T);
 		initEOperation(op, g1);
 
 		initEClass(floatParameterEClass, FloatParameter.class, "FloatParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFloatParameter_Value(), theEcorePackage.getEFloatObject(), "value", null, 0, 1, FloatParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(floatParameterEClass, theEcorePackage.getEFloatObject(), "getNativeValue", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getFloatParameter__GetNativeValue(), theEcorePackage.getEFloatObject(), "getNativeValue", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(stringParameterEClass, StringParameter.class, "StringParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStringParameter_Value(), theEcorePackage.getEString(), "value", null, 0, 1, StringParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(stringParameterEClass, theEcorePackage.getEString(), "getNativeValue", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getStringParameter__GetNativeValue(), theEcorePackage.getEString(), "getNativeValue", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(booleanParameterEClass, BooleanParameter.class, "BooleanParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getBooleanParameter_Value(), theEcorePackage.getEBooleanObject(), "value", null, 0, 1, BooleanParameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(booleanParameterEClass, theEcorePackage.getEBooleanObject(), "getNativeValue", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getBooleanParameter__GetNativeValue(), theEcorePackage.getEBooleanObject(), "getNativeValue", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(eNotificationDirectionEEnum, ENotificationDirection.class, "ENotificationDirection");

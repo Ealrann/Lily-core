@@ -270,7 +270,7 @@ public class ActionPackageImpl extends EPackageImpl implements ActionPackage
 		// Add supertypes to classes
 		actionEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
 
-		// Initialize classes and features; add operations and parameters
+		// Initialize classes, features, and operations; add parameters
 		initEClass(actionEClass, Action.class, "Action", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize data types

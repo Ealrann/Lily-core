@@ -2,6 +2,7 @@
  */
 package org.sheepy.lily.core.model.inference.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -186,6 +187,24 @@ public abstract class InfererImpl extends MinimalEObjectImpl.Container implement
 				return rules != null && !rules.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
+	{
+		switch (operationID)
+		{
+			case InferencePackage.INFERER___LEXECUTOR:
+				return lExecutor();
+			case InferencePackage.INFERER___LINFERENCE_OBJECT:
+				return lInferenceObject();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //InfererImpl

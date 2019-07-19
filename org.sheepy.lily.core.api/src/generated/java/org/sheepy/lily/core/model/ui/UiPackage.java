@@ -4,6 +4,7 @@ package org.sheepy.lily.core.model.ui;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -187,6 +188,60 @@ public interface UiPackage extends EPackage
 	int PANEL_FEATURE_COUNT = PresentationPackage.IPANEL_FEATURE_COUNT + 7;
 
 	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANEL___LINFERENCE_OBJECT = PresentationPackage.IPANEL___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANEL___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.IPANEL___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANEL___LCONTENTS = PresentationPackage.IPANEL___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANEL___LPARENT = PresentationPackage.IPANEL___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANEL___LALL_CONTENTS = PresentationPackage.IPANEL___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>Panel</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANEL_OPERATION_COUNT = PresentationPackage.IPANEL_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.IControl <em>IControl</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -213,6 +268,60 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int ICONTROL_FEATURE_COUNT = PresentationPackage.IUI_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICONTROL___LINFERENCE_OBJECT = PresentationPackage.IUI_ELEMENT___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICONTROL___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.IUI_ELEMENT___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICONTROL___LCONTENTS = PresentationPackage.IUI_ELEMENT___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICONTROL___LPARENT = PresentationPackage.IUI_ELEMENT___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICONTROL___LALL_CONTENTS = PresentationPackage.IUI_ELEMENT___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>IControl</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICONTROL_OPERATION_COUNT = PresentationPackage.IUI_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.Widget <em>Widget</em>}' class.
@@ -286,6 +395,60 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int WIDGET_FEATURE_COUNT = ICONTROL_FEATURE_COUNT + 5;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET___LINFERENCE_OBJECT = ICONTROL___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS = ICONTROL___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET___LCONTENTS = ICONTROL___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET___LPARENT = ICONTROL___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET___LALL_CONTENTS = ICONTROL___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>Widget</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int WIDGET_OPERATION_COUNT = ICONTROL_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.AbstractLabelImpl <em>Abstract Label</em>}' class.
@@ -379,6 +542,60 @@ public interface UiPackage extends EPackage
 	int ABSTRACT_LABEL_FEATURE_COUNT = WIDGET_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL___LINFERENCE_OBJECT = WIDGET___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL___CREATE_CONTAINMENT_ELIST__ECLASS = WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL___LCONTENTS = WIDGET___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL___LPARENT = WIDGET___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL___LALL_CONTENTS = WIDGET___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>Abstract Label</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL_OPERATION_COUNT = WIDGET_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.DynamicRowLayoutImpl <em>Dynamic Row Layout</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -423,6 +640,60 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int DYNAMIC_ROW_LAYOUT_FEATURE_COUNT = ICONTROL_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT___LINFERENCE_OBJECT = ICONTROL___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT___CREATE_CONTAINMENT_ELIST__ECLASS = ICONTROL___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT___LCONTENTS = ICONTROL___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT___LPARENT = ICONTROL___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT___LALL_CONTENTS = ICONTROL___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>Dynamic Row Layout</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DYNAMIC_ROW_LAYOUT_OPERATION_COUNT = ICONTROL_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.VariableLabelImpl <em>Variable Label</em>}' class.
@@ -525,6 +796,60 @@ public interface UiPackage extends EPackage
 	int VARIABLE_LABEL_FEATURE_COUNT = ABSTRACT_LABEL_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL___LINFERENCE_OBJECT = ABSTRACT_LABEL___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL___CREATE_CONTAINMENT_ELIST__ECLASS = ABSTRACT_LABEL___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL___LCONTENTS = ABSTRACT_LABEL___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL___LPARENT = ABSTRACT_LABEL___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL___LALL_CONTENTS = ABSTRACT_LABEL___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>Variable Label</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL_OPERATION_COUNT = ABSTRACT_LABEL_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.LabelImpl <em>Label</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -614,6 +939,60 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int LABEL_FEATURE_COUNT = ABSTRACT_LABEL_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL___LINFERENCE_OBJECT = ABSTRACT_LABEL___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL___CREATE_CONTAINMENT_ELIST__ECLASS = ABSTRACT_LABEL___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL___LCONTENTS = ABSTRACT_LABEL___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL___LPARENT = ABSTRACT_LABEL___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL___LALL_CONTENTS = ABSTRACT_LABEL___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>Label</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL_OPERATION_COUNT = ABSTRACT_LABEL_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.SliderImpl <em>Slider</em>}' class.
@@ -725,6 +1104,60 @@ public interface UiPackage extends EPackage
 	int SLIDER_FEATURE_COUNT = WIDGET_FEATURE_COUNT + 4;
 
 	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER___LINFERENCE_OBJECT = WIDGET___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER___CREATE_CONTAINMENT_ELIST__ECLASS = WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER___LCONTENTS = WIDGET___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER___LPARENT = WIDGET___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER___LALL_CONTENTS = WIDGET___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>Slider</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER_OPERATION_COUNT = WIDGET_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.TextFieldImpl <em>Text Field</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -807,6 +1240,60 @@ public interface UiPackage extends EPackage
 	int TEXT_FIELD_FEATURE_COUNT = WIDGET_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD___LINFERENCE_OBJECT = WIDGET___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD___CREATE_CONTAINMENT_ELIST__ECLASS = WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD___LCONTENTS = WIDGET___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD___LPARENT = WIDGET___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD___LALL_CONTENTS = WIDGET___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>Text Field</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD_OPERATION_COUNT = WIDGET_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.AbstractButtonImpl <em>Abstract Button</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -887,6 +1374,60 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int ABSTRACT_BUTTON_FEATURE_COUNT = WIDGET_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON___LINFERENCE_OBJECT = WIDGET___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS = WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON___LCONTENTS = WIDGET___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON___LPARENT = WIDGET___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON___LALL_CONTENTS = WIDGET___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>Abstract Button</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON_OPERATION_COUNT = WIDGET_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.ButtonImpl <em>Button</em>}' class.
@@ -998,6 +1539,78 @@ public interface UiPackage extends EPackage
 	int BUTTON_FEATURE_COUNT = ABSTRACT_BUTTON_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON___LINFERENCE_OBJECT = ABSTRACT_BUTTON___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS = ABSTRACT_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON___LCONTENTS = ABSTRACT_BUTTON___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON___LPARENT = ABSTRACT_BUTTON___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON___LALL_CONTENTS = ABSTRACT_BUTTON___LALL_CONTENTS;
+
+	/**
+	 * The operation id for the '<em>LActions</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON___LACTIONS = ABSTRACT_BUTTON_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Get Executor</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON___GET_EXECUTOR = ABSTRACT_BUTTON_OPERATION_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Button</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON_OPERATION_COUNT = ABSTRACT_BUTTON_OPERATION_COUNT + 2;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.AbstractBooleanButtonImpl <em>Abstract Boolean Button</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1096,6 +1709,60 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int ABSTRACT_BOOLEAN_BUTTON_FEATURE_COUNT = ABSTRACT_BUTTON_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON___LINFERENCE_OBJECT = ABSTRACT_BUTTON___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS = ABSTRACT_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON___LCONTENTS = ABSTRACT_BUTTON___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON___LPARENT = ABSTRACT_BUTTON___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON___LALL_CONTENTS = ABSTRACT_BUTTON___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>Abstract Boolean Button</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON_OPERATION_COUNT = ABSTRACT_BUTTON_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.BooleanButtonImpl <em>Boolean Button</em>}' class.
@@ -1205,6 +1872,60 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int BOOLEAN_BUTTON_FEATURE_COUNT = ABSTRACT_BOOLEAN_BUTTON_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON___LINFERENCE_OBJECT = ABSTRACT_BOOLEAN_BUTTON___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS = ABSTRACT_BOOLEAN_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON___LCONTENTS = ABSTRACT_BOOLEAN_BUTTON___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON___LPARENT = ABSTRACT_BOOLEAN_BUTTON___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON___LALL_CONTENTS = ABSTRACT_BOOLEAN_BUTTON___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>Boolean Button</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON_OPERATION_COUNT = ABSTRACT_BOOLEAN_BUTTON_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.BooleanActionButtonImpl <em>Boolean Action Button</em>}' class.
@@ -1323,6 +2044,60 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int BOOLEAN_ACTION_BUTTON_FEATURE_COUNT = ABSTRACT_BOOLEAN_BUTTON_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON___LINFERENCE_OBJECT = ABSTRACT_BOOLEAN_BUTTON___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS = ABSTRACT_BOOLEAN_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON___LCONTENTS = ABSTRACT_BOOLEAN_BUTTON___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON___LPARENT = ABSTRACT_BOOLEAN_BUTTON___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON___LALL_CONTENTS = ABSTRACT_BOOLEAN_BUTTON___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>Boolean Action Button</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON_OPERATION_COUNT = ABSTRACT_BOOLEAN_BUTTON_OPERATION_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.Panel <em>Panel</em>}'.
@@ -1642,6 +2417,26 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	EReference getButton_Actions();
+
+	/**
+	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.ui.Button#lActions() <em>LActions</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>LActions</em>' operation.
+	 * @see org.sheepy.lily.core.model.ui.Button#lActions()
+	 * @generated
+	 */
+	EOperation getButton__LActions();
+
+	/**
+	 * Returns the meta object for the '{@link org.sheepy.lily.core.model.ui.Button#getExecutor() <em>Get Executor</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Executor</em>' operation.
+	 * @see org.sheepy.lily.core.model.ui.Button#getExecutor()
+	 * @generated
+	 */
+	EOperation getButton__GetExecutor();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.AbstractBooleanButton <em>Abstract Boolean Button</em>}'.
@@ -2013,6 +2808,22 @@ public interface UiPackage extends EPackage
 		 * @generated
 		 */
 		EReference BUTTON__ACTIONS = eINSTANCE.getButton_Actions();
+
+		/**
+		 * The meta object literal for the '<em><b>LActions</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation BUTTON___LACTIONS = eINSTANCE.getButton__LActions();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Executor</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation BUTTON___GET_EXECUTOR = eINSTANCE.getButton__GetExecutor();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.AbstractBooleanButtonImpl <em>Abstract Boolean Button</em>}' class.

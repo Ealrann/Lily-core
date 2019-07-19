@@ -2,6 +2,7 @@
  */
 package org.sheepy.lily.core.model.presentation.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -388,6 +389,30 @@ public class TranparentUIViewImpl extends MinimalEObjectImpl.Container implement
 				return currentUIPage != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
+	{
+		switch (operationID)
+		{
+			case PresentationPackage.TRANPARENT_UI_VIEW___CREATE_CONTAINMENT_ELIST__ECLASS:
+				return createContainmentEList((EClass)arguments.get(0));
+			case PresentationPackage.TRANPARENT_UI_VIEW___LCONTENTS:
+				return lContents();
+			case PresentationPackage.TRANPARENT_UI_VIEW___LPARENT:
+				return lParent();
+			case PresentationPackage.TRANPARENT_UI_VIEW___LALL_CONTENTS:
+				return lAllContents();
+			case PresentationPackage.TRANPARENT_UI_VIEW___LINFERENCE_OBJECT:
+				return lInferenceObject();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

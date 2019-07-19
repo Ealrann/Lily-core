@@ -2,6 +2,7 @@
  */
 package org.sheepy.lily.core.model.resolver.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.Deque;
@@ -198,6 +199,24 @@ public class ChainResolverImpl extends MinimalEObjectImpl.Container implements C
 				return resolvers != null && !resolvers.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
+	{
+		switch (operationID)
+		{
+			case ResolverPackage.CHAIN_RESOLVER___COLLECT_UNITS__LOBJECT_COLLECTION:
+				collectUnits((LObject)arguments.get(0), (Collection<LObject>)arguments.get(1));
+				return null;
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //ChainResolverImpl

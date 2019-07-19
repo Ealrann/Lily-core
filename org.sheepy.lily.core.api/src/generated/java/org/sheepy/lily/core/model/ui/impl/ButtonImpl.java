@@ -2,6 +2,7 @@
  */
 package org.sheepy.lily.core.model.ui.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.List;
 
@@ -311,6 +312,24 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 				return actions != null && !actions.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
+	{
+		switch (operationID)
+		{
+			case UiPackage.BUTTON___LACTIONS:
+				return lActions();
+			case UiPackage.BUTTON___GET_EXECUTOR:
+				return getExecutor();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

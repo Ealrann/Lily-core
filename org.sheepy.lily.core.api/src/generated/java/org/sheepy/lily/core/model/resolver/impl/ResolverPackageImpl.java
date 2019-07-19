@@ -203,6 +203,17 @@ public class ResolverPackageImpl extends EPackageImpl implements ResolverPackage
 	 * @generated
 	 */
 	@Override
+	public EOperation getILObjectResolver__CollectUnits__LObject_Collection()
+	{
+		return ilObjectResolverEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getEReferenceResolver()
 	{
 		return eReferenceResolverEClass;
@@ -247,6 +258,17 @@ public class ResolverPackageImpl extends EPackageImpl implements ResolverPackage
 	 * @generated
 	 */
 	@Override
+	public EOperation getEReferenceResolver__CollectUnits__LObject_Collection()
+	{
+		return eReferenceResolverEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getChainResolver()
 	{
 		return chainResolverEClass;
@@ -261,6 +283,17 @@ public class ResolverPackageImpl extends EPackageImpl implements ResolverPackage
 	public EReference getChainResolver_Resolvers()
 	{
 		return (EReference)chainResolverEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getChainResolver__CollectUnits__LObject_Collection()
+	{
+		return chainResolverEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -295,14 +328,17 @@ public class ResolverPackageImpl extends EPackageImpl implements ResolverPackage
 
 		// Create classes and their features
 		ilObjectResolverEClass = createEClass(IL_OBJECT_RESOLVER);
+		createEOperation(ilObjectResolverEClass, IL_OBJECT_RESOLVER___COLLECT_UNITS__LOBJECT_COLLECTION);
 
 		eReferenceResolverEClass = createEClass(EREFERENCE_RESOLVER);
 		createEAttribute(eReferenceResolverEClass, EREFERENCE_RESOLVER__REFERENCE_NAME);
 		createEAttribute(eReferenceResolverEClass, EREFERENCE_RESOLVER__CLASS_NAME);
 		createEReference(eReferenceResolverEClass, EREFERENCE_RESOLVER__INTERNAL_REFERENCE);
+		createEOperation(eReferenceResolverEClass, EREFERENCE_RESOLVER___COLLECT_UNITS__LOBJECT_COLLECTION);
 
 		chainResolverEClass = createEClass(CHAIN_RESOLVER);
 		createEReference(chainResolverEClass, CHAIN_RESOLVER__RESOLVERS);
+		createEOperation(chainResolverEClass, CHAIN_RESOLVER___COLLECT_UNITS__LOBJECT_COLLECTION);
 	}
 
 	/**
@@ -341,10 +377,10 @@ public class ResolverPackageImpl extends EPackageImpl implements ResolverPackage
 		eReferenceResolverEClass.getESuperTypes().add(this.getILObjectResolver());
 		chainResolverEClass.getESuperTypes().add(this.getILObjectResolver());
 
-		// Initialize classes and features; add operations and parameters
+		// Initialize classes, features, and operations; add parameters
 		initEClass(ilObjectResolverEClass, ILObjectResolver.class, "ILObjectResolver", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		EOperation op = addEOperation(ilObjectResolverEClass, null, "collectUnits", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		EOperation op = initEOperation(getILObjectResolver__CollectUnits__LObject_Collection(), null, "collectUnits", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theRootPackage.getLObject(), "source", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theRootPackage.getLCollection(), "collected", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
@@ -353,14 +389,14 @@ public class ResolverPackageImpl extends EPackageImpl implements ResolverPackage
 		initEAttribute(getEReferenceResolver_ClassName(), theEcorePackage.getEString(), "className", null, 0, 1, EReferenceResolver.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEReferenceResolver_InternalReference(), theEcorePackage.getEReference(), null, "internalReference", null, 0, 1, EReferenceResolver.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(eReferenceResolverEClass, null, "collectUnits", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getEReferenceResolver__CollectUnits__LObject_Collection(), null, "collectUnits", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theRootPackage.getLObject(), "source", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theRootPackage.getLCollection(), "collected", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(chainResolverEClass, ChainResolver.class, "ChainResolver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getChainResolver_Resolvers(), this.getILObjectResolver(), null, "resolvers", null, 0, -1, ChainResolver.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(chainResolverEClass, null, "collectUnits", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getChainResolver__CollectUnits__LObject_Collection(), null, "collectUnits", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theRootPackage.getLObject(), "source", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, theRootPackage.getLCollection(), "collected", 0, 1, !IS_UNIQUE, IS_ORDERED);
 

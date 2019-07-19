@@ -539,7 +539,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		booleanChangeActionEClass.getESuperTypes().add(this.getVarChangeAction());
 		booleanChangeActionEClass.getESuperTypes().add(theActionPackage.getAction());
 
-		// Initialize classes and features; add operations and parameters
+		// Initialize classes, features, and operations; add parameters
 		initEClass(iVariableResolverEClass, IVariableResolver.class, "IVariableResolver", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(iDefinitionContainerEClass, IDefinitionContainer.class, "IDefinitionContainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

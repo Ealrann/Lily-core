@@ -2,6 +2,8 @@
  */
 package org.sheepy.lily.core.model.inference.impl;
 
+import java.lang.reflect.InvocationTargetException;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -48,6 +50,22 @@ public abstract class AbstractNotificationImpl extends MinimalEObjectImpl.Contai
 	public boolean match(final AbstractNotification compareTo)
 	{
 		return this.eClass().equals(compareTo.eClass());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
+	{
+		switch (operationID)
+		{
+			case InferencePackage.ABSTRACT_NOTIFICATION___MATCH__ABSTRACTNOTIFICATION:
+				return match((AbstractNotification)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //AbstractNotificationImpl

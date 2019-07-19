@@ -2,6 +2,7 @@
  */
 package org.sheepy.lily.core.model.application.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -825,6 +826,30 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 				return cadenceInHz != CADENCE_IN_HZ_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
+	{
+		switch (operationID)
+		{
+			case ApplicationPackage.APPLICATION___CREATE_CONTAINMENT_ELIST__ECLASS:
+				return createContainmentEList((EClass)arguments.get(0));
+			case ApplicationPackage.APPLICATION___LCONTENTS:
+				return lContents();
+			case ApplicationPackage.APPLICATION___LPARENT:
+				return lParent();
+			case ApplicationPackage.APPLICATION___LALL_CONTENTS:
+				return lAllContents();
+			case ApplicationPackage.APPLICATION___LINFERENCE_OBJECT:
+				return lInferenceObject();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

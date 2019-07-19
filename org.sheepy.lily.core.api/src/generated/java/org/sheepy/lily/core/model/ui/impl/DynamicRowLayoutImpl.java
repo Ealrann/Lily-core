@@ -2,6 +2,7 @@
  */
 package org.sheepy.lily.core.model.ui.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -374,6 +375,30 @@ public class DynamicRowLayoutImpl extends MinimalEObjectImpl.Container implement
 				return columnCount != COLUMN_COUNT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
+	{
+		switch (operationID)
+		{
+			case UiPackage.DYNAMIC_ROW_LAYOUT___CREATE_CONTAINMENT_ELIST__ECLASS:
+				return createContainmentEList((EClass)arguments.get(0));
+			case UiPackage.DYNAMIC_ROW_LAYOUT___LCONTENTS:
+				return lContents();
+			case UiPackage.DYNAMIC_ROW_LAYOUT___LPARENT:
+				return lParent();
+			case UiPackage.DYNAMIC_ROW_LAYOUT___LALL_CONTENTS:
+				return lAllContents();
+			case UiPackage.DYNAMIC_ROW_LAYOUT___LINFERENCE_OBJECT:
+				return lInferenceObject();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

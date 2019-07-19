@@ -2,6 +2,7 @@
  */
 package org.sheepy.lily.core.model.ui.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -31,6 +32,7 @@ import org.joml.Vector2ic;
 import org.sheepy.lily.core.api.util.LTreeIterator;
 
 import org.sheepy.lily.core.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.inference.InferencePackage;
 import org.sheepy.lily.core.model.presentation.IPositionElement;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
 import org.sheepy.lily.core.model.presentation.IUIElement;
@@ -997,6 +999,81 @@ public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass)
+	{
+		if (baseClass == IInferenceObject.class)
+		{
+			switch (baseOperationID)
+			{
+				case InferencePackage.IINFERENCE_OBJECT___LINFERENCE_OBJECT: return UiPackage.PANEL___LINFERENCE_OBJECT;
+				default: return -1;
+			}
+		}
+		if (baseClass == LObject.class)
+		{
+			switch (baseOperationID)
+			{
+				case RootPackage.LOBJECT___CREATE_CONTAINMENT_ELIST__ECLASS: return UiPackage.PANEL___CREATE_CONTAINMENT_ELIST__ECLASS;
+				case RootPackage.LOBJECT___LCONTENTS: return UiPackage.PANEL___LCONTENTS;
+				case RootPackage.LOBJECT___LPARENT: return UiPackage.PANEL___LPARENT;
+				case RootPackage.LOBJECT___LALL_CONTENTS: return UiPackage.PANEL___LALL_CONTENTS;
+				default: return -1;
+			}
+		}
+		if (baseClass == IUIElement.class)
+		{
+			switch (baseOperationID)
+			{
+				default: return -1;
+			}
+		}
+		if (baseClass == IPositionElement.class)
+		{
+			switch (baseOperationID)
+			{
+				default: return -1;
+			}
+		}
+		if (baseClass == ISizedElement.class)
+		{
+			switch (baseOperationID)
+			{
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
+	{
+		switch (operationID)
+		{
+			case UiPackage.PANEL___CREATE_CONTAINMENT_ELIST__ECLASS:
+				return createContainmentEList((EClass)arguments.get(0));
+			case UiPackage.PANEL___LCONTENTS:
+				return lContents();
+			case UiPackage.PANEL___LPARENT:
+				return lParent();
+			case UiPackage.PANEL___LALL_CONTENTS:
+				return lAllContents();
+			case UiPackage.PANEL___LINFERENCE_OBJECT:
+				return lInferenceObject();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

@@ -2,6 +2,7 @@
  */
 package org.sheepy.lily.core.model.ui.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -872,6 +873,30 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
+	{
+		switch (operationID)
+		{
+			case UiPackage.SLIDER___CREATE_CONTAINMENT_ELIST__ECLASS:
+				return createContainmentEList((EClass)arguments.get(0));
+			case UiPackage.SLIDER___LCONTENTS:
+				return lContents();
+			case UiPackage.SLIDER___LPARENT:
+				return lParent();
+			case UiPackage.SLIDER___LALL_CONTENTS:
+				return lAllContents();
+			case UiPackage.SLIDER___LINFERENCE_OBJECT:
+				return lInferenceObject();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

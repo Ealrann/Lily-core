@@ -300,7 +300,7 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 
 		// Add supertypes to classes
 
-		// Initialize classes and features; add operations and parameters
+		// Initialize classes, features, and operations; add parameters
 		initEClass(maintainableEClass, Maintainable.class, "Maintainable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getMaintainer());
 		g2 = createEGenericType(maintainableEClass_T);

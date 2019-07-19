@@ -2,6 +2,7 @@
  */
 package org.sheepy.lily.core.model.ui.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -669,6 +670,30 @@ public abstract class AbstractButtonImpl extends MinimalEObjectImpl.Container im
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
+	{
+		switch (operationID)
+		{
+			case UiPackage.ABSTRACT_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS:
+				return createContainmentEList((EClass)arguments.get(0));
+			case UiPackage.ABSTRACT_BUTTON___LCONTENTS:
+				return lContents();
+			case UiPackage.ABSTRACT_BUTTON___LPARENT:
+				return lParent();
+			case UiPackage.ABSTRACT_BUTTON___LALL_CONTENTS:
+				return lAllContents();
+			case UiPackage.ABSTRACT_BUTTON___LINFERENCE_OBJECT:
+				return lInferenceObject();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

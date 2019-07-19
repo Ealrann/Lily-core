@@ -119,6 +119,60 @@ public interface PresentationPackage extends EPackage
 	int IPOSITION_ELEMENT_FEATURE_COUNT = RootPackage.LOBJECT_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPOSITION_ELEMENT___LINFERENCE_OBJECT = RootPackage.LOBJECT___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPOSITION_ELEMENT___CREATE_CONTAINMENT_ELIST__ECLASS = RootPackage.LOBJECT___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPOSITION_ELEMENT___LCONTENTS = RootPackage.LOBJECT___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPOSITION_ELEMENT___LPARENT = RootPackage.LOBJECT___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPOSITION_ELEMENT___LALL_CONTENTS = RootPackage.LOBJECT___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>IPosition Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPOSITION_ELEMENT_OPERATION_COUNT = RootPackage.LOBJECT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.ISizedElement <em>ISized Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -192,6 +246,60 @@ public interface PresentationPackage extends EPackage
 	int ISIZED_ELEMENT_FEATURE_COUNT = IPOSITION_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_ELEMENT___LINFERENCE_OBJECT = IPOSITION_ELEMENT___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_ELEMENT___CREATE_CONTAINMENT_ELIST__ECLASS = IPOSITION_ELEMENT___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_ELEMENT___LCONTENTS = IPOSITION_ELEMENT___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_ELEMENT___LPARENT = IPOSITION_ELEMENT___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_ELEMENT___LALL_CONTENTS = IPOSITION_ELEMENT___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>ISized Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_ELEMENT_OPERATION_COUNT = IPOSITION_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.IUIView <em>IUI View</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -236,6 +344,60 @@ public interface PresentationPackage extends EPackage
 	 * @ordered
 	 */
 	int IUI_VIEW_FEATURE_COUNT = ApplicationPackage.IVIEW_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IUI_VIEW___LINFERENCE_OBJECT = ApplicationPackage.IVIEW___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IUI_VIEW___CREATE_CONTAINMENT_ELIST__ECLASS = ApplicationPackage.IVIEW___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IUI_VIEW___LCONTENTS = ApplicationPackage.IVIEW___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IUI_VIEW___LPARENT = ApplicationPackage.IVIEW___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IUI_VIEW___LALL_CONTENTS = ApplicationPackage.IVIEW___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>IUI View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IUI_VIEW_OPERATION_COUNT = ApplicationPackage.IVIEW_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.impl.TranparentUIViewImpl <em>Tranparent UI View</em>}' class.
@@ -284,6 +446,60 @@ public interface PresentationPackage extends EPackage
 	int TRANPARENT_UI_VIEW_FEATURE_COUNT = IUI_VIEW_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANPARENT_UI_VIEW___LINFERENCE_OBJECT = IUI_VIEW___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANPARENT_UI_VIEW___CREATE_CONTAINMENT_ELIST__ECLASS = IUI_VIEW___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANPARENT_UI_VIEW___LCONTENTS = IUI_VIEW___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANPARENT_UI_VIEW___LPARENT = IUI_VIEW___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANPARENT_UI_VIEW___LALL_CONTENTS = IUI_VIEW___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>Tranparent UI View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANPARENT_UI_VIEW_OPERATION_COUNT = IUI_VIEW_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.IMusicView <em>IMusic View</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -319,6 +535,60 @@ public interface PresentationPackage extends EPackage
 	 * @ordered
 	 */
 	int IMUSIC_VIEW_FEATURE_COUNT = ApplicationPackage.IVIEW_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMUSIC_VIEW___LINFERENCE_OBJECT = ApplicationPackage.IVIEW___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMUSIC_VIEW___CREATE_CONTAINMENT_ELIST__ECLASS = ApplicationPackage.IVIEW___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMUSIC_VIEW___LCONTENTS = ApplicationPackage.IVIEW___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMUSIC_VIEW___LPARENT = ApplicationPackage.IVIEW___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMUSIC_VIEW___LALL_CONTENTS = ApplicationPackage.IVIEW___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>IMusic View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMUSIC_VIEW_OPERATION_COUNT = ApplicationPackage.IVIEW_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.ISizedView <em>ISized View</em>}' class.
@@ -439,6 +709,60 @@ public interface PresentationPackage extends EPackage
 	int ISIZED_VIEW_FEATURE_COUNT = ISIZED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_VIEW___LINFERENCE_OBJECT = ISIZED_ELEMENT___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_VIEW___CREATE_CONTAINMENT_ELIST__ECLASS = ISIZED_ELEMENT___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_VIEW___LCONTENTS = ISIZED_ELEMENT___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_VIEW___LPARENT = ISIZED_ELEMENT___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_VIEW___LALL_CONTENTS = ISIZED_ELEMENT___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>ISized View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ISIZED_VIEW_OPERATION_COUNT = ISIZED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.IUIElement <em>IUI Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -465,6 +789,60 @@ public interface PresentationPackage extends EPackage
 	 * @ordered
 	 */
 	int IUI_ELEMENT_FEATURE_COUNT = RootPackage.LOBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IUI_ELEMENT___LINFERENCE_OBJECT = RootPackage.LOBJECT___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IUI_ELEMENT___CREATE_CONTAINMENT_ELIST__ECLASS = RootPackage.LOBJECT___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IUI_ELEMENT___LCONTENTS = RootPackage.LOBJECT___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IUI_ELEMENT___LPARENT = RootPackage.LOBJECT___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IUI_ELEMENT___LALL_CONTENTS = RootPackage.LOBJECT___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>IUI Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IUI_ELEMENT_OPERATION_COUNT = RootPackage.LOBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl <em>UI Page</em>}' class.
@@ -549,6 +927,60 @@ public interface PresentationPackage extends EPackage
 	int UI_PAGE_FEATURE_COUNT = ISIZED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_PAGE___LINFERENCE_OBJECT = ISIZED_ELEMENT___LINFERENCE_OBJECT;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_PAGE___CREATE_CONTAINMENT_ELIST__ECLASS = ISIZED_ELEMENT___CREATE_CONTAINMENT_ELIST__ECLASS;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_PAGE___LCONTENTS = ISIZED_ELEMENT___LCONTENTS;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_PAGE___LPARENT = ISIZED_ELEMENT___LPARENT;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_PAGE___LALL_CONTENTS = ISIZED_ELEMENT___LALL_CONTENTS;
+
+	/**
+	 * The number of operations of the '<em>UI Page</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_PAGE_OPERATION_COUNT = ISIZED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.IPanel <em>IPanel</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -611,6 +1043,60 @@ public interface PresentationPackage extends EPackage
 	 * @ordered
 	 */
 	int IPANEL_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPANEL___LINFERENCE_OBJECT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Create Containment EList</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPANEL___CREATE_CONTAINMENT_ELIST__ECLASS = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>LContents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPANEL___LCONTENTS = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>LParent</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPANEL___LPARENT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>LAll Contents</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPANEL___LALL_CONTENTS = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>IPanel</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPANEL_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 5;
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.IPositionElement <em>IPosition Element</em>}'.

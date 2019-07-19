@@ -244,6 +244,17 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * @generated
 	 */
 	@Override
+	public EOperation getIInferenceObject__LInferenceObject()
+	{
+		return iInferenceObjectEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getInferer()
 	{
 		return infererEClass;
@@ -258,6 +269,17 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	public EReference getInferer_Rules()
 	{
 		return (EReference)infererEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getInferer__LExecutor()
+	{
+		return infererEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -332,6 +354,17 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * @generated
 	 */
 	@Override
+	public EOperation getAbstractNotification__Match__AbstractNotification()
+	{
+		return abstractNotificationEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getLNotification()
 	{
 		return lNotificationEClass;
@@ -387,6 +420,28 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 * @generated
 	 */
 	@Override
+	public EOperation getCondition__GetType()
+	{
+		return conditionEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getCondition__Match__Parameter()
+	{
+		return conditionEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public InferenceFactory getInferenceFactory()
 	{
 		return (InferenceFactory)getEFactoryInstance();
@@ -413,9 +468,11 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 
 		// Create classes and their features
 		iInferenceObjectEClass = createEClass(IINFERENCE_OBJECT);
+		createEOperation(iInferenceObjectEClass, IINFERENCE_OBJECT___LINFERENCE_OBJECT);
 
 		infererEClass = createEClass(INFERER);
 		createEReference(infererEClass, INFERER__RULES);
+		createEOperation(infererEClass, INFERER___LEXECUTOR);
 
 		sensorEClass = createEClass(SENSOR);
 
@@ -425,6 +482,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 		createEReference(lRuleEClass, LRULE__CONDITIONS);
 
 		abstractNotificationEClass = createEClass(ABSTRACT_NOTIFICATION);
+		createEOperation(abstractNotificationEClass, ABSTRACT_NOTIFICATION___MATCH__ABSTRACTNOTIFICATION);
 
 		lNotificationEClass = createEClass(LNOTIFICATION);
 
@@ -433,6 +491,8 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 		conditionEClass = createEClass(CONDITION);
 		createEReference(conditionEClass, CONDITION__VALUE);
 		createEReference(conditionEClass, CONDITION__DEFINITION);
+		createEOperation(conditionEClass, CONDITION___GET_TYPE);
+		createEOperation(conditionEClass, CONDITION___MATCH__PARAMETER);
 	}
 
 	/**
@@ -480,15 +540,15 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 		lNotificationEClass.getESuperTypes().add(this.getAbstractNotification());
 		parameteredNotificationEClass.getESuperTypes().add(this.getAbstractNotification());
 
-		// Initialize classes and features; add operations and parameters
+		// Initialize classes, features, and operations; add parameters
 		initEClass(iInferenceObjectEClass, IInferenceObject.class, "IInferenceObject", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(iInferenceObjectEClass, this.getIInferenceObject(), "lInferenceObject", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getIInferenceObject__LInferenceObject(), this.getIInferenceObject(), "lInferenceObject", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(infererEClass, Inferer.class, "Inferer", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInferer_Rules(), this.getLRule(), null, "rules", null, 0, -1, Inferer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(infererEClass, this.getIInferenceObject(), "lExecutor", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getInferer__LExecutor(), this.getIInferenceObject(), "lExecutor", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(sensorEClass, Sensor.class, "Sensor", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -502,7 +562,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 
 		initEClass(abstractNotificationEClass, AbstractNotification.class, "AbstractNotification", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		EOperation op = addEOperation(abstractNotificationEClass, theEcorePackage.getEBoolean(), "match", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		EOperation op = initEOperation(getAbstractNotification__Match__AbstractNotification(), theEcorePackage.getEBoolean(), "match", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getAbstractNotification(), "compareTo", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(lNotificationEClass, LNotification.class, "LNotification", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -514,13 +574,13 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 		initEReference(getCondition_Value(), g1, null, "value", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCondition_Definition(), this.getLNotification(), null, "definition", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		op = addEOperation(conditionEClass, null, "getType", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getCondition__GetType(), null, "getType", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(theEcorePackage.getEJavaClass());
 		g2 = createEGenericType(conditionEClass_T);
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
-		op = addEOperation(conditionEClass, theEcorePackage.getEBoolean(), "match", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getCondition__Match__Parameter(), theEcorePackage.getEBoolean(), "match", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(conditionEClass_T);
 		addEParameter(op, g1, "compareTo", 0, 1, !IS_UNIQUE, IS_ORDERED);
 

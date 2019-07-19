@@ -2,6 +2,7 @@
  */
 package org.sheepy.lily.core.model.ui.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -705,6 +706,30 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
+	{
+		switch (operationID)
+		{
+			case UiPackage.TEXT_FIELD___CREATE_CONTAINMENT_ELIST__ECLASS:
+				return createContainmentEList((EClass)arguments.get(0));
+			case UiPackage.TEXT_FIELD___LCONTENTS:
+				return lContents();
+			case UiPackage.TEXT_FIELD___LPARENT:
+				return lParent();
+			case UiPackage.TEXT_FIELD___LALL_CONTENTS:
+				return lAllContents();
+			case UiPackage.TEXT_FIELD___LINFERENCE_OBJECT:
+				return lInferenceObject();
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

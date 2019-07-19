@@ -4,6 +4,7 @@ package org.sheepy.lily.core.model.ui.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -609,6 +610,28 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * @generated
 	 */
 	@Override
+	public EOperation getButton__LActions()
+	{
+		return buttonEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getButton__GetExecutor()
+	{
+		return buttonEClass.getEOperations().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getAbstractBooleanButton()
 	{
 		return abstractBooleanButtonEClass;
@@ -762,6 +785,8 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		createEAttribute(buttonEClass, BUTTON__SHORTCUT);
 		createEAttribute(buttonEClass, BUTTON__STATE);
 		createEReference(buttonEClass, BUTTON__ACTIONS);
+		createEOperation(buttonEClass, BUTTON___LACTIONS);
+		createEOperation(buttonEClass, BUTTON___GET_EXECUTOR);
 
 		abstractBooleanButtonEClass = createEClass(ABSTRACT_BOOLEAN_BUTTON);
 		createEAttribute(abstractBooleanButtonEClass, ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE);
@@ -830,7 +855,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		booleanButtonEClass.getESuperTypes().add(this.getAbstractBooleanButton());
 		booleanActionButtonEClass.getESuperTypes().add(this.getAbstractBooleanButton());
 
-		// Initialize classes and features; add operations and parameters
+		// Initialize classes, features, and operations; add parameters
 		initEClass(panelEClass, Panel.class, "Panel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPanel_Controls(), this.getIControl(), null, "controls", null, 0, -1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPanel_ShowTitle(), theEcorePackage.getEBoolean(), "showTitle", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -872,9 +897,9 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		initEAttribute(getButton_State(), theTypesPackage.getEKeyState(), "state", null, 0, 1, Button.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getButton_Actions(), theActionPackage.getAction(), null, "actions", null, 0, -1, Button.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(buttonEClass, theActionPackage.getActionList(), "lActions", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getButton__LActions(), theActionPackage.getActionList(), "lActions", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(buttonEClass, theRootPackage.getLObject(), "getExecutor", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		initEOperation(getButton__GetExecutor(), theRootPackage.getLObject(), "getExecutor", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(abstractBooleanButtonEClass, AbstractBooleanButton.class, "AbstractBooleanButton", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAbstractBooleanButton_TextWhenTrue(), theEcorePackage.getEString(), "textWhenTrue", null, 0, 1, AbstractBooleanButton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
