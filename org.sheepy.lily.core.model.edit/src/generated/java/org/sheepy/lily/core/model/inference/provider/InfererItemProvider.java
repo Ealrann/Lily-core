@@ -31,9 +31,8 @@ import org.sheepy.lily.core.model.inference.Inferer;
  * <!-- end-user-doc -->
  * @generated
  */
-public class InfererItemProvider extends ItemProviderAdapter
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
+public class InfererItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -122,10 +121,9 @@ public class InfererItemProvider extends ItemProviderAdapter
 
 		switch (notification.getFeatureID(Inferer.class))
 		{
-		case InferencePackage.INFERER__RULES:
-			fireNotifyChanged(
-					new ViewerNotification(notification, notification.getNotifier(), true, false));
-			return;
+			case InferencePackage.INFERER__RULES:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -152,7 +150,7 @@ public class InfererItemProvider extends ItemProviderAdapter
 	@Override
 	public ResourceLocator getResourceLocator()
 	{
-		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
 	}
 
 }

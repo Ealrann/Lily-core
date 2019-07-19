@@ -20,8 +20,7 @@ public interface MaintainerFactory extends EFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	MaintainerFactory eINSTANCE = org.sheepy.lily.core.model.maintainer.impl.MaintainerFactoryImpl
-			.init();
+	MaintainerFactory eINSTANCE = org.sheepy.lily.core.model.maintainer.impl.MaintainerFactoryImpl.init();
 
 	/**
 	 * Returns the package supported by this factory.

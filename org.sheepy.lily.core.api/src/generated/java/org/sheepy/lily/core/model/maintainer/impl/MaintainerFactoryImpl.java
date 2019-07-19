@@ -30,13 +30,13 @@ public class MaintainerFactoryImpl extends EFactoryImpl implements MaintainerFac
 	{
 		try
 		{
-			MaintainerFactory theMaintainerFactory = (MaintainerFactory) EPackage.Registry.INSTANCE
-					.getEFactory(MaintainerPackage.eNS_URI);
+			MaintainerFactory theMaintainerFactory = (MaintainerFactory)EPackage.Registry.INSTANCE.getEFactory(MaintainerPackage.eNS_URI);
 			if (theMaintainerFactory != null)
 			{
 				return theMaintainerFactory;
 			}
-		} catch (Exception exception)
+		}
+		catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -64,9 +64,8 @@ public class MaintainerFactoryImpl extends EFactoryImpl implements MaintainerFac
 	{
 		switch (eClass.getClassifierID())
 		{
-		default:
-			throw new IllegalArgumentException(
-					"The class '" + eClass.getName() + "' is not a valid classifier");
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -78,7 +77,7 @@ public class MaintainerFactoryImpl extends EFactoryImpl implements MaintainerFac
 	@Override
 	public MaintainerPackage getMaintainerPackage()
 	{
-		return (MaintainerPackage) getEPackage();
+		return (MaintainerPackage)getEPackage();
 	}
 
 	/**

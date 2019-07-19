@@ -30,9 +30,8 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class FloatParameterItemProvider extends ItemProviderAdapter
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
+public class FloatParameterItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -71,13 +70,19 @@ public class FloatParameterItemProvider extends ItemProviderAdapter
 	 */
 	protected void addValuePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_FloatParameter_value_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_FloatParameter_value_feature",
-						"_UI_FloatParameter_type"),
-				TypesPackage.Literals.FLOAT_PARAMETER__VALUE, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_FloatParameter_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_FloatParameter_value_feature", "_UI_FloatParameter_type"),
+				 TypesPackage.Literals.FLOAT_PARAMETER__VALUE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -101,11 +106,11 @@ public class FloatParameterItemProvider extends ItemProviderAdapter
 	@Override
 	public String getText(Object object)
 	{
-		Float labelValue = ((FloatParameter) object).getValue();
+		Float labelValue = ((FloatParameter)object).getValue();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0
-				? getString("_UI_FloatParameter_type")
-				: getString("_UI_FloatParameter_type") + " " + label;
+		return label == null || label.length() == 0 ?
+			getString("_UI_FloatParameter_type") :
+			getString("_UI_FloatParameter_type") + " " + label;
 	}
 
 	/**
@@ -122,10 +127,9 @@ public class FloatParameterItemProvider extends ItemProviderAdapter
 
 		switch (notification.getFeatureID(FloatParameter.class))
 		{
-		case TypesPackage.FLOAT_PARAMETER__VALUE:
-			fireNotifyChanged(
-					new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
+			case TypesPackage.FLOAT_PARAMETER__VALUE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}

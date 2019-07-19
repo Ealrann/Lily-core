@@ -144,14 +144,11 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	 */
 	public static RootPackage init()
 	{
-		if (isInited)
-			return (RootPackage) EPackage.Registry.INSTANCE.getEPackage(RootPackage.eNS_URI);
+		if (isInited) return (RootPackage)EPackage.Registry.INSTANCE.getEPackage(RootPackage.eNS_URI);
 
 		// Obtain or create and register package
 		Object registeredRootPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-		RootPackageImpl theRootPackage = registeredRootPackage instanceof RootPackageImpl
-				? (RootPackageImpl) registeredRootPackage
-				: new RootPackageImpl();
+		RootPackageImpl theRootPackage = registeredRootPackage instanceof RootPackageImpl ? (RootPackageImpl)registeredRootPackage : new RootPackageImpl();
 
 		isInited = true;
 
@@ -160,41 +157,23 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 
 		// Obtain or create and register interdependencies
 		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
-		TypesPackageImpl theTypesPackage = (TypesPackageImpl) (registeredPackage instanceof TypesPackageImpl
-				? registeredPackage
-				: TypesPackage.eINSTANCE);
+		TypesPackageImpl theTypesPackage = (TypesPackageImpl)(registeredPackage instanceof TypesPackageImpl ? registeredPackage : TypesPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
-		ActionPackageImpl theActionPackage = (ActionPackageImpl) (registeredPackage instanceof ActionPackageImpl
-				? registeredPackage
-				: ActionPackage.eINSTANCE);
+		ActionPackageImpl theActionPackage = (ActionPackageImpl)(registeredPackage instanceof ActionPackageImpl ? registeredPackage : ActionPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
-		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl) (registeredPackage instanceof ApplicationPackageImpl
-				? registeredPackage
-				: ApplicationPackage.eINSTANCE);
+		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl)(registeredPackage instanceof ApplicationPackageImpl ? registeredPackage : ApplicationPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
-		InferencePackageImpl theInferencePackage = (InferencePackageImpl) (registeredPackage instanceof InferencePackageImpl
-				? registeredPackage
-				: InferencePackage.eINSTANCE);
+		InferencePackageImpl theInferencePackage = (InferencePackageImpl)(registeredPackage instanceof InferencePackageImpl ? registeredPackage : InferencePackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(MaintainerPackage.eNS_URI);
-		MaintainerPackageImpl theMaintainerPackage = (MaintainerPackageImpl) (registeredPackage instanceof MaintainerPackageImpl
-				? registeredPackage
-				: MaintainerPackage.eINSTANCE);
+		MaintainerPackageImpl theMaintainerPackage = (MaintainerPackageImpl)(registeredPackage instanceof MaintainerPackageImpl ? registeredPackage : MaintainerPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(PresentationPackage.eNS_URI);
-		PresentationPackageImpl thePresentationPackage = (PresentationPackageImpl) (registeredPackage instanceof PresentationPackageImpl
-				? registeredPackage
-				: PresentationPackage.eINSTANCE);
+		PresentationPackageImpl thePresentationPackage = (PresentationPackageImpl)(registeredPackage instanceof PresentationPackageImpl ? registeredPackage : PresentationPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ResolverPackage.eNS_URI);
-		ResolverPackageImpl theResolverPackage = (ResolverPackageImpl) (registeredPackage instanceof ResolverPackageImpl
-				? registeredPackage
-				: ResolverPackage.eINSTANCE);
+		ResolverPackageImpl theResolverPackage = (ResolverPackageImpl)(registeredPackage instanceof ResolverPackageImpl ? registeredPackage : ResolverPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(UiPackage.eNS_URI);
-		UiPackageImpl theUiPackage = (UiPackageImpl) (registeredPackage instanceof UiPackageImpl
-				? registeredPackage
-				: UiPackage.eINSTANCE);
+		UiPackageImpl theUiPackage = (UiPackageImpl)(registeredPackage instanceof UiPackageImpl ? registeredPackage : UiPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(VariablePackage.eNS_URI);
-		VariablePackageImpl theVariablePackage = (VariablePackageImpl) (registeredPackage instanceof VariablePackageImpl
-				? registeredPackage
-				: VariablePackage.eINSTANCE);
+		VariablePackageImpl theVariablePackage = (VariablePackageImpl)(registeredPackage instanceof VariablePackageImpl ? registeredPackage : VariablePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theRootPackage.createPackageContents();
@@ -247,7 +226,7 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	@Override
 	public EAttribute getLObject_ContentObjects()
 	{
-		return (EAttribute) lObjectEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)lObjectEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -302,7 +281,7 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 	@Override
 	public RootFactory getRootFactory()
 	{
-		return (RootFactory) getEFactoryInstance();
+		return (RootFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -361,12 +340,9 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		InferencePackage theInferencePackage = (InferencePackage) EPackage.Registry.INSTANCE
-				.getEPackage(InferencePackage.eNS_URI);
-		EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE
-				.getEPackage(EcorePackage.eNS_URI);
-		ActionPackage theActionPackage = (ActionPackage) EPackage.Registry.INSTANCE
-				.getEPackage(ActionPackage.eNS_URI);
+		InferencePackage theInferencePackage = (InferencePackage)EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
+		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+		ActionPackage theActionPackage = (ActionPackage)EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -377,19 +353,14 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 		xActionEClass.getESuperTypes().add(theActionPackage.getAction());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(lObjectEClass, LObject.class, "LObject", IS_ABSTRACT, IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLObject_ContentObjects(), this.getLContentList(), "contentObjects", null,
-				0, 1, LObject.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-				!IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(lObjectEClass, LObject.class, "LObject", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLObject_ContentObjects(), this.getLContentList(), "contentObjects", null, 0, 1, LObject.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		EOperation op = addEOperation(lObjectEClass, null, "createContainmentEList", 0, -1,
-				!IS_UNIQUE, IS_ORDERED);
+		EOperation op = addEOperation(lObjectEClass, null, "createContainmentEList", 0, -1, !IS_UNIQUE, IS_ORDERED);
 		ETypeParameter t1 = addETypeParameter(op, "T");
 		EGenericType g1 = createEGenericType(this.getLObject());
 		t1.getEBounds().add(g1);
-		addEParameter(op, theEcorePackage.getEClass(), "targetEClass", 0, 1, !IS_UNIQUE,
-				IS_ORDERED);
+		addEParameter(op, theEcorePackage.getEClass(), "targetEClass", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(t1);
 		initEOperation(op, g1);
 
@@ -397,24 +368,17 @@ public class RootPackageImpl extends EPackageImpl implements RootPackage
 
 		addEOperation(lObjectEClass, this.getLObject(), "lParent", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(lObjectEClass, this.getLTreeIterator(), "lAllContents", 0, 1, !IS_UNIQUE,
-				IS_ORDERED);
+		addEOperation(lObjectEClass, this.getLTreeIterator(), "lAllContents", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(xActionEClass, XAction.class, "XAction", IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEClass(xActionEClass, XAction.class, "XAction", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		op = addEOperation(xActionEClass, null, "execute", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getLObject(), "object", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		// Initialize data types
-		initEDataType(lContentListEDataType, EList.class, "LContentList", IS_SERIALIZABLE,
-				!IS_GENERATED_INSTANCE_CLASS,
-				"org.eclipse.emf.common.util.EList<org.sheepy.lily.core.model.root.LObject>");
-		initEDataType(lTreeIteratorEDataType, LTreeIterator.class, "LTreeIterator", IS_SERIALIZABLE,
-				!IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(lCollectionEDataType, Collection.class, "LCollection", IS_SERIALIZABLE,
-				!IS_GENERATED_INSTANCE_CLASS,
-				"java.util.Collection<org.sheepy.lily.core.model.root.LObject>");
+		initEDataType(lContentListEDataType, EList.class, "LContentList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "org.eclipse.emf.common.util.EList<org.sheepy.lily.core.model.root.LObject>");
+		initEDataType(lTreeIteratorEDataType, LTreeIterator.class, "LTreeIterator", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(lCollectionEDataType, Collection.class, "LCollection", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.Collection<org.sheepy.lily.core.model.root.LObject>");
 
 		// Create resource
 		createResource(eNS_URI);

@@ -20,8 +20,7 @@ public interface InferenceFactory extends EFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	InferenceFactory eINSTANCE = org.sheepy.lily.core.model.inference.impl.InferenceFactoryImpl
-			.init();
+	InferenceFactory eINSTANCE = org.sheepy.lily.core.model.inference.impl.InferenceFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>LRule</em>'.

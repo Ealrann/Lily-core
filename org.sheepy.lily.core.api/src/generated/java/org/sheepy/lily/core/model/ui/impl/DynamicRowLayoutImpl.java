@@ -141,8 +141,8 @@ public class DynamicRowLayoutImpl extends MinimalEObjectImpl.Container implement
 	{
 		EList<LObject> oldContentObjects = contentObjects;
 		contentObjects = newContentObjects;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.DYNAMIC_ROW_LAYOUT__CONTENT_OBJECTS, oldContentObjects, contentObjects));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.DYNAMIC_ROW_LAYOUT__CONTENT_OBJECTS, oldContentObjects, contentObjects));
 	}
 
 	/**
@@ -166,8 +166,8 @@ public class DynamicRowLayoutImpl extends MinimalEObjectImpl.Container implement
 	{
 		int oldHeight = height;
 		height = newHeight;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.DYNAMIC_ROW_LAYOUT__HEIGHT, oldHeight, height));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.DYNAMIC_ROW_LAYOUT__HEIGHT, oldHeight, height));
 	}
 
 	/**
@@ -191,8 +191,8 @@ public class DynamicRowLayoutImpl extends MinimalEObjectImpl.Container implement
 	{
 		int oldColumnCount = columnCount;
 		columnCount = newColumnCount;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.DYNAMIC_ROW_LAYOUT__COLUMN_COUNT, oldColumnCount, columnCount));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.DYNAMIC_ROW_LAYOUT__COLUMN_COUNT, oldColumnCount, columnCount));
 	}
 
 	/**
@@ -218,7 +218,7 @@ public class DynamicRowLayoutImpl extends MinimalEObjectImpl.Container implement
 		boolean _isEmpty = unitRefs.isEmpty();
 		if (_isEmpty)
 		{
-			res = ECollections.<T> emptyEList();
+			res = ECollections.<T>emptyEList();
 		}
 		else
 		{
@@ -242,7 +242,7 @@ public class DynamicRowLayoutImpl extends MinimalEObjectImpl.Container implement
 			boolean _tripleEquals = (_contentObjects == null);
 			if (_tripleEquals)
 			{
-				this.setContentObjects(this.<LObject> createContainmentEList(Literals.LOBJECT));
+				this.setContentObjects(this.<LObject>createContainmentEList(Literals.LOBJECT));
 			}
 			_xblockexpression = this.getContentObjects();
 		}
@@ -299,12 +299,12 @@ public class DynamicRowLayoutImpl extends MinimalEObjectImpl.Container implement
 	{
 		switch (featureID)
 		{
-		case UiPackage.DYNAMIC_ROW_LAYOUT__CONTENT_OBJECTS:
-			return getContentObjects();
-		case UiPackage.DYNAMIC_ROW_LAYOUT__HEIGHT:
-			return getHeight();
-		case UiPackage.DYNAMIC_ROW_LAYOUT__COLUMN_COUNT:
-			return getColumnCount();
+			case UiPackage.DYNAMIC_ROW_LAYOUT__CONTENT_OBJECTS:
+				return getContentObjects();
+			case UiPackage.DYNAMIC_ROW_LAYOUT__HEIGHT:
+				return getHeight();
+			case UiPackage.DYNAMIC_ROW_LAYOUT__COLUMN_COUNT:
+				return getColumnCount();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -320,15 +320,15 @@ public class DynamicRowLayoutImpl extends MinimalEObjectImpl.Container implement
 	{
 		switch (featureID)
 		{
-		case UiPackage.DYNAMIC_ROW_LAYOUT__CONTENT_OBJECTS:
-			setContentObjects((EList<LObject>) newValue);
-			return;
-		case UiPackage.DYNAMIC_ROW_LAYOUT__HEIGHT:
-			setHeight((Integer) newValue);
-			return;
-		case UiPackage.DYNAMIC_ROW_LAYOUT__COLUMN_COUNT:
-			setColumnCount((Integer) newValue);
-			return;
+			case UiPackage.DYNAMIC_ROW_LAYOUT__CONTENT_OBJECTS:
+				setContentObjects((EList<LObject>)newValue);
+				return;
+			case UiPackage.DYNAMIC_ROW_LAYOUT__HEIGHT:
+				setHeight((Integer)newValue);
+				return;
+			case UiPackage.DYNAMIC_ROW_LAYOUT__COLUMN_COUNT:
+				setColumnCount((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -343,15 +343,15 @@ public class DynamicRowLayoutImpl extends MinimalEObjectImpl.Container implement
 	{
 		switch (featureID)
 		{
-		case UiPackage.DYNAMIC_ROW_LAYOUT__CONTENT_OBJECTS:
-			setContentObjects((EList<LObject>) null);
-			return;
-		case UiPackage.DYNAMIC_ROW_LAYOUT__HEIGHT:
-			setHeight(HEIGHT_EDEFAULT);
-			return;
-		case UiPackage.DYNAMIC_ROW_LAYOUT__COLUMN_COUNT:
-			setColumnCount(COLUMN_COUNT_EDEFAULT);
-			return;
+			case UiPackage.DYNAMIC_ROW_LAYOUT__CONTENT_OBJECTS:
+				setContentObjects((EList<LObject>)null);
+				return;
+			case UiPackage.DYNAMIC_ROW_LAYOUT__HEIGHT:
+				setHeight(HEIGHT_EDEFAULT);
+				return;
+			case UiPackage.DYNAMIC_ROW_LAYOUT__COLUMN_COUNT:
+				setColumnCount(COLUMN_COUNT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -366,12 +366,12 @@ public class DynamicRowLayoutImpl extends MinimalEObjectImpl.Container implement
 	{
 		switch (featureID)
 		{
-		case UiPackage.DYNAMIC_ROW_LAYOUT__CONTENT_OBJECTS:
-			return contentObjects != null;
-		case UiPackage.DYNAMIC_ROW_LAYOUT__HEIGHT:
-			return height != HEIGHT_EDEFAULT;
-		case UiPackage.DYNAMIC_ROW_LAYOUT__COLUMN_COUNT:
-			return columnCount != COLUMN_COUNT_EDEFAULT;
+			case UiPackage.DYNAMIC_ROW_LAYOUT__CONTENT_OBJECTS:
+				return contentObjects != null;
+			case UiPackage.DYNAMIC_ROW_LAYOUT__HEIGHT:
+				return height != HEIGHT_EDEFAULT;
+			case UiPackage.DYNAMIC_ROW_LAYOUT__COLUMN_COUNT:
+				return columnCount != COLUMN_COUNT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

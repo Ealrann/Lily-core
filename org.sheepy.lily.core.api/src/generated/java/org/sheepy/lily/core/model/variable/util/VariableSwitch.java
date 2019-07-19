@@ -76,83 +76,82 @@ public class VariableSwitch<T> extends Switch<T>
 	{
 		switch (classifierID)
 		{
-		case VariablePackage.IVARIABLE_RESOLVER:
-		{
-			IVariableResolver iVariableResolver = (IVariableResolver) theEObject;
-			T result = caseIVariableResolver(iVariableResolver);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case VariablePackage.IDEFINITION_CONTAINER:
-		{
-			IDefinitionContainer iDefinitionContainer = (IDefinitionContainer) theEObject;
-			T result = caseIDefinitionContainer(iDefinitionContainer);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case VariablePackage.CHAIN_VARIABLE_RESOLVER:
-		{
-			ChainVariableResolver chainVariableResolver = (ChainVariableResolver) theEObject;
-			T result = caseChainVariableResolver(chainVariableResolver);
-			if (result == null) result = caseIVariableResolver(chainVariableResolver);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case VariablePackage.CHAIN_RESOLVER:
-		{
-			ChainResolver chainResolver = (ChainResolver) theEObject;
-			T result = caseChainResolver(chainResolver);
-			if (result == null) result = caseIDefinitionContainer(chainResolver);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case VariablePackage.ABSTRACT_VARIABLE_RESOLVER:
-		{
-			AbstractVariableResolver abstractVariableResolver = (AbstractVariableResolver) theEObject;
-			T result = caseAbstractVariableResolver(abstractVariableResolver);
-			if (result == null) result = caseIVariableResolver(abstractVariableResolver);
-			if (result == null) result = caseIDefinitionContainer(abstractVariableResolver);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case VariablePackage.DIRECT_VARIABLE_RESOLVER:
-		{
-			DirectVariableResolver directVariableResolver = (DirectVariableResolver) theEObject;
-			T result = caseDirectVariableResolver(directVariableResolver);
-			if (result == null) result = caseAbstractVariableResolver(directVariableResolver);
-			if (result == null) result = caseIVariableResolver(directVariableResolver);
-			if (result == null) result = caseIDefinitionContainer(directVariableResolver);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case VariablePackage.VAR_CHANGE_ACTION:
-		{
-			VarChangeAction varChangeAction = (VarChangeAction) theEObject;
-			T result = caseVarChangeAction(varChangeAction);
-			if (result == null) result = caseAction(varChangeAction);
-			if (result == null) result = caseLNamedElement(varChangeAction);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case VariablePackage.BOOLEAN_CHANGE_ACTION:
-		{
-			BooleanChangeAction booleanChangeAction = (BooleanChangeAction) theEObject;
-			T result = caseBooleanChangeAction(booleanChangeAction);
-			if (result == null) result = caseVarChangeAction(booleanChangeAction);
-			if (result == null) result = caseAction(booleanChangeAction);
-			if (result == null) result = caseLNamedElement(booleanChangeAction);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case VariablePackage.VAR_CHANGE_ACTION_PKG:
-		{
-			VarChangeActionPkg varChangeActionPkg = (VarChangeActionPkg) theEObject;
-			T result = caseVarChangeActionPkg(varChangeActionPkg);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		default:
-			return defaultCase(theEObject);
+			case VariablePackage.IVARIABLE_RESOLVER:
+			{
+				IVariableResolver iVariableResolver = (IVariableResolver)theEObject;
+				T result = caseIVariableResolver(iVariableResolver);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case VariablePackage.IDEFINITION_CONTAINER:
+			{
+				IDefinitionContainer iDefinitionContainer = (IDefinitionContainer)theEObject;
+				T result = caseIDefinitionContainer(iDefinitionContainer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case VariablePackage.CHAIN_VARIABLE_RESOLVER:
+			{
+				ChainVariableResolver chainVariableResolver = (ChainVariableResolver)theEObject;
+				T result = caseChainVariableResolver(chainVariableResolver);
+				if (result == null) result = caseIVariableResolver(chainVariableResolver);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case VariablePackage.CHAIN_RESOLVER:
+			{
+				ChainResolver chainResolver = (ChainResolver)theEObject;
+				T result = caseChainResolver(chainResolver);
+				if (result == null) result = caseIDefinitionContainer(chainResolver);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER:
+			{
+				AbstractVariableResolver abstractVariableResolver = (AbstractVariableResolver)theEObject;
+				T result = caseAbstractVariableResolver(abstractVariableResolver);
+				if (result == null) result = caseIVariableResolver(abstractVariableResolver);
+				if (result == null) result = caseIDefinitionContainer(abstractVariableResolver);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case VariablePackage.DIRECT_VARIABLE_RESOLVER:
+			{
+				DirectVariableResolver directVariableResolver = (DirectVariableResolver)theEObject;
+				T result = caseDirectVariableResolver(directVariableResolver);
+				if (result == null) result = caseAbstractVariableResolver(directVariableResolver);
+				if (result == null) result = caseIVariableResolver(directVariableResolver);
+				if (result == null) result = caseIDefinitionContainer(directVariableResolver);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case VariablePackage.VAR_CHANGE_ACTION:
+			{
+				VarChangeAction varChangeAction = (VarChangeAction)theEObject;
+				T result = caseVarChangeAction(varChangeAction);
+				if (result == null) result = caseAction(varChangeAction);
+				if (result == null) result = caseLNamedElement(varChangeAction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case VariablePackage.BOOLEAN_CHANGE_ACTION:
+			{
+				BooleanChangeAction booleanChangeAction = (BooleanChangeAction)theEObject;
+				T result = caseBooleanChangeAction(booleanChangeAction);
+				if (result == null) result = caseVarChangeAction(booleanChangeAction);
+				if (result == null) result = caseAction(booleanChangeAction);
+				if (result == null) result = caseLNamedElement(booleanChangeAction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case VariablePackage.VAR_CHANGE_ACTION_PKG:
+			{
+				VarChangeActionPkg varChangeActionPkg = (VarChangeActionPkg)theEObject;
+				T result = caseVarChangeActionPkg(varChangeActionPkg);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			default: return defaultCase(theEObject);
 		}
 	}
 

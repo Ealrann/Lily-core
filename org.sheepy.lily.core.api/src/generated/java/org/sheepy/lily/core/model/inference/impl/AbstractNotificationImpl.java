@@ -16,8 +16,7 @@ import org.sheepy.lily.core.model.inference.InferencePackage;
  *
  * @generated
  */
-public abstract class AbstractNotificationImpl extends MinimalEObjectImpl.Container
-		implements AbstractNotification
+public abstract class AbstractNotificationImpl extends MinimalEObjectImpl.Container implements AbstractNotification
 {
 	/**
 	 * <!-- begin-user-doc -->

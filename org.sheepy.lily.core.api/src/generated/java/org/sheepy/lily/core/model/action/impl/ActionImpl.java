@@ -89,8 +89,8 @@ public abstract class ActionImpl extends MinimalEObjectImpl.Container implements
 	{
 		String oldName = name;
 		name = newName;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				ActionPackage.ACTION__NAME, oldName, name));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ActionPackage.ACTION__NAME, oldName, name));
 	}
 
 	/**
@@ -103,8 +103,8 @@ public abstract class ActionImpl extends MinimalEObjectImpl.Container implements
 	{
 		switch (featureID)
 		{
-		case ActionPackage.ACTION__NAME:
-			return getName();
+			case ActionPackage.ACTION__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -119,9 +119,9 @@ public abstract class ActionImpl extends MinimalEObjectImpl.Container implements
 	{
 		switch (featureID)
 		{
-		case ActionPackage.ACTION__NAME:
-			setName((String) newValue);
-			return;
+			case ActionPackage.ACTION__NAME:
+				setName((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -136,9 +136,9 @@ public abstract class ActionImpl extends MinimalEObjectImpl.Container implements
 	{
 		switch (featureID)
 		{
-		case ActionPackage.ACTION__NAME:
-			setName(NAME_EDEFAULT);
-			return;
+			case ActionPackage.ACTION__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -153,8 +153,8 @@ public abstract class ActionImpl extends MinimalEObjectImpl.Container implements
 	{
 		switch (featureID)
 		{
-		case ActionPackage.ACTION__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case ActionPackage.ACTION__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}

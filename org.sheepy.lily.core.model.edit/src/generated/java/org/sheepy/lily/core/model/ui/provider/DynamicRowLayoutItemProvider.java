@@ -34,9 +34,8 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DynamicRowLayoutItemProvider extends ItemProviderAdapter
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
+public class DynamicRowLayoutItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -76,13 +75,19 @@ public class DynamicRowLayoutItemProvider extends ItemProviderAdapter
 	 */
 	protected void addHeightPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_DynamicRowLayout_height_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_DynamicRowLayout_height_feature", "_UI_DynamicRowLayout_type"),
-				UiPackage.Literals.DYNAMIC_ROW_LAYOUT__HEIGHT, true, false, false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DynamicRowLayout_height_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DynamicRowLayout_height_feature", "_UI_DynamicRowLayout_type"),
+				 UiPackage.Literals.DYNAMIC_ROW_LAYOUT__HEIGHT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -93,13 +98,19 @@ public class DynamicRowLayoutItemProvider extends ItemProviderAdapter
 	 */
 	protected void addColumnCountPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_DynamicRowLayout_columnCount_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_DynamicRowLayout_columnCount_feature", "_UI_DynamicRowLayout_type"),
-				UiPackage.Literals.DYNAMIC_ROW_LAYOUT__COLUMN_COUNT, true, false, false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DynamicRowLayout_columnCount_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DynamicRowLayout_columnCount_feature", "_UI_DynamicRowLayout_type"),
+				 UiPackage.Literals.DYNAMIC_ROW_LAYOUT__COLUMN_COUNT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -123,11 +134,11 @@ public class DynamicRowLayoutItemProvider extends ItemProviderAdapter
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((DynamicRowLayout) object).getContentObjects();
+		EList<LObject> labelValue = ((DynamicRowLayout)object).getContentObjects();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0
-				? getString("_UI_DynamicRowLayout_type")
-				: getString("_UI_DynamicRowLayout_type") + " " + label;
+		return label == null || label.length() == 0 ?
+			getString("_UI_DynamicRowLayout_type") :
+			getString("_UI_DynamicRowLayout_type") + " " + label;
 	}
 
 	/**
@@ -144,12 +155,11 @@ public class DynamicRowLayoutItemProvider extends ItemProviderAdapter
 
 		switch (notification.getFeatureID(DynamicRowLayout.class))
 		{
-		case UiPackage.DYNAMIC_ROW_LAYOUT__CONTENT_OBJECTS:
-		case UiPackage.DYNAMIC_ROW_LAYOUT__HEIGHT:
-		case UiPackage.DYNAMIC_ROW_LAYOUT__COLUMN_COUNT:
-			fireNotifyChanged(
-					new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
+			case UiPackage.DYNAMIC_ROW_LAYOUT__CONTENT_OBJECTS:
+			case UiPackage.DYNAMIC_ROW_LAYOUT__HEIGHT:
+			case UiPackage.DYNAMIC_ROW_LAYOUT__COLUMN_COUNT:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -176,7 +186,7 @@ public class DynamicRowLayoutItemProvider extends ItemProviderAdapter
 	@Override
 	public ResourceLocator getResourceLocator()
 	{
-		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
 	}
 
 }

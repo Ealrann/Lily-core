@@ -60,7 +60,7 @@ public class MaintainerAdapterFactory extends AdapterFactoryImpl
 		}
 		if (object instanceof EObject)
 		{
-			return ((EObject) object).eClass().getEPackage() == modelPackage;
+			return ((EObject)object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -72,23 +72,23 @@ public class MaintainerAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	protected MaintainerSwitch<Adapter> modelSwitch = new MaintainerSwitch<Adapter>()
-	{
-		@Override
-		public <T extends Maintainable<T>> Adapter caseMaintainable(Maintainable<T> object)
 		{
-			return createMaintainableAdapter();
-		}
-		@Override
-		public <T extends Maintainable<T>> Adapter caseMaintainer(Maintainer<T> object)
-		{
-			return createMaintainerAdapter();
-		}
-		@Override
-		public Adapter defaultCase(EObject object)
-		{
-			return createEObjectAdapter();
-		}
-	};
+			@Override
+			public <T extends Maintainable<T>> Adapter caseMaintainable(Maintainable<T> object)
+			{
+				return createMaintainableAdapter();
+			}
+			@Override
+			public <T extends Maintainable<T>> Adapter caseMaintainer(Maintainer<T> object)
+			{
+				return createMaintainerAdapter();
+			}
+			@Override
+			public Adapter defaultCase(EObject object)
+			{
+				return createEObjectAdapter();
+			}
+		};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -101,7 +101,7 @@ public class MaintainerAdapterFactory extends AdapterFactoryImpl
 	@Override
 	public Adapter createAdapter(Notifier target)
 	{
-		return modelSwitch.doSwitch((EObject) target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 	/**

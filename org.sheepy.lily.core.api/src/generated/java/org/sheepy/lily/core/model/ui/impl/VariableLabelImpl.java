@@ -77,18 +77,14 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetVariableResolver(	IVariableResolver newVariableResolver,
-														NotificationChain msgs)
+	public NotificationChain basicSetVariableResolver(IVariableResolver newVariableResolver, NotificationChain msgs)
 	{
 		IVariableResolver oldVariableResolver = variableResolver;
 		variableResolver = newVariableResolver;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER, oldVariableResolver,
-					newVariableResolver);
-			if (msgs == null) msgs = notification;
-			else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER, oldVariableResolver, newVariableResolver);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -105,19 +101,14 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 		{
 			NotificationChain msgs = null;
 			if (variableResolver != null)
-				msgs = ((InternalEObject) variableResolver).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER, null,
-						msgs);
+				msgs = ((InternalEObject)variableResolver).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER, null, msgs);
 			if (newVariableResolver != null)
-				msgs = ((InternalEObject) newVariableResolver).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER, null,
-						msgs);
+				msgs = ((InternalEObject)newVariableResolver).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER, null, msgs);
 			msgs = basicSetVariableResolver(newVariableResolver, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
-		else if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER, newVariableResolver,
-				newVariableResolver));
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER, newVariableResolver, newVariableResolver));
 	}
 
 	/**
@@ -126,14 +117,12 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-											int featureID,
-											NotificationChain msgs)
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
 		switch (featureID)
 		{
-		case UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER:
-			return basicSetVariableResolver(null, msgs);
+			case UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER:
+				return basicSetVariableResolver(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -148,8 +137,8 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 	{
 		switch (featureID)
 		{
-		case UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER:
-			return getVariableResolver();
+			case UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER:
+				return getVariableResolver();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -164,9 +153,9 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 	{
 		switch (featureID)
 		{
-		case UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER:
-			setVariableResolver((IVariableResolver) newValue);
-			return;
+			case UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER:
+				setVariableResolver((IVariableResolver)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -181,9 +170,9 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 	{
 		switch (featureID)
 		{
-		case UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER:
-			setVariableResolver((IVariableResolver) null);
-			return;
+			case UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER:
+				setVariableResolver((IVariableResolver)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -198,8 +187,8 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 	{
 		switch (featureID)
 		{
-		case UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER:
-			return variableResolver != null;
+			case UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER:
+				return variableResolver != null;
 		}
 		return super.eIsSet(featureID);
 	}

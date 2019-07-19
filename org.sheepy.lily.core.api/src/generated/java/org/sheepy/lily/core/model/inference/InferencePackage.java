@@ -54,8 +54,7 @@ public interface InferencePackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	InferencePackage eINSTANCE = org.sheepy.lily.core.model.inference.impl.InferencePackageImpl
-			.init();
+	InferencePackage eINSTANCE = org.sheepy.lily.core.model.inference.impl.InferencePackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.inference.IInferenceObject <em>IInference Object</em>}' class.

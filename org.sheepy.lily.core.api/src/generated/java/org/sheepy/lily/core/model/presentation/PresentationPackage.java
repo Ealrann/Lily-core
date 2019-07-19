@@ -61,8 +61,7 @@ public interface PresentationPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	PresentationPackage eINSTANCE = org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl
-			.init();
+	PresentationPackage eINSTANCE = org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.IPositionElement <em>IPosition Element</em>}' class.
@@ -905,8 +904,7 @@ public interface PresentationPackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute IPOSITION_ELEMENT__VERTICAL_RELATIVE = eINSTANCE
-				.getIPositionElement_VerticalRelative();
+		EAttribute IPOSITION_ELEMENT__VERTICAL_RELATIVE = eINSTANCE.getIPositionElement_VerticalRelative();
 
 		/**
 		 * The meta object literal for the '<em><b>Horizontal Relative</b></em>' attribute feature.
@@ -914,8 +912,7 @@ public interface PresentationPackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute IPOSITION_ELEMENT__HORIZONTAL_RELATIVE = eINSTANCE
-				.getIPositionElement_HorizontalRelative();
+		EAttribute IPOSITION_ELEMENT__HORIZONTAL_RELATIVE = eINSTANCE.getIPositionElement_HorizontalRelative();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.ISizedElement <em>ISized Element</em>}' class.

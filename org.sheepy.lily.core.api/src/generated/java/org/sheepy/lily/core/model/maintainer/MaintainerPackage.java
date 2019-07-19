@@ -54,8 +54,7 @@ public interface MaintainerPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	MaintainerPackage eINSTANCE = org.sheepy.lily.core.model.maintainer.impl.MaintainerPackageImpl
-			.init();
+	MaintainerPackage eINSTANCE = org.sheepy.lily.core.model.maintainer.impl.MaintainerPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.maintainer.Maintainable <em>Maintainable</em>}' class.

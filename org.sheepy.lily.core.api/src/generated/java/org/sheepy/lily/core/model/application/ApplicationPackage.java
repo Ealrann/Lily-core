@@ -57,8 +57,7 @@ public interface ApplicationPackage extends EPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ApplicationPackage eINSTANCE = org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl
-			.init();
+	ApplicationPackage eINSTANCE = org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl.init();
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl <em>Application</em>}' class.

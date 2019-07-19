@@ -72,31 +72,30 @@ public class ResolverSwitch<T> extends Switch<T>
 	{
 		switch (classifierID)
 		{
-		case ResolverPackage.IL_OBJECT_RESOLVER:
-		{
-			ILObjectResolver ilObjectResolver = (ILObjectResolver) theEObject;
-			T result = caseILObjectResolver(ilObjectResolver);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case ResolverPackage.EREFERENCE_RESOLVER:
-		{
-			EReferenceResolver eReferenceResolver = (EReferenceResolver) theEObject;
-			T result = caseEReferenceResolver(eReferenceResolver);
-			if (result == null) result = caseILObjectResolver(eReferenceResolver);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case ResolverPackage.CHAIN_RESOLVER:
-		{
-			ChainResolver chainResolver = (ChainResolver) theEObject;
-			T result = caseChainResolver(chainResolver);
-			if (result == null) result = caseILObjectResolver(chainResolver);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		default:
-			return defaultCase(theEObject);
+			case ResolverPackage.IL_OBJECT_RESOLVER:
+			{
+				ILObjectResolver ilObjectResolver = (ILObjectResolver)theEObject;
+				T result = caseILObjectResolver(ilObjectResolver);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ResolverPackage.EREFERENCE_RESOLVER:
+			{
+				EReferenceResolver eReferenceResolver = (EReferenceResolver)theEObject;
+				T result = caseEReferenceResolver(eReferenceResolver);
+				if (result == null) result = caseILObjectResolver(eReferenceResolver);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ResolverPackage.CHAIN_RESOLVER:
+			{
+				ChainResolver chainResolver = (ChainResolver)theEObject;
+				T result = caseChainResolver(chainResolver);
+				if (result == null) result = caseILObjectResolver(chainResolver);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			default: return defaultCase(theEObject);
 		}
 	}
 

@@ -84,11 +84,8 @@ public class BooleanButtonImpl extends AbstractBooleanButtonImpl implements Bool
 		variableResolver = newVariableResolver;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER, oldVariableResolver,
-					newVariableResolver);
-			if (msgs == null) msgs = notification;
-			else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER, oldVariableResolver, newVariableResolver);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -105,19 +102,14 @@ public class BooleanButtonImpl extends AbstractBooleanButtonImpl implements Bool
 		{
 			NotificationChain msgs = null;
 			if (variableResolver != null)
-				msgs = ((InternalEObject) variableResolver).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER, null,
-						msgs);
+				msgs = ((InternalEObject)variableResolver).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER, null, msgs);
 			if (newVariableResolver != null)
-				msgs = ((InternalEObject) newVariableResolver).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER, null,
-						msgs);
+				msgs = ((InternalEObject)newVariableResolver).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER, null, msgs);
 			msgs = basicSetVariableResolver(newVariableResolver, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
-		else if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER, newVariableResolver,
-				newVariableResolver));
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER, newVariableResolver, newVariableResolver));
 	}
 
 	/**
@@ -126,14 +118,12 @@ public class BooleanButtonImpl extends AbstractBooleanButtonImpl implements Bool
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-											int featureID,
-											NotificationChain msgs)
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
 		switch (featureID)
 		{
-		case UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER:
-			return basicSetVariableResolver(null, msgs);
+			case UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER:
+				return basicSetVariableResolver(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -148,8 +138,8 @@ public class BooleanButtonImpl extends AbstractBooleanButtonImpl implements Bool
 	{
 		switch (featureID)
 		{
-		case UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER:
-			return getVariableResolver();
+			case UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER:
+				return getVariableResolver();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -164,9 +154,9 @@ public class BooleanButtonImpl extends AbstractBooleanButtonImpl implements Bool
 	{
 		switch (featureID)
 		{
-		case UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER:
-			setVariableResolver((AbstractVariableResolver) newValue);
-			return;
+			case UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER:
+				setVariableResolver((AbstractVariableResolver)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -181,9 +171,9 @@ public class BooleanButtonImpl extends AbstractBooleanButtonImpl implements Bool
 	{
 		switch (featureID)
 		{
-		case UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER:
-			setVariableResolver((AbstractVariableResolver) null);
-			return;
+			case UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER:
+				setVariableResolver((AbstractVariableResolver)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -198,8 +188,8 @@ public class BooleanButtonImpl extends AbstractBooleanButtonImpl implements Bool
 	{
 		switch (featureID)
 		{
-		case UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER:
-			return variableResolver != null;
+			case UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER:
+				return variableResolver != null;
 		}
 		return super.eIsSet(featureID);
 	}

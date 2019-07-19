@@ -164,14 +164,11 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	 */
 	public static InferencePackage init()
 	{
-		if (isInited) return (InferencePackage) EPackage.Registry.INSTANCE
-				.getEPackage(InferencePackage.eNS_URI);
+		if (isInited) return (InferencePackage)EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
 
 		// Obtain or create and register package
 		Object registeredInferencePackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-		InferencePackageImpl theInferencePackage = registeredInferencePackage instanceof InferencePackageImpl
-				? (InferencePackageImpl) registeredInferencePackage
-				: new InferencePackageImpl();
+		InferencePackageImpl theInferencePackage = registeredInferencePackage instanceof InferencePackageImpl ? (InferencePackageImpl)registeredInferencePackage : new InferencePackageImpl();
 
 		isInited = true;
 
@@ -180,41 +177,23 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 
 		// Obtain or create and register interdependencies
 		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
-		TypesPackageImpl theTypesPackage = (TypesPackageImpl) (registeredPackage instanceof TypesPackageImpl
-				? registeredPackage
-				: TypesPackage.eINSTANCE);
+		TypesPackageImpl theTypesPackage = (TypesPackageImpl)(registeredPackage instanceof TypesPackageImpl ? registeredPackage : TypesPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
-		ActionPackageImpl theActionPackage = (ActionPackageImpl) (registeredPackage instanceof ActionPackageImpl
-				? registeredPackage
-				: ActionPackage.eINSTANCE);
+		ActionPackageImpl theActionPackage = (ActionPackageImpl)(registeredPackage instanceof ActionPackageImpl ? registeredPackage : ActionPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
-		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl) (registeredPackage instanceof ApplicationPackageImpl
-				? registeredPackage
-				: ApplicationPackage.eINSTANCE);
+		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl)(registeredPackage instanceof ApplicationPackageImpl ? registeredPackage : ApplicationPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(RootPackage.eNS_URI);
-		RootPackageImpl theRootPackage = (RootPackageImpl) (registeredPackage instanceof RootPackageImpl
-				? registeredPackage
-				: RootPackage.eINSTANCE);
+		RootPackageImpl theRootPackage = (RootPackageImpl)(registeredPackage instanceof RootPackageImpl ? registeredPackage : RootPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(MaintainerPackage.eNS_URI);
-		MaintainerPackageImpl theMaintainerPackage = (MaintainerPackageImpl) (registeredPackage instanceof MaintainerPackageImpl
-				? registeredPackage
-				: MaintainerPackage.eINSTANCE);
+		MaintainerPackageImpl theMaintainerPackage = (MaintainerPackageImpl)(registeredPackage instanceof MaintainerPackageImpl ? registeredPackage : MaintainerPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(PresentationPackage.eNS_URI);
-		PresentationPackageImpl thePresentationPackage = (PresentationPackageImpl) (registeredPackage instanceof PresentationPackageImpl
-				? registeredPackage
-				: PresentationPackage.eINSTANCE);
+		PresentationPackageImpl thePresentationPackage = (PresentationPackageImpl)(registeredPackage instanceof PresentationPackageImpl ? registeredPackage : PresentationPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ResolverPackage.eNS_URI);
-		ResolverPackageImpl theResolverPackage = (ResolverPackageImpl) (registeredPackage instanceof ResolverPackageImpl
-				? registeredPackage
-				: ResolverPackage.eINSTANCE);
+		ResolverPackageImpl theResolverPackage = (ResolverPackageImpl)(registeredPackage instanceof ResolverPackageImpl ? registeredPackage : ResolverPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(UiPackage.eNS_URI);
-		UiPackageImpl theUiPackage = (UiPackageImpl) (registeredPackage instanceof UiPackageImpl
-				? registeredPackage
-				: UiPackage.eINSTANCE);
+		UiPackageImpl theUiPackage = (UiPackageImpl)(registeredPackage instanceof UiPackageImpl ? registeredPackage : UiPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(VariablePackage.eNS_URI);
-		VariablePackageImpl theVariablePackage = (VariablePackageImpl) (registeredPackage instanceof VariablePackageImpl
-				? registeredPackage
-				: VariablePackage.eINSTANCE);
+		VariablePackageImpl theVariablePackage = (VariablePackageImpl)(registeredPackage instanceof VariablePackageImpl ? registeredPackage : VariablePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theInferencePackage.createPackageContents();
@@ -278,7 +257,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	@Override
 	public EReference getInferer_Rules()
 	{
-		return (EReference) infererEClass.getEStructuralFeatures().get(0);
+		return (EReference)infererEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -311,7 +290,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	@Override
 	public EReference getLRule_Notification()
 	{
-		return (EReference) lRuleEClass.getEStructuralFeatures().get(0);
+		return (EReference)lRuleEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -322,7 +301,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	@Override
 	public EReference getLRule_Action()
 	{
-		return (EReference) lRuleEClass.getEStructuralFeatures().get(1);
+		return (EReference)lRuleEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -333,7 +312,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	@Override
 	public EReference getLRule_Conditions()
 	{
-		return (EReference) lRuleEClass.getEStructuralFeatures().get(2);
+		return (EReference)lRuleEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -388,7 +367,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	@Override
 	public EReference getCondition_Value()
 	{
-		return (EReference) conditionEClass.getEStructuralFeatures().get(0);
+		return (EReference)conditionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -399,7 +378,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	@Override
 	public EReference getCondition_Definition()
 	{
-		return (EReference) conditionEClass.getEStructuralFeatures().get(1);
+		return (EReference)conditionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -410,7 +389,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 	@Override
 	public InferenceFactory getInferenceFactory()
 	{
-		return (InferenceFactory) getEFactoryInstance();
+		return (InferenceFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -481,16 +460,12 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		ActionPackage theActionPackage = (ActionPackage) EPackage.Registry.INSTANCE
-				.getEPackage(ActionPackage.eNS_URI);
-		EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE
-				.getEPackage(EcorePackage.eNS_URI);
-		TypesPackage theTypesPackage = (TypesPackage) EPackage.Registry.INSTANCE
-				.getEPackage(TypesPackage.eNS_URI);
+		ActionPackage theActionPackage = (ActionPackage)EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
+		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
 
 		// Create type parameters
-		ETypeParameter parameteredNotificationEClass_T = addETypeParameter(
-				parameteredNotificationEClass, "T");
+		ETypeParameter parameteredNotificationEClass_T = addETypeParameter(parameteredNotificationEClass, "T");
 		ETypeParameter conditionEClass_T = addETypeParameter(conditionEClass, "T");
 
 		// Set bounds for type parameters
@@ -506,63 +481,38 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 		parameteredNotificationEClass.getESuperTypes().add(this.getAbstractNotification());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(iInferenceObjectEClass, IInferenceObject.class, "IInferenceObject", IS_ABSTRACT,
-				IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(iInferenceObjectEClass, IInferenceObject.class, "IInferenceObject", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		addEOperation(iInferenceObjectEClass, this.getIInferenceObject(), "lInferenceObject", 0, 1,
-				!IS_UNIQUE, IS_ORDERED);
+		addEOperation(iInferenceObjectEClass, this.getIInferenceObject(), "lInferenceObject", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(infererEClass, Inferer.class, "Inferer", IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getInferer_Rules(), this.getLRule(), null, "rules", null, 0, -1,
-				Inferer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(infererEClass, Inferer.class, "Inferer", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getInferer_Rules(), this.getLRule(), null, "rules", null, 0, -1, Inferer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(infererEClass, this.getIInferenceObject(), "lExecutor", 0, 1, !IS_UNIQUE,
-				IS_ORDERED);
+		addEOperation(infererEClass, this.getIInferenceObject(), "lExecutor", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(sensorEClass, Sensor.class, "Sensor", IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEClass(sensorEClass, Sensor.class, "Sensor", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(lRuleEClass, LRule.class, "LRule", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getLRule_Notification(), this.getAbstractNotification(), null,
-				"notification", null, 0, 1, LRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEReference(getLRule_Action(), theActionPackage.getAction(), null, "action", null, 0, 1,
-				LRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(lRuleEClass, LRule.class, "LRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getLRule_Notification(), this.getAbstractNotification(), null, "notification", null, 0, 1, LRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLRule_Action(), theActionPackage.getAction(), null, "action", null, 0, 1, LRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		g1 = createEGenericType(this.getCondition());
 		EGenericType g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
-		initEReference(getLRule_Conditions(), g1, null, "conditions", null, 0, -1, LRule.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLRule_Conditions(), g1, null, "conditions", null, 0, -1, LRule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(abstractNotificationEClass, AbstractNotification.class, "AbstractNotification",
-				IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(abstractNotificationEClass, AbstractNotification.class, "AbstractNotification", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		EOperation op = addEOperation(abstractNotificationEClass, theEcorePackage.getEBoolean(),
-				"match", 0, 1, !IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAbstractNotification(), "compareTo", 0, 1, !IS_UNIQUE,
-				IS_ORDERED);
+		EOperation op = addEOperation(abstractNotificationEClass, theEcorePackage.getEBoolean(), "match", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getAbstractNotification(), "compareTo", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(lNotificationEClass, LNotification.class, "LNotification", IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(lNotificationEClass, LNotification.class, "LNotification", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(parameteredNotificationEClass, ParameteredNotification.class,
-				"ParameteredNotification", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(parameteredNotificationEClass, ParameteredNotification.class, "ParameteredNotification", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(conditionEClass, Condition.class, "Condition", IS_ABSTRACT, IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEClass(conditionEClass, Condition.class, "Condition", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(conditionEClass_T);
-		initEReference(getCondition_Value(), g1, null, "value", null, 0, 1, Condition.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCondition_Definition(), this.getLNotification(), null, "definition", null,
-				0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCondition_Value(), g1, null, "value", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCondition_Definition(), this.getLNotification(), null, "definition", null, 0, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(conditionEClass, null, "getType", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(theEcorePackage.getEJavaClass());
@@ -570,8 +520,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
-		op = addEOperation(conditionEClass, theEcorePackage.getEBoolean(), "match", 0, 1,
-				!IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(conditionEClass, theEcorePackage.getEBoolean(), "match", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(conditionEClass_T);
 		addEParameter(op, g1, "compareTo", 0, 1, !IS_UNIQUE, IS_ORDERED);
 

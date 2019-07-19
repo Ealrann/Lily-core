@@ -29,8 +29,7 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  *
  * @generated
  */
-public class BooleanActionButtonImpl extends AbstractBooleanButtonImpl
-		implements BooleanActionButton
+public class BooleanActionButtonImpl extends AbstractBooleanButtonImpl implements BooleanActionButton
 {
 	/**
 	 * The cached value of the '{@link #getActionWhenTrue() <em>Action When True</em>}' containment reference.
@@ -89,18 +88,14 @@ public class BooleanActionButtonImpl extends AbstractBooleanButtonImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetActionWhenTrue(Action newActionWhenTrue,
-													NotificationChain msgs)
+	public NotificationChain basicSetActionWhenTrue(Action newActionWhenTrue, NotificationChain msgs)
 	{
 		Action oldActionWhenTrue = actionWhenTrue;
 		actionWhenTrue = newActionWhenTrue;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE, oldActionWhenTrue,
-					newActionWhenTrue);
-			if (msgs == null) msgs = notification;
-			else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE, oldActionWhenTrue, newActionWhenTrue);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -117,19 +112,14 @@ public class BooleanActionButtonImpl extends AbstractBooleanButtonImpl
 		{
 			NotificationChain msgs = null;
 			if (actionWhenTrue != null)
-				msgs = ((InternalEObject) actionWhenTrue).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE,
-						null, msgs);
+				msgs = ((InternalEObject)actionWhenTrue).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE, null, msgs);
 			if (newActionWhenTrue != null)
-				msgs = ((InternalEObject) newActionWhenTrue).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE,
-						null, msgs);
+				msgs = ((InternalEObject)newActionWhenTrue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE, null, msgs);
 			msgs = basicSetActionWhenTrue(newActionWhenTrue, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
-		else if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE, newActionWhenTrue,
-				newActionWhenTrue));
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE, newActionWhenTrue, newActionWhenTrue));
 	}
 
 	/**
@@ -148,18 +138,14 @@ public class BooleanActionButtonImpl extends AbstractBooleanButtonImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetActionWhenFalse(	Action newActionWhenFalse,
-														NotificationChain msgs)
+	public NotificationChain basicSetActionWhenFalse(Action newActionWhenFalse, NotificationChain msgs)
 	{
 		Action oldActionWhenFalse = actionWhenFalse;
 		actionWhenFalse = newActionWhenFalse;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE, oldActionWhenFalse,
-					newActionWhenFalse);
-			if (msgs == null) msgs = notification;
-			else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE, oldActionWhenFalse, newActionWhenFalse);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -176,19 +162,14 @@ public class BooleanActionButtonImpl extends AbstractBooleanButtonImpl
 		{
 			NotificationChain msgs = null;
 			if (actionWhenFalse != null)
-				msgs = ((InternalEObject) actionWhenFalse).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE,
-						null, msgs);
+				msgs = ((InternalEObject)actionWhenFalse).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE, null, msgs);
 			if (newActionWhenFalse != null)
-				msgs = ((InternalEObject) newActionWhenFalse).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE,
-						null, msgs);
+				msgs = ((InternalEObject)newActionWhenFalse).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE, null, msgs);
 			msgs = basicSetActionWhenFalse(newActionWhenFalse, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
-		else if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE, newActionWhenFalse,
-				newActionWhenFalse));
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE, newActionWhenFalse, newActionWhenFalse));
 	}
 
 	/**
@@ -197,16 +178,14 @@ public class BooleanActionButtonImpl extends AbstractBooleanButtonImpl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-											int featureID,
-											NotificationChain msgs)
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
 		switch (featureID)
 		{
-		case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE:
-			return basicSetActionWhenTrue(null, msgs);
-		case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE:
-			return basicSetActionWhenFalse(null, msgs);
+			case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE:
+				return basicSetActionWhenTrue(null, msgs);
+			case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE:
+				return basicSetActionWhenFalse(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -221,10 +200,10 @@ public class BooleanActionButtonImpl extends AbstractBooleanButtonImpl
 	{
 		switch (featureID)
 		{
-		case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE:
-			return getActionWhenTrue();
-		case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE:
-			return getActionWhenFalse();
+			case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE:
+				return getActionWhenTrue();
+			case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE:
+				return getActionWhenFalse();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -239,12 +218,12 @@ public class BooleanActionButtonImpl extends AbstractBooleanButtonImpl
 	{
 		switch (featureID)
 		{
-		case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE:
-			setActionWhenTrue((Action) newValue);
-			return;
-		case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE:
-			setActionWhenFalse((Action) newValue);
-			return;
+			case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE:
+				setActionWhenTrue((Action)newValue);
+				return;
+			case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE:
+				setActionWhenFalse((Action)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -259,12 +238,12 @@ public class BooleanActionButtonImpl extends AbstractBooleanButtonImpl
 	{
 		switch (featureID)
 		{
-		case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE:
-			setActionWhenTrue((Action) null);
-			return;
-		case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE:
-			setActionWhenFalse((Action) null);
-			return;
+			case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE:
+				setActionWhenTrue((Action)null);
+				return;
+			case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE:
+				setActionWhenFalse((Action)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -279,10 +258,10 @@ public class BooleanActionButtonImpl extends AbstractBooleanButtonImpl
 	{
 		switch (featureID)
 		{
-		case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE:
-			return actionWhenTrue != null;
-		case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE:
-			return actionWhenFalse != null;
+			case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE:
+				return actionWhenTrue != null;
+			case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE:
+				return actionWhenFalse != null;
 		}
 		return super.eIsSet(featureID);
 	}

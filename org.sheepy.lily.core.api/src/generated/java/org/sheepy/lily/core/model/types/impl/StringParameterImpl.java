@@ -88,8 +88,8 @@ public class StringParameterImpl extends MinimalEObjectImpl.Container implements
 	{
 		String oldValue = value;
 		value = newValue;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				TypesPackage.STRING_PARAMETER__VALUE, oldValue, value));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.STRING_PARAMETER__VALUE, oldValue, value));
 	}
 
 	/**
@@ -113,8 +113,8 @@ public class StringParameterImpl extends MinimalEObjectImpl.Container implements
 	{
 		switch (featureID)
 		{
-		case TypesPackage.STRING_PARAMETER__VALUE:
-			return getValue();
+			case TypesPackage.STRING_PARAMETER__VALUE:
+				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -129,9 +129,9 @@ public class StringParameterImpl extends MinimalEObjectImpl.Container implements
 	{
 		switch (featureID)
 		{
-		case TypesPackage.STRING_PARAMETER__VALUE:
-			setValue((String) newValue);
-			return;
+			case TypesPackage.STRING_PARAMETER__VALUE:
+				setValue((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -146,9 +146,9 @@ public class StringParameterImpl extends MinimalEObjectImpl.Container implements
 	{
 		switch (featureID)
 		{
-		case TypesPackage.STRING_PARAMETER__VALUE:
-			setValue(VALUE_EDEFAULT);
-			return;
+			case TypesPackage.STRING_PARAMETER__VALUE:
+				setValue(VALUE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -163,8 +163,8 @@ public class StringParameterImpl extends MinimalEObjectImpl.Container implements
 	{
 		switch (featureID)
 		{
-		case TypesPackage.STRING_PARAMETER__VALUE:
-			return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case TypesPackage.STRING_PARAMETER__VALUE:
+				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
 	}

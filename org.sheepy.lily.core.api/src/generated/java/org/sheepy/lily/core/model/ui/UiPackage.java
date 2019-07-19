@@ -1890,8 +1890,7 @@ public interface UiPackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VARIABLE_LABEL__VARIABLE_RESOLVER = eINSTANCE
-				.getVariableLabel_VariableResolver();
+		EReference VARIABLE_LABEL__VARIABLE_RESOLVER = eINSTANCE.getVariableLabel_VariableResolver();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.LabelImpl <em>Label</em>}' class.
@@ -2031,8 +2030,7 @@ public interface UiPackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE = eINSTANCE
-				.getAbstractBooleanButton_TextWhenTrue();
+		EAttribute ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE = eINSTANCE.getAbstractBooleanButton_TextWhenTrue();
 
 		/**
 		 * The meta object literal for the '<em><b>Text When False</b></em>' attribute feature.
@@ -2040,8 +2038,7 @@ public interface UiPackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE = eINSTANCE
-				.getAbstractBooleanButton_TextWhenFalse();
+		EAttribute ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE = eINSTANCE.getAbstractBooleanButton_TextWhenFalse();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.BooleanButtonImpl <em>Boolean Button</em>}' class.
@@ -2059,8 +2056,7 @@ public interface UiPackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BOOLEAN_BUTTON__VARIABLE_RESOLVER = eINSTANCE
-				.getBooleanButton_VariableResolver();
+		EReference BOOLEAN_BUTTON__VARIABLE_RESOLVER = eINSTANCE.getBooleanButton_VariableResolver();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.BooleanActionButtonImpl <em>Boolean Action Button</em>}' class.
@@ -2078,8 +2074,7 @@ public interface UiPackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE = eINSTANCE
-				.getBooleanActionButton_ActionWhenTrue();
+		EReference BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE = eINSTANCE.getBooleanActionButton_ActionWhenTrue();
 
 		/**
 		 * The meta object literal for the '<em><b>Action When False</b></em>' containment reference feature.
@@ -2087,8 +2082,7 @@ public interface UiPackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE = eINSTANCE
-				.getBooleanActionButton_ActionWhenFalse();
+		EReference BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE = eINSTANCE.getBooleanActionButton_ActionWhenFalse();
 
 	}
 

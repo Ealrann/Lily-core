@@ -62,14 +62,19 @@ public class AbstractBooleanButtonItemProvider extends AbstractButtonItemProvide
 	 */
 	protected void addTextWhenTruePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_AbstractBooleanButton_textWhenTrue_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_AbstractBooleanButton_textWhenTrue_feature",
-						"_UI_AbstractBooleanButton_type"),
-				UiPackage.Literals.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AbstractBooleanButton_textWhenTrue_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractBooleanButton_textWhenTrue_feature", "_UI_AbstractBooleanButton_type"),
+				 UiPackage.Literals.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -80,14 +85,19 @@ public class AbstractBooleanButtonItemProvider extends AbstractButtonItemProvide
 	 */
 	protected void addTextWhenFalsePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_AbstractBooleanButton_textWhenFalse_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_AbstractBooleanButton_textWhenFalse_feature",
-						"_UI_AbstractBooleanButton_type"),
-				UiPackage.Literals.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_AbstractBooleanButton_textWhenFalse_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractBooleanButton_textWhenFalse_feature", "_UI_AbstractBooleanButton_type"),
+				 UiPackage.Literals.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -99,11 +109,11 @@ public class AbstractBooleanButtonItemProvider extends AbstractButtonItemProvide
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((AbstractBooleanButton) object).getContentObjects();
+		EList<LObject> labelValue = ((AbstractBooleanButton)object).getContentObjects();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0
-				? getString("_UI_AbstractBooleanButton_type")
-				: getString("_UI_AbstractBooleanButton_type") + " " + label;
+		return label == null || label.length() == 0 ?
+			getString("_UI_AbstractBooleanButton_type") :
+			getString("_UI_AbstractBooleanButton_type") + " " + label;
 	}
 
 	/**
@@ -120,11 +130,10 @@ public class AbstractBooleanButtonItemProvider extends AbstractButtonItemProvide
 
 		switch (notification.getFeatureID(AbstractBooleanButton.class))
 		{
-		case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE:
-		case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE:
-			fireNotifyChanged(
-					new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
+			case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE:
+			case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 		}
 		super.notifyChanged(notification);
 	}

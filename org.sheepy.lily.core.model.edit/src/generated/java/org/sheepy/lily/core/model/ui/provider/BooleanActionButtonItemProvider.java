@@ -97,8 +97,7 @@ public class BooleanActionButtonItemProvider extends AbstractBooleanButtonItemPr
 	@Override
 	public Object getImage(Object object)
 	{
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/BooleanActionButton"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/BooleanActionButton"));
 	}
 
 	/**
@@ -110,11 +109,11 @@ public class BooleanActionButtonItemProvider extends AbstractBooleanButtonItemPr
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((BooleanActionButton) object).getContentObjects();
+		EList<LObject> labelValue = ((BooleanActionButton)object).getContentObjects();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0
-				? getString("_UI_BooleanActionButton_type")
-				: getString("_UI_BooleanActionButton_type") + " " + label;
+		return label == null || label.length() == 0 ?
+			getString("_UI_BooleanActionButton_type") :
+			getString("_UI_BooleanActionButton_type") + " " + label;
 	}
 
 	/**
@@ -131,11 +130,10 @@ public class BooleanActionButtonItemProvider extends AbstractBooleanButtonItemPr
 
 		switch (notification.getFeatureID(BooleanActionButton.class))
 		{
-		case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE:
-		case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE:
-			fireNotifyChanged(
-					new ViewerNotification(notification, notification.getNotifier(), true, false));
-			return;
+			case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE:
+			case UiPackage.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -152,13 +150,15 @@ public class BooleanActionButtonItemProvider extends AbstractBooleanButtonItemPr
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(
-				createChildParameter(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE,
-						VariableFactory.eINSTANCE.createBooleanChangeAction()));
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE,
+				 VariableFactory.eINSTANCE.createBooleanChangeAction()));
 
-		newChildDescriptors.add(
-				createChildParameter(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE,
-						VariableFactory.eINSTANCE.createBooleanChangeAction()));
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE,
+				 VariableFactory.eINSTANCE.createBooleanChangeAction()));
 	}
 
 	/**
@@ -168,22 +168,20 @@ public class BooleanActionButtonItemProvider extends AbstractBooleanButtonItemPr
 	 * @generated
 	 */
 	@Override
-	public String getCreateChildText(	Object owner,
-										Object feature,
-										Object child,
-										Collection<?> selection)
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection)
 	{
 		Object childFeature = feature;
 		Object childObject = child;
 
-		boolean qualify = childFeature == UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE
-				|| childFeature == UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE;
+		boolean qualify =
+			childFeature == UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE ||
+			childFeature == UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE;
 
 		if (qualify)
 		{
-			return getString("_UI_CreateChild_text2", new Object[] {
-					getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner)
-			});
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
 		}
 		return super.getCreateChildText(owner, feature, child, selection);
 	}

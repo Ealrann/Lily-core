@@ -40,9 +40,8 @@ import org.sheepy.lily.core.model.variable.VariableFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SliderItemProvider extends ItemProviderAdapter
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
+public class SliderItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -88,14 +87,19 @@ public class SliderItemProvider extends ItemProviderAdapter
 	 */
 	protected void addVerticalRelativePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_IPositionElement_verticalRelative_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_IPositionElement_verticalRelative_feature",
-						"_UI_IPositionElement_type"),
-				PresentationPackage.Literals.IPOSITION_ELEMENT__VERTICAL_RELATIVE, true, false,
-				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_IPositionElement_verticalRelative_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_verticalRelative_feature", "_UI_IPositionElement_type"),
+				 PresentationPackage.Literals.IPOSITION_ELEMENT__VERTICAL_RELATIVE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -106,14 +110,19 @@ public class SliderItemProvider extends ItemProviderAdapter
 	 */
 	protected void addHorizontalRelativePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_IPositionElement_horizontalRelative_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_IPositionElement_horizontalRelative_feature",
-						"_UI_IPositionElement_type"),
-				PresentationPackage.Literals.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE, true, false,
-				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_IPositionElement_horizontalRelative_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_horizontalRelative_feature", "_UI_IPositionElement_type"),
+				 PresentationPackage.Literals.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -124,13 +133,19 @@ public class SliderItemProvider extends ItemProviderAdapter
 	 */
 	protected void addPositionPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_IPositionElement_position_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_IPositionElement_position_feature", "_UI_IPositionElement_type"),
-				PresentationPackage.Literals.IPOSITION_ELEMENT__POSITION, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_IPositionElement_position_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_position_feature", "_UI_IPositionElement_type"),
+				 PresentationPackage.Literals.IPOSITION_ELEMENT__POSITION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -141,13 +156,19 @@ public class SliderItemProvider extends ItemProviderAdapter
 	 */
 	protected void addWidthPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_ISizedElement_width_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_width_feature",
-						"_UI_ISizedElement_type"),
-				PresentationPackage.Literals.ISIZED_ELEMENT__WIDTH, true, false, false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ISizedElement_width_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_width_feature", "_UI_ISizedElement_type"),
+				 PresentationPackage.Literals.ISIZED_ELEMENT__WIDTH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -158,13 +179,19 @@ public class SliderItemProvider extends ItemProviderAdapter
 	 */
 	protected void addHeightPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_ISizedElement_height_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_height_feature",
-						"_UI_ISizedElement_type"),
-				PresentationPackage.Literals.ISIZED_ELEMENT__HEIGHT, true, false, false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ISizedElement_height_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_height_feature", "_UI_ISizedElement_type"),
+				 PresentationPackage.Literals.ISIZED_ELEMENT__HEIGHT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -175,13 +202,19 @@ public class SliderItemProvider extends ItemProviderAdapter
 	 */
 	protected void addMinValuePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_Slider_minValue_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Slider_minValue_feature",
-						"_UI_Slider_type"),
-				UiPackage.Literals.SLIDER__MIN_VALUE, true, false, false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Slider_minValue_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Slider_minValue_feature", "_UI_Slider_type"),
+				 UiPackage.Literals.SLIDER__MIN_VALUE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -192,13 +225,19 @@ public class SliderItemProvider extends ItemProviderAdapter
 	 */
 	protected void addMaxValuePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_Slider_maxValue_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Slider_maxValue_feature",
-						"_UI_Slider_type"),
-				UiPackage.Literals.SLIDER__MAX_VALUE, true, false, false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Slider_maxValue_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Slider_maxValue_feature", "_UI_Slider_type"),
+				 UiPackage.Literals.SLIDER__MAX_VALUE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -209,13 +248,19 @@ public class SliderItemProvider extends ItemProviderAdapter
 	 */
 	protected void addStepPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_Slider_step_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Slider_step_feature",
-						"_UI_Slider_type"),
-				UiPackage.Literals.SLIDER__STEP, true, false, false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Slider_step_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Slider_step_feature", "_UI_Slider_type"),
+				 UiPackage.Literals.SLIDER__STEP,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -272,11 +317,11 @@ public class SliderItemProvider extends ItemProviderAdapter
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((Slider) object).getContentObjects();
+		EList<LObject> labelValue = ((Slider)object).getContentObjects();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0
-				? getString("_UI_Slider_type")
-				: getString("_UI_Slider_type") + " " + label;
+		return label == null || label.length() == 0 ?
+			getString("_UI_Slider_type") :
+			getString("_UI_Slider_type") + " " + label;
 	}
 
 	/**
@@ -293,22 +338,20 @@ public class SliderItemProvider extends ItemProviderAdapter
 
 		switch (notification.getFeatureID(Slider.class))
 		{
-		case UiPackage.SLIDER__CONTENT_OBJECTS:
-		case UiPackage.SLIDER__POSITION:
-		case UiPackage.SLIDER__VERTICAL_RELATIVE:
-		case UiPackage.SLIDER__HORIZONTAL_RELATIVE:
-		case UiPackage.SLIDER__WIDTH:
-		case UiPackage.SLIDER__HEIGHT:
-		case UiPackage.SLIDER__MIN_VALUE:
-		case UiPackage.SLIDER__MAX_VALUE:
-		case UiPackage.SLIDER__STEP:
-			fireNotifyChanged(
-					new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
-		case UiPackage.SLIDER__VARIABLE_RESOLVER:
-			fireNotifyChanged(
-					new ViewerNotification(notification, notification.getNotifier(), true, false));
-			return;
+			case UiPackage.SLIDER__CONTENT_OBJECTS:
+			case UiPackage.SLIDER__POSITION:
+			case UiPackage.SLIDER__VERTICAL_RELATIVE:
+			case UiPackage.SLIDER__HORIZONTAL_RELATIVE:
+			case UiPackage.SLIDER__WIDTH:
+			case UiPackage.SLIDER__HEIGHT:
+			case UiPackage.SLIDER__MIN_VALUE:
+			case UiPackage.SLIDER__MAX_VALUE:
+			case UiPackage.SLIDER__STEP:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case UiPackage.SLIDER__VARIABLE_RESOLVER:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -325,11 +368,15 @@ public class SliderItemProvider extends ItemProviderAdapter
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UiPackage.Literals.SLIDER__VARIABLE_RESOLVER,
-				VariableFactory.eINSTANCE.createChainVariableResolver()));
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.SLIDER__VARIABLE_RESOLVER,
+				 VariableFactory.eINSTANCE.createChainVariableResolver()));
 
-		newChildDescriptors.add(createChildParameter(UiPackage.Literals.SLIDER__VARIABLE_RESOLVER,
-				VariableFactory.eINSTANCE.createDirectVariableResolver()));
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.SLIDER__VARIABLE_RESOLVER,
+				 VariableFactory.eINSTANCE.createDirectVariableResolver()));
 	}
 
 	/**
@@ -341,7 +388,7 @@ public class SliderItemProvider extends ItemProviderAdapter
 	@Override
 	public ResourceLocator getResourceLocator()
 	{
-		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
 	}
 
 }

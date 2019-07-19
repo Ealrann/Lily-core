@@ -76,35 +76,34 @@ public class ApplicationSwitch<T> extends Switch<T>
 	{
 		switch (classifierID)
 		{
-		case ApplicationPackage.APPLICATION:
-		{
-			Application application = (Application) theEObject;
-			T result = caseApplication(application);
-			if (result == null) result = caseLObject(application);
-			if (result == null) result = caseIInferenceObject(application);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case ApplicationPackage.IENGINE:
-		{
-			IEngine iEngine = (IEngine) theEObject;
-			T result = caseIEngine(iEngine);
-			if (result == null) result = caseLObject(iEngine);
-			if (result == null) result = caseIInferenceObject(iEngine);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case ApplicationPackage.IVIEW:
-		{
-			IView iView = (IView) theEObject;
-			T result = caseIView(iView);
-			if (result == null) result = caseLObject(iView);
-			if (result == null) result = caseIInferenceObject(iView);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		default:
-			return defaultCase(theEObject);
+			case ApplicationPackage.APPLICATION:
+			{
+				Application application = (Application)theEObject;
+				T result = caseApplication(application);
+				if (result == null) result = caseLObject(application);
+				if (result == null) result = caseIInferenceObject(application);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ApplicationPackage.IENGINE:
+			{
+				IEngine iEngine = (IEngine)theEObject;
+				T result = caseIEngine(iEngine);
+				if (result == null) result = caseLObject(iEngine);
+				if (result == null) result = caseIInferenceObject(iEngine);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ApplicationPackage.IVIEW:
+			{
+				IView iView = (IView)theEObject;
+				T result = caseIView(iView);
+				if (result == null) result = caseLObject(iView);
+				if (result == null) result = caseIInferenceObject(iView);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			default: return defaultCase(theEObject);
 		}
 	}
 

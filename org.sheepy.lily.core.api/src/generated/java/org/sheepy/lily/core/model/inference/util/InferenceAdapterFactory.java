@@ -62,7 +62,7 @@ public class InferenceAdapterFactory extends AdapterFactoryImpl
 		}
 		if (object instanceof EObject)
 		{
-			return ((EObject) object).eClass().getEPackage() == modelPackage;
+			return ((EObject)object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -74,53 +74,53 @@ public class InferenceAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	protected InferenceSwitch<Adapter> modelSwitch = new InferenceSwitch<Adapter>()
-	{
-		@Override
-		public Adapter caseIInferenceObject(IInferenceObject object)
 		{
-			return createIInferenceObjectAdapter();
-		}
-		@Override
-		public Adapter caseInferer(Inferer object)
-		{
-			return createInfererAdapter();
-		}
-		@Override
-		public Adapter caseSensor(Sensor object)
-		{
-			return createSensorAdapter();
-		}
-		@Override
-		public Adapter caseLRule(LRule object)
-		{
-			return createLRuleAdapter();
-		}
-		@Override
-		public Adapter caseAbstractNotification(AbstractNotification object)
-		{
-			return createAbstractNotificationAdapter();
-		}
-		@Override
-		public Adapter caseLNotification(LNotification object)
-		{
-			return createLNotificationAdapter();
-		}
-		@Override
-		public <T extends Parameter> Adapter caseParameteredNotification(ParameteredNotification<T> object)
-		{
-			return createParameteredNotificationAdapter();
-		}
-		@Override
-		public <T extends Parameter> Adapter caseCondition(Condition<T> object)
-		{
-			return createConditionAdapter();
-		}
-		@Override
-		public Adapter defaultCase(EObject object)
-		{
-			return createEObjectAdapter();
-		}
-	};
+			@Override
+			public Adapter caseIInferenceObject(IInferenceObject object)
+			{
+				return createIInferenceObjectAdapter();
+			}
+			@Override
+			public Adapter caseInferer(Inferer object)
+			{
+				return createInfererAdapter();
+			}
+			@Override
+			public Adapter caseSensor(Sensor object)
+			{
+				return createSensorAdapter();
+			}
+			@Override
+			public Adapter caseLRule(LRule object)
+			{
+				return createLRuleAdapter();
+			}
+			@Override
+			public Adapter caseAbstractNotification(AbstractNotification object)
+			{
+				return createAbstractNotificationAdapter();
+			}
+			@Override
+			public Adapter caseLNotification(LNotification object)
+			{
+				return createLNotificationAdapter();
+			}
+			@Override
+			public <T extends Parameter> Adapter caseParameteredNotification(ParameteredNotification<T> object)
+			{
+				return createParameteredNotificationAdapter();
+			}
+			@Override
+			public <T extends Parameter> Adapter caseCondition(Condition<T> object)
+			{
+				return createConditionAdapter();
+			}
+			@Override
+			public Adapter defaultCase(EObject object)
+			{
+				return createEObjectAdapter();
+			}
+		};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -133,7 +133,7 @@ public class InferenceAdapterFactory extends AdapterFactoryImpl
 	@Override
 	public Adapter createAdapter(Notifier target)
 	{
-		return modelSwitch.doSwitch((EObject) target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 	/**

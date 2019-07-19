@@ -274,8 +274,7 @@ public interface ResolverPackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute EREFERENCE_RESOLVER__REFERENCE_NAME = eINSTANCE
-				.getEReferenceResolver_ReferenceName();
+		EAttribute EREFERENCE_RESOLVER__REFERENCE_NAME = eINSTANCE.getEReferenceResolver_ReferenceName();
 
 		/**
 		 * The meta object literal for the '<em><b>Class Name</b></em>' attribute feature.
@@ -291,8 +290,7 @@ public interface ResolverPackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EREFERENCE_RESOLVER__INTERNAL_REFERENCE = eINSTANCE
-				.getEReferenceResolver_InternalReference();
+		EReference EREFERENCE_RESOLVER__INTERNAL_REFERENCE = eINSTANCE.getEReferenceResolver_InternalReference();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.resolver.impl.ChainResolverImpl <em>Chain Resolver</em>}' class.

@@ -88,9 +88,12 @@ public enum EVerticalRelative implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final EVerticalRelative[] VALUES_ARRAY = new EVerticalRelative[] {
-			BOTTOM, MIDDLE, TOP,
-	};
+	private static final EVerticalRelative[] VALUES_ARRAY = new EVerticalRelative[]
+		{
+			BOTTOM,
+			MIDDLE,
+			TOP,
+		};
 
 	/**
 	 * A public read-only list of all the '<em><b>EVertical Relative</b></em>' enumerators.
@@ -98,8 +101,7 @@ public enum EVerticalRelative implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<EVerticalRelative> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<EVerticalRelative> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>EVertical Relative</b></em>' literal with the specified literal value.
@@ -155,8 +157,7 @@ public enum EVerticalRelative implements Enumerator
 	{
 		switch (value)
 		{
-		case BOTTOM_VALUE:
-			return BOTTOM;
+			case BOTTOM_VALUE: return BOTTOM;
 		}
 		return null;
 	}
@@ -203,7 +204,7 @@ public enum EVerticalRelative implements Enumerator
 	@Override
 	public int getValue()
 	{
-		return value;
+	  return value;
 	}
 
 	/**
@@ -214,7 +215,7 @@ public enum EVerticalRelative implements Enumerator
 	@Override
 	public String getName()
 	{
-		return name;
+	  return name;
 	}
 
 	/**
@@ -225,7 +226,7 @@ public enum EVerticalRelative implements Enumerator
 	@Override
 	public String getLiteral()
 	{
-		return literal;
+	  return literal;
 	}
 
 	/**

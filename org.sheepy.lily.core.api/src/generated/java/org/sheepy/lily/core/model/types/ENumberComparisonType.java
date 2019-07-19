@@ -130,9 +130,14 @@ public enum ENumberComparisonType implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ENumberComparisonType[] VALUES_ARRAY = new ENumberComparisonType[] {
-			EQUAL, INF_OR_EQUAL, SUP_OR_EQUAL, INF, SUP,
-	};
+	private static final ENumberComparisonType[] VALUES_ARRAY = new ENumberComparisonType[]
+		{
+			EQUAL,
+			INF_OR_EQUAL,
+			SUP_OR_EQUAL,
+			INF,
+			SUP,
+		};
 
 	/**
 	 * A public read-only list of all the '<em><b>ENumber Comparison Type</b></em>' enumerators.
@@ -140,8 +145,7 @@ public enum ENumberComparisonType implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<ENumberComparisonType> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ENumberComparisonType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>ENumber Comparison Type</b></em>' literal with the specified literal value.
@@ -197,8 +201,7 @@ public enum ENumberComparisonType implements Enumerator
 	{
 		switch (value)
 		{
-		case EQUAL_VALUE:
-			return EQUAL;
+			case EQUAL_VALUE: return EQUAL;
 		}
 		return null;
 	}
@@ -245,7 +248,7 @@ public enum ENumberComparisonType implements Enumerator
 	@Override
 	public int getValue()
 	{
-		return value;
+	  return value;
 	}
 
 	/**
@@ -256,7 +259,7 @@ public enum ENumberComparisonType implements Enumerator
 	@Override
 	public String getName()
 	{
-		return name;
+	  return name;
 	}
 
 	/**
@@ -267,7 +270,7 @@ public enum ENumberComparisonType implements Enumerator
 	@Override
 	public String getLiteral()
 	{
-		return literal;
+	  return literal;
 	}
 
 	/**

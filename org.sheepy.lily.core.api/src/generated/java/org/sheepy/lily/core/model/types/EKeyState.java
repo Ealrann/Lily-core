@@ -88,9 +88,12 @@ public enum EKeyState implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final EKeyState[] VALUES_ARRAY = new EKeyState[] {
-			RELEASED, PRESSED, REPEATED,
-	};
+	private static final EKeyState[] VALUES_ARRAY = new EKeyState[]
+		{
+			RELEASED,
+			PRESSED,
+			REPEATED,
+		};
 
 	/**
 	 * A public read-only list of all the '<em><b>EKey State</b></em>' enumerators.
@@ -98,8 +101,7 @@ public enum EKeyState implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<EKeyState> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<EKeyState> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>EKey State</b></em>' literal with the specified literal value.
@@ -155,12 +157,9 @@ public enum EKeyState implements Enumerator
 	{
 		switch (value)
 		{
-		case RELEASED_VALUE:
-			return RELEASED;
-		case PRESSED_VALUE:
-			return PRESSED;
-		case REPEATED_VALUE:
-			return REPEATED;
+			case RELEASED_VALUE: return RELEASED;
+			case PRESSED_VALUE: return PRESSED;
+			case REPEATED_VALUE: return REPEATED;
 		}
 		return null;
 	}
@@ -207,7 +206,7 @@ public enum EKeyState implements Enumerator
 	@Override
 	public int getValue()
 	{
-		return value;
+	  return value;
 	}
 
 	/**
@@ -218,7 +217,7 @@ public enum EKeyState implements Enumerator
 	@Override
 	public String getName()
 	{
-		return name;
+	  return name;
 	}
 
 	/**
@@ -229,7 +228,7 @@ public enum EKeyState implements Enumerator
 	@Override
 	public String getLiteral()
 	{
-		return literal;
+	  return literal;
 	}
 
 	/**

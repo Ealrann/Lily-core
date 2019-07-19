@@ -30,13 +30,13 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 	{
 		try
 		{
-			ApplicationFactory theApplicationFactory = (ApplicationFactory) EPackage.Registry.INSTANCE
-					.getEFactory(ApplicationPackage.eNS_URI);
+			ApplicationFactory theApplicationFactory = (ApplicationFactory)EPackage.Registry.INSTANCE.getEFactory(ApplicationPackage.eNS_URI);
 			if (theApplicationFactory != null)
 			{
 				return theApplicationFactory;
 			}
-		} catch (Exception exception)
+		}
+		catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -64,11 +64,9 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 	{
 		switch (eClass.getClassifierID())
 		{
-		case ApplicationPackage.APPLICATION:
-			return createApplication();
-		default:
-			throw new IllegalArgumentException(
-					"The class '" + eClass.getName() + "' is not a valid classifier");
+			case ApplicationPackage.APPLICATION: return createApplication();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -92,7 +90,7 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 	@Override
 	public ApplicationPackage getApplicationPackage()
 	{
-		return (ApplicationPackage) getEPackage();
+		return (ApplicationPackage)getEPackage();
 	}
 
 	/**

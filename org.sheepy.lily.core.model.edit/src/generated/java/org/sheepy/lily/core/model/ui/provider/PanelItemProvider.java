@@ -35,9 +35,8 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PanelItemProvider extends ItemProviderAdapter
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
+public class PanelItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -85,13 +84,19 @@ public class PanelItemProvider extends ItemProviderAdapter
 	 */
 	protected void addNamePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_LNamedElement_name_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_LNamedElement_name_feature",
-						"_UI_LNamedElement_type"),
-				TypesPackage.Literals.LNAMED_ELEMENT__NAME, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LNamedElement_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LNamedElement_name_feature", "_UI_LNamedElement_type"),
+				 TypesPackage.Literals.LNAMED_ELEMENT__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -102,14 +107,19 @@ public class PanelItemProvider extends ItemProviderAdapter
 	 */
 	protected void addVerticalRelativePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_IPositionElement_verticalRelative_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_IPositionElement_verticalRelative_feature",
-						"_UI_IPositionElement_type"),
-				PresentationPackage.Literals.IPOSITION_ELEMENT__VERTICAL_RELATIVE, true, false,
-				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_IPositionElement_verticalRelative_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_verticalRelative_feature", "_UI_IPositionElement_type"),
+				 PresentationPackage.Literals.IPOSITION_ELEMENT__VERTICAL_RELATIVE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -120,14 +130,19 @@ public class PanelItemProvider extends ItemProviderAdapter
 	 */
 	protected void addHorizontalRelativePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_IPositionElement_horizontalRelative_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_IPositionElement_horizontalRelative_feature",
-						"_UI_IPositionElement_type"),
-				PresentationPackage.Literals.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE, true, false,
-				false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_IPositionElement_horizontalRelative_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_horizontalRelative_feature", "_UI_IPositionElement_type"),
+				 PresentationPackage.Literals.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -138,13 +153,19 @@ public class PanelItemProvider extends ItemProviderAdapter
 	 */
 	protected void addPositionPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_IPositionElement_position_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_IPositionElement_position_feature", "_UI_IPositionElement_type"),
-				PresentationPackage.Literals.IPOSITION_ELEMENT__POSITION, true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_IPositionElement_position_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPositionElement_position_feature", "_UI_IPositionElement_type"),
+				 PresentationPackage.Literals.IPOSITION_ELEMENT__POSITION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -155,13 +176,19 @@ public class PanelItemProvider extends ItemProviderAdapter
 	 */
 	protected void addWidthPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_ISizedElement_width_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_width_feature",
-						"_UI_ISizedElement_type"),
-				PresentationPackage.Literals.ISIZED_ELEMENT__WIDTH, true, false, false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ISizedElement_width_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_width_feature", "_UI_ISizedElement_type"),
+				 PresentationPackage.Literals.ISIZED_ELEMENT__WIDTH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -172,13 +199,19 @@ public class PanelItemProvider extends ItemProviderAdapter
 	 */
 	protected void addHeightPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_ISizedElement_height_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_height_feature",
-						"_UI_ISizedElement_type"),
-				PresentationPackage.Literals.ISIZED_ELEMENT__HEIGHT, true, false, false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ISizedElement_height_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ISizedElement_height_feature", "_UI_ISizedElement_type"),
+				 PresentationPackage.Literals.ISIZED_ELEMENT__HEIGHT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -189,13 +222,19 @@ public class PanelItemProvider extends ItemProviderAdapter
 	 */
 	protected void addShowTitlePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_Panel_showTitle_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Panel_showTitle_feature",
-						"_UI_Panel_type"),
-				UiPackage.Literals.PANEL__SHOW_TITLE, true, false, false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Panel_showTitle_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Panel_showTitle_feature", "_UI_Panel_type"),
+				 UiPackage.Literals.PANEL__SHOW_TITLE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -206,13 +245,19 @@ public class PanelItemProvider extends ItemProviderAdapter
 	 */
 	protected void addMinimizablePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_Panel_minimizable_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Panel_minimizable_feature",
-						"_UI_Panel_type"),
-				UiPackage.Literals.PANEL__MINIMIZABLE, true, false, false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Panel_minimizable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Panel_minimizable_feature", "_UI_Panel_type"),
+				 UiPackage.Literals.PANEL__MINIMIZABLE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -223,13 +268,19 @@ public class PanelItemProvider extends ItemProviderAdapter
 	 */
 	protected void addMovablePropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_Panel_movable_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Panel_movable_feature",
-						"_UI_Panel_type"),
-				UiPackage.Literals.PANEL__MOVABLE, true, false, false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Panel_movable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Panel_movable_feature", "_UI_Panel_type"),
+				 UiPackage.Literals.PANEL__MOVABLE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -240,13 +291,19 @@ public class PanelItemProvider extends ItemProviderAdapter
 	 */
 	protected void addMinimizedPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_Panel_minimized_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_Panel_minimized_feature",
-						"_UI_Panel_type"),
-				UiPackage.Literals.PANEL__MINIMIZED, true, false, false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Panel_minimized_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Panel_minimized_feature", "_UI_Panel_type"),
+				 UiPackage.Literals.PANEL__MINIMIZED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -303,10 +360,10 @@ public class PanelItemProvider extends ItemProviderAdapter
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((Panel) object).getName();
-		return label == null || label.length() == 0
-				? getString("_UI_Panel_type")
-				: getString("_UI_Panel_type") + " " + label;
+		String label = ((Panel)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Panel_type") :
+			getString("_UI_Panel_type") + " " + label;
 	}
 
 	/**
@@ -323,24 +380,22 @@ public class PanelItemProvider extends ItemProviderAdapter
 
 		switch (notification.getFeatureID(Panel.class))
 		{
-		case UiPackage.PANEL__NAME:
-		case UiPackage.PANEL__CONTENT_OBJECTS:
-		case UiPackage.PANEL__POSITION:
-		case UiPackage.PANEL__VERTICAL_RELATIVE:
-		case UiPackage.PANEL__HORIZONTAL_RELATIVE:
-		case UiPackage.PANEL__WIDTH:
-		case UiPackage.PANEL__HEIGHT:
-		case UiPackage.PANEL__SHOW_TITLE:
-		case UiPackage.PANEL__MINIMIZABLE:
-		case UiPackage.PANEL__MOVABLE:
-		case UiPackage.PANEL__MINIMIZED:
-			fireNotifyChanged(
-					new ViewerNotification(notification, notification.getNotifier(), false, true));
-			return;
-		case UiPackage.PANEL__CONTROLS:
-			fireNotifyChanged(
-					new ViewerNotification(notification, notification.getNotifier(), true, false));
-			return;
+			case UiPackage.PANEL__NAME:
+			case UiPackage.PANEL__CONTENT_OBJECTS:
+			case UiPackage.PANEL__POSITION:
+			case UiPackage.PANEL__VERTICAL_RELATIVE:
+			case UiPackage.PANEL__HORIZONTAL_RELATIVE:
+			case UiPackage.PANEL__WIDTH:
+			case UiPackage.PANEL__HEIGHT:
+			case UiPackage.PANEL__SHOW_TITLE:
+			case UiPackage.PANEL__MINIMIZABLE:
+			case UiPackage.PANEL__MOVABLE:
+			case UiPackage.PANEL__MINIMIZED:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case UiPackage.PANEL__CONTROLS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -357,29 +412,45 @@ public class PanelItemProvider extends ItemProviderAdapter
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(UiPackage.Literals.PANEL__CONTROLS,
-				UiFactory.eINSTANCE.createDynamicRowLayout()));
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.PANEL__CONTROLS,
+				 UiFactory.eINSTANCE.createDynamicRowLayout()));
 
-		newChildDescriptors.add(createChildParameter(UiPackage.Literals.PANEL__CONTROLS,
-				UiFactory.eINSTANCE.createVariableLabel()));
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.PANEL__CONTROLS,
+				 UiFactory.eINSTANCE.createVariableLabel()));
 
-		newChildDescriptors.add(createChildParameter(UiPackage.Literals.PANEL__CONTROLS,
-				UiFactory.eINSTANCE.createLabel()));
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.PANEL__CONTROLS,
+				 UiFactory.eINSTANCE.createLabel()));
 
-		newChildDescriptors.add(createChildParameter(UiPackage.Literals.PANEL__CONTROLS,
-				UiFactory.eINSTANCE.createSlider()));
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.PANEL__CONTROLS,
+				 UiFactory.eINSTANCE.createSlider()));
 
-		newChildDescriptors.add(createChildParameter(UiPackage.Literals.PANEL__CONTROLS,
-				UiFactory.eINSTANCE.createTextField()));
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.PANEL__CONTROLS,
+				 UiFactory.eINSTANCE.createTextField()));
 
-		newChildDescriptors.add(createChildParameter(UiPackage.Literals.PANEL__CONTROLS,
-				UiFactory.eINSTANCE.createButton()));
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.PANEL__CONTROLS,
+				 UiFactory.eINSTANCE.createButton()));
 
-		newChildDescriptors.add(createChildParameter(UiPackage.Literals.PANEL__CONTROLS,
-				UiFactory.eINSTANCE.createBooleanButton()));
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.PANEL__CONTROLS,
+				 UiFactory.eINSTANCE.createBooleanButton()));
 
-		newChildDescriptors.add(createChildParameter(UiPackage.Literals.PANEL__CONTROLS,
-				UiFactory.eINSTANCE.createBooleanActionButton()));
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.PANEL__CONTROLS,
+				 UiFactory.eINSTANCE.createBooleanActionButton()));
 	}
 
 	/**
@@ -391,7 +462,7 @@ public class PanelItemProvider extends ItemProviderAdapter
 	@Override
 	public ResourceLocator getResourceLocator()
 	{
-		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
 	}
 
 }

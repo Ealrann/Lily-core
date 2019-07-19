@@ -108,11 +108,11 @@ public class VariableLabelItemProvider extends AbstractLabelItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((VariableLabel) object).getContentObjects();
+		EList<LObject> labelValue = ((VariableLabel)object).getContentObjects();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0
-				? getString("_UI_VariableLabel_type")
-				: getString("_UI_VariableLabel_type") + " " + label;
+		return label == null || label.length() == 0 ?
+			getString("_UI_VariableLabel_type") :
+			getString("_UI_VariableLabel_type") + " " + label;
 	}
 
 	/**
@@ -129,10 +129,9 @@ public class VariableLabelItemProvider extends AbstractLabelItemProvider
 
 		switch (notification.getFeatureID(VariableLabel.class))
 		{
-		case UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER:
-			fireNotifyChanged(
-					new ViewerNotification(notification, notification.getNotifier(), true, false));
-			return;
+			case UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -149,13 +148,15 @@ public class VariableLabelItemProvider extends AbstractLabelItemProvider
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors
-				.add(createChildParameter(UiPackage.Literals.VARIABLE_LABEL__VARIABLE_RESOLVER,
-						VariableFactory.eINSTANCE.createChainVariableResolver()));
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.VARIABLE_LABEL__VARIABLE_RESOLVER,
+				 VariableFactory.eINSTANCE.createChainVariableResolver()));
 
-		newChildDescriptors
-				.add(createChildParameter(UiPackage.Literals.VARIABLE_LABEL__VARIABLE_RESOLVER,
-						VariableFactory.eINSTANCE.createDirectVariableResolver()));
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.VARIABLE_LABEL__VARIABLE_RESOLVER,
+				 VariableFactory.eINSTANCE.createDirectVariableResolver()));
 	}
 
 }

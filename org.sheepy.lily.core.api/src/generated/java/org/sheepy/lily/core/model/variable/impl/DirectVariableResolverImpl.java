@@ -26,8 +26,7 @@ import org.sheepy.lily.core.model.variable.VariablePackage;
  *
  * @generated
  */
-public class DirectVariableResolverImpl extends AbstractVariableResolverImpl
-		implements DirectVariableResolver
+public class DirectVariableResolverImpl extends AbstractVariableResolverImpl implements DirectVariableResolver
 {
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
@@ -70,13 +69,12 @@ public class DirectVariableResolverImpl extends AbstractVariableResolverImpl
 	{
 		if (target != null && target.eIsProxy())
 		{
-			InternalEObject oldTarget = (InternalEObject) target;
+			InternalEObject oldTarget = (InternalEObject)target;
 			target = eResolveProxy(oldTarget);
 			if (target != oldTarget)
 			{
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							VariablePackage.DIRECT_VARIABLE_RESOLVER__TARGET, oldTarget, target));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, VariablePackage.DIRECT_VARIABLE_RESOLVER__TARGET, oldTarget, target));
 			}
 		}
 		return target;
@@ -102,8 +100,8 @@ public class DirectVariableResolverImpl extends AbstractVariableResolverImpl
 	{
 		EObject oldTarget = target;
 		target = newTarget;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				VariablePackage.DIRECT_VARIABLE_RESOLVER__TARGET, oldTarget, target));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, VariablePackage.DIRECT_VARIABLE_RESOLVER__TARGET, oldTarget, target));
 	}
 
 	/**
@@ -116,9 +114,9 @@ public class DirectVariableResolverImpl extends AbstractVariableResolverImpl
 	{
 		switch (featureID)
 		{
-		case VariablePackage.DIRECT_VARIABLE_RESOLVER__TARGET:
-			if (resolve) return getTarget();
-			return basicGetTarget();
+			case VariablePackage.DIRECT_VARIABLE_RESOLVER__TARGET:
+				if (resolve) return getTarget();
+				return basicGetTarget();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -133,9 +131,9 @@ public class DirectVariableResolverImpl extends AbstractVariableResolverImpl
 	{
 		switch (featureID)
 		{
-		case VariablePackage.DIRECT_VARIABLE_RESOLVER__TARGET:
-			setTarget((EObject) newValue);
-			return;
+			case VariablePackage.DIRECT_VARIABLE_RESOLVER__TARGET:
+				setTarget((EObject)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -150,9 +148,9 @@ public class DirectVariableResolverImpl extends AbstractVariableResolverImpl
 	{
 		switch (featureID)
 		{
-		case VariablePackage.DIRECT_VARIABLE_RESOLVER__TARGET:
-			setTarget((EObject) null);
-			return;
+			case VariablePackage.DIRECT_VARIABLE_RESOLVER__TARGET:
+				setTarget((EObject)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -167,8 +165,8 @@ public class DirectVariableResolverImpl extends AbstractVariableResolverImpl
 	{
 		switch (featureID)
 		{
-		case VariablePackage.DIRECT_VARIABLE_RESOLVER__TARGET:
-			return target != null;
+			case VariablePackage.DIRECT_VARIABLE_RESOLVER__TARGET:
+				return target != null;
 		}
 		return super.eIsSet(featureID);
 	}

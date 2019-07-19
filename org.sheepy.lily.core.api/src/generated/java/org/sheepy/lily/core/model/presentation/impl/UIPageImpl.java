@@ -84,8 +84,7 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Vector2ic POSITION_EDEFAULT = (Vector2ic) TypesFactory.eINSTANCE
-			.createFromString(TypesPackage.eINSTANCE.getVector2i(), "0;0");
+	protected static final Vector2ic POSITION_EDEFAULT = (Vector2ic)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getVector2i(), "0;0");
 
 	/**
 	 * The cached value of the '{@link #getPosition() <em>Position</em>}' attribute.
@@ -229,8 +228,8 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 	{
 		EList<LObject> oldContentObjects = contentObjects;
 		contentObjects = newContentObjects;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				PresentationPackage.UI_PAGE__CONTENT_OBJECTS, oldContentObjects, contentObjects));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.UI_PAGE__CONTENT_OBJECTS, oldContentObjects, contentObjects));
 	}
 
 	/**
@@ -254,8 +253,8 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 	{
 		Vector2ic oldPosition = position;
 		position = newPosition;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				PresentationPackage.UI_PAGE__POSITION, oldPosition, position));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.UI_PAGE__POSITION, oldPosition, position));
 	}
 
 	/**
@@ -278,12 +277,9 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 	public void setVerticalRelative(EVerticalRelative newVerticalRelative)
 	{
 		EVerticalRelative oldVerticalRelative = verticalRelative;
-		verticalRelative = newVerticalRelative == null
-				? VERTICAL_RELATIVE_EDEFAULT
-				: newVerticalRelative;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				PresentationPackage.UI_PAGE__VERTICAL_RELATIVE, oldVerticalRelative,
-				verticalRelative));
+		verticalRelative = newVerticalRelative == null ? VERTICAL_RELATIVE_EDEFAULT : newVerticalRelative;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.UI_PAGE__VERTICAL_RELATIVE, oldVerticalRelative, verticalRelative));
 	}
 
 	/**
@@ -306,12 +302,9 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 	public void setHorizontalRelative(EHorizontalRelative newHorizontalRelative)
 	{
 		EHorizontalRelative oldHorizontalRelative = horizontalRelative;
-		horizontalRelative = newHorizontalRelative == null
-				? HORIZONTAL_RELATIVE_EDEFAULT
-				: newHorizontalRelative;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE, oldHorizontalRelative,
-				horizontalRelative));
+		horizontalRelative = newHorizontalRelative == null ? HORIZONTAL_RELATIVE_EDEFAULT : newHorizontalRelative;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE, oldHorizontalRelative, horizontalRelative));
 	}
 
 	/**
@@ -335,8 +328,8 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 	{
 		int oldWidth = width;
 		width = newWidth;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				PresentationPackage.UI_PAGE__WIDTH, oldWidth, width));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.UI_PAGE__WIDTH, oldWidth, width));
 	}
 
 	/**
@@ -360,8 +353,8 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 	{
 		int oldHeight = height;
 		height = newHeight;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				PresentationPackage.UI_PAGE__HEIGHT, oldHeight, height));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.UI_PAGE__HEIGHT, oldHeight, height));
 	}
 
 	/**
@@ -374,8 +367,7 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 	{
 		if (panels == null)
 		{
-			panels = new EObjectContainmentEList<IPanel>(IPanel.class, this,
-					PresentationPackage.UI_PAGE__PANELS);
+			panels = new EObjectContainmentEList<IPanel>(IPanel.class, this, PresentationPackage.UI_PAGE__PANELS);
 		}
 		return panels;
 	}
@@ -403,7 +395,7 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 		boolean _isEmpty = unitRefs.isEmpty();
 		if (_isEmpty)
 		{
-			res = ECollections.<T> emptyEList();
+			res = ECollections.<T>emptyEList();
 		}
 		else
 		{
@@ -427,7 +419,7 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 			boolean _tripleEquals = (_contentObjects == null);
 			if (_tripleEquals)
 			{
-				this.setContentObjects(this.<LObject> createContainmentEList(Literals.LOBJECT));
+				this.setContentObjects(this.<LObject>createContainmentEList(Literals.LOBJECT));
 			}
 			_xblockexpression = this.getContentObjects();
 		}
@@ -480,14 +472,12 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-											int featureID,
-											NotificationChain msgs)
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
 		switch (featureID)
 		{
-		case PresentationPackage.UI_PAGE__PANELS:
-			return ((InternalEList<?>) getPanels()).basicRemove(otherEnd, msgs);
+			case PresentationPackage.UI_PAGE__PANELS:
+				return ((InternalEList<?>)getPanels()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -502,20 +492,20 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 	{
 		switch (featureID)
 		{
-		case PresentationPackage.UI_PAGE__CONTENT_OBJECTS:
-			return getContentObjects();
-		case PresentationPackage.UI_PAGE__POSITION:
-			return getPosition();
-		case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
-			return getVerticalRelative();
-		case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
-			return getHorizontalRelative();
-		case PresentationPackage.UI_PAGE__WIDTH:
-			return getWidth();
-		case PresentationPackage.UI_PAGE__HEIGHT:
-			return getHeight();
-		case PresentationPackage.UI_PAGE__PANELS:
-			return getPanels();
+			case PresentationPackage.UI_PAGE__CONTENT_OBJECTS:
+				return getContentObjects();
+			case PresentationPackage.UI_PAGE__POSITION:
+				return getPosition();
+			case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
+				return getVerticalRelative();
+			case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
+				return getHorizontalRelative();
+			case PresentationPackage.UI_PAGE__WIDTH:
+				return getWidth();
+			case PresentationPackage.UI_PAGE__HEIGHT:
+				return getHeight();
+			case PresentationPackage.UI_PAGE__PANELS:
+				return getPanels();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -531,28 +521,28 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 	{
 		switch (featureID)
 		{
-		case PresentationPackage.UI_PAGE__CONTENT_OBJECTS:
-			setContentObjects((EList<LObject>) newValue);
-			return;
-		case PresentationPackage.UI_PAGE__POSITION:
-			setPosition((Vector2ic) newValue);
-			return;
-		case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
-			setVerticalRelative((EVerticalRelative) newValue);
-			return;
-		case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
-			setHorizontalRelative((EHorizontalRelative) newValue);
-			return;
-		case PresentationPackage.UI_PAGE__WIDTH:
-			setWidth((Integer) newValue);
-			return;
-		case PresentationPackage.UI_PAGE__HEIGHT:
-			setHeight((Integer) newValue);
-			return;
-		case PresentationPackage.UI_PAGE__PANELS:
-			getPanels().clear();
-			getPanels().addAll((Collection<? extends IPanel>) newValue);
-			return;
+			case PresentationPackage.UI_PAGE__CONTENT_OBJECTS:
+				setContentObjects((EList<LObject>)newValue);
+				return;
+			case PresentationPackage.UI_PAGE__POSITION:
+				setPosition((Vector2ic)newValue);
+				return;
+			case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
+				setVerticalRelative((EVerticalRelative)newValue);
+				return;
+			case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
+				setHorizontalRelative((EHorizontalRelative)newValue);
+				return;
+			case PresentationPackage.UI_PAGE__WIDTH:
+				setWidth((Integer)newValue);
+				return;
+			case PresentationPackage.UI_PAGE__HEIGHT:
+				setHeight((Integer)newValue);
+				return;
+			case PresentationPackage.UI_PAGE__PANELS:
+				getPanels().clear();
+				getPanels().addAll((Collection<? extends IPanel>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -567,27 +557,27 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 	{
 		switch (featureID)
 		{
-		case PresentationPackage.UI_PAGE__CONTENT_OBJECTS:
-			setContentObjects((EList<LObject>) null);
-			return;
-		case PresentationPackage.UI_PAGE__POSITION:
-			setPosition(POSITION_EDEFAULT);
-			return;
-		case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
-			setVerticalRelative(VERTICAL_RELATIVE_EDEFAULT);
-			return;
-		case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
-			setHorizontalRelative(HORIZONTAL_RELATIVE_EDEFAULT);
-			return;
-		case PresentationPackage.UI_PAGE__WIDTH:
-			setWidth(WIDTH_EDEFAULT);
-			return;
-		case PresentationPackage.UI_PAGE__HEIGHT:
-			setHeight(HEIGHT_EDEFAULT);
-			return;
-		case PresentationPackage.UI_PAGE__PANELS:
-			getPanels().clear();
-			return;
+			case PresentationPackage.UI_PAGE__CONTENT_OBJECTS:
+				setContentObjects((EList<LObject>)null);
+				return;
+			case PresentationPackage.UI_PAGE__POSITION:
+				setPosition(POSITION_EDEFAULT);
+				return;
+			case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
+				setVerticalRelative(VERTICAL_RELATIVE_EDEFAULT);
+				return;
+			case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
+				setHorizontalRelative(HORIZONTAL_RELATIVE_EDEFAULT);
+				return;
+			case PresentationPackage.UI_PAGE__WIDTH:
+				setWidth(WIDTH_EDEFAULT);
+				return;
+			case PresentationPackage.UI_PAGE__HEIGHT:
+				setHeight(HEIGHT_EDEFAULT);
+				return;
+			case PresentationPackage.UI_PAGE__PANELS:
+				getPanels().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -602,22 +592,20 @@ public class UIPageImpl extends MinimalEObjectImpl.Container implements UIPage
 	{
 		switch (featureID)
 		{
-		case PresentationPackage.UI_PAGE__CONTENT_OBJECTS:
-			return contentObjects != null;
-		case PresentationPackage.UI_PAGE__POSITION:
-			return POSITION_EDEFAULT == null
-					? position != null
-					: !POSITION_EDEFAULT.equals(position);
-		case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
-			return verticalRelative != VERTICAL_RELATIVE_EDEFAULT;
-		case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
-			return horizontalRelative != HORIZONTAL_RELATIVE_EDEFAULT;
-		case PresentationPackage.UI_PAGE__WIDTH:
-			return width != WIDTH_EDEFAULT;
-		case PresentationPackage.UI_PAGE__HEIGHT:
-			return height != HEIGHT_EDEFAULT;
-		case PresentationPackage.UI_PAGE__PANELS:
-			return panels != null && !panels.isEmpty();
+			case PresentationPackage.UI_PAGE__CONTENT_OBJECTS:
+				return contentObjects != null;
+			case PresentationPackage.UI_PAGE__POSITION:
+				return POSITION_EDEFAULT == null ? position != null : !POSITION_EDEFAULT.equals(position);
+			case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
+				return verticalRelative != VERTICAL_RELATIVE_EDEFAULT;
+			case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
+				return horizontalRelative != HORIZONTAL_RELATIVE_EDEFAULT;
+			case PresentationPackage.UI_PAGE__WIDTH:
+				return width != WIDTH_EDEFAULT;
+			case PresentationPackage.UI_PAGE__HEIGHT:
+				return height != HEIGHT_EDEFAULT;
+			case PresentationPackage.UI_PAGE__PANELS:
+				return panels != null && !panels.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

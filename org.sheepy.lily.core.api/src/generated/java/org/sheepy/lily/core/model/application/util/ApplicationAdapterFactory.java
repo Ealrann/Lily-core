@@ -64,7 +64,7 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 		}
 		if (object instanceof EObject)
 		{
-			return ((EObject) object).eClass().getEPackage() == modelPackage;
+			return ((EObject)object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -76,38 +76,38 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	protected ApplicationSwitch<Adapter> modelSwitch = new ApplicationSwitch<Adapter>()
-	{
-		@Override
-		public Adapter caseApplication(Application object)
 		{
-			return createApplicationAdapter();
-		}
-		@Override
-		public Adapter caseIEngine(IEngine object)
-		{
-			return createIEngineAdapter();
-		}
-		@Override
-		public Adapter caseIView(IView object)
-		{
-			return createIViewAdapter();
-		}
-		@Override
-		public Adapter caseIInferenceObject(IInferenceObject object)
-		{
-			return createIInferenceObjectAdapter();
-		}
-		@Override
-		public Adapter caseLObject(LObject object)
-		{
-			return createLObjectAdapter();
-		}
-		@Override
-		public Adapter defaultCase(EObject object)
-		{
-			return createEObjectAdapter();
-		}
-	};
+			@Override
+			public Adapter caseApplication(Application object)
+			{
+				return createApplicationAdapter();
+			}
+			@Override
+			public Adapter caseIEngine(IEngine object)
+			{
+				return createIEngineAdapter();
+			}
+			@Override
+			public Adapter caseIView(IView object)
+			{
+				return createIViewAdapter();
+			}
+			@Override
+			public Adapter caseIInferenceObject(IInferenceObject object)
+			{
+				return createIInferenceObjectAdapter();
+			}
+			@Override
+			public Adapter caseLObject(LObject object)
+			{
+				return createLObjectAdapter();
+			}
+			@Override
+			public Adapter defaultCase(EObject object)
+			{
+				return createEObjectAdapter();
+			}
+		};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -120,7 +120,7 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 	@Override
 	public Adapter createAdapter(Notifier target)
 	{
-		return modelSwitch.doSwitch((EObject) target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 	/**

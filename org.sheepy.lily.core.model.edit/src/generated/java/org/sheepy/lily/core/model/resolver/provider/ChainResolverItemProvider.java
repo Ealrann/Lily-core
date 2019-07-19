@@ -32,9 +32,8 @@ import org.sheepy.lily.core.model.resolver.ResolverPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ChainResolverItemProvider extends ItemProviderAdapter
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
+public class ChainResolverItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -135,10 +134,9 @@ public class ChainResolverItemProvider extends ItemProviderAdapter
 
 		switch (notification.getFeatureID(ChainResolver.class))
 		{
-		case ResolverPackage.CHAIN_RESOLVER__RESOLVERS:
-			fireNotifyChanged(
-					new ViewerNotification(notification, notification.getNotifier(), true, false));
-			return;
+			case ResolverPackage.CHAIN_RESOLVER__RESOLVERS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -155,13 +153,15 @@ public class ChainResolverItemProvider extends ItemProviderAdapter
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors
-				.add(createChildParameter(ResolverPackage.Literals.CHAIN_RESOLVER__RESOLVERS,
-						ResolverFactory.eINSTANCE.createEReferenceResolver()));
+		newChildDescriptors.add
+			(createChildParameter
+				(ResolverPackage.Literals.CHAIN_RESOLVER__RESOLVERS,
+				 ResolverFactory.eINSTANCE.createEReferenceResolver()));
 
-		newChildDescriptors
-				.add(createChildParameter(ResolverPackage.Literals.CHAIN_RESOLVER__RESOLVERS,
-						ResolverFactory.eINSTANCE.createChainResolver()));
+		newChildDescriptors.add
+			(createChildParameter
+				(ResolverPackage.Literals.CHAIN_RESOLVER__RESOLVERS,
+				 ResolverFactory.eINSTANCE.createChainResolver()));
 	}
 
 	/**
@@ -173,7 +173,7 @@ public class ChainResolverItemProvider extends ItemProviderAdapter
 	@Override
 	public ResourceLocator getResourceLocator()
 	{
-		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
 	}
 
 }

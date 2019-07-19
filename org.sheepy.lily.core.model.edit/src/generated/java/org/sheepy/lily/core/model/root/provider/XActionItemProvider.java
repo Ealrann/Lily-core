@@ -56,10 +56,10 @@ public class XActionItemProvider extends ActionItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((XAction) object).getName();
-		return label == null || label.length() == 0
-				? getString("_UI_XAction_type")
-				: getString("_UI_XAction_type") + " " + label;
+		String label = ((XAction)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_XAction_type") :
+			getString("_UI_XAction_type") + " " + label;
 	}
 
 	/**
@@ -73,6 +73,7 @@ public class XActionItemProvider extends ActionItemProvider
 	public void notifyChanged(Notification notification)
 	{
 		updateChildren(notification);
+		super.notifyChanged(notification);
 	}
 
 	/**

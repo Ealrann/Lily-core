@@ -74,16 +74,15 @@ public class ActionSwitch<T> extends Switch<T>
 	{
 		switch (classifierID)
 		{
-		case ActionPackage.ACTION:
-		{
-			Action action = (Action) theEObject;
-			T result = caseAction(action);
-			if (result == null) result = caseLNamedElement(action);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		default:
-			return defaultCase(theEObject);
+			case ActionPackage.ACTION:
+			{
+				Action action = (Action)theEObject;
+				T result = caseAction(action);
+				if (result == null) result = caseLNamedElement(action);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			default: return defaultCase(theEObject);
 		}
 	}
 

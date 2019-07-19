@@ -48,13 +48,13 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	{
 		try
 		{
-			TypesFactory theTypesFactory = (TypesFactory) EPackage.Registry.INSTANCE
-					.getEFactory(TypesPackage.eNS_URI);
+			TypesFactory theTypesFactory = (TypesFactory)EPackage.Registry.INSTANCE.getEFactory(TypesPackage.eNS_URI);
 			if (theTypesFactory != null)
 			{
 				return theTypesFactory;
 			}
-		} catch (Exception exception)
+		}
+		catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -82,15 +82,11 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	{
 		switch (eClass.getClassifierID())
 		{
-		case TypesPackage.FLOAT_PARAMETER:
-			return createFloatParameter();
-		case TypesPackage.STRING_PARAMETER:
-			return createStringParameter();
-		case TypesPackage.BOOLEAN_PARAMETER:
-			return createBooleanParameter();
-		default:
-			throw new IllegalArgumentException(
-					"The class '" + eClass.getName() + "' is not a valid classifier");
+			case TypesPackage.FLOAT_PARAMETER: return createFloatParameter();
+			case TypesPackage.STRING_PARAMETER: return createStringParameter();
+			case TypesPackage.BOOLEAN_PARAMETER: return createBooleanParameter();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -104,47 +100,46 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	{
 		switch (eDataType.getClassifierID())
 		{
-		case TypesPackage.ENOTIFICATION_DIRECTION:
-			return createENotificationDirectionFromString(eDataType, initialValue);
-		case TypesPackage.EMOVE_STATE:
-			return createEMoveStateFromString(eDataType, initialValue);
-		case TypesPackage.EDIRECTION:
-			return createEDirectionFromString(eDataType, initialValue);
-		case TypesPackage.ETIME_UNIT:
-			return createETimeUnitFromString(eDataType, initialValue);
-		case TypesPackage.ENUMBER_COMPARISON_TYPE:
-			return createENumberComparisonTypeFromString(eDataType, initialValue);
-		case TypesPackage.EVERTICAL_RELATIVE:
-			return createEVerticalRelativeFromString(eDataType, initialValue);
-		case TypesPackage.EHORIZONTAL_RELATIVE:
-			return createEHorizontalRelativeFromString(eDataType, initialValue);
-		case TypesPackage.EMOUSE_BUTTON:
-			return createEMouseButtonFromString(eDataType, initialValue);
-		case TypesPackage.EKEY_STATE:
-			return createEKeyStateFromString(eDataType, initialValue);
-		case TypesPackage.VECTOR4D:
-			return createVector4dFromString(eDataType, initialValue);
-		case TypesPackage.VECTOR4F:
-			return createVector4fFromString(eDataType, initialValue);
-		case TypesPackage.COLOR4F:
-			return createColor4fFromString(eDataType, initialValue);
-		case TypesPackage.COLOR3F:
-			return createColor3fFromString(eDataType, initialValue);
-		case TypesPackage.VECTOR3D:
-			return createVector3dFromString(eDataType, initialValue);
-		case TypesPackage.VECTOR3F:
-			return createVector3fFromString(eDataType, initialValue);
-		case TypesPackage.VECTOR3I:
-			return createVector3iFromString(eDataType, initialValue);
-		case TypesPackage.VECTOR2F:
-			return createVector2fFromString(eDataType, initialValue);
-		case TypesPackage.VECTOR2I:
-			return createVector2iFromString(eDataType, initialValue);
-		case TypesPackage.VECTOR2D:
-			return createVector2dFromString(eDataType, initialValue);
-		default:
-			throw new IllegalArgumentException(
-					"The datatype '" + eDataType.getName() + "' is not a valid classifier");
+			case TypesPackage.ENOTIFICATION_DIRECTION:
+				return createENotificationDirectionFromString(eDataType, initialValue);
+			case TypesPackage.EMOVE_STATE:
+				return createEMoveStateFromString(eDataType, initialValue);
+			case TypesPackage.EDIRECTION:
+				return createEDirectionFromString(eDataType, initialValue);
+			case TypesPackage.ETIME_UNIT:
+				return createETimeUnitFromString(eDataType, initialValue);
+			case TypesPackage.ENUMBER_COMPARISON_TYPE:
+				return createENumberComparisonTypeFromString(eDataType, initialValue);
+			case TypesPackage.EVERTICAL_RELATIVE:
+				return createEVerticalRelativeFromString(eDataType, initialValue);
+			case TypesPackage.EHORIZONTAL_RELATIVE:
+				return createEHorizontalRelativeFromString(eDataType, initialValue);
+			case TypesPackage.EMOUSE_BUTTON:
+				return createEMouseButtonFromString(eDataType, initialValue);
+			case TypesPackage.EKEY_STATE:
+				return createEKeyStateFromString(eDataType, initialValue);
+			case TypesPackage.VECTOR4D:
+				return createVector4dFromString(eDataType, initialValue);
+			case TypesPackage.VECTOR4F:
+				return createVector4fFromString(eDataType, initialValue);
+			case TypesPackage.COLOR4F:
+				return createColor4fFromString(eDataType, initialValue);
+			case TypesPackage.COLOR3F:
+				return createColor3fFromString(eDataType, initialValue);
+			case TypesPackage.VECTOR3D:
+				return createVector3dFromString(eDataType, initialValue);
+			case TypesPackage.VECTOR3F:
+				return createVector3fFromString(eDataType, initialValue);
+			case TypesPackage.VECTOR3I:
+				return createVector3iFromString(eDataType, initialValue);
+			case TypesPackage.VECTOR2F:
+				return createVector2fFromString(eDataType, initialValue);
+			case TypesPackage.VECTOR2I:
+				return createVector2iFromString(eDataType, initialValue);
+			case TypesPackage.VECTOR2D:
+				return createVector2dFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -158,47 +153,46 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	{
 		switch (eDataType.getClassifierID())
 		{
-		case TypesPackage.ENOTIFICATION_DIRECTION:
-			return convertENotificationDirectionToString(eDataType, instanceValue);
-		case TypesPackage.EMOVE_STATE:
-			return convertEMoveStateToString(eDataType, instanceValue);
-		case TypesPackage.EDIRECTION:
-			return convertEDirectionToString(eDataType, instanceValue);
-		case TypesPackage.ETIME_UNIT:
-			return convertETimeUnitToString(eDataType, instanceValue);
-		case TypesPackage.ENUMBER_COMPARISON_TYPE:
-			return convertENumberComparisonTypeToString(eDataType, instanceValue);
-		case TypesPackage.EVERTICAL_RELATIVE:
-			return convertEVerticalRelativeToString(eDataType, instanceValue);
-		case TypesPackage.EHORIZONTAL_RELATIVE:
-			return convertEHorizontalRelativeToString(eDataType, instanceValue);
-		case TypesPackage.EMOUSE_BUTTON:
-			return convertEMouseButtonToString(eDataType, instanceValue);
-		case TypesPackage.EKEY_STATE:
-			return convertEKeyStateToString(eDataType, instanceValue);
-		case TypesPackage.VECTOR4D:
-			return convertVector4dToString(eDataType, instanceValue);
-		case TypesPackage.VECTOR4F:
-			return convertVector4fToString(eDataType, instanceValue);
-		case TypesPackage.COLOR4F:
-			return convertColor4fToString(eDataType, instanceValue);
-		case TypesPackage.COLOR3F:
-			return convertColor3fToString(eDataType, instanceValue);
-		case TypesPackage.VECTOR3D:
-			return convertVector3dToString(eDataType, instanceValue);
-		case TypesPackage.VECTOR3F:
-			return convertVector3fToString(eDataType, instanceValue);
-		case TypesPackage.VECTOR3I:
-			return convertVector3iToString(eDataType, instanceValue);
-		case TypesPackage.VECTOR2F:
-			return convertVector2fToString(eDataType, instanceValue);
-		case TypesPackage.VECTOR2I:
-			return convertVector2iToString(eDataType, instanceValue);
-		case TypesPackage.VECTOR2D:
-			return convertVector2dToString(eDataType, instanceValue);
-		default:
-			throw new IllegalArgumentException(
-					"The datatype '" + eDataType.getName() + "' is not a valid classifier");
+			case TypesPackage.ENOTIFICATION_DIRECTION:
+				return convertENotificationDirectionToString(eDataType, instanceValue);
+			case TypesPackage.EMOVE_STATE:
+				return convertEMoveStateToString(eDataType, instanceValue);
+			case TypesPackage.EDIRECTION:
+				return convertEDirectionToString(eDataType, instanceValue);
+			case TypesPackage.ETIME_UNIT:
+				return convertETimeUnitToString(eDataType, instanceValue);
+			case TypesPackage.ENUMBER_COMPARISON_TYPE:
+				return convertENumberComparisonTypeToString(eDataType, instanceValue);
+			case TypesPackage.EVERTICAL_RELATIVE:
+				return convertEVerticalRelativeToString(eDataType, instanceValue);
+			case TypesPackage.EHORIZONTAL_RELATIVE:
+				return convertEHorizontalRelativeToString(eDataType, instanceValue);
+			case TypesPackage.EMOUSE_BUTTON:
+				return convertEMouseButtonToString(eDataType, instanceValue);
+			case TypesPackage.EKEY_STATE:
+				return convertEKeyStateToString(eDataType, instanceValue);
+			case TypesPackage.VECTOR4D:
+				return convertVector4dToString(eDataType, instanceValue);
+			case TypesPackage.VECTOR4F:
+				return convertVector4fToString(eDataType, instanceValue);
+			case TypesPackage.COLOR4F:
+				return convertColor4fToString(eDataType, instanceValue);
+			case TypesPackage.COLOR3F:
+				return convertColor3fToString(eDataType, instanceValue);
+			case TypesPackage.VECTOR3D:
+				return convertVector3dToString(eDataType, instanceValue);
+			case TypesPackage.VECTOR3F:
+				return convertVector3fToString(eDataType, instanceValue);
+			case TypesPackage.VECTOR3I:
+				return convertVector3iToString(eDataType, instanceValue);
+			case TypesPackage.VECTOR2F:
+				return convertVector2fToString(eDataType, instanceValue);
+			case TypesPackage.VECTOR2I:
+				return convertVector2iToString(eDataType, instanceValue);
+			case TypesPackage.VECTOR2D:
+				return convertVector2dToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -243,15 +237,10 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ENotificationDirection createENotificationDirectionFromString(	EDataType eDataType,
-																			String initialValue)
+	public ENotificationDirection createENotificationDirectionFromString(EDataType eDataType, String initialValue)
 	{
 		ENotificationDirection result = ENotificationDirection.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '"
-				+ initialValue
-				+ "' is not a valid enumerator of '"
-				+ eDataType.getName()
-				+ "'");
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -273,11 +262,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	public EMoveState createEMoveStateFromString(EDataType eDataType, String initialValue)
 	{
 		EMoveState result = EMoveState.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '"
-				+ initialValue
-				+ "' is not a valid enumerator of '"
-				+ eDataType.getName()
-				+ "'");
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -299,11 +284,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	public EDirection createEDirectionFromString(EDataType eDataType, String initialValue)
 	{
 		EDirection result = EDirection.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '"
-				+ initialValue
-				+ "' is not a valid enumerator of '"
-				+ eDataType.getName()
-				+ "'");
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -325,11 +306,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	public ETimeUnit createETimeUnitFromString(EDataType eDataType, String initialValue)
 	{
 		ETimeUnit result = ETimeUnit.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '"
-				+ initialValue
-				+ "' is not a valid enumerator of '"
-				+ eDataType.getName()
-				+ "'");
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -348,15 +325,10 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ENumberComparisonType createENumberComparisonTypeFromString(	EDataType eDataType,
-																		String initialValue)
+	public ENumberComparisonType createENumberComparisonTypeFromString(EDataType eDataType, String initialValue)
 	{
 		ENumberComparisonType result = ENumberComparisonType.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '"
-				+ initialValue
-				+ "' is not a valid enumerator of '"
-				+ eDataType.getName()
-				+ "'");
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -375,15 +347,10 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EVerticalRelative createEVerticalRelativeFromString(	EDataType eDataType,
-																String initialValue)
+	public EVerticalRelative createEVerticalRelativeFromString(EDataType eDataType, String initialValue)
 	{
 		EVerticalRelative result = EVerticalRelative.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '"
-				+ initialValue
-				+ "' is not a valid enumerator of '"
-				+ eDataType.getName()
-				+ "'");
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -402,15 +369,10 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EHorizontalRelative createEHorizontalRelativeFromString(	EDataType eDataType,
-																	String initialValue)
+	public EHorizontalRelative createEHorizontalRelativeFromString(EDataType eDataType, String initialValue)
 	{
 		EHorizontalRelative result = EHorizontalRelative.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '"
-				+ initialValue
-				+ "' is not a valid enumerator of '"
-				+ eDataType.getName()
-				+ "'");
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -432,11 +394,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	public EMouseButton createEMouseButtonFromString(EDataType eDataType, String initialValue)
 	{
 		EMouseButton result = EMouseButton.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '"
-				+ initialValue
-				+ "' is not a valid enumerator of '"
-				+ eDataType.getName()
-				+ "'");
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -458,11 +416,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	public EKeyState createEKeyStateFromString(EDataType eDataType, String initialValue)
 	{
 		EKeyState result = EKeyState.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '"
-				+ initialValue
-				+ "' is not a valid enumerator of '"
-				+ eDataType.getName()
-				+ "'");
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
 
@@ -494,8 +448,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				Double _valueOf_1 = Double.valueOf(split[1]);
 				Double _valueOf_2 = Double.valueOf(split[2]);
 				Double _valueOf_3 = Double.valueOf(split[3]);
-				return new Vector4d((_valueOf).doubleValue(), (_valueOf_1).doubleValue(),
-						(_valueOf_2).doubleValue(), (_valueOf_3).doubleValue());
+				return new Vector4d((_valueOf).doubleValue(), (_valueOf_1).doubleValue(), (_valueOf_2).doubleValue(), (_valueOf_3).doubleValue());
 			}
 		}
 		return new Vector4d(0, 0, 0, 0);
@@ -544,7 +497,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector4dToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertVector4d((Vector4dc) instanceValue);
+		return convertVector4d((Vector4dc)instanceValue);
 	}
 
 	/**
@@ -565,8 +518,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				Float _valueOf_1 = Float.valueOf(split[1]);
 				Float _valueOf_2 = Float.valueOf(split[2]);
 				Float _valueOf_3 = Float.valueOf(split[3]);
-				return new Vector4f((_valueOf).floatValue(), (_valueOf_1).floatValue(),
-						(_valueOf_2).floatValue(), (_valueOf_3).floatValue());
+				return new Vector4f((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue(), (_valueOf_3).floatValue());
 			}
 		}
 		return new Vector4f(0, 0, 0, 0);
@@ -615,7 +567,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector4fToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertVector4f((Vector4fc) instanceValue);
+		return convertVector4f((Vector4fc)instanceValue);
 	}
 
 	/**
@@ -636,8 +588,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				Float _valueOf_1 = Float.valueOf(split[1]);
 				Float _valueOf_2 = Float.valueOf(split[2]);
 				Float _valueOf_3 = Float.valueOf(split[3]);
-				return new Vector4f((_valueOf).floatValue(), (_valueOf_1).floatValue(),
-						(_valueOf_2).floatValue(), (_valueOf_3).floatValue());
+				return new Vector4f((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue(), (_valueOf_3).floatValue());
 			}
 		}
 		return new Vector4f(0, 0, 0, 0);
@@ -686,7 +637,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertColor4fToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertColor4f((Vector4fc) instanceValue);
+		return convertColor4f((Vector4fc)instanceValue);
 	}
 
 	/**
@@ -706,8 +657,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				Float _valueOf = Float.valueOf(split[0]);
 				Float _valueOf_1 = Float.valueOf(split[1]);
 				Float _valueOf_2 = Float.valueOf(split[2]);
-				return new Vector3f((_valueOf).floatValue(), (_valueOf_1).floatValue(),
-						(_valueOf_2).floatValue());
+				return new Vector3f((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue());
 			}
 		}
 		return new Vector3f(0, 0, 0);
@@ -753,7 +703,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertColor3fToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertColor3f((Vector3fc) instanceValue);
+		return convertColor3f((Vector3fc)instanceValue);
 	}
 
 	/**
@@ -773,8 +723,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				Double _valueOf = Double.valueOf(split[0]);
 				Double _valueOf_1 = Double.valueOf(split[1]);
 				Double _valueOf_2 = Double.valueOf(split[2]);
-				return new Vector3d((_valueOf).doubleValue(), (_valueOf_1).doubleValue(),
-						(_valueOf_2).doubleValue());
+				return new Vector3d((_valueOf).doubleValue(), (_valueOf_1).doubleValue(), (_valueOf_2).doubleValue());
 			}
 		}
 		return new Vector3d(0, 0, 0);
@@ -820,7 +769,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector3dToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertVector3d((Vector3dc) instanceValue);
+		return convertVector3d((Vector3dc)instanceValue);
 	}
 
 	/**
@@ -840,8 +789,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				Float _valueOf = Float.valueOf(split[0]);
 				Float _valueOf_1 = Float.valueOf(split[1]);
 				Float _valueOf_2 = Float.valueOf(split[2]);
-				return new Vector3f((_valueOf).floatValue(), (_valueOf_1).floatValue(),
-						(_valueOf_2).floatValue());
+				return new Vector3f((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue());
 			}
 		}
 		return new Vector3f(0, 0, 0);
@@ -887,7 +835,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector3fToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertVector3f((Vector3fc) instanceValue);
+		return convertVector3f((Vector3fc)instanceValue);
 	}
 
 	/**
@@ -907,8 +855,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				Integer _valueOf = Integer.valueOf(split[0]);
 				Integer _valueOf_1 = Integer.valueOf(split[1]);
 				Integer _valueOf_2 = Integer.valueOf(split[2]);
-				return new Vector3i((_valueOf).intValue(), (_valueOf_1).intValue(),
-						(_valueOf_2).intValue());
+				return new Vector3i((_valueOf).intValue(), (_valueOf_1).intValue(), (_valueOf_2).intValue());
 			}
 		}
 		return new Vector3i(0, 0, 0);
@@ -954,7 +901,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector3iToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertVector3i((Vector3ic) instanceValue);
+		return convertVector3i((Vector3ic)instanceValue);
 	}
 
 	/**
@@ -1016,7 +963,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector2fToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertVector2f((Vector2fc) instanceValue);
+		return convertVector2f((Vector2fc)instanceValue);
 	}
 
 	/**
@@ -1078,7 +1025,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector2iToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertVector2i((Vector2ic) instanceValue);
+		return convertVector2i((Vector2ic)instanceValue);
 	}
 
 	/**
@@ -1140,7 +1087,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 */
 	public String convertVector2dToString(EDataType eDataType, Object instanceValue)
 	{
-		return convertVector2d((Vector2dc) instanceValue);
+		return convertVector2d((Vector2dc)instanceValue);
 	}
 
 	/**
@@ -1151,7 +1098,7 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	@Override
 	public TypesPackage getTypesPackage()
 	{
-		return (TypesPackage) getEPackage();
+		return (TypesPackage)getEPackage();
 	}
 
 	/**

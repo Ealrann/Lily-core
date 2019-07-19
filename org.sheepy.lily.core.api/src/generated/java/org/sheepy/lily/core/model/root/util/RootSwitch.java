@@ -78,25 +78,24 @@ public class RootSwitch<T> extends Switch<T>
 	{
 		switch (classifierID)
 		{
-		case RootPackage.LOBJECT:
-		{
-			LObject lObject = (LObject) theEObject;
-			T result = caseLObject(lObject);
-			if (result == null) result = caseIInferenceObject(lObject);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case RootPackage.XACTION:
-		{
-			XAction xAction = (XAction) theEObject;
-			T result = caseXAction(xAction);
-			if (result == null) result = caseAction(xAction);
-			if (result == null) result = caseLNamedElement(xAction);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		default:
-			return defaultCase(theEObject);
+			case RootPackage.LOBJECT:
+			{
+				LObject lObject = (LObject)theEObject;
+				T result = caseLObject(lObject);
+				if (result == null) result = caseIInferenceObject(lObject);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case RootPackage.XACTION:
+			{
+				XAction xAction = (XAction)theEObject;
+				T result = caseXAction(xAction);
+				if (result == null) result = caseAction(xAction);
+				if (result == null) result = caseLNamedElement(xAction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			default: return defaultCase(theEObject);
 		}
 	}
 

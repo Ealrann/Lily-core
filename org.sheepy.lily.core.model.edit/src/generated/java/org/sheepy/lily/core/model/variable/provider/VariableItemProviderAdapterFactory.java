@@ -65,8 +65,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(
-			LilyEditPlugin.INSTANCE, VariablePackage.eNS_URI);
+	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(LilyEditPlugin.INSTANCE, VariablePackage.eNS_URI);
 
 	/**
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
@@ -274,7 +273,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
 		if (isFactoryForType(type))
 		{
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>) type).isInstance(adapter)))
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter)))
 			{
 				return adapter;
 			}
@@ -298,6 +297,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain)
 	{
 		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
@@ -308,6 +308,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ResourceLocator getResourceLocator()
 	{
 		return childCreationExtenderManager;
@@ -365,8 +366,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
 	{
 		if (chainVariableResolverItemProvider != null) chainVariableResolverItemProvider.dispose();
 		if (chainResolverItemProvider != null) chainResolverItemProvider.dispose();
-		if (directVariableResolverItemProvider != null)
-			directVariableResolverItemProvider.dispose();
+		if (directVariableResolverItemProvider != null) directVariableResolverItemProvider.dispose();
 		if (booleanChangeActionItemProvider != null) booleanChangeActionItemProvider.dispose();
 		if (varChangeActionPkgItemProvider != null) varChangeActionPkgItemProvider.dispose();
 	}

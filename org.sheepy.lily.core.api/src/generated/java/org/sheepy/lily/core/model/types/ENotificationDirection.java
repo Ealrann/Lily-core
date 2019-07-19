@@ -109,9 +109,13 @@ public enum ENotificationDirection implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ENotificationDirection[] VALUES_ARRAY = new ENotificationDirection[] {
-			PARENT, CHILDREN, SELF, ALL,
-	};
+	private static final ENotificationDirection[] VALUES_ARRAY = new ENotificationDirection[]
+		{
+			PARENT,
+			CHILDREN,
+			SELF,
+			ALL,
+		};
 
 	/**
 	 * A public read-only list of all the '<em><b>ENotification Direction</b></em>' enumerators.
@@ -119,8 +123,7 @@ public enum ENotificationDirection implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<ENotificationDirection> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ENotificationDirection> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>ENotification Direction</b></em>' literal with the specified literal value.
@@ -176,8 +179,7 @@ public enum ENotificationDirection implements Enumerator
 	{
 		switch (value)
 		{
-		case PARENT_VALUE:
-			return PARENT;
+			case PARENT_VALUE: return PARENT;
 		}
 		return null;
 	}
@@ -224,7 +226,7 @@ public enum ENotificationDirection implements Enumerator
 	@Override
 	public int getValue()
 	{
-		return value;
+	  return value;
 	}
 
 	/**
@@ -235,7 +237,7 @@ public enum ENotificationDirection implements Enumerator
 	@Override
 	public String getName()
 	{
-		return name;
+	  return name;
 	}
 
 	/**
@@ -246,7 +248,7 @@ public enum ENotificationDirection implements Enumerator
 	@Override
 	public String getLiteral()
 	{
-		return literal;
+	  return literal;
 	}
 
 	/**

@@ -115,14 +115,11 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 	 */
 	public static MaintainerPackage init()
 	{
-		if (isInited) return (MaintainerPackage) EPackage.Registry.INSTANCE
-				.getEPackage(MaintainerPackage.eNS_URI);
+		if (isInited) return (MaintainerPackage)EPackage.Registry.INSTANCE.getEPackage(MaintainerPackage.eNS_URI);
 
 		// Obtain or create and register package
 		Object registeredMaintainerPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-		MaintainerPackageImpl theMaintainerPackage = registeredMaintainerPackage instanceof MaintainerPackageImpl
-				? (MaintainerPackageImpl) registeredMaintainerPackage
-				: new MaintainerPackageImpl();
+		MaintainerPackageImpl theMaintainerPackage = registeredMaintainerPackage instanceof MaintainerPackageImpl ? (MaintainerPackageImpl)registeredMaintainerPackage : new MaintainerPackageImpl();
 
 		isInited = true;
 
@@ -131,41 +128,23 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 
 		// Obtain or create and register interdependencies
 		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
-		TypesPackageImpl theTypesPackage = (TypesPackageImpl) (registeredPackage instanceof TypesPackageImpl
-				? registeredPackage
-				: TypesPackage.eINSTANCE);
+		TypesPackageImpl theTypesPackage = (TypesPackageImpl)(registeredPackage instanceof TypesPackageImpl ? registeredPackage : TypesPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
-		ActionPackageImpl theActionPackage = (ActionPackageImpl) (registeredPackage instanceof ActionPackageImpl
-				? registeredPackage
-				: ActionPackage.eINSTANCE);
+		ActionPackageImpl theActionPackage = (ActionPackageImpl)(registeredPackage instanceof ActionPackageImpl ? registeredPackage : ActionPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
-		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl) (registeredPackage instanceof ApplicationPackageImpl
-				? registeredPackage
-				: ApplicationPackage.eINSTANCE);
+		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl)(registeredPackage instanceof ApplicationPackageImpl ? registeredPackage : ApplicationPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(RootPackage.eNS_URI);
-		RootPackageImpl theRootPackage = (RootPackageImpl) (registeredPackage instanceof RootPackageImpl
-				? registeredPackage
-				: RootPackage.eINSTANCE);
+		RootPackageImpl theRootPackage = (RootPackageImpl)(registeredPackage instanceof RootPackageImpl ? registeredPackage : RootPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
-		InferencePackageImpl theInferencePackage = (InferencePackageImpl) (registeredPackage instanceof InferencePackageImpl
-				? registeredPackage
-				: InferencePackage.eINSTANCE);
+		InferencePackageImpl theInferencePackage = (InferencePackageImpl)(registeredPackage instanceof InferencePackageImpl ? registeredPackage : InferencePackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(PresentationPackage.eNS_URI);
-		PresentationPackageImpl thePresentationPackage = (PresentationPackageImpl) (registeredPackage instanceof PresentationPackageImpl
-				? registeredPackage
-				: PresentationPackage.eINSTANCE);
+		PresentationPackageImpl thePresentationPackage = (PresentationPackageImpl)(registeredPackage instanceof PresentationPackageImpl ? registeredPackage : PresentationPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ResolverPackage.eNS_URI);
-		ResolverPackageImpl theResolverPackage = (ResolverPackageImpl) (registeredPackage instanceof ResolverPackageImpl
-				? registeredPackage
-				: ResolverPackage.eINSTANCE);
+		ResolverPackageImpl theResolverPackage = (ResolverPackageImpl)(registeredPackage instanceof ResolverPackageImpl ? registeredPackage : ResolverPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(UiPackage.eNS_URI);
-		UiPackageImpl theUiPackage = (UiPackageImpl) (registeredPackage instanceof UiPackageImpl
-				? registeredPackage
-				: UiPackage.eINSTANCE);
+		UiPackageImpl theUiPackage = (UiPackageImpl)(registeredPackage instanceof UiPackageImpl ? registeredPackage : UiPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(VariablePackage.eNS_URI);
-		VariablePackageImpl theVariablePackage = (VariablePackageImpl) (registeredPackage instanceof VariablePackageImpl
-				? registeredPackage
-				: VariablePackage.eINSTANCE);
+		VariablePackageImpl theVariablePackage = (VariablePackageImpl)(registeredPackage instanceof VariablePackageImpl ? registeredPackage : VariablePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theMaintainerPackage.createPackageContents();
@@ -218,7 +197,7 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 	@Override
 	public EReference getMaintainable_Maintainer()
 	{
-		return (EReference) maintainableEClass.getEStructuralFeatures().get(0);
+		return (EReference)maintainableEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -240,7 +219,7 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 	@Override
 	public EReference getMaintainer_Maintained()
 	{
-		return (EReference) maintainerEClass.getEStructuralFeatures().get(0);
+		return (EReference)maintainerEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -251,7 +230,7 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 	@Override
 	public MaintainerFactory getMaintainerFactory()
 	{
-		return (MaintainerFactory) getEFactoryInstance();
+		return (MaintainerFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -322,25 +301,17 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 		// Add supertypes to classes
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(maintainableEClass, Maintainable.class, "Maintainable", IS_ABSTRACT,
-				IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(maintainableEClass, Maintainable.class, "Maintainable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getMaintainer());
 		g2 = createEGenericType(maintainableEClass_T);
 		g1.getETypeArguments().add(g2);
-		initEReference(getMaintainable_Maintainer(), g1, this.getMaintainer_Maintained(),
-				"maintainer", null, 0, 1, Maintainable.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEReference(getMaintainable_Maintainer(), g1, this.getMaintainer_Maintained(), "maintainer", null, 0, 1, Maintainable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(maintainerEClass, Maintainer.class, "Maintainer", IS_ABSTRACT, IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEClass(maintainerEClass, Maintainer.class, "Maintainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		g1 = createEGenericType(this.getMaintainable());
 		g2 = createEGenericType(maintainerEClass_T);
 		g1.getETypeArguments().add(g2);
-		initEReference(getMaintainer_Maintained(), g1, this.getMaintainable_Maintainer(),
-				"maintained", null, 0, -1, Maintainer.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEReference(getMaintainer_Maintained(), g1, this.getMaintainable_Maintainer(), "maintained", null, 0, -1, Maintainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

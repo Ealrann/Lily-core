@@ -63,8 +63,7 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  *
  * @generated
  */
-public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container
-		implements AbstractLabel
+public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container implements AbstractLabel
 {
 	/**
 	 * The cached value of the '{@link #getContentObjects() <em>Content Objects</em>}' attribute.
@@ -84,8 +83,7 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Vector2ic POSITION_EDEFAULT = (Vector2ic) TypesFactory.eINSTANCE
-			.createFromString(TypesPackage.eINSTANCE.getVector2i(), "0;0");
+	protected static final Vector2ic POSITION_EDEFAULT = (Vector2ic)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getVector2i(), "0;0");
 
 	/**
 	 * The cached value of the '{@link #getPosition() <em>Position</em>}' attribute.
@@ -259,8 +257,8 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container
 	{
 		EList<LObject> oldContentObjects = contentObjects;
 		contentObjects = newContentObjects;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS, oldContentObjects, contentObjects));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS, oldContentObjects, contentObjects));
 	}
 
 	/**
@@ -284,8 +282,8 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container
 	{
 		Vector2ic oldPosition = position;
 		position = newPosition;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.ABSTRACT_LABEL__POSITION, oldPosition, position));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.ABSTRACT_LABEL__POSITION, oldPosition, position));
 	}
 
 	/**
@@ -308,12 +306,9 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container
 	public void setVerticalRelative(EVerticalRelative newVerticalRelative)
 	{
 		EVerticalRelative oldVerticalRelative = verticalRelative;
-		verticalRelative = newVerticalRelative == null
-				? VERTICAL_RELATIVE_EDEFAULT
-				: newVerticalRelative;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE, oldVerticalRelative,
-				verticalRelative));
+		verticalRelative = newVerticalRelative == null ? VERTICAL_RELATIVE_EDEFAULT : newVerticalRelative;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE, oldVerticalRelative, verticalRelative));
 	}
 
 	/**
@@ -336,12 +331,9 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container
 	public void setHorizontalRelative(EHorizontalRelative newHorizontalRelative)
 	{
 		EHorizontalRelative oldHorizontalRelative = horizontalRelative;
-		horizontalRelative = newHorizontalRelative == null
-				? HORIZONTAL_RELATIVE_EDEFAULT
-				: newHorizontalRelative;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE, oldHorizontalRelative,
-				horizontalRelative));
+		horizontalRelative = newHorizontalRelative == null ? HORIZONTAL_RELATIVE_EDEFAULT : newHorizontalRelative;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE, oldHorizontalRelative, horizontalRelative));
 	}
 
 	/**
@@ -365,8 +357,8 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container
 	{
 		int oldWidth = width;
 		width = newWidth;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.ABSTRACT_LABEL__WIDTH, oldWidth, width));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.ABSTRACT_LABEL__WIDTH, oldWidth, width));
 	}
 
 	/**
@@ -390,8 +382,8 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container
 	{
 		int oldHeight = height;
 		height = newHeight;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.ABSTRACT_LABEL__HEIGHT, oldHeight, height));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.ABSTRACT_LABEL__HEIGHT, oldHeight, height));
 	}
 
 	/**
@@ -415,8 +407,8 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container
 	{
 		String oldText = text;
 		text = newText;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.ABSTRACT_LABEL__TEXT, oldText, text));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.ABSTRACT_LABEL__TEXT, oldText, text));
 	}
 
 	/**
@@ -440,8 +432,8 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container
 	{
 		float oldFontScale = fontScale;
 		fontScale = newFontScale;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.ABSTRACT_LABEL__FONT_SCALE, oldFontScale, fontScale));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.ABSTRACT_LABEL__FONT_SCALE, oldFontScale, fontScale));
 	}
 
 	/**
@@ -467,7 +459,7 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container
 		boolean _isEmpty = unitRefs.isEmpty();
 		if (_isEmpty)
 		{
-			res = ECollections.<T> emptyEList();
+			res = ECollections.<T>emptyEList();
 		}
 		else
 		{
@@ -491,7 +483,7 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container
 			boolean _tripleEquals = (_contentObjects == null);
 			if (_tripleEquals)
 			{
-				this.setContentObjects(this.<LObject> createContainmentEList(Literals.LOBJECT));
+				this.setContentObjects(this.<LObject>createContainmentEList(Literals.LOBJECT));
 			}
 			_xblockexpression = this.getContentObjects();
 		}
@@ -548,22 +540,22 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container
 	{
 		switch (featureID)
 		{
-		case UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS:
-			return getContentObjects();
-		case UiPackage.ABSTRACT_LABEL__POSITION:
-			return getPosition();
-		case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE:
-			return getVerticalRelative();
-		case UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE:
-			return getHorizontalRelative();
-		case UiPackage.ABSTRACT_LABEL__WIDTH:
-			return getWidth();
-		case UiPackage.ABSTRACT_LABEL__HEIGHT:
-			return getHeight();
-		case UiPackage.ABSTRACT_LABEL__TEXT:
-			return getText();
-		case UiPackage.ABSTRACT_LABEL__FONT_SCALE:
-			return getFontScale();
+			case UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS:
+				return getContentObjects();
+			case UiPackage.ABSTRACT_LABEL__POSITION:
+				return getPosition();
+			case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE:
+				return getVerticalRelative();
+			case UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE:
+				return getHorizontalRelative();
+			case UiPackage.ABSTRACT_LABEL__WIDTH:
+				return getWidth();
+			case UiPackage.ABSTRACT_LABEL__HEIGHT:
+				return getHeight();
+			case UiPackage.ABSTRACT_LABEL__TEXT:
+				return getText();
+			case UiPackage.ABSTRACT_LABEL__FONT_SCALE:
+				return getFontScale();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -579,30 +571,30 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container
 	{
 		switch (featureID)
 		{
-		case UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS:
-			setContentObjects((EList<LObject>) newValue);
-			return;
-		case UiPackage.ABSTRACT_LABEL__POSITION:
-			setPosition((Vector2ic) newValue);
-			return;
-		case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE:
-			setVerticalRelative((EVerticalRelative) newValue);
-			return;
-		case UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE:
-			setHorizontalRelative((EHorizontalRelative) newValue);
-			return;
-		case UiPackage.ABSTRACT_LABEL__WIDTH:
-			setWidth((Integer) newValue);
-			return;
-		case UiPackage.ABSTRACT_LABEL__HEIGHT:
-			setHeight((Integer) newValue);
-			return;
-		case UiPackage.ABSTRACT_LABEL__TEXT:
-			setText((String) newValue);
-			return;
-		case UiPackage.ABSTRACT_LABEL__FONT_SCALE:
-			setFontScale((Float) newValue);
-			return;
+			case UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS:
+				setContentObjects((EList<LObject>)newValue);
+				return;
+			case UiPackage.ABSTRACT_LABEL__POSITION:
+				setPosition((Vector2ic)newValue);
+				return;
+			case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE:
+				setVerticalRelative((EVerticalRelative)newValue);
+				return;
+			case UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE:
+				setHorizontalRelative((EHorizontalRelative)newValue);
+				return;
+			case UiPackage.ABSTRACT_LABEL__WIDTH:
+				setWidth((Integer)newValue);
+				return;
+			case UiPackage.ABSTRACT_LABEL__HEIGHT:
+				setHeight((Integer)newValue);
+				return;
+			case UiPackage.ABSTRACT_LABEL__TEXT:
+				setText((String)newValue);
+				return;
+			case UiPackage.ABSTRACT_LABEL__FONT_SCALE:
+				setFontScale((Float)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -617,30 +609,30 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container
 	{
 		switch (featureID)
 		{
-		case UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS:
-			setContentObjects((EList<LObject>) null);
-			return;
-		case UiPackage.ABSTRACT_LABEL__POSITION:
-			setPosition(POSITION_EDEFAULT);
-			return;
-		case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE:
-			setVerticalRelative(VERTICAL_RELATIVE_EDEFAULT);
-			return;
-		case UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE:
-			setHorizontalRelative(HORIZONTAL_RELATIVE_EDEFAULT);
-			return;
-		case UiPackage.ABSTRACT_LABEL__WIDTH:
-			setWidth(WIDTH_EDEFAULT);
-			return;
-		case UiPackage.ABSTRACT_LABEL__HEIGHT:
-			setHeight(HEIGHT_EDEFAULT);
-			return;
-		case UiPackage.ABSTRACT_LABEL__TEXT:
-			setText(TEXT_EDEFAULT);
-			return;
-		case UiPackage.ABSTRACT_LABEL__FONT_SCALE:
-			setFontScale(FONT_SCALE_EDEFAULT);
-			return;
+			case UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS:
+				setContentObjects((EList<LObject>)null);
+				return;
+			case UiPackage.ABSTRACT_LABEL__POSITION:
+				setPosition(POSITION_EDEFAULT);
+				return;
+			case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE:
+				setVerticalRelative(VERTICAL_RELATIVE_EDEFAULT);
+				return;
+			case UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE:
+				setHorizontalRelative(HORIZONTAL_RELATIVE_EDEFAULT);
+				return;
+			case UiPackage.ABSTRACT_LABEL__WIDTH:
+				setWidth(WIDTH_EDEFAULT);
+				return;
+			case UiPackage.ABSTRACT_LABEL__HEIGHT:
+				setHeight(HEIGHT_EDEFAULT);
+				return;
+			case UiPackage.ABSTRACT_LABEL__TEXT:
+				setText(TEXT_EDEFAULT);
+				return;
+			case UiPackage.ABSTRACT_LABEL__FONT_SCALE:
+				setFontScale(FONT_SCALE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -655,24 +647,22 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container
 	{
 		switch (featureID)
 		{
-		case UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS:
-			return contentObjects != null;
-		case UiPackage.ABSTRACT_LABEL__POSITION:
-			return POSITION_EDEFAULT == null
-					? position != null
-					: !POSITION_EDEFAULT.equals(position);
-		case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE:
-			return verticalRelative != VERTICAL_RELATIVE_EDEFAULT;
-		case UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE:
-			return horizontalRelative != HORIZONTAL_RELATIVE_EDEFAULT;
-		case UiPackage.ABSTRACT_LABEL__WIDTH:
-			return width != WIDTH_EDEFAULT;
-		case UiPackage.ABSTRACT_LABEL__HEIGHT:
-			return height != HEIGHT_EDEFAULT;
-		case UiPackage.ABSTRACT_LABEL__TEXT:
-			return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
-		case UiPackage.ABSTRACT_LABEL__FONT_SCALE:
-			return fontScale != FONT_SCALE_EDEFAULT;
+			case UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS:
+				return contentObjects != null;
+			case UiPackage.ABSTRACT_LABEL__POSITION:
+				return POSITION_EDEFAULT == null ? position != null : !POSITION_EDEFAULT.equals(position);
+			case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE:
+				return verticalRelative != VERTICAL_RELATIVE_EDEFAULT;
+			case UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE:
+				return horizontalRelative != HORIZONTAL_RELATIVE_EDEFAULT;
+			case UiPackage.ABSTRACT_LABEL__WIDTH:
+				return width != WIDTH_EDEFAULT;
+			case UiPackage.ABSTRACT_LABEL__HEIGHT:
+				return height != HEIGHT_EDEFAULT;
+			case UiPackage.ABSTRACT_LABEL__TEXT:
+				return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT.equals(text);
+			case UiPackage.ABSTRACT_LABEL__FONT_SCALE:
+				return fontScale != FONT_SCALE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -689,26 +679,19 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container
 		{
 			switch (derivedFeatureID)
 			{
-			case UiPackage.ABSTRACT_LABEL__POSITION:
-				return PresentationPackage.IPOSITION_ELEMENT__POSITION;
-			case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE:
-				return PresentationPackage.IPOSITION_ELEMENT__VERTICAL_RELATIVE;
-			case UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE:
-				return PresentationPackage.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE;
-			default:
-				return -1;
+				case UiPackage.ABSTRACT_LABEL__POSITION: return PresentationPackage.IPOSITION_ELEMENT__POSITION;
+				case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE: return PresentationPackage.IPOSITION_ELEMENT__VERTICAL_RELATIVE;
+				case UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE: return PresentationPackage.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE;
+				default: return -1;
 			}
 		}
 		if (baseClass == ISizedElement.class)
 		{
 			switch (derivedFeatureID)
 			{
-			case UiPackage.ABSTRACT_LABEL__WIDTH:
-				return PresentationPackage.ISIZED_ELEMENT__WIDTH;
-			case UiPackage.ABSTRACT_LABEL__HEIGHT:
-				return PresentationPackage.ISIZED_ELEMENT__HEIGHT;
-			default:
-				return -1;
+				case UiPackage.ABSTRACT_LABEL__WIDTH: return PresentationPackage.ISIZED_ELEMENT__WIDTH;
+				case UiPackage.ABSTRACT_LABEL__HEIGHT: return PresentationPackage.ISIZED_ELEMENT__HEIGHT;
+				default: return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
@@ -726,26 +709,19 @@ public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container
 		{
 			switch (baseFeatureID)
 			{
-			case PresentationPackage.IPOSITION_ELEMENT__POSITION:
-				return UiPackage.ABSTRACT_LABEL__POSITION;
-			case PresentationPackage.IPOSITION_ELEMENT__VERTICAL_RELATIVE:
-				return UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE;
-			case PresentationPackage.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE:
-				return UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE;
-			default:
-				return -1;
+				case PresentationPackage.IPOSITION_ELEMENT__POSITION: return UiPackage.ABSTRACT_LABEL__POSITION;
+				case PresentationPackage.IPOSITION_ELEMENT__VERTICAL_RELATIVE: return UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE;
+				case PresentationPackage.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE: return UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE;
+				default: return -1;
 			}
 		}
 		if (baseClass == ISizedElement.class)
 		{
 			switch (baseFeatureID)
 			{
-			case PresentationPackage.ISIZED_ELEMENT__WIDTH:
-				return UiPackage.ABSTRACT_LABEL__WIDTH;
-			case PresentationPackage.ISIZED_ELEMENT__HEIGHT:
-				return UiPackage.ABSTRACT_LABEL__HEIGHT;
-			default:
-				return -1;
+				case PresentationPackage.ISIZED_ELEMENT__WIDTH: return UiPackage.ABSTRACT_LABEL__WIDTH;
+				case PresentationPackage.ISIZED_ELEMENT__HEIGHT: return UiPackage.ABSTRACT_LABEL__HEIGHT;
+				default: return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

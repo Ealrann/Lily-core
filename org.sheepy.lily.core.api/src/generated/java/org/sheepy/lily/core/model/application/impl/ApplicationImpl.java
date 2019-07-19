@@ -207,8 +207,7 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Vector2ic SIZE_EDEFAULT = (Vector2ic) TypesFactory.eINSTANCE
-			.createFromString(TypesPackage.eINSTANCE.getVector2i(), "400,400");
+	protected static final Vector2ic SIZE_EDEFAULT = (Vector2ic)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getVector2i(), "400,400");
 
 	/**
 	 * The cached value of the '{@link #getSize() <em>Size</em>}' attribute.
@@ -292,9 +291,8 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	{
 		EList<LObject> oldContentObjects = contentObjects;
 		contentObjects = newContentObjects;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				ApplicationPackage.APPLICATION__CONTENT_OBJECTS, oldContentObjects,
-				contentObjects));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__CONTENT_OBJECTS, oldContentObjects, contentObjects));
 	}
 
 	/**
@@ -307,8 +305,7 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	{
 		if (views == null)
 		{
-			views = new EObjectContainmentEList<IView>(IView.class, this,
-					ApplicationPackage.APPLICATION__VIEWS);
+			views = new EObjectContainmentEList<IView>(IView.class, this, ApplicationPackage.APPLICATION__VIEWS);
 		}
 		return views;
 	}
@@ -323,8 +320,7 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	{
 		if (engines == null)
 		{
-			engines = new EObjectContainmentEList<IEngine>(IEngine.class, this,
-					ApplicationPackage.APPLICATION__ENGINES);
+			engines = new EObjectContainmentEList<IEngine>(IEngine.class, this, ApplicationPackage.APPLICATION__ENGINES);
 		}
 		return engines;
 	}
@@ -350,8 +346,8 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	{
 		boolean oldRun = run;
 		run = newRun;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				ApplicationPackage.APPLICATION__RUN, oldRun, run));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__RUN, oldRun, run));
 	}
 
 	/**
@@ -375,8 +371,8 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	{
 		boolean oldFullscreen = fullscreen;
 		fullscreen = newFullscreen;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				ApplicationPackage.APPLICATION__FULLSCREEN, oldFullscreen, fullscreen));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__FULLSCREEN, oldFullscreen, fullscreen));
 	}
 
 	/**
@@ -400,8 +396,8 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	{
 		boolean oldResizeable = resizeable;
 		resizeable = newResizeable;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				ApplicationPackage.APPLICATION__RESIZEABLE, oldResizeable, resizeable));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__RESIZEABLE, oldResizeable, resizeable));
 	}
 
 	/**
@@ -425,8 +421,8 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	{
 		boolean oldHeadless = headless;
 		headless = newHeadless;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				ApplicationPackage.APPLICATION__HEADLESS, oldHeadless, headless));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__HEADLESS, oldHeadless, headless));
 	}
 
 	/**
@@ -450,8 +446,8 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	{
 		String oldTitle = title;
 		title = newTitle;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				ApplicationPackage.APPLICATION__TITLE, oldTitle, title));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__TITLE, oldTitle, title));
 	}
 
 	/**
@@ -475,8 +471,8 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	{
 		Vector2ic oldSize = size;
 		size = newSize;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				ApplicationPackage.APPLICATION__SIZE, oldSize, size));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__SIZE, oldSize, size));
 	}
 
 	/**
@@ -489,13 +485,12 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	{
 		if (currentView != null && currentView.eIsProxy())
 		{
-			InternalEObject oldCurrentView = (InternalEObject) currentView;
-			currentView = (IView) eResolveProxy(oldCurrentView);
+			InternalEObject oldCurrentView = (InternalEObject)currentView;
+			currentView = (IView)eResolveProxy(oldCurrentView);
 			if (currentView != oldCurrentView)
 			{
-				if (eNotificationRequired()) eNotify(new ENotificationImpl(this,
-						Notification.RESOLVE, ApplicationPackage.APPLICATION__CURRENT_VIEW,
-						oldCurrentView, currentView));
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.APPLICATION__CURRENT_VIEW, oldCurrentView, currentView));
 			}
 		}
 		return currentView;
@@ -521,8 +516,8 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	{
 		IView oldCurrentView = currentView;
 		currentView = newCurrentView;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				ApplicationPackage.APPLICATION__CURRENT_VIEW, oldCurrentView, currentView));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__CURRENT_VIEW, oldCurrentView, currentView));
 	}
 
 	/**
@@ -546,8 +541,8 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	{
 		int oldCadenceInHz = cadenceInHz;
 		cadenceInHz = newCadenceInHz;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				ApplicationPackage.APPLICATION__CADENCE_IN_HZ, oldCadenceInHz, cadenceInHz));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__CADENCE_IN_HZ, oldCadenceInHz, cadenceInHz));
 	}
 
 	/**
@@ -573,7 +568,7 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 		boolean _isEmpty = unitRefs.isEmpty();
 		if (_isEmpty)
 		{
-			res = ECollections.<T> emptyEList();
+			res = ECollections.<T>emptyEList();
 		}
 		else
 		{
@@ -597,7 +592,7 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 			boolean _tripleEquals = (_contentObjects == null);
 			if (_tripleEquals)
 			{
-				this.setContentObjects(this.<LObject> createContainmentEList(Literals.LOBJECT));
+				this.setContentObjects(this.<LObject>createContainmentEList(Literals.LOBJECT));
 			}
 			_xblockexpression = this.getContentObjects();
 		}
@@ -650,16 +645,14 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-											int featureID,
-											NotificationChain msgs)
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
 		switch (featureID)
 		{
-		case ApplicationPackage.APPLICATION__VIEWS:
-			return ((InternalEList<?>) getViews()).basicRemove(otherEnd, msgs);
-		case ApplicationPackage.APPLICATION__ENGINES:
-			return ((InternalEList<?>) getEngines()).basicRemove(otherEnd, msgs);
+			case ApplicationPackage.APPLICATION__VIEWS:
+				return ((InternalEList<?>)getViews()).basicRemove(otherEnd, msgs);
+			case ApplicationPackage.APPLICATION__ENGINES:
+				return ((InternalEList<?>)getEngines()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -674,29 +667,29 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	{
 		switch (featureID)
 		{
-		case ApplicationPackage.APPLICATION__CONTENT_OBJECTS:
-			return getContentObjects();
-		case ApplicationPackage.APPLICATION__VIEWS:
-			return getViews();
-		case ApplicationPackage.APPLICATION__ENGINES:
-			return getEngines();
-		case ApplicationPackage.APPLICATION__RUN:
-			return isRun();
-		case ApplicationPackage.APPLICATION__FULLSCREEN:
-			return isFullscreen();
-		case ApplicationPackage.APPLICATION__RESIZEABLE:
-			return isResizeable();
-		case ApplicationPackage.APPLICATION__HEADLESS:
-			return isHeadless();
-		case ApplicationPackage.APPLICATION__TITLE:
-			return getTitle();
-		case ApplicationPackage.APPLICATION__SIZE:
-			return getSize();
-		case ApplicationPackage.APPLICATION__CURRENT_VIEW:
-			if (resolve) return getCurrentView();
-			return basicGetCurrentView();
-		case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
-			return getCadenceInHz();
+			case ApplicationPackage.APPLICATION__CONTENT_OBJECTS:
+				return getContentObjects();
+			case ApplicationPackage.APPLICATION__VIEWS:
+				return getViews();
+			case ApplicationPackage.APPLICATION__ENGINES:
+				return getEngines();
+			case ApplicationPackage.APPLICATION__RUN:
+				return isRun();
+			case ApplicationPackage.APPLICATION__FULLSCREEN:
+				return isFullscreen();
+			case ApplicationPackage.APPLICATION__RESIZEABLE:
+				return isResizeable();
+			case ApplicationPackage.APPLICATION__HEADLESS:
+				return isHeadless();
+			case ApplicationPackage.APPLICATION__TITLE:
+				return getTitle();
+			case ApplicationPackage.APPLICATION__SIZE:
+				return getSize();
+			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
+				if (resolve) return getCurrentView();
+				return basicGetCurrentView();
+			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
+				return getCadenceInHz();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -712,41 +705,41 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	{
 		switch (featureID)
 		{
-		case ApplicationPackage.APPLICATION__CONTENT_OBJECTS:
-			setContentObjects((EList<LObject>) newValue);
-			return;
-		case ApplicationPackage.APPLICATION__VIEWS:
-			getViews().clear();
-			getViews().addAll((Collection<? extends IView>) newValue);
-			return;
-		case ApplicationPackage.APPLICATION__ENGINES:
-			getEngines().clear();
-			getEngines().addAll((Collection<? extends IEngine>) newValue);
-			return;
-		case ApplicationPackage.APPLICATION__RUN:
-			setRun((Boolean) newValue);
-			return;
-		case ApplicationPackage.APPLICATION__FULLSCREEN:
-			setFullscreen((Boolean) newValue);
-			return;
-		case ApplicationPackage.APPLICATION__RESIZEABLE:
-			setResizeable((Boolean) newValue);
-			return;
-		case ApplicationPackage.APPLICATION__HEADLESS:
-			setHeadless((Boolean) newValue);
-			return;
-		case ApplicationPackage.APPLICATION__TITLE:
-			setTitle((String) newValue);
-			return;
-		case ApplicationPackage.APPLICATION__SIZE:
-			setSize((Vector2ic) newValue);
-			return;
-		case ApplicationPackage.APPLICATION__CURRENT_VIEW:
-			setCurrentView((IView) newValue);
-			return;
-		case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
-			setCadenceInHz((Integer) newValue);
-			return;
+			case ApplicationPackage.APPLICATION__CONTENT_OBJECTS:
+				setContentObjects((EList<LObject>)newValue);
+				return;
+			case ApplicationPackage.APPLICATION__VIEWS:
+				getViews().clear();
+				getViews().addAll((Collection<? extends IView>)newValue);
+				return;
+			case ApplicationPackage.APPLICATION__ENGINES:
+				getEngines().clear();
+				getEngines().addAll((Collection<? extends IEngine>)newValue);
+				return;
+			case ApplicationPackage.APPLICATION__RUN:
+				setRun((Boolean)newValue);
+				return;
+			case ApplicationPackage.APPLICATION__FULLSCREEN:
+				setFullscreen((Boolean)newValue);
+				return;
+			case ApplicationPackage.APPLICATION__RESIZEABLE:
+				setResizeable((Boolean)newValue);
+				return;
+			case ApplicationPackage.APPLICATION__HEADLESS:
+				setHeadless((Boolean)newValue);
+				return;
+			case ApplicationPackage.APPLICATION__TITLE:
+				setTitle((String)newValue);
+				return;
+			case ApplicationPackage.APPLICATION__SIZE:
+				setSize((Vector2ic)newValue);
+				return;
+			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
+				setCurrentView((IView)newValue);
+				return;
+			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
+				setCadenceInHz((Integer)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -761,39 +754,39 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	{
 		switch (featureID)
 		{
-		case ApplicationPackage.APPLICATION__CONTENT_OBJECTS:
-			setContentObjects((EList<LObject>) null);
-			return;
-		case ApplicationPackage.APPLICATION__VIEWS:
-			getViews().clear();
-			return;
-		case ApplicationPackage.APPLICATION__ENGINES:
-			getEngines().clear();
-			return;
-		case ApplicationPackage.APPLICATION__RUN:
-			setRun(RUN_EDEFAULT);
-			return;
-		case ApplicationPackage.APPLICATION__FULLSCREEN:
-			setFullscreen(FULLSCREEN_EDEFAULT);
-			return;
-		case ApplicationPackage.APPLICATION__RESIZEABLE:
-			setResizeable(RESIZEABLE_EDEFAULT);
-			return;
-		case ApplicationPackage.APPLICATION__HEADLESS:
-			setHeadless(HEADLESS_EDEFAULT);
-			return;
-		case ApplicationPackage.APPLICATION__TITLE:
-			setTitle(TITLE_EDEFAULT);
-			return;
-		case ApplicationPackage.APPLICATION__SIZE:
-			setSize(SIZE_EDEFAULT);
-			return;
-		case ApplicationPackage.APPLICATION__CURRENT_VIEW:
-			setCurrentView((IView) null);
-			return;
-		case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
-			setCadenceInHz(CADENCE_IN_HZ_EDEFAULT);
-			return;
+			case ApplicationPackage.APPLICATION__CONTENT_OBJECTS:
+				setContentObjects((EList<LObject>)null);
+				return;
+			case ApplicationPackage.APPLICATION__VIEWS:
+				getViews().clear();
+				return;
+			case ApplicationPackage.APPLICATION__ENGINES:
+				getEngines().clear();
+				return;
+			case ApplicationPackage.APPLICATION__RUN:
+				setRun(RUN_EDEFAULT);
+				return;
+			case ApplicationPackage.APPLICATION__FULLSCREEN:
+				setFullscreen(FULLSCREEN_EDEFAULT);
+				return;
+			case ApplicationPackage.APPLICATION__RESIZEABLE:
+				setResizeable(RESIZEABLE_EDEFAULT);
+				return;
+			case ApplicationPackage.APPLICATION__HEADLESS:
+				setHeadless(HEADLESS_EDEFAULT);
+				return;
+			case ApplicationPackage.APPLICATION__TITLE:
+				setTitle(TITLE_EDEFAULT);
+				return;
+			case ApplicationPackage.APPLICATION__SIZE:
+				setSize(SIZE_EDEFAULT);
+				return;
+			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
+				setCurrentView((IView)null);
+				return;
+			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
+				setCadenceInHz(CADENCE_IN_HZ_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -808,28 +801,28 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	{
 		switch (featureID)
 		{
-		case ApplicationPackage.APPLICATION__CONTENT_OBJECTS:
-			return contentObjects != null;
-		case ApplicationPackage.APPLICATION__VIEWS:
-			return views != null && !views.isEmpty();
-		case ApplicationPackage.APPLICATION__ENGINES:
-			return engines != null && !engines.isEmpty();
-		case ApplicationPackage.APPLICATION__RUN:
-			return run != RUN_EDEFAULT;
-		case ApplicationPackage.APPLICATION__FULLSCREEN:
-			return fullscreen != FULLSCREEN_EDEFAULT;
-		case ApplicationPackage.APPLICATION__RESIZEABLE:
-			return resizeable != RESIZEABLE_EDEFAULT;
-		case ApplicationPackage.APPLICATION__HEADLESS:
-			return headless != HEADLESS_EDEFAULT;
-		case ApplicationPackage.APPLICATION__TITLE:
-			return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
-		case ApplicationPackage.APPLICATION__SIZE:
-			return SIZE_EDEFAULT == null ? size != null : !SIZE_EDEFAULT.equals(size);
-		case ApplicationPackage.APPLICATION__CURRENT_VIEW:
-			return currentView != null;
-		case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
-			return cadenceInHz != CADENCE_IN_HZ_EDEFAULT;
+			case ApplicationPackage.APPLICATION__CONTENT_OBJECTS:
+				return contentObjects != null;
+			case ApplicationPackage.APPLICATION__VIEWS:
+				return views != null && !views.isEmpty();
+			case ApplicationPackage.APPLICATION__ENGINES:
+				return engines != null && !engines.isEmpty();
+			case ApplicationPackage.APPLICATION__RUN:
+				return run != RUN_EDEFAULT;
+			case ApplicationPackage.APPLICATION__FULLSCREEN:
+				return fullscreen != FULLSCREEN_EDEFAULT;
+			case ApplicationPackage.APPLICATION__RESIZEABLE:
+				return resizeable != RESIZEABLE_EDEFAULT;
+			case ApplicationPackage.APPLICATION__HEADLESS:
+				return headless != HEADLESS_EDEFAULT;
+			case ApplicationPackage.APPLICATION__TITLE:
+				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
+			case ApplicationPackage.APPLICATION__SIZE:
+				return SIZE_EDEFAULT == null ? size != null : !SIZE_EDEFAULT.equals(size);
+			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
+				return currentView != null;
+			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
+				return cadenceInHz != CADENCE_IN_HZ_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

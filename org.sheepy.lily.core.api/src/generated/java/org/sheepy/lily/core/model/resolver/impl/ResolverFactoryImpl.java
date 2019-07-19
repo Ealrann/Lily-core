@@ -30,13 +30,13 @@ public class ResolverFactoryImpl extends EFactoryImpl implements ResolverFactory
 	{
 		try
 		{
-			ResolverFactory theResolverFactory = (ResolverFactory) EPackage.Registry.INSTANCE
-					.getEFactory(ResolverPackage.eNS_URI);
+			ResolverFactory theResolverFactory = (ResolverFactory)EPackage.Registry.INSTANCE.getEFactory(ResolverPackage.eNS_URI);
 			if (theResolverFactory != null)
 			{
 				return theResolverFactory;
 			}
-		} catch (Exception exception)
+		}
+		catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -64,13 +64,10 @@ public class ResolverFactoryImpl extends EFactoryImpl implements ResolverFactory
 	{
 		switch (eClass.getClassifierID())
 		{
-		case ResolverPackage.EREFERENCE_RESOLVER:
-			return createEReferenceResolver();
-		case ResolverPackage.CHAIN_RESOLVER:
-			return createChainResolver();
-		default:
-			throw new IllegalArgumentException(
-					"The class '" + eClass.getName() + "' is not a valid classifier");
+			case ResolverPackage.EREFERENCE_RESOLVER: return createEReferenceResolver();
+			case ResolverPackage.CHAIN_RESOLVER: return createChainResolver();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -106,7 +103,7 @@ public class ResolverFactoryImpl extends EFactoryImpl implements ResolverFactory
 	@Override
 	public ResolverPackage getResolverPackage()
 	{
-		return (ResolverPackage) getEPackage();
+		return (ResolverPackage)getEPackage();
 	}
 
 	/**

@@ -36,8 +36,7 @@ import org.sheepy.lily.core.model.root.LObject;
  *
  * @generated
  */
-public class EReferenceResolverImpl extends MinimalEObjectImpl.Container
-		implements EReferenceResolver
+public class EReferenceResolverImpl extends MinimalEObjectImpl.Container implements EReferenceResolver
 {
 	/**
 	 * The default value of the '{@link #getReferenceName() <em>Reference Name</em>}' attribute.
@@ -131,9 +130,8 @@ public class EReferenceResolverImpl extends MinimalEObjectImpl.Container
 	{
 		String oldReferenceName = referenceName;
 		referenceName = newReferenceName;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				ResolverPackage.EREFERENCE_RESOLVER__REFERENCE_NAME, oldReferenceName,
-				referenceName));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ResolverPackage.EREFERENCE_RESOLVER__REFERENCE_NAME, oldReferenceName, referenceName));
 	}
 
 	/**
@@ -157,8 +155,8 @@ public class EReferenceResolverImpl extends MinimalEObjectImpl.Container
 	{
 		String oldClassName = className;
 		className = newClassName;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				ResolverPackage.EREFERENCE_RESOLVER__CLASS_NAME, oldClassName, className));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ResolverPackage.EREFERENCE_RESOLVER__CLASS_NAME, oldClassName, className));
 	}
 
 	/**
@@ -171,14 +169,12 @@ public class EReferenceResolverImpl extends MinimalEObjectImpl.Container
 	{
 		if (internalReference != null && internalReference.eIsProxy())
 		{
-			InternalEObject oldInternalReference = (InternalEObject) internalReference;
-			internalReference = (EReference) eResolveProxy(oldInternalReference);
+			InternalEObject oldInternalReference = (InternalEObject)internalReference;
+			internalReference = (EReference)eResolveProxy(oldInternalReference);
 			if (internalReference != oldInternalReference)
 			{
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							ResolverPackage.EREFERENCE_RESOLVER__INTERNAL_REFERENCE,
-							oldInternalReference, internalReference));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ResolverPackage.EREFERENCE_RESOLVER__INTERNAL_REFERENCE, oldInternalReference, internalReference));
 			}
 		}
 		return internalReference;
@@ -204,9 +200,8 @@ public class EReferenceResolverImpl extends MinimalEObjectImpl.Container
 	{
 		EReference oldInternalReference = internalReference;
 		internalReference = newInternalReference;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				ResolverPackage.EREFERENCE_RESOLVER__INTERNAL_REFERENCE, oldInternalReference,
-				internalReference));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ResolverPackage.EREFERENCE_RESOLVER__INTERNAL_REFERENCE, oldInternalReference, internalReference));
 	}
 
 	/**
@@ -241,8 +236,7 @@ public class EReferenceResolverImpl extends MinimalEObjectImpl.Container
 				Object _eGet = source.eGet(this.getInternalReference());
 				for (final Object obj : ((EList<?>) _eGet))
 				{
-					if (((this.getClassName() == null)
-							|| ((EObject) obj).eClass().getName().equals(this.getClassName())))
+					if (((this.getClassName() == null) || ((EObject) obj).eClass().getName().equals(this.getClassName())))
 					{
 						collected.add(((LObject) obj));
 					}
@@ -252,8 +246,7 @@ public class EReferenceResolverImpl extends MinimalEObjectImpl.Container
 			{
 				Object _eGet_1 = source.eGet(this.getInternalReference());
 				final LObject target = ((LObject) _eGet_1);
-				if (((this.getClassName() == null)
-						|| target.eClass().getName().equals(this.getClassName())))
+				if (((this.getClassName() == null) || target.eClass().getName().equals(this.getClassName())))
 				{
 					collected.add(target);
 				}
@@ -271,13 +264,13 @@ public class EReferenceResolverImpl extends MinimalEObjectImpl.Container
 	{
 		switch (featureID)
 		{
-		case ResolverPackage.EREFERENCE_RESOLVER__REFERENCE_NAME:
-			return getReferenceName();
-		case ResolverPackage.EREFERENCE_RESOLVER__CLASS_NAME:
-			return getClassName();
-		case ResolverPackage.EREFERENCE_RESOLVER__INTERNAL_REFERENCE:
-			if (resolve) return getInternalReference();
-			return basicGetInternalReference();
+			case ResolverPackage.EREFERENCE_RESOLVER__REFERENCE_NAME:
+				return getReferenceName();
+			case ResolverPackage.EREFERENCE_RESOLVER__CLASS_NAME:
+				return getClassName();
+			case ResolverPackage.EREFERENCE_RESOLVER__INTERNAL_REFERENCE:
+				if (resolve) return getInternalReference();
+				return basicGetInternalReference();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -292,15 +285,15 @@ public class EReferenceResolverImpl extends MinimalEObjectImpl.Container
 	{
 		switch (featureID)
 		{
-		case ResolverPackage.EREFERENCE_RESOLVER__REFERENCE_NAME:
-			setReferenceName((String) newValue);
-			return;
-		case ResolverPackage.EREFERENCE_RESOLVER__CLASS_NAME:
-			setClassName((String) newValue);
-			return;
-		case ResolverPackage.EREFERENCE_RESOLVER__INTERNAL_REFERENCE:
-			setInternalReference((EReference) newValue);
-			return;
+			case ResolverPackage.EREFERENCE_RESOLVER__REFERENCE_NAME:
+				setReferenceName((String)newValue);
+				return;
+			case ResolverPackage.EREFERENCE_RESOLVER__CLASS_NAME:
+				setClassName((String)newValue);
+				return;
+			case ResolverPackage.EREFERENCE_RESOLVER__INTERNAL_REFERENCE:
+				setInternalReference((EReference)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -315,15 +308,15 @@ public class EReferenceResolverImpl extends MinimalEObjectImpl.Container
 	{
 		switch (featureID)
 		{
-		case ResolverPackage.EREFERENCE_RESOLVER__REFERENCE_NAME:
-			setReferenceName(REFERENCE_NAME_EDEFAULT);
-			return;
-		case ResolverPackage.EREFERENCE_RESOLVER__CLASS_NAME:
-			setClassName(CLASS_NAME_EDEFAULT);
-			return;
-		case ResolverPackage.EREFERENCE_RESOLVER__INTERNAL_REFERENCE:
-			setInternalReference((EReference) null);
-			return;
+			case ResolverPackage.EREFERENCE_RESOLVER__REFERENCE_NAME:
+				setReferenceName(REFERENCE_NAME_EDEFAULT);
+				return;
+			case ResolverPackage.EREFERENCE_RESOLVER__CLASS_NAME:
+				setClassName(CLASS_NAME_EDEFAULT);
+				return;
+			case ResolverPackage.EREFERENCE_RESOLVER__INTERNAL_REFERENCE:
+				setInternalReference((EReference)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -338,16 +331,12 @@ public class EReferenceResolverImpl extends MinimalEObjectImpl.Container
 	{
 		switch (featureID)
 		{
-		case ResolverPackage.EREFERENCE_RESOLVER__REFERENCE_NAME:
-			return REFERENCE_NAME_EDEFAULT == null
-					? referenceName != null
-					: !REFERENCE_NAME_EDEFAULT.equals(referenceName);
-		case ResolverPackage.EREFERENCE_RESOLVER__CLASS_NAME:
-			return CLASS_NAME_EDEFAULT == null
-					? className != null
-					: !CLASS_NAME_EDEFAULT.equals(className);
-		case ResolverPackage.EREFERENCE_RESOLVER__INTERNAL_REFERENCE:
-			return internalReference != null;
+			case ResolverPackage.EREFERENCE_RESOLVER__REFERENCE_NAME:
+				return REFERENCE_NAME_EDEFAULT == null ? referenceName != null : !REFERENCE_NAME_EDEFAULT.equals(referenceName);
+			case ResolverPackage.EREFERENCE_RESOLVER__CLASS_NAME:
+				return CLASS_NAME_EDEFAULT == null ? className != null : !CLASS_NAME_EDEFAULT.equals(className);
+			case ResolverPackage.EREFERENCE_RESOLVER__INTERNAL_REFERENCE:
+				return internalReference != null;
 		}
 		return super.eIsSet(featureID);
 	}

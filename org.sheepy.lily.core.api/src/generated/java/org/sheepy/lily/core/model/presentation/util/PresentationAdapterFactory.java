@@ -68,7 +68,7 @@ public class PresentationAdapterFactory extends AdapterFactoryImpl
 		}
 		if (object instanceof EObject)
 		{
-			return ((EObject) object).eClass().getEPackage() == modelPackage;
+			return ((EObject)object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -80,78 +80,78 @@ public class PresentationAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	protected PresentationSwitch<Adapter> modelSwitch = new PresentationSwitch<Adapter>()
-	{
-		@Override
-		public Adapter caseIPositionElement(IPositionElement object)
 		{
-			return createIPositionElementAdapter();
-		}
-		@Override
-		public Adapter caseISizedElement(ISizedElement object)
-		{
-			return createISizedElementAdapter();
-		}
-		@Override
-		public Adapter caseIUIView(IUIView object)
-		{
-			return createIUIViewAdapter();
-		}
-		@Override
-		public Adapter caseTranparentUIView(TranparentUIView object)
-		{
-			return createTranparentUIViewAdapter();
-		}
-		@Override
-		public Adapter caseIMusicView(IMusicView object)
-		{
-			return createIMusicViewAdapter();
-		}
-		@Override
-		public Adapter caseISizedView(ISizedView object)
-		{
-			return createISizedViewAdapter();
-		}
-		@Override
-		public Adapter caseIUIElement(IUIElement object)
-		{
-			return createIUIElementAdapter();
-		}
-		@Override
-		public Adapter caseUIPage(UIPage object)
-		{
-			return createUIPageAdapter();
-		}
-		@Override
-		public Adapter caseIPanel(IPanel object)
-		{
-			return createIPanelAdapter();
-		}
-		@Override
-		public Adapter caseIInferenceObject(IInferenceObject object)
-		{
-			return createIInferenceObjectAdapter();
-		}
-		@Override
-		public Adapter caseLObject(LObject object)
-		{
-			return createLObjectAdapter();
-		}
-		@Override
-		public Adapter caseIView(IView object)
-		{
-			return createIViewAdapter();
-		}
-		@Override
-		public Adapter caseLNamedElement(LNamedElement object)
-		{
-			return createLNamedElementAdapter();
-		}
-		@Override
-		public Adapter defaultCase(EObject object)
-		{
-			return createEObjectAdapter();
-		}
-	};
+			@Override
+			public Adapter caseIPositionElement(IPositionElement object)
+			{
+				return createIPositionElementAdapter();
+			}
+			@Override
+			public Adapter caseISizedElement(ISizedElement object)
+			{
+				return createISizedElementAdapter();
+			}
+			@Override
+			public Adapter caseIUIView(IUIView object)
+			{
+				return createIUIViewAdapter();
+			}
+			@Override
+			public Adapter caseTranparentUIView(TranparentUIView object)
+			{
+				return createTranparentUIViewAdapter();
+			}
+			@Override
+			public Adapter caseIMusicView(IMusicView object)
+			{
+				return createIMusicViewAdapter();
+			}
+			@Override
+			public Adapter caseISizedView(ISizedView object)
+			{
+				return createISizedViewAdapter();
+			}
+			@Override
+			public Adapter caseIUIElement(IUIElement object)
+			{
+				return createIUIElementAdapter();
+			}
+			@Override
+			public Adapter caseUIPage(UIPage object)
+			{
+				return createUIPageAdapter();
+			}
+			@Override
+			public Adapter caseIPanel(IPanel object)
+			{
+				return createIPanelAdapter();
+			}
+			@Override
+			public Adapter caseIInferenceObject(IInferenceObject object)
+			{
+				return createIInferenceObjectAdapter();
+			}
+			@Override
+			public Adapter caseLObject(LObject object)
+			{
+				return createLObjectAdapter();
+			}
+			@Override
+			public Adapter caseIView(IView object)
+			{
+				return createIViewAdapter();
+			}
+			@Override
+			public Adapter caseLNamedElement(LNamedElement object)
+			{
+				return createLNamedElementAdapter();
+			}
+			@Override
+			public Adapter defaultCase(EObject object)
+			{
+				return createEObjectAdapter();
+			}
+		};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -164,7 +164,7 @@ public class PresentationAdapterFactory extends AdapterFactoryImpl
 	@Override
 	public Adapter createAdapter(Notifier target)
 	{
-		return modelSwitch.doSwitch((EObject) target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 	/**

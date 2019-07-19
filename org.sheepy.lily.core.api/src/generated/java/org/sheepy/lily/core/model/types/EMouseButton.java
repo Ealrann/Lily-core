@@ -193,9 +193,17 @@ public enum EMouseButton implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final EMouseButton[] VALUES_ARRAY = new EMouseButton[] {
-			RIGHT, LEFT, MIDDLE, _4, _5, _6, _7, _8,
-	};
+	private static final EMouseButton[] VALUES_ARRAY = new EMouseButton[]
+		{
+			RIGHT,
+			LEFT,
+			MIDDLE,
+			_4,
+			_5,
+			_6,
+			_7,
+			_8,
+		};
 
 	/**
 	 * A public read-only list of all the '<em><b>EMouse Button</b></em>' enumerators.
@@ -203,8 +211,7 @@ public enum EMouseButton implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<EMouseButton> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<EMouseButton> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>EMouse Button</b></em>' literal with the specified literal value.
@@ -260,8 +267,7 @@ public enum EMouseButton implements Enumerator
 	{
 		switch (value)
 		{
-		case RIGHT_VALUE:
-			return RIGHT;
+			case RIGHT_VALUE: return RIGHT;
 		}
 		return null;
 	}
@@ -308,7 +314,7 @@ public enum EMouseButton implements Enumerator
 	@Override
 	public int getValue()
 	{
-		return value;
+	  return value;
 	}
 
 	/**
@@ -319,7 +325,7 @@ public enum EMouseButton implements Enumerator
 	@Override
 	public String getName()
 	{
-		return name;
+	  return name;
 	}
 
 	/**
@@ -330,7 +336,7 @@ public enum EMouseButton implements Enumerator
 	@Override
 	public String getLiteral()
 	{
-		return literal;
+	  return literal;
 	}
 
 	/**

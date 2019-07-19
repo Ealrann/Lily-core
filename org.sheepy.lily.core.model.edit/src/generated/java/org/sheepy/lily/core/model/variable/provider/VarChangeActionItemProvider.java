@@ -97,10 +97,10 @@ public class VarChangeActionItemProvider extends ActionItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((VarChangeAction) object).getName();
-		return label == null || label.length() == 0
-				? getString("_UI_VarChangeAction_type")
-				: getString("_UI_VarChangeAction_type") + " " + label;
+		String label = ((VarChangeAction)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_VarChangeAction_type") :
+			getString("_UI_VarChangeAction_type") + " " + label;
 	}
 
 	/**
@@ -117,10 +117,9 @@ public class VarChangeActionItemProvider extends ActionItemProvider
 
 		switch (notification.getFeatureID(VarChangeAction.class))
 		{
-		case VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER:
-			fireNotifyChanged(
-					new ViewerNotification(notification, notification.getNotifier(), true, false));
-			return;
+			case VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -137,9 +136,10 @@ public class VarChangeActionItemProvider extends ActionItemProvider
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(
-				createChildParameter(VariablePackage.Literals.VAR_CHANGE_ACTION__VARIABLE_RESOLVER,
-						VariableFactory.eINSTANCE.createDirectVariableResolver()));
+		newChildDescriptors.add
+			(createChildParameter
+				(VariablePackage.Literals.VAR_CHANGE_ACTION__VARIABLE_RESOLVER,
+				 VariableFactory.eINSTANCE.createDirectVariableResolver()));
 	}
 
 }

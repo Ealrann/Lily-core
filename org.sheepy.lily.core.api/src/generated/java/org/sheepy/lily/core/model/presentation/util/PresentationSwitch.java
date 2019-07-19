@@ -80,102 +80,101 @@ public class PresentationSwitch<T> extends Switch<T>
 	{
 		switch (classifierID)
 		{
-		case PresentationPackage.IPOSITION_ELEMENT:
-		{
-			IPositionElement iPositionElement = (IPositionElement) theEObject;
-			T result = caseIPositionElement(iPositionElement);
-			if (result == null) result = caseLObject(iPositionElement);
-			if (result == null) result = caseIInferenceObject(iPositionElement);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case PresentationPackage.ISIZED_ELEMENT:
-		{
-			ISizedElement iSizedElement = (ISizedElement) theEObject;
-			T result = caseISizedElement(iSizedElement);
-			if (result == null) result = caseIPositionElement(iSizedElement);
-			if (result == null) result = caseLObject(iSizedElement);
-			if (result == null) result = caseIInferenceObject(iSizedElement);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case PresentationPackage.IUI_VIEW:
-		{
-			IUIView iuiView = (IUIView) theEObject;
-			T result = caseIUIView(iuiView);
-			if (result == null) result = caseIView(iuiView);
-			if (result == null) result = caseLObject(iuiView);
-			if (result == null) result = caseIInferenceObject(iuiView);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case PresentationPackage.TRANPARENT_UI_VIEW:
-		{
-			TranparentUIView tranparentUIView = (TranparentUIView) theEObject;
-			T result = caseTranparentUIView(tranparentUIView);
-			if (result == null) result = caseIUIView(tranparentUIView);
-			if (result == null) result = caseIView(tranparentUIView);
-			if (result == null) result = caseLObject(tranparentUIView);
-			if (result == null) result = caseIInferenceObject(tranparentUIView);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case PresentationPackage.IMUSIC_VIEW:
-		{
-			IMusicView iMusicView = (IMusicView) theEObject;
-			T result = caseIMusicView(iMusicView);
-			if (result == null) result = caseIView(iMusicView);
-			if (result == null) result = caseLObject(iMusicView);
-			if (result == null) result = caseIInferenceObject(iMusicView);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case PresentationPackage.ISIZED_VIEW:
-		{
-			ISizedView iSizedView = (ISizedView) theEObject;
-			T result = caseISizedView(iSizedView);
-			if (result == null) result = caseISizedElement(iSizedView);
-			if (result == null) result = caseIView(iSizedView);
-			if (result == null) result = caseIPositionElement(iSizedView);
-			if (result == null) result = caseLObject(iSizedView);
-			if (result == null) result = caseIInferenceObject(iSizedView);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case PresentationPackage.IUI_ELEMENT:
-		{
-			IUIElement iuiElement = (IUIElement) theEObject;
-			T result = caseIUIElement(iuiElement);
-			if (result == null) result = caseLObject(iuiElement);
-			if (result == null) result = caseIInferenceObject(iuiElement);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case PresentationPackage.UI_PAGE:
-		{
-			UIPage uiPage = (UIPage) theEObject;
-			T result = caseUIPage(uiPage);
-			if (result == null) result = caseISizedElement(uiPage);
-			if (result == null) result = caseIPositionElement(uiPage);
-			if (result == null) result = caseLObject(uiPage);
-			if (result == null) result = caseIInferenceObject(uiPage);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		case PresentationPackage.IPANEL:
-		{
-			IPanel iPanel = (IPanel) theEObject;
-			T result = caseIPanel(iPanel);
-			if (result == null) result = caseLNamedElement(iPanel);
-			if (result == null) result = caseIUIElement(iPanel);
-			if (result == null) result = caseIPositionElement(iPanel);
-			if (result == null) result = caseLObject(iPanel);
-			if (result == null) result = caseIInferenceObject(iPanel);
-			if (result == null) result = defaultCase(theEObject);
-			return result;
-		}
-		default:
-			return defaultCase(theEObject);
+			case PresentationPackage.IPOSITION_ELEMENT:
+			{
+				IPositionElement iPositionElement = (IPositionElement)theEObject;
+				T result = caseIPositionElement(iPositionElement);
+				if (result == null) result = caseLObject(iPositionElement);
+				if (result == null) result = caseIInferenceObject(iPositionElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PresentationPackage.ISIZED_ELEMENT:
+			{
+				ISizedElement iSizedElement = (ISizedElement)theEObject;
+				T result = caseISizedElement(iSizedElement);
+				if (result == null) result = caseIPositionElement(iSizedElement);
+				if (result == null) result = caseLObject(iSizedElement);
+				if (result == null) result = caseIInferenceObject(iSizedElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PresentationPackage.IUI_VIEW:
+			{
+				IUIView iuiView = (IUIView)theEObject;
+				T result = caseIUIView(iuiView);
+				if (result == null) result = caseIView(iuiView);
+				if (result == null) result = caseLObject(iuiView);
+				if (result == null) result = caseIInferenceObject(iuiView);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PresentationPackage.TRANPARENT_UI_VIEW:
+			{
+				TranparentUIView tranparentUIView = (TranparentUIView)theEObject;
+				T result = caseTranparentUIView(tranparentUIView);
+				if (result == null) result = caseIUIView(tranparentUIView);
+				if (result == null) result = caseIView(tranparentUIView);
+				if (result == null) result = caseLObject(tranparentUIView);
+				if (result == null) result = caseIInferenceObject(tranparentUIView);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PresentationPackage.IMUSIC_VIEW:
+			{
+				IMusicView iMusicView = (IMusicView)theEObject;
+				T result = caseIMusicView(iMusicView);
+				if (result == null) result = caseIView(iMusicView);
+				if (result == null) result = caseLObject(iMusicView);
+				if (result == null) result = caseIInferenceObject(iMusicView);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PresentationPackage.ISIZED_VIEW:
+			{
+				ISizedView iSizedView = (ISizedView)theEObject;
+				T result = caseISizedView(iSizedView);
+				if (result == null) result = caseISizedElement(iSizedView);
+				if (result == null) result = caseIView(iSizedView);
+				if (result == null) result = caseIPositionElement(iSizedView);
+				if (result == null) result = caseLObject(iSizedView);
+				if (result == null) result = caseIInferenceObject(iSizedView);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PresentationPackage.IUI_ELEMENT:
+			{
+				IUIElement iuiElement = (IUIElement)theEObject;
+				T result = caseIUIElement(iuiElement);
+				if (result == null) result = caseLObject(iuiElement);
+				if (result == null) result = caseIInferenceObject(iuiElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PresentationPackage.UI_PAGE:
+			{
+				UIPage uiPage = (UIPage)theEObject;
+				T result = caseUIPage(uiPage);
+				if (result == null) result = caseISizedElement(uiPage);
+				if (result == null) result = caseIPositionElement(uiPage);
+				if (result == null) result = caseLObject(uiPage);
+				if (result == null) result = caseIInferenceObject(uiPage);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PresentationPackage.IPANEL:
+			{
+				IPanel iPanel = (IPanel)theEObject;
+				T result = caseIPanel(iPanel);
+				if (result == null) result = caseLNamedElement(iPanel);
+				if (result == null) result = caseIUIElement(iPanel);
+				if (result == null) result = caseIPositionElement(iPanel);
+				if (result == null) result = caseLObject(iPanel);
+				if (result == null) result = caseIInferenceObject(iPanel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			default: return defaultCase(theEObject);
 		}
 	}
 

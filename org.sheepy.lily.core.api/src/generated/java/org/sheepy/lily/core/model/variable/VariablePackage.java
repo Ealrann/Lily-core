@@ -587,8 +587,7 @@ public interface VariablePackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute IDEFINITION_CONTAINER__VARIABLE_DEFINITION = eINSTANCE
-				.getIDefinitionContainer_VariableDefinition();
+		EAttribute IDEFINITION_CONTAINER__VARIABLE_DEFINITION = eINSTANCE.getIDefinitionContainer_VariableDefinition();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.impl.ChainVariableResolverImpl <em>Chain Variable Resolver</em>}' class.
@@ -606,8 +605,7 @@ public interface VariablePackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER = eINSTANCE
-				.getChainVariableResolver_FirstResolver();
+		EReference CHAIN_VARIABLE_RESOLVER__FIRST_RESOLVER = eINSTANCE.getChainVariableResolver_FirstResolver();
 
 		/**
 		 * The meta object literal for the '<em><b>Sub Resolvers</b></em>' containment reference list feature.
@@ -615,8 +613,7 @@ public interface VariablePackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS = eINSTANCE
-				.getChainVariableResolver_SubResolvers();
+		EReference CHAIN_VARIABLE_RESOLVER__SUB_RESOLVERS = eINSTANCE.getChainVariableResolver_SubResolvers();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.impl.ChainResolverImpl <em>Chain Resolver</em>}' class.
@@ -672,8 +669,7 @@ public interface VariablePackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VAR_CHANGE_ACTION__VARIABLE_RESOLVER = eINSTANCE
-				.getVarChangeAction_VariableResolver();
+		EReference VAR_CHANGE_ACTION__VARIABLE_RESOLVER = eINSTANCE.getVarChangeAction_VariableResolver();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.impl.BooleanChangeActionImpl <em>Boolean Change Action</em>}' class.

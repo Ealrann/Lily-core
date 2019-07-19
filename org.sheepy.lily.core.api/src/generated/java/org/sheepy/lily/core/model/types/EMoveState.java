@@ -67,9 +67,11 @@ public enum EMoveState implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final EMoveState[] VALUES_ARRAY = new EMoveState[] {
-			START_MOVING, STOP_MOVING,
-	};
+	private static final EMoveState[] VALUES_ARRAY = new EMoveState[]
+		{
+			START_MOVING,
+			STOP_MOVING,
+		};
 
 	/**
 	 * A public read-only list of all the '<em><b>EMove State</b></em>' enumerators.
@@ -77,8 +79,7 @@ public enum EMoveState implements Enumerator
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<EMoveState> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<EMoveState> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>EMove State</b></em>' literal with the specified literal value.
@@ -134,8 +135,7 @@ public enum EMoveState implements Enumerator
 	{
 		switch (value)
 		{
-		case START_MOVING_VALUE:
-			return START_MOVING;
+			case START_MOVING_VALUE: return START_MOVING;
 		}
 		return null;
 	}
@@ -182,7 +182,7 @@ public enum EMoveState implements Enumerator
 	@Override
 	public int getValue()
 	{
-		return value;
+	  return value;
 	}
 
 	/**
@@ -193,7 +193,7 @@ public enum EMoveState implements Enumerator
 	@Override
 	public String getName()
 	{
-		return name;
+	  return name;
 	}
 
 	/**
@@ -204,7 +204,7 @@ public enum EMoveState implements Enumerator
 	@Override
 	public String getLiteral()
 	{
-		return literal;
+	  return literal;
 	}
 
 	/**

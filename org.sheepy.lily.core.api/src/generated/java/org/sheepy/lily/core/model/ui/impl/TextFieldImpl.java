@@ -86,8 +86,7 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Vector2ic POSITION_EDEFAULT = (Vector2ic) TypesFactory.eINSTANCE
-			.createFromString(TypesPackage.eINSTANCE.getVector2i(), "0;0");
+	protected static final Vector2ic POSITION_EDEFAULT = (Vector2ic)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getVector2i(), "0;0");
 
 	/**
 	 * The cached value of the '{@link #getPosition() <em>Position</em>}' attribute.
@@ -231,8 +230,8 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 	{
 		EList<LObject> oldContentObjects = contentObjects;
 		contentObjects = newContentObjects;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.TEXT_FIELD__CONTENT_OBJECTS, oldContentObjects, contentObjects));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.TEXT_FIELD__CONTENT_OBJECTS, oldContentObjects, contentObjects));
 	}
 
 	/**
@@ -256,8 +255,8 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 	{
 		Vector2ic oldPosition = position;
 		position = newPosition;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.TEXT_FIELD__POSITION, oldPosition, position));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.TEXT_FIELD__POSITION, oldPosition, position));
 	}
 
 	/**
@@ -280,11 +279,9 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 	public void setVerticalRelative(EVerticalRelative newVerticalRelative)
 	{
 		EVerticalRelative oldVerticalRelative = verticalRelative;
-		verticalRelative = newVerticalRelative == null
-				? VERTICAL_RELATIVE_EDEFAULT
-				: newVerticalRelative;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.TEXT_FIELD__VERTICAL_RELATIVE, oldVerticalRelative, verticalRelative));
+		verticalRelative = newVerticalRelative == null ? VERTICAL_RELATIVE_EDEFAULT : newVerticalRelative;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.TEXT_FIELD__VERTICAL_RELATIVE, oldVerticalRelative, verticalRelative));
 	}
 
 	/**
@@ -307,12 +304,9 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 	public void setHorizontalRelative(EHorizontalRelative newHorizontalRelative)
 	{
 		EHorizontalRelative oldHorizontalRelative = horizontalRelative;
-		horizontalRelative = newHorizontalRelative == null
-				? HORIZONTAL_RELATIVE_EDEFAULT
-				: newHorizontalRelative;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.TEXT_FIELD__HORIZONTAL_RELATIVE, oldHorizontalRelative,
-				horizontalRelative));
+		horizontalRelative = newHorizontalRelative == null ? HORIZONTAL_RELATIVE_EDEFAULT : newHorizontalRelative;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.TEXT_FIELD__HORIZONTAL_RELATIVE, oldHorizontalRelative, horizontalRelative));
 	}
 
 	/**
@@ -336,8 +330,8 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 	{
 		int oldWidth = width;
 		width = newWidth;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.TEXT_FIELD__WIDTH, oldWidth, width));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.TEXT_FIELD__WIDTH, oldWidth, width));
 	}
 
 	/**
@@ -361,8 +355,8 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 	{
 		int oldHeight = height;
 		height = newHeight;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.TEXT_FIELD__HEIGHT, oldHeight, height));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.TEXT_FIELD__HEIGHT, oldHeight, height));
 	}
 
 	/**
@@ -388,11 +382,8 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 		variableResolver = newVariableResolver;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					UiPackage.TEXT_FIELD__VARIABLE_RESOLVER, oldVariableResolver,
-					newVariableResolver);
-			if (msgs == null) msgs = notification;
-			else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UiPackage.TEXT_FIELD__VARIABLE_RESOLVER, oldVariableResolver, newVariableResolver);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -409,18 +400,14 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 		{
 			NotificationChain msgs = null;
 			if (variableResolver != null)
-				msgs = ((InternalEObject) variableResolver).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - UiPackage.TEXT_FIELD__VARIABLE_RESOLVER, null,
-						msgs);
+				msgs = ((InternalEObject)variableResolver).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UiPackage.TEXT_FIELD__VARIABLE_RESOLVER, null, msgs);
 			if (newVariableResolver != null)
-				msgs = ((InternalEObject) newVariableResolver).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - UiPackage.TEXT_FIELD__VARIABLE_RESOLVER, null,
-						msgs);
+				msgs = ((InternalEObject)newVariableResolver).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UiPackage.TEXT_FIELD__VARIABLE_RESOLVER, null, msgs);
 			msgs = basicSetVariableResolver(newVariableResolver, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
-		else if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.TEXT_FIELD__VARIABLE_RESOLVER, newVariableResolver, newVariableResolver));
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.TEXT_FIELD__VARIABLE_RESOLVER, newVariableResolver, newVariableResolver));
 	}
 
 	/**
@@ -446,7 +433,7 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 		boolean _isEmpty = unitRefs.isEmpty();
 		if (_isEmpty)
 		{
-			res = ECollections.<T> emptyEList();
+			res = ECollections.<T>emptyEList();
 		}
 		else
 		{
@@ -470,7 +457,7 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 			boolean _tripleEquals = (_contentObjects == null);
 			if (_tripleEquals)
 			{
-				this.setContentObjects(this.<LObject> createContainmentEList(Literals.LOBJECT));
+				this.setContentObjects(this.<LObject>createContainmentEList(Literals.LOBJECT));
 			}
 			_xblockexpression = this.getContentObjects();
 		}
@@ -523,14 +510,12 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-											int featureID,
-											NotificationChain msgs)
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
 		switch (featureID)
 		{
-		case UiPackage.TEXT_FIELD__VARIABLE_RESOLVER:
-			return basicSetVariableResolver(null, msgs);
+			case UiPackage.TEXT_FIELD__VARIABLE_RESOLVER:
+				return basicSetVariableResolver(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -545,20 +530,20 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 	{
 		switch (featureID)
 		{
-		case UiPackage.TEXT_FIELD__CONTENT_OBJECTS:
-			return getContentObjects();
-		case UiPackage.TEXT_FIELD__POSITION:
-			return getPosition();
-		case UiPackage.TEXT_FIELD__VERTICAL_RELATIVE:
-			return getVerticalRelative();
-		case UiPackage.TEXT_FIELD__HORIZONTAL_RELATIVE:
-			return getHorizontalRelative();
-		case UiPackage.TEXT_FIELD__WIDTH:
-			return getWidth();
-		case UiPackage.TEXT_FIELD__HEIGHT:
-			return getHeight();
-		case UiPackage.TEXT_FIELD__VARIABLE_RESOLVER:
-			return getVariableResolver();
+			case UiPackage.TEXT_FIELD__CONTENT_OBJECTS:
+				return getContentObjects();
+			case UiPackage.TEXT_FIELD__POSITION:
+				return getPosition();
+			case UiPackage.TEXT_FIELD__VERTICAL_RELATIVE:
+				return getVerticalRelative();
+			case UiPackage.TEXT_FIELD__HORIZONTAL_RELATIVE:
+				return getHorizontalRelative();
+			case UiPackage.TEXT_FIELD__WIDTH:
+				return getWidth();
+			case UiPackage.TEXT_FIELD__HEIGHT:
+				return getHeight();
+			case UiPackage.TEXT_FIELD__VARIABLE_RESOLVER:
+				return getVariableResolver();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -574,27 +559,27 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 	{
 		switch (featureID)
 		{
-		case UiPackage.TEXT_FIELD__CONTENT_OBJECTS:
-			setContentObjects((EList<LObject>) newValue);
-			return;
-		case UiPackage.TEXT_FIELD__POSITION:
-			setPosition((Vector2ic) newValue);
-			return;
-		case UiPackage.TEXT_FIELD__VERTICAL_RELATIVE:
-			setVerticalRelative((EVerticalRelative) newValue);
-			return;
-		case UiPackage.TEXT_FIELD__HORIZONTAL_RELATIVE:
-			setHorizontalRelative((EHorizontalRelative) newValue);
-			return;
-		case UiPackage.TEXT_FIELD__WIDTH:
-			setWidth((Integer) newValue);
-			return;
-		case UiPackage.TEXT_FIELD__HEIGHT:
-			setHeight((Integer) newValue);
-			return;
-		case UiPackage.TEXT_FIELD__VARIABLE_RESOLVER:
-			setVariableResolver((AbstractVariableResolver) newValue);
-			return;
+			case UiPackage.TEXT_FIELD__CONTENT_OBJECTS:
+				setContentObjects((EList<LObject>)newValue);
+				return;
+			case UiPackage.TEXT_FIELD__POSITION:
+				setPosition((Vector2ic)newValue);
+				return;
+			case UiPackage.TEXT_FIELD__VERTICAL_RELATIVE:
+				setVerticalRelative((EVerticalRelative)newValue);
+				return;
+			case UiPackage.TEXT_FIELD__HORIZONTAL_RELATIVE:
+				setHorizontalRelative((EHorizontalRelative)newValue);
+				return;
+			case UiPackage.TEXT_FIELD__WIDTH:
+				setWidth((Integer)newValue);
+				return;
+			case UiPackage.TEXT_FIELD__HEIGHT:
+				setHeight((Integer)newValue);
+				return;
+			case UiPackage.TEXT_FIELD__VARIABLE_RESOLVER:
+				setVariableResolver((AbstractVariableResolver)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -609,27 +594,27 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 	{
 		switch (featureID)
 		{
-		case UiPackage.TEXT_FIELD__CONTENT_OBJECTS:
-			setContentObjects((EList<LObject>) null);
-			return;
-		case UiPackage.TEXT_FIELD__POSITION:
-			setPosition(POSITION_EDEFAULT);
-			return;
-		case UiPackage.TEXT_FIELD__VERTICAL_RELATIVE:
-			setVerticalRelative(VERTICAL_RELATIVE_EDEFAULT);
-			return;
-		case UiPackage.TEXT_FIELD__HORIZONTAL_RELATIVE:
-			setHorizontalRelative(HORIZONTAL_RELATIVE_EDEFAULT);
-			return;
-		case UiPackage.TEXT_FIELD__WIDTH:
-			setWidth(WIDTH_EDEFAULT);
-			return;
-		case UiPackage.TEXT_FIELD__HEIGHT:
-			setHeight(HEIGHT_EDEFAULT);
-			return;
-		case UiPackage.TEXT_FIELD__VARIABLE_RESOLVER:
-			setVariableResolver((AbstractVariableResolver) null);
-			return;
+			case UiPackage.TEXT_FIELD__CONTENT_OBJECTS:
+				setContentObjects((EList<LObject>)null);
+				return;
+			case UiPackage.TEXT_FIELD__POSITION:
+				setPosition(POSITION_EDEFAULT);
+				return;
+			case UiPackage.TEXT_FIELD__VERTICAL_RELATIVE:
+				setVerticalRelative(VERTICAL_RELATIVE_EDEFAULT);
+				return;
+			case UiPackage.TEXT_FIELD__HORIZONTAL_RELATIVE:
+				setHorizontalRelative(HORIZONTAL_RELATIVE_EDEFAULT);
+				return;
+			case UiPackage.TEXT_FIELD__WIDTH:
+				setWidth(WIDTH_EDEFAULT);
+				return;
+			case UiPackage.TEXT_FIELD__HEIGHT:
+				setHeight(HEIGHT_EDEFAULT);
+				return;
+			case UiPackage.TEXT_FIELD__VARIABLE_RESOLVER:
+				setVariableResolver((AbstractVariableResolver)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -644,22 +629,20 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 	{
 		switch (featureID)
 		{
-		case UiPackage.TEXT_FIELD__CONTENT_OBJECTS:
-			return contentObjects != null;
-		case UiPackage.TEXT_FIELD__POSITION:
-			return POSITION_EDEFAULT == null
-					? position != null
-					: !POSITION_EDEFAULT.equals(position);
-		case UiPackage.TEXT_FIELD__VERTICAL_RELATIVE:
-			return verticalRelative != VERTICAL_RELATIVE_EDEFAULT;
-		case UiPackage.TEXT_FIELD__HORIZONTAL_RELATIVE:
-			return horizontalRelative != HORIZONTAL_RELATIVE_EDEFAULT;
-		case UiPackage.TEXT_FIELD__WIDTH:
-			return width != WIDTH_EDEFAULT;
-		case UiPackage.TEXT_FIELD__HEIGHT:
-			return height != HEIGHT_EDEFAULT;
-		case UiPackage.TEXT_FIELD__VARIABLE_RESOLVER:
-			return variableResolver != null;
+			case UiPackage.TEXT_FIELD__CONTENT_OBJECTS:
+				return contentObjects != null;
+			case UiPackage.TEXT_FIELD__POSITION:
+				return POSITION_EDEFAULT == null ? position != null : !POSITION_EDEFAULT.equals(position);
+			case UiPackage.TEXT_FIELD__VERTICAL_RELATIVE:
+				return verticalRelative != VERTICAL_RELATIVE_EDEFAULT;
+			case UiPackage.TEXT_FIELD__HORIZONTAL_RELATIVE:
+				return horizontalRelative != HORIZONTAL_RELATIVE_EDEFAULT;
+			case UiPackage.TEXT_FIELD__WIDTH:
+				return width != WIDTH_EDEFAULT;
+			case UiPackage.TEXT_FIELD__HEIGHT:
+				return height != HEIGHT_EDEFAULT;
+			case UiPackage.TEXT_FIELD__VARIABLE_RESOLVER:
+				return variableResolver != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -676,26 +659,19 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 		{
 			switch (derivedFeatureID)
 			{
-			case UiPackage.TEXT_FIELD__POSITION:
-				return PresentationPackage.IPOSITION_ELEMENT__POSITION;
-			case UiPackage.TEXT_FIELD__VERTICAL_RELATIVE:
-				return PresentationPackage.IPOSITION_ELEMENT__VERTICAL_RELATIVE;
-			case UiPackage.TEXT_FIELD__HORIZONTAL_RELATIVE:
-				return PresentationPackage.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE;
-			default:
-				return -1;
+				case UiPackage.TEXT_FIELD__POSITION: return PresentationPackage.IPOSITION_ELEMENT__POSITION;
+				case UiPackage.TEXT_FIELD__VERTICAL_RELATIVE: return PresentationPackage.IPOSITION_ELEMENT__VERTICAL_RELATIVE;
+				case UiPackage.TEXT_FIELD__HORIZONTAL_RELATIVE: return PresentationPackage.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE;
+				default: return -1;
 			}
 		}
 		if (baseClass == ISizedElement.class)
 		{
 			switch (derivedFeatureID)
 			{
-			case UiPackage.TEXT_FIELD__WIDTH:
-				return PresentationPackage.ISIZED_ELEMENT__WIDTH;
-			case UiPackage.TEXT_FIELD__HEIGHT:
-				return PresentationPackage.ISIZED_ELEMENT__HEIGHT;
-			default:
-				return -1;
+				case UiPackage.TEXT_FIELD__WIDTH: return PresentationPackage.ISIZED_ELEMENT__WIDTH;
+				case UiPackage.TEXT_FIELD__HEIGHT: return PresentationPackage.ISIZED_ELEMENT__HEIGHT;
+				default: return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
@@ -713,26 +689,19 @@ public class TextFieldImpl extends MinimalEObjectImpl.Container implements TextF
 		{
 			switch (baseFeatureID)
 			{
-			case PresentationPackage.IPOSITION_ELEMENT__POSITION:
-				return UiPackage.TEXT_FIELD__POSITION;
-			case PresentationPackage.IPOSITION_ELEMENT__VERTICAL_RELATIVE:
-				return UiPackage.TEXT_FIELD__VERTICAL_RELATIVE;
-			case PresentationPackage.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE:
-				return UiPackage.TEXT_FIELD__HORIZONTAL_RELATIVE;
-			default:
-				return -1;
+				case PresentationPackage.IPOSITION_ELEMENT__POSITION: return UiPackage.TEXT_FIELD__POSITION;
+				case PresentationPackage.IPOSITION_ELEMENT__VERTICAL_RELATIVE: return UiPackage.TEXT_FIELD__VERTICAL_RELATIVE;
+				case PresentationPackage.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE: return UiPackage.TEXT_FIELD__HORIZONTAL_RELATIVE;
+				default: return -1;
 			}
 		}
 		if (baseClass == ISizedElement.class)
 		{
 			switch (baseFeatureID)
 			{
-			case PresentationPackage.ISIZED_ELEMENT__WIDTH:
-				return UiPackage.TEXT_FIELD__WIDTH;
-			case PresentationPackage.ISIZED_ELEMENT__HEIGHT:
-				return UiPackage.TEXT_FIELD__HEIGHT;
-			default:
-				return -1;
+				case PresentationPackage.ISIZED_ELEMENT__WIDTH: return UiPackage.TEXT_FIELD__WIDTH;
+				case PresentationPackage.ISIZED_ELEMENT__HEIGHT: return UiPackage.TEXT_FIELD__HEIGHT;
+				default: return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

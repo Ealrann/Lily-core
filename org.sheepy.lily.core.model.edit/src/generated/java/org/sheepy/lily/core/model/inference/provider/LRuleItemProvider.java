@@ -32,9 +32,8 @@ import org.sheepy.lily.core.model.inference.LRule;
  * <!-- end-user-doc -->
  * @generated
  */
-public class LRuleItemProvider extends ItemProviderAdapter
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
+public class LRuleItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -73,12 +72,19 @@ public class LRuleItemProvider extends ItemProviderAdapter
 	 */
 	protected void addActionPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_LRule_action_feature"),
-				getString("_UI_PropertyDescriptor_description", "_UI_LRule_action_feature",
-						"_UI_LRule_type"),
-				InferencePackage.Literals.LRULE__ACTION, true, false, true, null, null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LRule_action_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LRule_action_feature", "_UI_LRule_type"),
+				 InferencePackage.Literals.LRULE__ACTION,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -153,11 +159,10 @@ public class LRuleItemProvider extends ItemProviderAdapter
 
 		switch (notification.getFeatureID(LRule.class))
 		{
-		case InferencePackage.LRULE__NOTIFICATION:
-		case InferencePackage.LRULE__CONDITIONS:
-			fireNotifyChanged(
-					new ViewerNotification(notification, notification.getNotifier(), true, false));
-			return;
+			case InferencePackage.LRULE__NOTIFICATION:
+			case InferencePackage.LRULE__CONDITIONS:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -184,7 +189,7 @@ public class LRuleItemProvider extends ItemProviderAdapter
 	@Override
 	public ResourceLocator getResourceLocator()
 	{
-		return ((IChildCreationExtender) adapterFactory).getResourceLocator();
+		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
 	}
 
 }

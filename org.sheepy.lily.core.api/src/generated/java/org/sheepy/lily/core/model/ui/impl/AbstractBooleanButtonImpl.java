@@ -25,8 +25,7 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  *
  * @generated
  */
-public abstract class AbstractBooleanButtonImpl extends AbstractButtonImpl
-		implements AbstractBooleanButton
+public abstract class AbstractBooleanButtonImpl extends AbstractButtonImpl implements AbstractBooleanButton
 {
 	/**
 	 * The default value of the '{@link #getTextWhenTrue() <em>Text When True</em>}' attribute.
@@ -110,8 +109,8 @@ public abstract class AbstractBooleanButtonImpl extends AbstractButtonImpl
 	{
 		String oldTextWhenTrue = textWhenTrue;
 		textWhenTrue = newTextWhenTrue;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE, oldTextWhenTrue, textWhenTrue));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE, oldTextWhenTrue, textWhenTrue));
 	}
 
 	/**
@@ -135,9 +134,8 @@ public abstract class AbstractBooleanButtonImpl extends AbstractButtonImpl
 	{
 		String oldTextWhenFalse = textWhenFalse;
 		textWhenFalse = newTextWhenFalse;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE, oldTextWhenFalse,
-				textWhenFalse));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE, oldTextWhenFalse, textWhenFalse));
 	}
 
 	/**
@@ -150,10 +148,10 @@ public abstract class AbstractBooleanButtonImpl extends AbstractButtonImpl
 	{
 		switch (featureID)
 		{
-		case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE:
-			return getTextWhenTrue();
-		case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE:
-			return getTextWhenFalse();
+			case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE:
+				return getTextWhenTrue();
+			case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE:
+				return getTextWhenFalse();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -168,12 +166,12 @@ public abstract class AbstractBooleanButtonImpl extends AbstractButtonImpl
 	{
 		switch (featureID)
 		{
-		case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE:
-			setTextWhenTrue((String) newValue);
-			return;
-		case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE:
-			setTextWhenFalse((String) newValue);
-			return;
+			case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE:
+				setTextWhenTrue((String)newValue);
+				return;
+			case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE:
+				setTextWhenFalse((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -188,12 +186,12 @@ public abstract class AbstractBooleanButtonImpl extends AbstractButtonImpl
 	{
 		switch (featureID)
 		{
-		case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE:
-			setTextWhenTrue(TEXT_WHEN_TRUE_EDEFAULT);
-			return;
-		case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE:
-			setTextWhenFalse(TEXT_WHEN_FALSE_EDEFAULT);
-			return;
+			case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE:
+				setTextWhenTrue(TEXT_WHEN_TRUE_EDEFAULT);
+				return;
+			case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE:
+				setTextWhenFalse(TEXT_WHEN_FALSE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -208,14 +206,10 @@ public abstract class AbstractBooleanButtonImpl extends AbstractButtonImpl
 	{
 		switch (featureID)
 		{
-		case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE:
-			return TEXT_WHEN_TRUE_EDEFAULT == null
-					? textWhenTrue != null
-					: !TEXT_WHEN_TRUE_EDEFAULT.equals(textWhenTrue);
-		case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE:
-			return TEXT_WHEN_FALSE_EDEFAULT == null
-					? textWhenFalse != null
-					: !TEXT_WHEN_FALSE_EDEFAULT.equals(textWhenFalse);
+			case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_TRUE:
+				return TEXT_WHEN_TRUE_EDEFAULT == null ? textWhenTrue != null : !TEXT_WHEN_TRUE_EDEFAULT.equals(textWhenTrue);
+			case UiPackage.ABSTRACT_BOOLEAN_BUTTON__TEXT_WHEN_FALSE:
+				return TEXT_WHEN_FALSE_EDEFAULT == null ? textWhenFalse != null : !TEXT_WHEN_FALSE_EDEFAULT.equals(textWhenFalse);
 		}
 		return super.eIsSet(featureID);
 	}

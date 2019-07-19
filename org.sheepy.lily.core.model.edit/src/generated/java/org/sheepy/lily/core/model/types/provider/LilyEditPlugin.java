@@ -40,9 +40,11 @@ public final class LilyEditPlugin extends EMFPlugin
 	 */
 	public LilyEditPlugin()
 	{
-		super(new ResourceLocator[] {
-				EcoreEditPlugin.INSTANCE,
-		});
+		super
+		  (new ResourceLocator [] 
+		   {
+		     EcoreEditPlugin.INSTANCE,
+		   });
 	}
 
 	/**

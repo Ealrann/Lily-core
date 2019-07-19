@@ -210,13 +210,11 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 */
 	public static UiPackage init()
 	{
-		if (isInited) return (UiPackage) EPackage.Registry.INSTANCE.getEPackage(UiPackage.eNS_URI);
+		if (isInited) return (UiPackage)EPackage.Registry.INSTANCE.getEPackage(UiPackage.eNS_URI);
 
 		// Obtain or create and register package
 		Object registeredUiPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-		UiPackageImpl theUiPackage = registeredUiPackage instanceof UiPackageImpl
-				? (UiPackageImpl) registeredUiPackage
-				: new UiPackageImpl();
+		UiPackageImpl theUiPackage = registeredUiPackage instanceof UiPackageImpl ? (UiPackageImpl)registeredUiPackage : new UiPackageImpl();
 
 		isInited = true;
 
@@ -225,41 +223,23 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 
 		// Obtain or create and register interdependencies
 		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
-		TypesPackageImpl theTypesPackage = (TypesPackageImpl) (registeredPackage instanceof TypesPackageImpl
-				? registeredPackage
-				: TypesPackage.eINSTANCE);
+		TypesPackageImpl theTypesPackage = (TypesPackageImpl)(registeredPackage instanceof TypesPackageImpl ? registeredPackage : TypesPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
-		ActionPackageImpl theActionPackage = (ActionPackageImpl) (registeredPackage instanceof ActionPackageImpl
-				? registeredPackage
-				: ActionPackage.eINSTANCE);
+		ActionPackageImpl theActionPackage = (ActionPackageImpl)(registeredPackage instanceof ActionPackageImpl ? registeredPackage : ActionPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
-		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl) (registeredPackage instanceof ApplicationPackageImpl
-				? registeredPackage
-				: ApplicationPackage.eINSTANCE);
+		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl)(registeredPackage instanceof ApplicationPackageImpl ? registeredPackage : ApplicationPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(RootPackage.eNS_URI);
-		RootPackageImpl theRootPackage = (RootPackageImpl) (registeredPackage instanceof RootPackageImpl
-				? registeredPackage
-				: RootPackage.eINSTANCE);
+		RootPackageImpl theRootPackage = (RootPackageImpl)(registeredPackage instanceof RootPackageImpl ? registeredPackage : RootPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
-		InferencePackageImpl theInferencePackage = (InferencePackageImpl) (registeredPackage instanceof InferencePackageImpl
-				? registeredPackage
-				: InferencePackage.eINSTANCE);
+		InferencePackageImpl theInferencePackage = (InferencePackageImpl)(registeredPackage instanceof InferencePackageImpl ? registeredPackage : InferencePackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(MaintainerPackage.eNS_URI);
-		MaintainerPackageImpl theMaintainerPackage = (MaintainerPackageImpl) (registeredPackage instanceof MaintainerPackageImpl
-				? registeredPackage
-				: MaintainerPackage.eINSTANCE);
+		MaintainerPackageImpl theMaintainerPackage = (MaintainerPackageImpl)(registeredPackage instanceof MaintainerPackageImpl ? registeredPackage : MaintainerPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(PresentationPackage.eNS_URI);
-		PresentationPackageImpl thePresentationPackage = (PresentationPackageImpl) (registeredPackage instanceof PresentationPackageImpl
-				? registeredPackage
-				: PresentationPackage.eINSTANCE);
+		PresentationPackageImpl thePresentationPackage = (PresentationPackageImpl)(registeredPackage instanceof PresentationPackageImpl ? registeredPackage : PresentationPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ResolverPackage.eNS_URI);
-		ResolverPackageImpl theResolverPackage = (ResolverPackageImpl) (registeredPackage instanceof ResolverPackageImpl
-				? registeredPackage
-				: ResolverPackage.eINSTANCE);
+		ResolverPackageImpl theResolverPackage = (ResolverPackageImpl)(registeredPackage instanceof ResolverPackageImpl ? registeredPackage : ResolverPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(VariablePackage.eNS_URI);
-		VariablePackageImpl theVariablePackage = (VariablePackageImpl) (registeredPackage instanceof VariablePackageImpl
-				? registeredPackage
-				: VariablePackage.eINSTANCE);
+		VariablePackageImpl theVariablePackage = (VariablePackageImpl)(registeredPackage instanceof VariablePackageImpl ? registeredPackage : VariablePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theUiPackage.createPackageContents();
@@ -312,7 +292,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EReference getPanel_Controls()
 	{
-		return (EReference) panelEClass.getEStructuralFeatures().get(0);
+		return (EReference)panelEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -323,7 +303,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EAttribute getPanel_ShowTitle()
 	{
-		return (EAttribute) panelEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)panelEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -334,7 +314,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EAttribute getPanel_Minimizable()
 	{
-		return (EAttribute) panelEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)panelEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -345,7 +325,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EAttribute getPanel_Movable()
 	{
-		return (EAttribute) panelEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)panelEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -356,7 +336,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EAttribute getPanel_Minimized()
 	{
-		return (EAttribute) panelEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)panelEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -400,7 +380,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EAttribute getAbstractLabel_Text()
 	{
-		return (EAttribute) abstractLabelEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)abstractLabelEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -411,7 +391,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EAttribute getAbstractLabel_FontScale()
 	{
-		return (EAttribute) abstractLabelEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)abstractLabelEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -433,7 +413,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EAttribute getDynamicRowLayout_Height()
 	{
-		return (EAttribute) dynamicRowLayoutEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)dynamicRowLayoutEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -444,7 +424,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EAttribute getDynamicRowLayout_ColumnCount()
 	{
-		return (EAttribute) dynamicRowLayoutEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)dynamicRowLayoutEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -466,7 +446,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EReference getVariableLabel_VariableResolver()
 	{
-		return (EReference) variableLabelEClass.getEStructuralFeatures().get(0);
+		return (EReference)variableLabelEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -499,7 +479,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EAttribute getSlider_MinValue()
 	{
-		return (EAttribute) sliderEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)sliderEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -510,7 +490,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EAttribute getSlider_MaxValue()
 	{
-		return (EAttribute) sliderEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)sliderEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -521,7 +501,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EAttribute getSlider_Step()
 	{
-		return (EAttribute) sliderEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)sliderEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -532,7 +512,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EReference getSlider_VariableResolver()
 	{
-		return (EReference) sliderEClass.getEStructuralFeatures().get(3);
+		return (EReference)sliderEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -554,7 +534,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EReference getTextField_VariableResolver()
 	{
-		return (EReference) textFieldEClass.getEStructuralFeatures().get(0);
+		return (EReference)textFieldEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -576,7 +556,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EAttribute getAbstractButton_Text()
 	{
-		return (EAttribute) abstractButtonEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)abstractButtonEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -598,7 +578,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EAttribute getButton_Shortcut()
 	{
-		return (EAttribute) buttonEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)buttonEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -609,7 +589,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EAttribute getButton_State()
 	{
-		return (EAttribute) buttonEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)buttonEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -620,7 +600,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EReference getButton_Actions()
 	{
-		return (EReference) buttonEClass.getEStructuralFeatures().get(2);
+		return (EReference)buttonEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -642,7 +622,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EAttribute getAbstractBooleanButton_TextWhenTrue()
 	{
-		return (EAttribute) abstractBooleanButtonEClass.getEStructuralFeatures().get(0);
+		return (EAttribute)abstractBooleanButtonEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -653,7 +633,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EAttribute getAbstractBooleanButton_TextWhenFalse()
 	{
-		return (EAttribute) abstractBooleanButtonEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)abstractBooleanButtonEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -675,7 +655,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EReference getBooleanButton_VariableResolver()
 	{
-		return (EReference) booleanButtonEClass.getEStructuralFeatures().get(0);
+		return (EReference)booleanButtonEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -697,7 +677,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EReference getBooleanActionButton_ActionWhenTrue()
 	{
-		return (EReference) booleanActionButtonEClass.getEStructuralFeatures().get(0);
+		return (EReference)booleanActionButtonEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -708,7 +688,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EReference getBooleanActionButton_ActionWhenFalse()
 	{
-		return (EReference) booleanActionButtonEClass.getEStructuralFeatures().get(1);
+		return (EReference)booleanActionButtonEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -719,7 +699,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public UiFactory getUiFactory()
 	{
-		return (UiFactory) getEFactoryInstance();
+		return (UiFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -820,18 +800,12 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		PresentationPackage thePresentationPackage = (PresentationPackage) EPackage.Registry.INSTANCE
-				.getEPackage(PresentationPackage.eNS_URI);
-		EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE
-				.getEPackage(EcorePackage.eNS_URI);
-		VariablePackage theVariablePackage = (VariablePackage) EPackage.Registry.INSTANCE
-				.getEPackage(VariablePackage.eNS_URI);
-		TypesPackage theTypesPackage = (TypesPackage) EPackage.Registry.INSTANCE
-				.getEPackage(TypesPackage.eNS_URI);
-		ActionPackage theActionPackage = (ActionPackage) EPackage.Registry.INSTANCE
-				.getEPackage(ActionPackage.eNS_URI);
-		RootPackage theRootPackage = (RootPackage) EPackage.Registry.INSTANCE
-				.getEPackage(RootPackage.eNS_URI);
+		PresentationPackage thePresentationPackage = (PresentationPackage)EPackage.Registry.INSTANCE.getEPackage(PresentationPackage.eNS_URI);
+		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+		VariablePackage theVariablePackage = (VariablePackage)EPackage.Registry.INSTANCE.getEPackage(VariablePackage.eNS_URI);
+		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+		ActionPackage theActionPackage = (ActionPackage)EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
+		RootPackage theRootPackage = (RootPackage)EPackage.Registry.INSTANCE.getEPackage(RootPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -857,133 +831,61 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		booleanActionButtonEClass.getESuperTypes().add(this.getAbstractBooleanButton());
 
 		// Initialize classes and features; add operations and parameters
-		initEClass(panelEClass, Panel.class, "Panel", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPanel_Controls(), this.getIControl(), null, "controls", null, 0, -1,
-				Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPanel_ShowTitle(), theEcorePackage.getEBoolean(), "showTitle", "false", 0,
-				1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPanel_Minimizable(), theEcorePackage.getEBoolean(), "minimizable",
-				"false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPanel_Movable(), theEcorePackage.getEBoolean(), "movable", "false", 0, 1,
-				Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPanel_Minimized(), theEcorePackage.getEBoolean(), "minimized", "false", 0,
-				1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(panelEClass, Panel.class, "Panel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPanel_Controls(), this.getIControl(), null, "controls", null, 0, -1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPanel_ShowTitle(), theEcorePackage.getEBoolean(), "showTitle", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPanel_Minimizable(), theEcorePackage.getEBoolean(), "minimizable", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPanel_Movable(), theEcorePackage.getEBoolean(), "movable", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPanel_Minimized(), theEcorePackage.getEBoolean(), "minimized", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(iControlEClass, IControl.class, "IControl", IS_ABSTRACT, IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEClass(iControlEClass, IControl.class, "IControl", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(widgetEClass, Widget.class, "Widget", IS_ABSTRACT, IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEClass(widgetEClass, Widget.class, "Widget", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(abstractLabelEClass, AbstractLabel.class, "AbstractLabel", IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAbstractLabel_Text(), theEcorePackage.getEString(), "text", "", 0, 1,
-				AbstractLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-				!IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAbstractLabel_FontScale(), theEcorePackage.getEFloat(), "fontScale", "1",
-				0, 1, AbstractLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(abstractLabelEClass, AbstractLabel.class, "AbstractLabel", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAbstractLabel_Text(), theEcorePackage.getEString(), "text", "", 0, 1, AbstractLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractLabel_FontScale(), theEcorePackage.getEFloat(), "fontScale", "1", 0, 1, AbstractLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(dynamicRowLayoutEClass, DynamicRowLayout.class, "DynamicRowLayout", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDynamicRowLayout_Height(), theEcorePackage.getEInt(), "height", "16", 0,
-				1, DynamicRowLayout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getDynamicRowLayout_ColumnCount(), theEcorePackage.getEInt(), "columnCount",
-				"1", 0, 1, DynamicRowLayout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
-				!IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(dynamicRowLayoutEClass, DynamicRowLayout.class, "DynamicRowLayout", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDynamicRowLayout_Height(), theEcorePackage.getEInt(), "height", "16", 0, 1, DynamicRowLayout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDynamicRowLayout_ColumnCount(), theEcorePackage.getEInt(), "columnCount", "1", 0, 1, DynamicRowLayout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(variableLabelEClass, VariableLabel.class, "VariableLabel", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getVariableLabel_VariableResolver(),
-				theVariablePackage.getIVariableResolver(), null, "variableResolver", null, 1, 1,
-				VariableLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(variableLabelEClass, VariableLabel.class, "VariableLabel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getVariableLabel_VariableResolver(), theVariablePackage.getIVariableResolver(), null, "variableResolver", null, 1, 1, VariableLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(labelEClass, Label.class, "Label", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
+		initEClass(labelEClass, Label.class, "Label", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(sliderEClass, Slider.class, "Slider", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getSlider_MinValue(), theEcorePackage.getEInt(), "minValue", "0", 0, 1,
-				Slider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSlider_MaxValue(), theEcorePackage.getEInt(), "maxValue", "10", 0, 1,
-				Slider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getSlider_Step(), theEcorePackage.getEInt(), "step", "1", 0, 1, Slider.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEReference(getSlider_VariableResolver(), theVariablePackage.getIVariableResolver(),
-				null, "variableResolver", null, 1, 1, Slider.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
+		initEClass(sliderEClass, Slider.class, "Slider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSlider_MinValue(), theEcorePackage.getEInt(), "minValue", "0", 0, 1, Slider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSlider_MaxValue(), theEcorePackage.getEInt(), "maxValue", "10", 0, 1, Slider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSlider_Step(), theEcorePackage.getEInt(), "step", "1", 0, 1, Slider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSlider_VariableResolver(), theVariablePackage.getIVariableResolver(), null, "variableResolver", null, 1, 1, Slider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(textFieldEClass, TextField.class, "TextField", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTextField_VariableResolver(),
-				theVariablePackage.getAbstractVariableResolver(), null, "variableResolver", null, 0,
-				1, TextField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(textFieldEClass, TextField.class, "TextField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTextField_VariableResolver(), theVariablePackage.getAbstractVariableResolver(), null, "variableResolver", null, 0, 1, TextField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(abstractButtonEClass, AbstractButton.class, "AbstractButton", IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAbstractButton_Text(), theEcorePackage.getEString(), "text", "", 0, 1,
-				AbstractButton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
-				!IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(abstractButtonEClass, AbstractButton.class, "AbstractButton", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAbstractButton_Text(), theEcorePackage.getEString(), "text", "", 0, 1, AbstractButton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(buttonEClass, Button.class, "Button", !IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getButton_Shortcut(), theEcorePackage.getEInt(), "shortcut", null, 0, 1,
-				Button.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getButton_State(), theTypesPackage.getEKeyState(), "state", null, 0, 1,
-				Button.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
-				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getButton_Actions(), theActionPackage.getAction(), null, "actions", null, 0,
-				-1, Button.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(buttonEClass, Button.class, "Button", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getButton_Shortcut(), theEcorePackage.getEInt(), "shortcut", null, 0, 1, Button.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getButton_State(), theTypesPackage.getEKeyState(), "state", null, 0, 1, Button.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getButton_Actions(), theActionPackage.getAction(), null, "actions", null, 0, -1, Button.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		addEOperation(buttonEClass, theActionPackage.getActionList(), "lActions", 0, 1, !IS_UNIQUE,
-				IS_ORDERED);
+		addEOperation(buttonEClass, theActionPackage.getActionList(), "lActions", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		addEOperation(buttonEClass, theRootPackage.getLObject(), "getExecutor", 0, 1, !IS_UNIQUE,
-				IS_ORDERED);
+		addEOperation(buttonEClass, theRootPackage.getLObject(), "getExecutor", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
-		initEClass(abstractBooleanButtonEClass, AbstractBooleanButton.class,
-				"AbstractBooleanButton", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getAbstractBooleanButton_TextWhenTrue(), theEcorePackage.getEString(),
-				"textWhenTrue", null, 0, 1, AbstractBooleanButton.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
-		initEAttribute(getAbstractBooleanButton_TextWhenFalse(), theEcorePackage.getEString(),
-				"textWhenFalse", null, 0, 1, AbstractBooleanButton.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
+		initEClass(abstractBooleanButtonEClass, AbstractBooleanButton.class, "AbstractBooleanButton", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getAbstractBooleanButton_TextWhenTrue(), theEcorePackage.getEString(), "textWhenTrue", null, 0, 1, AbstractBooleanButton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractBooleanButton_TextWhenFalse(), theEcorePackage.getEString(), "textWhenFalse", null, 0, 1, AbstractBooleanButton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(booleanButtonEClass, BooleanButton.class, "BooleanButton", !IS_ABSTRACT,
-				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBooleanButton_VariableResolver(),
-				theVariablePackage.getAbstractVariableResolver(), null, "variableResolver", null, 0,
-				1, BooleanButton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-				!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(booleanButtonEClass, BooleanButton.class, "BooleanButton", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBooleanButton_VariableResolver(), theVariablePackage.getAbstractVariableResolver(), null, "variableResolver", null, 0, 1, BooleanButton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(booleanActionButtonEClass, BooleanActionButton.class, "BooleanActionButton",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBooleanActionButton_ActionWhenTrue(), theActionPackage.getAction(), null,
-				"actionWhenTrue", null, 0, 1, BooleanActionButton.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBooleanActionButton_ActionWhenFalse(), theActionPackage.getAction(), null,
-				"actionWhenFalse", null, 0, 1, BooleanActionButton.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
-				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(booleanActionButtonEClass, BooleanActionButton.class, "BooleanActionButton", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBooleanActionButton_ActionWhenTrue(), theActionPackage.getAction(), null, "actionWhenTrue", null, 0, 1, BooleanActionButton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBooleanActionButton_ActionWhenFalse(), theActionPackage.getAction(), null, "actionWhenFalse", null, 0, 1, BooleanActionButton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

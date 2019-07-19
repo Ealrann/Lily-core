@@ -60,7 +60,7 @@ public class ResolverAdapterFactory extends AdapterFactoryImpl
 		}
 		if (object instanceof EObject)
 		{
-			return ((EObject) object).eClass().getEPackage() == modelPackage;
+			return ((EObject)object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -72,28 +72,28 @@ public class ResolverAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	protected ResolverSwitch<Adapter> modelSwitch = new ResolverSwitch<Adapter>()
-	{
-		@Override
-		public Adapter caseILObjectResolver(ILObjectResolver object)
 		{
-			return createILObjectResolverAdapter();
-		}
-		@Override
-		public Adapter caseEReferenceResolver(EReferenceResolver object)
-		{
-			return createEReferenceResolverAdapter();
-		}
-		@Override
-		public Adapter caseChainResolver(ChainResolver object)
-		{
-			return createChainResolverAdapter();
-		}
-		@Override
-		public Adapter defaultCase(EObject object)
-		{
-			return createEObjectAdapter();
-		}
-	};
+			@Override
+			public Adapter caseILObjectResolver(ILObjectResolver object)
+			{
+				return createILObjectResolverAdapter();
+			}
+			@Override
+			public Adapter caseEReferenceResolver(EReferenceResolver object)
+			{
+				return createEReferenceResolverAdapter();
+			}
+			@Override
+			public Adapter caseChainResolver(ChainResolver object)
+			{
+				return createChainResolverAdapter();
+			}
+			@Override
+			public Adapter defaultCase(EObject object)
+			{
+				return createEObjectAdapter();
+			}
+		};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -106,7 +106,7 @@ public class ResolverAdapterFactory extends AdapterFactoryImpl
 	@Override
 	public Adapter createAdapter(Notifier target)
 	{
-		return modelSwitch.doSwitch((EObject) target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 	/**

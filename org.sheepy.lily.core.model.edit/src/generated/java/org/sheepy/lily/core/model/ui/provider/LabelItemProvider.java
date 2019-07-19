@@ -69,11 +69,11 @@ public class LabelItemProvider extends AbstractLabelItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((Label) object).getContentObjects();
+		EList<LObject> labelValue = ((Label)object).getContentObjects();
 		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0
-				? getString("_UI_Label_type")
-				: getString("_UI_Label_type") + " " + label;
+		return label == null || label.length() == 0 ?
+			getString("_UI_Label_type") :
+			getString("_UI_Label_type") + " " + label;
 	}
 
 	/**
@@ -87,6 +87,7 @@ public class LabelItemProvider extends AbstractLabelItemProvider
 	public void notifyChanged(Notification notification)
 	{
 		updateChildren(notification);
+		super.notifyChanged(notification);
 	}
 
 	/**

@@ -20,8 +20,7 @@ public interface PresentationFactory extends EFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	PresentationFactory eINSTANCE = org.sheepy.lily.core.model.presentation.impl.PresentationFactoryImpl
-			.init();
+	PresentationFactory eINSTANCE = org.sheepy.lily.core.model.presentation.impl.PresentationFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Tranparent UI View</em>'.

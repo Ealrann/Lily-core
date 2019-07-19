@@ -59,14 +59,19 @@ public class DirectVariableResolverItemProvider extends AbstractVariableResolver
 	 */
 	protected void addTargetPropertyDescriptor(Object object)
 	{
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-				getResourceLocator(), getString("_UI_DirectVariableResolver_target_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_DirectVariableResolver_target_feature",
-						"_UI_DirectVariableResolver_type"),
-				VariablePackage.Literals.DIRECT_VARIABLE_RESOLVER__TARGET, true, false, true, null,
-				null, null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DirectVariableResolver_target_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DirectVariableResolver_target_feature", "_UI_DirectVariableResolver_type"),
+				 VariablePackage.Literals.DIRECT_VARIABLE_RESOLVER__TARGET,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -78,8 +83,7 @@ public class DirectVariableResolverItemProvider extends AbstractVariableResolver
 	@Override
 	public Object getImage(Object object)
 	{
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/DirectVariableResolver"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/DirectVariableResolver"));
 	}
 
 	/**
@@ -91,10 +95,10 @@ public class DirectVariableResolverItemProvider extends AbstractVariableResolver
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((DirectVariableResolver) object).getVariableDefinition();
-		return label == null || label.length() == 0
-				? getString("_UI_DirectVariableResolver_type")
-				: getString("_UI_DirectVariableResolver_type") + " " + label;
+		String label = ((DirectVariableResolver)object).getVariableDefinition();
+		return label == null || label.length() == 0 ?
+			getString("_UI_DirectVariableResolver_type") :
+			getString("_UI_DirectVariableResolver_type") + " " + label;
 	}
 
 	/**
@@ -108,6 +112,7 @@ public class DirectVariableResolverItemProvider extends AbstractVariableResolver
 	public void notifyChanged(Notification notification)
 	{
 		updateChildren(notification);
+		super.notifyChanged(notification);
 	}
 
 	/**

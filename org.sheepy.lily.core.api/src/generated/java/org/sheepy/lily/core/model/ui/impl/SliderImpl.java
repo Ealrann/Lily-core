@@ -89,8 +89,7 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Vector2ic POSITION_EDEFAULT = (Vector2ic) TypesFactory.eINSTANCE
-			.createFromString(TypesPackage.eINSTANCE.getVector2i(), "0;0");
+	protected static final Vector2ic POSITION_EDEFAULT = (Vector2ic)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getVector2i(), "0;0");
 
 	/**
 	 * The cached value of the '{@link #getPosition() <em>Position</em>}' attribute.
@@ -294,8 +293,8 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 	{
 		EList<LObject> oldContentObjects = contentObjects;
 		contentObjects = newContentObjects;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.SLIDER__CONTENT_OBJECTS, oldContentObjects, contentObjects));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.SLIDER__CONTENT_OBJECTS, oldContentObjects, contentObjects));
 	}
 
 	/**
@@ -319,8 +318,8 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 	{
 		Vector2ic oldPosition = position;
 		position = newPosition;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.SLIDER__POSITION, oldPosition, position));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.SLIDER__POSITION, oldPosition, position));
 	}
 
 	/**
@@ -343,11 +342,9 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 	public void setVerticalRelative(EVerticalRelative newVerticalRelative)
 	{
 		EVerticalRelative oldVerticalRelative = verticalRelative;
-		verticalRelative = newVerticalRelative == null
-				? VERTICAL_RELATIVE_EDEFAULT
-				: newVerticalRelative;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.SLIDER__VERTICAL_RELATIVE, oldVerticalRelative, verticalRelative));
+		verticalRelative = newVerticalRelative == null ? VERTICAL_RELATIVE_EDEFAULT : newVerticalRelative;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.SLIDER__VERTICAL_RELATIVE, oldVerticalRelative, verticalRelative));
 	}
 
 	/**
@@ -370,11 +367,9 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 	public void setHorizontalRelative(EHorizontalRelative newHorizontalRelative)
 	{
 		EHorizontalRelative oldHorizontalRelative = horizontalRelative;
-		horizontalRelative = newHorizontalRelative == null
-				? HORIZONTAL_RELATIVE_EDEFAULT
-				: newHorizontalRelative;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.SLIDER__HORIZONTAL_RELATIVE, oldHorizontalRelative, horizontalRelative));
+		horizontalRelative = newHorizontalRelative == null ? HORIZONTAL_RELATIVE_EDEFAULT : newHorizontalRelative;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.SLIDER__HORIZONTAL_RELATIVE, oldHorizontalRelative, horizontalRelative));
 	}
 
 	/**
@@ -398,8 +393,8 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 	{
 		int oldWidth = width;
 		width = newWidth;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.SLIDER__WIDTH, oldWidth, width));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.SLIDER__WIDTH, oldWidth, width));
 	}
 
 	/**
@@ -423,8 +418,8 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 	{
 		int oldHeight = height;
 		height = newHeight;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.SLIDER__HEIGHT, oldHeight, height));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.SLIDER__HEIGHT, oldHeight, height));
 	}
 
 	/**
@@ -448,8 +443,8 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 	{
 		int oldMinValue = minValue;
 		minValue = newMinValue;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.SLIDER__MIN_VALUE, oldMinValue, minValue));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.SLIDER__MIN_VALUE, oldMinValue, minValue));
 	}
 
 	/**
@@ -473,8 +468,8 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 	{
 		int oldMaxValue = maxValue;
 		maxValue = newMaxValue;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.SLIDER__MAX_VALUE, oldMaxValue, maxValue));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.SLIDER__MAX_VALUE, oldMaxValue, maxValue));
 	}
 
 	/**
@@ -498,8 +493,8 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 	{
 		int oldStep = step;
 		step = newStep;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.SLIDER__STEP, oldStep, step));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.SLIDER__STEP, oldStep, step));
 	}
 
 	/**
@@ -518,17 +513,14 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetVariableResolver(	IVariableResolver newVariableResolver,
-														NotificationChain msgs)
+	public NotificationChain basicSetVariableResolver(IVariableResolver newVariableResolver, NotificationChain msgs)
 	{
 		IVariableResolver oldVariableResolver = variableResolver;
 		variableResolver = newVariableResolver;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-					UiPackage.SLIDER__VARIABLE_RESOLVER, oldVariableResolver, newVariableResolver);
-			if (msgs == null) msgs = notification;
-			else msgs.add(notification);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UiPackage.SLIDER__VARIABLE_RESOLVER, oldVariableResolver, newVariableResolver);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
 	}
@@ -545,16 +537,14 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 		{
 			NotificationChain msgs = null;
 			if (variableResolver != null)
-				msgs = ((InternalEObject) variableResolver).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - UiPackage.SLIDER__VARIABLE_RESOLVER, null, msgs);
+				msgs = ((InternalEObject)variableResolver).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UiPackage.SLIDER__VARIABLE_RESOLVER, null, msgs);
 			if (newVariableResolver != null)
-				msgs = ((InternalEObject) newVariableResolver).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - UiPackage.SLIDER__VARIABLE_RESOLVER, null, msgs);
+				msgs = ((InternalEObject)newVariableResolver).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UiPackage.SLIDER__VARIABLE_RESOLVER, null, msgs);
 			msgs = basicSetVariableResolver(newVariableResolver, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
-		else if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				UiPackage.SLIDER__VARIABLE_RESOLVER, newVariableResolver, newVariableResolver));
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.SLIDER__VARIABLE_RESOLVER, newVariableResolver, newVariableResolver));
 	}
 
 	/**
@@ -580,7 +570,7 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 		boolean _isEmpty = unitRefs.isEmpty();
 		if (_isEmpty)
 		{
-			res = ECollections.<T> emptyEList();
+			res = ECollections.<T>emptyEList();
 		}
 		else
 		{
@@ -604,7 +594,7 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 			boolean _tripleEquals = (_contentObjects == null);
 			if (_tripleEquals)
 			{
-				this.setContentObjects(this.<LObject> createContainmentEList(Literals.LOBJECT));
+				this.setContentObjects(this.<LObject>createContainmentEList(Literals.LOBJECT));
 			}
 			_xblockexpression = this.getContentObjects();
 		}
@@ -657,14 +647,12 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-											int featureID,
-											NotificationChain msgs)
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
 		switch (featureID)
 		{
-		case UiPackage.SLIDER__VARIABLE_RESOLVER:
-			return basicSetVariableResolver(null, msgs);
+			case UiPackage.SLIDER__VARIABLE_RESOLVER:
+				return basicSetVariableResolver(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -679,26 +667,26 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 	{
 		switch (featureID)
 		{
-		case UiPackage.SLIDER__CONTENT_OBJECTS:
-			return getContentObjects();
-		case UiPackage.SLIDER__POSITION:
-			return getPosition();
-		case UiPackage.SLIDER__VERTICAL_RELATIVE:
-			return getVerticalRelative();
-		case UiPackage.SLIDER__HORIZONTAL_RELATIVE:
-			return getHorizontalRelative();
-		case UiPackage.SLIDER__WIDTH:
-			return getWidth();
-		case UiPackage.SLIDER__HEIGHT:
-			return getHeight();
-		case UiPackage.SLIDER__MIN_VALUE:
-			return getMinValue();
-		case UiPackage.SLIDER__MAX_VALUE:
-			return getMaxValue();
-		case UiPackage.SLIDER__STEP:
-			return getStep();
-		case UiPackage.SLIDER__VARIABLE_RESOLVER:
-			return getVariableResolver();
+			case UiPackage.SLIDER__CONTENT_OBJECTS:
+				return getContentObjects();
+			case UiPackage.SLIDER__POSITION:
+				return getPosition();
+			case UiPackage.SLIDER__VERTICAL_RELATIVE:
+				return getVerticalRelative();
+			case UiPackage.SLIDER__HORIZONTAL_RELATIVE:
+				return getHorizontalRelative();
+			case UiPackage.SLIDER__WIDTH:
+				return getWidth();
+			case UiPackage.SLIDER__HEIGHT:
+				return getHeight();
+			case UiPackage.SLIDER__MIN_VALUE:
+				return getMinValue();
+			case UiPackage.SLIDER__MAX_VALUE:
+				return getMaxValue();
+			case UiPackage.SLIDER__STEP:
+				return getStep();
+			case UiPackage.SLIDER__VARIABLE_RESOLVER:
+				return getVariableResolver();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -714,36 +702,36 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 	{
 		switch (featureID)
 		{
-		case UiPackage.SLIDER__CONTENT_OBJECTS:
-			setContentObjects((EList<LObject>) newValue);
-			return;
-		case UiPackage.SLIDER__POSITION:
-			setPosition((Vector2ic) newValue);
-			return;
-		case UiPackage.SLIDER__VERTICAL_RELATIVE:
-			setVerticalRelative((EVerticalRelative) newValue);
-			return;
-		case UiPackage.SLIDER__HORIZONTAL_RELATIVE:
-			setHorizontalRelative((EHorizontalRelative) newValue);
-			return;
-		case UiPackage.SLIDER__WIDTH:
-			setWidth((Integer) newValue);
-			return;
-		case UiPackage.SLIDER__HEIGHT:
-			setHeight((Integer) newValue);
-			return;
-		case UiPackage.SLIDER__MIN_VALUE:
-			setMinValue((Integer) newValue);
-			return;
-		case UiPackage.SLIDER__MAX_VALUE:
-			setMaxValue((Integer) newValue);
-			return;
-		case UiPackage.SLIDER__STEP:
-			setStep((Integer) newValue);
-			return;
-		case UiPackage.SLIDER__VARIABLE_RESOLVER:
-			setVariableResolver((IVariableResolver) newValue);
-			return;
+			case UiPackage.SLIDER__CONTENT_OBJECTS:
+				setContentObjects((EList<LObject>)newValue);
+				return;
+			case UiPackage.SLIDER__POSITION:
+				setPosition((Vector2ic)newValue);
+				return;
+			case UiPackage.SLIDER__VERTICAL_RELATIVE:
+				setVerticalRelative((EVerticalRelative)newValue);
+				return;
+			case UiPackage.SLIDER__HORIZONTAL_RELATIVE:
+				setHorizontalRelative((EHorizontalRelative)newValue);
+				return;
+			case UiPackage.SLIDER__WIDTH:
+				setWidth((Integer)newValue);
+				return;
+			case UiPackage.SLIDER__HEIGHT:
+				setHeight((Integer)newValue);
+				return;
+			case UiPackage.SLIDER__MIN_VALUE:
+				setMinValue((Integer)newValue);
+				return;
+			case UiPackage.SLIDER__MAX_VALUE:
+				setMaxValue((Integer)newValue);
+				return;
+			case UiPackage.SLIDER__STEP:
+				setStep((Integer)newValue);
+				return;
+			case UiPackage.SLIDER__VARIABLE_RESOLVER:
+				setVariableResolver((IVariableResolver)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -758,36 +746,36 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 	{
 		switch (featureID)
 		{
-		case UiPackage.SLIDER__CONTENT_OBJECTS:
-			setContentObjects((EList<LObject>) null);
-			return;
-		case UiPackage.SLIDER__POSITION:
-			setPosition(POSITION_EDEFAULT);
-			return;
-		case UiPackage.SLIDER__VERTICAL_RELATIVE:
-			setVerticalRelative(VERTICAL_RELATIVE_EDEFAULT);
-			return;
-		case UiPackage.SLIDER__HORIZONTAL_RELATIVE:
-			setHorizontalRelative(HORIZONTAL_RELATIVE_EDEFAULT);
-			return;
-		case UiPackage.SLIDER__WIDTH:
-			setWidth(WIDTH_EDEFAULT);
-			return;
-		case UiPackage.SLIDER__HEIGHT:
-			setHeight(HEIGHT_EDEFAULT);
-			return;
-		case UiPackage.SLIDER__MIN_VALUE:
-			setMinValue(MIN_VALUE_EDEFAULT);
-			return;
-		case UiPackage.SLIDER__MAX_VALUE:
-			setMaxValue(MAX_VALUE_EDEFAULT);
-			return;
-		case UiPackage.SLIDER__STEP:
-			setStep(STEP_EDEFAULT);
-			return;
-		case UiPackage.SLIDER__VARIABLE_RESOLVER:
-			setVariableResolver((IVariableResolver) null);
-			return;
+			case UiPackage.SLIDER__CONTENT_OBJECTS:
+				setContentObjects((EList<LObject>)null);
+				return;
+			case UiPackage.SLIDER__POSITION:
+				setPosition(POSITION_EDEFAULT);
+				return;
+			case UiPackage.SLIDER__VERTICAL_RELATIVE:
+				setVerticalRelative(VERTICAL_RELATIVE_EDEFAULT);
+				return;
+			case UiPackage.SLIDER__HORIZONTAL_RELATIVE:
+				setHorizontalRelative(HORIZONTAL_RELATIVE_EDEFAULT);
+				return;
+			case UiPackage.SLIDER__WIDTH:
+				setWidth(WIDTH_EDEFAULT);
+				return;
+			case UiPackage.SLIDER__HEIGHT:
+				setHeight(HEIGHT_EDEFAULT);
+				return;
+			case UiPackage.SLIDER__MIN_VALUE:
+				setMinValue(MIN_VALUE_EDEFAULT);
+				return;
+			case UiPackage.SLIDER__MAX_VALUE:
+				setMaxValue(MAX_VALUE_EDEFAULT);
+				return;
+			case UiPackage.SLIDER__STEP:
+				setStep(STEP_EDEFAULT);
+				return;
+			case UiPackage.SLIDER__VARIABLE_RESOLVER:
+				setVariableResolver((IVariableResolver)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -802,28 +790,26 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 	{
 		switch (featureID)
 		{
-		case UiPackage.SLIDER__CONTENT_OBJECTS:
-			return contentObjects != null;
-		case UiPackage.SLIDER__POSITION:
-			return POSITION_EDEFAULT == null
-					? position != null
-					: !POSITION_EDEFAULT.equals(position);
-		case UiPackage.SLIDER__VERTICAL_RELATIVE:
-			return verticalRelative != VERTICAL_RELATIVE_EDEFAULT;
-		case UiPackage.SLIDER__HORIZONTAL_RELATIVE:
-			return horizontalRelative != HORIZONTAL_RELATIVE_EDEFAULT;
-		case UiPackage.SLIDER__WIDTH:
-			return width != WIDTH_EDEFAULT;
-		case UiPackage.SLIDER__HEIGHT:
-			return height != HEIGHT_EDEFAULT;
-		case UiPackage.SLIDER__MIN_VALUE:
-			return minValue != MIN_VALUE_EDEFAULT;
-		case UiPackage.SLIDER__MAX_VALUE:
-			return maxValue != MAX_VALUE_EDEFAULT;
-		case UiPackage.SLIDER__STEP:
-			return step != STEP_EDEFAULT;
-		case UiPackage.SLIDER__VARIABLE_RESOLVER:
-			return variableResolver != null;
+			case UiPackage.SLIDER__CONTENT_OBJECTS:
+				return contentObjects != null;
+			case UiPackage.SLIDER__POSITION:
+				return POSITION_EDEFAULT == null ? position != null : !POSITION_EDEFAULT.equals(position);
+			case UiPackage.SLIDER__VERTICAL_RELATIVE:
+				return verticalRelative != VERTICAL_RELATIVE_EDEFAULT;
+			case UiPackage.SLIDER__HORIZONTAL_RELATIVE:
+				return horizontalRelative != HORIZONTAL_RELATIVE_EDEFAULT;
+			case UiPackage.SLIDER__WIDTH:
+				return width != WIDTH_EDEFAULT;
+			case UiPackage.SLIDER__HEIGHT:
+				return height != HEIGHT_EDEFAULT;
+			case UiPackage.SLIDER__MIN_VALUE:
+				return minValue != MIN_VALUE_EDEFAULT;
+			case UiPackage.SLIDER__MAX_VALUE:
+				return maxValue != MAX_VALUE_EDEFAULT;
+			case UiPackage.SLIDER__STEP:
+				return step != STEP_EDEFAULT;
+			case UiPackage.SLIDER__VARIABLE_RESOLVER:
+				return variableResolver != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -840,26 +826,19 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 		{
 			switch (derivedFeatureID)
 			{
-			case UiPackage.SLIDER__POSITION:
-				return PresentationPackage.IPOSITION_ELEMENT__POSITION;
-			case UiPackage.SLIDER__VERTICAL_RELATIVE:
-				return PresentationPackage.IPOSITION_ELEMENT__VERTICAL_RELATIVE;
-			case UiPackage.SLIDER__HORIZONTAL_RELATIVE:
-				return PresentationPackage.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE;
-			default:
-				return -1;
+				case UiPackage.SLIDER__POSITION: return PresentationPackage.IPOSITION_ELEMENT__POSITION;
+				case UiPackage.SLIDER__VERTICAL_RELATIVE: return PresentationPackage.IPOSITION_ELEMENT__VERTICAL_RELATIVE;
+				case UiPackage.SLIDER__HORIZONTAL_RELATIVE: return PresentationPackage.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE;
+				default: return -1;
 			}
 		}
 		if (baseClass == ISizedElement.class)
 		{
 			switch (derivedFeatureID)
 			{
-			case UiPackage.SLIDER__WIDTH:
-				return PresentationPackage.ISIZED_ELEMENT__WIDTH;
-			case UiPackage.SLIDER__HEIGHT:
-				return PresentationPackage.ISIZED_ELEMENT__HEIGHT;
-			default:
-				return -1;
+				case UiPackage.SLIDER__WIDTH: return PresentationPackage.ISIZED_ELEMENT__WIDTH;
+				case UiPackage.SLIDER__HEIGHT: return PresentationPackage.ISIZED_ELEMENT__HEIGHT;
+				default: return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
@@ -877,26 +856,19 @@ public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
 		{
 			switch (baseFeatureID)
 			{
-			case PresentationPackage.IPOSITION_ELEMENT__POSITION:
-				return UiPackage.SLIDER__POSITION;
-			case PresentationPackage.IPOSITION_ELEMENT__VERTICAL_RELATIVE:
-				return UiPackage.SLIDER__VERTICAL_RELATIVE;
-			case PresentationPackage.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE:
-				return UiPackage.SLIDER__HORIZONTAL_RELATIVE;
-			default:
-				return -1;
+				case PresentationPackage.IPOSITION_ELEMENT__POSITION: return UiPackage.SLIDER__POSITION;
+				case PresentationPackage.IPOSITION_ELEMENT__VERTICAL_RELATIVE: return UiPackage.SLIDER__VERTICAL_RELATIVE;
+				case PresentationPackage.IPOSITION_ELEMENT__HORIZONTAL_RELATIVE: return UiPackage.SLIDER__HORIZONTAL_RELATIVE;
+				default: return -1;
 			}
 		}
 		if (baseClass == ISizedElement.class)
 		{
 			switch (baseFeatureID)
 			{
-			case PresentationPackage.ISIZED_ELEMENT__WIDTH:
-				return UiPackage.SLIDER__WIDTH;
-			case PresentationPackage.ISIZED_ELEMENT__HEIGHT:
-				return UiPackage.SLIDER__HEIGHT;
-			default:
-				return -1;
+				case PresentationPackage.ISIZED_ELEMENT__WIDTH: return UiPackage.SLIDER__WIDTH;
+				case PresentationPackage.ISIZED_ELEMENT__HEIGHT: return UiPackage.SLIDER__HEIGHT;
+				default: return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);

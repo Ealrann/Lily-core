@@ -71,7 +71,7 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 		}
 		if (object instanceof EObject)
 		{
-			return ((EObject) object).eClass().getEPackage() == modelPackage;
+			return ((EObject)object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -83,118 +83,118 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	protected UiSwitch<Adapter> modelSwitch = new UiSwitch<Adapter>()
-	{
-		@Override
-		public Adapter casePanel(Panel object)
 		{
-			return createPanelAdapter();
-		}
-		@Override
-		public Adapter caseIControl(IControl object)
-		{
-			return createIControlAdapter();
-		}
-		@Override
-		public Adapter caseWidget(Widget object)
-		{
-			return createWidgetAdapter();
-		}
-		@Override
-		public Adapter caseAbstractLabel(AbstractLabel object)
-		{
-			return createAbstractLabelAdapter();
-		}
-		@Override
-		public Adapter caseDynamicRowLayout(DynamicRowLayout object)
-		{
-			return createDynamicRowLayoutAdapter();
-		}
-		@Override
-		public Adapter caseVariableLabel(VariableLabel object)
-		{
-			return createVariableLabelAdapter();
-		}
-		@Override
-		public Adapter caseLabel(Label object)
-		{
-			return createLabelAdapter();
-		}
-		@Override
-		public Adapter caseSlider(Slider object)
-		{
-			return createSliderAdapter();
-		}
-		@Override
-		public Adapter caseTextField(TextField object)
-		{
-			return createTextFieldAdapter();
-		}
-		@Override
-		public Adapter caseAbstractButton(AbstractButton object)
-		{
-			return createAbstractButtonAdapter();
-		}
-		@Override
-		public Adapter caseButton(Button object)
-		{
-			return createButtonAdapter();
-		}
-		@Override
-		public Adapter caseAbstractBooleanButton(AbstractBooleanButton object)
-		{
-			return createAbstractBooleanButtonAdapter();
-		}
-		@Override
-		public Adapter caseBooleanButton(BooleanButton object)
-		{
-			return createBooleanButtonAdapter();
-		}
-		@Override
-		public Adapter caseBooleanActionButton(BooleanActionButton object)
-		{
-			return createBooleanActionButtonAdapter();
-		}
-		@Override
-		public Adapter caseLNamedElement(LNamedElement object)
-		{
-			return createLNamedElementAdapter();
-		}
-		@Override
-		public Adapter caseIInferenceObject(IInferenceObject object)
-		{
-			return createIInferenceObjectAdapter();
-		}
-		@Override
-		public Adapter caseLObject(LObject object)
-		{
-			return createLObjectAdapter();
-		}
-		@Override
-		public Adapter caseIUIElement(IUIElement object)
-		{
-			return createIUIElementAdapter();
-		}
-		@Override
-		public Adapter caseIPositionElement(IPositionElement object)
-		{
-			return createIPositionElementAdapter();
-		}
-		@Override
-		public Adapter caseIPanel(IPanel object)
-		{
-			return createIPanelAdapter();
-		}
-		@Override
-		public Adapter caseISizedElement(ISizedElement object)
-		{
-			return createISizedElementAdapter();
-		}
-		@Override
-		public Adapter defaultCase(EObject object)
-		{
-			return createEObjectAdapter();
-		}
-	};
+			@Override
+			public Adapter casePanel(Panel object)
+			{
+				return createPanelAdapter();
+			}
+			@Override
+			public Adapter caseIControl(IControl object)
+			{
+				return createIControlAdapter();
+			}
+			@Override
+			public Adapter caseWidget(Widget object)
+			{
+				return createWidgetAdapter();
+			}
+			@Override
+			public Adapter caseAbstractLabel(AbstractLabel object)
+			{
+				return createAbstractLabelAdapter();
+			}
+			@Override
+			public Adapter caseDynamicRowLayout(DynamicRowLayout object)
+			{
+				return createDynamicRowLayoutAdapter();
+			}
+			@Override
+			public Adapter caseVariableLabel(VariableLabel object)
+			{
+				return createVariableLabelAdapter();
+			}
+			@Override
+			public Adapter caseLabel(Label object)
+			{
+				return createLabelAdapter();
+			}
+			@Override
+			public Adapter caseSlider(Slider object)
+			{
+				return createSliderAdapter();
+			}
+			@Override
+			public Adapter caseTextField(TextField object)
+			{
+				return createTextFieldAdapter();
+			}
+			@Override
+			public Adapter caseAbstractButton(AbstractButton object)
+			{
+				return createAbstractButtonAdapter();
+			}
+			@Override
+			public Adapter caseButton(Button object)
+			{
+				return createButtonAdapter();
+			}
+			@Override
+			public Adapter caseAbstractBooleanButton(AbstractBooleanButton object)
+			{
+				return createAbstractBooleanButtonAdapter();
+			}
+			@Override
+			public Adapter caseBooleanButton(BooleanButton object)
+			{
+				return createBooleanButtonAdapter();
+			}
+			@Override
+			public Adapter caseBooleanActionButton(BooleanActionButton object)
+			{
+				return createBooleanActionButtonAdapter();
+			}
+			@Override
+			public Adapter caseLNamedElement(LNamedElement object)
+			{
+				return createLNamedElementAdapter();
+			}
+			@Override
+			public Adapter caseIInferenceObject(IInferenceObject object)
+			{
+				return createIInferenceObjectAdapter();
+			}
+			@Override
+			public Adapter caseLObject(LObject object)
+			{
+				return createLObjectAdapter();
+			}
+			@Override
+			public Adapter caseIUIElement(IUIElement object)
+			{
+				return createIUIElementAdapter();
+			}
+			@Override
+			public Adapter caseIPositionElement(IPositionElement object)
+			{
+				return createIPositionElementAdapter();
+			}
+			@Override
+			public Adapter caseIPanel(IPanel object)
+			{
+				return createIPanelAdapter();
+			}
+			@Override
+			public Adapter caseISizedElement(ISizedElement object)
+			{
+				return createISizedElementAdapter();
+			}
+			@Override
+			public Adapter defaultCase(EObject object)
+			{
+				return createEObjectAdapter();
+			}
+		};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -207,7 +207,7 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	@Override
 	public Adapter createAdapter(Notifier target)
 	{
-		return modelSwitch.doSwitch((EObject) target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 	/**

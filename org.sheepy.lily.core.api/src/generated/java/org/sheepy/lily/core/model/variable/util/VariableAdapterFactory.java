@@ -64,7 +64,7 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 		}
 		if (object instanceof EObject)
 		{
-			return ((EObject) object).eClass().getEPackage() == modelPackage;
+			return ((EObject)object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -76,68 +76,68 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	protected VariableSwitch<Adapter> modelSwitch = new VariableSwitch<Adapter>()
-	{
-		@Override
-		public Adapter caseIVariableResolver(IVariableResolver object)
 		{
-			return createIVariableResolverAdapter();
-		}
-		@Override
-		public Adapter caseIDefinitionContainer(IDefinitionContainer object)
-		{
-			return createIDefinitionContainerAdapter();
-		}
-		@Override
-		public Adapter caseChainVariableResolver(ChainVariableResolver object)
-		{
-			return createChainVariableResolverAdapter();
-		}
-		@Override
-		public Adapter caseChainResolver(ChainResolver object)
-		{
-			return createChainResolverAdapter();
-		}
-		@Override
-		public Adapter caseAbstractVariableResolver(AbstractVariableResolver object)
-		{
-			return createAbstractVariableResolverAdapter();
-		}
-		@Override
-		public Adapter caseDirectVariableResolver(DirectVariableResolver object)
-		{
-			return createDirectVariableResolverAdapter();
-		}
-		@Override
-		public Adapter caseVarChangeAction(VarChangeAction object)
-		{
-			return createVarChangeActionAdapter();
-		}
-		@Override
-		public Adapter caseBooleanChangeAction(BooleanChangeAction object)
-		{
-			return createBooleanChangeActionAdapter();
-		}
-		@Override
-		public Adapter caseVarChangeActionPkg(VarChangeActionPkg object)
-		{
-			return createVarChangeActionPkgAdapter();
-		}
-		@Override
-		public Adapter caseLNamedElement(LNamedElement object)
-		{
-			return createLNamedElementAdapter();
-		}
-		@Override
-		public Adapter caseAction(Action object)
-		{
-			return createActionAdapter();
-		}
-		@Override
-		public Adapter defaultCase(EObject object)
-		{
-			return createEObjectAdapter();
-		}
-	};
+			@Override
+			public Adapter caseIVariableResolver(IVariableResolver object)
+			{
+				return createIVariableResolverAdapter();
+			}
+			@Override
+			public Adapter caseIDefinitionContainer(IDefinitionContainer object)
+			{
+				return createIDefinitionContainerAdapter();
+			}
+			@Override
+			public Adapter caseChainVariableResolver(ChainVariableResolver object)
+			{
+				return createChainVariableResolverAdapter();
+			}
+			@Override
+			public Adapter caseChainResolver(ChainResolver object)
+			{
+				return createChainResolverAdapter();
+			}
+			@Override
+			public Adapter caseAbstractVariableResolver(AbstractVariableResolver object)
+			{
+				return createAbstractVariableResolverAdapter();
+			}
+			@Override
+			public Adapter caseDirectVariableResolver(DirectVariableResolver object)
+			{
+				return createDirectVariableResolverAdapter();
+			}
+			@Override
+			public Adapter caseVarChangeAction(VarChangeAction object)
+			{
+				return createVarChangeActionAdapter();
+			}
+			@Override
+			public Adapter caseBooleanChangeAction(BooleanChangeAction object)
+			{
+				return createBooleanChangeActionAdapter();
+			}
+			@Override
+			public Adapter caseVarChangeActionPkg(VarChangeActionPkg object)
+			{
+				return createVarChangeActionPkgAdapter();
+			}
+			@Override
+			public Adapter caseLNamedElement(LNamedElement object)
+			{
+				return createLNamedElementAdapter();
+			}
+			@Override
+			public Adapter caseAction(Action object)
+			{
+				return createActionAdapter();
+			}
+			@Override
+			public Adapter defaultCase(EObject object)
+			{
+				return createEObjectAdapter();
+			}
+		};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.
@@ -150,7 +150,7 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	@Override
 	public Adapter createAdapter(Notifier target)
 	{
-		return modelSwitch.doSwitch((EObject) target);
+		return modelSwitch.doSwitch((EObject)target);
 	}
 
 	/**

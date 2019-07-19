@@ -89,9 +89,8 @@ public class ChainResolverImpl extends MinimalEObjectImpl.Container implements C
 	{
 		String oldVariableDefinition = variableDefinition;
 		variableDefinition = newVariableDefinition;
-		if (eNotificationRequired()) eNotify(new ENotificationImpl(this, Notification.SET,
-				VariablePackage.CHAIN_RESOLVER__VARIABLE_DEFINITION, oldVariableDefinition,
-				variableDefinition));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, VariablePackage.CHAIN_RESOLVER__VARIABLE_DEFINITION, oldVariableDefinition, variableDefinition));
 	}
 
 	/**
@@ -104,8 +103,8 @@ public class ChainResolverImpl extends MinimalEObjectImpl.Container implements C
 	{
 		switch (featureID)
 		{
-		case VariablePackage.CHAIN_RESOLVER__VARIABLE_DEFINITION:
-			return getVariableDefinition();
+			case VariablePackage.CHAIN_RESOLVER__VARIABLE_DEFINITION:
+				return getVariableDefinition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -120,9 +119,9 @@ public class ChainResolverImpl extends MinimalEObjectImpl.Container implements C
 	{
 		switch (featureID)
 		{
-		case VariablePackage.CHAIN_RESOLVER__VARIABLE_DEFINITION:
-			setVariableDefinition((String) newValue);
-			return;
+			case VariablePackage.CHAIN_RESOLVER__VARIABLE_DEFINITION:
+				setVariableDefinition((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -137,9 +136,9 @@ public class ChainResolverImpl extends MinimalEObjectImpl.Container implements C
 	{
 		switch (featureID)
 		{
-		case VariablePackage.CHAIN_RESOLVER__VARIABLE_DEFINITION:
-			setVariableDefinition(VARIABLE_DEFINITION_EDEFAULT);
-			return;
+			case VariablePackage.CHAIN_RESOLVER__VARIABLE_DEFINITION:
+				setVariableDefinition(VARIABLE_DEFINITION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -154,10 +153,8 @@ public class ChainResolverImpl extends MinimalEObjectImpl.Container implements C
 	{
 		switch (featureID)
 		{
-		case VariablePackage.CHAIN_RESOLVER__VARIABLE_DEFINITION:
-			return VARIABLE_DEFINITION_EDEFAULT == null
-					? variableDefinition != null
-					: !VARIABLE_DEFINITION_EDEFAULT.equals(variableDefinition);
+			case VariablePackage.CHAIN_RESOLVER__VARIABLE_DEFINITION:
+				return VARIABLE_DEFINITION_EDEFAULT == null ? variableDefinition != null : !VARIABLE_DEFINITION_EDEFAULT.equals(variableDefinition);
 		}
 		return super.eIsSet(featureID);
 	}

@@ -33,13 +33,13 @@ public class ActionFactoryImpl extends EFactoryImpl implements ActionFactory
 	{
 		try
 		{
-			ActionFactory theActionFactory = (ActionFactory) EPackage.Registry.INSTANCE
-					.getEFactory(ActionPackage.eNS_URI);
+			ActionFactory theActionFactory = (ActionFactory)EPackage.Registry.INSTANCE.getEFactory(ActionPackage.eNS_URI);
 			if (theActionFactory != null)
 			{
 				return theActionFactory;
 			}
-		} catch (Exception exception)
+		}
+		catch (Exception exception)
 		{
 			EcorePlugin.INSTANCE.log(exception);
 		}
@@ -67,9 +67,8 @@ public class ActionFactoryImpl extends EFactoryImpl implements ActionFactory
 	{
 		switch (eClass.getClassifierID())
 		{
-		default:
-			throw new IllegalArgumentException(
-					"The class '" + eClass.getName() + "' is not a valid classifier");
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -83,11 +82,10 @@ public class ActionFactoryImpl extends EFactoryImpl implements ActionFactory
 	{
 		switch (eDataType.getClassifierID())
 		{
-		case ActionPackage.ACTION_LIST:
-			return createActionListFromString(eDataType, initialValue);
-		default:
-			throw new IllegalArgumentException(
-					"The datatype '" + eDataType.getName() + "' is not a valid classifier");
+			case ActionPackage.ACTION_LIST:
+				return createActionListFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -101,11 +99,10 @@ public class ActionFactoryImpl extends EFactoryImpl implements ActionFactory
 	{
 		switch (eDataType.getClassifierID())
 		{
-		case ActionPackage.ACTION_LIST:
-			return convertActionListToString(eDataType, instanceValue);
-		default:
-			throw new IllegalArgumentException(
-					"The datatype '" + eDataType.getName() + "' is not a valid classifier");
+			case ActionPackage.ACTION_LIST:
+				return convertActionListToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -115,10 +112,9 @@ public class ActionFactoryImpl extends EFactoryImpl implements ActionFactory
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public List<? extends Action> createActionListFromString(	EDataType eDataType,
-																String initialValue)
+	public List<? extends Action> createActionListFromString(EDataType eDataType, String initialValue)
 	{
-		return (List<? extends Action>) super.createFromString(initialValue);
+		return (List<? extends Action>)super.createFromString(initialValue);
 	}
 
 	/**
@@ -139,7 +135,7 @@ public class ActionFactoryImpl extends EFactoryImpl implements ActionFactory
 	@Override
 	public ActionPackage getActionPackage()
 	{
-		return (ActionPackage) getEPackage();
+		return (ActionPackage)getEPackage();
 	}
 
 	/**
