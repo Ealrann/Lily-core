@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="inference" nsURI="org.sheepy.lily.core.model.inference" nsPrefix="inference">
-  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-    <details key="modelDirectory" value="/org.sheepy.lily.core.model/src/generated/java"/>
-    <details key="editDirectory" value="/org.sheepy.lily.core.model.edit/src/generated/java"/>
-    <details key="complianceLevel" value="11.0"/>
-    <details key="resource" value="XMI"/>
-    <details key="extensibleProviderFactory" value="true"/>
-    <details key="updateClasspath" value="false"/>
-    <details key="basePackage" value="org.sheepy.lily.core.model"/>
-  </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="IInferenceObject" abstract="true" interface="true">
     <eOperations name="lInferenceObject" unique="false" eType="#//IInferenceObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -76,7 +67,7 @@
         <eTypeArguments eTypeParameter="#//Condition/T"/>
       </eGenericType>
     </eOperations>
-    <eOperations name="match" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean">
+    <eOperations name="match" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="body" value="throw new &lt;%java.lang.UnsupportedOperationException%>();"/>
       </eAnnotations>
