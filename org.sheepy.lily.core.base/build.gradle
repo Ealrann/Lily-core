@@ -1,0 +1,9 @@
+plugins {
+	id 'java-library'
+}
+
+dependencies {
+	api project(":org.sheepy.lily.core.api")
+
+	implementation project(":org.sheepy.lily.core.impl")
+}
