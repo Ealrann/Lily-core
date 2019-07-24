@@ -6,17 +6,27 @@ import java.util.Collection;
 import java.util.Deque;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 
-public class ModelUtil
+public final class ModelUtil
 {
+	private static final EClass APPLICATION_ECLASS = ApplicationPackage.Literals.APPLICATION;
+
+	private ModelUtil()
+	{}
+
 	public static final Application getApplication(EObject eObject)
 	{
-		while (eObject != null && ApplicationPackage.Literals.APPLICATION.isInstance(eObject) == false)
+		while (eObject != null && APPLICATION_ECLASS.isInstance(eObject) == false)
 		{
 			eObject = eObject.eContainer();
 		}
@@ -100,7 +110,9 @@ public class ModelUtil
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T extends EObject> void gatherChildren(EObject eo, Class<T> type, Collection<T> gatherIn)
+	public static <T extends EObject> void gatherChildren(	EObject eo,
+															Class<T> type,
+															Collection<T> gatherIn)
 	{
 		final var containments = eo.eClass().getEAllContainments();
 		for (int i = 0; i < containments.size(); i++)
@@ -131,6 +143,52 @@ public class ModelUtil
 						gatherIn.add((T) value);
 					}
 				}
+			}
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public static void copyFeatures(EObject src,
+									final EObject trg,
+									final List<EStructuralFeature> features)
+	{
+		for (final var feature : features)
+		{
+			final boolean isNonContainment = feature instanceof EAttribute
+					|| (feature instanceof EReference
+							&& ((EReference) feature).isContainment() == false);
+
+			if (isNonContainment)
+			{
+				if (feature.isMany() == false)
+				{
+					trg.eSet(feature, src.eGet(feature));
+				}
+				else
+				{
+					final var listSrc = (EList<Object>) src.eGet(feature);
+					final var listTrg = (EList<Object>) trg.eGet(feature);
+
+					listTrg.addAll(listSrc);
+				}
+			}
+			else
+			{
+				if (feature.isMany() == false)
+				{
+					trg.eSet(feature, EcoreUtil.copy((EObject) src.eGet(feature)));
+				}
+				else
+				{
+					final var listSrc = (EList<EObject>) src.eGet(feature);
+					final var listTrg = (EList<EObject>) trg.eGet(feature);
+
+					for (final EObject element : listSrc)
+					{
+						listTrg.add(EcoreUtil.copy(element));
+					}
+				}
+
 			}
 		}
 	}
