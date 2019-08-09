@@ -22,7 +22,7 @@ public class ResourceLoader implements IResourceLoader
 				// Load factories
 				ePackage.eClass();
 
-				if (DebugUtil.DEBUG_ENABLED)
+				if (DebugUtil.DEBUG_VERBOSE_ENABLED)
 				{
 					System.out.println("\tLoad EPackage: " + ePackage.getName());
 				}
