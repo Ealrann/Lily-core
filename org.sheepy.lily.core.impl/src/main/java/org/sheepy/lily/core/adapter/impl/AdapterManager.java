@@ -99,6 +99,36 @@ class AdapterManager extends EContentAdapter
 	}
 
 	@Override
+	protected void handleContainment(Notification notification)
+	{
+		switch (notification.getEventType())
+		{
+		case Notification.SET:
+		{
+			final Notifier oldValue = (Notifier) notification.getOldValue();
+			final Notifier newValue = (Notifier) notification.getNewValue();
+
+			// Optimize here. Allow to re-set a reference to trigger the listeners,
+			// without destroying the AdapterManager
+			if (oldValue != newValue)
+			{
+				if (oldValue != null)
+				{
+					removeAdapter(oldValue, false, true);
+				}
+				if (newValue != null)
+				{
+					addAdapter(newValue);
+				}
+			}
+			break;
+		}
+		default:
+			super.handleContainment(notification);
+		}
+	}
+
+	@Override
 	protected void addAdapter(Notifier notifier)
 	{
 		final var adapters = notifier.eAdapters();
