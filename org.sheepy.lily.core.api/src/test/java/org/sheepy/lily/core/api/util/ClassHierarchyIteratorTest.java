@@ -3,21 +3,20 @@ package org.sheepy.lily.core.api.util;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import org.sheepy.lily.core.api.util.ClassHierarchyIterator;
 
 public class ClassHierarchyIteratorTest
 {
 	@Test
 	public void testClassIteratorOnObject()
 	{
-		ClassHierarchyIterator iterator = new ClassHierarchyIterator(Object.class);
+		final ClassHierarchyIterator iterator = new ClassHierarchyIterator(Object.class);
 		checkCount(iterator, 1);
 	}
 
 	@Test
 	public void testClassIteratorOnClassB()
 	{
-		ClassHierarchyIterator iterator = new ClassHierarchyIterator(B.class);
+		final ClassHierarchyIterator iterator = new ClassHierarchyIterator(B.class);
 		checkCount(iterator, 8);
 	}
 
@@ -26,7 +25,7 @@ public class ClassHierarchyIteratorTest
 		int count = 0;
 		while (iterator.hasNext())
 		{
-			Class<?> current = iterator.next();
+			final Class<?> current = iterator.next();
 			if (current != null)
 			{
 				count++;

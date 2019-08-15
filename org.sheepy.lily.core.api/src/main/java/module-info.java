@@ -1,5 +1,6 @@
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
+import org.sheepy.lily.core.api.allocation.IAllocationService;
 import org.sheepy.lily.core.api.application.IApplicationAdapter;
 import org.sheepy.lily.core.api.cadence.IMainLoop;
 import org.sheepy.lily.core.api.cadence.IStatistics;
@@ -16,6 +17,7 @@ module org.sheepy.lily.core.api
 	requires transitive org.joml;
 
 	exports org.sheepy.lily.core.api.action;
+	exports org.sheepy.lily.core.api.allocation;
 	exports org.sheepy.lily.core.api.action.context;
 	exports org.sheepy.lily.core.api.adapter;
 	exports org.sheepy.lily.core.api.adapter.annotation;
@@ -55,6 +57,7 @@ module org.sheepy.lily.core.api
 	provides IModelExtension with CoreModelExtension;
 
 	uses IApplicationAdapter;
+	uses IAllocationService;
 	uses IMainLoop;
 	uses IModelExtension;
 	uses IResourceLoader;

@@ -3,7 +3,7 @@ plugins {
 }
 
 test {
-  useJUnitPlatform()
+	useJUnitPlatform()
 }
 
 dependencies {
