@@ -159,6 +159,38 @@ public final class AllocationManager<T extends IAllocationContext> implements IA
 		}
 	}
 
+	private void appendInfo(StringBuilder appendTo, int depth)
+	{
+		appendTo.append(System.lineSeparator());
+		for (int i = 0; i < depth; i++)
+		{
+			appendTo.append('-');
+		}
+		appendTo.append('[' + allocable.getClass().getSimpleName() + "] ");
+
+		if (configuration.dependencies.isEmpty() == false)
+		{
+			appendTo.append("Dependencies: ");
+			for (final var dep : configuration.dependencies)
+			{
+				appendTo.append(dep.allocable.getClass().getSimpleName());
+			}
+		}
+
+		for (final var child : configuration.children)
+		{
+			child.appendInfo(appendTo, depth + 1);
+		}
+	}
+
+	@Override
+	public String toString()
+	{
+		final var sb = new StringBuilder();
+		appendInfo(sb, 0);
+		return sb.toString();
+	}
+
 	private final class AllocationConfiguration implements IAllocationConfiguration
 	{
 		public final List<AllocationManager<?>> children = new ArrayList<>();
