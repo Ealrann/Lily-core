@@ -12,10 +12,15 @@ import org.sheepy.lily.core.api.adapter.IAdapter;
 
 class AdapterManager extends EContentAdapter
 {
+	private static final String ADAPTER_CREATION_LOOP = "Adapter creation loop.";
+
 	public final List<ITickDescriptor> tickers = new ArrayList<>();
 
 	private final ServiceAdapterRegistry registry;
 	private final List<AdapterExecutor<?>> executors = new ArrayList<>();
+
+	private final List<Class<?>> constructingAdapters = new ArrayList<>();
+	private boolean constructing = false;
 
 	private EObject target;
 
@@ -52,6 +57,11 @@ class AdapterManager extends EContentAdapter
 
 	public <T extends IAdapter> T adapt(Class<T> type)
 	{
+		if (constructing && constructingAdapters.contains(type))
+		{
+			throw new AssertionError(ADAPTER_CREATION_LOOP);
+		}
+
 		T res = findAdapter(type);
 
 		if (res == null)
@@ -84,9 +94,14 @@ class AdapterManager extends EContentAdapter
 		final var descriptor = registry.getDescriptorFor(target, type);
 		if (descriptor != null)
 		{
+			constructingAdapters.add(type);
 			res = descriptor.info.create(target);
 			final var executor = new AdapterExecutor<>(descriptor, target, res);
 			executors.add(executor);
+			constructingAdapters.remove(type);
+
+			constructing = !constructingAdapters.isEmpty();
+
 			executor.load();
 
 			if (executor.info.isTicker())
