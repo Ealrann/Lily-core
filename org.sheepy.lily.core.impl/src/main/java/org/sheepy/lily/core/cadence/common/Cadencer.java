@@ -25,7 +25,6 @@ import org.sheepy.lily.core.api.input.IInputManager;
 import org.sheepy.lily.core.api.util.DebugUtil;
 import org.sheepy.lily.core.cadence.execution.CommandStack;
 import org.sheepy.lily.core.model.application.Application;
-import org.sheepy.lily.core.model.application.IEngine;
 
 public class Cadencer implements ICadencer
 {
@@ -92,7 +91,13 @@ public class Cadencer implements ICadencer
 
 		IAdapterFactoryService.INSTANCE.setupRoot(application);
 
-		for (final IEngine engine : application.getEngines())
+		for (final var engine : application.getEngines())
+		{
+			final var engineAdapter = IEngineAdapter.adapt(engine);
+			engineAdapter.start();
+		}
+
+		for (final var engine : application.getEngines())
 		{
 			inputManager = IEngineAdapter.adapt(engine).getInputManager();
 			if (inputManager != null)
@@ -129,6 +134,12 @@ public class Cadencer implements ICadencer
 		statistics.clear();
 
 		mainThread = null;
+
+		for (final var engine : application.getEngines())
+		{
+			final var engineAdapter = IEngineAdapter.adapt(engine);
+			engineAdapter.stop();
+		}
 
 		IAdapterFactoryService.INSTANCE.uninstallRoot(application);
 	}
@@ -171,7 +182,7 @@ public class Cadencer implements ICadencer
 		// =========
 		for (int i = 0; i < tickers.size(); i++)
 		{
-			final AbstractTickerWrapper ticker = tickers.get(i);
+			final var ticker = tickers.get(i);
 			ticker.accumulate(stepNano);
 
 			if (ticker.shouldTick())

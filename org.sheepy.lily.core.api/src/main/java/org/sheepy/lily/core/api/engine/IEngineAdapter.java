@@ -7,6 +7,9 @@ import org.sheepy.lily.core.model.application.IEngine;
 
 public interface IEngineAdapter extends IAdapter
 {
+	void start();
+	void stop();
+	
 	IInputManager getInputManager();
 
 	static IEngineAdapter adapt(IEngine engine)
