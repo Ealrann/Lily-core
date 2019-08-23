@@ -1,7 +1,6 @@
 package org.sheepy.lily.core.cadence.common;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -125,6 +124,14 @@ public class Cadencer implements ICadencer
 		application.eAdapters().remove(cadenceContentAdapter);
 		cadenceContentAdapter = null;
 
+		for (final var engine : application.getEngines())
+		{
+			final var engineAdapter = IEngineAdapter.adapt(engine);
+			engineAdapter.stop();
+		}
+
+		IAdapterFactoryService.INSTANCE.uninstallRoot(application);
+
 		removeTicker(dispatcher, -1);
 
 		if (DebugUtil.DEBUG_ENABLED)
@@ -134,14 +141,6 @@ public class Cadencer implements ICadencer
 		statistics.clear();
 
 		mainThread = null;
-
-		for (final var engine : application.getEngines())
-		{
-			final var engineAdapter = IEngineAdapter.adapt(engine);
-			engineAdapter.stop();
-		}
-
-		IAdapterFactoryService.INSTANCE.uninstallRoot(application);
 	}
 
 	public void run()
@@ -191,7 +190,7 @@ public class Cadencer implements ICadencer
 			}
 		}
 
-		Collections.sort(course, AbstractTickerWrapper.COMPARATOR);
+		course.sort(AbstractTickerWrapper.COMPARATOR);
 
 		long blockingDuration = System.nanoTime();
 		commandStack.execute();
