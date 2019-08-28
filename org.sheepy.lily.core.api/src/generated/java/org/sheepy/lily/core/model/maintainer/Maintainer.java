@@ -3,8 +3,7 @@
 package org.sheepy.lily.core.model.maintainer;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,9 +19,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.sheepy.lily.core.model.maintainer.MaintainerPackage#getMaintainer()
  * @model interface="true" abstract="true"
+ * @extends ILilyEObject
  * @generated
  */
-public interface Maintainer<T extends Maintainable<T>> extends EObject
+public interface Maintainer<T extends Maintainable<T>> extends ILilyEObject
 {
 	/**
 	 * Returns the value of the '<em><b>Maintained</b></em>' reference list.

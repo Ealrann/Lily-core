@@ -13,12 +13,10 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.model.resolver.ChainResolver;
 import org.sheepy.lily.core.model.resolver.ILObjectResolver;
 import org.sheepy.lily.core.model.resolver.ResolverPackage;
@@ -38,7 +36,7 @@ import org.sheepy.lily.core.model.root.LObject;
  *
  * @generated
  */
-public class ChainResolverImpl extends MinimalEObjectImpl.Container implements ChainResolver
+public class ChainResolverImpl extends LilyEObject implements ChainResolver
 {
 	/**
 	 * The cached value of the '{@link #getResolvers() <em>Resolvers</em>}' containment reference list.

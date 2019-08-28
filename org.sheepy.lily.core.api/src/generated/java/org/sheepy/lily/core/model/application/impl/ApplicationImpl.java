@@ -21,14 +21,13 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.joml.Vector2ic;
 
+import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.api.util.LTreeIterator;
 
 import org.sheepy.lily.core.model.application.Application;
@@ -68,7 +67,7 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  *
  * @generated
  */
-public class ApplicationImpl extends MinimalEObjectImpl.Container implements Application
+public class ApplicationImpl extends LilyEObject implements Application
 {
 	/**
 	 * The cached value of the '{@link #getContentObjects() <em>Content Objects</em>}' attribute.
@@ -484,7 +483,7 @@ public class ApplicationImpl extends MinimalEObjectImpl.Container implements App
 	@Override
 	public IView getCurrentView()
 	{
-		if (currentView != null && currentView.eIsProxy())
+		if (currentView != null && ((EObject)currentView).eIsProxy())
 		{
 			InternalEObject oldCurrentView = (InternalEObject)currentView;
 			currentView = (IView)eResolveProxy(oldCurrentView);

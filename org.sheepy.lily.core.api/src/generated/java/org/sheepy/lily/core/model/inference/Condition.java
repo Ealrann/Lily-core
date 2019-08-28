@@ -2,8 +2,7 @@
  */
 package org.sheepy.lily.core.model.inference;
 
-import org.eclipse.emf.ecore.EObject;
-
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.model.types.Parameter;
 
 /**
@@ -21,9 +20,10 @@ import org.sheepy.lily.core.model.types.Parameter;
  *
  * @see org.sheepy.lily.core.model.inference.InferencePackage#getCondition()
  * @model interface="true" abstract="true"
+ * @extends ILilyEObject
  * @generated
  */
-public interface Condition<T extends Parameter> extends EObject
+public interface Condition<T extends Parameter> extends ILilyEObject
 {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' containment reference.

@@ -5,9 +5,7 @@ package org.sheepy.lily.core.model.inference.impl;
 import java.lang.reflect.InvocationTargetException;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
+import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 import org.sheepy.lily.core.model.inference.InferencePackage;
 import org.sheepy.lily.core.model.inference.Sensor;
@@ -19,7 +17,7 @@ import org.sheepy.lily.core.model.inference.Sensor;
  *
  * @generated
  */
-public abstract class SensorImpl extends MinimalEObjectImpl.Container implements Sensor
+public abstract class SensorImpl extends LilyEObject implements Sensor
 {
 	/**
 	 * <!-- begin-user-doc -->

@@ -7,8 +7,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
+import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.model.variable.AbstractVariableResolver;
 import org.sheepy.lily.core.model.variable.IDefinitionContainer;
 import org.sheepy.lily.core.model.variable.VariablePackage;
@@ -26,7 +25,7 @@ import org.sheepy.lily.core.model.variable.VariablePackage;
  *
  * @generated
  */
-public abstract class AbstractVariableResolverImpl extends MinimalEObjectImpl.Container
+public abstract class AbstractVariableResolverImpl extends LilyEObject
 		implements AbstractVariableResolver
 {
 	/**

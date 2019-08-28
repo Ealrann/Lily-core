@@ -15,8 +15,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
+import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.model.resolver.EReferenceResolver;
 import org.sheepy.lily.core.model.resolver.ResolverPackage;
 
@@ -37,7 +36,7 @@ import org.sheepy.lily.core.model.root.LObject;
  *
  * @generated
  */
-public class EReferenceResolverImpl extends MinimalEObjectImpl.Container implements EReferenceResolver
+public class EReferenceResolverImpl extends LilyEObject implements EReferenceResolver
 {
 	/**
 	 * The default value of the '{@link #getReferenceName() <em>Reference Name</em>}' attribute.

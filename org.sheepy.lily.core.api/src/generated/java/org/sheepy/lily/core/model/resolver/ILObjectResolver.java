@@ -3,9 +3,7 @@
 package org.sheepy.lily.core.model.resolver;
 
 import java.util.Collection;
-
-import org.eclipse.emf.ecore.EObject;
-
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.model.root.LObject;
 
 /**
@@ -16,9 +14,10 @@ import org.sheepy.lily.core.model.root.LObject;
  *
  * @see org.sheepy.lily.core.model.resolver.ResolverPackage#getILObjectResolver()
  * @model interface="true" abstract="true"
+ * @extends ILilyEObject
  * @generated
  */
-public interface ILObjectResolver extends EObject
+public interface ILObjectResolver extends ILilyEObject
 {
 	/**
 	 * <!-- begin-user-doc -->

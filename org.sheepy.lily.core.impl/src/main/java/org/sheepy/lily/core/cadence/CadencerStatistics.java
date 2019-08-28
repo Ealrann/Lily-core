@@ -51,7 +51,7 @@ public class CadencerStatistics implements IStatistics
 	private static class AccumulatorTime
 	{
 		private static final int TICK_STACK_COUNT = 10;
-		Long[] tickStack = new Long[TICK_STACK_COUNT];
+		long[] tickStack = new long[TICK_STACK_COUNT];
 		long averageNs = 0;
 		long totalNs = 0;
 		long maxNS = 0;

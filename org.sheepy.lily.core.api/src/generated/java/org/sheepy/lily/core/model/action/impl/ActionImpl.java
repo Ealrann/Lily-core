@@ -7,8 +7,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
+import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.model.action.Action;
 import org.sheepy.lily.core.model.action.ActionPackage;
 
@@ -25,7 +24,7 @@ import org.sheepy.lily.core.model.action.ActionPackage;
  *
  * @generated
  */
-public abstract class ActionImpl extends MinimalEObjectImpl.Container implements Action
+public abstract class ActionImpl extends LilyEObject implements Action
 {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.

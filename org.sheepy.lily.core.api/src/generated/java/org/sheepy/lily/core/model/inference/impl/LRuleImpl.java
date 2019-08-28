@@ -10,14 +10,14 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.model.action.Action;
 
 import org.sheepy.lily.core.model.inference.AbstractNotification;
@@ -40,7 +40,7 @@ import org.sheepy.lily.core.model.inference.LRule;
  *
  * @generated
  */
-public class LRuleImpl extends MinimalEObjectImpl.Container implements LRule
+public class LRuleImpl extends LilyEObject implements LRule
 {
 	/**
 	 * The cached value of the '{@link #getNotification() <em>Notification</em>}' containment reference.
@@ -151,7 +151,7 @@ public class LRuleImpl extends MinimalEObjectImpl.Container implements LRule
 	@Override
 	public Action getAction()
 	{
-		if (action != null && action.eIsProxy())
+		if (action != null && ((EObject)action).eIsProxy())
 		{
 			InternalEObject oldAction = (InternalEObject)action;
 			action = (Action)eResolveProxy(oldAction);

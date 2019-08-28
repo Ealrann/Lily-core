@@ -2,7 +2,7 @@
  */
 package org.sheepy.lily.core.model.inference;
 
-import org.eclipse.emf.ecore.EObject;
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -12,9 +12,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.sheepy.lily.core.model.inference.InferencePackage#getIInferenceObject()
  * @model interface="true" abstract="true"
+ * @extends ILilyEObject
  * @generated
  */
-public interface IInferenceObject extends EObject
+public interface IInferenceObject extends ILilyEObject
 {
 	/**
 	 * <!-- begin-user-doc -->

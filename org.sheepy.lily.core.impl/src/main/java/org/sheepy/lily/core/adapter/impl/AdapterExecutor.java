@@ -65,6 +65,10 @@ public final class AdapterExecutor<T extends IAdapter>
 		}
 	}
 
+	/**
+	* TODO stepNs is autoboxed here. Finally, the step value can be retrived in Application, 
+	* is that really usefull to share it by argument ?
+	 */
 	@Override
 	public void tick(long stepNs)
 	{

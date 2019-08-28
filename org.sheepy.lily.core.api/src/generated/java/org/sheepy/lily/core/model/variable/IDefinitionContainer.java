@@ -2,7 +2,7 @@
  */
 package org.sheepy.lily.core.model.variable;
 
-import org.eclipse.emf.ecore.EObject;
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,9 +18,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.sheepy.lily.core.model.variable.VariablePackage#getIDefinitionContainer()
  * @model interface="true" abstract="true"
+ * @extends ILilyEObject
  * @generated
  */
-public interface IDefinitionContainer extends EObject
+public interface IDefinitionContainer extends ILilyEObject
 {
 	/**
 	 * Returns the value of the '<em><b>Variable Definition</b></em>' attribute.

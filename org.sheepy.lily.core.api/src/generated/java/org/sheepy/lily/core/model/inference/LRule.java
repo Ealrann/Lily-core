@@ -3,9 +3,7 @@
 package org.sheepy.lily.core.model.inference;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
-
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.model.action.Action;
 
 /**
@@ -24,9 +22,10 @@ import org.sheepy.lily.core.model.action.Action;
  *
  * @see org.sheepy.lily.core.model.inference.InferencePackage#getLRule()
  * @model
+ * @extends ILilyEObject
  * @generated
  */
-public interface LRule extends EObject
+public interface LRule extends ILilyEObject
 {
 	/**
 	 * Returns the value of the '<em><b>Notification</b></em>' containment reference.

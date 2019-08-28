@@ -7,8 +7,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
+import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.model.variable.ChainResolver;
 import org.sheepy.lily.core.model.variable.VariablePackage;
 
@@ -25,7 +24,7 @@ import org.sheepy.lily.core.model.variable.VariablePackage;
  *
  * @generated
  */
-public class ChainResolverImpl extends MinimalEObjectImpl.Container implements ChainResolver
+public class ChainResolverImpl extends LilyEObject implements ChainResolver
 {
 	/**
 	 * The default value of the '{@link #getVariableDefinition() <em>Variable Definition</em>}' attribute.

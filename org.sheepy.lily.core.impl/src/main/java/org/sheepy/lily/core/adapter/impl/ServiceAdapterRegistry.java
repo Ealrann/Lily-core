@@ -7,11 +7,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.annotation.Adapters;
 
-public class ServiceAdapterRegistry
+public final class ServiceAdapterRegistry
 {
+	public static final ServiceAdapterRegistry INSTANCE = new ServiceAdapterRegistry();
+
 	private final List<AdapterDescriptor<?>> descriptors;
 
-	ServiceAdapterRegistry()
+	private ServiceAdapterRegistry()
 	{
 		final List<AdapterDescriptor<?>> foundDescriptors = new ArrayList<>();
 

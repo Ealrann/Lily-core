@@ -21,14 +21,13 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.joml.Vector2ic;
 
+import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.api.util.LTreeIterator;
 
 import org.sheepy.lily.core.model.inference.IInferenceObject;
@@ -76,7 +75,7 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  *
  * @generated
  */
-public class PanelImpl extends MinimalEObjectImpl.Container implements Panel
+public class PanelImpl extends LilyEObject implements Panel
 {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.

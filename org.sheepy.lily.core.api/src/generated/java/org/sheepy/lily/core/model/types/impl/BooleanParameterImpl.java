@@ -8,8 +8,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
+import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.model.types.BooleanParameter;
 import org.sheepy.lily.core.model.types.TypesPackage;
 
@@ -26,7 +25,7 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  *
  * @generated
  */
-public class BooleanParameterImpl extends MinimalEObjectImpl.Container implements BooleanParameter
+public class BooleanParameterImpl extends LilyEObject implements BooleanParameter
 {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.

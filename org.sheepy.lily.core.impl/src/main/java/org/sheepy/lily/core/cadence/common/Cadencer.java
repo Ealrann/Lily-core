@@ -15,6 +15,7 @@ import org.sheepy.lily.core.adapter.IBasicAdapterFactory;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
 import org.sheepy.lily.core.api.action.context.ActionExecutionContext;
 import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.cadence.ICadencer;
 import org.sheepy.lily.core.api.cadence.IMainLoop;
 import org.sheepy.lily.core.api.cadence.IStatistics;
@@ -286,12 +287,13 @@ public class Cadencer implements ICadencer
 		return inputManager;
 	}
 
-	private class CadenceContentAdater extends EContentAdapter
+	private final class CadenceContentAdater extends EContentAdapter
 	{
 		@Override
 		protected void setTarget(EObject target)
 		{
-			final var tickDescriptors = adapterFactory.getTickDescriptors(target);
+			final var lilyObject = (ILilyEObject) target;
+			final var tickDescriptors = adapterFactory.getTickDescriptors(lilyObject);
 
 			for (final ITickDescriptor ticker : tickDescriptors)
 			{
@@ -305,7 +307,8 @@ public class Cadencer implements ICadencer
 		@Override
 		protected void unsetTarget(EObject target)
 		{
-			final var tickDescriptors = adapterFactory.getTickDescriptors(target);
+			final var lilyObject = (ILilyEObject) target;
+			final var tickDescriptors = adapterFactory.getTickDescriptors(lilyObject);
 
 			final var it = tickers.iterator();
 			while (it.hasNext())

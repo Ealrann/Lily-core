@@ -21,12 +21,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.api.util.LTreeIterator;
 
 import org.sheepy.lily.core.model.inference.IInferenceObject;
@@ -54,7 +53,7 @@ import org.sheepy.lily.core.model.root.RootPackage.Literals;
  *
  * @generated
  */
-public class TranparentUIViewImpl extends MinimalEObjectImpl.Container implements TranparentUIView
+public class TranparentUIViewImpl extends LilyEObject implements TranparentUIView
 {
 	/**
 	 * The cached value of the '{@link #getContentObjects() <em>Content Objects</em>}' attribute.
@@ -155,7 +154,7 @@ public class TranparentUIViewImpl extends MinimalEObjectImpl.Container implement
 	@Override
 	public UIPage getCurrentUIPage()
 	{
-		if (currentUIPage != null && currentUIPage.eIsProxy())
+		if (currentUIPage != null && ((EObject)currentUIPage).eIsProxy())
 		{
 			InternalEObject oldCurrentUIPage = (InternalEObject)currentUIPage;
 			currentUIPage = (UIPage)eResolveProxy(oldCurrentUIPage);

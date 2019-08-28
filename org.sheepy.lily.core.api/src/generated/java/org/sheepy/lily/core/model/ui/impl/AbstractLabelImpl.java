@@ -18,12 +18,11 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EContentsEList;
 
 import org.joml.Vector2ic;
 
+import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.api.util.LTreeIterator;
 
 import org.sheepy.lily.core.model.inference.IInferenceObject;
@@ -64,7 +63,7 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  *
  * @generated
  */
-public abstract class AbstractLabelImpl extends MinimalEObjectImpl.Container implements AbstractLabel
+public abstract class AbstractLabelImpl extends LilyEObject implements AbstractLabel
 {
 	/**
 	 * The cached value of the '{@link #getContentObjects() <em>Content Objects</em>}' attribute.

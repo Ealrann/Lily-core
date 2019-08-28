@@ -20,12 +20,11 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EContentsEList;
 
 import org.joml.Vector2ic;
 
+import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.api.util.LTreeIterator;
 
 import org.sheepy.lily.core.model.inference.IInferenceObject;
@@ -70,7 +69,7 @@ import org.sheepy.lily.core.model.variable.IVariableResolver;
  *
  * @generated
  */
-public class SliderImpl extends MinimalEObjectImpl.Container implements Slider
+public class SliderImpl extends LilyEObject implements Slider
 {
 	/**
 	 * The cached value of the '{@link #getContentObjects() <em>Content Objects</em>}' attribute.

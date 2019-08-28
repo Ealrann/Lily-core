@@ -4,62 +4,54 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.IBasicAdapterFactory;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
 import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.IAdapterManager;
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.resource.IResourceLoader;
 
-public class BasicAdapterFactory implements IBasicAdapterFactory
+public final class BasicAdapterFactory implements IBasicAdapterFactory
 {
-	private final ServiceAdapterRegistry registry = new ServiceAdapterRegistry();
-
-	// Force the ResourceLoader to be loaded
-	static final IResourceLoader instance = IResourceLoader.INSTANCE;
+	static
+	{
+		// Force the ResourceLoader to load
+		@SuppressWarnings("unused")
+		final IResourceLoader resourceLoader = IResourceLoader.INSTANCE;
+	}
 
 	@Override
-	public <T extends IAdapter> T adapt(EObject target, Class<T> type)
+	public <T extends IAdapter> T adapt(ILilyEObject target, Class<T> type)
 	{
 		T res = null;
 
-		final AdapterManager manager = getOrCreateManager(target);
+		final var manager = getOrCreateManager(target);
 		res = manager.adapt(type);
 
 		return res;
 	}
 
-	private AdapterManager getOrCreateManager(EObject target)
+	private static IAdapterManager getOrCreateManager(ILilyEObject target)
 	{
-		AdapterManager res = null;
-
-		final var adapters = target.eAdapters();
-		for (int i = 0; i < adapters.size(); i++)
-		{
-			final Adapter adapter = adapters.get(i);
-			if (adapter instanceof AdapterManager)
-			{
-				res = (AdapterManager) adapter;
-				break;
-			}
-		}
+		IAdapterManager res = target.getAdapterManager();
 
 		if (res == null)
 		{
-			res = new AdapterManager(registry);
-			target.eAdapters().add(res);
+			res = new AdapterManager();
+			target.setAdapterManager(res);
 		}
 
 		return res;
 	}
 
 	@Override
-	public void setupRoot(EObject root)
+	public void setupRoot(ILilyEObject root)
 	{
 		getOrCreateManager(root);
 	}
 
 	@Override
-	public void uninstallRoot(EObject root)
+	public void uninstallRoot(ILilyEObject root)
 	{
 		final Iterator<Adapter> it = root.eAdapters().iterator();
 		while (it.hasNext())
@@ -73,9 +65,9 @@ public class BasicAdapterFactory implements IBasicAdapterFactory
 	}
 
 	@Override
-	public List<ITickDescriptor> getTickDescriptors(EObject eObject)
+	public List<ITickDescriptor> getTickDescriptors(ILilyEObject eObject)
 	{
-		return getOrCreateManager(eObject).tickers;
+		final var manager = (AdapterManager) getOrCreateManager(eObject);
+		return manager.tickers;
 	}
-
 }

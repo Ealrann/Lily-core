@@ -9,25 +9,20 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
 import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.IAdapterManager;
 
-class AdapterManager extends EContentAdapter
+final class AdapterManager extends EContentAdapter implements IAdapterManager
 {
 	private static final String ADAPTER_CREATION_LOOP = "Adapter creation loop.";
+	private static final ServiceAdapterRegistry registry = ServiceAdapterRegistry.INSTANCE;
 
 	public final List<ITickDescriptor> tickers = new ArrayList<>();
 
-	private final ServiceAdapterRegistry registry;
 	private final List<AdapterExecutor<?>> executors = new ArrayList<>();
-
 	private final List<Class<?>> constructingAdapters = new ArrayList<>();
+
 	private boolean constructing = false;
-
 	private EObject target;
-
-	public AdapterManager(ServiceAdapterRegistry registry)
-	{
-		this.registry = registry;
-	}
 
 	@Override
 	public void notifyChanged(Notification notification)
@@ -55,6 +50,7 @@ class AdapterManager extends EContentAdapter
 		super.unsetTarget(target);
 	}
 
+	@Override
 	public <T extends IAdapter> T adapt(Class<T> type)
 	{
 		if (constructing && constructingAdapters.contains(type))
@@ -157,7 +153,7 @@ class AdapterManager extends EContentAdapter
 			}
 		}
 
-		adapters.add(new AdapterManager(registry));
+		adapters.add(new AdapterManager());
 	}
 
 	@Override

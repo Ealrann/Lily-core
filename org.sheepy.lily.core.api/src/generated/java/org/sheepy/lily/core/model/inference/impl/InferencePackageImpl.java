@@ -580,7 +580,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 		g1.getETypeArguments().add(g2);
 		initEOperation(op, g1);
 
-		op = initEOperation(getCondition__Match__Parameter(), theEcorePackage.getEBoolean(), "match", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		op = initEOperation(getCondition__Match__Parameter(), ecorePackage.getEBoolean(), "match", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		g1 = createEGenericType(conditionEClass_T);
 		addEParameter(op, g1, "compareTo", 0, 1, !IS_UNIQUE, IS_ORDERED);
 

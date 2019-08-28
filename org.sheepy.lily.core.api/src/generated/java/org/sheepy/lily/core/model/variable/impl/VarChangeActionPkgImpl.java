@@ -10,12 +10,10 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.model.variable.VarChangeAction;
 import org.sheepy.lily.core.model.variable.VarChangeActionPkg;
 import org.sheepy.lily.core.model.variable.VariablePackage;
@@ -33,7 +31,7 @@ import org.sheepy.lily.core.model.variable.VariablePackage;
  *
  * @generated
  */
-public class VarChangeActionPkgImpl extends MinimalEObjectImpl.Container implements VarChangeActionPkg
+public class VarChangeActionPkgImpl extends LilyEObject implements VarChangeActionPkg
 {
 	/**
 	 * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list.
