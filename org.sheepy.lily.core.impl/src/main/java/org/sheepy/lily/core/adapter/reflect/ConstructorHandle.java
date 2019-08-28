@@ -24,8 +24,9 @@ public interface ConstructorHandle<T extends IAdapter>
 			switch (paramCount)
 			{
 			case 0:
-				return new ConstructorHandleNoParam.Builder<T>(privateLookup, methodHandle,
-						sourceClass);
+				return new ConstructorHandleNoParam.Builder<T>(	privateLookup,
+																methodHandle,
+																sourceClass);
 			case 1:
 				return new ConstructorHandleParam1.Builder<>(privateLookup, methodHandle);
 			default:

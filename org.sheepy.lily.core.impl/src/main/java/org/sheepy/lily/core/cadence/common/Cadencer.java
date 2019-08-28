@@ -1,7 +1,9 @@
 package org.sheepy.lily.core.cadence.common;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.emf.ecore.EObject;
@@ -12,7 +14,6 @@ import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.sheepy.lily.core.action.ActionDispatcherThread;
 import org.sheepy.lily.core.adapter.IBasicAdapterFactory;
-import org.sheepy.lily.core.adapter.ITickDescriptor;
 import org.sheepy.lily.core.api.action.context.ActionExecutionContext;
 import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
@@ -35,6 +36,7 @@ public class Cadencer implements ICadencer
 	private final Application application;
 	private final List<AbstractTickerWrapper> tickers = new ArrayList<>();
 	private final List<AbstractTickerWrapper> course = new ArrayList<>();
+	private final Map<EObject, List<AbstractTickerWrapper>> tickerMap = new HashMap<>();
 
 	protected final CommandStack commandStack = new CommandStack();
 	protected final ECrossReferenceAdapter crossReferencer = new ECrossReferenceAdapter();
@@ -295,10 +297,11 @@ public class Cadencer implements ICadencer
 			final var lilyObject = (ILilyEObject) target;
 			final var tickDescriptors = adapterFactory.getTickDescriptors(lilyObject);
 
-			for (final ITickDescriptor ticker : tickDescriptors)
+			for (int i = 0; i < tickDescriptors.size(); i++)
 			{
+				final var ticker = tickDescriptors.get(i);
 				final var wrapper = new AdapterTickerWrapper(ticker);
-				tickers.add(wrapper);
+				addTicker(target, wrapper);
 			}
 
 			super.setTarget(target);
@@ -307,20 +310,34 @@ public class Cadencer implements ICadencer
 		@Override
 		protected void unsetTarget(EObject target)
 		{
-			final var lilyObject = (ILilyEObject) target;
-			final var tickDescriptors = adapterFactory.getTickDescriptors(lilyObject);
+			final var objectTickers = tickerMap.get(target);
 
-			final var it = tickers.iterator();
-			while (it.hasNext())
+			if (objectTickers != null)
 			{
-				final var next = it.next();
-				if (tickDescriptors.contains(next.getTicker()))
+				for (int i = 0; i < objectTickers.size(); i++)
 				{
+					final var next = objectTickers.get(i);
 					next.stop.set(true);
 				}
+
+				tickerMap.put(target, null);
+				tickers.removeAll(objectTickers);
 			}
 
 			super.unsetTarget(target);
+		}
+
+		private void addTicker(EObject target, AdapterTickerWrapper wrapper)
+		{
+			tickers.add(wrapper);
+
+			var list = tickerMap.get(target);
+			if (list == null)
+			{
+				list = new ArrayList<>();
+			}
+
+			list.add(wrapper);
 		}
 	};
 

@@ -17,7 +17,11 @@ public class LilyEObject extends MinimalEObjectImpl implements ILilyEObject
 		}
 
 		this.adapterManager = adapterManager;
-		eAdapters().add(adapterManager);
+
+		if (adapterManager != null)
+		{
+			eAdapters().add(adapterManager);
+		}
 	}
 
 	@Override

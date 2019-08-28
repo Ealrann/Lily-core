@@ -45,8 +45,9 @@ public final class ServiceAdapterRegistry
 	{
 		AdapterDescriptor<T> res = null;
 
-		for (final var descriptor : descriptors)
+		for (int i = 0; i < descriptors.size(); i++)
 		{
+			final var descriptor = descriptors.get(i);
 			final var domain = descriptor.domain;
 			if (domain.isAdapterForType(type) && domain.isApplicable(eObject))
 			{
@@ -65,8 +66,9 @@ public final class ServiceAdapterRegistry
 	{
 		final List<AdapterDescriptor<?>> res = new ArrayList<>();
 
-		for (final var descriptor : descriptors)
+		for (int i = 0; i < descriptors.size(); i++)
 		{
+			final var descriptor = descriptors.get(i);
 			final var domain = descriptor.domain;
 			if (domain.isApplicable(eobject))
 			{

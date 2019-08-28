@@ -1,9 +1,7 @@
 package org.sheepy.lily.core.adapter.impl;
 
-import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.emf.common.notify.Adapter;
 import org.sheepy.lily.core.adapter.IBasicAdapterFactory;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
 import org.sheepy.lily.core.api.adapter.IAdapter;
@@ -53,15 +51,7 @@ public final class BasicAdapterFactory implements IBasicAdapterFactory
 	@Override
 	public void uninstallRoot(ILilyEObject root)
 	{
-		final Iterator<Adapter> it = root.eAdapters().iterator();
-		while (it.hasNext())
-		{
-			final Adapter next = it.next();
-			if (next instanceof AdapterManager)
-			{
-				it.remove();
-			}
-		}
+		root.setAdapterManager(null);
 	}
 
 	@Override

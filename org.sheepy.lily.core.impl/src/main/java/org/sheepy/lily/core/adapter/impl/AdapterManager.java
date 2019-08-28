@@ -5,11 +5,13 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.IAdapterManager;
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 
 final class AdapterManager extends EContentAdapter implements IAdapterManager
 {
@@ -40,14 +42,32 @@ final class AdapterManager extends EContentAdapter implements IAdapterManager
 	{
 		this.target = target;
 		loadAutoAdapters();
-		super.setTarget(target);
+
+		final EList<EObject> eContents = target.eContents();
+		for (int i = 0; i < eContents.size(); i++)
+		{
+			final var child = eContents.get(i);
+			addAdapter(child);
+		}
 	}
 
 	@Override
 	protected void unsetTarget(EObject target)
 	{
+		final EList<EObject> eContents = target.eContents();
+		for (int i = 0; i < eContents.size(); i++)
+		{
+			final var child = eContents.get(i);
+			unsetTarget(child);
+		}
+
 		disposeAutoAdapters();
-		super.unsetTarget(target);
+	}
+
+	@Override
+	protected boolean resolve()
+	{
+		return false;
 	}
 
 	@Override
@@ -119,13 +139,13 @@ final class AdapterManager extends EContentAdapter implements IAdapterManager
 			final Notifier oldValue = (Notifier) notification.getOldValue();
 			final Notifier newValue = (Notifier) notification.getNewValue();
 
-			// Optimize here. Allow to re-set a reference to trigger the listeners,
+			// Allow to re-set a reference to trigger the listeners,
 			// without destroying the AdapterManager
 			if (oldValue != newValue)
 			{
 				if (oldValue != null)
 				{
-					removeAdapter(oldValue, false, true);
+					removeAdapter(oldValue);
 				}
 				if (newValue != null)
 				{
@@ -142,32 +162,19 @@ final class AdapterManager extends EContentAdapter implements IAdapterManager
 	@Override
 	protected void addAdapter(Notifier notifier)
 	{
-		final var adapters = notifier.eAdapters();
+		final var lilyObject = (ILilyEObject) notifier;
 
-		for (int i = 0; i < adapters.size(); i++)
+		if (lilyObject.getAdapterManager() == null)
 		{
-			final var adapter = adapters.get(i);
-			if (adapter instanceof AdapterManager)
-			{
-				return;
-			}
+			lilyObject.setAdapterManager(new AdapterManager());
 		}
-
-		adapters.add(new AdapterManager());
 	}
 
 	@Override
 	protected void removeAdapter(Notifier notifier)
 	{
-		final var it = notifier.eAdapters().iterator();
-		while (it.hasNext())
-		{
-			if (it.next() instanceof AdapterManager)
-			{
-				it.remove();
-				break;
-			}
-		}
+		final var lilyObject = (ILilyEObject) notifier;
+		lilyObject.setAdapterManager(null);
 	}
 
 	private void loadAutoAdapters()
