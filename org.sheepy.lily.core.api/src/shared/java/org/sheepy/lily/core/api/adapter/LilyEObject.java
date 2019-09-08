@@ -1,12 +1,10 @@
 package org.sheepy.lily.core.api.adapter;
 
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-public class LilyEObject extends MinimalEObjectImpl implements ILilyEObject
+public class LilyEObject extends EObjectImpl implements ILilyEObject
 {
 	private IAdapterManager adapterManager = null;
-	private InternalEObject eContainer;
 
 	@Override
 	public void setAdapterManager(IAdapterManager adapterManager)
@@ -28,17 +26,5 @@ public class LilyEObject extends MinimalEObjectImpl implements ILilyEObject
 	public IAdapterManager getAdapterManager()
 	{
 		return adapterManager;
-	}
-
-	@Override
-	public InternalEObject eInternalContainer()
-	{
-		return eContainer;
-	}
-
-	@Override
-	protected void eBasicSetContainer(InternalEObject newContainer)
-	{
-		eContainer = newContainer;
 	}
 }
