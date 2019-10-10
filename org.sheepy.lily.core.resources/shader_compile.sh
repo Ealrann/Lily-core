@@ -1,19 +1,20 @@
 #!/bin/bash
 
-optimize='false'
+optimize='true'
 
-for i in `find -regex '.*\.\(frag\|comp\|vert\)' ! -path "*/bin/*" ! -path "*/build/*" 2>/dev/null`
+for i in `find -regex '.*\.\(frag\|comp\|vert\)' ! -path "*/bin/*" ! -path "*/build/*" | grep "/src/main/shader" 2>/dev/null`
 do
-	rm $i.spv 2>/dev/null
-	dir=`dirname $i`
+	target="${i/shader/resources}.spv"
+	rm $target 2>/dev/null
 	if [ $optimize == 'true' ]
 	then
-		name=`basename $i`
-		glslangValidator -V $i -o /tmp/$name.spv
-		spirv-opt -O /tmp/$name.spv -o /tmp/$name.spv
-		spirv-remap --strip all --dce all -i /tmp/$name.spv -o $dir
-		rm /tmp/$name.spv
+		dir=`dirname $target`
+		name=`basename $target`
+		glslangValidator -V $i -o /tmp/$name
+		spirv-opt -O /tmp/$name -o /tmp/$name
+		spirv-remap --strip all --dce all -i /tmp/$name -o $dir
+		rm /tmp/$name
 	else
-		glslangValidator -V $i -o $i.spv
+		glslangValidator -V $i -o $target
 	fi
 done
