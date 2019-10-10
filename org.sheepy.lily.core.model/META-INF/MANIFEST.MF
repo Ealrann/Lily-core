@@ -11,6 +11,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.joml,
  org.sheepy.lily.core.api.util,
  org.sheepy.lily.core.api.adapter,
+ org.sheepy.lily.core.api.service,
  org.sheepy.lily.core.model.action,
  org.sheepy.lily.core.model.action.impl,
  org.sheepy.lily.core.model.action.util,
