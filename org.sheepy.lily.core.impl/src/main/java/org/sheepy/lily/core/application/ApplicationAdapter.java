@@ -32,9 +32,23 @@ public class ApplicationAdapter implements IApplicationAdapter
 	}
 
 	@Override
+	public void launch(Application application)
+	{
+		launch(application, null);
+	}
+
+	@Override
 	public void launch(Application application, IMainLoop mainLoop)
 	{
-		cadencer = new Cadencer(application, mainLoop);
+		final var cadence = application.getCadence();
+		if (cadence != null)
+		{
+			cadencer = new Cadencer(application);
+		}
+		else
+		{
+			cadencer = new Cadencer(application, mainLoop);
+		}
 
 		cadencer.load();
 		launched = true;

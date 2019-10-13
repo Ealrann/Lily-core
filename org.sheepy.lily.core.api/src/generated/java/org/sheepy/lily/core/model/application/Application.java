@@ -5,7 +5,6 @@ package org.sheepy.lily.core.model.application;
 import org.eclipse.emf.common.util.EList;
 
 import org.joml.Vector2ic;
-
 import org.sheepy.lily.core.model.root.LObject;
 
 /**
@@ -27,6 +26,7 @@ import org.sheepy.lily.core.model.root.LObject;
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getSize <em>Size</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getCurrentView <em>Current View</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getCadenceInHz <em>Cadence In Hz</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Application#getCadence <em>Cadence</em>}</li>
  * </ul>
  *
  * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication()
@@ -42,7 +42,7 @@ public interface Application extends LObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Views</em>' containment reference list.
 	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Views()
-	 * @model containment="true"
+	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<IView> getViews();
@@ -54,7 +54,7 @@ public interface Application extends LObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Engines</em>' containment reference list.
 	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Engines()
-	 * @model containment="true"
+	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<IEngine> getEngines();
@@ -241,5 +241,27 @@ public interface Application extends LObject
 	 * @generated
 	 */
 	void setCadenceInHz(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Cadence</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cadence</em>' containment reference.
+	 * @see #setCadence(ICadence)
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Cadence()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	ICadence getCadence();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#getCadence <em>Cadence</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cadence</em>' containment reference.
+	 * @see #getCadence()
+	 * @generated
+	 */
+	void setCadence(ICadence value);
 
 } // Application

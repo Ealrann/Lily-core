@@ -17,6 +17,7 @@ import org.sheepy.lily.core.adapter.IBasicAdapterFactory;
 import org.sheepy.lily.core.api.action.context.ActionExecutionContext;
 import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.api.cadence.ICadenceAdapter;
 import org.sheepy.lily.core.api.cadence.ICadencer;
 import org.sheepy.lily.core.api.cadence.IMainLoop;
 import org.sheepy.lily.core.api.cadence.IStatistics;
@@ -43,6 +44,7 @@ public class Cadencer implements ICadencer
 
 	protected final IBasicAdapterFactory adapterFactory = (IBasicAdapterFactory) IBasicAdapterFactory.INSTANCE;
 	protected final IMainLoop mainloop;
+	protected final ICadenceAdapter cadenceAdapter;
 
 	protected IInputManager inputManager = null;
 	private Long mainThread = null;
@@ -58,6 +60,14 @@ public class Cadencer implements ICadencer
 	{
 		this.application = application;
 		this.mainloop = mainloop;
+		this.cadenceAdapter = null;
+	}
+
+	public Cadencer(Application application)
+	{
+		this.application = application;
+		this.mainloop = null;
+		this.cadenceAdapter = application.getCadence().adapt(ICadenceAdapter.class);
 	}
 
 	@Override
@@ -148,7 +158,7 @@ public class Cadencer implements ICadencer
 
 	public void run()
 	{
-		final long stepNs = (long) (1. / application.getCadenceInHz() * 1e9);
+		final long stepNs = (long) (1e9 / application.getCadenceInHz());
 
 		while (stop.get() == false)
 		{
@@ -163,6 +173,12 @@ public class Cadencer implements ICadencer
 			{
 				final long duration = System.nanoTime();
 				mainloop.step(application);
+				statistics.addTime(MAIN_LOOP, System.nanoTime() - duration);
+			}
+			if (cadenceAdapter != null)
+			{
+				final long duration = System.nanoTime();
+				cadenceAdapter.run();
 				statistics.addTime(MAIN_LOOP, System.nanoTime() - duration);
 			}
 		}

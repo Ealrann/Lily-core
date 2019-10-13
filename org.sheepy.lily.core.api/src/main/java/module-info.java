@@ -16,6 +16,7 @@ module org.sheepy.lily.core.api
 
 	requires transitive org.joml;
 
+	exports org.sheepy.lily.core.api;
 	exports org.sheepy.lily.core.api.action;
 	exports org.sheepy.lily.core.api.allocation;
 	exports org.sheepy.lily.core.api.action.context;
@@ -37,6 +38,8 @@ module org.sheepy.lily.core.api
 	exports org.sheepy.lily.core.model.action.impl;
 	exports org.sheepy.lily.core.model.application;
 	exports org.sheepy.lily.core.model.application.impl;
+	exports org.sheepy.lily.core.model.cadence;
+	exports org.sheepy.lily.core.model.cadence.impl;
 	exports org.sheepy.lily.core.model.inference;
 	exports org.sheepy.lily.core.model.inference.impl;
 	exports org.sheepy.lily.core.model.maintainer;

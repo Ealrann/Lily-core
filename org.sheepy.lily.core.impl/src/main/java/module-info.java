@@ -5,6 +5,13 @@ import org.sheepy.lily.core.api.cadence.IStatistics;
 import org.sheepy.lily.core.api.resource.IResourceLoader;
 import org.sheepy.lily.core.application.ApplicationAdapter;
 import org.sheepy.lily.core.cadence.CadencerStatistics;
+import org.sheepy.lily.core.cadence.adapter.CadenceAdapter;
+import org.sheepy.lily.core.cadence.adapter.CloseApplicationAdapter;
+import org.sheepy.lily.core.cadence.adapter.CountUntilAdapter;
+import org.sheepy.lily.core.cadence.adapter.ExecuteIfAdapter;
+import org.sheepy.lily.core.cadence.adapter.ExecuteWhileAdapter;
+import org.sheepy.lily.core.cadence.adapter.HaveTimeAdapter;
+import org.sheepy.lily.core.cadence.adapter.PrintUPSAdapter;
 import org.sheepy.lily.core.resource.ResourceLoader;
 import org.sheepy.lily.core.util.ModelAdapter;
 import org.sheepy.lily.core.variable.ChainVariableResolverAdapter;
@@ -14,7 +21,14 @@ import org.sheepy.lily.core.variable.DirectVariableResolverAdapter;
 		DirectVariableResolverAdapter.class,
 		ChainVariableResolverAdapter.class,
 		ApplicationAdapter.class,
-		ModelAdapter.class
+		ModelAdapter.class,
+		ExecuteIfAdapter.class,
+		ExecuteWhileAdapter.class,
+		CadenceAdapter.class,
+		PrintUPSAdapter.class,
+		HaveTimeAdapter.class,
+		CountUntilAdapter.class,
+		CloseApplicationAdapter.class
 })
 
 module org.sheepy.lily.core.impl

@@ -20,6 +20,8 @@ import org.sheepy.lily.core.model.application.ApplicationPackage;
 
 import org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl;
 
+import org.sheepy.lily.core.model.cadence.CadencePackage;
+import org.sheepy.lily.core.model.cadence.impl.CadencePackageImpl;
 import org.sheepy.lily.core.model.inference.AbstractNotification;
 import org.sheepy.lily.core.model.inference.Condition;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
@@ -194,6 +196,8 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 		UiPackageImpl theUiPackage = (UiPackageImpl)(registeredPackage instanceof UiPackageImpl ? registeredPackage : UiPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(VariablePackage.eNS_URI);
 		VariablePackageImpl theVariablePackage = (VariablePackageImpl)(registeredPackage instanceof VariablePackageImpl ? registeredPackage : VariablePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CadencePackage.eNS_URI);
+		CadencePackageImpl theCadencePackage = (CadencePackageImpl)(registeredPackage instanceof CadencePackageImpl ? registeredPackage : CadencePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theInferencePackage.createPackageContents();
@@ -206,6 +210,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 		theResolverPackage.createPackageContents();
 		theUiPackage.createPackageContents();
 		theVariablePackage.createPackageContents();
+		theCadencePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theInferencePackage.initializePackageContents();
@@ -218,6 +223,7 @@ public class InferencePackageImpl extends EPackageImpl implements InferencePacka
 		theResolverPackage.initializePackageContents();
 		theUiPackage.initializePackageContents();
 		theVariablePackage.initializePackageContents();
+		theCadencePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theInferencePackage.freeze();

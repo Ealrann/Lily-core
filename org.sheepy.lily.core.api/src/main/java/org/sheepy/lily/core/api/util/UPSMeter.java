@@ -31,7 +31,7 @@ public class UPSMeter
 		if (currentDate > endDate)
 		{
 			final long deltaTime = currentDate - startDate;
-			final float UPS = (tickCount * 1000f) / deltaTime;
+			final float UPS = 1000f * tickCount / deltaTime;
 
 			System.out.println(String.format("%.2f", UPS));
 

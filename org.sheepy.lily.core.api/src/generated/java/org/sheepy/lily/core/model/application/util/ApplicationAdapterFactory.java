@@ -93,6 +93,11 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 				return createIViewAdapter();
 			}
 			@Override
+			public Adapter caseICadence(ICadence object)
+			{
+				return createICadenceAdapter();
+			}
+			@Override
 			public Adapter caseIInferenceObject(IInferenceObject object)
 			{
 				return createIInferenceObjectAdapter();
@@ -164,6 +169,21 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createIViewAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.ICadence <em>ICadence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.ICadence
+	 * @generated
+	 */
+	public Adapter createICadenceAdapter()
 	{
 		return null;
 	}

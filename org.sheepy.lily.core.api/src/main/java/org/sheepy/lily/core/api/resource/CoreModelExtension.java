@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.eclipse.emf.ecore.EPackage;
 import org.sheepy.lily.core.model.action.ActionPackage;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.cadence.CadencePackage;
 import org.sheepy.lily.core.model.inference.InferencePackage;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
 import org.sheepy.lily.core.model.resolver.ResolverPackage;
@@ -19,10 +20,11 @@ public class CoreModelExtension implements IModelExtension
 	@Override
 	public Collection<EPackage> getEPackages()
 	{
-		Collection<EPackage> res = new ArrayList<>();
+		final Collection<EPackage> res = new ArrayList<>();
 
 		res.add(ActionPackage.eINSTANCE);
 		res.add(ApplicationPackage.eINSTANCE);
+		res.add(CadencePackage.eINSTANCE);
 		res.add(InferencePackage.eINSTANCE);
 		res.add(PresentationPackage.eINSTANCE);
 		res.add(ResolverPackage.eINSTANCE);

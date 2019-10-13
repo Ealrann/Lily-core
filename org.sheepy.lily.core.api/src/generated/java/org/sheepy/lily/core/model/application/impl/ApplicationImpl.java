@@ -32,9 +32,9 @@ import org.sheepy.lily.core.api.util.LTreeIterator;
 
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.application.ICadence;
 import org.sheepy.lily.core.model.application.IEngine;
 import org.sheepy.lily.core.model.application.IView;
-
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 
 import org.sheepy.lily.core.model.root.LObject;
@@ -63,6 +63,7 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getSize <em>Size</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getCurrentView <em>Current View</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getCadenceInHz <em>Cadence In Hz</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getCadence <em>Cadence</em>}</li>
  * </ul>
  *
  * @generated
@@ -250,6 +251,16 @@ public class ApplicationImpl extends LilyEObject implements Application
 	protected int cadenceInHz = CADENCE_IN_HZ_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getCadence() <em>Cadence</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCadence()
+	 * @generated
+	 * @ordered
+	 */
+	protected ICadence cadence;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -305,7 +316,7 @@ public class ApplicationImpl extends LilyEObject implements Application
 	{
 		if (views == null)
 		{
-			views = new EObjectContainmentEList<IView>(IView.class, this, ApplicationPackage.APPLICATION__VIEWS);
+			views = new EObjectContainmentEList.Resolving<IView>(IView.class, this, ApplicationPackage.APPLICATION__VIEWS);
 		}
 		return views;
 	}
@@ -320,7 +331,7 @@ public class ApplicationImpl extends LilyEObject implements Application
 	{
 		if (engines == null)
 		{
-			engines = new EObjectContainmentEList<IEngine>(IEngine.class, this, ApplicationPackage.APPLICATION__ENGINES);
+			engines = new EObjectContainmentEList.Resolving<IEngine>(IEngine.class, this, ApplicationPackage.APPLICATION__ENGINES);
 		}
 		return engines;
 	}
@@ -551,6 +562,83 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @generated
 	 */
 	@Override
+	public ICadence getCadence()
+	{
+		if (cadence != null && ((EObject)cadence).eIsProxy())
+		{
+			InternalEObject oldCadence = (InternalEObject)cadence;
+			cadence = (ICadence)eResolveProxy(oldCadence);
+			if (cadence != oldCadence)
+			{
+				InternalEObject newCadence = (InternalEObject)cadence;
+				NotificationChain msgs = oldCadence.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__CADENCE, null, null);
+				if (newCadence.eInternalContainer() == null)
+				{
+					msgs = newCadence.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__CADENCE, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.APPLICATION__CADENCE, oldCadence, cadence));
+			}
+		}
+		return cadence;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ICadence basicGetCadence()
+	{
+		return cadence;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetCadence(ICadence newCadence, NotificationChain msgs)
+	{
+		ICadence oldCadence = cadence;
+		cadence = newCadence;
+		if (eNotificationRequired())
+		{
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__CADENCE, oldCadence, newCadence);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCadence(ICadence newCadence)
+	{
+		if (newCadence != cadence)
+		{
+			NotificationChain msgs = null;
+			if (cadence != null)
+				msgs = ((InternalEObject)cadence).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__CADENCE, null, msgs);
+			if (newCadence != null)
+				msgs = ((InternalEObject)newCadence).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__CADENCE, null, msgs);
+			msgs = basicSetCadence(newCadence, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__CADENCE, newCadence, newCadence));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public <T extends LObject> EList<T> createContainmentEList(final EClass targetEClass)
 	{
 		EList<T> res = null;
@@ -653,6 +741,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return ((InternalEList<?>)getViews()).basicRemove(otherEnd, msgs);
 			case ApplicationPackage.APPLICATION__ENGINES:
 				return ((InternalEList<?>)getEngines()).basicRemove(otherEnd, msgs);
+			case ApplicationPackage.APPLICATION__CADENCE:
+				return basicSetCadence(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -690,6 +780,9 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return basicGetCurrentView();
 			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
 				return getCadenceInHz();
+			case ApplicationPackage.APPLICATION__CADENCE:
+				if (resolve) return getCadence();
+				return basicGetCadence();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -740,6 +833,9 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
 				setCadenceInHz((Integer)newValue);
 				return;
+			case ApplicationPackage.APPLICATION__CADENCE:
+				setCadence((ICadence)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -787,6 +883,9 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
 				setCadenceInHz(CADENCE_IN_HZ_EDEFAULT);
 				return;
+			case ApplicationPackage.APPLICATION__CADENCE:
+				setCadence((ICadence)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -823,6 +922,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return currentView != null;
 			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
 				return cadenceInHz != CADENCE_IN_HZ_EDEFAULT;
+			case ApplicationPackage.APPLICATION__CADENCE:
+				return cadence != null;
 		}
 		return super.eIsSet(featureID);
 	}

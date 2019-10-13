@@ -26,9 +26,12 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cadenceInHz" unique="false"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"
         defaultValueLiteral="60"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cadence" eType="#//ICadence"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IEngine" abstract="true" interface="true"
       eSuperTypes="root.ecore#//LObject"/>
   <eClassifiers xsi:type="ecore:EClass" name="IView" abstract="true" interface="true"
       eSuperTypes="root.ecore#//LObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ICadence" abstract="true" interface="true"/>
 </ecore:EPackage>

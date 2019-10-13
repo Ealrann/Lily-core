@@ -19,6 +19,8 @@ import org.sheepy.lily.core.model.application.ApplicationPackage;
 
 import org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl;
 
+import org.sheepy.lily.core.model.cadence.CadencePackage;
+import org.sheepy.lily.core.model.cadence.impl.CadencePackageImpl;
 import org.sheepy.lily.core.model.inference.InferencePackage;
 
 import org.sheepy.lily.core.model.inference.impl.InferencePackageImpl;
@@ -241,6 +243,8 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		ResolverPackageImpl theResolverPackage = (ResolverPackageImpl)(registeredPackage instanceof ResolverPackageImpl ? registeredPackage : ResolverPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(VariablePackage.eNS_URI);
 		VariablePackageImpl theVariablePackage = (VariablePackageImpl)(registeredPackage instanceof VariablePackageImpl ? registeredPackage : VariablePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CadencePackage.eNS_URI);
+		CadencePackageImpl theCadencePackage = (CadencePackageImpl)(registeredPackage instanceof CadencePackageImpl ? registeredPackage : CadencePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theUiPackage.createPackageContents();
@@ -253,6 +257,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		thePresentationPackage.createPackageContents();
 		theResolverPackage.createPackageContents();
 		theVariablePackage.createPackageContents();
+		theCadencePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theUiPackage.initializePackageContents();
@@ -265,6 +270,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		thePresentationPackage.initializePackageContents();
 		theResolverPackage.initializePackageContents();
 		theVariablePackage.initializePackageContents();
+		theCadencePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theUiPackage.freeze();

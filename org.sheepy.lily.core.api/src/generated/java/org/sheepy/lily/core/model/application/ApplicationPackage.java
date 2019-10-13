@@ -169,13 +169,22 @@ public interface ApplicationPackage extends EPackage
 	int APPLICATION__CADENCE_IN_HZ = RootPackage.LOBJECT_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Cadence</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION__CADENCE = RootPackage.LOBJECT_FEATURE_COUNT + 10;
+
+	/**
 	 * The number of structural features of the '<em>Application</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_FEATURE_COUNT = RootPackage.LOBJECT_FEATURE_COUNT + 10;
+	int APPLICATION_FEATURE_COUNT = RootPackage.LOBJECT_FEATURE_COUNT + 11;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -396,6 +405,34 @@ public interface ApplicationPackage extends EPackage
 	int IVIEW_OPERATION_COUNT = RootPackage.LOBJECT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.ICadence <em>ICadence</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.application.ICadence
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getICadence()
+	 * @generated
+	 */
+	int ICADENCE = 3;
+
+	/**
+	 * The number of structural features of the '<em>ICadence</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICADENCE_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>ICadence</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICADENCE_OPERATION_COUNT = 0;
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.Application <em>Application</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -516,6 +553,17 @@ public interface ApplicationPackage extends EPackage
 	EAttribute getApplication_CadenceInHz();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.Application#getCadence <em>Cadence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Cadence</em>'.
+	 * @see org.sheepy.lily.core.model.application.Application#getCadence()
+	 * @see #getApplication()
+	 * @generated
+	 */
+	EReference getApplication_Cadence();
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.IEngine <em>IEngine</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -534,6 +582,16 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 */
 	EClass getIView();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.ICadence <em>ICadence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>ICadence</em>'.
+	 * @see org.sheepy.lily.core.model.application.ICadence
+	 * @generated
+	 */
+	EClass getICadence();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -650,6 +708,14 @@ public interface ApplicationPackage extends EPackage
 		EAttribute APPLICATION__CADENCE_IN_HZ = eINSTANCE.getApplication_CadenceInHz();
 
 		/**
+		 * The meta object literal for the '<em><b>Cadence</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference APPLICATION__CADENCE = eINSTANCE.getApplication_Cadence();
+
+		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.IEngine <em>IEngine</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -668,6 +734,16 @@ public interface ApplicationPackage extends EPackage
 		 * @generated
 		 */
 		EClass IVIEW = eINSTANCE.getIView();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.ICadence <em>ICadence</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.ICadence
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getICadence()
+		 * @generated
+		 */
+		EClass ICADENCE = eINSTANCE.getICadence();
 
 	}
 
