@@ -29,7 +29,7 @@ public interface ExecuteWhile extends CadenceTaskPkg
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Conditions</em>' containment reference list.
 	 * @see org.sheepy.lily.core.model.cadence.CadencePackage#getExecuteWhile_Conditions()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ICadenceCondition> getConditions();

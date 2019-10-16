@@ -10,11 +10,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="ICadenceTask" abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="CadenceTaskPkg" abstract="true" eSuperTypes="#//ICadenceTask">
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
-        eType="#//ICadenceTask" containment="true"/>
+        eType="#//ICadenceTask" containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExecuteWhile" eSuperTypes="#//CadenceTaskPkg">
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditions" upperBound="-1"
-        eType="#//ICadenceCondition" containment="true"/>
+        eType="#//ICadenceCondition" containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExecuteIf" eSuperTypes="#//CadenceTaskPkg">
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditions" upperBound="-1"

@@ -76,7 +76,7 @@ public abstract class CadenceTaskPkgImpl extends LilyEObject implements CadenceT
 	{
 		if (tasks == null)
 		{
-			tasks = new EObjectContainmentEList.Resolving<ICadenceTask>(ICadenceTask.class, this, CadencePackage.CADENCE_TASK_PKG__TASKS);
+			tasks = new EObjectContainmentEList<ICadenceTask>(ICadenceTask.class, this, CadencePackage.CADENCE_TASK_PKG__TASKS);
 		}
 		return tasks;
 	}

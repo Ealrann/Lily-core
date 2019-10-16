@@ -556,10 +556,10 @@ public class CadencePackageImpl extends EPackageImpl implements CadencePackage
 		initEClass(iCadenceTaskEClass, ICadenceTask.class, "ICadenceTask", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(cadenceTaskPkgEClass, CadenceTaskPkg.class, "CadenceTaskPkg", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCadenceTaskPkg_Tasks(), this.getICadenceTask(), null, "tasks", null, 0, -1, CadenceTaskPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCadenceTaskPkg_Tasks(), this.getICadenceTask(), null, "tasks", null, 0, -1, CadenceTaskPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(executeWhileEClass, ExecuteWhile.class, "ExecuteWhile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExecuteWhile_Conditions(), this.getICadenceCondition(), null, "conditions", null, 0, -1, ExecuteWhile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExecuteWhile_Conditions(), this.getICadenceCondition(), null, "conditions", null, 0, -1, ExecuteWhile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(executeIfEClass, ExecuteIf.class, "ExecuteIf", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExecuteIf_Conditions(), this.getICadenceCondition(), null, "conditions", null, 0, -1, ExecuteIf.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

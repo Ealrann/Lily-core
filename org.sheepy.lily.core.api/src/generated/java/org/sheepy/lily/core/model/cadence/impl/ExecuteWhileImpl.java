@@ -74,7 +74,7 @@ public class ExecuteWhileImpl extends CadenceTaskPkgImpl implements ExecuteWhile
 	{
 		if (conditions == null)
 		{
-			conditions = new EObjectContainmentEList.Resolving<ICadenceCondition>(ICadenceCondition.class, this, CadencePackage.EXECUTE_WHILE__CONDITIONS);
+			conditions = new EObjectContainmentEList<ICadenceCondition>(ICadenceCondition.class, this, CadencePackage.EXECUTE_WHILE__CONDITIONS);
 		}
 		return conditions;
 	}
