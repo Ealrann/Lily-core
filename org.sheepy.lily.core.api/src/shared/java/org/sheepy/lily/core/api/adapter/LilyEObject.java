@@ -33,7 +33,14 @@ public class LilyEObject extends EObjectImpl implements ILilyEObject
 	@Override
 	public <T extends IAdapter> T adapt(Class<T> type)
 	{
-		return IAdapterFactoryService.INSTANCE.adapt(this, type);
+		if (adapterManager != null)
+		{
+			return adapterManager.adapt(type);
+		}
+		else
+		{
+			return IAdapterFactoryService.INSTANCE.adapt(this, type);
+		}
 	}
 
 	@Override
