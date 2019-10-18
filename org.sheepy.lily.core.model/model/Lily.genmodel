@@ -382,7 +382,7 @@
     </genClasses>
     <genClasses image="false" ecoreClass="cadence.ecore#//ICadenceTask"/>
     <genClasses ecoreClass="cadence.ecore#//CadenceTaskPkg">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cadence.ecore#//CadenceTaskPkg/tasks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cadence.ecore#//CadenceTaskPkg/tasks"/>
     </genClasses>
     <genClasses ecoreClass="cadence.ecore#//ExecuteWhile">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cadence.ecore#//ExecuteWhile/conditions"/>
