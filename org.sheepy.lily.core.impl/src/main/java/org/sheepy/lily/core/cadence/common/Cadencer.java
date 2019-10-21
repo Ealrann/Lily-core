@@ -31,7 +31,8 @@ import org.sheepy.lily.core.model.application.Application;
 public class Cadencer implements ICadencer
 {
 	private static final String MAIN_LOOP = "Main Loop";
-	private static final String CADENCER_TICK = "Cadencer Tick";
+	private static final String CADENCE = "Cadence";
+	private static final String CADENCER_TICK = "Tickers";
 	private static final String MODEL_COMMANDS = "Model Commands";
 
 	private final Application application;
@@ -162,25 +163,29 @@ public class Cadencer implements ICadencer
 
 		while (stop.get() == false)
 		{
+			final long start = System.nanoTime();
 			if (inputManager != null)
 			{
 				inputManager.pollInputs();
 			}
 
+			final long duration = System.nanoTime();
 			tick(stepNs);
+			statistics.addTime(CADENCE, CADENCER_TICK, System.nanoTime() - duration);
 
 			if (mainloop != null)
 			{
-				final long duration = System.nanoTime();
+				final long d = System.nanoTime();
 				mainloop.step(application);
-				statistics.addTime(MAIN_LOOP, System.nanoTime() - duration);
+				statistics.addTime(CADENCE, MAIN_LOOP, System.nanoTime() - d);
 			}
 			if (cadenceAdapter != null)
 			{
-				final long duration = System.nanoTime();
+				final long d = System.nanoTime();
 				cadenceAdapter.run();
-				statistics.addTime(MAIN_LOOP, System.nanoTime() - duration);
+				statistics.addTime(CADENCE, MAIN_LOOP, System.nanoTime() - d);
 			}
+			statistics.addTime(CADENCE, System.nanoTime() - start);
 		}
 
 		dispose();
@@ -193,8 +198,6 @@ public class Cadencer implements ICadencer
 
 	public void tick(long stepNano)
 	{
-		final long duration = System.nanoTime();
-
 		// =========
 		// Compute tickers to execute
 		// =========
@@ -214,8 +217,7 @@ public class Cadencer implements ICadencer
 		long blockingDuration = System.nanoTime();
 		commandStack.execute();
 		blockingDuration = System.nanoTime() - blockingDuration;
-
-		statistics.addTime(MODEL_COMMANDS, blockingDuration);
+		statistics.addTime(CADENCER_TICK, MODEL_COMMANDS, blockingDuration);
 
 		// =========
 		// Execute tickers
@@ -237,7 +239,7 @@ public class Cadencer implements ICadencer
 
 					ticker.tick();
 
-					statistics.addTime(ticker.getLabel(), System.nanoTime() - d);
+					statistics.addTime(CADENCER_TICK, ticker.getLabel(), System.nanoTime() - d);
 				}
 			} while (ticker.shouldTick());
 		}
@@ -250,10 +252,7 @@ public class Cadencer implements ICadencer
 		blockingDuration = System.nanoTime();
 		commandStack.execute();
 		blockingDuration = System.nanoTime() - blockingDuration;
-
-		statistics.addTime(MODEL_COMMANDS, blockingDuration);
-
-		statistics.addTime(CADENCER_TICK, System.nanoTime() - duration);
+		statistics.addTime(CADENCE, MODEL_COMMANDS, blockingDuration);
 	}
 
 	@Override
