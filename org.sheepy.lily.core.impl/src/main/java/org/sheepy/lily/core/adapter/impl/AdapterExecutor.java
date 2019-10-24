@@ -1,21 +1,25 @@
 package org.sheepy.lily.core.adapter.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
+import org.sheepy.lily.core.adapter.impl.AdapterInfo.TickConfiguration;
 import org.sheepy.lily.core.adapter.impl.ServiceAdapterRegistry.AdapterDescriptor;
 import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 
 public final class AdapterExecutor<T extends IAdapter>
-		extends ServiceAdapterRegistry.AdapterDescriptor<T> implements ITickDescriptor
+		extends ServiceAdapterRegistry.AdapterDescriptor<T>
 {
 	public final T adapter;
-	private final EObject target;
+	public final List<TickHandle> tickHandles;
 
+	private final EObject target;
 	private final ExecutionHandle loadHandle;
 	private final ExecutionHandle disposeHandle;
-	private final ExecutionHandle tickHandle;
 	private final ExecutionHandle notifyHandle;
 
 	AdapterExecutor(AdapterDescriptor<T> descriptor, EObject target, T adapter)
@@ -26,8 +30,20 @@ public final class AdapterExecutor<T extends IAdapter>
 
 		loadHandle = createHandle(descriptor.info.loadHandleBuilder);
 		disposeHandle = createHandle(descriptor.info.disposeHandleBuilder);
-		tickHandle = createHandle(descriptor.info.tickHandleBuilder);
 		notifyHandle = createHandle(descriptor.info.notifyHandleBuilder);
+		tickHandles = List.copyOf(buildTickHandles(descriptor));
+	}
+
+	private List<TickHandle> buildTickHandles(AdapterDescriptor<T> descriptor)
+	{
+		final List<TickHandle> res = new ArrayList<>();
+
+		for (final var tickConfig : descriptor.info.tickConfiguration)
+		{
+			res.add(new TickHandle(tickConfig));
+		}
+
+		return res;
 	}
 
 	private ExecutionHandle createHandle(ExecutionHandle.Builder<T> builder)
@@ -65,32 +81,43 @@ public final class AdapterExecutor<T extends IAdapter>
 		}
 	}
 
-	/**
-	* TODO stepNs is autoboxed here. Finally, the step value can be retrived in Application, 
-	* is that really usefull to share it by argument ?
-	 */
-	@Override
-	public void tick(long stepNs)
+	public final class TickHandle implements ITickDescriptor
 	{
-		tickHandle.invoke(target, stepNs);
-	}
+		private final TickConfiguration<T> configuration;
+		private final ExecutionHandle handle;
 
-	@Override
-	public String getName()
-	{
-		return adapter.getClass().getSimpleName();
-	}
+		public TickHandle(TickConfiguration<T> configuration)
+		{
+			this.configuration = configuration;
+			handle = configuration.tickHandleBuilder.build(adapter);
+		}
 
-	@Override
-	public int getPriority()
-	{
-		return info.getTickPriority();
-	}
+		@Override
+		public int getFrequency()
+		{
+			return configuration.tickFrequency;
+		}
 
-	@Override
-	public int getFrequency()
-	{
-		return info.getTickFrequency();
-	}
+		/**
+		 * TODO stepNs is autoboxed here. Finally, the step value can be retrieved in Application,
+		 * is that really usefull to share it by argument ?
+		 */
+		@Override
+		public void tick(long stepNs)
+		{
+			handle.invoke(target, stepNs);
+		}
 
+		@Override
+		public String getName()
+		{
+			return adapter.getClass().getSimpleName();
+		}
+
+		@Override
+		public int getPriority()
+		{
+			return configuration.tickPriority;
+		}
+	}
 }

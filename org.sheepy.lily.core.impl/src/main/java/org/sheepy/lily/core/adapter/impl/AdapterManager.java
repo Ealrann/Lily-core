@@ -120,9 +120,9 @@ final class AdapterManager extends EContentAdapter implements IAdapterManager
 
 			executor.load();
 
-			if (executor.info.isTicker())
+			for (final var tickHandle : executor.tickHandles)
 			{
-				tickers.add(executor);
+				tickers.add(tickHandle);
 			}
 		}
 

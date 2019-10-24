@@ -4,6 +4,8 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.reflect.ConstructorHandle;
@@ -25,14 +27,13 @@ public final class AdapterInfo<T extends IAdapter>
 
 	public final ExecutionHandle.Builder<T> loadHandleBuilder;
 	public final ExecutionHandle.Builder<T> disposeHandleBuilder;
-	public final ExecutionHandle.Builder<T> tickHandleBuilder;
 	public final ExecutionHandle.Builder<T> notifyHandleBuilder;
 
 	private final T singleton;
 	private final boolean isSingleton;
 	private final boolean autorunConstructor;
-	private final Integer tickFrequency;
-	private final Integer tickPriority;
+
+	public final List<TickConfiguration<T>> tickConfiguration;
 
 	public AdapterInfo(AdapterDomain<T> domain)
 	{
@@ -53,20 +54,7 @@ public final class AdapterInfo<T extends IAdapter>
 		disposeHandleBuilder = createHandleBuilder(type, Dispose.class);
 		notifyHandleBuilder = createHandleBuilder(type, NotifyChanged.class);
 
-		final var tickMethodAnnotation = ReflectUtils.gatherMethodAnnotation(type, Tick.class);
-		if (tickMethodAnnotation != null)
-		{
-			final Tick tickAnnotation = tickMethodAnnotation.annotation;
-			tickFrequency = tickAnnotation.frequency();
-			tickPriority = tickAnnotation.priority();
-			tickHandleBuilder = ExecutionHandle.Builder.fromMethod(tickMethodAnnotation.method);
-		}
-		else
-		{
-			tickFrequency = null;
-			tickPriority = null;
-			tickHandleBuilder = null;
-		}
+		tickConfiguration = List.copyOf(buildTickerConfigurations(type));
 
 		if (isSingleton)
 		{
@@ -76,6 +64,25 @@ public final class AdapterInfo<T extends IAdapter>
 		{
 			singleton = null;
 		}
+	}
+
+	private List<TickConfiguration<T>> buildTickerConfigurations(final Class<T> type)
+	{
+		final List<TickConfiguration<T>> res = new ArrayList<>();
+		final var tickMethods = ReflectUtils.gatherAnnotatedMethods(type, Tick.class);
+		for (final var tickMethod : tickMethods)
+		{
+			final Tick tickAnnotation = tickMethod.annotation;
+			final var tickFrequency = tickAnnotation.frequency();
+			final var tickPriority = tickAnnotation.priority();
+			final var tickHandleBuilder = ExecutionHandle.Builder.<T> fromMethod(tickMethod.method);
+
+			final var handler = new TickConfiguration<>(tickHandleBuilder,
+														tickFrequency,
+														tickPriority);
+			res.add(handler);
+		}
+		return res;
 	}
 
 	private final ExecutionHandle.Builder<T> createHandleBuilder(	Class<?> type,
@@ -190,26 +197,27 @@ public final class AdapterInfo<T extends IAdapter>
 		return res;
 	}
 
-	public boolean isTicker()
-	{
-		return tickFrequency != null;
-	}
-
-	public int getTickFrequency()
-	{
-		return tickFrequency;
-	}
-
 	public boolean isAutoAdapter()
 	{
 		return loadHandleBuilder != null
-				|| isTicker()
+				|| tickConfiguration.isEmpty() == false
 				|| autorunConstructor
 				|| (isSingleton && notifyHandleBuilder != null);
 	}
 
-	public int getTickPriority()
+	public static final class TickConfiguration<T extends IAdapter>
 	{
-		return tickPriority;
+		public final ExecutionHandle.Builder<T> tickHandleBuilder;
+		public final Integer tickFrequency;
+		public final Integer tickPriority;
+
+		public TickConfiguration(	ExecutionHandle.Builder<T> tickHandleBuilder,
+									Integer tickFrequency,
+									Integer tickPriority)
+		{
+			this.tickHandleBuilder = tickHandleBuilder;
+			this.tickFrequency = tickFrequency;
+			this.tickPriority = tickPriority;
+		}
 	}
 }
