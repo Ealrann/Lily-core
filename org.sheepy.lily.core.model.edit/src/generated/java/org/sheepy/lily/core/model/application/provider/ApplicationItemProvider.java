@@ -72,7 +72,7 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 			addTitlePropertyDescriptor(object);
 			addSizePropertyDescriptor(object);
 			addCurrentViewPropertyDescriptor(object);
-			addCadenceInHzPropertyDescriptor(object);
+			addTimeFactorPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -239,24 +239,24 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 	}
 
 	/**
-	 * This adds a property descriptor for the Cadence In Hz feature.
+	 * This adds a property descriptor for the Time Factor feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addCadenceInHzPropertyDescriptor(Object object)
+	protected void addTimeFactorPropertyDescriptor(Object object)
 	{
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Application_cadenceInHz_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Application_cadenceInHz_feature", "_UI_Application_type"),
-				 ApplicationPackage.Literals.APPLICATION__CADENCE_IN_HZ,
+				 getString("_UI_Application_timeFactor_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Application_timeFactor_feature", "_UI_Application_type"),
+				 ApplicationPackage.Literals.APPLICATION__TIME_FACTOR,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -345,7 +345,7 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 			case ApplicationPackage.APPLICATION__HEADLESS:
 			case ApplicationPackage.APPLICATION__TITLE:
 			case ApplicationPackage.APPLICATION__SIZE:
-			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
+			case ApplicationPackage.APPLICATION__TIME_FACTOR:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ApplicationPackage.APPLICATION__VIEWS:

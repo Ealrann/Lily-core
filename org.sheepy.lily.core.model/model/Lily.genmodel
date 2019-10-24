@@ -153,7 +153,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/title"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/size"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference application.ecore#//Application/currentView"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/cadenceInHz"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/timeFactor"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/cadence"/>
     </genClasses>
     <genClasses image="false" ecoreClass="application.ecore#//IEngine"/>

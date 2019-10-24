@@ -23,9 +23,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" unique="false" eType="ecore:EDataType types.ecore#//Vector2i"
         defaultValueLiteral="400,400"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentView" eType="#//IView"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cadenceInHz" unique="false"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"
-        defaultValueLiteral="60"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeFactor" unique="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="1"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="cadence" eType="#//ICadence"
         containment="true"/>
   </eClassifiers>

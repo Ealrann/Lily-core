@@ -1,14 +1,15 @@
 package org.sheepy.lily.core.cadence.common;
 
+import org.sheepy.lily.core.api.cadence.ETickerClock;
 import org.sheepy.lily.core.api.cadence.ITicker;
 
 public class TickerWrapper extends AbstractTickerWrapper
 {
 	private final ITicker ticker;
 
-	public TickerWrapper(ITicker ticker, int frequency)
+	public TickerWrapper(ITicker ticker, ETickerClock clock, double frequency)
 	{
-		super(frequency);
+		super(clock, frequency);
 
 		this.ticker = ticker;
 	}

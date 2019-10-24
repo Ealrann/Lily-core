@@ -3,6 +3,8 @@ package org.sheepy.lily.core.cadence.common;
 import java.util.Comparator;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import org.sheepy.lily.core.api.cadence.ETickerClock;
+
 public abstract class AbstractTickerWrapper
 {
 	public static final Comparator<AbstractTickerWrapper> COMPARATOR = new Comparator<>()
@@ -14,15 +16,18 @@ public abstract class AbstractTickerWrapper
 		}
 	};
 
-	protected final float frequency;
+	public final double frequency;
+	public final ETickerClock clock;
+
 	protected final long tickerStep;
 
 	protected long accumulator = 0;
 
 	public final AtomicBoolean stop = new AtomicBoolean(false);
 
-	public AbstractTickerWrapper(float frequency)
+	public AbstractTickerWrapper(ETickerClock clock, double frequency)
 	{
+		this.clock = clock;
 		this.frequency = frequency;
 		// We planify the next tick
 		if (frequency > 0)
@@ -61,7 +66,7 @@ public abstract class AbstractTickerWrapper
 		}
 	}
 
-	public float getFrequency()
+	public double getFrequency()
 	{
 		return frequency;
 	}

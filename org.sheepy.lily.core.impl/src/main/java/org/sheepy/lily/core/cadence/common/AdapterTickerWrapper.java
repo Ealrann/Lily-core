@@ -9,7 +9,7 @@ public class AdapterTickerWrapper extends AbstractTickerWrapper
 
 	public AdapterTickerWrapper(ITickDescriptor tickDescriptor)
 	{
-		super(tickDescriptor.getFrequency());
+		super(tickDescriptor.getClock(), tickDescriptor.getFrequency());
 		this.tickDescriptor = tickDescriptor;
 		priority = tickDescriptor.getPriority();
 	}

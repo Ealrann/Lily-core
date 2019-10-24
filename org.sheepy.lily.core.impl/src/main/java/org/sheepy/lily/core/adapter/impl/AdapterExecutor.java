@@ -10,6 +10,7 @@ import org.sheepy.lily.core.adapter.impl.AdapterInfo.TickConfiguration;
 import org.sheepy.lily.core.adapter.impl.ServiceAdapterRegistry.AdapterDescriptor;
 import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
 import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.cadence.ETickerClock;
 
 public final class AdapterExecutor<T extends IAdapter>
 		extends ServiceAdapterRegistry.AdapterDescriptor<T>
@@ -93,7 +94,7 @@ public final class AdapterExecutor<T extends IAdapter>
 		}
 
 		@Override
-		public int getFrequency()
+		public double getFrequency()
 		{
 			return configuration.tickFrequency;
 		}
@@ -105,7 +106,7 @@ public final class AdapterExecutor<T extends IAdapter>
 		@Override
 		public void tick(long stepNs)
 		{
-			handle.invoke(target, stepNs);
+			handle.invoke(stepNs, target);
 		}
 
 		@Override
@@ -118,6 +119,12 @@ public final class AdapterExecutor<T extends IAdapter>
 		public int getPriority()
 		{
 			return configuration.tickPriority;
+		}
+
+		@Override
+		public ETickerClock getClock()
+		{
+			return configuration.clock;
 		}
 	}
 }

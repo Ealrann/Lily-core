@@ -17,6 +17,7 @@ import org.sheepy.lily.core.adapter.IBasicAdapterFactory;
 import org.sheepy.lily.core.api.action.context.ActionExecutionContext;
 import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.api.cadence.ETickerClock;
 import org.sheepy.lily.core.api.cadence.ICadenceAdapter;
 import org.sheepy.lily.core.api.cadence.ICadencer;
 import org.sheepy.lily.core.api.cadence.IMainLoop;
@@ -100,7 +101,7 @@ public class Cadencer implements ICadencer
 		mainThread = Thread.currentThread().getId();
 
 		dispatcher = new ActionDispatcherThread(commandStack, mainThread);
-		addTicker(dispatcher, -1);
+		addTicker(dispatcher, ETickerClock.RealWorld, -1);
 
 		IAdapterFactoryService.INSTANCE.setupRoot(application);
 
@@ -200,13 +201,23 @@ public class Cadencer implements ICadencer
 
 	public void tick(long stepNs)
 	{
+		final long appStepNs = (long) (application.getTimeFactor() * stepNs);
+
 		// =========
 		// Compute tickers to execute
 		// =========
 		for (int i = 0; i < tickers.size(); i++)
 		{
 			final var ticker = tickers.get(i);
-			ticker.accumulate(stepNs);
+			switch (ticker.clock)
+			{
+			case RealWorld:
+				ticker.accumulate(stepNs);
+				break;
+			case ApplicationWorld:
+				ticker.accumulate(appStepNs);
+				break;
+			}
 
 			if (ticker.shouldTick())
 			{
@@ -269,9 +280,9 @@ public class Cadencer implements ICadencer
 	}
 
 	@Override
-	public void addTicker(ITicker ticker, int frequency)
+	public void addTicker(ITicker ticker, ETickerClock clock, int frequency)
 	{
-		final TickerWrapper tw = new TickerWrapper(ticker, frequency);
+		final TickerWrapper tw = new TickerWrapper(ticker, clock, frequency);
 
 		tickers.add(tw);
 	}

@@ -25,7 +25,7 @@ import org.sheepy.lily.core.model.root.LObject;
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getTitle <em>Title</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getSize <em>Size</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getCurrentView <em>Current View</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.Application#getCadenceInHz <em>Cadence In Hz</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Application#getTimeFactor <em>Time Factor</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getCadence <em>Cadence</em>}</li>
  * </ul>
  *
@@ -220,27 +220,27 @@ public interface Application extends LObject
 	void setCurrentView(IView value);
 
 	/**
-	 * Returns the value of the '<em><b>Cadence In Hz</b></em>' attribute.
-	 * The default value is <code>"60"</code>.
+	 * Returns the value of the '<em><b>Time Factor</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Cadence In Hz</em>' attribute.
-	 * @see #setCadenceInHz(int)
-	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_CadenceInHz()
-	 * @model default="60" unique="false"
+	 * @return the value of the '<em>Time Factor</em>' attribute.
+	 * @see #setTimeFactor(double)
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_TimeFactor()
+	 * @model default="1" unique="false" required="true"
 	 * @generated
 	 */
-	int getCadenceInHz();
+	double getTimeFactor();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#getCadenceInHz <em>Cadence In Hz</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#getTimeFactor <em>Time Factor</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Cadence In Hz</em>' attribute.
-	 * @see #getCadenceInHz()
+	 * @param value the new value of the '<em>Time Factor</em>' attribute.
+	 * @see #getTimeFactor()
 	 * @generated
 	 */
-	void setCadenceInHz(int value);
+	void setTimeFactor(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Cadence</b></em>' containment reference.

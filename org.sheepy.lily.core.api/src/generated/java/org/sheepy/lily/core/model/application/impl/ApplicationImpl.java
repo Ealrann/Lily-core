@@ -62,7 +62,7 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getSize <em>Size</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getCurrentView <em>Current View</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getCadenceInHz <em>Cadence In Hz</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getTimeFactor <em>Time Factor</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getCadence <em>Cadence</em>}</li>
  * </ul>
  *
@@ -231,24 +231,24 @@ public class ApplicationImpl extends LilyEObject implements Application
 	protected IView currentView;
 
 	/**
-	 * The default value of the '{@link #getCadenceInHz() <em>Cadence In Hz</em>}' attribute.
+	 * The default value of the '{@link #getTimeFactor() <em>Time Factor</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCadenceInHz()
+	 * @see #getTimeFactor()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int CADENCE_IN_HZ_EDEFAULT = 60;
+	protected static final double TIME_FACTOR_EDEFAULT = 1.0;
 
 	/**
-	 * The cached value of the '{@link #getCadenceInHz() <em>Cadence In Hz</em>}' attribute.
+	 * The cached value of the '{@link #getTimeFactor() <em>Time Factor</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCadenceInHz()
+	 * @see #getTimeFactor()
 	 * @generated
 	 * @ordered
 	 */
-	protected int cadenceInHz = CADENCE_IN_HZ_EDEFAULT;
+	protected double timeFactor = TIME_FACTOR_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getCadence() <em>Cadence</em>}' containment reference.
@@ -537,9 +537,9 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @generated
 	 */
 	@Override
-	public int getCadenceInHz()
+	public double getTimeFactor()
 	{
-		return cadenceInHz;
+		return timeFactor;
 	}
 
 	/**
@@ -548,12 +548,12 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @generated
 	 */
 	@Override
-	public void setCadenceInHz(int newCadenceInHz)
+	public void setTimeFactor(double newTimeFactor)
 	{
-		int oldCadenceInHz = cadenceInHz;
-		cadenceInHz = newCadenceInHz;
+		double oldTimeFactor = timeFactor;
+		timeFactor = newTimeFactor;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__CADENCE_IN_HZ, oldCadenceInHz, cadenceInHz));
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__TIME_FACTOR, oldTimeFactor, timeFactor));
 	}
 
 	/**
@@ -778,8 +778,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
 				if (resolve) return getCurrentView();
 				return basicGetCurrentView();
-			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
-				return getCadenceInHz();
+			case ApplicationPackage.APPLICATION__TIME_FACTOR:
+				return getTimeFactor();
 			case ApplicationPackage.APPLICATION__CADENCE:
 				if (resolve) return getCadence();
 				return basicGetCadence();
@@ -830,8 +830,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
 				setCurrentView((IView)newValue);
 				return;
-			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
-				setCadenceInHz((Integer)newValue);
+			case ApplicationPackage.APPLICATION__TIME_FACTOR:
+				setTimeFactor((Double)newValue);
 				return;
 			case ApplicationPackage.APPLICATION__CADENCE:
 				setCadence((ICadence)newValue);
@@ -880,8 +880,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
 				setCurrentView((IView)null);
 				return;
-			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
-				setCadenceInHz(CADENCE_IN_HZ_EDEFAULT);
+			case ApplicationPackage.APPLICATION__TIME_FACTOR:
+				setTimeFactor(TIME_FACTOR_EDEFAULT);
 				return;
 			case ApplicationPackage.APPLICATION__CADENCE:
 				setCadence((ICadence)null);
@@ -920,8 +920,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return SIZE_EDEFAULT == null ? size != null : !SIZE_EDEFAULT.equals(size);
 			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
 				return currentView != null;
-			case ApplicationPackage.APPLICATION__CADENCE_IN_HZ:
-				return cadenceInHz != CADENCE_IN_HZ_EDEFAULT;
+			case ApplicationPackage.APPLICATION__TIME_FACTOR:
+				return timeFactor != TIME_FACTOR_EDEFAULT;
 			case ApplicationPackage.APPLICATION__CADENCE:
 				return cadence != null;
 		}
@@ -977,8 +977,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 		result.append(title);
 		result.append(", size: ");
 		result.append(size);
-		result.append(", cadenceInHz: ");
-		result.append(cadenceInHz);
+		result.append(", timeFactor: ");
+		result.append(timeFactor);
 		result.append(')');
 		return result.toString();
 	}

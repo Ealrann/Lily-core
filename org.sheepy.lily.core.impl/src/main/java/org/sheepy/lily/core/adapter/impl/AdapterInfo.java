@@ -17,6 +17,7 @@ import org.sheepy.lily.core.api.adapter.annotation.Dispose;
 import org.sheepy.lily.core.api.adapter.annotation.NotifyChanged;
 import org.sheepy.lily.core.api.adapter.annotation.Statefull;
 import org.sheepy.lily.core.api.adapter.annotation.Tick;
+import org.sheepy.lily.core.api.cadence.ETickerClock;
 import org.sheepy.lily.core.api.util.ReflectUtils;
 
 public final class AdapterInfo<T extends IAdapter>
@@ -73,16 +74,27 @@ public final class AdapterInfo<T extends IAdapter>
 		for (final var tickMethod : tickMethods)
 		{
 			final Tick tickAnnotation = tickMethod.annotation;
-			final var tickFrequency = tickAnnotation.frequency();
+			final var tickFrequency = computeFrequency(tickAnnotation);
+
 			final var tickPriority = tickAnnotation.priority();
+			final var clock = tickAnnotation.clock();
 			final var tickHandleBuilder = ExecutionHandle.Builder.<T> fromMethod(tickMethod.method);
 
 			final var handler = new TickConfiguration<>(tickHandleBuilder,
 														tickFrequency,
-														tickPriority);
+														tickPriority,
+														clock);
 			res.add(handler);
 		}
 		return res;
+	}
+
+	private static double computeFrequency(final Tick tickAnnotation)
+	{
+		final int frequency = tickAnnotation.frequency();
+		final var frequencyRef = tickAnnotation.frequencyRef();
+
+		return (double) frequency / frequencyRef.toSeconds(1);
 	}
 
 	private final ExecutionHandle.Builder<T> createHandleBuilder(	Class<?> type,
@@ -208,16 +220,19 @@ public final class AdapterInfo<T extends IAdapter>
 	public static final class TickConfiguration<T extends IAdapter>
 	{
 		public final ExecutionHandle.Builder<T> tickHandleBuilder;
-		public final Integer tickFrequency;
+		public final Double tickFrequency;
 		public final Integer tickPriority;
+		public final ETickerClock clock;
 
 		public TickConfiguration(	ExecutionHandle.Builder<T> tickHandleBuilder,
-									Integer tickFrequency,
-									Integer tickPriority)
+									Double tickFrequency,
+									Integer tickPriority,
+									ETickerClock clock)
 		{
 			this.tickHandleBuilder = tickHandleBuilder;
 			this.tickFrequency = tickFrequency;
 			this.tickPriority = tickPriority;
+			this.clock = clock;
 		}
 	}
 }

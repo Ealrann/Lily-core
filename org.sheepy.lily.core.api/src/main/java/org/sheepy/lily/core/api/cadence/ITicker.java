@@ -9,7 +9,6 @@ public interface ITicker
 	void tick(long stepNano);
 
 	String getLabel();
-
 	default int getPriority()
 	{
 		return 0;

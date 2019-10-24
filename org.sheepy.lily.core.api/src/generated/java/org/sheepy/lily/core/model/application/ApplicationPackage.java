@@ -160,13 +160,13 @@ public interface ApplicationPackage extends EPackage
 	int APPLICATION__CURRENT_VIEW = RootPackage.LOBJECT_FEATURE_COUNT + 8;
 
 	/**
-	 * The feature id for the '<em><b>Cadence In Hz</b></em>' attribute.
+	 * The feature id for the '<em><b>Time Factor</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__CADENCE_IN_HZ = RootPackage.LOBJECT_FEATURE_COUNT + 9;
+	int APPLICATION__TIME_FACTOR = RootPackage.LOBJECT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Cadence</b></em>' containment reference.
@@ -542,15 +542,15 @@ public interface ApplicationPackage extends EPackage
 	EReference getApplication_CurrentView();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Application#getCadenceInHz <em>Cadence In Hz</em>}'.
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Application#getTimeFactor <em>Time Factor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Cadence In Hz</em>'.
-	 * @see org.sheepy.lily.core.model.application.Application#getCadenceInHz()
+	 * @return the meta object for the attribute '<em>Time Factor</em>'.
+	 * @see org.sheepy.lily.core.model.application.Application#getTimeFactor()
 	 * @see #getApplication()
 	 * @generated
 	 */
-	EAttribute getApplication_CadenceInHz();
+	EAttribute getApplication_TimeFactor();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.Application#getCadence <em>Cadence</em>}'.
@@ -700,12 +700,12 @@ public interface ApplicationPackage extends EPackage
 		EReference APPLICATION__CURRENT_VIEW = eINSTANCE.getApplication_CurrentView();
 
 		/**
-		 * The meta object literal for the '<em><b>Cadence In Hz</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Time Factor</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute APPLICATION__CADENCE_IN_HZ = eINSTANCE.getApplication_CadenceInHz();
+		EAttribute APPLICATION__TIME_FACTOR = eINSTANCE.getApplication_TimeFactor();
 
 		/**
 		 * The meta object literal for the '<em><b>Cadence</b></em>' containment reference feature.

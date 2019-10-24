@@ -54,12 +54,12 @@ public class ActionDispatcherThread implements ITicker
 	// }
 
 	@Override
-	public void tick(long stepNano)
+	public void tick(long stepNs)
 	{
-		Iterator<ActionExecutionContext> it = externalActions.iterator();
+		final Iterator<ActionExecutionContext> it = externalActions.iterator();
 		while (it.hasNext())
 		{
-			ActionExecutionContext context = it.next();
+			final ActionExecutionContext context = it.next();
 			run(context);
 			it.remove();
 		}
@@ -69,7 +69,7 @@ public class ActionDispatcherThread implements ITicker
 	{
 		if (context.getAction() != null)
 		{
-			Action action = context.getAction();
+			final Action action = context.getAction();
 
 			// Injector redirection
 			// wait for https://bugs.eclipse.org/bugs/show_bug.cgi?id=542872
@@ -93,7 +93,7 @@ public class ActionDispatcherThread implements ITicker
 						try
 						{
 							xAction.execute(_context.getLUnit());
-						} catch (Exception e)
+						} catch (final Exception e)
 						{
 							e.printStackTrace();
 						}
@@ -102,22 +102,22 @@ public class ActionDispatcherThread implements ITicker
 			}
 			else
 			{
-				IActionHandler handler = registry.getHandler(action);
+				final IActionHandler handler = registry.getHandler(action);
 
 				if (handler != null)
 				{
 					try
 					{
 						handler.handle(context);
-					} catch (Exception e)
+					} catch (final Exception e)
 					{
 						e.printStackTrace();
 					}
 				}
 				else
 				{
-					System.err.println(
-							"Handler not found for " + context.getAction().eClass().getName());
+					System.err.println("Handler not found for "
+							+ context.getAction().eClass().getName());
 				}
 			}
 		}

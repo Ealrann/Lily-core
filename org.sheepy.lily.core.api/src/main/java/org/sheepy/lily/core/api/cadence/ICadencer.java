@@ -8,7 +8,7 @@ public interface ICadencer
 {
 	// Tickers on cadencer clock
 	// Step in ms
-	void addTicker(ITicker ticker, int freq);
+	void addTicker(ITicker ticker, ETickerClock clock, int frequency);
 	void removeTicker(ITicker ticker, int freq);
 
 	long getThreadId();
