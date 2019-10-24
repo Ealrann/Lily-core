@@ -9,7 +9,7 @@ import java.lang.annotation.RetentionPolicy;
 public @interface Tick
 {
 	/**
-	 * Frequency in ms (game clock)
+	 * Frequency in Hz (in real world clock)
 	 * 
 	 * 0 means tick every frame.
 	 * 

@@ -159,7 +159,7 @@ public class Cadencer implements ICadencer
 
 	public void run()
 	{
-		final long stepNs = (long) (1e9 / application.getCadenceInHz());
+		long lastUpdate = System.nanoTime();
 
 		while (stop.get() == false)
 		{
@@ -170,6 +170,8 @@ public class Cadencer implements ICadencer
 			}
 
 			final long duration = System.nanoTime();
+			final long stepNs = System.nanoTime() - lastUpdate;
+			lastUpdate = System.nanoTime();
 			tick(stepNs);
 			statistics.addTime(CADENCE, CADENCER_TICK, System.nanoTime() - duration);
 
@@ -196,7 +198,7 @@ public class Cadencer implements ICadencer
 		stop.set(true);
 	}
 
-	public void tick(long stepNano)
+	public void tick(long stepNs)
 	{
 		// =========
 		// Compute tickers to execute
@@ -204,7 +206,7 @@ public class Cadencer implements ICadencer
 		for (int i = 0; i < tickers.size(); i++)
 		{
 			final var ticker = tickers.get(i);
-			ticker.accumulate(stepNano);
+			ticker.accumulate(stepNs);
 
 			if (ticker.shouldTick())
 			{
