@@ -11,9 +11,9 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.IAdapterManager;
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.api.adapter.LilyEObject;
 
-final class AdapterManager extends EContentAdapter implements IAdapterManager
+public final class AdapterManager extends EContentAdapter implements IAdapterManager
 {
 	private static final String ADAPTER_CREATION_LOOP = "Adapter creation loop.";
 	private static final ServiceAdapterRegistry registry = ServiceAdapterRegistry.INSTANCE;
@@ -162,19 +162,15 @@ final class AdapterManager extends EContentAdapter implements IAdapterManager
 	@Override
 	protected void addAdapter(Notifier notifier)
 	{
-		final var lilyObject = (ILilyEObject) notifier;
-
-		if (lilyObject.getAdapterManager() == null)
-		{
-			lilyObject.setAdapterManager(new AdapterManager());
-		}
+		final var lilyObject = (LilyEObject) notifier;
+		lilyObject.setupAdapterManager();
 	}
 
 	@Override
 	protected void removeAdapter(Notifier notifier)
 	{
-		final var lilyObject = (ILilyEObject) notifier;
-		lilyObject.setAdapterManager(null);
+		final var lilyObject = (LilyEObject) notifier;
+		lilyObject.uninstallAdapterManager();
 	}
 
 	private void loadAutoAdapters()

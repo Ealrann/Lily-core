@@ -1,4 +1,4 @@
-import org.sheepy.lily.core.adapter.impl.BasicAdapterFactory;
+import org.sheepy.lily.core.adapter.impl.AdapterManagerFactory;
 import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
 import org.sheepy.lily.core.api.adapter.annotation.Adapters;
 import org.sheepy.lily.core.api.cadence.IStatistics;
@@ -36,7 +36,7 @@ module org.sheepy.lily.core.impl
 	requires transitive org.sheepy.lily.core.api;
 
 	provides IResourceLoader with ResourceLoader;
-	provides IAdapterFactoryService with BasicAdapterFactory;
+	provides IAdapterFactoryService with AdapterManagerFactory;
 	provides IStatistics with CadencerStatistics;
 
 	opens org.sheepy.lily.core.application;

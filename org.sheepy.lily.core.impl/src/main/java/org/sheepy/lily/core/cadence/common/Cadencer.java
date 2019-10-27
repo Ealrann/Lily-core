@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.sheepy.lily.core.action.ActionDispatcherThread;
-import org.sheepy.lily.core.adapter.IBasicAdapterFactory;
+import org.sheepy.lily.core.adapter.impl.AdapterManager;
 import org.sheepy.lily.core.api.action.context.ActionExecutionContext;
 import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.api.cadence.ETickerClock;
 import org.sheepy.lily.core.api.cadence.ICadenceAdapter;
 import org.sheepy.lily.core.api.cadence.ICadencer;
@@ -44,7 +44,7 @@ public class Cadencer implements ICadencer
 	protected final CommandStack commandStack = new CommandStack();
 	protected final ECrossReferenceAdapter crossReferencer = new ECrossReferenceAdapter();
 
-	protected final IBasicAdapterFactory adapterFactory = (IBasicAdapterFactory) IBasicAdapterFactory.INSTANCE;
+	protected final IAdapterFactoryService adapterFactory = IAdapterFactoryService.INSTANCE;
 	protected final IMainLoop mainloop;
 	protected final ICadenceAdapter cadenceAdapter;
 
@@ -103,7 +103,7 @@ public class Cadencer implements ICadencer
 		dispatcher = new ActionDispatcherThread(commandStack, mainThread);
 		addTicker(dispatcher, ETickerClock.RealWorld, -1);
 
-		IAdapterFactoryService.INSTANCE.setupRoot(application);
+		((LilyEObject) application).setupAdapterManager();
 
 		for (final var engine : application.getEngines())
 		{
@@ -145,7 +145,7 @@ public class Cadencer implements ICadencer
 			engineAdapter.stop();
 		}
 
-		IAdapterFactoryService.INSTANCE.uninstallRoot(application);
+		((LilyEObject) application).uninstallAdapterManager();
 
 		removeTicker(dispatcher, -1);
 
@@ -322,9 +322,9 @@ public class Cadencer implements ICadencer
 		@Override
 		protected void setTarget(EObject target)
 		{
-			final var lilyObject = (ILilyEObject) target;
-			final var tickDescriptors = adapterFactory.getTickDescriptors(lilyObject);
+			final var lilyObject = (LilyEObject) target;
 
+			final var tickDescriptors = ((AdapterManager) lilyObject.getAdapterManager()).tickers;
 			for (int i = 0; i < tickDescriptors.size(); i++)
 			{
 				final var ticker = tickDescriptors.get(i);

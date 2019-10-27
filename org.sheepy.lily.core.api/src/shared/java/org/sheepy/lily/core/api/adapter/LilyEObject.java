@@ -9,38 +9,10 @@ public class LilyEObject extends EObjectImpl implements ILilyEObject
 	private IAdapterManager adapterManager = null;
 
 	@Override
-	public void setAdapterManager(IAdapterManager adapterManager)
-	{
-		if (this.adapterManager != null)
-		{
-			eAdapters().remove(this.adapterManager);
-		}
-
-		this.adapterManager = adapterManager;
-
-		if (adapterManager != null)
-		{
-			eAdapters().add(adapterManager);
-		}
-	}
-
-	@Override
-	public IAdapterManager getAdapterManager()
-	{
-		return adapterManager;
-	}
-
-	@Override
 	public <T extends IAdapter> T adapt(Class<T> type)
 	{
-		if (adapterManager != null)
-		{
-			return adapterManager.adapt(type);
-		}
-		else
-		{
-			return IAdapterFactoryService.INSTANCE.adapt(this, type);
-		}
+		setupAdapterManager();
+		return adapterManager.adapt(type);
 	}
 
 	@Override
@@ -55,5 +27,29 @@ public class LilyEObject extends EObjectImpl implements ILilyEObject
 			throw new NullPointerException(message);
 		}
 		return adapt;
+	}
+
+	public IAdapterManager getAdapterManager()
+	{
+		setupAdapterManager();
+		return adapterManager;
+	}
+
+	public void setupAdapterManager()
+	{
+		if (adapterManager == null)
+		{
+			adapterManager = IAdapterFactoryService.INSTANCE.createAdapterManager();
+			eAdapters().add(adapterManager);
+		}
+	}
+
+	public void uninstallAdapterManager()
+	{
+		if (adapterManager != null)
+		{
+			eAdapters().remove(adapterManager);
+			adapterManager = null;
+		}
 	}
 }

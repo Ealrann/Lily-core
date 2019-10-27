@@ -10,8 +10,8 @@ public interface IAdapterFactoryService extends IService
 																.findFirst()
 																.get();
 
+	@Deprecated
 	<T extends IAdapter> T adapt(ILilyEObject lilyObject, Class<T> classifier);
 
-	void setupRoot(ILilyEObject root);
-	void uninstallRoot(ILilyEObject root);
+	IAdapterManager createAdapterManager();
 }
