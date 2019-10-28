@@ -16,18 +16,14 @@ import org.sheepy.lily.core.model.application.ApplicationPackage;
 public class ApplicationAdapter implements IApplicationAdapter
 {
 	private Cadencer cadencer = null;
-
 	private boolean launched = false;
 
-	@NotifyChanged
+	@NotifyChanged(featureIds = ApplicationPackage.APPLICATION__RUN)
 	public void notifyChanged(Notification notification)
 	{
-		if (notification.getFeature() == ApplicationPackage.Literals.APPLICATION__RUN)
+		if (launched == true && notification.getNewBooleanValue() == false)
 		{
-			if (launched == true && notification.getNewBooleanValue() == false)
-			{
-				stop((Application) notification.getNotifier());
-			}
+			stop((Application) notification.getNotifier());
 		}
 	}
 

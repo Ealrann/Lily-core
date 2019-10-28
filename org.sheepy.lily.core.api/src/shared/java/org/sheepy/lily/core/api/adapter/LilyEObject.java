@@ -8,11 +8,25 @@ public class LilyEObject extends EObjectImpl implements ILilyEObject
 
 	private IAdapterManager adapterManager = null;
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T extends IAdapter> T adaptGeneric(Class<? extends IAdapter> type)
+	{
+		return (T) adapt(type);
+	}
+
 	@Override
 	public <T extends IAdapter> T adapt(Class<T> type)
 	{
 		setupAdapterManager();
-		return adapterManager.adapt(type);
+		return adapterManager.adapt(this, type);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T extends IAdapter> T adaptNotNullGeneric(Class<? extends IAdapter> type)
+	{
+		return (T) adaptNotNull(type);
 	}
 
 	@Override

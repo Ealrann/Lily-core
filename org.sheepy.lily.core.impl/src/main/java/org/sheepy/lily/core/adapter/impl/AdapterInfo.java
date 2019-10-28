@@ -10,6 +10,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.reflect.ConstructorHandle;
 import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
+import org.sheepy.lily.core.adapter.reflect.ExecutionHandle.Builder;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.adapter.annotation.Autorun;
@@ -28,13 +29,13 @@ public final class AdapterInfo<T extends IAdapter>
 
 	public final ExecutionHandle.Builder<T> loadHandleBuilder;
 	public final ExecutionHandle.Builder<T> disposeHandleBuilder;
-	public final ExecutionHandle.Builder<T> notifyHandleBuilder;
 
 	private final T singleton;
 	private final boolean isSingleton;
 	private final boolean autorunConstructor;
 
-	public final List<TickConfiguration<T>> tickConfiguration;
+	public final List<TickConfiguration<T>> tickConfigurations;
+	public final List<NotifyConfiguration<T>> notifyConfigurations;
 
 	public AdapterInfo(AdapterDomain<T> domain)
 	{
@@ -53,9 +54,9 @@ public final class AdapterInfo<T extends IAdapter>
 		autorunConstructor = constructor.isAnnotationPresent(Autorun.class);
 		loadHandleBuilder = createHandleBuilder(type, Autorun.class);
 		disposeHandleBuilder = createHandleBuilder(type, Dispose.class);
-		notifyHandleBuilder = createHandleBuilder(type, NotifyChanged.class);
 
-		tickConfiguration = List.copyOf(buildTickerConfigurations(type));
+		tickConfigurations = List.copyOf(buildTickerConfigurations(type));
+		notifyConfigurations = List.copyOf(buildNotifyConfigurations(type));
 
 		if (isSingleton)
 		{
@@ -87,6 +88,32 @@ public final class AdapterInfo<T extends IAdapter>
 			res.add(handler);
 		}
 		return res;
+	}
+
+	private List<NotifyConfiguration<T>> buildNotifyConfigurations(final Class<T> type)
+	{
+		final List<NotifyConfiguration<T>> res = new ArrayList<>();
+		final var notifyMethods = ReflectUtils.gatherAnnotatedMethods(type, NotifyChanged.class);
+		for (final var notifyMethod : notifyMethods)
+		{
+			final NotifyChanged annotation = notifyMethod.annotation;
+
+			final var featureIds = convertFeatureList(annotation.featureIds());
+			final var notifyHandleBuilder = ExecutionHandle.Builder.<T> fromMethod(notifyMethod.method);
+
+			res.add(new NotifyConfiguration<>(notifyHandleBuilder, featureIds));
+		}
+		return res;
+	}
+
+	private List<Integer> convertFeatureList(int[] featureIds)
+	{
+		final List<Integer> res = new ArrayList<>();
+		for (final var id : featureIds)
+		{
+			res.add(id);
+		}
+		return List.copyOf(res);
 	}
 
 	private static double computeFrequency(final Tick tickAnnotation)
@@ -212,9 +239,22 @@ public final class AdapterInfo<T extends IAdapter>
 	public boolean isAutoAdapter()
 	{
 		return loadHandleBuilder != null
-				|| tickConfiguration.isEmpty() == false
+				|| tickConfigurations.isEmpty() == false
 				|| autorunConstructor
-				|| (isSingleton && notifyHandleBuilder != null);
+				|| (isSingleton && notifyConfigurations.isEmpty() == false);
+	}
+
+	public static final class NotifyConfiguration<T extends IAdapter>
+	{
+		public final Builder<T> notifyHandleBuilder;
+		public final List<Integer> featureIds;
+
+		public NotifyConfiguration(	ExecutionHandle.Builder<T> notifyHandleBuilder,
+									List<Integer> featureIds)
+		{
+			this.notifyHandleBuilder = notifyHandleBuilder;
+			this.featureIds = List.copyOf(featureIds);
+		}
 	}
 
 	public static final class TickConfiguration<T extends IAdapter>

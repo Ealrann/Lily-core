@@ -6,24 +6,25 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
+import org.sheepy.lily.core.adapter.impl.AdapterInfo.NotifyConfiguration;
 import org.sheepy.lily.core.adapter.impl.AdapterInfo.TickConfiguration;
 import org.sheepy.lily.core.adapter.impl.ServiceAdapterRegistry.AdapterDescriptor;
 import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.cadence.ETickerClock;
 
-public final class AdapterExecutor<T extends IAdapter>
+public final class AdapterHandle<T extends IAdapter>
 		extends ServiceAdapterRegistry.AdapterDescriptor<T>
 {
 	public final T adapter;
 	public final List<TickHandle> tickHandles;
+	public final List<NotifyHandle> notifyHandles;
 
 	private final EObject target;
 	private final ExecutionHandle loadHandle;
 	private final ExecutionHandle disposeHandle;
-	private final ExecutionHandle notifyHandle;
 
-	AdapterExecutor(AdapterDescriptor<T> descriptor, EObject target, T adapter)
+	AdapterHandle(AdapterDescriptor<T> descriptor, EObject target, T adapter)
 	{
 		super(descriptor.domain, descriptor.info);
 		this.target = target;
@@ -31,17 +32,30 @@ public final class AdapterExecutor<T extends IAdapter>
 
 		loadHandle = createHandle(descriptor.info.loadHandleBuilder);
 		disposeHandle = createHandle(descriptor.info.disposeHandleBuilder);
-		notifyHandle = createHandle(descriptor.info.notifyHandleBuilder);
+
 		tickHandles = List.copyOf(buildTickHandles(descriptor));
+		notifyHandles = List.copyOf(buildNotifyHandles(descriptor));
 	}
 
 	private List<TickHandle> buildTickHandles(AdapterDescriptor<T> descriptor)
 	{
 		final List<TickHandle> res = new ArrayList<>();
 
-		for (final var tickConfig : descriptor.info.tickConfiguration)
+		for (final var tickConfig : descriptor.info.tickConfigurations)
 		{
 			res.add(new TickHandle(tickConfig));
+		}
+
+		return res;
+	}
+
+	private List<NotifyHandle> buildNotifyHandles(AdapterDescriptor<T> descriptor)
+	{
+		final List<NotifyHandle> res = new ArrayList<>();
+
+		for (final var tickConfig : descriptor.info.notifyConfigurations)
+		{
+			res.add(new NotifyHandle(tickConfig, adapter));
 		}
 
 		return res;
@@ -74,11 +88,20 @@ public final class AdapterExecutor<T extends IAdapter>
 		}
 	}
 
-	public void notifyChanged(Notification notification)
+	public static final class NotifyHandle
 	{
-		if (notifyHandle != null)
+		public final ExecutionHandle handle;
+		public final List<Integer> featureIds;
+
+		public <T extends IAdapter> NotifyHandle(NotifyConfiguration<T> notifyConfig, T adapter)
 		{
-			notifyHandle.invoke(notification, target);
+			featureIds = List.copyOf(notifyConfig.featureIds);
+			handle = notifyConfig.notifyHandleBuilder.build(adapter);
+		}
+
+		public void notifyChanged(Notification notification)
+		{
+			handle.invoke(notification, notification.getNotifier());
 		}
 	}
 

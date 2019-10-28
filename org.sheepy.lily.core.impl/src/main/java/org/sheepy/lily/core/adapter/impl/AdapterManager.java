@@ -1,6 +1,8 @@
 package org.sheepy.lily.core.adapter.impl;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -9,6 +11,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
+import org.sheepy.lily.core.adapter.impl.AdapterHandle.NotifyHandle;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.IAdapterManager;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
@@ -20,28 +23,66 @@ public final class AdapterManager extends EContentAdapter implements IAdapterMan
 
 	public final List<ITickDescriptor> tickers = new ArrayList<>();
 
-	private final List<AdapterExecutor<?>> executors = new ArrayList<>();
-	private final List<Class<?>> constructingAdapters = new ArrayList<>();
+	private final List<AdapterHandle<?>> adapterHandles = new ArrayList<>();
+	private final Deque<Class<?>> constructingAdapters = new ArrayDeque<>();
 
 	private boolean constructing = false;
-	private EObject target;
+	private List<NotifyHandle>[] notificationMap = null;
+
+	private void registerNotifier(EObject target, AdapterHandle<?> adapterHandle)
+	{
+		if (notificationMap == null)
+		{
+			initNotificationMap(target);
+		}
+
+		for (final var notifyHandle : adapterHandle.notifyHandles)
+		{
+			for (final Integer id : notifyHandle.featureIds)
+			{
+				var list = notificationMap[id];
+				if (list == null)
+				{
+					list = new ArrayList<>();
+					notificationMap[id] = list;
+				}
+				list.add(notifyHandle);
+			}
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	private void initNotificationMap(EObject target)
+	{
+		final int featureCount = target.eClass().getEAllStructuralFeatures().size();
+		notificationMap = new List[featureCount];
+	}
 
 	@Override
 	public void notifyChanged(Notification notification)
 	{
 		super.notifyChanged(notification);
-		for (int i = 0; i < executors.size(); i++)
+
+		if (notificationMap != null && notification.getFeature() != null)
 		{
-			final var executor = executors.get(i);
-			executor.notifyChanged(notification);
+			final int featureId = notification.getFeatureID(target.getClass());
+			final var notifyHandles = notificationMap[featureId];
+			if (notifyHandles != null)
+			{
+				for (int i = 0; i < notifyHandles.size(); i++)
+				{
+					final var adapterHandle = notifyHandles.get(i);
+					adapterHandle.notifyChanged(notification);
+				}
+			}
 		}
 	}
 
 	@Override
 	protected void setTarget(EObject target)
 	{
-		this.target = target;
-		loadAutoAdapters();
+		basicSetTarget(target);
+		loadAutoAdapters(target);
 
 		final EList<EObject> eContents = target.eContents();
 		for (int i = 0; i < eContents.size(); i++)
@@ -71,7 +112,7 @@ public final class AdapterManager extends EContentAdapter implements IAdapterMan
 	}
 
 	@Override
-	public <T extends IAdapter> T adapt(Class<T> type)
+	public <T extends IAdapter> T adapt(EObject target, Class<T> type)
 	{
 		if (constructing && constructingAdapters.contains(type))
 		{
@@ -82,7 +123,7 @@ public final class AdapterManager extends EContentAdapter implements IAdapterMan
 
 		if (res == null)
 		{
-			res = createAdapter(type);
+			res = createAdapter(target, type);
 		}
 
 		return res;
@@ -91,42 +132,48 @@ public final class AdapterManager extends EContentAdapter implements IAdapterMan
 	private <T extends IAdapter> T findAdapter(Class<T> type)
 	{
 		T res = null;
-		for (int i = 0; i < executors.size(); i++)
+		for (int i = 0; i < adapterHandles.size(); i++)
 		{
-			final var executor = executors.get(i);
-			if (executor.domain.isAdapterForType(type))
+			final var adapterHandle = adapterHandles.get(i);
+			if (adapterHandle.domain.isAdapterForType(type))
 			{
-				res = type.cast(executor.adapter);
+				res = type.cast(adapterHandle.adapter);
 				break;
 			}
 		}
 		return res;
 	}
 
-	private <T extends IAdapter> T createAdapter(Class<T> type)
+	private <T extends IAdapter> T createAdapter(EObject target, Class<T> type)
 	{
 		T res = null;
 
 		final var descriptor = registry.getDescriptorFor(target, type);
 		if (descriptor != null)
 		{
-			constructingAdapters.add(type);
+			constructingAdapters.addLast(type);
 			res = descriptor.info.create(target);
-			final var executor = new AdapterExecutor<>(descriptor, target, res);
-			executors.add(executor);
-			constructingAdapters.remove(type);
-
+			final var adapterHandle = new AdapterHandle<>(descriptor, target, res);
+			adapterHandles.add(adapterHandle);
+			if (constructingAdapters.removeLast() != type) throwBadError();
 			constructing = !constructingAdapters.isEmpty();
 
-			executor.load();
+			registerNotifier(target, adapterHandle);
 
-			for (final var tickHandle : executor.tickHandles)
+			adapterHandle.load();
+
+			for (final var tickHandle : adapterHandle.tickHandles)
 			{
 				tickers.add(tickHandle);
 			}
 		}
 
 		return res;
+	}
+
+	private void throwBadError() throws AssertionError
+	{
+		throw new AssertionError("Something went really wrong");
 	}
 
 	@Override
@@ -173,7 +220,7 @@ public final class AdapterManager extends EContentAdapter implements IAdapterMan
 		lilyObject.uninstallAdapterManager();
 	}
 
-	private void loadAutoAdapters()
+	private void loadAutoAdapters(EObject target)
 	{
 		final var autoAdapters = registry.getDefinitionsFor(target);
 		if (autoAdapters != null)
@@ -183,7 +230,7 @@ public final class AdapterManager extends EContentAdapter implements IAdapterMan
 				final var descriptor = autoAdapters.get(i);
 				if (descriptor.info.isAutoAdapter())
 				{
-					adapt(descriptor.domain.type);
+					adapt(target, descriptor.domain.type);
 				}
 			}
 		}
@@ -191,10 +238,10 @@ public final class AdapterManager extends EContentAdapter implements IAdapterMan
 
 	private void disposeAutoAdapters()
 	{
-		for (int i = 0; i < executors.size(); i++)
+		for (int i = 0; i < adapterHandles.size(); i++)
 		{
-			final var executor = executors.get(i);
-			executor.dispose();
+			final var adapterHandle = adapterHandles.get(i);
+			adapterHandle.dispose();
 		}
 	}
 }
