@@ -8,16 +8,16 @@ public class LilyLauncher
 {
 	public static final void launch(Application application)
 	{
-		IApplicationAdapter.adapt(application).launch(application);
+		application.adaptNotNull(IApplicationAdapter.class).launch(application);
 	}
 
 	public static final void launch(Application application, IMainLoop mainLoop)
 	{
-		IApplicationAdapter.adapt(application).launch(application, mainLoop);
+		application.adaptNotNull(IApplicationAdapter.class).launch(application, mainLoop);
 	}
 
 	public static final void stop(Application application)
 	{
-		IApplicationAdapter.adapt(application).stop(application);
+		application.adaptNotNull(IApplicationAdapter.class).stop(application);
 	}
 }

@@ -4,8 +4,6 @@ import java.util.EventListener;
 
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.api.adapter.IAdapter;
-import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
 
 public interface IModelAdapter extends IAdapter
 {
@@ -17,10 +15,5 @@ public interface IModelAdapter extends IAdapter
 	{
 		void onObjectAdded(T object);
 		void onObjectRemoved(T object);
-	}
-
-	static IModelAdapter adapt(ILilyEObject object)
-	{
-		return IAdapterFactoryService.INSTANCE.adapt(object, IModelAdapter.class);
 	}
 }

@@ -26,18 +26,18 @@ public abstract class AbstractInferenceProxyAdapter implements IAdapter, INotifi
 	{
 		initialInferenceObject = (IInferenceObject) unit;
 
-		LObject sourceNotificationObject = getNotificationSourceObject(initialInferenceObject);
+		final LObject sourceNotificationObject = getNotificationSourceObject(initialInferenceObject);
 
-		var adapter = IInferenceAdapter.adapt(sourceNotificationObject);
+		final var adapter = sourceNotificationObject.adaptNotNull(IInferenceAdapter.class);
 		adapter.addNotificationListener(getNotificationEClassToRedirect(), this);
 	}
 
 	@Dispose
-	public void dispose(EObject unit)
+	public void dispose()
 	{
-		LObject sourceNotificationObject = getNotificationSourceObject(initialInferenceObject);
+		final LObject sourceNotificationObject = getNotificationSourceObject(initialInferenceObject);
 
-		IInferenceAdapter adapter = IInferenceAdapter.adapt(sourceNotificationObject);
+		final var adapter = sourceNotificationObject.adaptNotNull(IInferenceAdapter.class);
 		adapter.removeNotificationListener(getNotificationEClassToRedirect(), this);
 
 		initialInferenceObject = null;
@@ -46,8 +46,8 @@ public abstract class AbstractInferenceProxyAdapter implements IAdapter, INotifi
 	@Override
 	public void onNotification(LObject sourceNotified, LNotification notification)
 	{
-		IInferenceAdapter adapter = IInferenceAdapter
-				.adapt(initialInferenceObject.lInferenceObject());
+		final var lInferenceObject = initialInferenceObject.lInferenceObject();
+		final var adapter = lInferenceObject.adaptNotNull(IInferenceAdapter.class);
 
 		adapter.postNotification(sourceNotified, notification);
 	}
@@ -57,7 +57,8 @@ public abstract class AbstractInferenceProxyAdapter implements IAdapter, INotifi
 														ParameteredNotification<T> notification,
 														T parameter)
 	{
-		var adapter = IInferenceAdapter.adapt(initialInferenceObject.lInferenceObject());
+		final var lInferenceObject = initialInferenceObject.lInferenceObject();
+		final var adapter = lInferenceObject.adaptNotNull(IInferenceAdapter.class);
 
 		adapter.postNotification(sourceNotified, notification, parameter);
 	}

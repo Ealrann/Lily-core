@@ -107,13 +107,13 @@ public class Cadencer implements ICadencer
 
 		for (final var engine : application.getEngines())
 		{
-			final var engineAdapter = IEngineAdapter.adapt(engine);
+			final var engineAdapter = engine.adaptNotNull(IEngineAdapter.class);
 			engineAdapter.start();
 		}
 
 		for (final var engine : application.getEngines())
 		{
-			inputManager = IEngineAdapter.adapt(engine).getInputManager();
+			inputManager = engine.adaptNotNull(IEngineAdapter.class).getInputManager();
 			if (inputManager != null)
 			{
 				break;
@@ -141,7 +141,7 @@ public class Cadencer implements ICadencer
 
 		for (final var engine : application.getEngines())
 		{
-			final var engineAdapter = IEngineAdapter.adapt(engine);
+			final var engineAdapter = engine.adaptNotNull(IEngineAdapter.class);
 			engineAdapter.stop();
 		}
 

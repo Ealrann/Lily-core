@@ -1,7 +1,6 @@
 package org.sheepy.lily.core.api.variable;
 
 import org.sheepy.lily.core.api.adapter.IAdapter;
-import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
 import org.sheepy.lily.core.model.variable.IVariableResolver;
 
 public interface IVariableResolverAdapter<T extends IVariableResolver> extends IAdapter
@@ -17,11 +16,5 @@ public interface IVariableResolverAdapter<T extends IVariableResolver> extends I
 	interface IVariableListener
 	{
 		void onVariableChange(Object oldValue, Object newValue);
-	}
-
-	@SuppressWarnings("unchecked")
-	static <T extends IVariableResolver> IVariableResolverAdapter<T> adapt(T part)
-	{
-		return IAdapterFactoryService.INSTANCE.adapt(part, IVariableResolverAdapter.class);
 	}
 }

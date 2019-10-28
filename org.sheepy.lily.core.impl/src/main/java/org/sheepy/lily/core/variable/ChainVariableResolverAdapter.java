@@ -7,7 +7,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.util.FeatureDefinition;
 import org.sheepy.lily.core.api.variable.IVariableResolverAdapter;
-import org.sheepy.lily.core.model.variable.ChainResolver;
 import org.sheepy.lily.core.model.variable.ChainVariableResolver;
 
 @Adapter(scope = ChainVariableResolver.class)
@@ -20,10 +19,10 @@ public class ChainVariableResolverAdapter
 	public ChainVariableResolverAdapter(ChainVariableResolver resolver)
 	{
 		this.resolver = resolver;
-		for (ChainResolver chainResolver : resolver.getSubResolvers())
+		for (final var chainResolver : resolver.getSubResolvers())
 		{
-			var variableDefinition = chainResolver.getVariableDefinition();
-			var featureDefinition = new FeatureDefinition(variableDefinition);
+			final var variableDefinition = chainResolver.getVariableDefinition();
+			final var featureDefinition = new FeatureDefinition(variableDefinition);
 			definitionMap.put(variableDefinition, featureDefinition);
 		}
 	}
@@ -31,11 +30,11 @@ public class ChainVariableResolverAdapter
 	@Override
 	public Object getValue(ChainVariableResolver variableResolver)
 	{
-		EObject resolvedTarget = resolveTargetObject(variableResolver);
-		var subResolvers = variableResolver.getSubResolvers();
-		var lastResolver = subResolvers.get(subResolvers.size() - 1);
-		var featureDefinition = definitionMap.get(lastResolver.getVariableDefinition());
-		Object value = resolvedTarget.eGet(featureDefinition.feature);
+		final var resolvedTarget = resolveTargetObject(variableResolver);
+		final var subResolvers = variableResolver.getSubResolvers();
+		final var lastResolver = subResolvers.get(subResolvers.size() - 1);
+		final var featureDefinition = definitionMap.get(lastResolver.getVariableDefinition());
+		final Object value = resolvedTarget.eGet(featureDefinition.feature);
 
 		return value;
 	}
@@ -43,28 +42,26 @@ public class ChainVariableResolverAdapter
 	@Override
 	public void setValue(ChainVariableResolver variableResolver, Object object)
 	{
-		EObject resolvedTarget = resolveTargetObject(variableResolver);
-		var subResolvers = variableResolver.getSubResolvers();
-		var lastResolver = subResolvers.get(subResolvers.size() - 1);
-		var featureDefinition = definitionMap.get(lastResolver.getVariableDefinition());
+		final EObject resolvedTarget = resolveTargetObject(variableResolver);
+		final var subResolvers = variableResolver.getSubResolvers();
+		final var lastResolver = subResolvers.get(subResolvers.size() - 1);
+		final var featureDefinition = definitionMap.get(lastResolver.getVariableDefinition());
 
 		resolvedTarget.eSet(featureDefinition.feature, object);
 	}
 
 	private EObject resolveTargetObject(ChainVariableResolver variableResolver)
 	{
-		var firstResolver = variableResolver.getFirstResolver();
-		var firstAdapter = IVariableResolverAdapter.adapt(firstResolver);
-		EObject resolvedTarget = (EObject) firstAdapter.getValue(firstResolver);
+		final var firstResolver = variableResolver.getFirstResolver();
+		final var firstAdapter = firstResolver.adaptNotNull(IVariableResolverAdapter.class);
+		@SuppressWarnings("unchecked")
+		var resolvedTarget = (EObject) firstAdapter.getValue(firstResolver);
 
 		for (int i = 0; i < variableResolver.getSubResolvers().size() - 1; i++)
 		{
-			ChainResolver chainResolver = variableResolver.getSubResolvers().get(i);
-
-			var resolvedDefinition = definitionMap.get(chainResolver.getVariableDefinition());
-			Object value = resolvedTarget.eGet(resolvedDefinition.feature);
-
-			resolvedTarget = (EObject) value;
+			final var chainResolver = variableResolver.getSubResolvers().get(i);
+			final var resolvedDefinition = definitionMap.get(chainResolver.getVariableDefinition());
+			resolvedTarget = (EObject) resolvedTarget.eGet(resolvedDefinition.feature);
 		}
 
 		return resolvedTarget;
@@ -73,9 +70,9 @@ public class ChainVariableResolverAdapter
 	@Override
 	protected FeatureDefinition getFeatureDefinition()
 	{
-		var subResolvers = resolver.getSubResolvers();
-		var lastResolver = subResolvers.get(subResolvers.size() - 1);
-		var featureDefinition = definitionMap.get(lastResolver.getVariableDefinition());
+		final var subResolvers = resolver.getSubResolvers();
+		final var lastResolver = subResolvers.get(subResolvers.size() - 1);
+		final var featureDefinition = definitionMap.get(lastResolver.getVariableDefinition());
 		return featureDefinition;
 	}
 

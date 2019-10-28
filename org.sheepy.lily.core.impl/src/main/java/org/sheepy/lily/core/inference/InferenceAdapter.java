@@ -49,7 +49,7 @@ public class InferenceAdapter implements IInferenceAdapter
 
 		if (listeners.containsKey(notification.eClass()))
 		{
-			for (INotificationListener listener : listeners.get(notification.eClass()))
+			for (final INotificationListener listener : listeners.get(notification.eClass()))
 			{
 				listener.onNotification(adaptedEntity, notification);
 			}
@@ -65,7 +65,7 @@ public class InferenceAdapter implements IInferenceAdapter
 
 		if (listeners.containsKey(notification.eClass()))
 		{
-			for (INotificationListener listener : listeners.get(notification.eClass()))
+			for (final INotificationListener listener : listeners.get(notification.eClass()))
 			{
 				listener.onNotification(adaptedEntity, notification, parameter);
 			}
@@ -79,13 +79,13 @@ public class InferenceAdapter implements IInferenceAdapter
 											AbstractNotification notification,
 											Parameter parameter)
 	{
-		for (LRule rule : ruleGraph.getLinkedRules(notification))
+		for (final LRule rule : ruleGraph.getLinkedRules(notification))
 		{
 			if (rule.getNotification().match(notification))
 			{
 				boolean match = true;
 
-				for (Condition c : rule.getConditions())
+				for (final Condition c : rule.getConditions())
 				{
 					if (c.getType().isInstance(parameter) == false || c.match(parameter) == false)
 					{
@@ -96,16 +96,16 @@ public class InferenceAdapter implements IInferenceAdapter
 
 				if (match)
 				{
-					ActionExecutionContext ec = new ActionExecutionContext(
-							(LObject) ((Inferer) rule.eContainer()).lExecutor(), rule.getAction(),
-							parameter);
+					final ActionExecutionContext ec = new ActionExecutionContext(	(LObject) ((Inferer) rule.eContainer()).lExecutor(),
+																					rule.getAction(),
+																					parameter);
 
 					// TODO si actionDispatcher est null, il faut mettre de coté
 					// les notif pour
 					// les executer plus tard
 
-					var application = (Application) EcoreUtil.getRootContainer(adaptedEntity);
-					var adapter = IApplicationAdapter.adapt(application);
+					final var application = (Application) EcoreUtil.getRootContainer(adaptedEntity);
+					final var adapter = application.adaptNotNull(IApplicationAdapter.class);
 					adapter.getCadencer().postAction(ec);
 				}
 			}

@@ -11,14 +11,16 @@ public class InfererAdapter implements IInfererAdapter
 	@Override
 	public void load(Inferer unit)
 	{
-		IInferenceAdapter adapter = IInferenceAdapter.adapt(unit.lInferenceObject());
+		final var lInferenceObject = unit.lInferenceObject();
+		final IInferenceAdapter adapter = lInferenceObject.adaptNotNull(IInferenceAdapter.class);
 		adapter.addInferer(unit);
 	}
 
 	@Override
 	public void dispose(Inferer unit)
 	{
-		IInferenceAdapter adapter = IInferenceAdapter.adapt(unit.lInferenceObject());
+		final var lInferenceObject = unit.lInferenceObject();
+		final IInferenceAdapter adapter = lInferenceObject.adaptNotNull(IInferenceAdapter.class);
 		adapter.removeInferer(unit);
 	}
 }
