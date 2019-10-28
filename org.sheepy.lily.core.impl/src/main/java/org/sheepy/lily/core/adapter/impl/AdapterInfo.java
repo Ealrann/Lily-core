@@ -106,7 +106,7 @@ public final class AdapterInfo<T extends IAdapter>
 		return res;
 	}
 
-	private List<Integer> convertFeatureList(int[] featureIds)
+	private static List<Integer> convertFeatureList(int[] featureIds)
 	{
 		final List<Integer> res = new ArrayList<>();
 		for (final var id : featureIds)

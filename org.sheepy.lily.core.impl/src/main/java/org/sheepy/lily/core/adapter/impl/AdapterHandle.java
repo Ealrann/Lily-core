@@ -11,6 +11,7 @@ import org.sheepy.lily.core.adapter.impl.AdapterInfo.TickConfiguration;
 import org.sheepy.lily.core.adapter.impl.ServiceAdapterRegistry.AdapterDescriptor;
 import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
 import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.INotificationListener;
 import org.sheepy.lily.core.api.cadence.ETickerClock;
 
 public final class AdapterHandle<T extends IAdapter>
@@ -88,7 +89,7 @@ public final class AdapterHandle<T extends IAdapter>
 		}
 	}
 
-	public static final class NotifyHandle
+	public static final class NotifyHandle implements INotificationListener
 	{
 		public final ExecutionHandle handle;
 		public final List<Integer> featureIds;
@@ -99,6 +100,7 @@ public final class AdapterHandle<T extends IAdapter>
 			handle = notifyConfig.notifyHandleBuilder.build(adapter);
 		}
 
+		@Override
 		public void notifyChanged(Notification notification)
 		{
 			handle.invoke(notification, notification.getNotifier());

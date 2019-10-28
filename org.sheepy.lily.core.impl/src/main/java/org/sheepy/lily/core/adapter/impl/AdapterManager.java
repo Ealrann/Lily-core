@@ -8,12 +8,14 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
-import org.sheepy.lily.core.adapter.impl.AdapterHandle.NotifyHandle;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.IAdapterManager;
+import org.sheepy.lily.core.api.adapter.INotificationListener;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 
 public final class AdapterManager extends EContentAdapter implements IAdapterManager
@@ -27,34 +29,74 @@ public final class AdapterManager extends EContentAdapter implements IAdapterMan
 	private final Deque<Class<?>> constructingAdapters = new ArrayDeque<>();
 
 	private boolean constructing = false;
-	private List<NotifyHandle>[] notificationMap = null;
+	private List<INotificationListener>[] notificationMap = null;
 
 	private void registerNotifier(EObject target, AdapterHandle<?> adapterHandle)
 	{
 		if (notificationMap == null)
 		{
-			initNotificationMap(target);
+			initNotificationMap(target.eClass());
 		}
 
 		for (final var notifyHandle : adapterHandle.notifyHandles)
 		{
 			for (final Integer id : notifyHandle.featureIds)
 			{
-				var list = notificationMap[id];
-				if (list == null)
+				registerNotificationListener(notifyHandle, id);
+			}
+		}
+	}
+
+	private void registerNotificationListener(	final INotificationListener listener,
+												final Integer id)
+	{
+		var list = notificationMap[id];
+		if (list == null)
+		{
+			list = new ArrayList<>(2);
+			notificationMap[id] = list;
+		}
+		list.add(listener);
+	}
+
+	@Override
+	public void addListener(INotificationListener listener, List<EStructuralFeature> features)
+	{
+		final var eClass = ((EObject) super.target).eClass();
+		if (notificationMap == null)
+		{
+			initNotificationMap(eClass);
+		}
+
+		for (final var feature : features)
+		{
+			final var id = eClass.getFeatureID(feature);
+			registerNotificationListener(listener, id);
+		}
+	}
+
+	@Override
+	public void removeListener(INotificationListener listener, List<EStructuralFeature> features)
+	{
+		if (notificationMap != null)
+		{
+			final var eClass = ((EObject) super.target).eClass();
+			for (final var feature : features)
+			{
+				final var id = eClass.getFeatureID(feature);
+				final var list = notificationMap[id];
+				if (list != null)
 				{
-					list = new ArrayList<>();
-					notificationMap[id] = list;
+					list.remove(listener);
 				}
-				list.add(notifyHandle);
 			}
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	private void initNotificationMap(EObject target)
+	private void initNotificationMap(EClass eClass)
 	{
-		final int featureCount = target.eClass().getEAllStructuralFeatures().size();
+		final int featureCount = eClass.getEAllStructuralFeatures().size();
 		notificationMap = new List[featureCount];
 	}
 
@@ -66,13 +108,13 @@ public final class AdapterManager extends EContentAdapter implements IAdapterMan
 		if (notificationMap != null && notification.getFeature() != null)
 		{
 			final int featureId = notification.getFeatureID(target.getClass());
-			final var notifyHandles = notificationMap[featureId];
-			if (notifyHandles != null)
+			final var notificationListeners = notificationMap[featureId];
+			if (notificationListeners != null)
 			{
-				for (int i = 0; i < notifyHandles.size(); i++)
+				for (int i = 0; i < notificationListeners.size(); i++)
 				{
-					final var adapterHandle = notifyHandles.get(i);
-					adapterHandle.notifyChanged(notification);
+					final var listener = notificationListeners.get(i);
+					listener.notifyChanged(notification);
 				}
 			}
 		}
@@ -171,7 +213,7 @@ public final class AdapterManager extends EContentAdapter implements IAdapterMan
 		return res;
 	}
 
-	private void throwBadError() throws AssertionError
+	private static void throwBadError() throws AssertionError
 	{
 		throw new AssertionError("Something went really wrong");
 	}
