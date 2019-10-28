@@ -10,7 +10,6 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
 import org.sheepy.lily.core.api.adapter.IAdapter;
@@ -40,7 +39,7 @@ public final class AdapterManager extends EContentAdapter implements IAdapterMan
 
 		for (final var notifyHandle : adapterHandle.notifyHandles)
 		{
-			for (final Integer id : notifyHandle.featureIds)
+			for (final var id : notifyHandle.featureIds)
 			{
 				registerNotificationListener(notifyHandle, id);
 			}
@@ -60,7 +59,7 @@ public final class AdapterManager extends EContentAdapter implements IAdapterMan
 	}
 
 	@Override
-	public void addListener(INotificationListener listener, List<EStructuralFeature> features)
+	public void addListener(INotificationListener listener, int[] features)
 	{
 		final var eClass = ((EObject) super.target).eClass();
 		if (notificationMap == null)
@@ -68,23 +67,22 @@ public final class AdapterManager extends EContentAdapter implements IAdapterMan
 			initNotificationMap(eClass);
 		}
 
-		for (final var feature : features)
+		for (int i = 0; i < features.length; i++)
 		{
-			final var id = eClass.getFeatureID(feature);
-			registerNotificationListener(listener, id);
+			final var feature = features[i];
+			registerNotificationListener(listener, feature);
 		}
 	}
 
 	@Override
-	public void removeListener(INotificationListener listener, List<EStructuralFeature> features)
+	public void removeListener(INotificationListener listener, int[] features)
 	{
 		if (notificationMap != null)
 		{
-			final var eClass = ((EObject) super.target).eClass();
-			for (final var feature : features)
+			for (int i = 0; i < features.length; i++)
 			{
-				final var id = eClass.getFeatureID(feature);
-				final var list = notificationMap[id];
+				final var feature = features[i];
+				final var list = notificationMap[feature];
 				if (list != null)
 				{
 					list.remove(listener);

@@ -1,25 +1,23 @@
 package org.sheepy.lily.core.api.adapter;
 
-import java.util.List;
-
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-public class LilyEObject extends EObjectImpl implements ILilyEObject
+public class LilyEObject extends EObjectImpl implements ILilyEObject, InternalEObject
 {
 	private static final String CANNOT_FIND_ADAPTER_S_FOR_CLASS_S = "Cannot find adapter [%s] for class [%s]";
 
 	private IAdapterManager adapterManager = null;
 
 	@Override
-	public void addListener(INotificationListener listener, List<EStructuralFeature> features)
+	public void addListener(INotificationListener listener, int... features)
 	{
 		setupAdapterManager();
 		adapterManager.addListener(listener, features);
 	}
 
 	@Override
-	public void removeListener(INotificationListener listener, List<EStructuralFeature> features)
+	public void removeListener(INotificationListener listener, int... features)
 	{
 		setupAdapterManager();
 		adapterManager.removeListener(listener, features);
