@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.util.FeatureDefinition;
 import org.sheepy.lily.core.api.variable.IVariableResolverAdapter;
@@ -50,18 +51,18 @@ public class ChainVariableResolverAdapter
 		resolvedTarget.eSet(featureDefinition.feature, object);
 	}
 
-	private EObject resolveTargetObject(ChainVariableResolver variableResolver)
+	private ILilyEObject resolveTargetObject(ChainVariableResolver variableResolver)
 	{
 		final var firstResolver = variableResolver.getFirstResolver();
 		final var firstAdapter = firstResolver.adaptNotNull(IVariableResolverAdapter.class);
 		@SuppressWarnings("unchecked")
-		var resolvedTarget = (EObject) firstAdapter.getValue(firstResolver);
+		var resolvedTarget = (ILilyEObject) firstAdapter.getValue(firstResolver);
 
 		for (int i = 0; i < variableResolver.getSubResolvers().size() - 1; i++)
 		{
 			final var chainResolver = variableResolver.getSubResolvers().get(i);
 			final var resolvedDefinition = definitionMap.get(chainResolver.getVariableDefinition());
-			resolvedTarget = (EObject) resolvedTarget.eGet(resolvedDefinition.feature);
+			resolvedTarget = (ILilyEObject) resolvedTarget.eGet(resolvedDefinition.feature);
 		}
 
 		return resolvedTarget;
@@ -77,7 +78,7 @@ public class ChainVariableResolverAdapter
 	}
 
 	@Override
-	protected EObject getResolvedTarget()
+	protected ILilyEObject getResolvedTarget()
 	{
 		return resolveTargetObject(resolver);
 	}

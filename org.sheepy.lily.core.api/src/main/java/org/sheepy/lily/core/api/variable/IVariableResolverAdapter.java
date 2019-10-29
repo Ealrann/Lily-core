@@ -1,6 +1,7 @@
 package org.sheepy.lily.core.api.variable;
 
 import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.INotificationListener;
 import org.sheepy.lily.core.model.variable.IVariableResolver;
 
 public interface IVariableResolverAdapter<T extends IVariableResolver> extends IAdapter
@@ -9,12 +10,7 @@ public interface IVariableResolverAdapter<T extends IVariableResolver> extends I
 
 	void setValue(T variableResolver, Object object);
 
-	void addListener(IVariableListener listener);
+	void addListener(INotificationListener listener);
 
-	void removeListener(IVariableListener listener);
-
-	interface IVariableListener
-	{
-		void onVariableChange(Object oldValue, Object newValue);
-	}
+	void removeListener(INotificationListener listener);
 }
