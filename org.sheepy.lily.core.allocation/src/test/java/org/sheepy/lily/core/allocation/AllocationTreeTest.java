@@ -23,7 +23,7 @@ public class AllocationTreeTest
 
 		final AllocationService service = new AllocationService();
 
-		final var rootManager = service.register(root);
+		final var rootManager = service.createManager(root);
 		rootManager.configure(null);
 
 		rootManager.allocate();

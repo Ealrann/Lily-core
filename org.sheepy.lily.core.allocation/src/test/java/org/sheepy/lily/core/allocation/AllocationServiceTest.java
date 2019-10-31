@@ -23,7 +23,7 @@ public class AllocationServiceTest
 
 		final AllocationService service = new AllocationService();
 
-		final var rootManager = service.register(root);
+		final var rootManager = service.createManager(root);
 		rootManager.configure(null);
 
 		rootManager.allocate();
@@ -51,7 +51,7 @@ public class AllocationServiceTest
 
 		final AllocationService service = new AllocationService();
 
-		final var rootManager = service.register(root);
+		final var rootManager = service.createManager(root);
 		rootManager.configure(null);
 
 		rootManager.allocate();
@@ -83,7 +83,7 @@ public class AllocationServiceTest
 
 		final AllocationService service = new AllocationService();
 
-		final var rootManager = service.register(root);
+		final var rootManager = service.createManager(root);
 		rootManager.configure(null);
 
 		rootManager.allocate();
@@ -115,7 +115,7 @@ public class AllocationServiceTest
 
 		final AllocationService service = new AllocationService();
 
-		final var rootManager = service.register(root);
+		final var rootManager = service.createManager(root);
 		rootManager.configure(null);
 
 		rootManager.allocate();
@@ -138,7 +138,7 @@ public class AllocationServiceTest
 
 		final AllocationService service = new AllocationService();
 
-		final var rootManager = service.register(root);
+		final var rootManager = service.createManager(root);
 		rootManager.configure(null);
 
 		assertTrue(!lvl2_1.tag);

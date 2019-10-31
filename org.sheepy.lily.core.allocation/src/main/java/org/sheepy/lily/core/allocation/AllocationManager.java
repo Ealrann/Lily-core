@@ -7,14 +7,12 @@ import org.sheepy.lily.core.api.allocation.IAllocable;
 import org.sheepy.lily.core.api.allocation.IAllocationConfiguration;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.IAllocationManager;
-import org.sheepy.lily.core.api.allocation.IAllocationService;
 
-public final class AllocationManager<T extends IAllocationContext> implements IAllocationManager<T>
+public class AllocationManager<T extends IAllocationContext> implements IAllocationManager<T>
 {
-	public static final AllocationService allocationService = (AllocationService) IAllocationService.INSTANCE;
-
 	public final IAllocable<T> allocable;
 	public final List<IDependencyListener> listeners = new ArrayList<>();
+	private final AllocationManagerFactory<?> factory;
 
 	private AllocationManager<?> parent;
 	private boolean virtual = false;
@@ -23,31 +21,35 @@ public final class AllocationManager<T extends IAllocationContext> implements IA
 	private boolean dirtyBranch = true;
 	private boolean allocated = false;
 
-	static final <T extends IAllocationContext> AllocationManager<T> newManager(AllocationManager<?> parent,
+	static final <T extends IAllocationContext> AllocationManager<T> newManager(AllocationManagerFactory<?> factory,
+																				AllocationManager<?> parent,
 																				IAllocable<T> allocable)
 	{
-		final AllocationManager<T> res = new AllocationManager<>(allocable);
+		final AllocationManager<T> res = new AllocationManager<>(factory, allocable);
 		if (parent != null) res.setParent(parent, false);
 		return res;
 	}
 
-	static final <T extends IAllocationContext> AllocationManager<T> newContextManager(	AllocationManager<?> parent,
+	static final <T extends IAllocationContext> AllocationManager<T> newContextManager(	AllocationManagerFactory<?> factory,
+																						AllocationManager<?> parent,
 																						IAllocable<T> allocable)
 	{
-		final AllocationManager<T> res = new AllocationManager<>(allocable);
+		final AllocationManager<T> res = new AllocationManager<>(factory, allocable);
 		if (parent != null) res.setParent(parent, true);
 		return res;
 	}
 
-	static final <T extends IAllocationContext> AllocationManager<T> newVirtualManager(IAllocable<T> allocable)
+	static final <T extends IAllocationContext> AllocationManager<T> newVirtualManager(	AllocationManagerFactory<?> factory,
+																						IAllocable<T> allocable)
 	{
-		final AllocationManager<T> res = new AllocationManager<>(allocable);
+		final AllocationManager<T> res = new AllocationManager<>(factory, allocable);
 		res.virtual = true;
 		return res;
 	}
 
-	private AllocationManager(IAllocable<T> allocable)
+	protected AllocationManager(AllocationManagerFactory<?> factory, IAllocable<T> allocable)
 	{
+		this.factory = factory;
 		assert allocable != null;
 
 		this.allocable = allocable;
@@ -149,6 +151,26 @@ public final class AllocationManager<T extends IAllocationContext> implements IA
 				parent.dirtyBranch();
 			}
 		}
+	}
+
+	public AllocationManager<?> searchManager(IAllocable<?> allocable)
+	{
+		if (this.allocable == allocable)
+		{
+			return this;
+		}
+		else
+		{
+			for (final var child : configuration.children)
+			{
+				final var childSearch = child.searchManager(allocable);
+				if (childSearch != null)
+				{
+					return childSearch;
+				}
+			}
+		}
+		return null;
 	}
 
 	private void fireDirtyChange()
@@ -256,8 +278,8 @@ public final class AllocationManager<T extends IAllocationContext> implements IA
 
 			if (newChildrenContext != null && newChildrenContext instanceof IAllocable<?>)
 			{
-				childrenContextManager = allocationService.getOrCreateContext(
-						AllocationManager.this, (IAllocable<T>) newChildrenContext);
+				childrenContextManager = factory.createContext(	AllocationManager.this,
+																(IAllocable<T>) newChildrenContext);
 
 				childrenContextManager.configure(this.context);
 			}
@@ -284,9 +306,7 @@ public final class AllocationManager<T extends IAllocationContext> implements IA
 				{
 					assert child != null;
 
-					final var childManager = allocationService.getOrCreate(AllocationManager.this,
-							(IAllocable<?>) child);
-
+					final var childManager = factory.create(AllocationManager.this, child);
 					childManager.configure(childContext());
 
 					if (allocated)
@@ -301,10 +321,21 @@ public final class AllocationManager<T extends IAllocationContext> implements IA
 		@Override
 		public void removeChildren(List<? extends IAllocable<?>> oldChildren)
 		{
-			for (final var allocable : oldChildren)
+
+			final var it = children.iterator();
+			while (it.hasNext())
 			{
-				final var manager = allocationService.unregister(allocable);
-				this.children.remove(manager);
+				final var child = it.next();
+				for (int i = 0; i < oldChildren.size(); i++)
+				{
+					final var oldAllocableDependency = oldChildren.get(i);
+					if (oldAllocableDependency == child.allocable)
+					{
+						child.free();
+						it.remove();
+						break;
+					}
+				}
 			}
 		}
 
@@ -313,30 +344,40 @@ public final class AllocationManager<T extends IAllocationContext> implements IA
 		{
 			for (final var child : children)
 			{
-				allocationService.unregister(child.allocable);
+				child.free();
 			}
 			this.children.clear();
 		}
 
 		@Override
-		public void addDependencies(List<? extends IAllocable<?>> newDependencies)
+		public void addDependencies(List<? extends IAllocable<?>> newDeps)
 		{
-			for (final var dependency : newDependencies)
+			for (int i = 0; i < newDeps.size(); i++)
 			{
-				final var manager = allocationService.getOrCreateVirtual(dependency);
-				this.dependencies.add(manager);
-				manager.listeners.add(dependencyListener);
+				final var newAllocableDep = newDeps.get(i);
+				final var dep = factory.getOrCreateVirtual(newAllocableDep);
+				this.dependencies.add(dep);
+				dep.listeners.add(dependencyListener);
 			}
 		}
 
 		@Override
-		public void removeDependencies(List<? extends IAllocable<?>> oldDependencies)
+		public void removeDependencies(List<? extends IAllocable<?>> oldDeps)
 		{
-			for (final var dependency : oldDependencies)
+			final var it = dependencies.iterator();
+			while (it.hasNext())
 			{
-				final var manager = allocationService.getManager(dependency);
-				this.dependencies.remove(manager);
-				manager.listeners.remove(dependencyListener);
+				final var dependency = it.next();
+				for (int i = 0; i < oldDeps.size(); i++)
+				{
+					final var oldAllocableDependency = oldDeps.get(i);
+					if (oldAllocableDependency == dependency.allocable)
+					{
+						dependency.listeners.remove(dependencyListener);
+						it.remove();
+						break;
+					}
+				}
 			}
 		}
 
