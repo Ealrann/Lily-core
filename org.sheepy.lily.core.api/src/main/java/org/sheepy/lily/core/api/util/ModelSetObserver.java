@@ -119,22 +119,14 @@ public class ModelSetObserver
 			{
 				if (value != null)
 				{
-					if (feature.isMany() == false)
-					{
-						ModelSetObserver.this.listener.notifyChanged(new ENotificationImpl(	target,
-																							Notification.REMOVE_MANY,
-																							feature.getFeatureID(),
-																							value,
-																							null));
-					}
-					else
-					{
-						ModelSetObserver.this.listener.notifyChanged(new ENotificationImpl(	target,
-																							Notification.REMOVE,
-																							feature.getFeatureID(),
-																							value,
-																							null));
-					}
+					final int type = feature.isMany()
+							? Notification.REMOVE_MANY
+							: Notification.REMOVE;
+					ModelSetObserver.this.listener.notifyChanged(new ENotificationImpl(	target,
+																						type,
+																						feature.getFeatureID(),
+																						value,
+																						null));
 				}
 			}
 			else

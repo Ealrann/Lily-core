@@ -7,12 +7,12 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * This method will be called when the object is added to the model.
+ * This method will be called when the object is loaded.
  */
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.METHOD, ElementType.CONSTRUCTOR})
-public @interface Autorun
+@Target(ElementType.METHOD)
+public @interface Load
 {
 
 }

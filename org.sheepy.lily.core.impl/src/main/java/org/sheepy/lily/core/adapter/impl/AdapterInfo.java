@@ -13,8 +13,8 @@ import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
 import org.sheepy.lily.core.adapter.reflect.ExecutionHandle.Builder;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
-import org.sheepy.lily.core.api.adapter.annotation.Autorun;
 import org.sheepy.lily.core.api.adapter.annotation.Dispose;
+import org.sheepy.lily.core.api.adapter.annotation.Load;
 import org.sheepy.lily.core.api.adapter.annotation.NotifyChanged;
 import org.sheepy.lily.core.api.adapter.annotation.Statefull;
 import org.sheepy.lily.core.api.adapter.annotation.Tick;
@@ -32,7 +32,7 @@ public final class AdapterInfo<T extends IAdapter>
 
 	private final T singleton;
 	private final boolean isSingleton;
-	private final boolean autorunConstructor;
+	private final boolean lazy;
 
 	public final List<TickConfiguration<T>> tickConfigurations;
 	public final List<NotifyConfiguration<T>> notifyConfigurations;
@@ -51,10 +51,10 @@ public final class AdapterInfo<T extends IAdapter>
 		isSingleton = !type.isAnnotationPresent(Statefull.class);
 		final var constructor = gatherConstructor();
 		constructorHandle = ConstructorHandle.Builder.fromMethod(constructor).build();
-		autorunConstructor = constructor.isAnnotationPresent(Autorun.class);
-		loadHandleBuilder = createHandleBuilder(type, Autorun.class);
+		loadHandleBuilder = createHandleBuilder(type, Load.class);
 		disposeHandleBuilder = createHandleBuilder(type, Dispose.class);
 
+		lazy = adapterAnnotation.lazy();
 		tickConfigurations = List.copyOf(buildTickerConfigurations(type));
 		notifyConfigurations = List.copyOf(buildNotifyConfigurations(type));
 
@@ -174,23 +174,13 @@ public final class AdapterInfo<T extends IAdapter>
 					if (parameter.getType().isAssignableFrom(applicableClass))
 					{
 						res = constructor;
+						break;
 					}
 				}
 				else if (constructor.getParameterCount() == 0)
 				{
-					if (res == null)
-					{
-						res = constructor;
-					}
-				}
-
-				if (res != null)
-				{
-					if (constructor.isAnnotationPresent(Autorun.class))
-					{
-						// Autorun has priority
-						break;
-					}
+					res = constructor;
+					break;
 				}
 			}
 		}
@@ -238,9 +228,8 @@ public final class AdapterInfo<T extends IAdapter>
 
 	public boolean isAutoAdapter()
 	{
-		return loadHandleBuilder != null
-				|| tickConfigurations.isEmpty() == false
-				|| autorunConstructor
+		return tickConfigurations.isEmpty() == false
+				|| lazy == false
 				|| (isSingleton && notifyConfigurations.isEmpty() == false);
 	}
 

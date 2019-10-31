@@ -2,13 +2,13 @@ package org.sheepy.lily.core.api.inference;
 
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.api.adapter.IAdapter;
-import org.sheepy.lily.core.api.adapter.annotation.Autorun;
 import org.sheepy.lily.core.api.adapter.annotation.Dispose;
+import org.sheepy.lily.core.api.adapter.annotation.Load;
 import org.sheepy.lily.core.model.inference.Inferer;
 
 public interface IInfererAdapter extends IAdapter
 {
-	@Autorun
+	@Load
 	default void load(EObject unit)
 	{
 		load((Inferer) unit);

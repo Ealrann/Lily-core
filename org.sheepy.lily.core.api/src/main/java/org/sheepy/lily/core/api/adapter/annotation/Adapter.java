@@ -13,5 +13,6 @@ public @interface Adapter
 {
 	Class<? extends EObject> scope();
 	String name() default "";
+	boolean lazy() default true;
 	boolean scopeInheritance() default false;
 }

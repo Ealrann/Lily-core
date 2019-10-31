@@ -13,5 +13,5 @@ public interface IAdapterFactoryService extends IService
 	@Deprecated
 	<T extends IAdapter> T adapt(ILilyEObject lilyObject, Class<T> classifier);
 
-	IAdapterManager createAdapterManager();
+	IAdapterManager createAdapterManager(ILilyEObject target);
 }

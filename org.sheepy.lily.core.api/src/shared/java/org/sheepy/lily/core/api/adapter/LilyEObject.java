@@ -34,7 +34,7 @@ public class LilyEObject extends EObjectImpl implements ILilyEObject, InternalEO
 	public <T extends IAdapter> T adapt(Class<T> type)
 	{
 		setupAdapterManager();
-		return adapterManager.adapt(this, type);
+		return adapterManager.adapt(type);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -68,17 +68,21 @@ public class LilyEObject extends EObjectImpl implements ILilyEObject, InternalEO
 	{
 		if (adapterManager == null)
 		{
-			adapterManager = IAdapterFactoryService.INSTANCE.createAdapterManager();
-			eAdapters().add(adapterManager);
+			adapterManager = IAdapterFactoryService.INSTANCE.createAdapterManager(this);
 		}
 	}
 
-	public void uninstallAdapterManager()
+	public void loadAdapterManager()
+	{
+		setupAdapterManager();
+		adapterManager.load();
+	}
+
+	public void disposeAdapterManager()
 	{
 		if (adapterManager != null)
 		{
-			eAdapters().remove(adapterManager);
-			adapterManager = null;
+			adapterManager.dispose();
 		}
 	}
 }

@@ -104,6 +104,7 @@ public class Cadencer implements ICadencer
 		addTicker(dispatcher, ETickerClock.RealWorld, -1);
 
 		((LilyEObject) application).setupAdapterManager();
+		((LilyEObject) application).loadAdapterManager();
 
 		for (final var engine : application.getEngines())
 		{
@@ -145,7 +146,7 @@ public class Cadencer implements ICadencer
 			engineAdapter.stop();
 		}
 
-		((LilyEObject) application).uninstallAdapterManager();
+		((LilyEObject) application).disposeAdapterManager();
 
 		removeTicker(dispatcher, -1);
 

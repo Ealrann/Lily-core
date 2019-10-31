@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Deque;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
@@ -145,6 +147,33 @@ public final class ModelUtil
 				}
 			}
 		}
+	}
+
+	public static Stream<EObject> streamChildren(EObject eo)
+	{
+		return eo	.eClass()
+					.getEAllContainments()
+					.stream()
+					.flatMap(ref -> streamReference(eo, ref))
+					.filter(Objects::nonNull);
+	}
+
+	@SuppressWarnings("unchecked")
+	private static Stream<EObject> streamReference(EObject eo, EReference ref)
+	{
+		if (ref.isMany())
+		{
+			return ((List<EObject>) eo.eGet(ref)).stream();
+		}
+		else
+		{
+			final var value = (EObject) eo.eGet(ref);
+			if (value != null)
+			{
+				return Stream.of(value);
+			}
+		}
+		return Stream.empty();
 	}
 
 	@SuppressWarnings("unchecked")
