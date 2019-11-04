@@ -5,18 +5,15 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.IAdapterRegistry;
 import org.sheepy.lily.core.api.adapter.annotation.Adapters;
 
-public final class ServiceAdapterRegistry
+public final class AdapterRegistry implements IAdapterRegistry
 {
-	public static final ServiceAdapterRegistry INSTANCE = new ServiceAdapterRegistry();
+	private final List<AdapterDescriptor<?>> descriptors = new ArrayList<>();
 
-	private final List<AdapterDescriptor<?>> descriptors;
-
-	private ServiceAdapterRegistry()
+	public AdapterRegistry()
 	{
-		final List<AdapterDescriptor<?>> foundDescriptors = new ArrayList<>();
-
 		for (final Module module : ModuleLayer.boot().modules())
 		{
 			final Adapters adapters = module.getAnnotation(Adapters.class);
@@ -24,12 +21,16 @@ public final class ServiceAdapterRegistry
 			{
 				for (final Class<? extends IAdapter> adapterClass : adapters.classifiers())
 				{
-					foundDescriptors.add(createDescriptor(adapterClass));
+					descriptors.add(createDescriptor(adapterClass));
 				}
 			}
 		}
+	}
 
-		descriptors = List.copyOf(foundDescriptors);
+	@Override
+	public void register(Class<? extends IAdapter> classifier)
+	{
+		descriptors.add(createDescriptor(classifier));
 	}
 
 	private static <T extends IAdapter> AdapterDescriptor<T> createDescriptor(final Class<T> adapterClass)
@@ -95,5 +96,4 @@ public final class ServiceAdapterRegistry
 			return domain.targetName.isEmpty() == false;
 		}
 	}
-
 }

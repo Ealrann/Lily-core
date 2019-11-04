@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.IAdapterManager;
+import org.sheepy.lily.core.api.adapter.IAdapterRegistry;
 import org.sheepy.lily.core.api.adapter.INotificationListener;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.api.util.ModelUtil;
@@ -21,7 +22,7 @@ import org.sheepy.lily.core.api.util.TinyEContentAdapter;
 public final class AdapterManager extends TinyEContentAdapter implements IAdapterManager
 {
 	private static final String ADAPTER_CREATION_LOOP = "Adapter creation loop.";
-	private static final ServiceAdapterRegistry registry = ServiceAdapterRegistry.INSTANCE;
+	private static final AdapterRegistry registry = (AdapterRegistry) IAdapterRegistry.INSTANCE;
 
 	private final Deque<Class<?>> constructingAdapters = new ArrayDeque<>();
 	private boolean constructing = false;

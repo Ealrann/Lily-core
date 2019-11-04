@@ -8,14 +8,14 @@ import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
 import org.sheepy.lily.core.adapter.impl.AdapterInfo.NotifyConfiguration;
 import org.sheepy.lily.core.adapter.impl.AdapterInfo.TickConfiguration;
-import org.sheepy.lily.core.adapter.impl.ServiceAdapterRegistry.AdapterDescriptor;
+import org.sheepy.lily.core.adapter.impl.AdapterRegistry.AdapterDescriptor;
 import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.INotificationListener;
 import org.sheepy.lily.core.api.cadence.ETickerClock;
 
 public final class AdapterHandle<T extends IAdapter>
-		extends ServiceAdapterRegistry.AdapterDescriptor<T>
+		extends AdapterRegistry.AdapterDescriptor<T>
 {
 	public final T adapter;
 	public final List<TickHandle> tickHandles;
