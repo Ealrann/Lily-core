@@ -16,6 +16,7 @@ import org.sheepy.lily.core.api.adapter.IAdapterManager;
 import org.sheepy.lily.core.api.adapter.IAdapterRegistry;
 import org.sheepy.lily.core.api.adapter.INotificationListener;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
+import org.sheepy.lily.core.api.util.ListenerNotificationMap;
 import org.sheepy.lily.core.api.util.ModelUtil;
 import org.sheepy.lily.core.api.util.TinyEContentAdapter;
 
@@ -38,7 +39,8 @@ public final class AdapterManager extends TinyEContentAdapter implements IAdapte
 	{
 		setTarget(target);
 
-		notificationMap = new ListenerNotificationMap(target.eClass());
+		final int featureCount = target.eClass().getEAllStructuralFeatures().size();
+		notificationMap = new ListenerNotificationMap(featureCount);
 		installAutoAdapters();
 
 		foreachChild(LilyEObject::setupAdapterManager);
@@ -208,11 +210,26 @@ public final class AdapterManager extends TinyEContentAdapter implements IAdapte
 
 	private <T extends IAdapter> void loadHandle(final AdapterHandle<T> adapterHandle)
 	{
-		notificationMap.addListener(adapterHandle);
+		addHandleListener(adapterHandle);
 		adapterHandle.load();
 		for (final var tickHandle : adapterHandle.tickHandles)
 		{
 			tickers.add(tickHandle);
+		}
+	}
+
+	private void addHandleListener(AdapterHandle<?> adapterHandle)
+	{
+		final var notifyHandles = adapterHandle.notifyHandles;
+		for (int i = 0; i < notifyHandles.size(); i++)
+		{
+			final var notifyHandle = notifyHandles.get(i);
+			final var featureIds = notifyHandle.featureIds;
+			for (int j = 0; j < featureIds.size(); j++)
+			{
+				final var feature = featureIds.get(j);
+				notificationMap.addListener(notifyHandle, feature);
+			}
 		}
 	}
 }

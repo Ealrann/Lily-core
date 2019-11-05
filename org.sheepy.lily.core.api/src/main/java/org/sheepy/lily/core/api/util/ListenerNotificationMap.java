@@ -1,63 +1,45 @@
-package org.sheepy.lily.core.adapter.impl;
+package org.sheepy.lily.core.api.util;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EClass;
 import org.sheepy.lily.core.api.adapter.INotificationListener;
 
 public class ListenerNotificationMap implements INotificationListener
 {
-	private List<INotificationListener>[] notificationMap = null;
-	private final EClass targetClass;
+	private final int featureCount;
 
-	public ListenerNotificationMap(EClass targetClass)
+	private List<INotificationListener>[] notificationMap = null;
+
+	public ListenerNotificationMap(int featureCount)
 	{
-		this.targetClass = targetClass;
+		this.featureCount = featureCount;
 	}
 
 	@Override
 	public void notifyChanged(Notification notification)
 	{
-		final var feature = notification.getFeature();
-		if (feature != null && notificationMap != null)
+		if (notificationMap != null)
 		{
 			final var targetClass = notification.getNotifier().getClass();
 			final int featureId = notification.getFeatureID(targetClass);
-			final var notificationListeners = notificationMap[featureId];
-			if (notificationListeners != null)
+			if (featureId != Notification.NO_FEATURE_ID)
 			{
-				for (int i = 0; i < notificationListeners.size(); i++)
+				final var notificationListeners = notificationMap[featureId];
+				if (notificationListeners != null)
 				{
-					final var listener = notificationListeners.get(i);
-					listener.notifyChanged(notification);
+					for (int i = 0; i < notificationListeners.size(); i++)
+					{
+						final var listener = notificationListeners.get(i);
+						listener.notifyChanged(notification);
+					}
 				}
 			}
 		}
 	}
 
-	public void addListener(AdapterHandle<?> adapterHandle)
-	{
-		if (notificationMap == null)
-		{
-			initNotificationMap();
-		}
-
-		final var notifyHandles = adapterHandle.notifyHandles;
-		for (int i = 0; i < notifyHandles.size(); i++)
-		{
-			final var notifyHandle = notifyHandles.get(i);
-			final var featureIds = notifyHandle.featureIds;
-			for (int j = 0; j < featureIds.size(); j++)
-			{
-				final var feature = featureIds.get(j);
-				registerNotificationListener(notifyHandle, feature);
-			}
-		}
-	}
-
-	public void addListener(INotificationListener listener, int[] features)
+	public void addListener(INotificationListener listener, int... features)
 	{
 		if (notificationMap == null)
 		{
@@ -71,7 +53,7 @@ public class ListenerNotificationMap implements INotificationListener
 		}
 	}
 
-	public void removeListener(INotificationListener listener, int[] features)
+	public void removeListener(INotificationListener listener, int... features)
 	{
 		if (notificationMap != null)
 		{
@@ -90,7 +72,6 @@ public class ListenerNotificationMap implements INotificationListener
 	@SuppressWarnings("unchecked")
 	private void initNotificationMap()
 	{
-		final int featureCount = targetClass.getEAllStructuralFeatures().size();
 		notificationMap = new List[featureCount];
 	}
 
