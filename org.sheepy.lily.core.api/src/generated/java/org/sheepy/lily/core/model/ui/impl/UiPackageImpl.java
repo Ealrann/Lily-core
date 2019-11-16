@@ -462,6 +462,17 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * @generated
 	 */
 	@Override
+	public EAttribute getVariableLabel_ShowName()
+	{
+		return (EAttribute)variableLabelEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getLabel()
 	{
 		return labelEClass;
@@ -772,6 +783,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 
 		variableLabelEClass = createEClass(VARIABLE_LABEL);
 		createEReference(variableLabelEClass, VARIABLE_LABEL__VARIABLE_RESOLVER);
+		createEAttribute(variableLabelEClass, VARIABLE_LABEL__SHOW_NAME);
 
 		labelEClass = createEClass(LABEL);
 
@@ -883,6 +895,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 
 		initEClass(variableLabelEClass, VariableLabel.class, "VariableLabel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getVariableLabel_VariableResolver(), theVariablePackage.getIVariableResolver(), null, "variableResolver", null, 1, 1, VariableLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getVariableLabel_ShowName(), ecorePackage.getEBoolean(), "showName", "true", 1, 1, VariableLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(labelEClass, Label.class, "Label", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

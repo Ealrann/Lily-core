@@ -7,12 +7,12 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.sheepy.lily.core.model.root.LObject;
 import org.sheepy.lily.core.model.ui.UiPackage;
 import org.sheepy.lily.core.model.ui.VariableLabel;
 
@@ -50,8 +50,32 @@ public class VariableLabelItemProvider extends AbstractLabelItemProvider
 		{
 			super.getPropertyDescriptors(object);
 
+			addShowNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Show Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addShowNamePropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_VariableLabel_showName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_VariableLabel_showName_feature", "_UI_VariableLabel_type"),
+				 UiPackage.Literals.VARIABLE_LABEL__SHOW_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -108,11 +132,8 @@ public class VariableLabelItemProvider extends AbstractLabelItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((VariableLabel)object).getContentObjects();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_VariableLabel_type") :
-			getString("_UI_VariableLabel_type") + " " + label;
+		VariableLabel variableLabel = (VariableLabel)object;
+		return getString("_UI_VariableLabel_type") + " " + variableLabel.isShowName();
 	}
 
 	/**
@@ -129,6 +150,9 @@ public class VariableLabelItemProvider extends AbstractLabelItemProvider
 
 		switch (notification.getFeatureID(VariableLabel.class))
 		{
+			case UiPackage.VARIABLE_LABEL__SHOW_NAME:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;

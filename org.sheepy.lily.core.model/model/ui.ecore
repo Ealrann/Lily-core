@@ -40,6 +40,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="variableResolver" lowerBound="1"
         eType="ecore:EClass variable.ecore#//IVariableResolver" containment="true"
         resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="showName" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Label" eSuperTypes="#//AbstractLabel"/>
   <eClassifiers xsi:type="ecore:EClass" name="Slider" eSuperTypes="#//Widget">

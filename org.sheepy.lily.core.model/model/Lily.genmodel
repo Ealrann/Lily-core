@@ -316,6 +316,7 @@
     </genClasses>
     <genClasses ecoreClass="ui.ecore#//VariableLabel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//VariableLabel/variableResolver"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//VariableLabel/showName"/>
     </genClasses>
     <genClasses ecoreClass="ui.ecore#//Label"/>
     <genClasses ecoreClass="ui.ecore#//Slider">

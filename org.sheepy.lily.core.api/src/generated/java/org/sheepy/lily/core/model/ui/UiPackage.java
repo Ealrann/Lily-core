@@ -787,13 +787,22 @@ public interface UiPackage extends EPackage
 	int VARIABLE_LABEL__VARIABLE_RESOLVER = ABSTRACT_LABEL_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Show Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL__SHOW_NAME = ABSTRACT_LABEL_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Variable Label</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_LABEL_FEATURE_COUNT = ABSTRACT_LABEL_FEATURE_COUNT + 1;
+	int VARIABLE_LABEL_FEATURE_COUNT = ABSTRACT_LABEL_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -2270,6 +2279,17 @@ public interface UiPackage extends EPackage
 	EReference getVariableLabel_VariableResolver();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.VariableLabel#isShowName <em>Show Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Show Name</em>'.
+	 * @see org.sheepy.lily.core.model.ui.VariableLabel#isShowName()
+	 * @see #getVariableLabel()
+	 * @generated
+	 */
+	EAttribute getVariableLabel_ShowName();
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.Label <em>Label</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2686,6 +2706,14 @@ public interface UiPackage extends EPackage
 		 * @generated
 		 */
 		EReference VARIABLE_LABEL__VARIABLE_RESOLVER = eINSTANCE.getVariableLabel_VariableResolver();
+
+		/**
+		 * The meta object literal for the '<em><b>Show Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE_LABEL__SHOW_NAME = eINSTANCE.getVariableLabel_ShowName();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.LabelImpl <em>Label</em>}' class.
