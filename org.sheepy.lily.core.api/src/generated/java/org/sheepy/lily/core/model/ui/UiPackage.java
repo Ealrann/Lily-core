@@ -796,13 +796,22 @@ public interface UiPackage extends EPackage
 	int VARIABLE_LABEL__SHOW_NAME = ABSTRACT_LABEL_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL__FORMAT = ABSTRACT_LABEL_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Variable Label</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_LABEL_FEATURE_COUNT = ABSTRACT_LABEL_FEATURE_COUNT + 2;
+	int VARIABLE_LABEL_FEATURE_COUNT = ABSTRACT_LABEL_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -2290,6 +2299,17 @@ public interface UiPackage extends EPackage
 	EAttribute getVariableLabel_ShowName();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.VariableLabel#getFormat <em>Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Format</em>'.
+	 * @see org.sheepy.lily.core.model.ui.VariableLabel#getFormat()
+	 * @see #getVariableLabel()
+	 * @generated
+	 */
+	EAttribute getVariableLabel_Format();
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.Label <em>Label</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2714,6 +2734,14 @@ public interface UiPackage extends EPackage
 		 * @generated
 		 */
 		EAttribute VARIABLE_LABEL__SHOW_NAME = eINSTANCE.getVariableLabel_ShowName();
+
+		/**
+		 * The meta object literal for the '<em><b>Format</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VARIABLE_LABEL__FORMAT = eINSTANCE.getVariableLabel_Format();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.LabelImpl <em>Label</em>}' class.

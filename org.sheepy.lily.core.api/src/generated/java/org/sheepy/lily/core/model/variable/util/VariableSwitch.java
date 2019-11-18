@@ -106,12 +106,12 @@ public class VariableSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER:
+			case VariablePackage.ABSTRACT_DEFINED_VARIABLE_RESOLVER:
 			{
-				AbstractVariableResolver abstractVariableResolver = (AbstractVariableResolver)theEObject;
-				T result = caseAbstractVariableResolver(abstractVariableResolver);
-				if (result == null) result = caseIVariableResolver(abstractVariableResolver);
-				if (result == null) result = caseIDefinitionContainer(abstractVariableResolver);
+				AbstractDefinedVariableResolver abstractDefinedVariableResolver = (AbstractDefinedVariableResolver)theEObject;
+				T result = caseAbstractDefinedVariableResolver(abstractDefinedVariableResolver);
+				if (result == null) result = caseIVariableResolver(abstractDefinedVariableResolver);
+				if (result == null) result = caseIDefinitionContainer(abstractDefinedVariableResolver);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -119,7 +119,7 @@ public class VariableSwitch<T> extends Switch<T>
 			{
 				DirectVariableResolver directVariableResolver = (DirectVariableResolver)theEObject;
 				T result = caseDirectVariableResolver(directVariableResolver);
-				if (result == null) result = caseAbstractVariableResolver(directVariableResolver);
+				if (result == null) result = caseAbstractDefinedVariableResolver(directVariableResolver);
 				if (result == null) result = caseIVariableResolver(directVariableResolver);
 				if (result == null) result = caseIDefinitionContainer(directVariableResolver);
 				if (result == null) result = defaultCase(theEObject);
@@ -220,17 +220,17 @@ public class VariableSwitch<T> extends Switch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Variable Resolver</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Defined Variable Resolver</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Variable Resolver</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Defined Variable Resolver</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseAbstractVariableResolver(AbstractVariableResolver object)
+	public T caseAbstractDefinedVariableResolver(AbstractDefinedVariableResolver object)
 	{
 		return null;
 	}

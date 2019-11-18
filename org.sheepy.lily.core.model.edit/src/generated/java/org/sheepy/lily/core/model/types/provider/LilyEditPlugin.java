@@ -44,6 +44,7 @@ public final class LilyEditPlugin extends EMFPlugin
 		  (new ResourceLocator [] 
 		   {
 		     EcoreEditPlugin.INSTANCE,
+		     LilyEditPlugin.INSTANCE,
 		   });
 	}
 

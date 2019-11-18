@@ -98,9 +98,9 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 				return createChainResolverAdapter();
 			}
 			@Override
-			public Adapter caseAbstractVariableResolver(AbstractVariableResolver object)
+			public Adapter caseAbstractDefinedVariableResolver(AbstractDefinedVariableResolver object)
 			{
-				return createAbstractVariableResolverAdapter();
+				return createAbstractDefinedVariableResolverAdapter();
 			}
 			@Override
 			public Adapter caseDirectVariableResolver(DirectVariableResolver object)
@@ -214,16 +214,16 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.AbstractVariableResolver <em>Abstract Variable Resolver</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.AbstractDefinedVariableResolver <em>Abstract Defined Variable Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.lily.core.model.variable.AbstractVariableResolver
+	 * @see org.sheepy.lily.core.model.variable.AbstractDefinedVariableResolver
 	 * @generated
 	 */
-	public Adapter createAbstractVariableResolverAdapter()
+	public Adapter createAbstractDefinedVariableResolverAdapter()
 	{
 		return null;
 	}

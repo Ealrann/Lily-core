@@ -26,7 +26,7 @@ import org.sheepy.lily.core.model.variable.VariablePackage;
  *
  * @generated
  */
-public class DirectVariableResolverImpl extends AbstractVariableResolverImpl implements DirectVariableResolver
+public class DirectVariableResolverImpl extends AbstractDefinedVariableResolverImpl implements DirectVariableResolver
 {
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.

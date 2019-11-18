@@ -51,6 +51,7 @@ public class VariableLabelItemProvider extends AbstractLabelItemProvider
 			super.getPropertyDescriptors(object);
 
 			addShowNamePropertyDescriptor(object);
+			addFormatPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -74,6 +75,29 @@ public class VariableLabelItemProvider extends AbstractLabelItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Format feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addFormatPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_VariableLabel_format_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_VariableLabel_format_feature", "_UI_VariableLabel_type"),
+				 UiPackage.Literals.VARIABLE_LABEL__FORMAT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -151,6 +175,7 @@ public class VariableLabelItemProvider extends AbstractLabelItemProvider
 		switch (notification.getFeatureID(VariableLabel.class))
 		{
 			case UiPackage.VARIABLE_LABEL__SHOW_NAME:
+			case UiPackage.VARIABLE_LABEL__FORMAT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case UiPackage.VARIABLE_LABEL__VARIABLE_RESOLVER:
@@ -181,6 +206,30 @@ public class VariableLabelItemProvider extends AbstractLabelItemProvider
 			(createChildParameter
 				(UiPackage.Literals.VARIABLE_LABEL__VARIABLE_RESOLVER,
 				 VariableFactory.eINSTANCE.createDirectVariableResolver()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection)
+	{
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == UiPackage.Literals.VARIABLE_LABEL__VARIABLE_RESOLVER;
+
+		if (qualify)
+		{
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

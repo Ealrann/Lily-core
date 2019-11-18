@@ -25,6 +25,7 @@ import org.sheepy.lily.core.model.variable.IVariableResolver;
  * <ul>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.VariableLabelImpl#getVariableResolver <em>Variable Resolver</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.VariableLabelImpl#isShowName <em>Show Name</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.VariableLabelImpl#getFormat <em>Format</em>}</li>
  * </ul>
  *
  * @generated
@@ -59,6 +60,26 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 	 * @ordered
 	 */
 	protected boolean showName = SHOW_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getFormat() <em>Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFormat()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String FORMAT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getFormat() <em>Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFormat()
+	 * @generated
+	 * @ordered
+	 */
+	protected String format = FORMAT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -162,6 +183,31 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 	 * @generated
 	 */
 	@Override
+	public String getFormat()
+	{
+		return format;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setFormat(String newFormat)
+	{
+		String oldFormat = format;
+		format = newFormat;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.VARIABLE_LABEL__FORMAT, oldFormat, format));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
 		switch (featureID)
@@ -186,6 +232,8 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 				return getVariableResolver();
 			case UiPackage.VARIABLE_LABEL__SHOW_NAME:
 				return isShowName();
+			case UiPackage.VARIABLE_LABEL__FORMAT:
+				return getFormat();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -205,6 +253,9 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 				return;
 			case UiPackage.VARIABLE_LABEL__SHOW_NAME:
 				setShowName((Boolean)newValue);
+				return;
+			case UiPackage.VARIABLE_LABEL__FORMAT:
+				setFormat((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -226,6 +277,9 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 			case UiPackage.VARIABLE_LABEL__SHOW_NAME:
 				setShowName(SHOW_NAME_EDEFAULT);
 				return;
+			case UiPackage.VARIABLE_LABEL__FORMAT:
+				setFormat(FORMAT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -244,6 +298,8 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 				return variableResolver != null;
 			case UiPackage.VARIABLE_LABEL__SHOW_NAME:
 				return showName != SHOW_NAME_EDEFAULT;
+			case UiPackage.VARIABLE_LABEL__FORMAT:
+				return FORMAT_EDEFAULT == null ? format != null : !FORMAT_EDEFAULT.equals(format);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -261,6 +317,8 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (showName: ");
 		result.append(showName);
+		result.append(", format: ");
+		result.append(format);
 		result.append(')');
 		return result.toString();
 	}

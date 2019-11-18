@@ -317,6 +317,7 @@
     <genClasses ecoreClass="ui.ecore#//VariableLabel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//VariableLabel/variableResolver"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//VariableLabel/showName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//VariableLabel/format"/>
     </genClasses>
     <genClasses ecoreClass="ui.ecore#//Label"/>
     <genClasses ecoreClass="ui.ecore#//Slider">
@@ -363,7 +364,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference variable.ecore#//ChainVariableResolver/subResolvers"/>
     </genClasses>
     <genClasses ecoreClass="variable.ecore#//ChainResolver"/>
-    <genClasses image="false" ecoreClass="variable.ecore#//AbstractVariableResolver"/>
+    <genClasses image="false" ecoreClass="variable.ecore#//AbstractDefinedVariableResolver"/>
     <genClasses ecoreClass="variable.ecore#//DirectVariableResolver">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference variable.ecore#//DirectVariableResolver/target"/>
     </genClasses>

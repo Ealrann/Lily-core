@@ -14,15 +14,15 @@
         upperBound="-1" eType="#//ChainResolver" containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ChainResolver" eSuperTypes="#//IDefinitionContainer"/>
-  <eClassifiers xsi:type="ecore:EClass" name="AbstractVariableResolver" abstract="true"
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractDefinedVariableResolver" abstract="true"
       eSuperTypes="#//IVariableResolver #//IDefinitionContainer"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DirectVariableResolver" eSuperTypes="#//AbstractVariableResolver">
+  <eClassifiers xsi:type="ecore:EClass" name="DirectVariableResolver" eSuperTypes="#//AbstractDefinedVariableResolver">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="LResolvedVariableFeature" instanceClassName="org.sheepy.lily.core.api.util.FeatureDefinition"/>
   <eClassifiers xsi:type="ecore:EDataType" name="VariableDefinition" instanceClassName="java.lang.String"/>
   <eClassifiers xsi:type="ecore:EClass" name="VarChangeAction" abstract="true" eSuperTypes="action.ecore#//Action">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="variableResolver" eType="#//AbstractVariableResolver"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variableResolver" eType="#//AbstractDefinedVariableResolver"
         containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BooleanChangeAction" eSuperTypes="#//VarChangeAction action.ecore#//Action"/>

@@ -8,7 +8,7 @@ import org.sheepy.lily.core.model.variable.DirectVariableResolver;
 
 @Adapter(scope = DirectVariableResolver.class)
 public class DirectVariableResolverAdapter
-		extends AbstractVariableResolverAdapter<DirectVariableResolver>
+		extends AbstractDefinedVariableResolverAdapter<DirectVariableResolver>
 {
 	private final FeatureDefinition resolvedDefinition;
 	private final DirectVariableResolver resolver;

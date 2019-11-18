@@ -12,8 +12,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.sheepy.lily.core.model.ui.BooleanButton;
 import org.sheepy.lily.core.model.ui.UiPackage;
-
-import org.sheepy.lily.core.model.variable.AbstractVariableResolver;
+import org.sheepy.lily.core.model.variable.IVariableResolver;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,7 +37,7 @@ public class BooleanButtonImpl extends AbstractBooleanButtonImpl implements Bool
 	 * @generated
 	 * @ordered
 	 */
-	protected AbstractVariableResolver variableResolver;
+	protected IVariableResolver variableResolver;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -67,7 +66,7 @@ public class BooleanButtonImpl extends AbstractBooleanButtonImpl implements Bool
 	 * @generated
 	 */
 	@Override
-	public AbstractVariableResolver getVariableResolver()
+	public IVariableResolver getVariableResolver()
 	{
 		return variableResolver;
 	}
@@ -77,10 +76,9 @@ public class BooleanButtonImpl extends AbstractBooleanButtonImpl implements Bool
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetVariableResolver(	AbstractVariableResolver newVariableResolver,
-														NotificationChain msgs)
+	public NotificationChain basicSetVariableResolver(IVariableResolver newVariableResolver, NotificationChain msgs)
 	{
-		AbstractVariableResolver oldVariableResolver = variableResolver;
+		IVariableResolver oldVariableResolver = variableResolver;
 		variableResolver = newVariableResolver;
 		if (eNotificationRequired())
 		{
@@ -96,7 +94,7 @@ public class BooleanButtonImpl extends AbstractBooleanButtonImpl implements Bool
 	 * @generated
 	 */
 	@Override
-	public void setVariableResolver(AbstractVariableResolver newVariableResolver)
+	public void setVariableResolver(IVariableResolver newVariableResolver)
 	{
 		if (newVariableResolver != variableResolver)
 		{
@@ -155,7 +153,7 @@ public class BooleanButtonImpl extends AbstractBooleanButtonImpl implements Bool
 		switch (featureID)
 		{
 			case UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER:
-				setVariableResolver((AbstractVariableResolver)newValue);
+				setVariableResolver((IVariableResolver)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -172,7 +170,7 @@ public class BooleanButtonImpl extends AbstractBooleanButtonImpl implements Bool
 		switch (featureID)
 		{
 			case UiPackage.BOOLEAN_BUTTON__VARIABLE_RESOLVER:
-				setVariableResolver((AbstractVariableResolver)null);
+				setVariableResolver((IVariableResolver)null);
 				return;
 		}
 		super.eUnset(featureID);

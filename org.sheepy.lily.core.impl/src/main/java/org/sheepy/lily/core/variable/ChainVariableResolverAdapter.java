@@ -12,7 +12,7 @@ import org.sheepy.lily.core.model.variable.ChainVariableResolver;
 
 @Adapter(scope = ChainVariableResolver.class)
 public class ChainVariableResolverAdapter
-		extends AbstractVariableResolverAdapter<ChainVariableResolver>
+		extends AbstractDefinedVariableResolverAdapter<ChainVariableResolver>
 {
 	private final Map<String, FeatureDefinition> definitionMap = new HashMap<>();
 	private final ChainVariableResolver resolver;

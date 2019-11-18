@@ -2,6 +2,7 @@
  */
 package org.sheepy.lily.core.model.variable.provider;
 
+
 import java.util.Collection;
 import java.util.List;
 
@@ -22,17 +23,23 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.lily.core.model.variable.AbstractVariableResolver;
+import org.sheepy.lily.core.model.variable.AbstractDefinedVariableResolver;
 import org.sheepy.lily.core.model.variable.VariablePackage;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.lily.core.model.variable.AbstractVariableResolver} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.variable.AbstractDefinedVariableResolver} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class AbstractVariableResolverItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
+public class AbstractDefinedVariableResolverItemProvider 
+	extends ItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -40,7 +47,7 @@ public class AbstractVariableResolverItemProvider extends ItemProviderAdapter im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AbstractVariableResolverItemProvider(AdapterFactory adapterFactory)
+	public AbstractDefinedVariableResolverItemProvider(AdapterFactory adapterFactory)
 	{
 		super(adapterFactory);
 	}
@@ -95,11 +102,12 @@ public class AbstractVariableResolverItemProvider extends ItemProviderAdapter im
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((AbstractVariableResolver)object).getVariableDefinition();
+		String label = ((AbstractDefinedVariableResolver)object).getVariableDefinition();
 		return label == null || label.length() == 0 ?
-			getString("_UI_AbstractVariableResolver_type") :
-			getString("_UI_AbstractVariableResolver_type") + " " + label;
+			getString("_UI_AbstractDefinedVariableResolver_type") :
+			getString("_UI_AbstractDefinedVariableResolver_type") + " " + label;
 	}
+
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -113,9 +121,9 @@ public class AbstractVariableResolverItemProvider extends ItemProviderAdapter im
 	{
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(AbstractVariableResolver.class))
+		switch (notification.getFeatureID(AbstractDefinedVariableResolver.class))
 		{
-			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
+			case VariablePackage.ABSTRACT_DEFINED_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

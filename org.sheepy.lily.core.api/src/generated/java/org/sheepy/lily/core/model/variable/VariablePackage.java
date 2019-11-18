@@ -209,14 +209,14 @@ public interface VariablePackage extends EPackage
 	int CHAIN_RESOLVER_OPERATION_COUNT = IDEFINITION_CONTAINER_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.AbstractVariableResolverImpl <em>Abstract Variable Resolver</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.AbstractDefinedVariableResolverImpl <em>Abstract Defined Variable Resolver</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.lily.core.model.variable.impl.AbstractVariableResolverImpl
-	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getAbstractVariableResolver()
+	 * @see org.sheepy.lily.core.model.variable.impl.AbstractDefinedVariableResolverImpl
+	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getAbstractDefinedVariableResolver()
 	 * @generated
 	 */
-	int ABSTRACT_VARIABLE_RESOLVER = 4;
+	int ABSTRACT_DEFINED_VARIABLE_RESOLVER = 4;
 
 	/**
 	 * The feature id for the '<em><b>Variable Definition</b></em>' attribute.
@@ -225,25 +225,25 @@ public interface VariablePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION = IVARIABLE_RESOLVER_FEATURE_COUNT + 0;
+	int ABSTRACT_DEFINED_VARIABLE_RESOLVER__VARIABLE_DEFINITION = IVARIABLE_RESOLVER_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Abstract Variable Resolver</em>' class.
+	 * The number of structural features of the '<em>Abstract Defined Variable Resolver</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_VARIABLE_RESOLVER_FEATURE_COUNT = IVARIABLE_RESOLVER_FEATURE_COUNT + 1;
+	int ABSTRACT_DEFINED_VARIABLE_RESOLVER_FEATURE_COUNT = IVARIABLE_RESOLVER_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Abstract Variable Resolver</em>' class.
+	 * The number of operations of the '<em>Abstract Defined Variable Resolver</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_VARIABLE_RESOLVER_OPERATION_COUNT = IVARIABLE_RESOLVER_OPERATION_COUNT + 0;
+	int ABSTRACT_DEFINED_VARIABLE_RESOLVER_OPERATION_COUNT = IVARIABLE_RESOLVER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.DirectVariableResolverImpl <em>Direct Variable Resolver</em>}' class.
@@ -262,7 +262,7 @@ public interface VariablePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECT_VARIABLE_RESOLVER__VARIABLE_DEFINITION = ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION;
+	int DIRECT_VARIABLE_RESOLVER__VARIABLE_DEFINITION = ABSTRACT_DEFINED_VARIABLE_RESOLVER__VARIABLE_DEFINITION;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -271,7 +271,7 @@ public interface VariablePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECT_VARIABLE_RESOLVER__TARGET = ABSTRACT_VARIABLE_RESOLVER_FEATURE_COUNT + 0;
+	int DIRECT_VARIABLE_RESOLVER__TARGET = ABSTRACT_DEFINED_VARIABLE_RESOLVER_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Direct Variable Resolver</em>' class.
@@ -280,7 +280,7 @@ public interface VariablePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECT_VARIABLE_RESOLVER_FEATURE_COUNT = ABSTRACT_VARIABLE_RESOLVER_FEATURE_COUNT + 1;
+	int DIRECT_VARIABLE_RESOLVER_FEATURE_COUNT = ABSTRACT_DEFINED_VARIABLE_RESOLVER_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Direct Variable Resolver</em>' class.
@@ -289,7 +289,7 @@ public interface VariablePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int DIRECT_VARIABLE_RESOLVER_OPERATION_COUNT = ABSTRACT_VARIABLE_RESOLVER_OPERATION_COUNT + 0;
+	int DIRECT_VARIABLE_RESOLVER_OPERATION_COUNT = ABSTRACT_DEFINED_VARIABLE_RESOLVER_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.VarChangeActionImpl <em>Var Change Action</em>}' class.
@@ -514,14 +514,14 @@ public interface VariablePackage extends EPackage
 	EClass getChainResolver();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.AbstractVariableResolver <em>Abstract Variable Resolver</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.AbstractDefinedVariableResolver <em>Abstract Defined Variable Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Abstract Variable Resolver</em>'.
-	 * @see org.sheepy.lily.core.model.variable.AbstractVariableResolver
+	 * @return the meta object for class '<em>Abstract Defined Variable Resolver</em>'.
+	 * @see org.sheepy.lily.core.model.variable.AbstractDefinedVariableResolver
 	 * @generated
 	 */
-	EClass getAbstractVariableResolver();
+	EClass getAbstractDefinedVariableResolver();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.DirectVariableResolver <em>Direct Variable Resolver</em>}'.
@@ -707,14 +707,14 @@ public interface VariablePackage extends EPackage
 		EClass CHAIN_RESOLVER = eINSTANCE.getChainResolver();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.impl.AbstractVariableResolverImpl <em>Abstract Variable Resolver</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.impl.AbstractDefinedVariableResolverImpl <em>Abstract Defined Variable Resolver</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.lily.core.model.variable.impl.AbstractVariableResolverImpl
-		 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getAbstractVariableResolver()
+		 * @see org.sheepy.lily.core.model.variable.impl.AbstractDefinedVariableResolverImpl
+		 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getAbstractDefinedVariableResolver()
 		 * @generated
 		 */
-		EClass ABSTRACT_VARIABLE_RESOLVER = eINSTANCE.getAbstractVariableResolver();
+		EClass ABSTRACT_DEFINED_VARIABLE_RESOLVER = eINSTANCE.getAbstractDefinedVariableResolver();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.impl.DirectVariableResolverImpl <em>Direct Variable Resolver</em>}' class.

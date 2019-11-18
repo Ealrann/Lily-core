@@ -51,7 +51,7 @@ import org.sheepy.lily.core.model.ui.UiPackage;
 
 import org.sheepy.lily.core.model.ui.impl.UiPackageImpl;
 
-import org.sheepy.lily.core.model.variable.AbstractVariableResolver;
+import org.sheepy.lily.core.model.variable.AbstractDefinedVariableResolver;
 import org.sheepy.lily.core.model.variable.BooleanChangeAction;
 import org.sheepy.lily.core.model.variable.ChainResolver;
 import org.sheepy.lily.core.model.variable.ChainVariableResolver;
@@ -104,7 +104,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass abstractVariableResolverEClass = null;
+	private EClass abstractDefinedVariableResolverEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -339,9 +339,9 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * @generated
 	 */
 	@Override
-	public EClass getAbstractVariableResolver()
+	public EClass getAbstractDefinedVariableResolver()
 	{
-		return abstractVariableResolverEClass;
+		return abstractDefinedVariableResolverEClass;
 	}
 
 	/**
@@ -485,7 +485,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 
 		chainResolverEClass = createEClass(CHAIN_RESOLVER);
 
-		abstractVariableResolverEClass = createEClass(ABSTRACT_VARIABLE_RESOLVER);
+		abstractDefinedVariableResolverEClass = createEClass(ABSTRACT_DEFINED_VARIABLE_RESOLVER);
 
 		directVariableResolverEClass = createEClass(DIRECT_VARIABLE_RESOLVER);
 		createEReference(directVariableResolverEClass, DIRECT_VARIABLE_RESOLVER__TARGET);
@@ -538,9 +538,9 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		// Add supertypes to classes
 		chainVariableResolverEClass.getESuperTypes().add(this.getIVariableResolver());
 		chainResolverEClass.getESuperTypes().add(this.getIDefinitionContainer());
-		abstractVariableResolverEClass.getESuperTypes().add(this.getIVariableResolver());
-		abstractVariableResolverEClass.getESuperTypes().add(this.getIDefinitionContainer());
-		directVariableResolverEClass.getESuperTypes().add(this.getAbstractVariableResolver());
+		abstractDefinedVariableResolverEClass.getESuperTypes().add(this.getIVariableResolver());
+		abstractDefinedVariableResolverEClass.getESuperTypes().add(this.getIDefinitionContainer());
+		directVariableResolverEClass.getESuperTypes().add(this.getAbstractDefinedVariableResolver());
 		varChangeActionEClass.getESuperTypes().add(theActionPackage.getAction());
 		booleanChangeActionEClass.getESuperTypes().add(this.getVarChangeAction());
 		booleanChangeActionEClass.getESuperTypes().add(theActionPackage.getAction());
@@ -557,13 +557,13 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 
 		initEClass(chainResolverEClass, ChainResolver.class, "ChainResolver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(abstractVariableResolverEClass, AbstractVariableResolver.class, "AbstractVariableResolver", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(abstractDefinedVariableResolverEClass, AbstractDefinedVariableResolver.class, "AbstractDefinedVariableResolver", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(directVariableResolverEClass, DirectVariableResolver.class, "DirectVariableResolver", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDirectVariableResolver_Target(), theEcorePackage.getEObject(), null, "target", null, 0, 1, DirectVariableResolver.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(varChangeActionEClass, VarChangeAction.class, "VarChangeAction", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getVarChangeAction_VariableResolver(), this.getAbstractVariableResolver(), null, "variableResolver", null, 0, 1, VarChangeAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVarChangeAction_VariableResolver(), this.getAbstractDefinedVariableResolver(), null, "variableResolver", null, 0, 1, VarChangeAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(booleanChangeActionEClass, BooleanChangeAction.class, "BooleanChangeAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -20,7 +20,7 @@ import org.sheepy.lily.core.model.variable.VariablePackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DirectVariableResolverItemProvider extends AbstractVariableResolverItemProvider
+public class DirectVariableResolverItemProvider extends AbstractDefinedVariableResolverItemProvider
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.

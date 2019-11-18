@@ -13,7 +13,7 @@ import org.sheepy.lily.core.api.variable.IVariableResolverAdapter;
 import org.sheepy.lily.core.model.variable.IVariableResolver;
 
 @Statefull
-public abstract class AbstractVariableResolverAdapter<T extends IVariableResolver>
+public abstract class AbstractDefinedVariableResolverAdapter<T extends IVariableResolver>
 		implements IVariableResolverAdapter<T>
 {
 	private INotificationListener adapter = null;

@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface DirectVariableResolver extends AbstractVariableResolver
+public interface DirectVariableResolver extends AbstractDefinedVariableResolver
 {
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' reference.

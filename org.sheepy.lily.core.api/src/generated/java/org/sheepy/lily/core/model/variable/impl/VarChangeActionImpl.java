@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.sheepy.lily.core.model.action.impl.ActionImpl;
 
-import org.sheepy.lily.core.model.variable.AbstractVariableResolver;
+import org.sheepy.lily.core.model.variable.AbstractDefinedVariableResolver;
 import org.sheepy.lily.core.model.variable.VarChangeAction;
 import org.sheepy.lily.core.model.variable.VariablePackage;
 
@@ -39,7 +39,7 @@ public abstract class VarChangeActionImpl extends ActionImpl implements VarChang
 	 * @generated
 	 * @ordered
 	 */
-	protected AbstractVariableResolver variableResolver;
+	protected AbstractDefinedVariableResolver variableResolver;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,7 +68,7 @@ public abstract class VarChangeActionImpl extends ActionImpl implements VarChang
 	 * @generated
 	 */
 	@Override
-	public AbstractVariableResolver getVariableResolver()
+	public AbstractDefinedVariableResolver getVariableResolver()
 	{
 		return variableResolver;
 	}
@@ -78,10 +78,9 @@ public abstract class VarChangeActionImpl extends ActionImpl implements VarChang
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetVariableResolver(	AbstractVariableResolver newVariableResolver,
-														NotificationChain msgs)
+	public NotificationChain basicSetVariableResolver(AbstractDefinedVariableResolver newVariableResolver, NotificationChain msgs)
 	{
-		AbstractVariableResolver oldVariableResolver = variableResolver;
+		AbstractDefinedVariableResolver oldVariableResolver = variableResolver;
 		variableResolver = newVariableResolver;
 		if (eNotificationRequired())
 		{
@@ -97,7 +96,7 @@ public abstract class VarChangeActionImpl extends ActionImpl implements VarChang
 	 * @generated
 	 */
 	@Override
-	public void setVariableResolver(AbstractVariableResolver newVariableResolver)
+	public void setVariableResolver(AbstractDefinedVariableResolver newVariableResolver)
 	{
 		if (newVariableResolver != variableResolver)
 		{
@@ -156,7 +155,7 @@ public abstract class VarChangeActionImpl extends ActionImpl implements VarChang
 		switch (featureID)
 		{
 			case VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER:
-				setVariableResolver((AbstractVariableResolver)newValue);
+				setVariableResolver((AbstractDefinedVariableResolver)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -173,7 +172,7 @@ public abstract class VarChangeActionImpl extends ActionImpl implements VarChang
 		switch (featureID)
 		{
 			case VariablePackage.VAR_CHANGE_ACTION__VARIABLE_RESOLVER:
-				setVariableResolver((AbstractVariableResolver)null);
+				setVariableResolver((AbstractDefinedVariableResolver)null);
 				return;
 		}
 		super.eUnset(featureID);

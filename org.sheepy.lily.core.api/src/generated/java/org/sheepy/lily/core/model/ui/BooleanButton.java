@@ -2,7 +2,7 @@
  */
 package org.sheepy.lily.core.model.ui;
 
-import org.sheepy.lily.core.model.variable.AbstractVariableResolver;
+import org.sheepy.lily.core.model.variable.IVariableResolver;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,12 +27,12 @@ public interface BooleanButton extends AbstractBooleanButton
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Variable Resolver</em>' containment reference.
-	 * @see #setVariableResolver(AbstractVariableResolver)
+	 * @see #setVariableResolver(IVariableResolver)
 	 * @see org.sheepy.lily.core.model.ui.UiPackage#getBooleanButton_VariableResolver()
 	 * @model containment="true"
 	 * @generated
 	 */
-	AbstractVariableResolver getVariableResolver();
+	IVariableResolver getVariableResolver();
 
 	/**
 	 * Sets the value of the '{@link org.sheepy.lily.core.model.ui.BooleanButton#getVariableResolver <em>Variable Resolver</em>}' containment reference.
@@ -42,6 +42,6 @@ public interface BooleanButton extends AbstractBooleanButton
 	 * @see #getVariableResolver()
 	 * @generated
 	 */
-	void setVariableResolver(AbstractVariableResolver value);
+	void setVariableResolver(IVariableResolver value);
 
 } // BooleanButton

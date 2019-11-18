@@ -15,6 +15,7 @@ import org.sheepy.lily.core.model.variable.IVariableResolver;
  * <ul>
  *   <li>{@link org.sheepy.lily.core.model.ui.VariableLabel#getVariableResolver <em>Variable Resolver</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.VariableLabel#isShowName <em>Show Name</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.VariableLabel#getFormat <em>Format</em>}</li>
  * </ul>
  *
  * @see org.sheepy.lily.core.model.ui.UiPackage#getVariableLabel()
@@ -67,5 +68,27 @@ public interface VariableLabel extends AbstractLabel
 	 * @generated
 	 */
 	void setShowName(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Format</em>' attribute.
+	 * @see #setFormat(String)
+	 * @see org.sheepy.lily.core.model.ui.UiPackage#getVariableLabel_Format()
+	 * @model
+	 * @generated
+	 */
+	String getFormat();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.ui.VariableLabel#getFormat <em>Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Format</em>' attribute.
+	 * @see #getFormat()
+	 * @generated
+	 */
+	void setFormat(String value);
 
 } // VariableLabel

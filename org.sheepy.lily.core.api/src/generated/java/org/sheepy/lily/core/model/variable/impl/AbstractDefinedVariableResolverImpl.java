@@ -7,26 +7,27 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.sheepy.lily.core.api.adapter.LilyEObject;
-import org.sheepy.lily.core.model.variable.AbstractVariableResolver;
+
+import org.sheepy.lily.core.model.variable.AbstractDefinedVariableResolver;
 import org.sheepy.lily.core.model.variable.IDefinitionContainer;
 import org.sheepy.lily.core.model.variable.VariablePackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Abstract Variable Resolver</b></em>'.
+ * An implementation of the model object '<em><b>Abstract Defined Variable Resolver</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.variable.impl.AbstractVariableResolverImpl#getVariableDefinition <em>Variable Definition</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.variable.impl.AbstractDefinedVariableResolverImpl#getVariableDefinition <em>Variable Definition</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class AbstractVariableResolverImpl extends LilyEObject
-		implements AbstractVariableResolver
+public abstract class AbstractDefinedVariableResolverImpl extends LilyEObject implements AbstractDefinedVariableResolver
 {
 	/**
 	 * The default value of the '{@link #getVariableDefinition() <em>Variable Definition</em>}' attribute.
@@ -53,7 +54,7 @@ public abstract class AbstractVariableResolverImpl extends LilyEObject
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AbstractVariableResolverImpl()
+	protected AbstractDefinedVariableResolverImpl()
 	{
 		super();
 	}
@@ -66,7 +67,7 @@ public abstract class AbstractVariableResolverImpl extends LilyEObject
 	@Override
 	protected EClass eStaticClass()
 	{
-		return VariablePackage.Literals.ABSTRACT_VARIABLE_RESOLVER;
+		return VariablePackage.Literals.ABSTRACT_DEFINED_VARIABLE_RESOLVER;
 	}
 
 	/**
@@ -91,7 +92,7 @@ public abstract class AbstractVariableResolverImpl extends LilyEObject
 		String oldVariableDefinition = variableDefinition;
 		variableDefinition = newVariableDefinition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION, oldVariableDefinition, variableDefinition));
+			eNotify(new ENotificationImpl(this, Notification.SET, VariablePackage.ABSTRACT_DEFINED_VARIABLE_RESOLVER__VARIABLE_DEFINITION, oldVariableDefinition, variableDefinition));
 	}
 
 	/**
@@ -104,7 +105,7 @@ public abstract class AbstractVariableResolverImpl extends LilyEObject
 	{
 		switch (featureID)
 		{
-			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
+			case VariablePackage.ABSTRACT_DEFINED_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
 				return getVariableDefinition();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -120,7 +121,7 @@ public abstract class AbstractVariableResolverImpl extends LilyEObject
 	{
 		switch (featureID)
 		{
-			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
+			case VariablePackage.ABSTRACT_DEFINED_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
 				setVariableDefinition((String)newValue);
 				return;
 		}
@@ -137,7 +138,7 @@ public abstract class AbstractVariableResolverImpl extends LilyEObject
 	{
 		switch (featureID)
 		{
-			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
+			case VariablePackage.ABSTRACT_DEFINED_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
 				setVariableDefinition(VARIABLE_DEFINITION_EDEFAULT);
 				return;
 		}
@@ -154,7 +155,7 @@ public abstract class AbstractVariableResolverImpl extends LilyEObject
 	{
 		switch (featureID)
 		{
-			case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
+			case VariablePackage.ABSTRACT_DEFINED_VARIABLE_RESOLVER__VARIABLE_DEFINITION:
 				return VARIABLE_DEFINITION_EDEFAULT == null ? variableDefinition != null : !VARIABLE_DEFINITION_EDEFAULT.equals(variableDefinition);
 		}
 		return super.eIsSet(featureID);
@@ -172,7 +173,7 @@ public abstract class AbstractVariableResolverImpl extends LilyEObject
 		{
 			switch (derivedFeatureID)
 			{
-				case VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION: return VariablePackage.IDEFINITION_CONTAINER__VARIABLE_DEFINITION;
+				case VariablePackage.ABSTRACT_DEFINED_VARIABLE_RESOLVER__VARIABLE_DEFINITION: return VariablePackage.IDEFINITION_CONTAINER__VARIABLE_DEFINITION;
 				default: return -1;
 			}
 		}
@@ -191,7 +192,7 @@ public abstract class AbstractVariableResolverImpl extends LilyEObject
 		{
 			switch (baseFeatureID)
 			{
-				case VariablePackage.IDEFINITION_CONTAINER__VARIABLE_DEFINITION: return VariablePackage.ABSTRACT_VARIABLE_RESOLVER__VARIABLE_DEFINITION;
+				case VariablePackage.IDEFINITION_CONTAINER__VARIABLE_DEFINITION: return VariablePackage.ABSTRACT_DEFINED_VARIABLE_RESOLVER__VARIABLE_DEFINITION;
 				default: return -1;
 			}
 		}
@@ -215,4 +216,4 @@ public abstract class AbstractVariableResolverImpl extends LilyEObject
 		return result.toString();
 	}
 
-} //AbstractVariableResolverImpl
+} //AbstractDefinedVariableResolverImpl
