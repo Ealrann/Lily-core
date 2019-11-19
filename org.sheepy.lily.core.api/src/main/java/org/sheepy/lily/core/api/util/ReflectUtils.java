@@ -46,7 +46,7 @@ public class ReflectUtils
 	{
 		final List<AnnotatedMethod<T>> res = new ArrayList<>();
 
-		final var methods = type.getMethods();
+		final var methods = type.getDeclaredMethods();
 		for (final Method method : methods)
 		{
 			final var annotation = method.getAnnotation(annotationClass);

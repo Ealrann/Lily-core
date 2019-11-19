@@ -15,8 +15,8 @@ import java.util.function.Supplier;
 
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.reflect.ConstructorHandle.Builder;
-import org.sheepy.lily.core.adapter.reflect.ExecutionHandle.Operation;
-import org.sheepy.lily.core.adapter.reflect.ExecutionHandle.TriConsumer;
+import org.sheepy.lily.core.api.util.Operation;
+import org.sheepy.lily.core.api.util.TriConsumer;
 
 public class ReflectUtil
 {

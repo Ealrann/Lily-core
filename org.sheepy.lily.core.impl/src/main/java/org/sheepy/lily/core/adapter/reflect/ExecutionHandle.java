@@ -48,16 +48,4 @@ public interface ExecutionHandle
 
 		public abstract ExecutionHandle build(T adapter);
 	}
-
-	@FunctionalInterface
-	public static interface Operation
-	{
-		void execute();
-	}
-
-	@FunctionalInterface
-	public static interface TriConsumer<T, U, V>
-	{
-		void accept(T p1, U p2, V p3);
-	}
 }

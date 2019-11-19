@@ -153,7 +153,7 @@ public final class AdapterInfo<T extends IAdapter>
 		Constructor<T> res = null;
 
 		@SuppressWarnings("unchecked")
-		final var constructors = (Constructor<T>[]) domain.type.getConstructors();
+		final var constructors = (Constructor<T>[]) domain.type.getDeclaredConstructors();
 		final var applicableClass = domain.targetClassifier.getInstanceClass();
 
 		for (final var constructor : constructors)

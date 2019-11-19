@@ -6,6 +6,7 @@ import java.lang.invoke.MethodHandles.Lookup;
 import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
 import org.sheepy.lily.core.adapter.reflect.util.ReflectUtil;
 import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.util.TriConsumer;
 
 public final class ExecutionHandleParam2<T extends IAdapter> extends AbstractExecutionHandle<T>
 {
