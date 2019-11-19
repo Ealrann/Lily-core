@@ -26,17 +26,18 @@ public final class ConstructorHandleNoParam<T extends IAdapter> implements Const
 
 	public static final class Builder<T extends IAdapter> extends ConstructorHandle.Builder<T>
 	{
-		private final Supplier<T> supplier;
+		private final ConstructorHandle<T> handle;
 
-		public Builder(Lookup lookup, MethodHandle methodHandle, Class<T> sourceClass)
+		public Builder(Lookup lookup, MethodHandle methodHandle)
 		{
-			this.supplier = ReflectUtil.createSupplier(lookup, methodHandle);
+			final Supplier<T> supplier = ReflectUtil.createSupplier(lookup, methodHandle);
+			handle = new ConstructorHandleNoParam<>(supplier);
 		}
 
 		@Override
 		public ConstructorHandle<T> build()
 		{
-			return new ConstructorHandleNoParam<>(supplier);
+			return handle;
 		}
 	}
 }

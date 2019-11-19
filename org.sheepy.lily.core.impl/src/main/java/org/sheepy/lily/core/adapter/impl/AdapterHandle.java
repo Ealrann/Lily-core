@@ -14,8 +14,7 @@ import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.INotificationListener;
 import org.sheepy.lily.core.api.cadence.ETickerClock;
 
-public final class AdapterHandle<T extends IAdapter>
-		extends AdapterRegistry.AdapterDescriptor<T>
+public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.AdapterDescriptor<T>
 {
 	public final T adapter;
 	public final List<TickHandle> tickHandles;
@@ -62,7 +61,7 @@ public final class AdapterHandle<T extends IAdapter>
 		return res;
 	}
 
-	private ExecutionHandle createHandle(ExecutionHandle.Builder<T> builder)
+	private ExecutionHandle createHandle(ExecutionHandle.Builder builder)
 	{
 		ExecutionHandle res = null;
 		if (builder != null)
@@ -94,7 +93,7 @@ public final class AdapterHandle<T extends IAdapter>
 		public final ExecutionHandle handle;
 		public final List<Integer> featureIds;
 
-		public <T extends IAdapter> NotifyHandle(NotifyConfiguration<T> notifyConfig, T adapter)
+		public <T extends IAdapter> NotifyHandle(NotifyConfiguration notifyConfig, T adapter)
 		{
 			featureIds = List.copyOf(notifyConfig.featureIds);
 			handle = notifyConfig.notifyHandleBuilder.build(adapter);
@@ -109,10 +108,10 @@ public final class AdapterHandle<T extends IAdapter>
 
 	public final class TickHandle implements ITickDescriptor
 	{
-		private final TickConfiguration<T> configuration;
+		private final TickConfiguration configuration;
 		private final ExecutionHandle handle;
 
-		public TickHandle(TickConfiguration<T> configuration)
+		public TickHandle(TickConfiguration configuration)
 		{
 			this.configuration = configuration;
 			handle = configuration.tickHandleBuilder.build(adapter);

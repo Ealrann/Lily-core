@@ -27,15 +27,15 @@ public final class AdapterInfo<T extends IAdapter>
 
 	private final ConstructorHandle<T> constructorHandle;
 
-	public final ExecutionHandle.Builder<T> loadHandleBuilder;
-	public final ExecutionHandle.Builder<T> disposeHandleBuilder;
+	public final ExecutionHandle.Builder loadHandleBuilder;
+	public final ExecutionHandle.Builder disposeHandleBuilder;
 
 	private final T singleton;
 	private final boolean isSingleton;
 	private final boolean lazy;
 
-	public final List<TickConfiguration<T>> tickConfigurations;
-	public final List<NotifyConfiguration<T>> notifyConfigurations;
+	public final List<TickConfiguration> tickConfigurations;
+	public final List<NotifyConfiguration> notifyConfigurations;
 
 	public AdapterInfo(AdapterDomain<T> domain)
 	{
@@ -68,9 +68,9 @@ public final class AdapterInfo<T extends IAdapter>
 		}
 	}
 
-	private List<TickConfiguration<T>> buildTickerConfigurations(final Class<T> type)
+	private List<TickConfiguration> buildTickerConfigurations(final Class<T> type)
 	{
-		final List<TickConfiguration<T>> res = new ArrayList<>();
+		final List<TickConfiguration> res = new ArrayList<>();
 		final var tickMethods = ReflectUtils.gatherAnnotatedMethods(type, Tick.class);
 		for (final var tickMethod : tickMethods)
 		{
@@ -79,9 +79,9 @@ public final class AdapterInfo<T extends IAdapter>
 
 			final var tickPriority = tickAnnotation.priority();
 			final var clock = tickAnnotation.clock();
-			final var tickHandleBuilder = ExecutionHandle.Builder.<T> fromMethod(tickMethod.method);
+			final var tickHandleBuilder = ExecutionHandle.Builder.fromMethod(tickMethod.method);
 
-			final var handler = new TickConfiguration<>(tickHandleBuilder,
+			final var handler = new TickConfiguration(	tickHandleBuilder,
 														tickFrequency,
 														tickPriority,
 														clock);
@@ -90,18 +90,18 @@ public final class AdapterInfo<T extends IAdapter>
 		return res;
 	}
 
-	private List<NotifyConfiguration<T>> buildNotifyConfigurations(final Class<T> type)
+	private List<NotifyConfiguration> buildNotifyConfigurations(final Class<T> type)
 	{
-		final List<NotifyConfiguration<T>> res = new ArrayList<>();
+		final List<NotifyConfiguration> res = new ArrayList<>();
 		final var notifyMethods = ReflectUtils.gatherAnnotatedMethods(type, NotifyChanged.class);
 		for (final var notifyMethod : notifyMethods)
 		{
 			final NotifyChanged annotation = notifyMethod.annotation;
 
 			final var featureIds = convertFeatureList(annotation.featureIds());
-			final var notifyHandleBuilder = ExecutionHandle.Builder.<T> fromMethod(notifyMethod.method);
+			final var notifyHandleBuilder = ExecutionHandle.Builder.fromMethod(notifyMethod.method);
 
-			res.add(new NotifyConfiguration<>(notifyHandleBuilder, featureIds));
+			res.add(new NotifyConfiguration(notifyHandleBuilder, featureIds));
 		}
 		return res;
 	}
@@ -124,14 +124,14 @@ public final class AdapterInfo<T extends IAdapter>
 		return (double) frequency / frequencyRef.toSeconds(1);
 	}
 
-	private final ExecutionHandle.Builder<T> createHandleBuilder(	Class<?> type,
-																	Class<? extends Annotation> annotationClass)
+	private static final ExecutionHandle.Builder createHandleBuilder(	Class<?> type,
+																		Class<? extends Annotation> annotationClass)
 	{
 		final var method = ReflectUtils.gatherMethod(type, annotationClass);
 		return createHandleBuilder(method);
 	}
 
-	private ExecutionHandle.Builder<T> createHandleBuilder(Method method)
+	private static ExecutionHandle.Builder createHandleBuilder(Method method)
 	{
 		if (method != null)
 		{
@@ -233,12 +233,12 @@ public final class AdapterInfo<T extends IAdapter>
 				|| (isSingleton && notifyConfigurations.isEmpty() == false);
 	}
 
-	public static final class NotifyConfiguration<T extends IAdapter>
+	public static final class NotifyConfiguration
 	{
-		public final Builder<T> notifyHandleBuilder;
+		public final Builder notifyHandleBuilder;
 		public final List<Integer> featureIds;
 
-		public NotifyConfiguration(	ExecutionHandle.Builder<T> notifyHandleBuilder,
+		public NotifyConfiguration(	ExecutionHandle.Builder notifyHandleBuilder,
 									List<Integer> featureIds)
 		{
 			this.notifyHandleBuilder = notifyHandleBuilder;
@@ -246,14 +246,14 @@ public final class AdapterInfo<T extends IAdapter>
 		}
 	}
 
-	public static final class TickConfiguration<T extends IAdapter>
+	public static final class TickConfiguration
 	{
-		public final ExecutionHandle.Builder<T> tickHandleBuilder;
+		public final ExecutionHandle.Builder tickHandleBuilder;
 		public final Double tickFrequency;
 		public final Integer tickPriority;
 		public final ETickerClock clock;
 
-		public TickConfiguration(	ExecutionHandle.Builder<T> tickHandleBuilder,
+		public TickConfiguration(	ExecutionHandle.Builder tickHandleBuilder,
 									Double tickFrequency,
 									Integer tickPriority,
 									ETickerClock clock)

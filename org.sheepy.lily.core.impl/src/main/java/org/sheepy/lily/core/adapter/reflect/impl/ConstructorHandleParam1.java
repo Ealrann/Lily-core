@@ -26,17 +26,18 @@ public final class ConstructorHandleParam1<T extends IAdapter> implements Constr
 
 	public static final class Builder<T extends IAdapter> extends ConstructorHandle.Builder<T>
 	{
-		private final Function<EObject, T> function;
+		private final ConstructorHandle<T> handle;
 
 		public Builder(Lookup lookup, MethodHandle methodHandle)
 		{
-			this.function = ReflectUtil.createFunction(lookup, methodHandle);
+			final Function<EObject, T> function = ReflectUtil.createFunction(lookup, methodHandle);
+			handle = new ConstructorHandleParam1<>(function);
 		}
 
 		@Override
 		public ConstructorHandle<T> build()
 		{
-			return new ConstructorHandleParam1<>(function);
+			return handle;
 		}
 	}
 }
