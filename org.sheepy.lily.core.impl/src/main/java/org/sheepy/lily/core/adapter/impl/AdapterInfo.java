@@ -228,8 +228,7 @@ public final class AdapterInfo<T extends IAdapter>
 		public final Builder notifyHandleBuilder;
 		public final int[] featureIds;
 
-		public NotifyConfiguration(	ExecutionHandle.Builder notifyHandleBuilder,
-									int[] featureIds)
+		public NotifyConfiguration(ExecutionHandle.Builder notifyHandleBuilder, int[] featureIds)
 		{
 			this.notifyHandleBuilder = notifyHandleBuilder;
 			this.featureIds = featureIds;

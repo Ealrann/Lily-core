@@ -2,6 +2,9 @@ package org.sheepy.lily.core.adapter.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.LongConsumer;
+import java.util.function.ObjLongConsumer;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -13,6 +16,7 @@ import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.INotificationListener;
 import org.sheepy.lily.core.api.cadence.ETickerClock;
+import org.sheepy.lily.core.api.util.Operation;
 
 public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.AdapterDescriptor<T>
 {
@@ -123,14 +127,41 @@ public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.Ada
 			return configuration.tickFrequency;
 		}
 
-		/**
-		 * TODO stepNs is autoboxed here. Finally, the step value can be retrieved in Application,
-		 * is that really usefull to share it by argument ?
-		 */
 		@Override
 		public void tick(long stepNs)
 		{
-			handle.invoke(stepNs, target);
+			final var function = handle.getLambdaFunction();
+
+			// Let's do our best to avoid autoboxing
+			if (function instanceof LongConsumer)
+			{
+				((LongConsumer) function).accept(stepNs);
+			}
+			else if (function instanceof Consumer)
+			{
+				@SuppressWarnings("unchecked")
+				final var oConsumer = (Consumer<EObject>) function;
+				oConsumer.accept(target);
+			}
+			else if (function instanceof Operation)
+			{
+				((Operation) function).execute();
+			}
+			else if (function instanceof ObjLongConsumer)
+			{
+				@SuppressWarnings("unchecked")
+				final var oLongConsumer = (ObjLongConsumer<EObject>) function;
+				oLongConsumer.accept(target, stepNs);
+			}
+			else
+			{
+				throwError();
+			}
+		}
+
+		private void throwError() throws AssertionError
+		{
+			throw new AssertionError("Invalid ticker");
 		}
 
 		@Override

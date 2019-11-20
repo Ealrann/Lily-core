@@ -23,6 +23,12 @@ public final class ExecutionHandle2Param implements ExecutionHandle
 		consumer.accept(parameters[0], parameters[1]);
 	}
 
+	@Override
+	public Object getLambdaFunction()
+	{
+		return consumer;
+	}
+
 	public static final class Builder extends ExecutionHandle.Builder
 	{
 		private final MethodHandle factory;

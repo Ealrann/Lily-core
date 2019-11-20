@@ -9,6 +9,7 @@ import java.lang.invoke.MethodHandles.Lookup;
 import java.lang.invoke.MethodType;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -73,12 +74,19 @@ public final class ReflectUtil
 		return res;
 	}
 
-	public static MethodHandle unreflect(Method method, Lookup lookup)
+	public static MethodHandle unreflectSpecial(Method method, Lookup lookup, Class<?> caller)
 	{
 		MethodHandle res = null;
 		try
 		{
-			res = lookup.unreflect(method);
+			if (Modifier.isStatic(method.getModifiers()) == false)
+			{
+				res = lookup.unreflectSpecial(method, caller);
+			}
+			else
+			{
+				res = lookup.unreflect(method);
+			}
 
 		} catch (final IllegalAccessException e)
 		{

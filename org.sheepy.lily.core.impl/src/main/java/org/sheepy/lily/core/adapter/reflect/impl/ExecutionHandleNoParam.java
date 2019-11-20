@@ -23,6 +23,12 @@ public final class ExecutionHandleNoParam implements ExecutionHandle
 		operation.execute();
 	}
 
+	@Override
+	public Object getLambdaFunction()
+	{
+		return operation;
+	}
+
 	public static final class Builder extends ExecutionHandle.Builder
 	{
 		private final MethodHandle factory;
