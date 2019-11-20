@@ -24,8 +24,6 @@ public final class AdapterManagerFactory implements IAdapterFactoryService
 	@Override
 	public IAdapterManager createAdapterManager(ILilyEObject target)
 	{
-		final AdapterManager res = new AdapterManager(target);
-		target.eAdapters().add(res);
-		return res;
+		return new AdapterManager(target);
 	}
 }

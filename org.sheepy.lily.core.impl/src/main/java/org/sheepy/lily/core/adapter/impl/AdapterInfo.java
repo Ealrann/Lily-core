@@ -98,22 +98,12 @@ public final class AdapterInfo<T extends IAdapter>
 		{
 			final NotifyChanged annotation = notifyMethod.annotation;
 
-			final var featureIds = convertFeatureList(annotation.featureIds());
+			final var featureIds = annotation.featureIds();
 			final var notifyHandleBuilder = ExecutionHandle.Builder.fromMethod(notifyMethod.method);
 
 			res.add(new NotifyConfiguration(notifyHandleBuilder, featureIds));
 		}
 		return res;
-	}
-
-	private static List<Integer> convertFeatureList(int[] featureIds)
-	{
-		final List<Integer> res = new ArrayList<>();
-		for (final var id : featureIds)
-		{
-			res.add(id);
-		}
-		return List.copyOf(res);
 	}
 
 	private static double computeFrequency(final Tick tickAnnotation)
@@ -236,13 +226,13 @@ public final class AdapterInfo<T extends IAdapter>
 	public static final class NotifyConfiguration
 	{
 		public final Builder notifyHandleBuilder;
-		public final List<Integer> featureIds;
+		public final int[] featureIds;
 
 		public NotifyConfiguration(	ExecutionHandle.Builder notifyHandleBuilder,
-									List<Integer> featureIds)
+									int[] featureIds)
 		{
 			this.notifyHandleBuilder = notifyHandleBuilder;
-			this.featureIds = List.copyOf(featureIds);
+			this.featureIds = featureIds;
 		}
 	}
 

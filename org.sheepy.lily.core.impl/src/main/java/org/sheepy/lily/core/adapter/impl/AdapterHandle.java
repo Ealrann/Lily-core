@@ -24,11 +24,11 @@ public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.Ada
 	private final ExecutionHandle loadHandle;
 	private final ExecutionHandle disposeHandle;
 
-	AdapterHandle(AdapterDescriptor<T> descriptor, EObject target, T adapter)
+	AdapterHandle(AdapterDescriptor<T> descriptor, EObject target)
 	{
 		super(descriptor.domain, descriptor.info);
 		this.target = target;
-		this.adapter = adapter;
+		this.adapter = descriptor.info.create(target);
 
 		loadHandle = createHandle(descriptor.info.loadHandleBuilder);
 		disposeHandle = createHandle(descriptor.info.disposeHandleBuilder);
@@ -91,11 +91,11 @@ public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.Ada
 	public static final class NotifyHandle implements INotificationListener
 	{
 		public final ExecutionHandle handle;
-		public final List<Integer> featureIds;
+		public final int[] featureIds;
 
 		public <T extends IAdapter> NotifyHandle(NotifyConfiguration notifyConfig, T adapter)
 		{
-			featureIds = List.copyOf(notifyConfig.featureIds);
+			featureIds = notifyConfig.featureIds;
 			handle = notifyConfig.notifyHandleBuilder.build(adapter);
 		}
 
