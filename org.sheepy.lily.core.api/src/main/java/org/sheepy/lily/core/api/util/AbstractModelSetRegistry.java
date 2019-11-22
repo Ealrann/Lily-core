@@ -45,7 +45,6 @@ public abstract class AbstractModelSetRegistry
 			}
 			break;
 		case Notification.SET:
-
 			if (notification.getOldValue() != null)
 				remove((LilyEObject) notification.getOldValue());
 			if (notification.getNewValue() != null) add((LilyEObject) notification.getNewValue());

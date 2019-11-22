@@ -15,10 +15,11 @@ public class ModelSetObserver
 	private final HierarchyNotificationListener rootListener;
 	private final INotificationListener listener;
 
-	public ModelSetObserver(INotificationListener listener, List<EStructuralFeature> features)
+	public ModelSetObserver(INotificationListener listener,
+							List<EStructuralFeature> structuralFeatures)
 	{
 		this.listener = listener;
-		this.features = List.copyOf(features);
+		this.features = List.copyOf(structuralFeatures);
 
 		rootListener = new HierarchyNotificationListener(0);
 	}
@@ -26,10 +27,12 @@ public class ModelSetObserver
 	public void startObserve(ILilyEObject root)
 	{
 		rootListener.setTarget((LilyEObject) root);
+		root.addListener(rootListener, features.get(0).getFeatureID());
 	}
 
 	public void stopObserve(ILilyEObject root)
 	{
+		root.removeListener(rootListener, features.get(0).getFeatureID());
 		rootListener.unsetTarget((LilyEObject) root);
 	}
 
