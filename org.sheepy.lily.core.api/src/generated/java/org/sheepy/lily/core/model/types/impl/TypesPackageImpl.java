@@ -976,10 +976,13 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		addEEnumLiteral(eDirectionEEnum, EDirection.DOWN);
 
 		initEEnum(eTimeUnitEEnum, ETimeUnit.class, "ETimeUnit");
-		addEEnumLiteral(eTimeUnitEEnum, ETimeUnit.MILLISECOND);
-		addEEnumLiteral(eTimeUnitEEnum, ETimeUnit.SECOND);
-		addEEnumLiteral(eTimeUnitEEnum, ETimeUnit.MINUTE);
-		addEEnumLiteral(eTimeUnitEEnum, ETimeUnit.HOUR);
+		addEEnumLiteral(eTimeUnitEEnum, ETimeUnit.NANOSECONDS);
+		addEEnumLiteral(eTimeUnitEEnum, ETimeUnit.MICROSECONDS);
+		addEEnumLiteral(eTimeUnitEEnum, ETimeUnit.MILLISECONDS);
+		addEEnumLiteral(eTimeUnitEEnum, ETimeUnit.SECONDS);
+		addEEnumLiteral(eTimeUnitEEnum, ETimeUnit.MINUTES);
+		addEEnumLiteral(eTimeUnitEEnum, ETimeUnit.HOURS);
+		addEEnumLiteral(eTimeUnitEEnum, ETimeUnit.DAYS);
 
 		initEEnum(eNumberComparisonTypeEEnum, ENumberComparisonType.class, "ENumberComparisonType");
 		addEEnumLiteral(eNumberComparisonTypeEEnum, ENumberComparisonType.EQUAL);

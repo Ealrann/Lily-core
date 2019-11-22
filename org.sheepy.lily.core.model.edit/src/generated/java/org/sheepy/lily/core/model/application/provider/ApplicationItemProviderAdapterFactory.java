@@ -118,6 +118,31 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.application.TimeConfiguration} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected TimeConfigurationItemProvider timeConfigurationItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.application.TimeConfiguration}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createTimeConfigurationAdapter()
+	{
+		if (timeConfigurationItemProvider == null)
+		{
+			timeConfigurationItemProvider = new TimeConfigurationItemProvider(this);
+		}
+
+		return timeConfigurationItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -267,6 +292,7 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 	public void dispose()
 	{
 		if (applicationItemProvider != null) applicationItemProvider.dispose();
+		if (timeConfigurationItemProvider != null) timeConfigurationItemProvider.dispose();
 	}
 
 }

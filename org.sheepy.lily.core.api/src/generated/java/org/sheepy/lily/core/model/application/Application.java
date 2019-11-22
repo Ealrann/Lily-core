@@ -25,8 +25,8 @@ import org.sheepy.lily.core.model.root.LObject;
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getTitle <em>Title</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getSize <em>Size</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getCurrentView <em>Current View</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.Application#getTimeFactor <em>Time Factor</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getCadence <em>Cadence</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Application#getTimeConfiguration <em>Time Configuration</em>}</li>
  * </ul>
  *
  * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication()
@@ -220,29 +220,6 @@ public interface Application extends LObject
 	void setCurrentView(IView value);
 
 	/**
-	 * Returns the value of the '<em><b>Time Factor</b></em>' attribute.
-	 * The default value is <code>"1"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Time Factor</em>' attribute.
-	 * @see #setTimeFactor(double)
-	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_TimeFactor()
-	 * @model default="1" unique="false" required="true"
-	 * @generated
-	 */
-	double getTimeFactor();
-
-	/**
-	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#getTimeFactor <em>Time Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Time Factor</em>' attribute.
-	 * @see #getTimeFactor()
-	 * @generated
-	 */
-	void setTimeFactor(double value);
-
-	/**
 	 * Returns the value of the '<em><b>Cadence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -263,5 +240,27 @@ public interface Application extends LObject
 	 * @generated
 	 */
 	void setCadence(ICadence value);
+
+	/**
+	 * Returns the value of the '<em><b>Time Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Time Configuration</em>' containment reference.
+	 * @see #setTimeConfiguration(TimeConfiguration)
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_TimeConfiguration()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	TimeConfiguration getTimeConfiguration();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#getTimeConfiguration <em>Time Configuration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Time Configuration</em>' containment reference.
+	 * @see #getTimeConfiguration()
+	 * @generated
+	 */
+	void setTimeConfiguration(TimeConfiguration value);
 
 } // Application

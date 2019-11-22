@@ -130,10 +130,13 @@
     <eLiterals name="DOWN"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ETimeUnit">
-    <eLiterals name="MILLISECOND"/>
-    <eLiterals name="SECOND"/>
-    <eLiterals name="MINUTE"/>
-    <eLiterals name="HOUR"/>
+    <eLiterals name="NANOSECONDS"/>
+    <eLiterals name="MICROSECONDS" value="1"/>
+    <eLiterals name="MILLISECONDS" value="2"/>
+    <eLiterals name="SECONDS" value="3"/>
+    <eLiterals name="MINUTES" value="4"/>
+    <eLiterals name="HOURS" value="5"/>
+    <eLiterals name="DAYS" value="6"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="ENumberComparisonType">
     <eLiterals name="Equal"/>

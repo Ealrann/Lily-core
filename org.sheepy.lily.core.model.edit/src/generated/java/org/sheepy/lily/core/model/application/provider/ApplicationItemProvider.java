@@ -26,6 +26,7 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import org.sheepy.lily.core.model.application.Application;
+import org.sheepy.lily.core.model.application.ApplicationFactory;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 
 import org.sheepy.lily.core.model.cadence.CadenceFactory;
@@ -72,7 +73,6 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 			addTitlePropertyDescriptor(object);
 			addSizePropertyDescriptor(object);
 			addCurrentViewPropertyDescriptor(object);
-			addTimeFactorPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -239,29 +239,6 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 	}
 
 	/**
-	 * This adds a property descriptor for the Time Factor feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTimeFactorPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Application_timeFactor_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Application_timeFactor_feature", "_UI_Application_type"),
-				 ApplicationPackage.Literals.APPLICATION__TIME_FACTOR,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -278,6 +255,7 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__VIEWS);
 			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__ENGINES);
 			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__CADENCE);
+			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__TIME_CONFIGURATION);
 		}
 		return childrenFeatures;
 	}
@@ -345,12 +323,12 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 			case ApplicationPackage.APPLICATION__HEADLESS:
 			case ApplicationPackage.APPLICATION__TITLE:
 			case ApplicationPackage.APPLICATION__SIZE:
-			case ApplicationPackage.APPLICATION__TIME_FACTOR:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ApplicationPackage.APPLICATION__VIEWS:
 			case ApplicationPackage.APPLICATION__ENGINES:
 			case ApplicationPackage.APPLICATION__CADENCE:
+			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -378,6 +356,11 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 			(createChildParameter
 				(ApplicationPackage.Literals.APPLICATION__CADENCE,
 				 CadenceFactory.eINSTANCE.createCadence()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ApplicationPackage.Literals.APPLICATION__TIME_CONFIGURATION,
+				 ApplicationFactory.eINSTANCE.createTimeConfiguration()));
 	}
 
 	/**

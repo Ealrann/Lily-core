@@ -23,11 +23,19 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" unique="false" eType="ecore:EDataType types.ecore#//Vector2i"
         defaultValueLiteral="400,400"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentView" eType="#//IView"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cadence" eType="#//ICadence"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="timeConfiguration" eType="#//TimeConfiguration"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TimeConfiguration">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeStep" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong" defaultValueLiteral="1"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" lowerBound="1" eType="ecore:EEnum types.ecore#//ETimeUnit"
+        defaultValueLiteral="SECONDS"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeFactor" unique="false"
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="1"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="cadence" eType="#//ICadence"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IEngine" abstract="true" interface="true"
       eSuperTypes="root.ecore#//LObject"/>

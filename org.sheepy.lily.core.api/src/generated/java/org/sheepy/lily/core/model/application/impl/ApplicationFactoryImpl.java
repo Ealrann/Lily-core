@@ -65,6 +65,7 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 		switch (eClass.getClassifierID())
 		{
 			case ApplicationPackage.APPLICATION: return createApplication();
+			case ApplicationPackage.TIME_CONFIGURATION: return createTimeConfiguration();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -80,6 +81,18 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 	{
 		ApplicationImpl application = new ApplicationImpl();
 		return application;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public TimeConfiguration createTimeConfiguration()
+	{
+		TimeConfigurationImpl timeConfiguration = new TimeConfigurationImpl();
+		return timeConfiguration;
 	}
 
 	/**

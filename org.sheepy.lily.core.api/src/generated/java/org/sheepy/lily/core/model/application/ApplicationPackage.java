@@ -160,22 +160,22 @@ public interface ApplicationPackage extends EPackage
 	int APPLICATION__CURRENT_VIEW = RootPackage.LOBJECT_FEATURE_COUNT + 8;
 
 	/**
-	 * The feature id for the '<em><b>Time Factor</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION__TIME_FACTOR = RootPackage.LOBJECT_FEATURE_COUNT + 9;
-
-	/**
 	 * The feature id for the '<em><b>Cadence</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__CADENCE = RootPackage.LOBJECT_FEATURE_COUNT + 10;
+	int APPLICATION__CADENCE = RootPackage.LOBJECT_FEATURE_COUNT + 9;
+
+	/**
+	 * The feature id for the '<em><b>Time Configuration</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION__TIME_CONFIGURATION = RootPackage.LOBJECT_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>Application</em>' class.
@@ -241,6 +241,61 @@ public interface ApplicationPackage extends EPackage
 	int APPLICATION_OPERATION_COUNT = RootPackage.LOBJECT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.TimeConfigurationImpl <em>Time Configuration</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.application.impl.TimeConfigurationImpl
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getTimeConfiguration()
+	 * @generated
+	 */
+	int TIME_CONFIGURATION = 1;
+
+	/**
+	 * The feature id for the '<em><b>Time Step</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_CONFIGURATION__TIME_STEP = 0;
+
+	/**
+	 * The feature id for the '<em><b>Unit</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_CONFIGURATION__UNIT = 1;
+
+	/**
+	 * The feature id for the '<em><b>Time Factor</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_CONFIGURATION__TIME_FACTOR = 2;
+
+	/**
+	 * The number of structural features of the '<em>Time Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_CONFIGURATION_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Time Configuration</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TIME_CONFIGURATION_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.IEngine <em>IEngine</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -248,7 +303,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIEngine()
 	 * @generated
 	 */
-	int IENGINE = 1;
+	int IENGINE = 2;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -330,7 +385,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIView()
 	 * @generated
 	 */
-	int IVIEW = 2;
+	int IVIEW = 3;
 
 	/**
 	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
@@ -412,7 +467,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getICadence()
 	 * @generated
 	 */
-	int ICADENCE = 3;
+	int ICADENCE = 4;
 
 	/**
 	 * The number of structural features of the '<em>ICadence</em>' class.
@@ -542,17 +597,6 @@ public interface ApplicationPackage extends EPackage
 	EReference getApplication_CurrentView();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Application#getTimeFactor <em>Time Factor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Time Factor</em>'.
-	 * @see org.sheepy.lily.core.model.application.Application#getTimeFactor()
-	 * @see #getApplication()
-	 * @generated
-	 */
-	EAttribute getApplication_TimeFactor();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.Application#getCadence <em>Cadence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -562,6 +606,60 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 */
 	EReference getApplication_Cadence();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.Application#getTimeConfiguration <em>Time Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Time Configuration</em>'.
+	 * @see org.sheepy.lily.core.model.application.Application#getTimeConfiguration()
+	 * @see #getApplication()
+	 * @generated
+	 */
+	EReference getApplication_TimeConfiguration();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.TimeConfiguration <em>Time Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Time Configuration</em>'.
+	 * @see org.sheepy.lily.core.model.application.TimeConfiguration
+	 * @generated
+	 */
+	EClass getTimeConfiguration();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.TimeConfiguration#getTimeStep <em>Time Step</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Time Step</em>'.
+	 * @see org.sheepy.lily.core.model.application.TimeConfiguration#getTimeStep()
+	 * @see #getTimeConfiguration()
+	 * @generated
+	 */
+	EAttribute getTimeConfiguration_TimeStep();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.TimeConfiguration#getUnit <em>Unit</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Unit</em>'.
+	 * @see org.sheepy.lily.core.model.application.TimeConfiguration#getUnit()
+	 * @see #getTimeConfiguration()
+	 * @generated
+	 */
+	EAttribute getTimeConfiguration_Unit();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.TimeConfiguration#getTimeFactor <em>Time Factor</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Time Factor</em>'.
+	 * @see org.sheepy.lily.core.model.application.TimeConfiguration#getTimeFactor()
+	 * @see #getTimeConfiguration()
+	 * @generated
+	 */
+	EAttribute getTimeConfiguration_TimeFactor();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.IEngine <em>IEngine</em>}'.
@@ -700,20 +798,54 @@ public interface ApplicationPackage extends EPackage
 		EReference APPLICATION__CURRENT_VIEW = eINSTANCE.getApplication_CurrentView();
 
 		/**
-		 * The meta object literal for the '<em><b>Time Factor</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute APPLICATION__TIME_FACTOR = eINSTANCE.getApplication_TimeFactor();
-
-		/**
 		 * The meta object literal for the '<em><b>Cadence</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference APPLICATION__CADENCE = eINSTANCE.getApplication_Cadence();
+
+		/**
+		 * The meta object literal for the '<em><b>Time Configuration</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference APPLICATION__TIME_CONFIGURATION = eINSTANCE.getApplication_TimeConfiguration();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.TimeConfigurationImpl <em>Time Configuration</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.impl.TimeConfigurationImpl
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getTimeConfiguration()
+		 * @generated
+		 */
+		EClass TIME_CONFIGURATION = eINSTANCE.getTimeConfiguration();
+
+		/**
+		 * The meta object literal for the '<em><b>Time Step</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TIME_CONFIGURATION__TIME_STEP = eINSTANCE.getTimeConfiguration_TimeStep();
+
+		/**
+		 * The meta object literal for the '<em><b>Unit</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TIME_CONFIGURATION__UNIT = eINSTANCE.getTimeConfiguration_Unit();
+
+		/**
+		 * The meta object literal for the '<em><b>Time Factor</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TIME_CONFIGURATION__TIME_FACTOR = eINSTANCE.getTimeConfiguration_TimeFactor();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.IEngine <em>IEngine</em>}' class.

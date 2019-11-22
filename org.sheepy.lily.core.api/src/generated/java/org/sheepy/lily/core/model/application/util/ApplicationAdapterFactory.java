@@ -83,6 +83,11 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 				return createApplicationAdapter();
 			}
 			@Override
+			public Adapter caseTimeConfiguration(TimeConfiguration object)
+			{
+				return createTimeConfigurationAdapter();
+			}
+			@Override
 			public Adapter caseIEngine(IEngine object)
 			{
 				return createIEngineAdapter();
@@ -139,6 +144,21 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createApplicationAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.TimeConfiguration <em>Time Configuration</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.TimeConfiguration
+	 * @generated
+	 */
+	public Adapter createTimeConfigurationAdapter()
 	{
 		return null;
 	}

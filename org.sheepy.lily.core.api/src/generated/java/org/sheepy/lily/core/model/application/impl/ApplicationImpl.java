@@ -35,6 +35,7 @@ import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.ICadence;
 import org.sheepy.lily.core.model.application.IEngine;
 import org.sheepy.lily.core.model.application.IView;
+import org.sheepy.lily.core.model.application.TimeConfiguration;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 
 import org.sheepy.lily.core.model.root.LObject;
@@ -62,8 +63,8 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getSize <em>Size</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getCurrentView <em>Current View</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getTimeFactor <em>Time Factor</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getCadence <em>Cadence</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getTimeConfiguration <em>Time Configuration</em>}</li>
  * </ul>
  *
  * @generated
@@ -231,26 +232,6 @@ public class ApplicationImpl extends LilyEObject implements Application
 	protected IView currentView;
 
 	/**
-	 * The default value of the '{@link #getTimeFactor() <em>Time Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTimeFactor()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double TIME_FACTOR_EDEFAULT = 1.0;
-
-	/**
-	 * The cached value of the '{@link #getTimeFactor() <em>Time Factor</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTimeFactor()
-	 * @generated
-	 * @ordered
-	 */
-	protected double timeFactor = TIME_FACTOR_EDEFAULT;
-
-	/**
 	 * The cached value of the '{@link #getCadence() <em>Cadence</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -259,6 +240,16 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @ordered
 	 */
 	protected ICadence cadence;
+
+	/**
+	 * The cached value of the '{@link #getTimeConfiguration() <em>Time Configuration</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTimeConfiguration()
+	 * @generated
+	 * @ordered
+	 */
+	protected TimeConfiguration timeConfiguration;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -537,31 +528,6 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @generated
 	 */
 	@Override
-	public double getTimeFactor()
-	{
-		return timeFactor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setTimeFactor(double newTimeFactor)
-	{
-		double oldTimeFactor = timeFactor;
-		timeFactor = newTimeFactor;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__TIME_FACTOR, oldTimeFactor, timeFactor));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public ICadence getCadence()
 	{
 		if (cadence != null && ((EObject)cadence).eIsProxy())
@@ -631,6 +597,83 @@ public class ApplicationImpl extends LilyEObject implements Application
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__CADENCE, newCadence, newCadence));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public TimeConfiguration getTimeConfiguration()
+	{
+		if (timeConfiguration != null && ((EObject)timeConfiguration).eIsProxy())
+		{
+			InternalEObject oldTimeConfiguration = (InternalEObject)timeConfiguration;
+			timeConfiguration = (TimeConfiguration)eResolveProxy(oldTimeConfiguration);
+			if (timeConfiguration != oldTimeConfiguration)
+			{
+				InternalEObject newTimeConfiguration = (InternalEObject)timeConfiguration;
+				NotificationChain msgs = oldTimeConfiguration.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__TIME_CONFIGURATION, null, null);
+				if (newTimeConfiguration.eInternalContainer() == null)
+				{
+					msgs = newTimeConfiguration.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__TIME_CONFIGURATION, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.APPLICATION__TIME_CONFIGURATION, oldTimeConfiguration, timeConfiguration));
+			}
+		}
+		return timeConfiguration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TimeConfiguration basicGetTimeConfiguration()
+	{
+		return timeConfiguration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetTimeConfiguration(TimeConfiguration newTimeConfiguration, NotificationChain msgs)
+	{
+		TimeConfiguration oldTimeConfiguration = timeConfiguration;
+		timeConfiguration = newTimeConfiguration;
+		if (eNotificationRequired())
+		{
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__TIME_CONFIGURATION, oldTimeConfiguration, newTimeConfiguration);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setTimeConfiguration(TimeConfiguration newTimeConfiguration)
+	{
+		if (newTimeConfiguration != timeConfiguration)
+		{
+			NotificationChain msgs = null;
+			if (timeConfiguration != null)
+				msgs = ((InternalEObject)timeConfiguration).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__TIME_CONFIGURATION, null, msgs);
+			if (newTimeConfiguration != null)
+				msgs = ((InternalEObject)newTimeConfiguration).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__TIME_CONFIGURATION, null, msgs);
+			msgs = basicSetTimeConfiguration(newTimeConfiguration, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__TIME_CONFIGURATION, newTimeConfiguration, newTimeConfiguration));
 	}
 
 	/**
@@ -743,6 +786,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return ((InternalEList<?>)getEngines()).basicRemove(otherEnd, msgs);
 			case ApplicationPackage.APPLICATION__CADENCE:
 				return basicSetCadence(null, msgs);
+			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
+				return basicSetTimeConfiguration(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -778,11 +823,12 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
 				if (resolve) return getCurrentView();
 				return basicGetCurrentView();
-			case ApplicationPackage.APPLICATION__TIME_FACTOR:
-				return getTimeFactor();
 			case ApplicationPackage.APPLICATION__CADENCE:
 				if (resolve) return getCadence();
 				return basicGetCadence();
+			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
+				if (resolve) return getTimeConfiguration();
+				return basicGetTimeConfiguration();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -830,11 +876,11 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
 				setCurrentView((IView)newValue);
 				return;
-			case ApplicationPackage.APPLICATION__TIME_FACTOR:
-				setTimeFactor((Double)newValue);
-				return;
 			case ApplicationPackage.APPLICATION__CADENCE:
 				setCadence((ICadence)newValue);
+				return;
+			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
+				setTimeConfiguration((TimeConfiguration)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -880,11 +926,11 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
 				setCurrentView((IView)null);
 				return;
-			case ApplicationPackage.APPLICATION__TIME_FACTOR:
-				setTimeFactor(TIME_FACTOR_EDEFAULT);
-				return;
 			case ApplicationPackage.APPLICATION__CADENCE:
 				setCadence((ICadence)null);
+				return;
+			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
+				setTimeConfiguration((TimeConfiguration)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -920,10 +966,10 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return SIZE_EDEFAULT == null ? size != null : !SIZE_EDEFAULT.equals(size);
 			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
 				return currentView != null;
-			case ApplicationPackage.APPLICATION__TIME_FACTOR:
-				return timeFactor != TIME_FACTOR_EDEFAULT;
 			case ApplicationPackage.APPLICATION__CADENCE:
 				return cadence != null;
+			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
+				return timeConfiguration != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -977,8 +1023,6 @@ public class ApplicationImpl extends LilyEObject implements Application
 		result.append(title);
 		result.append(", size: ");
 		result.append(size);
-		result.append(", timeFactor: ");
-		result.append(timeFactor);
 		result.append(')');
 		return result.toString();
 	}

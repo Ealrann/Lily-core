@@ -20,88 +20,139 @@ import org.eclipse.emf.common.util.Enumerator;
 public enum ETimeUnit implements Enumerator
 {
 	/**
-	 * The '<em><b>MILLISECOND</b></em>' literal object.
+	 * The '<em><b>NANOSECONDS</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #MILLISECOND_VALUE
+	 * @see #NANOSECONDS_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	MILLISECOND(0, "MILLISECOND", "MILLISECOND"),
-
-	/**
-	 * The '<em><b>SECOND</b></em>' literal object.
+	NANOSECONDS(0, "NANOSECONDS", "NANOSECONDS"), /**
+	 * The '<em><b>MICROSECONDS</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #SECOND_VALUE
+	 * @see #MICROSECONDS_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	SECOND(0, "SECOND", "SECOND"),
-
-	/**
-	 * The '<em><b>MINUTE</b></em>' literal object.
+	MICROSECONDS(1, "MICROSECONDS", "MICROSECONDS"), /**
+	 * The '<em><b>MILLISECONDS</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #MINUTE_VALUE
+	 * @see #MILLISECONDS_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	MINUTE(0, "MINUTE", "MINUTE"),
-
-	/**
-	 * The '<em><b>HOUR</b></em>' literal object.
+	MILLISECONDS(2, "MILLISECONDS", "MILLISECONDS"), /**
+	 * The '<em><b>SECONDS</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #HOUR_VALUE
+	 * @see #SECONDS_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	HOUR(0, "HOUR", "HOUR");
-
-	/**
-	 * The '<em><b>MILLISECOND</b></em>' literal value.
+	SECONDS(3, "SECONDS", "SECONDS"), /**
+	 * The '<em><b>MINUTES</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #MILLISECOND
+	 * @see #MINUTES_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	MINUTES(4, "MINUTES", "MINUTES"), /**
+	 * The '<em><b>HOURS</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #HOURS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	HOURS(5, "HOURS", "HOURS"), /**
+	 * The '<em><b>DAYS</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DAYS_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	DAYS(6, "DAYS", "DAYS");
+
+	/**
+	 * The '<em><b>NANOSECONDS</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #NANOSECONDS
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MILLISECOND_VALUE = 0;
+	public static final int NANOSECONDS_VALUE = 0;
 
 	/**
-	 * The '<em><b>SECOND</b></em>' literal value.
+	 * The '<em><b>MICROSECONDS</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #SECOND
+	 * @see #MICROSECONDS
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int SECOND_VALUE = 0;
+	public static final int MICROSECONDS_VALUE = 1;
 
 	/**
-	 * The '<em><b>MINUTE</b></em>' literal value.
+	 * The '<em><b>MILLISECONDS</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #MINUTE
+	 * @see #MILLISECONDS
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MINUTE_VALUE = 0;
+	public static final int MILLISECONDS_VALUE = 2;
 
 	/**
-	 * The '<em><b>HOUR</b></em>' literal value.
+	 * The '<em><b>SECONDS</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #HOUR
+	 * @see #SECONDS
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int HOUR_VALUE = 0;
+	public static final int SECONDS_VALUE = 3;
+
+	/**
+	 * The '<em><b>MINUTES</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #MINUTES
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MINUTES_VALUE = 4;
+
+	/**
+	 * The '<em><b>HOURS</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #HOURS
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int HOURS_VALUE = 5;
+
+	/**
+	 * The '<em><b>DAYS</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DAYS
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DAYS_VALUE = 6;
 
 	/**
 	 * An array of all the '<em><b>ETime Unit</b></em>' enumerators.
@@ -111,10 +162,13 @@ public enum ETimeUnit implements Enumerator
 	 */
 	private static final ETimeUnit[] VALUES_ARRAY = new ETimeUnit[]
 		{
-			MILLISECOND,
-			SECOND,
-			MINUTE,
-			HOUR,
+			NANOSECONDS,
+			MICROSECONDS,
+			MILLISECONDS,
+			SECONDS,
+			MINUTES,
+			HOURS,
+			DAYS,
 		};
 
 	/**
@@ -179,7 +233,13 @@ public enum ETimeUnit implements Enumerator
 	{
 		switch (value)
 		{
-			case MILLISECOND_VALUE: return MILLISECOND;
+			case NANOSECONDS_VALUE: return NANOSECONDS;
+			case MICROSECONDS_VALUE: return MICROSECONDS;
+			case MILLISECONDS_VALUE: return MILLISECONDS;
+			case SECONDS_VALUE: return SECONDS;
+			case MINUTES_VALUE: return MINUTES;
+			case HOURS_VALUE: return HOURS;
+			case DAYS_VALUE: return DAYS;
 		}
 		return null;
 	}

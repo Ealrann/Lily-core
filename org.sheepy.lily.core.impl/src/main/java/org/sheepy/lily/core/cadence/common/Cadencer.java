@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.emf.ecore.EObject;
@@ -26,6 +27,7 @@ import org.sheepy.lily.core.api.cadence.ITicker;
 import org.sheepy.lily.core.api.engine.IEngineAdapter;
 import org.sheepy.lily.core.api.input.IInputManager;
 import org.sheepy.lily.core.api.util.DebugUtil;
+import org.sheepy.lily.core.api.util.TimeUtil;
 import org.sheepy.lily.core.cadence.execution.CommandStack;
 import org.sheepy.lily.core.model.application.Application;
 
@@ -202,7 +204,7 @@ public class Cadencer implements ICadencer
 
 	public void tick(long stepNs)
 	{
-		final long appStepNs = (long) (application.getTimeFactor() * stepNs);
+		final long appStepNs = computeStepNs();
 
 		// =========
 		// Compute tickers to execute
@@ -267,6 +269,21 @@ public class Cadencer implements ICadencer
 		commandStack.execute();
 		blockingDuration = System.nanoTime() - blockingDuration;
 		statistics.addTime(CADENCE, MODEL_COMMANDS, blockingDuration);
+	}
+
+	private long computeStepNs()
+	{
+		final var timeConfig = application.getTimeConfiguration();
+		if (timeConfig != null)
+		{
+			final var unit = TimeUtil.resolveUnit(timeConfig.getUnit());
+			final long step = (long) (timeConfig.getTimeStep() * timeConfig.getTimeFactor());
+			return unit.toNanos(step);
+		}
+		else
+		{
+			return TimeUnit.SECONDS.toNanos(1);
+		}
 	}
 
 	@Override
