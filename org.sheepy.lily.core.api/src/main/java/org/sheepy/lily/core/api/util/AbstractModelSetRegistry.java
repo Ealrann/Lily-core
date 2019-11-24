@@ -6,7 +6,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.INotificationListener;
-import org.sheepy.lily.core.api.adapter.LilyEObject;
 
 public abstract class AbstractModelSetRegistry
 {
@@ -33,11 +32,11 @@ public abstract class AbstractModelSetRegistry
 		switch (notification.getEventType())
 		{
 		case Notification.ADD:
-			add((LilyEObject) notification.getNewValue());
+			add((ILilyEObject) notification.getNewValue());
 			break;
 		case Notification.ADD_MANY:
 			@SuppressWarnings("unchecked")
-			final var newList = (List<LilyEObject>) notification.getNewValue();
+			final var newList = (List<ILilyEObject>) notification.getNewValue();
 			for (int i = 0; i < newList.size(); i++)
 			{
 				final var newVal = newList.get(i);
@@ -46,15 +45,15 @@ public abstract class AbstractModelSetRegistry
 			break;
 		case Notification.SET:
 			if (notification.getOldValue() != null)
-				remove((LilyEObject) notification.getOldValue());
-			if (notification.getNewValue() != null) add((LilyEObject) notification.getNewValue());
+				remove((ILilyEObject) notification.getOldValue());
+			if (notification.getNewValue() != null) add((ILilyEObject) notification.getNewValue());
 			break;
 		case Notification.REMOVE:
-			remove((LilyEObject) notification.getOldValue());
+			remove((ILilyEObject) notification.getOldValue());
 			break;
 		case Notification.REMOVE_MANY:
 			@SuppressWarnings("unchecked")
-			final var oldList = (List<LilyEObject>) notification.getOldValue();
+			final var oldList = (List<ILilyEObject>) notification.getOldValue();
 			for (int i = 0; i < oldList.size(); i++)
 			{
 				final var oldVal = oldList.get(i);
@@ -64,6 +63,6 @@ public abstract class AbstractModelSetRegistry
 		}
 	}
 
-	protected abstract void add(LilyEObject newValue);
-	protected abstract void remove(LilyEObject oldValue);
+	protected abstract void add(ILilyEObject newValue);
+	protected abstract void remove(ILilyEObject oldValue);
 }

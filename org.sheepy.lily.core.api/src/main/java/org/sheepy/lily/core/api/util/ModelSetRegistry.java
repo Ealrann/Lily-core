@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
-import org.sheepy.lily.core.api.adapter.LilyEObject;
 
 public class ModelSetRegistry<T extends ILilyEObject> extends AbstractModelSetRegistry
 {
@@ -25,13 +24,13 @@ public class ModelSetRegistry<T extends ILilyEObject> extends AbstractModelSetRe
 	}
 
 	@Override
-	protected void add(LilyEObject newValue)
+	protected void add(ILilyEObject newValue)
 	{
 		list.add(classCast.cast(newValue));
 	}
 
 	@Override
-	protected void remove(LilyEObject oldValue)
+	protected void remove(ILilyEObject oldValue)
 	{
 		list.remove(oldValue);
 	}

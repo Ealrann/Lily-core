@@ -3,8 +3,8 @@ package org.sheepy.lily.core.api.util;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.INotificationListener;
-import org.sheepy.lily.core.api.adapter.LilyEObject;
 
 public class NotificationListenerDeployer extends AbstractModelSetRegistry
 {
@@ -21,13 +21,13 @@ public class NotificationListenerDeployer extends AbstractModelSetRegistry
 	}
 
 	@Override
-	protected void add(LilyEObject newValue)
+	protected void add(ILilyEObject newValue)
 	{
 		newValue.addListener(listener, featuresToListen);
 	}
 
 	@Override
-	protected void remove(LilyEObject oldValue)
+	protected void remove(ILilyEObject oldValue)
 	{
 		oldValue.removeListener(listener, featuresToListen);
 	}

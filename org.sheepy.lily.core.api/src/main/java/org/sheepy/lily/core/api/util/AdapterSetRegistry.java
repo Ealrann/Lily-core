@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.sheepy.lily.core.api.adapter.IAdapter;
-import org.sheepy.lily.core.api.adapter.LilyEObject;
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 
 public class AdapterSetRegistry<T extends IAdapter> extends AbstractModelSetRegistry
 {
@@ -25,13 +25,13 @@ public class AdapterSetRegistry<T extends IAdapter> extends AbstractModelSetRegi
 	}
 
 	@Override
-	protected void add(LilyEObject newValue)
+	protected void add(ILilyEObject newValue)
 	{
 		list.add(newValue.adapt(adapterType));
 	}
 
 	@Override
-	protected void remove(LilyEObject oldValue)
+	protected void remove(ILilyEObject oldValue)
 	{
 		list.remove(oldValue.adapt(adapterType));
 	}
