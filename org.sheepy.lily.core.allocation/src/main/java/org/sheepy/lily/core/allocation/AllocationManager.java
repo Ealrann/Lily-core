@@ -2,6 +2,7 @@ package org.sheepy.lily.core.allocation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.sheepy.lily.core.api.allocation.IAllocable;
 import org.sheepy.lily.core.api.allocation.IAllocationConfiguration;
@@ -19,7 +20,7 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 	private AllocationConfiguration configuration = null;
 
 	private boolean dirtyBranch = true;
-	private boolean allocated = false;
+	private EAllocationStatus status = EAllocationStatus.NotAllocated;
 
 	static final <T extends IAllocationContext> AllocationManager<T> newManager(AllocationManagerFactory<?> factory,
 																				AllocationManager<?> parent,
@@ -100,11 +101,18 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 			dirtyBranch = false;
 		}
 
-		if (configuration.dirty || !allocated)
+		if (configuration.dirty || status == EAllocationStatus.NotAllocated)
 		{
-			allocated = true;
-			allocable.allocate(configuration.context);
-			configuration.dirty = false;
+			if (configuration.isAllocable())
+			{
+				status = EAllocationStatus.Allocated;
+				allocable.allocate(configuration.context);
+				configuration.dirty = false;
+			}
+			else
+			{
+				status = EAllocationStatus.CannotAllocate;
+			}
 		}
 	}
 
@@ -122,10 +130,13 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 
 	public void free(boolean dirtyOnly)
 	{
-		if (allocated && (!dirtyOnly || configuration.dirty))
+		if (status != EAllocationStatus.NotAllocated && (!dirtyOnly || configuration.dirty))
 		{
-			allocable.free(configuration.context);
-			allocated = false;
+			if (status == EAllocationStatus.Allocated)
+			{
+				allocable.free(configuration.context);
+			}
+			status = EAllocationStatus.NotAllocated;
 		}
 
 		if (!dirtyOnly || dirtyBranch)
@@ -215,23 +226,43 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 
 	private final class AllocationConfiguration implements IAllocationConfiguration
 	{
+
 		public final List<AllocationManager<?>> children = new ArrayList<>();
 		public final List<AllocationManager<?>> dependencies = new ArrayList<>();
 
+		private final IDependencyListener dependencyListener = this::setDirty;
+
 		private IAllocationContext childrenContext = null;
 		private AllocationManager<T> childrenContextManager = null;
-
 		private T context = null;
 		private boolean dirty = false;
-
-		private final IDependencyListener dependencyListener = () ->
-		{
-			setDirty();
-		};
+		private Predicate<IAllocationContext> allocationCondition;
 
 		private AllocationConfiguration(T context)
 		{
 			this.context = context;
+		}
+
+		public boolean isAllocable()
+		{
+			boolean res = true;
+
+			if (allocationCondition != null)
+			{
+				res &= allocationCondition.test(context);
+			}
+
+			for (int i = 0; i < dependencies.size(); i++)
+			{
+				var dep = dependencies.get(i);
+				if (dep.status != EAllocationStatus.Allocated)
+				{
+					res &= false;
+					break;
+				}
+			}
+
+			return res;
 		}
 
 		public void allocateChildren()
@@ -309,7 +340,7 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 					final var childManager = factory.create(AllocationManager.this, child);
 					childManager.configure(childContext());
 
-					if (allocated)
+					if (status == EAllocationStatus.Allocated)
 					{
 						childManager.allocate();
 					}
@@ -403,6 +434,12 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 				}
 				fireDirtyChange();
 			}
+		}
+
+		@Override
+		public void setAllocationCondition(Predicate<IAllocationContext> predicate)
+		{
+			this.allocationCondition = predicate;
 		}
 	}
 

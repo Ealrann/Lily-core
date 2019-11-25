@@ -1,6 +1,7 @@
 package org.sheepy.lily.core.api.allocation;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 public interface IAllocationConfiguration
 {
@@ -15,4 +16,6 @@ public interface IAllocationConfiguration
 	void clearDependencies();
 
 	void setChildrenContext(IAllocationContext context);
+
+	void setAllocationCondition(Predicate<IAllocationContext> predicate);
 }
