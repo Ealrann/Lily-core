@@ -5,14 +5,14 @@ import org.eclipse.emf.common.notify.Notification;
 public class LongNotification implements Notification
 {
 	private final Object notifier;
-	private final int featureId;
+	private final Enum<?> feature;
 	private final long oldValue;
 	private final long newValue;
 
-	public LongNotification(Object Notifier, int featureId, long oldValue, long newValue)
+	public LongNotification(Object Notifier, Enum<?> feature, long oldValue, long newValue)
 	{
 		notifier = Notifier;
-		this.featureId = featureId;
+		this.feature = feature;
 		this.oldValue = oldValue;
 		this.newValue = newValue;
 	}
@@ -32,13 +32,13 @@ public class LongNotification implements Notification
 	@Override
 	public int getFeatureID(Class<?> expectedClass)
 	{
-		return featureId;
+		return feature.ordinal();
 	}
 
 	@Override
 	public Object getFeature()
 	{
-		return null;
+		return feature;
 	}
 
 	@Override

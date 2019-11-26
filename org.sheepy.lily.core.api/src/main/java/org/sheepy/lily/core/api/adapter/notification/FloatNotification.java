@@ -5,14 +5,14 @@ import org.eclipse.emf.common.notify.Notification;
 public class FloatNotification implements Notification
 {
 	private final Object notifier;
-	private final int featureId;
+	private final Enum<?> feature;
 	private final float oldValue;
 	private final float newValue;
 
-	public FloatNotification(Object Notifier, int featureId, float oldValue, float newValue)
+	public FloatNotification(Object Notifier, Enum<?> feature, float oldValue, float newValue)
 	{
 		notifier = Notifier;
-		this.featureId = featureId;
+		this.feature = feature;
 		this.oldValue = oldValue;
 		this.newValue = newValue;
 	}
@@ -32,13 +32,13 @@ public class FloatNotification implements Notification
 	@Override
 	public int getFeatureID(Class<?> expectedClass)
 	{
-		return featureId;
+		return feature.ordinal();
 	}
 
 	@Override
 	public Object getFeature()
 	{
-		return null;
+		return feature;
 	}
 
 	@Override
