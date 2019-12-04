@@ -15,7 +15,6 @@ repositories {
 project.ext.jomlVersion = "1.9.19"
 
 subprojects {
-
 	apply plugin: 'eclipse'
 	apply plugin: "org.javamodularity.moduleplugin"
 
@@ -33,7 +32,6 @@ subprojects {
 					entries.findAll { isModule(it) }.each {
 						it.entryAttributes['module'] = 'true'
 					}
-
 					//Test-scoped stuff should set the appropriate flag
 					entries.findAll { isTest(it) }.each {
 						it.entryAttributes['test'] = 'true'
@@ -46,6 +44,13 @@ subprojects {
 	afterEvaluate {
 		repositories {
 			jcenter()
+			maven {
+				url "https://maven.pkg.github.com/ealrann/emf-standalone"
+				credentials {
+					username = findProperty("github.username")
+					password = findProperty("github.token")
+				}
+			}
 		}
 	}
 }

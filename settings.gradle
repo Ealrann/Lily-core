@@ -6,6 +6,3 @@ include 'org.sheepy.lily.core.base'
 
 include 'org.sheepy.lily.core.allocation'
 include 'org.sheepy.lily.core.impl'
-
-// EMF
-includeBuild 'EMF'
