@@ -3,44 +3,33 @@
 package org.sheepy.lily.core.model.ui.impl;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
+
 import java.util.Collection;
-import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
-import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EContentsEList;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.joml.Vector2ic;
 
 import org.sheepy.lily.core.api.adapter.LilyEObject;
-import org.sheepy.lily.core.api.util.LTreeIterator;
 
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 import org.sheepy.lily.core.model.inference.InferencePackage;
+
 import org.sheepy.lily.core.model.presentation.IPositionElement;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
 import org.sheepy.lily.core.model.presentation.IUIElement;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
-
-import org.sheepy.lily.core.model.root.LObject;
-import org.sheepy.lily.core.model.root.RootPackage;
-
-import org.sheepy.lily.core.model.root.RootPackage.Literals;
 
 import org.sheepy.lily.core.model.types.EHorizontalRelative;
 import org.sheepy.lily.core.model.types.EVerticalRelative;
@@ -60,7 +49,6 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  * </p>
  * <ul>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getContentObjects <em>Content Objects</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getPosition <em>Position</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getVerticalRelative <em>Vertical Relative</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getHorizontalRelative <em>Horizontal Relative</em>}</li>
@@ -96,16 +84,6 @@ public class PanelImpl extends LilyEObject implements Panel
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getContentObjects() <em>Content Objects</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContentObjects()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<LObject> contentObjects;
 
 	/**
 	 * The default value of the '{@link #getPosition() <em>Position</em>}' attribute.
@@ -341,31 +319,6 @@ public class PanelImpl extends LilyEObject implements Panel
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<LObject> getContentObjects()
-	{
-		return contentObjects;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setContentObjects(EList<LObject> newContentObjects)
-	{
-		EList<LObject> oldContentObjects = contentObjects;
-		contentObjects = newContentObjects;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__CONTENT_OBJECTS, oldContentObjects, contentObjects));
 	}
 
 	/**
@@ -614,89 +567,6 @@ public class PanelImpl extends LilyEObject implements Panel
 	 * @generated
 	 */
 	@Override
-	public <T extends LObject> EList<T> createContainmentEList(final EClass targetEClass)
-	{
-		EList<T> res = null;
-		final List<EStructuralFeature> unitRefs = new ArrayList<EStructuralFeature>();
-		EList<EReference> _eAllContainments = this.eClass().getEAllContainments();
-		for (final EReference ref : _eAllContainments)
-		{
-			EClassifier _eType = ref.getEType();
-			boolean _isSuperTypeOf = targetEClass.isSuperTypeOf(((EClass) _eType));
-			if (_isSuperTypeOf)
-			{
-				unitRefs.add(ref);
-			}
-		}
-		boolean _isEmpty = unitRefs.isEmpty();
-		if (_isEmpty)
-		{
-			res = ECollections.<T>emptyEList();
-		}
-		else
-		{
-			EContentsEList<T> _eContentsEList = new EContentsEList<T>(this, unitRefs);
-			res = _eContentsEList;
-		}
-		return res;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<LObject> lContents()
-	{
-		EList<LObject> _xblockexpression = null;
-		{
-			EList<LObject> _contentObjects = this.getContentObjects();
-			boolean _tripleEquals = (_contentObjects == null);
-			if (_tripleEquals)
-			{
-				this.setContentObjects(this.<LObject>createContainmentEList(Literals.LOBJECT));
-			}
-			_xblockexpression = this.getContentObjects();
-		}
-		return _xblockexpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public LObject lParent()
-	{
-		LObject _xifexpression = null;
-		EObject _eContainer = this.eContainer();
-		if ((_eContainer instanceof LObject))
-		{
-			EObject _eContainer_1 = this.eContainer();
-			_xifexpression = ((LObject) _eContainer_1);
-		}
-		return _xifexpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public LTreeIterator lAllContents()
-	{
-		return new LTreeIterator(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public IInferenceObject lInferenceObject()
 	{
 		return this;
@@ -730,8 +600,6 @@ public class PanelImpl extends LilyEObject implements Panel
 		{
 			case UiPackage.PANEL__NAME:
 				return getName();
-			case UiPackage.PANEL__CONTENT_OBJECTS:
-				return getContentObjects();
 			case UiPackage.PANEL__POSITION:
 				return getPosition();
 			case UiPackage.PANEL__VERTICAL_RELATIVE:
@@ -769,9 +637,6 @@ public class PanelImpl extends LilyEObject implements Panel
 		{
 			case UiPackage.PANEL__NAME:
 				setName((String)newValue);
-				return;
-			case UiPackage.PANEL__CONTENT_OBJECTS:
-				setContentObjects((EList<LObject>)newValue);
 				return;
 			case UiPackage.PANEL__POSITION:
 				setPosition((Vector2ic)newValue);
@@ -821,9 +686,6 @@ public class PanelImpl extends LilyEObject implements Panel
 			case UiPackage.PANEL__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case UiPackage.PANEL__CONTENT_OBJECTS:
-				setContentObjects((EList<LObject>)null);
-				return;
 			case UiPackage.PANEL__POSITION:
 				setPosition(POSITION_EDEFAULT);
 				return;
@@ -870,8 +732,6 @@ public class PanelImpl extends LilyEObject implements Panel
 		{
 			case UiPackage.PANEL__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case UiPackage.PANEL__CONTENT_OBJECTS:
-				return contentObjects != null;
 			case UiPackage.PANEL__POSITION:
 				return POSITION_EDEFAULT == null ? position != null : !POSITION_EDEFAULT.equals(position);
 			case UiPackage.PANEL__VERTICAL_RELATIVE:
@@ -908,14 +768,6 @@ public class PanelImpl extends LilyEObject implements Panel
 		{
 			switch (derivedFeatureID)
 			{
-				default: return -1;
-			}
-		}
-		if (baseClass == LObject.class)
-		{
-			switch (derivedFeatureID)
-			{
-				case UiPackage.PANEL__CONTENT_OBJECTS: return RootPackage.LOBJECT__CONTENT_OBJECTS;
 				default: return -1;
 			}
 		}
@@ -960,14 +812,6 @@ public class PanelImpl extends LilyEObject implements Panel
 		{
 			switch (baseFeatureID)
 			{
-				default: return -1;
-			}
-		}
-		if (baseClass == LObject.class)
-		{
-			switch (baseFeatureID)
-			{
-				case RootPackage.LOBJECT__CONTENT_OBJECTS: return UiPackage.PANEL__CONTENT_OBJECTS;
 				default: return -1;
 			}
 		}
@@ -1016,17 +860,6 @@ public class PanelImpl extends LilyEObject implements Panel
 				default: return -1;
 			}
 		}
-		if (baseClass == LObject.class)
-		{
-			switch (baseOperationID)
-			{
-				case RootPackage.LOBJECT___CREATE_CONTAINMENT_ELIST__ECLASS: return UiPackage.PANEL___CREATE_CONTAINMENT_ELIST__ECLASS;
-				case RootPackage.LOBJECT___LCONTENTS: return UiPackage.PANEL___LCONTENTS;
-				case RootPackage.LOBJECT___LPARENT: return UiPackage.PANEL___LPARENT;
-				case RootPackage.LOBJECT___LALL_CONTENTS: return UiPackage.PANEL___LALL_CONTENTS;
-				default: return -1;
-			}
-		}
 		if (baseClass == IUIElement.class)
 		{
 			switch (baseOperationID)
@@ -1061,14 +894,6 @@ public class PanelImpl extends LilyEObject implements Panel
 	{
 		switch (operationID)
 		{
-			case UiPackage.PANEL___CREATE_CONTAINMENT_ELIST__ECLASS:
-				return createContainmentEList((EClass)arguments.get(0));
-			case UiPackage.PANEL___LCONTENTS:
-				return lContents();
-			case UiPackage.PANEL___LPARENT:
-				return lParent();
-			case UiPackage.PANEL___LALL_CONTENTS:
-				return lAllContents();
 			case UiPackage.PANEL___LINFERENCE_OBJECT:
 				return lInferenceObject();
 		}
@@ -1088,8 +913,6 @@ public class PanelImpl extends LilyEObject implements Panel
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
-		result.append(", contentObjects: ");
-		result.append(contentObjects);
 		result.append(", position: ");
 		result.append(position);
 		result.append(", verticalRelative: ");

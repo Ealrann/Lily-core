@@ -25,12 +25,12 @@ public interface FloatParameter extends NativeParameter<Float>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Value</em>' attribute.
-	 * @see #setValue(Float)
+	 * @see #setValue(float)
 	 * @see org.sheepy.lily.core.model.types.TypesPackage#getFloatParameter_Value()
 	 * @model unique="false"
 	 * @generated
 	 */
-	Float getValue();
+	float getValue();
 
 	/**
 	 * Sets the value of the '{@link org.sheepy.lily.core.model.types.FloatParameter#getValue <em>Value</em>}' attribute.
@@ -40,7 +40,7 @@ public interface FloatParameter extends NativeParameter<Float>
 	 * @see #getValue()
 	 * @generated
 	 */
-	void setValue(Float value);
+	void setValue(float value);
 
 	/**
 	 * <!-- begin-user-doc -->

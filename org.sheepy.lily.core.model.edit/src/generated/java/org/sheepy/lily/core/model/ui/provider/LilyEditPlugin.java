@@ -5,28 +5,14 @@ package org.sheepy.lily.core.model.ui.provider;
 import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
-import org.sheepy.lily.core.model.action.provider.ActionEditPlugin;
-
-import org.sheepy.lily.core.model.application.provider.ApplicationEditPlugin;
-
-import org.sheepy.lily.core.model.inference.provider.InferenceEditPlugin;
-
-import org.sheepy.lily.core.model.presentation.provider.PresentationEditPlugin;
-
-import org.sheepy.lily.core.model.root.provider.RootEditPlugin;
-
-import org.sheepy.lily.core.model.types.provider.TypesEditPlugin;
-
-import org.sheepy.lily.core.model.variable.provider.VariableEditPlugin;
 
 /**
- * This is the central singleton for the Ui edit plugin.
+ * This is the central singleton for the Lily edit plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public final class UiEditPlugin extends EMFPlugin
+public final class LilyEditPlugin extends EMFPlugin
 {
 	/**
 	 * Keep track of the singleton.
@@ -34,7 +20,7 @@ public final class UiEditPlugin extends EMFPlugin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final UiEditPlugin INSTANCE = new UiEditPlugin();
+	public static final LilyEditPlugin INSTANCE = new LilyEditPlugin();
 
 	/**
 	 * Keep track of the singleton.
@@ -50,19 +36,11 @@ public final class UiEditPlugin extends EMFPlugin
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public UiEditPlugin()
+	public LilyEditPlugin()
 	{
 		super
 		  (new ResourceLocator [] 
 		   {
-		     PresentationEditPlugin.INSTANCE,
-		     TypesEditPlugin.INSTANCE,
-		     RootEditPlugin.INSTANCE,
-		     InferenceEditPlugin.INSTANCE,
-		     EcoreEditPlugin.INSTANCE,
-		     VariableEditPlugin.INSTANCE,
-		     ActionEditPlugin.INSTANCE,
-		     ApplicationEditPlugin.INSTANCE,
 		   });
 	}
 

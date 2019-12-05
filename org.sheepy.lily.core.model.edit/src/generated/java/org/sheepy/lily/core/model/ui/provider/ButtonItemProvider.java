@@ -7,14 +7,13 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.sheepy.lily.core.model.root.LObject;
+import org.joml.Vector2ic;
 import org.sheepy.lily.core.model.ui.Button;
 import org.sheepy.lily.core.model.ui.UiPackage;
 
@@ -158,7 +157,7 @@ public class ButtonItemProvider extends AbstractButtonItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((Button)object).getContentObjects();
+		Vector2ic labelValue = ((Button)object).getPosition();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Button_type") :

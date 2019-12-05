@@ -5,8 +5,8 @@
     modelPluginID="org.sheepy.lily.core.model" modelName="Lily" rootExtendsInterface="org.sheepy.lily.core.api.adapter.ILilyEObject"
     rootExtendsClass="org.sheepy.lily.core.api.adapter.LilyEObject" testsDirectory=""
     importerID="org.eclipse.emf.importer.ecore" containmentProxies="true" complianceLevel="11.0"
-    copyrightFields="false" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore"
-    operationReflection="true" importOrganizing="true" cleanup="true" eclipsePlatformVersion="2019-06">
+    copyrightFields="false" operationReflection="true" importOrganizing="true" cleanup="true"
+    eclipsePlatformVersion="2019-06">
   <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter">
     <genAnnotations source="selectedPackages">
       <details key="http://www.eclipse.org/emf/2002/Ecore" value="Ecore.xsd"/>
@@ -19,17 +19,154 @@
     </genAnnotations>
     <details key="directoryURI" value="."/>
   </genAnnotations>
-  <foreignModel>types.ecore</foreignModel>
-  <foreignModel>action.ecore</foreignModel>
+  <foreignModel>ui.ecore</foreignModel>
+  <foreignModel>presentation.ecore</foreignModel>
   <foreignModel>application.ecore</foreignModel>
-  <foreignModel>root.ecore</foreignModel>
+  <foreignModel>variable.ecore</foreignModel>
+  <foreignModel>types.ecore</foreignModel>
   <foreignModel>inference.ecore</foreignModel>
   <foreignModel>maintainer.ecore</foreignModel>
-  <foreignModel>presentation.ecore</foreignModel>
-  <foreignModel>resolver.ecore</foreignModel>
-  <foreignModel>ui.ecore</foreignModel>
-  <foreignModel>variable.ecore</foreignModel>
   <foreignModel>cadence.ecore</foreignModel>
+  <foreignModel>action.ecore</foreignModel>
+  <genPackages prefix="Ui" basePackage="org.sheepy.lily.core.model" resource="XMI"
+      disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
+      ecorePackage="ui.ecore#/">
+    <genClasses ecoreClass="ui.ecore#//Panel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//Panel/controls"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Panel/showTitle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Panel/minimizable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Panel/movable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Panel/minimized"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ui.ecore#//IControl"/>
+    <genClasses image="false" ecoreClass="ui.ecore#//Widget"/>
+    <genClasses image="false" ecoreClass="ui.ecore#//AbstractLabel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//AbstractLabel/text"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//AbstractLabel/fontScale"/>
+    </genClasses>
+    <genClasses ecoreClass="ui.ecore#//DynamicRowLayout">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//DynamicRowLayout/height"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//DynamicRowLayout/columnCount"/>
+    </genClasses>
+    <genClasses ecoreClass="ui.ecore#//VariableLabel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//VariableLabel/variableResolver"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//VariableLabel/showName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//VariableLabel/format"/>
+    </genClasses>
+    <genClasses ecoreClass="ui.ecore#//Label"/>
+    <genClasses ecoreClass="ui.ecore#//Slider">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Slider/minValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Slider/maxValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Slider/step"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//Slider/variableResolver"/>
+    </genClasses>
+    <genClasses ecoreClass="ui.ecore#//TextField">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//TextField/variableResolver"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ui.ecore#//AbstractButton">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//AbstractButton/text"/>
+    </genClasses>
+    <genClasses ecoreClass="ui.ecore#//Button">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Button/shortcut"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Button/state"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//Button/actions"/>
+      <genOperations ecoreOperation="ui.ecore#//Button/lActions" body="return this.getActions();"/>
+      <genOperations ecoreOperation="ui.ecore#//Button/getExecutor" body="&lt;%org.eclipse.emf.ecore.EObject%> unit = this;&#xA;while (((unit instanceof &lt;%org.sheepy.lily.core.model.application.IView%>) == false))&#xA;{&#xA;&#x9;unit = unit.eContainer();&#xA;}&#xA;return (IView) unit;"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ui.ecore#//AbstractBooleanButton">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//AbstractBooleanButton/textWhenTrue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//AbstractBooleanButton/textWhenFalse"/>
+    </genClasses>
+    <genClasses ecoreClass="ui.ecore#//BooleanButton">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//BooleanButton/variableResolver"/>
+    </genClasses>
+    <genClasses ecoreClass="ui.ecore#//BooleanActionButton">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//BooleanActionButton/actionWhenTrue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//BooleanActionButton/actionWhenFalse"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Presentation" basePackage="org.sheepy.lily.core.model" resource="XMI"
+      disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
+      ecorePackage="presentation.ecore#/">
+    <genClasses image="false" ecoreClass="presentation.ecore#//IPositionElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//IPositionElement/position"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//IPositionElement/verticalRelative"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//IPositionElement/horizontalRelative"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="presentation.ecore#//ISizedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//ISizedElement/width"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//ISizedElement/height"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="presentation.ecore#//IUIView">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference presentation.ecore#//IUIView/uiPages"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference presentation.ecore#//IUIView/currentUIPage"/>
+    </genClasses>
+    <genClasses ecoreClass="presentation.ecore#//TranparentUIView"/>
+    <genClasses image="false" ecoreClass="presentation.ecore#//IMusicView">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//IMusicView/musicPath"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="presentation.ecore#//ISizedView">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//ISizedView/moveable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//ISizedView/closeable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//ISizedView/scalable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//ISizedView/showTitle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//ISizedView/fullscreen"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="presentation.ecore#//IUIElement"/>
+    <genClasses ecoreClass="presentation.ecore#//UIPage">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference presentation.ecore#//UIPage/panels"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="presentation.ecore#//IPanel"/>
+  </genPackages>
+  <genPackages prefix="Application" basePackage="org.sheepy.lily.core.model" resource="XMI"
+      disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="application.ecore#/">
+    <genClasses ecoreClass="application.ecore#//Application">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/views"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/engines"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/run"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/fullscreen"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/resizeable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/headless"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/size"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference application.ecore#//Application/currentView"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/cadence"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/timeConfiguration"/>
+    </genClasses>
+    <genClasses ecoreClass="application.ecore#//TimeConfiguration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//TimeConfiguration/timeStep"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//TimeConfiguration/unit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//TimeConfiguration/timeFactor"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="application.ecore#//IEngine"/>
+    <genClasses image="false" ecoreClass="application.ecore#//IView"/>
+    <genClasses image="false" ecoreClass="application.ecore#//ICadence"/>
+  </genPackages>
+  <genPackages prefix="Variable" basePackage="org.sheepy.lily.core.model" resource="XMI"
+      disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="variable.ecore#/">
+    <genDataTypes ecoreDataType="variable.ecore#//LResolvedVariableFeature"/>
+    <genDataTypes ecoreDataType="variable.ecore#//VariableDefinition"/>
+    <genClasses image="false" ecoreClass="variable.ecore#//IVariableResolver"/>
+    <genClasses image="false" ecoreClass="variable.ecore#//IDefinitionContainer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute variable.ecore#//IDefinitionContainer/variableDefinition"/>
+    </genClasses>
+    <genClasses ecoreClass="variable.ecore#//ChainVariableResolver">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference variable.ecore#//ChainVariableResolver/firstResolver"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference variable.ecore#//ChainVariableResolver/subResolvers"/>
+    </genClasses>
+    <genClasses ecoreClass="variable.ecore#//ChainResolver"/>
+    <genClasses image="false" ecoreClass="variable.ecore#//AbstractDefinedVariableResolver"/>
+    <genClasses ecoreClass="variable.ecore#//DirectVariableResolver">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference variable.ecore#//DirectVariableResolver/target"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="variable.ecore#//VarChangeAction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference variable.ecore#//VarChangeAction/variableResolver"/>
+    </genClasses>
+    <genClasses ecoreClass="variable.ecore#//BooleanChangeAction"/>
+    <genClasses ecoreClass="variable.ecore#//VarChangeActionPkg">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference variable.ecore#//VarChangeActionPkg/actions"/>
+    </genClasses>
+  </genPackages>
   <genPackages prefix="Types" basePackage="org.sheepy.lily.core.model" resource="XMI"
       disposableProviderFactory="true" ecorePackage="types.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="types.ecore#//ENotificationDirection">
@@ -139,58 +276,6 @@
           body="return this.getValue();"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Action" basePackage="org.sheepy.lily.core.model" resource="XMI"
-      disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="action.ecore#/">
-    <genDataTypes ecoreDataType="action.ecore#//ActionList"/>
-    <genClasses image="false" ecoreClass="action.ecore#//Action"/>
-  </genPackages>
-  <genPackages prefix="Application" basePackage="org.sheepy.lily.core.model" resource="XMI"
-      disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="application.ecore#/">
-    <genClasses ecoreClass="application.ecore#//Application">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/views"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/engines"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/run"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/fullscreen"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/resizeable"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/headless"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/title"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/size"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference application.ecore#//Application/currentView"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/cadence"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/timeConfiguration"/>
-    </genClasses>
-    <genClasses ecoreClass="application.ecore#//TimeConfiguration">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//TimeConfiguration/timeStep"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//TimeConfiguration/unit"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//TimeConfiguration/timeFactor"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="application.ecore#//IEngine"/>
-    <genClasses image="false" ecoreClass="application.ecore#//IView"/>
-    <genClasses image="false" ecoreClass="application.ecore#//ICadence"/>
-  </genPackages>
-  <genPackages prefix="Root" basePackage="org.sheepy.lily.core.model" resource="XMI"
-      disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
-      ecorePackage="root.ecore#/">
-    <genDataTypes ecoreDataType="root.ecore#//LContentList"/>
-    <genDataTypes ecoreDataType="root.ecore#//LTreeIterator"/>
-    <genDataTypes ecoreDataType="root.ecore#//LCollection"/>
-    <genClasses image="false" ecoreClass="root.ecore#//LObject">
-      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute root.ecore#//LObject/contentObjects"/>
-      <genOperations ecoreOperation="root.ecore#//LObject/createContainmentEList"
-          body="&lt;%org.eclipse.emf.common.util.EList%>&lt;T> res = null;&#xA;final &lt;%java.util.List%>&lt;&lt;%org.eclipse.emf.ecore.EStructuralFeature%>> unitRefs = new &lt;%java.util.ArrayList%>&lt;&lt;%org.eclipse.emf.ecore.EStructuralFeature%>>();&#xA;&lt;%org.eclipse.emf.common.util.EList%>&lt;&lt;%org.eclipse.emf.ecore.EReference%>> _eAllContainments = this.eClass().getEAllContainments();&#xA;for (final &lt;%org.eclipse.emf.ecore.EReference%> ref : _eAllContainments)&#xA;{&#xA;&#x9;&lt;%org.eclipse.emf.ecore.EClassifier%> _eType = ref.getEType();&#xA;&#x9;boolean _isSuperTypeOf = targetEClass.isSuperTypeOf(((&lt;%org.eclipse.emf.ecore.EClass%>) _eType));&#xA;&#x9;if (_isSuperTypeOf)&#xA;&#x9;{&#xA;&#x9;&#x9;unitRefs.add(ref);&#xA;&#x9;}&#xA;}&#xA;boolean _isEmpty = unitRefs.isEmpty();&#xA;if (_isEmpty)&#xA;{&#xA;&#x9;res = &lt;%org.eclipse.emf.common.util.ECollections%>.&lt;T>emptyEList();&#xA;}&#xA;else&#xA;{&#xA;&#x9;&lt;%org.eclipse.emf.ecore.util.EContentsEList%>&lt;T> _eContentsEList = new &lt;%org.eclipse.emf.ecore.util.EContentsEList%>&lt;T>(this, unitRefs);&#xA;&#x9;res = _eContentsEList;&#xA;}&#xA;return res;">
-        <genParameters ecoreParameter="root.ecore#//LObject/createContainmentEList/targetEClass"/>
-        <genTypeParameters ecoreTypeParameter="root.ecore#//LObject/createContainmentEList/T"/>
-      </genOperations>
-      <genOperations ecoreOperation="root.ecore#//LObject/lContents" body="&lt;%org.eclipse.emf.common.util.EList%>&lt;&lt;%org.sheepy.lily.core.model.root.LObject%>> _xblockexpression = null;&#xA;{&#xA;&#x9;&lt;%org.eclipse.emf.common.util.EList%>&lt;&lt;%org.sheepy.lily.core.model.root.LObject%>> _contentObjects = this.getContentObjects();&#xA;&#x9;boolean _tripleEquals = (_contentObjects == null);&#xA;&#x9;if (_tripleEquals)&#xA;&#x9;{&#xA;&#x9;&#x9;this.setContentObjects(this.&lt;&lt;%org.sheepy.lily.core.model.root.LObject%>>createContainmentEList(&lt;%org.sheepy.lily.core.model.root.RootPackage.Literals%>.LOBJECT));&#xA;&#x9;}&#xA;&#x9;_xblockexpression = this.getContentObjects();&#xA;}&#xA;return _xblockexpression;"/>
-      <genOperations ecoreOperation="root.ecore#//LObject/lParent" body="&lt;%org.sheepy.lily.core.model.root.LObject%> _xifexpression = null;&#xA;&lt;%org.eclipse.emf.ecore.EObject%> _eContainer = this.eContainer();&#xA;if ((_eContainer instanceof &lt;%org.sheepy.lily.core.model.root.LObject%>))&#xA;{&#xA;&#x9;&lt;%org.eclipse.emf.ecore.EObject%> _eContainer_1 = this.eContainer();&#xA;&#x9;_xifexpression = ((&lt;%org.sheepy.lily.core.model.root.LObject%>) _eContainer_1);&#xA;}&#xA;return _xifexpression;"/>
-      <genOperations ecoreOperation="root.ecore#//LObject/lAllContents" body="return new &lt;%org.sheepy.lily.core.api.util.LTreeIterator%>(this);"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="root.ecore#//XAction">
-      <genOperations ecoreOperation="root.ecore#//XAction/execute">
-        <genParameters ecoreParameter="root.ecore#//XAction/execute/object"/>
-      </genOperations>
-    </genClasses>
-  </genPackages>
   <genPackages prefix="Inference" basePackage="org.sheepy.lily.core.model" resource="XMI"
       disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="inference.ecore#/">
     <genClasses image="false" ecoreClass="inference.ecore#//IInferenceObject">
@@ -240,150 +325,6 @@
           ecoreFeature="ecore:EReference maintainer.ecore#//Maintainer/maintained"/>
     </genClasses>
   </genPackages>
-  <genPackages prefix="Presentation" basePackage="org.sheepy.lily.core.model" resource="XMI"
-      disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
-      ecorePackage="presentation.ecore#/">
-    <genClasses image="false" ecoreClass="presentation.ecore#//IPositionElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//IPositionElement/position"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//IPositionElement/verticalRelative"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//IPositionElement/horizontalRelative"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="presentation.ecore#//ISizedElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//ISizedElement/width"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//ISizedElement/height"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="presentation.ecore#//IUIView">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference presentation.ecore#//IUIView/uiPages"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference presentation.ecore#//IUIView/currentUIPage"/>
-    </genClasses>
-    <genClasses ecoreClass="presentation.ecore#//TranparentUIView"/>
-    <genClasses image="false" ecoreClass="presentation.ecore#//IMusicView">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//IMusicView/musicPath"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="presentation.ecore#//ISizedView">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//ISizedView/moveable"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//ISizedView/closeable"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//ISizedView/scalable"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//ISizedView/showTitle"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//ISizedView/fullscreen"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="presentation.ecore#//IUIElement"/>
-    <genClasses ecoreClass="presentation.ecore#//UIPage">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference presentation.ecore#//UIPage/panels"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="presentation.ecore#//IPanel"/>
-  </genPackages>
-  <genPackages prefix="Resolver" basePackage="org.sheepy.lily.core.model" resource="XMI"
-      disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
-      ecorePackage="resolver.ecore#/">
-    <genClasses image="false" ecoreClass="resolver.ecore#//ILObjectResolver">
-      <genOperations ecoreOperation="resolver.ecore#//ILObjectResolver/collectUnits">
-        <genParameters ecoreParameter="resolver.ecore#//ILObjectResolver/collectUnits/source"/>
-        <genParameters ecoreParameter="resolver.ecore#//ILObjectResolver/collectUnits/collected"/>
-      </genOperations>
-    </genClasses>
-    <genClasses ecoreClass="resolver.ecore#//EReferenceResolver">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resolver.ecore#//EReferenceResolver/referenceName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resolver.ecore#//EReferenceResolver/className"/>
-      <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
-          ecoreFeature="ecore:EReference resolver.ecore#//EReferenceResolver/internalReference"/>
-      <genOperations ecoreOperation="resolver.ecore#//EReferenceResolver/collectUnits"
-          body="&lt;%org.eclipse.emf.ecore.EReference%> _internalReference = this.getInternalReference();&#xA;boolean _tripleEquals = (_internalReference == null);&#xA;if (_tripleEquals)&#xA;{&#xA;&#x9;&lt;%org.eclipse.emf.common.util.EList%>&lt;&lt;%org.eclipse.emf.ecore.EReference%>> _eAllReferences = source.eClass().getEAllReferences();&#xA;&#x9;for (final &lt;%org.eclipse.emf.ecore.EReference%> ref : _eAllReferences)&#xA;&#x9;{&#xA;&#x9;&#x9;boolean _equals = ref.getName().equals(this.getReferenceName());&#xA;&#x9;&#x9;if (_equals)&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;this.setInternalReference(ref);&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;}&#xA;&lt;%org.eclipse.emf.ecore.EReference%> _internalReference_1 = this.getInternalReference();&#xA;boolean _tripleNotEquals = (_internalReference_1 != null);&#xA;if (_tripleNotEquals)&#xA;{&#xA;&#x9;boolean _isMany = this.getInternalReference().isMany();&#xA;&#x9;if (_isMany)&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%java.lang.Object%> _eGet = source.eGet(this.getInternalReference());&#xA;&#x9;&#x9;for (final &lt;%java.lang.Object%> obj : ((&lt;%org.eclipse.emf.common.util.EList%>&lt;?>) _eGet))&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;if (((this.getClassName() == null) || ((&lt;%org.eclipse.emf.ecore.EObject%>) obj).eClass().getName().equals(this.getClassName())))&#xA;&#x9;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;&#x9;collected.add(((&lt;%org.sheepy.lily.core.model.root.LObject%>) obj));&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#x9;else&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%java.lang.Object%> _eGet_1 = source.eGet(this.getInternalReference());&#xA;&#x9;&#x9;final &lt;%org.sheepy.lily.core.model.root.LObject%> target = ((&lt;%org.sheepy.lily.core.model.root.LObject%>) _eGet_1);&#xA;&#x9;&#x9;if (((this.getClassName() == null) || target.eClass().getName().equals(this.getClassName())))&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;collected.add(target);&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;}">
-        <genParameters ecoreParameter="resolver.ecore#//EReferenceResolver/collectUnits/source"/>
-        <genParameters ecoreParameter="resolver.ecore#//EReferenceResolver/collectUnits/collected"/>
-      </genOperations>
-    </genClasses>
-    <genClasses ecoreClass="resolver.ecore#//ChainResolver">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resolver.ecore#//ChainResolver/resolvers"/>
-      <genOperations ecoreOperation="resolver.ecore#//ChainResolver/collectUnits"
-          body="&lt;%java.util.Deque%>&lt;&lt;%org.sheepy.lily.core.model.root.LObject%>> course = new &lt;%java.util.ArrayDeque%>&lt;&lt;%org.sheepy.lily.core.model.root.LObject%>>();&#xA;&lt;%java.util.Deque%>&lt;&lt;%org.sheepy.lily.core.model.root.LObject%>> next = new &lt;%java.util.ArrayDeque%>&lt;&lt;%org.sheepy.lily.core.model.root.LObject%>>();&#xA;&lt;%java.util.Deque%>&lt;&lt;%org.sheepy.lily.core.model.root.LObject%>> temp = null;&#xA;next.add(source);&#xA;&lt;%org.eclipse.emf.common.util.EList%>&lt;&lt;%org.sheepy.lily.core.model.resolver.ILObjectResolver%>> _resolvers = this.getResolvers();&#xA;for (final &lt;%org.sheepy.lily.core.model.resolver.ILObjectResolver%> resolver : _resolvers)&#xA;{&#xA;&#x9;{&#xA;&#x9;&#x9;temp = course;&#xA;&#x9;&#x9;course = next;&#xA;&#x9;&#x9;next = temp;&#xA;&#x9;&#x9;while ((course.isEmpty() == false))&#xA;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;{&#xA;&#x9;&#x9;&#x9;&#x9;final &lt;%org.sheepy.lily.core.model.root.LObject%> object = course.poll();&#xA;&#x9;&#x9;&#x9;&#x9;resolver.collectUnits(object, next);&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;}&#xA;collected.addAll(next);">
-        <genParameters ecoreParameter="resolver.ecore#//ChainResolver/collectUnits/source"/>
-        <genParameters ecoreParameter="resolver.ecore#//ChainResolver/collectUnits/collected"/>
-      </genOperations>
-    </genClasses>
-  </genPackages>
-  <genPackages prefix="Ui" basePackage="org.sheepy.lily.core.model" resource="XMI"
-      disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
-      ecorePackage="ui.ecore#/">
-    <genClasses ecoreClass="ui.ecore#//Panel">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//Panel/controls"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Panel/showTitle"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Panel/minimizable"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Panel/movable"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Panel/minimized"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="ui.ecore#//IControl"/>
-    <genClasses image="false" ecoreClass="ui.ecore#//Widget"/>
-    <genClasses image="false" ecoreClass="ui.ecore#//AbstractLabel">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//AbstractLabel/text"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//AbstractLabel/fontScale"/>
-    </genClasses>
-    <genClasses ecoreClass="ui.ecore#//DynamicRowLayout">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//DynamicRowLayout/height"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//DynamicRowLayout/columnCount"/>
-    </genClasses>
-    <genClasses ecoreClass="ui.ecore#//VariableLabel">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//VariableLabel/variableResolver"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//VariableLabel/showName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//VariableLabel/format"/>
-    </genClasses>
-    <genClasses ecoreClass="ui.ecore#//Label"/>
-    <genClasses ecoreClass="ui.ecore#//Slider">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Slider/minValue"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Slider/maxValue"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Slider/step"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//Slider/variableResolver"/>
-    </genClasses>
-    <genClasses ecoreClass="ui.ecore#//TextField">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//TextField/variableResolver"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="ui.ecore#//AbstractButton">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//AbstractButton/text"/>
-    </genClasses>
-    <genClasses ecoreClass="ui.ecore#//Button">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Button/shortcut"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Button/state"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//Button/actions"/>
-      <genOperations ecoreOperation="ui.ecore#//Button/lActions" body="return this.getActions();"/>
-      <genOperations ecoreOperation="ui.ecore#//Button/getExecutor" body="&lt;%org.sheepy.lily.core.model.root.LObject%> unit = this;&#xA;while (((unit instanceof &lt;%org.sheepy.lily.core.model.application.IView%>) == false))&#xA;{&#xA;&#x9;unit = unit.lParent();&#xA;}&#xA;return unit;"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="ui.ecore#//AbstractBooleanButton">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//AbstractBooleanButton/textWhenTrue"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//AbstractBooleanButton/textWhenFalse"/>
-    </genClasses>
-    <genClasses ecoreClass="ui.ecore#//BooleanButton">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//BooleanButton/variableResolver"/>
-    </genClasses>
-    <genClasses ecoreClass="ui.ecore#//BooleanActionButton">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//BooleanActionButton/actionWhenTrue"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//BooleanActionButton/actionWhenFalse"/>
-    </genClasses>
-  </genPackages>
-  <genPackages prefix="Variable" basePackage="org.sheepy.lily.core.model" resource="XMI"
-      disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="variable.ecore#/">
-    <genDataTypes ecoreDataType="variable.ecore#//LResolvedVariableFeature"/>
-    <genDataTypes ecoreDataType="variable.ecore#//VariableDefinition"/>
-    <genClasses image="false" ecoreClass="variable.ecore#//IVariableResolver"/>
-    <genClasses image="false" ecoreClass="variable.ecore#//IDefinitionContainer">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute variable.ecore#//IDefinitionContainer/variableDefinition"/>
-    </genClasses>
-    <genClasses ecoreClass="variable.ecore#//ChainVariableResolver">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference variable.ecore#//ChainVariableResolver/firstResolver"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference variable.ecore#//ChainVariableResolver/subResolvers"/>
-    </genClasses>
-    <genClasses ecoreClass="variable.ecore#//ChainResolver"/>
-    <genClasses image="false" ecoreClass="variable.ecore#//AbstractDefinedVariableResolver"/>
-    <genClasses ecoreClass="variable.ecore#//DirectVariableResolver">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference variable.ecore#//DirectVariableResolver/target"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="variable.ecore#//VarChangeAction">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference variable.ecore#//VarChangeAction/variableResolver"/>
-    </genClasses>
-    <genClasses ecoreClass="variable.ecore#//BooleanChangeAction"/>
-    <genClasses ecoreClass="variable.ecore#//VarChangeActionPkg">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference variable.ecore#//VarChangeActionPkg/actions"/>
-    </genClasses>
-  </genPackages>
   <genPackages prefix="Cadence" basePackage="org.sheepy.lily.core.model" resource="XMI"
       disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="cadence.ecore#/">
     <genClasses ecoreClass="cadence.ecore#//Cadence">
@@ -410,5 +351,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cadence.ecore#//CountUntil/currentCount"/>
     </genClasses>
     <genClasses ecoreClass="cadence.ecore#//CloseApplication"/>
+  </genPackages>
+  <genPackages prefix="Action" basePackage="org.sheepy.lily.core.model" resource="XMI"
+      disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="action.ecore#/">
+    <genDataTypes ecoreDataType="action.ecore#//ActionList"/>
+    <genClasses image="false" ecoreClass="action.ecore#//Action"/>
   </genPackages>
 </genmodel:GenModel>

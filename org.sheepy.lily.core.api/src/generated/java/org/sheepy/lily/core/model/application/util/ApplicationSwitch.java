@@ -8,10 +8,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import org.sheepy.lily.core.model.application.*;
-
 import org.sheepy.lily.core.model.inference.IInferenceObject;
-
-import org.sheepy.lily.core.model.root.LObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -80,8 +77,6 @@ public class ApplicationSwitch<T> extends Switch<T>
 			{
 				Application application = (Application)theEObject;
 				T result = caseApplication(application);
-				if (result == null) result = caseLObject(application);
-				if (result == null) result = caseIInferenceObject(application);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -96,8 +91,6 @@ public class ApplicationSwitch<T> extends Switch<T>
 			{
 				IEngine iEngine = (IEngine)theEObject;
 				T result = caseIEngine(iEngine);
-				if (result == null) result = caseLObject(iEngine);
-				if (result == null) result = caseIInferenceObject(iEngine);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -105,7 +98,6 @@ public class ApplicationSwitch<T> extends Switch<T>
 			{
 				IView iView = (IView)theEObject;
 				T result = caseIView(iView);
-				if (result == null) result = caseLObject(iView);
 				if (result == null) result = caseIInferenceObject(iView);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -213,22 +205,6 @@ public class ApplicationSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseIInferenceObject(IInferenceObject object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>LObject</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>LObject</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseLObject(LObject object)
 	{
 		return null;
 	}

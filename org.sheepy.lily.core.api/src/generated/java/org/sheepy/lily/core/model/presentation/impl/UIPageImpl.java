@@ -2,44 +2,24 @@
  */
 package org.sheepy.lily.core.model.presentation.impl;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.joml.Vector2ic;
 
 import org.sheepy.lily.core.api.adapter.LilyEObject;
-import org.sheepy.lily.core.api.util.LTreeIterator;
-
-import org.sheepy.lily.core.model.inference.IInferenceObject;
-
 import org.sheepy.lily.core.model.presentation.IPanel;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
 import org.sheepy.lily.core.model.presentation.UIPage;
-
-import org.sheepy.lily.core.model.root.LObject;
-
-import org.sheepy.lily.core.model.root.RootPackage.Literals;
-
 import org.sheepy.lily.core.model.types.EHorizontalRelative;
 import org.sheepy.lily.core.model.types.EVerticalRelative;
 import org.sheepy.lily.core.model.types.TypesFactory;
@@ -53,7 +33,6 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl#getContentObjects <em>Content Objects</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl#getPosition <em>Position</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl#getVerticalRelative <em>Vertical Relative</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl#getHorizontalRelative <em>Horizontal Relative</em>}</li>
@@ -66,16 +45,6 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  */
 public class UIPageImpl extends LilyEObject implements UIPage
 {
-	/**
-	 * The cached value of the '{@link #getContentObjects() <em>Content Objects</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContentObjects()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<LObject> contentObjects;
-
 	/**
 	 * The default value of the '{@link #getPosition() <em>Position</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -205,31 +174,6 @@ public class UIPageImpl extends LilyEObject implements UIPage
 	protected EClass eStaticClass()
 	{
 		return PresentationPackage.Literals.UI_PAGE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<LObject> getContentObjects()
-	{
-		return contentObjects;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setContentObjects(EList<LObject> newContentObjects)
-	{
-		EList<LObject> oldContentObjects = contentObjects;
-		contentObjects = newContentObjects;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.UI_PAGE__CONTENT_OBJECTS, oldContentObjects, contentObjects));
 	}
 
 	/**
@@ -378,100 +322,6 @@ public class UIPageImpl extends LilyEObject implements UIPage
 	 * @generated
 	 */
 	@Override
-	public <T extends LObject> EList<T> createContainmentEList(final EClass targetEClass)
-	{
-		EList<T> res = null;
-		final List<EStructuralFeature> unitRefs = new ArrayList<EStructuralFeature>();
-		EList<EReference> _eAllContainments = this.eClass().getEAllContainments();
-		for (final EReference ref : _eAllContainments)
-		{
-			EClassifier _eType = ref.getEType();
-			boolean _isSuperTypeOf = targetEClass.isSuperTypeOf(((EClass) _eType));
-			if (_isSuperTypeOf)
-			{
-				unitRefs.add(ref);
-			}
-		}
-		boolean _isEmpty = unitRefs.isEmpty();
-		if (_isEmpty)
-		{
-			res = ECollections.<T>emptyEList();
-		}
-		else
-		{
-			EContentsEList<T> _eContentsEList = new EContentsEList<T>(this, unitRefs);
-			res = _eContentsEList;
-		}
-		return res;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<LObject> lContents()
-	{
-		EList<LObject> _xblockexpression = null;
-		{
-			EList<LObject> _contentObjects = this.getContentObjects();
-			boolean _tripleEquals = (_contentObjects == null);
-			if (_tripleEquals)
-			{
-				this.setContentObjects(this.<LObject>createContainmentEList(Literals.LOBJECT));
-			}
-			_xblockexpression = this.getContentObjects();
-		}
-		return _xblockexpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public LObject lParent()
-	{
-		LObject _xifexpression = null;
-		EObject _eContainer = this.eContainer();
-		if ((_eContainer instanceof LObject))
-		{
-			EObject _eContainer_1 = this.eContainer();
-			_xifexpression = ((LObject) _eContainer_1);
-		}
-		return _xifexpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public LTreeIterator lAllContents()
-	{
-		return new LTreeIterator(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public IInferenceObject lInferenceObject()
-	{
-		return this;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
 		switch (featureID)
@@ -492,8 +342,6 @@ public class UIPageImpl extends LilyEObject implements UIPage
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.UI_PAGE__CONTENT_OBJECTS:
-				return getContentObjects();
 			case PresentationPackage.UI_PAGE__POSITION:
 				return getPosition();
 			case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
@@ -521,9 +369,6 @@ public class UIPageImpl extends LilyEObject implements UIPage
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.UI_PAGE__CONTENT_OBJECTS:
-				setContentObjects((EList<LObject>)newValue);
-				return;
 			case PresentationPackage.UI_PAGE__POSITION:
 				setPosition((Vector2ic)newValue);
 				return;
@@ -557,9 +402,6 @@ public class UIPageImpl extends LilyEObject implements UIPage
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.UI_PAGE__CONTENT_OBJECTS:
-				setContentObjects((EList<LObject>)null);
-				return;
 			case PresentationPackage.UI_PAGE__POSITION:
 				setPosition(POSITION_EDEFAULT);
 				return;
@@ -592,8 +434,6 @@ public class UIPageImpl extends LilyEObject implements UIPage
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.UI_PAGE__CONTENT_OBJECTS:
-				return contentObjects != null;
 			case PresentationPackage.UI_PAGE__POSITION:
 				return POSITION_EDEFAULT == null ? position != null : !POSITION_EDEFAULT.equals(position);
 			case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
@@ -616,38 +456,12 @@ public class UIPageImpl extends LilyEObject implements UIPage
 	 * @generated
 	 */
 	@Override
-	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException
-	{
-		switch (operationID)
-		{
-			case PresentationPackage.UI_PAGE___CREATE_CONTAINMENT_ELIST__ECLASS:
-				return createContainmentEList((EClass)arguments.get(0));
-			case PresentationPackage.UI_PAGE___LCONTENTS:
-				return lContents();
-			case PresentationPackage.UI_PAGE___LPARENT:
-				return lParent();
-			case PresentationPackage.UI_PAGE___LALL_CONTENTS:
-				return lAllContents();
-			case PresentationPackage.UI_PAGE___LINFERENCE_OBJECT:
-				return lInferenceObject();
-		}
-		return super.eInvoke(operationID, arguments);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public String toString()
 	{
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (contentObjects: ");
-		result.append(contentObjects);
-		result.append(", position: ");
+		result.append(" (position: ");
 		result.append(position);
 		result.append(", verticalRelative: ");
 		result.append(verticalRelative);

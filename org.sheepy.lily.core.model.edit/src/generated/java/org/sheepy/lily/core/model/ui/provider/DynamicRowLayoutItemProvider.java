@@ -7,8 +7,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
@@ -22,9 +20,6 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.sheepy.lily.core.model.root.LObject;
-
 import org.sheepy.lily.core.model.ui.DynamicRowLayout;
 import org.sheepy.lily.core.model.ui.UiPackage;
 
@@ -134,11 +129,8 @@ public class DynamicRowLayoutItemProvider extends ItemProviderAdapter implements
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((DynamicRowLayout)object).getContentObjects();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_DynamicRowLayout_type") :
-			getString("_UI_DynamicRowLayout_type") + " " + label;
+		DynamicRowLayout dynamicRowLayout = (DynamicRowLayout)object;
+		return getString("_UI_DynamicRowLayout_type") + " " + dynamicRowLayout.getHeight();
 	}
 
 	/**
@@ -155,7 +147,6 @@ public class DynamicRowLayoutItemProvider extends ItemProviderAdapter implements
 
 		switch (notification.getFeatureID(DynamicRowLayout.class))
 		{
-			case UiPackage.DYNAMIC_ROW_LAYOUT__CONTENT_OBJECTS:
 			case UiPackage.DYNAMIC_ROW_LAYOUT__HEIGHT:
 			case UiPackage.DYNAMIC_ROW_LAYOUT__COLUMN_COUNT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

@@ -8,13 +8,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import org.sheepy.lily.core.model.application.IView;
-
 import org.sheepy.lily.core.model.inference.IInferenceObject;
-
 import org.sheepy.lily.core.model.presentation.*;
-
-import org.sheepy.lily.core.model.root.LObject;
-
 import org.sheepy.lily.core.model.types.LNamedElement;
 
 /**
@@ -84,8 +79,6 @@ public class PresentationSwitch<T> extends Switch<T>
 			{
 				IPositionElement iPositionElement = (IPositionElement)theEObject;
 				T result = caseIPositionElement(iPositionElement);
-				if (result == null) result = caseLObject(iPositionElement);
-				if (result == null) result = caseIInferenceObject(iPositionElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -94,8 +87,6 @@ public class PresentationSwitch<T> extends Switch<T>
 				ISizedElement iSizedElement = (ISizedElement)theEObject;
 				T result = caseISizedElement(iSizedElement);
 				if (result == null) result = caseIPositionElement(iSizedElement);
-				if (result == null) result = caseLObject(iSizedElement);
-				if (result == null) result = caseIInferenceObject(iSizedElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -104,7 +95,6 @@ public class PresentationSwitch<T> extends Switch<T>
 				IUIView iuiView = (IUIView)theEObject;
 				T result = caseIUIView(iuiView);
 				if (result == null) result = caseIView(iuiView);
-				if (result == null) result = caseLObject(iuiView);
 				if (result == null) result = caseIInferenceObject(iuiView);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -115,7 +105,6 @@ public class PresentationSwitch<T> extends Switch<T>
 				T result = caseTranparentUIView(tranparentUIView);
 				if (result == null) result = caseIUIView(tranparentUIView);
 				if (result == null) result = caseIView(tranparentUIView);
-				if (result == null) result = caseLObject(tranparentUIView);
 				if (result == null) result = caseIInferenceObject(tranparentUIView);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -125,7 +114,6 @@ public class PresentationSwitch<T> extends Switch<T>
 				IMusicView iMusicView = (IMusicView)theEObject;
 				T result = caseIMusicView(iMusicView);
 				if (result == null) result = caseIView(iMusicView);
-				if (result == null) result = caseLObject(iMusicView);
 				if (result == null) result = caseIInferenceObject(iMusicView);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -137,7 +125,6 @@ public class PresentationSwitch<T> extends Switch<T>
 				if (result == null) result = caseISizedElement(iSizedView);
 				if (result == null) result = caseIView(iSizedView);
 				if (result == null) result = caseIPositionElement(iSizedView);
-				if (result == null) result = caseLObject(iSizedView);
 				if (result == null) result = caseIInferenceObject(iSizedView);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -146,7 +133,6 @@ public class PresentationSwitch<T> extends Switch<T>
 			{
 				IUIElement iuiElement = (IUIElement)theEObject;
 				T result = caseIUIElement(iuiElement);
-				if (result == null) result = caseLObject(iuiElement);
 				if (result == null) result = caseIInferenceObject(iuiElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -157,8 +143,6 @@ public class PresentationSwitch<T> extends Switch<T>
 				T result = caseUIPage(uiPage);
 				if (result == null) result = caseISizedElement(uiPage);
 				if (result == null) result = caseIPositionElement(uiPage);
-				if (result == null) result = caseLObject(uiPage);
-				if (result == null) result = caseIInferenceObject(uiPage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -169,7 +153,6 @@ public class PresentationSwitch<T> extends Switch<T>
 				if (result == null) result = caseLNamedElement(iPanel);
 				if (result == null) result = caseIUIElement(iPanel);
 				if (result == null) result = caseIPositionElement(iPanel);
-				if (result == null) result = caseLObject(iPanel);
 				if (result == null) result = caseIInferenceObject(iPanel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -323,38 +306,6 @@ public class PresentationSwitch<T> extends Switch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>IInference Object</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>IInference Object</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIInferenceObject(IInferenceObject object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>LObject</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>LObject</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseLObject(LObject object)
-	{
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>IView</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -366,6 +317,22 @@ public class PresentationSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseIView(IView object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IInference Object</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IInference Object</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIInferenceObject(IInferenceObject object)
 	{
 		return null;
 	}

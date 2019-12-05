@@ -5,11 +5,9 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 
 import org.sheepy.lily.core.api.action.IActionHandler;
 import org.sheepy.lily.core.api.action.context.ActionExecutionContext;
-import org.sheepy.lily.core.api.cadence.EditingCommand;
 import org.sheepy.lily.core.api.cadence.ITicker;
 import org.sheepy.lily.core.cadence.execution.CommandStack;
 import org.sheepy.lily.core.model.action.Action;
-import org.sheepy.lily.core.model.root.XAction;
 
 public class ActionDispatcherThread implements ITicker
 {
@@ -17,12 +15,12 @@ public class ActionDispatcherThread implements ITicker
 
 	private final ActionHandlerRegistry registry = new ActionHandlerRegistry();
 
-	private final CommandStack commandStack;
+	// private final CommandStack commandStack;
 	private final long threadId;
 
 	public ActionDispatcherThread(CommandStack commandStack, long threadId)
 	{
-		this.commandStack = commandStack;
+		// this.commandStack = commandStack;
 		this.threadId = threadId;
 	}
 
@@ -81,26 +79,26 @@ public class ActionDispatcherThread implements ITicker
 			// ((TypeInjectorAction<?>) action).getInjectedValue());
 			// }
 
-			if (action instanceof XAction)
-			{
-				final ActionExecutionContext _context = context;
-				final XAction xAction = (XAction) action;
-				commandStack.add(new EditingCommand()
-				{
-					@Override
-					public void execute()
-					{
-						try
-						{
-							xAction.execute(_context.getLUnit());
-						} catch (final Exception e)
-						{
-							e.printStackTrace();
-						}
-					}
-				});
-			}
-			else
+			// if (action instanceof XAction)
+			// {
+			// final ActionExecutionContext _context = context;
+			// final XAction xAction = (XAction) action;
+			// commandStack.add(new EditingCommand()
+			// {
+			// @Override
+			// public void execute()
+			// {
+			// try
+			// {
+			// xAction.execute(_context.getLUnit());
+			// } catch (final Exception e)
+			// {
+			// e.printStackTrace();
+			// }
+			// }
+			// });
+			// }
+			// else
 			{
 				final IActionHandler handler = registry.getHandler(action);
 

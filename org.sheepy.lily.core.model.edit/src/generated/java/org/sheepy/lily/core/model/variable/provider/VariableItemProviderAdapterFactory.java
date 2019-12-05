@@ -26,7 +26,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.sheepy.lily.core.model.types.provider.LilyEditPlugin;
+import org.sheepy.lily.core.model.ui.provider.LilyEditPlugin;
 import org.sheepy.lily.core.model.variable.VariablePackage;
 
 import org.sheepy.lily.core.model.variable.util.VariableAdapterFactory;

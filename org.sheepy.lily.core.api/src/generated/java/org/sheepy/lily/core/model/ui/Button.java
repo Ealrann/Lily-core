@@ -8,8 +8,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.sheepy.lily.core.model.action.Action;
 
-import org.sheepy.lily.core.model.root.LObject;
-
+import org.sheepy.lily.core.model.inference.IInferenceObject;
 import org.sheepy.lily.core.model.types.EKeyState;
 
 /**
@@ -105,6 +104,6 @@ public interface Button extends AbstractButton
 	 * @model kind="operation" unique="false"
 	 * @generated
 	 */
-	LObject getExecutor();
+	IInferenceObject getExecutor();
 
 } // Button

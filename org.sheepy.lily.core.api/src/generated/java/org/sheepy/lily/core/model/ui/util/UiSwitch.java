@@ -6,16 +6,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
-
 import org.sheepy.lily.core.model.inference.IInferenceObject;
-
 import org.sheepy.lily.core.model.presentation.IPanel;
 import org.sheepy.lily.core.model.presentation.IPositionElement;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
 import org.sheepy.lily.core.model.presentation.IUIElement;
-
-import org.sheepy.lily.core.model.root.LObject;
-
 import org.sheepy.lily.core.model.types.LNamedElement;
 
 import org.sheepy.lily.core.model.ui.*;
@@ -92,7 +87,6 @@ public class UiSwitch<T> extends Switch<T>
 				if (result == null) result = caseLNamedElement(panel);
 				if (result == null) result = caseIUIElement(panel);
 				if (result == null) result = caseIPositionElement(panel);
-				if (result == null) result = caseLObject(panel);
 				if (result == null) result = caseIInferenceObject(panel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -102,7 +96,6 @@ public class UiSwitch<T> extends Switch<T>
 				IControl iControl = (IControl)theEObject;
 				T result = caseIControl(iControl);
 				if (result == null) result = caseIUIElement(iControl);
-				if (result == null) result = caseLObject(iControl);
 				if (result == null) result = caseIInferenceObject(iControl);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -115,7 +108,6 @@ public class UiSwitch<T> extends Switch<T>
 				if (result == null) result = caseISizedElement(widget);
 				if (result == null) result = caseIUIElement(widget);
 				if (result == null) result = caseIPositionElement(widget);
-				if (result == null) result = caseLObject(widget);
 				if (result == null) result = caseIInferenceObject(widget);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -129,7 +121,6 @@ public class UiSwitch<T> extends Switch<T>
 				if (result == null) result = caseISizedElement(abstractLabel);
 				if (result == null) result = caseIUIElement(abstractLabel);
 				if (result == null) result = caseIPositionElement(abstractLabel);
-				if (result == null) result = caseLObject(abstractLabel);
 				if (result == null) result = caseIInferenceObject(abstractLabel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -140,7 +131,6 @@ public class UiSwitch<T> extends Switch<T>
 				T result = caseDynamicRowLayout(dynamicRowLayout);
 				if (result == null) result = caseIControl(dynamicRowLayout);
 				if (result == null) result = caseIUIElement(dynamicRowLayout);
-				if (result == null) result = caseLObject(dynamicRowLayout);
 				if (result == null) result = caseIInferenceObject(dynamicRowLayout);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -155,7 +145,6 @@ public class UiSwitch<T> extends Switch<T>
 				if (result == null) result = caseISizedElement(variableLabel);
 				if (result == null) result = caseIUIElement(variableLabel);
 				if (result == null) result = caseIPositionElement(variableLabel);
-				if (result == null) result = caseLObject(variableLabel);
 				if (result == null) result = caseIInferenceObject(variableLabel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -170,7 +159,6 @@ public class UiSwitch<T> extends Switch<T>
 				if (result == null) result = caseISizedElement(label);
 				if (result == null) result = caseIUIElement(label);
 				if (result == null) result = caseIPositionElement(label);
-				if (result == null) result = caseLObject(label);
 				if (result == null) result = caseIInferenceObject(label);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -184,7 +172,6 @@ public class UiSwitch<T> extends Switch<T>
 				if (result == null) result = caseISizedElement(slider);
 				if (result == null) result = caseIUIElement(slider);
 				if (result == null) result = caseIPositionElement(slider);
-				if (result == null) result = caseLObject(slider);
 				if (result == null) result = caseIInferenceObject(slider);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -198,7 +185,6 @@ public class UiSwitch<T> extends Switch<T>
 				if (result == null) result = caseISizedElement(textField);
 				if (result == null) result = caseIUIElement(textField);
 				if (result == null) result = caseIPositionElement(textField);
-				if (result == null) result = caseLObject(textField);
 				if (result == null) result = caseIInferenceObject(textField);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -212,7 +198,6 @@ public class UiSwitch<T> extends Switch<T>
 				if (result == null) result = caseISizedElement(abstractButton);
 				if (result == null) result = caseIUIElement(abstractButton);
 				if (result == null) result = caseIPositionElement(abstractButton);
-				if (result == null) result = caseLObject(abstractButton);
 				if (result == null) result = caseIInferenceObject(abstractButton);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -227,7 +212,6 @@ public class UiSwitch<T> extends Switch<T>
 				if (result == null) result = caseISizedElement(button);
 				if (result == null) result = caseIUIElement(button);
 				if (result == null) result = caseIPositionElement(button);
-				if (result == null) result = caseLObject(button);
 				if (result == null) result = caseIInferenceObject(button);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -242,7 +226,6 @@ public class UiSwitch<T> extends Switch<T>
 				if (result == null) result = caseISizedElement(abstractBooleanButton);
 				if (result == null) result = caseIUIElement(abstractBooleanButton);
 				if (result == null) result = caseIPositionElement(abstractBooleanButton);
-				if (result == null) result = caseLObject(abstractBooleanButton);
 				if (result == null) result = caseIInferenceObject(abstractBooleanButton);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -258,7 +241,6 @@ public class UiSwitch<T> extends Switch<T>
 				if (result == null) result = caseISizedElement(booleanButton);
 				if (result == null) result = caseIUIElement(booleanButton);
 				if (result == null) result = caseIPositionElement(booleanButton);
-				if (result == null) result = caseLObject(booleanButton);
 				if (result == null) result = caseIInferenceObject(booleanButton);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -274,7 +256,6 @@ public class UiSwitch<T> extends Switch<T>
 				if (result == null) result = caseISizedElement(booleanActionButton);
 				if (result == null) result = caseIUIElement(booleanActionButton);
 				if (result == null) result = caseIPositionElement(booleanActionButton);
-				if (result == null) result = caseLObject(booleanActionButton);
 				if (result == null) result = caseIInferenceObject(booleanActionButton);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -535,22 +516,6 @@ public class UiSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseIInferenceObject(IInferenceObject object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>LObject</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>LObject</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseLObject(LObject object)
 	{
 		return null;
 	}

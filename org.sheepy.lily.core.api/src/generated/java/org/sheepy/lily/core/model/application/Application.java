@@ -5,7 +5,7 @@ package org.sheepy.lily.core.model.application;
 import org.eclipse.emf.common.util.EList;
 
 import org.joml.Vector2ic;
-import org.sheepy.lily.core.model.root.LObject;
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,9 +31,10 @@ import org.sheepy.lily.core.model.root.LObject;
  *
  * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication()
  * @model
+ * @extends ILilyEObject
  * @generated
  */
-public interface Application extends LObject
+public interface Application extends ILilyEObject
 {
 	/**
 	 * Returns the value of the '<em><b>Views</b></em>' containment reference list.

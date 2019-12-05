@@ -381,7 +381,6 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 		switch (notification.getFeatureID(Panel.class))
 		{
 			case UiPackage.PANEL__NAME:
-			case UiPackage.PANEL__CONTENT_OBJECTS:
 			case UiPackage.PANEL__POSITION:
 			case UiPackage.PANEL__VERTICAL_RELATIVE:
 			case UiPackage.PANEL__HORIZONTAL_RELATIVE:

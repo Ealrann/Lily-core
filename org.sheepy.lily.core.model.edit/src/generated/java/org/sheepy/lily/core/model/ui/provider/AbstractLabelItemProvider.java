@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IChildCreationExtender;
@@ -20,8 +19,8 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.joml.Vector2ic;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
-import org.sheepy.lily.core.model.root.LObject;
 import org.sheepy.lily.core.model.ui.AbstractLabel;
 import org.sheepy.lily.core.model.ui.UiPackage;
 
@@ -239,7 +238,7 @@ public class AbstractLabelItemProvider extends ItemProviderAdapter implements IE
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((AbstractLabel)object).getContentObjects();
+		Vector2ic labelValue = ((AbstractLabel)object).getPosition();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_AbstractLabel_type") :
@@ -260,7 +259,6 @@ public class AbstractLabelItemProvider extends ItemProviderAdapter implements IE
 
 		switch (notification.getFeatureID(AbstractLabel.class))
 		{
-			case UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS:
 			case UiPackage.ABSTRACT_LABEL__POSITION:
 			case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE:
 			case UiPackage.ABSTRACT_LABEL__HORIZONTAL_RELATIVE:

@@ -6,8 +6,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
-import org.sheepy.lily.core.model.root.RootPackage;
+import org.sheepy.lily.core.model.inference.InferencePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -70,22 +69,13 @@ public interface ApplicationPackage extends EPackage
 	int APPLICATION = 0;
 
 	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION__CONTENT_OBJECTS = RootPackage.LOBJECT__CONTENT_OBJECTS;
-
-	/**
 	 * The feature id for the '<em><b>Views</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__VIEWS = RootPackage.LOBJECT_FEATURE_COUNT + 0;
+	int APPLICATION__VIEWS = 0;
 
 	/**
 	 * The feature id for the '<em><b>Engines</b></em>' containment reference list.
@@ -94,7 +84,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__ENGINES = RootPackage.LOBJECT_FEATURE_COUNT + 1;
+	int APPLICATION__ENGINES = 1;
 
 	/**
 	 * The feature id for the '<em><b>Run</b></em>' attribute.
@@ -103,7 +93,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__RUN = RootPackage.LOBJECT_FEATURE_COUNT + 2;
+	int APPLICATION__RUN = 2;
 
 	/**
 	 * The feature id for the '<em><b>Fullscreen</b></em>' attribute.
@@ -112,7 +102,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__FULLSCREEN = RootPackage.LOBJECT_FEATURE_COUNT + 3;
+	int APPLICATION__FULLSCREEN = 3;
 
 	/**
 	 * The feature id for the '<em><b>Resizeable</b></em>' attribute.
@@ -121,7 +111,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__RESIZEABLE = RootPackage.LOBJECT_FEATURE_COUNT + 4;
+	int APPLICATION__RESIZEABLE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Headless</b></em>' attribute.
@@ -130,7 +120,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__HEADLESS = RootPackage.LOBJECT_FEATURE_COUNT + 5;
+	int APPLICATION__HEADLESS = 5;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -139,7 +129,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__TITLE = RootPackage.LOBJECT_FEATURE_COUNT + 6;
+	int APPLICATION__TITLE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Size</b></em>' attribute.
@@ -148,7 +138,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__SIZE = RootPackage.LOBJECT_FEATURE_COUNT + 7;
+	int APPLICATION__SIZE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Current View</b></em>' reference.
@@ -157,7 +147,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__CURRENT_VIEW = RootPackage.LOBJECT_FEATURE_COUNT + 8;
+	int APPLICATION__CURRENT_VIEW = 8;
 
 	/**
 	 * The feature id for the '<em><b>Cadence</b></em>' containment reference.
@@ -166,7 +156,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__CADENCE = RootPackage.LOBJECT_FEATURE_COUNT + 9;
+	int APPLICATION__CADENCE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Time Configuration</b></em>' containment reference.
@@ -175,7 +165,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__TIME_CONFIGURATION = RootPackage.LOBJECT_FEATURE_COUNT + 10;
+	int APPLICATION__TIME_CONFIGURATION = 10;
 
 	/**
 	 * The number of structural features of the '<em>Application</em>' class.
@@ -184,52 +174,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_FEATURE_COUNT = RootPackage.LOBJECT_FEATURE_COUNT + 11;
-
-	/**
-	 * The operation id for the '<em>LInference Object</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION___LINFERENCE_OBJECT = RootPackage.LOBJECT___LINFERENCE_OBJECT;
-
-	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION___CREATE_CONTAINMENT_ELIST__ECLASS = RootPackage.LOBJECT___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION___LCONTENTS = RootPackage.LOBJECT___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION___LPARENT = RootPackage.LOBJECT___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION___LALL_CONTENTS = RootPackage.LOBJECT___LALL_CONTENTS;
+	int APPLICATION_FEATURE_COUNT = 11;
 
 	/**
 	 * The number of operations of the '<em>Application</em>' class.
@@ -238,7 +183,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_OPERATION_COUNT = RootPackage.LOBJECT_OPERATION_COUNT + 0;
+	int APPLICATION_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.TimeConfigurationImpl <em>Time Configuration</em>}' class.
@@ -306,67 +251,13 @@ public interface ApplicationPackage extends EPackage
 	int IENGINE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IENGINE__CONTENT_OBJECTS = RootPackage.LOBJECT__CONTENT_OBJECTS;
-
-	/**
 	 * The number of structural features of the '<em>IEngine</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IENGINE_FEATURE_COUNT = RootPackage.LOBJECT_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>LInference Object</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IENGINE___LINFERENCE_OBJECT = RootPackage.LOBJECT___LINFERENCE_OBJECT;
-
-	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IENGINE___CREATE_CONTAINMENT_ELIST__ECLASS = RootPackage.LOBJECT___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IENGINE___LCONTENTS = RootPackage.LOBJECT___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IENGINE___LPARENT = RootPackage.LOBJECT___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IENGINE___LALL_CONTENTS = RootPackage.LOBJECT___LALL_CONTENTS;
+	int IENGINE_FEATURE_COUNT = 0;
 
 	/**
 	 * The number of operations of the '<em>IEngine</em>' class.
@@ -375,7 +266,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IENGINE_OPERATION_COUNT = RootPackage.LOBJECT_OPERATION_COUNT + 0;
+	int IENGINE_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.IView <em>IView</em>}' class.
@@ -388,22 +279,13 @@ public interface ApplicationPackage extends EPackage
 	int IVIEW = 3;
 
 	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IVIEW__CONTENT_OBJECTS = RootPackage.LOBJECT__CONTENT_OBJECTS;
-
-	/**
 	 * The number of structural features of the '<em>IView</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IVIEW_FEATURE_COUNT = RootPackage.LOBJECT_FEATURE_COUNT + 0;
+	int IVIEW_FEATURE_COUNT = InferencePackage.IINFERENCE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -412,43 +294,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IVIEW___LINFERENCE_OBJECT = RootPackage.LOBJECT___LINFERENCE_OBJECT;
-
-	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IVIEW___CREATE_CONTAINMENT_ELIST__ECLASS = RootPackage.LOBJECT___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IVIEW___LCONTENTS = RootPackage.LOBJECT___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IVIEW___LPARENT = RootPackage.LOBJECT___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IVIEW___LALL_CONTENTS = RootPackage.LOBJECT___LALL_CONTENTS;
+	int IVIEW___LINFERENCE_OBJECT = InferencePackage.IINFERENCE_OBJECT___LINFERENCE_OBJECT;
 
 	/**
 	 * The number of operations of the '<em>IView</em>' class.
@@ -457,7 +303,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IVIEW_OPERATION_COUNT = RootPackage.LOBJECT_OPERATION_COUNT + 0;
+	int IVIEW_OPERATION_COUNT = InferencePackage.IINFERENCE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.ICadence <em>ICadence</em>}' class.

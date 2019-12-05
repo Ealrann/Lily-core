@@ -54,21 +54,6 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated Lily -->
       <package
-            uri="org.sheepy.lily.core.model.root"
-            class="org.sheepy.lily.core.model.root.RootPackage"
-            genModel="model/Lily.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated Lily -->
-      <parser
-            type="root"
-            class="org.sheepy.lily.core.model.root.util.RootResourceFactoryImpl"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated Lily -->
-      <package
             uri="org.sheepy.lily.core.model.inference"
             class="org.sheepy.lily.core.model.inference.InferencePackage"
             genModel="model/Lily.genmodel"/>
@@ -109,21 +94,6 @@
       <parser
             type="presentation"
             class="org.sheepy.lily.core.model.presentation.util.PresentationResourceFactoryImpl"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated Lily -->
-      <package
-            uri="org.sheepy.lily.core.model.resolver"
-            class="org.sheepy.lily.core.model.resolver.ResolverPackage"
-            genModel="model/Lily.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.extension_parser">
-      <!-- @generated Lily -->
-      <parser
-            type="resolver"
-            class="org.sheepy.lily.core.model.resolver.util.ResolverResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">

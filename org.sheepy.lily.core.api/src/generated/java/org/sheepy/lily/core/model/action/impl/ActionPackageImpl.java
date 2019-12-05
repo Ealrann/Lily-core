@@ -7,8 +7,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EcorePackage;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.sheepy.lily.core.model.action.Action;
@@ -32,15 +30,6 @@ import org.sheepy.lily.core.model.maintainer.impl.MaintainerPackageImpl;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
 
 import org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl;
-
-import org.sheepy.lily.core.model.resolver.ResolverPackage;
-
-import org.sheepy.lily.core.model.resolver.impl.ResolverPackageImpl;
-
-import org.sheepy.lily.core.model.root.RootPackage;
-
-import org.sheepy.lily.core.model.root.impl.RootPackageImpl;
-
 import org.sheepy.lily.core.model.types.TypesPackage;
 
 import org.sheepy.lily.core.model.types.impl.TypesPackageImpl;
@@ -124,55 +113,44 @@ public class ActionPackageImpl extends EPackageImpl implements ActionPackage
 
 		isInited = true;
 
-		// Initialize simple dependencies
-		EcorePackage.eINSTANCE.eClass();
-
 		// Obtain or create and register interdependencies
-		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
-		TypesPackageImpl theTypesPackage = (TypesPackageImpl)(registeredPackage instanceof TypesPackageImpl ? registeredPackage : TypesPackage.eINSTANCE);
+		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(UiPackage.eNS_URI);
+		UiPackageImpl theUiPackage = (UiPackageImpl)(registeredPackage instanceof UiPackageImpl ? registeredPackage : UiPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(PresentationPackage.eNS_URI);
+		PresentationPackageImpl thePresentationPackage = (PresentationPackageImpl)(registeredPackage instanceof PresentationPackageImpl ? registeredPackage : PresentationPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
 		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl)(registeredPackage instanceof ApplicationPackageImpl ? registeredPackage : ApplicationPackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(RootPackage.eNS_URI);
-		RootPackageImpl theRootPackage = (RootPackageImpl)(registeredPackage instanceof RootPackageImpl ? registeredPackage : RootPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(VariablePackage.eNS_URI);
+		VariablePackageImpl theVariablePackage = (VariablePackageImpl)(registeredPackage instanceof VariablePackageImpl ? registeredPackage : VariablePackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+		TypesPackageImpl theTypesPackage = (TypesPackageImpl)(registeredPackage instanceof TypesPackageImpl ? registeredPackage : TypesPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
 		InferencePackageImpl theInferencePackage = (InferencePackageImpl)(registeredPackage instanceof InferencePackageImpl ? registeredPackage : InferencePackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(MaintainerPackage.eNS_URI);
 		MaintainerPackageImpl theMaintainerPackage = (MaintainerPackageImpl)(registeredPackage instanceof MaintainerPackageImpl ? registeredPackage : MaintainerPackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(PresentationPackage.eNS_URI);
-		PresentationPackageImpl thePresentationPackage = (PresentationPackageImpl)(registeredPackage instanceof PresentationPackageImpl ? registeredPackage : PresentationPackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ResolverPackage.eNS_URI);
-		ResolverPackageImpl theResolverPackage = (ResolverPackageImpl)(registeredPackage instanceof ResolverPackageImpl ? registeredPackage : ResolverPackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(UiPackage.eNS_URI);
-		UiPackageImpl theUiPackage = (UiPackageImpl)(registeredPackage instanceof UiPackageImpl ? registeredPackage : UiPackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(VariablePackage.eNS_URI);
-		VariablePackageImpl theVariablePackage = (VariablePackageImpl)(registeredPackage instanceof VariablePackageImpl ? registeredPackage : VariablePackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CadencePackage.eNS_URI);
 		CadencePackageImpl theCadencePackage = (CadencePackageImpl)(registeredPackage instanceof CadencePackageImpl ? registeredPackage : CadencePackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theActionPackage.createPackageContents();
-		theTypesPackage.createPackageContents();
+		theUiPackage.createPackageContents();
+		thePresentationPackage.createPackageContents();
 		theApplicationPackage.createPackageContents();
-		theRootPackage.createPackageContents();
+		theVariablePackage.createPackageContents();
+		theTypesPackage.createPackageContents();
 		theInferencePackage.createPackageContents();
 		theMaintainerPackage.createPackageContents();
-		thePresentationPackage.createPackageContents();
-		theResolverPackage.createPackageContents();
-		theUiPackage.createPackageContents();
-		theVariablePackage.createPackageContents();
 		theCadencePackage.createPackageContents();
 
 		// Initialize created meta-data
 		theActionPackage.initializePackageContents();
-		theTypesPackage.initializePackageContents();
+		theUiPackage.initializePackageContents();
+		thePresentationPackage.initializePackageContents();
 		theApplicationPackage.initializePackageContents();
-		theRootPackage.initializePackageContents();
+		theVariablePackage.initializePackageContents();
+		theTypesPackage.initializePackageContents();
 		theInferencePackage.initializePackageContents();
 		theMaintainerPackage.initializePackageContents();
-		thePresentationPackage.initializePackageContents();
-		theResolverPackage.initializePackageContents();
-		theUiPackage.initializePackageContents();
-		theVariablePackage.initializePackageContents();
 		theCadencePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed

@@ -7,9 +7,8 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.sheepy.lily.core.model.root.LObject;
+import org.joml.Vector2ic;
 import org.sheepy.lily.core.model.ui.Label;
 
 /**
@@ -69,7 +68,7 @@ public class LabelItemProvider extends AbstractLabelItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((Label)object).getContentObjects();
+		Vector2ic labelValue = ((Label)object).getPosition();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Label_type") :

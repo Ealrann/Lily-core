@@ -6,8 +6,6 @@ import org.eclipse.emf.common.EMFPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
-
 /**
  * This is the central singleton for the Lily edit plugin.
  * <!-- begin-user-doc -->
@@ -43,7 +41,6 @@ public final class LilyEditPlugin extends EMFPlugin
 		super
 		  (new ResourceLocator [] 
 		   {
-		     EcoreEditPlugin.INSTANCE,
 		   });
 	}
 

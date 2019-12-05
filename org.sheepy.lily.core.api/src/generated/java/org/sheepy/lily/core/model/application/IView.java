@@ -2,7 +2,7 @@
  */
 package org.sheepy.lily.core.model.application;
 
-import org.sheepy.lily.core.model.root.LObject;
+import org.sheepy.lily.core.model.inference.IInferenceObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,5 +14,5 @@ import org.sheepy.lily.core.model.root.LObject;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface IView extends LObject
+public interface IView extends IInferenceObject
 {} // IView

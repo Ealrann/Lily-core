@@ -7,9 +7,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -24,10 +21,9 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.joml.Vector2ic;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
 import org.sheepy.lily.core.model.presentation.UIPage;
-
-import org.sheepy.lily.core.model.root.LObject;
 import org.sheepy.lily.core.model.ui.UiFactory;
 
 /**
@@ -241,7 +237,7 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((UIPage)object).getContentObjects();
+		Vector2ic labelValue = ((UIPage)object).getPosition();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_UIPage_type") :
@@ -262,7 +258,6 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 
 		switch (notification.getFeatureID(UIPage.class))
 		{
-			case PresentationPackage.UI_PAGE__CONTENT_OBJECTS:
 			case PresentationPackage.UI_PAGE__POSITION:
 			case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
 			case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:

@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
@@ -21,8 +20,8 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.joml.Vector2ic;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
-import org.sheepy.lily.core.model.root.LObject;
 import org.sheepy.lily.core.model.ui.TextField;
 import org.sheepy.lily.core.model.ui.UiPackage;
 
@@ -239,7 +238,7 @@ public class TextFieldItemProvider extends ItemProviderAdapter implements IEditi
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((TextField)object).getContentObjects();
+		Vector2ic labelValue = ((TextField)object).getPosition();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_TextField_type") :
@@ -260,7 +259,6 @@ public class TextFieldItemProvider extends ItemProviderAdapter implements IEditi
 
 		switch (notification.getFeatureID(TextField.class))
 		{
-			case UiPackage.TEXT_FIELD__CONTENT_OBJECTS:
 			case UiPackage.TEXT_FIELD__POSITION:
 			case UiPackage.TEXT_FIELD__VERTICAL_RELATIVE:
 			case UiPackage.TEXT_FIELD__HORIZONTAL_RELATIVE:

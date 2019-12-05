@@ -7,9 +7,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -27,8 +24,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.sheepy.lily.core.model.presentation.PresentationFactory;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
 import org.sheepy.lily.core.model.presentation.TranparentUIView;
-
-import org.sheepy.lily.core.model.root.LObject;
 
 /**
  * This is the item provider adapter for a {@link org.sheepy.lily.core.model.presentation.TranparentUIView} object.
@@ -145,11 +140,7 @@ public class TranparentUIViewItemProvider extends ItemProviderAdapter implements
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((TranparentUIView)object).getContentObjects();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_TranparentUIView_type") :
-			getString("_UI_TranparentUIView_type") + " " + label;
+		return getString("_UI_TranparentUIView_type");
 	}
 
 	/**
@@ -166,9 +157,6 @@ public class TranparentUIViewItemProvider extends ItemProviderAdapter implements
 
 		switch (notification.getFeatureID(TranparentUIView.class))
 		{
-			case PresentationPackage.TRANPARENT_UI_VIEW__CONTENT_OBJECTS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
 			case PresentationPackage.TRANPARENT_UI_VIEW__UI_PAGES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;

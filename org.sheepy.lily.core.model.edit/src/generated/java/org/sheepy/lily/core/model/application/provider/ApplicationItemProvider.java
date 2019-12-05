@@ -7,9 +7,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
@@ -31,7 +28,6 @@ import org.sheepy.lily.core.model.application.ApplicationPackage;
 
 import org.sheepy.lily.core.model.cadence.CadenceFactory;
 import org.sheepy.lily.core.model.presentation.PresentationFactory;
-import org.sheepy.lily.core.model.root.LObject;
 
 /**
  * This is the item provider adapter for a {@link org.sheepy.lily.core.model.application.Application} object.
@@ -295,11 +291,8 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((Application)object).getContentObjects();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Application_type") :
-			getString("_UI_Application_type") + " " + label;
+		Application application = (Application)object;
+		return getString("_UI_Application_type") + " " + application.isRun();
 	}
 
 	/**
@@ -316,7 +309,6 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 
 		switch (notification.getFeatureID(Application.class))
 		{
-			case ApplicationPackage.APPLICATION__CONTENT_OBJECTS:
 			case ApplicationPackage.APPLICATION__RUN:
 			case ApplicationPackage.APPLICATION__FULLSCREEN:
 			case ApplicationPackage.APPLICATION__RESIZEABLE:

@@ -35,7 +35,7 @@ public class FloatParameterImpl extends LilyEObject implements FloatParameter
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Float VALUE_EDEFAULT = null;
+	protected static final float VALUE_EDEFAULT = 0.0F;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -45,7 +45,7 @@ public class FloatParameterImpl extends LilyEObject implements FloatParameter
 	 * @generated
 	 * @ordered
 	 */
-	protected Float value = VALUE_EDEFAULT;
+	protected float value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -74,7 +74,7 @@ public class FloatParameterImpl extends LilyEObject implements FloatParameter
 	 * @generated
 	 */
 	@Override
-	public Float getValue()
+	public float getValue()
 	{
 		return value;
 	}
@@ -85,9 +85,9 @@ public class FloatParameterImpl extends LilyEObject implements FloatParameter
 	 * @generated
 	 */
 	@Override
-	public void setValue(Float newValue)
+	public void setValue(float newValue)
 	{
-		Float oldValue = value;
+		float oldValue = value;
 		value = newValue;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, TypesPackage.FLOAT_PARAMETER__VALUE, oldValue, value));
@@ -165,7 +165,7 @@ public class FloatParameterImpl extends LilyEObject implements FloatParameter
 		switch (featureID)
 		{
 			case TypesPackage.FLOAT_PARAMETER__VALUE:
-				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+				return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

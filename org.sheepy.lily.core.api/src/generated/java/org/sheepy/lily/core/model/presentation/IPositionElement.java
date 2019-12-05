@@ -4,8 +4,7 @@ package org.sheepy.lily.core.model.presentation;
 
 import org.joml.Vector2ic;
 
-import org.sheepy.lily.core.model.root.LObject;
-
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.model.types.EHorizontalRelative;
 import org.sheepy.lily.core.model.types.EVerticalRelative;
 
@@ -25,9 +24,10 @@ import org.sheepy.lily.core.model.types.EVerticalRelative;
  *
  * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getIPositionElement()
  * @model interface="true" abstract="true"
+ * @extends ILilyEObject
  * @generated
  */
-public interface IPositionElement extends LObject
+public interface IPositionElement extends ILilyEObject
 {
 	/**
 	 * Returns the value of the '<em><b>Position</b></em>' attribute.

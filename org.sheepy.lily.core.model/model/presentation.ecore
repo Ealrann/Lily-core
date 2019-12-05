@@ -2,8 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="presentation" nsURI="org.sheepy.lily.core.model.presentation"
     nsPrefix="presentation">
-  <eClassifiers xsi:type="ecore:EClass" name="IPositionElement" abstract="true" interface="true"
-      eSuperTypes="root.ecore#//LObject">
+  <eClassifiers xsi:type="ecore:EClass" name="IPositionElement" abstract="true" interface="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="position" unique="false"
         eType="ecore:EDataType types.ecore#//Vector2i" defaultValueLiteral="0;0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="verticalRelative" unique="false"
@@ -13,9 +12,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ISizedElement" abstract="true" interface="true"
       eSuperTypes="#//IPositionElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" unique="false" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" unique="false"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EInt"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IUIView" abstract="true" interface="true"
       eSuperTypes="application.ecore#//IView">
@@ -27,29 +26,23 @@
   <eClassifiers xsi:type="ecore:EClass" name="IMusicView" abstract="true" interface="true"
       eSuperTypes="application.ecore#//IView">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="musicPath" unique="false"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
-        defaultValueLiteral=""/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ISizedView" abstract="true" interface="true"
       eSuperTypes="#//ISizedElement application.ecore#//IView">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="moveable" unique="false"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
-        defaultValueLiteral="false"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="closeable" unique="false"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
-        defaultValueLiteral="false"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="scalable" unique="false"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
-        defaultValueLiteral="false"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="showTitle" unique="false"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
-        defaultValueLiteral="false"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fullscreen" unique="false"
-        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
-        defaultValueLiteral="true"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IUIElement" abstract="true" interface="true"
-      eSuperTypes="root.ecore#//LObject"/>
+      eSuperTypes="inference.ecore#//IInferenceObject"/>
   <eClassifiers xsi:type="ecore:EClass" name="UIPage" eSuperTypes="#//ISizedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="panels" upperBound="-1"
         eType="#//IPanel" containment="true" resolveProxies="false"/>

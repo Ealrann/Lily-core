@@ -3,37 +3,24 @@
 package org.sheepy.lily.core.model.ui.impl;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ECollections;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EContentsEList;
 
 import org.joml.Vector2ic;
 
 import org.sheepy.lily.core.api.adapter.LilyEObject;
-import org.sheepy.lily.core.api.util.LTreeIterator;
 
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 
 import org.sheepy.lily.core.model.presentation.IPositionElement;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
-
-import org.sheepy.lily.core.model.root.LObject;
-
-import org.sheepy.lily.core.model.root.RootPackage.Literals;
 
 import org.sheepy.lily.core.model.types.EHorizontalRelative;
 import org.sheepy.lily.core.model.types.EVerticalRelative;
@@ -51,7 +38,6 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.ui.impl.AbstractLabelImpl#getContentObjects <em>Content Objects</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.AbstractLabelImpl#getPosition <em>Position</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.AbstractLabelImpl#getVerticalRelative <em>Vertical Relative</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.AbstractLabelImpl#getHorizontalRelative <em>Horizontal Relative</em>}</li>
@@ -65,16 +51,6 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  */
 public abstract class AbstractLabelImpl extends LilyEObject implements AbstractLabel
 {
-	/**
-	 * The cached value of the '{@link #getContentObjects() <em>Content Objects</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContentObjects()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<LObject> contentObjects;
-
 	/**
 	 * The default value of the '{@link #getPosition() <em>Position</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -234,31 +210,6 @@ public abstract class AbstractLabelImpl extends LilyEObject implements AbstractL
 	protected EClass eStaticClass()
 	{
 		return UiPackage.Literals.ABSTRACT_LABEL;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<LObject> getContentObjects()
-	{
-		return contentObjects;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setContentObjects(EList<LObject> newContentObjects)
-	{
-		EList<LObject> oldContentObjects = contentObjects;
-		contentObjects = newContentObjects;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS, oldContentObjects, contentObjects));
 	}
 
 	/**
@@ -442,89 +393,6 @@ public abstract class AbstractLabelImpl extends LilyEObject implements AbstractL
 	 * @generated
 	 */
 	@Override
-	public <T extends LObject> EList<T> createContainmentEList(final EClass targetEClass)
-	{
-		EList<T> res = null;
-		final List<EStructuralFeature> unitRefs = new ArrayList<EStructuralFeature>();
-		EList<EReference> _eAllContainments = this.eClass().getEAllContainments();
-		for (final EReference ref : _eAllContainments)
-		{
-			EClassifier _eType = ref.getEType();
-			boolean _isSuperTypeOf = targetEClass.isSuperTypeOf(((EClass) _eType));
-			if (_isSuperTypeOf)
-			{
-				unitRefs.add(ref);
-			}
-		}
-		boolean _isEmpty = unitRefs.isEmpty();
-		if (_isEmpty)
-		{
-			res = ECollections.<T>emptyEList();
-		}
-		else
-		{
-			EContentsEList<T> _eContentsEList = new EContentsEList<T>(this, unitRefs);
-			res = _eContentsEList;
-		}
-		return res;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<LObject> lContents()
-	{
-		EList<LObject> _xblockexpression = null;
-		{
-			EList<LObject> _contentObjects = this.getContentObjects();
-			boolean _tripleEquals = (_contentObjects == null);
-			if (_tripleEquals)
-			{
-				this.setContentObjects(this.<LObject>createContainmentEList(Literals.LOBJECT));
-			}
-			_xblockexpression = this.getContentObjects();
-		}
-		return _xblockexpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public LObject lParent()
-	{
-		LObject _xifexpression = null;
-		EObject _eContainer = this.eContainer();
-		if ((_eContainer instanceof LObject))
-		{
-			EObject _eContainer_1 = this.eContainer();
-			_xifexpression = ((LObject) _eContainer_1);
-		}
-		return _xifexpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public LTreeIterator lAllContents()
-	{
-		return new LTreeIterator(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public IInferenceObject lInferenceObject()
 	{
 		return this;
@@ -540,8 +408,6 @@ public abstract class AbstractLabelImpl extends LilyEObject implements AbstractL
 	{
 		switch (featureID)
 		{
-			case UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS:
-				return getContentObjects();
 			case UiPackage.ABSTRACT_LABEL__POSITION:
 				return getPosition();
 			case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE:
@@ -565,15 +431,11 @@ public abstract class AbstractLabelImpl extends LilyEObject implements AbstractL
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue)
 	{
 		switch (featureID)
 		{
-			case UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS:
-				setContentObjects((EList<LObject>)newValue);
-				return;
 			case UiPackage.ABSTRACT_LABEL__POSITION:
 				setPosition((Vector2ic)newValue);
 				return;
@@ -609,9 +471,6 @@ public abstract class AbstractLabelImpl extends LilyEObject implements AbstractL
 	{
 		switch (featureID)
 		{
-			case UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS:
-				setContentObjects((EList<LObject>)null);
-				return;
 			case UiPackage.ABSTRACT_LABEL__POSITION:
 				setPosition(POSITION_EDEFAULT);
 				return;
@@ -647,8 +506,6 @@ public abstract class AbstractLabelImpl extends LilyEObject implements AbstractL
 	{
 		switch (featureID)
 		{
-			case UiPackage.ABSTRACT_LABEL__CONTENT_OBJECTS:
-				return contentObjects != null;
 			case UiPackage.ABSTRACT_LABEL__POSITION:
 				return POSITION_EDEFAULT == null ? position != null : !POSITION_EDEFAULT.equals(position);
 			case UiPackage.ABSTRACT_LABEL__VERTICAL_RELATIVE:
@@ -737,14 +594,6 @@ public abstract class AbstractLabelImpl extends LilyEObject implements AbstractL
 	{
 		switch (operationID)
 		{
-			case UiPackage.ABSTRACT_LABEL___CREATE_CONTAINMENT_ELIST__ECLASS:
-				return createContainmentEList((EClass)arguments.get(0));
-			case UiPackage.ABSTRACT_LABEL___LCONTENTS:
-				return lContents();
-			case UiPackage.ABSTRACT_LABEL___LPARENT:
-				return lParent();
-			case UiPackage.ABSTRACT_LABEL___LALL_CONTENTS:
-				return lAllContents();
 			case UiPackage.ABSTRACT_LABEL___LINFERENCE_OBJECT:
 				return lInferenceObject();
 		}
@@ -762,9 +611,7 @@ public abstract class AbstractLabelImpl extends LilyEObject implements AbstractL
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (contentObjects: ");
-		result.append(contentObjects);
-		result.append(", position: ");
+		result.append(" (position: ");
 		result.append(position);
 		result.append(", verticalRelative: ");
 		result.append(verticalRelative);

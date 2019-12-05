@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.sheepy.lily.core.model.ui.BooleanButton;
 import org.sheepy.lily.core.model.ui.UiPackage;
+
 import org.sheepy.lily.core.model.variable.IVariableResolver;
 
 /**

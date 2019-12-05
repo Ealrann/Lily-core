@@ -80,7 +80,7 @@ public class FloatParameterItemProvider extends ItemProviderAdapter implements I
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -106,11 +106,8 @@ public class FloatParameterItemProvider extends ItemProviderAdapter implements I
 	@Override
 	public String getText(Object object)
 	{
-		Float labelValue = ((FloatParameter)object).getValue();
-		String label = labelValue == null ? null : labelValue.toString();
-		return label == null || label.length() == 0 ?
-			getString("_UI_FloatParameter_type") :
-			getString("_UI_FloatParameter_type") + " " + label;
+		FloatParameter floatParameter = (FloatParameter)object;
+		return getString("_UI_FloatParameter_type") + " " + floatParameter.getValue();
 	}
 
 	/**

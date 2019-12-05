@@ -3,6 +3,7 @@
 package org.sheepy.lily.core.model.ui.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -23,7 +25,7 @@ import org.sheepy.lily.core.model.action.Action;
 
 import org.sheepy.lily.core.model.application.IView;
 
-import org.sheepy.lily.core.model.root.LObject;
+import org.sheepy.lily.core.model.inference.IInferenceObject;
 
 import org.sheepy.lily.core.model.types.EKeyState;
 
@@ -200,14 +202,14 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 	 * @generated
 	 */
 	@Override
-	public LObject getExecutor()
+	public IInferenceObject getExecutor()
 	{
-		LObject unit = this;
+		EObject unit = this;
 		while (((unit instanceof IView) == false))
 		{
-			unit = unit.lParent();
+			unit = unit.eContainer();
 		}
-		return unit;
+		return (IView) unit;
 	}
 
 	/**

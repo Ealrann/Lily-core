@@ -51,6 +51,7 @@ public class VariableLabelImpl extends AbstractLabelImpl implements VariableLabe
 	 * @ordered
 	 */
 	protected static final boolean SHOW_NAME_EDEFAULT = true;
+
 	/**
 	 * The cached value of the '{@link #isShowName() <em>Show Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IChildCreationExtender;
@@ -20,8 +19,8 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.joml.Vector2ic;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
-import org.sheepy.lily.core.model.root.LObject;
 import org.sheepy.lily.core.model.ui.AbstractButton;
 import org.sheepy.lily.core.model.ui.UiPackage;
 
@@ -215,7 +214,7 @@ public class AbstractButtonItemProvider extends ItemProviderAdapter implements I
 	@Override
 	public String getText(Object object)
 	{
-		EList<LObject> labelValue = ((AbstractButton)object).getContentObjects();
+		Vector2ic labelValue = ((AbstractButton)object).getPosition();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
 			getString("_UI_AbstractButton_type") :
@@ -236,7 +235,6 @@ public class AbstractButtonItemProvider extends ItemProviderAdapter implements I
 
 		switch (notification.getFeatureID(AbstractButton.class))
 		{
-			case UiPackage.ABSTRACT_BUTTON__CONTENT_OBJECTS:
 			case UiPackage.ABSTRACT_BUTTON__POSITION:
 			case UiPackage.ABSTRACT_BUTTON__VERTICAL_RELATIVE:
 			case UiPackage.ABSTRACT_BUTTON__HORIZONTAL_RELATIVE:

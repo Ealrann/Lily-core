@@ -80,15 +80,6 @@ public interface UiPackage extends EPackage
 	int PANEL__NAME = PresentationPackage.IPANEL__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANEL__CONTENT_OBJECTS = PresentationPackage.IPANEL__CONTENT_OBJECTS;
-
-	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -197,42 +188,6 @@ public interface UiPackage extends EPackage
 	int PANEL___LINFERENCE_OBJECT = PresentationPackage.IPANEL___LINFERENCE_OBJECT;
 
 	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANEL___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.IPANEL___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANEL___LCONTENTS = PresentationPackage.IPANEL___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANEL___LPARENT = PresentationPackage.IPANEL___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PANEL___LALL_CONTENTS = PresentationPackage.IPANEL___LALL_CONTENTS;
-
-	/**
 	 * The number of operations of the '<em>Panel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -250,15 +205,6 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	int ICONTROL = 1;
-
-	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ICONTROL__CONTENT_OBJECTS = PresentationPackage.IUI_ELEMENT__CONTENT_OBJECTS;
 
 	/**
 	 * The number of structural features of the '<em>IControl</em>' class.
@@ -279,42 +225,6 @@ public interface UiPackage extends EPackage
 	int ICONTROL___LINFERENCE_OBJECT = PresentationPackage.IUI_ELEMENT___LINFERENCE_OBJECT;
 
 	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ICONTROL___CREATE_CONTAINMENT_ELIST__ECLASS = PresentationPackage.IUI_ELEMENT___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ICONTROL___LCONTENTS = PresentationPackage.IUI_ELEMENT___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ICONTROL___LPARENT = PresentationPackage.IUI_ELEMENT___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ICONTROL___LALL_CONTENTS = PresentationPackage.IUI_ELEMENT___LALL_CONTENTS;
-
-	/**
 	 * The number of operations of the '<em>IControl</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -332,15 +242,6 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	int WIDGET = 2;
-
-	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WIDGET__CONTENT_OBJECTS = ICONTROL__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -406,42 +307,6 @@ public interface UiPackage extends EPackage
 	int WIDGET___LINFERENCE_OBJECT = ICONTROL___LINFERENCE_OBJECT;
 
 	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS = ICONTROL___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WIDGET___LCONTENTS = ICONTROL___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WIDGET___LPARENT = ICONTROL___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WIDGET___LALL_CONTENTS = ICONTROL___LALL_CONTENTS;
-
-	/**
 	 * The number of operations of the '<em>Widget</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -459,15 +324,6 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	int ABSTRACT_LABEL = 3;
-
-	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_LABEL__CONTENT_OBJECTS = WIDGET__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -551,42 +407,6 @@ public interface UiPackage extends EPackage
 	int ABSTRACT_LABEL___LINFERENCE_OBJECT = WIDGET___LINFERENCE_OBJECT;
 
 	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_LABEL___CREATE_CONTAINMENT_ELIST__ECLASS = WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_LABEL___LCONTENTS = WIDGET___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_LABEL___LPARENT = WIDGET___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_LABEL___LALL_CONTENTS = WIDGET___LALL_CONTENTS;
-
-	/**
 	 * The number of operations of the '<em>Abstract Label</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -604,15 +424,6 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	int DYNAMIC_ROW_LAYOUT = 4;
-
-	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DYNAMIC_ROW_LAYOUT__CONTENT_OBJECTS = ICONTROL__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
@@ -651,42 +462,6 @@ public interface UiPackage extends EPackage
 	int DYNAMIC_ROW_LAYOUT___LINFERENCE_OBJECT = ICONTROL___LINFERENCE_OBJECT;
 
 	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DYNAMIC_ROW_LAYOUT___CREATE_CONTAINMENT_ELIST__ECLASS = ICONTROL___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DYNAMIC_ROW_LAYOUT___LCONTENTS = ICONTROL___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DYNAMIC_ROW_LAYOUT___LPARENT = ICONTROL___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DYNAMIC_ROW_LAYOUT___LALL_CONTENTS = ICONTROL___LALL_CONTENTS;
-
-	/**
 	 * The number of operations of the '<em>Dynamic Row Layout</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -704,15 +479,6 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	int VARIABLE_LABEL = 5;
-
-	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_LABEL__CONTENT_OBJECTS = ABSTRACT_LABEL__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -823,42 +589,6 @@ public interface UiPackage extends EPackage
 	int VARIABLE_LABEL___LINFERENCE_OBJECT = ABSTRACT_LABEL___LINFERENCE_OBJECT;
 
 	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_LABEL___CREATE_CONTAINMENT_ELIST__ECLASS = ABSTRACT_LABEL___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_LABEL___LCONTENTS = ABSTRACT_LABEL___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_LABEL___LPARENT = ABSTRACT_LABEL___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_LABEL___LALL_CONTENTS = ABSTRACT_LABEL___LALL_CONTENTS;
-
-	/**
 	 * The number of operations of the '<em>Variable Label</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -876,15 +606,6 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	int LABEL = 6;
-
-	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LABEL__CONTENT_OBJECTS = ABSTRACT_LABEL__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -968,42 +689,6 @@ public interface UiPackage extends EPackage
 	int LABEL___LINFERENCE_OBJECT = ABSTRACT_LABEL___LINFERENCE_OBJECT;
 
 	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LABEL___CREATE_CONTAINMENT_ELIST__ECLASS = ABSTRACT_LABEL___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LABEL___LCONTENTS = ABSTRACT_LABEL___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LABEL___LPARENT = ABSTRACT_LABEL___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LABEL___LALL_CONTENTS = ABSTRACT_LABEL___LALL_CONTENTS;
-
-	/**
 	 * The number of operations of the '<em>Label</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1021,15 +706,6 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	int SLIDER = 7;
-
-	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SLIDER__CONTENT_OBJECTS = WIDGET__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -1131,42 +807,6 @@ public interface UiPackage extends EPackage
 	int SLIDER___LINFERENCE_OBJECT = WIDGET___LINFERENCE_OBJECT;
 
 	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SLIDER___CREATE_CONTAINMENT_ELIST__ECLASS = WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SLIDER___LCONTENTS = WIDGET___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SLIDER___LPARENT = WIDGET___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SLIDER___LALL_CONTENTS = WIDGET___LALL_CONTENTS;
-
-	/**
 	 * The number of operations of the '<em>Slider</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1184,15 +824,6 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	int TEXT_FIELD = 8;
-
-	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEXT_FIELD__CONTENT_OBJECTS = WIDGET__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -1267,42 +898,6 @@ public interface UiPackage extends EPackage
 	int TEXT_FIELD___LINFERENCE_OBJECT = WIDGET___LINFERENCE_OBJECT;
 
 	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEXT_FIELD___CREATE_CONTAINMENT_ELIST__ECLASS = WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEXT_FIELD___LCONTENTS = WIDGET___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEXT_FIELD___LPARENT = WIDGET___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEXT_FIELD___LALL_CONTENTS = WIDGET___LALL_CONTENTS;
-
-	/**
 	 * The number of operations of the '<em>Text Field</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1320,15 +915,6 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	int ABSTRACT_BUTTON = 9;
-
-	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BUTTON__CONTENT_OBJECTS = WIDGET__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -1403,42 +989,6 @@ public interface UiPackage extends EPackage
 	int ABSTRACT_BUTTON___LINFERENCE_OBJECT = WIDGET___LINFERENCE_OBJECT;
 
 	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS = WIDGET___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BUTTON___LCONTENTS = WIDGET___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BUTTON___LPARENT = WIDGET___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BUTTON___LALL_CONTENTS = WIDGET___LALL_CONTENTS;
-
-	/**
 	 * The number of operations of the '<em>Abstract Button</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1456,15 +1006,6 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	int BUTTON = 10;
-
-	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUTTON__CONTENT_OBJECTS = ABSTRACT_BUTTON__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -1566,42 +1107,6 @@ public interface UiPackage extends EPackage
 	int BUTTON___LINFERENCE_OBJECT = ABSTRACT_BUTTON___LINFERENCE_OBJECT;
 
 	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS = ABSTRACT_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUTTON___LCONTENTS = ABSTRACT_BUTTON___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUTTON___LPARENT = ABSTRACT_BUTTON___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BUTTON___LALL_CONTENTS = ABSTRACT_BUTTON___LALL_CONTENTS;
-
-	/**
 	 * The operation id for the '<em>LActions</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1637,15 +1142,6 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	int ABSTRACT_BOOLEAN_BUTTON = 11;
-
-	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BOOLEAN_BUTTON__CONTENT_OBJECTS = ABSTRACT_BUTTON__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -1738,42 +1234,6 @@ public interface UiPackage extends EPackage
 	int ABSTRACT_BOOLEAN_BUTTON___LINFERENCE_OBJECT = ABSTRACT_BUTTON___LINFERENCE_OBJECT;
 
 	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BOOLEAN_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS = ABSTRACT_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BOOLEAN_BUTTON___LCONTENTS = ABSTRACT_BUTTON___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BOOLEAN_BUTTON___LPARENT = ABSTRACT_BUTTON___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_BOOLEAN_BUTTON___LALL_CONTENTS = ABSTRACT_BUTTON___LALL_CONTENTS;
-
-	/**
 	 * The number of operations of the '<em>Abstract Boolean Button</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1791,15 +1251,6 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	int BOOLEAN_BUTTON = 12;
-
-	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_BUTTON__CONTENT_OBJECTS = ABSTRACT_BOOLEAN_BUTTON__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -1901,42 +1352,6 @@ public interface UiPackage extends EPackage
 	int BOOLEAN_BUTTON___LINFERENCE_OBJECT = ABSTRACT_BOOLEAN_BUTTON___LINFERENCE_OBJECT;
 
 	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS = ABSTRACT_BOOLEAN_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_BUTTON___LCONTENTS = ABSTRACT_BOOLEAN_BUTTON___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_BUTTON___LPARENT = ABSTRACT_BOOLEAN_BUTTON___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_BUTTON___LALL_CONTENTS = ABSTRACT_BOOLEAN_BUTTON___LALL_CONTENTS;
-
-	/**
 	 * The number of operations of the '<em>Boolean Button</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1954,15 +1369,6 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	int BOOLEAN_ACTION_BUTTON = 13;
-
-	/**
-	 * The feature id for the '<em><b>Content Objects</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_ACTION_BUTTON__CONTENT_OBJECTS = ABSTRACT_BOOLEAN_BUTTON__CONTENT_OBJECTS;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -2071,42 +1477,6 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int BOOLEAN_ACTION_BUTTON___LINFERENCE_OBJECT = ABSTRACT_BOOLEAN_BUTTON___LINFERENCE_OBJECT;
-
-	/**
-	 * The operation id for the '<em>Create Containment EList</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_ACTION_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS = ABSTRACT_BOOLEAN_BUTTON___CREATE_CONTAINMENT_ELIST__ECLASS;
-
-	/**
-	 * The operation id for the '<em>LContents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_ACTION_BUTTON___LCONTENTS = ABSTRACT_BOOLEAN_BUTTON___LCONTENTS;
-
-	/**
-	 * The operation id for the '<em>LParent</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_ACTION_BUTTON___LPARENT = ABSTRACT_BOOLEAN_BUTTON___LPARENT;
-
-	/**
-	 * The operation id for the '<em>LAll Contents</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_ACTION_BUTTON___LALL_CONTENTS = ABSTRACT_BOOLEAN_BUTTON___LALL_CONTENTS;
 
 	/**
 	 * The number of operations of the '<em>Boolean Action Button</em>' class.

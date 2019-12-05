@@ -20,7 +20,6 @@ import org.sheepy.lily.core.model.inference.Inferer;
 import org.sheepy.lily.core.model.inference.LNotification;
 import org.sheepy.lily.core.model.inference.LRule;
 import org.sheepy.lily.core.model.inference.ParameteredNotification;
-import org.sheepy.lily.core.model.root.LObject;
 import org.sheepy.lily.core.model.types.Parameter;
 
 @Statefull
@@ -43,7 +42,7 @@ public class InferenceAdapter implements IInferenceAdapter
 	}
 
 	@Override
-	public void postNotification(LObject adaptedEntity, LNotification notification)
+	public void postNotification(EObject adaptedEntity, LNotification notification)
 	{
 		postNotificationInternal(adaptedEntity, notification, null);
 
@@ -57,7 +56,7 @@ public class InferenceAdapter implements IInferenceAdapter
 	}
 
 	@Override
-	public <T extends Parameter> void postNotification(	LObject adaptedEntity,
+	public <T extends Parameter> void postNotification(	EObject adaptedEntity,
 														ParameteredNotification<T> notification,
 														T parameter)
 	{
@@ -75,7 +74,7 @@ public class InferenceAdapter implements IInferenceAdapter
 	@SuppressWarnings({
 			"rawtypes", "unchecked"
 	})
-	private void postNotificationInternal(	LObject adaptedEntity,
+	private void postNotificationInternal(	EObject adaptedEntity,
 											AbstractNotification notification,
 											Parameter parameter)
 	{
@@ -96,7 +95,7 @@ public class InferenceAdapter implements IInferenceAdapter
 
 				if (match)
 				{
-					final ActionExecutionContext ec = new ActionExecutionContext(	(LObject) ((Inferer) rule.eContainer()).lExecutor(),
+					final ActionExecutionContext ec = new ActionExecutionContext(	((Inferer) rule.eContainer()).lExecutor(),
 																					rule.getAction(),
 																					parameter);
 

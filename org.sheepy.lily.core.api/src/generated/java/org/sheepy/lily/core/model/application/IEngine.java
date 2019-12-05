@@ -2,7 +2,7 @@
  */
 package org.sheepy.lily.core.model.application;
 
-import org.sheepy.lily.core.model.root.LObject;
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -12,7 +12,8 @@ import org.sheepy.lily.core.model.root.LObject;
  *
  * @see org.sheepy.lily.core.model.application.ApplicationPackage#getIEngine()
  * @model interface="true" abstract="true"
+ * @extends ILilyEObject
  * @generated
  */
-public interface IEngine extends LObject
+public interface IEngine extends ILilyEObject
 {} // IEngine

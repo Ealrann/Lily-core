@@ -29,7 +29,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
 
 import org.sheepy.lily.core.model.presentation.util.PresentationAdapterFactory;
-import org.sheepy.lily.core.model.types.provider.LilyEditPlugin;
+import org.sheepy.lily.core.model.ui.provider.LilyEditPlugin;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
