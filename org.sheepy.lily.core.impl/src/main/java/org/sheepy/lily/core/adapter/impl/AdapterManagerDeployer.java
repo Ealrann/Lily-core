@@ -21,7 +21,7 @@ import org.sheepy.lily.core.api.util.TinyEContentAdapter;
 public final class AdapterManagerDeployer extends TinyEContentAdapter
 {
 	public static final AdapterRegistry REGISTRY = (AdapterRegistry) IAdapterRegistry.INSTANCE;
-	private static final String ADAPTER_CREATION_LOOP = "Adapter creation loop.";
+	private static final String ADAPTER_CREATION_LOOP = "Adapter creation loop: ";
 
 	private final Deque<AdapterDescriptor<?>> constructingAdapters = new ArrayDeque<>();
 	private final ListenerNotificationMap notificationMap;
@@ -66,7 +66,7 @@ public final class AdapterManagerDeployer extends TinyEContentAdapter
 	{
 		if (constructing && constructingAdapters.contains(descriptor))
 		{
-			throw new AssertionError(ADAPTER_CREATION_LOOP);
+			throwAdapterCreationLoopException();
 		}
 
 		final var eTarget = (EObject) target;
@@ -79,6 +79,15 @@ public final class AdapterManagerDeployer extends TinyEContentAdapter
 		constructing = !constructingAdapters.isEmpty();
 
 		return res;
+	}
+
+	private void throwAdapterCreationLoopException() throws AssertionError
+	{
+		final var classLoop = constructingAdapters	.stream()
+													.map(n -> n.domain.type.getSimpleName())
+													.collect(Collectors.joining(", "));
+
+		throw new AssertionError(ADAPTER_CREATION_LOOP + classLoop);
 	}
 
 	public void addListener(INotificationListener listener, int... features)

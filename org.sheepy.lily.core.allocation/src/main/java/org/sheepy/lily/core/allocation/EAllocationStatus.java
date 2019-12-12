@@ -4,5 +4,6 @@ public enum EAllocationStatus
 {
 	Allocated,
 	CannotAllocate,
+	AllocationDelayed,
 	NotAllocated
 }

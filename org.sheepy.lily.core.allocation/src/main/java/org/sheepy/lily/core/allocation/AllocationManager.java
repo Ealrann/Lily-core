@@ -14,6 +14,8 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 	public final IAllocable<T> allocable;
 	public final List<IDependencyListener> listeners = new ArrayList<>();
 	private final AllocationManagerFactory<?> factory;
+	private final IDependencyListener dependencyListener = this::dependencyChanged;
+
 
 	private AllocationManager<?> parent;
 	private boolean virtual = false;
@@ -105,8 +107,15 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 		{
 			if (configuration.isAllocable())
 			{
-				status = EAllocationStatus.Allocated;
-				allocable.allocate(configuration.context);
+				if (configuration.areDependenciesAllocated())
+				{
+					status = EAllocationStatus.Allocated;
+					doAllocate();
+				}
+				else
+				{
+					status = EAllocationStatus.AllocationDelayed;
+				}
 				configuration.dirty = false;
 			}
 			else
@@ -114,6 +123,12 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 				status = EAllocationStatus.CannotAllocate;
 			}
 		}
+	}
+
+	private void doAllocate()
+	{
+		allocable.allocate(configuration.context);
+		fireChange();
 	}
 
 	@Override
@@ -135,6 +150,7 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 			if (status == EAllocationStatus.Allocated)
 			{
 				allocable.free(configuration.context);
+				fireChange();
 			}
 			status = EAllocationStatus.NotAllocated;
 		}
@@ -184,11 +200,24 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 		return null;
 	}
 
-	private void fireDirtyChange()
+	private void dependencyChanged()
+	{
+		if (status == EAllocationStatus.AllocationDelayed && configuration.areDependenciesAllocated())
+		{
+			allocable.allocate(configuration.context);
+			fireChange();
+		}
+		else
+		{
+			configuration.setDirty();
+		}
+	}
+
+	private void fireChange()
 	{
 		for (final var listener : listeners)
 		{
-			listener.markedAsDirty();
+			listener.onChange();
 		}
 	}
 
@@ -226,11 +255,8 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 
 	private final class AllocationConfiguration implements IAllocationConfiguration
 	{
-
 		public final List<AllocationManager<?>> children = new ArrayList<>();
 		public final List<AllocationManager<?>> dependencies = new ArrayList<>();
-
-		private final IDependencyListener dependencyListener = this::setDirty;
 
 		private IAllocationContext childrenContext = null;
 		private AllocationManager<T> childrenContextManager = null;
@@ -245,23 +271,28 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 
 		public boolean isAllocable()
 		{
-			boolean res = true;
-
 			if (allocationCondition != null)
 			{
-				res &= allocationCondition.test(context);
+				return allocationCondition.test(context);
 			}
+			else
+			{
+				return true;
+			}
+		}
 
+		public boolean areDependenciesAllocated()
+		{
+			boolean res = true;
 			for (int i = 0; i < dependencies.size(); i++)
 			{
-				var dep = dependencies.get(i);
+				final var dep = dependencies.get(i);
 				if (dep.status != EAllocationStatus.Allocated)
 				{
 					res &= false;
 					break;
 				}
 			}
-
 			return res;
 		}
 
@@ -432,7 +463,7 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 				{
 					parent.dirtyBranch();
 				}
-				fireDirtyChange();
+				fireChange();
 			}
 		}
 
@@ -445,6 +476,6 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 
 	private interface IDependencyListener
 	{
-		void markedAsDirty();
+		void onChange();
 	}
 }
