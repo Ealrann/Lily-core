@@ -1,11 +1,13 @@
 package org.sheepy.lily.core.allocation;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
 
+import org.sheepy.lily.core.allocation.internal.AllocationConfiguration;
 import org.sheepy.lily.core.api.allocation.IAllocable;
-import org.sheepy.lily.core.api.allocation.IAllocationConfiguration;
+import org.sheepy.lily.core.api.allocation.IAllocationConfigurator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.IAllocationManager;
 
@@ -15,12 +17,13 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 	public final List<IDependencyListener> listeners = new ArrayList<>();
 	private final AllocationManagerFactory<?> factory;
 	private final IDependencyListener dependencyListener = this::dependencyChanged;
+	private final AllocationConfigurator configurator = new AllocationConfigurator();
 
-
+	private boolean dirty = false;
 	private AllocationManager<?> parent;
 	private boolean virtual = false;
-	private AllocationConfiguration configuration = null;
-
+	private AllocationConfiguration<T> configuration = null;
+	private AllocationManager<T> childrenContextManager = null;
 	private boolean dirtyBranch = true;
 	private EAllocationStatus status = EAllocationStatus.NotAllocated;
 
@@ -79,17 +82,18 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 	public void configure(IAllocationContext context)
 	{
 		cleanConfiguration();
-
-		configuration = new AllocationConfiguration((T) context);
-
-		allocable.configureAllocation(configuration, (T) context);
+		configuration = new AllocationConfiguration<>((T) context);
+		allocable.configureAllocation(configurator, (T) context);
 	}
 
 	private void cleanConfiguration()
 	{
 		if (configuration != null)
 		{
-			configuration.clean();
+			for (final var dep : configuration.dependencies)
+			{
+				dep.listeners.remove(dependencyListener);
+			}
 			configuration = null;
 		}
 	}
@@ -99,11 +103,15 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 	{
 		if (dirtyBranch)
 		{
+			if (childrenContextManager != null)
+			{
+				childrenContextManager.allocate();
+			}
 			configuration.allocateChildren();
 			dirtyBranch = false;
 		}
 
-		if (configuration.dirty || status == EAllocationStatus.NotAllocated)
+		if (dirty || status == EAllocationStatus.NotAllocated)
 		{
 			if (configuration.isAllocable())
 			{
@@ -116,7 +124,7 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 				{
 					status = EAllocationStatus.AllocationDelayed;
 				}
-				configuration.dirty = false;
+				dirty = false;
 			}
 			else
 			{
@@ -145,7 +153,7 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 
 	public void free(boolean dirtyOnly)
 	{
-		if (status != EAllocationStatus.NotAllocated && (!dirtyOnly || configuration.dirty))
+		if (status != EAllocationStatus.NotAllocated && (!dirtyOnly || dirty))
 		{
 			if (status == EAllocationStatus.Allocated)
 			{
@@ -158,7 +166,11 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 		if (!dirtyOnly || dirtyBranch)
 		{
 			configuration.freeChildren(dirtyOnly);
-			dirtyBranch();
+			if (childrenContextManager != null)
+			{
+				childrenContextManager.free(dirtyOnly);
+			}
+			markBranchAsDirty();
 		}
 	}
 
@@ -168,48 +180,42 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 		return dirtyBranch;
 	}
 
-	private void dirtyBranch()
+	private void markBranchAsDirty()
 	{
 		if (this.dirtyBranch == false)
 		{
 			this.dirtyBranch = true;
 			if (parent != null)
 			{
-				parent.dirtyBranch();
+				parent.markBranchAsDirty();
 			}
 		}
-	}
-
-	public AllocationManager<?> searchManager(IAllocable<?> allocable)
-	{
-		if (this.allocable == allocable)
-		{
-			return this;
-		}
-		else
-		{
-			for (final var child : configuration.children)
-			{
-				final var childSearch = child.searchManager(allocable);
-				if (childSearch != null)
-				{
-					return childSearch;
-				}
-			}
-		}
-		return null;
 	}
 
 	private void dependencyChanged()
 	{
-		if (status == EAllocationStatus.AllocationDelayed && configuration.areDependenciesAllocated())
+		if (status == EAllocationStatus.AllocationDelayed
+				&& configuration.areDependenciesAllocated())
 		{
 			allocable.allocate(configuration.context);
 			fireChange();
 		}
 		else
 		{
-			configuration.setDirty();
+			setDirty();
+		}
+	}
+
+	public void setDirty()
+	{
+		if (dirty == false)
+		{
+			dirty = true;
+			if (parent != null)
+			{
+				parent.markBranchAsDirty();
+			}
+			fireChange();
 		}
 	}
 
@@ -221,7 +227,7 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 		}
 	}
 
-	private void appendInfo(StringBuilder appendTo, int depth)
+	public void appendInfo(StringBuilder appendTo, int depth)
 	{
 		appendTo.append(System.lineSeparator());
 		for (int i = 0; i < depth; i++)
@@ -230,19 +236,17 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 		}
 		appendTo.append('[' + allocable.getClass().getSimpleName() + "] ");
 
-		if (configuration.dependencies.isEmpty() == false)
-		{
-			appendTo.append("Dependencies: ");
-			for (final var dep : configuration.dependencies)
-			{
-				appendTo.append(dep.allocable.getClass().getSimpleName());
-			}
-		}
+		configuration.appendInfo(appendTo, depth);
+	}
 
-		for (final var child : configuration.children)
-		{
-			child.appendInfo(appendTo, depth + 1);
-		}
+	public Collection<? extends AllocationManager<?>> getChildren()
+	{
+		return configuration.children;
+	}
+
+	public EAllocationStatus getStatus()
+	{
+		return status;
 	}
 
 	@Override
@@ -253,97 +257,18 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 		return sb.toString();
 	}
 
-	private final class AllocationConfiguration implements IAllocationConfiguration
+	private final class AllocationConfigurator implements IAllocationConfigurator
 	{
-		public final List<AllocationManager<?>> children = new ArrayList<>();
-		public final List<AllocationManager<?>> dependencies = new ArrayList<>();
-
-		private IAllocationContext childrenContext = null;
-		private AllocationManager<T> childrenContextManager = null;
-		private T context = null;
-		private boolean dirty = false;
-		private Predicate<IAllocationContext> allocationCondition;
-
-		private AllocationConfiguration(T context)
-		{
-			this.context = context;
-		}
-
-		public boolean isAllocable()
-		{
-			if (allocationCondition != null)
-			{
-				return allocationCondition.test(context);
-			}
-			else
-			{
-				return true;
-			}
-		}
-
-		public boolean areDependenciesAllocated()
-		{
-			boolean res = true;
-			for (int i = 0; i < dependencies.size(); i++)
-			{
-				final var dep = dependencies.get(i);
-				if (dep.status != EAllocationStatus.Allocated)
-				{
-					res &= false;
-					break;
-				}
-			}
-			return res;
-		}
-
-		public void allocateChildren()
-		{
-			if (childrenContextManager != null)
-			{
-				childrenContextManager.allocate();
-			}
-
-			for (int i = 0; i < children.size(); i++)
-			{
-				final var allocationManager = children.get(i);
-				allocationManager.allocate();
-			}
-		}
-
-		private void freeChildren(boolean dirtyOnly)
-		{
-			for (int i = children.size() - 1; i >= 0; i--)
-			{
-				final var allocationManager = children.get(i);
-				allocationManager.free(dirtyOnly);
-			}
-
-			if (childrenContextManager != null)
-			{
-				childrenContextManager.free(dirtyOnly);
-			}
-		}
-
-		private void clean()
-		{
-			for (final var dep : configuration.dependencies)
-			{
-				dep.listeners.remove(dependencyListener);
-			}
-		}
-
 		@Override
 		@SuppressWarnings("unchecked")
 		public void setChildrenContext(IAllocationContext newChildrenContext)
 		{
-			this.childrenContext = newChildrenContext;
-
+			configuration.setChildrenContext(newChildrenContext);
 			if (newChildrenContext != null && newChildrenContext instanceof IAllocable<?>)
 			{
 				childrenContextManager = factory.createContext(	AllocationManager.this,
 																(IAllocable<T>) newChildrenContext);
-
-				childrenContextManager.configure(this.context);
+				childrenContextManager.configure(configuration.context);
 			}
 			else
 			{
@@ -351,51 +276,46 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 			}
 		}
 
-		private IAllocationContext childContext()
-		{
-			final IAllocationContext childContext = childrenContext != null
-					? childrenContext
-					: context;
-			return childContext;
-		}
-
 		@Override
 		public void addChildren(List<? extends IAllocable<?>> newChildren)
 		{
 			if (newChildren.isEmpty() == false)
 			{
-				for (final var child : newChildren)
+				for (final var newChild : newChildren)
 				{
-					assert child != null;
-
-					final var childManager = factory.create(AllocationManager.this, child);
-					childManager.configure(childContext());
+					final var childManager = factory.create(AllocationManager.this, newChild);
+					childManager.configure(configuration.childContext());
 
 					if (status == EAllocationStatus.Allocated)
 					{
 						childManager.allocate();
 					}
+
+					configuration.children.add(childManager);
 				}
-				dirtyBranch();
+
+				markBranchAsDirty();
 			}
 		}
 
 		@Override
 		public void removeChildren(List<? extends IAllocable<?>> oldChildren)
 		{
-
-			final var it = children.iterator();
-			while (it.hasNext())
+			if (oldChildren.isEmpty() == false)
 			{
-				final var child = it.next();
 				for (int i = 0; i < oldChildren.size(); i++)
 				{
-					final var oldAllocableDependency = oldChildren.get(i);
-					if (oldAllocableDependency == child.allocable)
+					final var it = configuration.children.iterator();
+					while (it.hasNext())
 					{
-						child.free();
-						it.remove();
-						break;
+						final var child = it.next();
+						final var oldAllocableDependency = oldChildren.get(i);
+						if (oldAllocableDependency == child.allocable)
+						{
+							child.free();
+							it.remove();
+							break;
+						}
 					}
 				}
 			}
@@ -404,11 +324,14 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 		@Override
 		public void clearChildren()
 		{
-			for (final var child : children)
+			final var it = configuration.children.iterator();
+			while (it.hasNext())
 			{
+				final var child = it.next();
 				child.free();
+				it.remove();
+				break;
 			}
-			this.children.clear();
 		}
 
 		@Override
@@ -418,7 +341,7 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 			{
 				final var newAllocableDep = newDeps.get(i);
 				final var dep = factory.getOrCreateVirtual(newAllocableDep);
-				this.dependencies.add(dep);
+				configuration.dependencies.add(dep);
 				dep.listeners.add(dependencyListener);
 			}
 		}
@@ -426,7 +349,7 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 		@Override
 		public void removeDependencies(List<? extends IAllocable<?>> oldDeps)
 		{
-			final var it = dependencies.iterator();
+			final var it = configuration.dependencies.iterator();
 			while (it.hasNext())
 			{
 				final var dependency = it.next();
@@ -446,31 +369,23 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 		@Override
 		public void clearDependencies()
 		{
-			for (final var dependency : dependencies)
+			for (final var dependency : configuration.dependencies)
 			{
 				dependency.listeners.remove(dependencyListener);
 			}
-			dependencies.clear();
-		}
-
-		@Override
-		public void setDirty()
-		{
-			if (dirty == false)
-			{
-				dirty = true;
-				if (parent != null)
-				{
-					parent.dirtyBranch();
-				}
-				fireChange();
-			}
+			configuration.dependencies.clear();
 		}
 
 		@Override
 		public void setAllocationCondition(Predicate<IAllocationContext> predicate)
 		{
-			this.allocationCondition = predicate;
+			configuration.setAllocationCondition(predicate);
+		}
+
+		@Override
+		public void setDirty()
+		{
+			AllocationManager.this.setDirty();
 		}
 	}
 

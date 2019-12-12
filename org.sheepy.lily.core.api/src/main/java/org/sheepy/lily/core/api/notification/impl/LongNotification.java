@@ -1,15 +1,15 @@
-package org.sheepy.lily.core.api.adapter.notification;
+package org.sheepy.lily.core.api.notification.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
-public class ObjectNotification implements Notification
+public class LongNotification implements Notification
 {
 	private final Object notifier;
 	private final Enum<?> feature;
-	private final Object oldValue;
-	private final Object newValue;
+	private final long oldValue;
+	private final long newValue;
 
-	public ObjectNotification(Object Notifier, Enum<?> feature, Object oldValue, Object newValue)
+	public LongNotification(Object Notifier, Enum<?> feature, long oldValue, long newValue)
 	{
 		notifier = Notifier;
 		this.feature = feature;
@@ -158,13 +158,13 @@ public class ObjectNotification implements Notification
 	@Override
 	public long getOldLongValue()
 	{
-		return 0;
+		return oldValue;
 	}
 
 	@Override
 	public long getNewLongValue()
 	{
-		return 0;
+		return newValue;
 	}
 
 	@Override

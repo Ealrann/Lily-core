@@ -1,5 +1,7 @@
 package org.sheepy.lily.core.api.adapter;
 
+import org.sheepy.lily.core.api.notification.INotificationListener;
+
 public interface IAdapterManager
 {
 	<T extends IAdapter> T adapt(Class<T> type);

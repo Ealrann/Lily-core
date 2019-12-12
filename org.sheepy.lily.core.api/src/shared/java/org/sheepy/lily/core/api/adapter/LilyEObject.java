@@ -2,6 +2,7 @@ package org.sheepy.lily.core.api.adapter;
 
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.sheepy.lily.core.api.notification.INotificationListener;
 
 public class LilyEObject extends EObjectImpl implements ILilyEObject, InternalEObject
 {

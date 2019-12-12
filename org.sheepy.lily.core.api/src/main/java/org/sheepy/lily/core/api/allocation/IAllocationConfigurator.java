@@ -3,8 +3,16 @@ package org.sheepy.lily.core.api.allocation;
 import java.util.List;
 import java.util.function.Predicate;
 
-public interface IAllocationConfiguration
+public interface IAllocationConfigurator
 {
+	enum Features
+	{
+		Dirty,
+		Children,
+		Dependencies,
+		ChildrenContext
+	}
+
 	void setDirty();
 
 	void addChildren(List<? extends IAllocable<?>> children);

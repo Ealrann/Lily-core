@@ -5,7 +5,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
-import org.sheepy.lily.core.api.adapter.INotificationListener;
+import org.sheepy.lily.core.api.notification.INotificationListener;
 
 public abstract class AbstractModelSetRegistry
 {

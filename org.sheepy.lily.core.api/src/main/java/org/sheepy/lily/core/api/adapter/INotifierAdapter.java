@@ -1,7 +1,6 @@
 package org.sheepy.lily.core.api.adapter;
 
-public interface INotifierAdapter extends IAdapter
-{
-	void addListener(INotificationListener listener, int... features);
-	void removeListener(INotificationListener listener, int... features);
-}
+import org.sheepy.lily.core.api.notification.INotifier;
+
+public interface INotifierAdapter extends IAdapter, INotifier
+{}

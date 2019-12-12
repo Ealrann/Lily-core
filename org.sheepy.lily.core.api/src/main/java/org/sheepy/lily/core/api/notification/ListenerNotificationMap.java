@@ -1,10 +1,10 @@
-package org.sheepy.lily.core.api.util;
+package org.sheepy.lily.core.api.notification;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.sheepy.lily.core.api.adapter.INotificationListener;
+import org.sheepy.lily.core.api.notification.INotificationListener;
 
 public class ListenerNotificationMap implements INotificationListener
 {

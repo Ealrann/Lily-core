@@ -7,8 +7,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.IAdapterManager;
-import org.sheepy.lily.core.api.adapter.INotificationListener;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
+import org.sheepy.lily.core.api.notification.INotificationListener;
 
 public final class AdapterManager implements IAdapterManager
 {

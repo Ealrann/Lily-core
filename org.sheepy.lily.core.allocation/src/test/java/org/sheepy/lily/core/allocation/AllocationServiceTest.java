@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.sheepy.lily.core.allocation.AllocationServiceTest.BasicContext.BasicBasicContext;
 import org.sheepy.lily.core.api.allocation.IAllocable;
-import org.sheepy.lily.core.api.allocation.IAllocationConfiguration;
+import org.sheepy.lily.core.api.allocation.IAllocationConfigurator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 
 public class AllocationServiceTest
@@ -184,7 +184,7 @@ public class AllocationServiceTest
 		public boolean tag = false;
 		public boolean configured = false;
 		public boolean dirty = false;
-		private IAllocationConfiguration config;
+		private IAllocationConfigurator config;
 
 		public BasicAllocable(List<BasicAllocable> children, List<BasicAllocable> dependencies)
 		{
@@ -201,7 +201,7 @@ public class AllocationServiceTest
 		}
 
 		@Override
-		public void configureAllocation(IAllocationConfiguration config, BasicContext context)
+		public void configureAllocation(IAllocationConfigurator config, BasicContext context)
 		{
 			this.config = config;
 

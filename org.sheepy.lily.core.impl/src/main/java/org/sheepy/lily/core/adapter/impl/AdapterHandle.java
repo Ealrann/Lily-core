@@ -14,8 +14,8 @@ import org.sheepy.lily.core.adapter.impl.AdapterInfo.TickConfiguration;
 import org.sheepy.lily.core.adapter.impl.AdapterRegistry.AdapterDescriptor;
 import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
 import org.sheepy.lily.core.api.adapter.IAdapter;
-import org.sheepy.lily.core.api.adapter.INotificationListener;
 import org.sheepy.lily.core.api.cadence.ETickerClock;
+import org.sheepy.lily.core.api.notification.INotificationListener;
 import org.sheepy.lily.core.api.util.Operation;
 
 public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.AdapterDescriptor<T>

@@ -1,15 +1,15 @@
-package org.sheepy.lily.core.api.adapter.notification;
+package org.sheepy.lily.core.api.notification.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
-public class FloatNotification implements Notification
+public class IntNotification implements Notification
 {
 	private final Object notifier;
 	private final Enum<?> feature;
-	private final float oldValue;
-	private final float newValue;
+	private final int oldValue;
+	private final int newValue;
 
-	public FloatNotification(Object Notifier, Enum<?> feature, float oldValue, float newValue)
+	public IntNotification(Object Notifier, Enum<?> feature, int oldValue, int newValue)
 	{
 		notifier = Notifier;
 		this.feature = feature;
@@ -134,25 +134,25 @@ public class FloatNotification implements Notification
 	@Override
 	public float getOldFloatValue()
 	{
-		return oldValue;
+		return 0;
 	}
 
 	@Override
 	public float getNewFloatValue()
 	{
-		return newValue;
+		return 0;
 	}
 
 	@Override
 	public int getOldIntValue()
 	{
-		return 0;
+		return oldValue;
 	}
 
 	@Override
 	public int getNewIntValue()
 	{
-		return 0;
+		return newValue;
 	}
 
 	@Override

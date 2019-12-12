@@ -12,9 +12,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.impl.AdapterRegistry.AdapterDescriptor;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.IAdapterRegistry;
-import org.sheepy.lily.core.api.adapter.INotificationListener;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
-import org.sheepy.lily.core.api.util.ListenerNotificationMap;
+import org.sheepy.lily.core.api.notification.INotificationListener;
+import org.sheepy.lily.core.api.notification.ListenerNotificationMap;
 import org.sheepy.lily.core.api.util.ModelUtil;
 import org.sheepy.lily.core.api.util.TinyEContentAdapter;
 

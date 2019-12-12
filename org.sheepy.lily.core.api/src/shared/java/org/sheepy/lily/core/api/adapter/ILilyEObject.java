@@ -1,6 +1,7 @@
 package org.sheepy.lily.core.api.adapter;
 
 import org.eclipse.emf.ecore.EObject;
+import org.sheepy.lily.core.api.notification.INotificationListener;
 
 public interface ILilyEObject extends EObject
 {
