@@ -290,8 +290,6 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 					{
 						childManager.allocate();
 					}
-
-					configuration.children.add(childManager);
 				}
 
 				markBranchAsDirty();
@@ -305,11 +303,11 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 			{
 				for (int i = 0; i < oldChildren.size(); i++)
 				{
+					final var oldAllocableDependency = oldChildren.get(i);
 					final var it = configuration.children.iterator();
 					while (it.hasNext())
 					{
 						final var child = it.next();
-						final var oldAllocableDependency = oldChildren.get(i);
 						if (oldAllocableDependency == child.allocable)
 						{
 							child.free();
