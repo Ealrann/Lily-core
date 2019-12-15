@@ -117,7 +117,7 @@ public final class AdapterInfo<T extends IAdapter>
 	private static final ExecutionHandle.Builder createHandleBuilder(	Class<?> type,
 																		Class<? extends Annotation> annotationClass)
 	{
-		final var method = ReflectUtils.gatherMethod(type, annotationClass);
+		final var method = ReflectUtils.gatherAnnotatedMethod(type, annotationClass);
 		return createHandleBuilder(method);
 	}
 

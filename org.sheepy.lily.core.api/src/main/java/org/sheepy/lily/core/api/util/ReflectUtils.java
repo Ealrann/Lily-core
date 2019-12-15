@@ -8,7 +8,7 @@ import java.util.List;
 
 import org.sheepy.lily.core.api.adapter.IAdapter;
 
-public class ReflectUtils
+public final class ReflectUtils
 {
 	private static final Class<?>[] NO_TYPES = new Class<?>[0];
 	private static final Object[] NO_OBJECTS = new Object[0];
@@ -27,8 +27,8 @@ public class ReflectUtils
 		return res;
 	}
 
-	public static final <T extends Annotation> Method gatherMethod(	Class<?> type,
-																	Class<? extends T> annotationClass)
+	public static <T extends Annotation> Method gatherAnnotatedMethod(	Class<?> type,
+																		Class<? extends T> annotationClass)
 	{
 		Method res = null;
 
@@ -45,22 +45,23 @@ public class ReflectUtils
 																							Class<? extends T> annotationClass)
 	{
 		final List<AnnotatedMethod<T>> res = new ArrayList<>();
-
-		final var methods = type.getDeclaredMethods();
-		for (final Method method : methods)
+		while (type != null)
 		{
-			final var annotation = method.getAnnotation(annotationClass);
-
-			if (annotation != null)
+			for (final var method : type.getDeclaredMethods())
 			{
-				res.add(new AnnotatedMethod<>(method, annotation));
+				final var annotation = method.getAnnotation(annotationClass);
+				if (annotation != null)
+				{
+					res.add(new AnnotatedMethod<>(method, annotation));
+				}
 			}
+			type = type.getSuperclass();
 		}
 
 		return List.copyOf(res);
 	}
 
-	public static class AnnotatedMethod<T extends Annotation>
+	public static final class AnnotatedMethod<T extends Annotation>
 	{
 		public final Method method;
 		public final T annotation;
