@@ -25,8 +25,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationFactory;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
-
-import org.sheepy.lily.core.model.cadence.CadenceFactory;
 import org.sheepy.lily.core.model.presentation.PresentationFactory;
 
 /**
@@ -250,7 +248,6 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__VIEWS);
 			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__ENGINES);
-			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__CADENCE);
 			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__TIME_CONFIGURATION);
 		}
 		return childrenFeatures;
@@ -319,7 +316,6 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 				return;
 			case ApplicationPackage.APPLICATION__VIEWS:
 			case ApplicationPackage.APPLICATION__ENGINES:
-			case ApplicationPackage.APPLICATION__CADENCE:
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -343,11 +339,6 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 			(createChildParameter
 				(ApplicationPackage.Literals.APPLICATION__VIEWS,
 				 PresentationFactory.eINSTANCE.createTranparentUIView()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ApplicationPackage.Literals.APPLICATION__CADENCE,
-				 CadenceFactory.eINSTANCE.createCadence()));
 
 		newChildDescriptors.add
 			(createChildParameter

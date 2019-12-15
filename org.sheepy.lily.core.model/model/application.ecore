@@ -20,8 +20,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" unique="false" eType="ecore:EDataType types.ecore#//Vector2i"
         defaultValueLiteral="400,400"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentView" eType="#//IView"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="cadence" eType="#//ICadence"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="timeConfiguration" eType="#//TimeConfiguration"
         containment="true"/>
   </eClassifiers>
@@ -34,7 +32,10 @@
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="1"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IEngine" abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IEngine" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cadence" lowerBound="1"
+        eType="#//ICadence" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IView" abstract="true" interface="true"
       eSuperTypes="inference.ecore#//IInferenceObject"/>
   <eClassifiers xsi:type="ecore:EClass" name="ICadence" abstract="true" interface="true"/>

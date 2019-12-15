@@ -16,20 +16,20 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.sheepy.lily.core.action.ActionDispatcherThread;
 import org.sheepy.lily.core.adapter.impl.AdapterManager;
 import org.sheepy.lily.core.api.action.context.ActionExecutionContext;
-import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.api.cadence.ETickerClock;
 import org.sheepy.lily.core.api.cadence.ICadenceAdapter;
 import org.sheepy.lily.core.api.cadence.ICadencer;
-import org.sheepy.lily.core.api.cadence.IMainLoop;
 import org.sheepy.lily.core.api.cadence.IStatistics;
 import org.sheepy.lily.core.api.cadence.ITicker;
 import org.sheepy.lily.core.api.engine.IEngineAdapter;
 import org.sheepy.lily.core.api.input.IInputManager;
+import org.sheepy.lily.core.api.util.AdapterSetRegistry;
 import org.sheepy.lily.core.api.util.DebugUtil;
 import org.sheepy.lily.core.api.util.TimeUtil;
 import org.sheepy.lily.core.cadence.execution.CommandStack;
 import org.sheepy.lily.core.model.application.Application;
+import org.sheepy.lily.core.model.application.ApplicationPackage;
 
 public class Cadencer implements ICadencer
 {
@@ -42,36 +42,22 @@ public class Cadencer implements ICadencer
 	private final List<AbstractTickerWrapper> tickers = new ArrayList<>();
 	private final List<AbstractTickerWrapper> course = new ArrayList<>();
 	private final Map<EObject, List<AbstractTickerWrapper>> tickerMap = new HashMap<>();
-
-	protected final CommandStack commandStack = new CommandStack();
-	protected final ECrossReferenceAdapter crossReferencer = new ECrossReferenceAdapter();
-
-	protected final IAdapterFactoryService adapterFactory = IAdapterFactoryService.INSTANCE;
-	protected final IMainLoop mainloop;
-	protected final ICadenceAdapter cadenceAdapter;
-
-	protected IInputManager inputManager = null;
-	private Long mainThread = null;
-
-	private final AtomicBoolean stop = new AtomicBoolean(false);
-
+	private final CommandStack commandStack = new CommandStack();
+	private final ECrossReferenceAdapter crossReferencer = new ECrossReferenceAdapter();
 	private final IStatistics statistics = IStatistics.INSTANCE;
+	private final AtomicBoolean stop = new AtomicBoolean(false);
+	private final AdapterSetRegistry<ICadenceAdapter> cadenceAdapters = new AdapterSetRegistry<>(	ICadenceAdapter.class,
+																									List.of(ApplicationPackage.Literals.APPLICATION__ENGINES,
+																											ApplicationPackage.Literals.IENGINE__CADENCE));
 
+	private IInputManager inputManager = null;
+	private Long mainThread = null;
 	private ActionDispatcherThread dispatcher;
 	private CadenceContentAdater cadenceContentAdapter;
-
-	public Cadencer(Application application, IMainLoop mainloop)
-	{
-		this.application = application;
-		this.mainloop = mainloop;
-		this.cadenceAdapter = null;
-	}
 
 	public Cadencer(Application application)
 	{
 		this.application = application;
-		this.mainloop = null;
-		this.cadenceAdapter = application.getCadence().adapt(ICadenceAdapter.class);
 	}
 
 	@Override
@@ -125,40 +111,7 @@ public class Cadencer implements ICadencer
 
 		cadenceContentAdapter = new CadenceContentAdater();
 		application.eAdapters().add(cadenceContentAdapter);
-
-		if (mainloop != null)
-		{
-			mainloop.load(application);
-		}
-	}
-
-	private void dispose()
-	{
-		if (mainloop != null)
-		{
-			mainloop.free(application);
-		}
-
-		application.eAdapters().remove(cadenceContentAdapter);
-		cadenceContentAdapter = null;
-
-		for (final var engine : application.getEngines())
-		{
-			final var engineAdapter = engine.adaptNotNull(IEngineAdapter.class);
-			engineAdapter.stop();
-		}
-
-		((LilyEObject) application).disposeAdapterManager();
-
-		removeTicker(dispatcher, -1);
-
-		if (DebugUtil.DEBUG_ENABLED)
-		{
-			statistics.printTimes();
-		}
-		statistics.clear();
-
-		mainThread = null;
+		cadenceAdapters.startRegister(application);
 	}
 
 	public void run()
@@ -179,22 +132,42 @@ public class Cadencer implements ICadencer
 			tick(stepNs);
 			statistics.addTime(CADENCE, CADENCER_TICK, System.nanoTime() - duration);
 
-			if (mainloop != null)
+			final long d = System.nanoTime();
+			for (final var cadenceAdapter : cadenceAdapters.getAdapters())
 			{
-				final long d = System.nanoTime();
-				mainloop.step(application);
-				statistics.addTime(CADENCE, MAIN_LOOP, System.nanoTime() - d);
-			}
-			if (cadenceAdapter != null)
-			{
-				final long d = System.nanoTime();
 				cadenceAdapter.run();
-				statistics.addTime(CADENCE, MAIN_LOOP, System.nanoTime() - d);
 			}
+
+			statistics.addTime(CADENCE, MAIN_LOOP, System.nanoTime() - d);
 			statistics.addTime(CADENCE, System.nanoTime() - start);
 		}
 
 		dispose();
+	}
+
+	private void dispose()
+	{
+		cadenceAdapters.stopRegister(application);
+		application.eAdapters().remove(cadenceContentAdapter);
+		cadenceContentAdapter = null;
+
+		for (final var engine : application.getEngines())
+		{
+			final var engineAdapter = engine.adaptNotNull(IEngineAdapter.class);
+			engineAdapter.stop();
+		}
+
+		((LilyEObject) application).disposeAdapterManager();
+
+		removeTicker(dispatcher, -1);
+
+		if (DebugUtil.DEBUG_ENABLED)
+		{
+			statistics.printTimes();
+		}
+		statistics.clear();
+
+		mainThread = null;
 	}
 
 	public void stop()
@@ -385,6 +358,5 @@ public class Cadencer implements ICadencer
 
 			list.add(wrapper);
 		}
-	};
-
+	}
 }

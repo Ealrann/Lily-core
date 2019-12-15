@@ -24,6 +24,7 @@ import org.sheepy.lily.core.model.cadence.CloseApplication;
 import org.sheepy.lily.core.model.cadence.CountUntil;
 import org.sheepy.lily.core.model.cadence.ExecuteIf;
 import org.sheepy.lily.core.model.cadence.ExecuteWhile;
+import org.sheepy.lily.core.model.cadence.GenericCadence;
 import org.sheepy.lily.core.model.cadence.HaveTime;
 import org.sheepy.lily.core.model.cadence.ICadenceCondition;
 import org.sheepy.lily.core.model.cadence.ICadenceTask;
@@ -128,6 +129,13 @@ public class CadencePackageImpl extends EPackageImpl implements CadencePackage
 	 * @generated
 	 */
 	private EClass closeApplicationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass genericCadenceEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -430,6 +438,17 @@ public class CadencePackageImpl extends EPackageImpl implements CadencePackage
 	 * @generated
 	 */
 	@Override
+	public EClass getGenericCadence()
+	{
+		return genericCadenceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public CadenceFactory getCadenceFactory()
 	{
 		return (CadenceFactory)getEFactoryInstance();
@@ -482,6 +501,8 @@ public class CadencePackageImpl extends EPackageImpl implements CadencePackage
 		createEAttribute(countUntilEClass, COUNT_UNTIL__CURRENT_COUNT);
 
 		closeApplicationEClass = createEClass(CLOSE_APPLICATION);
+
+		genericCadenceEClass = createEClass(GENERIC_CADENCE);
 	}
 
 	/**
@@ -510,6 +531,7 @@ public class CadencePackageImpl extends EPackageImpl implements CadencePackage
 
 		// Obtain other dependent packages
 		ApplicationPackage theApplicationPackage = (ApplicationPackage)EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
+		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -525,6 +547,8 @@ public class CadencePackageImpl extends EPackageImpl implements CadencePackage
 		haveTimeEClass.getESuperTypes().add(this.getICadenceCondition());
 		countUntilEClass.getESuperTypes().add(this.getICadenceCondition());
 		closeApplicationEClass.getESuperTypes().add(this.getICadenceTask());
+		genericCadenceEClass.getESuperTypes().add(theApplicationPackage.getICadence());
+		genericCadenceEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(cadenceEClass, Cadence.class, "Cadence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -554,6 +578,8 @@ public class CadencePackageImpl extends EPackageImpl implements CadencePackage
 		initEAttribute(getCountUntil_CurrentCount(), ecorePackage.getEInt(), "currentCount", "0", 1, 1, CountUntil.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(closeApplicationEClass, CloseApplication.class, "CloseApplication", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(genericCadenceEClass, GenericCadence.class, "GenericCadence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

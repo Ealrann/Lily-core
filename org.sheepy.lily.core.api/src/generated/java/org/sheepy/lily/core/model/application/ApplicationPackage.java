@@ -150,22 +150,13 @@ public interface ApplicationPackage extends EPackage
 	int APPLICATION__CURRENT_VIEW = 8;
 
 	/**
-	 * The feature id for the '<em><b>Cadence</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION__CADENCE = 9;
-
-	/**
 	 * The feature id for the '<em><b>Time Configuration</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__TIME_CONFIGURATION = 10;
+	int APPLICATION__TIME_CONFIGURATION = 9;
 
 	/**
 	 * The number of structural features of the '<em>Application</em>' class.
@@ -174,7 +165,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_FEATURE_COUNT = 11;
+	int APPLICATION_FEATURE_COUNT = 10;
 
 	/**
 	 * The number of operations of the '<em>Application</em>' class.
@@ -251,13 +242,22 @@ public interface ApplicationPackage extends EPackage
 	int IENGINE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Cadence</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IENGINE__CADENCE = 0;
+
+	/**
 	 * The number of structural features of the '<em>IEngine</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IENGINE_FEATURE_COUNT = 0;
+	int IENGINE_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>IEngine</em>' class.
@@ -443,17 +443,6 @@ public interface ApplicationPackage extends EPackage
 	EReference getApplication_CurrentView();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.Application#getCadence <em>Cadence</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Cadence</em>'.
-	 * @see org.sheepy.lily.core.model.application.Application#getCadence()
-	 * @see #getApplication()
-	 * @generated
-	 */
-	EReference getApplication_Cadence();
-
-	/**
 	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.Application#getTimeConfiguration <em>Time Configuration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -516,6 +505,17 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 */
 	EClass getIEngine();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.IEngine#getCadence <em>Cadence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Cadence</em>'.
+	 * @see org.sheepy.lily.core.model.application.IEngine#getCadence()
+	 * @see #getIEngine()
+	 * @generated
+	 */
+	EReference getIEngine_Cadence();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.IView <em>IView</em>}'.
@@ -644,14 +644,6 @@ public interface ApplicationPackage extends EPackage
 		EReference APPLICATION__CURRENT_VIEW = eINSTANCE.getApplication_CurrentView();
 
 		/**
-		 * The meta object literal for the '<em><b>Cadence</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference APPLICATION__CADENCE = eINSTANCE.getApplication_Cadence();
-
-		/**
 		 * The meta object literal for the '<em><b>Time Configuration</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -702,6 +694,14 @@ public interface ApplicationPackage extends EPackage
 		 * @generated
 		 */
 		EClass IENGINE = eINSTANCE.getIEngine();
+
+		/**
+		 * The meta object literal for the '<em><b>Cadence</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IENGINE__CADENCE = eINSTANCE.getIEngine_Cadence();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.IView <em>IView</em>}' class.

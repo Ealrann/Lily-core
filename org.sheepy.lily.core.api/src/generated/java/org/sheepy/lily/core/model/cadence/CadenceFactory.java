@@ -86,6 +86,15 @@ public interface CadenceFactory extends EFactory
 	CloseApplication createCloseApplication();
 
 	/**
+	 * Returns a new object of class '<em>Generic Cadence</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Generic Cadence</em>'.
+	 * @generated
+	 */
+	GenericCadence createGenericCadence();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

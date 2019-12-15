@@ -71,6 +71,7 @@ public class CadenceFactoryImpl extends EFactoryImpl implements CadenceFactory
 			case CadencePackage.HAVE_TIME: return createHaveTime();
 			case CadencePackage.COUNT_UNTIL: return createCountUntil();
 			case CadencePackage.CLOSE_APPLICATION: return createCloseApplication();
+			case CadencePackage.GENERIC_CADENCE: return createGenericCadence();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -158,6 +159,18 @@ public class CadenceFactoryImpl extends EFactoryImpl implements CadenceFactory
 	{
 		CloseApplicationImpl closeApplication = new CloseApplicationImpl();
 		return closeApplication;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public GenericCadence createGenericCadence()
+	{
+		GenericCadenceImpl genericCadence = new GenericCadenceImpl();
+		return genericCadence;
 	}
 
 	/**

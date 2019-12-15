@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.util.Switch;
 
 import org.sheepy.lily.core.model.application.ICadence;
 import org.sheepy.lily.core.model.cadence.*;
+import org.sheepy.lily.core.model.types.LNamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -152,6 +153,15 @@ public class CadenceSwitch<T> extends Switch<T>
 				CloseApplication closeApplication = (CloseApplication)theEObject;
 				T result = caseCloseApplication(closeApplication);
 				if (result == null) result = caseICadenceTask(closeApplication);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case CadencePackage.GENERIC_CADENCE:
+			{
+				GenericCadence genericCadence = (GenericCadence)theEObject;
+				T result = caseGenericCadence(genericCadence);
+				if (result == null) result = caseICadence(genericCadence);
+				if (result == null) result = caseLNamedElement(genericCadence);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -320,6 +330,22 @@ public class CadenceSwitch<T> extends Switch<T>
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Generic Cadence</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Generic Cadence</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGenericCadence(GenericCadence object)
+	{
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>ICadence</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -331,6 +357,22 @@ public class CadenceSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseICadence(ICadence object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LNamed Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LNamed Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLNamedElement(LNamedElement object)
 	{
 		return null;
 	}

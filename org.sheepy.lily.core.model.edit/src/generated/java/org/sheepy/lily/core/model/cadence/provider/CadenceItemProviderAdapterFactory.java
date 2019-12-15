@@ -267,6 +267,31 @@ public class CadenceItemProviderAdapterFactory extends CadenceAdapterFactory imp
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.cadence.GenericCadence} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected GenericCadenceItemProvider genericCadenceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.cadence.GenericCadence}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createGenericCadenceAdapter()
+	{
+		if (genericCadenceItemProvider == null)
+		{
+			genericCadenceItemProvider = new GenericCadenceItemProvider(this);
+		}
+
+		return genericCadenceItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -422,6 +447,7 @@ public class CadenceItemProviderAdapterFactory extends CadenceAdapterFactory imp
 		if (haveTimeItemProvider != null) haveTimeItemProvider.dispose();
 		if (countUntilItemProvider != null) countUntilItemProvider.dispose();
 		if (closeApplicationItemProvider != null) closeApplicationItemProvider.dispose();
+		if (genericCadenceItemProvider != null) genericCadenceItemProvider.dispose();
 	}
 
 }

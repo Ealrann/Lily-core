@@ -33,4 +33,5 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CloseApplication" eSuperTypes="#//ICadenceTask"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GenericCadence" eSuperTypes="application.ecore#//ICadence types.ecore#//LNamedElement"/>
 </ecore:EPackage>

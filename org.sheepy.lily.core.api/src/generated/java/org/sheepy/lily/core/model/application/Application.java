@@ -25,7 +25,6 @@ import org.sheepy.lily.core.api.adapter.ILilyEObject;
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getTitle <em>Title</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getSize <em>Size</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getCurrentView <em>Current View</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.Application#getCadence <em>Cadence</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getTimeConfiguration <em>Time Configuration</em>}</li>
  * </ul>
  *
@@ -219,28 +218,6 @@ public interface Application extends ILilyEObject
 	 * @generated
 	 */
 	void setCurrentView(IView value);
-
-	/**
-	 * Returns the value of the '<em><b>Cadence</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Cadence</em>' containment reference.
-	 * @see #setCadence(ICadence)
-	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Cadence()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
-	ICadence getCadence();
-
-	/**
-	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#getCadence <em>Cadence</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Cadence</em>' containment reference.
-	 * @see #getCadence()
-	 * @generated
-	 */
-	void setCadence(ICadence value);
 
 	/**
 	 * Returns the value of the '<em><b>Time Configuration</b></em>' containment reference.

@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.sheepy.lily.core.model.application.ICadence;
 import org.sheepy.lily.core.model.cadence.*;
+import org.sheepy.lily.core.model.types.LNamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -126,9 +127,19 @@ public class CadenceAdapterFactory extends AdapterFactoryImpl
 				return createCloseApplicationAdapter();
 			}
 			@Override
+			public Adapter caseGenericCadence(GenericCadence object)
+			{
+				return createGenericCadenceAdapter();
+			}
+			@Override
 			public Adapter caseICadence(ICadence object)
 			{
 				return createICadenceAdapter();
+			}
+			@Override
+			public Adapter caseLNamedElement(LNamedElement object)
+			{
+				return createLNamedElementAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object)
@@ -303,6 +314,21 @@ public class CadenceAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.cadence.GenericCadence <em>Generic Cadence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.cadence.GenericCadence
+	 * @generated
+	 */
+	public Adapter createGenericCadenceAdapter()
+	{
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.ICadence <em>ICadence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -313,6 +339,21 @@ public class CadenceAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createICadenceAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.types.LNamedElement <em>LNamed Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.types.LNamedElement
+	 * @generated
+	 */
+	public Adapter createLNamedElementAdapter()
 	{
 		return null;
 	}

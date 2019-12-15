@@ -6,7 +6,6 @@ import org.sheepy.lily.core.api.adapter.annotation.NotifyChanged;
 import org.sheepy.lily.core.api.adapter.annotation.Statefull;
 import org.sheepy.lily.core.api.application.IApplicationAdapter;
 import org.sheepy.lily.core.api.cadence.ICadencer;
-import org.sheepy.lily.core.api.cadence.IMainLoop;
 import org.sheepy.lily.core.cadence.common.Cadencer;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
@@ -30,21 +29,7 @@ public class ApplicationAdapter implements IApplicationAdapter
 	@Override
 	public void launch(Application application)
 	{
-		launch(application, null);
-	}
-
-	@Override
-	public void launch(Application application, IMainLoop mainLoop)
-	{
-		final var cadence = application.getCadence();
-		if (cadence != null)
-		{
-			cadencer = new Cadencer(application);
-		}
-		else
-		{
-			cadencer = new Cadencer(application, mainLoop);
-		}
+		cadencer = new Cadencer(application);
 
 		cadencer.load();
 		launched = true;

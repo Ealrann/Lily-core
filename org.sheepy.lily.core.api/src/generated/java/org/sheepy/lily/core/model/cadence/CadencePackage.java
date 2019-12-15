@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.sheepy.lily.core.model.application.ApplicationPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -440,6 +441,44 @@ public interface CadencePackage extends EPackage
 
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.cadence.impl.GenericCadenceImpl <em>Generic Cadence</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.cadence.impl.GenericCadenceImpl
+	 * @see org.sheepy.lily.core.model.cadence.impl.CadencePackageImpl#getGenericCadence()
+	 * @generated
+	 */
+	int GENERIC_CADENCE = 10;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_CADENCE__NAME = ApplicationPackage.ICADENCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Generic Cadence</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_CADENCE_FEATURE_COUNT = ApplicationPackage.ICADENCE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Generic Cadence</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_CADENCE_OPERATION_COUNT = ApplicationPackage.ICADENCE_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.cadence.Cadence <em>Cadence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -628,6 +667,16 @@ public interface CadencePackage extends EPackage
 	EClass getCloseApplication();
 
 	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.cadence.GenericCadence <em>Generic Cadence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Generic Cadence</em>'.
+	 * @see org.sheepy.lily.core.model.cadence.GenericCadence
+	 * @generated
+	 */
+	EClass getGenericCadence();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -814,6 +863,16 @@ public interface CadencePackage extends EPackage
 		 * @generated
 		 */
 		EClass CLOSE_APPLICATION = eINSTANCE.getCloseApplication();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.cadence.impl.GenericCadenceImpl <em>Generic Cadence</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.cadence.impl.GenericCadenceImpl
+		 * @see org.sheepy.lily.core.model.cadence.impl.CadencePackageImpl#getGenericCadence()
+		 * @generated
+		 */
+		EClass GENERIC_CADENCE = eINSTANCE.getGenericCadence();
 
 	}
 

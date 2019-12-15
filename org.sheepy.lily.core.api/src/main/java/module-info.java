@@ -3,7 +3,6 @@ import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
 import org.sheepy.lily.core.api.adapter.IAdapterRegistry;
 import org.sheepy.lily.core.api.allocation.IAllocationService;
 import org.sheepy.lily.core.api.application.IApplicationAdapter;
-import org.sheepy.lily.core.api.cadence.IMainLoop;
 import org.sheepy.lily.core.api.cadence.IStatistics;
 import org.sheepy.lily.core.api.resource.CoreModelExtension;
 import org.sheepy.lily.core.api.resource.IModelExtension;
@@ -61,7 +60,6 @@ module org.sheepy.lily.core.api
 	uses IApplicationAdapter;
 	uses IAllocationService;
 	uses IAdapterRegistry;
-	uses IMainLoop;
 	uses IModelExtension;
 	uses IResourceLoader;
 	uses IAdapterFactoryService;

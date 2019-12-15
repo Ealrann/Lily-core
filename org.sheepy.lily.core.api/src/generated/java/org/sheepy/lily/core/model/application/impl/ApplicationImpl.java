@@ -20,7 +20,6 @@ import org.joml.Vector2ic;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
-import org.sheepy.lily.core.model.application.ICadence;
 import org.sheepy.lily.core.model.application.IEngine;
 import org.sheepy.lily.core.model.application.IView;
 import org.sheepy.lily.core.model.application.TimeConfiguration;
@@ -44,7 +43,6 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getSize <em>Size</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getCurrentView <em>Current View</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getCadence <em>Cadence</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getTimeConfiguration <em>Time Configuration</em>}</li>
  * </ul>
  *
@@ -201,16 +199,6 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @ordered
 	 */
 	protected IView currentView;
-
-	/**
-	 * The cached value of the '{@link #getCadence() <em>Cadence</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCadence()
-	 * @generated
-	 * @ordered
-	 */
-	protected ICadence cadence;
 
 	/**
 	 * The cached value of the '{@link #getTimeConfiguration() <em>Time Configuration</em>}' containment reference.
@@ -474,83 +462,6 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @generated
 	 */
 	@Override
-	public ICadence getCadence()
-	{
-		if (cadence != null && ((EObject)cadence).eIsProxy())
-		{
-			InternalEObject oldCadence = (InternalEObject)cadence;
-			cadence = (ICadence)eResolveProxy(oldCadence);
-			if (cadence != oldCadence)
-			{
-				InternalEObject newCadence = (InternalEObject)cadence;
-				NotificationChain msgs = oldCadence.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__CADENCE, null, null);
-				if (newCadence.eInternalContainer() == null)
-				{
-					msgs = newCadence.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__CADENCE, null, msgs);
-				}
-				if (msgs != null) msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.APPLICATION__CADENCE, oldCadence, cadence));
-			}
-		}
-		return cadence;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ICadence basicGetCadence()
-	{
-		return cadence;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetCadence(ICadence newCadence, NotificationChain msgs)
-	{
-		ICadence oldCadence = cadence;
-		cadence = newCadence;
-		if (eNotificationRequired())
-		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__CADENCE, oldCadence, newCadence);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setCadence(ICadence newCadence)
-	{
-		if (newCadence != cadence)
-		{
-			NotificationChain msgs = null;
-			if (cadence != null)
-				msgs = ((InternalEObject)cadence).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__CADENCE, null, msgs);
-			if (newCadence != null)
-				msgs = ((InternalEObject)newCadence).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__CADENCE, null, msgs);
-			msgs = basicSetCadence(newCadence, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__CADENCE, newCadence, newCadence));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public TimeConfiguration getTimeConfiguration()
 	{
 		if (timeConfiguration != null && ((EObject)timeConfiguration).eIsProxy())
@@ -636,8 +547,6 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return ((InternalEList<?>)getViews()).basicRemove(otherEnd, msgs);
 			case ApplicationPackage.APPLICATION__ENGINES:
 				return ((InternalEList<?>)getEngines()).basicRemove(otherEnd, msgs);
-			case ApplicationPackage.APPLICATION__CADENCE:
-				return basicSetCadence(null, msgs);
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				return basicSetTimeConfiguration(null, msgs);
 		}
@@ -673,9 +582,6 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
 				if (resolve) return getCurrentView();
 				return basicGetCurrentView();
-			case ApplicationPackage.APPLICATION__CADENCE:
-				if (resolve) return getCadence();
-				return basicGetCadence();
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				if (resolve) return getTimeConfiguration();
 				return basicGetTimeConfiguration();
@@ -723,9 +629,6 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
 				setCurrentView((IView)newValue);
 				return;
-			case ApplicationPackage.APPLICATION__CADENCE:
-				setCadence((ICadence)newValue);
-				return;
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				setTimeConfiguration((TimeConfiguration)newValue);
 				return;
@@ -770,9 +673,6 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
 				setCurrentView((IView)null);
 				return;
-			case ApplicationPackage.APPLICATION__CADENCE:
-				setCadence((ICadence)null);
-				return;
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				setTimeConfiguration((TimeConfiguration)null);
 				return;
@@ -808,8 +708,6 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return SIZE_EDEFAULT == null ? size != null : !SIZE_EDEFAULT.equals(size);
 			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
 				return currentView != null;
-			case ApplicationPackage.APPLICATION__CADENCE:
-				return cadence != null;
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				return timeConfiguration != null;
 		}
