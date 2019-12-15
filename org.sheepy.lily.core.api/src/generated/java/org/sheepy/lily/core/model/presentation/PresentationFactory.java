@@ -41,6 +41,15 @@ public interface PresentationFactory extends EFactory
 	UIPage createUIPage();
 
 	/**
+	 * Returns a new object of class '<em>Generic View</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Generic View</em>'.
+	 * @generated
+	 */
+	GenericView createGenericView();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

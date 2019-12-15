@@ -26,6 +26,7 @@ import org.sheepy.lily.core.model.maintainer.MaintainerPackage;
 
 import org.sheepy.lily.core.model.maintainer.impl.MaintainerPackageImpl;
 
+import org.sheepy.lily.core.model.presentation.GenericView;
 import org.sheepy.lily.core.model.presentation.IMusicView;
 import org.sheepy.lily.core.model.presentation.IPanel;
 import org.sheepy.lily.core.model.presentation.IPositionElement;
@@ -119,6 +120,13 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * @generated
 	 */
 	private EClass iPanelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass genericViewEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -476,6 +484,17 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * @generated
 	 */
 	@Override
+	public EClass getGenericView()
+	{
+		return genericViewEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public PresentationFactory getPresentationFactory()
 	{
 		return (PresentationFactory)getEFactoryInstance();
@@ -532,6 +551,8 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 		createEReference(uiPageEClass, UI_PAGE__PANELS);
 
 		iPanelEClass = createEClass(IPANEL);
+
+		genericViewEClass = createEClass(GENERIC_VIEW);
 	}
 
 	/**
@@ -579,6 +600,8 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 		iPanelEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
 		iPanelEClass.getESuperTypes().add(this.getIUIElement());
 		iPanelEClass.getESuperTypes().add(this.getIPositionElement());
+		genericViewEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
+		genericViewEClass.getESuperTypes().add(theApplicationPackage.getIView());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(iPositionElementEClass, IPositionElement.class, "IPositionElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -612,6 +635,8 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 		initEReference(getUIPage_Panels(), this.getIPanel(), null, "panels", null, 0, -1, UIPage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iPanelEClass, IPanel.class, "IPanel", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(genericViewEClass, GenericView.class, "GenericView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

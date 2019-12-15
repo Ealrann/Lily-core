@@ -69,22 +69,13 @@ public interface ApplicationPackage extends EPackage
 	int APPLICATION = 0;
 
 	/**
-	 * The feature id for the '<em><b>Views</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION__VIEWS = 0;
-
-	/**
 	 * The feature id for the '<em><b>Engines</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__ENGINES = 1;
+	int APPLICATION__ENGINES = 0;
 
 	/**
 	 * The feature id for the '<em><b>Run</b></em>' attribute.
@@ -93,7 +84,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__RUN = 2;
+	int APPLICATION__RUN = 1;
 
 	/**
 	 * The feature id for the '<em><b>Fullscreen</b></em>' attribute.
@@ -102,7 +93,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__FULLSCREEN = 3;
+	int APPLICATION__FULLSCREEN = 2;
 
 	/**
 	 * The feature id for the '<em><b>Resizeable</b></em>' attribute.
@@ -111,7 +102,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__RESIZEABLE = 4;
+	int APPLICATION__RESIZEABLE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Headless</b></em>' attribute.
@@ -120,7 +111,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__HEADLESS = 5;
+	int APPLICATION__HEADLESS = 4;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -129,7 +120,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__TITLE = 6;
+	int APPLICATION__TITLE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Size</b></em>' attribute.
@@ -138,16 +129,16 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__SIZE = 7;
+	int APPLICATION__SIZE = 6;
 
 	/**
-	 * The feature id for the '<em><b>Current View</b></em>' reference.
+	 * The feature id for the '<em><b>View</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__CURRENT_VIEW = 8;
+	int APPLICATION__VIEW = 7;
 
 	/**
 	 * The feature id for the '<em><b>Time Configuration</b></em>' containment reference.
@@ -156,7 +147,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__TIME_CONFIGURATION = 9;
+	int APPLICATION__TIME_CONFIGURATION = 8;
 
 	/**
 	 * The number of structural features of the '<em>Application</em>' class.
@@ -165,7 +156,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_FEATURE_COUNT = 10;
+	int APPLICATION_FEATURE_COUNT = 9;
 
 	/**
 	 * The number of operations of the '<em>Application</em>' class.
@@ -344,17 +335,6 @@ public interface ApplicationPackage extends EPackage
 	EClass getApplication();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.application.Application#getViews <em>Views</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Views</em>'.
-	 * @see org.sheepy.lily.core.model.application.Application#getViews()
-	 * @see #getApplication()
-	 * @generated
-	 */
-	EReference getApplication_Views();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.application.Application#getEngines <em>Engines</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -432,15 +412,15 @@ public interface ApplicationPackage extends EPackage
 	EAttribute getApplication_Size();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.application.Application#getCurrentView <em>Current View</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.Application#getView <em>View</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Current View</em>'.
-	 * @see org.sheepy.lily.core.model.application.Application#getCurrentView()
+	 * @return the meta object for the containment reference '<em>View</em>'.
+	 * @see org.sheepy.lily.core.model.application.Application#getView()
 	 * @see #getApplication()
 	 * @generated
 	 */
-	EReference getApplication_CurrentView();
+	EReference getApplication_View();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.Application#getTimeConfiguration <em>Time Configuration</em>}'.
@@ -572,14 +552,6 @@ public interface ApplicationPackage extends EPackage
 		EClass APPLICATION = eINSTANCE.getApplication();
 
 		/**
-		 * The meta object literal for the '<em><b>Views</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference APPLICATION__VIEWS = eINSTANCE.getApplication_Views();
-
-		/**
 		 * The meta object literal for the '<em><b>Engines</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -636,12 +608,12 @@ public interface ApplicationPackage extends EPackage
 		EAttribute APPLICATION__SIZE = eINSTANCE.getApplication_Size();
 
 		/**
-		 * The meta object literal for the '<em><b>Current View</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>View</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference APPLICATION__CURRENT_VIEW = eINSTANCE.getApplication_CurrentView();
+		EReference APPLICATION__VIEW = eINSTANCE.getApplication_View();
 
 		/**
 		 * The meta object literal for the '<em><b>Time Configuration</b></em>' containment reference feature.

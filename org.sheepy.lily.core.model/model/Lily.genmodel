@@ -117,11 +117,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference presentation.ecore#//UIPage/panels"/>
     </genClasses>
     <genClasses image="false" ecoreClass="presentation.ecore#//IPanel"/>
+    <genClasses ecoreClass="presentation.ecore#//GenericView"/>
   </genPackages>
   <genPackages prefix="Application" basePackage="org.sheepy.lily.core.model" resource="XMI"
       disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="application.ecore#/">
     <genClasses ecoreClass="application.ecore#//Application">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/views"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/engines"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/run"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/fullscreen"/>
@@ -129,7 +129,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/headless"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/title"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/size"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference application.ecore#//Application/currentView"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/view"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/timeConfiguration"/>
     </genClasses>
     <genClasses ecoreClass="application.ecore#//TimeConfiguration">

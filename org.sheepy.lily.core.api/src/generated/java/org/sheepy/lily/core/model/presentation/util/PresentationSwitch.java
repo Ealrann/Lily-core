@@ -157,6 +157,16 @@ public class PresentationSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case PresentationPackage.GENERIC_VIEW:
+			{
+				GenericView genericView = (GenericView)theEObject;
+				T result = caseGenericView(genericView);
+				if (result == null) result = caseLNamedElement(genericView);
+				if (result == null) result = caseIView(genericView);
+				if (result == null) result = caseIInferenceObject(genericView);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -301,6 +311,22 @@ public class PresentationSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseIPanel(IPanel object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Generic View</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Generic View</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseGenericView(GenericView object)
 	{
 		return null;
 	}

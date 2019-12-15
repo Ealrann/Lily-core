@@ -16,7 +16,6 @@ import org.sheepy.lily.core.api.adapter.ILilyEObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.application.Application#getViews <em>Views</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getEngines <em>Engines</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#isRun <em>Run</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#isFullscreen <em>Fullscreen</em>}</li>
@@ -24,7 +23,7 @@ import org.sheepy.lily.core.api.adapter.ILilyEObject;
  *   <li>{@link org.sheepy.lily.core.model.application.Application#isHeadless <em>Headless</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getTitle <em>Title</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getSize <em>Size</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.Application#getCurrentView <em>Current View</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Application#getView <em>View</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getTimeConfiguration <em>Time Configuration</em>}</li>
  * </ul>
  *
@@ -35,18 +34,6 @@ import org.sheepy.lily.core.api.adapter.ILilyEObject;
  */
 public interface Application extends ILilyEObject
 {
-	/**
-	 * Returns the value of the '<em><b>Views</b></em>' containment reference list.
-	 * The list contents are of type {@link org.sheepy.lily.core.model.application.IView}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Views</em>' containment reference list.
-	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Views()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
-	EList<IView> getViews();
-
 	/**
 	 * Returns the value of the '<em><b>Engines</b></em>' containment reference list.
 	 * The list contents are of type {@link org.sheepy.lily.core.model.application.IEngine}.
@@ -198,26 +185,26 @@ public interface Application extends ILilyEObject
 	void setSize(Vector2ic value);
 
 	/**
-	 * Returns the value of the '<em><b>Current View</b></em>' reference.
+	 * Returns the value of the '<em><b>View</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Current View</em>' reference.
-	 * @see #setCurrentView(IView)
-	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_CurrentView()
-	 * @model
+	 * @return the value of the '<em>View</em>' containment reference.
+	 * @see #setView(IView)
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_View()
+	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	IView getCurrentView();
+	IView getView();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#getCurrentView <em>Current View</em>}' reference.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#getView <em>View</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Current View</em>' reference.
-	 * @see #getCurrentView()
+	 * @param value the new value of the '<em>View</em>' containment reference.
+	 * @see #getView()
 	 * @generated
 	 */
-	void setCurrentView(IView value);
+	void setView(IView value);
 
 	/**
 	 * Returns the value of the '<em><b>Time Configuration</b></em>' containment reference.

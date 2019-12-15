@@ -202,7 +202,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
-	public EReference getApplication_Views()
+	public EReference getApplication_Engines()
 	{
 		return (EReference)applicationEClass.getEStructuralFeatures().get(0);
 	}
@@ -213,20 +213,9 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
-	public EReference getApplication_Engines()
-	{
-		return (EReference)applicationEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getApplication_Run()
 	{
-		return (EAttribute)applicationEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -237,7 +226,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	@Override
 	public EAttribute getApplication_Fullscreen()
 	{
-		return (EAttribute)applicationEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -248,7 +237,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	@Override
 	public EAttribute getApplication_Resizeable()
 	{
-		return (EAttribute)applicationEClass.getEStructuralFeatures().get(4);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -259,7 +248,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	@Override
 	public EAttribute getApplication_Headless()
 	{
-		return (EAttribute)applicationEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -270,7 +259,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	@Override
 	public EAttribute getApplication_Title()
 	{
-		return (EAttribute)applicationEClass.getEStructuralFeatures().get(6);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -281,7 +270,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	@Override
 	public EAttribute getApplication_Size()
 	{
-		return (EAttribute)applicationEClass.getEStructuralFeatures().get(7);
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -290,9 +279,9 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
-	public EReference getApplication_CurrentView()
+	public EReference getApplication_View()
 	{
-		return (EReference)applicationEClass.getEStructuralFeatures().get(8);
+		return (EReference)applicationEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -303,7 +292,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	@Override
 	public EReference getApplication_TimeConfiguration()
 	{
-		return (EReference)applicationEClass.getEStructuralFeatures().get(9);
+		return (EReference)applicationEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -426,7 +415,6 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 
 		// Create classes and their features
 		applicationEClass = createEClass(APPLICATION);
-		createEReference(applicationEClass, APPLICATION__VIEWS);
 		createEReference(applicationEClass, APPLICATION__ENGINES);
 		createEAttribute(applicationEClass, APPLICATION__RUN);
 		createEAttribute(applicationEClass, APPLICATION__FULLSCREEN);
@@ -434,7 +422,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEAttribute(applicationEClass, APPLICATION__HEADLESS);
 		createEAttribute(applicationEClass, APPLICATION__TITLE);
 		createEAttribute(applicationEClass, APPLICATION__SIZE);
-		createEReference(applicationEClass, APPLICATION__CURRENT_VIEW);
+		createEReference(applicationEClass, APPLICATION__VIEW);
 		createEReference(applicationEClass, APPLICATION__TIME_CONFIGURATION);
 
 		timeConfigurationEClass = createEClass(TIME_CONFIGURATION);
@@ -487,7 +475,6 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(applicationEClass, Application.class, "Application", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getApplication_Views(), this.getIView(), null, "views", null, 0, -1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_Engines(), this.getIEngine(), null, "engines", null, 0, -1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplication_Run(), ecorePackage.getEBoolean(), "run", "true", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplication_Fullscreen(), ecorePackage.getEBoolean(), "fullscreen", "false", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -495,7 +482,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEAttribute(getApplication_Headless(), ecorePackage.getEBoolean(), "headless", "false", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplication_Title(), ecorePackage.getEString(), "title", "Vulkan Application", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplication_Size(), theTypesPackage.getVector2i(), "size", "400,400", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getApplication_CurrentView(), this.getIView(), null, "currentView", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getApplication_View(), this.getIView(), null, "view", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_TimeConfiguration(), this.getTimeConfiguration(), null, "timeConfiguration", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(timeConfigurationEClass, TimeConfiguration.class, "TimeConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

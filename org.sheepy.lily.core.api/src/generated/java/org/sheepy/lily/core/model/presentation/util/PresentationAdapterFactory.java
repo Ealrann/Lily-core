@@ -122,6 +122,11 @@ public class PresentationAdapterFactory extends AdapterFactoryImpl
 				return createIPanelAdapter();
 			}
 			@Override
+			public Adapter caseGenericView(GenericView object)
+			{
+				return createGenericViewAdapter();
+			}
+			@Override
 			public Adapter caseIInferenceObject(IInferenceObject object)
 			{
 				return createIInferenceObjectAdapter();
@@ -288,6 +293,21 @@ public class PresentationAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createIPanelAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.presentation.GenericView <em>Generic View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.presentation.GenericView
+	 * @generated
+	 */
+	public Adapter createGenericViewAdapter()
 	{
 		return null;
 	}

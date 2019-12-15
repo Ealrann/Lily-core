@@ -34,7 +34,6 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getViews <em>Views</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getEngines <em>Engines</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#isRun <em>Run</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#isFullscreen <em>Fullscreen</em>}</li>
@@ -42,7 +41,7 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#isHeadless <em>Headless</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getSize <em>Size</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getCurrentView <em>Current View</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getView <em>View</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getTimeConfiguration <em>Time Configuration</em>}</li>
  * </ul>
  *
@@ -50,16 +49,6 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  */
 public class ApplicationImpl extends LilyEObject implements Application
 {
-	/**
-	 * The cached value of the '{@link #getViews() <em>Views</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getViews()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<IView> views;
-
 	/**
 	 * The cached value of the '{@link #getEngines() <em>Engines</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -191,14 +180,14 @@ public class ApplicationImpl extends LilyEObject implements Application
 	protected Vector2ic size = SIZE_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getCurrentView() <em>Current View</em>}' reference.
+	 * The cached value of the '{@link #getView() <em>View</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCurrentView()
+	 * @see #getView()
 	 * @generated
 	 * @ordered
 	 */
-	protected IView currentView;
+	protected IView view;
 
 	/**
 	 * The cached value of the '{@link #getTimeConfiguration() <em>Time Configuration</em>}' containment reference.
@@ -229,21 +218,6 @@ public class ApplicationImpl extends LilyEObject implements Application
 	protected EClass eStaticClass()
 	{
 		return ApplicationPackage.Literals.APPLICATION;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<IView> getViews()
-	{
-		if (views == null)
-		{
-			views = new EObjectContainmentEList.Resolving<IView>(IView.class, this, ApplicationPackage.APPLICATION__VIEWS);
-		}
-		return views;
 	}
 
 	/**
@@ -417,19 +391,26 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @generated
 	 */
 	@Override
-	public IView getCurrentView()
+	public IView getView()
 	{
-		if (currentView != null && ((EObject)currentView).eIsProxy())
+		if (view != null && ((EObject)view).eIsProxy())
 		{
-			InternalEObject oldCurrentView = (InternalEObject)currentView;
-			currentView = (IView)eResolveProxy(oldCurrentView);
-			if (currentView != oldCurrentView)
+			InternalEObject oldView = (InternalEObject)view;
+			view = (IView)eResolveProxy(oldView);
+			if (view != oldView)
 			{
+				InternalEObject newView = (InternalEObject)view;
+				NotificationChain msgs = oldView.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__VIEW, null, null);
+				if (newView.eInternalContainer() == null)
+				{
+					msgs = newView.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__VIEW, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.APPLICATION__CURRENT_VIEW, oldCurrentView, currentView));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.APPLICATION__VIEW, oldView, view));
 			}
 		}
-		return currentView;
+		return view;
 	}
 
 	/**
@@ -437,9 +418,26 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IView basicGetCurrentView()
+	public IView basicGetView()
 	{
-		return currentView;
+		return view;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetView(IView newView, NotificationChain msgs)
+	{
+		IView oldView = view;
+		view = newView;
+		if (eNotificationRequired())
+		{
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__VIEW, oldView, newView);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -448,12 +446,20 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @generated
 	 */
 	@Override
-	public void setCurrentView(IView newCurrentView)
+	public void setView(IView newView)
 	{
-		IView oldCurrentView = currentView;
-		currentView = newCurrentView;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__CURRENT_VIEW, oldCurrentView, currentView));
+		if (newView != view)
+		{
+			NotificationChain msgs = null;
+			if (view != null)
+				msgs = ((InternalEObject)view).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__VIEW, null, msgs);
+			if (newView != null)
+				msgs = ((InternalEObject)newView).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__VIEW, null, msgs);
+			msgs = basicSetView(newView, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__VIEW, newView, newView));
 	}
 
 	/**
@@ -543,10 +549,10 @@ public class ApplicationImpl extends LilyEObject implements Application
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.APPLICATION__VIEWS:
-				return ((InternalEList<?>)getViews()).basicRemove(otherEnd, msgs);
 			case ApplicationPackage.APPLICATION__ENGINES:
 				return ((InternalEList<?>)getEngines()).basicRemove(otherEnd, msgs);
+			case ApplicationPackage.APPLICATION__VIEW:
+				return basicSetView(null, msgs);
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				return basicSetTimeConfiguration(null, msgs);
 		}
@@ -563,8 +569,6 @@ public class ApplicationImpl extends LilyEObject implements Application
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.APPLICATION__VIEWS:
-				return getViews();
 			case ApplicationPackage.APPLICATION__ENGINES:
 				return getEngines();
 			case ApplicationPackage.APPLICATION__RUN:
@@ -579,9 +583,9 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return getTitle();
 			case ApplicationPackage.APPLICATION__SIZE:
 				return getSize();
-			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
-				if (resolve) return getCurrentView();
-				return basicGetCurrentView();
+			case ApplicationPackage.APPLICATION__VIEW:
+				if (resolve) return getView();
+				return basicGetView();
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				if (resolve) return getTimeConfiguration();
 				return basicGetTimeConfiguration();
@@ -600,10 +604,6 @@ public class ApplicationImpl extends LilyEObject implements Application
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.APPLICATION__VIEWS:
-				getViews().clear();
-				getViews().addAll((Collection<? extends IView>)newValue);
-				return;
 			case ApplicationPackage.APPLICATION__ENGINES:
 				getEngines().clear();
 				getEngines().addAll((Collection<? extends IEngine>)newValue);
@@ -626,8 +626,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__SIZE:
 				setSize((Vector2ic)newValue);
 				return;
-			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
-				setCurrentView((IView)newValue);
+			case ApplicationPackage.APPLICATION__VIEW:
+				setView((IView)newValue);
 				return;
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				setTimeConfiguration((TimeConfiguration)newValue);
@@ -646,9 +646,6 @@ public class ApplicationImpl extends LilyEObject implements Application
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.APPLICATION__VIEWS:
-				getViews().clear();
-				return;
 			case ApplicationPackage.APPLICATION__ENGINES:
 				getEngines().clear();
 				return;
@@ -670,8 +667,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__SIZE:
 				setSize(SIZE_EDEFAULT);
 				return;
-			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
-				setCurrentView((IView)null);
+			case ApplicationPackage.APPLICATION__VIEW:
+				setView((IView)null);
 				return;
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				setTimeConfiguration((TimeConfiguration)null);
@@ -690,8 +687,6 @@ public class ApplicationImpl extends LilyEObject implements Application
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.APPLICATION__VIEWS:
-				return views != null && !views.isEmpty();
 			case ApplicationPackage.APPLICATION__ENGINES:
 				return engines != null && !engines.isEmpty();
 			case ApplicationPackage.APPLICATION__RUN:
@@ -706,8 +701,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
 			case ApplicationPackage.APPLICATION__SIZE:
 				return SIZE_EDEFAULT == null ? size != null : !SIZE_EDEFAULT.equals(size);
-			case ApplicationPackage.APPLICATION__CURRENT_VIEW:
-				return currentView != null;
+			case ApplicationPackage.APPLICATION__VIEW:
+				return view != null;
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				return timeConfiguration != null;
 		}

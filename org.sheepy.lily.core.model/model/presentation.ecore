@@ -49,4 +49,5 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IPanel" abstract="true" interface="true"
       eSuperTypes="types.ecore#//LNamedElement #//IUIElement #//IPositionElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GenericView" eSuperTypes="types.ecore#//LNamedElement application.ecore#//IView"/>
 </ecore:EPackage>

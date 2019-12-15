@@ -66,7 +66,6 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 			addHeadlessPropertyDescriptor(object);
 			addTitlePropertyDescriptor(object);
 			addSizePropertyDescriptor(object);
-			addCurrentViewPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -210,29 +209,6 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 	}
 
 	/**
-	 * This adds a property descriptor for the Current View feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addCurrentViewPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Application_currentView_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Application_currentView_feature", "_UI_Application_type"),
-				 ApplicationPackage.Literals.APPLICATION__CURRENT_VIEW,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -246,8 +222,8 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 		if (childrenFeatures == null)
 		{
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__VIEWS);
 			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__ENGINES);
+			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__VIEW);
 			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__TIME_CONFIGURATION);
 		}
 		return childrenFeatures;
@@ -314,8 +290,8 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 			case ApplicationPackage.APPLICATION__SIZE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case ApplicationPackage.APPLICATION__VIEWS:
 			case ApplicationPackage.APPLICATION__ENGINES:
+			case ApplicationPackage.APPLICATION__VIEW:
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -337,8 +313,13 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ApplicationPackage.Literals.APPLICATION__VIEWS,
+				(ApplicationPackage.Literals.APPLICATION__VIEW,
 				 PresentationFactory.eINSTANCE.createTranparentUIView()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ApplicationPackage.Literals.APPLICATION__VIEW,
+				 PresentationFactory.eINSTANCE.createGenericView()));
 
 		newChildDescriptors.add
 			(createChildParameter

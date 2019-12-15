@@ -665,6 +665,52 @@ public interface PresentationPackage extends EPackage
 	int IPANEL_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.impl.GenericViewImpl <em>Generic View</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.presentation.impl.GenericViewImpl
+	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getGenericView()
+	 * @generated
+	 */
+	int GENERIC_VIEW = 9;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_VIEW__NAME = TypesPackage.LNAMED_ELEMENT__NAME;
+
+	/**
+	 * The number of structural features of the '<em>Generic View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_VIEW_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_VIEW___LINFERENCE_OBJECT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Generic View</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_VIEW_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 1;
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.IPositionElement <em>IPosition Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -909,6 +955,16 @@ public interface PresentationPackage extends EPackage
 	EClass getIPanel();
 
 	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.GenericView <em>Generic View</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Generic View</em>'.
+	 * @see org.sheepy.lily.core.model.presentation.GenericView
+	 * @generated
+	 */
+	EClass getGenericView();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1133,6 +1189,16 @@ public interface PresentationPackage extends EPackage
 		 * @generated
 		 */
 		EClass IPANEL = eINSTANCE.getIPanel();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.impl.GenericViewImpl <em>Generic View</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.presentation.impl.GenericViewImpl
+		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getGenericView()
+		 * @generated
+		 */
+		EClass GENERIC_VIEW = eINSTANCE.getGenericView();
 
 	}
 

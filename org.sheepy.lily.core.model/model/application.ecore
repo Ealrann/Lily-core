@@ -3,8 +3,6 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="application" nsURI="org.sheepy.lily.core.model.application"
     nsPrefix="application">
   <eClassifiers xsi:type="ecore:EClass" name="Application">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="views" upperBound="-1"
-        eType="#//IView" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="engines" upperBound="-1"
         eType="#//IEngine" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="run" unique="false" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
@@ -19,7 +17,8 @@
         defaultValueLiteral="Vulkan Application"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" unique="false" eType="ecore:EDataType types.ecore#//Vector2i"
         defaultValueLiteral="400,400"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="currentView" eType="#//IView"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="view" eType="#//IView"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="timeConfiguration" eType="#//TimeConfiguration"
         containment="true"/>
   </eClassifiers>
