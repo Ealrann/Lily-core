@@ -170,4 +170,5 @@
     <eLiterals name="PRESSED" value="1"/>
     <eLiterals name="REPEATED" value="2"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="JavaModule" instanceClassName="java.lang.Module"/>
 </ecore:EPackage>

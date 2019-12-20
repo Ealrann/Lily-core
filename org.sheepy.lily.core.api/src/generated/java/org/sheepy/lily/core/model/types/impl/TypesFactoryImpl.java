@@ -138,6 +138,8 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				return createVector2iFromString(eDataType, initialValue);
 			case TypesPackage.VECTOR2D:
 				return createVector2dFromString(eDataType, initialValue);
+			case TypesPackage.JAVA_MODULE:
+				return createJavaModuleFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -191,6 +193,8 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				return convertVector2iToString(eDataType, instanceValue);
 			case TypesPackage.VECTOR2D:
 				return convertVector2dToString(eDataType, instanceValue);
+			case TypesPackage.JAVA_MODULE:
+				return convertJavaModuleToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -1088,6 +1092,26 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	public String convertVector2dToString(EDataType eDataType, Object instanceValue)
 	{
 		return convertVector2d((Vector2dc)instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Module createJavaModuleFromString(EDataType eDataType, String initialValue)
+	{
+		return (Module)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertJavaModuleToString(EDataType eDataType, Object instanceValue)
+	{
+		return super.convertToString(eDataType, instanceValue);
 	}
 
 	/**

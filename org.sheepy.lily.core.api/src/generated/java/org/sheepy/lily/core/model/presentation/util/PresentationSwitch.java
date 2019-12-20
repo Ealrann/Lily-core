@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
-import org.sheepy.lily.core.model.application.IView;
+import org.sheepy.lily.core.model.application.IScenePart;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 import org.sheepy.lily.core.model.presentation.*;
 import org.sheepy.lily.core.model.types.LNamedElement;
@@ -90,42 +90,12 @@ public class PresentationSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PresentationPackage.IUI_VIEW:
+			case PresentationPackage.UI:
 			{
-				IUIView iuiView = (IUIView)theEObject;
-				T result = caseIUIView(iuiView);
-				if (result == null) result = caseIView(iuiView);
-				if (result == null) result = caseIInferenceObject(iuiView);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PresentationPackage.TRANPARENT_UI_VIEW:
-			{
-				TranparentUIView tranparentUIView = (TranparentUIView)theEObject;
-				T result = caseTranparentUIView(tranparentUIView);
-				if (result == null) result = caseIUIView(tranparentUIView);
-				if (result == null) result = caseIView(tranparentUIView);
-				if (result == null) result = caseIInferenceObject(tranparentUIView);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PresentationPackage.IMUSIC_VIEW:
-			{
-				IMusicView iMusicView = (IMusicView)theEObject;
-				T result = caseIMusicView(iMusicView);
-				if (result == null) result = caseIView(iMusicView);
-				if (result == null) result = caseIInferenceObject(iMusicView);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PresentationPackage.ISIZED_VIEW:
-			{
-				ISizedView iSizedView = (ISizedView)theEObject;
-				T result = caseISizedView(iSizedView);
-				if (result == null) result = caseISizedElement(iSizedView);
-				if (result == null) result = caseIView(iSizedView);
-				if (result == null) result = caseIPositionElement(iSizedView);
-				if (result == null) result = caseIInferenceObject(iSizedView);
+				UI ui = (UI)theEObject;
+				T result = caseUI(ui);
+				if (result == null) result = caseIScenePart(ui);
+				if (result == null) result = caseIInferenceObject(ui);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -154,16 +124,6 @@ public class PresentationSwitch<T> extends Switch<T>
 				if (result == null) result = caseIUIElement(iPanel);
 				if (result == null) result = caseIPositionElement(iPanel);
 				if (result == null) result = caseIInferenceObject(iPanel);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PresentationPackage.GENERIC_VIEW:
-			{
-				GenericView genericView = (GenericView)theEObject;
-				T result = caseGenericView(genericView);
-				if (result == null) result = caseLNamedElement(genericView);
-				if (result == null) result = caseIView(genericView);
-				if (result == null) result = caseIInferenceObject(genericView);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -204,65 +164,17 @@ public class PresentationSwitch<T> extends Switch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>IUI View</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>UI</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>IUI View</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>UI</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseIUIView(IUIView object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Tranparent UI View</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Tranparent UI View</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTranparentUIView(TranparentUIView object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>IMusic View</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>IMusic View</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIMusicView(IMusicView object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>ISized View</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>ISized View</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseISizedView(ISizedView object)
+	public T caseUI(UI object)
 	{
 		return null;
 	}
@@ -316,38 +228,6 @@ public class PresentationSwitch<T> extends Switch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Generic View</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Generic View</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseGenericView(GenericView object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>IView</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>IView</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIView(IView object)
-	{
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>IInference Object</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -359,6 +239,22 @@ public class PresentationSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseIInferenceObject(IInferenceObject object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IScene Part</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IScene Part</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIScenePart(IScenePart object)
 	{
 		return null;
 	}

@@ -65,7 +65,7 @@
     </eOperations>
     <eOperations name="getExecutor" unique="false" eType="ecore:EClass inference.ecore#//IInferenceObject">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="&lt;%org.eclipse.emf.ecore.EObject%> unit = this;&#xA;while (((unit instanceof &lt;%org.sheepy.lily.core.model.application.IView%>) == false))&#xA;{&#xA;&#x9;unit = unit.eContainer();&#xA;}&#xA;return (IView) unit;"/>
+        <details key="body" value="&lt;%org.eclipse.emf.ecore.EObject%> unit = this;&#xA;while (((unit instanceof &lt;%org.sheepy.lily.core.model.application.IScenePart%>) == false))&#xA;{&#xA;&#x9;unit = unit.eContainer();&#xA;}&#xA;return (org.sheepy.lily.core.model.presentation.UI) unit;"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="shortcut" unique="false"

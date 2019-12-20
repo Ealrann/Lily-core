@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.sheepy.lily.core.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -87,58 +88,22 @@ public interface ApplicationPackage extends EPackage
 	int APPLICATION__RUN = 1;
 
 	/**
-	 * The feature id for the '<em><b>Fullscreen</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION__FULLSCREEN = 2;
-
-	/**
-	 * The feature id for the '<em><b>Resizeable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION__RESIZEABLE = 3;
-
-	/**
-	 * The feature id for the '<em><b>Headless</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION__HEADLESS = 4;
-
-	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__TITLE = 5;
+	int APPLICATION__TITLE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Size</b></em>' attribute.
+	 * The feature id for the '<em><b>Scene</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__SIZE = 6;
-
-	/**
-	 * The feature id for the '<em><b>View</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int APPLICATION__VIEW = 7;
+	int APPLICATION__SCENE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Time Configuration</b></em>' containment reference.
@@ -147,7 +112,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION__TIME_CONFIGURATION = 8;
+	int APPLICATION__TIME_CONFIGURATION = 4;
 
 	/**
 	 * The number of structural features of the '<em>Application</em>' class.
@@ -156,7 +121,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_FEATURE_COUNT = 9;
+	int APPLICATION_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Application</em>' class.
@@ -233,22 +198,13 @@ public interface ApplicationPackage extends EPackage
 	int IENGINE = 2;
 
 	/**
-	 * The feature id for the '<em><b>Cadence</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IENGINE__CADENCE = 0;
-
-	/**
 	 * The number of structural features of the '<em>IEngine</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IENGINE_FEATURE_COUNT = 1;
+	int IENGINE_FEATURE_COUNT = 0;
 
 	/**
 	 * The number of operations of the '<em>IEngine</em>' class.
@@ -260,23 +216,23 @@ public interface ApplicationPackage extends EPackage
 	int IENGINE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.IView <em>IView</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.IScenePart <em>IScene Part</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.lily.core.model.application.IView
-	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIView()
+	 * @see org.sheepy.lily.core.model.application.IScenePart
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIScenePart()
 	 * @generated
 	 */
-	int IVIEW = 3;
+	int ISCENE_PART = 3;
 
 	/**
-	 * The number of structural features of the '<em>IView</em>' class.
+	 * The number of structural features of the '<em>IScene Part</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IVIEW_FEATURE_COUNT = InferencePackage.IINFERENCE_OBJECT_FEATURE_COUNT + 0;
+	int ISCENE_PART_FEATURE_COUNT = InferencePackage.IINFERENCE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -285,16 +241,16 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IVIEW___LINFERENCE_OBJECT = InferencePackage.IINFERENCE_OBJECT___LINFERENCE_OBJECT;
+	int ISCENE_PART___LINFERENCE_OBJECT = InferencePackage.IINFERENCE_OBJECT___LINFERENCE_OBJECT;
 
 	/**
-	 * The number of operations of the '<em>IView</em>' class.
+	 * The number of operations of the '<em>IScene Part</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IVIEW_OPERATION_COUNT = InferencePackage.IINFERENCE_OBJECT_OPERATION_COUNT + 0;
+	int ISCENE_PART_OPERATION_COUNT = InferencePackage.IINFERENCE_OBJECT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.ICadence <em>ICadence</em>}' class.
@@ -323,6 +279,530 @@ public interface ApplicationPackage extends EPackage
 	 * @ordered
 	 */
 	int ICADENCE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.SceneImpl <em>Scene</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.application.impl.SceneImpl
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getScene()
+	 * @generated
+	 */
+	int SCENE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Parts</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENE__PARTS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Fullscreen</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENE__FULLSCREEN = 1;
+
+	/**
+	 * The feature id for the '<em><b>Resizeable</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENE__RESIZEABLE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Size</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENE__SIZE = 3;
+
+	/**
+	 * The number of structural features of the '<em>Scene</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENE_FEATURE_COUNT = 4;
+
+	/**
+	 * The number of operations of the '<em>Scene</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.GenericScenePartImpl <em>Generic Scene Part</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.application.impl.GenericScenePartImpl
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getGenericScenePart()
+	 * @generated
+	 */
+	int GENERIC_SCENE_PART = 6;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_SCENE_PART__NAME = ISCENE_PART_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Generic Scene Part</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_SCENE_PART_FEATURE_COUNT = ISCENE_PART_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_SCENE_PART___LINFERENCE_OBJECT = ISCENE_PART___LINFERENCE_OBJECT;
+
+	/**
+	 * The number of operations of the '<em>Generic Scene Part</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_SCENE_PART_OPERATION_COUNT = ISCENE_PART_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl <em>Background Image</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.application.impl.BackgroundImageImpl
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getBackgroundImage()
+	 * @generated
+	 */
+	int BACKGROUND_IMAGE = 7;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND_IMAGE__NAME = TypesPackage.LNAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Resource</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND_IMAGE__RESOURCE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Background Image</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND_IMAGE_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND_IMAGE___LINFERENCE_OBJECT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Background Image</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND_IMAGE_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.ResourcePkgImpl <em>Resource Pkg</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.application.impl.ResourcePkgImpl
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getResourcePkg()
+	 * @generated
+	 */
+	int RESOURCE_PKG = 8;
+
+	/**
+	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_PKG__RESOURCES = 0;
+
+	/**
+	 * The number of structural features of the '<em>Resource Pkg</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_PKG_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Resource Pkg</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESOURCE_PKG_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.IResourceImpl <em>IResource</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.application.impl.IResourceImpl
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIResource()
+	 * @generated
+	 */
+	int IRESOURCE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IRESOURCE__NAME = TypesPackage.LNAMED_ELEMENT__NAME;
+
+	/**
+	 * The number of structural features of the '<em>IResource</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IRESOURCE_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>IResource</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IRESOURCE_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.VirtualResourceImpl <em>Virtual Resource</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.application.impl.VirtualResourceImpl
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getVirtualResource()
+	 * @generated
+	 */
+	int VIRTUAL_RESOURCE = 10;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_RESOURCE__NAME = IRESOURCE__NAME;
+
+	/**
+	 * The number of structural features of the '<em>Virtual Resource</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_RESOURCE_FEATURE_COUNT = IRESOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Virtual Resource</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIRTUAL_RESOURCE_OPERATION_COUNT = IRESOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.FileResourceImpl <em>File Resource</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.application.impl.FileResourceImpl
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getFileResource()
+	 * @generated
+	 */
+	int FILE_RESOURCE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_RESOURCE__NAME = IRESOURCE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_RESOURCE__PATH = IRESOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>File Resource</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_RESOURCE_FEATURE_COUNT = IRESOURCE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>File Resource</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_RESOURCE_OPERATION_COUNT = IRESOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.LocalResourceImpl <em>Local Resource</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.application.impl.LocalResourceImpl
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getLocalResource()
+	 * @generated
+	 */
+	int LOCAL_RESOURCE = 12;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCAL_RESOURCE__NAME = FILE_RESOURCE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCAL_RESOURCE__PATH = FILE_RESOURCE__PATH;
+
+	/**
+	 * The number of structural features of the '<em>Local Resource</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCAL_RESOURCE_FEATURE_COUNT = FILE_RESOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Local Resource</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LOCAL_RESOURCE_OPERATION_COUNT = FILE_RESOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.AbstractModuleResourceImpl <em>Abstract Module Resource</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.application.impl.AbstractModuleResourceImpl
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getAbstractModuleResource()
+	 * @generated
+	 */
+	int ABSTRACT_MODULE_RESOURCE = 13;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_MODULE_RESOURCE__NAME = FILE_RESOURCE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_MODULE_RESOURCE__PATH = FILE_RESOURCE__PATH;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Module Resource</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_MODULE_RESOURCE_FEATURE_COUNT = FILE_RESOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Abstract Module Resource</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_MODULE_RESOURCE_OPERATION_COUNT = FILE_RESOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.ModuleResourceImpl <em>Module Resource</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.application.impl.ModuleResourceImpl
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getModuleResource()
+	 * @generated
+	 */
+	int MODULE_RESOURCE = 14;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE_RESOURCE__NAME = ABSTRACT_MODULE_RESOURCE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE_RESOURCE__PATH = ABSTRACT_MODULE_RESOURCE__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Module</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE_RESOURCE__MODULE = ABSTRACT_MODULE_RESOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Module Resource</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE_RESOURCE_FEATURE_COUNT = ABSTRACT_MODULE_RESOURCE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Module Resource</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODULE_RESOURCE_OPERATION_COUNT = ABSTRACT_MODULE_RESOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.StringModuleResourceImpl <em>String Module Resource</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.application.impl.StringModuleResourceImpl
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getStringModuleResource()
+	 * @generated
+	 */
+	int STRING_MODULE_RESOURCE = 15;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_MODULE_RESOURCE__NAME = ABSTRACT_MODULE_RESOURCE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_MODULE_RESOURCE__PATH = ABSTRACT_MODULE_RESOURCE__PATH;
+
+	/**
+	 * The feature id for the '<em><b>Module Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_MODULE_RESOURCE__MODULE_NAME = ABSTRACT_MODULE_RESOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>String Module Resource</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_MODULE_RESOURCE_FEATURE_COUNT = ABSTRACT_MODULE_RESOURCE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>String Module Resource</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_MODULE_RESOURCE_OPERATION_COUNT = ABSTRACT_MODULE_RESOURCE_OPERATION_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.Application <em>Application</em>}'.
@@ -357,39 +837,6 @@ public interface ApplicationPackage extends EPackage
 	EAttribute getApplication_Run();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Application#isFullscreen <em>Fullscreen</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Fullscreen</em>'.
-	 * @see org.sheepy.lily.core.model.application.Application#isFullscreen()
-	 * @see #getApplication()
-	 * @generated
-	 */
-	EAttribute getApplication_Fullscreen();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Application#isResizeable <em>Resizeable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Resizeable</em>'.
-	 * @see org.sheepy.lily.core.model.application.Application#isResizeable()
-	 * @see #getApplication()
-	 * @generated
-	 */
-	EAttribute getApplication_Resizeable();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Application#isHeadless <em>Headless</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Headless</em>'.
-	 * @see org.sheepy.lily.core.model.application.Application#isHeadless()
-	 * @see #getApplication()
-	 * @generated
-	 */
-	EAttribute getApplication_Headless();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Application#getTitle <em>Title</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -401,26 +848,15 @@ public interface ApplicationPackage extends EPackage
 	EAttribute getApplication_Title();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Application#getSize <em>Size</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.Application#getScene <em>Scene</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Size</em>'.
-	 * @see org.sheepy.lily.core.model.application.Application#getSize()
+	 * @return the meta object for the containment reference '<em>Scene</em>'.
+	 * @see org.sheepy.lily.core.model.application.Application#getScene()
 	 * @see #getApplication()
 	 * @generated
 	 */
-	EAttribute getApplication_Size();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.Application#getView <em>View</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>View</em>'.
-	 * @see org.sheepy.lily.core.model.application.Application#getView()
-	 * @see #getApplication()
-	 * @generated
-	 */
-	EReference getApplication_View();
+	EReference getApplication_Scene();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.Application#getTimeConfiguration <em>Time Configuration</em>}'.
@@ -487,25 +923,14 @@ public interface ApplicationPackage extends EPackage
 	EClass getIEngine();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.IEngine#getCadence <em>Cadence</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.IScenePart <em>IScene Part</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Cadence</em>'.
-	 * @see org.sheepy.lily.core.model.application.IEngine#getCadence()
-	 * @see #getIEngine()
+	 * @return the meta object for class '<em>IScene Part</em>'.
+	 * @see org.sheepy.lily.core.model.application.IScenePart
 	 * @generated
 	 */
-	EReference getIEngine_Cadence();
-
-	/**
-	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.IView <em>IView</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>IView</em>'.
-	 * @see org.sheepy.lily.core.model.application.IView
-	 * @generated
-	 */
-	EClass getIView();
+	EClass getIScenePart();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.ICadence <em>ICadence</em>}'.
@@ -516,6 +941,215 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 */
 	EClass getICadence();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.Scene <em>Scene</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Scene</em>'.
+	 * @see org.sheepy.lily.core.model.application.Scene
+	 * @generated
+	 */
+	EClass getScene();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.application.Scene#getParts <em>Parts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Parts</em>'.
+	 * @see org.sheepy.lily.core.model.application.Scene#getParts()
+	 * @see #getScene()
+	 * @generated
+	 */
+	EReference getScene_Parts();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Scene#isFullscreen <em>Fullscreen</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Fullscreen</em>'.
+	 * @see org.sheepy.lily.core.model.application.Scene#isFullscreen()
+	 * @see #getScene()
+	 * @generated
+	 */
+	EAttribute getScene_Fullscreen();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Scene#isResizeable <em>Resizeable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Resizeable</em>'.
+	 * @see org.sheepy.lily.core.model.application.Scene#isResizeable()
+	 * @see #getScene()
+	 * @generated
+	 */
+	EAttribute getScene_Resizeable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Scene#getSize <em>Size</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Size</em>'.
+	 * @see org.sheepy.lily.core.model.application.Scene#getSize()
+	 * @see #getScene()
+	 * @generated
+	 */
+	EAttribute getScene_Size();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.GenericScenePart <em>Generic Scene Part</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Generic Scene Part</em>'.
+	 * @see org.sheepy.lily.core.model.application.GenericScenePart
+	 * @generated
+	 */
+	EClass getGenericScenePart();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.BackgroundImage <em>Background Image</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Background Image</em>'.
+	 * @see org.sheepy.lily.core.model.application.BackgroundImage
+	 * @generated
+	 */
+	EClass getBackgroundImage();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.application.BackgroundImage#getResource <em>Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Resource</em>'.
+	 * @see org.sheepy.lily.core.model.application.BackgroundImage#getResource()
+	 * @see #getBackgroundImage()
+	 * @generated
+	 */
+	EReference getBackgroundImage_Resource();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.ResourcePkg <em>Resource Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Resource Pkg</em>'.
+	 * @see org.sheepy.lily.core.model.application.ResourcePkg
+	 * @generated
+	 */
+	EClass getResourcePkg();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.application.ResourcePkg#getResources <em>Resources</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Resources</em>'.
+	 * @see org.sheepy.lily.core.model.application.ResourcePkg#getResources()
+	 * @see #getResourcePkg()
+	 * @generated
+	 */
+	EReference getResourcePkg_Resources();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.IResource <em>IResource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IResource</em>'.
+	 * @see org.sheepy.lily.core.model.application.IResource
+	 * @generated
+	 */
+	EClass getIResource();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.VirtualResource <em>Virtual Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Virtual Resource</em>'.
+	 * @see org.sheepy.lily.core.model.application.VirtualResource
+	 * @generated
+	 */
+	EClass getVirtualResource();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.FileResource <em>File Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>File Resource</em>'.
+	 * @see org.sheepy.lily.core.model.application.FileResource
+	 * @generated
+	 */
+	EClass getFileResource();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.FileResource#getPath <em>Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Path</em>'.
+	 * @see org.sheepy.lily.core.model.application.FileResource#getPath()
+	 * @see #getFileResource()
+	 * @generated
+	 */
+	EAttribute getFileResource_Path();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.LocalResource <em>Local Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Local Resource</em>'.
+	 * @see org.sheepy.lily.core.model.application.LocalResource
+	 * @generated
+	 */
+	EClass getLocalResource();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.AbstractModuleResource <em>Abstract Module Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abstract Module Resource</em>'.
+	 * @see org.sheepy.lily.core.model.application.AbstractModuleResource
+	 * @generated
+	 */
+	EClass getAbstractModuleResource();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.ModuleResource <em>Module Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Module Resource</em>'.
+	 * @see org.sheepy.lily.core.model.application.ModuleResource
+	 * @generated
+	 */
+	EClass getModuleResource();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.ModuleResource#getModule <em>Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Module</em>'.
+	 * @see org.sheepy.lily.core.model.application.ModuleResource#getModule()
+	 * @see #getModuleResource()
+	 * @generated
+	 */
+	EAttribute getModuleResource_Module();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.StringModuleResource <em>String Module Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>String Module Resource</em>'.
+	 * @see org.sheepy.lily.core.model.application.StringModuleResource
+	 * @generated
+	 */
+	EClass getStringModuleResource();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.StringModuleResource#getModuleName <em>Module Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Module Name</em>'.
+	 * @see org.sheepy.lily.core.model.application.StringModuleResource#getModuleName()
+	 * @see #getStringModuleResource()
+	 * @generated
+	 */
+	EAttribute getStringModuleResource_ModuleName();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -568,30 +1202,6 @@ public interface ApplicationPackage extends EPackage
 		EAttribute APPLICATION__RUN = eINSTANCE.getApplication_Run();
 
 		/**
-		 * The meta object literal for the '<em><b>Fullscreen</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute APPLICATION__FULLSCREEN = eINSTANCE.getApplication_Fullscreen();
-
-		/**
-		 * The meta object literal for the '<em><b>Resizeable</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute APPLICATION__RESIZEABLE = eINSTANCE.getApplication_Resizeable();
-
-		/**
-		 * The meta object literal for the '<em><b>Headless</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute APPLICATION__HEADLESS = eINSTANCE.getApplication_Headless();
-
-		/**
 		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -600,20 +1210,12 @@ public interface ApplicationPackage extends EPackage
 		EAttribute APPLICATION__TITLE = eINSTANCE.getApplication_Title();
 
 		/**
-		 * The meta object literal for the '<em><b>Size</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Scene</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute APPLICATION__SIZE = eINSTANCE.getApplication_Size();
-
-		/**
-		 * The meta object literal for the '<em><b>View</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference APPLICATION__VIEW = eINSTANCE.getApplication_View();
+		EReference APPLICATION__SCENE = eINSTANCE.getApplication_Scene();
 
 		/**
 		 * The meta object literal for the '<em><b>Time Configuration</b></em>' containment reference feature.
@@ -668,22 +1270,14 @@ public interface ApplicationPackage extends EPackage
 		EClass IENGINE = eINSTANCE.getIEngine();
 
 		/**
-		 * The meta object literal for the '<em><b>Cadence</b></em>' containment reference feature.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.IScenePart <em>IScene Part</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.IScenePart
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIScenePart()
 		 * @generated
 		 */
-		EReference IENGINE__CADENCE = eINSTANCE.getIEngine_Cadence();
-
-		/**
-		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.IView <em>IView</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.sheepy.lily.core.model.application.IView
-		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIView()
-		 * @generated
-		 */
-		EClass IVIEW = eINSTANCE.getIView();
+		EClass ISCENE_PART = eINSTANCE.getIScenePart();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.ICadence <em>ICadence</em>}' class.
@@ -694,6 +1288,188 @@ public interface ApplicationPackage extends EPackage
 		 * @generated
 		 */
 		EClass ICADENCE = eINSTANCE.getICadence();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.SceneImpl <em>Scene</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.impl.SceneImpl
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getScene()
+		 * @generated
+		 */
+		EClass SCENE = eINSTANCE.getScene();
+
+		/**
+		 * The meta object literal for the '<em><b>Parts</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SCENE__PARTS = eINSTANCE.getScene_Parts();
+
+		/**
+		 * The meta object literal for the '<em><b>Fullscreen</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCENE__FULLSCREEN = eINSTANCE.getScene_Fullscreen();
+
+		/**
+		 * The meta object literal for the '<em><b>Resizeable</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCENE__RESIZEABLE = eINSTANCE.getScene_Resizeable();
+
+		/**
+		 * The meta object literal for the '<em><b>Size</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SCENE__SIZE = eINSTANCE.getScene_Size();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.GenericScenePartImpl <em>Generic Scene Part</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.impl.GenericScenePartImpl
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getGenericScenePart()
+		 * @generated
+		 */
+		EClass GENERIC_SCENE_PART = eINSTANCE.getGenericScenePart();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl <em>Background Image</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.impl.BackgroundImageImpl
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getBackgroundImage()
+		 * @generated
+		 */
+		EClass BACKGROUND_IMAGE = eINSTANCE.getBackgroundImage();
+
+		/**
+		 * The meta object literal for the '<em><b>Resource</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BACKGROUND_IMAGE__RESOURCE = eINSTANCE.getBackgroundImage_Resource();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.ResourcePkgImpl <em>Resource Pkg</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.impl.ResourcePkgImpl
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getResourcePkg()
+		 * @generated
+		 */
+		EClass RESOURCE_PKG = eINSTANCE.getResourcePkg();
+
+		/**
+		 * The meta object literal for the '<em><b>Resources</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RESOURCE_PKG__RESOURCES = eINSTANCE.getResourcePkg_Resources();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.IResourceImpl <em>IResource</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.impl.IResourceImpl
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIResource()
+		 * @generated
+		 */
+		EClass IRESOURCE = eINSTANCE.getIResource();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.VirtualResourceImpl <em>Virtual Resource</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.impl.VirtualResourceImpl
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getVirtualResource()
+		 * @generated
+		 */
+		EClass VIRTUAL_RESOURCE = eINSTANCE.getVirtualResource();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.FileResourceImpl <em>File Resource</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.impl.FileResourceImpl
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getFileResource()
+		 * @generated
+		 */
+		EClass FILE_RESOURCE = eINSTANCE.getFileResource();
+
+		/**
+		 * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FILE_RESOURCE__PATH = eINSTANCE.getFileResource_Path();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.LocalResourceImpl <em>Local Resource</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.impl.LocalResourceImpl
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getLocalResource()
+		 * @generated
+		 */
+		EClass LOCAL_RESOURCE = eINSTANCE.getLocalResource();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.AbstractModuleResourceImpl <em>Abstract Module Resource</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.impl.AbstractModuleResourceImpl
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getAbstractModuleResource()
+		 * @generated
+		 */
+		EClass ABSTRACT_MODULE_RESOURCE = eINSTANCE.getAbstractModuleResource();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.ModuleResourceImpl <em>Module Resource</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.impl.ModuleResourceImpl
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getModuleResource()
+		 * @generated
+		 */
+		EClass MODULE_RESOURCE = eINSTANCE.getModuleResource();
+
+		/**
+		 * The meta object literal for the '<em><b>Module</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODULE_RESOURCE__MODULE = eINSTANCE.getModuleResource_Module();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.StringModuleResourceImpl <em>String Module Resource</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.impl.StringModuleResourceImpl
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getStringModuleResource()
+		 * @generated
+		 */
+		EClass STRING_MODULE_RESOURCE = eINSTANCE.getStringModuleResource();
+
+		/**
+		 * The meta object literal for the '<em><b>Module Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STRING_MODULE_RESOURCE__MODULE_NAME = eINSTANCE.getStringModuleResource_ModuleName();
 
 	}
 

@@ -66,6 +66,15 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 		{
 			case ApplicationPackage.APPLICATION: return createApplication();
 			case ApplicationPackage.TIME_CONFIGURATION: return createTimeConfiguration();
+			case ApplicationPackage.SCENE: return createScene();
+			case ApplicationPackage.GENERIC_SCENE_PART: return createGenericScenePart();
+			case ApplicationPackage.BACKGROUND_IMAGE: return createBackgroundImage();
+			case ApplicationPackage.RESOURCE_PKG: return createResourcePkg();
+			case ApplicationPackage.IRESOURCE: return createIResource();
+			case ApplicationPackage.VIRTUAL_RESOURCE: return createVirtualResource();
+			case ApplicationPackage.LOCAL_RESOURCE: return createLocalResource();
+			case ApplicationPackage.MODULE_RESOURCE: return createModuleResource();
+			case ApplicationPackage.STRING_MODULE_RESOURCE: return createStringModuleResource();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -93,6 +102,114 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 	{
 		TimeConfigurationImpl timeConfiguration = new TimeConfigurationImpl();
 		return timeConfiguration;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Scene createScene()
+	{
+		SceneImpl scene = new SceneImpl();
+		return scene;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public GenericScenePart createGenericScenePart()
+	{
+		GenericScenePartImpl genericScenePart = new GenericScenePartImpl();
+		return genericScenePart;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public BackgroundImage createBackgroundImage()
+	{
+		BackgroundImageImpl backgroundImage = new BackgroundImageImpl();
+		return backgroundImage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourcePkg createResourcePkg()
+	{
+		ResourcePkgImpl resourcePkg = new ResourcePkgImpl();
+		return resourcePkg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public IResource createIResource()
+	{
+		IResourceImpl iResource = new IResourceImpl();
+		return iResource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public VirtualResource createVirtualResource()
+	{
+		VirtualResourceImpl virtualResource = new VirtualResourceImpl();
+		return virtualResource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public LocalResource createLocalResource()
+	{
+		LocalResourceImpl localResource = new LocalResourceImpl();
+		return localResource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ModuleResource createModuleResource()
+	{
+		ModuleResourceImpl moduleResource = new ModuleResourceImpl();
+		return moduleResource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public StringModuleResource createStringModuleResource()
+	{
+		StringModuleResourceImpl stringModuleResource = new StringModuleResourceImpl();
+		return stringModuleResource;
 	}
 
 	/**

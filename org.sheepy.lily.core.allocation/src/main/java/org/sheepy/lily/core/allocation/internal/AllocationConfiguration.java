@@ -1,6 +1,8 @@
 package org.sheepy.lily.core.allocation.internal;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -11,6 +13,7 @@ import org.sheepy.lily.core.api.allocation.IAllocationContext;
 public final class AllocationConfiguration<T extends IAllocationContext>
 {
 	public final List<AllocationManager<?>> children = new ArrayList<>();
+	public final Deque<AllocationManager<?>> childrenToRemove = new ArrayDeque<>();
 	public final List<AllocationManager<?>> dependencies = new ArrayList<>();
 	public final T context;
 
@@ -40,7 +43,7 @@ public final class AllocationConfiguration<T extends IAllocationContext>
 		for (int i = 0; i < dependencies.size(); i++)
 		{
 			final var dep = dependencies.get(i);
-			if (dep.getStatus() != EAllocationStatus.Allocated)
+			if (dep.isDirty() || dep.getStatus() != EAllocationStatus.Allocated)
 			{
 				res &= false;
 				break;

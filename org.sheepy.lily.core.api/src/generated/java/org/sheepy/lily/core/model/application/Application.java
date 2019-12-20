@@ -3,8 +3,6 @@
 package org.sheepy.lily.core.model.application;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.joml.Vector2ic;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
 
 /**
@@ -18,12 +16,8 @@ import org.sheepy.lily.core.api.adapter.ILilyEObject;
  * <ul>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getEngines <em>Engines</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#isRun <em>Run</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.Application#isFullscreen <em>Fullscreen</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.Application#isResizeable <em>Resizeable</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.Application#isHeadless <em>Headless</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getTitle <em>Title</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.Application#getSize <em>Size</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.Application#getView <em>View</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Application#getScene <em>Scene</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getTimeConfiguration <em>Time Configuration</em>}</li>
  * </ul>
  *
@@ -70,75 +64,6 @@ public interface Application extends ILilyEObject
 	void setRun(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Fullscreen</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Fullscreen</em>' attribute.
-	 * @see #setFullscreen(boolean)
-	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Fullscreen()
-	 * @model default="false" unique="false"
-	 * @generated
-	 */
-	boolean isFullscreen();
-
-	/**
-	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#isFullscreen <em>Fullscreen</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Fullscreen</em>' attribute.
-	 * @see #isFullscreen()
-	 * @generated
-	 */
-	void setFullscreen(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Resizeable</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Resizeable</em>' attribute.
-	 * @see #setResizeable(boolean)
-	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Resizeable()
-	 * @model default="false" unique="false"
-	 * @generated
-	 */
-	boolean isResizeable();
-
-	/**
-	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#isResizeable <em>Resizeable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Resizeable</em>' attribute.
-	 * @see #isResizeable()
-	 * @generated
-	 */
-	void setResizeable(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Headless</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Headless</em>' attribute.
-	 * @see #setHeadless(boolean)
-	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Headless()
-	 * @model default="false" unique="false"
-	 * @generated
-	 */
-	boolean isHeadless();
-
-	/**
-	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#isHeadless <em>Headless</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Headless</em>' attribute.
-	 * @see #isHeadless()
-	 * @generated
-	 */
-	void setHeadless(boolean value);
-
-	/**
 	 * Returns the value of the '<em><b>Title</b></em>' attribute.
 	 * The default value is <code>"Vulkan Application"</code>.
 	 * <!-- begin-user-doc -->
@@ -162,49 +87,26 @@ public interface Application extends ILilyEObject
 	void setTitle(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Size</b></em>' attribute.
-	 * The default value is <code>"400,400"</code>.
+	 * Returns the value of the '<em><b>Scene</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Size</em>' attribute.
-	 * @see #setSize(Vector2ic)
-	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Size()
-	 * @model default="400,400" unique="false" dataType="org.sheepy.lily.core.model.types.Vector2i"
-	 * @generated
-	 */
-	Vector2ic getSize();
-
-	/**
-	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#getSize <em>Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Size</em>' attribute.
-	 * @see #getSize()
-	 * @generated
-	 */
-	void setSize(Vector2ic value);
-
-	/**
-	 * Returns the value of the '<em><b>View</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>View</em>' containment reference.
-	 * @see #setView(IView)
-	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_View()
+	 * @return the value of the '<em>Scene</em>' containment reference.
+	 * @see #setScene(Scene)
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Scene()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	IView getView();
+	Scene getScene();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#getView <em>View</em>}' containment reference.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#getScene <em>Scene</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>View</em>' containment reference.
-	 * @see #getView()
+	 * @param value the new value of the '<em>Scene</em>' containment reference.
+	 * @see #getScene()
 	 * @generated
 	 */
-	void setView(IView value);
+	void setScene(Scene value);
 
 	/**
 	 * Returns the value of the '<em><b>Time Configuration</b></em>' containment reference.

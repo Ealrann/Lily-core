@@ -35,7 +35,6 @@ module org.sheepy.lily.core.api
 	exports org.sheepy.lily.core.api.service;
 	exports org.sheepy.lily.core.api.util;
 	exports org.sheepy.lily.core.api.variable;
-	exports org.sheepy.lily.core.api.view;
 
 	exports org.sheepy.lily.core.model.action;
 	exports org.sheepy.lily.core.model.action.impl;

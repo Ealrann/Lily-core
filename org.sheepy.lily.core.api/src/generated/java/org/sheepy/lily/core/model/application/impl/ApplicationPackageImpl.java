@@ -12,14 +12,24 @@ import org.sheepy.lily.core.model.action.ActionPackage;
 
 import org.sheepy.lily.core.model.action.impl.ActionPackageImpl;
 
+import org.sheepy.lily.core.model.application.AbstractModuleResource;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationFactory;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.application.BackgroundImage;
+import org.sheepy.lily.core.model.application.FileResource;
+import org.sheepy.lily.core.model.application.GenericScenePart;
 import org.sheepy.lily.core.model.application.ICadence;
 import org.sheepy.lily.core.model.application.IEngine;
-import org.sheepy.lily.core.model.application.IView;
-
+import org.sheepy.lily.core.model.application.IResource;
+import org.sheepy.lily.core.model.application.IScenePart;
+import org.sheepy.lily.core.model.application.LocalResource;
+import org.sheepy.lily.core.model.application.ModuleResource;
+import org.sheepy.lily.core.model.application.ResourcePkg;
+import org.sheepy.lily.core.model.application.Scene;
+import org.sheepy.lily.core.model.application.StringModuleResource;
 import org.sheepy.lily.core.model.application.TimeConfiguration;
+import org.sheepy.lily.core.model.application.VirtualResource;
 import org.sheepy.lily.core.model.cadence.CadencePackage;
 import org.sheepy.lily.core.model.cadence.impl.CadencePackageImpl;
 import org.sheepy.lily.core.model.inference.InferencePackage;
@@ -79,7 +89,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass iViewEClass = null;
+	private EClass iScenePartEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -87,6 +97,83 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	private EClass iCadenceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass sceneEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass genericScenePartEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass backgroundImageEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass resourcePkgEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iResourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass virtualResourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass fileResourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass localResourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass abstractModuleResourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass moduleResourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stringModuleResourceEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -224,7 +311,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getApplication_Fullscreen()
+	public EAttribute getApplication_Title()
 	{
 		return (EAttribute)applicationEClass.getEStructuralFeatures().get(2);
 	}
@@ -235,53 +322,9 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
-	public EAttribute getApplication_Resizeable()
+	public EReference getApplication_Scene()
 	{
-		return (EAttribute)applicationEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getApplication_Headless()
-	{
-		return (EAttribute)applicationEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getApplication_Title()
-	{
-		return (EAttribute)applicationEClass.getEStructuralFeatures().get(5);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getApplication_Size()
-	{
-		return (EAttribute)applicationEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getApplication_View()
-	{
-		return (EReference)applicationEClass.getEStructuralFeatures().get(7);
+		return (EReference)applicationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -292,7 +335,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	@Override
 	public EReference getApplication_TimeConfiguration()
 	{
-		return (EReference)applicationEClass.getEStructuralFeatures().get(8);
+		return (EReference)applicationEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -356,20 +399,9 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
-	public EReference getIEngine_Cadence()
+	public EClass getIScenePart()
 	{
-		return (EReference)iEngineEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getIView()
-	{
-		return iViewEClass;
+		return iScenePartEClass;
 	}
 
 	/**
@@ -381,6 +413,226 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	public EClass getICadence()
 	{
 		return iCadenceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getScene()
+	{
+		return sceneEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getScene_Parts()
+	{
+		return (EReference)sceneEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getScene_Fullscreen()
+	{
+		return (EAttribute)sceneEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getScene_Resizeable()
+	{
+		return (EAttribute)sceneEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getScene_Size()
+	{
+		return (EAttribute)sceneEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getGenericScenePart()
+	{
+		return genericScenePartEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getBackgroundImage()
+	{
+		return backgroundImageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getBackgroundImage_Resource()
+	{
+		return (EReference)backgroundImageEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getResourcePkg()
+	{
+		return resourcePkgEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getResourcePkg_Resources()
+	{
+		return (EReference)resourcePkgEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getIResource()
+	{
+		return iResourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getVirtualResource()
+	{
+		return virtualResourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getFileResource()
+	{
+		return fileResourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFileResource_Path()
+	{
+		return (EAttribute)fileResourceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getLocalResource()
+	{
+		return localResourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAbstractModuleResource()
+	{
+		return abstractModuleResourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getModuleResource()
+	{
+		return moduleResourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getModuleResource_Module()
+	{
+		return (EAttribute)moduleResourceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getStringModuleResource()
+	{
+		return stringModuleResourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getStringModuleResource_ModuleName()
+	{
+		return (EAttribute)stringModuleResourceEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -417,12 +669,8 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		applicationEClass = createEClass(APPLICATION);
 		createEReference(applicationEClass, APPLICATION__ENGINES);
 		createEAttribute(applicationEClass, APPLICATION__RUN);
-		createEAttribute(applicationEClass, APPLICATION__FULLSCREEN);
-		createEAttribute(applicationEClass, APPLICATION__RESIZEABLE);
-		createEAttribute(applicationEClass, APPLICATION__HEADLESS);
 		createEAttribute(applicationEClass, APPLICATION__TITLE);
-		createEAttribute(applicationEClass, APPLICATION__SIZE);
-		createEReference(applicationEClass, APPLICATION__VIEW);
+		createEReference(applicationEClass, APPLICATION__SCENE);
 		createEReference(applicationEClass, APPLICATION__TIME_CONFIGURATION);
 
 		timeConfigurationEClass = createEClass(TIME_CONFIGURATION);
@@ -431,11 +679,41 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEAttribute(timeConfigurationEClass, TIME_CONFIGURATION__TIME_FACTOR);
 
 		iEngineEClass = createEClass(IENGINE);
-		createEReference(iEngineEClass, IENGINE__CADENCE);
 
-		iViewEClass = createEClass(IVIEW);
+		iScenePartEClass = createEClass(ISCENE_PART);
 
 		iCadenceEClass = createEClass(ICADENCE);
+
+		sceneEClass = createEClass(SCENE);
+		createEReference(sceneEClass, SCENE__PARTS);
+		createEAttribute(sceneEClass, SCENE__FULLSCREEN);
+		createEAttribute(sceneEClass, SCENE__RESIZEABLE);
+		createEAttribute(sceneEClass, SCENE__SIZE);
+
+		genericScenePartEClass = createEClass(GENERIC_SCENE_PART);
+
+		backgroundImageEClass = createEClass(BACKGROUND_IMAGE);
+		createEReference(backgroundImageEClass, BACKGROUND_IMAGE__RESOURCE);
+
+		resourcePkgEClass = createEClass(RESOURCE_PKG);
+		createEReference(resourcePkgEClass, RESOURCE_PKG__RESOURCES);
+
+		iResourceEClass = createEClass(IRESOURCE);
+
+		virtualResourceEClass = createEClass(VIRTUAL_RESOURCE);
+
+		fileResourceEClass = createEClass(FILE_RESOURCE);
+		createEAttribute(fileResourceEClass, FILE_RESOURCE__PATH);
+
+		localResourceEClass = createEClass(LOCAL_RESOURCE);
+
+		abstractModuleResourceEClass = createEClass(ABSTRACT_MODULE_RESOURCE);
+
+		moduleResourceEClass = createEClass(MODULE_RESOURCE);
+		createEAttribute(moduleResourceEClass, MODULE_RESOURCE__MODULE);
+
+		stringModuleResourceEClass = createEClass(STRING_MODULE_RESOURCE);
+		createEAttribute(stringModuleResourceEClass, STRING_MODULE_RESOURCE__MODULE_NAME);
 	}
 
 	/**
@@ -471,18 +749,25 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		iViewEClass.getESuperTypes().add(theInferencePackage.getIInferenceObject());
+		iScenePartEClass.getESuperTypes().add(theInferencePackage.getIInferenceObject());
+		genericScenePartEClass.getESuperTypes().add(this.getIScenePart());
+		genericScenePartEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
+		backgroundImageEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
+		backgroundImageEClass.getESuperTypes().add(this.getIScenePart());
+		iResourceEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
+		virtualResourceEClass.getESuperTypes().add(this.getIResource());
+		fileResourceEClass.getESuperTypes().add(this.getIResource());
+		localResourceEClass.getESuperTypes().add(this.getFileResource());
+		abstractModuleResourceEClass.getESuperTypes().add(this.getFileResource());
+		moduleResourceEClass.getESuperTypes().add(this.getAbstractModuleResource());
+		stringModuleResourceEClass.getESuperTypes().add(this.getAbstractModuleResource());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(applicationEClass, Application.class, "Application", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getApplication_Engines(), this.getIEngine(), null, "engines", null, 0, -1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplication_Run(), ecorePackage.getEBoolean(), "run", "true", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getApplication_Fullscreen(), ecorePackage.getEBoolean(), "fullscreen", "false", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getApplication_Resizeable(), ecorePackage.getEBoolean(), "resizeable", "false", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getApplication_Headless(), ecorePackage.getEBoolean(), "headless", "false", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getApplication_Title(), ecorePackage.getEString(), "title", "Vulkan Application", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getApplication_Size(), theTypesPackage.getVector2i(), "size", "400,400", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getApplication_View(), this.getIView(), null, "view", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getApplication_Scene(), this.getScene(), null, "scene", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_TimeConfiguration(), this.getTimeConfiguration(), null, "timeConfiguration", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(timeConfigurationEClass, TimeConfiguration.class, "TimeConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -491,11 +776,41 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEAttribute(getTimeConfiguration_TimeFactor(), ecorePackage.getEDouble(), "timeFactor", "1", 1, 1, TimeConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iEngineEClass, IEngine.class, "IEngine", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIEngine_Cadence(), this.getICadence(), null, "cadence", null, 1, 1, IEngine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(iViewEClass, IView.class, "IView", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(iScenePartEClass, IScenePart.class, "IScenePart", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(iCadenceEClass, ICadence.class, "ICadence", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(sceneEClass, Scene.class, "Scene", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getScene_Parts(), this.getIScenePart(), null, "parts", null, 0, -1, Scene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScene_Fullscreen(), ecorePackage.getEBoolean(), "fullscreen", "false", 0, 1, Scene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScene_Resizeable(), ecorePackage.getEBoolean(), "resizeable", "false", 0, 1, Scene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getScene_Size(), theTypesPackage.getVector2i(), "size", "400,400", 0, 1, Scene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(genericScenePartEClass, GenericScenePart.class, "GenericScenePart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(backgroundImageEClass, BackgroundImage.class, "BackgroundImage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBackgroundImage_Resource(), this.getIResource(), null, "resource", null, 0, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(resourcePkgEClass, ResourcePkg.class, "ResourcePkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getResourcePkg_Resources(), this.getIResource(), null, "resources", null, 0, -1, ResourcePkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(iResourceEClass, IResource.class, "IResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(virtualResourceEClass, VirtualResource.class, "VirtualResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(fileResourceEClass, FileResource.class, "FileResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFileResource_Path(), ecorePackage.getEString(), "path", null, 1, 1, FileResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(localResourceEClass, LocalResource.class, "LocalResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(abstractModuleResourceEClass, AbstractModuleResource.class, "AbstractModuleResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(moduleResourceEClass, ModuleResource.class, "ModuleResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getModuleResource_Module(), theTypesPackage.getJavaModule(), "module", null, 1, 1, ModuleResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(stringModuleResourceEClass, StringModuleResource.class, "StringModuleResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStringModuleResource_ModuleName(), ecorePackage.getEString(), "moduleName", null, 1, 1, StringModuleResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

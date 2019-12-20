@@ -25,16 +25,16 @@ public interface IInferenceAdapter extends IAdapter
 	 *            The {@link LNotification} eClass listened
 	 * @param listener
 	 */
-	void addNotificationListener(EClass clazz, INotificationListener listener);
+	void addNotificationListener(EClass clazz, IInferenceListener listener);
 
 	/**
 	 * @param clazz
 	 *            The {@link LNotification} eClass listened
 	 * @param listener
 	 */
-	void removeNotificationListener(EClass clazz, INotificationListener listener);
+	void removeNotificationListener(EClass clazz, IInferenceListener listener);
 
-	public interface INotificationListener
+	public interface IInferenceListener
 	{
 		void onNotification(EObject unit, LNotification notification);
 

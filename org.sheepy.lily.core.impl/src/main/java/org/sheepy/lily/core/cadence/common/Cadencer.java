@@ -18,18 +18,15 @@ import org.sheepy.lily.core.adapter.impl.AdapterManager;
 import org.sheepy.lily.core.api.action.context.ActionExecutionContext;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.api.cadence.ETickerClock;
-import org.sheepy.lily.core.api.cadence.ICadenceAdapter;
 import org.sheepy.lily.core.api.cadence.ICadencer;
 import org.sheepy.lily.core.api.cadence.IStatistics;
 import org.sheepy.lily.core.api.cadence.ITicker;
 import org.sheepy.lily.core.api.engine.IEngineAdapter;
 import org.sheepy.lily.core.api.input.IInputManager;
-import org.sheepy.lily.core.api.util.AdapterSetRegistry;
 import org.sheepy.lily.core.api.util.DebugUtil;
 import org.sheepy.lily.core.api.util.TimeUtil;
 import org.sheepy.lily.core.cadence.execution.CommandStack;
 import org.sheepy.lily.core.model.application.Application;
-import org.sheepy.lily.core.model.application.ApplicationPackage;
 
 public class Cadencer implements ICadencer
 {
@@ -39,6 +36,7 @@ public class Cadencer implements ICadencer
 	private static final String MODEL_COMMANDS = "Model Commands";
 
 	private final Application application;
+	private final Runnable stepper;
 	private final List<AbstractTickerWrapper> tickers = new ArrayList<>();
 	private final List<AbstractTickerWrapper> course = new ArrayList<>();
 	private final Map<EObject, List<AbstractTickerWrapper>> tickerMap = new HashMap<>();
@@ -46,9 +44,6 @@ public class Cadencer implements ICadencer
 	private final ECrossReferenceAdapter crossReferencer = new ECrossReferenceAdapter();
 	private final IStatistics statistics = IStatistics.INSTANCE;
 	private final AtomicBoolean stop = new AtomicBoolean(false);
-	private final AdapterSetRegistry<ICadenceAdapter> cadenceAdapters = new AdapterSetRegistry<>(	ICadenceAdapter.class,
-																									List.of(ApplicationPackage.Literals.APPLICATION__ENGINES,
-																											ApplicationPackage.Literals.IENGINE__CADENCE));
 
 	private IInputManager inputManager = null;
 	private Long mainThread = null;
@@ -57,7 +52,13 @@ public class Cadencer implements ICadencer
 
 	public Cadencer(Application application)
 	{
+		this(application, null);
+	}
+
+	public Cadencer(Application application, Runnable stepper)
+	{
 		this.application = application;
+		this.stepper = stepper;
 	}
 
 	@Override
@@ -111,7 +112,6 @@ public class Cadencer implements ICadencer
 
 		cadenceContentAdapter = new CadenceContentAdater();
 		application.eAdapters().add(cadenceContentAdapter);
-		cadenceAdapters.startRegister(application);
 	}
 
 	public void run()
@@ -133,9 +133,15 @@ public class Cadencer implements ICadencer
 			statistics.addTime(CADENCE, CADENCER_TICK, System.nanoTime() - duration);
 
 			final long d = System.nanoTime();
-			for (final var cadenceAdapter : cadenceAdapters.getAdapters())
+			for (final var engine : application.getEngines())
 			{
-				cadenceAdapter.run();
+				final var engineAdapter = engine.adaptNotNull(IEngineAdapter.class);
+				engineAdapter.step();
+			}
+
+			if (stepper != null)
+			{
+				stepper.run();
 			}
 
 			statistics.addTime(CADENCE, MAIN_LOOP, System.nanoTime() - d);
@@ -147,7 +153,6 @@ public class Cadencer implements ICadencer
 
 	private void dispose()
 	{
-		cadenceAdapters.stopRegister(application);
 		application.eAdapters().remove(cadenceContentAdapter);
 		cadenceContentAdapter = null;
 
@@ -339,7 +344,7 @@ public class Cadencer implements ICadencer
 					next.stop.set(true);
 				}
 
-				tickerMap.put(target, null);
+				tickerMap.remove(target);
 				tickers.removeAll(objectTickers);
 			}
 
@@ -354,6 +359,7 @@ public class Cadencer implements ICadencer
 			if (list == null)
 			{
 				list = new ArrayList<>();
+				tickerMap.put(target, list);
 			}
 
 			list.add(wrapper);

@@ -61,6 +61,7 @@ public class AllocationServiceTest
 		assertTrue(lvl1_2.dirty);
 		assertTrue(lvl1_2.tag);
 
+		rootManager.freeDirtyElements();
 		rootManager.allocate();
 
 		assertTrue(!lvl1_2.dirty);
@@ -100,6 +101,7 @@ public class AllocationServiceTest
 
 		lvl1_2.setDirty();
 
+		rootManager.freeDirtyElements();
 		rootManager.allocate();
 
 		assertTrue(lvl1_1.tag);
@@ -227,7 +229,7 @@ public class AllocationServiceTest
 		{
 			if (childrenToAddDuringAlloc.isEmpty() == false)
 			{
-				config.addChildren(childrenToAddDuringAlloc);
+				config.addChildren(childrenToAddDuringAlloc, true);
 			}
 
 			tag = true;
@@ -242,7 +244,7 @@ public class AllocationServiceTest
 
 			if (childrenToAddDuringAlloc.isEmpty() == false)
 			{
-				config.removeChildren(childrenToAddDuringAlloc);
+				config.removeChildren(childrenToAddDuringAlloc, true);
 			}
 		}
 	}

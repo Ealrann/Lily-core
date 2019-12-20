@@ -91,31 +91,6 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.presentation.TranparentUIView} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected TranparentUIViewItemProvider tranparentUIViewItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.sheepy.lily.core.model.presentation.TranparentUIView}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createTranparentUIViewAdapter()
-	{
-		if (tranparentUIViewItemProvider == null)
-		{
-			tranparentUIViewItemProvider = new TranparentUIViewItemProvider(this);
-		}
-
-		return tranparentUIViewItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.presentation.UIPage} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -138,31 +113,6 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 		}
 
 		return uiPageItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.presentation.GenericView} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected GenericViewItemProvider genericViewItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.sheepy.lily.core.model.presentation.GenericView}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createGenericViewAdapter()
-	{
-		if (genericViewItemProvider == null)
-		{
-			genericViewItemProvider = new GenericViewItemProvider(this);
-		}
-
-		return genericViewItemProvider;
 	}
 
 	/**
@@ -314,9 +264,7 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 	@Override
 	public void dispose()
 	{
-		if (tranparentUIViewItemProvider != null) tranparentUIViewItemProvider.dispose();
 		if (uiPageItemProvider != null) uiPageItemProvider.dispose();
-		if (genericViewItemProvider != null) genericViewItemProvider.dispose();
 	}
 
 }

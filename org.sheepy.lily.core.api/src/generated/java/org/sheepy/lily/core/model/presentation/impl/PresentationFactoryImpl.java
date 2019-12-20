@@ -64,24 +64,10 @@ public class PresentationFactoryImpl extends EFactoryImpl implements Presentatio
 	{
 		switch (eClass.getClassifierID())
 		{
-			case PresentationPackage.TRANPARENT_UI_VIEW: return createTranparentUIView();
 			case PresentationPackage.UI_PAGE: return createUIPage();
-			case PresentationPackage.GENERIC_VIEW: return createGenericView();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public TranparentUIView createTranparentUIView()
-	{
-		TranparentUIViewImpl tranparentUIView = new TranparentUIViewImpl();
-		return tranparentUIView;
 	}
 
 	/**
@@ -94,18 +80,6 @@ public class PresentationFactoryImpl extends EFactoryImpl implements Presentatio
 	{
 		UIPageImpl uiPage = new UIPageImpl();
 		return uiPage;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public GenericView createGenericView()
-	{
-		GenericViewImpl genericView = new GenericViewImpl();
-		return genericView;
 	}
 
 	/**

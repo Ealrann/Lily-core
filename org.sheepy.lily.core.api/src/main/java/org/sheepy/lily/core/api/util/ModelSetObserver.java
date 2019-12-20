@@ -14,7 +14,7 @@ public class ModelSetObserver
 	private final List<EStructuralFeature> features;
 	private final HierarchyNotificationListener rootListener;
 	private final INotificationListener listener;
-
+	
 	public ModelSetObserver(INotificationListener listener,
 							List<EStructuralFeature> structuralFeatures)
 	{
@@ -180,7 +180,6 @@ public class ModelSetObserver
 					}
 					break;
 				case Notification.SET:
-
 					if (notification.getOldValue() != null)
 						removeChild((LilyEObject) notification.getOldValue());
 					if (notification.getNewValue() != null)

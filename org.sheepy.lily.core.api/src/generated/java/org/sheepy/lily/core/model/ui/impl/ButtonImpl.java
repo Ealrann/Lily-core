@@ -23,8 +23,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.sheepy.lily.core.model.action.Action;
 
-import org.sheepy.lily.core.model.application.IView;
-
+import org.sheepy.lily.core.model.application.IScenePart;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 
 import org.sheepy.lily.core.model.types.EKeyState;
@@ -205,11 +204,11 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 	public IInferenceObject getExecutor()
 	{
 		EObject unit = this;
-		while (((unit instanceof IView) == false))
+		while (((unit instanceof IScenePart) == false))
 		{
 			unit = unit.eContainer();
 		}
-		return (IView) unit;
+		return (org.sheepy.lily.core.model.presentation.UI) unit;
 	}
 
 	/**

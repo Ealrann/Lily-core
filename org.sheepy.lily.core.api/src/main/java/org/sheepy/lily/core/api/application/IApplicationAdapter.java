@@ -8,6 +8,6 @@ public interface IApplicationAdapter extends IAdapter
 {
 	ICadencer getCadencer();
 
-	void launch(Application application);
+	void launch(Application application, Runnable step);
 	void stop(Application application);
 }

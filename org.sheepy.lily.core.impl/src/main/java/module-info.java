@@ -28,7 +28,7 @@ import org.sheepy.lily.core.variable.DirectVariableResolverAdapter;
 		PrintUPSAdapter.class,
 		HaveTimeAdapter.class,
 		CountUntilAdapter.class,
-		CloseApplicationAdapter.class
+		CloseApplicationAdapter.class,
 })
 
 module org.sheepy.lily.core.impl

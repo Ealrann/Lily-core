@@ -41,6 +41,87 @@ public interface ApplicationFactory extends EFactory
 	TimeConfiguration createTimeConfiguration();
 
 	/**
+	 * Returns a new object of class '<em>Scene</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Scene</em>'.
+	 * @generated
+	 */
+	Scene createScene();
+
+	/**
+	 * Returns a new object of class '<em>Generic Scene Part</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Generic Scene Part</em>'.
+	 * @generated
+	 */
+	GenericScenePart createGenericScenePart();
+
+	/**
+	 * Returns a new object of class '<em>Background Image</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Background Image</em>'.
+	 * @generated
+	 */
+	BackgroundImage createBackgroundImage();
+
+	/**
+	 * Returns a new object of class '<em>Resource Pkg</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Resource Pkg</em>'.
+	 * @generated
+	 */
+	ResourcePkg createResourcePkg();
+
+	/**
+	 * Returns a new object of class '<em>IResource</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>IResource</em>'.
+	 * @generated
+	 */
+	IResource createIResource();
+
+	/**
+	 * Returns a new object of class '<em>Virtual Resource</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Virtual Resource</em>'.
+	 * @generated
+	 */
+	VirtualResource createVirtualResource();
+
+	/**
+	 * Returns a new object of class '<em>Local Resource</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Local Resource</em>'.
+	 * @generated
+	 */
+	LocalResource createLocalResource();
+
+	/**
+	 * Returns a new object of class '<em>Module Resource</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Module Resource</em>'.
+	 * @generated
+	 */
+	ModuleResource createModuleResource();
+
+	/**
+	 * Returns a new object of class '<em>String Module Resource</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>String Module Resource</em>'.
+	 * @generated
+	 */
+	StringModuleResource createStringModuleResource();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

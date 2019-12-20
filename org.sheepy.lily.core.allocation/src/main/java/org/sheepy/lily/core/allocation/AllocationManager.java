@@ -81,15 +81,23 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 	@SuppressWarnings("unchecked")
 	public void configure(IAllocationContext context)
 	{
-		cleanConfiguration();
+		cleanConfiguration(false);
 		configuration = new AllocationConfiguration<>((T) context);
 		allocable.configureAllocation(configurator, (T) context);
 	}
 
-	private void cleanConfiguration()
+	private void cleanConfiguration(boolean deep)
 	{
 		if (configuration != null)
 		{
+			if (deep)
+			{
+				for (final var child : configuration.children)
+				{
+					child.cleanConfiguration(deep);
+				}
+			}
+
 			for (final var dep : configuration.dependencies)
 			{
 				dep.listeners.remove(dependencyListener);
@@ -111,20 +119,19 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 			dirtyBranch = false;
 		}
 
-		if (dirty || status == EAllocationStatus.NotAllocated)
+		if (status == EAllocationStatus.NotAllocated)
 		{
 			if (configuration.isAllocable())
 			{
+				dirty = false;
 				if (configuration.areDependenciesAllocated())
 				{
-					status = EAllocationStatus.Allocated;
 					doAllocate();
 				}
 				else
 				{
 					status = EAllocationStatus.AllocationDelayed;
 				}
-				dirty = false;
 			}
 			else
 			{
@@ -135,8 +142,9 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 
 	private void doAllocate()
 	{
+		status = EAllocationStatus.Allocated;
 		allocable.allocate(configuration.context);
-		fireChange();
+		fireChange(IDependencyListener.EChangeNature.Allocated);
 	}
 
 	@Override
@@ -153,12 +161,21 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 
 	public void free(boolean dirtyOnly)
 	{
+		while (configuration.childrenToRemove.isEmpty() == false)
+		{
+			final var childToRemove = configuration.childrenToRemove.pop();
+			childToRemove.free();
+			childToRemove.cleanConfiguration(true);
+			configuration.children.remove(childToRemove);
+		}
+		configuration.childrenToRemove.clear();
+
 		if (status != EAllocationStatus.NotAllocated && (!dirtyOnly || dirty))
 		{
 			if (status == EAllocationStatus.Allocated)
 			{
 				allocable.free(configuration.context);
-				fireChange();
+				fireChange(IDependencyListener.EChangeNature.Free);
 			}
 			status = EAllocationStatus.NotAllocated;
 		}
@@ -180,6 +197,11 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 		return dirtyBranch;
 	}
 
+	public boolean isDirty()
+	{
+		return dirty;
+	}
+
 	private void markBranchAsDirty()
 	{
 		if (this.dirtyBranch == false)
@@ -192,17 +214,17 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 		}
 	}
 
-	private void dependencyChanged()
+	private void dependencyChanged(	AllocationManager<?> source,
+									IDependencyListener.EChangeNature changeNature)
 	{
-		if (status == EAllocationStatus.AllocationDelayed
-				&& configuration.areDependenciesAllocated())
-		{
-			allocable.allocate(configuration.context);
-			fireChange();
-		}
-		else
+		if (changeNature != IDependencyListener.EChangeNature.Allocated)
 		{
 			setDirty();
+		}
+		else if (status == EAllocationStatus.AllocationDelayed
+				&& configuration.areDependenciesAllocated())
+		{
+			doAllocate();
 		}
 	}
 
@@ -215,15 +237,15 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 			{
 				parent.markBranchAsDirty();
 			}
-			fireChange();
+			fireChange(IDependencyListener.EChangeNature.Dirty);
 		}
 	}
 
-	private void fireChange()
+	private void fireChange(IDependencyListener.EChangeNature nature)
 	{
 		for (final var listener : listeners)
 		{
-			listener.onChange();
+			listener.onChange(this, nature);
 		}
 	}
 
@@ -279,6 +301,12 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 		@Override
 		public void addChildren(List<? extends IAllocable<?>> newChildren)
 		{
+			addChildren(newChildren, false);
+		}
+
+		@Override
+		public void addChildren(List<? extends IAllocable<?>> newChildren, boolean allocateNow)
+		{
 			if (newChildren.isEmpty() == false)
 			{
 				for (final var newChild : newChildren)
@@ -286,7 +314,7 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 					final var childManager = factory.create(AllocationManager.this, newChild);
 					childManager.configure(configuration.childContext());
 
-					if (status == EAllocationStatus.Allocated)
+					if (allocateNow)
 					{
 						childManager.allocate();
 					}
@@ -299,6 +327,12 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 		@Override
 		public void removeChildren(List<? extends IAllocable<?>> oldChildren)
 		{
+			removeChildren(oldChildren, false);
+		}
+
+		@Override
+		public void removeChildren(List<? extends IAllocable<?>> oldChildren, boolean freeNow)
+		{
 			if (oldChildren.isEmpty() == false)
 			{
 				for (int i = 0; i < oldChildren.size(); i++)
@@ -310,12 +344,23 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 						final var child = it.next();
 						if (oldAllocableDependency == child.allocable)
 						{
-							child.free();
-							it.remove();
+							if (freeNow)
+							{
+								child.free();
+								child.cleanConfiguration(true);
+								it.remove();
+							}
+							else
+							{
+								configuration.childrenToRemove.add(child);
+							}
+
 							break;
 						}
 					}
 				}
+
+				markBranchAsDirty();
 			}
 		}
 
@@ -328,7 +373,6 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 				final var child = it.next();
 				child.free();
 				it.remove();
-				break;
 			}
 		}
 
@@ -389,6 +433,13 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 
 	private interface IDependencyListener
 	{
-		void onChange();
+		enum EChangeNature
+		{
+			Dirty,
+			Allocated,
+			Free
+		}
+
+		void onChange(AllocationManager<?> source, EChangeNature changeNature);
 	}
 }

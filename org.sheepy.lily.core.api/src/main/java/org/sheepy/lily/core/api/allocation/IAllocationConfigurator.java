@@ -16,7 +16,9 @@ public interface IAllocationConfigurator
 	void setDirty();
 
 	void addChildren(List<? extends IAllocable<?>> children);
+	void addChildren(List<? extends IAllocable<?>> children, boolean allocateNow);
 	void removeChildren(List<? extends IAllocable<?>> children);
+	void removeChildren(List<? extends IAllocable<?>> children, boolean freeNow);
 	void clearChildren();
 
 	void addDependencies(List<? extends IAllocable<?>> dependencies);

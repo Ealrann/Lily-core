@@ -25,7 +25,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationFactory;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
-import org.sheepy.lily.core.model.presentation.PresentationFactory;
 
 /**
  * This is the item provider adapter for a {@link org.sheepy.lily.core.model.application.Application} object.
@@ -61,11 +60,7 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 			super.getPropertyDescriptors(object);
 
 			addRunPropertyDescriptor(object);
-			addFullscreenPropertyDescriptor(object);
-			addResizeablePropertyDescriptor(object);
-			addHeadlessPropertyDescriptor(object);
 			addTitlePropertyDescriptor(object);
-			addSizePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -85,75 +80,6 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 				 getString("_UI_Application_run_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Application_run_feature", "_UI_Application_type"),
 				 ApplicationPackage.Literals.APPLICATION__RUN,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Fullscreen feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addFullscreenPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Application_fullscreen_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Application_fullscreen_feature", "_UI_Application_type"),
-				 ApplicationPackage.Literals.APPLICATION__FULLSCREEN,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Resizeable feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addResizeablePropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Application_resizeable_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Application_resizeable_feature", "_UI_Application_type"),
-				 ApplicationPackage.Literals.APPLICATION__RESIZEABLE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Headless feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addHeadlessPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Application_headless_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Application_headless_feature", "_UI_Application_type"),
-				 ApplicationPackage.Literals.APPLICATION__HEADLESS,
 				 true,
 				 false,
 				 false,
@@ -186,29 +112,6 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 	}
 
 	/**
-	 * This adds a property descriptor for the Size feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSizePropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Application_size_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Application_size_feature", "_UI_Application_type"),
-				 ApplicationPackage.Literals.APPLICATION__SIZE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -223,7 +126,7 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 		{
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__ENGINES);
-			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__VIEW);
+			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__SCENE);
 			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__TIME_CONFIGURATION);
 		}
 		return childrenFeatures;
@@ -283,15 +186,11 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 		switch (notification.getFeatureID(Application.class))
 		{
 			case ApplicationPackage.APPLICATION__RUN:
-			case ApplicationPackage.APPLICATION__FULLSCREEN:
-			case ApplicationPackage.APPLICATION__RESIZEABLE:
-			case ApplicationPackage.APPLICATION__HEADLESS:
 			case ApplicationPackage.APPLICATION__TITLE:
-			case ApplicationPackage.APPLICATION__SIZE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ApplicationPackage.APPLICATION__ENGINES:
-			case ApplicationPackage.APPLICATION__VIEW:
+			case ApplicationPackage.APPLICATION__SCENE:
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -313,13 +212,8 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ApplicationPackage.Literals.APPLICATION__VIEW,
-				 PresentationFactory.eINSTANCE.createTranparentUIView()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ApplicationPackage.Literals.APPLICATION__VIEW,
-				 PresentationFactory.eINSTANCE.createGenericView()));
+				(ApplicationPackage.Literals.APPLICATION__SCENE,
+				 ApplicationFactory.eINSTANCE.createScene()));
 
 		newChildDescriptors.add
 			(createChildParameter

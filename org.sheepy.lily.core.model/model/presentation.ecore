@@ -16,30 +16,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IUIView" abstract="true" interface="true"
-      eSuperTypes="application.ecore#//IView">
+  <eClassifiers xsi:type="ecore:EClass" name="UI" abstract="true" interface="true"
+      eSuperTypes="application.ecore#//IScenePart">
     <eStructuralFeatures xsi:type="ecore:EReference" name="uiPages" upperBound="-1"
         eType="#//UIPage" containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentUIPage" eType="#//UIPage"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TranparentUIView" eSuperTypes="#//IUIView"/>
-  <eClassifiers xsi:type="ecore:EClass" name="IMusicView" abstract="true" interface="true"
-      eSuperTypes="application.ecore#//IView">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="musicPath" unique="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral=""/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ISizedView" abstract="true" interface="true"
-      eSuperTypes="#//ISizedElement application.ecore#//IView">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="moveable" unique="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="closeable" unique="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scalable" unique="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="showTitle" unique="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fullscreen" unique="false"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IUIElement" abstract="true" interface="true"
       eSuperTypes="inference.ecore#//IInferenceObject"/>
@@ -49,5 +30,4 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IPanel" abstract="true" interface="true"
       eSuperTypes="types.ecore#//LNamedElement #//IUIElement #//IPositionElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="GenericView" eSuperTypes="types.ecore#//LNamedElement application.ecore#//IView"/>
 </ecore:EPackage>

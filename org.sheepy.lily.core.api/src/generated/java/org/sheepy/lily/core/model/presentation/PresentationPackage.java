@@ -190,14 +190,14 @@ public interface PresentationPackage extends EPackage
 	int ISIZED_ELEMENT_OPERATION_COUNT = IPOSITION_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.IUIView <em>IUI View</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.UI <em>UI</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.lily.core.model.presentation.IUIView
-	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getIUIView()
+	 * @see org.sheepy.lily.core.model.presentation.UI
+	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getUI()
 	 * @generated
 	 */
-	int IUI_VIEW = 2;
+	int UI = 2;
 
 	/**
 	 * The feature id for the '<em><b>Ui Pages</b></em>' containment reference list.
@@ -206,7 +206,7 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IUI_VIEW__UI_PAGES = ApplicationPackage.IVIEW_FEATURE_COUNT + 0;
+	int UI__UI_PAGES = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Current UI Page</b></em>' reference.
@@ -215,16 +215,16 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IUI_VIEW__CURRENT_UI_PAGE = ApplicationPackage.IVIEW_FEATURE_COUNT + 1;
+	int UI__CURRENT_UI_PAGE = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>IUI View</em>' class.
+	 * The number of structural features of the '<em>UI</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IUI_VIEW_FEATURE_COUNT = ApplicationPackage.IVIEW_FEATURE_COUNT + 2;
+	int UI_FEATURE_COUNT = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -233,244 +233,16 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IUI_VIEW___LINFERENCE_OBJECT = ApplicationPackage.IVIEW___LINFERENCE_OBJECT;
+	int UI___LINFERENCE_OBJECT = ApplicationPackage.ISCENE_PART___LINFERENCE_OBJECT;
 
 	/**
-	 * The number of operations of the '<em>IUI View</em>' class.
+	 * The number of operations of the '<em>UI</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IUI_VIEW_OPERATION_COUNT = ApplicationPackage.IVIEW_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.impl.TranparentUIViewImpl <em>Tranparent UI View</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.sheepy.lily.core.model.presentation.impl.TranparentUIViewImpl
-	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getTranparentUIView()
-	 * @generated
-	 */
-	int TRANPARENT_UI_VIEW = 3;
-
-	/**
-	 * The feature id for the '<em><b>Ui Pages</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANPARENT_UI_VIEW__UI_PAGES = IUI_VIEW__UI_PAGES;
-
-	/**
-	 * The feature id for the '<em><b>Current UI Page</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANPARENT_UI_VIEW__CURRENT_UI_PAGE = IUI_VIEW__CURRENT_UI_PAGE;
-
-	/**
-	 * The number of structural features of the '<em>Tranparent UI View</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANPARENT_UI_VIEW_FEATURE_COUNT = IUI_VIEW_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>LInference Object</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANPARENT_UI_VIEW___LINFERENCE_OBJECT = IUI_VIEW___LINFERENCE_OBJECT;
-
-	/**
-	 * The number of operations of the '<em>Tranparent UI View</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANPARENT_UI_VIEW_OPERATION_COUNT = IUI_VIEW_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.IMusicView <em>IMusic View</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.sheepy.lily.core.model.presentation.IMusicView
-	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getIMusicView()
-	 * @generated
-	 */
-	int IMUSIC_VIEW = 4;
-
-	/**
-	 * The feature id for the '<em><b>Music Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IMUSIC_VIEW__MUSIC_PATH = ApplicationPackage.IVIEW_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>IMusic View</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IMUSIC_VIEW_FEATURE_COUNT = ApplicationPackage.IVIEW_FEATURE_COUNT + 1;
-
-	/**
-	 * The operation id for the '<em>LInference Object</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IMUSIC_VIEW___LINFERENCE_OBJECT = ApplicationPackage.IVIEW___LINFERENCE_OBJECT;
-
-	/**
-	 * The number of operations of the '<em>IMusic View</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IMUSIC_VIEW_OPERATION_COUNT = ApplicationPackage.IVIEW_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.ISizedView <em>ISized View</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.sheepy.lily.core.model.presentation.ISizedView
-	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getISizedView()
-	 * @generated
-	 */
-	int ISIZED_VIEW = 5;
-
-	/**
-	 * The feature id for the '<em><b>Position</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_VIEW__POSITION = ISIZED_ELEMENT__POSITION;
-
-	/**
-	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_VIEW__VERTICAL_RELATIVE = ISIZED_ELEMENT__VERTICAL_RELATIVE;
-
-	/**
-	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_VIEW__HORIZONTAL_RELATIVE = ISIZED_ELEMENT__HORIZONTAL_RELATIVE;
-
-	/**
-	 * The feature id for the '<em><b>Width</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_VIEW__WIDTH = ISIZED_ELEMENT__WIDTH;
-
-	/**
-	 * The feature id for the '<em><b>Height</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_VIEW__HEIGHT = ISIZED_ELEMENT__HEIGHT;
-
-	/**
-	 * The feature id for the '<em><b>Moveable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_VIEW__MOVEABLE = ISIZED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Closeable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_VIEW__CLOSEABLE = ISIZED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Scalable</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_VIEW__SCALABLE = ISIZED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Show Title</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_VIEW__SHOW_TITLE = ISIZED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Fullscreen</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_VIEW__FULLSCREEN = ISIZED_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The number of structural features of the '<em>ISized View</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_VIEW_FEATURE_COUNT = ISIZED_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
-	 * The operation id for the '<em>LInference Object</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_VIEW___LINFERENCE_OBJECT = ISIZED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>ISized View</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ISIZED_VIEW_OPERATION_COUNT = ISIZED_ELEMENT_OPERATION_COUNT + 1;
+	int UI_OPERATION_COUNT = ApplicationPackage.ISCENE_PART_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.IUIElement <em>IUI Element</em>}' class.
@@ -480,7 +252,7 @@ public interface PresentationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getIUIElement()
 	 * @generated
 	 */
-	int IUI_ELEMENT = 6;
+	int IUI_ELEMENT = 3;
 
 	/**
 	 * The number of structural features of the '<em>IUI Element</em>' class.
@@ -517,7 +289,7 @@ public interface PresentationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getUIPage()
 	 * @generated
 	 */
-	int UI_PAGE = 7;
+	int UI_PAGE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -599,7 +371,7 @@ public interface PresentationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getIPanel()
 	 * @generated
 	 */
-	int IPANEL = 8;
+	int IPANEL = 5;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -663,52 +435,6 @@ public interface PresentationPackage extends EPackage
 	 * @ordered
 	 */
 	int IPANEL_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 1;
-
-	/**
-	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.impl.GenericViewImpl <em>Generic View</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.sheepy.lily.core.model.presentation.impl.GenericViewImpl
-	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getGenericView()
-	 * @generated
-	 */
-	int GENERIC_VIEW = 9;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERIC_VIEW__NAME = TypesPackage.LNAMED_ELEMENT__NAME;
-
-	/**
-	 * The number of structural features of the '<em>Generic View</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERIC_VIEW_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The operation id for the '<em>LInference Object</em>' operation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERIC_VIEW___LINFERENCE_OBJECT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Generic View</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GENERIC_VIEW_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.IPositionElement <em>IPosition Element</em>}'.
@@ -786,132 +512,36 @@ public interface PresentationPackage extends EPackage
 	EAttribute getISizedElement_Height();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.IUIView <em>IUI View</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.UI <em>UI</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>IUI View</em>'.
-	 * @see org.sheepy.lily.core.model.presentation.IUIView
+	 * @return the meta object for class '<em>UI</em>'.
+	 * @see org.sheepy.lily.core.model.presentation.UI
 	 * @generated
 	 */
-	EClass getIUIView();
+	EClass getUI();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.presentation.IUIView#getUiPages <em>Ui Pages</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.presentation.UI#getUiPages <em>Ui Pages</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Ui Pages</em>'.
-	 * @see org.sheepy.lily.core.model.presentation.IUIView#getUiPages()
-	 * @see #getIUIView()
+	 * @see org.sheepy.lily.core.model.presentation.UI#getUiPages()
+	 * @see #getUI()
 	 * @generated
 	 */
-	EReference getIUIView_UiPages();
+	EReference getUI_UiPages();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.presentation.IUIView#getCurrentUIPage <em>Current UI Page</em>}'.
+	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.presentation.UI#getCurrentUIPage <em>Current UI Page</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Current UI Page</em>'.
-	 * @see org.sheepy.lily.core.model.presentation.IUIView#getCurrentUIPage()
-	 * @see #getIUIView()
+	 * @see org.sheepy.lily.core.model.presentation.UI#getCurrentUIPage()
+	 * @see #getUI()
 	 * @generated
 	 */
-	EReference getIUIView_CurrentUIPage();
-
-	/**
-	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.TranparentUIView <em>Tranparent UI View</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Tranparent UI View</em>'.
-	 * @see org.sheepy.lily.core.model.presentation.TranparentUIView
-	 * @generated
-	 */
-	EClass getTranparentUIView();
-
-	/**
-	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.IMusicView <em>IMusic View</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>IMusic View</em>'.
-	 * @see org.sheepy.lily.core.model.presentation.IMusicView
-	 * @generated
-	 */
-	EClass getIMusicView();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.presentation.IMusicView#getMusicPath <em>Music Path</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Music Path</em>'.
-	 * @see org.sheepy.lily.core.model.presentation.IMusicView#getMusicPath()
-	 * @see #getIMusicView()
-	 * @generated
-	 */
-	EAttribute getIMusicView_MusicPath();
-
-	/**
-	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.ISizedView <em>ISized View</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>ISized View</em>'.
-	 * @see org.sheepy.lily.core.model.presentation.ISizedView
-	 * @generated
-	 */
-	EClass getISizedView();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.presentation.ISizedView#isMoveable <em>Moveable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Moveable</em>'.
-	 * @see org.sheepy.lily.core.model.presentation.ISizedView#isMoveable()
-	 * @see #getISizedView()
-	 * @generated
-	 */
-	EAttribute getISizedView_Moveable();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.presentation.ISizedView#isCloseable <em>Closeable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Closeable</em>'.
-	 * @see org.sheepy.lily.core.model.presentation.ISizedView#isCloseable()
-	 * @see #getISizedView()
-	 * @generated
-	 */
-	EAttribute getISizedView_Closeable();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.presentation.ISizedView#isScalable <em>Scalable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Scalable</em>'.
-	 * @see org.sheepy.lily.core.model.presentation.ISizedView#isScalable()
-	 * @see #getISizedView()
-	 * @generated
-	 */
-	EAttribute getISizedView_Scalable();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.presentation.ISizedView#isShowTitle <em>Show Title</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Show Title</em>'.
-	 * @see org.sheepy.lily.core.model.presentation.ISizedView#isShowTitle()
-	 * @see #getISizedView()
-	 * @generated
-	 */
-	EAttribute getISizedView_ShowTitle();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.presentation.ISizedView#isFullscreen <em>Fullscreen</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Fullscreen</em>'.
-	 * @see org.sheepy.lily.core.model.presentation.ISizedView#isFullscreen()
-	 * @see #getISizedView()
-	 * @generated
-	 */
-	EAttribute getISizedView_Fullscreen();
+	EReference getUI_CurrentUIPage();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.IUIElement <em>IUI Element</em>}'.
@@ -953,16 +583,6 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 */
 	EClass getIPanel();
-
-	/**
-	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.GenericView <em>Generic View</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Generic View</em>'.
-	 * @see org.sheepy.lily.core.model.presentation.GenericView
-	 * @generated
-	 */
-	EClass getGenericView();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1049,14 +669,14 @@ public interface PresentationPackage extends EPackage
 		EAttribute ISIZED_ELEMENT__HEIGHT = eINSTANCE.getISizedElement_Height();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.IUIView <em>IUI View</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.UI <em>UI</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.lily.core.model.presentation.IUIView
-		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getIUIView()
+		 * @see org.sheepy.lily.core.model.presentation.UI
+		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getUI()
 		 * @generated
 		 */
-		EClass IUI_VIEW = eINSTANCE.getIUIView();
+		EClass UI = eINSTANCE.getUI();
 
 		/**
 		 * The meta object literal for the '<em><b>Ui Pages</b></em>' containment reference list feature.
@@ -1064,7 +684,7 @@ public interface PresentationPackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference IUI_VIEW__UI_PAGES = eINSTANCE.getIUIView_UiPages();
+		EReference UI__UI_PAGES = eINSTANCE.getUI_UiPages();
 
 		/**
 		 * The meta object literal for the '<em><b>Current UI Page</b></em>' reference feature.
@@ -1072,85 +692,7 @@ public interface PresentationPackage extends EPackage
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference IUI_VIEW__CURRENT_UI_PAGE = eINSTANCE.getIUIView_CurrentUIPage();
-
-		/**
-		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.impl.TranparentUIViewImpl <em>Tranparent UI View</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.sheepy.lily.core.model.presentation.impl.TranparentUIViewImpl
-		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getTranparentUIView()
-		 * @generated
-		 */
-		EClass TRANPARENT_UI_VIEW = eINSTANCE.getTranparentUIView();
-
-		/**
-		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.IMusicView <em>IMusic View</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.sheepy.lily.core.model.presentation.IMusicView
-		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getIMusicView()
-		 * @generated
-		 */
-		EClass IMUSIC_VIEW = eINSTANCE.getIMusicView();
-
-		/**
-		 * The meta object literal for the '<em><b>Music Path</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute IMUSIC_VIEW__MUSIC_PATH = eINSTANCE.getIMusicView_MusicPath();
-
-		/**
-		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.ISizedView <em>ISized View</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.sheepy.lily.core.model.presentation.ISizedView
-		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getISizedView()
-		 * @generated
-		 */
-		EClass ISIZED_VIEW = eINSTANCE.getISizedView();
-
-		/**
-		 * The meta object literal for the '<em><b>Moveable</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ISIZED_VIEW__MOVEABLE = eINSTANCE.getISizedView_Moveable();
-
-		/**
-		 * The meta object literal for the '<em><b>Closeable</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ISIZED_VIEW__CLOSEABLE = eINSTANCE.getISizedView_Closeable();
-
-		/**
-		 * The meta object literal for the '<em><b>Scalable</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ISIZED_VIEW__SCALABLE = eINSTANCE.getISizedView_Scalable();
-
-		/**
-		 * The meta object literal for the '<em><b>Show Title</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ISIZED_VIEW__SHOW_TITLE = eINSTANCE.getISizedView_ShowTitle();
-
-		/**
-		 * The meta object literal for the '<em><b>Fullscreen</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ISIZED_VIEW__FULLSCREEN = eINSTANCE.getISizedView_Fullscreen();
+		EReference UI__CURRENT_UI_PAGE = eINSTANCE.getUI_CurrentUIPage();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.IUIElement <em>IUI Element</em>}' class.
@@ -1189,16 +731,6 @@ public interface PresentationPackage extends EPackage
 		 * @generated
 		 */
 		EClass IPANEL = eINSTANCE.getIPanel();
-
-		/**
-		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.impl.GenericViewImpl <em>Generic View</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.sheepy.lily.core.model.presentation.impl.GenericViewImpl
-		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getGenericView()
-		 * @generated
-		 */
-		EClass GENERIC_VIEW = eINSTANCE.getGenericView();
 
 	}
 

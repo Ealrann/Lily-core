@@ -14,17 +14,12 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import org.joml.Vector2ic;
-
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.IEngine;
-import org.sheepy.lily.core.model.application.IView;
+import org.sheepy.lily.core.model.application.Scene;
 import org.sheepy.lily.core.model.application.TimeConfiguration;
-import org.sheepy.lily.core.model.types.TypesFactory;
-import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,12 +31,8 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  * <ul>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getEngines <em>Engines</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#isRun <em>Run</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#isFullscreen <em>Fullscreen</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#isResizeable <em>Resizeable</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#isHeadless <em>Headless</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getTitle <em>Title</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getSize <em>Size</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getView <em>View</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getScene <em>Scene</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getTimeConfiguration <em>Time Configuration</em>}</li>
  * </ul>
  *
@@ -80,66 +71,6 @@ public class ApplicationImpl extends LilyEObject implements Application
 	protected boolean run = RUN_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isFullscreen() <em>Fullscreen</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isFullscreen()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean FULLSCREEN_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isFullscreen() <em>Fullscreen</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isFullscreen()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean fullscreen = FULLSCREEN_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isResizeable() <em>Resizeable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isResizeable()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean RESIZEABLE_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isResizeable() <em>Resizeable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isResizeable()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean resizeable = RESIZEABLE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isHeadless() <em>Headless</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isHeadless()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean HEADLESS_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isHeadless() <em>Headless</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isHeadless()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean headless = HEADLESS_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -160,34 +91,14 @@ public class ApplicationImpl extends LilyEObject implements Application
 	protected String title = TITLE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getSize() <em>Size</em>}' attribute.
+	 * The cached value of the '{@link #getScene() <em>Scene</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getSize()
+	 * @see #getScene()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Vector2ic SIZE_EDEFAULT = (Vector2ic)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getVector2i(), "400,400");
-
-	/**
-	 * The cached value of the '{@link #getSize() <em>Size</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSize()
-	 * @generated
-	 * @ordered
-	 */
-	protected Vector2ic size = SIZE_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getView() <em>View</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getView()
-	 * @generated
-	 * @ordered
-	 */
-	protected IView view;
+	protected Scene scene;
 
 	/**
 	 * The cached value of the '{@link #getTimeConfiguration() <em>Time Configuration</em>}' containment reference.
@@ -266,81 +177,6 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @generated
 	 */
 	@Override
-	public boolean isFullscreen()
-	{
-		return fullscreen;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setFullscreen(boolean newFullscreen)
-	{
-		boolean oldFullscreen = fullscreen;
-		fullscreen = newFullscreen;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__FULLSCREEN, oldFullscreen, fullscreen));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean isResizeable()
-	{
-		return resizeable;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setResizeable(boolean newResizeable)
-	{
-		boolean oldResizeable = resizeable;
-		resizeable = newResizeable;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__RESIZEABLE, oldResizeable, resizeable));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean isHeadless()
-	{
-		return headless;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setHeadless(boolean newHeadless)
-	{
-		boolean oldHeadless = headless;
-		headless = newHeadless;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__HEADLESS, oldHeadless, headless));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public String getTitle()
 	{
 		return title;
@@ -366,51 +202,26 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @generated
 	 */
 	@Override
-	public Vector2ic getSize()
+	public Scene getScene()
 	{
-		return size;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setSize(Vector2ic newSize)
-	{
-		Vector2ic oldSize = size;
-		size = newSize;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__SIZE, oldSize, size));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public IView getView()
-	{
-		if (view != null && ((EObject)view).eIsProxy())
+		if (scene != null && ((EObject)scene).eIsProxy())
 		{
-			InternalEObject oldView = (InternalEObject)view;
-			view = (IView)eResolveProxy(oldView);
-			if (view != oldView)
+			InternalEObject oldScene = (InternalEObject)scene;
+			scene = (Scene)eResolveProxy(oldScene);
+			if (scene != oldScene)
 			{
-				InternalEObject newView = (InternalEObject)view;
-				NotificationChain msgs = oldView.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__VIEW, null, null);
-				if (newView.eInternalContainer() == null)
+				InternalEObject newScene = (InternalEObject)scene;
+				NotificationChain msgs = oldScene.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__SCENE, null, null);
+				if (newScene.eInternalContainer() == null)
 				{
-					msgs = newView.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__VIEW, null, msgs);
+					msgs = newScene.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__SCENE, null, msgs);
 				}
 				if (msgs != null) msgs.dispatch();
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.APPLICATION__VIEW, oldView, view));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.APPLICATION__SCENE, oldScene, scene));
 			}
 		}
-		return view;
+		return scene;
 	}
 
 	/**
@@ -418,9 +229,9 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IView basicGetView()
+	public Scene basicGetScene()
 	{
-		return view;
+		return scene;
 	}
 
 	/**
@@ -428,13 +239,13 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetView(IView newView, NotificationChain msgs)
+	public NotificationChain basicSetScene(Scene newScene, NotificationChain msgs)
 	{
-		IView oldView = view;
-		view = newView;
+		Scene oldScene = scene;
+		scene = newScene;
 		if (eNotificationRequired())
 		{
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__VIEW, oldView, newView);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__SCENE, oldScene, newScene);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -446,20 +257,20 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @generated
 	 */
 	@Override
-	public void setView(IView newView)
+	public void setScene(Scene newScene)
 	{
-		if (newView != view)
+		if (newScene != scene)
 		{
 			NotificationChain msgs = null;
-			if (view != null)
-				msgs = ((InternalEObject)view).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__VIEW, null, msgs);
-			if (newView != null)
-				msgs = ((InternalEObject)newView).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__VIEW, null, msgs);
-			msgs = basicSetView(newView, msgs);
+			if (scene != null)
+				msgs = ((InternalEObject)scene).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__SCENE, null, msgs);
+			if (newScene != null)
+				msgs = ((InternalEObject)newScene).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__SCENE, null, msgs);
+			msgs = basicSetScene(newScene, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__VIEW, newView, newView));
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__SCENE, newScene, newScene));
 	}
 
 	/**
@@ -551,8 +362,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 		{
 			case ApplicationPackage.APPLICATION__ENGINES:
 				return ((InternalEList<?>)getEngines()).basicRemove(otherEnd, msgs);
-			case ApplicationPackage.APPLICATION__VIEW:
-				return basicSetView(null, msgs);
+			case ApplicationPackage.APPLICATION__SCENE:
+				return basicSetScene(null, msgs);
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				return basicSetTimeConfiguration(null, msgs);
 		}
@@ -573,19 +384,11 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return getEngines();
 			case ApplicationPackage.APPLICATION__RUN:
 				return isRun();
-			case ApplicationPackage.APPLICATION__FULLSCREEN:
-				return isFullscreen();
-			case ApplicationPackage.APPLICATION__RESIZEABLE:
-				return isResizeable();
-			case ApplicationPackage.APPLICATION__HEADLESS:
-				return isHeadless();
 			case ApplicationPackage.APPLICATION__TITLE:
 				return getTitle();
-			case ApplicationPackage.APPLICATION__SIZE:
-				return getSize();
-			case ApplicationPackage.APPLICATION__VIEW:
-				if (resolve) return getView();
-				return basicGetView();
+			case ApplicationPackage.APPLICATION__SCENE:
+				if (resolve) return getScene();
+				return basicGetScene();
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				if (resolve) return getTimeConfiguration();
 				return basicGetTimeConfiguration();
@@ -611,23 +414,11 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__RUN:
 				setRun((Boolean)newValue);
 				return;
-			case ApplicationPackage.APPLICATION__FULLSCREEN:
-				setFullscreen((Boolean)newValue);
-				return;
-			case ApplicationPackage.APPLICATION__RESIZEABLE:
-				setResizeable((Boolean)newValue);
-				return;
-			case ApplicationPackage.APPLICATION__HEADLESS:
-				setHeadless((Boolean)newValue);
-				return;
 			case ApplicationPackage.APPLICATION__TITLE:
 				setTitle((String)newValue);
 				return;
-			case ApplicationPackage.APPLICATION__SIZE:
-				setSize((Vector2ic)newValue);
-				return;
-			case ApplicationPackage.APPLICATION__VIEW:
-				setView((IView)newValue);
+			case ApplicationPackage.APPLICATION__SCENE:
+				setScene((Scene)newValue);
 				return;
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				setTimeConfiguration((TimeConfiguration)newValue);
@@ -652,23 +443,11 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__RUN:
 				setRun(RUN_EDEFAULT);
 				return;
-			case ApplicationPackage.APPLICATION__FULLSCREEN:
-				setFullscreen(FULLSCREEN_EDEFAULT);
-				return;
-			case ApplicationPackage.APPLICATION__RESIZEABLE:
-				setResizeable(RESIZEABLE_EDEFAULT);
-				return;
-			case ApplicationPackage.APPLICATION__HEADLESS:
-				setHeadless(HEADLESS_EDEFAULT);
-				return;
 			case ApplicationPackage.APPLICATION__TITLE:
 				setTitle(TITLE_EDEFAULT);
 				return;
-			case ApplicationPackage.APPLICATION__SIZE:
-				setSize(SIZE_EDEFAULT);
-				return;
-			case ApplicationPackage.APPLICATION__VIEW:
-				setView((IView)null);
+			case ApplicationPackage.APPLICATION__SCENE:
+				setScene((Scene)null);
 				return;
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				setTimeConfiguration((TimeConfiguration)null);
@@ -691,18 +470,10 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return engines != null && !engines.isEmpty();
 			case ApplicationPackage.APPLICATION__RUN:
 				return run != RUN_EDEFAULT;
-			case ApplicationPackage.APPLICATION__FULLSCREEN:
-				return fullscreen != FULLSCREEN_EDEFAULT;
-			case ApplicationPackage.APPLICATION__RESIZEABLE:
-				return resizeable != RESIZEABLE_EDEFAULT;
-			case ApplicationPackage.APPLICATION__HEADLESS:
-				return headless != HEADLESS_EDEFAULT;
 			case ApplicationPackage.APPLICATION__TITLE:
 				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
-			case ApplicationPackage.APPLICATION__SIZE:
-				return SIZE_EDEFAULT == null ? size != null : !SIZE_EDEFAULT.equals(size);
-			case ApplicationPackage.APPLICATION__VIEW:
-				return view != null;
+			case ApplicationPackage.APPLICATION__SCENE:
+				return scene != null;
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				return timeConfiguration != null;
 		}
@@ -722,16 +493,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (run: ");
 		result.append(run);
-		result.append(", fullscreen: ");
-		result.append(fullscreen);
-		result.append(", resizeable: ");
-		result.append(resizeable);
-		result.append(", headless: ");
-		result.append(headless);
 		result.append(", title: ");
 		result.append(title);
-		result.append(", size: ");
-		result.append(size);
 		result.append(')');
 		return result.toString();
 	}

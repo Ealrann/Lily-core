@@ -268,6 +268,13 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	private EDataType vector2dEDataType = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType javaModuleEDataType = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -777,6 +784,17 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	@Override
+	public EDataType getJavaModule()
+	{
+		return javaModuleEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public TypesFactory getTypesFactory()
 	{
 		return (TypesFactory)getEFactoryInstance();
@@ -850,6 +868,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		vector2fEDataType = createEDataType(VECTOR2F);
 		vector2iEDataType = createEDataType(VECTOR2I);
 		vector2dEDataType = createEDataType(VECTOR2D);
+		javaModuleEDataType = createEDataType(JAVA_MODULE);
 	}
 
 	/**
@@ -1002,6 +1021,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		initEDataType(vector2fEDataType, Vector2fc.class, "Vector2f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(vector2iEDataType, Vector2ic.class, "Vector2i", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(vector2dEDataType, Vector2dc.class, "Vector2d", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(javaModuleEDataType, Module.class, "JavaModule", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

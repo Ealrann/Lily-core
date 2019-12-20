@@ -7,6 +7,8 @@ public interface IEngineAdapter extends IAdapter
 {
 	void start();
 	void stop();
+	
+	void step();
 
 	IInputManager getInputManager();
 }

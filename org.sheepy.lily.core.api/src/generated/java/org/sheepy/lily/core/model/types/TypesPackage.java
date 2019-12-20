@@ -564,6 +564,16 @@ public interface TypesPackage extends EPackage
 	int VECTOR2D = 26;
 
 	/**
+	 * The meta object id for the '<em>Java Module</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.Module
+	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getJavaModule()
+	 * @generated
+	 */
+	int JAVA_MODULE = 27;
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.types.LNamedElement <em>LNamed Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -948,6 +958,17 @@ public interface TypesPackage extends EPackage
 	EDataType getVector2d();
 
 	/**
+	 * Returns the meta object for data type '{@link java.lang.Module <em>Java Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Java Module</em>'.
+	 * @see java.lang.Module
+	 * @model instanceClass="java.lang.Module"
+	 * @generated
+	 */
+	EDataType getJavaModule();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1320,6 +1341,16 @@ public interface TypesPackage extends EPackage
 		 * @generated
 		 */
 		EDataType VECTOR2D = eINSTANCE.getVector2d();
+
+		/**
+		 * The meta object literal for the '<em>Java Module</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.Module
+		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getJavaModule()
+		 * @generated
+		 */
+		EDataType JAVA_MODULE = eINSTANCE.getJavaModule();
 
 	}
 

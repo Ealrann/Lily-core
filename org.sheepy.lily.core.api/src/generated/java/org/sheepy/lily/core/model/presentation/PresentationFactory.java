@@ -23,15 +23,6 @@ public interface PresentationFactory extends EFactory
 	PresentationFactory eINSTANCE = org.sheepy.lily.core.model.presentation.impl.PresentationFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Tranparent UI View</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Tranparent UI View</em>'.
-	 * @generated
-	 */
-	TranparentUIView createTranparentUIView();
-
-	/**
 	 * Returns a new object of class '<em>UI Page</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -39,15 +30,6 @@ public interface PresentationFactory extends EFactory
 	 * @generated
 	 */
 	UIPage createUIPage();
-
-	/**
-	 * Returns a new object of class '<em>Generic View</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Generic View</em>'.
-	 * @generated
-	 */
-	GenericView createGenericView();
 
 	/**
 	 * Returns the package supported by this factory.

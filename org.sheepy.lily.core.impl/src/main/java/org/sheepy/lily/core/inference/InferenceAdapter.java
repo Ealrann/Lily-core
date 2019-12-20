@@ -27,7 +27,7 @@ import org.sheepy.lily.core.model.types.Parameter;
 public class InferenceAdapter implements IInferenceAdapter
 {
 	public InferenceGraph ruleGraph = new InferenceGraph();
-	private final Map<EClass, List<INotificationListener>> listeners = new HashMap<>();
+	private final Map<EClass, List<IInferenceListener>> listeners = new HashMap<>();
 
 	@Override
 	public void addInferer(Inferer inferer)
@@ -48,7 +48,7 @@ public class InferenceAdapter implements IInferenceAdapter
 
 		if (listeners.containsKey(notification.eClass()))
 		{
-			for (final INotificationListener listener : listeners.get(notification.eClass()))
+			for (final var listener : listeners.get(notification.eClass()))
 			{
 				listener.onNotification(adaptedEntity, notification);
 			}
@@ -64,7 +64,7 @@ public class InferenceAdapter implements IInferenceAdapter
 
 		if (listeners.containsKey(notification.eClass()))
 		{
-			for (final INotificationListener listener : listeners.get(notification.eClass()))
+			for (final var listener : listeners.get(notification.eClass()))
 			{
 				listener.onNotification(adaptedEntity, notification, parameter);
 			}
@@ -112,9 +112,9 @@ public class InferenceAdapter implements IInferenceAdapter
 	}
 
 	@Override
-	public void addNotificationListener(EClass clazz, INotificationListener listener)
+	public void addNotificationListener(EClass clazz, IInferenceListener listener)
 	{
-		List<INotificationListener> list = listeners.get(clazz);
+		List<IInferenceListener> list = listeners.get(clazz);
 		if (list == null)
 		{
 			list = new ArrayList<>();
@@ -124,7 +124,7 @@ public class InferenceAdapter implements IInferenceAdapter
 	}
 
 	@Override
-	public void removeNotificationListener(EClass clazz, INotificationListener listener)
+	public void removeNotificationListener(EClass clazz, IInferenceListener listener)
 	{
 		listeners.remove(clazz, listener);
 	}

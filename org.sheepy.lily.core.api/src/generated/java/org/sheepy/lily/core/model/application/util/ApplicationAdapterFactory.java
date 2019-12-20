@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
 
 import org.sheepy.lily.core.model.application.*;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.types.LNamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -90,9 +91,9 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 				return createIEngineAdapter();
 			}
 			@Override
-			public Adapter caseIView(IView object)
+			public Adapter caseIScenePart(IScenePart object)
 			{
-				return createIViewAdapter();
+				return createIScenePartAdapter();
 			}
 			@Override
 			public Adapter caseICadence(ICadence object)
@@ -100,9 +101,69 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 				return createICadenceAdapter();
 			}
 			@Override
+			public Adapter caseScene(Scene object)
+			{
+				return createSceneAdapter();
+			}
+			@Override
+			public Adapter caseGenericScenePart(GenericScenePart object)
+			{
+				return createGenericScenePartAdapter();
+			}
+			@Override
+			public Adapter caseBackgroundImage(BackgroundImage object)
+			{
+				return createBackgroundImageAdapter();
+			}
+			@Override
+			public Adapter caseResourcePkg(ResourcePkg object)
+			{
+				return createResourcePkgAdapter();
+			}
+			@Override
+			public Adapter caseIResource(IResource object)
+			{
+				return createIResourceAdapter();
+			}
+			@Override
+			public Adapter caseVirtualResource(VirtualResource object)
+			{
+				return createVirtualResourceAdapter();
+			}
+			@Override
+			public Adapter caseFileResource(FileResource object)
+			{
+				return createFileResourceAdapter();
+			}
+			@Override
+			public Adapter caseLocalResource(LocalResource object)
+			{
+				return createLocalResourceAdapter();
+			}
+			@Override
+			public Adapter caseAbstractModuleResource(AbstractModuleResource object)
+			{
+				return createAbstractModuleResourceAdapter();
+			}
+			@Override
+			public Adapter caseModuleResource(ModuleResource object)
+			{
+				return createModuleResourceAdapter();
+			}
+			@Override
+			public Adapter caseStringModuleResource(StringModuleResource object)
+			{
+				return createStringModuleResourceAdapter();
+			}
+			@Override
 			public Adapter caseIInferenceObject(IInferenceObject object)
 			{
 				return createIInferenceObjectAdapter();
+			}
+			@Override
+			public Adapter caseLNamedElement(LNamedElement object)
+			{
+				return createLNamedElementAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object)
@@ -171,16 +232,16 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.IView <em>IView</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.IScenePart <em>IScene Part</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.lily.core.model.application.IView
+	 * @see org.sheepy.lily.core.model.application.IScenePart
 	 * @generated
 	 */
-	public Adapter createIViewAdapter()
+	public Adapter createIScenePartAdapter()
 	{
 		return null;
 	}
@@ -201,6 +262,171 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.Scene <em>Scene</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.Scene
+	 * @generated
+	 */
+	public Adapter createSceneAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.GenericScenePart <em>Generic Scene Part</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.GenericScenePart
+	 * @generated
+	 */
+	public Adapter createGenericScenePartAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.BackgroundImage <em>Background Image</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.BackgroundImage
+	 * @generated
+	 */
+	public Adapter createBackgroundImageAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.ResourcePkg <em>Resource Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.ResourcePkg
+	 * @generated
+	 */
+	public Adapter createResourcePkgAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.IResource <em>IResource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.IResource
+	 * @generated
+	 */
+	public Adapter createIResourceAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.VirtualResource <em>Virtual Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.VirtualResource
+	 * @generated
+	 */
+	public Adapter createVirtualResourceAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.FileResource <em>File Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.FileResource
+	 * @generated
+	 */
+	public Adapter createFileResourceAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.LocalResource <em>Local Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.LocalResource
+	 * @generated
+	 */
+	public Adapter createLocalResourceAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.AbstractModuleResource <em>Abstract Module Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.AbstractModuleResource
+	 * @generated
+	 */
+	public Adapter createAbstractModuleResourceAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.ModuleResource <em>Module Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.ModuleResource
+	 * @generated
+	 */
+	public Adapter createModuleResourceAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.StringModuleResource <em>String Module Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.StringModuleResource
+	 * @generated
+	 */
+	public Adapter createStringModuleResourceAdapter()
+	{
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.inference.IInferenceObject <em>IInference Object</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -211,6 +437,21 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createIInferenceObjectAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.types.LNamedElement <em>LNamed Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.types.LNamedElement
+	 * @generated
+	 */
+	public Adapter createLNamedElementAdapter()
 	{
 		return null;
 	}

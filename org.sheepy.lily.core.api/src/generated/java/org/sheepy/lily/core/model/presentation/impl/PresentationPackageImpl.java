@@ -25,18 +25,12 @@ import org.sheepy.lily.core.model.inference.impl.InferencePackageImpl;
 import org.sheepy.lily.core.model.maintainer.MaintainerPackage;
 
 import org.sheepy.lily.core.model.maintainer.impl.MaintainerPackageImpl;
-
-import org.sheepy.lily.core.model.presentation.GenericView;
-import org.sheepy.lily.core.model.presentation.IMusicView;
 import org.sheepy.lily.core.model.presentation.IPanel;
 import org.sheepy.lily.core.model.presentation.IPositionElement;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
-import org.sheepy.lily.core.model.presentation.ISizedView;
 import org.sheepy.lily.core.model.presentation.IUIElement;
-import org.sheepy.lily.core.model.presentation.IUIView;
 import org.sheepy.lily.core.model.presentation.PresentationFactory;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
-import org.sheepy.lily.core.model.presentation.TranparentUIView;
 import org.sheepy.lily.core.model.presentation.UIPage;
 import org.sheepy.lily.core.model.types.TypesPackage;
 
@@ -77,28 +71,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass iuiViewEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass tranparentUIViewEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass iMusicViewEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass iSizedViewEClass = null;
+	private EClass uiEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -120,13 +93,6 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * @generated
 	 */
 	private EClass iPanelEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass genericViewEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -308,9 +274,9 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * @generated
 	 */
 	@Override
-	public EClass getIUIView()
+	public EClass getUI()
 	{
-		return iuiViewEClass;
+		return uiEClass;
 	}
 
 	/**
@@ -319,9 +285,9 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * @generated
 	 */
 	@Override
-	public EReference getIUIView_UiPages()
+	public EReference getUI_UiPages()
 	{
-		return (EReference)iuiViewEClass.getEStructuralFeatures().get(0);
+		return (EReference)uiEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -330,108 +296,9 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * @generated
 	 */
 	@Override
-	public EReference getIUIView_CurrentUIPage()
+	public EReference getUI_CurrentUIPage()
 	{
-		return (EReference)iuiViewEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getTranparentUIView()
-	{
-		return tranparentUIViewEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getIMusicView()
-	{
-		return iMusicViewEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getIMusicView_MusicPath()
-	{
-		return (EAttribute)iMusicViewEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getISizedView()
-	{
-		return iSizedViewEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getISizedView_Moveable()
-	{
-		return (EAttribute)iSizedViewEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getISizedView_Closeable()
-	{
-		return (EAttribute)iSizedViewEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getISizedView_Scalable()
-	{
-		return (EAttribute)iSizedViewEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getISizedView_ShowTitle()
-	{
-		return (EAttribute)iSizedViewEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getISizedView_Fullscreen()
-	{
-		return (EAttribute)iSizedViewEClass.getEStructuralFeatures().get(4);
+		return (EReference)uiEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -484,17 +351,6 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * @generated
 	 */
 	@Override
-	public EClass getGenericView()
-	{
-		return genericViewEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public PresentationFactory getPresentationFactory()
 	{
 		return (PresentationFactory)getEFactoryInstance();
@@ -529,21 +385,9 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 		createEAttribute(iSizedElementEClass, ISIZED_ELEMENT__WIDTH);
 		createEAttribute(iSizedElementEClass, ISIZED_ELEMENT__HEIGHT);
 
-		iuiViewEClass = createEClass(IUI_VIEW);
-		createEReference(iuiViewEClass, IUI_VIEW__UI_PAGES);
-		createEReference(iuiViewEClass, IUI_VIEW__CURRENT_UI_PAGE);
-
-		tranparentUIViewEClass = createEClass(TRANPARENT_UI_VIEW);
-
-		iMusicViewEClass = createEClass(IMUSIC_VIEW);
-		createEAttribute(iMusicViewEClass, IMUSIC_VIEW__MUSIC_PATH);
-
-		iSizedViewEClass = createEClass(ISIZED_VIEW);
-		createEAttribute(iSizedViewEClass, ISIZED_VIEW__MOVEABLE);
-		createEAttribute(iSizedViewEClass, ISIZED_VIEW__CLOSEABLE);
-		createEAttribute(iSizedViewEClass, ISIZED_VIEW__SCALABLE);
-		createEAttribute(iSizedViewEClass, ISIZED_VIEW__SHOW_TITLE);
-		createEAttribute(iSizedViewEClass, ISIZED_VIEW__FULLSCREEN);
+		uiEClass = createEClass(UI);
+		createEReference(uiEClass, UI__UI_PAGES);
+		createEReference(uiEClass, UI__CURRENT_UI_PAGE);
 
 		iuiElementEClass = createEClass(IUI_ELEMENT);
 
@@ -551,8 +395,6 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 		createEReference(uiPageEClass, UI_PAGE__PANELS);
 
 		iPanelEClass = createEClass(IPANEL);
-
-		genericViewEClass = createEClass(GENERIC_VIEW);
 	}
 
 	/**
@@ -590,18 +432,12 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 
 		// Add supertypes to classes
 		iSizedElementEClass.getESuperTypes().add(this.getIPositionElement());
-		iuiViewEClass.getESuperTypes().add(theApplicationPackage.getIView());
-		tranparentUIViewEClass.getESuperTypes().add(this.getIUIView());
-		iMusicViewEClass.getESuperTypes().add(theApplicationPackage.getIView());
-		iSizedViewEClass.getESuperTypes().add(this.getISizedElement());
-		iSizedViewEClass.getESuperTypes().add(theApplicationPackage.getIView());
+		uiEClass.getESuperTypes().add(theApplicationPackage.getIScenePart());
 		iuiElementEClass.getESuperTypes().add(theInferencePackage.getIInferenceObject());
 		uiPageEClass.getESuperTypes().add(this.getISizedElement());
 		iPanelEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
 		iPanelEClass.getESuperTypes().add(this.getIUIElement());
 		iPanelEClass.getESuperTypes().add(this.getIPositionElement());
-		genericViewEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
-		genericViewEClass.getESuperTypes().add(theApplicationPackage.getIView());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(iPositionElementEClass, IPositionElement.class, "IPositionElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -613,21 +449,9 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 		initEAttribute(getISizedElement_Width(), ecorePackage.getEInt(), "width", null, 0, 1, ISizedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getISizedElement_Height(), ecorePackage.getEInt(), "height", null, 0, 1, ISizedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(iuiViewEClass, IUIView.class, "IUIView", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIUIView_UiPages(), this.getUIPage(), null, "uiPages", null, 0, -1, IUIView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIUIView_CurrentUIPage(), this.getUIPage(), null, "currentUIPage", null, 0, 1, IUIView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(tranparentUIViewEClass, TranparentUIView.class, "TranparentUIView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(iMusicViewEClass, IMusicView.class, "IMusicView", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIMusicView_MusicPath(), ecorePackage.getEString(), "musicPath", "", 0, 1, IMusicView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(iSizedViewEClass, ISizedView.class, "ISizedView", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getISizedView_Moveable(), ecorePackage.getEBoolean(), "moveable", "false", 0, 1, ISizedView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getISizedView_Closeable(), ecorePackage.getEBoolean(), "closeable", "false", 0, 1, ISizedView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getISizedView_Scalable(), ecorePackage.getEBoolean(), "scalable", "false", 0, 1, ISizedView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getISizedView_ShowTitle(), ecorePackage.getEBoolean(), "showTitle", "false", 0, 1, ISizedView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getISizedView_Fullscreen(), ecorePackage.getEBoolean(), "fullscreen", "true", 0, 1, ISizedView.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(uiEClass, org.sheepy.lily.core.model.presentation.UI.class, "UI", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUI_UiPages(), this.getUIPage(), null, "uiPages", null, 0, -1, org.sheepy.lily.core.model.presentation.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUI_CurrentUIPage(), this.getUIPage(), null, "currentUIPage", null, 0, 1, org.sheepy.lily.core.model.presentation.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iuiElementEClass, IUIElement.class, "IUIElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -635,8 +459,6 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 		initEReference(getUIPage_Panels(), this.getIPanel(), null, "panels", null, 0, -1, UIPage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iPanelEClass, IPanel.class, "IPanel", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(genericViewEClass, GenericView.class, "GenericView", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
