@@ -14,15 +14,19 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.joml.Vector3ic;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.BackgroundImage;
+import org.sheepy.lily.core.model.application.ESampling;
 import org.sheepy.lily.core.model.application.IResource;
 import org.sheepy.lily.core.model.application.IScenePart;
 
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 import org.sheepy.lily.core.model.inference.InferencePackage;
+import org.sheepy.lily.core.model.types.TypesFactory;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,6 +38,8 @@ import org.sheepy.lily.core.model.inference.InferencePackage;
  * <ul>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getResource <em>Resource</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getClearColor <em>Clear Color</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getSampling <em>Sampling</em>}</li>
  * </ul>
  *
  * @generated
@@ -69,6 +75,46 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 	 * @ordered
 	 */
 	protected IResource resource;
+
+	/**
+	 * The default value of the '{@link #getClearColor() <em>Clear Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClearColor()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Vector3ic CLEAR_COLOR_EDEFAULT = (Vector3ic)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getVector3i(), "0;0;0");
+
+	/**
+	 * The cached value of the '{@link #getClearColor() <em>Clear Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getClearColor()
+	 * @generated
+	 * @ordered
+	 */
+	protected Vector3ic clearColor = CLEAR_COLOR_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSampling() <em>Sampling</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSampling()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final ESampling SAMPLING_EDEFAULT = ESampling.LINEAR;
+
+	/**
+	 * The cached value of the '{@link #getSampling() <em>Sampling</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSampling()
+	 * @generated
+	 * @ordered
+	 */
+	protected ESampling sampling = SAMPLING_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -167,6 +213,56 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 	 * @generated
 	 */
 	@Override
+	public Vector3ic getClearColor()
+	{
+		return clearColor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setClearColor(Vector3ic newClearColor)
+	{
+		Vector3ic oldClearColor = clearColor;
+		clearColor = newClearColor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR, oldClearColor, clearColor));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ESampling getSampling()
+	{
+		return sampling;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setSampling(ESampling newSampling)
+	{
+		ESampling oldSampling = sampling;
+		sampling = newSampling == null ? SAMPLING_EDEFAULT : newSampling;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.BACKGROUND_IMAGE__SAMPLING, oldSampling, sampling));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public IInferenceObject lInferenceObject()
 	{
 		return this;
@@ -187,6 +283,10 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 			case ApplicationPackage.BACKGROUND_IMAGE__RESOURCE:
 				if (resolve) return getResource();
 				return basicGetResource();
+			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
+				return getClearColor();
+			case ApplicationPackage.BACKGROUND_IMAGE__SAMPLING:
+				return getSampling();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -206,6 +306,12 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 				return;
 			case ApplicationPackage.BACKGROUND_IMAGE__RESOURCE:
 				setResource((IResource)newValue);
+				return;
+			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
+				setClearColor((Vector3ic)newValue);
+				return;
+			case ApplicationPackage.BACKGROUND_IMAGE__SAMPLING:
+				setSampling((ESampling)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -227,6 +333,12 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 			case ApplicationPackage.BACKGROUND_IMAGE__RESOURCE:
 				setResource((IResource)null);
 				return;
+			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
+				setClearColor(CLEAR_COLOR_EDEFAULT);
+				return;
+			case ApplicationPackage.BACKGROUND_IMAGE__SAMPLING:
+				setSampling(SAMPLING_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -245,6 +357,10 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ApplicationPackage.BACKGROUND_IMAGE__RESOURCE:
 				return resource != null;
+			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
+				return CLEAR_COLOR_EDEFAULT == null ? clearColor != null : !CLEAR_COLOR_EDEFAULT.equals(clearColor);
+			case ApplicationPackage.BACKGROUND_IMAGE__SAMPLING:
+				return sampling != SAMPLING_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -304,6 +420,10 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", clearColor: ");
+		result.append(clearColor);
+		result.append(", sampling: ");
+		result.append(sampling);
 		result.append(')');
 		return result.toString();
 	}

@@ -69,6 +69,8 @@ public class BackgroundImageItemProvider
 
 			addNamePropertyDescriptor(object);
 			addResourcePropertyDescriptor(object);
+			addClearColorPropertyDescriptor(object);
+			addSamplingPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -120,6 +122,52 @@ public class BackgroundImageItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Clear Color feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addClearColorPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_BackgroundImage_clearColor_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_BackgroundImage_clearColor_feature", "_UI_BackgroundImage_type"),
+				 ApplicationPackage.Literals.BACKGROUND_IMAGE__CLEAR_COLOR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Sampling feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSamplingPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_BackgroundImage_sampling_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_BackgroundImage_sampling_feature", "_UI_BackgroundImage_type"),
+				 ApplicationPackage.Literals.BACKGROUND_IMAGE__SAMPLING,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns BackgroundImage.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -162,6 +210,8 @@ public class BackgroundImageItemProvider
 		switch (notification.getFeatureID(BackgroundImage.class))
 		{
 			case ApplicationPackage.BACKGROUND_IMAGE__NAME:
+			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
+			case ApplicationPackage.BACKGROUND_IMAGE__SAMPLING:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -4,6 +4,7 @@ package org.sheepy.lily.core.model.application;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.sheepy.lily.core.model.inference.InferencePackage;
@@ -419,13 +420,31 @@ public interface ApplicationPackage extends EPackage
 	int BACKGROUND_IMAGE__RESOURCE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Clear Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND_IMAGE__CLEAR_COLOR = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Sampling</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND_IMAGE__SAMPLING = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Background Image</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BACKGROUND_IMAGE_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 1;
+	int BACKGROUND_IMAGE_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -805,6 +824,16 @@ public interface ApplicationPackage extends EPackage
 	int STRING_MODULE_RESOURCE_OPERATION_COUNT = ABSTRACT_MODULE_RESOURCE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.ESampling <em>ESampling</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.application.ESampling
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getESampling()
+	 * @generated
+	 */
+	int ESAMPLING = 16;
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.Application <em>Application</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1028,6 +1057,28 @@ public interface ApplicationPackage extends EPackage
 	EReference getBackgroundImage_Resource();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.BackgroundImage#getClearColor <em>Clear Color</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Clear Color</em>'.
+	 * @see org.sheepy.lily.core.model.application.BackgroundImage#getClearColor()
+	 * @see #getBackgroundImage()
+	 * @generated
+	 */
+	EAttribute getBackgroundImage_ClearColor();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.BackgroundImage#getSampling <em>Sampling</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sampling</em>'.
+	 * @see org.sheepy.lily.core.model.application.BackgroundImage#getSampling()
+	 * @see #getBackgroundImage()
+	 * @generated
+	 */
+	EAttribute getBackgroundImage_Sampling();
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.ResourcePkg <em>Resource Pkg</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1150,6 +1201,16 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 */
 	EAttribute getStringModuleResource_ModuleName();
+
+	/**
+	 * Returns the meta object for enum '{@link org.sheepy.lily.core.model.application.ESampling <em>ESampling</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>ESampling</em>'.
+	 * @see org.sheepy.lily.core.model.application.ESampling
+	 * @generated
+	 */
+	EEnum getESampling();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1360,6 +1421,22 @@ public interface ApplicationPackage extends EPackage
 		EReference BACKGROUND_IMAGE__RESOURCE = eINSTANCE.getBackgroundImage_Resource();
 
 		/**
+		 * The meta object literal for the '<em><b>Clear Color</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BACKGROUND_IMAGE__CLEAR_COLOR = eINSTANCE.getBackgroundImage_ClearColor();
+
+		/**
+		 * The meta object literal for the '<em><b>Sampling</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute BACKGROUND_IMAGE__SAMPLING = eINSTANCE.getBackgroundImage_Sampling();
+
+		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.ResourcePkgImpl <em>Resource Pkg</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1470,6 +1547,16 @@ public interface ApplicationPackage extends EPackage
 		 * @generated
 		 */
 		EAttribute STRING_MODULE_RESOURCE__MODULE_NAME = eINSTANCE.getStringModuleResource_ModuleName();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.ESampling <em>ESampling</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.ESampling
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getESampling()
+		 * @generated
+		 */
+		EEnum ESAMPLING = eINSTANCE.getESampling();
 
 	}
 

@@ -4,6 +4,7 @@ package org.sheepy.lily.core.model.application.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -17,6 +18,7 @@ import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationFactory;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.BackgroundImage;
+import org.sheepy.lily.core.model.application.ESampling;
 import org.sheepy.lily.core.model.application.FileResource;
 import org.sheepy.lily.core.model.application.GenericScenePart;
 import org.sheepy.lily.core.model.application.ICadence;
@@ -174,6 +176,13 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	private EClass stringModuleResourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum eSamplingEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -509,6 +518,28 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
+	public EAttribute getBackgroundImage_ClearColor()
+	{
+		return (EAttribute)backgroundImageEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getBackgroundImage_Sampling()
+	{
+		return (EAttribute)backgroundImageEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getResourcePkg()
 	{
 		return resourcePkgEClass;
@@ -641,6 +672,17 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
+	public EEnum getESampling()
+	{
+		return eSamplingEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public ApplicationFactory getApplicationFactory()
 	{
 		return (ApplicationFactory)getEFactoryInstance();
@@ -694,6 +736,8 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 
 		backgroundImageEClass = createEClass(BACKGROUND_IMAGE);
 		createEReference(backgroundImageEClass, BACKGROUND_IMAGE__RESOURCE);
+		createEAttribute(backgroundImageEClass, BACKGROUND_IMAGE__CLEAR_COLOR);
+		createEAttribute(backgroundImageEClass, BACKGROUND_IMAGE__SAMPLING);
 
 		resourcePkgEClass = createEClass(RESOURCE_PKG);
 		createEReference(resourcePkgEClass, RESOURCE_PKG__RESOURCES);
@@ -714,6 +758,9 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 
 		stringModuleResourceEClass = createEClass(STRING_MODULE_RESOURCE);
 		createEAttribute(stringModuleResourceEClass, STRING_MODULE_RESOURCE__MODULE_NAME);
+
+		// Create enums
+		eSamplingEEnum = createEEnum(ESAMPLING);
 	}
 
 	/**
@@ -791,6 +838,8 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 
 		initEClass(backgroundImageEClass, BackgroundImage.class, "BackgroundImage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBackgroundImage_Resource(), this.getIResource(), null, "resource", null, 0, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBackgroundImage_ClearColor(), theTypesPackage.getVector3i(), "clearColor", "0;0;0", 1, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getBackgroundImage_Sampling(), this.getESampling(), "sampling", null, 1, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(resourcePkgEClass, ResourcePkg.class, "ResourcePkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getResourcePkg_Resources(), this.getIResource(), null, "resources", null, 0, -1, ResourcePkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -811,6 +860,11 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 
 		initEClass(stringModuleResourceEClass, StringModuleResource.class, "StringModuleResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStringModuleResource_ModuleName(), ecorePackage.getEString(), "moduleName", null, 1, 1, StringModuleResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(eSamplingEEnum, ESampling.class, "ESampling");
+		addEEnumLiteral(eSamplingEEnum, ESampling.LINEAR);
+		addEEnumLiteral(eSamplingEEnum, ESampling.NEAREST);
 
 		// Create resource
 		createResource(eNS_URI);

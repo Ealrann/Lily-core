@@ -109,6 +109,10 @@
   </genPackages>
   <genPackages prefix="Application" basePackage="org.sheepy.lily.core.model" resource="XMI"
       disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="application.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="application.ecore#//ESampling">
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//ESampling/Linear"/>
+      <genEnumLiterals ecoreEnumLiteral="application.ecore#//ESampling/Nearest"/>
+    </genEnums>
     <genClasses ecoreClass="application.ecore#//Application">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/engines"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/run"/>
@@ -133,6 +137,8 @@
     <genClasses ecoreClass="application.ecore#//GenericScenePart"/>
     <genClasses ecoreClass="application.ecore#//BackgroundImage">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference application.ecore#//BackgroundImage/resource"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//BackgroundImage/clearColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//BackgroundImage/sampling"/>
     </genClasses>
     <genClasses ecoreClass="application.ecore#//ResourcePkg">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//ResourcePkg/resources"/>

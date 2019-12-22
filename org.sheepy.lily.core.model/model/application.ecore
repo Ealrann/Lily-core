@@ -40,6 +40,14 @@
   <eClassifiers xsi:type="ecore:EClass" name="GenericScenePart" eSuperTypes="#//IScenePart types.ecore#//LNamedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="BackgroundImage" eSuperTypes="types.ecore#//LNamedElement #//IScenePart">
     <eStructuralFeatures xsi:type="ecore:EReference" name="resource" eType="#//IResource"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clearColor" lowerBound="1"
+        eType="ecore:EDataType types.ecore#//Vector3i" defaultValueLiteral="0;0;0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampling" lowerBound="1"
+        eType="#//ESampling"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ESampling">
+    <eLiterals name="Linear"/>
+    <eLiterals name="Nearest" value="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResourcePkg">
     <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
