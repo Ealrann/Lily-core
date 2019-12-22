@@ -64,10 +64,23 @@ public class PresentationFactoryImpl extends EFactoryImpl implements Presentatio
 	{
 		switch (eClass.getClassifierID())
 		{
+			case PresentationPackage.UI: return createUI();
 			case PresentationPackage.UI_PAGE: return createUIPage();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public UI createUI()
+	{
+		UIImpl ui = new UIImpl();
+		return ui;
 	}
 
 	/**

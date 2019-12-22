@@ -16,8 +16,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="UI" abstract="true" interface="true"
-      eSuperTypes="application.ecore#//IScenePart">
+  <eClassifiers xsi:type="ecore:EClass" name="UI" eSuperTypes="application.ecore#//IScenePart">
     <eStructuralFeatures xsi:type="ecore:EReference" name="uiPages" upperBound="-1"
         eType="#//UIPage" containment="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentUIPage" eType="#//UIPage"/>

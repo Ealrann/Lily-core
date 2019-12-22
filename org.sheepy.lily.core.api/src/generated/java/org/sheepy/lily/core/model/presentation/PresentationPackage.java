@@ -190,10 +190,10 @@ public interface PresentationPackage extends EPackage
 	int ISIZED_ELEMENT_OPERATION_COUNT = IPOSITION_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.UI <em>UI</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.impl.UIImpl <em>UI</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.lily.core.model.presentation.UI
+	 * @see org.sheepy.lily.core.model.presentation.impl.UIImpl
 	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getUI()
 	 * @generated
 	 */
@@ -669,10 +669,10 @@ public interface PresentationPackage extends EPackage
 		EAttribute ISIZED_ELEMENT__HEIGHT = eINSTANCE.getISizedElement_Height();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.UI <em>UI</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.impl.UIImpl <em>UI</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.lily.core.model.presentation.UI
+		 * @see org.sheepy.lily.core.model.presentation.impl.UIImpl
 		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getUI()
 		 * @generated
 		 */

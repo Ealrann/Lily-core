@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.application.provider;
+package org.sheepy.lily.core.model.presentation.provider;
 
 
 import java.util.Collection;
@@ -21,22 +21,20 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.lily.core.model.application.ApplicationFactory;
-import org.sheepy.lily.core.model.application.ApplicationPackage;
-import org.sheepy.lily.core.model.application.Scene;
 import org.sheepy.lily.core.model.presentation.PresentationFactory;
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.presentation.UI;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.lily.core.model.application.Scene} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.presentation.UI} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class SceneItemProvider 
+public class UIItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -51,7 +49,7 @@ public class SceneItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SceneItemProvider(AdapterFactory adapterFactory)
+	public UIItemProvider(AdapterFactory adapterFactory)
 	{
 		super(adapterFactory);
 	}
@@ -69,78 +67,30 @@ public class SceneItemProvider
 		{
 			super.getPropertyDescriptors(object);
 
-			addFullscreenPropertyDescriptor(object);
-			addResizeablePropertyDescriptor(object);
-			addSizePropertyDescriptor(object);
+			addCurrentUIPagePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Fullscreen feature.
+	 * This adds a property descriptor for the Current UI Page feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addFullscreenPropertyDescriptor(Object object)
+	protected void addCurrentUIPagePropertyDescriptor(Object object)
 	{
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Scene_fullscreen_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Scene_fullscreen_feature", "_UI_Scene_type"),
-				 ApplicationPackage.Literals.SCENE__FULLSCREEN,
+				 getString("_UI_UI_currentUIPage_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_UI_currentUIPage_feature", "_UI_UI_type"),
+				 PresentationPackage.Literals.UI__CURRENT_UI_PAGE,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 true,
 				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Resizeable feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addResizeablePropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Scene_resizeable_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Scene_resizeable_feature", "_UI_Scene_type"),
-				 ApplicationPackage.Literals.SCENE__RESIZEABLE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Size feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addSizePropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Scene_size_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Scene_size_feature", "_UI_Scene_type"),
-				 ApplicationPackage.Literals.SCENE__SIZE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -159,7 +109,7 @@ public class SceneItemProvider
 		if (childrenFeatures == null)
 		{
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ApplicationPackage.Literals.SCENE__PARTS);
+			childrenFeatures.add(PresentationPackage.Literals.UI__UI_PAGES);
 		}
 		return childrenFeatures;
 	}
@@ -179,18 +129,6 @@ public class SceneItemProvider
 	}
 
 	/**
-	 * This returns Scene.gif.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object getImage(Object object)
-	{
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Scene"));
-	}
-
-	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -199,8 +137,7 @@ public class SceneItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		Scene scene = (Scene)object;
-		return getString("_UI_Scene_type") + " " + scene.isFullscreen();
+		return getString("_UI_UI_type");
 	}
 
 
@@ -216,14 +153,9 @@ public class SceneItemProvider
 	{
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(Scene.class))
+		switch (notification.getFeatureID(UI.class))
 		{
-			case ApplicationPackage.SCENE__FULLSCREEN:
-			case ApplicationPackage.SCENE__RESIZEABLE:
-			case ApplicationPackage.SCENE__SIZE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case ApplicationPackage.SCENE__PARTS:
+			case PresentationPackage.UI__UI_PAGES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -244,18 +176,8 @@ public class SceneItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ApplicationPackage.Literals.SCENE__PARTS,
-				 ApplicationFactory.eINSTANCE.createGenericScenePart()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ApplicationPackage.Literals.SCENE__PARTS,
-				 ApplicationFactory.eINSTANCE.createBackgroundImage()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ApplicationPackage.Literals.SCENE__PARTS,
-				 PresentationFactory.eINSTANCE.createUI()));
+				(PresentationPackage.Literals.UI__UI_PAGES,
+				 PresentationFactory.eINSTANCE.createUIPage()));
 	}
 
 	/**

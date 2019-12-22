@@ -91,6 +91,31 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.presentation.UI} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected UIItemProvider uiItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.presentation.UI}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createUIAdapter()
+	{
+		if (uiItemProvider == null)
+		{
+			uiItemProvider = new UIItemProvider(this);
+		}
+
+		return uiItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.presentation.UIPage} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -264,6 +289,7 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 	@Override
 	public void dispose()
 	{
+		if (uiItemProvider != null) uiItemProvider.dispose();
 		if (uiPageItemProvider != null) uiPageItemProvider.dispose();
 	}
 

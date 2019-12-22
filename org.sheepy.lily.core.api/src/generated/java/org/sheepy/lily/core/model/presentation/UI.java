@@ -20,7 +20,7 @@ import org.sheepy.lily.core.model.application.IScenePart;
  * </ul>
  *
  * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getUI()
- * @model interface="true" abstract="true"
+ * @model
  * @generated
  */
 public interface UI extends IScenePart
