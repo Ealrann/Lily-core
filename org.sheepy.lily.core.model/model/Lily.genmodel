@@ -100,6 +100,7 @@
     <genClasses image="false" ecoreClass="presentation.ecore#//UI">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference presentation.ecore#//UI/uiPages"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference presentation.ecore#//UI/currentUIPage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//UI/imageSupport"/>
     </genClasses>
     <genClasses image="false" ecoreClass="presentation.ecore#//IUIElement"/>
     <genClasses ecoreClass="presentation.ecore#//UIPage">

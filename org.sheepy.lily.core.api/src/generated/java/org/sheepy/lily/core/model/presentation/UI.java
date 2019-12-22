@@ -17,6 +17,7 @@ import org.sheepy.lily.core.model.application.IScenePart;
  * <ul>
  *   <li>{@link org.sheepy.lily.core.model.presentation.UI#getUiPages <em>Ui Pages</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.presentation.UI#getCurrentUIPage <em>Current UI Page</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.presentation.UI#isImageSupport <em>Image Support</em>}</li>
  * </ul>
  *
  * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getUI()
@@ -58,5 +59,28 @@ public interface UI extends IScenePart
 	 * @generated
 	 */
 	void setCurrentUIPage(UIPage value);
+
+	/**
+	 * Returns the value of the '<em><b>Image Support</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Image Support</em>' attribute.
+	 * @see #setImageSupport(boolean)
+	 * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getUI_ImageSupport()
+	 * @model default="true" required="true"
+	 * @generated
+	 */
+	boolean isImageSupport();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.presentation.UI#isImageSupport <em>Image Support</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Image Support</em>' attribute.
+	 * @see #isImageSupport()
+	 * @generated
+	 */
+	void setImageSupport(boolean value);
 
 } // UI

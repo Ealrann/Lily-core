@@ -307,6 +307,17 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * @generated
 	 */
 	@Override
+	public EAttribute getUI_ImageSupport()
+	{
+		return (EAttribute)uiEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getIUIElement()
 	{
 		return iuiElementEClass;
@@ -388,6 +399,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 		uiEClass = createEClass(UI);
 		createEReference(uiEClass, UI__UI_PAGES);
 		createEReference(uiEClass, UI__CURRENT_UI_PAGE);
+		createEAttribute(uiEClass, UI__IMAGE_SUPPORT);
 
 		iuiElementEClass = createEClass(IUI_ELEMENT);
 
@@ -452,6 +464,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 		initEClass(uiEClass, org.sheepy.lily.core.model.presentation.UI.class, "UI", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getUI_UiPages(), this.getUIPage(), null, "uiPages", null, 0, -1, org.sheepy.lily.core.model.presentation.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUI_CurrentUIPage(), this.getUIPage(), null, "currentUIPage", null, 0, 1, org.sheepy.lily.core.model.presentation.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUI_ImageSupport(), ecorePackage.getEBoolean(), "imageSupport", "true", 1, 1, org.sheepy.lily.core.model.presentation.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iuiElementEClass, IUIElement.class, "IUIElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

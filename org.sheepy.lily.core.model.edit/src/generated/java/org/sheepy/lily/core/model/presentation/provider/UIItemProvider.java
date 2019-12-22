@@ -21,6 +21,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -68,6 +69,7 @@ public class UIItemProvider
 			super.getPropertyDescriptors(object);
 
 			addCurrentUIPagePropertyDescriptor(object);
+			addImageSupportPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -91,6 +93,29 @@ public class UIItemProvider
 				 false,
 				 true,
 				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Image Support feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addImageSupportPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_UI_imageSupport_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_UI_imageSupport_feature", "_UI_UI_type"),
+				 PresentationPackage.Literals.UI__IMAGE_SUPPORT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -137,7 +162,8 @@ public class UIItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		return getString("_UI_UI_type");
+		UI ui = (UI)object;
+		return getString("_UI_UI_type") + " " + ui.isImageSupport();
 	}
 
 
@@ -155,6 +181,9 @@ public class UIItemProvider
 
 		switch (notification.getFeatureID(UI.class))
 		{
+			case PresentationPackage.UI__IMAGE_SUPPORT:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
 			case PresentationPackage.UI__UI_PAGES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;

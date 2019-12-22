@@ -218,13 +218,22 @@ public interface PresentationPackage extends EPackage
 	int UI__CURRENT_UI_PAGE = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Image Support</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI__IMAGE_SUPPORT = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>UI</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UI_FEATURE_COUNT = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 2;
+	int UI_FEATURE_COUNT = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -544,6 +553,17 @@ public interface PresentationPackage extends EPackage
 	EReference getUI_CurrentUIPage();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.presentation.UI#isImageSupport <em>Image Support</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Image Support</em>'.
+	 * @see org.sheepy.lily.core.model.presentation.UI#isImageSupport()
+	 * @see #getUI()
+	 * @generated
+	 */
+	EAttribute getUI_ImageSupport();
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.IUIElement <em>IUI Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -693,6 +713,14 @@ public interface PresentationPackage extends EPackage
 		 * @generated
 		 */
 		EReference UI__CURRENT_UI_PAGE = eINSTANCE.getUI_CurrentUIPage();
+
+		/**
+		 * The meta object literal for the '<em><b>Image Support</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UI__IMAGE_SUPPORT = eINSTANCE.getUI_ImageSupport();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.IUIElement <em>IUI Element</em>}' class.

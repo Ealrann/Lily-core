@@ -38,6 +38,7 @@ import org.sheepy.lily.core.model.presentation.UIPage;
  * <ul>
  *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIImpl#getUiPages <em>Ui Pages</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIImpl#getCurrentUIPage <em>Current UI Page</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIImpl#isImageSupport <em>Image Support</em>}</li>
  * </ul>
  *
  * @generated
@@ -63,6 +64,26 @@ public class UIImpl extends LilyEObject implements UI
 	 * @ordered
 	 */
 	protected UIPage currentUIPage;
+
+	/**
+	 * The default value of the '{@link #isImageSupport() <em>Image Support</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isImageSupport()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IMAGE_SUPPORT_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isImageSupport() <em>Image Support</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isImageSupport()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean imageSupport = IMAGE_SUPPORT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -151,6 +172,31 @@ public class UIImpl extends LilyEObject implements UI
 	 * @generated
 	 */
 	@Override
+	public boolean isImageSupport()
+	{
+		return imageSupport;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setImageSupport(boolean newImageSupport)
+	{
+		boolean oldImageSupport = imageSupport;
+		imageSupport = newImageSupport;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.UI__IMAGE_SUPPORT, oldImageSupport, imageSupport));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public IInferenceObject lInferenceObject()
 	{
 		return this;
@@ -187,6 +233,8 @@ public class UIImpl extends LilyEObject implements UI
 			case PresentationPackage.UI__CURRENT_UI_PAGE:
 				if (resolve) return getCurrentUIPage();
 				return basicGetCurrentUIPage();
+			case PresentationPackage.UI__IMAGE_SUPPORT:
+				return isImageSupport();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -209,6 +257,9 @@ public class UIImpl extends LilyEObject implements UI
 			case PresentationPackage.UI__CURRENT_UI_PAGE:
 				setCurrentUIPage((UIPage)newValue);
 				return;
+			case PresentationPackage.UI__IMAGE_SUPPORT:
+				setImageSupport((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -229,6 +280,9 @@ public class UIImpl extends LilyEObject implements UI
 			case PresentationPackage.UI__CURRENT_UI_PAGE:
 				setCurrentUIPage((UIPage)null);
 				return;
+			case PresentationPackage.UI__IMAGE_SUPPORT:
+				setImageSupport(IMAGE_SUPPORT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -247,6 +301,8 @@ public class UIImpl extends LilyEObject implements UI
 				return uiPages != null && !uiPages.isEmpty();
 			case PresentationPackage.UI__CURRENT_UI_PAGE:
 				return currentUIPage != null;
+			case PresentationPackage.UI__IMAGE_SUPPORT:
+				return imageSupport != IMAGE_SUPPORT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -265,6 +321,23 @@ public class UIImpl extends LilyEObject implements UI
 				return lInferenceObject();
 		}
 		return super.eInvoke(operationID, arguments);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString()
+	{
+		if (eIsProxy()) return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (imageSupport: ");
+		result.append(imageSupport);
+		result.append(')');
+		return result.toString();
 	}
 
 } //UIImpl
