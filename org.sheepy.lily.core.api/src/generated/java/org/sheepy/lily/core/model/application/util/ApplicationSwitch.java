@@ -81,6 +81,21 @@ public class ApplicationSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ApplicationPackage.IAPPLICATION_EXTENSION:
+			{
+				IApplicationExtension iApplicationExtension = (IApplicationExtension)theEObject;
+				T result = caseIApplicationExtension(iApplicationExtension);
+				if (result == null) result = caseLNamedElement(iApplicationExtension);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ApplicationPackage.APPLICATION_EXTENSION_PACKAGE:
+			{
+				ApplicationExtensionPackage applicationExtensionPackage = (ApplicationExtensionPackage)theEObject;
+				T result = caseApplicationExtensionPackage(applicationExtensionPackage);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case ApplicationPackage.TIME_CONFIGURATION:
 			{
 				TimeConfiguration timeConfiguration = (TimeConfiguration)theEObject;
@@ -228,6 +243,38 @@ public class ApplicationSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseApplication(Application object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IApplication Extension</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IApplication Extension</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIApplicationExtension(IApplicationExtension object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Extension Package</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Extension Package</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseApplicationExtensionPackage(ApplicationExtensionPackage object)
 	{
 		return null;
 	}

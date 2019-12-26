@@ -19,6 +19,7 @@ import org.sheepy.lily.core.api.adapter.ILilyEObject;
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getTitle <em>Title</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getScene <em>Scene</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getTimeConfiguration <em>Time Configuration</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Application#getExtensionPkg <em>Extension Pkg</em>}</li>
  * </ul>
  *
  * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication()
@@ -129,5 +130,27 @@ public interface Application extends ILilyEObject
 	 * @generated
 	 */
 	void setTimeConfiguration(TimeConfiguration value);
+
+	/**
+	 * Returns the value of the '<em><b>Extension Pkg</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Extension Pkg</em>' containment reference.
+	 * @see #setExtensionPkg(ApplicationExtensionPackage)
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_ExtensionPkg()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	ApplicationExtensionPackage getExtensionPkg();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#getExtensionPkg <em>Extension Pkg</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Extension Pkg</em>' containment reference.
+	 * @see #getExtensionPkg()
+	 * @generated
+	 */
+	void setExtensionPkg(ApplicationExtensionPackage value);
 
 } // Application

@@ -13,6 +13,14 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="timeConfiguration" eType="#//TimeConfiguration"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extensionPkg" eType="#//ApplicationExtensionPackage"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IApplicationExtension" abstract="true"
+      interface="true" eSuperTypes="types.ecore#//LNamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ApplicationExtensionPackage">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extensions" upperBound="-1"
+        eType="#//IApplicationExtension" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TimeConfiguration">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeStep" lowerBound="1"

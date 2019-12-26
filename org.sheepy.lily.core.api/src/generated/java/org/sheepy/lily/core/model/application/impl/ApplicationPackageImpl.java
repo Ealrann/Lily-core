@@ -15,12 +15,14 @@ import org.sheepy.lily.core.model.action.impl.ActionPackageImpl;
 
 import org.sheepy.lily.core.model.application.AbstractModuleResource;
 import org.sheepy.lily.core.model.application.Application;
+import org.sheepy.lily.core.model.application.ApplicationExtensionPackage;
 import org.sheepy.lily.core.model.application.ApplicationFactory;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.BackgroundImage;
 import org.sheepy.lily.core.model.application.ESampling;
 import org.sheepy.lily.core.model.application.FileResource;
 import org.sheepy.lily.core.model.application.GenericScenePart;
+import org.sheepy.lily.core.model.application.IApplicationExtension;
 import org.sheepy.lily.core.model.application.ICadence;
 import org.sheepy.lily.core.model.application.IEngine;
 import org.sheepy.lily.core.model.application.IResource;
@@ -71,6 +73,20 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	private EClass applicationEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iApplicationExtensionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass applicationExtensionPackageEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -345,6 +361,50 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	public EReference getApplication_TimeConfiguration()
 	{
 		return (EReference)applicationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getApplication_ExtensionPkg()
+	{
+		return (EReference)applicationEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getIApplicationExtension()
+	{
+		return iApplicationExtensionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getApplicationExtensionPackage()
+	{
+		return applicationExtensionPackageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getApplicationExtensionPackage_Extensions()
+	{
+		return (EReference)applicationExtensionPackageEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -714,6 +774,12 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEAttribute(applicationEClass, APPLICATION__TITLE);
 		createEReference(applicationEClass, APPLICATION__SCENE);
 		createEReference(applicationEClass, APPLICATION__TIME_CONFIGURATION);
+		createEReference(applicationEClass, APPLICATION__EXTENSION_PKG);
+
+		iApplicationExtensionEClass = createEClass(IAPPLICATION_EXTENSION);
+
+		applicationExtensionPackageEClass = createEClass(APPLICATION_EXTENSION_PACKAGE);
+		createEReference(applicationExtensionPackageEClass, APPLICATION_EXTENSION_PACKAGE__EXTENSIONS);
 
 		timeConfigurationEClass = createEClass(TIME_CONFIGURATION);
 		createEAttribute(timeConfigurationEClass, TIME_CONFIGURATION__TIME_STEP);
@@ -796,6 +862,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		iApplicationExtensionEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
 		iScenePartEClass.getESuperTypes().add(theInferencePackage.getIInferenceObject());
 		genericScenePartEClass.getESuperTypes().add(this.getIScenePart());
 		genericScenePartEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
@@ -816,6 +883,12 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEAttribute(getApplication_Title(), ecorePackage.getEString(), "title", "Vulkan Application", 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_Scene(), this.getScene(), null, "scene", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_TimeConfiguration(), this.getTimeConfiguration(), null, "timeConfiguration", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getApplication_ExtensionPkg(), this.getApplicationExtensionPackage(), null, "extensionPkg", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(iApplicationExtensionEClass, IApplicationExtension.class, "IApplicationExtension", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(applicationExtensionPackageEClass, ApplicationExtensionPackage.class, "ApplicationExtensionPackage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getApplicationExtensionPackage_Extensions(), this.getIApplicationExtension(), null, "extensions", null, 0, -1, ApplicationExtensionPackage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(timeConfigurationEClass, TimeConfiguration.class, "TimeConfiguration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTimeConfiguration_TimeStep(), ecorePackage.getELong(), "timeStep", "1", 1, 1, TimeConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

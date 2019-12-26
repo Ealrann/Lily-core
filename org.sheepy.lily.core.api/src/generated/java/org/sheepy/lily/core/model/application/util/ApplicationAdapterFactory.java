@@ -81,6 +81,16 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 				return createApplicationAdapter();
 			}
 			@Override
+			public Adapter caseIApplicationExtension(IApplicationExtension object)
+			{
+				return createIApplicationExtensionAdapter();
+			}
+			@Override
+			public Adapter caseApplicationExtensionPackage(ApplicationExtensionPackage object)
+			{
+				return createApplicationExtensionPackageAdapter();
+			}
+			@Override
 			public Adapter caseTimeConfiguration(TimeConfiguration object)
 			{
 				return createTimeConfigurationAdapter();
@@ -156,14 +166,14 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 				return createStringModuleResourceAdapter();
 			}
 			@Override
-			public Adapter caseIInferenceObject(IInferenceObject object)
-			{
-				return createIInferenceObjectAdapter();
-			}
-			@Override
 			public Adapter caseLNamedElement(LNamedElement object)
 			{
 				return createLNamedElementAdapter();
+			}
+			@Override
+			public Adapter caseIInferenceObject(IInferenceObject object)
+			{
+				return createIInferenceObjectAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object)
@@ -197,6 +207,36 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createApplicationAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.IApplicationExtension <em>IApplication Extension</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.IApplicationExtension
+	 * @generated
+	 */
+	public Adapter createIApplicationExtensionAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.ApplicationExtensionPackage <em>Extension Package</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.ApplicationExtensionPackage
+	 * @generated
+	 */
+	public Adapter createApplicationExtensionPackageAdapter()
 	{
 		return null;
 	}

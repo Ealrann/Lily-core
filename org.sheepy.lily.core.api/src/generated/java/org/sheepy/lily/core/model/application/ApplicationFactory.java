@@ -32,6 +32,15 @@ public interface ApplicationFactory extends EFactory
 	Application createApplication();
 
 	/**
+	 * Returns a new object of class '<em>Extension Package</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Extension Package</em>'.
+	 * @generated
+	 */
+	ApplicationExtensionPackage createApplicationExtensionPackage();
+
+	/**
 	 * Returns a new object of class '<em>Time Configuration</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

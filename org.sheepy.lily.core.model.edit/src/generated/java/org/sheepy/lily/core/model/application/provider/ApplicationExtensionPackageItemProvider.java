@@ -23,18 +23,16 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.lily.core.model.application.ApplicationFactory;
+import org.sheepy.lily.core.model.application.ApplicationExtensionPackage;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
-import org.sheepy.lily.core.model.application.ResourcePkg;
-import org.sheepy.lily.core.model.ui.UiFactory;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.lily.core.model.application.ResourcePkg} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.application.ApplicationExtensionPackage} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ResourcePkgItemProvider 
+public class ApplicationExtensionPackageItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -49,7 +47,7 @@ public class ResourcePkgItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ResourcePkgItemProvider(AdapterFactory adapterFactory)
+	public ApplicationExtensionPackageItemProvider(AdapterFactory adapterFactory)
 	{
 		super(adapterFactory);
 	}
@@ -85,7 +83,7 @@ public class ResourcePkgItemProvider
 		if (childrenFeatures == null)
 		{
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES);
+			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION_EXTENSION_PACKAGE__EXTENSIONS);
 		}
 		return childrenFeatures;
 	}
@@ -105,7 +103,7 @@ public class ResourcePkgItemProvider
 	}
 
 	/**
-	 * This returns ResourcePkg.gif.
+	 * This returns ApplicationExtensionPackage.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -113,7 +111,7 @@ public class ResourcePkgItemProvider
 	@Override
 	public Object getImage(Object object)
 	{
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ResourcePkg"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ApplicationExtensionPackage"));
 	}
 
 	/**
@@ -125,7 +123,7 @@ public class ResourcePkgItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		return getString("_UI_ResourcePkg_type");
+		return getString("_UI_ApplicationExtensionPackage_type");
 	}
 
 
@@ -141,9 +139,9 @@ public class ResourcePkgItemProvider
 	{
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ResourcePkg.class))
+		switch (notification.getFeatureID(ApplicationExtensionPackage.class))
 		{
-			case ApplicationPackage.RESOURCE_PKG__RESOURCES:
+			case ApplicationPackage.APPLICATION_EXTENSION_PACKAGE__EXTENSIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -161,41 +159,6 @@ public class ResourcePkgItemProvider
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ApplicationFactory.eINSTANCE.createIResource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ApplicationFactory.eINSTANCE.createVirtualResource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ApplicationFactory.eINSTANCE.createLocalResource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ApplicationFactory.eINSTANCE.createModuleResource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ApplicationFactory.eINSTANCE.createStringModuleResource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
-				 UiFactory.eINSTANCE.createFontTable()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
-				 UiFactory.eINSTANCE.createFont()));
 	}
 
 	/**

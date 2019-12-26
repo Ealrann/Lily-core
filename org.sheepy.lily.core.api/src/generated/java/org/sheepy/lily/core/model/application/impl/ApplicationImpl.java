@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.model.application.Application;
+import org.sheepy.lily.core.model.application.ApplicationExtensionPackage;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.IEngine;
 import org.sheepy.lily.core.model.application.Scene;
@@ -34,6 +35,7 @@ import org.sheepy.lily.core.model.application.TimeConfiguration;
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getScene <em>Scene</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getTimeConfiguration <em>Time Configuration</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getExtensionPkg <em>Extension Pkg</em>}</li>
  * </ul>
  *
  * @generated
@@ -109,6 +111,16 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @ordered
 	 */
 	protected TimeConfiguration timeConfiguration;
+
+	/**
+	 * The cached value of the '{@link #getExtensionPkg() <em>Extension Pkg</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExtensionPkg()
+	 * @generated
+	 * @ordered
+	 */
+	protected ApplicationExtensionPackage extensionPkg;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -356,6 +368,83 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @generated
 	 */
 	@Override
+	public ApplicationExtensionPackage getExtensionPkg()
+	{
+		if (extensionPkg != null && ((EObject)extensionPkg).eIsProxy())
+		{
+			InternalEObject oldExtensionPkg = (InternalEObject)extensionPkg;
+			extensionPkg = (ApplicationExtensionPackage)eResolveProxy(oldExtensionPkg);
+			if (extensionPkg != oldExtensionPkg)
+			{
+				InternalEObject newExtensionPkg = (InternalEObject)extensionPkg;
+				NotificationChain msgs = oldExtensionPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__EXTENSION_PKG, null, null);
+				if (newExtensionPkg.eInternalContainer() == null)
+				{
+					msgs = newExtensionPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__EXTENSION_PKG, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.APPLICATION__EXTENSION_PKG, oldExtensionPkg, extensionPkg));
+			}
+		}
+		return extensionPkg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ApplicationExtensionPackage basicGetExtensionPkg()
+	{
+		return extensionPkg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExtensionPkg(ApplicationExtensionPackage newExtensionPkg, NotificationChain msgs)
+	{
+		ApplicationExtensionPackage oldExtensionPkg = extensionPkg;
+		extensionPkg = newExtensionPkg;
+		if (eNotificationRequired())
+		{
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__EXTENSION_PKG, oldExtensionPkg, newExtensionPkg);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setExtensionPkg(ApplicationExtensionPackage newExtensionPkg)
+	{
+		if (newExtensionPkg != extensionPkg)
+		{
+			NotificationChain msgs = null;
+			if (extensionPkg != null)
+				msgs = ((InternalEObject)extensionPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__EXTENSION_PKG, null, msgs);
+			if (newExtensionPkg != null)
+				msgs = ((InternalEObject)newExtensionPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__EXTENSION_PKG, null, msgs);
+			msgs = basicSetExtensionPkg(newExtensionPkg, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__EXTENSION_PKG, newExtensionPkg, newExtensionPkg));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
 		switch (featureID)
@@ -366,6 +455,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return basicSetScene(null, msgs);
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				return basicSetTimeConfiguration(null, msgs);
+			case ApplicationPackage.APPLICATION__EXTENSION_PKG:
+				return basicSetExtensionPkg(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -392,6 +483,9 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				if (resolve) return getTimeConfiguration();
 				return basicGetTimeConfiguration();
+			case ApplicationPackage.APPLICATION__EXTENSION_PKG:
+				if (resolve) return getExtensionPkg();
+				return basicGetExtensionPkg();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -423,6 +517,9 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				setTimeConfiguration((TimeConfiguration)newValue);
 				return;
+			case ApplicationPackage.APPLICATION__EXTENSION_PKG:
+				setExtensionPkg((ApplicationExtensionPackage)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -452,6 +549,9 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				setTimeConfiguration((TimeConfiguration)null);
 				return;
+			case ApplicationPackage.APPLICATION__EXTENSION_PKG:
+				setExtensionPkg((ApplicationExtensionPackage)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -476,6 +576,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return scene != null;
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 				return timeConfiguration != null;
+			case ApplicationPackage.APPLICATION__EXTENSION_PKG:
+				return extensionPkg != null;
 		}
 		return super.eIsSet(featureID);
 	}

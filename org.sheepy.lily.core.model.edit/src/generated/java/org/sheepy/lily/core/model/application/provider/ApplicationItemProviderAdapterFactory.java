@@ -118,6 +118,31 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.application.ApplicationExtensionPackage} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ApplicationExtensionPackageItemProvider applicationExtensionPackageItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.application.ApplicationExtensionPackage}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createApplicationExtensionPackageAdapter()
+	{
+		if (applicationExtensionPackageItemProvider == null)
+		{
+			applicationExtensionPackageItemProvider = new ApplicationExtensionPackageItemProvider(this);
+		}
+
+		return applicationExtensionPackageItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.application.TimeConfiguration} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -517,6 +542,7 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 	public void dispose()
 	{
 		if (applicationItemProvider != null) applicationItemProvider.dispose();
+		if (applicationExtensionPackageItemProvider != null) applicationExtensionPackageItemProvider.dispose();
 		if (timeConfigurationItemProvider != null) timeConfigurationItemProvider.dispose();
 		if (sceneItemProvider != null) sceneItemProvider.dispose();
 		if (genericScenePartItemProvider != null) genericScenePartItemProvider.dispose();
