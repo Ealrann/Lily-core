@@ -6,11 +6,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
-
-import org.sheepy.lily.core.model.application.IScenePart;
-import org.sheepy.lily.core.model.inference.IInferenceObject;
 import org.sheepy.lily.core.model.presentation.*;
-import org.sheepy.lily.core.model.types.LNamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -90,43 +86,6 @@ public class PresentationSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PresentationPackage.UI:
-			{
-				UI ui = (UI)theEObject;
-				T result = caseUI(ui);
-				if (result == null) result = caseIScenePart(ui);
-				if (result == null) result = caseIInferenceObject(ui);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PresentationPackage.IUI_ELEMENT:
-			{
-				IUIElement iuiElement = (IUIElement)theEObject;
-				T result = caseIUIElement(iuiElement);
-				if (result == null) result = caseIInferenceObject(iuiElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PresentationPackage.UI_PAGE:
-			{
-				UIPage uiPage = (UIPage)theEObject;
-				T result = caseUIPage(uiPage);
-				if (result == null) result = caseISizedElement(uiPage);
-				if (result == null) result = caseIPositionElement(uiPage);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case PresentationPackage.IPANEL:
-			{
-				IPanel iPanel = (IPanel)theEObject;
-				T result = caseIPanel(iPanel);
-				if (result == null) result = caseLNamedElement(iPanel);
-				if (result == null) result = caseIUIElement(iPanel);
-				if (result == null) result = caseIPositionElement(iPanel);
-				if (result == null) result = caseIInferenceObject(iPanel);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -159,118 +118,6 @@ public class PresentationSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseISizedElement(ISizedElement object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>UI</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>UI</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseUI(UI object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>IUI Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>IUI Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIUIElement(IUIElement object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>UI Page</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>UI Page</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseUIPage(UIPage object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>IPanel</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>IPanel</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIPanel(IPanel object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>IInference Object</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>IInference Object</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIInferenceObject(IInferenceObject object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>IScene Part</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>IScene Part</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIScenePart(IScenePart object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>LNamed Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>LNamed Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseLNamedElement(LNamedElement object)
 	{
 		return null;
 	}

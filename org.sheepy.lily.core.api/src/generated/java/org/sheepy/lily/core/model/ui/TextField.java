@@ -20,7 +20,7 @@ import org.sheepy.lily.core.model.variable.IVariableResolver;
  * @model
  * @generated
  */
-public interface TextField extends Widget
+public interface TextField extends TextWidget
 {
 	/**
 	 * Returns the value of the '<em><b>Variable Resolver</b></em>' containment reference.

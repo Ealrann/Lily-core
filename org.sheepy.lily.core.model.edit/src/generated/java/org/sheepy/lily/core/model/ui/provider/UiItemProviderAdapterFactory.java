@@ -115,6 +115,56 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.ui.UI} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected UIItemProvider uiItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.ui.UI}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createUIAdapter()
+	{
+		if (uiItemProvider == null)
+		{
+			uiItemProvider = new UIItemProvider(this);
+		}
+
+		return uiItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.ui.UIPage} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected UIPageItemProvider uiPageItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.ui.UIPage}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createUIPageAdapter()
+	{
+		if (uiPageItemProvider == null)
+		{
+			uiPageItemProvider = new UIPageItemProvider(this);
+		}
+
+		return uiPageItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.ui.DynamicRowLayout} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -315,6 +365,81 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.ui.FontPkg} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FontPkgItemProvider fontPkgItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.ui.FontPkg}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFontPkgAdapter()
+	{
+		if (fontPkgItemProvider == null)
+		{
+			fontPkgItemProvider = new FontPkgItemProvider(this);
+		}
+
+		return fontPkgItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.ui.FontTable} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FontTableItemProvider fontTableItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.ui.FontTable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFontTableAdapter()
+	{
+		if (fontTableItemProvider == null)
+		{
+			fontTableItemProvider = new FontTableItemProvider(this);
+		}
+
+		return fontTableItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.ui.Font} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FontItemProvider fontItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.ui.Font}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFontAdapter()
+	{
+		if (fontItemProvider == null)
+		{
+			fontItemProvider = new FontItemProvider(this);
+		}
+
+		return fontItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -464,6 +589,8 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory
 	public void dispose()
 	{
 		if (panelItemProvider != null) panelItemProvider.dispose();
+		if (uiItemProvider != null) uiItemProvider.dispose();
+		if (uiPageItemProvider != null) uiPageItemProvider.dispose();
 		if (dynamicRowLayoutItemProvider != null) dynamicRowLayoutItemProvider.dispose();
 		if (variableLabelItemProvider != null) variableLabelItemProvider.dispose();
 		if (labelItemProvider != null) labelItemProvider.dispose();
@@ -472,6 +599,9 @@ public class UiItemProviderAdapterFactory extends UiAdapterFactory
 		if (buttonItemProvider != null) buttonItemProvider.dispose();
 		if (booleanButtonItemProvider != null) booleanButtonItemProvider.dispose();
 		if (booleanActionButtonItemProvider != null) booleanActionButtonItemProvider.dispose();
+		if (fontPkgItemProvider != null) fontPkgItemProvider.dispose();
+		if (fontTableItemProvider != null) fontTableItemProvider.dispose();
+		if (fontItemProvider != null) fontItemProvider.dispose();
 	}
 
 }

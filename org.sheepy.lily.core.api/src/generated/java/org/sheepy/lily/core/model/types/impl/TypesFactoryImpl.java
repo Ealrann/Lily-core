@@ -82,9 +82,9 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	{
 		switch (eClass.getClassifierID())
 		{
-			case TypesPackage.FLOAT_PARAMETER: return createFloatParameter();
-			case TypesPackage.STRING_PARAMETER: return createStringParameter();
-			case TypesPackage.BOOLEAN_PARAMETER: return createBooleanParameter();
+			case TypesPackage.FLOAT_PARAMETER: return (EObject)createFloatParameter();
+			case TypesPackage.STRING_PARAMETER: return (EObject)createStringParameter();
+			case TypesPackage.BOOLEAN_PARAMETER: return (EObject)createBooleanParameter();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -118,6 +118,8 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				return createEMouseButtonFromString(eDataType, initialValue);
 			case TypesPackage.EKEY_STATE:
 				return createEKeyStateFromString(eDataType, initialValue);
+			case TypesPackage.ECHAR_TABLE:
+				return createECharTableFromString(eDataType, initialValue);
 			case TypesPackage.VECTOR4D:
 				return createVector4dFromString(eDataType, initialValue);
 			case TypesPackage.VECTOR4F:
@@ -173,6 +175,8 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				return convertEMouseButtonToString(eDataType, instanceValue);
 			case TypesPackage.EKEY_STATE:
 				return convertEKeyStateToString(eDataType, instanceValue);
+			case TypesPackage.ECHAR_TABLE:
+				return convertECharTableToString(eDataType, instanceValue);
 			case TypesPackage.VECTOR4D:
 				return convertVector4dToString(eDataType, instanceValue);
 			case TypesPackage.VECTOR4F:
@@ -430,6 +434,28 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * @generated
 	 */
 	public String convertEKeyStateToString(EDataType eDataType, Object instanceValue)
+	{
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ECharTable createECharTableFromString(EDataType eDataType, String initialValue)
+	{
+		ECharTable result = ECharTable.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertECharTableToString(EDataType eDataType, Object instanceValue)
 	{
 		return instanceValue == null ? null : instanceValue.toString();
 	}

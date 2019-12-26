@@ -8,7 +8,10 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import org.sheepy.lily.core.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.inference.InferencePackage;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -61,6 +64,79 @@ public interface UiPackage extends EPackage
 	UiPackage eINSTANCE = org.sheepy.lily.core.model.ui.impl.UiPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.IPanel <em>IPanel</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.ui.IPanel
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getIPanel()
+	 * @generated
+	 */
+	int IPANEL = 4;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPANEL__NAME = TypesPackage.LNAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPANEL__POSITION = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPANEL__VERTICAL_RELATIVE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPANEL__HORIZONTAL_RELATIVE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>IPanel</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPANEL_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPANEL___LINFERENCE_OBJECT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>IPanel</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPANEL_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.PanelImpl <em>Panel</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -77,7 +153,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PANEL__NAME = PresentationPackage.IPANEL__NAME;
+	int PANEL__NAME = IPANEL__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -86,7 +162,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PANEL__POSITION = PresentationPackage.IPANEL__POSITION;
+	int PANEL__POSITION = IPANEL__POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
@@ -95,7 +171,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PANEL__VERTICAL_RELATIVE = PresentationPackage.IPANEL__VERTICAL_RELATIVE;
+	int PANEL__VERTICAL_RELATIVE = IPANEL__VERTICAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
@@ -104,7 +180,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PANEL__HORIZONTAL_RELATIVE = PresentationPackage.IPANEL__HORIZONTAL_RELATIVE;
+	int PANEL__HORIZONTAL_RELATIVE = IPANEL__HORIZONTAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -113,7 +189,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PANEL__WIDTH = PresentationPackage.IPANEL_FEATURE_COUNT + 0;
+	int PANEL__WIDTH = IPANEL_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
@@ -122,7 +198,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PANEL__HEIGHT = PresentationPackage.IPANEL_FEATURE_COUNT + 1;
+	int PANEL__HEIGHT = IPANEL_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Controls</b></em>' containment reference list.
@@ -131,7 +207,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PANEL__CONTROLS = PresentationPackage.IPANEL_FEATURE_COUNT + 2;
+	int PANEL__CONTROLS = IPANEL_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Show Title</b></em>' attribute.
@@ -140,7 +216,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PANEL__SHOW_TITLE = PresentationPackage.IPANEL_FEATURE_COUNT + 3;
+	int PANEL__SHOW_TITLE = IPANEL_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Minimizable</b></em>' attribute.
@@ -149,7 +225,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PANEL__MINIMIZABLE = PresentationPackage.IPANEL_FEATURE_COUNT + 4;
+	int PANEL__MINIMIZABLE = IPANEL_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Movable</b></em>' attribute.
@@ -158,7 +234,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PANEL__MOVABLE = PresentationPackage.IPANEL_FEATURE_COUNT + 5;
+	int PANEL__MOVABLE = IPANEL_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Minimized</b></em>' attribute.
@@ -167,7 +243,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PANEL__MINIMIZED = PresentationPackage.IPANEL_FEATURE_COUNT + 6;
+	int PANEL__MINIMIZED = IPANEL_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Panel</em>' class.
@@ -176,7 +252,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PANEL_FEATURE_COUNT = PresentationPackage.IPANEL_FEATURE_COUNT + 7;
+	int PANEL_FEATURE_COUNT = IPANEL_FEATURE_COUNT + 7;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -185,7 +261,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PANEL___LINFERENCE_OBJECT = PresentationPackage.IPANEL___LINFERENCE_OBJECT;
+	int PANEL___LINFERENCE_OBJECT = IPANEL___LINFERENCE_OBJECT;
 
 	/**
 	 * The number of operations of the '<em>Panel</em>' class.
@@ -194,7 +270,208 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int PANEL_OPERATION_COUNT = PresentationPackage.IPANEL_OPERATION_COUNT + 0;
+	int PANEL_OPERATION_COUNT = IPANEL_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.UIImpl <em>UI</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.ui.impl.UIImpl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getUI()
+	 * @generated
+	 */
+	int UI = 1;
+
+	/**
+	 * The feature id for the '<em><b>Image Support</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI__IMAGE_SUPPORT = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Ui Pages</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI__UI_PAGES = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Current UI Page</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI__CURRENT_UI_PAGE = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Font Pkg</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI__FONT_PKG = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>UI</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_FEATURE_COUNT = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI___LINFERENCE_OBJECT = ApplicationPackage.ISCENE_PART___LINFERENCE_OBJECT;
+
+	/**
+	 * The number of operations of the '<em>UI</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_OPERATION_COUNT = ApplicationPackage.ISCENE_PART_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.IUIElement <em>IUI Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.ui.IUIElement
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getIUIElement()
+	 * @generated
+	 */
+	int IUI_ELEMENT = 2;
+
+	/**
+	 * The number of structural features of the '<em>IUI Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IUI_ELEMENT_FEATURE_COUNT = InferencePackage.IINFERENCE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IUI_ELEMENT___LINFERENCE_OBJECT = InferencePackage.IINFERENCE_OBJECT___LINFERENCE_OBJECT;
+
+	/**
+	 * The number of operations of the '<em>IUI Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IUI_ELEMENT_OPERATION_COUNT = InferencePackage.IINFERENCE_OBJECT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.UIPageImpl <em>UI Page</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.ui.impl.UIPageImpl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getUIPage()
+	 * @generated
+	 */
+	int UI_PAGE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_PAGE__POSITION = PresentationPackage.ISIZED_ELEMENT__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_PAGE__VERTICAL_RELATIVE = PresentationPackage.ISIZED_ELEMENT__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_PAGE__HORIZONTAL_RELATIVE = PresentationPackage.ISIZED_ELEMENT__HORIZONTAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_PAGE__WIDTH = PresentationPackage.ISIZED_ELEMENT__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_PAGE__HEIGHT = PresentationPackage.ISIZED_ELEMENT__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_PAGE__NAME = PresentationPackage.ISIZED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Panels</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_PAGE__PANELS = PresentationPackage.ISIZED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>UI Page</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_PAGE_FEATURE_COUNT = PresentationPackage.ISIZED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>UI Page</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI_PAGE_OPERATION_COUNT = PresentationPackage.ISIZED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.IControl <em>IControl</em>}' class.
@@ -204,7 +481,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getIControl()
 	 * @generated
 	 */
-	int ICONTROL = 1;
+	int ICONTROL = 5;
 
 	/**
 	 * The number of structural features of the '<em>IControl</em>' class.
@@ -213,7 +490,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ICONTROL_FEATURE_COUNT = PresentationPackage.IUI_ELEMENT_FEATURE_COUNT + 0;
+	int ICONTROL_FEATURE_COUNT = IUI_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -222,7 +499,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ICONTROL___LINFERENCE_OBJECT = PresentationPackage.IUI_ELEMENT___LINFERENCE_OBJECT;
+	int ICONTROL___LINFERENCE_OBJECT = IUI_ELEMENT___LINFERENCE_OBJECT;
 
 	/**
 	 * The number of operations of the '<em>IControl</em>' class.
@@ -231,7 +508,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ICONTROL_OPERATION_COUNT = PresentationPackage.IUI_ELEMENT_OPERATION_COUNT + 0;
+	int ICONTROL_OPERATION_COUNT = IUI_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.Widget <em>Widget</em>}' class.
@@ -241,7 +518,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getWidget()
 	 * @generated
 	 */
-	int WIDGET = 2;
+	int WIDGET = 6;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -316,14 +593,14 @@ public interface UiPackage extends EPackage
 	int WIDGET_OPERATION_COUNT = ICONTROL_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.AbstractLabelImpl <em>Abstract Label</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.TextWidgetImpl <em>Text Widget</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.lily.core.model.ui.impl.AbstractLabelImpl
-	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getAbstractLabel()
+	 * @see org.sheepy.lily.core.model.ui.impl.TextWidgetImpl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getTextWidget()
 	 * @generated
 	 */
-	int ABSTRACT_LABEL = 3;
+	int TEXT_WIDGET = 7;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -332,7 +609,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL__POSITION = WIDGET__POSITION;
+	int TEXT_WIDGET__POSITION = WIDGET__POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
@@ -341,7 +618,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL__VERTICAL_RELATIVE = WIDGET__VERTICAL_RELATIVE;
+	int TEXT_WIDGET__VERTICAL_RELATIVE = WIDGET__VERTICAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
@@ -350,7 +627,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL__HORIZONTAL_RELATIVE = WIDGET__HORIZONTAL_RELATIVE;
+	int TEXT_WIDGET__HORIZONTAL_RELATIVE = WIDGET__HORIZONTAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -359,7 +636,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL__WIDTH = WIDGET__WIDTH;
+	int TEXT_WIDGET__WIDTH = WIDGET__WIDTH;
 
 	/**
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
@@ -368,34 +645,25 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL__HEIGHT = WIDGET__HEIGHT;
+	int TEXT_WIDGET__HEIGHT = WIDGET__HEIGHT;
 
 	/**
-	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * The feature id for the '<em><b>Font</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL__TEXT = WIDGET_FEATURE_COUNT + 0;
+	int TEXT_WIDGET__FONT = WIDGET_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Font Scale</b></em>' attribute.
+	 * The number of structural features of the '<em>Text Widget</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL__FONT_SCALE = WIDGET_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Abstract Label</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_LABEL_FEATURE_COUNT = WIDGET_FEATURE_COUNT + 2;
+	int TEXT_WIDGET_FEATURE_COUNT = WIDGET_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -404,7 +672,116 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL___LINFERENCE_OBJECT = WIDGET___LINFERENCE_OBJECT;
+	int TEXT_WIDGET___LINFERENCE_OBJECT = WIDGET___LINFERENCE_OBJECT;
+
+	/**
+	 * The number of operations of the '<em>Text Widget</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_WIDGET_OPERATION_COUNT = WIDGET_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.AbstractLabelImpl <em>Abstract Label</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.ui.impl.AbstractLabelImpl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getAbstractLabel()
+	 * @generated
+	 */
+	int ABSTRACT_LABEL = 8;
+
+	/**
+	 * The feature id for the '<em><b>Position</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__POSITION = TEXT_WIDGET__POSITION;
+
+	/**
+	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__VERTICAL_RELATIVE = TEXT_WIDGET__VERTICAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__HORIZONTAL_RELATIVE = TEXT_WIDGET__HORIZONTAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Width</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__WIDTH = TEXT_WIDGET__WIDTH;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__HEIGHT = TEXT_WIDGET__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Font</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__FONT = TEXT_WIDGET__FONT;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__TEXT = TEXT_WIDGET_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Font Scale</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL__FONT_SCALE = TEXT_WIDGET_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Label</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL_FEATURE_COUNT = TEXT_WIDGET_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>LInference Object</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_LABEL___LINFERENCE_OBJECT = TEXT_WIDGET___LINFERENCE_OBJECT;
 
 	/**
 	 * The number of operations of the '<em>Abstract Label</em>' class.
@@ -413,7 +790,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_LABEL_OPERATION_COUNT = WIDGET_OPERATION_COUNT + 0;
+	int ABSTRACT_LABEL_OPERATION_COUNT = TEXT_WIDGET_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.DynamicRowLayoutImpl <em>Dynamic Row Layout</em>}' class.
@@ -423,7 +800,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getDynamicRowLayout()
 	 * @generated
 	 */
-	int DYNAMIC_ROW_LAYOUT = 4;
+	int DYNAMIC_ROW_LAYOUT = 9;
 
 	/**
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
@@ -478,7 +855,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getVariableLabel()
 	 * @generated
 	 */
-	int VARIABLE_LABEL = 5;
+	int VARIABLE_LABEL = 10;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -524,6 +901,15 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int VARIABLE_LABEL__HEIGHT = ABSTRACT_LABEL__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Font</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE_LABEL__FONT = ABSTRACT_LABEL__FONT;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -605,7 +991,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getLabel()
 	 * @generated
 	 */
-	int LABEL = 6;
+	int LABEL = 11;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -653,6 +1039,15 @@ public interface UiPackage extends EPackage
 	int LABEL__HEIGHT = ABSTRACT_LABEL__HEIGHT;
 
 	/**
+	 * The feature id for the '<em><b>Font</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__FONT = ABSTRACT_LABEL__FONT;
+
+	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -671,13 +1066,22 @@ public interface UiPackage extends EPackage
 	int LABEL__FONT_SCALE = ABSTRACT_LABEL__FONT_SCALE;
 
 	/**
+	 * The feature id for the '<em><b>Wrap</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__WRAP = ABSTRACT_LABEL_FEATURE_COUNT + 0;
+
+	/**
 	 * The number of structural features of the '<em>Label</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_FEATURE_COUNT = ABSTRACT_LABEL_FEATURE_COUNT + 0;
+	int LABEL_FEATURE_COUNT = ABSTRACT_LABEL_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -705,7 +1109,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getSlider()
 	 * @generated
 	 */
-	int SLIDER = 7;
+	int SLIDER = 12;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -714,7 +1118,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER__POSITION = WIDGET__POSITION;
+	int SLIDER__POSITION = TEXT_WIDGET__POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
@@ -723,7 +1127,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER__VERTICAL_RELATIVE = WIDGET__VERTICAL_RELATIVE;
+	int SLIDER__VERTICAL_RELATIVE = TEXT_WIDGET__VERTICAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
@@ -732,7 +1136,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER__HORIZONTAL_RELATIVE = WIDGET__HORIZONTAL_RELATIVE;
+	int SLIDER__HORIZONTAL_RELATIVE = TEXT_WIDGET__HORIZONTAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -741,7 +1145,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER__WIDTH = WIDGET__WIDTH;
+	int SLIDER__WIDTH = TEXT_WIDGET__WIDTH;
 
 	/**
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
@@ -750,7 +1154,16 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER__HEIGHT = WIDGET__HEIGHT;
+	int SLIDER__HEIGHT = TEXT_WIDGET__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Font</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SLIDER__FONT = TEXT_WIDGET__FONT;
 
 	/**
 	 * The feature id for the '<em><b>Min Value</b></em>' attribute.
@@ -759,7 +1172,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER__MIN_VALUE = WIDGET_FEATURE_COUNT + 0;
+	int SLIDER__MIN_VALUE = TEXT_WIDGET_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Max Value</b></em>' attribute.
@@ -768,7 +1181,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER__MAX_VALUE = WIDGET_FEATURE_COUNT + 1;
+	int SLIDER__MAX_VALUE = TEXT_WIDGET_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Step</b></em>' attribute.
@@ -777,7 +1190,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER__STEP = WIDGET_FEATURE_COUNT + 2;
+	int SLIDER__STEP = TEXT_WIDGET_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Variable Resolver</b></em>' containment reference.
@@ -786,7 +1199,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER__VARIABLE_RESOLVER = WIDGET_FEATURE_COUNT + 3;
+	int SLIDER__VARIABLE_RESOLVER = TEXT_WIDGET_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Slider</em>' class.
@@ -795,7 +1208,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER_FEATURE_COUNT = WIDGET_FEATURE_COUNT + 4;
+	int SLIDER_FEATURE_COUNT = TEXT_WIDGET_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -804,7 +1217,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER___LINFERENCE_OBJECT = WIDGET___LINFERENCE_OBJECT;
+	int SLIDER___LINFERENCE_OBJECT = TEXT_WIDGET___LINFERENCE_OBJECT;
 
 	/**
 	 * The number of operations of the '<em>Slider</em>' class.
@@ -813,7 +1226,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SLIDER_OPERATION_COUNT = WIDGET_OPERATION_COUNT + 0;
+	int SLIDER_OPERATION_COUNT = TEXT_WIDGET_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.TextFieldImpl <em>Text Field</em>}' class.
@@ -823,7 +1236,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getTextField()
 	 * @generated
 	 */
-	int TEXT_FIELD = 8;
+	int TEXT_FIELD = 13;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -832,7 +1245,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD__POSITION = WIDGET__POSITION;
+	int TEXT_FIELD__POSITION = TEXT_WIDGET__POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
@@ -841,7 +1254,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD__VERTICAL_RELATIVE = WIDGET__VERTICAL_RELATIVE;
+	int TEXT_FIELD__VERTICAL_RELATIVE = TEXT_WIDGET__VERTICAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
@@ -850,7 +1263,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD__HORIZONTAL_RELATIVE = WIDGET__HORIZONTAL_RELATIVE;
+	int TEXT_FIELD__HORIZONTAL_RELATIVE = TEXT_WIDGET__HORIZONTAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -859,7 +1272,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD__WIDTH = WIDGET__WIDTH;
+	int TEXT_FIELD__WIDTH = TEXT_WIDGET__WIDTH;
 
 	/**
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
@@ -868,7 +1281,16 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD__HEIGHT = WIDGET__HEIGHT;
+	int TEXT_FIELD__HEIGHT = TEXT_WIDGET__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Font</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_FIELD__FONT = TEXT_WIDGET__FONT;
 
 	/**
 	 * The feature id for the '<em><b>Variable Resolver</b></em>' containment reference.
@@ -877,7 +1299,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD__VARIABLE_RESOLVER = WIDGET_FEATURE_COUNT + 0;
+	int TEXT_FIELD__VARIABLE_RESOLVER = TEXT_WIDGET_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Text Field</em>' class.
@@ -886,7 +1308,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD_FEATURE_COUNT = WIDGET_FEATURE_COUNT + 1;
+	int TEXT_FIELD_FEATURE_COUNT = TEXT_WIDGET_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -895,7 +1317,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD___LINFERENCE_OBJECT = WIDGET___LINFERENCE_OBJECT;
+	int TEXT_FIELD___LINFERENCE_OBJECT = TEXT_WIDGET___LINFERENCE_OBJECT;
 
 	/**
 	 * The number of operations of the '<em>Text Field</em>' class.
@@ -904,7 +1326,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FIELD_OPERATION_COUNT = WIDGET_OPERATION_COUNT + 0;
+	int TEXT_FIELD_OPERATION_COUNT = TEXT_WIDGET_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.AbstractButtonImpl <em>Abstract Button</em>}' class.
@@ -914,7 +1336,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getAbstractButton()
 	 * @generated
 	 */
-	int ABSTRACT_BUTTON = 9;
+	int ABSTRACT_BUTTON = 14;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -923,7 +1345,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON__POSITION = WIDGET__POSITION;
+	int ABSTRACT_BUTTON__POSITION = TEXT_WIDGET__POSITION;
 
 	/**
 	 * The feature id for the '<em><b>Vertical Relative</b></em>' attribute.
@@ -932,7 +1354,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON__VERTICAL_RELATIVE = WIDGET__VERTICAL_RELATIVE;
+	int ABSTRACT_BUTTON__VERTICAL_RELATIVE = TEXT_WIDGET__VERTICAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Horizontal Relative</b></em>' attribute.
@@ -941,7 +1363,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON__HORIZONTAL_RELATIVE = WIDGET__HORIZONTAL_RELATIVE;
+	int ABSTRACT_BUTTON__HORIZONTAL_RELATIVE = TEXT_WIDGET__HORIZONTAL_RELATIVE;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -950,7 +1372,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON__WIDTH = WIDGET__WIDTH;
+	int ABSTRACT_BUTTON__WIDTH = TEXT_WIDGET__WIDTH;
 
 	/**
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
@@ -959,7 +1381,16 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON__HEIGHT = WIDGET__HEIGHT;
+	int ABSTRACT_BUTTON__HEIGHT = TEXT_WIDGET__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Font</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BUTTON__FONT = TEXT_WIDGET__FONT;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -968,7 +1399,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON__TEXT = WIDGET_FEATURE_COUNT + 0;
+	int ABSTRACT_BUTTON__TEXT = TEXT_WIDGET_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Button</em>' class.
@@ -977,7 +1408,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON_FEATURE_COUNT = WIDGET_FEATURE_COUNT + 1;
+	int ABSTRACT_BUTTON_FEATURE_COUNT = TEXT_WIDGET_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -986,7 +1417,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON___LINFERENCE_OBJECT = WIDGET___LINFERENCE_OBJECT;
+	int ABSTRACT_BUTTON___LINFERENCE_OBJECT = TEXT_WIDGET___LINFERENCE_OBJECT;
 
 	/**
 	 * The number of operations of the '<em>Abstract Button</em>' class.
@@ -995,7 +1426,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_BUTTON_OPERATION_COUNT = WIDGET_OPERATION_COUNT + 0;
+	int ABSTRACT_BUTTON_OPERATION_COUNT = TEXT_WIDGET_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.ButtonImpl <em>Button</em>}' class.
@@ -1005,7 +1436,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getButton()
 	 * @generated
 	 */
-	int BUTTON = 10;
+	int BUTTON = 15;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -1051,6 +1482,15 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int BUTTON__HEIGHT = ABSTRACT_BUTTON__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Font</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BUTTON__FONT = ABSTRACT_BUTTON__FONT;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -1141,7 +1581,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getAbstractBooleanButton()
 	 * @generated
 	 */
-	int ABSTRACT_BOOLEAN_BUTTON = 11;
+	int ABSTRACT_BOOLEAN_BUTTON = 16;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -1187,6 +1627,15 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int ABSTRACT_BOOLEAN_BUTTON__HEIGHT = ABSTRACT_BUTTON__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Font</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_BOOLEAN_BUTTON__FONT = ABSTRACT_BUTTON__FONT;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -1250,7 +1699,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getBooleanButton()
 	 * @generated
 	 */
-	int BOOLEAN_BUTTON = 12;
+	int BOOLEAN_BUTTON = 17;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -1296,6 +1745,15 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int BOOLEAN_BUTTON__HEIGHT = ABSTRACT_BOOLEAN_BUTTON__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Font</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_BUTTON__FONT = ABSTRACT_BOOLEAN_BUTTON__FONT;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -1368,7 +1826,7 @@ public interface UiPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getBooleanActionButton()
 	 * @generated
 	 */
-	int BOOLEAN_ACTION_BUTTON = 13;
+	int BOOLEAN_ACTION_BUTTON = 18;
 
 	/**
 	 * The feature id for the '<em><b>Position</b></em>' attribute.
@@ -1414,6 +1872,15 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int BOOLEAN_ACTION_BUTTON__HEIGHT = ABSTRACT_BOOLEAN_BUTTON__HEIGHT;
+
+	/**
+	 * The feature id for the '<em><b>Font</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_ACTION_BUTTON__FONT = ABSTRACT_BOOLEAN_BUTTON__FONT;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -1488,6 +1955,153 @@ public interface UiPackage extends EPackage
 	int BOOLEAN_ACTION_BUTTON_OPERATION_COUNT = ABSTRACT_BOOLEAN_BUTTON_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.FontPkgImpl <em>Font Pkg</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.ui.impl.FontPkgImpl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getFontPkg()
+	 * @generated
+	 */
+	int FONT_PKG = 19;
+
+	/**
+	 * The feature id for the '<em><b>Fonts</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FONT_PKG__FONTS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Font Pkg</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FONT_PKG_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Font Pkg</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FONT_PKG_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.FontTableImpl <em>Font Table</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.ui.impl.FontTableImpl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getFontTable()
+	 * @generated
+	 */
+	int FONT_TABLE = 20;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FONT_TABLE__NAME = ApplicationPackage.IRESOURCE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>File</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FONT_TABLE__FILE = ApplicationPackage.IRESOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Char Tables</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FONT_TABLE__CHAR_TABLES = ApplicationPackage.IRESOURCE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Font Table</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FONT_TABLE_FEATURE_COUNT = ApplicationPackage.IRESOURCE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Font Table</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FONT_TABLE_OPERATION_COUNT = ApplicationPackage.IRESOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.FontImpl <em>Font</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.ui.impl.FontImpl
+	 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getFont()
+	 * @generated
+	 */
+	int FONT = 21;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FONT__NAME = ApplicationPackage.IRESOURCE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Tables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FONT__TABLES = ApplicationPackage.IRESOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Height</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FONT__HEIGHT = ApplicationPackage.IRESOURCE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Font</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FONT_FEATURE_COUNT = ApplicationPackage.IRESOURCE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Font</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FONT_OPERATION_COUNT = ApplicationPackage.IRESOURCE_OPERATION_COUNT + 0;
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.Panel <em>Panel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1553,6 +2167,101 @@ public interface UiPackage extends EPackage
 	EAttribute getPanel_Minimized();
 
 	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.UI <em>UI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>UI</em>'.
+	 * @see org.sheepy.lily.core.model.ui.UI
+	 * @generated
+	 */
+	EClass getUI();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.UI#isImageSupport <em>Image Support</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Image Support</em>'.
+	 * @see org.sheepy.lily.core.model.ui.UI#isImageSupport()
+	 * @see #getUI()
+	 * @generated
+	 */
+	EAttribute getUI_ImageSupport();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.ui.UI#getUiPages <em>Ui Pages</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Ui Pages</em>'.
+	 * @see org.sheepy.lily.core.model.ui.UI#getUiPages()
+	 * @see #getUI()
+	 * @generated
+	 */
+	EReference getUI_UiPages();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.ui.UI#getCurrentUIPage <em>Current UI Page</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Current UI Page</em>'.
+	 * @see org.sheepy.lily.core.model.ui.UI#getCurrentUIPage()
+	 * @see #getUI()
+	 * @generated
+	 */
+	EReference getUI_CurrentUIPage();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.ui.UI#getFontPkg <em>Font Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Font Pkg</em>'.
+	 * @see org.sheepy.lily.core.model.ui.UI#getFontPkg()
+	 * @see #getUI()
+	 * @generated
+	 */
+	EReference getUI_FontPkg();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.IUIElement <em>IUI Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IUI Element</em>'.
+	 * @see org.sheepy.lily.core.model.ui.IUIElement
+	 * @generated
+	 */
+	EClass getIUIElement();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.UIPage <em>UI Page</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>UI Page</em>'.
+	 * @see org.sheepy.lily.core.model.ui.UIPage
+	 * @generated
+	 */
+	EClass getUIPage();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.ui.UIPage#getPanels <em>Panels</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Panels</em>'.
+	 * @see org.sheepy.lily.core.model.ui.UIPage#getPanels()
+	 * @see #getUIPage()
+	 * @generated
+	 */
+	EReference getUIPage_Panels();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.IPanel <em>IPanel</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IPanel</em>'.
+	 * @see org.sheepy.lily.core.model.ui.IPanel
+	 * @generated
+	 */
+	EClass getIPanel();
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.IControl <em>IControl</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1571,6 +2280,27 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	EClass getWidget();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.TextWidget <em>Text Widget</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Text Widget</em>'.
+	 * @see org.sheepy.lily.core.model.ui.TextWidget
+	 * @generated
+	 */
+	EClass getTextWidget();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.ui.TextWidget#getFont <em>Font</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Font</em>'.
+	 * @see org.sheepy.lily.core.model.ui.TextWidget#getFont()
+	 * @see #getTextWidget()
+	 * @generated
+	 */
+	EReference getTextWidget_Font();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.AbstractLabel <em>Abstract Label</em>}'.
@@ -1688,6 +2418,17 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	EClass getLabel();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.Label#isWrap <em>Wrap</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Wrap</em>'.
+	 * @see org.sheepy.lily.core.model.ui.Label#isWrap()
+	 * @see #getLabel()
+	 * @generated
+	 */
+	EAttribute getLabel_Wrap();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.Slider <em>Slider</em>}'.
@@ -1934,6 +2675,91 @@ public interface UiPackage extends EPackage
 	EReference getBooleanActionButton_ActionWhenFalse();
 
 	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.FontPkg <em>Font Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Font Pkg</em>'.
+	 * @see org.sheepy.lily.core.model.ui.FontPkg
+	 * @generated
+	 */
+	EClass getFontPkg();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.ui.FontPkg#getFonts <em>Fonts</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Fonts</em>'.
+	 * @see org.sheepy.lily.core.model.ui.FontPkg#getFonts()
+	 * @see #getFontPkg()
+	 * @generated
+	 */
+	EReference getFontPkg_Fonts();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.FontTable <em>Font Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Font Table</em>'.
+	 * @see org.sheepy.lily.core.model.ui.FontTable
+	 * @generated
+	 */
+	EClass getFontTable();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.ui.FontTable#getFile <em>File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>File</em>'.
+	 * @see org.sheepy.lily.core.model.ui.FontTable#getFile()
+	 * @see #getFontTable()
+	 * @generated
+	 */
+	EReference getFontTable_File();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.sheepy.lily.core.model.ui.FontTable#getCharTables <em>Char Tables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Char Tables</em>'.
+	 * @see org.sheepy.lily.core.model.ui.FontTable#getCharTables()
+	 * @see #getFontTable()
+	 * @generated
+	 */
+	EAttribute getFontTable_CharTables();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.Font <em>Font</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Font</em>'.
+	 * @see org.sheepy.lily.core.model.ui.Font
+	 * @generated
+	 */
+	EClass getFont();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.ui.Font#getTables <em>Tables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Tables</em>'.
+	 * @see org.sheepy.lily.core.model.ui.Font#getTables()
+	 * @see #getFont()
+	 * @generated
+	 */
+	EReference getFont_Tables();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.Font#getHeight <em>Height</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Height</em>'.
+	 * @see org.sheepy.lily.core.model.ui.Font#getHeight()
+	 * @see #getFont()
+	 * @generated
+	 */
+	EAttribute getFont_Height();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2008,6 +2834,86 @@ public interface UiPackage extends EPackage
 		EAttribute PANEL__MINIMIZED = eINSTANCE.getPanel_Minimized();
 
 		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.UIImpl <em>UI</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.ui.impl.UIImpl
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getUI()
+		 * @generated
+		 */
+		EClass UI = eINSTANCE.getUI();
+
+		/**
+		 * The meta object literal for the '<em><b>Image Support</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute UI__IMAGE_SUPPORT = eINSTANCE.getUI_ImageSupport();
+
+		/**
+		 * The meta object literal for the '<em><b>Ui Pages</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UI__UI_PAGES = eINSTANCE.getUI_UiPages();
+
+		/**
+		 * The meta object literal for the '<em><b>Current UI Page</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UI__CURRENT_UI_PAGE = eINSTANCE.getUI_CurrentUIPage();
+
+		/**
+		 * The meta object literal for the '<em><b>Font Pkg</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UI__FONT_PKG = eINSTANCE.getUI_FontPkg();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.IUIElement <em>IUI Element</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.ui.IUIElement
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getIUIElement()
+		 * @generated
+		 */
+		EClass IUI_ELEMENT = eINSTANCE.getIUIElement();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.UIPageImpl <em>UI Page</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.ui.impl.UIPageImpl
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getUIPage()
+		 * @generated
+		 */
+		EClass UI_PAGE = eINSTANCE.getUIPage();
+
+		/**
+		 * The meta object literal for the '<em><b>Panels</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UI_PAGE__PANELS = eINSTANCE.getUIPage_Panels();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.IPanel <em>IPanel</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.ui.IPanel
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getIPanel()
+		 * @generated
+		 */
+		EClass IPANEL = eINSTANCE.getIPanel();
+
+		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.IControl <em>IControl</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2026,6 +2932,24 @@ public interface UiPackage extends EPackage
 		 * @generated
 		 */
 		EClass WIDGET = eINSTANCE.getWidget();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.TextWidgetImpl <em>Text Widget</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.ui.impl.TextWidgetImpl
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getTextWidget()
+		 * @generated
+		 */
+		EClass TEXT_WIDGET = eINSTANCE.getTextWidget();
+
+		/**
+		 * The meta object literal for the '<em><b>Font</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEXT_WIDGET__FONT = eINSTANCE.getTextWidget_Font();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.AbstractLabelImpl <em>Abstract Label</em>}' class.
@@ -2122,6 +3046,14 @@ public interface UiPackage extends EPackage
 		 * @generated
 		 */
 		EClass LABEL = eINSTANCE.getLabel();
+
+		/**
+		 * The meta object literal for the '<em><b>Wrap</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LABEL__WRAP = eINSTANCE.getLabel_Wrap();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.SliderImpl <em>Slider</em>}' class.
@@ -2320,6 +3252,76 @@ public interface UiPackage extends EPackage
 		 * @generated
 		 */
 		EReference BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE = eINSTANCE.getBooleanActionButton_ActionWhenFalse();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.FontPkgImpl <em>Font Pkg</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.ui.impl.FontPkgImpl
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getFontPkg()
+		 * @generated
+		 */
+		EClass FONT_PKG = eINSTANCE.getFontPkg();
+
+		/**
+		 * The meta object literal for the '<em><b>Fonts</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FONT_PKG__FONTS = eINSTANCE.getFontPkg_Fonts();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.FontTableImpl <em>Font Table</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.ui.impl.FontTableImpl
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getFontTable()
+		 * @generated
+		 */
+		EClass FONT_TABLE = eINSTANCE.getFontTable();
+
+		/**
+		 * The meta object literal for the '<em><b>File</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FONT_TABLE__FILE = eINSTANCE.getFontTable_File();
+
+		/**
+		 * The meta object literal for the '<em><b>Char Tables</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FONT_TABLE__CHAR_TABLES = eINSTANCE.getFontTable_CharTables();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.FontImpl <em>Font</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.ui.impl.FontImpl
+		 * @see org.sheepy.lily.core.model.ui.impl.UiPackageImpl#getFont()
+		 * @generated
+		 */
+		EClass FONT = eINSTANCE.getFont();
+
+		/**
+		 * The meta object literal for the '<em><b>Tables</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FONT__TABLES = eINSTANCE.getFont_Tables();
+
+		/**
+		 * The meta object literal for the '<em><b>Height</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FONT__HEIGHT = eINSTANCE.getFont_Height();
 
 	}
 

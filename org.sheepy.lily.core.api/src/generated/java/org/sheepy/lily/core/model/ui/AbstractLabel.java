@@ -19,7 +19,7 @@ package org.sheepy.lily.core.model.ui;
  * @model abstract="true"
  * @generated
  */
-public interface AbstractLabel extends Widget
+public interface AbstractLabel extends TextWidget
 {
 	/**
 	 * Returns the value of the '<em><b>Text</b></em>' attribute.

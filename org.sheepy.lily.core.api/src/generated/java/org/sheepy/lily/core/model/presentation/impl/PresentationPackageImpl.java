@@ -5,7 +5,6 @@ package org.sheepy.lily.core.model.presentation.impl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.sheepy.lily.core.model.action.ActionPackage;
@@ -25,13 +24,10 @@ import org.sheepy.lily.core.model.inference.impl.InferencePackageImpl;
 import org.sheepy.lily.core.model.maintainer.MaintainerPackage;
 
 import org.sheepy.lily.core.model.maintainer.impl.MaintainerPackageImpl;
-import org.sheepy.lily.core.model.presentation.IPanel;
 import org.sheepy.lily.core.model.presentation.IPositionElement;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
-import org.sheepy.lily.core.model.presentation.IUIElement;
 import org.sheepy.lily.core.model.presentation.PresentationFactory;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
-import org.sheepy.lily.core.model.presentation.UIPage;
 import org.sheepy.lily.core.model.types.TypesPackage;
 
 import org.sheepy.lily.core.model.types.impl.TypesPackageImpl;
@@ -65,34 +61,6 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * @generated
 	 */
 	private EClass iSizedElementEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass uiEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass iuiElementEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass uiPageEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass iPanelEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -274,94 +242,6 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * @generated
 	 */
 	@Override
-	public EClass getUI()
-	{
-		return uiEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getUI_UiPages()
-	{
-		return (EReference)uiEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getUI_CurrentUIPage()
-	{
-		return (EReference)uiEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getUI_ImageSupport()
-	{
-		return (EAttribute)uiEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getIUIElement()
-	{
-		return iuiElementEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getUIPage()
-	{
-		return uiPageEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getUIPage_Panels()
-	{
-		return (EReference)uiPageEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getIPanel()
-	{
-		return iPanelEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public PresentationFactory getPresentationFactory()
 	{
 		return (PresentationFactory)getEFactoryInstance();
@@ -395,18 +275,6 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 		iSizedElementEClass = createEClass(ISIZED_ELEMENT);
 		createEAttribute(iSizedElementEClass, ISIZED_ELEMENT__WIDTH);
 		createEAttribute(iSizedElementEClass, ISIZED_ELEMENT__HEIGHT);
-
-		uiEClass = createEClass(UI);
-		createEReference(uiEClass, UI__UI_PAGES);
-		createEReference(uiEClass, UI__CURRENT_UI_PAGE);
-		createEAttribute(uiEClass, UI__IMAGE_SUPPORT);
-
-		iuiElementEClass = createEClass(IUI_ELEMENT);
-
-		uiPageEClass = createEClass(UI_PAGE);
-		createEReference(uiPageEClass, UI_PAGE__PANELS);
-
-		iPanelEClass = createEClass(IPANEL);
 	}
 
 	/**
@@ -435,8 +303,6 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 
 		// Obtain other dependent packages
 		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
-		ApplicationPackage theApplicationPackage = (ApplicationPackage)EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
-		InferencePackage theInferencePackage = (InferencePackage)EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -444,12 +310,6 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 
 		// Add supertypes to classes
 		iSizedElementEClass.getESuperTypes().add(this.getIPositionElement());
-		uiEClass.getESuperTypes().add(theApplicationPackage.getIScenePart());
-		iuiElementEClass.getESuperTypes().add(theInferencePackage.getIInferenceObject());
-		uiPageEClass.getESuperTypes().add(this.getISizedElement());
-		iPanelEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
-		iPanelEClass.getESuperTypes().add(this.getIUIElement());
-		iPanelEClass.getESuperTypes().add(this.getIPositionElement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(iPositionElementEClass, IPositionElement.class, "IPositionElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -460,18 +320,6 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 		initEClass(iSizedElementEClass, ISizedElement.class, "ISizedElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getISizedElement_Width(), ecorePackage.getEInt(), "width", null, 0, 1, ISizedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getISizedElement_Height(), ecorePackage.getEInt(), "height", null, 0, 1, ISizedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(uiEClass, org.sheepy.lily.core.model.presentation.UI.class, "UI", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getUI_UiPages(), this.getUIPage(), null, "uiPages", null, 0, -1, org.sheepy.lily.core.model.presentation.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getUI_CurrentUIPage(), this.getUIPage(), null, "currentUIPage", null, 0, 1, org.sheepy.lily.core.model.presentation.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getUI_ImageSupport(), ecorePackage.getEBoolean(), "imageSupport", "true", 1, 1, org.sheepy.lily.core.model.presentation.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(iuiElementEClass, IUIElement.class, "IUIElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(uiPageEClass, UIPage.class, "UIPage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getUIPage_Panels(), this.getIPanel(), null, "panels", null, 0, -1, UIPage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(iPanelEClass, IPanel.class, "IPanel", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

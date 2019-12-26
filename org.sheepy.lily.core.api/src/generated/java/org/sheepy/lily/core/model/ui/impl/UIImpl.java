@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.presentation.impl;
+package org.sheepy.lily.core.model.ui.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -23,10 +23,10 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 
 import org.sheepy.lily.core.model.inference.IInferenceObject;
-
-import org.sheepy.lily.core.model.presentation.PresentationPackage;
-import org.sheepy.lily.core.model.presentation.UI;
-import org.sheepy.lily.core.model.presentation.UIPage;
+import org.sheepy.lily.core.model.ui.FontPkg;
+import org.sheepy.lily.core.model.ui.UI;
+import org.sheepy.lily.core.model.ui.UIPage;
+import org.sheepy.lily.core.model.ui.UiPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,35 +36,16 @@ import org.sheepy.lily.core.model.presentation.UIPage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIImpl#getUiPages <em>Ui Pages</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIImpl#getCurrentUIPage <em>Current UI Page</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIImpl#isImageSupport <em>Image Support</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#isImageSupport <em>Image Support</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getUiPages <em>Ui Pages</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getCurrentUIPage <em>Current UI Page</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getFontPkg <em>Font Pkg</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class UIImpl extends LilyEObject implements UI
 {
-	/**
-	 * The cached value of the '{@link #getUiPages() <em>Ui Pages</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUiPages()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<UIPage> uiPages;
-
-	/**
-	 * The cached value of the '{@link #getCurrentUIPage() <em>Current UI Page</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCurrentUIPage()
-	 * @generated
-	 * @ordered
-	 */
-	protected UIPage currentUIPage;
-
 	/**
 	 * The default value of the '{@link #isImageSupport() <em>Image Support</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -86,6 +67,36 @@ public class UIImpl extends LilyEObject implements UI
 	protected boolean imageSupport = IMAGE_SUPPORT_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getUiPages() <em>Ui Pages</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUiPages()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<UIPage> uiPages;
+
+	/**
+	 * The cached value of the '{@link #getCurrentUIPage() <em>Current UI Page</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCurrentUIPage()
+	 * @generated
+	 * @ordered
+	 */
+	protected UIPage currentUIPage;
+
+	/**
+	 * The cached value of the '{@link #getFontPkg() <em>Font Pkg</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFontPkg()
+	 * @generated
+	 * @ordered
+	 */
+	protected FontPkg fontPkg;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -103,7 +114,32 @@ public class UIImpl extends LilyEObject implements UI
 	@Override
 	protected EClass eStaticClass()
 	{
-		return PresentationPackage.Literals.UI;
+		return UiPackage.Literals.UI;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isImageSupport()
+	{
+		return imageSupport;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setImageSupport(boolean newImageSupport)
+	{
+		boolean oldImageSupport = imageSupport;
+		imageSupport = newImageSupport;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.UI__IMAGE_SUPPORT, oldImageSupport, imageSupport));
 	}
 
 	/**
@@ -116,7 +152,7 @@ public class UIImpl extends LilyEObject implements UI
 	{
 		if (uiPages == null)
 		{
-			uiPages = new EObjectContainmentEList<UIPage>(UIPage.class, this, PresentationPackage.UI__UI_PAGES);
+			uiPages = new EObjectContainmentEList.Resolving<UIPage>(UIPage.class, this, UiPackage.UI__UI_PAGES);
 		}
 		return uiPages;
 	}
@@ -136,7 +172,7 @@ public class UIImpl extends LilyEObject implements UI
 			if (currentUIPage != oldCurrentUIPage)
 			{
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PresentationPackage.UI__CURRENT_UI_PAGE, oldCurrentUIPage, currentUIPage));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UiPackage.UI__CURRENT_UI_PAGE, oldCurrentUIPage, currentUIPage));
 			}
 		}
 		return currentUIPage;
@@ -163,7 +199,7 @@ public class UIImpl extends LilyEObject implements UI
 		UIPage oldCurrentUIPage = currentUIPage;
 		currentUIPage = newCurrentUIPage;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.UI__CURRENT_UI_PAGE, oldCurrentUIPage, currentUIPage));
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.UI__CURRENT_UI_PAGE, oldCurrentUIPage, currentUIPage));
 	}
 
 	/**
@@ -172,9 +208,26 @@ public class UIImpl extends LilyEObject implements UI
 	 * @generated
 	 */
 	@Override
-	public boolean isImageSupport()
+	public FontPkg getFontPkg()
 	{
-		return imageSupport;
+		if (fontPkg != null && ((EObject)fontPkg).eIsProxy())
+		{
+			InternalEObject oldFontPkg = (InternalEObject)fontPkg;
+			fontPkg = (FontPkg)eResolveProxy(oldFontPkg);
+			if (fontPkg != oldFontPkg)
+			{
+				InternalEObject newFontPkg = (InternalEObject)fontPkg;
+				NotificationChain msgs = oldFontPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UiPackage.UI__FONT_PKG, null, null);
+				if (newFontPkg.eInternalContainer() == null)
+				{
+					msgs = newFontPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UiPackage.UI__FONT_PKG, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UiPackage.UI__FONT_PKG, oldFontPkg, fontPkg));
+			}
+		}
+		return fontPkg;
 	}
 
 	/**
@@ -182,13 +235,48 @@ public class UIImpl extends LilyEObject implements UI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setImageSupport(boolean newImageSupport)
+	public FontPkg basicGetFontPkg()
 	{
-		boolean oldImageSupport = imageSupport;
-		imageSupport = newImageSupport;
+		return fontPkg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetFontPkg(FontPkg newFontPkg, NotificationChain msgs)
+	{
+		FontPkg oldFontPkg = fontPkg;
+		fontPkg = newFontPkg;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.UI__IMAGE_SUPPORT, oldImageSupport, imageSupport));
+		{
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UiPackage.UI__FONT_PKG, oldFontPkg, newFontPkg);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setFontPkg(FontPkg newFontPkg)
+	{
+		if (newFontPkg != fontPkg)
+		{
+			NotificationChain msgs = null;
+			if (fontPkg != null)
+				msgs = ((InternalEObject)fontPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UiPackage.UI__FONT_PKG, null, msgs);
+			if (newFontPkg != null)
+				msgs = ((InternalEObject)newFontPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UiPackage.UI__FONT_PKG, null, msgs);
+			msgs = basicSetFontPkg(newFontPkg, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.UI__FONT_PKG, newFontPkg, newFontPkg));
 	}
 
 	/**
@@ -212,8 +300,10 @@ public class UIImpl extends LilyEObject implements UI
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.UI__UI_PAGES:
+			case UiPackage.UI__UI_PAGES:
 				return ((InternalEList<?>)getUiPages()).basicRemove(otherEnd, msgs);
+			case UiPackage.UI__FONT_PKG:
+				return basicSetFontPkg(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -228,13 +318,16 @@ public class UIImpl extends LilyEObject implements UI
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.UI__UI_PAGES:
+			case UiPackage.UI__IMAGE_SUPPORT:
+				return isImageSupport();
+			case UiPackage.UI__UI_PAGES:
 				return getUiPages();
-			case PresentationPackage.UI__CURRENT_UI_PAGE:
+			case UiPackage.UI__CURRENT_UI_PAGE:
 				if (resolve) return getCurrentUIPage();
 				return basicGetCurrentUIPage();
-			case PresentationPackage.UI__IMAGE_SUPPORT:
-				return isImageSupport();
+			case UiPackage.UI__FONT_PKG:
+				if (resolve) return getFontPkg();
+				return basicGetFontPkg();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -250,15 +343,18 @@ public class UIImpl extends LilyEObject implements UI
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.UI__UI_PAGES:
+			case UiPackage.UI__IMAGE_SUPPORT:
+				setImageSupport((Boolean)newValue);
+				return;
+			case UiPackage.UI__UI_PAGES:
 				getUiPages().clear();
 				getUiPages().addAll((Collection<? extends UIPage>)newValue);
 				return;
-			case PresentationPackage.UI__CURRENT_UI_PAGE:
+			case UiPackage.UI__CURRENT_UI_PAGE:
 				setCurrentUIPage((UIPage)newValue);
 				return;
-			case PresentationPackage.UI__IMAGE_SUPPORT:
-				setImageSupport((Boolean)newValue);
+			case UiPackage.UI__FONT_PKG:
+				setFontPkg((FontPkg)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -274,14 +370,17 @@ public class UIImpl extends LilyEObject implements UI
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.UI__UI_PAGES:
+			case UiPackage.UI__IMAGE_SUPPORT:
+				setImageSupport(IMAGE_SUPPORT_EDEFAULT);
+				return;
+			case UiPackage.UI__UI_PAGES:
 				getUiPages().clear();
 				return;
-			case PresentationPackage.UI__CURRENT_UI_PAGE:
+			case UiPackage.UI__CURRENT_UI_PAGE:
 				setCurrentUIPage((UIPage)null);
 				return;
-			case PresentationPackage.UI__IMAGE_SUPPORT:
-				setImageSupport(IMAGE_SUPPORT_EDEFAULT);
+			case UiPackage.UI__FONT_PKG:
+				setFontPkg((FontPkg)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -297,12 +396,14 @@ public class UIImpl extends LilyEObject implements UI
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.UI__UI_PAGES:
-				return uiPages != null && !uiPages.isEmpty();
-			case PresentationPackage.UI__CURRENT_UI_PAGE:
-				return currentUIPage != null;
-			case PresentationPackage.UI__IMAGE_SUPPORT:
+			case UiPackage.UI__IMAGE_SUPPORT:
 				return imageSupport != IMAGE_SUPPORT_EDEFAULT;
+			case UiPackage.UI__UI_PAGES:
+				return uiPages != null && !uiPages.isEmpty();
+			case UiPackage.UI__CURRENT_UI_PAGE:
+				return currentUIPage != null;
+			case UiPackage.UI__FONT_PKG:
+				return fontPkg != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -317,7 +418,7 @@ public class UIImpl extends LilyEObject implements UI
 	{
 		switch (operationID)
 		{
-			case PresentationPackage.UI___LINFERENCE_OBJECT:
+			case UiPackage.UI___LINFERENCE_OBJECT:
 				return lInferenceObject();
 		}
 		return super.eInvoke(operationID, arguments);

@@ -28,7 +28,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.sheepy.lily.core.model.application.ApplicationFactory;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.Scene;
-import org.sheepy.lily.core.model.presentation.PresentationFactory;
+import org.sheepy.lily.core.model.ui.UiFactory;
 
 /**
  * This is the item provider adapter for a {@link org.sheepy.lily.core.model.application.Scene} object.
@@ -255,7 +255,7 @@ public class SceneItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ApplicationPackage.Literals.SCENE__PARTS,
-				 PresentationFactory.eINSTANCE.createUI()));
+				 UiFactory.eINSTANCE.createUI()));
 	}
 
 	/**

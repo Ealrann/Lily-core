@@ -1,15 +1,17 @@
 /**
  */
-package org.sheepy.lily.core.model.presentation.provider;
+package org.sheepy.lily.core.model.ui.provider;
+
 
 import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
-import org.eclipse.emf.ecore.EStructuralFeature;
 
+import org.eclipse.emf.common.util.ResourceLocator;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -21,19 +23,27 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.joml.Vector2ic;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
-import org.sheepy.lily.core.model.presentation.UIPage;
+
+import org.sheepy.lily.core.model.types.TypesPackage;
+import org.sheepy.lily.core.model.ui.UIPage;
 import org.sheepy.lily.core.model.ui.UiFactory;
+import org.sheepy.lily.core.model.ui.UiPackage;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.lily.core.model.presentation.UIPage} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.ui.UIPage} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class UIPageItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
+public class UIPageItemProvider 
+	extends ItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -64,6 +74,7 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 			addHorizontalRelativePropertyDescriptor(object);
 			addWidthPropertyDescriptor(object);
 			addHeightPropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -184,6 +195,29 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 	}
 
 	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LNamedElement_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LNamedElement_name_feature", "_UI_LNamedElement_type"),
+				 TypesPackage.Literals.LNAMED_ELEMENT__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -197,7 +231,7 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 		if (childrenFeatures == null)
 		{
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(PresentationPackage.Literals.UI_PAGE__PANELS);
+			childrenFeatures.add(UiPackage.Literals.UI_PAGE__PANELS);
 		}
 		return childrenFeatures;
 	}
@@ -237,12 +271,12 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 	@Override
 	public String getText(Object object)
 	{
-		Vector2ic labelValue = ((UIPage)object).getPosition();
-		String label = labelValue == null ? null : labelValue.toString();
+		String label = ((UIPage)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_UIPage_type") :
 			getString("_UI_UIPage_type") + " " + label;
 	}
+
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -258,14 +292,15 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 
 		switch (notification.getFeatureID(UIPage.class))
 		{
-			case PresentationPackage.UI_PAGE__POSITION:
-			case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
-			case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
-			case PresentationPackage.UI_PAGE__WIDTH:
-			case PresentationPackage.UI_PAGE__HEIGHT:
+			case UiPackage.UI_PAGE__POSITION:
+			case UiPackage.UI_PAGE__VERTICAL_RELATIVE:
+			case UiPackage.UI_PAGE__HORIZONTAL_RELATIVE:
+			case UiPackage.UI_PAGE__WIDTH:
+			case UiPackage.UI_PAGE__HEIGHT:
+			case UiPackage.UI_PAGE__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case PresentationPackage.UI_PAGE__PANELS:
+			case UiPackage.UI_PAGE__PANELS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -286,7 +321,7 @@ public class UIPageItemProvider extends ItemProviderAdapter implements IEditingD
 
 		newChildDescriptors.add
 			(createChildParameter
-				(PresentationPackage.Literals.UI_PAGE__PANELS,
+				(UiPackage.Literals.UI_PAGE__PANELS,
 				 UiFactory.eINSTANCE.createPanel()));
 	}
 

@@ -64,14 +64,14 @@ public class CadenceFactoryImpl extends EFactoryImpl implements CadenceFactory
 	{
 		switch (eClass.getClassifierID())
 		{
-			case CadencePackage.CADENCE: return createCadence();
-			case CadencePackage.EXECUTE_WHILE: return createExecuteWhile();
-			case CadencePackage.EXECUTE_IF: return createExecuteIf();
-			case CadencePackage.PRINT_UPS: return createPrintUPS();
-			case CadencePackage.HAVE_TIME: return createHaveTime();
-			case CadencePackage.COUNT_UNTIL: return createCountUntil();
-			case CadencePackage.CLOSE_APPLICATION: return createCloseApplication();
-			case CadencePackage.GENERIC_CADENCE: return createGenericCadence();
+			case CadencePackage.CADENCE: return (EObject)createCadence();
+			case CadencePackage.EXECUTE_WHILE: return (EObject)createExecuteWhile();
+			case CadencePackage.EXECUTE_IF: return (EObject)createExecuteIf();
+			case CadencePackage.PRINT_UPS: return (EObject)createPrintUPS();
+			case CadencePackage.HAVE_TIME: return (EObject)createHaveTime();
+			case CadencePackage.COUNT_UNTIL: return (EObject)createCountUntil();
+			case CadencePackage.CLOSE_APPLICATION: return (EObject)createCloseApplication();
+			case CadencePackage.GENERIC_CADENCE: return (EObject)createGenericCadence();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

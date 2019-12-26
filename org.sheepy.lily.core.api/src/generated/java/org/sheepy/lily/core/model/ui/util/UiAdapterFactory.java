@@ -8,11 +8,11 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
+import org.sheepy.lily.core.model.application.IResource;
+import org.sheepy.lily.core.model.application.IScenePart;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
-import org.sheepy.lily.core.model.presentation.IPanel;
 import org.sheepy.lily.core.model.presentation.IPositionElement;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
-import org.sheepy.lily.core.model.presentation.IUIElement;
 import org.sheepy.lily.core.model.types.LNamedElement;
 
 import org.sheepy.lily.core.model.ui.*;
@@ -85,6 +85,26 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 				return createPanelAdapter();
 			}
 			@Override
+			public Adapter caseUI(UI object)
+			{
+				return createUIAdapter();
+			}
+			@Override
+			public Adapter caseIUIElement(IUIElement object)
+			{
+				return createIUIElementAdapter();
+			}
+			@Override
+			public Adapter caseUIPage(UIPage object)
+			{
+				return createUIPageAdapter();
+			}
+			@Override
+			public Adapter caseIPanel(IPanel object)
+			{
+				return createIPanelAdapter();
+			}
+			@Override
 			public Adapter caseIControl(IControl object)
 			{
 				return createIControlAdapter();
@@ -93,6 +113,11 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 			public Adapter caseWidget(Widget object)
 			{
 				return createWidgetAdapter();
+			}
+			@Override
+			public Adapter caseTextWidget(TextWidget object)
+			{
+				return createTextWidgetAdapter();
 			}
 			@Override
 			public Adapter caseAbstractLabel(AbstractLabel object)
@@ -150,6 +175,21 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 				return createBooleanActionButtonAdapter();
 			}
 			@Override
+			public Adapter caseFontPkg(FontPkg object)
+			{
+				return createFontPkgAdapter();
+			}
+			@Override
+			public Adapter caseFontTable(FontTable object)
+			{
+				return createFontTableAdapter();
+			}
+			@Override
+			public Adapter caseFont(Font object)
+			{
+				return createFontAdapter();
+			}
+			@Override
 			public Adapter caseLNamedElement(LNamedElement object)
 			{
 				return createLNamedElementAdapter();
@@ -160,24 +200,24 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 				return createIInferenceObjectAdapter();
 			}
 			@Override
-			public Adapter caseIUIElement(IUIElement object)
-			{
-				return createIUIElementAdapter();
-			}
-			@Override
 			public Adapter caseIPositionElement(IPositionElement object)
 			{
 				return createIPositionElementAdapter();
 			}
 			@Override
-			public Adapter caseIPanel(IPanel object)
-			{
-				return createIPanelAdapter();
-			}
-			@Override
 			public Adapter caseISizedElement(ISizedElement object)
 			{
 				return createISizedElementAdapter();
+			}
+			@Override
+			public Adapter caseIScenePart(IScenePart object)
+			{
+				return createIScenePartAdapter();
+			}
+			@Override
+			public Adapter caseIResource(IResource object)
+			{
+				return createIResourceAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object)
@@ -216,6 +256,21 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.UI <em>UI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.ui.UI
+	 * @generated
+	 */
+	public Adapter createUIAdapter()
+	{
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.IControl <em>IControl</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -241,6 +296,21 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createWidgetAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.TextWidget <em>Text Widget</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.ui.TextWidget
+	 * @generated
+	 */
+	public Adapter createTextWidgetAdapter()
 	{
 		return null;
 	}
@@ -411,6 +481,51 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.FontPkg <em>Font Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.ui.FontPkg
+	 * @generated
+	 */
+	public Adapter createFontPkgAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.FontTable <em>Font Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.ui.FontTable
+	 * @generated
+	 */
+	public Adapter createFontTableAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.Font <em>Font</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.ui.Font
+	 * @generated
+	 */
+	public Adapter createFontAdapter()
+	{
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.types.LNamedElement <em>LNamed Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -441,16 +556,31 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.presentation.IUIElement <em>IUI Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.IUIElement <em>IUI Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.lily.core.model.presentation.IUIElement
+	 * @see org.sheepy.lily.core.model.ui.IUIElement
 	 * @generated
 	 */
 	public Adapter createIUIElementAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.UIPage <em>UI Page</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.ui.UIPage
+	 * @generated
+	 */
+	public Adapter createUIPageAdapter()
 	{
 		return null;
 	}
@@ -471,13 +601,13 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.presentation.IPanel <em>IPanel</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.ui.IPanel <em>IPanel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.lily.core.model.presentation.IPanel
+	 * @see org.sheepy.lily.core.model.ui.IPanel
 	 * @generated
 	 */
 	public Adapter createIPanelAdapter()
@@ -496,6 +626,36 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createISizedElementAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.IScenePart <em>IScene Part</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.IScenePart
+	 * @generated
+	 */
+	public Adapter createIScenePartAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.IResource <em>IResource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.IResource
+	 * @generated
+	 */
+	public Adapter createIResourceAdapter()
 	{
 		return null;
 	}

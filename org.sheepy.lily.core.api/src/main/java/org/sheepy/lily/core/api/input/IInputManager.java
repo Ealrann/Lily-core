@@ -11,8 +11,8 @@ import org.sheepy.lily.core.api.input.event.ScrollEvent;
 
 public interface IInputManager
 {
-
 	void showCursor(boolean show);
+	boolean isMouseOnUI();
 
 	Vector2fc getCursorPosition();
 	void setCursorPosition(Vector2fc position);

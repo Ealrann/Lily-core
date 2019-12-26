@@ -3,7 +3,6 @@
 package org.sheepy.lily.core.model.ui;
 
 import org.sheepy.lily.core.model.presentation.ISizedElement;
-import org.sheepy.lily.core.model.presentation.IUIElement;
 
 /**
  * <!-- begin-user-doc -->

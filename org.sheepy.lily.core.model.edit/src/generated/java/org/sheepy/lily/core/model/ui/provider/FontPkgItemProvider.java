@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.presentation.provider;
+package org.sheepy.lily.core.model.ui.provider;
 
 
 import java.util.Collection;
@@ -12,8 +12,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -21,21 +19,20 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.lily.core.model.presentation.PresentationFactory;
-import org.sheepy.lily.core.model.presentation.PresentationPackage;
-import org.sheepy.lily.core.model.presentation.UI;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.sheepy.lily.core.model.ui.FontPkg;
+import org.sheepy.lily.core.model.ui.UiFactory;
+import org.sheepy.lily.core.model.ui.UiPackage;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.lily.core.model.presentation.UI} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.ui.FontPkg} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class UIItemProvider 
+public class FontPkgItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -50,7 +47,7 @@ public class UIItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public UIItemProvider(AdapterFactory adapterFactory)
+	public FontPkgItemProvider(AdapterFactory adapterFactory)
 	{
 		super(adapterFactory);
 	}
@@ -68,56 +65,8 @@ public class UIItemProvider
 		{
 			super.getPropertyDescriptors(object);
 
-			addCurrentUIPagePropertyDescriptor(object);
-			addImageSupportPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Current UI Page feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addCurrentUIPagePropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_UI_currentUIPage_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_UI_currentUIPage_feature", "_UI_UI_type"),
-				 PresentationPackage.Literals.UI__CURRENT_UI_PAGE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Image Support feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addImageSupportPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_UI_imageSupport_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_UI_imageSupport_feature", "_UI_UI_type"),
-				 PresentationPackage.Literals.UI__IMAGE_SUPPORT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -134,7 +83,7 @@ public class UIItemProvider
 		if (childrenFeatures == null)
 		{
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(PresentationPackage.Literals.UI__UI_PAGES);
+			childrenFeatures.add(UiPackage.Literals.FONT_PKG__FONTS);
 		}
 		return childrenFeatures;
 	}
@@ -154,6 +103,18 @@ public class UIItemProvider
 	}
 
 	/**
+	 * This returns FontPkg.gif.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object getImage(Object object)
+	{
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/FontPkg"));
+	}
+
+	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -162,8 +123,7 @@ public class UIItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		UI ui = (UI)object;
-		return getString("_UI_UI_type") + " " + ui.isImageSupport();
+		return getString("_UI_FontPkg_type");
 	}
 
 
@@ -179,12 +139,9 @@ public class UIItemProvider
 	{
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(UI.class))
+		switch (notification.getFeatureID(FontPkg.class))
 		{
-			case PresentationPackage.UI__IMAGE_SUPPORT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case PresentationPackage.UI__UI_PAGES:
+			case UiPackage.FONT_PKG__FONTS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -205,8 +162,8 @@ public class UIItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(PresentationPackage.Literals.UI__UI_PAGES,
-				 PresentationFactory.eINSTANCE.createUIPage()));
+				(UiPackage.Literals.FONT_PKG__FONTS,
+				 UiFactory.eINSTANCE.createFont()));
 	}
 
 	/**

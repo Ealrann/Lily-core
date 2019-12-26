@@ -28,7 +28,6 @@ import org.sheepy.lily.core.model.inference.InferencePackage;
 
 import org.sheepy.lily.core.model.presentation.IPositionElement;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
-import org.sheepy.lily.core.model.presentation.IUIElement;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
 
 import org.sheepy.lily.core.model.types.EHorizontalRelative;
@@ -37,6 +36,7 @@ import org.sheepy.lily.core.model.types.TypesFactory;
 import org.sheepy.lily.core.model.types.TypesPackage;
 
 import org.sheepy.lily.core.model.ui.IControl;
+import org.sheepy.lily.core.model.ui.IUIElement;
 import org.sheepy.lily.core.model.ui.Panel;
 import org.sheepy.lily.core.model.ui.UiPackage;
 

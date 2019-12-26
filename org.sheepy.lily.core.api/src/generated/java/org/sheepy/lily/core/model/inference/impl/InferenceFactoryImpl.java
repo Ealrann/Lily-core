@@ -64,7 +64,7 @@ public class InferenceFactoryImpl extends EFactoryImpl implements InferenceFacto
 	{
 		switch (eClass.getClassifierID())
 		{
-			case InferencePackage.LRULE: return createLRule();
+			case InferencePackage.LRULE: return (EObject)createLRule();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

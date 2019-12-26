@@ -26,6 +26,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.sheepy.lily.core.model.application.ApplicationFactory;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.ResourcePkg;
+import org.sheepy.lily.core.model.ui.UiFactory;
 
 /**
  * This is the item provider adapter for a {@link org.sheepy.lily.core.model.application.ResourcePkg} object.
@@ -185,6 +186,11 @@ public class ResourcePkgItemProvider
 			(createChildParameter
 				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
 				 ApplicationFactory.eINSTANCE.createStringModuleResource()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
+				 UiFactory.eINSTANCE.createFont()));
 	}
 
 	/**

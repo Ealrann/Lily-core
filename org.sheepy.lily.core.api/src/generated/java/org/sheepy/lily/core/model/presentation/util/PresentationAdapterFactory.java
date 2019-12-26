@@ -8,11 +8,7 @@ import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
-
-import org.sheepy.lily.core.model.application.IScenePart;
-import org.sheepy.lily.core.model.inference.IInferenceObject;
 import org.sheepy.lily.core.model.presentation.*;
-import org.sheepy.lily.core.model.types.LNamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -87,41 +83,6 @@ public class PresentationAdapterFactory extends AdapterFactoryImpl
 				return createISizedElementAdapter();
 			}
 			@Override
-			public Adapter caseUI(UI object)
-			{
-				return createUIAdapter();
-			}
-			@Override
-			public Adapter caseIUIElement(IUIElement object)
-			{
-				return createIUIElementAdapter();
-			}
-			@Override
-			public Adapter caseUIPage(UIPage object)
-			{
-				return createUIPageAdapter();
-			}
-			@Override
-			public Adapter caseIPanel(IPanel object)
-			{
-				return createIPanelAdapter();
-			}
-			@Override
-			public Adapter caseIInferenceObject(IInferenceObject object)
-			{
-				return createIInferenceObjectAdapter();
-			}
-			@Override
-			public Adapter caseIScenePart(IScenePart object)
-			{
-				return createIScenePartAdapter();
-			}
-			@Override
-			public Adapter caseLNamedElement(LNamedElement object)
-			{
-				return createLNamedElementAdapter();
-			}
-			@Override
 			public Adapter defaultCase(EObject object)
 			{
 				return createEObjectAdapter();
@@ -168,111 +129,6 @@ public class PresentationAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createISizedElementAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.presentation.UI <em>UI</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.sheepy.lily.core.model.presentation.UI
-	 * @generated
-	 */
-	public Adapter createUIAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.presentation.IUIElement <em>IUI Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.sheepy.lily.core.model.presentation.IUIElement
-	 * @generated
-	 */
-	public Adapter createIUIElementAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.presentation.UIPage <em>UI Page</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.sheepy.lily.core.model.presentation.UIPage
-	 * @generated
-	 */
-	public Adapter createUIPageAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.presentation.IPanel <em>IPanel</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.sheepy.lily.core.model.presentation.IPanel
-	 * @generated
-	 */
-	public Adapter createIPanelAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.inference.IInferenceObject <em>IInference Object</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.sheepy.lily.core.model.inference.IInferenceObject
-	 * @generated
-	 */
-	public Adapter createIInferenceObjectAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.IScenePart <em>IScene Part</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.sheepy.lily.core.model.application.IScenePart
-	 * @generated
-	 */
-	public Adapter createIScenePartAdapter()
-	{
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.types.LNamedElement <em>LNamed Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.sheepy.lily.core.model.types.LNamedElement
-	 * @generated
-	 */
-	public Adapter createLNamedElementAdapter()
 	{
 		return null;
 	}

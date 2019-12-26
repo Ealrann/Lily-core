@@ -38,8 +38,22 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Panel/movable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Panel/minimized"/>
     </genClasses>
+    <genClasses ecoreClass="ui.ecore#//UI">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//UI/imageSupport"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//UI/uiPages"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ui.ecore#//UI/currentUIPage"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//UI/fontPkg"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ui.ecore#//IUIElement"/>
+    <genClasses ecoreClass="ui.ecore#//UIPage" labelFeature="#//types/LNamedElement/name">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//UIPage/panels"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="ui.ecore#//IPanel"/>
     <genClasses image="false" ecoreClass="ui.ecore#//IControl"/>
     <genClasses image="false" ecoreClass="ui.ecore#//Widget"/>
+    <genClasses image="false" ecoreClass="ui.ecore#//TextWidget">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ui.ecore#//TextWidget/font"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="ui.ecore#//AbstractLabel">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//AbstractLabel/text"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//AbstractLabel/fontScale"/>
@@ -53,7 +67,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//VariableLabel/showName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//VariableLabel/format"/>
     </genClasses>
-    <genClasses ecoreClass="ui.ecore#//Label"/>
+    <genClasses ecoreClass="ui.ecore#//Label" labelFeature="#//ui/AbstractLabel/text">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Label/wrap"/>
+    </genClasses>
     <genClasses ecoreClass="ui.ecore#//Slider">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Slider/minValue"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Slider/maxValue"/>
@@ -71,7 +87,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Button/state"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//Button/actions"/>
       <genOperations ecoreOperation="ui.ecore#//Button/lActions" body="return this.getActions();"/>
-      <genOperations ecoreOperation="ui.ecore#//Button/getExecutor" body="&lt;%org.eclipse.emf.ecore.EObject%> unit = this;&#xA;while (((unit instanceof &lt;%org.sheepy.lily.core.model.application.IScenePart%>) == false))&#xA;{&#xA;&#x9;unit = unit.eContainer();&#xA;}&#xA;return (org.sheepy.lily.core.model.presentation.UI) unit;"/>
+      <genOperations ecoreOperation="ui.ecore#//Button/getExecutor" body="&lt;%org.eclipse.emf.ecore.EObject%> unit = this;&#xA;while (((unit instanceof &lt;%org.sheepy.lily.core.model.application.IScenePart%>) == false))&#xA;{&#xA;&#x9;unit = unit.eContainer();&#xA;}&#xA;return (org.sheepy.lily.core.model.ui.UI) unit;"/>
     </genClasses>
     <genClasses image="false" ecoreClass="ui.ecore#//AbstractBooleanButton">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//AbstractBooleanButton/textWhenTrue"/>
@@ -83,6 +99,17 @@
     <genClasses ecoreClass="ui.ecore#//BooleanActionButton">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//BooleanActionButton/actionWhenTrue"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//BooleanActionButton/actionWhenFalse"/>
+    </genClasses>
+    <genClasses ecoreClass="ui.ecore#//FontPkg">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//FontPkg/fonts"/>
+    </genClasses>
+    <genClasses ecoreClass="ui.ecore#//FontTable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//FontTable/file"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//FontTable/charTables"/>
+    </genClasses>
+    <genClasses ecoreClass="ui.ecore#//Font">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//Font/tables"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Font/height"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Presentation" basePackage="org.sheepy.lily.core.model" resource="XMI"
@@ -97,16 +124,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//ISizedElement/width"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//ISizedElement/height"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="presentation.ecore#//UI">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference presentation.ecore#//UI/uiPages"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference presentation.ecore#//UI/currentUIPage"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//UI/imageSupport"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="presentation.ecore#//IUIElement"/>
-    <genClasses ecoreClass="presentation.ecore#//UIPage">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference presentation.ecore#//UIPage/panels"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="presentation.ecore#//IPanel"/>
   </genPackages>
   <genPackages prefix="Application" basePackage="org.sheepy.lily.core.model" resource="XMI"
       disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="application.ecore#/">
@@ -241,6 +258,11 @@
       <genEnumLiterals ecoreEnumLiteral="types.ecore#//EKeyState/RELEASED"/>
       <genEnumLiterals ecoreEnumLiteral="types.ecore#//EKeyState/PRESSED"/>
       <genEnumLiterals ecoreEnumLiteral="types.ecore#//EKeyState/REPEATED"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="types.ecore#//ECharTable">
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//ECharTable/Base"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//ECharTable/Extended"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//ECharTable/Chinese"/>
     </genEnums>
     <genDataTypes ecoreDataType="types.ecore#//Vector4d" create="if ((it != null))&#xA;{&#xA;&#x9;final &lt;%java.lang.String%>[] split = it.split(&quot;;&quot;);&#xA;&#x9;int _length = split.length;&#xA;&#x9;boolean _equals = (_length == 4);&#xA;&#x9;if (_equals)&#xA;&#x9;{&#xA;&#x9;&#x9;&lt;%java.lang.Double%> _valueOf = &lt;%java.lang.Double%>.valueOf(split[0]);&#xA;&#x9;&#x9;&lt;%java.lang.Double%> _valueOf_1 = &lt;%java.lang.Double%>.valueOf(split[1]);&#xA;&#x9;&#x9;&lt;%java.lang.Double%> _valueOf_2 = &lt;%java.lang.Double%>.valueOf(split[2]);&#xA;&#x9;&#x9;&lt;%java.lang.Double%> _valueOf_3 = &lt;%java.lang.Double%>.valueOf(split[3]);&#xA;&#x9;&#x9;return new &lt;%org.joml.Vector4d%>((_valueOf).doubleValue(), (_valueOf_1).doubleValue(), (_valueOf_2).doubleValue(), (_valueOf_3).doubleValue());&#xA;&#x9;}&#xA;}&#xA;return new &lt;%org.joml.Vector4d%>(0, 0, 0, 0);"
         convert="if ((it != null))&#xA;{&#xA;&#x9;double _x = it.x();&#xA;&#x9;&lt;%java.lang.String%> _plus = (&lt;%java.lang.Double%>.valueOf(_x) + &quot;;&quot;);&#xA;&#x9;double _y = it.y();&#xA;&#x9;&lt;%java.lang.String%> _plus_1 = (_plus + &lt;%java.lang.Double%>.valueOf(_y));&#xA;&#x9;&lt;%java.lang.String%> _plus_2 = (_plus_1 + &quot;;&quot;);&#xA;&#x9;double _z = it.z();&#xA;&#x9;&lt;%java.lang.String%> _plus_3 = (_plus_2 + &lt;%java.lang.Double%>.valueOf(_z));&#xA;&#x9;&lt;%java.lang.String%> _plus_4 = (_plus_3 + &quot;;&quot;);&#xA;&#x9;double _w = it.w();&#xA;&#x9;return (_plus_4 + &lt;%java.lang.Double%>.valueOf(_w));&#xA;}&#xA;else&#xA;{&#xA;&#x9;return &quot;0;0;0;0&quot;;&#xA;}"/>

@@ -208,7 +208,7 @@ public class ButtonImpl extends AbstractButtonImpl implements Button
 		{
 			unit = unit.eContainer();
 		}
-		return (org.sheepy.lily.core.model.presentation.UI) unit;
+		return (org.sheepy.lily.core.model.ui.UI) unit;
 	}
 
 	/**

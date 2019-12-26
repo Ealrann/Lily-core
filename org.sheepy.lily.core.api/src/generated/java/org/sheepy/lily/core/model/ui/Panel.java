@@ -3,8 +3,6 @@
 package org.sheepy.lily.core.model.ui;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.sheepy.lily.core.model.presentation.IPanel;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
 
 /**

@@ -43,6 +43,7 @@ import org.sheepy.lily.core.model.presentation.PresentationPackage;
 
 import org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl;
 import org.sheepy.lily.core.model.types.BooleanParameter;
+import org.sheepy.lily.core.model.types.ECharTable;
 import org.sheepy.lily.core.model.types.EDirection;
 import org.sheepy.lily.core.model.types.EHorizontalRelative;
 import org.sheepy.lily.core.model.types.EKeyState;
@@ -196,6 +197,13 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	private EEnum eKeyStateEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum eCharTableEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -674,6 +682,17 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	@Override
+	public EEnum getECharTable()
+	{
+		return eCharTableEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EDataType getVector4d()
 	{
 		return vector4dEDataType;
@@ -856,6 +875,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		eHorizontalRelativeEEnum = createEEnum(EHORIZONTAL_RELATIVE);
 		eMouseButtonEEnum = createEEnum(EMOUSE_BUTTON);
 		eKeyStateEEnum = createEEnum(EKEY_STATE);
+		eCharTableEEnum = createEEnum(ECHAR_TABLE);
 
 		// Create data types
 		vector4dEDataType = createEDataType(VECTOR4D);
@@ -1009,6 +1029,11 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		addEEnumLiteral(eKeyStateEEnum, EKeyState.RELEASED);
 		addEEnumLiteral(eKeyStateEEnum, EKeyState.PRESSED);
 		addEEnumLiteral(eKeyStateEEnum, EKeyState.REPEATED);
+
+		initEEnum(eCharTableEEnum, ECharTable.class, "ECharTable");
+		addEEnumLiteral(eCharTableEEnum, ECharTable.BASE);
+		addEEnumLiteral(eCharTableEEnum, ECharTable.EXTENDED);
+		addEEnumLiteral(eCharTableEEnum, ECharTable.CHINESE);
 
 		// Initialize data types
 		initEDataType(vector4dEDataType, Vector4dc.class, "Vector4d", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

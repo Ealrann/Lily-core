@@ -45,11 +45,18 @@ import org.sheepy.lily.core.model.ui.BooleanActionButton;
 import org.sheepy.lily.core.model.ui.BooleanButton;
 import org.sheepy.lily.core.model.ui.Button;
 import org.sheepy.lily.core.model.ui.DynamicRowLayout;
+import org.sheepy.lily.core.model.ui.Font;
+import org.sheepy.lily.core.model.ui.FontPkg;
+import org.sheepy.lily.core.model.ui.FontTable;
 import org.sheepy.lily.core.model.ui.IControl;
+import org.sheepy.lily.core.model.ui.IPanel;
+import org.sheepy.lily.core.model.ui.IUIElement;
 import org.sheepy.lily.core.model.ui.Label;
 import org.sheepy.lily.core.model.ui.Panel;
 import org.sheepy.lily.core.model.ui.Slider;
 import org.sheepy.lily.core.model.ui.TextField;
+import org.sheepy.lily.core.model.ui.TextWidget;
+import org.sheepy.lily.core.model.ui.UIPage;
 import org.sheepy.lily.core.model.ui.UiFactory;
 import org.sheepy.lily.core.model.ui.UiPackage;
 import org.sheepy.lily.core.model.ui.VariableLabel;
@@ -79,6 +86,34 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	private EClass uiEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iuiElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass uiPageEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iPanelEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	private EClass iControlEClass = null;
 
 	/**
@@ -87,6 +122,13 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * @generated
 	 */
 	private EClass widgetEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass textWidgetEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -164,6 +206,27 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * @generated
 	 */
 	private EClass booleanActionButtonEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass fontPkgEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass fontTableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass fontEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -334,6 +397,105 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * @generated
 	 */
 	@Override
+	public EClass getUI()
+	{
+		return uiEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getUI_ImageSupport()
+	{
+		return (EAttribute)uiEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getUI_UiPages()
+	{
+		return (EReference)uiEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getUI_CurrentUIPage()
+	{
+		return (EReference)uiEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getUI_FontPkg()
+	{
+		return (EReference)uiEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getIUIElement()
+	{
+		return iuiElementEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getUIPage()
+	{
+		return uiPageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getUIPage_Panels()
+	{
+		return (EReference)uiPageEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getIPanel()
+	{
+		return iPanelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getIControl()
 	{
 		return iControlEClass;
@@ -348,6 +510,28 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	public EClass getWidget()
 	{
 		return widgetEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getTextWidget()
+	{
+		return textWidgetEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getTextWidget_Font()
+	{
+		return (EReference)textWidgetEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -469,6 +653,17 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	public EClass getLabel()
 	{
 		return labelEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getLabel_Wrap()
+	{
+		return (EAttribute)labelEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -730,6 +925,94 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * @generated
 	 */
 	@Override
+	public EClass getFontPkg()
+	{
+		return fontPkgEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getFontPkg_Fonts()
+	{
+		return (EReference)fontPkgEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getFontTable()
+	{
+		return fontTableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getFontTable_File()
+	{
+		return (EReference)fontTableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFontTable_CharTables()
+	{
+		return (EAttribute)fontTableEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getFont()
+	{
+		return fontEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getFont_Tables()
+	{
+		return (EReference)fontEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFont_Height()
+	{
+		return (EAttribute)fontEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public UiFactory getUiFactory()
 	{
 		return (UiFactory)getEFactoryInstance();
@@ -762,9 +1045,25 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		createEAttribute(panelEClass, PANEL__MOVABLE);
 		createEAttribute(panelEClass, PANEL__MINIMIZED);
 
+		uiEClass = createEClass(UI);
+		createEAttribute(uiEClass, UI__IMAGE_SUPPORT);
+		createEReference(uiEClass, UI__UI_PAGES);
+		createEReference(uiEClass, UI__CURRENT_UI_PAGE);
+		createEReference(uiEClass, UI__FONT_PKG);
+
+		iuiElementEClass = createEClass(IUI_ELEMENT);
+
+		uiPageEClass = createEClass(UI_PAGE);
+		createEReference(uiPageEClass, UI_PAGE__PANELS);
+
+		iPanelEClass = createEClass(IPANEL);
+
 		iControlEClass = createEClass(ICONTROL);
 
 		widgetEClass = createEClass(WIDGET);
+
+		textWidgetEClass = createEClass(TEXT_WIDGET);
+		createEReference(textWidgetEClass, TEXT_WIDGET__FONT);
 
 		abstractLabelEClass = createEClass(ABSTRACT_LABEL);
 		createEAttribute(abstractLabelEClass, ABSTRACT_LABEL__TEXT);
@@ -780,6 +1079,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		createEAttribute(variableLabelEClass, VARIABLE_LABEL__FORMAT);
 
 		labelEClass = createEClass(LABEL);
+		createEAttribute(labelEClass, LABEL__WRAP);
 
 		sliderEClass = createEClass(SLIDER);
 		createEAttribute(sliderEClass, SLIDER__MIN_VALUE);
@@ -810,6 +1110,17 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		booleanActionButtonEClass = createEClass(BOOLEAN_ACTION_BUTTON);
 		createEReference(booleanActionButtonEClass, BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE);
 		createEReference(booleanActionButtonEClass, BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE);
+
+		fontPkgEClass = createEClass(FONT_PKG);
+		createEReference(fontPkgEClass, FONT_PKG__FONTS);
+
+		fontTableEClass = createEClass(FONT_TABLE);
+		createEReference(fontTableEClass, FONT_TABLE__FILE);
+		createEAttribute(fontTableEClass, FONT_TABLE__CHAR_TABLES);
+
+		fontEClass = createEClass(FONT);
+		createEReference(fontEClass, FONT__TABLES);
+		createEAttribute(fontEClass, FONT__HEIGHT);
 	}
 
 	/**
@@ -838,33 +1149,44 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 
 		// Obtain other dependent packages
 		PresentationPackage thePresentationPackage = (PresentationPackage)EPackage.Registry.INSTANCE.getEPackage(PresentationPackage.eNS_URI);
-		VariablePackage theVariablePackage = (VariablePackage)EPackage.Registry.INSTANCE.getEPackage(VariablePackage.eNS_URI);
-		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
-		ActionPackage theActionPackage = (ActionPackage)EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
+		ApplicationPackage theApplicationPackage = (ApplicationPackage)EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
 		InferencePackage theInferencePackage = (InferencePackage)EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
+		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+		VariablePackage theVariablePackage = (VariablePackage)EPackage.Registry.INSTANCE.getEPackage(VariablePackage.eNS_URI);
+		ActionPackage theActionPackage = (ActionPackage)EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		panelEClass.getESuperTypes().add(thePresentationPackage.getIPanel());
+		panelEClass.getESuperTypes().add(this.getIPanel());
 		panelEClass.getESuperTypes().add(thePresentationPackage.getISizedElement());
-		iControlEClass.getESuperTypes().add(thePresentationPackage.getIUIElement());
+		uiEClass.getESuperTypes().add(theApplicationPackage.getIScenePart());
+		iuiElementEClass.getESuperTypes().add(theInferencePackage.getIInferenceObject());
+		uiPageEClass.getESuperTypes().add(thePresentationPackage.getISizedElement());
+		uiPageEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
+		iPanelEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
+		iPanelEClass.getESuperTypes().add(this.getIUIElement());
+		iPanelEClass.getESuperTypes().add(thePresentationPackage.getIPositionElement());
+		iControlEClass.getESuperTypes().add(this.getIUIElement());
 		widgetEClass.getESuperTypes().add(this.getIControl());
-		widgetEClass.getESuperTypes().add(thePresentationPackage.getIUIElement());
+		widgetEClass.getESuperTypes().add(this.getIUIElement());
 		widgetEClass.getESuperTypes().add(thePresentationPackage.getISizedElement());
-		abstractLabelEClass.getESuperTypes().add(this.getWidget());
+		textWidgetEClass.getESuperTypes().add(this.getWidget());
+		abstractLabelEClass.getESuperTypes().add(this.getTextWidget());
 		dynamicRowLayoutEClass.getESuperTypes().add(this.getIControl());
 		variableLabelEClass.getESuperTypes().add(this.getAbstractLabel());
 		labelEClass.getESuperTypes().add(this.getAbstractLabel());
-		sliderEClass.getESuperTypes().add(this.getWidget());
-		textFieldEClass.getESuperTypes().add(this.getWidget());
-		abstractButtonEClass.getESuperTypes().add(this.getWidget());
+		sliderEClass.getESuperTypes().add(this.getTextWidget());
+		textFieldEClass.getESuperTypes().add(this.getTextWidget());
+		abstractButtonEClass.getESuperTypes().add(this.getTextWidget());
 		buttonEClass.getESuperTypes().add(this.getAbstractButton());
 		abstractBooleanButtonEClass.getESuperTypes().add(this.getAbstractButton());
 		booleanButtonEClass.getESuperTypes().add(this.getAbstractBooleanButton());
 		booleanActionButtonEClass.getESuperTypes().add(this.getAbstractBooleanButton());
+		fontTableEClass.getESuperTypes().add(theApplicationPackage.getIResource());
+		fontEClass.getESuperTypes().add(theApplicationPackage.getIResource());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(panelEClass, Panel.class, "Panel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -874,9 +1196,25 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		initEAttribute(getPanel_Movable(), ecorePackage.getEBoolean(), "movable", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPanel_Minimized(), ecorePackage.getEBoolean(), "minimized", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(uiEClass, org.sheepy.lily.core.model.ui.UI.class, "UI", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getUI_ImageSupport(), ecorePackage.getEBoolean(), "imageSupport", "true", 1, 1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUI_UiPages(), this.getUIPage(), null, "uiPages", null, 0, -1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUI_CurrentUIPage(), this.getUIPage(), null, "currentUIPage", null, 0, 1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUI_FontPkg(), this.getFontPkg(), null, "fontPkg", null, 0, 1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(iuiElementEClass, IUIElement.class, "IUIElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(uiPageEClass, UIPage.class, "UIPage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUIPage_Panels(), this.getIPanel(), null, "panels", null, 0, -1, UIPage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(iPanelEClass, IPanel.class, "IPanel", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		initEClass(iControlEClass, IControl.class, "IControl", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(widgetEClass, Widget.class, "Widget", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(textWidgetEClass, TextWidget.class, "TextWidget", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTextWidget_Font(), this.getFont(), null, "font", null, 0, 1, TextWidget.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractLabelEClass, AbstractLabel.class, "AbstractLabel", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAbstractLabel_Text(), ecorePackage.getEString(), "text", "", 0, 1, AbstractLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -892,6 +1230,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		initEAttribute(getVariableLabel_Format(), ecorePackage.getEString(), "format", null, 0, 1, VariableLabel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(labelEClass, Label.class, "Label", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getLabel_Wrap(), ecorePackage.getEBoolean(), "wrap", "false", 1, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sliderEClass, Slider.class, "Slider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSlider_MinValue(), ecorePackage.getEInt(), "minValue", "0", 0, 1, Slider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -924,6 +1263,17 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		initEClass(booleanActionButtonEClass, BooleanActionButton.class, "BooleanActionButton", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBooleanActionButton_ActionWhenTrue(), theActionPackage.getAction(), null, "actionWhenTrue", null, 0, 1, BooleanActionButton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBooleanActionButton_ActionWhenFalse(), theActionPackage.getAction(), null, "actionWhenFalse", null, 0, 1, BooleanActionButton.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(fontPkgEClass, FontPkg.class, "FontPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFontPkg_Fonts(), this.getFont(), null, "fonts", null, 0, -1, FontPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(fontTableEClass, FontTable.class, "FontTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFontTable_File(), theApplicationPackage.getFileResource(), null, "file", null, 1, 1, FontTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFontTable_CharTables(), theTypesPackage.getECharTable(), "charTables", null, 1, -1, FontTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(fontEClass, Font.class, "Font", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFont_Tables(), this.getFontTable(), null, "tables", null, 1, -1, Font.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFont_Height(), ecorePackage.getEFloat(), "height", "18.0", 1, 1, Font.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

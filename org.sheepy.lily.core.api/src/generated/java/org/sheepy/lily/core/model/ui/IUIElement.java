@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.presentation;
+package org.sheepy.lily.core.model.ui;
 
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 
@@ -10,9 +10,10 @@ import org.sheepy.lily.core.model.inference.IInferenceObject;
  * <!-- end-user-doc -->
  *
  *
- * @see org.sheepy.lily.core.model.presentation.PresentationPackage#getIUIElement()
+ * @see org.sheepy.lily.core.model.ui.UiPackage#getIUIElement()
  * @model interface="true" abstract="true"
  * @generated
  */
 public interface IUIElement extends IInferenceObject
-{} // IUIElement
+{
+} // IUIElement

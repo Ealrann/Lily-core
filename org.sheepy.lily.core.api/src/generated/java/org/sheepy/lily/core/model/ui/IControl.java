@@ -2,8 +2,6 @@
  */
 package org.sheepy.lily.core.model.ui;
 
-import org.sheepy.lily.core.model.presentation.IUIElement;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>IControl</b></em>'.

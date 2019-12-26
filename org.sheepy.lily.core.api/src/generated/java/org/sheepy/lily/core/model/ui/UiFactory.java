@@ -32,6 +32,24 @@ public interface UiFactory extends EFactory
 	Panel createPanel();
 
 	/**
+	 * Returns a new object of class '<em>UI</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>UI</em>'.
+	 * @generated
+	 */
+	UI createUI();
+
+	/**
+	 * Returns a new object of class '<em>UI Page</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>UI Page</em>'.
+	 * @generated
+	 */
+	UIPage createUIPage();
+
+	/**
 	 * Returns a new object of class '<em>Dynamic Row Layout</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -102,6 +120,33 @@ public interface UiFactory extends EFactory
 	 * @generated
 	 */
 	BooleanActionButton createBooleanActionButton();
+
+	/**
+	 * Returns a new object of class '<em>Font Pkg</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Font Pkg</em>'.
+	 * @generated
+	 */
+	FontPkg createFontPkg();
+
+	/**
+	 * Returns a new object of class '<em>Font Table</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Font Table</em>'.
+	 * @generated
+	 */
+	FontTable createFontTable();
+
+	/**
+	 * Returns a new object of class '<em>Font</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Font</em>'.
+	 * @generated
+	 */
+	Font createFont();
 
 	/**
 	 * Returns the package supported by this factory.

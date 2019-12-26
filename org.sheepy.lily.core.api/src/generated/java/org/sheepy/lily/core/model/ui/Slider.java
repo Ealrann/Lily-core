@@ -23,7 +23,7 @@ import org.sheepy.lily.core.model.variable.IVariableResolver;
  * @model
  * @generated
  */
-public interface Slider extends Widget
+public interface Slider extends TextWidget
 {
 	/**
 	 * Returns the value of the '<em><b>Min Value</b></em>' attribute.

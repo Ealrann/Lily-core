@@ -65,6 +65,8 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 		switch (eClass.getClassifierID())
 		{
 			case UiPackage.PANEL: return createPanel();
+			case UiPackage.UI: return createUI();
+			case UiPackage.UI_PAGE: return createUIPage();
 			case UiPackage.DYNAMIC_ROW_LAYOUT: return createDynamicRowLayout();
 			case UiPackage.VARIABLE_LABEL: return createVariableLabel();
 			case UiPackage.LABEL: return createLabel();
@@ -73,6 +75,9 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 			case UiPackage.BUTTON: return createButton();
 			case UiPackage.BOOLEAN_BUTTON: return createBooleanButton();
 			case UiPackage.BOOLEAN_ACTION_BUTTON: return createBooleanActionButton();
+			case UiPackage.FONT_PKG: return createFontPkg();
+			case UiPackage.FONT_TABLE: return createFontTable();
+			case UiPackage.FONT: return createFont();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -88,6 +93,30 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 	{
 		PanelImpl panel = new PanelImpl();
 		return panel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public UI createUI()
+	{
+		UIImpl ui = new UIImpl();
+		return ui;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public UIPage createUIPage()
+	{
+		UIPageImpl uiPage = new UIPageImpl();
+		return uiPage;
 	}
 
 	/**
@@ -184,6 +213,42 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 	{
 		BooleanActionButtonImpl booleanActionButton = new BooleanActionButtonImpl();
 		return booleanActionButton;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public FontPkg createFontPkg()
+	{
+		FontPkgImpl fontPkg = new FontPkgImpl();
+		return fontPkg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public FontTable createFontTable()
+	{
+		FontTableImpl fontTable = new FontTableImpl();
+		return fontTable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Font createFont()
+	{
+		FontImpl font = new FontImpl();
+		return font;
 	}
 
 	/**

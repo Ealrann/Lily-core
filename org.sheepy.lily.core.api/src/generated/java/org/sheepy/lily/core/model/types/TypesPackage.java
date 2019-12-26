@@ -464,6 +464,16 @@ public interface TypesPackage extends EPackage
 	int EKEY_STATE = 16;
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.types.ECharTable <em>EChar Table</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.types.ECharTable
+	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getECharTable()
+	 * @generated
+	 */
+	int ECHAR_TABLE = 17;
+
+	/**
 	 * The meta object id for the '<em>Vector4d</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -471,7 +481,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector4d()
 	 * @generated
 	 */
-	int VECTOR4D = 17;
+	int VECTOR4D = 18;
 
 	/**
 	 * The meta object id for the '<em>Vector4f</em>' data type.
@@ -481,7 +491,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector4f()
 	 * @generated
 	 */
-	int VECTOR4F = 18;
+	int VECTOR4F = 19;
 
 	/**
 	 * The meta object id for the '<em>Color4f</em>' data type.
@@ -491,7 +501,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getColor4f()
 	 * @generated
 	 */
-	int COLOR4F = 19;
+	int COLOR4F = 20;
 
 	/**
 	 * The meta object id for the '<em>Color3f</em>' data type.
@@ -501,7 +511,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getColor3f()
 	 * @generated
 	 */
-	int COLOR3F = 20;
+	int COLOR3F = 21;
 
 	/**
 	 * The meta object id for the '<em>Vector3d</em>' data type.
@@ -511,7 +521,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3d()
 	 * @generated
 	 */
-	int VECTOR3D = 21;
+	int VECTOR3D = 22;
 
 	/**
 	 * The meta object id for the '<em>Vector3f</em>' data type.
@@ -521,7 +531,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3f()
 	 * @generated
 	 */
-	int VECTOR3F = 22;
+	int VECTOR3F = 23;
 
 	/**
 	 * The meta object id for the '<em>Vector3i</em>' data type.
@@ -531,7 +541,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3i()
 	 * @generated
 	 */
-	int VECTOR3I = 23;
+	int VECTOR3I = 24;
 
 	/**
 	 * The meta object id for the '<em>Vector2f</em>' data type.
@@ -541,7 +551,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2f()
 	 * @generated
 	 */
-	int VECTOR2F = 24;
+	int VECTOR2F = 25;
 
 	/**
 	 * The meta object id for the '<em>Vector2i</em>' data type.
@@ -551,7 +561,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2i()
 	 * @generated
 	 */
-	int VECTOR2I = 25;
+	int VECTOR2I = 26;
 
 	/**
 	 * The meta object id for the '<em>Vector2d</em>' data type.
@@ -561,7 +571,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2d()
 	 * @generated
 	 */
-	int VECTOR2D = 26;
+	int VECTOR2D = 27;
 
 	/**
 	 * The meta object id for the '<em>Java Module</em>' data type.
@@ -571,7 +581,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getJavaModule()
 	 * @generated
 	 */
-	int JAVA_MODULE = 27;
+	int JAVA_MODULE = 28;
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.types.LNamedElement <em>LNamed Element</em>}'.
@@ -846,6 +856,16 @@ public interface TypesPackage extends EPackage
 	 * @generated
 	 */
 	EEnum getEKeyState();
+
+	/**
+	 * Returns the meta object for enum '{@link org.sheepy.lily.core.model.types.ECharTable <em>EChar Table</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>EChar Table</em>'.
+	 * @see org.sheepy.lily.core.model.types.ECharTable
+	 * @generated
+	 */
+	EEnum getECharTable();
 
 	/**
 	 * Returns the meta object for data type '{@link org.joml.Vector4dc <em>Vector4d</em>}'.
@@ -1241,6 +1261,16 @@ public interface TypesPackage extends EPackage
 		 * @generated
 		 */
 		EEnum EKEY_STATE = eINSTANCE.getEKeyState();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.types.ECharTable <em>EChar Table</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.types.ECharTable
+		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getECharTable()
+		 * @generated
+		 */
+		EEnum ECHAR_TABLE = eINSTANCE.getECharTable();
 
 		/**
 		 * The meta object literal for the '<em>Vector4d</em>' data type.

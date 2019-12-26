@@ -6,11 +6,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
+import org.sheepy.lily.core.model.application.IResource;
+import org.sheepy.lily.core.model.application.IScenePart;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
-import org.sheepy.lily.core.model.presentation.IPanel;
 import org.sheepy.lily.core.model.presentation.IPositionElement;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
-import org.sheepy.lily.core.model.presentation.IUIElement;
 import org.sheepy.lily.core.model.types.LNamedElement;
 
 import org.sheepy.lily.core.model.ui.*;
@@ -91,6 +91,44 @@ public class UiSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case UiPackage.UI:
+			{
+				UI ui = (UI)theEObject;
+				T result = caseUI(ui);
+				if (result == null) result = caseIScenePart(ui);
+				if (result == null) result = caseIInferenceObject(ui);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UiPackage.IUI_ELEMENT:
+			{
+				IUIElement iuiElement = (IUIElement)theEObject;
+				T result = caseIUIElement(iuiElement);
+				if (result == null) result = caseIInferenceObject(iuiElement);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UiPackage.UI_PAGE:
+			{
+				UIPage uiPage = (UIPage)theEObject;
+				T result = caseUIPage(uiPage);
+				if (result == null) result = caseISizedElement(uiPage);
+				if (result == null) result = caseLNamedElement(uiPage);
+				if (result == null) result = caseIPositionElement(uiPage);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UiPackage.IPANEL:
+			{
+				IPanel iPanel = (IPanel)theEObject;
+				T result = caseIPanel(iPanel);
+				if (result == null) result = caseLNamedElement(iPanel);
+				if (result == null) result = caseIUIElement(iPanel);
+				if (result == null) result = caseIPositionElement(iPanel);
+				if (result == null) result = caseIInferenceObject(iPanel);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case UiPackage.ICONTROL:
 			{
 				IControl iControl = (IControl)theEObject;
@@ -112,10 +150,24 @@ public class UiSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case UiPackage.TEXT_WIDGET:
+			{
+				TextWidget textWidget = (TextWidget)theEObject;
+				T result = caseTextWidget(textWidget);
+				if (result == null) result = caseWidget(textWidget);
+				if (result == null) result = caseIControl(textWidget);
+				if (result == null) result = caseISizedElement(textWidget);
+				if (result == null) result = caseIUIElement(textWidget);
+				if (result == null) result = caseIPositionElement(textWidget);
+				if (result == null) result = caseIInferenceObject(textWidget);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case UiPackage.ABSTRACT_LABEL:
 			{
 				AbstractLabel abstractLabel = (AbstractLabel)theEObject;
 				T result = caseAbstractLabel(abstractLabel);
+				if (result == null) result = caseTextWidget(abstractLabel);
 				if (result == null) result = caseWidget(abstractLabel);
 				if (result == null) result = caseIControl(abstractLabel);
 				if (result == null) result = caseISizedElement(abstractLabel);
@@ -140,6 +192,7 @@ public class UiSwitch<T> extends Switch<T>
 				VariableLabel variableLabel = (VariableLabel)theEObject;
 				T result = caseVariableLabel(variableLabel);
 				if (result == null) result = caseAbstractLabel(variableLabel);
+				if (result == null) result = caseTextWidget(variableLabel);
 				if (result == null) result = caseWidget(variableLabel);
 				if (result == null) result = caseIControl(variableLabel);
 				if (result == null) result = caseISizedElement(variableLabel);
@@ -154,6 +207,7 @@ public class UiSwitch<T> extends Switch<T>
 				Label label = (Label)theEObject;
 				T result = caseLabel(label);
 				if (result == null) result = caseAbstractLabel(label);
+				if (result == null) result = caseTextWidget(label);
 				if (result == null) result = caseWidget(label);
 				if (result == null) result = caseIControl(label);
 				if (result == null) result = caseISizedElement(label);
@@ -167,6 +221,7 @@ public class UiSwitch<T> extends Switch<T>
 			{
 				Slider slider = (Slider)theEObject;
 				T result = caseSlider(slider);
+				if (result == null) result = caseTextWidget(slider);
 				if (result == null) result = caseWidget(slider);
 				if (result == null) result = caseIControl(slider);
 				if (result == null) result = caseISizedElement(slider);
@@ -180,6 +235,7 @@ public class UiSwitch<T> extends Switch<T>
 			{
 				TextField textField = (TextField)theEObject;
 				T result = caseTextField(textField);
+				if (result == null) result = caseTextWidget(textField);
 				if (result == null) result = caseWidget(textField);
 				if (result == null) result = caseIControl(textField);
 				if (result == null) result = caseISizedElement(textField);
@@ -193,6 +249,7 @@ public class UiSwitch<T> extends Switch<T>
 			{
 				AbstractButton abstractButton = (AbstractButton)theEObject;
 				T result = caseAbstractButton(abstractButton);
+				if (result == null) result = caseTextWidget(abstractButton);
 				if (result == null) result = caseWidget(abstractButton);
 				if (result == null) result = caseIControl(abstractButton);
 				if (result == null) result = caseISizedElement(abstractButton);
@@ -207,6 +264,7 @@ public class UiSwitch<T> extends Switch<T>
 				Button button = (Button)theEObject;
 				T result = caseButton(button);
 				if (result == null) result = caseAbstractButton(button);
+				if (result == null) result = caseTextWidget(button);
 				if (result == null) result = caseWidget(button);
 				if (result == null) result = caseIControl(button);
 				if (result == null) result = caseISizedElement(button);
@@ -221,6 +279,7 @@ public class UiSwitch<T> extends Switch<T>
 				AbstractBooleanButton abstractBooleanButton = (AbstractBooleanButton)theEObject;
 				T result = caseAbstractBooleanButton(abstractBooleanButton);
 				if (result == null) result = caseAbstractButton(abstractBooleanButton);
+				if (result == null) result = caseTextWidget(abstractBooleanButton);
 				if (result == null) result = caseWidget(abstractBooleanButton);
 				if (result == null) result = caseIControl(abstractBooleanButton);
 				if (result == null) result = caseISizedElement(abstractBooleanButton);
@@ -236,6 +295,7 @@ public class UiSwitch<T> extends Switch<T>
 				T result = caseBooleanButton(booleanButton);
 				if (result == null) result = caseAbstractBooleanButton(booleanButton);
 				if (result == null) result = caseAbstractButton(booleanButton);
+				if (result == null) result = caseTextWidget(booleanButton);
 				if (result == null) result = caseWidget(booleanButton);
 				if (result == null) result = caseIControl(booleanButton);
 				if (result == null) result = caseISizedElement(booleanButton);
@@ -251,12 +311,38 @@ public class UiSwitch<T> extends Switch<T>
 				T result = caseBooleanActionButton(booleanActionButton);
 				if (result == null) result = caseAbstractBooleanButton(booleanActionButton);
 				if (result == null) result = caseAbstractButton(booleanActionButton);
+				if (result == null) result = caseTextWidget(booleanActionButton);
 				if (result == null) result = caseWidget(booleanActionButton);
 				if (result == null) result = caseIControl(booleanActionButton);
 				if (result == null) result = caseISizedElement(booleanActionButton);
 				if (result == null) result = caseIUIElement(booleanActionButton);
 				if (result == null) result = caseIPositionElement(booleanActionButton);
 				if (result == null) result = caseIInferenceObject(booleanActionButton);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UiPackage.FONT_PKG:
+			{
+				FontPkg fontPkg = (FontPkg)theEObject;
+				T result = caseFontPkg(fontPkg);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UiPackage.FONT_TABLE:
+			{
+				FontTable fontTable = (FontTable)theEObject;
+				T result = caseFontTable(fontTable);
+				if (result == null) result = caseIResource(fontTable);
+				if (result == null) result = caseLNamedElement(fontTable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UiPackage.FONT:
+			{
+				Font font = (Font)theEObject;
+				T result = caseFont(font);
+				if (result == null) result = caseIResource(font);
+				if (result == null) result = caseLNamedElement(font);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -276,6 +362,70 @@ public class UiSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T casePanel(Panel object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>UI</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>UI</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUI(UI object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IUI Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IUI Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIUIElement(IUIElement object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>UI Page</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>UI Page</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUIPage(UIPage object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IPanel</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IPanel</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIPanel(IPanel object)
 	{
 		return null;
 	}
@@ -308,6 +458,22 @@ public class UiSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseWidget(Widget object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Text Widget</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Text Widget</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTextWidget(TextWidget object)
 	{
 		return null;
 	}
@@ -489,6 +655,54 @@ public class UiSwitch<T> extends Switch<T>
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Font Pkg</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Font Pkg</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFontPkg(FontPkg object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Font Table</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Font Table</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFontTable(FontTable object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Font</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Font</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFont(Font object)
+	{
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>LNamed Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -521,22 +735,6 @@ public class UiSwitch<T> extends Switch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>IUI Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>IUI Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIUIElement(IUIElement object)
-	{
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>IPosition Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -553,22 +751,6 @@ public class UiSwitch<T> extends Switch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>IPanel</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>IPanel</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIPanel(IPanel object)
-	{
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>ISized Element</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -580,6 +762,38 @@ public class UiSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseISizedElement(ISizedElement object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IScene Part</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IScene Part</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIScenePart(IScenePart object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IResource</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IResource</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIResource(IResource object)
 	{
 		return null;
 	}

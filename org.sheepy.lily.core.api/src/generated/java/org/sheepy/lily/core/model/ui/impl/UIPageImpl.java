@@ -1,29 +1,32 @@
 /**
  */
-package org.sheepy.lily.core.model.presentation.impl;
+package org.sheepy.lily.core.model.ui.impl;
 
 import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.joml.Vector2ic;
 
 import org.sheepy.lily.core.api.adapter.LilyEObject;
-import org.sheepy.lily.core.model.presentation.IPanel;
-import org.sheepy.lily.core.model.presentation.PresentationPackage;
-import org.sheepy.lily.core.model.presentation.UIPage;
+
 import org.sheepy.lily.core.model.types.EHorizontalRelative;
 import org.sheepy.lily.core.model.types.EVerticalRelative;
+import org.sheepy.lily.core.model.types.LNamedElement;
 import org.sheepy.lily.core.model.types.TypesFactory;
 import org.sheepy.lily.core.model.types.TypesPackage;
+
+import org.sheepy.lily.core.model.ui.IPanel;
+import org.sheepy.lily.core.model.ui.UIPage;
+import org.sheepy.lily.core.model.ui.UiPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,12 +36,13 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl#getPosition <em>Position</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl#getVerticalRelative <em>Vertical Relative</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl#getHorizontalRelative <em>Horizontal Relative</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl#getWidth <em>Width</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl#getHeight <em>Height</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.presentation.impl.UIPageImpl#getPanels <em>Panels</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIPageImpl#getPosition <em>Position</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIPageImpl#getVerticalRelative <em>Vertical Relative</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIPageImpl#getHorizontalRelative <em>Horizontal Relative</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIPageImpl#getWidth <em>Width</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIPageImpl#getHeight <em>Height</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIPageImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIPageImpl#getPanels <em>Panels</em>}</li>
  * </ul>
  *
  * @generated
@@ -146,6 +150,26 @@ public class UIPageImpl extends LilyEObject implements UIPage
 	protected int height = HEIGHT_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
+	/**
 	 * The cached value of the '{@link #getPanels() <em>Panels</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -173,7 +197,7 @@ public class UIPageImpl extends LilyEObject implements UIPage
 	@Override
 	protected EClass eStaticClass()
 	{
-		return PresentationPackage.Literals.UI_PAGE;
+		return UiPackage.Literals.UI_PAGE;
 	}
 
 	/**
@@ -198,7 +222,7 @@ public class UIPageImpl extends LilyEObject implements UIPage
 		Vector2ic oldPosition = position;
 		position = newPosition;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.UI_PAGE__POSITION, oldPosition, position));
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.UI_PAGE__POSITION, oldPosition, position));
 	}
 
 	/**
@@ -223,7 +247,7 @@ public class UIPageImpl extends LilyEObject implements UIPage
 		EVerticalRelative oldVerticalRelative = verticalRelative;
 		verticalRelative = newVerticalRelative == null ? VERTICAL_RELATIVE_EDEFAULT : newVerticalRelative;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.UI_PAGE__VERTICAL_RELATIVE, oldVerticalRelative, verticalRelative));
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.UI_PAGE__VERTICAL_RELATIVE, oldVerticalRelative, verticalRelative));
 	}
 
 	/**
@@ -248,7 +272,7 @@ public class UIPageImpl extends LilyEObject implements UIPage
 		EHorizontalRelative oldHorizontalRelative = horizontalRelative;
 		horizontalRelative = newHorizontalRelative == null ? HORIZONTAL_RELATIVE_EDEFAULT : newHorizontalRelative;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE, oldHorizontalRelative, horizontalRelative));
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.UI_PAGE__HORIZONTAL_RELATIVE, oldHorizontalRelative, horizontalRelative));
 	}
 
 	/**
@@ -273,7 +297,7 @@ public class UIPageImpl extends LilyEObject implements UIPage
 		int oldWidth = width;
 		width = newWidth;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.UI_PAGE__WIDTH, oldWidth, width));
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.UI_PAGE__WIDTH, oldWidth, width));
 	}
 
 	/**
@@ -298,7 +322,32 @@ public class UIPageImpl extends LilyEObject implements UIPage
 		int oldHeight = height;
 		height = newHeight;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PresentationPackage.UI_PAGE__HEIGHT, oldHeight, height));
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.UI_PAGE__HEIGHT, oldHeight, height));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getName()
+	{
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setName(String newName)
+	{
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.UI_PAGE__NAME, oldName, name));
 	}
 
 	/**
@@ -311,7 +360,7 @@ public class UIPageImpl extends LilyEObject implements UIPage
 	{
 		if (panels == null)
 		{
-			panels = new EObjectContainmentEList<IPanel>(IPanel.class, this, PresentationPackage.UI_PAGE__PANELS);
+			panels = new EObjectContainmentEList.Resolving<IPanel>(IPanel.class, this, UiPackage.UI_PAGE__PANELS);
 		}
 		return panels;
 	}
@@ -326,7 +375,7 @@ public class UIPageImpl extends LilyEObject implements UIPage
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.UI_PAGE__PANELS:
+			case UiPackage.UI_PAGE__PANELS:
 				return ((InternalEList<?>)getPanels()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -342,17 +391,19 @@ public class UIPageImpl extends LilyEObject implements UIPage
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.UI_PAGE__POSITION:
+			case UiPackage.UI_PAGE__POSITION:
 				return getPosition();
-			case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
+			case UiPackage.UI_PAGE__VERTICAL_RELATIVE:
 				return getVerticalRelative();
-			case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
+			case UiPackage.UI_PAGE__HORIZONTAL_RELATIVE:
 				return getHorizontalRelative();
-			case PresentationPackage.UI_PAGE__WIDTH:
+			case UiPackage.UI_PAGE__WIDTH:
 				return getWidth();
-			case PresentationPackage.UI_PAGE__HEIGHT:
+			case UiPackage.UI_PAGE__HEIGHT:
 				return getHeight();
-			case PresentationPackage.UI_PAGE__PANELS:
+			case UiPackage.UI_PAGE__NAME:
+				return getName();
+			case UiPackage.UI_PAGE__PANELS:
 				return getPanels();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -369,22 +420,25 @@ public class UIPageImpl extends LilyEObject implements UIPage
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.UI_PAGE__POSITION:
+			case UiPackage.UI_PAGE__POSITION:
 				setPosition((Vector2ic)newValue);
 				return;
-			case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
+			case UiPackage.UI_PAGE__VERTICAL_RELATIVE:
 				setVerticalRelative((EVerticalRelative)newValue);
 				return;
-			case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
+			case UiPackage.UI_PAGE__HORIZONTAL_RELATIVE:
 				setHorizontalRelative((EHorizontalRelative)newValue);
 				return;
-			case PresentationPackage.UI_PAGE__WIDTH:
+			case UiPackage.UI_PAGE__WIDTH:
 				setWidth((Integer)newValue);
 				return;
-			case PresentationPackage.UI_PAGE__HEIGHT:
+			case UiPackage.UI_PAGE__HEIGHT:
 				setHeight((Integer)newValue);
 				return;
-			case PresentationPackage.UI_PAGE__PANELS:
+			case UiPackage.UI_PAGE__NAME:
+				setName((String)newValue);
+				return;
+			case UiPackage.UI_PAGE__PANELS:
 				getPanels().clear();
 				getPanels().addAll((Collection<? extends IPanel>)newValue);
 				return;
@@ -402,22 +456,25 @@ public class UIPageImpl extends LilyEObject implements UIPage
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.UI_PAGE__POSITION:
+			case UiPackage.UI_PAGE__POSITION:
 				setPosition(POSITION_EDEFAULT);
 				return;
-			case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
+			case UiPackage.UI_PAGE__VERTICAL_RELATIVE:
 				setVerticalRelative(VERTICAL_RELATIVE_EDEFAULT);
 				return;
-			case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
+			case UiPackage.UI_PAGE__HORIZONTAL_RELATIVE:
 				setHorizontalRelative(HORIZONTAL_RELATIVE_EDEFAULT);
 				return;
-			case PresentationPackage.UI_PAGE__WIDTH:
+			case UiPackage.UI_PAGE__WIDTH:
 				setWidth(WIDTH_EDEFAULT);
 				return;
-			case PresentationPackage.UI_PAGE__HEIGHT:
+			case UiPackage.UI_PAGE__HEIGHT:
 				setHeight(HEIGHT_EDEFAULT);
 				return;
-			case PresentationPackage.UI_PAGE__PANELS:
+			case UiPackage.UI_PAGE__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case UiPackage.UI_PAGE__PANELS:
 				getPanels().clear();
 				return;
 		}
@@ -434,20 +491,60 @@ public class UIPageImpl extends LilyEObject implements UIPage
 	{
 		switch (featureID)
 		{
-			case PresentationPackage.UI_PAGE__POSITION:
+			case UiPackage.UI_PAGE__POSITION:
 				return POSITION_EDEFAULT == null ? position != null : !POSITION_EDEFAULT.equals(position);
-			case PresentationPackage.UI_PAGE__VERTICAL_RELATIVE:
+			case UiPackage.UI_PAGE__VERTICAL_RELATIVE:
 				return verticalRelative != VERTICAL_RELATIVE_EDEFAULT;
-			case PresentationPackage.UI_PAGE__HORIZONTAL_RELATIVE:
+			case UiPackage.UI_PAGE__HORIZONTAL_RELATIVE:
 				return horizontalRelative != HORIZONTAL_RELATIVE_EDEFAULT;
-			case PresentationPackage.UI_PAGE__WIDTH:
+			case UiPackage.UI_PAGE__WIDTH:
 				return width != WIDTH_EDEFAULT;
-			case PresentationPackage.UI_PAGE__HEIGHT:
+			case UiPackage.UI_PAGE__HEIGHT:
 				return height != HEIGHT_EDEFAULT;
-			case PresentationPackage.UI_PAGE__PANELS:
+			case UiPackage.UI_PAGE__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case UiPackage.UI_PAGE__PANELS:
 				return panels != null && !panels.isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
+	{
+		if (baseClass == LNamedElement.class)
+		{
+			switch (derivedFeatureID)
+			{
+				case UiPackage.UI_PAGE__NAME: return TypesPackage.LNAMED_ELEMENT__NAME;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
+	{
+		if (baseClass == LNamedElement.class)
+		{
+			switch (baseFeatureID)
+			{
+				case TypesPackage.LNAMED_ELEMENT__NAME: return UiPackage.UI_PAGE__NAME;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
@@ -471,6 +568,8 @@ public class UIPageImpl extends LilyEObject implements UIPage
 		result.append(width);
 		result.append(", height: ");
 		result.append(height);
+		result.append(", name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

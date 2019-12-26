@@ -65,17 +65,17 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 	{
 		switch (eClass.getClassifierID())
 		{
-			case ApplicationPackage.APPLICATION: return createApplication();
-			case ApplicationPackage.TIME_CONFIGURATION: return createTimeConfiguration();
-			case ApplicationPackage.SCENE: return createScene();
-			case ApplicationPackage.GENERIC_SCENE_PART: return createGenericScenePart();
-			case ApplicationPackage.BACKGROUND_IMAGE: return createBackgroundImage();
-			case ApplicationPackage.RESOURCE_PKG: return createResourcePkg();
-			case ApplicationPackage.IRESOURCE: return createIResource();
-			case ApplicationPackage.VIRTUAL_RESOURCE: return createVirtualResource();
-			case ApplicationPackage.LOCAL_RESOURCE: return createLocalResource();
-			case ApplicationPackage.MODULE_RESOURCE: return createModuleResource();
-			case ApplicationPackage.STRING_MODULE_RESOURCE: return createStringModuleResource();
+			case ApplicationPackage.APPLICATION: return (EObject)createApplication();
+			case ApplicationPackage.TIME_CONFIGURATION: return (EObject)createTimeConfiguration();
+			case ApplicationPackage.SCENE: return (EObject)createScene();
+			case ApplicationPackage.GENERIC_SCENE_PART: return (EObject)createGenericScenePart();
+			case ApplicationPackage.BACKGROUND_IMAGE: return (EObject)createBackgroundImage();
+			case ApplicationPackage.RESOURCE_PKG: return (EObject)createResourcePkg();
+			case ApplicationPackage.IRESOURCE: return (EObject)createIResource();
+			case ApplicationPackage.VIRTUAL_RESOURCE: return (EObject)createVirtualResource();
+			case ApplicationPackage.LOCAL_RESOURCE: return (EObject)createLocalResource();
+			case ApplicationPackage.MODULE_RESOURCE: return (EObject)createModuleResource();
+			case ApplicationPackage.STRING_MODULE_RESOURCE: return (EObject)createStringModuleResource();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

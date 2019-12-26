@@ -16,19 +16,4 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="UI" eSuperTypes="application.ecore#//IScenePart">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="uiPages" upperBound="-1"
-        eType="#//UIPage" containment="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="currentUIPage" eType="#//UIPage"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="imageSupport" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IUIElement" abstract="true" interface="true"
-      eSuperTypes="inference.ecore#//IInferenceObject"/>
-  <eClassifiers xsi:type="ecore:EClass" name="UIPage" eSuperTypes="#//ISizedElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="panels" upperBound="-1"
-        eType="#//IPanel" containment="true" resolveProxies="false"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IPanel" abstract="true" interface="true"
-      eSuperTypes="types.ecore#//LNamedElement #//IUIElement #//IPositionElement"/>
 </ecore:EPackage>

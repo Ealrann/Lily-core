@@ -171,4 +171,9 @@
     <eLiterals name="REPEATED" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="JavaModule" instanceClassName="java.lang.Module"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="ECharTable">
+    <eLiterals name="Base"/>
+    <eLiterals name="Extended"/>
+    <eLiterals name="Chinese"/>
+  </eClassifiers>
 </ecore:EPackage>
