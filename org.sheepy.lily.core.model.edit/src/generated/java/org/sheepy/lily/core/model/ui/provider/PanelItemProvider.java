@@ -66,6 +66,7 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 			addPositionPropertyDescriptor(object);
 			addVerticalRelativePropertyDescriptor(object);
 			addHorizontalRelativePropertyDescriptor(object);
+			addCatchInputsPropertyDescriptor(object);
 			addWidthPropertyDescriptor(object);
 			addHeightPropertyDescriptor(object);
 			addShowTitlePropertyDescriptor(object);
@@ -141,6 +142,29 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Catch Inputs feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCatchInputsPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_IPanel_catchInputs_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPanel_catchInputs_feature", "_UI_IPanel_type"),
+				 UiPackage.Literals.IPANEL__CATCH_INPUTS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -384,6 +408,7 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 			case UiPackage.PANEL__POSITION:
 			case UiPackage.PANEL__VERTICAL_RELATIVE:
 			case UiPackage.PANEL__HORIZONTAL_RELATIVE:
+			case UiPackage.PANEL__CATCH_INPUTS:
 			case UiPackage.PANEL__WIDTH:
 			case UiPackage.PANEL__HEIGHT:
 			case UiPackage.PANEL__SHOW_TITLE:

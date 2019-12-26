@@ -32,7 +32,10 @@
         eType="#//IPanel" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IPanel" abstract="true" interface="true"
-      eSuperTypes="types.ecore#//LNamedElement #//IUIElement presentation.ecore#//IPositionElement"/>
+      eSuperTypes="types.ecore#//LNamedElement #//IUIElement presentation.ecore#//IPositionElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="catchInputs" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IControl" abstract="true" interface="true"
       eSuperTypes="#//IUIElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Widget" abstract="true" interface="true"

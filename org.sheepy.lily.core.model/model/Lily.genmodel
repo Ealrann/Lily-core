@@ -48,7 +48,9 @@
     <genClasses ecoreClass="ui.ecore#//UIPage" labelFeature="#//types/LNamedElement/name">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//UIPage/panels"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="ui.ecore#//IPanel"/>
+    <genClasses image="false" ecoreClass="ui.ecore#//IPanel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//IPanel/catchInputs"/>
+    </genClasses>
     <genClasses image="false" ecoreClass="ui.ecore#//IControl"/>
     <genClasses image="false" ecoreClass="ui.ecore#//Widget"/>
     <genClasses image="false" ecoreClass="ui.ecore#//TextWidget">

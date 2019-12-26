@@ -496,6 +496,17 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * @generated
 	 */
 	@Override
+	public EAttribute getIPanel_CatchInputs()
+	{
+		return (EAttribute)iPanelEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getIControl()
 	{
 		return iControlEClass;
@@ -1057,6 +1068,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		createEReference(uiPageEClass, UI_PAGE__PANELS);
 
 		iPanelEClass = createEClass(IPANEL);
+		createEAttribute(iPanelEClass, IPANEL__CATCH_INPUTS);
 
 		iControlEClass = createEClass(ICONTROL);
 
@@ -1208,6 +1220,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		initEReference(getUIPage_Panels(), this.getIPanel(), null, "panels", null, 0, -1, UIPage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iPanelEClass, IPanel.class, "IPanel", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIPanel_CatchInputs(), ecorePackage.getEBoolean(), "catchInputs", "true", 1, 1, IPanel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iControlEClass, IControl.class, "IControl", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

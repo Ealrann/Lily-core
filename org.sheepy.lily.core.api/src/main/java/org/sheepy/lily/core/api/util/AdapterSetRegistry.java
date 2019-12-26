@@ -11,7 +11,8 @@ import org.sheepy.lily.core.api.adapter.ILilyEObject;
 public class AdapterSetRegistry<T extends IAdapter> extends AbstractModelSetRegistry
 {
 	private final Class<T> adapterType;
-	private final List<T> list = new ArrayList<>();
+	private final List<ILilyEObject> objects = new ArrayList<>();
+	private final List<T> adapters = new ArrayList<>();
 
 	public AdapterSetRegistry(Class<T> adapterType, List<EStructuralFeature> features)
 	{
@@ -21,18 +22,25 @@ public class AdapterSetRegistry<T extends IAdapter> extends AbstractModelSetRegi
 
 	public List<T> getAdapters()
 	{
-		return Collections.unmodifiableList(list);
+		return Collections.unmodifiableList(adapters);
+	}
+
+	public List<ILilyEObject> getObjects()
+	{
+		return Collections.unmodifiableList(objects);
 	}
 
 	@Override
 	protected void add(ILilyEObject newValue)
 	{
-		list.add(newValue.adapt(adapterType));
+		objects.add(newValue);
+		adapters.add(newValue.adapt(adapterType));
 	}
 
 	@Override
 	protected void remove(ILilyEObject oldValue)
 	{
-		list.remove(oldValue.adapt(adapterType));
+		objects.remove(oldValue);
+		adapters.remove(oldValue.adapt(adapterType));
 	}
 }

@@ -52,6 +52,7 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getPosition <em>Position</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getVerticalRelative <em>Vertical Relative</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getHorizontalRelative <em>Horizontal Relative</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#isCatchInputs <em>Catch Inputs</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getWidth <em>Width</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getHeight <em>Height</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getControls <em>Controls</em>}</li>
@@ -144,6 +145,26 @@ public class PanelImpl extends LilyEObject implements Panel
 	 * @ordered
 	 */
 	protected EHorizontalRelative horizontalRelative = HORIZONTAL_RELATIVE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isCatchInputs() <em>Catch Inputs</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCatchInputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean CATCH_INPUTS_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isCatchInputs() <em>Catch Inputs</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isCatchInputs()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean catchInputs = CATCH_INPUTS_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
@@ -402,6 +423,31 @@ public class PanelImpl extends LilyEObject implements Panel
 	 * @generated
 	 */
 	@Override
+	public boolean isCatchInputs()
+	{
+		return catchInputs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCatchInputs(boolean newCatchInputs)
+	{
+		boolean oldCatchInputs = catchInputs;
+		catchInputs = newCatchInputs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__CATCH_INPUTS, oldCatchInputs, catchInputs));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public int getWidth()
 	{
 		return width;
@@ -606,6 +652,8 @@ public class PanelImpl extends LilyEObject implements Panel
 				return getVerticalRelative();
 			case UiPackage.PANEL__HORIZONTAL_RELATIVE:
 				return getHorizontalRelative();
+			case UiPackage.PANEL__CATCH_INPUTS:
+				return isCatchInputs();
 			case UiPackage.PANEL__WIDTH:
 				return getWidth();
 			case UiPackage.PANEL__HEIGHT:
@@ -646,6 +694,9 @@ public class PanelImpl extends LilyEObject implements Panel
 				return;
 			case UiPackage.PANEL__HORIZONTAL_RELATIVE:
 				setHorizontalRelative((EHorizontalRelative)newValue);
+				return;
+			case UiPackage.PANEL__CATCH_INPUTS:
+				setCatchInputs((Boolean)newValue);
 				return;
 			case UiPackage.PANEL__WIDTH:
 				setWidth((Integer)newValue);
@@ -695,6 +746,9 @@ public class PanelImpl extends LilyEObject implements Panel
 			case UiPackage.PANEL__HORIZONTAL_RELATIVE:
 				setHorizontalRelative(HORIZONTAL_RELATIVE_EDEFAULT);
 				return;
+			case UiPackage.PANEL__CATCH_INPUTS:
+				setCatchInputs(CATCH_INPUTS_EDEFAULT);
+				return;
 			case UiPackage.PANEL__WIDTH:
 				setWidth(WIDTH_EDEFAULT);
 				return;
@@ -738,6 +792,8 @@ public class PanelImpl extends LilyEObject implements Panel
 				return verticalRelative != VERTICAL_RELATIVE_EDEFAULT;
 			case UiPackage.PANEL__HORIZONTAL_RELATIVE:
 				return horizontalRelative != HORIZONTAL_RELATIVE_EDEFAULT;
+			case UiPackage.PANEL__CATCH_INPUTS:
+				return catchInputs != CATCH_INPUTS_EDEFAULT;
 			case UiPackage.PANEL__WIDTH:
 				return width != WIDTH_EDEFAULT;
 			case UiPackage.PANEL__HEIGHT:
@@ -919,6 +975,8 @@ public class PanelImpl extends LilyEObject implements Panel
 		result.append(verticalRelative);
 		result.append(", horizontalRelative: ");
 		result.append(horizontalRelative);
+		result.append(", catchInputs: ");
+		result.append(catchInputs);
 		result.append(", width: ");
 		result.append(width);
 		result.append(", height: ");

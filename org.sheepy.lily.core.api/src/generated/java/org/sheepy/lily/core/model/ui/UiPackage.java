@@ -110,13 +110,22 @@ public interface UiPackage extends EPackage
 	int IPANEL__HORIZONTAL_RELATIVE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Catch Inputs</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPANEL__CATCH_INPUTS = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>IPanel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IPANEL_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 3;
+	int IPANEL_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -181,6 +190,15 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int PANEL__HORIZONTAL_RELATIVE = IPANEL__HORIZONTAL_RELATIVE;
+
+	/**
+	 * The feature id for the '<em><b>Catch Inputs</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANEL__CATCH_INPUTS = IPANEL__CATCH_INPUTS;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -2262,6 +2280,17 @@ public interface UiPackage extends EPackage
 	EClass getIPanel();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.IPanel#isCatchInputs <em>Catch Inputs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Catch Inputs</em>'.
+	 * @see org.sheepy.lily.core.model.ui.IPanel#isCatchInputs()
+	 * @see #getIPanel()
+	 * @generated
+	 */
+	EAttribute getIPanel_CatchInputs();
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.IControl <em>IControl</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2912,6 +2941,14 @@ public interface UiPackage extends EPackage
 		 * @generated
 		 */
 		EClass IPANEL = eINSTANCE.getIPanel();
+
+		/**
+		 * The meta object literal for the '<em><b>Catch Inputs</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IPANEL__CATCH_INPUTS = eINSTANCE.getIPanel_CatchInputs();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.IControl <em>IControl</em>}' class.
