@@ -142,8 +142,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/extensionPkg"/>
     </genClasses>
     <genClasses image="false" ecoreClass="application.ecore#//IApplicationExtension"/>
-    <genClasses ecoreClass="application.ecore#//ApplicationExtensionPackage">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//ApplicationExtensionPackage/extensions"/>
+    <genClasses ecoreClass="application.ecore#//ApplicationExtensionPkg">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//ApplicationExtensionPkg/extensions"/>
     </genClasses>
     <genClasses ecoreClass="application.ecore#//TimeConfiguration">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//TimeConfiguration/timeStep"/>

@@ -8,22 +8,22 @@ import org.sheepy.lily.core.api.adapter.ILilyEObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Extension Package</b></em>'.
+ * A representation of the model object '<em><b>Extension Pkg</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.application.ApplicationExtensionPackage#getExtensions <em>Extensions</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.ApplicationExtensionPkg#getExtensions <em>Extensions</em>}</li>
  * </ul>
  *
- * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplicationExtensionPackage()
+ * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplicationExtensionPkg()
  * @model
  * @extends ILilyEObject
  * @generated
  */
-public interface ApplicationExtensionPackage extends ILilyEObject
+public interface ApplicationExtensionPkg extends ILilyEObject
 {
 	/**
 	 * Returns the value of the '<em><b>Extensions</b></em>' containment reference list.
@@ -31,10 +31,10 @@ public interface ApplicationExtensionPackage extends ILilyEObject
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Extensions</em>' containment reference list.
-	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplicationExtensionPackage_Extensions()
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplicationExtensionPkg_Extensions()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<IApplicationExtension> getExtensions();
 
-} // ApplicationExtensionPackage
+} // ApplicationExtensionPkg

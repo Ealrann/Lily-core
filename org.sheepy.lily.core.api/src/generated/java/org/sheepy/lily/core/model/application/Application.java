@@ -136,12 +136,12 @@ public interface Application extends ILilyEObject
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Extension Pkg</em>' containment reference.
-	 * @see #setExtensionPkg(ApplicationExtensionPackage)
+	 * @see #setExtensionPkg(ApplicationExtensionPkg)
 	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_ExtensionPkg()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	ApplicationExtensionPackage getExtensionPkg();
+	ApplicationExtensionPkg getExtensionPkg();
 
 	/**
 	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#getExtensionPkg <em>Extension Pkg</em>}' containment reference.
@@ -151,6 +151,6 @@ public interface Application extends ILilyEObject
 	 * @see #getExtensionPkg()
 	 * @generated
 	 */
-	void setExtensionPkg(ApplicationExtensionPackage value);
+	void setExtensionPkg(ApplicationExtensionPkg value);
 
 } // Application

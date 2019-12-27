@@ -118,28 +118,28 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.application.ApplicationExtensionPackage} instances.
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.application.ApplicationExtensionPkg} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ApplicationExtensionPackageItemProvider applicationExtensionPackageItemProvider;
+	protected ApplicationExtensionPkgItemProvider applicationExtensionPkgItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.sheepy.lily.core.model.application.ApplicationExtensionPackage}.
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.application.ApplicationExtensionPkg}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createApplicationExtensionPackageAdapter()
+	public Adapter createApplicationExtensionPkgAdapter()
 	{
-		if (applicationExtensionPackageItemProvider == null)
+		if (applicationExtensionPkgItemProvider == null)
 		{
-			applicationExtensionPackageItemProvider = new ApplicationExtensionPackageItemProvider(this);
+			applicationExtensionPkgItemProvider = new ApplicationExtensionPkgItemProvider(this);
 		}
 
-		return applicationExtensionPackageItemProvider;
+		return applicationExtensionPkgItemProvider;
 	}
 
 	/**
@@ -542,7 +542,7 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 	public void dispose()
 	{
 		if (applicationItemProvider != null) applicationItemProvider.dispose();
-		if (applicationExtensionPackageItemProvider != null) applicationExtensionPackageItemProvider.dispose();
+		if (applicationExtensionPkgItemProvider != null) applicationExtensionPkgItemProvider.dispose();
 		if (timeConfigurationItemProvider != null) timeConfigurationItemProvider.dispose();
 		if (sceneItemProvider != null) sceneItemProvider.dispose();
 		if (genericScenePartItemProvider != null) genericScenePartItemProvider.dispose();

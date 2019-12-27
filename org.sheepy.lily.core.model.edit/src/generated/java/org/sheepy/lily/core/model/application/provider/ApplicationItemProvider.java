@@ -225,7 +225,7 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 		newChildDescriptors.add
 			(createChildParameter
 				(ApplicationPackage.Literals.APPLICATION__EXTENSION_PKG,
-				 ApplicationFactory.eINSTANCE.createApplicationExtensionPackage()));
+				 ApplicationFactory.eINSTANCE.createApplicationExtensionPkg()));
 	}
 
 	/**

@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.model.application.Application;
-import org.sheepy.lily.core.model.application.ApplicationExtensionPackage;
+import org.sheepy.lily.core.model.application.ApplicationExtensionPkg;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.IEngine;
 import org.sheepy.lily.core.model.application.Scene;
@@ -120,7 +120,7 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @generated
 	 * @ordered
 	 */
-	protected ApplicationExtensionPackage extensionPkg;
+	protected ApplicationExtensionPkg extensionPkg;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -368,12 +368,12 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @generated
 	 */
 	@Override
-	public ApplicationExtensionPackage getExtensionPkg()
+	public ApplicationExtensionPkg getExtensionPkg()
 	{
 		if (extensionPkg != null && ((EObject)extensionPkg).eIsProxy())
 		{
 			InternalEObject oldExtensionPkg = (InternalEObject)extensionPkg;
-			extensionPkg = (ApplicationExtensionPackage)eResolveProxy(oldExtensionPkg);
+			extensionPkg = (ApplicationExtensionPkg)eResolveProxy(oldExtensionPkg);
 			if (extensionPkg != oldExtensionPkg)
 			{
 				InternalEObject newExtensionPkg = (InternalEObject)extensionPkg;
@@ -395,7 +395,7 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ApplicationExtensionPackage basicGetExtensionPkg()
+	public ApplicationExtensionPkg basicGetExtensionPkg()
 	{
 		return extensionPkg;
 	}
@@ -405,9 +405,9 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetExtensionPkg(ApplicationExtensionPackage newExtensionPkg, NotificationChain msgs)
+	public NotificationChain basicSetExtensionPkg(ApplicationExtensionPkg newExtensionPkg, NotificationChain msgs)
 	{
-		ApplicationExtensionPackage oldExtensionPkg = extensionPkg;
+		ApplicationExtensionPkg oldExtensionPkg = extensionPkg;
 		extensionPkg = newExtensionPkg;
 		if (eNotificationRequired())
 		{
@@ -423,7 +423,7 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @generated
 	 */
 	@Override
-	public void setExtensionPkg(ApplicationExtensionPackage newExtensionPkg)
+	public void setExtensionPkg(ApplicationExtensionPkg newExtensionPkg)
 	{
 		if (newExtensionPkg != extensionPkg)
 		{
@@ -518,7 +518,7 @@ public class ApplicationImpl extends LilyEObject implements Application
 				setTimeConfiguration((TimeConfiguration)newValue);
 				return;
 			case ApplicationPackage.APPLICATION__EXTENSION_PKG:
-				setExtensionPkg((ApplicationExtensionPackage)newValue);
+				setExtensionPkg((ApplicationExtensionPkg)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -550,7 +550,7 @@ public class ApplicationImpl extends LilyEObject implements Application
 				setTimeConfiguration((TimeConfiguration)null);
 				return;
 			case ApplicationPackage.APPLICATION__EXTENSION_PKG:
-				setExtensionPkg((ApplicationExtensionPackage)null);
+				setExtensionPkg((ApplicationExtensionPkg)null);
 				return;
 		}
 		super.eUnset(featureID);

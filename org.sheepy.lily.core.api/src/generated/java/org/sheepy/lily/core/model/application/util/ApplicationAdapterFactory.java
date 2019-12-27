@@ -86,9 +86,9 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 				return createIApplicationExtensionAdapter();
 			}
 			@Override
-			public Adapter caseApplicationExtensionPackage(ApplicationExtensionPackage object)
+			public Adapter caseApplicationExtensionPkg(ApplicationExtensionPkg object)
 			{
-				return createApplicationExtensionPackageAdapter();
+				return createApplicationExtensionPkgAdapter();
 			}
 			@Override
 			public Adapter caseTimeConfiguration(TimeConfiguration object)
@@ -227,16 +227,16 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.ApplicationExtensionPackage <em>Extension Package</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.ApplicationExtensionPkg <em>Extension Pkg</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.lily.core.model.application.ApplicationExtensionPackage
+	 * @see org.sheepy.lily.core.model.application.ApplicationExtensionPkg
 	 * @generated
 	 */
-	public Adapter createApplicationExtensionPackageAdapter()
+	public Adapter createApplicationExtensionPkgAdapter()
 	{
 		return null;
 	}

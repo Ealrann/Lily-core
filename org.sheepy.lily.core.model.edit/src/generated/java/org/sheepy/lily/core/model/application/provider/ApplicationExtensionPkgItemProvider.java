@@ -23,16 +23,16 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.lily.core.model.application.ApplicationExtensionPackage;
+import org.sheepy.lily.core.model.application.ApplicationExtensionPkg;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.lily.core.model.application.ApplicationExtensionPackage} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.application.ApplicationExtensionPkg} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ApplicationExtensionPackageItemProvider 
+public class ApplicationExtensionPkgItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -47,7 +47,7 @@ public class ApplicationExtensionPackageItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ApplicationExtensionPackageItemProvider(AdapterFactory adapterFactory)
+	public ApplicationExtensionPkgItemProvider(AdapterFactory adapterFactory)
 	{
 		super(adapterFactory);
 	}
@@ -83,7 +83,7 @@ public class ApplicationExtensionPackageItemProvider
 		if (childrenFeatures == null)
 		{
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION_EXTENSION_PACKAGE__EXTENSIONS);
+			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION_EXTENSION_PKG__EXTENSIONS);
 		}
 		return childrenFeatures;
 	}
@@ -103,7 +103,7 @@ public class ApplicationExtensionPackageItemProvider
 	}
 
 	/**
-	 * This returns ApplicationExtensionPackage.gif.
+	 * This returns ApplicationExtensionPkg.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -111,7 +111,7 @@ public class ApplicationExtensionPackageItemProvider
 	@Override
 	public Object getImage(Object object)
 	{
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ApplicationExtensionPackage"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ApplicationExtensionPkg"));
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class ApplicationExtensionPackageItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		return getString("_UI_ApplicationExtensionPackage_type");
+		return getString("_UI_ApplicationExtensionPkg_type");
 	}
 
 
@@ -139,9 +139,9 @@ public class ApplicationExtensionPackageItemProvider
 	{
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ApplicationExtensionPackage.class))
+		switch (notification.getFeatureID(ApplicationExtensionPkg.class))
 		{
-			case ApplicationPackage.APPLICATION_EXTENSION_PACKAGE__EXTENSIONS:
+			case ApplicationPackage.APPLICATION_EXTENSION_PKG__EXTENSIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}

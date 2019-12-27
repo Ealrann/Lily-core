@@ -16,24 +16,24 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 
-import org.sheepy.lily.core.model.application.ApplicationExtensionPackage;
+import org.sheepy.lily.core.model.application.ApplicationExtensionPkg;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.IApplicationExtension;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Extension Package</b></em>'.
+ * An implementation of the model object '<em><b>Extension Pkg</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationExtensionPackageImpl#getExtensions <em>Extensions</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationExtensionPkgImpl#getExtensions <em>Extensions</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ApplicationExtensionPackageImpl extends LilyEObject implements ApplicationExtensionPackage
+public class ApplicationExtensionPkgImpl extends LilyEObject implements ApplicationExtensionPkg
 {
 	/**
 	 * The cached value of the '{@link #getExtensions() <em>Extensions</em>}' containment reference list.
@@ -50,7 +50,7 @@ public class ApplicationExtensionPackageImpl extends LilyEObject implements Appl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ApplicationExtensionPackageImpl()
+	protected ApplicationExtensionPkgImpl()
 	{
 		super();
 	}
@@ -63,7 +63,7 @@ public class ApplicationExtensionPackageImpl extends LilyEObject implements Appl
 	@Override
 	protected EClass eStaticClass()
 	{
-		return ApplicationPackage.Literals.APPLICATION_EXTENSION_PACKAGE;
+		return ApplicationPackage.Literals.APPLICATION_EXTENSION_PKG;
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class ApplicationExtensionPackageImpl extends LilyEObject implements Appl
 	{
 		if (extensions == null)
 		{
-			extensions = new EObjectContainmentEList.Resolving<IApplicationExtension>(IApplicationExtension.class, this, ApplicationPackage.APPLICATION_EXTENSION_PACKAGE__EXTENSIONS);
+			extensions = new EObjectContainmentEList.Resolving<IApplicationExtension>(IApplicationExtension.class, this, ApplicationPackage.APPLICATION_EXTENSION_PKG__EXTENSIONS);
 		}
 		return extensions;
 	}
@@ -91,7 +91,7 @@ public class ApplicationExtensionPackageImpl extends LilyEObject implements Appl
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.APPLICATION_EXTENSION_PACKAGE__EXTENSIONS:
+			case ApplicationPackage.APPLICATION_EXTENSION_PKG__EXTENSIONS:
 				return ((InternalEList<?>)getExtensions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -107,7 +107,7 @@ public class ApplicationExtensionPackageImpl extends LilyEObject implements Appl
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.APPLICATION_EXTENSION_PACKAGE__EXTENSIONS:
+			case ApplicationPackage.APPLICATION_EXTENSION_PKG__EXTENSIONS:
 				return getExtensions();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -124,7 +124,7 @@ public class ApplicationExtensionPackageImpl extends LilyEObject implements Appl
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.APPLICATION_EXTENSION_PACKAGE__EXTENSIONS:
+			case ApplicationPackage.APPLICATION_EXTENSION_PKG__EXTENSIONS:
 				getExtensions().clear();
 				getExtensions().addAll((Collection<? extends IApplicationExtension>)newValue);
 				return;
@@ -142,7 +142,7 @@ public class ApplicationExtensionPackageImpl extends LilyEObject implements Appl
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.APPLICATION_EXTENSION_PACKAGE__EXTENSIONS:
+			case ApplicationPackage.APPLICATION_EXTENSION_PKG__EXTENSIONS:
 				getExtensions().clear();
 				return;
 		}
@@ -159,10 +159,10 @@ public class ApplicationExtensionPackageImpl extends LilyEObject implements Appl
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.APPLICATION_EXTENSION_PACKAGE__EXTENSIONS:
+			case ApplicationPackage.APPLICATION_EXTENSION_PKG__EXTENSIONS:
 				return extensions != null && !extensions.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ApplicationExtensionPackageImpl
+} //ApplicationExtensionPkgImpl

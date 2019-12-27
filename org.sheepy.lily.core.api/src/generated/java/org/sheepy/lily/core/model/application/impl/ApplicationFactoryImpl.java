@@ -66,7 +66,7 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 		switch (eClass.getClassifierID())
 		{
 			case ApplicationPackage.APPLICATION: return createApplication();
-			case ApplicationPackage.APPLICATION_EXTENSION_PACKAGE: return createApplicationExtensionPackage();
+			case ApplicationPackage.APPLICATION_EXTENSION_PKG: return createApplicationExtensionPkg();
 			case ApplicationPackage.TIME_CONFIGURATION: return createTimeConfiguration();
 			case ApplicationPackage.SCENE: return createScene();
 			case ApplicationPackage.GENERIC_SCENE_PART: return createGenericScenePart();
@@ -134,10 +134,10 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 	 * @generated
 	 */
 	@Override
-	public ApplicationExtensionPackage createApplicationExtensionPackage()
+	public ApplicationExtensionPkg createApplicationExtensionPkg()
 	{
-		ApplicationExtensionPackageImpl applicationExtensionPackage = new ApplicationExtensionPackageImpl();
-		return applicationExtensionPackage;
+		ApplicationExtensionPkgImpl applicationExtensionPkg = new ApplicationExtensionPkgImpl();
+		return applicationExtensionPkg;
 	}
 
 	/**

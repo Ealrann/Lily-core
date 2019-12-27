@@ -89,10 +89,10 @@ public class ApplicationSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ApplicationPackage.APPLICATION_EXTENSION_PACKAGE:
+			case ApplicationPackage.APPLICATION_EXTENSION_PKG:
 			{
-				ApplicationExtensionPackage applicationExtensionPackage = (ApplicationExtensionPackage)theEObject;
-				T result = caseApplicationExtensionPackage(applicationExtensionPackage);
+				ApplicationExtensionPkg applicationExtensionPkg = (ApplicationExtensionPkg)theEObject;
+				T result = caseApplicationExtensionPkg(applicationExtensionPkg);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -264,17 +264,17 @@ public class ApplicationSwitch<T> extends Switch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Extension Package</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Extension Pkg</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Extension Package</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Extension Pkg</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseApplicationExtensionPackage(ApplicationExtensionPackage object)
+	public T caseApplicationExtensionPkg(ApplicationExtensionPkg object)
 	{
 		return null;
 	}
