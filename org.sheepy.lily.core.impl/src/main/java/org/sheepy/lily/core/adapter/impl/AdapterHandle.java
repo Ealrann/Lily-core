@@ -23,10 +23,10 @@ public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.Ada
 	public final T adapter;
 	public final List<TickHandle> tickHandles;
 	public final List<NotifyHandle> notifyHandles;
+	private final List<ExecutionHandle> loadHandles;
+	private final List<ExecutionHandle> disposeHandles;
 
 	private final EObject target;
-	private final ExecutionHandle loadHandle;
-	private final ExecutionHandle disposeHandle;
 
 	AdapterHandle(AdapterDescriptor<T> descriptor, EObject target)
 	{
@@ -34,8 +34,8 @@ public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.Ada
 		this.target = target;
 		this.adapter = descriptor.info.create(target);
 
-		loadHandle = createHandle(descriptor.info.loadHandleBuilder);
-		disposeHandle = createHandle(descriptor.info.disposeHandleBuilder);
+		loadHandles = List.copyOf(createHandles(descriptor.info.loadHandleBuilders));
+		disposeHandles = List.copyOf(createHandles(descriptor.info.disposeHandleBuilders));
 
 		tickHandles = List.copyOf(buildTickHandles(descriptor));
 		notifyHandles = List.copyOf(buildNotifyHandles(descriptor));
@@ -65,12 +65,12 @@ public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.Ada
 		return res;
 	}
 
-	private ExecutionHandle createHandle(ExecutionHandle.Builder builder)
+	private List<ExecutionHandle> createHandles(List<ExecutionHandle.Builder> builders)
 	{
-		ExecutionHandle res = null;
-		if (builder != null)
+		final List<ExecutionHandle> res = new ArrayList<>();
+		for (final var builder : builders)
 		{
-			res = builder.build(adapter);
+			res.add(builder.build(adapter));
 		}
 
 		return res;
@@ -78,7 +78,7 @@ public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.Ada
 
 	public void load()
 	{
-		if (loadHandle != null)
+		for (final var loadHandle : loadHandles)
 		{
 			loadHandle.invoke(target);
 		}
@@ -86,7 +86,7 @@ public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.Ada
 
 	public void dispose()
 	{
-		if (disposeHandle != null)
+		for (final var disposeHandle : disposeHandles)
 		{
 			disposeHandle.invoke(target);
 		}

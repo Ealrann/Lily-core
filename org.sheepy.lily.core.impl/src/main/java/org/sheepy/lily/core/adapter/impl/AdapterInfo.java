@@ -2,7 +2,6 @@ package org.sheepy.lily.core.adapter.impl;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,15 +26,14 @@ public final class AdapterInfo<T extends IAdapter>
 
 	private final ConstructorHandle<T> constructorHandle;
 
-	public final ExecutionHandle.Builder loadHandleBuilder;
-	public final ExecutionHandle.Builder disposeHandleBuilder;
+	public final List<ExecutionHandle.Builder> loadHandleBuilders;
+	public final List<ExecutionHandle.Builder> disposeHandleBuilders;
+	public final List<TickConfiguration> tickConfigurations;
+	public final List<NotifyConfiguration> notifyConfigurations;
 
 	private final T singleton;
 	private final boolean isSingleton;
 	private final boolean lazy;
-
-	public final List<TickConfiguration> tickConfigurations;
-	public final List<NotifyConfiguration> notifyConfigurations;
 
 	public AdapterInfo(AdapterDomain<T> domain)
 	{
@@ -51,8 +49,8 @@ public final class AdapterInfo<T extends IAdapter>
 		isSingleton = !type.isAnnotationPresent(Statefull.class);
 		final var constructor = gatherConstructor();
 		constructorHandle = ConstructorHandle.Builder.fromMethod(constructor).build();
-		loadHandleBuilder = createHandleBuilder(type, Load.class);
-		disposeHandleBuilder = createHandleBuilder(type, Dispose.class);
+		loadHandleBuilders = List.copyOf(createHandleBuilders(type, Load.class));
+		disposeHandleBuilders = List.copyOf(createHandleBuilders(type, Dispose.class));
 
 		lazy = adapterAnnotation.lazy();
 		tickConfigurations = List.copyOf(buildTickerConfigurations(type));
@@ -114,23 +112,16 @@ public final class AdapterInfo<T extends IAdapter>
 		return (double) frequency / frequencyRef.toSeconds(1);
 	}
 
-	private static final ExecutionHandle.Builder createHandleBuilder(	Class<?> type,
+	private static List<ExecutionHandle.Builder> createHandleBuilders(	Class<?> type,
 																		Class<? extends Annotation> annotationClass)
 	{
-		final var method = ReflectUtils.gatherAnnotatedMethod(type, annotationClass);
-		return createHandleBuilder(method);
-	}
-
-	private static ExecutionHandle.Builder createHandleBuilder(Method method)
-	{
-		if (method != null)
+		final List<ExecutionHandle.Builder> res = new ArrayList<>();
+		final var annotatedMethods = ReflectUtils.gatherAnnotatedMethods(type, annotationClass);
+		for (final var annotatedMethod : annotatedMethods)
 		{
-			return ExecutionHandle.Builder.fromMethod(method);
+			res.add(ExecutionHandle.Builder.fromMethod(annotatedMethod.method));
 		}
-		else
-		{
-			return null;
-		}
+		return res;
 	}
 
 	private T createSingleton()
