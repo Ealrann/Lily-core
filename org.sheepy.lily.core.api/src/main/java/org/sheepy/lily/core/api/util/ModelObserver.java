@@ -9,13 +9,13 @@ import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.api.notification.INotificationListener;
 
-public class ModelSetObserver
+public class ModelObserver
 {
 	private final List<EStructuralFeature> features;
 	private final HierarchyNotificationListener rootListener;
 	private final INotificationListener listener;
 	
-	public ModelSetObserver(INotificationListener listener,
+	public ModelObserver(INotificationListener listener,
 							List<EStructuralFeature> structuralFeatures)
 	{
 		this.listener = listener;
@@ -72,7 +72,7 @@ public class ModelSetObserver
 				{
 					if (feature.isMany() == false)
 					{
-						ModelSetObserver.this.listener.notifyChanged(new ENotificationImpl(	target,
+						ModelObserver.this.listener.notifyChanged(new ENotificationImpl(	target,
 																							Notification.ADD,
 																							feature.getFeatureID(),
 																							null,
@@ -80,7 +80,7 @@ public class ModelSetObserver
 					}
 					else
 					{
-						ModelSetObserver.this.listener.notifyChanged(new ENotificationImpl(	target,
+						ModelObserver.this.listener.notifyChanged(new ENotificationImpl(	target,
 																							Notification.ADD_MANY,
 																							feature.getFeatureID(),
 																							null,
@@ -125,7 +125,7 @@ public class ModelSetObserver
 					final int type = feature.isMany()
 							? Notification.REMOVE_MANY
 							: Notification.REMOVE;
-					ModelSetObserver.this.listener.notifyChanged(new ENotificationImpl(	target,
+					ModelObserver.this.listener.notifyChanged(new ENotificationImpl(	target,
 																						type,
 																						feature.getFeatureID(),
 																						value,
@@ -161,7 +161,7 @@ public class ModelSetObserver
 
 			if (depth == features.size() - 1)
 			{
-				ModelSetObserver.this.listener.notifyChanged(notification);
+				ModelObserver.this.listener.notifyChanged(notification);
 			}
 			else
 			{

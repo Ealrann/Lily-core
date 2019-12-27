@@ -9,12 +9,12 @@ import org.sheepy.lily.core.api.notification.INotificationListener;
 
 public abstract class AbstractModelSetRegistry
 {
-	private final ModelSetObserver observer;
+	private final ModelObserver observer;
 	private final INotificationListener listener = this::notifyChanged;
 
 	public AbstractModelSetRegistry(List<EStructuralFeature> features)
 	{
-		observer = new ModelSetObserver(listener, features);
+		observer = new ModelObserver(listener, features);
 	}
 
 	public void startRegister(ILilyEObject root)
