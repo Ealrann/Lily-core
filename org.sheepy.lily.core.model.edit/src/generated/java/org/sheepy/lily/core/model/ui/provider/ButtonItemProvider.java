@@ -205,6 +205,11 @@ public class ButtonItemProvider extends AbstractButtonItemProvider
 			(createChildParameter
 				(UiPackage.Literals.BUTTON__ACTIONS,
 				 VariableFactory.eINSTANCE.createBooleanChangeAction()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.BUTTON__ACTIONS,
+				 VariableFactory.eINSTANCE.createIntChangeAction()));
 	}
 
 }

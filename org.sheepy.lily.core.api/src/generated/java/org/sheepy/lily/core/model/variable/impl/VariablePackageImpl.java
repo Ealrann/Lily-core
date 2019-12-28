@@ -47,6 +47,7 @@ import org.sheepy.lily.core.model.variable.ChainVariableResolver;
 import org.sheepy.lily.core.model.variable.DirectVariableResolver;
 import org.sheepy.lily.core.model.variable.IDefinitionContainer;
 import org.sheepy.lily.core.model.variable.IVariableResolver;
+import org.sheepy.lily.core.model.variable.IntChangeAction;
 import org.sheepy.lily.core.model.variable.VarChangeAction;
 import org.sheepy.lily.core.model.variable.VarChangeActionPkg;
 import org.sheepy.lily.core.model.variable.VariableFactory;
@@ -115,6 +116,13 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * @generated
 	 */
 	private EClass booleanChangeActionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass intChangeActionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -383,6 +391,28 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * @generated
 	 */
 	@Override
+	public EClass getIntChangeAction()
+	{
+		return intChangeActionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIntChangeAction_Value()
+	{
+		return (EAttribute)intChangeActionEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getVarChangeActionPkg()
 	{
 		return varChangeActionPkgEClass;
@@ -473,6 +503,9 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 
 		booleanChangeActionEClass = createEClass(BOOLEAN_CHANGE_ACTION);
 
+		intChangeActionEClass = createEClass(INT_CHANGE_ACTION);
+		createEAttribute(intChangeActionEClass, INT_CHANGE_ACTION__VALUE);
+
 		varChangeActionPkgEClass = createEClass(VAR_CHANGE_ACTION_PKG);
 		createEReference(varChangeActionPkgEClass, VAR_CHANGE_ACTION_PKG__ACTIONS);
 
@@ -520,7 +553,7 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		directVariableResolverEClass.getESuperTypes().add(this.getAbstractDefinedVariableResolver());
 		varChangeActionEClass.getESuperTypes().add(theActionPackage.getAction());
 		booleanChangeActionEClass.getESuperTypes().add(this.getVarChangeAction());
-		booleanChangeActionEClass.getESuperTypes().add(theActionPackage.getAction());
+		intChangeActionEClass.getESuperTypes().add(this.getVarChangeAction());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(iVariableResolverEClass, IVariableResolver.class, "IVariableResolver", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -540,9 +573,12 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		initEReference(getDirectVariableResolver_Target(), ecorePackage.getEObject(), null, "target", null, 0, 1, DirectVariableResolver.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(varChangeActionEClass, VarChangeAction.class, "VarChangeAction", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getVarChangeAction_VariableResolver(), this.getAbstractDefinedVariableResolver(), null, "variableResolver", null, 0, 1, VarChangeAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVarChangeAction_VariableResolver(), this.getAbstractDefinedVariableResolver(), null, "variableResolver", null, 1, 1, VarChangeAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(booleanChangeActionEClass, BooleanChangeAction.class, "BooleanChangeAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(intChangeActionEClass, IntChangeAction.class, "IntChangeAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIntChangeAction_Value(), ecorePackage.getEInt(), "value", null, 1, 1, IntChangeAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(varChangeActionPkgEClass, VarChangeActionPkg.class, "VarChangeActionPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getVarChangeActionPkg_Actions(), this.getVarChangeAction(), null, "actions", null, 0, -1, VarChangeActionPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

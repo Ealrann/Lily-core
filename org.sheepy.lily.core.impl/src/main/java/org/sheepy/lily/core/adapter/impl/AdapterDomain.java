@@ -19,9 +19,15 @@ public class AdapterDomain<T extends IAdapter>
 
 	public AdapterDomain(Class<T> type)
 	{
+		assert type != null;
 		this.type = type;
 
 		adapterAnnotation = type.getAnnotation(Adapter.class);
+
+		if (adapterAnnotation == null)
+		{
+			throw new AssertionError(type.getSimpleName() + " needs to be annotated with @Adapter");
+		}
 
 		final var classifier = adapterAnnotation.scope();
 		inheritance = adapterAnnotation.scopeInheritance();

@@ -203,6 +203,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference variable.ecore#//VarChangeAction/variableResolver"/>
     </genClasses>
     <genClasses ecoreClass="variable.ecore#//BooleanChangeAction"/>
+    <genClasses ecoreClass="variable.ecore#//IntChangeAction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute variable.ecore#//IntChangeAction/value"/>
+    </genClasses>
     <genClasses ecoreClass="variable.ecore#//VarChangeActionPkg">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference variable.ecore#//VarChangeActionPkg/actions"/>
     </genClasses>

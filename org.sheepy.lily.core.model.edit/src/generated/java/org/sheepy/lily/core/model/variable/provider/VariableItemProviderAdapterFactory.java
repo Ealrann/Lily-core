@@ -191,6 +191,31 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.variable.IntChangeAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IntChangeActionItemProvider intChangeActionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.variable.IntChangeAction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createIntChangeActionAdapter()
+	{
+		if (intChangeActionItemProvider == null)
+		{
+			intChangeActionItemProvider = new IntChangeActionItemProvider(this);
+		}
+
+		return intChangeActionItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.variable.VarChangeActionPkg} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -368,6 +393,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
 		if (chainResolverItemProvider != null) chainResolverItemProvider.dispose();
 		if (directVariableResolverItemProvider != null) directVariableResolverItemProvider.dispose();
 		if (booleanChangeActionItemProvider != null) booleanChangeActionItemProvider.dispose();
+		if (intChangeActionItemProvider != null) intChangeActionItemProvider.dispose();
 		if (varChangeActionPkgItemProvider != null) varChangeActionPkgItemProvider.dispose();
 	}
 

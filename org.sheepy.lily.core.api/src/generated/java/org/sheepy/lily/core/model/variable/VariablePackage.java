@@ -384,6 +384,61 @@ public interface VariablePackage extends EPackage
 	int BOOLEAN_CHANGE_ACTION_OPERATION_COUNT = VAR_CHANGE_ACTION_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.IntChangeActionImpl <em>Int Change Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.variable.impl.IntChangeActionImpl
+	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getIntChangeAction()
+	 * @generated
+	 */
+	int INT_CHANGE_ACTION = 8;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INT_CHANGE_ACTION__NAME = VAR_CHANGE_ACTION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Variable Resolver</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INT_CHANGE_ACTION__VARIABLE_RESOLVER = VAR_CHANGE_ACTION__VARIABLE_RESOLVER;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INT_CHANGE_ACTION__VALUE = VAR_CHANGE_ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Int Change Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INT_CHANGE_ACTION_FEATURE_COUNT = VAR_CHANGE_ACTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Int Change Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INT_CHANGE_ACTION_OPERATION_COUNT = VAR_CHANGE_ACTION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.VarChangeActionPkgImpl <em>Var Change Action Pkg</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -391,7 +446,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getVarChangeActionPkg()
 	 * @generated
 	 */
-	int VAR_CHANGE_ACTION_PKG = 8;
+	int VAR_CHANGE_ACTION_PKG = 9;
 
 	/**
 	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
@@ -428,7 +483,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getLResolvedVariableFeature()
 	 * @generated
 	 */
-	int LRESOLVED_VARIABLE_FEATURE = 9;
+	int LRESOLVED_VARIABLE_FEATURE = 10;
 
 	/**
 	 * The meta object id for the '<em>Definition</em>' data type.
@@ -438,7 +493,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getVariableDefinition()
 	 * @generated
 	 */
-	int VARIABLE_DEFINITION = 10;
+	int VARIABLE_DEFINITION = 11;
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.IVariableResolver <em>IVariable Resolver</em>}'.
@@ -574,6 +629,27 @@ public interface VariablePackage extends EPackage
 	 * @generated
 	 */
 	EClass getBooleanChangeAction();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.IntChangeAction <em>Int Change Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Int Change Action</em>'.
+	 * @see org.sheepy.lily.core.model.variable.IntChangeAction
+	 * @generated
+	 */
+	EClass getIntChangeAction();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.variable.IntChangeAction#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.sheepy.lily.core.model.variable.IntChangeAction#getValue()
+	 * @see #getIntChangeAction()
+	 * @generated
+	 */
+	EAttribute getIntChangeAction_Value();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.VarChangeActionPkg <em>Var Change Action Pkg</em>}'.
@@ -761,6 +837,24 @@ public interface VariablePackage extends EPackage
 		 * @generated
 		 */
 		EClass BOOLEAN_CHANGE_ACTION = eINSTANCE.getBooleanChangeAction();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.impl.IntChangeActionImpl <em>Int Change Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.variable.impl.IntChangeActionImpl
+		 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getIntChangeAction()
+		 * @generated
+		 */
+		EClass INT_CHANGE_ACTION = eINSTANCE.getIntChangeAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INT_CHANGE_ACTION__VALUE = eINSTANCE.getIntChangeAction_Value();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.impl.VarChangeActionPkgImpl <em>Var Change Action Pkg</em>}' class.

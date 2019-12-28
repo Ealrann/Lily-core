@@ -22,10 +22,13 @@
   <eClassifiers xsi:type="ecore:EDataType" name="LResolvedVariableFeature" instanceClassName="org.sheepy.lily.core.api.util.FeatureDefinition"/>
   <eClassifiers xsi:type="ecore:EDataType" name="VariableDefinition" instanceClassName="java.lang.String"/>
   <eClassifiers xsi:type="ecore:EClass" name="VarChangeAction" abstract="true" eSuperTypes="action.ecore#//Action">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="variableResolver" eType="#//AbstractDefinedVariableResolver"
-        containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variableResolver" lowerBound="1"
+        eType="#//AbstractDefinedVariableResolver" containment="true" resolveProxies="false"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BooleanChangeAction" eSuperTypes="#//VarChangeAction action.ecore#//Action"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanChangeAction" eSuperTypes="#//VarChangeAction"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IntChangeAction" eSuperTypes="#//VarChangeAction">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="VarChangeActionPkg">
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
         eType="#//VarChangeAction" containment="true" resolveProxies="false"/>

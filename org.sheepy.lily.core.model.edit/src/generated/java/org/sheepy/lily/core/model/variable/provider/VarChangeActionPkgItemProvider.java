@@ -157,6 +157,11 @@ public class VarChangeActionPkgItemProvider extends ItemProviderAdapter implemen
 			(createChildParameter
 				(VariablePackage.Literals.VAR_CHANGE_ACTION_PKG__ACTIONS,
 				 VariableFactory.eINSTANCE.createBooleanChangeAction()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(VariablePackage.Literals.VAR_CHANGE_ACTION_PKG__ACTIONS,
+				 VariableFactory.eINSTANCE.createIntChangeAction()));
 	}
 
 	/**

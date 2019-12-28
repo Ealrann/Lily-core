@@ -2,8 +2,6 @@
  */
 package org.sheepy.lily.core.model.variable;
 
-import org.sheepy.lily.core.model.action.Action;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Boolean Change Action</b></em>'.
@@ -14,5 +12,5 @@ import org.sheepy.lily.core.model.action.Action;
  * @model
  * @generated
  */
-public interface BooleanChangeAction extends VarChangeAction, Action
+public interface BooleanChangeAction extends VarChangeAction
 {} // BooleanChangeAction

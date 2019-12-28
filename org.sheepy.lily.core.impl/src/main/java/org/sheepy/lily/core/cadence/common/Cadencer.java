@@ -13,9 +13,7 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.sheepy.lily.core.action.ActionDispatcherThread;
 import org.sheepy.lily.core.adapter.impl.AdapterManager;
-import org.sheepy.lily.core.api.action.context.ActionExecutionContext;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.api.cadence.ETickerClock;
 import org.sheepy.lily.core.api.cadence.ICadencer;
@@ -47,7 +45,6 @@ public class Cadencer implements ICadencer
 
 	private IInputManager inputManager = null;
 	private Long mainThread = null;
-	private ActionDispatcherThread dispatcher;
 	private CadenceContentAdater cadenceContentAdapter;
 
 	public Cadencer(Application application)
@@ -88,9 +85,6 @@ public class Cadencer implements ICadencer
 	{
 		stop.set(false);
 		mainThread = Thread.currentThread().getId();
-
-		dispatcher = new ActionDispatcherThread(commandStack, mainThread);
-		addTicker(dispatcher, ETickerClock.RealWorld, -1);
 
 		((LilyEObject) application).setupAdapterManager();
 		((LilyEObject) application).loadAdapterManager();
@@ -163,8 +157,6 @@ public class Cadencer implements ICadencer
 		}
 
 		((LilyEObject) application).disposeAdapterManager();
-
-		removeTicker(dispatcher, -1);
 
 		if (DebugUtil.DEBUG_ENABLED)
 		{
@@ -262,17 +254,6 @@ public class Cadencer implements ICadencer
 		{
 			return TimeUnit.SECONDS.toNanos(1);
 		}
-	}
-
-	@Override
-	public void postAction(ActionExecutionContext ec)
-	{
-		if (dispatcher == null)
-		{
-			new AssertionError("No action dispatcher. Is cadencer running?");
-		}
-
-		dispatcher.postAction(ec);
 	}
 
 	@Override

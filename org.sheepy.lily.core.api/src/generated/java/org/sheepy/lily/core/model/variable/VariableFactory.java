@@ -59,6 +59,15 @@ public interface VariableFactory extends EFactory
 	BooleanChangeAction createBooleanChangeAction();
 
 	/**
+	 * Returns a new object of class '<em>Int Change Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Int Change Action</em>'.
+	 * @generated
+	 */
+	IntChangeAction createIntChangeAction();
+
+	/**
 	 * Returns a new object of class '<em>Var Change Action Pkg</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

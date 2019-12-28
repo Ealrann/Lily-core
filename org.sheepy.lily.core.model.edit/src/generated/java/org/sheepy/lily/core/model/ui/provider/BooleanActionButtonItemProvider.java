@@ -156,8 +156,18 @@ public class BooleanActionButtonItemProvider extends AbstractBooleanButtonItemPr
 
 		newChildDescriptors.add
 			(createChildParameter
+				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE,
+				 VariableFactory.eINSTANCE.createIntChangeAction()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE,
 				 VariableFactory.eINSTANCE.createBooleanChangeAction()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE,
+				 VariableFactory.eINSTANCE.createIntChangeAction()));
 	}
 
 	/**

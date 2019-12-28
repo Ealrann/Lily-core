@@ -7,13 +7,9 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.sheepy.lily.core.api.action.context.ActionExecutionContext;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.adapter.annotation.Statefull;
-import org.sheepy.lily.core.api.application.IApplicationAdapter;
 import org.sheepy.lily.core.api.inference.IInferenceAdapter;
-import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.inference.AbstractNotification;
 import org.sheepy.lily.core.model.inference.Condition;
 import org.sheepy.lily.core.model.inference.Inferer;
@@ -95,17 +91,17 @@ public class InferenceAdapter implements IInferenceAdapter
 
 				if (match)
 				{
-					final ActionExecutionContext ec = new ActionExecutionContext(	((Inferer) rule.eContainer()).lExecutor(),
-																					rule.getAction(),
-																					parameter);
-
-					// TODO si actionDispatcher est null, il faut mettre de coté
-					// les notif pour
-					// les executer plus tard
-
-					final var application = (Application) EcoreUtil.getRootContainer(adaptedEntity);
-					final var adapter = application.adaptNotNull(IApplicationAdapter.class);
-					adapter.getCadencer().postAction(ec);
+//					final ActionExecutionContext ec = new ActionExecutionContext(	((Inferer) rule.eContainer()).lExecutor(),
+//																					rule.getAction(),
+//																					parameter);
+//
+//					// TODO si actionDispatcher est null, il faut mettre de coté
+//					// les notif pour
+//					// les executer plus tard
+//
+//					final var application = (Application) EcoreUtil.getRootContainer(adaptedEntity);
+//					final var adapter = application.adaptNotNull(IApplicationAdapter.class);
+//					adapter.getCadencer().postAction(ec);
 				}
 			}
 		}

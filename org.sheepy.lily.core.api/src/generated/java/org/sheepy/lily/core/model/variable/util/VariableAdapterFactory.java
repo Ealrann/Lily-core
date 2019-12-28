@@ -118,6 +118,11 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 				return createBooleanChangeActionAdapter();
 			}
 			@Override
+			public Adapter caseIntChangeAction(IntChangeAction object)
+			{
+				return createIntChangeActionAdapter();
+			}
+			@Override
 			public Adapter caseVarChangeActionPkg(VarChangeActionPkg object)
 			{
 				return createVarChangeActionPkgAdapter();
@@ -269,6 +274,21 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createBooleanChangeActionAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.IntChangeAction <em>Int Change Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.variable.IntChangeAction
+	 * @generated
+	 */
+	public Adapter createIntChangeActionAdapter()
 	{
 		return null;
 	}

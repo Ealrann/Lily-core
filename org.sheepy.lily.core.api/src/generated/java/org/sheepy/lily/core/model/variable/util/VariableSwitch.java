@@ -144,6 +144,16 @@ public class VariableSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case VariablePackage.INT_CHANGE_ACTION:
+			{
+				IntChangeAction intChangeAction = (IntChangeAction)theEObject;
+				T result = caseIntChangeAction(intChangeAction);
+				if (result == null) result = caseVarChangeAction(intChangeAction);
+				if (result == null) result = caseAction(intChangeAction);
+				if (result == null) result = caseLNamedElement(intChangeAction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case VariablePackage.VAR_CHANGE_ACTION_PKG:
 			{
 				VarChangeActionPkg varChangeActionPkg = (VarChangeActionPkg)theEObject;
@@ -279,6 +289,22 @@ public class VariableSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseBooleanChangeAction(BooleanChangeAction object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Int Change Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Int Change Action</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIntChangeAction(IntChangeAction object)
 	{
 		return null;
 	}
