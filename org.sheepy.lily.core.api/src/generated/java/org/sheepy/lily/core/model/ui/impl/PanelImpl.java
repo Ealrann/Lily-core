@@ -12,6 +12,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -23,6 +24,7 @@ import org.joml.Vector2ic;
 
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 
+import org.sheepy.lily.core.model.application.FileResource;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 import org.sheepy.lily.core.model.inference.InferencePackage;
 
@@ -60,6 +62,7 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#isMinimizable <em>Minimizable</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#isMovable <em>Movable</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#isMinimized <em>Minimized</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getBackgroundImage <em>Background Image</em>}</li>
  * </ul>
  *
  * @generated
@@ -295,6 +298,16 @@ public class PanelImpl extends LilyEObject implements Panel
 	 * @ordered
 	 */
 	protected boolean minimized = MINIMIZED_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getBackgroundImage() <em>Background Image</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBackgroundImage()
+	 * @generated
+	 * @ordered
+	 */
+	protected FileResource backgroundImage;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -613,6 +626,51 @@ public class PanelImpl extends LilyEObject implements Panel
 	 * @generated
 	 */
 	@Override
+	public FileResource getBackgroundImage()
+	{
+		if (backgroundImage != null && ((EObject)backgroundImage).eIsProxy())
+		{
+			InternalEObject oldBackgroundImage = (InternalEObject)backgroundImage;
+			backgroundImage = (FileResource)eResolveProxy(oldBackgroundImage);
+			if (backgroundImage != oldBackgroundImage)
+			{
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UiPackage.PANEL__BACKGROUND_IMAGE, oldBackgroundImage, backgroundImage));
+			}
+		}
+		return backgroundImage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FileResource basicGetBackgroundImage()
+	{
+		return backgroundImage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setBackgroundImage(FileResource newBackgroundImage)
+	{
+		FileResource oldBackgroundImage = backgroundImage;
+		backgroundImage = newBackgroundImage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__BACKGROUND_IMAGE, oldBackgroundImage, backgroundImage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public IInferenceObject lInferenceObject()
 	{
 		return this;
@@ -668,6 +726,9 @@ public class PanelImpl extends LilyEObject implements Panel
 				return isMovable();
 			case UiPackage.PANEL__MINIMIZED:
 				return isMinimized();
+			case UiPackage.PANEL__BACKGROUND_IMAGE:
+				if (resolve) return getBackgroundImage();
+				return basicGetBackgroundImage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -720,6 +781,9 @@ public class PanelImpl extends LilyEObject implements Panel
 			case UiPackage.PANEL__MINIMIZED:
 				setMinimized((Boolean)newValue);
 				return;
+			case UiPackage.PANEL__BACKGROUND_IMAGE:
+				setBackgroundImage((FileResource)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -770,6 +834,9 @@ public class PanelImpl extends LilyEObject implements Panel
 			case UiPackage.PANEL__MINIMIZED:
 				setMinimized(MINIMIZED_EDEFAULT);
 				return;
+			case UiPackage.PANEL__BACKGROUND_IMAGE:
+				setBackgroundImage((FileResource)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -808,6 +875,8 @@ public class PanelImpl extends LilyEObject implements Panel
 				return movable != MOVABLE_EDEFAULT;
 			case UiPackage.PANEL__MINIMIZED:
 				return minimized != MINIMIZED_EDEFAULT;
+			case UiPackage.PANEL__BACKGROUND_IMAGE:
+				return backgroundImage != null;
 		}
 		return super.eIsSet(featureID);
 	}

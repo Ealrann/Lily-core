@@ -73,6 +73,7 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 			addMinimizablePropertyDescriptor(object);
 			addMovablePropertyDescriptor(object);
 			addMinimizedPropertyDescriptor(object);
+			addBackgroundImagePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -326,6 +327,29 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Background Image feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBackgroundImagePropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Panel_backgroundImage_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Panel_backgroundImage_feature", "_UI_Panel_type"),
+				 UiPackage.Literals.PANEL__BACKGROUND_IMAGE,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

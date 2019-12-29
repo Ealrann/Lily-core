@@ -264,13 +264,22 @@ public interface UiPackage extends EPackage
 	int PANEL__MINIMIZED = IPANEL_FEATURE_COUNT + 6;
 
 	/**
+	 * The feature id for the '<em><b>Background Image</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANEL__BACKGROUND_IMAGE = IPANEL_FEATURE_COUNT + 7;
+
+	/**
 	 * The number of structural features of the '<em>Panel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANEL_FEATURE_COUNT = IPANEL_FEATURE_COUNT + 7;
+	int PANEL_FEATURE_COUNT = IPANEL_FEATURE_COUNT + 8;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -2185,6 +2194,17 @@ public interface UiPackage extends EPackage
 	EAttribute getPanel_Minimized();
 
 	/**
+	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.ui.Panel#getBackgroundImage <em>Background Image</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Background Image</em>'.
+	 * @see org.sheepy.lily.core.model.ui.Panel#getBackgroundImage()
+	 * @see #getPanel()
+	 * @generated
+	 */
+	EReference getPanel_BackgroundImage();
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.UI <em>UI</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2861,6 +2881,14 @@ public interface UiPackage extends EPackage
 		 * @generated
 		 */
 		EAttribute PANEL__MINIMIZED = eINSTANCE.getPanel_Minimized();
+
+		/**
+		 * The meta object literal for the '<em><b>Background Image</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PANEL__BACKGROUND_IMAGE = eINSTANCE.getPanel_BackgroundImage();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.UIImpl <em>UI</em>}' class.

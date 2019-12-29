@@ -397,6 +397,17 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * @generated
 	 */
 	@Override
+	public EReference getPanel_BackgroundImage()
+	{
+		return (EReference)panelEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getUI()
 	{
 		return uiEClass;
@@ -1055,6 +1066,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		createEAttribute(panelEClass, PANEL__MINIMIZABLE);
 		createEAttribute(panelEClass, PANEL__MOVABLE);
 		createEAttribute(panelEClass, PANEL__MINIMIZED);
+		createEReference(panelEClass, PANEL__BACKGROUND_IMAGE);
 
 		uiEClass = createEClass(UI);
 		createEAttribute(uiEClass, UI__IMAGE_SUPPORT);
@@ -1207,6 +1219,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		initEAttribute(getPanel_Minimizable(), ecorePackage.getEBoolean(), "minimizable", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPanel_Movable(), ecorePackage.getEBoolean(), "movable", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPanel_Minimized(), ecorePackage.getEBoolean(), "minimized", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPanel_BackgroundImage(), theApplicationPackage.getFileResource(), null, "backgroundImage", null, 1, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(uiEClass, org.sheepy.lily.core.model.ui.UI.class, "UI", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getUI_ImageSupport(), ecorePackage.getEBoolean(), "imageSupport", "true", 1, 1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
