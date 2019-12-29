@@ -20,7 +20,7 @@ import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.BackgroundImage;
 import org.sheepy.lily.core.model.application.ESampling;
-import org.sheepy.lily.core.model.application.IResource;
+import org.sheepy.lily.core.model.application.IImage;
 import org.sheepy.lily.core.model.application.IScenePart;
 
 import org.sheepy.lily.core.model.inference.IInferenceObject;
@@ -37,7 +37,7 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  * </p>
  * <ul>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getResource <em>Resource</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getImage <em>Image</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getClearColor <em>Clear Color</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getSampling <em>Sampling</em>}</li>
  * </ul>
@@ -67,14 +67,14 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getResource() <em>Resource</em>}' reference.
+	 * The cached value of the '{@link #getImage() <em>Image</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getResource()
+	 * @see #getImage()
 	 * @generated
 	 * @ordered
 	 */
-	protected IResource resource;
+	protected IImage image;
 
 	/**
 	 * The default value of the '{@link #getClearColor() <em>Clear Color</em>}' attribute.
@@ -168,19 +168,19 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 	 * @generated
 	 */
 	@Override
-	public IResource getResource()
+	public IImage getImage()
 	{
-		if (resource != null && ((EObject)resource).eIsProxy())
+		if (image != null && ((EObject)image).eIsProxy())
 		{
-			InternalEObject oldResource = (InternalEObject)resource;
-			resource = (IResource)eResolveProxy(oldResource);
-			if (resource != oldResource)
+			InternalEObject oldImage = (InternalEObject)image;
+			image = (IImage)eResolveProxy(oldImage);
+			if (image != oldImage)
 			{
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.BACKGROUND_IMAGE__RESOURCE, oldResource, resource));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.BACKGROUND_IMAGE__IMAGE, oldImage, image));
 			}
 		}
-		return resource;
+		return image;
 	}
 
 	/**
@@ -188,9 +188,9 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IResource basicGetResource()
+	public IImage basicGetImage()
 	{
-		return resource;
+		return image;
 	}
 
 	/**
@@ -199,12 +199,12 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 	 * @generated
 	 */
 	@Override
-	public void setResource(IResource newResource)
+	public void setImage(IImage newImage)
 	{
-		IResource oldResource = resource;
-		resource = newResource;
+		IImage oldImage = image;
+		image = newImage;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.BACKGROUND_IMAGE__RESOURCE, oldResource, resource));
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.BACKGROUND_IMAGE__IMAGE, oldImage, image));
 	}
 
 	/**
@@ -280,9 +280,9 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 		{
 			case ApplicationPackage.BACKGROUND_IMAGE__NAME:
 				return getName();
-			case ApplicationPackage.BACKGROUND_IMAGE__RESOURCE:
-				if (resolve) return getResource();
-				return basicGetResource();
+			case ApplicationPackage.BACKGROUND_IMAGE__IMAGE:
+				if (resolve) return getImage();
+				return basicGetImage();
 			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
 				return getClearColor();
 			case ApplicationPackage.BACKGROUND_IMAGE__SAMPLING:
@@ -304,8 +304,8 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 			case ApplicationPackage.BACKGROUND_IMAGE__NAME:
 				setName((String)newValue);
 				return;
-			case ApplicationPackage.BACKGROUND_IMAGE__RESOURCE:
-				setResource((IResource)newValue);
+			case ApplicationPackage.BACKGROUND_IMAGE__IMAGE:
+				setImage((IImage)newValue);
 				return;
 			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
 				setClearColor((Vector3ic)newValue);
@@ -330,8 +330,8 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 			case ApplicationPackage.BACKGROUND_IMAGE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case ApplicationPackage.BACKGROUND_IMAGE__RESOURCE:
-				setResource((IResource)null);
+			case ApplicationPackage.BACKGROUND_IMAGE__IMAGE:
+				setImage((IImage)null);
 				return;
 			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
 				setClearColor(CLEAR_COLOR_EDEFAULT);
@@ -355,8 +355,8 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 		{
 			case ApplicationPackage.BACKGROUND_IMAGE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case ApplicationPackage.BACKGROUND_IMAGE__RESOURCE:
-				return resource != null;
+			case ApplicationPackage.BACKGROUND_IMAGE__IMAGE:
+				return image != null;
 			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
 				return CLEAR_COLOR_EDEFAULT == null ? clearColor != null : !CLEAR_COLOR_EDEFAULT.equals(clearColor);
 			case ApplicationPackage.BACKGROUND_IMAGE__SAMPLING:

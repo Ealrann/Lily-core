@@ -167,6 +167,15 @@ public class ApplicationSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ApplicationPackage.IIMAGE:
+			{
+				IImage iImage = (IImage)theEObject;
+				T result = caseIImage(iImage);
+				if (result == null) result = caseIResource(iImage);
+				if (result == null) result = caseLNamedElement(iImage);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case ApplicationPackage.VIRTUAL_RESOURCE:
 			{
 				VirtualResource virtualResource = (VirtualResource)theEObject;
@@ -419,6 +428,22 @@ public class ApplicationSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseIResource(IResource object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IImage</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IImage</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIImage(IImage object)
 	{
 		return null;
 	}

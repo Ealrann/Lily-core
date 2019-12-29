@@ -14,7 +14,7 @@ import org.sheepy.lily.core.model.types.LNamedElement;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.application.BackgroundImage#getResource <em>Resource</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.BackgroundImage#getImage <em>Image</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.BackgroundImage#getClearColor <em>Clear Color</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.BackgroundImage#getSampling <em>Sampling</em>}</li>
  * </ul>
@@ -27,26 +27,26 @@ public interface BackgroundImage extends LNamedElement, IScenePart
 {
 
 	/**
-	 * Returns the value of the '<em><b>Resource</b></em>' reference.
+	 * Returns the value of the '<em><b>Image</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Resource</em>' reference.
-	 * @see #setResource(IResource)
-	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getBackgroundImage_Resource()
+	 * @return the value of the '<em>Image</em>' reference.
+	 * @see #setImage(IImage)
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getBackgroundImage_Image()
 	 * @model
 	 * @generated
 	 */
-	IResource getResource();
+	IImage getImage();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.BackgroundImage#getResource <em>Resource</em>}' reference.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.BackgroundImage#getImage <em>Image</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Resource</em>' reference.
-	 * @see #getResource()
+	 * @param value the new value of the '<em>Image</em>' reference.
+	 * @see #getImage()
 	 * @generated
 	 */
-	void setResource(IResource value);
+	void setImage(IImage value);
 
 	/**
 	 * Returns the value of the '<em><b>Clear Color</b></em>' attribute.

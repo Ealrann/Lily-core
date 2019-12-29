@@ -25,6 +25,7 @@ import org.sheepy.lily.core.model.application.GenericScenePart;
 import org.sheepy.lily.core.model.application.IApplicationExtension;
 import org.sheepy.lily.core.model.application.ICadence;
 import org.sheepy.lily.core.model.application.IEngine;
+import org.sheepy.lily.core.model.application.IImage;
 import org.sheepy.lily.core.model.application.IResource;
 import org.sheepy.lily.core.model.application.IScenePart;
 import org.sheepy.lily.core.model.application.LocalResource;
@@ -150,6 +151,13 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	private EClass iResourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iImageEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -567,7 +575,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
-	public EReference getBackgroundImage_Resource()
+	public EReference getBackgroundImage_Image()
 	{
 		return (EReference)backgroundImageEClass.getEStructuralFeatures().get(0);
 	}
@@ -625,6 +633,17 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	public EClass getIResource()
 	{
 		return iResourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getIImage()
+	{
+		return iImageEClass;
 	}
 
 	/**
@@ -801,7 +820,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		genericScenePartEClass = createEClass(GENERIC_SCENE_PART);
 
 		backgroundImageEClass = createEClass(BACKGROUND_IMAGE);
-		createEReference(backgroundImageEClass, BACKGROUND_IMAGE__RESOURCE);
+		createEReference(backgroundImageEClass, BACKGROUND_IMAGE__IMAGE);
 		createEAttribute(backgroundImageEClass, BACKGROUND_IMAGE__CLEAR_COLOR);
 		createEAttribute(backgroundImageEClass, BACKGROUND_IMAGE__SAMPLING);
 
@@ -809,6 +828,8 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEReference(resourcePkgEClass, RESOURCE_PKG__RESOURCES);
 
 		iResourceEClass = createEClass(IRESOURCE);
+
+		iImageEClass = createEClass(IIMAGE);
 
 		virtualResourceEClass = createEClass(VIRTUAL_RESOURCE);
 
@@ -869,6 +890,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		backgroundImageEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
 		backgroundImageEClass.getESuperTypes().add(this.getIScenePart());
 		iResourceEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
+		iImageEClass.getESuperTypes().add(this.getIResource());
 		virtualResourceEClass.getESuperTypes().add(this.getIResource());
 		fileResourceEClass.getESuperTypes().add(this.getIResource());
 		localResourceEClass.getESuperTypes().add(this.getFileResource());
@@ -910,7 +932,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEClass(genericScenePartEClass, GenericScenePart.class, "GenericScenePart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(backgroundImageEClass, BackgroundImage.class, "BackgroundImage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBackgroundImage_Resource(), this.getIResource(), null, "resource", null, 0, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBackgroundImage_Image(), this.getIImage(), null, "image", null, 0, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBackgroundImage_ClearColor(), theTypesPackage.getVector3i(), "clearColor", "0;0;0", 1, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBackgroundImage_Sampling(), this.getESampling(), "sampling", null, 1, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -918,6 +940,8 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEReference(getResourcePkg_Resources(), this.getIResource(), null, "resources", null, 0, -1, ResourcePkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iResourceEClass, IResource.class, "IResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(iImageEClass, IImage.class, "IImage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(virtualResourceEClass, VirtualResource.class, "VirtualResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

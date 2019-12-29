@@ -494,13 +494,13 @@ public interface ApplicationPackage extends EPackage
 	int BACKGROUND_IMAGE__NAME = TypesPackage.LNAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Resource</b></em>' reference.
+	 * The feature id for the '<em><b>Image</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BACKGROUND_IMAGE__RESOURCE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
+	int BACKGROUND_IMAGE__IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Clear Color</b></em>' attribute.
@@ -622,6 +622,43 @@ public interface ApplicationPackage extends EPackage
 	int IRESOURCE_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.IImageImpl <em>IImage</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.application.impl.IImageImpl
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIImage()
+	 * @generated
+	 */
+	int IIMAGE = 12;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IIMAGE__NAME = IRESOURCE__NAME;
+
+	/**
+	 * The number of structural features of the '<em>IImage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IIMAGE_FEATURE_COUNT = IRESOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>IImage</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IIMAGE_OPERATION_COUNT = IRESOURCE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.VirtualResourceImpl <em>Virtual Resource</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -629,7 +666,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getVirtualResource()
 	 * @generated
 	 */
-	int VIRTUAL_RESOURCE = 12;
+	int VIRTUAL_RESOURCE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -666,7 +703,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getFileResource()
 	 * @generated
 	 */
-	int FILE_RESOURCE = 13;
+	int FILE_RESOURCE = 14;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -712,7 +749,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getLocalResource()
 	 * @generated
 	 */
-	int LOCAL_RESOURCE = 14;
+	int LOCAL_RESOURCE = 15;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -758,7 +795,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getAbstractModuleResource()
 	 * @generated
 	 */
-	int ABSTRACT_MODULE_RESOURCE = 15;
+	int ABSTRACT_MODULE_RESOURCE = 16;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -804,7 +841,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getModuleResource()
 	 * @generated
 	 */
-	int MODULE_RESOURCE = 16;
+	int MODULE_RESOURCE = 17;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -859,7 +896,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getStringModuleResource()
 	 * @generated
 	 */
-	int STRING_MODULE_RESOURCE = 17;
+	int STRING_MODULE_RESOURCE = 18;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -914,7 +951,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getESampling()
 	 * @generated
 	 */
-	int ESAMPLING = 18;
+	int ESAMPLING = 19;
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.Application <em>Application</em>}'.
@@ -1171,15 +1208,15 @@ public interface ApplicationPackage extends EPackage
 	EClass getBackgroundImage();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.application.BackgroundImage#getResource <em>Resource</em>}'.
+	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.application.BackgroundImage#getImage <em>Image</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Resource</em>'.
-	 * @see org.sheepy.lily.core.model.application.BackgroundImage#getResource()
+	 * @return the meta object for the reference '<em>Image</em>'.
+	 * @see org.sheepy.lily.core.model.application.BackgroundImage#getImage()
 	 * @see #getBackgroundImage()
 	 * @generated
 	 */
-	EReference getBackgroundImage_Resource();
+	EReference getBackgroundImage_Image();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.BackgroundImage#getClearColor <em>Clear Color</em>}'.
@@ -1233,6 +1270,16 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 */
 	EClass getIResource();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.IImage <em>IImage</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IImage</em>'.
+	 * @see org.sheepy.lily.core.model.application.IImage
+	 * @generated
+	 */
+	EClass getIImage();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.VirtualResource <em>Virtual Resource</em>}'.
@@ -1574,12 +1621,12 @@ public interface ApplicationPackage extends EPackage
 		EClass BACKGROUND_IMAGE = eINSTANCE.getBackgroundImage();
 
 		/**
-		 * The meta object literal for the '<em><b>Resource</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Image</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BACKGROUND_IMAGE__RESOURCE = eINSTANCE.getBackgroundImage_Resource();
+		EReference BACKGROUND_IMAGE__IMAGE = eINSTANCE.getBackgroundImage_Image();
 
 		/**
 		 * The meta object literal for the '<em><b>Clear Color</b></em>' attribute feature.
@@ -1624,6 +1671,16 @@ public interface ApplicationPackage extends EPackage
 		 * @generated
 		 */
 		EClass IRESOURCE = eINSTANCE.getIResource();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.IImageImpl <em>IImage</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.impl.IImageImpl
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIImage()
+		 * @generated
+		 */
+		EClass IIMAGE = eINSTANCE.getIImage();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.VirtualResourceImpl <em>Virtual Resource</em>}' class.
