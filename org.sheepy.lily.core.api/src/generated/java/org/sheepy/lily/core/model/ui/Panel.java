@@ -140,7 +140,7 @@ public interface Panel extends IPanel, ISizedElement
 	 * @return the value of the '<em>Background Image</em>' reference.
 	 * @see #setBackgroundImage(IImage)
 	 * @see org.sheepy.lily.core.model.ui.UiPackage#getPanel_BackgroundImage()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	IImage getBackgroundImage();
