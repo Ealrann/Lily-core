@@ -346,13 +346,22 @@ public interface UiPackage extends EPackage
 	int UI__FONT_PKG = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Images</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI__IMAGES = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>UI</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UI_FEATURE_COUNT = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 4;
+	int UI_FEATURE_COUNT = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -2259,6 +2268,17 @@ public interface UiPackage extends EPackage
 	EReference getUI_FontPkg();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.sheepy.lily.core.model.ui.UI#getImages <em>Images</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Images</em>'.
+	 * @see org.sheepy.lily.core.model.ui.UI#getImages()
+	 * @see #getUI()
+	 * @generated
+	 */
+	EReference getUI_Images();
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.IUIElement <em>IUI Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2931,6 +2951,14 @@ public interface UiPackage extends EPackage
 		 * @generated
 		 */
 		EReference UI__FONT_PKG = eINSTANCE.getUI_FontPkg();
+
+		/**
+		 * The meta object literal for the '<em><b>Images</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UI__IMAGES = eINSTANCE.getUI_Images();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.IUIElement <em>IUI Element</em>}' class.

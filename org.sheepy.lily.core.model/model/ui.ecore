@@ -23,6 +23,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentUIPage" eType="#//UIPage"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fontPkg" eType="#//FontPkg"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="images" upperBound="-1"
+        eType="ecore:EClass application.ecore#//IImage"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IUIElement" abstract="true" interface="true"
       eSuperTypes="inference.ecore#//IInferenceObject"/>

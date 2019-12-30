@@ -4,6 +4,7 @@ package org.sheepy.lily.core.model.ui;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.sheepy.lily.core.model.application.IImage;
 import org.sheepy.lily.core.model.application.IScenePart;
 
 /**
@@ -19,6 +20,7 @@ import org.sheepy.lily.core.model.application.IScenePart;
  *   <li>{@link org.sheepy.lily.core.model.ui.UI#getUiPages <em>Ui Pages</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.UI#getCurrentUIPage <em>Current UI Page</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.UI#getFontPkg <em>Font Pkg</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.UI#getImages <em>Images</em>}</li>
  * </ul>
  *
  * @see org.sheepy.lily.core.model.ui.UiPackage#getUI()
@@ -105,5 +107,17 @@ public interface UI extends IScenePart
 	 * @generated
 	 */
 	void setFontPkg(FontPkg value);
+
+	/**
+	 * Returns the value of the '<em><b>Images</b></em>' reference list.
+	 * The list contents are of type {@link org.sheepy.lily.core.model.application.IImage}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Images</em>' reference list.
+	 * @see org.sheepy.lily.core.model.ui.UiPackage#getUI_Images()
+	 * @model
+	 * @generated
+	 */
+	EList<IImage> getImages();
 
 } // UI
