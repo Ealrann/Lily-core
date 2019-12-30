@@ -170,11 +170,6 @@ public class ResourcePkgItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ApplicationFactory.eINSTANCE.createIImage()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
 				 ApplicationFactory.eINSTANCE.createVirtualResource()));
 
 		newChildDescriptors.add

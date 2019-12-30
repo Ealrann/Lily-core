@@ -622,10 +622,10 @@ public interface ApplicationPackage extends EPackage
 	int IRESOURCE_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.IImageImpl <em>IImage</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.IImage <em>IImage</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.lily.core.model.application.impl.IImageImpl
+	 * @see org.sheepy.lily.core.model.application.IImage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIImage()
 	 * @generated
 	 */
@@ -1673,10 +1673,10 @@ public interface ApplicationPackage extends EPackage
 		EClass IRESOURCE = eINSTANCE.getIResource();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.IImageImpl <em>IImage</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.IImage <em>IImage</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.lily.core.model.application.impl.IImageImpl
+		 * @see org.sheepy.lily.core.model.application.IImage
 		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIImage()
 		 * @generated
 		 */

@@ -23,8 +23,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.joml.Vector2ic;
 
 import org.sheepy.lily.core.api.adapter.LilyEObject;
-
-import org.sheepy.lily.core.model.application.FileResource;
+import org.sheepy.lily.core.model.application.IImage;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 import org.sheepy.lily.core.model.inference.InferencePackage;
 
@@ -307,7 +306,7 @@ public class PanelImpl extends LilyEObject implements Panel
 	 * @generated
 	 * @ordered
 	 */
-	protected FileResource backgroundImage;
+	protected IImage backgroundImage;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -626,12 +625,12 @@ public class PanelImpl extends LilyEObject implements Panel
 	 * @generated
 	 */
 	@Override
-	public FileResource getBackgroundImage()
+	public IImage getBackgroundImage()
 	{
 		if (backgroundImage != null && ((EObject)backgroundImage).eIsProxy())
 		{
 			InternalEObject oldBackgroundImage = (InternalEObject)backgroundImage;
-			backgroundImage = (FileResource)eResolveProxy(oldBackgroundImage);
+			backgroundImage = (IImage)eResolveProxy(oldBackgroundImage);
 			if (backgroundImage != oldBackgroundImage)
 			{
 				if (eNotificationRequired())
@@ -646,7 +645,7 @@ public class PanelImpl extends LilyEObject implements Panel
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FileResource basicGetBackgroundImage()
+	public IImage basicGetBackgroundImage()
 	{
 		return backgroundImage;
 	}
@@ -657,9 +656,9 @@ public class PanelImpl extends LilyEObject implements Panel
 	 * @generated
 	 */
 	@Override
-	public void setBackgroundImage(FileResource newBackgroundImage)
+	public void setBackgroundImage(IImage newBackgroundImage)
 	{
-		FileResource oldBackgroundImage = backgroundImage;
+		IImage oldBackgroundImage = backgroundImage;
 		backgroundImage = newBackgroundImage;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__BACKGROUND_IMAGE, oldBackgroundImage, backgroundImage));
@@ -782,7 +781,7 @@ public class PanelImpl extends LilyEObject implements Panel
 				setMinimized((Boolean)newValue);
 				return;
 			case UiPackage.PANEL__BACKGROUND_IMAGE:
-				setBackgroundImage((FileResource)newValue);
+				setBackgroundImage((IImage)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -835,7 +834,7 @@ public class PanelImpl extends LilyEObject implements Panel
 				setMinimized(MINIMIZED_EDEFAULT);
 				return;
 			case UiPackage.PANEL__BACKGROUND_IMAGE:
-				setBackgroundImage((FileResource)null);
+				setBackgroundImage((IImage)null);
 				return;
 		}
 		super.eUnset(featureID);

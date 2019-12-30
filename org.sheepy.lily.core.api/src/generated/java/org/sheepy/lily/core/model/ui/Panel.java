@@ -3,7 +3,7 @@
 package org.sheepy.lily.core.model.ui;
 
 import org.eclipse.emf.common.util.EList;
-import org.sheepy.lily.core.model.application.FileResource;
+import org.sheepy.lily.core.model.application.IImage;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
 
 /**
@@ -138,12 +138,12 @@ public interface Panel extends IPanel, ISizedElement
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Background Image</em>' reference.
-	 * @see #setBackgroundImage(FileResource)
+	 * @see #setBackgroundImage(IImage)
 	 * @see org.sheepy.lily.core.model.ui.UiPackage#getPanel_BackgroundImage()
 	 * @model required="true"
 	 * @generated
 	 */
-	FileResource getBackgroundImage();
+	IImage getBackgroundImage();
 
 	/**
 	 * Sets the value of the '{@link org.sheepy.lily.core.model.ui.Panel#getBackgroundImage <em>Background Image</em>}' reference.
@@ -153,6 +153,6 @@ public interface Panel extends IPanel, ISizedElement
 	 * @see #getBackgroundImage()
 	 * @generated
 	 */
-	void setBackgroundImage(FileResource value);
+	void setBackgroundImage(IImage value);
 
 } // Panel

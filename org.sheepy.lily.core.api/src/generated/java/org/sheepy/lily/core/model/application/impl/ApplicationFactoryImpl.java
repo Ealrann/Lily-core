@@ -73,7 +73,6 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 			case ApplicationPackage.BACKGROUND_IMAGE: return createBackgroundImage();
 			case ApplicationPackage.RESOURCE_PKG: return createResourcePkg();
 			case ApplicationPackage.IRESOURCE: return createIResource();
-			case ApplicationPackage.IIMAGE: return createIImage();
 			case ApplicationPackage.VIRTUAL_RESOURCE: return createVirtualResource();
 			case ApplicationPackage.LOCAL_RESOURCE: return createLocalResource();
 			case ApplicationPackage.MODULE_RESOURCE: return createModuleResource();
@@ -211,18 +210,6 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 	{
 		IResourceImpl iResource = new IResourceImpl();
 		return iResource;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public IImage createIImage()
-	{
-		IImageImpl iImage = new IImageImpl();
-		return iImage;
 	}
 
 	/**

@@ -62,7 +62,8 @@
         eType="#//IResource" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IResource" eSuperTypes="types.ecore#//LNamedElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="IImage" eSuperTypes="#//IResource"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IImage" abstract="true" interface="true"
+      eSuperTypes="#//IResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="VirtualResource" eSuperTypes="#//IResource"/>
   <eClassifiers xsi:type="ecore:EClass" name="FileResource" abstract="true" eSuperTypes="#//IResource">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

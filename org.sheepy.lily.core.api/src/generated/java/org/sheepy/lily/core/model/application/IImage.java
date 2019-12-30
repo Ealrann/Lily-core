@@ -10,7 +10,7 @@ package org.sheepy.lily.core.model.application;
  *
  *
  * @see org.sheepy.lily.core.model.application.ApplicationPackage#getIImage()
- * @model
+ * @model interface="true" abstract="true"
  * @generated
  */
 public interface IImage extends IResource

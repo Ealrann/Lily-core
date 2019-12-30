@@ -293,31 +293,6 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.application.IImage} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IImageItemProvider iImageItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.sheepy.lily.core.model.application.IImage}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createIImageAdapter()
-	{
-		if (iImageItemProvider == null)
-		{
-			iImageItemProvider = new IImageItemProvider(this);
-		}
-
-		return iImageItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.application.VirtualResource} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -574,7 +549,6 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 		if (backgroundImageItemProvider != null) backgroundImageItemProvider.dispose();
 		if (resourcePkgItemProvider != null) resourcePkgItemProvider.dispose();
 		if (iResourceItemProvider != null) iResourceItemProvider.dispose();
-		if (iImageItemProvider != null) iImageItemProvider.dispose();
 		if (virtualResourceItemProvider != null) virtualResourceItemProvider.dispose();
 		if (localResourceItemProvider != null) localResourceItemProvider.dispose();
 		if (moduleResourceItemProvider != null) moduleResourceItemProvider.dispose();

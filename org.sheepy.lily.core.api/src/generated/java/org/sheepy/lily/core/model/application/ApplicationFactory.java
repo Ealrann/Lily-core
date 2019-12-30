@@ -95,15 +95,6 @@ public interface ApplicationFactory extends EFactory
 	IResource createIResource();
 
 	/**
-	 * Returns a new object of class '<em>IImage</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>IImage</em>'.
-	 * @generated
-	 */
-	IImage createIImage();
-
-	/**
 	 * Returns a new object of class '<em>Virtual Resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
