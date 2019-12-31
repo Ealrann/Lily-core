@@ -212,10 +212,11 @@ public class Cadencer implements ICadencer
 		while (index < course.size())
 		{
 			final AbstractTickerWrapper ticker = course.get(index++);
+			final boolean stopped = ticker.stop.get();
 
 			do
 			{
-				if (ticker.stop.get())
+				if (stopped)
 				{
 					tickers.remove(ticker);
 				}
@@ -227,7 +228,7 @@ public class Cadencer implements ICadencer
 
 					statistics.addTime(CADENCER_TICK, ticker.getLabel(), System.nanoTime() - d);
 				}
-			} while (ticker.shouldTick());
+			} while (!stopped && ticker.shouldTick());
 		}
 		course.clear();
 
