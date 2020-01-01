@@ -74,6 +74,7 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 			addMovablePropertyDescriptor(object);
 			addMinimizedPropertyDescriptor(object);
 			addBackgroundImagePropertyDescriptor(object);
+			addBackgroundColorPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -355,6 +356,29 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 	}
 
 	/**
+	 * This adds a property descriptor for the Background Color feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addBackgroundColorPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Panel_backgroundColor_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Panel_backgroundColor_feature", "_UI_Panel_type"),
+				 UiPackage.Literals.PANEL__BACKGROUND_COLOR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -439,6 +463,7 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 			case UiPackage.PANEL__MINIMIZABLE:
 			case UiPackage.PANEL__MOVABLE:
 			case UiPackage.PANEL__MINIMIZED:
+			case UiPackage.PANEL__BACKGROUND_COLOR:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case UiPackage.PANEL__CONTROLS:

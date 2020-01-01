@@ -408,6 +408,17 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * @generated
 	 */
 	@Override
+	public EAttribute getPanel_BackgroundColor()
+	{
+		return (EAttribute)panelEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getUI()
 	{
 		return uiEClass;
@@ -1078,6 +1089,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		createEAttribute(panelEClass, PANEL__MOVABLE);
 		createEAttribute(panelEClass, PANEL__MINIMIZED);
 		createEReference(panelEClass, PANEL__BACKGROUND_IMAGE);
+		createEAttribute(panelEClass, PANEL__BACKGROUND_COLOR);
 
 		uiEClass = createEClass(UI);
 		createEAttribute(uiEClass, UI__IMAGE_SUPPORT);
@@ -1186,8 +1198,8 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		// Obtain other dependent packages
 		PresentationPackage thePresentationPackage = (PresentationPackage)EPackage.Registry.INSTANCE.getEPackage(PresentationPackage.eNS_URI);
 		ApplicationPackage theApplicationPackage = (ApplicationPackage)EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
-		InferencePackage theInferencePackage = (InferencePackage)EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
 		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+		InferencePackage theInferencePackage = (InferencePackage)EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
 		VariablePackage theVariablePackage = (VariablePackage)EPackage.Registry.INSTANCE.getEPackage(VariablePackage.eNS_URI);
 		ActionPackage theActionPackage = (ActionPackage)EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
 
@@ -1232,6 +1244,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		initEAttribute(getPanel_Movable(), ecorePackage.getEBoolean(), "movable", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPanel_Minimized(), ecorePackage.getEBoolean(), "minimized", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPanel_BackgroundImage(), theApplicationPackage.getIImage(), null, "backgroundImage", null, 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getPanel_BackgroundColor(), theTypesPackage.getVector4i(), "backgroundColor", "90;90;90;150", 1, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(uiEClass, org.sheepy.lily.core.model.ui.UI.class, "UI", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getUI_ImageSupport(), ecorePackage.getEBoolean(), "imageSupport", "true", 1, 1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

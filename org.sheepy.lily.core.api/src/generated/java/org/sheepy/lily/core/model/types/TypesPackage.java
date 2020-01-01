@@ -494,6 +494,16 @@ public interface TypesPackage extends EPackage
 	int VECTOR4F = 19;
 
 	/**
+	 * The meta object id for the '<em>Vector4i</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.joml.Vector4ic
+	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector4i()
+	 * @generated
+	 */
+	int VECTOR4I = 20;
+
+	/**
 	 * The meta object id for the '<em>Color4f</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -501,7 +511,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getColor4f()
 	 * @generated
 	 */
-	int COLOR4F = 20;
+	int COLOR4F = 21;
 
 	/**
 	 * The meta object id for the '<em>Color3f</em>' data type.
@@ -511,7 +521,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getColor3f()
 	 * @generated
 	 */
-	int COLOR3F = 21;
+	int COLOR3F = 22;
 
 	/**
 	 * The meta object id for the '<em>Vector3d</em>' data type.
@@ -521,7 +531,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3d()
 	 * @generated
 	 */
-	int VECTOR3D = 22;
+	int VECTOR3D = 23;
 
 	/**
 	 * The meta object id for the '<em>Vector3f</em>' data type.
@@ -531,7 +541,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3f()
 	 * @generated
 	 */
-	int VECTOR3F = 23;
+	int VECTOR3F = 24;
 
 	/**
 	 * The meta object id for the '<em>Vector3i</em>' data type.
@@ -541,7 +551,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3i()
 	 * @generated
 	 */
-	int VECTOR3I = 24;
+	int VECTOR3I = 25;
 
 	/**
 	 * The meta object id for the '<em>Vector2f</em>' data type.
@@ -551,7 +561,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2f()
 	 * @generated
 	 */
-	int VECTOR2F = 25;
+	int VECTOR2F = 26;
 
 	/**
 	 * The meta object id for the '<em>Vector2i</em>' data type.
@@ -561,7 +571,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2i()
 	 * @generated
 	 */
-	int VECTOR2I = 26;
+	int VECTOR2I = 27;
 
 	/**
 	 * The meta object id for the '<em>Vector2d</em>' data type.
@@ -571,7 +581,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2d()
 	 * @generated
 	 */
-	int VECTOR2D = 27;
+	int VECTOR2D = 28;
 
 	/**
 	 * The meta object id for the '<em>Java Module</em>' data type.
@@ -581,7 +591,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getJavaModule()
 	 * @generated
 	 */
-	int JAVA_MODULE = 28;
+	int JAVA_MODULE = 29;
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.types.LNamedElement <em>LNamed Element</em>}'.
@@ -888,6 +898,17 @@ public interface TypesPackage extends EPackage
 	 * @generated
 	 */
 	EDataType getVector4f();
+
+	/**
+	 * Returns the meta object for data type '{@link org.joml.Vector4ic <em>Vector4i</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Vector4i</em>'.
+	 * @see org.joml.Vector4ic
+	 * @model instanceClass="org.joml.Vector4ic"
+	 * @generated
+	 */
+	EDataType getVector4i();
 
 	/**
 	 * Returns the meta object for data type '{@link org.joml.Vector4fc <em>Color4f</em>}'.
@@ -1291,6 +1312,16 @@ public interface TypesPackage extends EPackage
 		 * @generated
 		 */
 		EDataType VECTOR4F = eINSTANCE.getVector4f();
+
+		/**
+		 * The meta object literal for the '<em>Vector4i</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.joml.Vector4ic
+		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector4i()
+		 * @generated
+		 */
+		EDataType VECTOR4I = eINSTANCE.getVector4i();
 
 		/**
 		 * The meta object literal for the '<em>Color4f</em>' data type.

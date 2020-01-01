@@ -28,6 +28,8 @@ import org.joml.Vector4dc;
 import org.joml.Vector4f;
 import org.joml.Vector4fc;
 
+import org.joml.Vector4i;
+import org.joml.Vector4ic;
 import org.sheepy.lily.core.model.types.*;
 
 /**
@@ -82,9 +84,9 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	{
 		switch (eClass.getClassifierID())
 		{
-			case TypesPackage.FLOAT_PARAMETER: return (EObject)createFloatParameter();
-			case TypesPackage.STRING_PARAMETER: return (EObject)createStringParameter();
-			case TypesPackage.BOOLEAN_PARAMETER: return (EObject)createBooleanParameter();
+			case TypesPackage.FLOAT_PARAMETER: return createFloatParameter();
+			case TypesPackage.STRING_PARAMETER: return createStringParameter();
+			case TypesPackage.BOOLEAN_PARAMETER: return createBooleanParameter();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -124,6 +126,8 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				return createVector4dFromString(eDataType, initialValue);
 			case TypesPackage.VECTOR4F:
 				return createVector4fFromString(eDataType, initialValue);
+			case TypesPackage.VECTOR4I:
+				return createVector4iFromString(eDataType, initialValue);
 			case TypesPackage.COLOR4F:
 				return createColor4fFromString(eDataType, initialValue);
 			case TypesPackage.COLOR3F:
@@ -181,6 +185,8 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				return convertVector4dToString(eDataType, instanceValue);
 			case TypesPackage.VECTOR4F:
 				return convertVector4fToString(eDataType, instanceValue);
+			case TypesPackage.VECTOR4I:
+				return convertVector4iToString(eDataType, instanceValue);
 			case TypesPackage.COLOR4F:
 				return convertColor4fToString(eDataType, instanceValue);
 			case TypesPackage.COLOR3F:
@@ -470,15 +476,13 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 		if ((it != null))
 		{
 			final String[] split = it.split(";");
-			int _length = split.length;
-			boolean _equals = (_length == 4);
-			if (_equals)
+			if (split.length == 4)
 			{
-				Double _valueOf = Double.valueOf(split[0]);
-				Double _valueOf_1 = Double.valueOf(split[1]);
-				Double _valueOf_2 = Double.valueOf(split[2]);
-				Double _valueOf_3 = Double.valueOf(split[3]);
-				return new Vector4d((_valueOf).doubleValue(), (_valueOf_1).doubleValue(), (_valueOf_2).doubleValue(), (_valueOf_3).doubleValue());
+				double x = Double.parseDouble(split[0]);
+				double y = Double.parseDouble(split[1]);
+				double z = Double.parseDouble(split[2]);
+				double w = Double.parseDouble(split[3]);
+				return new Vector4d(x, y, z, w);
 			}
 		}
 		return new Vector4d(0, 0, 0, 0);
@@ -503,16 +507,11 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	{
 		if ((it != null))
 		{
-			double _x = it.x();
-			String _plus = (Double.valueOf(_x) + ";");
-			double _y = it.y();
-			String _plus_1 = (_plus + Double.valueOf(_y));
-			String _plus_2 = (_plus_1 + ";");
-			double _z = it.z();
-			String _plus_3 = (_plus_2 + Double.valueOf(_z));
-			String _plus_4 = (_plus_3 + ";");
-			double _w = it.w();
-			return (_plus_4 + Double.valueOf(_w));
+			double x = it.x();
+			double y = it.y();
+			double z = it.z();
+			double w = it.w();
+			return (x + ";" + y + ";" + z + ";" + w);
 		}
 		else
 		{
@@ -540,18 +539,16 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 		if ((it != null))
 		{
 			final String[] split = it.split(";");
-			int _length = split.length;
-			boolean _equals = (_length == 4);
-			if (_equals)
+			if (split.length == 4)
 			{
-				Float _valueOf = Float.valueOf(split[0]);
-				Float _valueOf_1 = Float.valueOf(split[1]);
-				Float _valueOf_2 = Float.valueOf(split[2]);
-				Float _valueOf_3 = Float.valueOf(split[3]);
-				return new Vector4f((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue(), (_valueOf_3).floatValue());
+				float x = Float.parseFloat(split[0]);
+				float y = Float.parseFloat(split[1]);
+				float z = Float.parseFloat(split[2]);
+				float w = Float.parseFloat(split[3]);
+				return new Vector4f(x, y, z, w);
 			}
 		}
-		return new Vector4f(0, 0, 0, 0);
+		return new Vector4f(0f, 0f, 0f, 0f);
 	}
 
 	/**
@@ -573,16 +570,11 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	{
 		if ((it != null))
 		{
-			float _x = it.x();
-			String _plus = (Float.valueOf(_x) + ";");
-			float _y = it.y();
-			String _plus_1 = (_plus + Float.valueOf(_y));
-			String _plus_2 = (_plus_1 + ";");
-			float _z = it.z();
-			String _plus_3 = (_plus_2 + Float.valueOf(_z));
-			String _plus_4 = (_plus_3 + ";");
-			float _w = it.w();
-			return (_plus_4 + Float.valueOf(_w));
+			float x = it.x();
+			float y = it.y();
+			float z = it.z();
+			float w = it.w();
+			return (x + ";" + y + ";" + z + ";" + w);
 		}
 		else
 		{
@@ -605,23 +597,84 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Vector4ic createVector4i(final String it)
+	{
+		if ((it != null))
+		{
+			final String[] split = it.split(";");
+			if (split.length == 4)
+			{
+				int x = Integer.parseInt(split[0]);
+				int y = Integer.parseInt(split[1]);
+				int z = Integer.parseInt(split[2]);
+				int w = Integer.parseInt(split[3]);
+				return new Vector4i(x, y, z, w);
+			}
+		}
+		return new Vector4i(0, 0, 0, 0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Vector4ic createVector4iFromString(EDataType eDataType, String initialValue)
+	{
+		return createVector4i(initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertVector4i(final Vector4ic it)
+	{
+		if ((it != null))
+		{
+			int x = it.x();
+			int y = it.y();
+			int z = it.z();
+			int w = it.w();
+			return (x + ";" + y + ";" + z + ";" + w);
+		}
+		else
+		{
+			return "0;0;0;0";
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertVector4iToString(EDataType eDataType, Object instanceValue)
+	{
+		return convertVector4i((Vector4ic)instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Vector4fc createColor4f(final String it)
 	{
 		if ((it != null))
 		{
 			final String[] split = it.split(";");
-			int _length = split.length;
-			boolean _equals = (_length == 4);
-			if (_equals)
+			if (split.length == 4)
 			{
-				Float _valueOf = Float.valueOf(split[0]);
-				Float _valueOf_1 = Float.valueOf(split[1]);
-				Float _valueOf_2 = Float.valueOf(split[2]);
-				Float _valueOf_3 = Float.valueOf(split[3]);
-				return new Vector4f((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue(), (_valueOf_3).floatValue());
+				float x = Float.parseFloat(split[0]);
+				float y = Float.parseFloat(split[1]);
+				float z = Float.parseFloat(split[2]);
+				float w = Float.parseFloat(split[3]);
+				return new Vector4f(x, y, z, w);
 			}
 		}
-		return new Vector4f(0, 0, 0, 0);
+		return new Vector4f(0f, 0f, 0f, 0f);
 	}
 
 	/**
@@ -643,16 +696,11 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	{
 		if ((it != null))
 		{
-			float _x = it.x();
-			String _plus = (Float.valueOf(_x) + ";");
-			float _y = it.y();
-			String _plus_1 = (_plus + Float.valueOf(_y));
-			String _plus_2 = (_plus_1 + ";");
-			float _z = it.z();
-			String _plus_3 = (_plus_2 + Float.valueOf(_z));
-			String _plus_4 = (_plus_3 + ";");
-			float _w = it.w();
-			return (_plus_4 + Float.valueOf(_w));
+			float x = it.x();
+			float y = it.y();
+			float z = it.z();
+			float w = it.w();
+			return (x + ";" + y + ";" + z + ";" + w);
 		}
 		else
 		{
@@ -680,17 +728,15 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 		if ((it != null))
 		{
 			final String[] split = it.split(";");
-			int _length = split.length;
-			boolean _equals = (_length == 3);
-			if (_equals)
+			if (split.length == 3)
 			{
-				Float _valueOf = Float.valueOf(split[0]);
-				Float _valueOf_1 = Float.valueOf(split[1]);
-				Float _valueOf_2 = Float.valueOf(split[2]);
-				return new Vector3f((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue());
+				float x = Float.parseFloat(split[0]);
+				float y = Float.parseFloat(split[1]);
+				float z = Float.parseFloat(split[2]);
+				return new Vector3f(x, y, z);
 			}
 		}
-		return new Vector3f(0, 0, 0);
+		return new Vector3f(0f, 0f, 0f);
 	}
 
 	/**
@@ -712,13 +758,10 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	{
 		if ((it != null))
 		{
-			float _x = it.x();
-			String _plus = (Float.valueOf(_x) + ";");
-			float _y = it.y();
-			String _plus_1 = (_plus + Float.valueOf(_y));
-			String _plus_2 = (_plus_1 + ";");
-			float _z = it.z();
-			return (_plus_2 + Float.valueOf(_z));
+			float x = it.x();
+			float y = it.y();
+			float z = it.z();
+			return (x + ";" + y + ";" + z);
 		}
 		else
 		{
@@ -746,14 +789,12 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 		if ((it != null))
 		{
 			final String[] split = it.split(";");
-			int _length = split.length;
-			boolean _equals = (_length == 3);
-			if (_equals)
+			if (split.length == 3)
 			{
-				Double _valueOf = Double.valueOf(split[0]);
-				Double _valueOf_1 = Double.valueOf(split[1]);
-				Double _valueOf_2 = Double.valueOf(split[2]);
-				return new Vector3d((_valueOf).doubleValue(), (_valueOf_1).doubleValue(), (_valueOf_2).doubleValue());
+				double x = Double.parseDouble(split[0]);
+				double y = Double.parseDouble(split[1]);
+				double z = Double.parseDouble(split[2]);
+				return new Vector3d(x, y, z);
 			}
 		}
 		return new Vector3d(0, 0, 0);
@@ -778,13 +819,10 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	{
 		if ((it != null))
 		{
-			double _x = it.x();
-			String _plus = (Double.valueOf(_x) + ";");
-			double _y = it.y();
-			String _plus_1 = (_plus + Double.valueOf(_y));
-			String _plus_2 = (_plus_1 + ";");
-			double _z = it.z();
-			return (_plus_2 + Double.valueOf(_z));
+			double x = it.x();
+			double y = it.y();
+			double z = it.z();
+			return (x + ";" + y + ";" + z);
 		}
 		else
 		{
@@ -812,17 +850,15 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 		if ((it != null))
 		{
 			final String[] split = it.split(";");
-			int _length = split.length;
-			boolean _equals = (_length == 3);
-			if (_equals)
+			if (split.length == 3)
 			{
-				Float _valueOf = Float.valueOf(split[0]);
-				Float _valueOf_1 = Float.valueOf(split[1]);
-				Float _valueOf_2 = Float.valueOf(split[2]);
-				return new Vector3f((_valueOf).floatValue(), (_valueOf_1).floatValue(), (_valueOf_2).floatValue());
+				float x = Float.parseFloat(split[0]);
+				float y = Float.parseFloat(split[1]);
+				float z = Float.parseFloat(split[2]);
+				return new Vector3f(x, y, z);
 			}
 		}
-		return new Vector3f(0, 0, 0);
+		return new Vector3f(0f, 0f, 0f);
 	}
 
 	/**
@@ -844,13 +880,10 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	{
 		if ((it != null))
 		{
-			float _x = it.x();
-			String _plus = (Float.valueOf(_x) + ";");
-			float _y = it.y();
-			String _plus_1 = (_plus + Float.valueOf(_y));
-			String _plus_2 = (_plus_1 + ";");
-			float _z = it.z();
-			return (_plus_2 + Float.valueOf(_z));
+			float x = it.x();
+			float y = it.y();
+			float z = it.z();
+			return (x + ";" + y + ";" + z);
 		}
 		else
 		{
@@ -878,14 +911,12 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 		if ((it != null))
 		{
 			final String[] split = it.split(";");
-			int _length = split.length;
-			boolean _equals = (_length == 3);
-			if (_equals)
+			if (split.length == 3)
 			{
-				Integer _valueOf = Integer.valueOf(split[0]);
-				Integer _valueOf_1 = Integer.valueOf(split[1]);
-				Integer _valueOf_2 = Integer.valueOf(split[2]);
-				return new Vector3i((_valueOf).intValue(), (_valueOf_1).intValue(), (_valueOf_2).intValue());
+				int x = Integer.parseInt(split[0]);
+				int y = Integer.parseInt(split[1]);
+				int z = Integer.parseInt(split[2]);
+				return new Vector3i(x, y, z);
 			}
 		}
 		return new Vector3i(0, 0, 0);
@@ -910,13 +941,10 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	{
 		if ((it != null))
 		{
-			int _x = it.x();
-			String _plus = (Integer.valueOf(_x) + ";");
-			int _y = it.y();
-			String _plus_1 = (_plus + Integer.valueOf(_y));
-			String _plus_2 = (_plus_1 + ";");
-			int _z = it.z();
-			return (_plus_2 + Integer.valueOf(_z));
+			int x = it.x();
+			int y = it.y();
+			int z = it.z();
+			return (x + ";" + y + ";" + z);
 		}
 		else
 		{
@@ -944,16 +972,14 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 		if ((it != null))
 		{
 			final String[] split = it.split(";");
-			int _length = split.length;
-			boolean _equals = (_length == 2);
-			if (_equals)
+			if (split.length == 2)
 			{
-				Float _valueOf = Float.valueOf(split[0]);
-				Float _valueOf_1 = Float.valueOf(split[1]);
-				return new Vector2f((_valueOf).floatValue(), (_valueOf_1).floatValue());
+				float x = Float.parseFloat(split[0]);
+				float y = Float.parseFloat(split[1]);
+				return new Vector2f(x, y);
 			}
 		}
-		return new Vector2f(0, 0);
+		return new Vector2f(0f, 0f);
 	}
 
 	/**
@@ -975,10 +1001,9 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	{
 		if ((it != null))
 		{
-			float _x = it.x();
-			String _plus = (Float.valueOf(_x) + ";");
-			float _y = it.y();
-			return (_plus + Float.valueOf(_y));
+			float x = it.x();
+			float y = it.y();
+			return (x + ";" + y);
 		}
 		else
 		{
@@ -1006,13 +1031,11 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 		if ((it != null))
 		{
 			final String[] split = it.split(";");
-			int _length = split.length;
-			boolean _equals = (_length == 2);
-			if (_equals)
+			if (split.length == 2)
 			{
-				Integer _valueOf = Integer.valueOf(split[0]);
-				Integer _valueOf_1 = Integer.valueOf(split[1]);
-				return new Vector2i((_valueOf).intValue(), (_valueOf_1).intValue());
+				int x = Integer.parseInt(split[0]);
+				int y = Integer.parseInt(split[1]);
+				return new Vector2i(x, y);
 			}
 		}
 		return new Vector2i(0, 0);
@@ -1037,10 +1060,9 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	{
 		if ((it != null))
 		{
-			int _x = it.x();
-			String _plus = (Integer.valueOf(_x) + ";");
-			int _y = it.y();
-			return (_plus + Integer.valueOf(_y));
+			int x = it.x();
+			int y = it.y();
+			return (x + ";" + y);
 		}
 		else
 		{
@@ -1068,13 +1090,11 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 		if ((it != null))
 		{
 			final String[] split = it.split(";");
-			int _length = split.length;
-			boolean _equals = (_length == 2);
-			if (_equals)
+			if (split.length == 2)
 			{
-				Double _valueOf = Double.valueOf(split[0]);
-				Double _valueOf_1 = Double.valueOf(split[1]);
-				return new Vector2d((_valueOf).doubleValue(), (_valueOf_1).doubleValue());
+				double x = Double.parseDouble(split[0]);
+				double y = Double.parseDouble(split[1]);
+				return new Vector2d(x, y);
 			}
 		}
 		return new Vector2d(0, 0);
@@ -1099,10 +1119,9 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	{
 		if ((it != null))
 		{
-			double _x = it.x();
-			String _plus = (Double.valueOf(_x) + ";");
-			double _y = it.y();
-			return (_plus + Double.valueOf(_y));
+			double x = it.x();
+			double y = it.y();
+			return (x + ";" + y);
 		}
 		else
 		{

@@ -21,6 +21,7 @@ import org.joml.Vector3ic;
 import org.joml.Vector4dc;
 import org.joml.Vector4fc;
 
+import org.joml.Vector4ic;
 import org.sheepy.lily.core.model.action.ActionPackage;
 
 import org.sheepy.lily.core.model.action.impl.ActionPackageImpl;
@@ -218,6 +219,13 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	private EDataType vector4fEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType vector4iEDataType = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -715,6 +723,17 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	@Override
+	public EDataType getVector4i()
+	{
+		return vector4iEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EDataType getColor4f()
 	{
 		return color4fEDataType;
@@ -880,6 +899,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		// Create data types
 		vector4dEDataType = createEDataType(VECTOR4D);
 		vector4fEDataType = createEDataType(VECTOR4F);
+		vector4iEDataType = createEDataType(VECTOR4I);
 		color4fEDataType = createEDataType(COLOR4F);
 		color3fEDataType = createEDataType(COLOR3F);
 		vector3dEDataType = createEDataType(VECTOR3D);
@@ -1038,6 +1058,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		// Initialize data types
 		initEDataType(vector4dEDataType, Vector4dc.class, "Vector4d", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(vector4fEDataType, Vector4fc.class, "Vector4f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(vector4iEDataType, Vector4ic.class, "Vector4i", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(color4fEDataType, Vector4fc.class, "Color4f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(color3fEDataType, Vector3fc.class, "Color3f", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(vector3dEDataType, Vector3dc.class, "Vector3d", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

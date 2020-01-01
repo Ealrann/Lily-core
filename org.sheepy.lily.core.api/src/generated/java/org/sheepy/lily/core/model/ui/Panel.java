@@ -3,6 +3,7 @@
 package org.sheepy.lily.core.model.ui;
 
 import org.eclipse.emf.common.util.EList;
+import org.joml.Vector4ic;
 import org.sheepy.lily.core.model.application.IImage;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
 
@@ -21,6 +22,7 @@ import org.sheepy.lily.core.model.presentation.ISizedElement;
  *   <li>{@link org.sheepy.lily.core.model.ui.Panel#isMovable <em>Movable</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.Panel#isMinimized <em>Minimized</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.Panel#getBackgroundImage <em>Background Image</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.Panel#getBackgroundColor <em>Background Color</em>}</li>
  * </ul>
  *
  * @see org.sheepy.lily.core.model.ui.UiPackage#getPanel()
@@ -154,5 +156,28 @@ public interface Panel extends IPanel, ISizedElement
 	 * @generated
 	 */
 	void setBackgroundImage(IImage value);
+
+	/**
+	 * Returns the value of the '<em><b>Background Color</b></em>' attribute.
+	 * The default value is <code>"90;90;90;150"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Background Color</em>' attribute.
+	 * @see #setBackgroundColor(Vector4ic)
+	 * @see org.sheepy.lily.core.model.ui.UiPackage#getPanel_BackgroundColor()
+	 * @model default="90;90;90;150" dataType="org.sheepy.lily.core.model.types.Vector4i" required="true"
+	 * @generated
+	 */
+	Vector4ic getBackgroundColor();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.ui.Panel#getBackgroundColor <em>Background Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Background Color</em>' attribute.
+	 * @see #getBackgroundColor()
+	 * @generated
+	 */
+	void setBackgroundColor(Vector4ic value);
 
 } // Panel

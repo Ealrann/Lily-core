@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.joml.Vector2ic;
 
+import org.joml.Vector4ic;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.model.application.IImage;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
@@ -62,6 +63,7 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#isMovable <em>Movable</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#isMinimized <em>Minimized</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getBackgroundImage <em>Background Image</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getBackgroundColor <em>Background Color</em>}</li>
  * </ul>
  *
  * @generated
@@ -307,6 +309,26 @@ public class PanelImpl extends LilyEObject implements Panel
 	 * @ordered
 	 */
 	protected IImage backgroundImage;
+
+	/**
+	 * The default value of the '{@link #getBackgroundColor() <em>Background Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBackgroundColor()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Vector4ic BACKGROUND_COLOR_EDEFAULT = (Vector4ic)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getVector4i(), "90;90;90;150");
+
+	/**
+	 * The cached value of the '{@link #getBackgroundColor() <em>Background Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBackgroundColor()
+	 * @generated
+	 * @ordered
+	 */
+	protected Vector4ic backgroundColor = BACKGROUND_COLOR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -670,6 +692,31 @@ public class PanelImpl extends LilyEObject implements Panel
 	 * @generated
 	 */
 	@Override
+	public Vector4ic getBackgroundColor()
+	{
+		return backgroundColor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setBackgroundColor(Vector4ic newBackgroundColor)
+	{
+		Vector4ic oldBackgroundColor = backgroundColor;
+		backgroundColor = newBackgroundColor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__BACKGROUND_COLOR, oldBackgroundColor, backgroundColor));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public IInferenceObject lInferenceObject()
 	{
 		return this;
@@ -728,6 +775,8 @@ public class PanelImpl extends LilyEObject implements Panel
 			case UiPackage.PANEL__BACKGROUND_IMAGE:
 				if (resolve) return getBackgroundImage();
 				return basicGetBackgroundImage();
+			case UiPackage.PANEL__BACKGROUND_COLOR:
+				return getBackgroundColor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -783,6 +832,9 @@ public class PanelImpl extends LilyEObject implements Panel
 			case UiPackage.PANEL__BACKGROUND_IMAGE:
 				setBackgroundImage((IImage)newValue);
 				return;
+			case UiPackage.PANEL__BACKGROUND_COLOR:
+				setBackgroundColor((Vector4ic)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -836,6 +888,9 @@ public class PanelImpl extends LilyEObject implements Panel
 			case UiPackage.PANEL__BACKGROUND_IMAGE:
 				setBackgroundImage((IImage)null);
 				return;
+			case UiPackage.PANEL__BACKGROUND_COLOR:
+				setBackgroundColor(BACKGROUND_COLOR_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -876,6 +931,8 @@ public class PanelImpl extends LilyEObject implements Panel
 				return minimized != MINIMIZED_EDEFAULT;
 			case UiPackage.PANEL__BACKGROUND_IMAGE:
 				return backgroundImage != null;
+			case UiPackage.PANEL__BACKGROUND_COLOR:
+				return BACKGROUND_COLOR_EDEFAULT == null ? backgroundColor != null : !BACKGROUND_COLOR_EDEFAULT.equals(backgroundColor);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1057,6 +1114,8 @@ public class PanelImpl extends LilyEObject implements Panel
 		result.append(movable);
 		result.append(", minimized: ");
 		result.append(minimized);
+		result.append(", backgroundColor: ");
+		result.append(backgroundColor);
 		result.append(')');
 		return result.toString();
 	}
