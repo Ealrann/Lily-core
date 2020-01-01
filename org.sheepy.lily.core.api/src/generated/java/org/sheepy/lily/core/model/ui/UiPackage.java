@@ -282,13 +282,22 @@ public interface UiPackage extends EPackage
 	int PANEL__BACKGROUND_COLOR = IPANEL_FEATURE_COUNT + 8;
 
 	/**
+	 * The feature id for the '<em><b>Border Color</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANEL__BORDER_COLOR = IPANEL_FEATURE_COUNT + 9;
+
+	/**
 	 * The number of structural features of the '<em>Panel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PANEL_FEATURE_COUNT = IPANEL_FEATURE_COUNT + 9;
+	int PANEL_FEATURE_COUNT = IPANEL_FEATURE_COUNT + 10;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -2234,6 +2243,17 @@ public interface UiPackage extends EPackage
 	EAttribute getPanel_BackgroundColor();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.Panel#getBorderColor <em>Border Color</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Border Color</em>'.
+	 * @see org.sheepy.lily.core.model.ui.Panel#getBorderColor()
+	 * @see #getPanel()
+	 * @generated
+	 */
+	EAttribute getPanel_BorderColor();
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.UI <em>UI</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2937,6 +2957,14 @@ public interface UiPackage extends EPackage
 		 * @generated
 		 */
 		EAttribute PANEL__BACKGROUND_COLOR = eINSTANCE.getPanel_BackgroundColor();
+
+		/**
+		 * The meta object literal for the '<em><b>Border Color</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PANEL__BORDER_COLOR = eINSTANCE.getPanel_BorderColor();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.UIImpl <em>UI</em>}' class.

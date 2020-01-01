@@ -64,6 +64,7 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#isMinimized <em>Minimized</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getBackgroundImage <em>Background Image</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getBackgroundColor <em>Background Color</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getBorderColor <em>Border Color</em>}</li>
  * </ul>
  *
  * @generated
@@ -329,6 +330,26 @@ public class PanelImpl extends LilyEObject implements Panel
 	 * @ordered
 	 */
 	protected Vector4ic backgroundColor = BACKGROUND_COLOR_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getBorderColor() <em>Border Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBorderColor()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Vector4ic BORDER_COLOR_EDEFAULT = (Vector4ic)TypesFactory.eINSTANCE.createFromString(TypesPackage.eINSTANCE.getVector4i(), "60;60;60;150");
+
+	/**
+	 * The cached value of the '{@link #getBorderColor() <em>Border Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBorderColor()
+	 * @generated
+	 * @ordered
+	 */
+	protected Vector4ic borderColor = BORDER_COLOR_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -717,6 +738,31 @@ public class PanelImpl extends LilyEObject implements Panel
 	 * @generated
 	 */
 	@Override
+	public Vector4ic getBorderColor()
+	{
+		return borderColor;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setBorderColor(Vector4ic newBorderColor)
+	{
+		Vector4ic oldBorderColor = borderColor;
+		borderColor = newBorderColor;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__BORDER_COLOR, oldBorderColor, borderColor));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public IInferenceObject lInferenceObject()
 	{
 		return this;
@@ -777,6 +823,8 @@ public class PanelImpl extends LilyEObject implements Panel
 				return basicGetBackgroundImage();
 			case UiPackage.PANEL__BACKGROUND_COLOR:
 				return getBackgroundColor();
+			case UiPackage.PANEL__BORDER_COLOR:
+				return getBorderColor();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -835,6 +883,9 @@ public class PanelImpl extends LilyEObject implements Panel
 			case UiPackage.PANEL__BACKGROUND_COLOR:
 				setBackgroundColor((Vector4ic)newValue);
 				return;
+			case UiPackage.PANEL__BORDER_COLOR:
+				setBorderColor((Vector4ic)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -891,6 +942,9 @@ public class PanelImpl extends LilyEObject implements Panel
 			case UiPackage.PANEL__BACKGROUND_COLOR:
 				setBackgroundColor(BACKGROUND_COLOR_EDEFAULT);
 				return;
+			case UiPackage.PANEL__BORDER_COLOR:
+				setBorderColor(BORDER_COLOR_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -933,6 +987,8 @@ public class PanelImpl extends LilyEObject implements Panel
 				return backgroundImage != null;
 			case UiPackage.PANEL__BACKGROUND_COLOR:
 				return BACKGROUND_COLOR_EDEFAULT == null ? backgroundColor != null : !BACKGROUND_COLOR_EDEFAULT.equals(backgroundColor);
+			case UiPackage.PANEL__BORDER_COLOR:
+				return BORDER_COLOR_EDEFAULT == null ? borderColor != null : !BORDER_COLOR_EDEFAULT.equals(borderColor);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -1116,6 +1172,8 @@ public class PanelImpl extends LilyEObject implements Panel
 		result.append(minimized);
 		result.append(", backgroundColor: ");
 		result.append(backgroundColor);
+		result.append(", borderColor: ");
+		result.append(borderColor);
 		result.append(')');
 		return result.toString();
 	}

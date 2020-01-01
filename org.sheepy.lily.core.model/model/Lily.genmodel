@@ -39,6 +39,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Panel/minimized"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ui.ecore#//Panel/backgroundImage"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Panel/backgroundColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Panel/borderColor"/>
     </genClasses>
     <genClasses ecoreClass="ui.ecore#//UI">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//UI/imageSupport"/>

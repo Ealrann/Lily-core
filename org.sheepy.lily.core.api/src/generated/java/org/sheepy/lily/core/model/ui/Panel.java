@@ -23,6 +23,7 @@ import org.sheepy.lily.core.model.presentation.ISizedElement;
  *   <li>{@link org.sheepy.lily.core.model.ui.Panel#isMinimized <em>Minimized</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.Panel#getBackgroundImage <em>Background Image</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.Panel#getBackgroundColor <em>Background Color</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.Panel#getBorderColor <em>Border Color</em>}</li>
  * </ul>
  *
  * @see org.sheepy.lily.core.model.ui.UiPackage#getPanel()
@@ -179,5 +180,28 @@ public interface Panel extends IPanel, ISizedElement
 	 * @generated
 	 */
 	void setBackgroundColor(Vector4ic value);
+
+	/**
+	 * Returns the value of the '<em><b>Border Color</b></em>' attribute.
+	 * The default value is <code>"60;60;60;150"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Border Color</em>' attribute.
+	 * @see #setBorderColor(Vector4ic)
+	 * @see org.sheepy.lily.core.model.ui.UiPackage#getPanel_BorderColor()
+	 * @model default="60;60;60;150" dataType="org.sheepy.lily.core.model.types.Vector4i" required="true"
+	 * @generated
+	 */
+	Vector4ic getBorderColor();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.ui.Panel#getBorderColor <em>Border Color</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Border Color</em>' attribute.
+	 * @see #getBorderColor()
+	 * @generated
+	 */
+	void setBorderColor(Vector4ic value);
 
 } // Panel
