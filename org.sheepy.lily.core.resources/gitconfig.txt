@@ -1,6 +1,6 @@
 [user]
-name = Aurélien Mora
-email = ealrann@gmail.com
+name =
+email =
 
 [color]
 ui = auto
@@ -13,11 +13,10 @@ lg = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(
 oops = commit --amend --no-edit
 su = submodule update
 si = submodule init
-ps = pull --recurse-submodules
+pr = pull --rebase --recurse-submodules
 
 [color "branch"]
 upstream = cyan
 
 [tag]
 sort = version:refname
-
