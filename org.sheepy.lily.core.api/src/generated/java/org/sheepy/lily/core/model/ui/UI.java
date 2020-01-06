@@ -93,7 +93,7 @@ public interface UI extends IScenePart
 	 * @return the value of the '<em>Font Pkg</em>' containment reference.
 	 * @see #setFontPkg(FontPkg)
 	 * @see org.sheepy.lily.core.model.ui.UiPackage#getUI_FontPkg()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true" resolveProxies="true" required="true"
 	 * @generated
 	 */
 	FontPkg getFontPkg();

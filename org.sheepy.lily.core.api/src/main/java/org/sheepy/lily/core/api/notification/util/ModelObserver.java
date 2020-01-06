@@ -1,4 +1,4 @@
-package org.sheepy.lily.core.api.util;
+package org.sheepy.lily.core.api.notification.util;
 
 import java.util.List;
 
@@ -14,8 +14,8 @@ public class ModelObserver
 	private final List<EStructuralFeature> features;
 	private final HierarchyNotificationListener rootListener;
 	private final INotificationListener listener;
-	
-	public ModelObserver(INotificationListener listener,
+
+	public ModelObserver(	INotificationListener listener,
 							List<EStructuralFeature> structuralFeatures)
 	{
 		this.listener = listener;
@@ -72,19 +72,19 @@ public class ModelObserver
 				{
 					if (feature.isMany() == false)
 					{
-						ModelObserver.this.listener.notifyChanged(new ENotificationImpl(	target,
-																							Notification.ADD,
-																							feature.getFeatureID(),
-																							null,
-																							value));
+						ModelObserver.this.listener.notifyChanged(new ENotificationImpl(target,
+																						Notification.ADD,
+																						feature.getFeatureID(),
+																						null,
+																						value));
 					}
 					else
 					{
-						ModelObserver.this.listener.notifyChanged(new ENotificationImpl(	target,
-																							Notification.ADD_MANY,
-																							feature.getFeatureID(),
-																							null,
-																							value));
+						ModelObserver.this.listener.notifyChanged(new ENotificationImpl(target,
+																						Notification.ADD_MANY,
+																						feature.getFeatureID(),
+																						null,
+																						value));
 					}
 				}
 			}
@@ -125,11 +125,11 @@ public class ModelObserver
 					final int type = feature.isMany()
 							? Notification.REMOVE_MANY
 							: Notification.REMOVE;
-					ModelObserver.this.listener.notifyChanged(new ENotificationImpl(	target,
-																						type,
-																						feature.getFeatureID(),
-																						value,
-																						null));
+					ModelObserver.this.listener.notifyChanged(new ENotificationImpl(target,
+																					type,
+																					feature.getFeatureID(),
+																					value,
+																					null));
 				}
 			}
 			else
@@ -165,52 +165,22 @@ public class ModelObserver
 			}
 			else
 			{
-				switch (notification.getEventType())
-				{
-				case Notification.ADD:
-					addChild((LilyEObject) notification.getNewValue());
-					break;
-				case Notification.ADD_MANY:
-					@SuppressWarnings("unchecked")
-					final var newList = (List<LilyEObject>) notification.getNewValue();
-					for (int i = 0; i < newList.size(); i++)
-					{
-						final var child = newList.get(i);
-						addChild(child);
-					}
-					break;
-				case Notification.SET:
-					if (notification.getOldValue() != null)
-						removeChild((LilyEObject) notification.getOldValue());
-					if (notification.getNewValue() != null)
-						addChild((LilyEObject) notification.getNewValue());
-					break;
-				case Notification.REMOVE:
-					removeChild((LilyEObject) notification.getOldValue());
-					break;
-				case Notification.REMOVE_MANY:
-					@SuppressWarnings("unchecked")
-					final var oldList = (List<LilyEObject>) notification.getOldValue();
-					for (int i = 0; i < oldList.size(); i++)
-					{
-						final var child = oldList.get(i);
-						removeChild(child);
-					}
-					break;
-				}
+				NotificationUnifier.unify(notification, this::addChild, this::removeChild);
 			}
 		}
 
-		private void addChild(final LilyEObject child)
+		private void addChild(final ILilyEObject child)
 		{
-			child.addListener(childListener, subFeatureId);
-			childListener.setTarget(child);
+			final var lilyChild = (LilyEObject) child;
+			lilyChild.addListener(childListener, subFeatureId);
+			childListener.setTarget(lilyChild);
 		}
 
-		private void removeChild(final LilyEObject child)
+		private void removeChild(final ILilyEObject child)
 		{
-			childListener.unsetTarget(child);
-			child.removeListener(childListener, subFeatureId);
+			final var lilyChild = (LilyEObject) child;
+			childListener.unsetTarget(lilyChild);
+			lilyChild.removeListener(childListener, subFeatureId);
 		}
 	}
 }

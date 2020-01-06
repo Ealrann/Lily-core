@@ -1,10 +1,9 @@
 package org.sheepy.lily.core.api.notification;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.sheepy.lily.core.api.notification.INotificationListener;
-import org.sheepy.lily.core.api.notification.ListenerNotificationMap;
+import org.sheepy.lily.core.api.notification.util.ListenerNotificationMap;
 
-public abstract class Notifier implements INotifier
+public class Notifier implements INotifier
 {
 	private final ListenerNotificationMap notificationMap;
 

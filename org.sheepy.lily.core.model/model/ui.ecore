@@ -24,8 +24,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="uiPages" upperBound="-1"
         eType="#//UIPage" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentUIPage" eType="#//UIPage"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="fontPkg" eType="#//FontPkg"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fontPkg" lowerBound="1"
+        eType="#//FontPkg" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="images" upperBound="-1"
         eType="ecore:EClass application.ecore#//IImage"/>
   </eClassifiers>
@@ -131,7 +131,7 @@
         containment="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FontPkg">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="fonts" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fonts" lowerBound="1" upperBound="-1"
         eType="#//Font" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FontTable" eSuperTypes="application.ecore#//IResource">

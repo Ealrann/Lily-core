@@ -7,18 +7,20 @@ import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.sheepy.lily.core.adapter.impl.AdapterRegistry.AdapterDescriptor;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.IAdapterRegistry;
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.api.notification.INotificationListener;
-import org.sheepy.lily.core.api.notification.ListenerNotificationMap;
+import org.sheepy.lily.core.api.notification.util.ListenerNotificationMap;
+import org.sheepy.lily.core.api.notification.util.NotificationUnifier;
 import org.sheepy.lily.core.api.util.ModelUtil;
-import org.sheepy.lily.core.api.util.TinyEContentAdapter;
 
-public final class AdapterManagerDeployer extends TinyEContentAdapter
+public final class AdapterManagerDeployer extends AdapterImpl
 {
 	public static final AdapterRegistry REGISTRY = (AdapterRegistry) IAdapterRegistry.INSTANCE;
 	private static final String ADAPTER_CREATION_LOOP = "Adapter creation loop: ";
@@ -103,12 +105,16 @@ public final class AdapterManagerDeployer extends TinyEContentAdapter
 	@Override
 	public void notifyChanged(Notification notification)
 	{
-		super.notifyChanged(notification);
+		final var feature = notification.getFeature();
+		if (feature instanceof EReference && ((EReference) feature).isContainment() == true)
+		{
+			NotificationUnifier.unify(notification, this::setupChild, this::disposeChild);
+		}
+
 		notificationMap.notifyChanged(notification);
 	}
 
-	@Override
-	protected void setupChild(Notifier notifier)
+	private void setupChild(ILilyEObject notifier)
 	{
 		final var child = (LilyEObject) notifier;
 		child.setupAdapterManager();
@@ -119,8 +125,7 @@ public final class AdapterManagerDeployer extends TinyEContentAdapter
 		}
 	}
 
-	@Override
-	protected void disposeChild(Notifier notifier)
+	private void disposeChild(ILilyEObject notifier)
 	{
 		if (autoLoad)
 		{

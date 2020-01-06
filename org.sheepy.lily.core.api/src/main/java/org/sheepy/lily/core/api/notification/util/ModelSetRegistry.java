@@ -1,4 +1,4 @@
-package org.sheepy.lily.core.api.util;
+package org.sheepy.lily.core.api.notification.util;
 
 import java.util.ArrayList;
 import java.util.Collections;

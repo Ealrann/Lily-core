@@ -1,4 +1,4 @@
-package org.sheepy.lily.core.api.util;
+package org.sheepy.lily.core.api.adapter.util;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -7,6 +7,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.api.notification.util.AbstractModelSetRegistry;
 
 public class AdapterSetRegistry<T extends IAdapter> extends AbstractModelSetRegistry
 {

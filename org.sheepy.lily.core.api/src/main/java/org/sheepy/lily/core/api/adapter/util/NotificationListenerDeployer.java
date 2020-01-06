@@ -1,10 +1,11 @@
-package org.sheepy.lily.core.api.util;
+package org.sheepy.lily.core.api.adapter.util;
 
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.notification.INotificationListener;
+import org.sheepy.lily.core.api.notification.util.AbstractModelSetRegistry;
 
 public class NotificationListenerDeployer extends AbstractModelSetRegistry
 {

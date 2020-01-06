@@ -21,6 +21,7 @@ module org.sheepy.lily.core.api
 	exports org.sheepy.lily.core.api.allocation;
 	exports org.sheepy.lily.core.api.adapter;
 	exports org.sheepy.lily.core.api.adapter.annotation;
+	exports org.sheepy.lily.core.api.adapter.util;
 	exports org.sheepy.lily.core.api.application;
 	exports org.sheepy.lily.core.api.cadence;
 	exports org.sheepy.lily.core.api.engine;
@@ -30,6 +31,7 @@ module org.sheepy.lily.core.api
 	exports org.sheepy.lily.core.api.maintainer;
 	exports org.sheepy.lily.core.api.notification;
 	exports org.sheepy.lily.core.api.notification.impl;
+	exports org.sheepy.lily.core.api.notification.util;
 	exports org.sheepy.lily.core.api.resource;
 	exports org.sheepy.lily.core.api.service;
 	exports org.sheepy.lily.core.api.util;

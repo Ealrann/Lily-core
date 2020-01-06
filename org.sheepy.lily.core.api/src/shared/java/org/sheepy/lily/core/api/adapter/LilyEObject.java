@@ -1,5 +1,10 @@
 package org.sheepy.lily.core.api.adapter;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Stream;
+
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.sheepy.lily.core.api.notification.INotificationListener;
@@ -11,14 +16,14 @@ public class LilyEObject extends EObjectImpl implements ILilyEObject, InternalEO
 	private IAdapterManager adapterManager = null;
 
 	@Override
-	public void addListener(INotificationListener listener, int... features)
+	public final void addListener(INotificationListener listener, int... features)
 	{
 		setupAdapterManager();
 		adapterManager.addListener(listener, features);
 	}
 
 	@Override
-	public void removeListener(INotificationListener listener, int... features)
+	public final void removeListener(INotificationListener listener, int... features)
 	{
 		setupAdapterManager();
 		adapterManager.removeListener(listener, features);
@@ -26,7 +31,7 @@ public class LilyEObject extends EObjectImpl implements ILilyEObject, InternalEO
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T extends IAdapter> T adaptGeneric(Class<? extends IAdapter> type)
+	public final <T extends IAdapter> T adaptGeneric(Class<? extends IAdapter> type)
 	{
 		return (T) adapt(type);
 	}
@@ -40,13 +45,13 @@ public class LilyEObject extends EObjectImpl implements ILilyEObject, InternalEO
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T extends IAdapter> T adaptNotNullGeneric(Class<? extends IAdapter> type)
+	public final <T extends IAdapter> T adaptNotNullGeneric(Class<? extends IAdapter> type)
 	{
 		return (T) adaptNotNull(type);
 	}
 
 	@Override
-	public <T extends IAdapter> T adaptNotNull(Class<T> type)
+	public final <T extends IAdapter> T adaptNotNull(Class<T> type)
 	{
 		final T adapt = adapt(type);
 		if (adapt == null)
@@ -59,13 +64,13 @@ public class LilyEObject extends EObjectImpl implements ILilyEObject, InternalEO
 		return adapt;
 	}
 
-	public IAdapterManager getAdapterManager()
+	public final IAdapterManager getAdapterManager()
 	{
 		setupAdapterManager();
 		return adapterManager;
 	}
 
-	public void setupAdapterManager()
+	public final void setupAdapterManager()
 	{
 		if (adapterManager == null)
 		{
@@ -73,17 +78,51 @@ public class LilyEObject extends EObjectImpl implements ILilyEObject, InternalEO
 		}
 	}
 
-	public void loadAdapterManager()
+	public final void loadAdapterManager()
 	{
 		setupAdapterManager();
 		adapterManager.load();
 	}
 
-	public void disposeAdapterManager()
+	public final void disposeAdapterManager()
 	{
 		if (adapterManager != null)
 		{
 			adapterManager.dispose();
 		}
+	}
+
+	@Override
+	public final Stream<ILilyEObject> streamChildren()
+	{
+		return eClass()	.getEAllContainments()
+						.stream()
+						.flatMap(ref -> streamReference(ref))
+						.filter(Objects::nonNull);
+	}
+
+	@Override
+	public final Stream<ILilyEObject> streamAllChildren()
+	{
+		return Stream.concat(	Stream.of(this),
+								streamChildren().flatMap(ILilyEObject::streamAllChildren));
+	}
+
+	@SuppressWarnings("unchecked")
+	private final Stream<ILilyEObject> streamReference(EReference ref)
+	{
+		if (ref.isMany())
+		{
+			return ((List<ILilyEObject>) eGet(ref)).stream();
+		}
+		else
+		{
+			final var value = (ILilyEObject) eGet(ref);
+			if (value != null)
+			{
+				return Stream.of(value);
+			}
+		}
+		return Stream.empty();
 	}
 }

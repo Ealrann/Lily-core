@@ -31,7 +31,7 @@ public interface FontPkg extends ILilyEObject
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Fonts</em>' containment reference list.
 	 * @see org.sheepy.lily.core.model.ui.UiPackage#getFontPkg_Fonts()
-	 * @model containment="true" resolveProxies="true"
+	 * @model containment="true" resolveProxies="true" required="true"
 	 * @generated
 	 */
 	EList<Font> getFonts();
