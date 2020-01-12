@@ -17,18 +17,18 @@ public final class NotificationUnifier
 		{
 		case Notification.SET:
 		case Notification.UNSET:
-			final var setted = (ILilyEObject) notification.getNewValue();
-			final var unsetted = (ILilyEObject) notification.getOldValue();
+			final var setted = notification.getNewValue();
+			final var unsetted = notification.getOldValue();
 
 			if (setted != unsetted)
 			{
-				if (setted != null)
+				if (setted instanceof ILilyEObject && setted != null)
 				{
-					onAdd.accept(setted);
+					onAdd.accept((ILilyEObject) setted);
 				}
-				if (unsetted != null)
+				if (unsetted instanceof ILilyEObject && unsetted != null)
 				{
-					onRemove.accept(unsetted);
+					onRemove.accept((ILilyEObject) unsetted);
 				}
 			}
 			break;
