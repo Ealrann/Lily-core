@@ -33,9 +33,22 @@ public final class ModelExplorer
 		return streamAdapt(root, adapterType).collect(Collectors.toUnmodifiableList());
 	}
 
+	public <T extends IAdapter> List<T> exploreAdaptGeneric(ILilyEObject root,
+															Class<? extends IAdapter> adapterType)
+	{
+		return this	.<T> streamAdaptGeneric(root, adapterType)
+					.collect(Collectors.toUnmodifiableList());
+	}
+
 	public <T extends IAdapter> Stream<T> streamAdapt(ILilyEObject root, Class<T> adapterType)
 	{
 		return stream(root).map(e -> e.adapt(adapterType)).filter(Objects::nonNull);
+	}
+
+	public <T extends IAdapter> Stream<T> streamAdaptGeneric(	ILilyEObject root,
+																Class<? extends IAdapter> adapterType)
+	{
+		return stream(root).map(e -> e.<T> adaptGeneric(adapterType)).filter(Objects::nonNull);
 	}
 
 	public <T extends IAdapter> List<T> exploreAdaptNotNull(ILilyEObject root, Class<T> adapterType)
