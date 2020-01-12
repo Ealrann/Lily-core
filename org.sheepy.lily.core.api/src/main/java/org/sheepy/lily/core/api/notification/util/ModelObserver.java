@@ -40,13 +40,20 @@ public class ModelObserver
 	{
 		private final int depth;
 		private final int subFeatureId;
-
-		private HierarchyNotificationListener childListener;
+		private final HierarchyNotificationListener childListener;
 
 		public HierarchyNotificationListener(int depth)
 		{
 			this.depth = depth;
 			this.subFeatureId = computeSubFeatureId();
+			if (depth != features.size() - 1)
+			{
+				childListener = new HierarchyNotificationListener(depth + 1);
+			}
+			else
+			{
+				childListener = null;
+			}
 		}
 
 		private int computeSubFeatureId()
@@ -64,7 +71,7 @@ public class ModelObserver
 		private void setTarget(LilyEObject target)
 		{
 			final var feature = features.get(depth);
-			final var value = target.eGet(feature);
+			final var value = getValue(target, feature);
 
 			if (depth == features.size() - 1)
 			{
@@ -90,8 +97,6 @@ public class ModelObserver
 			}
 			else
 			{
-				childListener = new HierarchyNotificationListener(depth + 1);
-
 				if (value != null)
 				{
 					if (feature.isMany() == false)
@@ -116,7 +121,7 @@ public class ModelObserver
 		private void unsetTarget(LilyEObject target)
 		{
 			final var feature = features.get(depth);
-			final var value = target.eGet(feature);
+			final var value = getValue(target, feature);
 
 			if (depth == features.size() - 1)
 			{
@@ -152,6 +157,18 @@ public class ModelObserver
 						}
 					}
 				}
+			}
+		}
+
+		private Object getValue(ILilyEObject target, final EStructuralFeature feature)
+		{
+			if (target.eClass().getEAllReferences().contains(feature))
+			{
+				return target.eGet(feature);
+			}
+			else
+			{
+				return null;
 			}
 		}
 
