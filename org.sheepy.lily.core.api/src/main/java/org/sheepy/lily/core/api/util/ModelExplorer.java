@@ -49,7 +49,7 @@ public final class ModelExplorer
 		return stream(root).map(e -> e.adaptNotNull(adapterType));
 	}
 
-	private Stream<ILilyEObject> stream(ILilyEObject root)
+	Stream<ILilyEObject> stream(ILilyEObject root)
 	{
 		final var list = List.of(root);
 		var stream = list.stream();
@@ -63,21 +63,33 @@ public final class ModelExplorer
 	@SuppressWarnings("unchecked")
 	private static Stream<ILilyEObject> extractList(ILilyEObject object, EStructuralFeature feature)
 	{
-		final var val = object.eGet(feature);
-		if (feature.isMany() == false)
+		final var val = getValue(object, feature);
+		if (val != null)
 		{
-			if (val != null)
+			if (feature.isMany() == false)
 			{
 				return List.of((ILilyEObject) val).stream();
 			}
 			else
 			{
-				return Stream.empty();
+				return ((List<ILilyEObject>) val).stream();
 			}
 		}
 		else
 		{
-			return ((List<ILilyEObject>) val).stream();
+			return Stream.empty();
+		}
+	}
+
+	private static Object getValue(ILilyEObject target, final EStructuralFeature feature)
+	{
+		if (target.eClass().getEAllReferences().contains(feature))
+		{
+			return target.eGet(feature);
+		}
+		else
+		{
+			return null;
 		}
 	}
 }
