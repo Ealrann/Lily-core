@@ -7,17 +7,17 @@ test {
 }
 
 dependencies {
-	api "org.joml:joml:${jomlVersion}"
+	api "org.joml:joml:$jomlVersion"
 
-	api "emf.standalone:org.eclipse.emf.common:2.19.0"
-	api "emf.standalone:org.eclipse.emf.ecore:2.19.0"
-	api "emf.standalone:org.eclipse.emf.ecore.xmi:2.19.0"
+	api "emf.standalone:org.eclipse.emf.common:$emfVersion"
+	api "emf.standalone:org.eclipse.emf.ecore:$emfVersion"
+	api "emf.standalone:org.eclipse.emf.ecore.xmi:$emfVersion"
 
-	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.2'
-	testImplementation 'org.junit.jupiter:junit-jupiter-params:5.5.2'
+	testImplementation "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
+	testImplementation "org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion"
 
-	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.2'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.5.2'
+	testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
+	testRuntimeOnly "org.junit.platform:junit-platform-launcher:$junitPlatformVersion"
 }
 
 sourceSets {
