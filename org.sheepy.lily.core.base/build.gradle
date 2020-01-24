@@ -3,8 +3,6 @@ plugins {
 }
 
 dependencies {
-	api project(":org.sheepy.lily.core.api")
-
-	implementation project(":org.sheepy.lily.core.allocation")
-	implementation project(":org.sheepy.lily.core.impl")
+	runtimeOnly project(":org.sheepy.lily.core.allocation")
+	runtimeOnly project(":org.sheepy.lily.core.impl")
 }

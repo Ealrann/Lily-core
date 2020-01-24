@@ -2,27 +2,31 @@ package org.sheepy.lily.core.adapter.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ServiceLoader;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.IAdapterProvider;
 import org.sheepy.lily.core.api.adapter.IAdapterRegistry;
-import org.sheepy.lily.core.api.adapter.annotation.Adapters;
 
 public final class AdapterRegistry implements IAdapterRegistry
 {
+	private final static List<IAdapterProvider> ADAPTERS = StreamSupport.stream(ServiceLoader	.load(IAdapterProvider.class)
+																								.spliterator(),
+																				false)
+																		.collect(Collectors.toList());
+
 	private final List<AdapterDescriptor<?>> descriptors = new ArrayList<>();
 
 	public AdapterRegistry()
 	{
-		for (final Module module : ModuleLayer.boot().modules())
+		for (final var adapters : ADAPTERS)
 		{
-			final Adapters adapters = module.getAnnotation(Adapters.class);
-			if (adapters != null)
+			for (final var adapterClass : adapters.classifiers())
 			{
-				for (final Class<? extends IAdapter> adapterClass : adapters.classifiers())
-				{
-					descriptors.add(createDescriptor(adapterClass));
-				}
+				descriptors.add(createDescriptor(adapterClass));
 			}
 		}
 	}
