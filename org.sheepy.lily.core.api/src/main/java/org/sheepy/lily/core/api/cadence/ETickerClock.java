@@ -1,5 +1,7 @@
 package org.sheepy.lily.core.api.cadence;
 
+import org.sheepy.lily.core.model.application.Application;
+
 public enum ETickerClock
 {
 	/** Clock based on {@link java.lang.System#nanoTime()} */
@@ -7,7 +9,7 @@ public enum ETickerClock
 
 	/**
 	 * Clock based on a factor of real clock:
-	 * {@link org.sheepy.lily.core.model.application.Application#getTimeFactor()}
+	 * {@link Application#getTimeConfiguration()}
 	 */
 	ApplicationWorld
 }

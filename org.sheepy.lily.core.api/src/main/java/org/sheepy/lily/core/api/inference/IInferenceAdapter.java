@@ -21,25 +21,23 @@ public interface IInferenceAdapter extends IAdapter
 	void removeInferer(Inferer inferer);
 
 	/**
-	 * @param clazz
-	 *            The {@link LNotification} eClass listened
+	 * @param clazz    The {@link LNotification} eClass listened
 	 * @param listener
 	 */
 	void addNotificationListener(EClass clazz, IInferenceListener listener);
 
 	/**
-	 * @param clazz
-	 *            The {@link LNotification} eClass listened
+	 * @param clazz    The {@link LNotification} eClass listened
 	 * @param listener
 	 */
 	void removeNotificationListener(EClass clazz, IInferenceListener listener);
 
-	public interface IInferenceListener
+	interface IInferenceListener
 	{
 		void onNotification(EObject unit, LNotification notification);
 
-		<T extends Parameter> void onNotification(	EObject unit,
-													ParameteredNotification<T> notification,
-													T parameter);
+		<T extends Parameter> void onNotification(EObject unit,
+												  ParameteredNotification<T> notification,
+												  T parameter);
 	}
 }

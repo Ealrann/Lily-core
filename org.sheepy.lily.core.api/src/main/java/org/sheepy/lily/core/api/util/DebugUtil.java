@@ -3,6 +3,7 @@ package org.sheepy.lily.core.api.util;
 public class DebugUtil
 {
 	public static boolean DEBUG_ENABLED;
+	@SuppressWarnings("CanBeFinal")
 	public static boolean DEBUG_VERBOSE_ENABLED;
 	static
 	{

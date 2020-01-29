@@ -6,11 +6,10 @@ import org.eclipse.emf.ecore.EAttribute;
 
 public class FeatureData
 {
-	public String nsURI;
-	public String className;
-	public String featureName;
-
-	public String definition;
+	public final String nsURI;
+	public final String className;
+	public final String featureName;
+	public final String definition;
 
 	public FeatureData(String def)
 	{

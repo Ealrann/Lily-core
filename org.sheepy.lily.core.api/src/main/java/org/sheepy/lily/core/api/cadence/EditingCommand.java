@@ -22,7 +22,7 @@ public abstract class EditingCommand
 	 * 
 	 * @return
 	 */
-	@SuppressWarnings("static-method")
+	@SuppressWarnings({"static-method", "SameReturnValue"})
 	public boolean doPrepare()
 	{
 		return true;
@@ -41,7 +41,7 @@ public abstract class EditingCommand
 	 * 
 	 * @return
 	 */
-	@SuppressWarnings("static-method")
+	@SuppressWarnings({"static-method", "SameReturnValue"})
 	public boolean keepInStack()
 	{
 		return false;

@@ -194,7 +194,7 @@ public final class AdapterInfo<T extends IAdapter>
 
 	public T create(EObject target)
 	{
-		T res = null;
+		T res;
 		if (isSingleton == true)
 		{
 			res = singleton;

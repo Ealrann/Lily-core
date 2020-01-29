@@ -39,7 +39,7 @@ public class ClassHierarchyIteratorTest
 		assertEquals(expectedCount, count);
 	}
 
-	private class A implements I11, I21
+	private static class A implements I11, I21
 	{}
 
 	private interface I1

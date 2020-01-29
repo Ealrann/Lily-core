@@ -14,7 +14,7 @@ public class CommandStack implements ICommandStack
 {
 
 	private LilyTransaction currentTransaction = null;
-	public Deque<EditingCommand> commands = new ConcurrentLinkedDeque<>();
+	public final Deque<EditingCommand> commands = new ConcurrentLinkedDeque<>();
 
 	private final HashMap<String, Long> times = new HashMap<>();
 	private final List<EditingCommand> keptCommands = new ArrayList<>();

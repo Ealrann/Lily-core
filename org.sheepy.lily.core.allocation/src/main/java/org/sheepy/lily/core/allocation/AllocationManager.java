@@ -36,17 +36,17 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 		return res;
 	}
 
-	static final <T extends IAllocationContext> AllocationManager<T> newContextManager(	AllocationManagerFactory<?> factory,
-																						AllocationManager<?> parent,
-																						IAllocable<T> allocable)
+	static final <T extends IAllocationContext> AllocationManager<T> newContextManager(AllocationManagerFactory<?> factory,
+																					   AllocationManager<?> parent,
+																					   IAllocable<T> allocable)
 	{
 		final AllocationManager<T> res = new AllocationManager<>(factory, allocable);
 		if (parent != null) res.setParent(parent, true);
 		return res;
 	}
 
-	static final <T extends IAllocationContext> AllocationManager<T> newVirtualManager(	AllocationManagerFactory<?> factory,
-																						IAllocable<T> allocable)
+	static final <T extends IAllocationContext> AllocationManager<T> newVirtualManager(AllocationManagerFactory<?> factory,
+																					   IAllocable<T> allocable)
 	{
 		final AllocationManager<T> res = new AllocationManager<>(factory, allocable);
 		res.virtual = true;
@@ -94,7 +94,7 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 			{
 				for (final var child : configuration.children)
 				{
-					child.cleanConfiguration(deep);
+					child.cleanConfiguration(true);
 				}
 			}
 
@@ -214,8 +214,8 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 		}
 	}
 
-	private void dependencyChanged(	AllocationManager<?> source,
-									IDependencyListener.EChangeNature changeNature)
+	private void dependencyChanged(AllocationManager<?> source,
+								   IDependencyListener.EChangeNature changeNature)
 	{
 		if (changeNature != IDependencyListener.EChangeNature.Allocated)
 		{
@@ -252,11 +252,9 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 	public void appendInfo(StringBuilder appendTo, int depth)
 	{
 		appendTo.append(System.lineSeparator());
-		for (int i = 0; i < depth; i++)
-		{
-			appendTo.append('-');
-		}
-		appendTo.append('[' + allocable.getClass().getSimpleName() + "] ");
+		appendTo.append("-".repeat(Math.max(0, depth)));
+		appendTo.append('[' + allocable.getClass()
+									   .getSimpleName() + "] ");
 
 		configuration.appendInfo(appendTo, depth);
 	}
@@ -288,8 +286,8 @@ public class AllocationManager<T extends IAllocationContext> implements IAllocat
 			configuration.setChildrenContext(newChildrenContext);
 			if (newChildrenContext != null && newChildrenContext instanceof IAllocable<?>)
 			{
-				childrenContextManager = factory.createContext(	AllocationManager.this,
-																(IAllocable<T>) newChildrenContext);
+				childrenContextManager = factory.createContext(AllocationManager.this,
+															   (IAllocable<T>) newChildrenContext);
 				childrenContextManager.configure(configuration.context);
 			}
 			else

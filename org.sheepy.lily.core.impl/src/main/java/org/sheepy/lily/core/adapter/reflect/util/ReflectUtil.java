@@ -140,8 +140,8 @@ public final class ReflectUtil
 		return res;
 	}
 
-	public static <T extends Object> Consumer<T> createConsumer(Lookup lookup,
-																MethodHandle methodHandle)
+	public static <T> Consumer<T> createConsumer(Lookup lookup,
+												 MethodHandle methodHandle)
 	{
 		Consumer<T> consumer = null;
 		try
@@ -186,8 +186,8 @@ public final class ReflectUtil
 		return res;
 	}
 
-	public static <T extends Object> Supplier<T> createSupplier(Lookup lookup,
-																MethodHandle methodHandle)
+	public static <T> Supplier<T> createSupplier(Lookup lookup,
+												 MethodHandle methodHandle)
 	{
 		Supplier<T> supplier = null;
 		try
@@ -209,8 +209,8 @@ public final class ReflectUtil
 		return supplier;
 	}
 
-	public static <T extends Object> BiConsumer<T, Object> createBiConsumer(Lookup lookup,
-																			MethodHandle methodHandle)
+	public static <T> BiConsumer<T, Object> createBiConsumer(Lookup lookup,
+															 MethodHandle methodHandle)
 
 	{
 		BiConsumer<T, Object> consumer = null;
@@ -256,8 +256,8 @@ public final class ReflectUtil
 		return res;
 	}
 
-	public static <T extends Object> Function<EObject, T> createFunction(	Lookup lookup,
-																			MethodHandle methodHandle)
+	public static <T> Function<EObject, T> createFunction(Lookup lookup,
+														  MethodHandle methodHandle)
 	{
 		Function<EObject, T> function = null;
 		try

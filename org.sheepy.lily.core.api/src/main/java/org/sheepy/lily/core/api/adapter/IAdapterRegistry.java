@@ -6,7 +6,7 @@ public interface IAdapterRegistry
 {
 	void register(Class<? extends IAdapter> classifier);
 
-	static final IAdapterRegistry INSTANCE = ServiceLoader	.load(IAdapterRegistry.class)
-															.findFirst()
-															.get();
+	IAdapterRegistry INSTANCE = ServiceLoader.load(IAdapterRegistry.class)
+											 .findFirst()
+											 .get();
 }

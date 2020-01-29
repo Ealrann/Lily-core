@@ -10,6 +10,7 @@ public interface IResourceLoader extends IService
 {
 	Resource loadResource(InputStream inputStream);
 
-	static final IResourceLoader INSTANCE = ServiceLoader.load(IResourceLoader.class).findFirst()
-			.get();
+	IResourceLoader INSTANCE = ServiceLoader.load(IResourceLoader.class)
+											.findFirst()
+											.get();
 }

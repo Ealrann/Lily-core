@@ -1,18 +1,13 @@
 package org.sheepy.lily.core.adapter.reflect;
 
-import java.lang.invoke.LambdaConversionException;
+import org.sheepy.lily.core.adapter.reflect.impl.*;
+import org.sheepy.lily.core.adapter.reflect.util.ReflectUtil;
+import org.sheepy.lily.core.api.adapter.IAdapter;
+
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles.Lookup;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-
-import org.sheepy.lily.core.adapter.reflect.impl.ExecutionHandle1Param;
-import org.sheepy.lily.core.adapter.reflect.impl.ExecutionHandle1ParamLong;
-import org.sheepy.lily.core.adapter.reflect.impl.ExecutionHandle2Param;
-import org.sheepy.lily.core.adapter.reflect.impl.ExecutionHandle2ParamObjLong;
-import org.sheepy.lily.core.adapter.reflect.impl.ExecutionHandleNoParam;
-import org.sheepy.lily.core.adapter.reflect.util.ReflectUtil;
-import org.sheepy.lily.core.api.adapter.IAdapter;
 
 public interface ExecutionHandle
 {
@@ -20,7 +15,7 @@ public interface ExecutionHandle
 
 	Object getLambdaFunction();
 
-	public static abstract class Builder
+	abstract class Builder
 	{
 		public static final Builder fromMethod(Method method)
 		{
@@ -34,14 +29,12 @@ public interface ExecutionHandle
 			{
 				switch (paramCount)
 				{
-				case 0:
-					return buildNoArgs(type, lookup, methodHandle, isStatic);
-				case 1:
-
-					return build1Args(type, lookup, methodHandle, isStatic);
-
-				case 2:
-					return build2Args(type, lookup, methodHandle, isStatic);
+					case 0:
+						return buildNoArgs(type, lookup, methodHandle, isStatic);
+					case 1:
+						return build1Args(type, lookup, methodHandle, isStatic);
+					case 2:
+						return build2Args(type, lookup, methodHandle, isStatic);
 				}
 			} catch (final Throwable e)
 			{
@@ -51,23 +44,23 @@ public interface ExecutionHandle
 			return null;
 		}
 
-		private static Builder buildNoArgs(	final Class<?> type,
-											final Lookup lookup,
-											final MethodHandle methodHandle,
-											final boolean isStatic)
+		private static Builder buildNoArgs(final Class<?> type,
+										   final Lookup lookup,
+										   final MethodHandle methodHandle,
+										   final boolean isStatic)
 		{
 			if (isStatic) return new ExecutionHandleNoParam.StaticBuilder(lookup, methodHandle);
 			else return new ExecutionHandleNoParam.Builder(lookup, methodHandle, type);
 		}
 
-		private static Builder build1Args(	final Class<?> type,
-											final Lookup lookup,
-											final MethodHandle methodHandle,
-											final boolean isStatic)
-				throws Throwable,
-				LambdaConversionException
+		private static Builder build1Args(final Class<?> type,
+										  final Lookup lookup,
+										  final MethodHandle methodHandle,
+										  final boolean isStatic)
+				throws Throwable
 		{
-			if (methodHandle.type().lastParameterType() == Long.TYPE)
+			if (methodHandle.type()
+							.lastParameterType() == Long.TYPE)
 			{
 				if (isStatic)
 					return new ExecutionHandle1ParamLong.StaticBuilder(lookup, methodHandle);
@@ -80,14 +73,14 @@ public interface ExecutionHandle
 			}
 		}
 
-		private static Builder build2Args(	final Class<?> type,
-											final Lookup lookup,
-											final MethodHandle methodHandle,
-											final boolean isStatic)
-				throws Throwable,
-				LambdaConversionException
+		private static Builder build2Args(final Class<?> type,
+										  final Lookup lookup,
+										  final MethodHandle methodHandle,
+										  final boolean isStatic)
+				throws Throwable
 		{
-			if (methodHandle.type().lastParameterType() == Long.TYPE)
+			if (methodHandle.type()
+							.lastParameterType() == Long.TYPE)
 			{
 				if (isStatic)
 					return new ExecutionHandle2ParamObjLong.StaticBuilder(lookup, methodHandle);

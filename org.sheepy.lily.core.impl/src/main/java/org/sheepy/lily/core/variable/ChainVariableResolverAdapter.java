@@ -1,14 +1,14 @@
 package org.sheepy.lily.core.variable;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.util.FeatureDefinition;
 import org.sheepy.lily.core.api.variable.IVariableResolverAdapter;
 import org.sheepy.lily.core.model.variable.ChainVariableResolver;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Adapter(scope = ChainVariableResolver.class)
 public class ChainVariableResolverAdapter
@@ -35,9 +35,8 @@ public class ChainVariableResolverAdapter
 		final var subResolvers = variableResolver.getSubResolvers();
 		final var lastResolver = subResolvers.get(subResolvers.size() - 1);
 		final var featureDefinition = definitionMap.get(lastResolver.getVariableDefinition());
-		final Object value = resolvedTarget.eGet(featureDefinition.feature);
 
-		return value;
+		return resolvedTarget.eGet(featureDefinition.feature);
 	}
 
 	@Override
@@ -55,12 +54,12 @@ public class ChainVariableResolverAdapter
 	{
 		final var firstResolver = variableResolver.getFirstResolver();
 		final var firstAdapter = firstResolver.adaptNotNull(IVariableResolverAdapter.class);
-		@SuppressWarnings("unchecked")
 		var resolvedTarget = (ILilyEObject) firstAdapter.getValue(firstResolver);
 
-		for (int i = 0; i < variableResolver.getSubResolvers().size() - 1; i++)
+		final var subResolvers = variableResolver.getSubResolvers();
+		for (int i = 0; i < subResolvers.size() - 1; i++)
 		{
-			final var chainResolver = variableResolver.getSubResolvers().get(i);
+			final var chainResolver = subResolvers.get(i);
 			final var resolvedDefinition = definitionMap.get(chainResolver.getVariableDefinition());
 			resolvedTarget = (ILilyEObject) resolvedTarget.eGet(resolvedDefinition.feature);
 		}
@@ -73,8 +72,7 @@ public class ChainVariableResolverAdapter
 	{
 		final var subResolvers = resolver.getSubResolvers();
 		final var lastResolver = subResolvers.get(subResolvers.size() - 1);
-		final var featureDefinition = definitionMap.get(lastResolver.getVariableDefinition());
-		return featureDefinition;
+		return definitionMap.get(lastResolver.getVariableDefinition());
 	}
 
 	@Override

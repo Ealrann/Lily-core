@@ -33,13 +33,7 @@ public class InferenceGraph
 		for (LRule rule : inferer.getRules())
 		{
 			var eClass = rule.getNotification().eClass();
-			List<LRule> rules = graph.get(eClass);
-
-			if (rules == null)
-			{
-				rules = new ArrayList<>();
-				graph.put(eClass, rules);
-			}
+			var rules = graph.computeIfAbsent(eClass, k -> new ArrayList<>());
 
 			rules.add(rule);
 		}

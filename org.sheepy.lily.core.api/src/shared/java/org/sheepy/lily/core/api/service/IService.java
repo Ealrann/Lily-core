@@ -1,9 +1,6 @@
 package org.sheepy.lily.core.api.service;
 
-public interface IService {
+public interface IService
+{
 
-	default int getPriority()
-	{
-		return 0;
-	}
 }

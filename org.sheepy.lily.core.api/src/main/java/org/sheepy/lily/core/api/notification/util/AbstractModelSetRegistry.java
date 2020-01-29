@@ -1,20 +1,18 @@
 package org.sheepy.lily.core.api.notification.util;
 
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
-import org.sheepy.lily.core.api.notification.INotificationListener;
+
+import java.util.List;
 
 public abstract class AbstractModelSetRegistry
 {
 	private final ModelObserver observer;
-	private final INotificationListener listener = this::notifyChanged;
 
 	public AbstractModelSetRegistry(List<EStructuralFeature> features)
 	{
-		observer = new ModelObserver(listener, features);
+		observer = new ModelObserver(this::notifyChanged, features);
 	}
 
 	public void startRegister(ILilyEObject root)
@@ -33,5 +31,6 @@ public abstract class AbstractModelSetRegistry
 	}
 
 	protected abstract void add(ILilyEObject newValue);
+
 	protected abstract void remove(ILilyEObject oldValue);
 }

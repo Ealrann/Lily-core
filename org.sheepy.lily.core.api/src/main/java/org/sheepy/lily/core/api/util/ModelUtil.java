@@ -71,8 +71,7 @@ public final class ModelUtil
 
 	public static final EClassifier resolveGenericType(EObject object, EClass genericHolder)
 	{
-		final EClassifier type = resolveGenericType(object.eClass(), genericHolder);
-		return type;
+		return resolveGenericType(object.eClass(), genericHolder);
 	}
 
 	private static EClassifier resolveGenericType(EClass eClass, EClass genericHolder)

@@ -32,7 +32,7 @@ public final class ExecuteIfAdapter implements ICadenceTaskAdapter
 		for (final var condition : execIf.getConditions())
 		{
 			final var conditionAdapter = condition.adapt(ICadenceConditionAdapter.class);
-			if (!conditionAdapter.check(condition, context))
+			if (conditionAdapter.check(condition, context))
 			{
 				res = false;
 				break;

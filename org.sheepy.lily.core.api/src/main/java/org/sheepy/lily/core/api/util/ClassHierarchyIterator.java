@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 public class ClassHierarchyIterator implements Iterator<Class<?>>
 {
-	private Deque<Class<?>> stack = new ArrayDeque<>();
+	private final Deque<Class<?>> stack = new ArrayDeque<>();
 
 	public ClassHierarchyIterator(Class<?> classifier)
 	{

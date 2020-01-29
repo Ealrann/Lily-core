@@ -249,6 +249,7 @@ public class Cadencer implements ICadencer
 		{
 			final var unit = TimeUtil.resolveUnit(timeConfig.getUnit());
 			final long step = (long) (timeConfig.getTimeStep() * timeConfig.getTimeFactor());
+			assert unit != null;
 			return unit.toNanos(step);
 		}
 		else
@@ -336,14 +337,7 @@ public class Cadencer implements ICadencer
 		private void addTicker(EObject target, AdapterTickerWrapper wrapper)
 		{
 			tickers.add(wrapper);
-
-			var list = tickerMap.get(target);
-			if (list == null)
-			{
-				list = new ArrayList<>();
-				tickerMap.put(target, list);
-			}
-
+			var list = tickerMap.computeIfAbsent(target, k -> new ArrayList<>());
 			list.add(wrapper);
 		}
 	}

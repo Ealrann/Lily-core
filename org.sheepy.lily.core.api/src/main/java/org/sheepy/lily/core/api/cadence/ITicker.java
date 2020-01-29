@@ -3,12 +3,12 @@ package org.sheepy.lily.core.api.cadence;
 public interface ITicker
 {
 	/**
-	 * @param step
-	 *            in ms
+	 * @param stepNs
 	 */
-	void tick(long stepNano);
+	void tick(long stepNs);
 
 	String getLabel();
+	@SuppressWarnings("SameReturnValue")
 	default int getPriority()
 	{
 		return 0;

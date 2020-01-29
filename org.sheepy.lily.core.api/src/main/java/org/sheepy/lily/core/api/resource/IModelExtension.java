@@ -13,7 +13,8 @@ public interface IModelExtension extends IService
 {
 	Collection<EPackage> getEPackages();
 
-	static List<IModelExtension> EXTENSIONS = StreamSupport
-			.stream(ServiceLoader.load(IModelExtension.class).spliterator(), false)
+	List<IModelExtension> EXTENSIONS = StreamSupport
+			.stream(ServiceLoader.load(IModelExtension.class)
+								 .spliterator(), false)
 			.collect(Collectors.toList());
 }

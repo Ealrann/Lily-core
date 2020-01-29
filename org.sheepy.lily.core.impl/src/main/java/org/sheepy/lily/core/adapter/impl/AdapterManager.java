@@ -124,10 +124,7 @@ public final class AdapterManager implements IAdapterManager
 	{
 		addHandleListener(adapterHandle);
 		adapterHandle.load();
-		for (final var tickHandle : adapterHandle.tickHandles)
-		{
-			tickers.add(tickHandle);
-		}
+		tickers.addAll(adapterHandle.tickHandles);
 	}
 
 	private void addHandleListener(AdapterHandle<?> adapterHandle)

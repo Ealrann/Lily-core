@@ -41,11 +41,14 @@ public class AdapterDomain<T extends IAdapter>
 
 		final String name = classifier.getSimpleName();
 		final String pkgName = classifier.getPackageName();
-		EXT_LOOP: for (final IModelExtension extension : IModelExtension.EXTENSIONS)
+		EXT_LOOP:
+		for (final IModelExtension extension : IModelExtension.EXTENSIONS)
 		{
 			for (final EPackage ePackage : extension.getEPackages())
 			{
-				final var epkg = ePackage.getClass().getPackageName().replaceAll(".impl", "");
+				final var epkg = ePackage.getClass()
+										 .getPackageName()
+										 .replaceAll(".impl", "");
 				if (pkgName.equals(epkg))
 				{
 					res = (EClass) ePackage.getEClassifier(name);
@@ -84,27 +87,30 @@ public class AdapterDomain<T extends IAdapter>
 
 	public boolean isApplicable(EObject eObject)
 	{
-		boolean res = false;
-		final var eClass = eObject.eClass();
-
-		if (inheritance)
-		{
-			res = targetClassifier.isSuperTypeOf(eClass);
-		}
-		else
-		{
-			res = eClass == targetClassifier;
-		}
+		final boolean res = isClassApplicable(eObject.eClass());
 
 		if (res == true && targetName.isEmpty() == false)
 		{
 			if (eObject instanceof LNamedElement == false
 					|| targetName.equals(((LNamedElement) eObject).getName()) == false)
 			{
-				res = false;
+				return false;
 			}
 		}
 
+		return res;
+	}
+
+	private boolean isClassApplicable(EClass eClass)
+	{
+		boolean res;
+		if (inheritance)
+		{
+			res = targetClassifier.isSuperTypeOf(eClass);
+		} else
+		{
+			res = eClass == targetClassifier;
+		}
 		return res;
 	}
 }

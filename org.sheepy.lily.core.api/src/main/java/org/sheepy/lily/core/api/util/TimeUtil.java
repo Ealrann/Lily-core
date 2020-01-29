@@ -7,7 +7,7 @@ import org.sheepy.lily.core.model.types.ETimeUnit;
 public final class TimeUtil
 {
 
-	public static final TimeUnit resolveUnit(ETimeUnit unit)
+	public static TimeUnit resolveUnit(ETimeUnit unit)
 	{
 		switch (unit)
 		{

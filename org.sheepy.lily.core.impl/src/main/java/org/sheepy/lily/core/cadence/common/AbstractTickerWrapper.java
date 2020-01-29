@@ -7,20 +7,12 @@ import org.sheepy.lily.core.api.cadence.ETickerClock;
 
 public abstract class AbstractTickerWrapper
 {
-	public static final Comparator<AbstractTickerWrapper> COMPARATOR = new Comparator<>()
-	{
-		@Override
-		public int compare(AbstractTickerWrapper o1, AbstractTickerWrapper o2)
-		{
-			return Integer.compare(o2.getPriority(), o1.getPriority());
-		}
-	};
+	public static final Comparator<AbstractTickerWrapper> COMPARATOR = (o1, o2) -> Integer.compare(o2.getPriority(), o1.getPriority());
 
 	public final double frequency;
 	public final ETickerClock clock;
 
 	protected final long tickerStep;
-
 	protected long accumulator = 0;
 
 	public final AtomicBoolean stop = new AtomicBoolean(false);

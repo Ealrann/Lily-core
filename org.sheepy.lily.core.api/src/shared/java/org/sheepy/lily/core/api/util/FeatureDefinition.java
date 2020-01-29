@@ -5,7 +5,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-public class FeatureDefinition extends FeatureData
+public final class FeatureDefinition extends FeatureData
 {
 	public EPackage ePackage;
 	public EClass eClass;

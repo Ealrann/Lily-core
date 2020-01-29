@@ -50,27 +50,27 @@ public class SingletonUtilTest
 		assertTrue(SingletonUtil.isSingleton(C2.class));
 	}
 
-	private class A1
+	private static class A1
 	{
 		@SuppressWarnings("unused")
 		public int c;
 	}
 
-	private class B1 extends A1
+	private static class B1 extends A1
 	{}
 
-	private class C1 extends B1
+	private static class C1 extends B1
 	{
 		@SuppressWarnings("unused")
 		private String a;
 	}
 
-	private class A2
+	private static class A2
 	{}
 
-	private class B2 extends A2
+	private static class B2 extends A2
 	{}
 
-	private class C2 extends B2
+	private static class C2 extends B2
 	{}
 }

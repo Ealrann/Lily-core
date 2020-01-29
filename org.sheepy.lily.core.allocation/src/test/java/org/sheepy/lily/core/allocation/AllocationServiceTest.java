@@ -1,5 +1,6 @@
 package org.sheepy.lily.core.allocation;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -35,10 +36,10 @@ public class AllocationServiceTest
 
 		rootManager.free();
 
-		assertTrue(!root.tag);
-		assertTrue(!lvl1_1.tag);
-		assertTrue(!lvl1_2.tag);
-		assertTrue(!lvl2_1.tag);
+		assertFalse(root.tag);
+		assertFalse(lvl1_1.tag);
+		assertFalse(lvl1_2.tag);
+		assertFalse(lvl2_1.tag);
 	}
 
 	@Test
@@ -64,14 +65,14 @@ public class AllocationServiceTest
 		rootManager.freeDirtyElements();
 		rootManager.allocate();
 
-		assertTrue(!lvl1_2.dirty);
+		assertFalse(lvl1_2.dirty);
 		assertTrue(lvl1_2.tag);
 
 		lvl1_2.setDirty();
 		rootManager.free();
 
-		assertTrue(!lvl1_2.dirty);
-		assertTrue(!lvl1_2.tag);
+		assertFalse(lvl1_2.dirty);
+		assertFalse(lvl1_2.tag);
 	}
 
 	@Test
@@ -97,7 +98,7 @@ public class AllocationServiceTest
 
 		rootManager.allocate();
 
-		assertTrue(!lvl1_1.tag);
+		assertFalse(lvl1_1.tag);
 
 		lvl1_2.setDirty();
 
@@ -126,7 +127,7 @@ public class AllocationServiceTest
 
 		rootManager.free();
 
-		assertTrue(!context.allocated);
+		assertFalse(context.allocated);
 	}
 
 	@Test
@@ -143,8 +144,8 @@ public class AllocationServiceTest
 		final var rootManager = service.createManager(root);
 		rootManager.configure(null);
 
-		assertTrue(!lvl2_1.tag);
-		assertTrue(!lvl2_1.configured);
+		assertFalse(lvl2_1.tag);
+		assertFalse(lvl2_1.configured);
 
 		rootManager.allocate();
 
@@ -153,7 +154,7 @@ public class AllocationServiceTest
 
 		rootManager.free();
 
-		assertTrue(!lvl2_1.tag);
+		assertFalse(lvl2_1.tag);
 	}
 
 	final static class BasicContext implements IAllocationContext, IAllocable<BasicBasicContext>

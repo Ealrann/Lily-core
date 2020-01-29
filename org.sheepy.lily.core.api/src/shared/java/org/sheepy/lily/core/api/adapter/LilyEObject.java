@@ -1,15 +1,14 @@
 package org.sheepy.lily.core.api.adapter;
 
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.sheepy.lily.core.api.notification.INotificationListener;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.sheepy.lily.core.api.notification.INotificationListener;
-
-public class LilyEObject extends EObjectImpl implements ILilyEObject, InternalEObject
+public class LilyEObject extends EObjectImpl implements ILilyEObject
 {
 	private static final String CANNOT_FIND_ADAPTER_S_FOR_CLASS_S = "Cannot find adapter [%s] for class [%s]";
 
@@ -56,9 +55,9 @@ public class LilyEObject extends EObjectImpl implements ILilyEObject, InternalEO
 		final T adapt = adapt(type);
 		if (adapt == null)
 		{
-			final var message = String.format(	CANNOT_FIND_ADAPTER_S_FOR_CLASS_S,
-												type.getSimpleName(),
-												eClass().getName());
+			final var message = String.format(CANNOT_FIND_ADAPTER_S_FOR_CLASS_S,
+											  type.getSimpleName(),
+											  eClass().getName());
 			throw new NullPointerException(message);
 		}
 		return adapt;
@@ -95,21 +94,21 @@ public class LilyEObject extends EObjectImpl implements ILilyEObject, InternalEO
 	@Override
 	public final Stream<ILilyEObject> streamChildren()
 	{
-		return eClass()	.getEAllContainments()
-						.stream()
-						.flatMap(ref -> streamReference(ref))
-						.filter(Objects::nonNull);
+		return eClass().getEAllContainments()
+					   .stream()
+					   .flatMap(this::streamReference)
+					   .filter(Objects::nonNull);
 	}
 
 	@Override
 	public final Stream<ILilyEObject> streamAllChildren()
 	{
-		return Stream.concat(	Stream.of(this),
-								streamChildren().flatMap(ILilyEObject::streamAllChildren));
+		return Stream.concat(Stream.of(this),
+							 streamChildren().flatMap(ILilyEObject::streamAllChildren));
 	}
 
 	@SuppressWarnings("unchecked")
-	private final Stream<ILilyEObject> streamReference(EReference ref)
+	private Stream<ILilyEObject> streamReference(EReference ref)
 	{
 		if (ref.isMany())
 		{

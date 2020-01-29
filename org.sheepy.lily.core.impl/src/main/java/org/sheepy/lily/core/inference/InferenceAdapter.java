@@ -22,7 +22,7 @@ import org.sheepy.lily.core.model.types.Parameter;
 @Adapter(scope = EObject.class, scopeInheritance = true)
 public class InferenceAdapter implements IInferenceAdapter
 {
-	public InferenceGraph ruleGraph = new InferenceGraph();
+	public final InferenceGraph ruleGraph = new InferenceGraph();
 	private final Map<EClass, List<IInferenceListener>> listeners = new HashMap<>();
 
 	@Override
@@ -110,12 +110,7 @@ public class InferenceAdapter implements IInferenceAdapter
 	@Override
 	public void addNotificationListener(EClass clazz, IInferenceListener listener)
 	{
-		List<IInferenceListener> list = listeners.get(clazz);
-		if (list == null)
-		{
-			list = new ArrayList<>();
-			listeners.put(clazz, list);
-		}
+		var list = listeners.computeIfAbsent(clazz, k -> new ArrayList<>());
 		list.add(listener);
 	}
 

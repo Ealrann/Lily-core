@@ -12,6 +12,6 @@ public class HaveTimeAdapter implements ICadenceConditionAdapter
 	@Override
 	public boolean check(ICadenceCondition condition, ICadenceContext context)
 	{
-		return context.endTimeNs() >= System.nanoTime();
+		return context.endTimeNs() < System.nanoTime();
 	}
 }

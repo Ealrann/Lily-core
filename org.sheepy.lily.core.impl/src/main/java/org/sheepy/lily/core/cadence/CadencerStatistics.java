@@ -95,8 +95,7 @@ public class CadencerStatistics implements IStatistics
 			else sb.append("  ");
 		}
 		sb.append(accu.name);
-		final String name = sb.toString();
-		return name;
+		return sb.toString();
 	}
 
 	private static class AccumulatorTime

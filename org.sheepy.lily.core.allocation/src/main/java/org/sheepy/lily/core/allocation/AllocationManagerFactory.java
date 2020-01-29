@@ -40,7 +40,7 @@ final class AllocationManagerFactory<R extends IAllocationContext>
 
 	private AllocationManager<?> searchManager(IAllocable<?> allocable)
 	{
-		final Deque<AllocationManager<?>> course = new ArrayDeque<AllocationManager<?>>();
+		final Deque<AllocationManager<?>> course = new ArrayDeque<>();
 		AllocationManager<?> res = null;
 
 		course.add(root);

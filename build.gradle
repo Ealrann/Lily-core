@@ -44,11 +44,11 @@ subprojects {
 	}
 }
 
-boolean isLibrary(entry) { return entry instanceof org.gradle.plugins.ide.eclipse.model.Library }
-boolean isProjectDependency(entry) { return entry instanceof org.gradle.plugins.ide.eclipse.model.ProjectDependency }
+static boolean isLibrary(entry) { return entry instanceof org.gradle.plugins.ide.eclipse.model.Library }
+static boolean isProjectDependency(entry) { return entry instanceof org.gradle.plugins.ide.eclipse.model.ProjectDependency }
 
-boolean isTestScope(entry) { return entry.entryAttributes.get('gradle_used_by_scope').equals('test'); }
-boolean isSource(entry) { return entry.properties.kind.equals('src'); }
+static boolean isTestScope(entry) { return entry.entryAttributes.get('gradle_used_by_scope').equals('test') }
+static boolean isSource(entry) { return entry.properties.kind == 'src' }
 
-boolean isModule(entry) { (isLibrary(entry) || isProjectDependency(entry)) && !isTestScope(entry); }
-boolean isTest(entry) { (isSource(entry) || isLibrary(entry)) && isTestScope(entry); }
+static boolean isModule(entry) { (isLibrary(entry) || isProjectDependency(entry)) && !isTestScope(entry) }
+static boolean isTest(entry) { (isSource(entry) || isLibrary(entry)) && isTestScope(entry) }

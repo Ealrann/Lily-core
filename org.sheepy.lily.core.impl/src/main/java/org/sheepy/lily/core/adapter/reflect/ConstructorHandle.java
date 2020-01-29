@@ -12,7 +12,7 @@ public interface ConstructorHandle<T extends IAdapter>
 {
 	T newInstance(EObject parameter);
 
-	public static abstract class Builder<T extends IAdapter>
+	abstract class Builder<T extends IAdapter>
 	{
 		public static final <T extends IAdapter> Builder<T> fromMethod(Constructor<T> constructor)
 		{
@@ -23,12 +23,12 @@ public interface ConstructorHandle<T extends IAdapter>
 
 			switch (paramCount)
 			{
-			case 0:
-				return new ConstructorHandleNoParam.Builder<T>(privateLookup, methodHandle);
-			case 1:
-				return new ConstructorHandleParam1.Builder<>(privateLookup, methodHandle);
-			default:
-				return null;
+				case 0:
+					return new ConstructorHandleNoParam.Builder<>(privateLookup, methodHandle);
+				case 1:
+					return new ConstructorHandleParam1.Builder<>(privateLookup, methodHandle);
+				default:
+					throw new AssertionError("Constructor not found");
 			}
 		}
 

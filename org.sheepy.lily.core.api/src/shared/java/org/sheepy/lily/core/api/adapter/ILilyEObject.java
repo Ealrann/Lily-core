@@ -1,11 +1,11 @@
 package org.sheepy.lily.core.api.adapter;
 
-import java.util.stream.Stream;
-
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.sheepy.lily.core.api.notification.INotificationListener;
 
-public interface ILilyEObject extends EObject
+import java.util.stream.Stream;
+
+public interface ILilyEObject extends InternalEObject
 {
 	Stream<ILilyEObject> streamChildren();
 	Stream<ILilyEObject> streamAllChildren();

@@ -16,6 +16,6 @@ public class CountUntilAdapter implements ICadenceConditionAdapter
 		final int count = countUntil.getCurrentCount();
 		countUntil.setCurrentCount(count + 1);
 
-		return count >= countUntil.getTotalCount();
+		return count < countUntil.getTotalCount();
 	}
 }
