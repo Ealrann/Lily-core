@@ -4,31 +4,12 @@ plugins {
 
 subprojects {
 
-	apply plugin: 'eclipse'
 	apply plugin: 'org.javamodularity.moduleplugin'
 
 	version "1.0.6"
 
 	sourceCompatibility = 11
 	targetCompatibility = 11
-
-	eclipse {
-		classpath {
-			file {
-				whenMerged {
-					//Define a module as being either a library or a project dependency.
-					//Test sources are excluded because eclipse wants them on the classpath for some reason (1)
-					entries.findAll { isModule(it) }.each {
-						it.entryAttributes['module'] = 'true'
-					}
-					//Test-scoped stuff should set the appropriate flag
-					entries.findAll { isTest(it) }.each {
-						it.entryAttributes['test'] = 'true'
-					}
-				}
-			}
-		}
-	}
 
 	afterEvaluate {
 		repositories {
@@ -43,12 +24,3 @@ subprojects {
 		}
 	}
 }
-
-static boolean isLibrary(entry) { return entry instanceof org.gradle.plugins.ide.eclipse.model.Library }
-static boolean isProjectDependency(entry) { return entry instanceof org.gradle.plugins.ide.eclipse.model.ProjectDependency }
-
-static boolean isTestScope(entry) { return entry.entryAttributes.get('gradle_used_by_scope').equals('test') }
-static boolean isSource(entry) { return entry.properties.kind == 'src' }
-
-static boolean isModule(entry) { (isLibrary(entry) || isProjectDependency(entry)) && !isTestScope(entry) }
-static boolean isTest(entry) { (isSource(entry) || isLibrary(entry)) && isTestScope(entry) }
