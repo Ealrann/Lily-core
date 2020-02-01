@@ -1,6 +1,6 @@
 package org.sheepy.lily.core.api.util;
 
-public class DebugUtil
+public final class DebugUtil
 {
 	public static boolean DEBUG_ENABLED;
 	@SuppressWarnings("CanBeFinal")
@@ -13,5 +13,21 @@ public class DebugUtil
 				&& debugVerboseProperty.equals("false") == false;
 		DEBUG_ENABLED = (debugProperty != null && debugProperty.equals("false") == false)
 				|| DEBUG_VERBOSE_ENABLED;
+	}
+
+	public static void parseMainArgs(String[] args)
+	{
+		for (var arg : args)
+		{
+			if ("debug".equals(arg))
+			{
+				DebugUtil.DEBUG_ENABLED = true;
+			}
+			if ("debugVerbose".equals(arg))
+			{
+				DebugUtil.DEBUG_ENABLED = true;
+				DebugUtil.DEBUG_VERBOSE_ENABLED = true;
+			}
+		}
 	}
 }

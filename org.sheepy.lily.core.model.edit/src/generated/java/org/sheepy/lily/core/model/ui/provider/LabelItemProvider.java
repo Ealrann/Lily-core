@@ -47,6 +47,8 @@ public class LabelItemProvider extends AbstractLabelItemProvider
 			super.getPropertyDescriptors(object);
 
 			addWrapPropertyDescriptor(object);
+			addNarratorPropertyDescriptor(object);
+			addNarrationSpeedPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -70,6 +72,52 @@ public class LabelItemProvider extends AbstractLabelItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Narrator feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNarratorPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Label_narrator_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Label_narrator_feature", "_UI_Label_type"),
+				 UiPackage.Literals.LABEL__NARRATOR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Narration Speed feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNarrationSpeedPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Label_narrationSpeed_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Label_narrationSpeed_feature", "_UI_Label_type"),
+				 UiPackage.Literals.LABEL__NARRATION_SPEED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -116,6 +164,8 @@ public class LabelItemProvider extends AbstractLabelItemProvider
 		switch (notification.getFeatureID(Label.class))
 		{
 			case UiPackage.LABEL__WRAP:
+			case UiPackage.LABEL__NARRATOR:
+			case UiPackage.LABEL__NARRATION_SPEED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

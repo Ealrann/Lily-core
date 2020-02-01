@@ -75,6 +75,8 @@
     </genClasses>
     <genClasses ecoreClass="ui.ecore#//Label" labelFeature="#//ui/AbstractLabel/text">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Label/wrap"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Label/narrator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Label/narrationSpeed"/>
     </genClasses>
     <genClasses ecoreClass="ui.ecore#//Slider">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Slider/minValue"/>

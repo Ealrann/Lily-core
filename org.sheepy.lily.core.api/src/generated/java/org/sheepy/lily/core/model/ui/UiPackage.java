@@ -1129,13 +1129,31 @@ public interface UiPackage extends EPackage
 	int LABEL__WRAP = ABSTRACT_LABEL_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Narrator</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__NARRATOR = ABSTRACT_LABEL_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Narration Speed</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__NARRATION_SPEED = ABSTRACT_LABEL_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Label</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_FEATURE_COUNT = ABSTRACT_LABEL_FEATURE_COUNT + 1;
+	int LABEL_FEATURE_COUNT = ABSTRACT_LABEL_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -2540,6 +2558,28 @@ public interface UiPackage extends EPackage
 	EAttribute getLabel_Wrap();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.Label#isNarrator <em>Narrator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Narrator</em>'.
+	 * @see org.sheepy.lily.core.model.ui.Label#isNarrator()
+	 * @see #getLabel()
+	 * @generated
+	 */
+	EAttribute getLabel_Narrator();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.Label#getNarrationSpeed <em>Narration Speed</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Narration Speed</em>'.
+	 * @see org.sheepy.lily.core.model.ui.Label#getNarrationSpeed()
+	 * @see #getLabel()
+	 * @generated
+	 */
+	EAttribute getLabel_NarrationSpeed();
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.Slider <em>Slider</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3203,6 +3243,22 @@ public interface UiPackage extends EPackage
 		 * @generated
 		 */
 		EAttribute LABEL__WRAP = eINSTANCE.getLabel_Wrap();
+
+		/**
+		 * The meta object literal for the '<em><b>Narrator</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LABEL__NARRATOR = eINSTANCE.getLabel_Narrator();
+
+		/**
+		 * The meta object literal for the '<em><b>Narration Speed</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LABEL__NARRATION_SPEED = eINSTANCE.getLabel_NarrationSpeed();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.impl.SliderImpl <em>Slider</em>}' class.

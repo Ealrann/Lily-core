@@ -727,6 +727,28 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * @generated
 	 */
 	@Override
+	public EAttribute getLabel_Narrator()
+	{
+		return (EAttribute)labelEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getLabel_NarrationSpeed()
+	{
+		return (EAttribute)labelEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getSlider()
 	{
 		return sliderEClass;
@@ -1140,6 +1162,8 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 
 		labelEClass = createEClass(LABEL);
 		createEAttribute(labelEClass, LABEL__WRAP);
+		createEAttribute(labelEClass, LABEL__NARRATOR);
+		createEAttribute(labelEClass, LABEL__NARRATION_SPEED);
 
 		sliderEClass = createEClass(SLIDER);
 		createEAttribute(sliderEClass, SLIDER__MIN_VALUE);
@@ -1296,6 +1320,8 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 
 		initEClass(labelEClass, Label.class, "Label", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLabel_Wrap(), ecorePackage.getEBoolean(), "wrap", "false", 1, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLabel_Narrator(), ecorePackage.getEBoolean(), "narrator", "false", 1, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLabel_NarrationSpeed(), ecorePackage.getEInt(), "narrationSpeed", "100", 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(sliderEClass, Slider.class, "Slider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSlider_MinValue(), ecorePackage.getEInt(), "minValue", "0", 0, 1, Slider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

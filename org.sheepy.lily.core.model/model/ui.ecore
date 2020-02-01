@@ -76,6 +76,10 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="wrap" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="narrator" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="narrationSpeed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="100"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Slider" eSuperTypes="#//TextWidget">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minValue" unique="false"
