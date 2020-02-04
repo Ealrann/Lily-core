@@ -4,9 +4,7 @@ import java.util.ServiceLoader;
 
 public interface IAllocationService
 {
-	<T extends IAllocationContext> IAllocationManager<T> createManager(IAllocable<T> allocable);
+	<T extends IAllocationContext> IRootAllocator<T> createAllocator(IAllocable<T> allocable, T context);
 
-	IAllocationService INSTANCE = ServiceLoader.load(IAllocationService.class)
-											   .findFirst()
-											   .get();
+	IAllocationService INSTANCE = ServiceLoader.load(IAllocationService.class).findFirst().get();
 }

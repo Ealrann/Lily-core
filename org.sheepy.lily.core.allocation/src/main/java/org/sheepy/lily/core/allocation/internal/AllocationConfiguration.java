@@ -39,17 +39,15 @@ public final class AllocationConfiguration<T extends IAllocationContext>
 
 	public boolean areDependenciesAllocated()
 	{
-		boolean res = true;
 		for (int i = 0; i < dependencies.size(); i++)
 		{
 			final var dep = dependencies.get(i);
 			if (dep.isDirty() || dep.getStatus() != EAllocationStatus.Allocated)
 			{
-				res &= false;
-				break;
+				return false;
 			}
 		}
-		return res;
+		return true;
 	}
 
 	public void allocateChildren()
@@ -72,8 +70,7 @@ public final class AllocationConfiguration<T extends IAllocationContext>
 
 	public IAllocationContext childContext()
 	{
-		final IAllocationContext childContext = childrenContext != null ? childrenContext : context;
-		return childContext;
+		return childrenContext != null ? childrenContext : context;
 	}
 
 	public IAllocationContext getChildrenContext()

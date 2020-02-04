@@ -1,11 +1,11 @@
 package org.sheepy.lily.core.allocation;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.sheepy.lily.core.api.allocation.IAllocable;
 import org.sheepy.lily.core.api.allocation.IAllocationConfigurator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
+
+import java.util.List;
 
 public class AllocationTreeTest
 {
@@ -23,26 +23,28 @@ public class AllocationTreeTest
 
 		final AllocationService service = new AllocationService();
 
-		final var rootManager = service.createManager(root);
-		rootManager.configure(null);
-
+		final var rootManager = service.createAllocator(root, null);
 		rootManager.allocate();
 	}
 
 	static final class C1 implements IAllocationContext
-	{}
+	{
+	}
+
 	static final class C2 implements IAllocationContext
-	{}
+	{
+	}
+
 	static final class C3 implements IAllocationContext
-	{}
+	{
+	}
 
 	static class BasicAllocable<T extends IAllocationContext> implements IAllocable<T>
 	{
 		private final List<? extends IAllocable<?>> children;
 		private final IAllocationContext childrenContext;
 
-		public BasicAllocable(	IAllocationContext childrenContext,
-								List<? extends IAllocable<?>> children)
+		public BasicAllocable(IAllocationContext childrenContext, List<? extends IAllocable<?>> children)
 		{
 			this.childrenContext = childrenContext;
 			this.children = List.copyOf(children);
@@ -61,11 +63,13 @@ public class AllocationTreeTest
 
 		@Override
 		public void allocate(T context)
-		{}
+		{
+		}
 
 		@Override
 		public void free(T context)
-		{}
+		{
+		}
 	}
 
 	static final class A1 extends BasicAllocable<C1>
@@ -94,7 +98,7 @@ public class AllocationTreeTest
 		@Override
 		public void allocate(C3 context)
 		{
-			System.out.println("");
+			System.out.println();
 		}
 	}
 }

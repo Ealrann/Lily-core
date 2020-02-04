@@ -1,16 +1,16 @@
 package org.sheepy.lily.core.allocation;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.sheepy.lily.core.allocation.AllocationServiceTest.BasicContext.BasicBasicContext;
 import org.sheepy.lily.core.api.allocation.IAllocable;
 import org.sheepy.lily.core.api.allocation.IAllocationConfigurator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AllocationServiceTest
 {
@@ -24,9 +24,7 @@ public class AllocationServiceTest
 
 		final AllocationService service = new AllocationService();
 
-		final var rootManager = service.createManager(root);
-		rootManager.configure(null);
-
+		final var rootManager = service.createAllocator(root, null);
 		rootManager.allocate();
 
 		assertTrue(root.tag);
@@ -52,9 +50,7 @@ public class AllocationServiceTest
 
 		final AllocationService service = new AllocationService();
 
-		final var rootManager = service.createManager(root);
-		rootManager.configure(null);
-
+		final var rootManager = service.createAllocator(root, null);
 		rootManager.allocate();
 
 		lvl1_2.setDirty();
@@ -62,8 +58,7 @@ public class AllocationServiceTest
 		assertTrue(lvl1_2.dirty);
 		assertTrue(lvl1_2.tag);
 
-		rootManager.freeDirtyElements();
-		rootManager.allocate();
+		rootManager.reloadDirtyElements();
 
 		assertFalse(lvl1_2.dirty);
 		assertTrue(lvl1_2.tag);
@@ -85,9 +80,7 @@ public class AllocationServiceTest
 
 		final AllocationService service = new AllocationService();
 
-		final var rootManager = service.createManager(root);
-		rootManager.configure(null);
-
+		final var rootManager = service.createAllocator(root, null);
 		rootManager.allocate();
 
 		assertTrue(lvl1_2.tag);
@@ -95,15 +88,15 @@ public class AllocationServiceTest
 		assertTrue(lvl1_1.tag);
 
 		lvl1_1.tag = false;
+		lvl1_1.setDirty();
 
-		rootManager.allocate();
+		rootManager.reloadDirtyElements();
 
-		assertFalse(lvl1_1.tag);
+		assertTrue(lvl1_1.tag);
 
 		lvl1_2.setDirty();
 
-		rootManager.freeDirtyElements();
-		rootManager.allocate();
+		rootManager.reloadDirtyElements();
 
 		assertTrue(lvl1_1.tag);
 	}
@@ -118,8 +111,7 @@ public class AllocationServiceTest
 
 		final AllocationService service = new AllocationService();
 
-		final var rootManager = service.createManager(root);
-		rootManager.configure(null);
+		final var rootManager = service.createAllocator(root, null);
 
 		rootManager.allocate();
 
@@ -141,8 +133,7 @@ public class AllocationServiceTest
 
 		final AllocationService service = new AllocationService();
 
-		final var rootManager = service.createManager(root);
-		rootManager.configure(null);
+		final var rootManager = service.createAllocator(root, null);
 
 		assertFalse(lvl2_1.tag);
 		assertFalse(lvl2_1.configured);
@@ -174,7 +165,8 @@ public class AllocationServiceTest
 		}
 
 		final static class BasicBasicContext implements IAllocationContext
-		{}
+		{
+		}
 	}
 
 	static class BasicAllocable implements IAllocable<BasicContext>
@@ -194,9 +186,9 @@ public class AllocationServiceTest
 			this(null, children, dependencies);
 		}
 
-		public BasicAllocable(	IAllocationContext context,
-								List<BasicAllocable> children,
-								List<BasicAllocable> dependencies)
+		public BasicAllocable(IAllocationContext context,
+							  List<BasicAllocable> children,
+							  List<BasicAllocable> dependencies)
 		{
 			this.providedContext = context;
 			this.children = List.copyOf(children);
