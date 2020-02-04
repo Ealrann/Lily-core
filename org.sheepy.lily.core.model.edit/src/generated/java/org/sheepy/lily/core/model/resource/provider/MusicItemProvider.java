@@ -1,6 +1,7 @@
 /**
  */
-package org.sheepy.lily.core.model.types.provider;
+package org.sheepy.lily.core.model.resource.provider;
+
 
 import java.util.Collection;
 import java.util.List;
@@ -8,30 +9,21 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.lily.core.model.types.FloatParameter;
-import org.sheepy.lily.core.model.types.TypesPackage;
+import org.sheepy.lily.core.model.application.provider.IResourceItemProvider;
+
+import org.sheepy.lily.core.model.resource.Music;
+import org.sheepy.lily.core.model.resource.ResourcePackage;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.lily.core.model.types.FloatParameter} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.resource.Music} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class FloatParameterItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
+public class MusicItemProvider extends IResourceItemProvider
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -39,7 +31,7 @@ public class FloatParameterItemProvider extends ItemProviderAdapter implements I
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FloatParameterItemProvider(AdapterFactory adapterFactory)
+	public MusicItemProvider(AdapterFactory adapterFactory)
 	{
 		super(adapterFactory);
 	}
@@ -57,36 +49,36 @@ public class FloatParameterItemProvider extends ItemProviderAdapter implements I
 		{
 			super.getPropertyDescriptors(object);
 
-			addValuePropertyDescriptor(object);
+			addFilePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Value feature.
+	 * This adds a property descriptor for the File feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValuePropertyDescriptor(Object object)
+	protected void addFilePropertyDescriptor(Object object)
 	{
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_FloatParameter_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_FloatParameter_value_feature", "_UI_FloatParameter_type"),
-				 TypesPackage.Literals.FLOAT_PARAMETER__VALUE,
+				 getString("_UI_Music_file_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Music_file_feature", "_UI_Music_type"),
+				 ResourcePackage.Literals.MUSIC__FILE,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.REAL_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This returns FloatParameter.gif.
+	 * This returns Music.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -94,7 +86,7 @@ public class FloatParameterItemProvider extends ItemProviderAdapter implements I
 	@Override
 	public Object getImage(Object object)
 	{
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/FloatParameter"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Music"));
 	}
 
 	/**
@@ -106,9 +98,12 @@ public class FloatParameterItemProvider extends ItemProviderAdapter implements I
 	@Override
 	public String getText(Object object)
 	{
-		FloatParameter floatParameter = (FloatParameter)object;
-		return getString("_UI_FloatParameter_type") + " " + floatParameter.getValue();
+		String label = ((Music)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Music_type") :
+			getString("_UI_Music_type") + " " + label;
 	}
+
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -121,13 +116,6 @@ public class FloatParameterItemProvider extends ItemProviderAdapter implements I
 	public void notifyChanged(Notification notification)
 	{
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(FloatParameter.class))
-		{
-			case TypesPackage.FLOAT_PARAMETER__VALUE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 
@@ -142,18 +130,6 @@ public class FloatParameterItemProvider extends ItemProviderAdapter implements I
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator()
-	{
-		return org.sheepy.lily.core.model.resource.provider.LilyEditPlugin.INSTANCE;
 	}
 
 }

@@ -49,6 +49,9 @@ module org.sheepy.lily.core.api
 	exports org.sheepy.lily.core.model.maintainer.impl;
 	exports org.sheepy.lily.core.model.presentation;
 	exports org.sheepy.lily.core.model.presentation.impl;
+	exports org.sheepy.lily.core.model.resource;
+	exports org.sheepy.lily.core.model.resource.impl;
+	exports org.sheepy.lily.core.model.resource.util;
 	exports org.sheepy.lily.core.model.types;
 	exports org.sheepy.lily.core.model.types.impl;
 	exports org.sheepy.lily.core.model.ui;

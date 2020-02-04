@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.presentation.provider;
+package org.sheepy.lily.core.model.resource.provider;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,6 +11,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.eclipse.emf.edit.provider.ChangeNotifier;
@@ -26,9 +27,10 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.sheepy.lily.core.model.presentation.PresentationPackage;
 
-import org.sheepy.lily.core.model.presentation.util.PresentationAdapterFactory;
+import org.sheepy.lily.core.model.resource.ResourcePackage;
+
+import org.sheepy.lily.core.model.resource.util.ResourceAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -39,8 +41,7 @@ import org.sheepy.lily.core.model.presentation.util.PresentationAdapterFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PresentationItemProviderAdapterFactory extends PresentationAdapterFactory
-		implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender
+public class ResourceItemProviderAdapterFactory extends ResourceAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender
 {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
@@ -64,7 +65,7 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(org.sheepy.lily.core.model.resource.provider.LilyEditPlugin.INSTANCE, PresentationPackage.eNS_URI);
+	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(LilyEditPlugin.INSTANCE, ResourcePackage.eNS_URI);
 
 	/**
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
@@ -80,13 +81,63 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PresentationItemProviderAdapterFactory()
+	public ResourceItemProviderAdapterFactory()
 	{
 		supportedTypes.add(IEditingDomainItemProvider.class);
 		supportedTypes.add(IStructuredItemContentProvider.class);
 		supportedTypes.add(ITreeItemContentProvider.class);
 		supportedTypes.add(IItemLabelProvider.class);
 		supportedTypes.add(IItemPropertySource.class);
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.resource.Sound} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SoundItemProvider soundItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.resource.Sound}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSoundAdapter()
+	{
+		if (soundItemProvider == null)
+		{
+			soundItemProvider = new SoundItemProvider(this);
+		}
+
+		return soundItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.resource.Music} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected MusicItemProvider musicItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.resource.Music}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createMusicAdapter()
+	{
+		if (musicItemProvider == null)
+		{
+			musicItemProvider = new MusicItemProvider(this);
+		}
+
+		return musicItemProvider;
 	}
 
 	/**
@@ -238,6 +289,8 @@ public class PresentationItemProviderAdapterFactory extends PresentationAdapterF
 	@Override
 	public void dispose()
 	{
+		if (soundItemProvider != null) soundItemProvider.dispose();
+		if (musicItemProvider != null) musicItemProvider.dispose();
 	}
 
 }

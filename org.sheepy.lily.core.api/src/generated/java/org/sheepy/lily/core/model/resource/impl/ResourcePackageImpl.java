@@ -1,12 +1,11 @@
 /**
  */
-package org.sheepy.lily.core.model.maintainer.impl;
+package org.sheepy.lily.core.model.resource.impl;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.ETypeParameter;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.sheepy.lily.core.model.action.ActionPackage;
@@ -18,21 +17,26 @@ import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl;
 
 import org.sheepy.lily.core.model.cadence.CadencePackage;
+
 import org.sheepy.lily.core.model.cadence.impl.CadencePackageImpl;
+
 import org.sheepy.lily.core.model.inference.InferencePackage;
 
 import org.sheepy.lily.core.model.inference.impl.InferencePackageImpl;
 
-import org.sheepy.lily.core.model.maintainer.Maintainable;
-import org.sheepy.lily.core.model.maintainer.Maintainer;
-import org.sheepy.lily.core.model.maintainer.MaintainerFactory;
 import org.sheepy.lily.core.model.maintainer.MaintainerPackage;
+
+import org.sheepy.lily.core.model.maintainer.impl.MaintainerPackageImpl;
 
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
 
 import org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl;
+
+import org.sheepy.lily.core.model.resource.Music;
+import org.sheepy.lily.core.model.resource.ResourceFactory;
 import org.sheepy.lily.core.model.resource.ResourcePackage;
-import org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl;
+import org.sheepy.lily.core.model.resource.Sound;
+
 import org.sheepy.lily.core.model.types.TypesPackage;
 
 import org.sheepy.lily.core.model.types.impl.TypesPackageImpl;
@@ -51,21 +55,21 @@ import org.sheepy.lily.core.model.variable.impl.VariablePackageImpl;
  * <!-- end-user-doc -->
  * @generated
  */
-public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPackage
+public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass maintainableEClass = null;
+	private EClass soundEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass maintainerEClass = null;
+	private EClass musicEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -78,13 +82,13 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see org.sheepy.lily.core.model.maintainer.MaintainerPackage#eNS_URI
+	 * @see org.sheepy.lily.core.model.resource.ResourcePackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private MaintainerPackageImpl()
+	private ResourcePackageImpl()
 	{
-		super(eNS_URI, MaintainerFactory.eINSTANCE);
+		super(eNS_URI, ResourceFactory.eINSTANCE);
 	}
 
 	/**
@@ -97,7 +101,7 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 *
-	 * <p>This method is used to initialize {@link MaintainerPackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link ResourcePackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -106,20 +110,18 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static MaintainerPackage init()
+	public static ResourcePackage init()
 	{
-		if (isInited) return (MaintainerPackage)EPackage.Registry.INSTANCE.getEPackage(MaintainerPackage.eNS_URI);
+		if (isInited) return (ResourcePackage)EPackage.Registry.INSTANCE.getEPackage(ResourcePackage.eNS_URI);
 
 		// Obtain or create and register package
-		Object registeredMaintainerPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-		MaintainerPackageImpl theMaintainerPackage = registeredMaintainerPackage instanceof MaintainerPackageImpl ? (MaintainerPackageImpl)registeredMaintainerPackage : new MaintainerPackageImpl();
+		Object registeredResourcePackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		ResourcePackageImpl theResourcePackage = registeredResourcePackage instanceof ResourcePackageImpl ? (ResourcePackageImpl)registeredResourcePackage : new ResourcePackageImpl();
 
 		isInited = true;
 
 		// Obtain or create and register interdependencies
-		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ResourcePackage.eNS_URI);
-		ResourcePackageImpl theResourcePackage = (ResourcePackageImpl)(registeredPackage instanceof ResourcePackageImpl ? registeredPackage : ResourcePackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(UiPackage.eNS_URI);
+		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(UiPackage.eNS_URI);
 		UiPackageImpl theUiPackage = (UiPackageImpl)(registeredPackage instanceof UiPackageImpl ? registeredPackage : UiPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(VariablePackage.eNS_URI);
 		VariablePackageImpl theVariablePackage = (VariablePackageImpl)(registeredPackage instanceof VariablePackageImpl ? registeredPackage : VariablePackage.eINSTANCE);
@@ -127,6 +129,8 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 		TypesPackageImpl theTypesPackage = (TypesPackageImpl)(registeredPackage instanceof TypesPackageImpl ? registeredPackage : TypesPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(PresentationPackage.eNS_URI);
 		PresentationPackageImpl thePresentationPackage = (PresentationPackageImpl)(registeredPackage instanceof PresentationPackageImpl ? registeredPackage : PresentationPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(MaintainerPackage.eNS_URI);
+		MaintainerPackageImpl theMaintainerPackage = (MaintainerPackageImpl)(registeredPackage instanceof MaintainerPackageImpl ? registeredPackage : MaintainerPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
 		InferencePackageImpl theInferencePackage = (InferencePackageImpl)(registeredPackage instanceof InferencePackageImpl ? registeredPackage : InferencePackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CadencePackage.eNS_URI);
@@ -137,35 +141,35 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 		ActionPackageImpl theActionPackage = (ActionPackageImpl)(registeredPackage instanceof ActionPackageImpl ? registeredPackage : ActionPackage.eINSTANCE);
 
 		// Create package meta-data objects
-		theMaintainerPackage.createPackageContents();
 		theResourcePackage.createPackageContents();
 		theUiPackage.createPackageContents();
 		theVariablePackage.createPackageContents();
 		theTypesPackage.createPackageContents();
 		thePresentationPackage.createPackageContents();
+		theMaintainerPackage.createPackageContents();
 		theInferencePackage.createPackageContents();
 		theCadencePackage.createPackageContents();
 		theApplicationPackage.createPackageContents();
 		theActionPackage.createPackageContents();
 
 		// Initialize created meta-data
-		theMaintainerPackage.initializePackageContents();
 		theResourcePackage.initializePackageContents();
 		theUiPackage.initializePackageContents();
 		theVariablePackage.initializePackageContents();
 		theTypesPackage.initializePackageContents();
 		thePresentationPackage.initializePackageContents();
+		theMaintainerPackage.initializePackageContents();
 		theInferencePackage.initializePackageContents();
 		theCadencePackage.initializePackageContents();
 		theApplicationPackage.initializePackageContents();
 		theActionPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theMaintainerPackage.freeze();
+		theResourcePackage.freeze();
 
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(MaintainerPackage.eNS_URI, theMaintainerPackage);
-		return theMaintainerPackage;
+		EPackage.Registry.INSTANCE.put(ResourcePackage.eNS_URI, theResourcePackage);
+		return theResourcePackage;
 	}
 
 	/**
@@ -174,9 +178,9 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 	 * @generated
 	 */
 	@Override
-	public EClass getMaintainable()
+	public EClass getSound()
 	{
-		return maintainableEClass;
+		return soundEClass;
 	}
 
 	/**
@@ -185,9 +189,9 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 	 * @generated
 	 */
 	@Override
-	public EReference getMaintainable_Maintainer()
+	public EReference getSound_File()
 	{
-		return (EReference)maintainableEClass.getEStructuralFeatures().get(0);
+		return (EReference)soundEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -196,9 +200,9 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 	 * @generated
 	 */
 	@Override
-	public EClass getMaintainer()
+	public EClass getMusic()
 	{
-		return maintainerEClass;
+		return musicEClass;
 	}
 
 	/**
@@ -207,9 +211,9 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 	 * @generated
 	 */
 	@Override
-	public EReference getMaintainer_Maintained()
+	public EReference getMusic_File()
 	{
-		return (EReference)maintainerEClass.getEStructuralFeatures().get(0);
+		return (EReference)musicEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -218,9 +222,9 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 	 * @generated
 	 */
 	@Override
-	public MaintainerFactory getMaintainerFactory()
+	public ResourceFactory getResourceFactory()
 	{
-		return (MaintainerFactory)getEFactoryInstance();
+		return (ResourceFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -243,11 +247,11 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 		isCreated = true;
 
 		// Create classes and their features
-		maintainableEClass = createEClass(MAINTAINABLE);
-		createEReference(maintainableEClass, MAINTAINABLE__MAINTAINER);
+		soundEClass = createEClass(SOUND);
+		createEReference(soundEClass, SOUND__FILE);
 
-		maintainerEClass = createEClass(MAINTAINER);
-		createEReference(maintainerEClass, MAINTAINER__MAINTAINED);
+		musicEClass = createEClass(MUSIC);
+		createEReference(musicEClass, MUSIC__FILE);
 	}
 
 	/**
@@ -274,37 +278,26 @@ public class MaintainerPackageImpl extends EPackageImpl implements MaintainerPac
 		setNsPrefix(eNS_PREFIX);
 		setNsURI(eNS_URI);
 
+		// Obtain other dependent packages
+		ApplicationPackage theApplicationPackage = (ApplicationPackage)EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
+
 		// Create type parameters
-		ETypeParameter maintainableEClass_T = addETypeParameter(maintainableEClass, "T");
-		ETypeParameter maintainerEClass_T = addETypeParameter(maintainerEClass, "T");
 
 		// Set bounds for type parameters
-		EGenericType g1 = createEGenericType(this.getMaintainable());
-		EGenericType g2 = createEGenericType(maintainableEClass_T);
-		g1.getETypeArguments().add(g2);
-		maintainableEClass_T.getEBounds().add(g1);
-		g1 = createEGenericType(this.getMaintainable());
-		g2 = createEGenericType(maintainerEClass_T);
-		g1.getETypeArguments().add(g2);
-		maintainerEClass_T.getEBounds().add(g1);
 
 		// Add supertypes to classes
+		soundEClass.getESuperTypes().add(theApplicationPackage.getIResource());
+		musicEClass.getESuperTypes().add(theApplicationPackage.getIResource());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(maintainableEClass, Maintainable.class, "Maintainable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(this.getMaintainer());
-		g2 = createEGenericType(maintainableEClass_T);
-		g1.getETypeArguments().add(g2);
-		initEReference(getMaintainable_Maintainer(), g1, this.getMaintainer_Maintained(), "maintainer", null, 0, 1, Maintainable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(soundEClass, Sound.class, "Sound", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSound_File(), theApplicationPackage.getFileResource(), null, "file", null, 1, 1, Sound.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(maintainerEClass, Maintainer.class, "Maintainer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		g1 = createEGenericType(this.getMaintainable());
-		g2 = createEGenericType(maintainerEClass_T);
-		g1.getETypeArguments().add(g2);
-		initEReference(getMaintainer_Maintained(), g1, this.getMaintainable_Maintainer(), "maintained", null, 0, -1, Maintainer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(musicEClass, Music.class, "Music", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getMusic_File(), theApplicationPackage.getFileResource(), null, "file", null, 1, 1, Music.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
 	}
 
-} //MaintainerPackageImpl
+} //ResourcePackageImpl
