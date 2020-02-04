@@ -6,13 +6,13 @@ import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.util.FeatureDefinition;
 import org.sheepy.lily.core.api.variable.IVariableResolverAdapter;
 import org.sheepy.lily.core.model.variable.ChainVariableResolver;
+import org.sheepy.lily.core.model.variable.IVariableResolver;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Adapter(scope = ChainVariableResolver.class)
-public class ChainVariableResolverAdapter
-		extends AbstractDefinedVariableResolverAdapter<ChainVariableResolver>
+public class ChainVariableResolverAdapter extends AbstractDefinedVariableResolverAdapter<ChainVariableResolver>
 {
 	private final Map<String, FeatureDefinition> definitionMap = new HashMap<>();
 	private final ChainVariableResolver resolver;
@@ -53,8 +53,7 @@ public class ChainVariableResolverAdapter
 	private ILilyEObject resolveTargetObject(ChainVariableResolver variableResolver)
 	{
 		final var firstResolver = variableResolver.getFirstResolver();
-		final var firstAdapter = firstResolver.adaptNotNull(IVariableResolverAdapter.class);
-		var resolvedTarget = (ILilyEObject) firstAdapter.getValue(firstResolver);
+		var resolvedTarget = resolveTarget(firstResolver);
 
 		final var subResolvers = variableResolver.getSubResolvers();
 		for (int i = 0; i < subResolvers.size() - 1; i++)
@@ -65,6 +64,12 @@ public class ChainVariableResolverAdapter
 		}
 
 		return resolvedTarget;
+	}
+
+	private <T extends IVariableResolver> ILilyEObject resolveTarget(T resolver)
+	{
+		final var firstAdapter = resolver.<IVariableResolverAdapter<T>>adaptNotNullGeneric(IVariableResolverAdapter.class);
+		return (ILilyEObject) firstAdapter.getValue(resolver);
 	}
 
 	@Override
