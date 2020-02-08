@@ -31,6 +31,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 
 import org.sheepy.lily.core.model.application.util.ApplicationAdapterFactory;
+import org.sheepy.lily.core.model.resource.provider.LilyEditPlugin;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -66,7 +67,7 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(org.sheepy.lily.core.model.resource.provider.LilyEditPlugin.INSTANCE, ApplicationPackage.eNS_URI);
+	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(LilyEditPlugin.INSTANCE, ApplicationPackage.eNS_URI);
 
 	/**
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
@@ -164,6 +165,31 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 		}
 
 		return timeConfigurationItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.application.IModel} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IModelItemProvider iModelItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.application.IModel}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createIModelAdapter()
+	{
+		if (iModelItemProvider == null)
+		{
+			iModelItemProvider = new IModelItemProvider(this);
+		}
+
+		return iModelItemProvider;
 	}
 
 	/**
@@ -543,6 +569,7 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 		if (applicationItemProvider != null) applicationItemProvider.dispose();
 		if (applicationExtensionPkgItemProvider != null) applicationExtensionPkgItemProvider.dispose();
 		if (timeConfigurationItemProvider != null) timeConfigurationItemProvider.dispose();
+		if (iModelItemProvider != null) iModelItemProvider.dispose();
 		if (sceneItemProvider != null) sceneItemProvider.dispose();
 		if (genericScenePartItemProvider != null) genericScenePartItemProvider.dispose();
 		if (backgroundImageItemProvider != null) backgroundImageItemProvider.dispose();

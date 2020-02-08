@@ -1,6 +1,5 @@
 package org.sheepy.lily.core.allocation;
 
-import org.sheepy.lily.core.allocation.internal.RootAllocator;
 import org.sheepy.lily.core.api.allocation.IAllocable;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.IAllocationService;

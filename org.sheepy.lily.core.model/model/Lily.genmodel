@@ -33,10 +33,14 @@
       disposableProviderFactory="true" extensibleProviderFactory="true" childCreationExtenders="true"
       ecorePackage="resource.ecore#/">
     <genClasses ecoreClass="resource.ecore#//Sound">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resource.ecore#//Sound/file"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resource.ecore#//Sound/file"/>
     </genClasses>
     <genClasses ecoreClass="resource.ecore#//Music">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference resource.ecore#//Music/file"/>
+      <genFeatures property="Readonly" children="true" createChild="true" ecoreFeature="ecore:EReference resource.ecore#//Music/file"/>
+    </genClasses>
+    <genClasses ecoreClass="resource.ecore#//SoundContinuous">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resource.ecore#//SoundContinuous/attackMs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resource.ecore#//SoundContinuous/decayMs"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Ui" basePackage="org.sheepy.lily.core.model" resource="XMI"
@@ -372,13 +376,14 @@
       <genEnumLiterals ecoreEnumLiteral="application.ecore#//ESampling/Linear"/>
       <genEnumLiterals ecoreEnumLiteral="application.ecore#//ESampling/Nearest"/>
     </genEnums>
-    <genClasses ecoreClass="application.ecore#//Application">
+    <genClasses ecoreClass="application.ecore#//Application" labelFeature="#//application/Application/title">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/engines"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/run"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Application/title"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/scene"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/timeConfiguration"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/extensionPkg"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/models"/>
     </genClasses>
     <genClasses image="false" ecoreClass="application.ecore#//IApplicationExtension"/>
     <genClasses ecoreClass="application.ecore#//ApplicationExtensionPkg">
@@ -389,10 +394,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//TimeConfiguration/unit"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//TimeConfiguration/timeFactor"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="application.ecore#//IEngine"/>
+    <genClasses image="false" ecoreClass="application.ecore#//IEngine">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//IEngine/resourcePkg"/>
+    </genClasses>
+    <genClasses ecoreClass="application.ecore#//IModel"/>
     <genClasses image="false" ecoreClass="application.ecore#//IScenePart"/>
     <genClasses image="false" ecoreClass="application.ecore#//ICadence"/>
-    <genClasses ecoreClass="application.ecore#//Scene">
+    <genClasses ecoreClass="application.ecore#//Scene" labelFeature="#//application/Scene/size">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Scene/parts"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Scene/fullscreen"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Scene/resizeable"/>

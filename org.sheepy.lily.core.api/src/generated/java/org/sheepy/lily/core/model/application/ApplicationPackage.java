@@ -125,13 +125,22 @@ public interface ApplicationPackage extends EPackage
 	int APPLICATION__EXTENSION_PKG = 5;
 
 	/**
+	 * The feature id for the '<em><b>Models</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION__MODELS = 6;
+
+	/**
 	 * The number of structural features of the '<em>Application</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_FEATURE_COUNT = 6;
+	int APPLICATION_FEATURE_COUNT = 7;
 
 	/**
 	 * The number of operations of the '<em>Application</em>' class.
@@ -282,13 +291,22 @@ public interface ApplicationPackage extends EPackage
 	int IENGINE = 4;
 
 	/**
+	 * The feature id for the '<em><b>Resource Pkg</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IENGINE__RESOURCE_PKG = 0;
+
+	/**
 	 * The number of structural features of the '<em>IEngine</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IENGINE_FEATURE_COUNT = 0;
+	int IENGINE_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>IEngine</em>' class.
@@ -300,6 +318,34 @@ public interface ApplicationPackage extends EPackage
 	int IENGINE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.IModelImpl <em>IModel</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.application.impl.IModelImpl
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIModel()
+	 * @generated
+	 */
+	int IMODEL = 5;
+
+	/**
+	 * The number of structural features of the '<em>IModel</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMODEL_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>IModel</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMODEL_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.IScenePart <em>IScene Part</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -307,7 +353,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIScenePart()
 	 * @generated
 	 */
-	int ISCENE_PART = 5;
+	int ISCENE_PART = 6;
 
 	/**
 	 * The number of structural features of the '<em>IScene Part</em>' class.
@@ -344,7 +390,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getICadence()
 	 * @generated
 	 */
-	int ICADENCE = 6;
+	int ICADENCE = 7;
 
 	/**
 	 * The number of structural features of the '<em>ICadence</em>' class.
@@ -372,7 +418,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getScene()
 	 * @generated
 	 */
-	int SCENE = 7;
+	int SCENE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Parts</b></em>' containment reference list.
@@ -436,7 +482,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getGenericScenePart()
 	 * @generated
 	 */
-	int GENERIC_SCENE_PART = 8;
+	int GENERIC_SCENE_PART = 9;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -482,7 +528,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getBackgroundImage()
 	 * @generated
 	 */
-	int BACKGROUND_IMAGE = 9;
+	int BACKGROUND_IMAGE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -555,7 +601,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getResourcePkg()
 	 * @generated
 	 */
-	int RESOURCE_PKG = 10;
+	int RESOURCE_PKG = 11;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -592,7 +638,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIResource()
 	 * @generated
 	 */
-	int IRESOURCE = 11;
+	int IRESOURCE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -629,7 +675,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIImage()
 	 * @generated
 	 */
-	int IIMAGE = 12;
+	int IIMAGE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -666,7 +712,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getVirtualResource()
 	 * @generated
 	 */
-	int VIRTUAL_RESOURCE = 13;
+	int VIRTUAL_RESOURCE = 14;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -703,7 +749,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getFileResource()
 	 * @generated
 	 */
-	int FILE_RESOURCE = 14;
+	int FILE_RESOURCE = 15;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -749,7 +795,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getLocalResource()
 	 * @generated
 	 */
-	int LOCAL_RESOURCE = 15;
+	int LOCAL_RESOURCE = 16;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -795,7 +841,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getAbstractModuleResource()
 	 * @generated
 	 */
-	int ABSTRACT_MODULE_RESOURCE = 16;
+	int ABSTRACT_MODULE_RESOURCE = 17;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -841,7 +887,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getModuleResource()
 	 * @generated
 	 */
-	int MODULE_RESOURCE = 17;
+	int MODULE_RESOURCE = 18;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -896,7 +942,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getStringModuleResource()
 	 * @generated
 	 */
-	int STRING_MODULE_RESOURCE = 18;
+	int STRING_MODULE_RESOURCE = 19;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -951,7 +997,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getESampling()
 	 * @generated
 	 */
-	int ESAMPLING = 19;
+	int ESAMPLING = 20;
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.Application <em>Application</em>}'.
@@ -1028,6 +1074,17 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 */
 	EReference getApplication_ExtensionPkg();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.application.Application#getModels <em>Models</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Models</em>'.
+	 * @see org.sheepy.lily.core.model.application.Application#getModels()
+	 * @see #getApplication()
+	 * @generated
+	 */
+	EReference getApplication_Models();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.IApplicationExtension <em>IApplication Extension</em>}'.
@@ -1112,6 +1169,27 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 */
 	EClass getIEngine();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.IEngine#getResourcePkg <em>Resource Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Resource Pkg</em>'.
+	 * @see org.sheepy.lily.core.model.application.IEngine#getResourcePkg()
+	 * @see #getIEngine()
+	 * @generated
+	 */
+	EReference getIEngine_ResourcePkg();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.IModel <em>IModel</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IModel</em>'.
+	 * @see org.sheepy.lily.core.model.application.IModel
+	 * @generated
+	 */
+	EClass getIModel();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.IScenePart <em>IScene Part</em>}'.
@@ -1467,6 +1545,14 @@ public interface ApplicationPackage extends EPackage
 		EReference APPLICATION__EXTENSION_PKG = eINSTANCE.getApplication_ExtensionPkg();
 
 		/**
+		 * The meta object literal for the '<em><b>Models</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference APPLICATION__MODELS = eINSTANCE.getApplication_Models();
+
+		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.IApplicationExtension <em>IApplication Extension</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1537,6 +1623,24 @@ public interface ApplicationPackage extends EPackage
 		 * @generated
 		 */
 		EClass IENGINE = eINSTANCE.getIEngine();
+
+		/**
+		 * The meta object literal for the '<em><b>Resource Pkg</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IENGINE__RESOURCE_PKG = eINSTANCE.getIEngine_ResourcePkg();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.IModelImpl <em>IModel</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.impl.IModelImpl
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIModel()
+		 * @generated
+		 */
+		EClass IMODEL = eINSTANCE.getIModel();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.IScenePart <em>IScene Part</em>}' class.

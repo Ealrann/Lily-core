@@ -94,6 +94,16 @@ public class ResourceSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ResourcePackage.SOUND_CONTINUOUS:
+			{
+				SoundContinuous soundContinuous = (SoundContinuous)theEObject;
+				T result = caseSoundContinuous(soundContinuous);
+				if (result == null) result = caseSound(soundContinuous);
+				if (result == null) result = caseIResource(soundContinuous);
+				if (result == null) result = caseLNamedElement(soundContinuous);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -126,6 +136,22 @@ public class ResourceSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseMusic(Music object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sound Continuous</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sound Continuous</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSoundContinuous(SoundContinuous object)
 	{
 		return null;
 	}

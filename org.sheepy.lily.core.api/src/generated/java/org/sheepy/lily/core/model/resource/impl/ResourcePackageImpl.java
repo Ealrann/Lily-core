@@ -2,6 +2,7 @@
  */
 package org.sheepy.lily.core.model.resource.impl;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -37,6 +38,7 @@ import org.sheepy.lily.core.model.resource.ResourceFactory;
 import org.sheepy.lily.core.model.resource.ResourcePackage;
 import org.sheepy.lily.core.model.resource.Sound;
 
+import org.sheepy.lily.core.model.resource.SoundContinuous;
 import org.sheepy.lily.core.model.types.TypesPackage;
 
 import org.sheepy.lily.core.model.types.impl.TypesPackageImpl;
@@ -70,6 +72,13 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 	 * @generated
 	 */
 	private EClass musicEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass soundContinuousEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -222,6 +231,39 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 	 * @generated
 	 */
 	@Override
+	public EClass getSoundContinuous()
+	{
+		return soundContinuousEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSoundContinuous_AttackMs()
+	{
+		return (EAttribute)soundContinuousEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getSoundContinuous_DecayMs()
+	{
+		return (EAttribute)soundContinuousEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public ResourceFactory getResourceFactory()
 	{
 		return (ResourceFactory)getEFactoryInstance();
@@ -252,6 +294,10 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 
 		musicEClass = createEClass(MUSIC);
 		createEReference(musicEClass, MUSIC__FILE);
+
+		soundContinuousEClass = createEClass(SOUND_CONTINUOUS);
+		createEAttribute(soundContinuousEClass, SOUND_CONTINUOUS__ATTACK_MS);
+		createEAttribute(soundContinuousEClass, SOUND_CONTINUOUS__DECAY_MS);
 	}
 
 	/**
@@ -288,13 +334,19 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 		// Add supertypes to classes
 		soundEClass.getESuperTypes().add(theApplicationPackage.getIResource());
 		musicEClass.getESuperTypes().add(theApplicationPackage.getIResource());
+		soundContinuousEClass.getESuperTypes().add(this.getSound());
+		soundContinuousEClass.getESuperTypes().add(theApplicationPackage.getIResource());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(soundEClass, Sound.class, "Sound", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSound_File(), theApplicationPackage.getFileResource(), null, "file", null, 1, 1, Sound.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSound_File(), theApplicationPackage.getFileResource(), null, "file", null, 1, 1, Sound.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(musicEClass, Music.class, "Music", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMusic_File(), theApplicationPackage.getFileResource(), null, "file", null, 1, 1, Music.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMusic_File(), theApplicationPackage.getFileResource(), null, "file", null, 1, 1, Music.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(soundContinuousEClass, SoundContinuous.class, "SoundContinuous", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSoundContinuous_AttackMs(), ecorePackage.getEInt(), "attackMs", null, 1, 1, SoundContinuous.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSoundContinuous_DecayMs(), ecorePackage.getEInt(), "decayMs", null, 1, 1, SoundContinuous.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

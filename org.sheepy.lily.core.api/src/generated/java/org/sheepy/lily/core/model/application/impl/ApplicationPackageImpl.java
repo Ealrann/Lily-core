@@ -26,6 +26,7 @@ import org.sheepy.lily.core.model.application.IApplicationExtension;
 import org.sheepy.lily.core.model.application.ICadence;
 import org.sheepy.lily.core.model.application.IEngine;
 import org.sheepy.lily.core.model.application.IImage;
+import org.sheepy.lily.core.model.application.IModel;
 import org.sheepy.lily.core.model.application.IResource;
 import org.sheepy.lily.core.model.application.IScenePart;
 import org.sheepy.lily.core.model.application.LocalResource;
@@ -104,6 +105,13 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	private EClass iEngineEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iModelEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -394,6 +402,17 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
+	public EReference getApplication_Models()
+	{
+		return (EReference)applicationEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getIApplicationExtension()
 	{
 		return iApplicationExtensionEClass;
@@ -474,6 +493,28 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	public EClass getIEngine()
 	{
 		return iEngineEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getIEngine_ResourcePkg()
+	{
+		return (EReference)iEngineEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getIModel()
+	{
+		return iModelEClass;
 	}
 
 	/**
@@ -800,6 +841,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEReference(applicationEClass, APPLICATION__SCENE);
 		createEReference(applicationEClass, APPLICATION__TIME_CONFIGURATION);
 		createEReference(applicationEClass, APPLICATION__EXTENSION_PKG);
+		createEReference(applicationEClass, APPLICATION__MODELS);
 
 		iApplicationExtensionEClass = createEClass(IAPPLICATION_EXTENSION);
 
@@ -812,6 +854,9 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEAttribute(timeConfigurationEClass, TIME_CONFIGURATION__TIME_FACTOR);
 
 		iEngineEClass = createEClass(IENGINE);
+		createEReference(iEngineEClass, IENGINE__RESOURCE_PKG);
+
+		iModelEClass = createEClass(IMODEL);
 
 		iScenePartEClass = createEClass(ISCENE_PART);
 
@@ -912,6 +957,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEReference(getApplication_Scene(), this.getScene(), null, "scene", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_TimeConfiguration(), this.getTimeConfiguration(), null, "timeConfiguration", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_ExtensionPkg(), this.getApplicationExtensionPkg(), null, "extensionPkg", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getApplication_Models(), this.getIModel(), null, "models", null, 0, -1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iApplicationExtensionEClass, IApplicationExtension.class, "IApplicationExtension", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -924,6 +970,9 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEAttribute(getTimeConfiguration_TimeFactor(), ecorePackage.getEDouble(), "timeFactor", "1", 1, 1, TimeConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iEngineEClass, IEngine.class, "IEngine", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getIEngine_ResourcePkg(), this.getResourcePkg(), null, "resourcePkg", null, 0, 1, IEngine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(iModelEClass, IModel.class, "IModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(iScenePartEClass, IScenePart.class, "IScenePart", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

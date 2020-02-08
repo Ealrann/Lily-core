@@ -24,22 +24,22 @@ import org.sheepy.lily.core.model.application.IResource;
 public interface Music extends IResource
 {
 	/**
-	 * Returns the value of the '<em><b>File</b></em>' reference.
+	 * Returns the value of the '<em><b>File</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>File</em>' reference.
+	 * @return the value of the '<em>File</em>' containment reference.
 	 * @see #setFile(FileResource)
 	 * @see org.sheepy.lily.core.model.resource.ResourcePackage#getMusic_File()
-	 * @model required="true"
+	 * @model containment="true" resolveProxies="true" required="true"
 	 * @generated
 	 */
 	FileResource getFile();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.lily.core.model.resource.Music#getFile <em>File</em>}' reference.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.resource.Music#getFile <em>File</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>File</em>' reference.
+	 * @param value the new value of the '<em>File</em>' containment reference.
 	 * @see #getFile()
 	 * @generated
 	 */

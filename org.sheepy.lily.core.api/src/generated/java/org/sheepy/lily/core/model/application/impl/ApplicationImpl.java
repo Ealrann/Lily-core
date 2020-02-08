@@ -19,6 +19,7 @@ import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationExtensionPkg;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.IEngine;
+import org.sheepy.lily.core.model.application.IModel;
 import org.sheepy.lily.core.model.application.Scene;
 import org.sheepy.lily.core.model.application.TimeConfiguration;
 
@@ -36,6 +37,7 @@ import org.sheepy.lily.core.model.application.TimeConfiguration;
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getScene <em>Scene</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getTimeConfiguration <em>Time Configuration</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getExtensionPkg <em>Extension Pkg</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getModels <em>Models</em>}</li>
  * </ul>
  *
  * @generated
@@ -121,6 +123,16 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @ordered
 	 */
 	protected ApplicationExtensionPkg extensionPkg;
+
+	/**
+	 * The cached value of the '{@link #getModels() <em>Models</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getModels()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<IModel> models;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -218,11 +230,11 @@ public class ApplicationImpl extends LilyEObject implements Application
 	{
 		if (scene != null && ((EObject)scene).eIsProxy())
 		{
-			InternalEObject oldScene = (InternalEObject)scene;
+			InternalEObject oldScene = scene;
 			scene = (Scene)eResolveProxy(oldScene);
 			if (scene != oldScene)
 			{
-				InternalEObject newScene = (InternalEObject)scene;
+				InternalEObject newScene = scene;
 				NotificationChain msgs = oldScene.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__SCENE, null, null);
 				if (newScene.eInternalContainer() == null)
 				{
@@ -295,11 +307,11 @@ public class ApplicationImpl extends LilyEObject implements Application
 	{
 		if (timeConfiguration != null && ((EObject)timeConfiguration).eIsProxy())
 		{
-			InternalEObject oldTimeConfiguration = (InternalEObject)timeConfiguration;
+			InternalEObject oldTimeConfiguration = timeConfiguration;
 			timeConfiguration = (TimeConfiguration)eResolveProxy(oldTimeConfiguration);
 			if (timeConfiguration != oldTimeConfiguration)
 			{
-				InternalEObject newTimeConfiguration = (InternalEObject)timeConfiguration;
+				InternalEObject newTimeConfiguration = timeConfiguration;
 				NotificationChain msgs = oldTimeConfiguration.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__TIME_CONFIGURATION, null, null);
 				if (newTimeConfiguration.eInternalContainer() == null)
 				{
@@ -372,11 +384,11 @@ public class ApplicationImpl extends LilyEObject implements Application
 	{
 		if (extensionPkg != null && ((EObject)extensionPkg).eIsProxy())
 		{
-			InternalEObject oldExtensionPkg = (InternalEObject)extensionPkg;
+			InternalEObject oldExtensionPkg = extensionPkg;
 			extensionPkg = (ApplicationExtensionPkg)eResolveProxy(oldExtensionPkg);
 			if (extensionPkg != oldExtensionPkg)
 			{
-				InternalEObject newExtensionPkg = (InternalEObject)extensionPkg;
+				InternalEObject newExtensionPkg = extensionPkg;
 				NotificationChain msgs = oldExtensionPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__EXTENSION_PKG, null, null);
 				if (newExtensionPkg.eInternalContainer() == null)
 				{
@@ -445,6 +457,21 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @generated
 	 */
 	@Override
+	public EList<IModel> getModels()
+	{
+		if (models == null)
+		{
+			models = new EObjectContainmentEList.Resolving<IModel>(IModel.class, this, ApplicationPackage.APPLICATION__MODELS);
+		}
+		return models;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
 		switch (featureID)
@@ -457,6 +484,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return basicSetTimeConfiguration(null, msgs);
 			case ApplicationPackage.APPLICATION__EXTENSION_PKG:
 				return basicSetExtensionPkg(null, msgs);
+			case ApplicationPackage.APPLICATION__MODELS:
+				return ((InternalEList<?>)getModels()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -486,6 +515,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__EXTENSION_PKG:
 				if (resolve) return getExtensionPkg();
 				return basicGetExtensionPkg();
+			case ApplicationPackage.APPLICATION__MODELS:
+				return getModels();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -520,6 +551,10 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__EXTENSION_PKG:
 				setExtensionPkg((ApplicationExtensionPkg)newValue);
 				return;
+			case ApplicationPackage.APPLICATION__MODELS:
+				getModels().clear();
+				getModels().addAll((Collection<? extends IModel>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -552,6 +587,9 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__EXTENSION_PKG:
 				setExtensionPkg((ApplicationExtensionPkg)null);
 				return;
+			case ApplicationPackage.APPLICATION__MODELS:
+				getModels().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -578,6 +616,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return timeConfiguration != null;
 			case ApplicationPackage.APPLICATION__EXTENSION_PKG:
 				return extensionPkg != null;
+			case ApplicationPackage.APPLICATION__MODELS:
+				return models != null && !models.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

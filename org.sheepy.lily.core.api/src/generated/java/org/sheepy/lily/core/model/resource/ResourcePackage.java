@@ -2,6 +2,7 @@
  */
 package org.sheepy.lily.core.model.resource;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -78,7 +79,7 @@ public interface ResourcePackage extends EPackage
 	int SOUND__NAME = ApplicationPackage.IRESOURCE__NAME;
 
 	/**
-	 * The feature id for the '<em><b>File</b></em>' reference.
+	 * The feature id for the '<em><b>File</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -124,7 +125,7 @@ public interface ResourcePackage extends EPackage
 	int MUSIC__NAME = ApplicationPackage.IRESOURCE__NAME;
 
 	/**
-	 * The feature id for the '<em><b>File</b></em>' reference.
+	 * The feature id for the '<em><b>File</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -152,6 +153,71 @@ public interface ResourcePackage extends EPackage
 
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.resource.impl.SoundContinuousImpl <em>Sound Continuous</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.resource.impl.SoundContinuousImpl
+	 * @see org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl#getSoundContinuous()
+	 * @generated
+	 */
+	int SOUND_CONTINUOUS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOUND_CONTINUOUS__NAME = SOUND__NAME;
+
+	/**
+	 * The feature id for the '<em><b>File</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOUND_CONTINUOUS__FILE = SOUND__FILE;
+
+	/**
+	 * The feature id for the '<em><b>Attack Ms</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOUND_CONTINUOUS__ATTACK_MS = SOUND_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Decay Ms</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOUND_CONTINUOUS__DECAY_MS = SOUND_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Sound Continuous</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOUND_CONTINUOUS_FEATURE_COUNT = SOUND_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Sound Continuous</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SOUND_CONTINUOUS_OPERATION_COUNT = SOUND_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.resource.Sound <em>Sound</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -162,10 +228,10 @@ public interface ResourcePackage extends EPackage
 	EClass getSound();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.resource.Sound#getFile <em>File</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.resource.Sound#getFile <em>File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>File</em>'.
+	 * @return the meta object for the containment reference '<em>File</em>'.
 	 * @see org.sheepy.lily.core.model.resource.Sound#getFile()
 	 * @see #getSound()
 	 * @generated
@@ -183,15 +249,47 @@ public interface ResourcePackage extends EPackage
 	EClass getMusic();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.resource.Music#getFile <em>File</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.resource.Music#getFile <em>File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>File</em>'.
+	 * @return the meta object for the containment reference '<em>File</em>'.
 	 * @see org.sheepy.lily.core.model.resource.Music#getFile()
 	 * @see #getMusic()
 	 * @generated
 	 */
 	EReference getMusic_File();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.resource.SoundContinuous <em>Sound Continuous</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Sound Continuous</em>'.
+	 * @see org.sheepy.lily.core.model.resource.SoundContinuous
+	 * @generated
+	 */
+	EClass getSoundContinuous();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.resource.SoundContinuous#getAttackMs <em>Attack Ms</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Attack Ms</em>'.
+	 * @see org.sheepy.lily.core.model.resource.SoundContinuous#getAttackMs()
+	 * @see #getSoundContinuous()
+	 * @generated
+	 */
+	EAttribute getSoundContinuous_AttackMs();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.resource.SoundContinuous#getDecayMs <em>Decay Ms</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Decay Ms</em>'.
+	 * @see org.sheepy.lily.core.model.resource.SoundContinuous#getDecayMs()
+	 * @see #getSoundContinuous()
+	 * @generated
+	 */
+	EAttribute getSoundContinuous_DecayMs();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -228,7 +326,7 @@ public interface ResourcePackage extends EPackage
 		EClass SOUND = eINSTANCE.getSound();
 
 		/**
-		 * The meta object literal for the '<em><b>File</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>File</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -246,12 +344,38 @@ public interface ResourcePackage extends EPackage
 		EClass MUSIC = eINSTANCE.getMusic();
 
 		/**
-		 * The meta object literal for the '<em><b>File</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>File</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference MUSIC__FILE = eINSTANCE.getMusic_File();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.resource.impl.SoundContinuousImpl <em>Sound Continuous</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.resource.impl.SoundContinuousImpl
+		 * @see org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl#getSoundContinuous()
+		 * @generated
+		 */
+		EClass SOUND_CONTINUOUS = eINSTANCE.getSoundContinuous();
+
+		/**
+		 * The meta object literal for the '<em><b>Attack Ms</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SOUND_CONTINUOUS__ATTACK_MS = eINSTANCE.getSoundContinuous_AttackMs();
+
+		/**
+		 * The meta object literal for the '<em><b>Decay Ms</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SOUND_CONTINUOUS__DECAY_MS = eINSTANCE.getSoundContinuous_DecayMs();
 
 	}
 

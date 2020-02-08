@@ -9,6 +9,7 @@ import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.cadence.CadencePackage;
 import org.sheepy.lily.core.model.inference.InferencePackage;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.resource.ResourcePackage;
 import org.sheepy.lily.core.model.types.TypesPackage;
 import org.sheepy.lily.core.model.ui.UiPackage;
 import org.sheepy.lily.core.model.variable.VariablePackage;
@@ -25,6 +26,7 @@ public class CoreModelExtension implements IModelExtension
 		res.add(CadencePackage.eINSTANCE);
 		res.add(InferencePackage.eINSTANCE);
 		res.add(PresentationPackage.eINSTANCE);
+		res.add(ResourcePackage.eINSTANCE);
 		res.add(TypesPackage.eINSTANCE);
 		res.add(UiPackage.eINSTANCE);
 		res.add(VariablePackage.eINSTANCE);

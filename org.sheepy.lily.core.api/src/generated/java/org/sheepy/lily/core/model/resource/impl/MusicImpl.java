@@ -4,6 +4,7 @@ package org.sheepy.lily.core.model.resource.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -33,7 +34,7 @@ import org.sheepy.lily.core.model.resource.ResourcePackage;
 public class MusicImpl extends IResourceImpl implements Music
 {
 	/**
-	 * The cached value of the '{@link #getFile() <em>File</em>}' reference.
+	 * The cached value of the '{@link #getFile() <em>File</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getFile()
@@ -77,6 +78,13 @@ public class MusicImpl extends IResourceImpl implements Music
 			file = (FileResource)eResolveProxy(oldFile);
 			if (file != oldFile)
 			{
+				InternalEObject newFile = file;
+				NotificationChain msgs = oldFile.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ResourcePackage.MUSIC__FILE, null, null);
+				if (newFile.eInternalContainer() == null)
+				{
+					msgs = newFile.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ResourcePackage.MUSIC__FILE, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ResourcePackage.MUSIC__FILE, oldFile, file));
 			}
@@ -99,13 +107,54 @@ public class MusicImpl extends IResourceImpl implements Music
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public void setFile(FileResource newFile)
+	public NotificationChain basicSetFile(FileResource newFile, NotificationChain msgs)
 	{
 		FileResource oldFile = file;
 		file = newFile;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ResourcePackage.MUSIC__FILE, oldFile, file));
+		{
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ResourcePackage.MUSIC__FILE, oldFile, newFile);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setFile(FileResource newFile)
+	{
+		if (newFile != file)
+		{
+			NotificationChain msgs = null;
+			if (file != null)
+				msgs = ((InternalEObject)file).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ResourcePackage.MUSIC__FILE, null, msgs);
+			if (newFile != null)
+				msgs = ((InternalEObject)newFile).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ResourcePackage.MUSIC__FILE, null, msgs);
+			msgs = basicSetFile(newFile, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ResourcePackage.MUSIC__FILE, newFile, newFile));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+	{
+		switch (featureID)
+		{
+			case ResourcePackage.MUSIC__FILE:
+				return basicSetFile(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

@@ -1,6 +1,7 @@
 /**
  */
-package org.sheepy.lily.core.model.types.provider;
+package org.sheepy.lily.core.model.application.provider;
+
 
 import java.util.Collection;
 import java.util.List;
@@ -10,29 +11,29 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
+import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
-import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.sheepy.lily.core.model.resource.provider.LilyEditPlugin;
-import org.sheepy.lily.core.model.types.StringParameter;
-import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.lily.core.model.types.StringParameter} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.application.IModel} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class StringParameterItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
+public class IModelItemProvider 
+	extends ItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -40,7 +41,7 @@ public class StringParameterItemProvider extends ItemProviderAdapter implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StringParameterItemProvider(AdapterFactory adapterFactory)
+	public IModelItemProvider(AdapterFactory adapterFactory)
 	{
 		super(adapterFactory);
 	}
@@ -58,36 +59,12 @@ public class StringParameterItemProvider extends ItemProviderAdapter implements 
 		{
 			super.getPropertyDescriptors(object);
 
-			addValuePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Value feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addValuePropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_StringParameter_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_StringParameter_value_feature", "_UI_StringParameter_type"),
-				 TypesPackage.Literals.STRING_PARAMETER__VALUE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This returns StringParameter.gif.
+	 * This returns IModel.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -95,7 +72,7 @@ public class StringParameterItemProvider extends ItemProviderAdapter implements 
 	@Override
 	public Object getImage(Object object)
 	{
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/StringParameter"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/IModel"));
 	}
 
 	/**
@@ -107,11 +84,9 @@ public class StringParameterItemProvider extends ItemProviderAdapter implements 
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((StringParameter)object).getValue();
-		return label == null || label.length() == 0 ?
-			getString("_UI_StringParameter_type") :
-			getString("_UI_StringParameter_type") + " " + label;
+		return getString("_UI_IModel_type");
 	}
+
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -124,13 +99,6 @@ public class StringParameterItemProvider extends ItemProviderAdapter implements 
 	public void notifyChanged(Notification notification)
 	{
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(StringParameter.class))
-		{
-			case TypesPackage.STRING_PARAMETER__VALUE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 
@@ -156,7 +124,7 @@ public class StringParameterItemProvider extends ItemProviderAdapter implements 
 	@Override
 	public ResourceLocator getResourceLocator()
 	{
-		return LilyEditPlugin.INSTANCE;
+		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
 	}
 
 }

@@ -129,6 +129,7 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__SCENE);
 			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__TIME_CONFIGURATION);
 			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__EXTENSION_PKG);
+			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__MODELS);
 		}
 		return childrenFeatures;
 	}
@@ -194,6 +195,7 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 			case ApplicationPackage.APPLICATION__SCENE:
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 			case ApplicationPackage.APPLICATION__EXTENSION_PKG:
+			case ApplicationPackage.APPLICATION__MODELS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -226,6 +228,11 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 			(createChildParameter
 				(ApplicationPackage.Literals.APPLICATION__EXTENSION_PKG,
 				 ApplicationFactory.eINSTANCE.createApplicationExtensionPkg()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ApplicationPackage.Literals.APPLICATION__MODELS,
+				 ApplicationFactory.eINSTANCE.createIModel()));
 	}
 
 	/**

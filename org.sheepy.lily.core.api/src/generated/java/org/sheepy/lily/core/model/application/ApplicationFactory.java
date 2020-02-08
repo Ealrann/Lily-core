@@ -50,6 +50,15 @@ public interface ApplicationFactory extends EFactory
 	TimeConfiguration createTimeConfiguration();
 
 	/**
+	 * Returns a new object of class '<em>IModel</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>IModel</em>'.
+	 * @generated
+	 */
+	IModel createIModel();
+
+	/**
 	 * Returns a new object of class '<em>Scene</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

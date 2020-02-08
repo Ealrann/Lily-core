@@ -1,12 +1,5 @@
 package org.sheepy.lily.core.cadence.common;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
@@ -20,11 +13,19 @@ import org.sheepy.lily.core.api.cadence.ICadencer;
 import org.sheepy.lily.core.api.cadence.IStatistics;
 import org.sheepy.lily.core.api.cadence.ITicker;
 import org.sheepy.lily.core.api.engine.IEngineAdapter;
+import org.sheepy.lily.core.api.engine.IInputEngineAdapter;
 import org.sheepy.lily.core.api.input.IInputManager;
 import org.sheepy.lily.core.api.util.DebugUtil;
 import org.sheepy.lily.core.api.util.TimeUtil;
 import org.sheepy.lily.core.cadence.execution.CommandStack;
 import org.sheepy.lily.core.model.application.Application;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Cadencer implements ICadencer
 {
@@ -97,10 +98,14 @@ public class Cadencer implements ICadencer
 
 		for (final var engine : application.getEngines())
 		{
-			inputManager = engine.adaptNotNull(IEngineAdapter.class).getInputManager();
-			if (inputManager != null)
+			var adapter = engine.adapt(IInputEngineAdapter.class);
+			if (adapter != null)
 			{
-				break;
+				inputManager = adapter.getInputManager();
+				if (inputManager != null)
+				{
+					break;
+				}
 			}
 		}
 
@@ -184,12 +189,12 @@ public class Cadencer implements ICadencer
 			final var ticker = tickers.get(i);
 			switch (ticker.clock)
 			{
-			case RealWorld:
-				ticker.accumulate(stepNs);
-				break;
-			case ApplicationWorld:
-				ticker.accumulate(appStepNs);
-				break;
+				case RealWorld:
+					ticker.accumulate(stepNs);
+					break;
+				case ApplicationWorld:
+					ticker.accumulate(appStepNs);
+					break;
 			}
 
 			if (ticker.shouldTick())
@@ -337,7 +342,7 @@ public class Cadencer implements ICadencer
 		private void addTicker(EObject target, AdapterTickerWrapper wrapper)
 		{
 			tickers.add(wrapper);
-			var list = tickerMap.computeIfAbsent(target, k -> new ArrayList<>());
+			final var list = tickerMap.computeIfAbsent(target, k -> new ArrayList<>());
 			list.add(wrapper);
 		}
 	}

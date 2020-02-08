@@ -2,9 +2,17 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="resource" nsURI="org.sheepy.lily.core.model.resource" nsPrefix="resource">
   <eClassifiers xsi:type="ecore:EClass" name="Sound" eSuperTypes="application.ecore#//IResource">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="file" lowerBound="1" eType="ecore:EClass application.ecore#//FileResource"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="file" lowerBound="1" eType="ecore:EClass application.ecore#//FileResource"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Music" eSuperTypes="application.ecore#//IResource">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="file" lowerBound="1" eType="ecore:EClass application.ecore#//FileResource"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="file" lowerBound="1" eType="ecore:EClass application.ecore#//FileResource"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SoundContinuous" eSuperTypes="#//Sound application.ecore#//IResource">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attackMs" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="decayMs" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
 </ecore:EPackage>

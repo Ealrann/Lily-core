@@ -21,6 +21,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.sheepy.lily.core.model.resource.provider.LilyEditPlugin;
 import org.sheepy.lily.core.model.types.BooleanParameter;
 import org.sheepy.lily.core.model.types.TypesPackage;
 
@@ -156,7 +157,7 @@ public class BooleanParameterItemProvider extends ItemProviderAdapter implements
 	@Override
 	public ResourceLocator getResourceLocator()
 	{
-		return org.sheepy.lily.core.model.resource.provider.LilyEditPlugin.INSTANCE;
+		return LilyEditPlugin.INSTANCE;
 	}
 
 }

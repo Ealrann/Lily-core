@@ -101,6 +101,11 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 				return createIEngineAdapter();
 			}
 			@Override
+			public Adapter caseIModel(IModel object)
+			{
+				return createIModelAdapter();
+			}
+			@Override
 			public Adapter caseIScenePart(IScenePart object)
 			{
 				return createIScenePartAdapter();
@@ -272,6 +277,21 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createIEngineAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.IModel <em>IModel</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.IModel
+	 * @generated
+	 */
+	public Adapter createIModelAdapter()
 	{
 		return null;
 	}

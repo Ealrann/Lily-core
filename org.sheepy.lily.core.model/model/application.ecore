@@ -15,6 +15,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extensionPkg" eType="#//ApplicationExtensionPkg"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="models" upperBound="-1"
+        eType="#//IModel" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IApplicationExtension" abstract="true"
       interface="true" eSuperTypes="types.ecore#//LNamedElement"/>
@@ -31,7 +33,11 @@
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="1"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IEngine" abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IEngine" abstract="true" interface="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resourcePkg" eType="#//ResourcePkg"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IModel"/>
   <eClassifiers xsi:type="ecore:EClass" name="IScenePart" abstract="true" interface="true"
       eSuperTypes="inference.ecore#//IInferenceObject"/>
   <eClassifiers xsi:type="ecore:EClass" name="ICadence" abstract="true" interface="true"/>

@@ -31,6 +31,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.sheepy.lily.core.model.maintainer.MaintainerPackage;
 
 import org.sheepy.lily.core.model.maintainer.util.MaintainerAdapterFactory;
+import org.sheepy.lily.core.model.resource.provider.LilyEditPlugin;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -66,7 +67,7 @@ public class MaintainerItemProviderAdapterFactory extends MaintainerAdapterFacto
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(org.sheepy.lily.core.model.resource.provider.LilyEditPlugin.INSTANCE, MaintainerPackage.eNS_URI);
+	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(LilyEditPlugin.INSTANCE, MaintainerPackage.eNS_URI);
 
 	/**
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.

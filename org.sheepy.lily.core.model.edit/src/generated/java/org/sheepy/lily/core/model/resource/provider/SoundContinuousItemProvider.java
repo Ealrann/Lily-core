@@ -1,6 +1,7 @@
 /**
  */
-package org.sheepy.lily.core.model.types.provider;
+package org.sheepy.lily.core.model.resource.provider;
+
 
 import java.util.Collection;
 import java.util.List;
@@ -8,31 +9,21 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.lily.core.model.resource.provider.LilyEditPlugin;
-import org.sheepy.lily.core.model.types.StringParameter;
-import org.sheepy.lily.core.model.types.TypesPackage;
+import org.sheepy.lily.core.model.resource.ResourcePackage;
+import org.sheepy.lily.core.model.resource.SoundContinuous;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.lily.core.model.types.StringParameter} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.resource.SoundContinuous} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class StringParameterItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
+public class SoundContinuousItemProvider extends SoundItemProvider
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -40,7 +31,7 @@ public class StringParameterItemProvider extends ItemProviderAdapter implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public StringParameterItemProvider(AdapterFactory adapterFactory)
+	public SoundContinuousItemProvider(AdapterFactory adapterFactory)
 	{
 		super(adapterFactory);
 	}
@@ -58,36 +49,60 @@ public class StringParameterItemProvider extends ItemProviderAdapter implements 
 		{
 			super.getPropertyDescriptors(object);
 
-			addValuePropertyDescriptor(object);
+			addAttackMsPropertyDescriptor(object);
+			addDecayMsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Value feature.
+	 * This adds a property descriptor for the Attack Ms feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValuePropertyDescriptor(Object object)
+	protected void addAttackMsPropertyDescriptor(Object object)
 	{
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_StringParameter_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_StringParameter_value_feature", "_UI_StringParameter_type"),
-				 TypesPackage.Literals.STRING_PARAMETER__VALUE,
+				 getString("_UI_SoundContinuous_attackMs_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SoundContinuous_attackMs_feature", "_UI_SoundContinuous_type"),
+				 ResourcePackage.Literals.SOUND_CONTINUOUS__ATTACK_MS,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This returns StringParameter.gif.
+	 * This adds a property descriptor for the Decay Ms feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDecayMsPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SoundContinuous_decayMs_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SoundContinuous_decayMs_feature", "_UI_SoundContinuous_type"),
+				 ResourcePackage.Literals.SOUND_CONTINUOUS__DECAY_MS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns SoundContinuous.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -95,7 +110,7 @@ public class StringParameterItemProvider extends ItemProviderAdapter implements 
 	@Override
 	public Object getImage(Object object)
 	{
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/StringParameter"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/SoundContinuous"));
 	}
 
 	/**
@@ -107,11 +122,12 @@ public class StringParameterItemProvider extends ItemProviderAdapter implements 
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((StringParameter)object).getValue();
+		String label = ((SoundContinuous)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_StringParameter_type") :
-			getString("_UI_StringParameter_type") + " " + label;
+			getString("_UI_SoundContinuous_type") :
+			getString("_UI_SoundContinuous_type") + " " + label;
 	}
+
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
@@ -125,9 +141,10 @@ public class StringParameterItemProvider extends ItemProviderAdapter implements 
 	{
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(StringParameter.class))
+		switch (notification.getFeatureID(SoundContinuous.class))
 		{
-			case TypesPackage.STRING_PARAMETER__VALUE:
+			case ResourcePackage.SOUND_CONTINUOUS__ATTACK_MS:
+			case ResourcePackage.SOUND_CONTINUOUS__DECAY_MS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
@@ -145,18 +162,6 @@ public class StringParameterItemProvider extends ItemProviderAdapter implements 
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator()
-	{
-		return LilyEditPlugin.INSTANCE;
 	}
 
 }

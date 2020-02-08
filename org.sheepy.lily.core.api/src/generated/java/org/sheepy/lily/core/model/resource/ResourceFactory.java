@@ -41,6 +41,15 @@ public interface ResourceFactory extends EFactory
 	Music createMusic();
 
 	/**
+	 * Returns a new object of class '<em>Sound Continuous</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Sound Continuous</em>'.
+	 * @generated
+	 */
+	SoundContinuous createSoundContinuous();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

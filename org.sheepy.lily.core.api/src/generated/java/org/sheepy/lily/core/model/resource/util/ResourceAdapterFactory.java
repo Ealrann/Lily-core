@@ -89,6 +89,11 @@ public class ResourceAdapterFactory extends AdapterFactoryImpl
 				return createMusicAdapter();
 			}
 			@Override
+			public Adapter caseSoundContinuous(SoundContinuous object)
+			{
+				return createSoundContinuousAdapter();
+			}
+			@Override
 			public Adapter caseLNamedElement(LNamedElement object)
 			{
 				return createLNamedElementAdapter();
@@ -146,6 +151,21 @@ public class ResourceAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createMusicAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.resource.SoundContinuous <em>Sound Continuous</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.resource.SoundContinuous
+	 * @generated
+	 */
+	public Adapter createSoundContinuousAdapter()
 	{
 		return null;
 	}

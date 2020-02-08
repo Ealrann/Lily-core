@@ -201,6 +201,11 @@ public class ResourcePkgItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
+				 ResourceFactory.eINSTANCE.createSoundContinuous()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
 				 UiFactory.eINSTANCE.createFontTable()));
 
 		newChildDescriptors.add

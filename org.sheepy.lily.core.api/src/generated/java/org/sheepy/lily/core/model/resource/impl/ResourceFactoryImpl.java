@@ -66,6 +66,7 @@ public class ResourceFactoryImpl extends EFactoryImpl implements ResourceFactory
 		{
 			case ResourcePackage.SOUND: return createSound();
 			case ResourcePackage.MUSIC: return createMusic();
+			case ResourcePackage.SOUND_CONTINUOUS: return createSoundContinuous();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -93,6 +94,18 @@ public class ResourceFactoryImpl extends EFactoryImpl implements ResourceFactory
 	{
 		MusicImpl music = new MusicImpl();
 		return music;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public SoundContinuous createSoundContinuous()
+	{
+		SoundContinuousImpl soundContinuous = new SoundContinuousImpl();
+		return soundContinuous;
 	}
 
 	/**

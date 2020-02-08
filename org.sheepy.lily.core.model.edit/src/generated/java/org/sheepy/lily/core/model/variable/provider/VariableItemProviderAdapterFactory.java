@@ -26,6 +26,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.sheepy.lily.core.model.resource.provider.LilyEditPlugin;
 import org.sheepy.lily.core.model.variable.VariablePackage;
 
 import org.sheepy.lily.core.model.variable.util.VariableAdapterFactory;
@@ -64,7 +65,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(org.sheepy.lily.core.model.resource.provider.LilyEditPlugin.INSTANCE, VariablePackage.eNS_URI);
+	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(LilyEditPlugin.INSTANCE, VariablePackage.eNS_URI);
 
 	/**
 	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.

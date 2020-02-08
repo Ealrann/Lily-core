@@ -9,6 +9,4 @@ public interface IEngineAdapter extends IAdapter
 	void stop();
 	
 	void step();
-
-	IInputManager getInputManager();
 }

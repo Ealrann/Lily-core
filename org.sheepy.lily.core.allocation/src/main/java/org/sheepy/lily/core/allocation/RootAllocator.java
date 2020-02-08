@@ -1,7 +1,5 @@
-package org.sheepy.lily.core.allocation.internal;
+package org.sheepy.lily.core.allocation;
 
-import org.sheepy.lily.core.allocation.AllocationManager;
-import org.sheepy.lily.core.allocation.AllocationManagerFactory;
 import org.sheepy.lily.core.api.allocation.IAllocable;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.IRootAllocator;

@@ -20,6 +20,7 @@ import org.sheepy.lily.core.api.adapter.ILilyEObject;
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getScene <em>Scene</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getTimeConfiguration <em>Time Configuration</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getExtensionPkg <em>Extension Pkg</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Application#getModels <em>Models</em>}</li>
  * </ul>
  *
  * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication()
@@ -152,5 +153,17 @@ public interface Application extends ILilyEObject
 	 * @generated
 	 */
 	void setExtensionPkg(ApplicationExtensionPkg value);
+
+	/**
+	 * Returns the value of the '<em><b>Models</b></em>' containment reference list.
+	 * The list contents are of type {@link org.sheepy.lily.core.model.application.IModel}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Models</em>' containment reference list.
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Models()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	EList<IModel> getModels();
 
 } // Application
