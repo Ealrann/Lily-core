@@ -86,60 +86,6 @@ public interface ApplicationFactory extends EFactory
 	BackgroundImage createBackgroundImage();
 
 	/**
-	 * Returns a new object of class '<em>Resource Pkg</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Resource Pkg</em>'.
-	 * @generated
-	 */
-	ResourcePkg createResourcePkg();
-
-	/**
-	 * Returns a new object of class '<em>IResource</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>IResource</em>'.
-	 * @generated
-	 */
-	IResource createIResource();
-
-	/**
-	 * Returns a new object of class '<em>Virtual Resource</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Virtual Resource</em>'.
-	 * @generated
-	 */
-	VirtualResource createVirtualResource();
-
-	/**
-	 * Returns a new object of class '<em>Local Resource</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Local Resource</em>'.
-	 * @generated
-	 */
-	LocalResource createLocalResource();
-
-	/**
-	 * Returns a new object of class '<em>Module Resource</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Module Resource</em>'.
-	 * @generated
-	 */
-	ModuleResource createModuleResource();
-
-	/**
-	 * Returns a new object of class '<em>String Module Resource</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>String Module Resource</em>'.
-	 * @generated
-	 */
-	StringModuleResource createStringModuleResource();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

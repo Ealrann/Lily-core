@@ -24,7 +24,6 @@ import org.joml.Vector2ic;
 
 import org.joml.Vector4ic;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
-import org.sheepy.lily.core.model.application.IImage;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 import org.sheepy.lily.core.model.inference.InferencePackage;
 
@@ -32,6 +31,7 @@ import org.sheepy.lily.core.model.presentation.IPositionElement;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
 
+import org.sheepy.lily.core.model.resource.IImage;
 import org.sheepy.lily.core.model.types.EHorizontalRelative;
 import org.sheepy.lily.core.model.types.EVerticalRelative;
 import org.sheepy.lily.core.model.types.TypesFactory;
@@ -672,7 +672,7 @@ public class PanelImpl extends LilyEObject implements Panel
 	{
 		if (backgroundImage != null && ((EObject)backgroundImage).eIsProxy())
 		{
-			InternalEObject oldBackgroundImage = (InternalEObject)backgroundImage;
+			InternalEObject oldBackgroundImage = backgroundImage;
 			backgroundImage = (IImage)eResolveProxy(oldBackgroundImage);
 			if (backgroundImage != oldBackgroundImage)
 			{

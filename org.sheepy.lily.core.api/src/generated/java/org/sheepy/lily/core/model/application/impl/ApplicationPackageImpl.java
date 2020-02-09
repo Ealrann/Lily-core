@@ -4,7 +4,6 @@ package org.sheepy.lily.core.model.application.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -12,30 +11,19 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.sheepy.lily.core.model.action.ActionPackage;
 
 import org.sheepy.lily.core.model.action.impl.ActionPackageImpl;
-
-import org.sheepy.lily.core.model.application.AbstractModuleResource;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationExtensionPkg;
 import org.sheepy.lily.core.model.application.ApplicationFactory;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.BackgroundImage;
-import org.sheepy.lily.core.model.application.ESampling;
-import org.sheepy.lily.core.model.application.FileResource;
 import org.sheepy.lily.core.model.application.GenericScenePart;
 import org.sheepy.lily.core.model.application.IApplicationExtension;
 import org.sheepy.lily.core.model.application.ICadence;
 import org.sheepy.lily.core.model.application.IEngine;
-import org.sheepy.lily.core.model.application.IImage;
 import org.sheepy.lily.core.model.application.IModel;
-import org.sheepy.lily.core.model.application.IResource;
 import org.sheepy.lily.core.model.application.IScenePart;
-import org.sheepy.lily.core.model.application.LocalResource;
-import org.sheepy.lily.core.model.application.ModuleResource;
-import org.sheepy.lily.core.model.application.ResourcePkg;
 import org.sheepy.lily.core.model.application.Scene;
-import org.sheepy.lily.core.model.application.StringModuleResource;
 import org.sheepy.lily.core.model.application.TimeConfiguration;
-import org.sheepy.lily.core.model.application.VirtualResource;
 import org.sheepy.lily.core.model.cadence.CadencePackage;
 import org.sheepy.lily.core.model.cadence.impl.CadencePackageImpl;
 import org.sheepy.lily.core.model.inference.InferencePackage;
@@ -147,76 +135,6 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	private EClass backgroundImageEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass resourcePkgEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass iResourceEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass iImageEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass virtualResourceEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass fileResourceEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass localResourceEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass abstractModuleResourceEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass moduleResourceEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass stringModuleResourceEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum eSamplingEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -655,160 +573,6 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
-	public EClass getResourcePkg()
-	{
-		return resourcePkgEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getResourcePkg_Resources()
-	{
-		return (EReference)resourcePkgEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getIResource()
-	{
-		return iResourceEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getIImage()
-	{
-		return iImageEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getVirtualResource()
-	{
-		return virtualResourceEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getFileResource()
-	{
-		return fileResourceEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getFileResource_Path()
-	{
-		return (EAttribute)fileResourceEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getLocalResource()
-	{
-		return localResourceEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getAbstractModuleResource()
-	{
-		return abstractModuleResourceEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getModuleResource()
-	{
-		return moduleResourceEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getModuleResource_Module()
-	{
-		return (EAttribute)moduleResourceEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getStringModuleResource()
-	{
-		return stringModuleResourceEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getStringModuleResource_ModuleName()
-	{
-		return (EAttribute)stringModuleResourceEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EEnum getESampling()
-	{
-		return eSamplingEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public ApplicationFactory getApplicationFactory()
 	{
 		return (ApplicationFactory)getEFactoryInstance();
@@ -874,31 +638,6 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEReference(backgroundImageEClass, BACKGROUND_IMAGE__IMAGE);
 		createEAttribute(backgroundImageEClass, BACKGROUND_IMAGE__CLEAR_COLOR);
 		createEAttribute(backgroundImageEClass, BACKGROUND_IMAGE__SAMPLING);
-
-		resourcePkgEClass = createEClass(RESOURCE_PKG);
-		createEReference(resourcePkgEClass, RESOURCE_PKG__RESOURCES);
-
-		iResourceEClass = createEClass(IRESOURCE);
-
-		iImageEClass = createEClass(IIMAGE);
-
-		virtualResourceEClass = createEClass(VIRTUAL_RESOURCE);
-
-		fileResourceEClass = createEClass(FILE_RESOURCE);
-		createEAttribute(fileResourceEClass, FILE_RESOURCE__PATH);
-
-		localResourceEClass = createEClass(LOCAL_RESOURCE);
-
-		abstractModuleResourceEClass = createEClass(ABSTRACT_MODULE_RESOURCE);
-
-		moduleResourceEClass = createEClass(MODULE_RESOURCE);
-		createEAttribute(moduleResourceEClass, MODULE_RESOURCE__MODULE);
-
-		stringModuleResourceEClass = createEClass(STRING_MODULE_RESOURCE);
-		createEAttribute(stringModuleResourceEClass, STRING_MODULE_RESOURCE__MODULE_NAME);
-
-		// Create enums
-		eSamplingEEnum = createEEnum(ESAMPLING);
 	}
 
 	/**
@@ -927,6 +666,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 
 		// Obtain other dependent packages
 		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+		ResourcePackage theResourcePackage = (ResourcePackage)EPackage.Registry.INSTANCE.getEPackage(ResourcePackage.eNS_URI);
 		InferencePackage theInferencePackage = (InferencePackage)EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
 
 		// Create type parameters
@@ -940,14 +680,6 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		genericScenePartEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
 		backgroundImageEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
 		backgroundImageEClass.getESuperTypes().add(this.getIScenePart());
-		iResourceEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
-		iImageEClass.getESuperTypes().add(this.getIResource());
-		virtualResourceEClass.getESuperTypes().add(this.getIResource());
-		fileResourceEClass.getESuperTypes().add(this.getIResource());
-		localResourceEClass.getESuperTypes().add(this.getFileResource());
-		abstractModuleResourceEClass.getESuperTypes().add(this.getFileResource());
-		moduleResourceEClass.getESuperTypes().add(this.getAbstractModuleResource());
-		stringModuleResourceEClass.getESuperTypes().add(this.getAbstractModuleResource());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(applicationEClass, Application.class, "Application", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -970,7 +702,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEAttribute(getTimeConfiguration_TimeFactor(), ecorePackage.getEDouble(), "timeFactor", "1", 1, 1, TimeConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iEngineEClass, IEngine.class, "IEngine", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIEngine_ResourcePkg(), this.getResourcePkg(), null, "resourcePkg", null, 0, 1, IEngine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIEngine_ResourcePkg(), theResourcePackage.getResourcePkg(), null, "resourcePkg", null, 0, 1, IEngine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iModelEClass, IModel.class, "IModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -987,36 +719,9 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEClass(genericScenePartEClass, GenericScenePart.class, "GenericScenePart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(backgroundImageEClass, BackgroundImage.class, "BackgroundImage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBackgroundImage_Image(), this.getIImage(), null, "image", null, 0, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBackgroundImage_Image(), theResourcePackage.getIImage(), null, "image", null, 0, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBackgroundImage_ClearColor(), theTypesPackage.getVector3i(), "clearColor", "0;0;0", 1, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBackgroundImage_Sampling(), this.getESampling(), "sampling", null, 1, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(resourcePkgEClass, ResourcePkg.class, "ResourcePkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getResourcePkg_Resources(), this.getIResource(), null, "resources", null, 0, -1, ResourcePkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(iResourceEClass, IResource.class, "IResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(iImageEClass, IImage.class, "IImage", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(virtualResourceEClass, VirtualResource.class, "VirtualResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(fileResourceEClass, FileResource.class, "FileResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getFileResource_Path(), ecorePackage.getEString(), "path", null, 1, 1, FileResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(localResourceEClass, LocalResource.class, "LocalResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(abstractModuleResourceEClass, AbstractModuleResource.class, "AbstractModuleResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(moduleResourceEClass, ModuleResource.class, "ModuleResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getModuleResource_Module(), theTypesPackage.getJavaModule(), "module", null, 1, 1, ModuleResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(stringModuleResourceEClass, StringModuleResource.class, "StringModuleResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStringModuleResource_ModuleName(), ecorePackage.getEString(), "moduleName", null, 1, 1, StringModuleResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		// Initialize enums and add enum literals
-		initEEnum(eSamplingEEnum, ESampling.class, "ESampling");
-		addEEnumLiteral(eSamplingEEnum, ESampling.LINEAR);
-		addEEnumLiteral(eSamplingEEnum, ESampling.NEAREST);
+		initEAttribute(getBackgroundImage_Sampling(), theResourcePackage.getESampling(), "sampling", null, 1, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

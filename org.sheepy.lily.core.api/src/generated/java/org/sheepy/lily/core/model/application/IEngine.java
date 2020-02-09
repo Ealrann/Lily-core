@@ -3,6 +3,7 @@
 package org.sheepy.lily.core.model.application;
 
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.model.resource.ResourcePkg;
 
 /**
  * <!-- begin-user-doc -->

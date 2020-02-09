@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.application.provider;
+package org.sheepy.lily.core.model.resource.provider;
 
 
 import java.util.Collection;
@@ -23,14 +23,14 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.lily.core.model.application.ApplicationFactory;
-import org.sheepy.lily.core.model.application.ApplicationPackage;
-import org.sheepy.lily.core.model.application.ResourcePkg;
 import org.sheepy.lily.core.model.resource.ResourceFactory;
+import org.sheepy.lily.core.model.resource.ResourcePackage;
+import org.sheepy.lily.core.model.resource.ResourcePkg;
+
 import org.sheepy.lily.core.model.ui.UiFactory;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.lily.core.model.application.ResourcePkg} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.resource.ResourcePkg} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -86,7 +86,7 @@ public class ResourcePkgItemProvider
 		if (childrenFeatures == null)
 		{
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES);
+			childrenFeatures.add(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES);
 		}
 		return childrenFeatures;
 	}
@@ -144,7 +144,7 @@ public class ResourcePkgItemProvider
 
 		switch (notification.getFeatureID(ResourcePkg.class))
 		{
-			case ApplicationPackage.RESOURCE_PKG__RESOURCES:
+			case ResourcePackage.RESOURCE_PKG__RESOURCES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -165,52 +165,52 @@ public class ResourcePkgItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ApplicationFactory.eINSTANCE.createIResource()));
+				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
+				 ResourceFactory.eINSTANCE.createIResource()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ApplicationFactory.eINSTANCE.createVirtualResource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ApplicationFactory.eINSTANCE.createLocalResource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ApplicationFactory.eINSTANCE.createModuleResource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ApplicationFactory.eINSTANCE.createStringModuleResource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
+				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
 				 ResourceFactory.eINSTANCE.createSound()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
+				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
 				 ResourceFactory.eINSTANCE.createMusic()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
+				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
 				 ResourceFactory.eINSTANCE.createSoundContinuous()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
+				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
+				 ResourceFactory.eINSTANCE.createVirtualResource()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
+				 ResourceFactory.eINSTANCE.createLocalResource()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
+				 ResourceFactory.eINSTANCE.createModuleResource()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
+				 ResourceFactory.eINSTANCE.createStringModuleResource()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
 				 UiFactory.eINSTANCE.createFontTable()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ApplicationPackage.Literals.RESOURCE_PKG__RESOURCES,
+				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
 				 UiFactory.eINSTANCE.createFont()));
 	}
 

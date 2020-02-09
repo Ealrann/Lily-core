@@ -2,9 +2,6 @@
  */
 package org.sheepy.lily.core.model.resource;
 
-import org.sheepy.lily.core.model.application.IResource;
-
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Sound Continuous</b></em>'.
@@ -22,7 +19,7 @@ import org.sheepy.lily.core.model.application.IResource;
  * @model
  * @generated
  */
-public interface SoundContinuous extends Sound, IResource
+public interface SoundContinuous extends Sound
 {
 	/**
 	 * Returns the value of the '<em><b>Attack Ms</b></em>' attribute.

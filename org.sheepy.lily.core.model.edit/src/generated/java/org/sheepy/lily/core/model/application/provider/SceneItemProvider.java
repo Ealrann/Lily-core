@@ -25,6 +25,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.joml.Vector2ic;
 import org.sheepy.lily.core.model.application.ApplicationFactory;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.Scene;
@@ -199,8 +200,11 @@ public class SceneItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		Scene scene = (Scene)object;
-		return getString("_UI_Scene_type") + " " + scene.isFullscreen();
+		Vector2ic labelValue = ((Scene)object).getSize();
+		String label = labelValue == null ? null : labelValue.toString();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Scene_type") :
+			getString("_UI_Scene_type") + " " + label;
 	}
 
 

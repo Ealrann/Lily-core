@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.application.impl;
+package org.sheepy.lily.core.model.resource.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -8,52 +8,50 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.sheepy.lily.core.api.adapter.LilyEObject;
-
-import org.sheepy.lily.core.model.application.ApplicationPackage;
-import org.sheepy.lily.core.model.application.IResource;
+import org.sheepy.lily.core.model.resource.ResourcePackage;
+import org.sheepy.lily.core.model.resource.StringModuleResource;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>IResource</b></em>'.
+ * An implementation of the model object '<em><b>String Module Resource</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.IResourceImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.resource.impl.StringModuleResourceImpl#getModuleName <em>Module Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class IResourceImpl extends LilyEObject implements IResource
+public class StringModuleResourceImpl extends AbstractModuleResourceImpl implements StringModuleResource
 {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The default value of the '{@link #getModuleName() <em>Module Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getModuleName()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final String MODULE_NAME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getModuleName() <em>Module Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getModuleName()
 	 * @generated
 	 * @ordered
 	 */
-	protected String name = NAME_EDEFAULT;
+	protected String moduleName = MODULE_NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected IResourceImpl()
+	protected StringModuleResourceImpl()
 	{
 		super();
 	}
@@ -66,7 +64,7 @@ public class IResourceImpl extends LilyEObject implements IResource
 	@Override
 	protected EClass eStaticClass()
 	{
-		return ApplicationPackage.Literals.IRESOURCE;
+		return ResourcePackage.Literals.STRING_MODULE_RESOURCE;
 	}
 
 	/**
@@ -75,9 +73,9 @@ public class IResourceImpl extends LilyEObject implements IResource
 	 * @generated
 	 */
 	@Override
-	public String getName()
+	public String getModuleName()
 	{
-		return name;
+		return moduleName;
 	}
 
 	/**
@@ -86,12 +84,12 @@ public class IResourceImpl extends LilyEObject implements IResource
 	 * @generated
 	 */
 	@Override
-	public void setName(String newName)
+	public void setModuleName(String newModuleName)
 	{
-		String oldName = name;
-		name = newName;
+		String oldModuleName = moduleName;
+		moduleName = newModuleName;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.IRESOURCE__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, ResourcePackage.STRING_MODULE_RESOURCE__MODULE_NAME, oldModuleName, moduleName));
 	}
 
 	/**
@@ -104,8 +102,8 @@ public class IResourceImpl extends LilyEObject implements IResource
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.IRESOURCE__NAME:
-				return getName();
+			case ResourcePackage.STRING_MODULE_RESOURCE__MODULE_NAME:
+				return getModuleName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -120,8 +118,8 @@ public class IResourceImpl extends LilyEObject implements IResource
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.IRESOURCE__NAME:
-				setName((String)newValue);
+			case ResourcePackage.STRING_MODULE_RESOURCE__MODULE_NAME:
+				setModuleName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -137,8 +135,8 @@ public class IResourceImpl extends LilyEObject implements IResource
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.IRESOURCE__NAME:
-				setName(NAME_EDEFAULT);
+			case ResourcePackage.STRING_MODULE_RESOURCE__MODULE_NAME:
+				setModuleName(MODULE_NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -154,8 +152,8 @@ public class IResourceImpl extends LilyEObject implements IResource
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.IRESOURCE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case ResourcePackage.STRING_MODULE_RESOURCE__MODULE_NAME:
+				return MODULE_NAME_EDEFAULT == null ? moduleName != null : !MODULE_NAME_EDEFAULT.equals(moduleName);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -171,10 +169,10 @@ public class IResourceImpl extends LilyEObject implements IResource
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (name: ");
-		result.append(name);
+		result.append(" (moduleName: ");
+		result.append(moduleName);
 		result.append(')');
 		return result.toString();
 	}
 
-} //IResourceImpl
+} //StringModuleResourceImpl

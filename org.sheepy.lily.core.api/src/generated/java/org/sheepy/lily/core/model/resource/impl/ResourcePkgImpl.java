@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.application.impl;
+package org.sheepy.lily.core.model.resource.impl;
 
 import java.util.Collection;
 
@@ -16,19 +16,19 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 
-import org.sheepy.lily.core.model.application.ApplicationPackage;
-import org.sheepy.lily.core.model.application.IResource;
-import org.sheepy.lily.core.model.application.ResourcePkg;
+import org.sheepy.lily.core.model.resource.IResource;
+import org.sheepy.lily.core.model.resource.ResourcePackage;
+import org.sheepy.lily.core.model.resource.ResourcePkg;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Resource Pkg</b></em>'.
+ * An implementation of the model object '<em><b>Pkg</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.ResourcePkgImpl#getResources <em>Resources</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.resource.impl.ResourcePkgImpl#getResources <em>Resources</em>}</li>
  * </ul>
  *
  * @generated
@@ -63,7 +63,7 @@ public class ResourcePkgImpl extends LilyEObject implements ResourcePkg
 	@Override
 	protected EClass eStaticClass()
 	{
-		return ApplicationPackage.Literals.RESOURCE_PKG;
+		return ResourcePackage.Literals.RESOURCE_PKG;
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class ResourcePkgImpl extends LilyEObject implements ResourcePkg
 	{
 		if (resources == null)
 		{
-			resources = new EObjectContainmentEList.Resolving<IResource>(IResource.class, this, ApplicationPackage.RESOURCE_PKG__RESOURCES);
+			resources = new EObjectContainmentEList.Resolving<IResource>(IResource.class, this, ResourcePackage.RESOURCE_PKG__RESOURCES);
 		}
 		return resources;
 	}
@@ -91,7 +91,7 @@ public class ResourcePkgImpl extends LilyEObject implements ResourcePkg
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.RESOURCE_PKG__RESOURCES:
+			case ResourcePackage.RESOURCE_PKG__RESOURCES:
 				return ((InternalEList<?>)getResources()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -107,7 +107,7 @@ public class ResourcePkgImpl extends LilyEObject implements ResourcePkg
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.RESOURCE_PKG__RESOURCES:
+			case ResourcePackage.RESOURCE_PKG__RESOURCES:
 				return getResources();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -124,7 +124,7 @@ public class ResourcePkgImpl extends LilyEObject implements ResourcePkg
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.RESOURCE_PKG__RESOURCES:
+			case ResourcePackage.RESOURCE_PKG__RESOURCES:
 				getResources().clear();
 				getResources().addAll((Collection<? extends IResource>)newValue);
 				return;
@@ -142,7 +142,7 @@ public class ResourcePkgImpl extends LilyEObject implements ResourcePkg
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.RESOURCE_PKG__RESOURCES:
+			case ResourcePackage.RESOURCE_PKG__RESOURCES:
 				getResources().clear();
 				return;
 		}
@@ -159,7 +159,7 @@ public class ResourcePkgImpl extends LilyEObject implements ResourcePkg
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.RESOURCE_PKG__RESOURCES:
+			case ResourcePackage.RESOURCE_PKG__RESOURCES:
 				return resources != null && !resources.isEmpty();
 		}
 		return super.eIsSet(featureID);

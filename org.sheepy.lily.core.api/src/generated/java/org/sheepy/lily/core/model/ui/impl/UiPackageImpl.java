@@ -1239,8 +1239,9 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 
 		// Obtain other dependent packages
 		PresentationPackage thePresentationPackage = (PresentationPackage)EPackage.Registry.INSTANCE.getEPackage(PresentationPackage.eNS_URI);
-		ApplicationPackage theApplicationPackage = (ApplicationPackage)EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
+		ResourcePackage theResourcePackage = (ResourcePackage)EPackage.Registry.INSTANCE.getEPackage(ResourcePackage.eNS_URI);
 		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+		ApplicationPackage theApplicationPackage = (ApplicationPackage)EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
 		InferencePackage theInferencePackage = (InferencePackage)EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
 		VariablePackage theVariablePackage = (VariablePackage)EPackage.Registry.INSTANCE.getEPackage(VariablePackage.eNS_URI);
 		ActionPackage theActionPackage = (ActionPackage)EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
@@ -1275,8 +1276,8 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		abstractBooleanButtonEClass.getESuperTypes().add(this.getAbstractButton());
 		booleanButtonEClass.getESuperTypes().add(this.getAbstractBooleanButton());
 		booleanActionButtonEClass.getESuperTypes().add(this.getAbstractBooleanButton());
-		fontTableEClass.getESuperTypes().add(theApplicationPackage.getIResource());
-		fontEClass.getESuperTypes().add(theApplicationPackage.getIResource());
+		fontTableEClass.getESuperTypes().add(theResourcePackage.getIResource());
+		fontEClass.getESuperTypes().add(theResourcePackage.getIResource());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(panelEClass, Panel.class, "Panel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1285,7 +1286,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		initEAttribute(getPanel_Minimizable(), ecorePackage.getEBoolean(), "minimizable", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPanel_Movable(), ecorePackage.getEBoolean(), "movable", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPanel_Minimized(), ecorePackage.getEBoolean(), "minimized", "false", 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPanel_BackgroundImage(), theApplicationPackage.getIImage(), null, "backgroundImage", null, 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPanel_BackgroundImage(), theResourcePackage.getIImage(), null, "backgroundImage", null, 0, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPanel_BackgroundColor(), theTypesPackage.getVector4i(), "backgroundColor", "90;90;90;150", 1, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getPanel_BorderColor(), theTypesPackage.getVector4i(), "borderColor", "60;60;60;150", 1, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1294,7 +1295,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		initEReference(getUI_UiPages(), this.getUIPage(), null, "uiPages", null, 0, -1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUI_CurrentUIPage(), this.getUIPage(), null, "currentUIPage", null, 0, 1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUI_FontPkg(), this.getFontPkg(), null, "fontPkg", null, 1, 1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getUI_Images(), theApplicationPackage.getIImage(), null, "images", null, 0, -1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUI_Images(), theResourcePackage.getIImage(), null, "images", null, 0, -1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iuiElementEClass, IUIElement.class, "IUIElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1365,7 +1366,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		initEReference(getFontPkg_Fonts(), this.getFont(), null, "fonts", null, 1, -1, FontPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(fontTableEClass, FontTable.class, "FontTable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getFontTable_File(), theApplicationPackage.getFileResource(), null, "file", null, 1, 1, FontTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getFontTable_File(), theResourcePackage.getFileResource(), null, "file", null, 1, 1, FontTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFontTable_CharTables(), theTypesPackage.getECharTable(), "charTables", null, 1, -1, FontTable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(fontEClass, Font.class, "Font", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.application.impl;
+package org.sheepy.lily.core.model.resource.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -8,50 +8,50 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.sheepy.lily.core.model.application.ApplicationPackage;
-import org.sheepy.lily.core.model.application.FileResource;
+import org.sheepy.lily.core.model.resource.ModuleResource;
+import org.sheepy.lily.core.model.resource.ResourcePackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>File Resource</b></em>'.
+ * An implementation of the model object '<em><b>Module Resource</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.FileResourceImpl#getPath <em>Path</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.resource.impl.ModuleResourceImpl#getModule <em>Module</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class FileResourceImpl extends IResourceImpl implements FileResource
+public class ModuleResourceImpl extends AbstractModuleResourceImpl implements ModuleResource
 {
 	/**
-	 * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
+	 * The default value of the '{@link #getModule() <em>Module</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPath()
+	 * @see #getModule()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String PATH_EDEFAULT = null;
+	protected static final Module MODULE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
+	 * The cached value of the '{@link #getModule() <em>Module</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getPath()
+	 * @see #getModule()
 	 * @generated
 	 * @ordered
 	 */
-	protected String path = PATH_EDEFAULT;
+	protected Module module = MODULE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected FileResourceImpl()
+	protected ModuleResourceImpl()
 	{
 		super();
 	}
@@ -64,7 +64,7 @@ public abstract class FileResourceImpl extends IResourceImpl implements FileReso
 	@Override
 	protected EClass eStaticClass()
 	{
-		return ApplicationPackage.Literals.FILE_RESOURCE;
+		return ResourcePackage.Literals.MODULE_RESOURCE;
 	}
 
 	/**
@@ -73,9 +73,9 @@ public abstract class FileResourceImpl extends IResourceImpl implements FileReso
 	 * @generated
 	 */
 	@Override
-	public String getPath()
+	public Module getModule()
 	{
-		return path;
+		return module;
 	}
 
 	/**
@@ -84,12 +84,12 @@ public abstract class FileResourceImpl extends IResourceImpl implements FileReso
 	 * @generated
 	 */
 	@Override
-	public void setPath(String newPath)
+	public void setModule(Module newModule)
 	{
-		String oldPath = path;
-		path = newPath;
+		Module oldModule = module;
+		module = newModule;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.FILE_RESOURCE__PATH, oldPath, path));
+			eNotify(new ENotificationImpl(this, Notification.SET, ResourcePackage.MODULE_RESOURCE__MODULE, oldModule, module));
 	}
 
 	/**
@@ -102,8 +102,8 @@ public abstract class FileResourceImpl extends IResourceImpl implements FileReso
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.FILE_RESOURCE__PATH:
-				return getPath();
+			case ResourcePackage.MODULE_RESOURCE__MODULE:
+				return getModule();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -118,8 +118,8 @@ public abstract class FileResourceImpl extends IResourceImpl implements FileReso
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.FILE_RESOURCE__PATH:
-				setPath((String)newValue);
+			case ResourcePackage.MODULE_RESOURCE__MODULE:
+				setModule((Module)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -135,8 +135,8 @@ public abstract class FileResourceImpl extends IResourceImpl implements FileReso
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.FILE_RESOURCE__PATH:
-				setPath(PATH_EDEFAULT);
+			case ResourcePackage.MODULE_RESOURCE__MODULE:
+				setModule(MODULE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -152,8 +152,8 @@ public abstract class FileResourceImpl extends IResourceImpl implements FileReso
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.FILE_RESOURCE__PATH:
-				return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
+			case ResourcePackage.MODULE_RESOURCE__MODULE:
+				return MODULE_EDEFAULT == null ? module != null : !MODULE_EDEFAULT.equals(module);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -169,10 +169,10 @@ public abstract class FileResourceImpl extends IResourceImpl implements FileReso
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (path: ");
-		result.append(path);
+		result.append(" (module: ");
+		result.append(module);
 		result.append(')');
 		return result.toString();
 	}
 
-} //FileResourceImpl
+} //ModuleResourceImpl

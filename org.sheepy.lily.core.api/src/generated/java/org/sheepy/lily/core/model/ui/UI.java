@@ -3,9 +3,8 @@
 package org.sheepy.lily.core.model.ui;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.sheepy.lily.core.model.application.IImage;
 import org.sheepy.lily.core.model.application.IScenePart;
+import org.sheepy.lily.core.model.resource.IImage;
 
 /**
  * <!-- begin-user-doc -->
@@ -110,7 +109,7 @@ public interface UI extends IScenePart
 
 	/**
 	 * Returns the value of the '<em><b>Images</b></em>' reference list.
-	 * The list contents are of type {@link org.sheepy.lily.core.model.application.IImage}.
+	 * The list contents are of type {@link org.sheepy.lily.core.model.resource.IImage}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Images</em>' reference list.

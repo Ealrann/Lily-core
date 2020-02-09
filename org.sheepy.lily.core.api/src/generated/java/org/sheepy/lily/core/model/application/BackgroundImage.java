@@ -3,6 +3,8 @@
 package org.sheepy.lily.core.model.application;
 
 import org.joml.Vector3ic;
+import org.sheepy.lily.core.model.resource.ESampling;
+import org.sheepy.lily.core.model.resource.IImage;
 import org.sheepy.lily.core.model.types.LNamedElement;
 
 /**
@@ -73,11 +75,11 @@ public interface BackgroundImage extends LNamedElement, IScenePart
 
 	/**
 	 * Returns the value of the '<em><b>Sampling</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.sheepy.lily.core.model.application.ESampling}.
+	 * The literals are from the enumeration {@link org.sheepy.lily.core.model.resource.ESampling}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Sampling</em>' attribute.
-	 * @see org.sheepy.lily.core.model.application.ESampling
+	 * @see org.sheepy.lily.core.model.resource.ESampling
 	 * @see #setSampling(ESampling)
 	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getBackgroundImage_Sampling()
 	 * @model required="true"
@@ -90,7 +92,7 @@ public interface BackgroundImage extends LNamedElement, IScenePart
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Sampling</em>' attribute.
-	 * @see org.sheepy.lily.core.model.application.ESampling
+	 * @see org.sheepy.lily.core.model.resource.ESampling
 	 * @see #getSampling()
 	 * @generated
 	 */

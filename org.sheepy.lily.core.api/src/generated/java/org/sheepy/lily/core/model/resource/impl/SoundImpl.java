@@ -10,11 +10,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.sheepy.lily.core.model.application.FileResource;
-
-import org.sheepy.lily.core.model.application.impl.IResourceImpl;
-
+import org.sheepy.lily.core.model.resource.FileResource;
 import org.sheepy.lily.core.model.resource.ResourcePackage;
 import org.sheepy.lily.core.model.resource.Sound;
 

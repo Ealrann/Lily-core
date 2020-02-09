@@ -4,6 +4,7 @@ package org.sheepy.lily.core.model.resource.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -33,12 +34,22 @@ import org.sheepy.lily.core.model.presentation.PresentationPackage;
 
 import org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl;
 
+import org.sheepy.lily.core.model.resource.AbstractModuleResource;
+import org.sheepy.lily.core.model.resource.ESampling;
+import org.sheepy.lily.core.model.resource.FileResource;
+import org.sheepy.lily.core.model.resource.IImage;
+import org.sheepy.lily.core.model.resource.IResource;
+import org.sheepy.lily.core.model.resource.LocalResource;
+import org.sheepy.lily.core.model.resource.ModuleResource;
 import org.sheepy.lily.core.model.resource.Music;
 import org.sheepy.lily.core.model.resource.ResourceFactory;
 import org.sheepy.lily.core.model.resource.ResourcePackage;
+import org.sheepy.lily.core.model.resource.ResourcePkg;
 import org.sheepy.lily.core.model.resource.Sound;
 
 import org.sheepy.lily.core.model.resource.SoundContinuous;
+import org.sheepy.lily.core.model.resource.StringModuleResource;
+import org.sheepy.lily.core.model.resource.VirtualResource;
 import org.sheepy.lily.core.model.types.TypesPackage;
 
 import org.sheepy.lily.core.model.types.impl.TypesPackageImpl;
@@ -79,6 +90,76 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 	 * @generated
 	 */
 	private EClass soundContinuousEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass resourcePkgEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iResourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iImageEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass virtualResourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass fileResourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass localResourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass abstractModuleResourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass moduleResourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass stringModuleResourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum eSamplingEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -264,6 +345,160 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 	 * @generated
 	 */
 	@Override
+	public EClass getResourcePkg()
+	{
+		return resourcePkgEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getResourcePkg_Resources()
+	{
+		return (EReference)resourcePkgEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getIResource()
+	{
+		return iResourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getIImage()
+	{
+		return iImageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getVirtualResource()
+	{
+		return virtualResourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getFileResource()
+	{
+		return fileResourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFileResource_Path()
+	{
+		return (EAttribute)fileResourceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getLocalResource()
+	{
+		return localResourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAbstractModuleResource()
+	{
+		return abstractModuleResourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getModuleResource()
+	{
+		return moduleResourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getModuleResource_Module()
+	{
+		return (EAttribute)moduleResourceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getStringModuleResource()
+	{
+		return stringModuleResourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getStringModuleResource_ModuleName()
+	{
+		return (EAttribute)stringModuleResourceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EEnum getESampling()
+	{
+		return eSamplingEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public ResourceFactory getResourceFactory()
 	{
 		return (ResourceFactory)getEFactoryInstance();
@@ -298,6 +533,31 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 		soundContinuousEClass = createEClass(SOUND_CONTINUOUS);
 		createEAttribute(soundContinuousEClass, SOUND_CONTINUOUS__ATTACK_MS);
 		createEAttribute(soundContinuousEClass, SOUND_CONTINUOUS__DECAY_MS);
+
+		resourcePkgEClass = createEClass(RESOURCE_PKG);
+		createEReference(resourcePkgEClass, RESOURCE_PKG__RESOURCES);
+
+		iResourceEClass = createEClass(IRESOURCE);
+
+		iImageEClass = createEClass(IIMAGE);
+
+		virtualResourceEClass = createEClass(VIRTUAL_RESOURCE);
+
+		fileResourceEClass = createEClass(FILE_RESOURCE);
+		createEAttribute(fileResourceEClass, FILE_RESOURCE__PATH);
+
+		localResourceEClass = createEClass(LOCAL_RESOURCE);
+
+		abstractModuleResourceEClass = createEClass(ABSTRACT_MODULE_RESOURCE);
+
+		moduleResourceEClass = createEClass(MODULE_RESOURCE);
+		createEAttribute(moduleResourceEClass, MODULE_RESOURCE__MODULE);
+
+		stringModuleResourceEClass = createEClass(STRING_MODULE_RESOURCE);
+		createEAttribute(stringModuleResourceEClass, STRING_MODULE_RESOURCE__MODULE_NAME);
+
+		// Create enums
+		eSamplingEEnum = createEEnum(ESAMPLING);
 	}
 
 	/**
@@ -325,28 +585,62 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		ApplicationPackage theApplicationPackage = (ApplicationPackage)EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
+		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		soundEClass.getESuperTypes().add(theApplicationPackage.getIResource());
-		musicEClass.getESuperTypes().add(theApplicationPackage.getIResource());
+		soundEClass.getESuperTypes().add(this.getIResource());
+		musicEClass.getESuperTypes().add(this.getIResource());
 		soundContinuousEClass.getESuperTypes().add(this.getSound());
-		soundContinuousEClass.getESuperTypes().add(theApplicationPackage.getIResource());
+		iResourceEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
+		iImageEClass.getESuperTypes().add(this.getIResource());
+		virtualResourceEClass.getESuperTypes().add(this.getIResource());
+		fileResourceEClass.getESuperTypes().add(this.getIResource());
+		localResourceEClass.getESuperTypes().add(this.getFileResource());
+		abstractModuleResourceEClass.getESuperTypes().add(this.getFileResource());
+		moduleResourceEClass.getESuperTypes().add(this.getAbstractModuleResource());
+		stringModuleResourceEClass.getESuperTypes().add(this.getAbstractModuleResource());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(soundEClass, Sound.class, "Sound", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSound_File(), theApplicationPackage.getFileResource(), null, "file", null, 1, 1, Sound.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSound_File(), this.getFileResource(), null, "file", null, 1, 1, Sound.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(musicEClass, Music.class, "Music", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMusic_File(), theApplicationPackage.getFileResource(), null, "file", null, 1, 1, Music.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMusic_File(), this.getFileResource(), null, "file", null, 1, 1, Music.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(soundContinuousEClass, SoundContinuous.class, "SoundContinuous", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSoundContinuous_AttackMs(), ecorePackage.getEInt(), "attackMs", null, 1, 1, SoundContinuous.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSoundContinuous_DecayMs(), ecorePackage.getEInt(), "decayMs", null, 1, 1, SoundContinuous.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(resourcePkgEClass, ResourcePkg.class, "ResourcePkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getResourcePkg_Resources(), this.getIResource(), null, "resources", null, 0, -1, ResourcePkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(iResourceEClass, IResource.class, "IResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(iImageEClass, IImage.class, "IImage", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(virtualResourceEClass, VirtualResource.class, "VirtualResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(fileResourceEClass, FileResource.class, "FileResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFileResource_Path(), ecorePackage.getEString(), "path", null, 1, 1, FileResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(localResourceEClass, LocalResource.class, "LocalResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(abstractModuleResourceEClass, AbstractModuleResource.class, "AbstractModuleResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(moduleResourceEClass, ModuleResource.class, "ModuleResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getModuleResource_Module(), theTypesPackage.getJavaModule(), "module", null, 1, 1, ModuleResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(stringModuleResourceEClass, StringModuleResource.class, "StringModuleResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getStringModuleResource_ModuleName(), ecorePackage.getEString(), "moduleName", null, 1, 1, StringModuleResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(eSamplingEEnum, ESampling.class, "ESampling");
+		addEEnumLiteral(eSamplingEEnum, ESampling.LINEAR);
+		addEEnumLiteral(eSamplingEEnum, ESampling.NEAREST);
 
 		// Create resource
 		createResource(eNS_URI);

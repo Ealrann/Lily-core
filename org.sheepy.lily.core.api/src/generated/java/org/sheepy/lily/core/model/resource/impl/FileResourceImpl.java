@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.application.impl;
+package org.sheepy.lily.core.model.resource.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -8,50 +8,50 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.sheepy.lily.core.model.application.ApplicationPackage;
-import org.sheepy.lily.core.model.application.StringModuleResource;
+import org.sheepy.lily.core.model.resource.FileResource;
+import org.sheepy.lily.core.model.resource.ResourcePackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>String Module Resource</b></em>'.
+ * An implementation of the model object '<em><b>File Resource</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.StringModuleResourceImpl#getModuleName <em>Module Name</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.resource.impl.FileResourceImpl#getPath <em>Path</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class StringModuleResourceImpl extends AbstractModuleResourceImpl implements StringModuleResource
+public abstract class FileResourceImpl extends IResourceImpl implements FileResource
 {
 	/**
-	 * The default value of the '{@link #getModuleName() <em>Module Name</em>}' attribute.
+	 * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getModuleName()
+	 * @see #getPath()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String MODULE_NAME_EDEFAULT = null;
+	protected static final String PATH_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getModuleName() <em>Module Name</em>}' attribute.
+	 * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getModuleName()
+	 * @see #getPath()
 	 * @generated
 	 * @ordered
 	 */
-	protected String moduleName = MODULE_NAME_EDEFAULT;
+	protected String path = PATH_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected StringModuleResourceImpl()
+	protected FileResourceImpl()
 	{
 		super();
 	}
@@ -64,7 +64,7 @@ public class StringModuleResourceImpl extends AbstractModuleResourceImpl impleme
 	@Override
 	protected EClass eStaticClass()
 	{
-		return ApplicationPackage.Literals.STRING_MODULE_RESOURCE;
+		return ResourcePackage.Literals.FILE_RESOURCE;
 	}
 
 	/**
@@ -73,9 +73,9 @@ public class StringModuleResourceImpl extends AbstractModuleResourceImpl impleme
 	 * @generated
 	 */
 	@Override
-	public String getModuleName()
+	public String getPath()
 	{
-		return moduleName;
+		return path;
 	}
 
 	/**
@@ -84,12 +84,12 @@ public class StringModuleResourceImpl extends AbstractModuleResourceImpl impleme
 	 * @generated
 	 */
 	@Override
-	public void setModuleName(String newModuleName)
+	public void setPath(String newPath)
 	{
-		String oldModuleName = moduleName;
-		moduleName = newModuleName;
+		String oldPath = path;
+		path = newPath;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.STRING_MODULE_RESOURCE__MODULE_NAME, oldModuleName, moduleName));
+			eNotify(new ENotificationImpl(this, Notification.SET, ResourcePackage.FILE_RESOURCE__PATH, oldPath, path));
 	}
 
 	/**
@@ -102,8 +102,8 @@ public class StringModuleResourceImpl extends AbstractModuleResourceImpl impleme
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.STRING_MODULE_RESOURCE__MODULE_NAME:
-				return getModuleName();
+			case ResourcePackage.FILE_RESOURCE__PATH:
+				return getPath();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -118,8 +118,8 @@ public class StringModuleResourceImpl extends AbstractModuleResourceImpl impleme
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.STRING_MODULE_RESOURCE__MODULE_NAME:
-				setModuleName((String)newValue);
+			case ResourcePackage.FILE_RESOURCE__PATH:
+				setPath((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -135,8 +135,8 @@ public class StringModuleResourceImpl extends AbstractModuleResourceImpl impleme
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.STRING_MODULE_RESOURCE__MODULE_NAME:
-				setModuleName(MODULE_NAME_EDEFAULT);
+			case ResourcePackage.FILE_RESOURCE__PATH:
+				setPath(PATH_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -152,8 +152,8 @@ public class StringModuleResourceImpl extends AbstractModuleResourceImpl impleme
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.STRING_MODULE_RESOURCE__MODULE_NAME:
-				return MODULE_NAME_EDEFAULT == null ? moduleName != null : !MODULE_NAME_EDEFAULT.equals(moduleName);
+			case ResourcePackage.FILE_RESOURCE__PATH:
+				return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -169,10 +169,10 @@ public class StringModuleResourceImpl extends AbstractModuleResourceImpl impleme
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (moduleName: ");
-		result.append(moduleName);
+		result.append(" (path: ");
+		result.append(path);
 		result.append(')');
 		return result.toString();
 	}
 
-} //StringModuleResourceImpl
+} //FileResourceImpl

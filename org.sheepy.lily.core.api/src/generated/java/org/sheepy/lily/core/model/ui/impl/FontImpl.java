@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.sheepy.lily.core.model.application.impl.IResourceImpl;
+import org.sheepy.lily.core.model.resource.impl.IResourceImpl;
 import org.sheepy.lily.core.model.ui.Font;
 import org.sheepy.lily.core.model.ui.FontTable;
 import org.sheepy.lily.core.model.ui.UiPackage;

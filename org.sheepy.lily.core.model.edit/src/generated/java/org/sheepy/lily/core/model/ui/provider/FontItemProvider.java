@@ -14,8 +14,7 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.sheepy.lily.core.model.application.provider.IResourceItemProvider;
-
+import org.sheepy.lily.core.model.resource.provider.IResourceItemProvider;
 import org.sheepy.lily.core.model.ui.Font;
 import org.sheepy.lily.core.model.ui.UiFactory;
 import org.sheepy.lily.core.model.ui.UiPackage;

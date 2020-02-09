@@ -166,6 +166,156 @@ public class ResourceItemProviderAdapterFactory extends ResourceAdapterFactory i
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.resource.ResourcePkg} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ResourcePkgItemProvider resourcePkgItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.resource.ResourcePkg}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createResourcePkgAdapter()
+	{
+		if (resourcePkgItemProvider == null)
+		{
+			resourcePkgItemProvider = new ResourcePkgItemProvider(this);
+		}
+
+		return resourcePkgItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.resource.IResource} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IResourceItemProvider iResourceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.resource.IResource}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createIResourceAdapter()
+	{
+		if (iResourceItemProvider == null)
+		{
+			iResourceItemProvider = new IResourceItemProvider(this);
+		}
+
+		return iResourceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.resource.VirtualResource} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected VirtualResourceItemProvider virtualResourceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.resource.VirtualResource}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVirtualResourceAdapter()
+	{
+		if (virtualResourceItemProvider == null)
+		{
+			virtualResourceItemProvider = new VirtualResourceItemProvider(this);
+		}
+
+		return virtualResourceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.resource.LocalResource} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected LocalResourceItemProvider localResourceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.resource.LocalResource}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createLocalResourceAdapter()
+	{
+		if (localResourceItemProvider == null)
+		{
+			localResourceItemProvider = new LocalResourceItemProvider(this);
+		}
+
+		return localResourceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.resource.ModuleResource} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ModuleResourceItemProvider moduleResourceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.resource.ModuleResource}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createModuleResourceAdapter()
+	{
+		if (moduleResourceItemProvider == null)
+		{
+			moduleResourceItemProvider = new ModuleResourceItemProvider(this);
+		}
+
+		return moduleResourceItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.resource.StringModuleResource} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected StringModuleResourceItemProvider stringModuleResourceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.resource.StringModuleResource}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createStringModuleResourceAdapter()
+	{
+		if (stringModuleResourceItemProvider == null)
+		{
+			stringModuleResourceItemProvider = new StringModuleResourceItemProvider(this);
+		}
+
+		return stringModuleResourceItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -317,6 +467,12 @@ public class ResourceItemProviderAdapterFactory extends ResourceAdapterFactory i
 		if (soundItemProvider != null) soundItemProvider.dispose();
 		if (musicItemProvider != null) musicItemProvider.dispose();
 		if (soundContinuousItemProvider != null) soundContinuousItemProvider.dispose();
+		if (resourcePkgItemProvider != null) resourcePkgItemProvider.dispose();
+		if (iResourceItemProvider != null) iResourceItemProvider.dispose();
+		if (virtualResourceItemProvider != null) virtualResourceItemProvider.dispose();
+		if (localResourceItemProvider != null) localResourceItemProvider.dispose();
+		if (moduleResourceItemProvider != null) moduleResourceItemProvider.dispose();
+		if (stringModuleResourceItemProvider != null) stringModuleResourceItemProvider.dispose();
 	}
 
 }

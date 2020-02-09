@@ -1,11 +1,11 @@
 /**
  */
-package org.sheepy.lily.core.model.application.impl;
+package org.sheepy.lily.core.model.resource.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.sheepy.lily.core.model.application.ApplicationPackage;
-import org.sheepy.lily.core.model.application.LocalResource;
+import org.sheepy.lily.core.model.resource.LocalResource;
+import org.sheepy.lily.core.model.resource.ResourcePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,7 +34,7 @@ public class LocalResourceImpl extends FileResourceImpl implements LocalResource
 	@Override
 	protected EClass eStaticClass()
 	{
-		return ApplicationPackage.Literals.LOCAL_RESOURCE;
+		return ResourcePackage.Literals.LOCAL_RESOURCE;
 	}
 
 } //LocalResourceImpl

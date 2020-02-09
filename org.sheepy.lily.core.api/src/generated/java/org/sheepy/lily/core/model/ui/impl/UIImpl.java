@@ -22,9 +22,8 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.sheepy.lily.core.api.adapter.LilyEObject;
-
-import org.sheepy.lily.core.model.application.IImage;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.resource.IImage;
 import org.sheepy.lily.core.model.ui.FontPkg;
 import org.sheepy.lily.core.model.ui.UI;
 import org.sheepy.lily.core.model.ui.UIPage;
@@ -180,7 +179,7 @@ public class UIImpl extends LilyEObject implements UI
 	{
 		if (currentUIPage != null && ((EObject)currentUIPage).eIsProxy())
 		{
-			InternalEObject oldCurrentUIPage = (InternalEObject)currentUIPage;
+			InternalEObject oldCurrentUIPage = currentUIPage;
 			currentUIPage = (UIPage)eResolveProxy(oldCurrentUIPage);
 			if (currentUIPage != oldCurrentUIPage)
 			{
@@ -225,11 +224,11 @@ public class UIImpl extends LilyEObject implements UI
 	{
 		if (fontPkg != null && ((EObject)fontPkg).eIsProxy())
 		{
-			InternalEObject oldFontPkg = (InternalEObject)fontPkg;
+			InternalEObject oldFontPkg = fontPkg;
 			fontPkg = (FontPkg)eResolveProxy(oldFontPkg);
 			if (fontPkg != oldFontPkg)
 			{
-				InternalEObject newFontPkg = (InternalEObject)fontPkg;
+				InternalEObject newFontPkg = fontPkg;
 				NotificationChain msgs = oldFontPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UiPackage.UI__FONT_PKG, null, null);
 				if (newFontPkg.eInternalContainer() == null)
 				{

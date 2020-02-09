@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.application.provider;
+package org.sheepy.lily.core.model.resource.provider;
 
 
 import java.util.Collection;
@@ -14,16 +14,16 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.lily.core.model.application.ApplicationPackage;
-import org.sheepy.lily.core.model.application.ModuleResource;
+import org.sheepy.lily.core.model.resource.ResourcePackage;
+import org.sheepy.lily.core.model.resource.StringModuleResource;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.lily.core.model.application.ModuleResource} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.resource.StringModuleResource} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModuleResourceItemProvider extends AbstractModuleResourceItemProvider
+public class StringModuleResourceItemProvider extends AbstractModuleResourceItemProvider
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -31,7 +31,7 @@ public class ModuleResourceItemProvider extends AbstractModuleResourceItemProvid
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModuleResourceItemProvider(AdapterFactory adapterFactory)
+	public StringModuleResourceItemProvider(AdapterFactory adapterFactory)
 	{
 		super(adapterFactory);
 	}
@@ -49,26 +49,26 @@ public class ModuleResourceItemProvider extends AbstractModuleResourceItemProvid
 		{
 			super.getPropertyDescriptors(object);
 
-			addModulePropertyDescriptor(object);
+			addModuleNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Module feature.
+	 * This adds a property descriptor for the Module Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addModulePropertyDescriptor(Object object)
+	protected void addModuleNamePropertyDescriptor(Object object)
 	{
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ModuleResource_module_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ModuleResource_module_feature", "_UI_ModuleResource_type"),
-				 ApplicationPackage.Literals.MODULE_RESOURCE__MODULE,
+				 getString("_UI_StringModuleResource_moduleName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_StringModuleResource_moduleName_feature", "_UI_StringModuleResource_type"),
+				 ResourcePackage.Literals.STRING_MODULE_RESOURCE__MODULE_NAME,
 				 true,
 				 false,
 				 false,
@@ -78,7 +78,7 @@ public class ModuleResourceItemProvider extends AbstractModuleResourceItemProvid
 	}
 
 	/**
-	 * This returns ModuleResource.gif.
+	 * This returns StringModuleResource.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -86,7 +86,7 @@ public class ModuleResourceItemProvider extends AbstractModuleResourceItemProvid
 	@Override
 	public Object getImage(Object object)
 	{
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ModuleResource"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/StringModuleResource"));
 	}
 
 	/**
@@ -98,10 +98,10 @@ public class ModuleResourceItemProvider extends AbstractModuleResourceItemProvid
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((ModuleResource)object).getName();
+		String label = ((StringModuleResource)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ModuleResource_type") :
-			getString("_UI_ModuleResource_type") + " " + label;
+			getString("_UI_StringModuleResource_type") :
+			getString("_UI_StringModuleResource_type") + " " + label;
 	}
 
 
@@ -117,9 +117,9 @@ public class ModuleResourceItemProvider extends AbstractModuleResourceItemProvid
 	{
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ModuleResource.class))
+		switch (notification.getFeatureID(StringModuleResource.class))
 		{
-			case ApplicationPackage.MODULE_RESOURCE__MODULE:
+			case ResourcePackage.STRING_MODULE_RESOURCE__MODULE_NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

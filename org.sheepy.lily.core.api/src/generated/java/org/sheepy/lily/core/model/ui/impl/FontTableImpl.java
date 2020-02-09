@@ -16,11 +16,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-
-import org.sheepy.lily.core.model.application.FileResource;
-
-import org.sheepy.lily.core.model.application.impl.IResourceImpl;
-
+import org.sheepy.lily.core.model.resource.FileResource;
+import org.sheepy.lily.core.model.resource.impl.IResourceImpl;
 import org.sheepy.lily.core.model.types.ECharTable;
 
 import org.sheepy.lily.core.model.ui.FontTable;
@@ -93,11 +90,11 @@ public class FontTableImpl extends IResourceImpl implements FontTable
 	{
 		if (file != null && ((EObject)file).eIsProxy())
 		{
-			InternalEObject oldFile = (InternalEObject)file;
+			InternalEObject oldFile = file;
 			file = (FileResource)eResolveProxy(oldFile);
 			if (file != oldFile)
 			{
-				InternalEObject newFile = (InternalEObject)file;
+				InternalEObject newFile = file;
 				NotificationChain msgs = oldFile.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UiPackage.FONT_TABLE__FILE, null, null);
 				if (newFile.eInternalContainer() == null)
 				{

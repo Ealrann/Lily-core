@@ -3,10 +3,8 @@
 package org.sheepy.lily.core.model.ui;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.sheepy.lily.core.model.application.FileResource;
-import org.sheepy.lily.core.model.application.IResource;
-
+import org.sheepy.lily.core.model.resource.FileResource;
+import org.sheepy.lily.core.model.resource.IResource;
 import org.sheepy.lily.core.model.types.ECharTable;
 
 /**

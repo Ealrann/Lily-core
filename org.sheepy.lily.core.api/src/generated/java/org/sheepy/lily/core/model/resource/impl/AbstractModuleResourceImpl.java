@@ -1,11 +1,11 @@
 /**
  */
-package org.sheepy.lily.core.model.application.impl;
+package org.sheepy.lily.core.model.resource.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.sheepy.lily.core.model.application.AbstractModuleResource;
-import org.sheepy.lily.core.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.resource.AbstractModuleResource;
+import org.sheepy.lily.core.model.resource.ResourcePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,7 +34,7 @@ public abstract class AbstractModuleResourceImpl extends FileResourceImpl implem
 	@Override
 	protected EClass eStaticClass()
 	{
-		return ApplicationPackage.Literals.ABSTRACT_MODULE_RESOURCE;
+		return ResourcePackage.Literals.ABSTRACT_MODULE_RESOURCE;
 	}
 
 } //AbstractModuleResourceImpl

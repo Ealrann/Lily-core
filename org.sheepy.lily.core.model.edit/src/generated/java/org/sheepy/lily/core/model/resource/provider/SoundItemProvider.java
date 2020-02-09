@@ -13,9 +13,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.sheepy.lily.core.model.application.ApplicationFactory;
-import org.sheepy.lily.core.model.application.provider.IResourceItemProvider;
-
+import org.sheepy.lily.core.model.resource.ResourceFactory;
 import org.sheepy.lily.core.model.resource.ResourcePackage;
 import org.sheepy.lily.core.model.resource.Sound;
 
@@ -152,17 +150,17 @@ public class SoundItemProvider extends IResourceItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ResourcePackage.Literals.SOUND__FILE,
-				 ApplicationFactory.eINSTANCE.createLocalResource()));
+				 ResourceFactory.eINSTANCE.createLocalResource()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(ResourcePackage.Literals.SOUND__FILE,
-				 ApplicationFactory.eINSTANCE.createModuleResource()));
+				 ResourceFactory.eINSTANCE.createModuleResource()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(ResourcePackage.Literals.SOUND__FILE,
-				 ApplicationFactory.eINSTANCE.createStringModuleResource()));
+				 ResourceFactory.eINSTANCE.createStringModuleResource()));
 	}
 
 }

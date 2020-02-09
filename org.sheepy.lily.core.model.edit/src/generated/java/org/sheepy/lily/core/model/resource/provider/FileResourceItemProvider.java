@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.application.provider;
+package org.sheepy.lily.core.model.resource.provider;
 
 
 import java.util.Collection;
@@ -14,11 +14,11 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.lily.core.model.application.ApplicationPackage;
-import org.sheepy.lily.core.model.application.FileResource;
+import org.sheepy.lily.core.model.resource.FileResource;
+import org.sheepy.lily.core.model.resource.ResourcePackage;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.lily.core.model.application.FileResource} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.resource.FileResource} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -68,7 +68,7 @@ public class FileResourceItemProvider extends IResourceItemProvider
 				 getResourceLocator(),
 				 getString("_UI_FileResource_path_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_FileResource_path_feature", "_UI_FileResource_type"),
-				 ApplicationPackage.Literals.FILE_RESOURCE__PATH,
+				 ResourcePackage.Literals.FILE_RESOURCE__PATH,
 				 true,
 				 false,
 				 false,
@@ -107,7 +107,7 @@ public class FileResourceItemProvider extends IResourceItemProvider
 
 		switch (notification.getFeatureID(FileResource.class))
 		{
-			case ApplicationPackage.FILE_RESOURCE__PATH:
+			case ResourcePackage.FILE_RESOURCE__PATH:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

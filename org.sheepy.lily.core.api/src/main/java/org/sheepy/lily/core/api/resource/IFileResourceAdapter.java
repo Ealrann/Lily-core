@@ -1,9 +1,9 @@
 package org.sheepy.lily.core.api.resource;
 
-import java.nio.ByteBuffer;
-
 import org.sheepy.lily.core.api.adapter.IAdapter;
-import org.sheepy.lily.core.model.application.FileResource;
+import org.sheepy.lily.core.model.resource.FileResource;
+
+import java.nio.ByteBuffer;
 
 public interface IFileResourceAdapter extends IAdapter
 {

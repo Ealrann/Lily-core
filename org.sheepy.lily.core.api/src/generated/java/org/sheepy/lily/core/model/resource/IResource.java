@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.application;
+package org.sheepy.lily.core.model.resource;
 
 import org.sheepy.lily.core.model.types.LNamedElement;
 
@@ -10,7 +10,7 @@ import org.sheepy.lily.core.model.types.LNamedElement;
  * <!-- end-user-doc -->
  *
  *
- * @see org.sheepy.lily.core.model.application.ApplicationPackage#getIResource()
+ * @see org.sheepy.lily.core.model.resource.ResourcePackage#getIResource()
  * @model
  * @generated
  */

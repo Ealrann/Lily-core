@@ -1,11 +1,11 @@
 /**
  */
-package org.sheepy.lily.core.model.application.impl;
+package org.sheepy.lily.core.model.resource.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.sheepy.lily.core.model.application.ApplicationPackage;
-import org.sheepy.lily.core.model.application.VirtualResource;
+import org.sheepy.lily.core.model.resource.ResourcePackage;
+import org.sheepy.lily.core.model.resource.VirtualResource;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,7 +34,7 @@ public class VirtualResourceImpl extends IResourceImpl implements VirtualResourc
 	@Override
 	protected EClass eStaticClass()
 	{
-		return ApplicationPackage.Literals.VIRTUAL_RESOURCE;
+		return ResourcePackage.Literals.VIRTUAL_RESOURCE;
 	}
 
 } //VirtualResourceImpl

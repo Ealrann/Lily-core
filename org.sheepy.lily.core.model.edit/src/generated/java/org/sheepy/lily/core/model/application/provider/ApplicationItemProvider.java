@@ -169,8 +169,10 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 	@Override
 	public String getText(Object object)
 	{
-		Application application = (Application)object;
-		return getString("_UI_Application_type") + " " + application.isRun();
+		String label = ((Application)object).getTitle();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Application_type") :
+			getString("_UI_Application_type") + " " + label;
 	}
 
 	/**

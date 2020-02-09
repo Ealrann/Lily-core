@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.application.provider;
+package org.sheepy.lily.core.model.resource.provider;
 
 
 import java.util.Collection;
@@ -11,10 +11,10 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
-import org.sheepy.lily.core.model.application.AbstractModuleResource;
+import org.sheepy.lily.core.model.resource.AbstractModuleResource;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.lily.core.model.application.AbstractModuleResource} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.resource.AbstractModuleResource} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

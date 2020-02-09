@@ -34,7 +34,7 @@
         defaultValueLiteral="1"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IEngine" abstract="true" interface="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="resourcePkg" eType="#//ResourcePkg"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resourcePkg" eType="ecore:EClass resource.ecore#//ResourcePkg"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IModel"/>
@@ -53,36 +53,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GenericScenePart" eSuperTypes="#//IScenePart types.ecore#//LNamedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="BackgroundImage" eSuperTypes="types.ecore#//LNamedElement #//IScenePart">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="image" eType="#//IImage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="image" eType="ecore:EClass resource.ecore#//IImage"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="clearColor" lowerBound="1"
         eType="ecore:EDataType types.ecore#//Vector3i" defaultValueLiteral="0;0;0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampling" lowerBound="1"
-        eType="#//ESampling"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="ESampling">
-    <eLiterals name="Linear"/>
-    <eLiterals name="Nearest" value="1"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ResourcePkg">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
-        eType="#//IResource" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IResource" eSuperTypes="types.ecore#//LNamedElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="IImage" abstract="true" interface="true"
-      eSuperTypes="#//IResource"/>
-  <eClassifiers xsi:type="ecore:EClass" name="VirtualResource" eSuperTypes="#//IResource"/>
-  <eClassifiers xsi:type="ecore:EClass" name="FileResource" abstract="true" eSuperTypes="#//IResource">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="LocalResource" eSuperTypes="#//FileResource"/>
-  <eClassifiers xsi:type="ecore:EClass" name="AbstractModuleResource" abstract="true"
-      eSuperTypes="#//FileResource"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ModuleResource" eSuperTypes="#//AbstractModuleResource">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="module" lowerBound="1"
-        eType="ecore:EDataType types.ecore#//JavaModule"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StringModuleResource" eSuperTypes="#//AbstractModuleResource">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="moduleName" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        eType="ecore:EEnum resource.ecore#//ESampling"/>
   </eClassifiers>
 </ecore:EPackage>

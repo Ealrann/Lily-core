@@ -4,8 +4,8 @@ package org.sheepy.lily.core.model.ui;
 
 import org.eclipse.emf.common.util.EList;
 import org.joml.Vector4ic;
-import org.sheepy.lily.core.model.application.IImage;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
+import org.sheepy.lily.core.model.resource.IImage;
 
 /**
  * <!-- begin-user-doc -->

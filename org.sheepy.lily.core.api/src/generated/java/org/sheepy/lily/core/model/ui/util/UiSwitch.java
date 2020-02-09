@@ -6,11 +6,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
-import org.sheepy.lily.core.model.application.IResource;
 import org.sheepy.lily.core.model.application.IScenePart;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 import org.sheepy.lily.core.model.presentation.IPositionElement;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
+import org.sheepy.lily.core.model.resource.IResource;
 import org.sheepy.lily.core.model.types.LNamedElement;
 
 import org.sheepy.lily.core.model.ui.*;

@@ -2,9 +2,6 @@
  */
 package org.sheepy.lily.core.model.resource;
 
-import org.sheepy.lily.core.model.application.FileResource;
-import org.sheepy.lily.core.model.application.IResource;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Music</b></em>'.

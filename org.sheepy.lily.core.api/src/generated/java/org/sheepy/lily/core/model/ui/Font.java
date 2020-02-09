@@ -3,7 +3,7 @@
 package org.sheepy.lily.core.model.ui;
 
 import org.eclipse.emf.common.util.EList;
-import org.sheepy.lily.core.model.application.IResource;
+import org.sheepy.lily.core.model.resource.IResource;
 
 /**
  * <!-- begin-user-doc -->

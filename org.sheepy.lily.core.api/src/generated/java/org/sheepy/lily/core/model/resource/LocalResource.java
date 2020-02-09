@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.application;
+package org.sheepy.lily.core.model.resource;
 
 
 /**
@@ -9,7 +9,7 @@ package org.sheepy.lily.core.model.application;
  * <!-- end-user-doc -->
  *
  *
- * @see org.sheepy.lily.core.model.application.ApplicationPackage#getLocalResource()
+ * @see org.sheepy.lily.core.model.resource.ResourcePackage#getLocalResource()
  * @model
  * @generated
  */

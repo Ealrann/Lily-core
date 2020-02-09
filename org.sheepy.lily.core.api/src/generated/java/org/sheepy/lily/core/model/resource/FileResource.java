@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.application;
+package org.sheepy.lily.core.model.resource;
 
 
 /**
@@ -12,10 +12,10 @@ package org.sheepy.lily.core.model.application;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.application.FileResource#getPath <em>Path</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.resource.FileResource#getPath <em>Path</em>}</li>
  * </ul>
  *
- * @see org.sheepy.lily.core.model.application.ApplicationPackage#getFileResource()
+ * @see org.sheepy.lily.core.model.resource.ResourcePackage#getFileResource()
  * @model abstract="true"
  * @generated
  */
@@ -27,14 +27,14 @@ public interface FileResource extends IResource
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Path</em>' attribute.
 	 * @see #setPath(String)
-	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getFileResource_Path()
+	 * @see org.sheepy.lily.core.model.resource.ResourcePackage#getFileResource_Path()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getPath();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.FileResource#getPath <em>Path</em>}' attribute.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.resource.FileResource#getPath <em>Path</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Path</em>' attribute.

@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.inference.InferencePackage;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.resource.ResourcePackage;
 import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
@@ -2080,7 +2081,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT_TABLE__NAME = ApplicationPackage.IRESOURCE__NAME;
+	int FONT_TABLE__NAME = ResourcePackage.IRESOURCE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>File</b></em>' containment reference.
@@ -2089,7 +2090,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT_TABLE__FILE = ApplicationPackage.IRESOURCE_FEATURE_COUNT + 0;
+	int FONT_TABLE__FILE = ResourcePackage.IRESOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Char Tables</b></em>' attribute list.
@@ -2098,7 +2099,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT_TABLE__CHAR_TABLES = ApplicationPackage.IRESOURCE_FEATURE_COUNT + 1;
+	int FONT_TABLE__CHAR_TABLES = ResourcePackage.IRESOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Font Table</em>' class.
@@ -2107,7 +2108,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT_TABLE_FEATURE_COUNT = ApplicationPackage.IRESOURCE_FEATURE_COUNT + 2;
+	int FONT_TABLE_FEATURE_COUNT = ResourcePackage.IRESOURCE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Font Table</em>' class.
@@ -2116,7 +2117,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT_TABLE_OPERATION_COUNT = ApplicationPackage.IRESOURCE_OPERATION_COUNT + 0;
+	int FONT_TABLE_OPERATION_COUNT = ResourcePackage.IRESOURCE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.FontImpl <em>Font</em>}' class.
@@ -2135,7 +2136,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT__NAME = ApplicationPackage.IRESOURCE__NAME;
+	int FONT__NAME = ResourcePackage.IRESOURCE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Tables</b></em>' containment reference list.
@@ -2144,7 +2145,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT__TABLES = ApplicationPackage.IRESOURCE_FEATURE_COUNT + 0;
+	int FONT__TABLES = ResourcePackage.IRESOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
@@ -2153,7 +2154,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT__HEIGHT = ApplicationPackage.IRESOURCE_FEATURE_COUNT + 1;
+	int FONT__HEIGHT = ResourcePackage.IRESOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Font</em>' class.
@@ -2162,7 +2163,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT_FEATURE_COUNT = ApplicationPackage.IRESOURCE_FEATURE_COUNT + 2;
+	int FONT_FEATURE_COUNT = ResourcePackage.IRESOURCE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Font</em>' class.
@@ -2171,7 +2172,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT_OPERATION_COUNT = ApplicationPackage.IRESOURCE_OPERATION_COUNT + 0;
+	int FONT_OPERATION_COUNT = ResourcePackage.IRESOURCE_OPERATION_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.Panel <em>Panel</em>}'.

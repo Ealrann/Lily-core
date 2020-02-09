@@ -6,9 +6,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
-
-import org.sheepy.lily.core.model.application.IResource;
-
 import org.sheepy.lily.core.model.resource.*;
 
 import org.sheepy.lily.core.model.types.LNamedElement;
@@ -104,6 +101,90 @@ public class ResourceSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ResourcePackage.RESOURCE_PKG:
+			{
+				ResourcePkg resourcePkg = (ResourcePkg)theEObject;
+				T result = caseResourcePkg(resourcePkg);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ResourcePackage.IRESOURCE:
+			{
+				IResource iResource = (IResource)theEObject;
+				T result = caseIResource(iResource);
+				if (result == null) result = caseLNamedElement(iResource);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ResourcePackage.IIMAGE:
+			{
+				IImage iImage = (IImage)theEObject;
+				T result = caseIImage(iImage);
+				if (result == null) result = caseIResource(iImage);
+				if (result == null) result = caseLNamedElement(iImage);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ResourcePackage.VIRTUAL_RESOURCE:
+			{
+				VirtualResource virtualResource = (VirtualResource)theEObject;
+				T result = caseVirtualResource(virtualResource);
+				if (result == null) result = caseIResource(virtualResource);
+				if (result == null) result = caseLNamedElement(virtualResource);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ResourcePackage.FILE_RESOURCE:
+			{
+				FileResource fileResource = (FileResource)theEObject;
+				T result = caseFileResource(fileResource);
+				if (result == null) result = caseIResource(fileResource);
+				if (result == null) result = caseLNamedElement(fileResource);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ResourcePackage.LOCAL_RESOURCE:
+			{
+				LocalResource localResource = (LocalResource)theEObject;
+				T result = caseLocalResource(localResource);
+				if (result == null) result = caseFileResource(localResource);
+				if (result == null) result = caseIResource(localResource);
+				if (result == null) result = caseLNamedElement(localResource);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ResourcePackage.ABSTRACT_MODULE_RESOURCE:
+			{
+				AbstractModuleResource abstractModuleResource = (AbstractModuleResource)theEObject;
+				T result = caseAbstractModuleResource(abstractModuleResource);
+				if (result == null) result = caseFileResource(abstractModuleResource);
+				if (result == null) result = caseIResource(abstractModuleResource);
+				if (result == null) result = caseLNamedElement(abstractModuleResource);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ResourcePackage.MODULE_RESOURCE:
+			{
+				ModuleResource moduleResource = (ModuleResource)theEObject;
+				T result = caseModuleResource(moduleResource);
+				if (result == null) result = caseAbstractModuleResource(moduleResource);
+				if (result == null) result = caseFileResource(moduleResource);
+				if (result == null) result = caseIResource(moduleResource);
+				if (result == null) result = caseLNamedElement(moduleResource);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ResourcePackage.STRING_MODULE_RESOURCE:
+			{
+				StringModuleResource stringModuleResource = (StringModuleResource)theEObject;
+				T result = caseStringModuleResource(stringModuleResource);
+				if (result == null) result = caseAbstractModuleResource(stringModuleResource);
+				if (result == null) result = caseFileResource(stringModuleResource);
+				if (result == null) result = caseIResource(stringModuleResource);
+				if (result == null) result = caseLNamedElement(stringModuleResource);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -157,17 +238,17 @@ public class ResourceSwitch<T> extends Switch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>LNamed Element</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Pkg</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>LNamed Element</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Pkg</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseLNamedElement(LNamedElement object)
+	public T caseResourcePkg(ResourcePkg object)
 	{
 		return null;
 	}
@@ -184,6 +265,134 @@ public class ResourceSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseIResource(IResource object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IImage</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IImage</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIImage(IImage object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Virtual Resource</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Virtual Resource</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVirtualResource(VirtualResource object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>File Resource</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>File Resource</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFileResource(FileResource object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Local Resource</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Local Resource</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLocalResource(LocalResource object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Module Resource</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Module Resource</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractModuleResource(AbstractModuleResource object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Module Resource</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Module Resource</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseModuleResource(ModuleResource object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>String Module Resource</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>String Module Resource</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStringModuleResource(StringModuleResource object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LNamed Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LNamed Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLNamedElement(LNamedElement object)
 	{
 		return null;
 	}

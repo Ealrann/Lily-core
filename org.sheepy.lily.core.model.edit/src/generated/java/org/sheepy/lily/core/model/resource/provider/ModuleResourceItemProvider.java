@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.application.provider;
+package org.sheepy.lily.core.model.resource.provider;
 
 
 import java.util.Collection;
@@ -9,17 +9,21 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.lily.core.model.application.LocalResource;
+import org.sheepy.lily.core.model.resource.ModuleResource;
+import org.sheepy.lily.core.model.resource.ResourcePackage;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.lily.core.model.application.LocalResource} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.resource.ModuleResource} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class LocalResourceItemProvider extends FileResourceItemProvider
+public class ModuleResourceItemProvider extends AbstractModuleResourceItemProvider
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -27,7 +31,7 @@ public class LocalResourceItemProvider extends FileResourceItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public LocalResourceItemProvider(AdapterFactory adapterFactory)
+	public ModuleResourceItemProvider(AdapterFactory adapterFactory)
 	{
 		super(adapterFactory);
 	}
@@ -45,12 +49,36 @@ public class LocalResourceItemProvider extends FileResourceItemProvider
 		{
 			super.getPropertyDescriptors(object);
 
+			addModulePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This returns LocalResource.gif.
+	 * This adds a property descriptor for the Module feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addModulePropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ModuleResource_module_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ModuleResource_module_feature", "_UI_ModuleResource_type"),
+				 ResourcePackage.Literals.MODULE_RESOURCE__MODULE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns ModuleResource.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -58,7 +86,7 @@ public class LocalResourceItemProvider extends FileResourceItemProvider
 	@Override
 	public Object getImage(Object object)
 	{
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/LocalResource"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ModuleResource"));
 	}
 
 	/**
@@ -70,10 +98,10 @@ public class LocalResourceItemProvider extends FileResourceItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((LocalResource)object).getName();
+		String label = ((ModuleResource)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_LocalResource_type") :
-			getString("_UI_LocalResource_type") + " " + label;
+			getString("_UI_ModuleResource_type") :
+			getString("_UI_ModuleResource_type") + " " + label;
 	}
 
 
@@ -88,6 +116,13 @@ public class LocalResourceItemProvider extends FileResourceItemProvider
 	public void notifyChanged(Notification notification)
 	{
 		updateChildren(notification);
+
+		switch (notification.getFeatureID(ModuleResource.class))
+		{
+			case ResourcePackage.MODULE_RESOURCE__MODULE:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
 		super.notifyChanged(notification);
 	}
 

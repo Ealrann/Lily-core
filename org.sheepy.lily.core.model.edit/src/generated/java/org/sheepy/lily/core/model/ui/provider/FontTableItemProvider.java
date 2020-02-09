@@ -15,11 +15,8 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
-import org.sheepy.lily.core.model.application.ApplicationFactory;
-
-import org.sheepy.lily.core.model.application.provider.IResourceItemProvider;
-
+import org.sheepy.lily.core.model.resource.ResourceFactory;
+import org.sheepy.lily.core.model.resource.provider.IResourceItemProvider;
 import org.sheepy.lily.core.model.ui.FontTable;
 import org.sheepy.lily.core.model.ui.UiPackage;
 
@@ -183,17 +180,17 @@ public class FontTableItemProvider extends IResourceItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UiPackage.Literals.FONT_TABLE__FILE,
-				 ApplicationFactory.eINSTANCE.createLocalResource()));
+				 ResourceFactory.eINSTANCE.createLocalResource()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UiPackage.Literals.FONT_TABLE__FILE,
-				 ApplicationFactory.eINSTANCE.createModuleResource()));
+				 ResourceFactory.eINSTANCE.createModuleResource()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UiPackage.Literals.FONT_TABLE__FILE,
-				 ApplicationFactory.eINSTANCE.createStringModuleResource()));
+				 ResourceFactory.eINSTANCE.createStringModuleResource()));
 	}
 
 }

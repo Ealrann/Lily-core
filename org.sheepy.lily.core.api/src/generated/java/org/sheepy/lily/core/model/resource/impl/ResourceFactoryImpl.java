@@ -3,6 +3,7 @@
 package org.sheepy.lily.core.model.resource.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -67,8 +68,48 @@ public class ResourceFactoryImpl extends EFactoryImpl implements ResourceFactory
 			case ResourcePackage.SOUND: return createSound();
 			case ResourcePackage.MUSIC: return createMusic();
 			case ResourcePackage.SOUND_CONTINUOUS: return createSoundContinuous();
+			case ResourcePackage.RESOURCE_PKG: return createResourcePkg();
+			case ResourcePackage.IRESOURCE: return createIResource();
+			case ResourcePackage.VIRTUAL_RESOURCE: return createVirtualResource();
+			case ResourcePackage.LOCAL_RESOURCE: return createLocalResource();
+			case ResourcePackage.MODULE_RESOURCE: return createModuleResource();
+			case ResourcePackage.STRING_MODULE_RESOURCE: return createStringModuleResource();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue)
+	{
+		switch (eDataType.getClassifierID())
+		{
+			case ResourcePackage.ESAMPLING:
+				return createESamplingFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue)
+	{
+		switch (eDataType.getClassifierID())
+		{
+			case ResourcePackage.ESAMPLING:
+				return convertESamplingToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -106,6 +147,100 @@ public class ResourceFactoryImpl extends EFactoryImpl implements ResourceFactory
 	{
 		SoundContinuousImpl soundContinuous = new SoundContinuousImpl();
 		return soundContinuous;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ResourcePkg createResourcePkg()
+	{
+		ResourcePkgImpl resourcePkg = new ResourcePkgImpl();
+		return resourcePkg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public IResource createIResource()
+	{
+		IResourceImpl iResource = new IResourceImpl();
+		return iResource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public VirtualResource createVirtualResource()
+	{
+		VirtualResourceImpl virtualResource = new VirtualResourceImpl();
+		return virtualResource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public LocalResource createLocalResource()
+	{
+		LocalResourceImpl localResource = new LocalResourceImpl();
+		return localResource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ModuleResource createModuleResource()
+	{
+		ModuleResourceImpl moduleResource = new ModuleResourceImpl();
+		return moduleResource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public StringModuleResource createStringModuleResource()
+	{
+		StringModuleResourceImpl stringModuleResource = new StringModuleResourceImpl();
+		return stringModuleResource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ESampling createESamplingFromString(EDataType eDataType, String initialValue)
+	{
+		ESampling result = ESampling.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertESamplingToString(EDataType eDataType, Object instanceValue)
+	{
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**
