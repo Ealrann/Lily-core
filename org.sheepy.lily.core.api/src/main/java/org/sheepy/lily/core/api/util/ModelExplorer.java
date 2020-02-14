@@ -75,6 +75,7 @@ public final class ModelExplorer
 		return stream;
 	}
 
+	@SuppressWarnings("unchecked")
 	private static Stream<ILilyEObject> extractList(ILilyEObject object, EReference reference)
 	{
 		final var val = getValue(object, reference);

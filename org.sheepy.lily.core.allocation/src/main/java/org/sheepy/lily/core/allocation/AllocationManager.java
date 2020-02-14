@@ -1,6 +1,9 @@
 package org.sheepy.lily.core.allocation;
 
+import org.eclipse.emf.ecore.EReference;
+import org.sheepy.lily.core.allocation.internal.AllocableListener;
 import org.sheepy.lily.core.allocation.internal.AllocationConfiguration;
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.allocation.IAllocable;
 import org.sheepy.lily.core.api.allocation.IAllocationConfigurator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
@@ -25,6 +28,7 @@ public final class AllocationManager<T extends IAllocationContext>
 	private AllocationManager<T> childrenContextManager = null;
 	private boolean dirtyBranch = true;
 	private EAllocationStatus status = EAllocationStatus.NotAllocated;
+	private AllocableListener eoDepListener = null;
 
 	static <T extends IAllocationContext> AllocationManager<T> newManager(AllocationManagerFactory<?> factory,
 																		  AllocationManager<?> parent,
@@ -217,6 +221,13 @@ public final class AllocationManager<T extends IAllocationContext>
 		}
 	}
 
+	public void listenEObject(ILilyEObject object, List<List<EReference>> referenceLists)
+	{
+		if (eoDepListener == null)
+			eoDepListener = new AllocableListener(object, configurator::addDependency, configurator::removeDependency);
+		eoDepListener.listen(referenceLists);
+	}
+
 	public boolean isBranchDirty()
 	{
 		return dirtyBranch;
@@ -386,35 +397,54 @@ public final class AllocationManager<T extends IAllocationContext>
 		}
 
 		@Override
+		public void dependsOnEObject(ILilyEObject object, List<List<EReference>> referenceLists)
+		{
+			listenEObject(object, referenceLists);
+		}
+
+		@Override
 		public void addDependencies(List<? extends IAllocable<?>> newDeps)
 		{
 			for (int i = 0; i < newDeps.size(); i++)
 			{
-				final var newAllocableDep = newDeps.get(i);
-				final var dep = factory.getOrCreateVirtual(newAllocableDep);
-				configuration.dependencies.add(dep);
-				dep.listeners.add(dependencyListener);
+				addDependency(newDeps.get(i));
 			}
+		}
+
+		@Override
+		public void addDependency(final IAllocable<?> newDependency)
+		{
+			final var dep = factory.getOrCreateVirtual(newDependency);
+			configuration.dependencies.add(dep);
+			dep.listeners.add(dependencyListener);
+			if (status == EAllocationStatus.Allocated) setDirty();
 		}
 
 		@Override
 		public void removeDependencies(List<? extends IAllocable<?>> oldDeps)
 		{
+			for (int i = 0; i < oldDeps.size(); i++)
+			{
+				final var oldAllocableDependency = oldDeps.get(i);
+				removeDependency(oldAllocableDependency);
+			}
+		}
+
+		@Override
+		public void removeDependency(final IAllocable<?> oldAllocableDependency)
+		{
 			final var it = configuration.dependencies.iterator();
 			while (it.hasNext())
 			{
 				final var dependency = it.next();
-				for (int i = 0; i < oldDeps.size(); i++)
+				if (oldAllocableDependency == dependency.allocable)
 				{
-					final var oldAllocableDependency = oldDeps.get(i);
-					if (oldAllocableDependency == dependency.allocable)
-					{
-						dependency.listeners.remove(dependencyListener);
-						it.remove();
-						break;
-					}
+					dependency.listeners.remove(dependencyListener);
+					it.remove();
+					break;
 				}
 			}
+			if (status == EAllocationStatus.Allocated) setDirty();
 		}
 
 		@Override

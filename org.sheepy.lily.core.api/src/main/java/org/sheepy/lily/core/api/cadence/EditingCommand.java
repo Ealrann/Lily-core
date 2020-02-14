@@ -2,8 +2,7 @@ package org.sheepy.lily.core.api.cadence;
 
 public abstract class EditingCommand
 {
-
-	private String label = "";
+	private final String label;
 
 	public EditingCommand()
 	{
@@ -17,10 +16,8 @@ public abstract class EditingCommand
 
 	/**
 	 * Prepare some stuff before the command is truely executed.
-	 * 
+	 * <p>
 	 * The command will not be executed if doPrepare() returns false.
-	 * 
-	 * @return
 	 */
 	@SuppressWarnings({"static-method", "SameReturnValue"})
 	public boolean doPrepare()
@@ -38,8 +35,6 @@ public abstract class EditingCommand
 	/**
 	 * While this method return true, the command will stay on the command
 	 * stack.
-	 * 
-	 * @return
 	 */
 	@SuppressWarnings({"static-method", "SameReturnValue"})
 	public boolean keepInStack()

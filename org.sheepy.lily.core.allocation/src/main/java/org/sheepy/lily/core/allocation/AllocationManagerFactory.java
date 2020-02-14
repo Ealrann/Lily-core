@@ -1,23 +1,25 @@
 package org.sheepy.lily.core.allocation;
 
+import org.sheepy.lily.core.api.allocation.IAllocable;
+import org.sheepy.lily.core.api.allocation.IAllocationContext;
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 
-import org.sheepy.lily.core.api.allocation.IAllocable;
-import org.sheepy.lily.core.api.allocation.IAllocationContext;
-
 @SuppressWarnings("unchecked")
 final class AllocationManagerFactory<R extends IAllocationContext>
 {
-	public final AllocationManager<R> root;
+	public final List<AllocationManager<R>> roots = new ArrayList<>();
 
 	private final List<AllocationManager<?>> virtualManagers = new ArrayList<>();
 
-	AllocationManagerFactory(IAllocable<R> root)
+	public AllocationManager<R> newRoot(IAllocable<R> root)
 	{
-		this.root = create(null, root);
+		final var res = create(null, root);
+		roots.add(res);
+		return res;
 	}
 
 	<T extends IAllocationContext> AllocationManager<?> getOrCreateVirtual(IAllocable<T> allocable)
@@ -40,17 +42,14 @@ final class AllocationManagerFactory<R extends IAllocationContext>
 
 	private AllocationManager<?> searchManager(IAllocable<?> allocable)
 	{
-		final Deque<AllocationManager<?>> course = new ArrayDeque<>();
-		AllocationManager<?> res = null;
+		final Deque<AllocationManager<?>> course = new ArrayDeque<>(roots);
 
-		course.add(root);
 		while (course.isEmpty() == false)
 		{
 			final var current = course.pop();
 			if (current.allocable == allocable)
 			{
-				res = current;
-				break;
+				return current;
 			}
 			else
 			{
@@ -58,11 +57,10 @@ final class AllocationManagerFactory<R extends IAllocationContext>
 			}
 		}
 
-		return res;
+		return null;
 	}
 
-	<T extends IAllocationContext> AllocationManager<T> create(	AllocationManager<?> parent,
-																IAllocable<T> allocable)
+	<T extends IAllocationContext> AllocationManager<T> create(AllocationManager<?> parent, IAllocable<T> allocable)
 	{
 		var manager = searchVirtual(allocable);
 
@@ -79,8 +77,8 @@ final class AllocationManagerFactory<R extends IAllocationContext>
 		return manager;
 	}
 
-	<T extends IAllocationContext> AllocationManager<T> createContext(	AllocationManager<T> parent,
-																		IAllocable<T> allocable)
+	<T extends IAllocationContext> AllocationManager<T> createContext(AllocationManager<T> parent,
+																	  IAllocable<T> allocable)
 	{
 		return AllocationManager.newContextManager(this, parent, allocable);
 	}

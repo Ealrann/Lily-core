@@ -8,14 +8,25 @@ public class RootAllocator<T extends IAllocationContext> implements IRootAllocat
 {
 	private final AllocationManager<T> rootWrapper;
 	private final T context;
+	private final AllocationManagerFactory<T> factory;
 
 	private boolean isAllocated = false;
 
 	public RootAllocator(IAllocable<T> root, T context)
 	{
+		this(new AllocationManagerFactory<>(), context, root);
+	}
+
+	public RootAllocator(RootAllocator<T> parentAllocator, IAllocable<T> root, T context)
+	{
+		this(parentAllocator.factory, context, root);
+	}
+
+	private RootAllocator(AllocationManagerFactory<T> factory, T context, IAllocable<T> root)
+	{
 		this.context = context;
-		final var factory = new AllocationManagerFactory<>(root);
-		rootWrapper = factory.root;
+		this.factory = factory;
+		this.rootWrapper = factory.newRoot(root);
 	}
 
 	@Override

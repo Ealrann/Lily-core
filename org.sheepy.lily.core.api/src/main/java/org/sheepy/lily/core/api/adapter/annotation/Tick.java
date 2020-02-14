@@ -15,8 +15,6 @@ public @interface Tick
 	 * Frequency in Hz (in real world clock)
 	 * 
 	 * 0 means tick every frame.
-	 * 
-	 * @return
 	 */
 	int frequency() default 0;
 

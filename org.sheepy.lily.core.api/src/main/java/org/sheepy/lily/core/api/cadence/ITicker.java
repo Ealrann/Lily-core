@@ -2,9 +2,6 @@ package org.sheepy.lily.core.api.cadence;
 
 public interface ITicker
 {
-	/**
-	 * @param stepNs
-	 */
 	void tick(long stepNs);
 
 	String getLabel();

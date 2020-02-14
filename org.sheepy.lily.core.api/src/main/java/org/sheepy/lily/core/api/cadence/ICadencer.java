@@ -17,8 +17,6 @@ public interface ICadencer
 
 	/**
 	 * Delete with crossreferences
-	 * 
-	 * @param eo
 	 * @TODO ne devrait plus être dans le cadencer
 	 */
 	void deleteObject(EObject eo);

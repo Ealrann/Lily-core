@@ -69,6 +69,7 @@ public class ListenerNotificationMap implements INotificationListener
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	private void initNotificationMap()
 	{
 		notificationMap = new List[featureCount];

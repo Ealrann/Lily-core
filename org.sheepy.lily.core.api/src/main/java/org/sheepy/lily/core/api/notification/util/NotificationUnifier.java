@@ -8,6 +8,7 @@ import org.sheepy.lily.core.api.adapter.ILilyEObject;
 
 public final class NotificationUnifier
 {
+	@SuppressWarnings("unchecked")
 	public static void unify(	Notification notification,
 								Consumer<ILilyEObject> onAdd,
 								Consumer<ILilyEObject> onRemove)
@@ -58,6 +59,7 @@ public final class NotificationUnifier
 		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public static void unifyList(	Notification notification,
 									Consumer<List<? extends ILilyEObject>> onAdd,
 									Consumer<List<? extends ILilyEObject>> onRemove)

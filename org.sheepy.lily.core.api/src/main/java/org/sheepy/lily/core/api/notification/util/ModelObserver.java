@@ -124,6 +124,7 @@ public class ModelObserver
 			}
 		}
 
+		@SuppressWarnings("unchecked")
 		private void actOnChildren(EStructuralFeature feature, Object value, Consumer<ILilyEObject> action)
 		{
 			if (feature.isMany() == false)

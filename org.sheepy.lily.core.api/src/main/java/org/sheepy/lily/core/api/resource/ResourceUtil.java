@@ -12,8 +12,8 @@ public class ResourceUtil
 
 	public static final Collection<URI> getXmlUrisFromPath(String path)
 	{
-		List<URI> res = new ArrayList<>();
-		File dir = new File(path);
+		final List<URI> res = new ArrayList<>();
+		final File dir = new File(path);
 
 		if (dir.exists())
 		{
