@@ -14,7 +14,7 @@ public final class AllocationConfiguration<T extends IAllocationContext>
 {
 	public final List<AllocationManager<?>> children = new ArrayList<>();
 	public final Deque<AllocationManager<?>> childrenToRemove = new ArrayDeque<>();
-	public final List<AllocationManager<?>> dependencies = new ArrayList<>();
+	public final List<AllocationState<?>> dependencies = new ArrayList<>();
 	public final T context;
 
 	private IAllocationContext childrenContext = null;
@@ -73,11 +73,6 @@ public final class AllocationConfiguration<T extends IAllocationContext>
 		return childrenContext != null ? childrenContext : context;
 	}
 
-	public IAllocationContext getChildrenContext()
-	{
-		return childrenContext;
-	}
-
 	public void setChildrenContext(IAllocationContext childrenContext)
 	{
 		this.childrenContext = childrenContext;
@@ -95,7 +90,7 @@ public final class AllocationConfiguration<T extends IAllocationContext>
 			appendTo.append("Dependencies: ");
 			for (final var dep : dependencies)
 			{
-				appendTo.append(dep.allocable.getClass().getSimpleName());
+				appendTo.append(dep.toString());
 			}
 		}
 

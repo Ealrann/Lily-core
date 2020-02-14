@@ -1,5 +1,6 @@
 package org.sheepy.lily.core.allocation;
 
+import org.sheepy.lily.core.allocation.internal.AllocationState;
 import org.sheepy.lily.core.api.allocation.IAllocable;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 
@@ -13,7 +14,7 @@ final class AllocationManagerFactory<R extends IAllocationContext>
 {
 	public final List<AllocationManager<R>> roots = new ArrayList<>();
 
-	private final List<AllocationManager<?>> virtualManagers = new ArrayList<>();
+	private final List<AllocationState<?>> orphanStates = new ArrayList<>();
 
 	public AllocationManager<R> newRoot(IAllocable<R> root)
 	{
@@ -22,32 +23,63 @@ final class AllocationManagerFactory<R extends IAllocationContext>
 		return res;
 	}
 
-	<T extends IAllocationContext> AllocationManager<?> getOrCreateVirtual(IAllocable<T> allocable)
+	AllocationState<?> getOrCreateState(IAllocable<?> allocable)
 	{
-		var manager = searchVirtual(allocable);
-
-		if (manager == null)
+		final var res = searchOrphanState(allocable, false);
+		if (res != null)
 		{
-			manager = (AllocationManager<T>) searchManager(allocable);
+			return res;
 		}
 
-		if (manager == null)
+		final var manager = search(allocable);
+		if (manager != null)
 		{
-			manager = AllocationManager.newVirtualManager(this, allocable);
-			virtualManagers.add(manager);
+			return manager.state;
 		}
 
-		return manager;
+		return newOrphanState(allocable);
 	}
 
-	private AllocationManager<?> searchManager(IAllocable<?> allocable)
+	private AllocationState<?> newOrphanState(final IAllocable<?> allocable)
+	{
+		final var newState = new AllocationState<>(allocable);
+		orphanStates.add(newState);
+		return newState;
+	}
+
+	<T extends IAllocationContext> AllocationManager<T> create(AllocationManager<?> parent, IAllocable<T> allocable)
+	{
+		final var state = searchOrphanState(allocable, true);
+		final var parentState = parent != null ? parent.state : null;
+		if (state != null)
+		{
+			state.setParent(parentState);
+			return AllocationManager.newManager(this, parent, state);
+		}
+		else
+		{
+			final var newState = new AllocationState<>(allocable);
+			newState.setParent(parentState);
+			return AllocationManager.newManager(this, parent, newState);
+		}
+	}
+
+	<T extends IAllocationContext> AllocationManager<T> createContext(AllocationManager<T> parent,
+																	  IAllocable<T> allocable)
+	{
+		final var parentState = parent != null ? parent.state : null;
+		final var newState = new AllocationState<>(allocable);
+		newState.setParent(parentState);
+		return AllocationManager.newContextManager(this, newState);
+	}
+
+	private AllocationManager<?> search(IAllocable<?> allocable)
 	{
 		final Deque<AllocationManager<?>> course = new ArrayDeque<>(roots);
-
 		while (course.isEmpty() == false)
 		{
 			final var current = course.pop();
-			if (current.allocable == allocable)
+			if (current.state.allocable == allocable)
 			{
 				return current;
 			}
@@ -56,40 +88,19 @@ final class AllocationManagerFactory<R extends IAllocationContext>
 				course.addAll(current.getChildren());
 			}
 		}
-
 		return null;
 	}
 
-	<T extends IAllocationContext> AllocationManager<T> create(AllocationManager<?> parent, IAllocable<T> allocable)
+	private <T extends IAllocationContext> AllocationState<T> searchOrphanState(IAllocable<T> allocable, boolean remove)
 	{
-		var manager = searchVirtual(allocable);
-
-		if (manager == null)
+		final var it = orphanStates.iterator();
+		while (it.hasNext())
 		{
-			manager = AllocationManager.newManager(this, parent, allocable);
-		}
-		else if (manager.isVirtual())
-		{
-			manager.setParent(parent, false);
-			virtualManagers.remove(manager);
-		}
-
-		return manager;
-	}
-
-	<T extends IAllocationContext> AllocationManager<T> createContext(AllocationManager<T> parent,
-																	  IAllocable<T> allocable)
-	{
-		return AllocationManager.newContextManager(this, parent, allocable);
-	}
-
-	private <T extends IAllocationContext> AllocationManager<T> searchVirtual(IAllocable<T> allocable)
-	{
-		for (final var virtual : virtualManagers)
-		{
-			if (virtual.allocable == allocable)
+			final var state = it.next();
+			if (state.allocable == allocable)
 			{
-				return (AllocationManager<T>) virtual;
+				if (remove) it.remove();
+				return (AllocationState<T>) state;
 			}
 		}
 		return null;

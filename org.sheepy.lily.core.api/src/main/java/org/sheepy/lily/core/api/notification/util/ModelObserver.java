@@ -15,25 +15,32 @@ public class ModelObserver
 	private final HierarchyNotificationListener rootListener;
 	private final INotificationListener listener;
 
-	public ModelObserver(INotificationListener listener,
-						 List<? extends EStructuralFeature> structuralFeatures)
+	private boolean deliver = true;
+
+	public ModelObserver(INotificationListener listener, List<? extends EStructuralFeature> structuralFeatures)
 	{
 		this.listener = listener;
 		this.features = List.copyOf(structuralFeatures);
 		rootListener = new HierarchyNotificationListener(0);
 	}
 
+	/**
+	 * @param deliver Enable or disable the notifications.
+	 */
+	public void setDeliver(boolean deliver)
+	{
+		this.deliver = deliver;
+	}
+
 	public void startObserve(ILilyEObject root)
 	{
 		rootListener.setTarget(root);
-		root.addListener(rootListener, features.get(0)
-											   .getFeatureID());
+		root.addListener(rootListener, features.get(0).getFeatureID());
 	}
 
 	public void stopObserve(ILilyEObject root)
 	{
-		root.removeListener(rootListener, features.get(0)
-												  .getFeatureID());
+		root.removeListener(rootListener, features.get(0).getFeatureID());
 		rootListener.unsetTarget(root);
 	}
 
@@ -65,8 +72,7 @@ public class ModelObserver
 			}
 			else
 			{
-				return features.get(depth + 1)
-							   .getFeatureID();
+				return features.get(depth + 1).getFeatureID();
 			}
 		}
 
@@ -76,23 +82,26 @@ public class ModelObserver
 			final var value = getValue(target, feature);
 			if (value == null) return;
 
-			if (depth == features.size() - 1)
+			if (isFinalDepth())
 			{
-				if (feature.isMany() == false)
+				if (deliver)
 				{
-					ModelObserver.this.listener.notifyChanged(new ENotificationImpl(target,
-																					Notification.ADD,
-																					feature.getFeatureID(),
-																					null,
-																					value));
-				}
-				else
-				{
-					ModelObserver.this.listener.notifyChanged(new ENotificationImpl(target,
-																					Notification.ADD_MANY,
-																					feature.getFeatureID(),
-																					null,
-																					value));
+					if (feature.isMany() == false)
+					{
+						ModelObserver.this.listener.notifyChanged(new ENotificationImpl(target,
+																						Notification.ADD,
+																						feature.getFeatureID(),
+																						null,
+																						value));
+					}
+					else
+					{
+						ModelObserver.this.listener.notifyChanged(new ENotificationImpl(target,
+																						Notification.ADD_MANY,
+																						feature.getFeatureID(),
+																						null,
+																						value));
+					}
 				}
 			}
 			else
@@ -107,16 +116,17 @@ public class ModelObserver
 			final var value = getValue(target, feature);
 			if (value == null) return;
 
-			if (depth == features.size() - 1)
+			if (isFinalDepth())
 			{
-				final int type = feature.isMany()
-						? Notification.REMOVE_MANY
-						: Notification.REMOVE;
-				ModelObserver.this.listener.notifyChanged(new ENotificationImpl(target,
-																				type,
-																				feature.getFeatureID(),
-																				value,
-																				null));
+				if (deliver)
+				{
+					final int type = feature.isMany() ? Notification.REMOVE_MANY : Notification.REMOVE;
+					ModelObserver.this.listener.notifyChanged(new ENotificationImpl(target,
+																					type,
+																					feature.getFeatureID(),
+																					value,
+																					null));
+				}
 			}
 			else
 			{
@@ -143,9 +153,7 @@ public class ModelObserver
 
 		private Object getValue(ILilyEObject target, final EStructuralFeature feature)
 		{
-			if (target.eClass()
-					  .getEAllStructuralFeatures()
-					  .contains(feature))
+			if (target.eClass().getEAllStructuralFeatures().contains(feature))
 			{
 				return target.eGet(feature);
 			}
@@ -158,14 +166,22 @@ public class ModelObserver
 		@Override
 		public void notifyChanged(Notification notification)
 		{
-			if (depth == features.size() - 1)
+			if (isFinalDepth())
 			{
-				ModelObserver.this.listener.notifyChanged(notification);
+				if (deliver)
+				{
+					ModelObserver.this.listener.notifyChanged(notification);
+				}
 			}
 			else
 			{
 				NotificationUnifier.unify(notification, this::addChild, this::removeChild);
 			}
+		}
+
+		private boolean isFinalDepth()
+		{
+			return depth == features.size() - 1;
 		}
 
 		private void addChild(final ILilyEObject child)

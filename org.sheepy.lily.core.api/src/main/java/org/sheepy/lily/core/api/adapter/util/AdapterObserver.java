@@ -31,6 +31,14 @@ public class AdapterObserver<T extends IAdapter>
 		this.oldAapter = oldAapter;
 	}
 
+	/**
+	 * @param deliver Enable or disable the notifications.
+	 */
+	public void setDeliver(boolean deliver)
+	{
+		observer.setDeliver(deliver);
+	}
+
 	private void notifyChanged(Notification notification)
 	{
 		if (notification.getNewValue() != notification.getOldValue())

@@ -30,8 +30,6 @@ public interface IAllocationConfigurator
 	void removeDependencies(List<? extends IAllocable<?>> dependencies);
 	void clearDependencies();
 
-	void dependsOnEObject(ILilyEObject object, List<List<EReference>> referenceLists);
-
 	void setChildrenContext(IAllocationContext context);
 
 	void setAllocationCondition(Predicate<IAllocationContext> predicate);
