@@ -161,6 +161,29 @@ public class VariableSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case VariablePackage.IMODEL_VARIABLE:
+			{
+				IModelVariable iModelVariable = (IModelVariable)theEObject;
+				T result = caseIModelVariable(iModelVariable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case VariablePackage.INT_VARIABLE:
+			{
+				IntVariable intVariable = (IntVariable)theEObject;
+				T result = caseIntVariable(intVariable);
+				if (result == null) result = caseIModelVariable(intVariable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case VariablePackage.DURATION_VARIABLE:
+			{
+				DurationVariable durationVariable = (DurationVariable)theEObject;
+				T result = caseDurationVariable(durationVariable);
+				if (result == null) result = caseIModelVariable(durationVariable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -321,6 +344,54 @@ public class VariableSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseVarChangeActionPkg(VarChangeActionPkg object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IModel Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IModel Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIModelVariable(IModelVariable object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Int Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Int Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIntVariable(IntVariable object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Duration Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Duration Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDurationVariable(DurationVariable object)
 	{
 		return null;
 	}

@@ -2,15 +2,14 @@
 
 count=0
 error_count=0
-for i in `find -regex '.*\.\(frag\|comp\|vert\)' ! -path "*/bin/*" ! -path "*/build/*" | grep "/src/main/shader" 2>/dev/null`
+for i in $(find . -regex '.*\.\(frag\|comp\|vert\)' ! -path "*/bin/*" ! -path "*/build/*" | grep "/src/main/shader" 2>/dev/null)
 do
 	target="${i/shader/resources}.spv"
-	rm $target 2>/dev/null
+	rm "$target" 2>/dev/null
 
-	dir=`dirname $target`
-	name=`basename $target`
-	res=$(glslc -O --target-env="vulkan1.0" -c $i -o $target)
-	if [ $? -ne 0 ]; then
+	dir=$(dirname "$target")
+	mkdir -p "$dir"
+	if ! glslc -O --target-env="vulkan1.0" -c "$i" -o "$target"; then
 		((error_count++))
 	fi
 	echo "$target"

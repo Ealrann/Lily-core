@@ -183,6 +183,11 @@
     <genClasses ecoreClass="variable.ecore#//VarChangeActionPkg">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference variable.ecore#//VarChangeActionPkg/actions"/>
     </genClasses>
+    <genClasses ecoreClass="variable.ecore#//IModelVariable"/>
+    <genClasses ecoreClass="variable.ecore#//IntVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute variable.ecore#//IntVariable/value"/>
+    </genClasses>
+    <genClasses ecoreClass="variable.ecore#//DurationVariable"/>
   </genPackages>
   <genPackages prefix="Types" basePackage="org.sheepy.lily.core.model" resource="XMI"
       disposableProviderFactory="true" ecorePackage="types.ecore#/">
@@ -425,9 +430,16 @@
     </genClasses>
     <genClasses ecoreClass="application.ecore#//GenericScenePart"/>
     <genClasses ecoreClass="application.ecore#//BackgroundImage">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference application.ecore#//BackgroundImage/image"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//BackgroundImage/clearColor"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//BackgroundImage/sampling"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference application.ecore#//BackgroundImage/srcImage"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference application.ecore#//BackgroundImage/dstImage"/>
+    </genClasses>
+    <genClasses ecoreClass="application.ecore#//ScreenEffect">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference application.ecore#//ScreenEffect/inputs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference application.ecore#//ScreenEffect/srcImage"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference application.ecore#//ScreenEffect/dstImage"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference application.ecore#//ScreenEffect/shader"/>
     </genClasses>
   </genPackages>
   <genPackages prefix="Action" basePackage="org.sheepy.lily.core.model" resource="XMI"

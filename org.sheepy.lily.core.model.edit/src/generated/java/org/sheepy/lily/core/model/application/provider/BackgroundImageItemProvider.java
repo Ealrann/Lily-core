@@ -66,9 +66,10 @@ public class BackgroundImageItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addImagePropertyDescriptor(object);
 			addClearColorPropertyDescriptor(object);
 			addSamplingPropertyDescriptor(object);
+			addSrcImagePropertyDescriptor(object);
+			addDstImagePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -92,29 +93,6 @@ public class BackgroundImageItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Image feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addImagePropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_BackgroundImage_image_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_BackgroundImage_image_feature", "_UI_BackgroundImage_type"),
-				 ApplicationPackage.Literals.BACKGROUND_IMAGE__IMAGE,
-				 true,
-				 false,
-				 true,
-				 null,
 				 null,
 				 null));
 	}
@@ -161,6 +139,52 @@ public class BackgroundImageItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Src Image feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSrcImagePropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_BackgroundImage_srcImage_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_BackgroundImage_srcImage_feature", "_UI_BackgroundImage_type"),
+				 ApplicationPackage.Literals.BACKGROUND_IMAGE__SRC_IMAGE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Dst Image feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDstImagePropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_BackgroundImage_dstImage_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_BackgroundImage_dstImage_feature", "_UI_BackgroundImage_type"),
+				 ApplicationPackage.Literals.BACKGROUND_IMAGE__DST_IMAGE,
+				 true,
+				 false,
+				 true,
+				 null,
 				 null,
 				 null));
 	}

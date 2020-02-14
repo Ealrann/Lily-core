@@ -476,6 +476,99 @@ public interface VariablePackage extends EPackage
 	int VAR_CHANGE_ACTION_PKG_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.IModelVariableImpl <em>IModel Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.variable.impl.IModelVariableImpl
+	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getIModelVariable()
+	 * @generated
+	 */
+	int IMODEL_VARIABLE = 10;
+
+	/**
+	 * The number of structural features of the '<em>IModel Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMODEL_VARIABLE_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>IModel Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMODEL_VARIABLE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.IntVariableImpl <em>Int Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.variable.impl.IntVariableImpl
+	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getIntVariable()
+	 * @generated
+	 */
+	int INT_VARIABLE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INT_VARIABLE__VALUE = IMODEL_VARIABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Int Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INT_VARIABLE_FEATURE_COUNT = IMODEL_VARIABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Int Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INT_VARIABLE_OPERATION_COUNT = IMODEL_VARIABLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.DurationVariableImpl <em>Duration Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.variable.impl.DurationVariableImpl
+	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getDurationVariable()
+	 * @generated
+	 */
+	int DURATION_VARIABLE = 12;
+
+	/**
+	 * The number of structural features of the '<em>Duration Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION_VARIABLE_FEATURE_COUNT = IMODEL_VARIABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Duration Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION_VARIABLE_OPERATION_COUNT = IMODEL_VARIABLE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '<em>LResolved Variable Feature</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -483,7 +576,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getLResolvedVariableFeature()
 	 * @generated
 	 */
-	int LRESOLVED_VARIABLE_FEATURE = 10;
+	int LRESOLVED_VARIABLE_FEATURE = 13;
 
 	/**
 	 * The meta object id for the '<em>Definition</em>' data type.
@@ -493,7 +586,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getVariableDefinition()
 	 * @generated
 	 */
-	int VARIABLE_DEFINITION = 11;
+	int VARIABLE_DEFINITION = 14;
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.IVariableResolver <em>IVariable Resolver</em>}'.
@@ -671,6 +764,47 @@ public interface VariablePackage extends EPackage
 	 * @generated
 	 */
 	EReference getVarChangeActionPkg_Actions();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.IModelVariable <em>IModel Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IModel Variable</em>'.
+	 * @see org.sheepy.lily.core.model.variable.IModelVariable
+	 * @generated
+	 */
+	EClass getIModelVariable();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.IntVariable <em>Int Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Int Variable</em>'.
+	 * @see org.sheepy.lily.core.model.variable.IntVariable
+	 * @generated
+	 */
+	EClass getIntVariable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.variable.IntVariable#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.sheepy.lily.core.model.variable.IntVariable#getValue()
+	 * @see #getIntVariable()
+	 * @generated
+	 */
+	EAttribute getIntVariable_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.DurationVariable <em>Duration Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Duration Variable</em>'.
+	 * @see org.sheepy.lily.core.model.variable.DurationVariable
+	 * @generated
+	 */
+	EClass getDurationVariable();
 
 	/**
 	 * Returns the meta object for data type '{@link org.sheepy.lily.core.api.util.FeatureDefinition <em>LResolved Variable Feature</em>}'.
@@ -873,6 +1007,44 @@ public interface VariablePackage extends EPackage
 		 * @generated
 		 */
 		EReference VAR_CHANGE_ACTION_PKG__ACTIONS = eINSTANCE.getVarChangeActionPkg_Actions();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.impl.IModelVariableImpl <em>IModel Variable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.variable.impl.IModelVariableImpl
+		 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getIModelVariable()
+		 * @generated
+		 */
+		EClass IMODEL_VARIABLE = eINSTANCE.getIModelVariable();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.impl.IntVariableImpl <em>Int Variable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.variable.impl.IntVariableImpl
+		 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getIntVariable()
+		 * @generated
+		 */
+		EClass INT_VARIABLE = eINSTANCE.getIntVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INT_VARIABLE__VALUE = eINSTANCE.getIntVariable_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.impl.DurationVariableImpl <em>Duration Variable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.variable.impl.DurationVariableImpl
+		 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getDurationVariable()
+		 * @generated
+		 */
+		EClass DURATION_VARIABLE = eINSTANCE.getDurationVariable();
 
 		/**
 		 * The meta object literal for the '<em>LResolved Variable Feature</em>' data type.

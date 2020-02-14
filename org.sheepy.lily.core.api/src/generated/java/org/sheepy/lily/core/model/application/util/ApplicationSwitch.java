@@ -159,6 +159,16 @@ public class ApplicationSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ApplicationPackage.SCREEN_EFFECT:
+			{
+				ScreenEffect screenEffect = (ScreenEffect)theEObject;
+				T result = caseScreenEffect(screenEffect);
+				if (result == null) result = caseLNamedElement(screenEffect);
+				if (result == null) result = caseIScenePart(screenEffect);
+				if (result == null) result = caseIInferenceObject(screenEffect);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -335,6 +345,22 @@ public class ApplicationSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseBackgroundImage(BackgroundImage object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Screen Effect</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Screen Effect</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseScreenEffect(ScreenEffect object)
 	{
 		return null;
 	}

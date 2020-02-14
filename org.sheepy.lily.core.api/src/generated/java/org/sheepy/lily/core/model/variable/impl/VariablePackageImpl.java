@@ -47,9 +47,12 @@ import org.sheepy.lily.core.model.variable.BooleanChangeAction;
 import org.sheepy.lily.core.model.variable.ChainResolver;
 import org.sheepy.lily.core.model.variable.ChainVariableResolver;
 import org.sheepy.lily.core.model.variable.DirectVariableResolver;
+import org.sheepy.lily.core.model.variable.DurationVariable;
 import org.sheepy.lily.core.model.variable.IDefinitionContainer;
+import org.sheepy.lily.core.model.variable.IModelVariable;
 import org.sheepy.lily.core.model.variable.IVariableResolver;
 import org.sheepy.lily.core.model.variable.IntChangeAction;
+import org.sheepy.lily.core.model.variable.IntVariable;
 import org.sheepy.lily.core.model.variable.VarChangeAction;
 import org.sheepy.lily.core.model.variable.VarChangeActionPkg;
 import org.sheepy.lily.core.model.variable.VariableFactory;
@@ -132,6 +135,27 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * @generated
 	 */
 	private EClass varChangeActionPkgEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iModelVariableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass intVariableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass durationVariableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -441,6 +465,50 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * @generated
 	 */
 	@Override
+	public EClass getIModelVariable()
+	{
+		return iModelVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getIntVariable()
+	{
+		return intVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIntVariable_Value()
+	{
+		return (EAttribute)intVariableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getDurationVariable()
+	{
+		return durationVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EDataType getLResolvedVariableFeature()
 	{
 		return lResolvedVariableFeatureEDataType;
@@ -515,6 +583,13 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		varChangeActionPkgEClass = createEClass(VAR_CHANGE_ACTION_PKG);
 		createEReference(varChangeActionPkgEClass, VAR_CHANGE_ACTION_PKG__ACTIONS);
 
+		iModelVariableEClass = createEClass(IMODEL_VARIABLE);
+
+		intVariableEClass = createEClass(INT_VARIABLE);
+		createEAttribute(intVariableEClass, INT_VARIABLE__VALUE);
+
+		durationVariableEClass = createEClass(DURATION_VARIABLE);
+
 		// Create data types
 		lResolvedVariableFeatureEDataType = createEDataType(LRESOLVED_VARIABLE_FEATURE);
 		variableDefinitionEDataType = createEDataType(VARIABLE_DEFINITION);
@@ -560,6 +635,8 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		varChangeActionEClass.getESuperTypes().add(theActionPackage.getAction());
 		booleanChangeActionEClass.getESuperTypes().add(this.getVarChangeAction());
 		intChangeActionEClass.getESuperTypes().add(this.getVarChangeAction());
+		intVariableEClass.getESuperTypes().add(this.getIModelVariable());
+		durationVariableEClass.getESuperTypes().add(this.getIModelVariable());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(iVariableResolverEClass, IVariableResolver.class, "IVariableResolver", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -588,6 +665,13 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 
 		initEClass(varChangeActionPkgEClass, VarChangeActionPkg.class, "VarChangeActionPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getVarChangeActionPkg_Actions(), this.getVarChangeAction(), null, "actions", null, 0, -1, VarChangeActionPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(iModelVariableEClass, IModelVariable.class, "IModelVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(intVariableEClass, IntVariable.class, "IntVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getIntVariable_Value(), ecorePackage.getEInt(), "value", null, 1, 1, IntVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(durationVariableEClass, DurationVariable.class, "DurationVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize data types
 		initEDataType(lResolvedVariableFeatureEDataType, FeatureDefinition.class, "LResolvedVariableFeature", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

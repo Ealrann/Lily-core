@@ -7,6 +7,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
+
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.sheepy.lily.core.model.action.Action;
@@ -18,7 +19,9 @@ import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl;
 
 import org.sheepy.lily.core.model.cadence.CadencePackage;
+
 import org.sheepy.lily.core.model.cadence.impl.CadencePackageImpl;
+
 import org.sheepy.lily.core.model.inference.InferencePackage;
 
 import org.sheepy.lily.core.model.inference.impl.InferencePackageImpl;
@@ -30,8 +33,11 @@ import org.sheepy.lily.core.model.maintainer.impl.MaintainerPackageImpl;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
 
 import org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl;
+
 import org.sheepy.lily.core.model.resource.ResourcePackage;
+
 import org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl;
+
 import org.sheepy.lily.core.model.types.TypesPackage;
 
 import org.sheepy.lily.core.model.types.impl.TypesPackageImpl;

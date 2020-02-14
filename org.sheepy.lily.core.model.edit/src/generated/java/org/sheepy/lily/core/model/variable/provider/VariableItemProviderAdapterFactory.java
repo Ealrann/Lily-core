@@ -241,6 +241,81 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.variable.IModelVariable} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IModelVariableItemProvider iModelVariableItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.variable.IModelVariable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createIModelVariableAdapter()
+	{
+		if (iModelVariableItemProvider == null)
+		{
+			iModelVariableItemProvider = new IModelVariableItemProvider(this);
+		}
+
+		return iModelVariableItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.variable.IntVariable} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected IntVariableItemProvider intVariableItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.variable.IntVariable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createIntVariableAdapter()
+	{
+		if (intVariableItemProvider == null)
+		{
+			intVariableItemProvider = new IntVariableItemProvider(this);
+		}
+
+		return intVariableItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.variable.DurationVariable} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected DurationVariableItemProvider durationVariableItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.variable.DurationVariable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createDurationVariableAdapter()
+	{
+		if (durationVariableItemProvider == null)
+		{
+			durationVariableItemProvider = new DurationVariableItemProvider(this);
+		}
+
+		return durationVariableItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -395,6 +470,9 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
 		if (booleanChangeActionItemProvider != null) booleanChangeActionItemProvider.dispose();
 		if (intChangeActionItemProvider != null) intChangeActionItemProvider.dispose();
 		if (varChangeActionPkgItemProvider != null) varChangeActionPkgItemProvider.dispose();
+		if (iModelVariableItemProvider != null) iModelVariableItemProvider.dispose();
+		if (intVariableItemProvider != null) intVariableItemProvider.dispose();
+		if (durationVariableItemProvider != null) durationVariableItemProvider.dispose();
 	}
 
 }

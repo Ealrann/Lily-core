@@ -40,9 +40,10 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  * </p>
  * <ul>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getImage <em>Image</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getClearColor <em>Clear Color</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getSampling <em>Sampling</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getSrcImage <em>Src Image</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getDstImage <em>Dst Image</em>}</li>
  * </ul>
  *
  * @generated
@@ -68,16 +69,6 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getImage() <em>Image</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImage()
-	 * @generated
-	 * @ordered
-	 */
-	protected IImage image;
 
 	/**
 	 * The default value of the '{@link #getClearColor() <em>Clear Color</em>}' attribute.
@@ -118,6 +109,26 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 	 * @ordered
 	 */
 	protected ESampling sampling = SAMPLING_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getSrcImage() <em>Src Image</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSrcImage()
+	 * @generated
+	 * @ordered
+	 */
+	protected IImage srcImage;
+
+	/**
+	 * The cached value of the '{@link #getDstImage() <em>Dst Image</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDstImage()
+	 * @generated
+	 * @ordered
+	 */
+	protected IImage dstImage;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -163,51 +174,6 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.BACKGROUND_IMAGE__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public IImage getImage()
-	{
-		if (image != null && ((EObject)image).eIsProxy())
-		{
-			InternalEObject oldImage = image;
-			image = (IImage)eResolveProxy(oldImage);
-			if (image != oldImage)
-			{
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.BACKGROUND_IMAGE__IMAGE, oldImage, image));
-			}
-		}
-		return image;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public IImage basicGetImage()
-	{
-		return image;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setImage(IImage newImage)
-	{
-		IImage oldImage = image;
-		image = newImage;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.BACKGROUND_IMAGE__IMAGE, oldImage, image));
 	}
 
 	/**
@@ -266,6 +232,96 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 	 * @generated
 	 */
 	@Override
+	public IImage getSrcImage()
+	{
+		if (srcImage != null && ((EObject)srcImage).eIsProxy())
+		{
+			InternalEObject oldSrcImage = srcImage;
+			srcImage = (IImage)eResolveProxy(oldSrcImage);
+			if (srcImage != oldSrcImage)
+			{
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.BACKGROUND_IMAGE__SRC_IMAGE, oldSrcImage, srcImage));
+			}
+		}
+		return srcImage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IImage basicGetSrcImage()
+	{
+		return srcImage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setSrcImage(IImage newSrcImage)
+	{
+		IImage oldSrcImage = srcImage;
+		srcImage = newSrcImage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.BACKGROUND_IMAGE__SRC_IMAGE, oldSrcImage, srcImage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public IImage getDstImage()
+	{
+		if (dstImage != null && ((EObject)dstImage).eIsProxy())
+		{
+			InternalEObject oldDstImage = dstImage;
+			dstImage = (IImage)eResolveProxy(oldDstImage);
+			if (dstImage != oldDstImage)
+			{
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.BACKGROUND_IMAGE__DST_IMAGE, oldDstImage, dstImage));
+			}
+		}
+		return dstImage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IImage basicGetDstImage()
+	{
+		return dstImage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setDstImage(IImage newDstImage)
+	{
+		IImage oldDstImage = dstImage;
+		dstImage = newDstImage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.BACKGROUND_IMAGE__DST_IMAGE, oldDstImage, dstImage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public IInferenceObject lInferenceObject()
 	{
 		return this;
@@ -283,13 +339,16 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 		{
 			case ApplicationPackage.BACKGROUND_IMAGE__NAME:
 				return getName();
-			case ApplicationPackage.BACKGROUND_IMAGE__IMAGE:
-				if (resolve) return getImage();
-				return basicGetImage();
 			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
 				return getClearColor();
 			case ApplicationPackage.BACKGROUND_IMAGE__SAMPLING:
 				return getSampling();
+			case ApplicationPackage.BACKGROUND_IMAGE__SRC_IMAGE:
+				if (resolve) return getSrcImage();
+				return basicGetSrcImage();
+			case ApplicationPackage.BACKGROUND_IMAGE__DST_IMAGE:
+				if (resolve) return getDstImage();
+				return basicGetDstImage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -307,14 +366,17 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 			case ApplicationPackage.BACKGROUND_IMAGE__NAME:
 				setName((String)newValue);
 				return;
-			case ApplicationPackage.BACKGROUND_IMAGE__IMAGE:
-				setImage((IImage)newValue);
-				return;
 			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
 				setClearColor((Vector3ic)newValue);
 				return;
 			case ApplicationPackage.BACKGROUND_IMAGE__SAMPLING:
 				setSampling((ESampling)newValue);
+				return;
+			case ApplicationPackage.BACKGROUND_IMAGE__SRC_IMAGE:
+				setSrcImage((IImage)newValue);
+				return;
+			case ApplicationPackage.BACKGROUND_IMAGE__DST_IMAGE:
+				setDstImage((IImage)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -333,14 +395,17 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 			case ApplicationPackage.BACKGROUND_IMAGE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case ApplicationPackage.BACKGROUND_IMAGE__IMAGE:
-				setImage((IImage)null);
-				return;
 			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
 				setClearColor(CLEAR_COLOR_EDEFAULT);
 				return;
 			case ApplicationPackage.BACKGROUND_IMAGE__SAMPLING:
 				setSampling(SAMPLING_EDEFAULT);
+				return;
+			case ApplicationPackage.BACKGROUND_IMAGE__SRC_IMAGE:
+				setSrcImage((IImage)null);
+				return;
+			case ApplicationPackage.BACKGROUND_IMAGE__DST_IMAGE:
+				setDstImage((IImage)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -358,12 +423,14 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 		{
 			case ApplicationPackage.BACKGROUND_IMAGE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case ApplicationPackage.BACKGROUND_IMAGE__IMAGE:
-				return image != null;
 			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
 				return CLEAR_COLOR_EDEFAULT == null ? clearColor != null : !CLEAR_COLOR_EDEFAULT.equals(clearColor);
 			case ApplicationPackage.BACKGROUND_IMAGE__SAMPLING:
 				return sampling != SAMPLING_EDEFAULT;
+			case ApplicationPackage.BACKGROUND_IMAGE__SRC_IMAGE:
+				return srcImage != null;
+			case ApplicationPackage.BACKGROUND_IMAGE__DST_IMAGE:
+				return dstImage != null;
 		}
 		return super.eIsSet(featureID);
 	}

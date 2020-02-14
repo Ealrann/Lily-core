@@ -73,7 +73,8 @@ public class ActionAdapterFactory extends AdapterFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ActionSwitch<Adapter> modelSwitch = new ActionSwitch<Adapter>()
+	protected ActionSwitch<Adapter> modelSwitch =
+		new ActionSwitch<Adapter>()
 		{
 			@Override
 			public Adapter caseAction(Action object)
@@ -105,6 +106,7 @@ public class ActionAdapterFactory extends AdapterFactoryImpl
 	{
 		return modelSwitch.doSwitch((EObject)target);
 	}
+
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.action.Action <em>Action</em>}'.

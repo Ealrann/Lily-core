@@ -131,6 +131,11 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 				return createBackgroundImageAdapter();
 			}
 			@Override
+			public Adapter caseScreenEffect(ScreenEffect object)
+			{
+				return createScreenEffectAdapter();
+			}
+			@Override
 			public Adapter caseLNamedElement(LNamedElement object)
 			{
 				return createLNamedElementAdapter();
@@ -322,6 +327,21 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createBackgroundImageAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.ScreenEffect <em>Screen Effect</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.ScreenEffect
+	 * @generated
+	 */
+	public Adapter createScreenEffectAdapter()
 	{
 		return null;
 	}

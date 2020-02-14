@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.action.impl;
+package org.sheepy.lily.core.model.variable.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -8,52 +8,50 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.sheepy.lily.core.api.adapter.LilyEObject;
-
-import org.sheepy.lily.core.model.action.Action;
-import org.sheepy.lily.core.model.action.ActionPackage;
+import org.sheepy.lily.core.model.variable.IntVariable;
+import org.sheepy.lily.core.model.variable.VariablePackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Action</b></em>'.
+ * An implementation of the model object '<em><b>Int Variable</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.action.impl.ActionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.variable.impl.IntVariableImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class ActionImpl extends LilyEObject implements Action
+public class IntVariableImpl extends IModelVariableImpl implements IntVariable
 {
 	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String NAME_EDEFAULT = null;
+	protected static final int VALUE_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getName()
+	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected String name = NAME_EDEFAULT;
+	protected int value = VALUE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ActionImpl()
+	protected IntVariableImpl()
 	{
 		super();
 	}
@@ -66,7 +64,7 @@ public abstract class ActionImpl extends LilyEObject implements Action
 	@Override
 	protected EClass eStaticClass()
 	{
-		return ActionPackage.Literals.ACTION;
+		return VariablePackage.Literals.INT_VARIABLE;
 	}
 
 	/**
@@ -75,9 +73,9 @@ public abstract class ActionImpl extends LilyEObject implements Action
 	 * @generated
 	 */
 	@Override
-	public String getName()
+	public int getValue()
 	{
-		return name;
+		return value;
 	}
 
 	/**
@@ -86,12 +84,12 @@ public abstract class ActionImpl extends LilyEObject implements Action
 	 * @generated
 	 */
 	@Override
-	public void setName(String newName)
+	public void setValue(int newValue)
 	{
-		String oldName = name;
-		name = newName;
+		int oldValue = value;
+		value = newValue;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActionPackage.ACTION__NAME, oldName, name));
+			eNotify(new ENotificationImpl(this, Notification.SET, VariablePackage.INT_VARIABLE__VALUE, oldValue, value));
 	}
 
 	/**
@@ -104,8 +102,8 @@ public abstract class ActionImpl extends LilyEObject implements Action
 	{
 		switch (featureID)
 		{
-			case ActionPackage.ACTION__NAME:
-				return getName();
+			case VariablePackage.INT_VARIABLE__VALUE:
+				return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -120,8 +118,8 @@ public abstract class ActionImpl extends LilyEObject implements Action
 	{
 		switch (featureID)
 		{
-			case ActionPackage.ACTION__NAME:
-				setName((String)newValue);
+			case VariablePackage.INT_VARIABLE__VALUE:
+				setValue((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -137,8 +135,8 @@ public abstract class ActionImpl extends LilyEObject implements Action
 	{
 		switch (featureID)
 		{
-			case ActionPackage.ACTION__NAME:
-				setName(NAME_EDEFAULT);
+			case VariablePackage.INT_VARIABLE__VALUE:
+				setValue(VALUE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -154,8 +152,8 @@ public abstract class ActionImpl extends LilyEObject implements Action
 	{
 		switch (featureID)
 		{
-			case ActionPackage.ACTION__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case VariablePackage.INT_VARIABLE__VALUE:
+				return value != VALUE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -171,10 +169,10 @@ public abstract class ActionImpl extends LilyEObject implements Action
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (name: ");
-		result.append(name);
+		result.append(" (value: ");
+		result.append(value);
 		result.append(')');
 		return result.toString();
 	}
 
-} //ActionImpl
+} //IntVariableImpl

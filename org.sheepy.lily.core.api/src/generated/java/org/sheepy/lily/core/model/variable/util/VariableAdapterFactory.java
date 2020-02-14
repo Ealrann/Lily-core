@@ -128,6 +128,21 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 				return createVarChangeActionPkgAdapter();
 			}
 			@Override
+			public Adapter caseIModelVariable(IModelVariable object)
+			{
+				return createIModelVariableAdapter();
+			}
+			@Override
+			public Adapter caseIntVariable(IntVariable object)
+			{
+				return createIntVariableAdapter();
+			}
+			@Override
+			public Adapter caseDurationVariable(DurationVariable object)
+			{
+				return createDurationVariableAdapter();
+			}
+			@Override
 			public Adapter caseLNamedElement(LNamedElement object)
 			{
 				return createLNamedElementAdapter();
@@ -304,6 +319,51 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createVarChangeActionPkgAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.IModelVariable <em>IModel Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.variable.IModelVariable
+	 * @generated
+	 */
+	public Adapter createIModelVariableAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.IntVariable <em>Int Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.variable.IntVariable
+	 * @generated
+	 */
+	public Adapter createIntVariableAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.DurationVariable <em>Duration Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.variable.DurationVariable
+	 * @generated
+	 */
+	public Adapter createDurationVariableAdapter()
 	{
 		return null;
 	}

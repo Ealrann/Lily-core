@@ -23,6 +23,7 @@ import org.sheepy.lily.core.model.application.IEngine;
 import org.sheepy.lily.core.model.application.IModel;
 import org.sheepy.lily.core.model.application.IScenePart;
 import org.sheepy.lily.core.model.application.Scene;
+import org.sheepy.lily.core.model.application.ScreenEffect;
 import org.sheepy.lily.core.model.application.TimeConfiguration;
 import org.sheepy.lily.core.model.cadence.CadencePackage;
 import org.sheepy.lily.core.model.cadence.impl.CadencePackageImpl;
@@ -135,6 +136,13 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	private EClass backgroundImageEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass screenEffectEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -540,20 +548,9 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
-	public EReference getBackgroundImage_Image()
-	{
-		return (EReference)backgroundImageEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getBackgroundImage_ClearColor()
 	{
-		return (EAttribute)backgroundImageEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)backgroundImageEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -564,7 +561,84 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	@Override
 	public EAttribute getBackgroundImage_Sampling()
 	{
-		return (EAttribute)backgroundImageEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)backgroundImageEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getBackgroundImage_SrcImage()
+	{
+		return (EReference)backgroundImageEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getBackgroundImage_DstImage()
+	{
+		return (EReference)backgroundImageEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getScreenEffect()
+	{
+		return screenEffectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getScreenEffect_Inputs()
+	{
+		return (EReference)screenEffectEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getScreenEffect_SrcImage()
+	{
+		return (EReference)screenEffectEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getScreenEffect_DstImage()
+	{
+		return (EReference)screenEffectEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getScreenEffect_Shader()
+	{
+		return (EReference)screenEffectEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -635,9 +709,16 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		genericScenePartEClass = createEClass(GENERIC_SCENE_PART);
 
 		backgroundImageEClass = createEClass(BACKGROUND_IMAGE);
-		createEReference(backgroundImageEClass, BACKGROUND_IMAGE__IMAGE);
 		createEAttribute(backgroundImageEClass, BACKGROUND_IMAGE__CLEAR_COLOR);
 		createEAttribute(backgroundImageEClass, BACKGROUND_IMAGE__SAMPLING);
+		createEReference(backgroundImageEClass, BACKGROUND_IMAGE__SRC_IMAGE);
+		createEReference(backgroundImageEClass, BACKGROUND_IMAGE__DST_IMAGE);
+
+		screenEffectEClass = createEClass(SCREEN_EFFECT);
+		createEReference(screenEffectEClass, SCREEN_EFFECT__INPUTS);
+		createEReference(screenEffectEClass, SCREEN_EFFECT__SRC_IMAGE);
+		createEReference(screenEffectEClass, SCREEN_EFFECT__DST_IMAGE);
+		createEReference(screenEffectEClass, SCREEN_EFFECT__SHADER);
 	}
 
 	/**
@@ -668,6 +749,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
 		ResourcePackage theResourcePackage = (ResourcePackage)EPackage.Registry.INSTANCE.getEPackage(ResourcePackage.eNS_URI);
 		InferencePackage theInferencePackage = (InferencePackage)EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
+		VariablePackage theVariablePackage = (VariablePackage)EPackage.Registry.INSTANCE.getEPackage(VariablePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -680,6 +762,8 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		genericScenePartEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
 		backgroundImageEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
 		backgroundImageEClass.getESuperTypes().add(this.getIScenePart());
+		screenEffectEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
+		screenEffectEClass.getESuperTypes().add(this.getIScenePart());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(applicationEClass, Application.class, "Application", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -719,9 +803,16 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEClass(genericScenePartEClass, GenericScenePart.class, "GenericScenePart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(backgroundImageEClass, BackgroundImage.class, "BackgroundImage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBackgroundImage_Image(), theResourcePackage.getIImage(), null, "image", null, 0, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBackgroundImage_ClearColor(), theTypesPackage.getVector3i(), "clearColor", "0;0;0", 1, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBackgroundImage_Sampling(), theResourcePackage.getESampling(), "sampling", null, 1, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBackgroundImage_SrcImage(), theResourcePackage.getIImage(), null, "srcImage", null, 0, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBackgroundImage_DstImage(), theResourcePackage.getIImage(), null, "dstImage", null, 1, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(screenEffectEClass, ScreenEffect.class, "ScreenEffect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getScreenEffect_Inputs(), theVariablePackage.getIModelVariable(), null, "inputs", null, 0, -1, ScreenEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getScreenEffect_SrcImage(), theResourcePackage.getIImage(), null, "srcImage", null, 0, 1, ScreenEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getScreenEffect_DstImage(), theResourcePackage.getIImage(), null, "dstImage", null, 1, 1, ScreenEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getScreenEffect_Shader(), theResourcePackage.getFileResource(), null, "shader", null, 0, 1, ScreenEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

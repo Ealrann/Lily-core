@@ -15,4 +15,5 @@ import org.sheepy.lily.core.model.types.LNamedElement;
  * @generated
  */
 public interface Action extends LNamedElement
-{} // Action
+{
+} // Action

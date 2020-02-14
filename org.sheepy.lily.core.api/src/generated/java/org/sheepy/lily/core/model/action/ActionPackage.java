@@ -105,6 +105,7 @@ public interface ActionPackage extends EPackage
 	 */
 	int ACTION_LIST = 1;
 
+
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.action.Action <em>Action</em>}'.
 	 * <!-- begin-user-doc -->

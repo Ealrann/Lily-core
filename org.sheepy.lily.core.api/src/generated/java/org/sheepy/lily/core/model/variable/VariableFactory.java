@@ -77,6 +77,33 @@ public interface VariableFactory extends EFactory
 	VarChangeActionPkg createVarChangeActionPkg();
 
 	/**
+	 * Returns a new object of class '<em>IModel Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>IModel Variable</em>'.
+	 * @generated
+	 */
+	IModelVariable createIModelVariable();
+
+	/**
+	 * Returns a new object of class '<em>Int Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Int Variable</em>'.
+	 * @generated
+	 */
+	IntVariable createIntVariable();
+
+	/**
+	 * Returns a new object of class '<em>Duration Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Duration Variable</em>'.
+	 * @generated
+	 */
+	DurationVariable createDurationVariable();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -268,6 +268,31 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.application.ScreenEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ScreenEffectItemProvider screenEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.application.ScreenEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createScreenEffectAdapter()
+	{
+		if (screenEffectItemProvider == null)
+		{
+			screenEffectItemProvider = new ScreenEffectItemProvider(this);
+		}
+
+		return screenEffectItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -423,6 +448,7 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 		if (sceneItemProvider != null) sceneItemProvider.dispose();
 		if (genericScenePartItemProvider != null) genericScenePartItemProvider.dispose();
 		if (backgroundImageItemProvider != null) backgroundImageItemProvider.dispose();
+		if (screenEffectItemProvider != null) screenEffectItemProvider.dispose();
 	}
 
 }

@@ -16,9 +16,10 @@ import org.sheepy.lily.core.model.types.LNamedElement;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.application.BackgroundImage#getImage <em>Image</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.BackgroundImage#getClearColor <em>Clear Color</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.BackgroundImage#getSampling <em>Sampling</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.BackgroundImage#getSrcImage <em>Src Image</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.BackgroundImage#getDstImage <em>Dst Image</em>}</li>
  * </ul>
  *
  * @see org.sheepy.lily.core.model.application.ApplicationPackage#getBackgroundImage()
@@ -27,28 +28,6 @@ import org.sheepy.lily.core.model.types.LNamedElement;
  */
 public interface BackgroundImage extends LNamedElement, IScenePart
 {
-
-	/**
-	 * Returns the value of the '<em><b>Image</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Image</em>' reference.
-	 * @see #setImage(IImage)
-	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getBackgroundImage_Image()
-	 * @model
-	 * @generated
-	 */
-	IImage getImage();
-
-	/**
-	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.BackgroundImage#getImage <em>Image</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Image</em>' reference.
-	 * @see #getImage()
-	 * @generated
-	 */
-	void setImage(IImage value);
 
 	/**
 	 * Returns the value of the '<em><b>Clear Color</b></em>' attribute.
@@ -97,4 +76,48 @@ public interface BackgroundImage extends LNamedElement, IScenePart
 	 * @generated
 	 */
 	void setSampling(ESampling value);
+
+	/**
+	 * Returns the value of the '<em><b>Src Image</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Src Image</em>' reference.
+	 * @see #setSrcImage(IImage)
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getBackgroundImage_SrcImage()
+	 * @model
+	 * @generated
+	 */
+	IImage getSrcImage();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.BackgroundImage#getSrcImage <em>Src Image</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Src Image</em>' reference.
+	 * @see #getSrcImage()
+	 * @generated
+	 */
+	void setSrcImage(IImage value);
+
+	/**
+	 * Returns the value of the '<em><b>Dst Image</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Dst Image</em>' reference.
+	 * @see #setDstImage(IImage)
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getBackgroundImage_DstImage()
+	 * @model required="true"
+	 * @generated
+	 */
+	IImage getDstImage();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.BackgroundImage#getDstImage <em>Dst Image</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Dst Image</em>' reference.
+	 * @see #getDstImage()
+	 * @generated
+	 */
+	void setDstImage(IImage value);
 } // BackgroundImage
