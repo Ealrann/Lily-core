@@ -23,6 +23,7 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.sheepy.lily.core.model.application.ApplicationFactory;
 import org.sheepy.lily.core.model.resource.ResourceFactory;
 import org.sheepy.lily.core.model.resource.ResourcePackage;
 import org.sheepy.lily.core.model.resource.ResourcePkg;
@@ -212,6 +213,11 @@ public class ResourcePkgItemProvider
 			(createChildParameter
 				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
 				 UiFactory.eINSTANCE.createFont()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
+				 ApplicationFactory.eINSTANCE.createSpecialEffect()));
 	}
 
 	/**

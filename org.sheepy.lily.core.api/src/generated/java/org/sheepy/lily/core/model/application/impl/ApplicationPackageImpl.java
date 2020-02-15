@@ -24,6 +24,7 @@ import org.sheepy.lily.core.model.application.IModel;
 import org.sheepy.lily.core.model.application.IScenePart;
 import org.sheepy.lily.core.model.application.Scene;
 import org.sheepy.lily.core.model.application.ScreenEffect;
+import org.sheepy.lily.core.model.application.SpecialEffect;
 import org.sheepy.lily.core.model.application.TimeConfiguration;
 import org.sheepy.lily.core.model.cadence.CadencePackage;
 import org.sheepy.lily.core.model.cadence.impl.CadencePackageImpl;
@@ -143,6 +144,13 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	private EClass screenEffectEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass specialEffectEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -603,7 +611,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
-	public EReference getScreenEffect_Inputs()
+	public EReference getScreenEffect_SrcImage()
 	{
 		return (EReference)screenEffectEClass.getEStructuralFeatures().get(0);
 	}
@@ -614,7 +622,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
-	public EReference getScreenEffect_SrcImage()
+	public EReference getScreenEffect_DstImage()
 	{
 		return (EReference)screenEffectEClass.getEStructuralFeatures().get(1);
 	}
@@ -625,7 +633,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
-	public EReference getScreenEffect_DstImage()
+	public EReference getScreenEffect_Effect()
 	{
 		return (EReference)screenEffectEClass.getEStructuralFeatures().get(2);
 	}
@@ -636,9 +644,31 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
-	public EReference getScreenEffect_Shader()
+	public EClass getSpecialEffect()
 	{
-		return (EReference)screenEffectEClass.getEStructuralFeatures().get(3);
+		return specialEffectEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSpecialEffect_Shader()
+	{
+		return (EReference)specialEffectEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getSpecialEffect_Inputs()
+	{
+		return (EReference)specialEffectEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -715,10 +745,13 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEReference(backgroundImageEClass, BACKGROUND_IMAGE__DST_IMAGE);
 
 		screenEffectEClass = createEClass(SCREEN_EFFECT);
-		createEReference(screenEffectEClass, SCREEN_EFFECT__INPUTS);
 		createEReference(screenEffectEClass, SCREEN_EFFECT__SRC_IMAGE);
 		createEReference(screenEffectEClass, SCREEN_EFFECT__DST_IMAGE);
-		createEReference(screenEffectEClass, SCREEN_EFFECT__SHADER);
+		createEReference(screenEffectEClass, SCREEN_EFFECT__EFFECT);
+
+		specialEffectEClass = createEClass(SPECIAL_EFFECT);
+		createEReference(specialEffectEClass, SPECIAL_EFFECT__SHADER);
+		createEReference(specialEffectEClass, SPECIAL_EFFECT__INPUTS);
 	}
 
 	/**
@@ -764,6 +797,8 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		backgroundImageEClass.getESuperTypes().add(this.getIScenePart());
 		screenEffectEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
 		screenEffectEClass.getESuperTypes().add(this.getIScenePart());
+		specialEffectEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
+		specialEffectEClass.getESuperTypes().add(theResourcePackage.getIResource());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(applicationEClass, Application.class, "Application", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -809,10 +844,13 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEReference(getBackgroundImage_DstImage(), theResourcePackage.getIImage(), null, "dstImage", null, 1, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(screenEffectEClass, ScreenEffect.class, "ScreenEffect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getScreenEffect_Inputs(), theVariablePackage.getIModelVariable(), null, "inputs", null, 0, -1, ScreenEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getScreenEffect_SrcImage(), theResourcePackage.getIImage(), null, "srcImage", null, 0, 1, ScreenEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getScreenEffect_DstImage(), theResourcePackage.getIImage(), null, "dstImage", null, 1, 1, ScreenEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getScreenEffect_Shader(), theResourcePackage.getFileResource(), null, "shader", null, 0, 1, ScreenEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getScreenEffect_Effect(), this.getSpecialEffect(), null, "effect", null, 0, 1, ScreenEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(specialEffectEClass, SpecialEffect.class, "SpecialEffect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSpecialEffect_Shader(), theResourcePackage.getFileResource(), null, "shader", null, 0, 1, SpecialEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSpecialEffect_Inputs(), theVariablePackage.getIModelVariable(), null, "inputs", null, 0, -1, SpecialEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -621,22 +621,13 @@ public interface ApplicationPackage extends EPackage
 	int SCREEN_EFFECT__NAME = TypesPackage.LNAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SCREEN_EFFECT__INPUTS = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Src Image</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCREEN_EFFECT__SRC_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 1;
+	int SCREEN_EFFECT__SRC_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Dst Image</b></em>' reference.
@@ -645,16 +636,16 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SCREEN_EFFECT__DST_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 2;
+	int SCREEN_EFFECT__DST_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Shader</b></em>' reference.
+	 * The feature id for the '<em><b>Effect</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCREEN_EFFECT__SHADER = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 3;
+	int SCREEN_EFFECT__EFFECT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Screen Effect</em>' class.
@@ -663,7 +654,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SCREEN_EFFECT_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 4;
+	int SCREEN_EFFECT_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -682,6 +673,61 @@ public interface ApplicationPackage extends EPackage
 	 * @ordered
 	 */
 	int SCREEN_EFFECT_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 1;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.SpecialEffectImpl <em>Special Effect</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.application.impl.SpecialEffectImpl
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getSpecialEffect()
+	 * @generated
+	 */
+	int SPECIAL_EFFECT = 12;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIAL_EFFECT__NAME = TypesPackage.LNAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Shader</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIAL_EFFECT__SHADER = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Inputs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIAL_EFFECT__INPUTS = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Special Effect</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIAL_EFFECT_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Special Effect</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SPECIAL_EFFECT_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.Application <em>Application</em>}'.
@@ -1024,17 +1070,6 @@ public interface ApplicationPackage extends EPackage
 	EClass getScreenEffect();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.sheepy.lily.core.model.application.ScreenEffect#getInputs <em>Inputs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Inputs</em>'.
-	 * @see org.sheepy.lily.core.model.application.ScreenEffect#getInputs()
-	 * @see #getScreenEffect()
-	 * @generated
-	 */
-	EReference getScreenEffect_Inputs();
-
-	/**
 	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.application.ScreenEffect#getSrcImage <em>Src Image</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1057,15 +1092,47 @@ public interface ApplicationPackage extends EPackage
 	EReference getScreenEffect_DstImage();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.application.ScreenEffect#getShader <em>Shader</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.ScreenEffect#getEffect <em>Effect</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Shader</em>'.
-	 * @see org.sheepy.lily.core.model.application.ScreenEffect#getShader()
+	 * @return the meta object for the containment reference '<em>Effect</em>'.
+	 * @see org.sheepy.lily.core.model.application.ScreenEffect#getEffect()
 	 * @see #getScreenEffect()
 	 * @generated
 	 */
-	EReference getScreenEffect_Shader();
+	EReference getScreenEffect_Effect();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.SpecialEffect <em>Special Effect</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Special Effect</em>'.
+	 * @see org.sheepy.lily.core.model.application.SpecialEffect
+	 * @generated
+	 */
+	EClass getSpecialEffect();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.SpecialEffect#getShader <em>Shader</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Shader</em>'.
+	 * @see org.sheepy.lily.core.model.application.SpecialEffect#getShader()
+	 * @see #getSpecialEffect()
+	 * @generated
+	 */
+	EReference getSpecialEffect_Shader();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.sheepy.lily.core.model.application.SpecialEffect#getInputs <em>Inputs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Inputs</em>'.
+	 * @see org.sheepy.lily.core.model.application.SpecialEffect#getInputs()
+	 * @see #getSpecialEffect()
+	 * @generated
+	 */
+	EReference getSpecialEffect_Inputs();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1372,14 +1439,6 @@ public interface ApplicationPackage extends EPackage
 		EClass SCREEN_EFFECT = eINSTANCE.getScreenEffect();
 
 		/**
-		 * The meta object literal for the '<em><b>Inputs</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SCREEN_EFFECT__INPUTS = eINSTANCE.getScreenEffect_Inputs();
-
-		/**
 		 * The meta object literal for the '<em><b>Src Image</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1396,12 +1455,38 @@ public interface ApplicationPackage extends EPackage
 		EReference SCREEN_EFFECT__DST_IMAGE = eINSTANCE.getScreenEffect_DstImage();
 
 		/**
-		 * The meta object literal for the '<em><b>Shader</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Effect</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SCREEN_EFFECT__SHADER = eINSTANCE.getScreenEffect_Shader();
+		EReference SCREEN_EFFECT__EFFECT = eINSTANCE.getScreenEffect_Effect();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.SpecialEffectImpl <em>Special Effect</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.impl.SpecialEffectImpl
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getSpecialEffect()
+		 * @generated
+		 */
+		EClass SPECIAL_EFFECT = eINSTANCE.getSpecialEffect();
+
+		/**
+		 * The meta object literal for the '<em><b>Shader</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SPECIAL_EFFECT__SHADER = eINSTANCE.getSpecialEffect_Shader();
+
+		/**
+		 * The meta object literal for the '<em><b>Inputs</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SPECIAL_EFFECT__INPUTS = eINSTANCE.getSpecialEffect_Inputs();
 
 	}
 

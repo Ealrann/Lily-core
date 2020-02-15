@@ -11,6 +11,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -23,6 +24,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.sheepy.lily.core.model.application.ApplicationFactory;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.ScreenEffect;
 
@@ -68,10 +70,8 @@ public class ScreenEffectItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addInputsPropertyDescriptor(object);
 			addSrcImagePropertyDescriptor(object);
 			addDstImagePropertyDescriptor(object);
-			addShaderPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -95,29 +95,6 @@ public class ScreenEffectItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Inputs feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addInputsPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ScreenEffect_inputs_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ScreenEffect_inputs_feature", "_UI_ScreenEffect_type"),
-				 ApplicationPackage.Literals.SCREEN_EFFECT__INPUTS,
-				 true,
-				 false,
-				 true,
-				 null,
 				 null,
 				 null));
 	}
@@ -169,26 +146,36 @@ public class ScreenEffectItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Shader feature.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addShaderPropertyDescriptor(Object object)
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object)
 	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ScreenEffect_shader_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ScreenEffect_shader_feature", "_UI_ScreenEffect_type"),
-				 ApplicationPackage.Literals.SCREEN_EFFECT__SHADER,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+		if (childrenFeatures == null)
+		{
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(ApplicationPackage.Literals.SCREEN_EFFECT__EFFECT);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child)
+	{
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
 	}
 
 	/**
@@ -236,6 +223,9 @@ public class ScreenEffectItemProvider
 			case ApplicationPackage.SCREEN_EFFECT__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
+			case ApplicationPackage.SCREEN_EFFECT__EFFECT:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -251,6 +241,11 @@ public class ScreenEffectItemProvider
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ApplicationPackage.Literals.SCREEN_EFFECT__EFFECT,
+				 ApplicationFactory.eINSTANCE.createSpecialEffect()));
 	}
 
 	/**

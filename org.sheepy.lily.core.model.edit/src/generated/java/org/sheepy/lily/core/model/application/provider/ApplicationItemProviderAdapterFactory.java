@@ -293,6 +293,31 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.application.SpecialEffect} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SpecialEffectItemProvider specialEffectItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.application.SpecialEffect}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSpecialEffectAdapter()
+	{
+		if (specialEffectItemProvider == null)
+		{
+			specialEffectItemProvider = new SpecialEffectItemProvider(this);
+		}
+
+		return specialEffectItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -449,6 +474,7 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 		if (genericScenePartItemProvider != null) genericScenePartItemProvider.dispose();
 		if (backgroundImageItemProvider != null) backgroundImageItemProvider.dispose();
 		if (screenEffectItemProvider != null) screenEffectItemProvider.dispose();
+		if (specialEffectItemProvider != null) specialEffectItemProvider.dispose();
 	}
 
 }

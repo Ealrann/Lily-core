@@ -72,6 +72,7 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 			case ApplicationPackage.GENERIC_SCENE_PART: return createGenericScenePart();
 			case ApplicationPackage.BACKGROUND_IMAGE: return createBackgroundImage();
 			case ApplicationPackage.SCREEN_EFFECT: return createScreenEffect();
+			case ApplicationPackage.SPECIAL_EFFECT: return createSpecialEffect();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -171,6 +172,18 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 	{
 		ScreenEffectImpl screenEffect = new ScreenEffectImpl();
 		return screenEffect;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public SpecialEffect createSpecialEffect()
+	{
+		SpecialEffectImpl specialEffect = new SpecialEffectImpl();
+		return specialEffect;
 	}
 
 	/**

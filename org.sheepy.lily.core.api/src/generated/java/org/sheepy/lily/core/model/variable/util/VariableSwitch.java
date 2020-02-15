@@ -165,6 +165,7 @@ public class VariableSwitch<T> extends Switch<T>
 			{
 				IModelVariable iModelVariable = (IModelVariable)theEObject;
 				T result = caseIModelVariable(iModelVariable);
+				if (result == null) result = caseLNamedElement(iModelVariable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -173,6 +174,7 @@ public class VariableSwitch<T> extends Switch<T>
 				IntVariable intVariable = (IntVariable)theEObject;
 				T result = caseIntVariable(intVariable);
 				if (result == null) result = caseIModelVariable(intVariable);
+				if (result == null) result = caseLNamedElement(intVariable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -181,6 +183,29 @@ public class VariableSwitch<T> extends Switch<T>
 				DurationVariable durationVariable = (DurationVariable)theEObject;
 				T result = caseDurationVariable(durationVariable);
 				if (result == null) result = caseIModelVariable(durationVariable);
+				if (result == null) result = caseLNamedElement(durationVariable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case VariablePackage.IMODEL_VARIABLE_ACTION:
+			{
+				IModelVariableAction iModelVariableAction = (IModelVariableAction)theEObject;
+				T result = caseIModelVariableAction(iModelVariableAction);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case VariablePackage.IMODEL_VARIABLE_ACTION_CONTAINER:
+			{
+				IModelVariableActionContainer iModelVariableActionContainer = (IModelVariableActionContainer)theEObject;
+				T result = caseIModelVariableActionContainer(iModelVariableActionContainer);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case VariablePackage.SET_VARIABLE_ACTION:
+			{
+				SetVariableAction setVariableAction = (SetVariableAction)theEObject;
+				T result = caseSetVariableAction(setVariableAction);
+				if (result == null) result = caseIModelVariableAction(setVariableAction);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -392,6 +417,54 @@ public class VariableSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseDurationVariable(DurationVariable object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IModel Variable Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IModel Variable Action</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIModelVariableAction(IModelVariableAction object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IModel Variable Action Container</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IModel Variable Action Container</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIModelVariableActionContainer(IModelVariableActionContainer object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Set Variable Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Set Variable Action</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSetVariableAction(SetVariableAction object)
 	{
 		return null;
 	}

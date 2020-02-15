@@ -241,31 +241,6 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.variable.IModelVariable} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IModelVariableItemProvider iModelVariableItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.sheepy.lily.core.model.variable.IModelVariable}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createIModelVariableAdapter()
-	{
-		if (iModelVariableItemProvider == null)
-		{
-			iModelVariableItemProvider = new IModelVariableItemProvider(this);
-		}
-
-		return iModelVariableItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.variable.IntVariable} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -313,6 +288,31 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
 		}
 
 		return durationVariableItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.variable.SetVariableAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected SetVariableActionItemProvider setVariableActionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.variable.SetVariableAction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createSetVariableActionAdapter()
+	{
+		if (setVariableActionItemProvider == null)
+		{
+			setVariableActionItemProvider = new SetVariableActionItemProvider(this);
+		}
+
+		return setVariableActionItemProvider;
 	}
 
 	/**
@@ -470,9 +470,9 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
 		if (booleanChangeActionItemProvider != null) booleanChangeActionItemProvider.dispose();
 		if (intChangeActionItemProvider != null) intChangeActionItemProvider.dispose();
 		if (varChangeActionPkgItemProvider != null) varChangeActionPkgItemProvider.dispose();
-		if (iModelVariableItemProvider != null) iModelVariableItemProvider.dispose();
 		if (intVariableItemProvider != null) intVariableItemProvider.dispose();
 		if (durationVariableItemProvider != null) durationVariableItemProvider.dispose();
+		if (setVariableActionItemProvider != null) setVariableActionItemProvider.dispose();
 	}
 
 }

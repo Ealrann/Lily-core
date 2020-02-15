@@ -2,12 +2,8 @@
  */
 package org.sheepy.lily.core.model.application;
 
-import org.eclipse.emf.common.util.EList;
-
-import org.sheepy.lily.core.model.resource.FileResource;
 import org.sheepy.lily.core.model.resource.IImage;
 import org.sheepy.lily.core.model.types.LNamedElement;
-import org.sheepy.lily.core.model.variable.IModelVariable;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,10 +14,9 @@ import org.sheepy.lily.core.model.variable.IModelVariable;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.application.ScreenEffect#getInputs <em>Inputs</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.ScreenEffect#getSrcImage <em>Src Image</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.ScreenEffect#getDstImage <em>Dst Image</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.ScreenEffect#getShader <em>Shader</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.ScreenEffect#getEffect <em>Effect</em>}</li>
  * </ul>
  *
  * @see org.sheepy.lily.core.model.application.ApplicationPackage#getScreenEffect()
@@ -30,18 +25,6 @@ import org.sheepy.lily.core.model.variable.IModelVariable;
  */
 public interface ScreenEffect extends LNamedElement, IScenePart
 {
-	/**
-	 * Returns the value of the '<em><b>Inputs</b></em>' reference list.
-	 * The list contents are of type {@link org.sheepy.lily.core.model.variable.IModelVariable}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Inputs</em>' reference list.
-	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getScreenEffect_Inputs()
-	 * @model
-	 * @generated
-	 */
-	EList<IModelVariable> getInputs();
-
 	/**
 	 * Returns the value of the '<em><b>Src Image</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -87,25 +70,25 @@ public interface ScreenEffect extends LNamedElement, IScenePart
 	void setDstImage(IImage value);
 
 	/**
-	 * Returns the value of the '<em><b>Shader</b></em>' reference.
+	 * Returns the value of the '<em><b>Effect</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Shader</em>' reference.
-	 * @see #setShader(FileResource)
-	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getScreenEffect_Shader()
-	 * @model
+	 * @return the value of the '<em>Effect</em>' containment reference.
+	 * @see #setEffect(SpecialEffect)
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getScreenEffect_Effect()
+	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	FileResource getShader();
+	SpecialEffect getEffect();
 
 	/**
-	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.ScreenEffect#getShader <em>Shader</em>}' reference.
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.ScreenEffect#getEffect <em>Effect</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Shader</em>' reference.
-	 * @see #getShader()
+	 * @param value the new value of the '<em>Effect</em>' containment reference.
+	 * @see #getEffect()
 	 * @generated
 	 */
-	void setShader(FileResource value);
+	void setEffect(SpecialEffect value);
 
 } // ScreenEffect

@@ -95,6 +95,15 @@ public interface ApplicationFactory extends EFactory
 	ScreenEffect createScreenEffect();
 
 	/**
+	 * Returns a new object of class '<em>Special Effect</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Special Effect</em>'.
+	 * @generated
+	 */
+	SpecialEffect createSpecialEffect();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

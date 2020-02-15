@@ -73,9 +73,9 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 			case VariablePackage.BOOLEAN_CHANGE_ACTION: return createBooleanChangeAction();
 			case VariablePackage.INT_CHANGE_ACTION: return createIntChangeAction();
 			case VariablePackage.VAR_CHANGE_ACTION_PKG: return createVarChangeActionPkg();
-			case VariablePackage.IMODEL_VARIABLE: return createIModelVariable();
 			case VariablePackage.INT_VARIABLE: return createIntVariable();
 			case VariablePackage.DURATION_VARIABLE: return createDurationVariable();
+			case VariablePackage.SET_VARIABLE_ACTION: return createSetVariableAction();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -197,18 +197,6 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	 * @generated
 	 */
 	@Override
-	public IModelVariable createIModelVariable()
-	{
-		IModelVariableImpl iModelVariable = new IModelVariableImpl();
-		return iModelVariable;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public IntVariable createIntVariable()
 	{
 		IntVariableImpl intVariable = new IntVariableImpl();
@@ -225,6 +213,18 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	{
 		DurationVariableImpl durationVariable = new DurationVariableImpl();
 		return durationVariable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public SetVariableAction createSetVariableAction()
+	{
+		SetVariableActionImpl setVariableAction = new SetVariableActionImpl();
+		return setVariableAction;
 	}
 
 	/**

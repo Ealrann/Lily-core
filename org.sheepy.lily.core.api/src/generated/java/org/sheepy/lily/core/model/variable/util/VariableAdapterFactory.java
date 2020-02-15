@@ -143,6 +143,21 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 				return createDurationVariableAdapter();
 			}
 			@Override
+			public Adapter caseIModelVariableAction(IModelVariableAction object)
+			{
+				return createIModelVariableActionAdapter();
+			}
+			@Override
+			public Adapter caseIModelVariableActionContainer(IModelVariableActionContainer object)
+			{
+				return createIModelVariableActionContainerAdapter();
+			}
+			@Override
+			public Adapter caseSetVariableAction(SetVariableAction object)
+			{
+				return createSetVariableActionAdapter();
+			}
+			@Override
 			public Adapter caseLNamedElement(LNamedElement object)
 			{
 				return createLNamedElementAdapter();
@@ -364,6 +379,51 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createDurationVariableAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.IModelVariableAction <em>IModel Variable Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.variable.IModelVariableAction
+	 * @generated
+	 */
+	public Adapter createIModelVariableActionAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.IModelVariableActionContainer <em>IModel Variable Action Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.variable.IModelVariableActionContainer
+	 * @generated
+	 */
+	public Adapter createIModelVariableActionContainerAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.SetVariableAction <em>Set Variable Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.variable.SetVariableAction
+	 * @generated
+	 */
+	public Adapter createSetVariableActionAdapter()
 	{
 		return null;
 	}

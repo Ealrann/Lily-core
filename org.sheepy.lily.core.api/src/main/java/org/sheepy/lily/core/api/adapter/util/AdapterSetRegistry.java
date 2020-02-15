@@ -1,13 +1,13 @@
 package org.sheepy.lily.core.api.adapter.util;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.notification.util.AbstractModelSetRegistry;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class AdapterSetRegistry<T extends IAdapter> extends AbstractModelSetRegistry
 {
@@ -43,5 +43,10 @@ public class AdapterSetRegistry<T extends IAdapter> extends AbstractModelSetRegi
 	{
 		objects.remove(oldValue);
 		adapters.remove(oldValue.adapt(adapterType));
+	}
+
+	public int size()
+	{
+		return objects.size();
 	}
 }

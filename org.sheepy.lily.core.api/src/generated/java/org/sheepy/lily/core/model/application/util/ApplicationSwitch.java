@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.util.Switch;
 
 import org.sheepy.lily.core.model.application.*;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.resource.IResource;
 import org.sheepy.lily.core.model.types.LNamedElement;
 
 /**
@@ -166,6 +167,15 @@ public class ApplicationSwitch<T> extends Switch<T>
 				if (result == null) result = caseLNamedElement(screenEffect);
 				if (result == null) result = caseIScenePart(screenEffect);
 				if (result == null) result = caseIInferenceObject(screenEffect);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ApplicationPackage.SPECIAL_EFFECT:
+			{
+				SpecialEffect specialEffect = (SpecialEffect)theEObject;
+				T result = caseSpecialEffect(specialEffect);
+				if (result == null) result = caseIResource(specialEffect);
+				if (result == null) result = caseLNamedElement(specialEffect);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -366,6 +376,22 @@ public class ApplicationSwitch<T> extends Switch<T>
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Special Effect</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Special Effect</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSpecialEffect(SpecialEffect object)
+	{
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>IInference Object</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -377,6 +403,22 @@ public class ApplicationSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseIInferenceObject(IInferenceObject object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IResource</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IResource</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIResource(IResource object)
 	{
 		return null;
 	}

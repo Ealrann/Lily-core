@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.sheepy.lily.core.model.action.ActionPackage;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -476,14 +477,23 @@ public interface VariablePackage extends EPackage
 	int VAR_CHANGE_ACTION_PKG_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.IModelVariableImpl <em>IModel Variable</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.IModelVariable <em>IModel Variable</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.lily.core.model.variable.impl.IModelVariableImpl
+	 * @see org.sheepy.lily.core.model.variable.IModelVariable
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getIModelVariable()
 	 * @generated
 	 */
 	int IMODEL_VARIABLE = 10;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMODEL_VARIABLE__NAME = TypesPackage.LNAMED_ELEMENT__NAME;
 
 	/**
 	 * The number of structural features of the '<em>IModel Variable</em>' class.
@@ -492,7 +502,7 @@ public interface VariablePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IMODEL_VARIABLE_FEATURE_COUNT = 0;
+	int IMODEL_VARIABLE_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>IModel Variable</em>' class.
@@ -501,7 +511,7 @@ public interface VariablePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IMODEL_VARIABLE_OPERATION_COUNT = 0;
+	int IMODEL_VARIABLE_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.IntVariableImpl <em>Int Variable</em>}' class.
@@ -512,6 +522,15 @@ public interface VariablePackage extends EPackage
 	 * @generated
 	 */
 	int INT_VARIABLE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INT_VARIABLE__NAME = IMODEL_VARIABLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -551,6 +570,15 @@ public interface VariablePackage extends EPackage
 	int DURATION_VARIABLE = 12;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DURATION_VARIABLE__NAME = IMODEL_VARIABLE__NAME;
+
+	/**
 	 * The number of structural features of the '<em>Duration Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -569,6 +597,117 @@ public interface VariablePackage extends EPackage
 	int DURATION_VARIABLE_OPERATION_COUNT = IMODEL_VARIABLE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.IModelVariableAction <em>IModel Variable Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.variable.IModelVariableAction
+	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getIModelVariableAction()
+	 * @generated
+	 */
+	int IMODEL_VARIABLE_ACTION = 13;
+
+	/**
+	 * The number of structural features of the '<em>IModel Variable Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMODEL_VARIABLE_ACTION_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>IModel Variable Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMODEL_VARIABLE_ACTION_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.IModelVariableActionContainer <em>IModel Variable Action Container</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.variable.IModelVariableActionContainer
+	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getIModelVariableActionContainer()
+	 * @generated
+	 */
+	int IMODEL_VARIABLE_ACTION_CONTAINER = 14;
+
+	/**
+	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMODEL_VARIABLE_ACTION_CONTAINER__ACTIONS = 0;
+
+	/**
+	 * The number of structural features of the '<em>IModel Variable Action Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMODEL_VARIABLE_ACTION_CONTAINER_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>IModel Variable Action Container</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IMODEL_VARIABLE_ACTION_CONTAINER_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.SetVariableActionImpl <em>Set Variable Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.variable.impl.SetVariableActionImpl
+	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getSetVariableAction()
+	 * @generated
+	 */
+	int SET_VARIABLE_ACTION = 15;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_VARIABLE_ACTION__VALUE = IMODEL_VARIABLE_ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Variable</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_VARIABLE_ACTION__VARIABLE = IMODEL_VARIABLE_ACTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Set Variable Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_VARIABLE_ACTION_FEATURE_COUNT = IMODEL_VARIABLE_ACTION_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Set Variable Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SET_VARIABLE_ACTION_OPERATION_COUNT = IMODEL_VARIABLE_ACTION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '<em>LResolved Variable Feature</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -576,7 +715,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getLResolvedVariableFeature()
 	 * @generated
 	 */
-	int LRESOLVED_VARIABLE_FEATURE = 13;
+	int LRESOLVED_VARIABLE_FEATURE = 16;
 
 	/**
 	 * The meta object id for the '<em>Definition</em>' data type.
@@ -586,7 +725,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getVariableDefinition()
 	 * @generated
 	 */
-	int VARIABLE_DEFINITION = 14;
+	int VARIABLE_DEFINITION = 17;
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.IVariableResolver <em>IVariable Resolver</em>}'.
@@ -807,6 +946,69 @@ public interface VariablePackage extends EPackage
 	EClass getDurationVariable();
 
 	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.IModelVariableAction <em>IModel Variable Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IModel Variable Action</em>'.
+	 * @see org.sheepy.lily.core.model.variable.IModelVariableAction
+	 * @generated
+	 */
+	EClass getIModelVariableAction();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.IModelVariableActionContainer <em>IModel Variable Action Container</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IModel Variable Action Container</em>'.
+	 * @see org.sheepy.lily.core.model.variable.IModelVariableActionContainer
+	 * @generated
+	 */
+	EClass getIModelVariableActionContainer();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.variable.IModelVariableActionContainer#getActions <em>Actions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Actions</em>'.
+	 * @see org.sheepy.lily.core.model.variable.IModelVariableActionContainer#getActions()
+	 * @see #getIModelVariableActionContainer()
+	 * @generated
+	 */
+	EReference getIModelVariableActionContainer_Actions();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.SetVariableAction <em>Set Variable Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Set Variable Action</em>'.
+	 * @see org.sheepy.lily.core.model.variable.SetVariableAction
+	 * @generated
+	 */
+	EClass getSetVariableAction();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.variable.SetVariableAction#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.sheepy.lily.core.model.variable.SetVariableAction#getValue()
+	 * @see #getSetVariableAction()
+	 * @generated
+	 */
+	EAttribute getSetVariableAction_Value();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.sheepy.lily.core.model.variable.SetVariableAction#getVariable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Variable</em>'.
+	 * @see org.sheepy.lily.core.model.variable.SetVariableAction#getVariable()
+	 * @see #getSetVariableAction()
+	 * @generated
+	 */
+	EReference getSetVariableAction_Variable();
+
+	/**
 	 * Returns the meta object for data type '{@link org.sheepy.lily.core.api.util.FeatureDefinition <em>LResolved Variable Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1009,10 +1211,10 @@ public interface VariablePackage extends EPackage
 		EReference VAR_CHANGE_ACTION_PKG__ACTIONS = eINSTANCE.getVarChangeActionPkg_Actions();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.impl.IModelVariableImpl <em>IModel Variable</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.IModelVariable <em>IModel Variable</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.lily.core.model.variable.impl.IModelVariableImpl
+		 * @see org.sheepy.lily.core.model.variable.IModelVariable
 		 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getIModelVariable()
 		 * @generated
 		 */
@@ -1045,6 +1247,60 @@ public interface VariablePackage extends EPackage
 		 * @generated
 		 */
 		EClass DURATION_VARIABLE = eINSTANCE.getDurationVariable();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.IModelVariableAction <em>IModel Variable Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.variable.IModelVariableAction
+		 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getIModelVariableAction()
+		 * @generated
+		 */
+		EClass IMODEL_VARIABLE_ACTION = eINSTANCE.getIModelVariableAction();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.IModelVariableActionContainer <em>IModel Variable Action Container</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.variable.IModelVariableActionContainer
+		 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getIModelVariableActionContainer()
+		 * @generated
+		 */
+		EClass IMODEL_VARIABLE_ACTION_CONTAINER = eINSTANCE.getIModelVariableActionContainer();
+
+		/**
+		 * The meta object literal for the '<em><b>Actions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IMODEL_VARIABLE_ACTION_CONTAINER__ACTIONS = eINSTANCE.getIModelVariableActionContainer_Actions();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.impl.SetVariableActionImpl <em>Set Variable Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.variable.impl.SetVariableActionImpl
+		 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getSetVariableAction()
+		 * @generated
+		 */
+		EClass SET_VARIABLE_ACTION = eINSTANCE.getSetVariableAction();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SET_VARIABLE_ACTION__VALUE = eINSTANCE.getSetVariableAction_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Variable</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SET_VARIABLE_ACTION__VARIABLE = eINSTANCE.getSetVariableAction_Variable();
 
 		/**
 		 * The meta object literal for the '<em>LResolved Variable Feature</em>' data type.

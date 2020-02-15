@@ -4,31 +4,28 @@ package org.sheepy.lily.core.model.application.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
-import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.IScenePart;
 import org.sheepy.lily.core.model.application.ScreenEffect;
+import org.sheepy.lily.core.model.application.SpecialEffect;
 
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 import org.sheepy.lily.core.model.inference.InferencePackage;
-import org.sheepy.lily.core.model.resource.FileResource;
+
 import org.sheepy.lily.core.model.resource.IImage;
-import org.sheepy.lily.core.model.variable.IModelVariable;
 
 /**
  * <!-- begin-user-doc -->
@@ -39,10 +36,9 @@ import org.sheepy.lily.core.model.variable.IModelVariable;
  * </p>
  * <ul>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ScreenEffectImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.ScreenEffectImpl#getInputs <em>Inputs</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ScreenEffectImpl#getSrcImage <em>Src Image</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ScreenEffectImpl#getDstImage <em>Dst Image</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.ScreenEffectImpl#getShader <em>Shader</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ScreenEffectImpl#getEffect <em>Effect</em>}</li>
  * </ul>
  *
  * @generated
@@ -70,16 +66,6 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 	protected String name = NAME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getInputs() <em>Inputs</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInputs()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<IModelVariable> inputs;
-
-	/**
 	 * The cached value of the '{@link #getSrcImage() <em>Src Image</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -100,14 +86,14 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 	protected IImage dstImage;
 
 	/**
-	 * The cached value of the '{@link #getShader() <em>Shader</em>}' reference.
+	 * The cached value of the '{@link #getEffect() <em>Effect</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getShader()
+	 * @see #getEffect()
 	 * @generated
 	 * @ordered
 	 */
-	protected FileResource shader;
+	protected SpecialEffect effect;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -153,21 +139,6 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.SCREEN_EFFECT__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<IModelVariable> getInputs()
-	{
-		if (inputs == null)
-		{
-			inputs = new EObjectResolvingEList<IModelVariable>(IModelVariable.class, this, ApplicationPackage.SCREEN_EFFECT__INPUTS);
-		}
-		return inputs;
 	}
 
 	/**
@@ -266,19 +237,26 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 	 * @generated
 	 */
 	@Override
-	public FileResource getShader()
+	public SpecialEffect getEffect()
 	{
-		if (shader != null && ((EObject)shader).eIsProxy())
+		if (effect != null && ((EObject)effect).eIsProxy())
 		{
-			InternalEObject oldShader = shader;
-			shader = (FileResource)eResolveProxy(oldShader);
-			if (shader != oldShader)
+			InternalEObject oldEffect = effect;
+			effect = (SpecialEffect)eResolveProxy(oldEffect);
+			if (effect != oldEffect)
 			{
+				InternalEObject newEffect = effect;
+				NotificationChain msgs = oldEffect.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.SCREEN_EFFECT__EFFECT, null, null);
+				if (newEffect.eInternalContainer() == null)
+				{
+					msgs = newEffect.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.SCREEN_EFFECT__EFFECT, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.SCREEN_EFFECT__SHADER, oldShader, shader));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.SCREEN_EFFECT__EFFECT, oldEffect, effect));
 			}
 		}
-		return shader;
+		return effect;
 	}
 
 	/**
@@ -286,9 +264,26 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FileResource basicGetShader()
+	public SpecialEffect basicGetEffect()
 	{
-		return shader;
+		return effect;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetEffect(SpecialEffect newEffect, NotificationChain msgs)
+	{
+		SpecialEffect oldEffect = effect;
+		effect = newEffect;
+		if (eNotificationRequired())
+		{
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplicationPackage.SCREEN_EFFECT__EFFECT, oldEffect, newEffect);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -297,12 +292,20 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 	 * @generated
 	 */
 	@Override
-	public void setShader(FileResource newShader)
+	public void setEffect(SpecialEffect newEffect)
 	{
-		FileResource oldShader = shader;
-		shader = newShader;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.SCREEN_EFFECT__SHADER, oldShader, shader));
+		if (newEffect != effect)
+		{
+			NotificationChain msgs = null;
+			if (effect != null)
+				msgs = ((InternalEObject)effect).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.SCREEN_EFFECT__EFFECT, null, msgs);
+			if (newEffect != null)
+				msgs = ((InternalEObject)newEffect).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.SCREEN_EFFECT__EFFECT, null, msgs);
+			msgs = basicSetEffect(newEffect, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.SCREEN_EFFECT__EFFECT, newEffect, newEffect));
 	}
 
 	/**
@@ -322,23 +325,37 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+	{
+		switch (featureID)
+		{
+			case ApplicationPackage.SCREEN_EFFECT__EFFECT:
+				return basicSetEffect(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType)
 	{
 		switch (featureID)
 		{
 			case ApplicationPackage.SCREEN_EFFECT__NAME:
 				return getName();
-			case ApplicationPackage.SCREEN_EFFECT__INPUTS:
-				return getInputs();
 			case ApplicationPackage.SCREEN_EFFECT__SRC_IMAGE:
 				if (resolve) return getSrcImage();
 				return basicGetSrcImage();
 			case ApplicationPackage.SCREEN_EFFECT__DST_IMAGE:
 				if (resolve) return getDstImage();
 				return basicGetDstImage();
-			case ApplicationPackage.SCREEN_EFFECT__SHADER:
-				if (resolve) return getShader();
-				return basicGetShader();
+			case ApplicationPackage.SCREEN_EFFECT__EFFECT:
+				if (resolve) return getEffect();
+				return basicGetEffect();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -348,7 +365,6 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue)
 	{
@@ -357,18 +373,14 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 			case ApplicationPackage.SCREEN_EFFECT__NAME:
 				setName((String)newValue);
 				return;
-			case ApplicationPackage.SCREEN_EFFECT__INPUTS:
-				getInputs().clear();
-				getInputs().addAll((Collection<? extends IModelVariable>)newValue);
-				return;
 			case ApplicationPackage.SCREEN_EFFECT__SRC_IMAGE:
 				setSrcImage((IImage)newValue);
 				return;
 			case ApplicationPackage.SCREEN_EFFECT__DST_IMAGE:
 				setDstImage((IImage)newValue);
 				return;
-			case ApplicationPackage.SCREEN_EFFECT__SHADER:
-				setShader((FileResource)newValue);
+			case ApplicationPackage.SCREEN_EFFECT__EFFECT:
+				setEffect((SpecialEffect)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -387,17 +399,14 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 			case ApplicationPackage.SCREEN_EFFECT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
-			case ApplicationPackage.SCREEN_EFFECT__INPUTS:
-				getInputs().clear();
-				return;
 			case ApplicationPackage.SCREEN_EFFECT__SRC_IMAGE:
 				setSrcImage((IImage)null);
 				return;
 			case ApplicationPackage.SCREEN_EFFECT__DST_IMAGE:
 				setDstImage((IImage)null);
 				return;
-			case ApplicationPackage.SCREEN_EFFECT__SHADER:
-				setShader((FileResource)null);
+			case ApplicationPackage.SCREEN_EFFECT__EFFECT:
+				setEffect((SpecialEffect)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -415,14 +424,12 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 		{
 			case ApplicationPackage.SCREEN_EFFECT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case ApplicationPackage.SCREEN_EFFECT__INPUTS:
-				return inputs != null && !inputs.isEmpty();
 			case ApplicationPackage.SCREEN_EFFECT__SRC_IMAGE:
 				return srcImage != null;
 			case ApplicationPackage.SCREEN_EFFECT__DST_IMAGE:
 				return dstImage != null;
-			case ApplicationPackage.SCREEN_EFFECT__SHADER:
-				return shader != null;
+			case ApplicationPackage.SCREEN_EFFECT__EFFECT:
+				return effect != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -22,17 +22,16 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.lily.core.model.types.TypesPackage;
-import org.sheepy.lily.core.model.variable.IntVariable;
+import org.sheepy.lily.core.model.variable.SetVariableAction;
 import org.sheepy.lily.core.model.variable.VariablePackage;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.lily.core.model.variable.IntVariable} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.variable.SetVariableAction} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class IntVariableItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
+public class SetVariableActionItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -40,7 +39,7 @@ public class IntVariableItemProvider extends ItemProviderAdapter implements IEdi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IntVariableItemProvider(AdapterFactory adapterFactory)
+	public SetVariableActionItemProvider(AdapterFactory adapterFactory)
 	{
 		super(adapterFactory);
 	}
@@ -58,33 +57,10 @@ public class IntVariableItemProvider extends ItemProviderAdapter implements IEdi
 		{
 			super.getPropertyDescriptors(object);
 
-			addNamePropertyDescriptor(object);
 			addValuePropertyDescriptor(object);
+			addVariablePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Name feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addNamePropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_LNamedElement_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LNamedElement_name_feature", "_UI_LNamedElement_type"),
-				 TypesPackage.Literals.LNAMED_ELEMENT__NAME,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -99,19 +75,42 @@ public class IntVariableItemProvider extends ItemProviderAdapter implements IEdi
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_IntVariable_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IntVariable_value_feature", "_UI_IntVariable_type"),
-				 VariablePackage.Literals.INT_VARIABLE__VALUE,
+				 getString("_UI_SetVariableAction_value_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SetVariableAction_value_feature", "_UI_SetVariableAction_type"),
+				 VariablePackage.Literals.SET_VARIABLE_ACTION__VALUE,
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This returns IntVariable.gif.
+	 * This adds a property descriptor for the Variable feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVariablePropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_SetVariableAction_variable_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SetVariableAction_variable_feature", "_UI_SetVariableAction_type"),
+				 VariablePackage.Literals.SET_VARIABLE_ACTION__VARIABLE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This returns SetVariableAction.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -119,22 +118,25 @@ public class IntVariableItemProvider extends ItemProviderAdapter implements IEdi
 	@Override
 	public Object getImage(Object object)
 	{
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/IntVariable"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/SetVariableAction"));
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((IntVariable)object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_IntVariable_type") :
-			getString("_UI_IntVariable_type") + " " + label;
+		final var action = (SetVariableAction) object;
+		final var variable = action.getVariable();
+		String variableName = variable != null ? variable.getName() : "";
+		String value = action.getValue() != null ? action.getValue() : "";
+		if(variableName == null)
+			variableName = variable.eClass().getName();
+		return variableName + " = " + value;
 	}
 
 
@@ -150,10 +152,10 @@ public class IntVariableItemProvider extends ItemProviderAdapter implements IEdi
 	{
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(IntVariable.class))
+		switch (notification.getFeatureID(SetVariableAction.class))
 		{
-			case VariablePackage.INT_VARIABLE__NAME:
-			case VariablePackage.INT_VARIABLE__VALUE:
+			case VariablePackage.SET_VARIABLE_ACTION__VALUE:
+			case VariablePackage.SET_VARIABLE_ACTION__VARIABLE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

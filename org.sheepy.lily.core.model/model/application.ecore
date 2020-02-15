@@ -62,11 +62,16 @@
         eType="ecore:EClass resource.ecore#//IImage"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ScreenEffect" eSuperTypes="types.ecore#//LNamedElement #//IScenePart">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
-        eType="ecore:EClass variable.ecore#//IModelVariable"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="srcImage" eType="ecore:EClass resource.ecore#//IImage"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dstImage" lowerBound="1"
         eType="ecore:EClass resource.ecore#//IImage"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="shader" eType="ecore:EClass resource.ecore#//FileResource"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="effect" eType="#//SpecialEffect"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SpecialEffect" eSuperTypes="types.ecore#//LNamedElement resource.ecore#//IResource">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="shader" eType="ecore:EClass resource.ecore#//FileResource"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
+        eType="ecore:EClass variable.ecore#//IModelVariable"/>
   </eClassifiers>
 </ecore:EPackage>

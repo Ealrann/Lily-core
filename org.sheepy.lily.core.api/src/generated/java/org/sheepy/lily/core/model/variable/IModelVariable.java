@@ -2,7 +2,7 @@
  */
 package org.sheepy.lily.core.model.variable;
 
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.model.types.LNamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -11,10 +11,9 @@ import org.sheepy.lily.core.api.adapter.ILilyEObject;
  *
  *
  * @see org.sheepy.lily.core.model.variable.VariablePackage#getIModelVariable()
- * @model
- * @extends ILilyEObject
+ * @model interface="true" abstract="true"
  * @generated
  */
-public interface IModelVariable extends ILilyEObject
+public interface IModelVariable extends LNamedElement
 {
 } // IModelVariable

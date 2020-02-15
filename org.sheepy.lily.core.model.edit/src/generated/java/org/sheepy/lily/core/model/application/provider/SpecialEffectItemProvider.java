@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.variable.provider;
+package org.sheepy.lily.core.model.application.provider;
 
 
 import java.util.Collection;
@@ -10,6 +10,8 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -22,17 +24,26 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.sheepy.lily.core.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.application.SpecialEffect;
+
+import org.sheepy.lily.core.model.resource.ResourceFactory;
 import org.sheepy.lily.core.model.types.TypesPackage;
-import org.sheepy.lily.core.model.variable.IntVariable;
-import org.sheepy.lily.core.model.variable.VariablePackage;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.lily.core.model.variable.IntVariable} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.application.SpecialEffect} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class IntVariableItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource
+public class SpecialEffectItemProvider 
+	extends ItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -40,7 +51,7 @@ public class IntVariableItemProvider extends ItemProviderAdapter implements IEdi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IntVariableItemProvider(AdapterFactory adapterFactory)
+	public SpecialEffectItemProvider(AdapterFactory adapterFactory)
 	{
 		super(adapterFactory);
 	}
@@ -59,7 +70,7 @@ public class IntVariableItemProvider extends ItemProviderAdapter implements IEdi
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
-			addValuePropertyDescriptor(object);
+			addInputsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -88,30 +99,63 @@ public class IntVariableItemProvider extends ItemProviderAdapter implements IEdi
 	}
 
 	/**
-	 * This adds a property descriptor for the Value feature.
+	 * This adds a property descriptor for the Inputs feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addValuePropertyDescriptor(Object object)
+	protected void addInputsPropertyDescriptor(Object object)
 	{
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_IntVariable_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_IntVariable_value_feature", "_UI_IntVariable_type"),
-				 VariablePackage.Literals.INT_VARIABLE__VALUE,
+				 getString("_UI_SpecialEffect_inputs_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_SpecialEffect_inputs_feature", "_UI_SpecialEffect_type"),
+				 ApplicationPackage.Literals.SPECIAL_EFFECT__INPUTS,
 				 true,
 				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
 
 	/**
-	 * This returns IntVariable.gif.
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object)
+	{
+		if (childrenFeatures == null)
+		{
+			super.getChildrenFeatures(object);
+			childrenFeatures.add(ApplicationPackage.Literals.SPECIAL_EFFECT__SHADER);
+		}
+		return childrenFeatures;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child)
+	{
+		// Check the type of the specified child object and return the proper feature to use for
+		// adding (see {@link AddCommand}) it as a child.
+
+		return super.getChildFeature(object, child);
+	}
+
+	/**
+	 * This returns SpecialEffect.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -119,7 +163,7 @@ public class IntVariableItemProvider extends ItemProviderAdapter implements IEdi
 	@Override
 	public Object getImage(Object object)
 	{
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/IntVariable"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/SpecialEffect"));
 	}
 
 	/**
@@ -131,10 +175,10 @@ public class IntVariableItemProvider extends ItemProviderAdapter implements IEdi
 	@Override
 	public String getText(Object object)
 	{
-		String label = ((IntVariable)object).getName();
+		String label = ((SpecialEffect)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_IntVariable_type") :
-			getString("_UI_IntVariable_type") + " " + label;
+			getString("_UI_SpecialEffect_type") :
+			getString("_UI_SpecialEffect_type") + " " + label;
 	}
 
 
@@ -150,11 +194,13 @@ public class IntVariableItemProvider extends ItemProviderAdapter implements IEdi
 	{
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(IntVariable.class))
+		switch (notification.getFeatureID(SpecialEffect.class))
 		{
-			case VariablePackage.INT_VARIABLE__NAME:
-			case VariablePackage.INT_VARIABLE__VALUE:
+			case ApplicationPackage.SPECIAL_EFFECT__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case ApplicationPackage.SPECIAL_EFFECT__SHADER:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -171,6 +217,21 @@ public class IntVariableItemProvider extends ItemProviderAdapter implements IEdi
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ApplicationPackage.Literals.SPECIAL_EFFECT__SHADER,
+				 ResourceFactory.eINSTANCE.createLocalResource()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ApplicationPackage.Literals.SPECIAL_EFFECT__SHADER,
+				 ResourceFactory.eINSTANCE.createModuleResource()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ApplicationPackage.Literals.SPECIAL_EFFECT__SHADER,
+				 ResourceFactory.eINSTANCE.createStringModuleResource()));
 	}
 
 	/**
