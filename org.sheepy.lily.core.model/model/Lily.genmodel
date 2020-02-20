@@ -231,6 +231,10 @@
       <genEnumLiterals ecoreEnumLiteral="types.ecore#//ENumberComparisonType/Inf"/>
       <genEnumLiterals ecoreEnumLiteral="types.ecore#//ENumberComparisonType/Sup"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="types.ecore#//ERelative">
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//ERelative/HORIZONTAL"/>
+      <genEnumLiterals ecoreEnumLiteral="types.ecore#//ERelative/VERTICAL"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="types.ecore#//EVerticalRelative">
       <genEnumLiterals ecoreEnumLiteral="types.ecore#//EVerticalRelative/BOTTOM"/>
       <genEnumLiterals ecoreEnumLiteral="types.ecore#//EVerticalRelative/MIDDLE"/>

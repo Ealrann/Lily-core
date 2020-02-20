@@ -424,6 +424,16 @@ public interface TypesPackage extends EPackage
 	int ENUMBER_COMPARISON_TYPE = 12;
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.types.ERelative <em>ERelative</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.types.ERelative
+	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getERelative()
+	 * @generated
+	 */
+	int ERELATIVE = 13;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.types.EVerticalRelative <em>EVertical Relative</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -431,7 +441,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getEVerticalRelative()
 	 * @generated
 	 */
-	int EVERTICAL_RELATIVE = 13;
+	int EVERTICAL_RELATIVE = 14;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.types.EHorizontalRelative <em>EHorizontal Relative</em>}' enum.
@@ -441,7 +451,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getEHorizontalRelative()
 	 * @generated
 	 */
-	int EHORIZONTAL_RELATIVE = 14;
+	int EHORIZONTAL_RELATIVE = 15;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.types.EMouseButton <em>EMouse Button</em>}' enum.
@@ -451,7 +461,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getEMouseButton()
 	 * @generated
 	 */
-	int EMOUSE_BUTTON = 15;
+	int EMOUSE_BUTTON = 16;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.types.EKeyState <em>EKey State</em>}' enum.
@@ -461,7 +471,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getEKeyState()
 	 * @generated
 	 */
-	int EKEY_STATE = 16;
+	int EKEY_STATE = 17;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.types.ECharTable <em>EChar Table</em>}' enum.
@@ -471,7 +481,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getECharTable()
 	 * @generated
 	 */
-	int ECHAR_TABLE = 17;
+	int ECHAR_TABLE = 18;
 
 	/**
 	 * The meta object id for the '<em>Vector4d</em>' data type.
@@ -481,7 +491,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector4d()
 	 * @generated
 	 */
-	int VECTOR4D = 18;
+	int VECTOR4D = 19;
 
 	/**
 	 * The meta object id for the '<em>Vector4f</em>' data type.
@@ -491,7 +501,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector4f()
 	 * @generated
 	 */
-	int VECTOR4F = 19;
+	int VECTOR4F = 20;
 
 	/**
 	 * The meta object id for the '<em>Vector4i</em>' data type.
@@ -501,7 +511,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector4i()
 	 * @generated
 	 */
-	int VECTOR4I = 20;
+	int VECTOR4I = 21;
 
 	/**
 	 * The meta object id for the '<em>Color4f</em>' data type.
@@ -511,7 +521,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getColor4f()
 	 * @generated
 	 */
-	int COLOR4F = 21;
+	int COLOR4F = 22;
 
 	/**
 	 * The meta object id for the '<em>Color3f</em>' data type.
@@ -521,7 +531,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getColor3f()
 	 * @generated
 	 */
-	int COLOR3F = 22;
+	int COLOR3F = 23;
 
 	/**
 	 * The meta object id for the '<em>Vector3d</em>' data type.
@@ -531,7 +541,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3d()
 	 * @generated
 	 */
-	int VECTOR3D = 23;
+	int VECTOR3D = 24;
 
 	/**
 	 * The meta object id for the '<em>Vector3f</em>' data type.
@@ -541,7 +551,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3f()
 	 * @generated
 	 */
-	int VECTOR3F = 24;
+	int VECTOR3F = 25;
 
 	/**
 	 * The meta object id for the '<em>Vector3i</em>' data type.
@@ -551,7 +561,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector3i()
 	 * @generated
 	 */
-	int VECTOR3I = 25;
+	int VECTOR3I = 26;
 
 	/**
 	 * The meta object id for the '<em>Vector2f</em>' data type.
@@ -561,7 +571,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2f()
 	 * @generated
 	 */
-	int VECTOR2F = 26;
+	int VECTOR2F = 27;
 
 	/**
 	 * The meta object id for the '<em>Vector2i</em>' data type.
@@ -571,7 +581,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2i()
 	 * @generated
 	 */
-	int VECTOR2I = 27;
+	int VECTOR2I = 28;
 
 	/**
 	 * The meta object id for the '<em>Vector2d</em>' data type.
@@ -581,7 +591,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getVector2d()
 	 * @generated
 	 */
-	int VECTOR2D = 28;
+	int VECTOR2D = 29;
 
 	/**
 	 * The meta object id for the '<em>Java Module</em>' data type.
@@ -591,7 +601,7 @@ public interface TypesPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getJavaModule()
 	 * @generated
 	 */
-	int JAVA_MODULE = 29;
+	int JAVA_MODULE = 30;
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.types.LNamedElement <em>LNamed Element</em>}'.
@@ -826,6 +836,16 @@ public interface TypesPackage extends EPackage
 	 * @generated
 	 */
 	EEnum getENumberComparisonType();
+
+	/**
+	 * Returns the meta object for enum '{@link org.sheepy.lily.core.model.types.ERelative <em>ERelative</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>ERelative</em>'.
+	 * @see org.sheepy.lily.core.model.types.ERelative
+	 * @generated
+	 */
+	EEnum getERelative();
 
 	/**
 	 * Returns the meta object for enum '{@link org.sheepy.lily.core.model.types.EVerticalRelative <em>EVertical Relative</em>}'.
@@ -1242,6 +1262,16 @@ public interface TypesPackage extends EPackage
 		 * @generated
 		 */
 		EEnum ENUMBER_COMPARISON_TYPE = eINSTANCE.getENumberComparisonType();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.types.ERelative <em>ERelative</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.types.ERelative
+		 * @see org.sheepy.lily.core.model.types.impl.TypesPackageImpl#getERelative()
+		 * @generated
+		 */
+		EEnum ERELATIVE = eINSTANCE.getERelative();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.types.EVerticalRelative <em>EVertical Relative</em>}' enum.

@@ -151,6 +151,10 @@
     <eLiterals name="Inf"/>
     <eLiterals name="Sup"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ERelative">
+    <eLiterals name="HORIZONTAL"/>
+    <eLiterals name="VERTICAL" value="1"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="EVerticalRelative">
     <eLiterals name="BOTTOM"/>
     <eLiterals name="MIDDLE"/>

@@ -112,6 +112,8 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				return createETimeUnitFromString(eDataType, initialValue);
 			case TypesPackage.ENUMBER_COMPARISON_TYPE:
 				return createENumberComparisonTypeFromString(eDataType, initialValue);
+			case TypesPackage.ERELATIVE:
+				return createERelativeFromString(eDataType, initialValue);
 			case TypesPackage.EVERTICAL_RELATIVE:
 				return createEVerticalRelativeFromString(eDataType, initialValue);
 			case TypesPackage.EHORIZONTAL_RELATIVE:
@@ -171,6 +173,8 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 				return convertETimeUnitToString(eDataType, instanceValue);
 			case TypesPackage.ENUMBER_COMPARISON_TYPE:
 				return convertENumberComparisonTypeToString(eDataType, instanceValue);
+			case TypesPackage.ERELATIVE:
+				return convertERelativeToString(eDataType, instanceValue);
 			case TypesPackage.EVERTICAL_RELATIVE:
 				return convertEVerticalRelativeToString(eDataType, instanceValue);
 			case TypesPackage.EHORIZONTAL_RELATIVE:
@@ -352,6 +356,28 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	 * @generated
 	 */
 	public String convertENumberComparisonTypeToString(EDataType eDataType, Object instanceValue)
+	{
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ERelative createERelativeFromString(EDataType eDataType, String initialValue)
+	{
+		ERelative result = ERelative.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertERelativeToString(EDataType eDataType, Object instanceValue)
 	{
 		return instanceValue == null ? null : instanceValue.toString();
 	}

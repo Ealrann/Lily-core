@@ -54,6 +54,7 @@ import org.sheepy.lily.core.model.types.EMouseButton;
 import org.sheepy.lily.core.model.types.EMoveState;
 import org.sheepy.lily.core.model.types.ENotificationDirection;
 import org.sheepy.lily.core.model.types.ENumberComparisonType;
+import org.sheepy.lily.core.model.types.ERelative;
 import org.sheepy.lily.core.model.types.ETimeUnit;
 import org.sheepy.lily.core.model.types.EVerticalRelative;
 import org.sheepy.lily.core.model.types.FloatParameter;
@@ -172,6 +173,13 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	private EEnum eNumberComparisonTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum eRelativeEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -652,6 +660,17 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 	 * @generated
 	 */
 	@Override
+	public EEnum getERelative()
+	{
+		return eRelativeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getEVerticalRelative()
 	{
 		return eVerticalRelativeEEnum;
@@ -896,6 +915,7 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		eDirectionEEnum = createEEnum(EDIRECTION);
 		eTimeUnitEEnum = createEEnum(ETIME_UNIT);
 		eNumberComparisonTypeEEnum = createEEnum(ENUMBER_COMPARISON_TYPE);
+		eRelativeEEnum = createEEnum(ERELATIVE);
 		eVerticalRelativeEEnum = createEEnum(EVERTICAL_RELATIVE);
 		eHorizontalRelativeEEnum = createEEnum(EHORIZONTAL_RELATIVE);
 		eMouseButtonEEnum = createEEnum(EMOUSE_BUTTON);
@@ -1030,6 +1050,10 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		addEEnumLiteral(eNumberComparisonTypeEEnum, ENumberComparisonType.SUP_OR_EQUAL);
 		addEEnumLiteral(eNumberComparisonTypeEEnum, ENumberComparisonType.INF);
 		addEEnumLiteral(eNumberComparisonTypeEEnum, ENumberComparisonType.SUP);
+
+		initEEnum(eRelativeEEnum, ERelative.class, "ERelative");
+		addEEnumLiteral(eRelativeEEnum, ERelative.HORIZONTAL);
+		addEEnumLiteral(eRelativeEEnum, ERelative.VERTICAL);
 
 		initEEnum(eVerticalRelativeEEnum, EVerticalRelative.class, "EVerticalRelative");
 		addEEnumLiteral(eVerticalRelativeEEnum, EVerticalRelative.BOTTOM);
