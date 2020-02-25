@@ -92,13 +92,13 @@ public class Cadencer implements ICadencer
 
 		for (final var engine : application.getEngines())
 		{
-			final var engineAdapter = engine.adaptNotNull(IEngineAdapter.class);
-			engineAdapter.start();
+			final var engineAdapter = engine.adapt(IEngineAdapter.class);
+			if (engineAdapter != null) engineAdapter.start();
 		}
 
 		for (final var engine : application.getEngines())
 		{
-			var adapter = engine.adapt(IInputEngineAdapter.class);
+			final var adapter = engine.adapt(IInputEngineAdapter.class);
 			if (adapter != null)
 			{
 				inputManager = adapter.getInputManager();
@@ -134,8 +134,8 @@ public class Cadencer implements ICadencer
 			final long d = System.nanoTime();
 			for (final var engine : application.getEngines())
 			{
-				final var engineAdapter = engine.adaptNotNull(IEngineAdapter.class);
-				engineAdapter.step();
+				final var engineAdapter = engine.adapt(IEngineAdapter.class);
+				if (engineAdapter != null) engineAdapter.step();
 			}
 
 			if (stepper != null)
@@ -157,8 +157,8 @@ public class Cadencer implements ICadencer
 
 		for (final var engine : application.getEngines())
 		{
-			final var engineAdapter = engine.adaptNotNull(IEngineAdapter.class);
-			engineAdapter.stop();
+			final var engineAdapter = engine.adapt(IEngineAdapter.class);
+			if (engineAdapter != null) engineAdapter.stop();
 		}
 
 		((LilyEObject) application).disposeAdapterManager();

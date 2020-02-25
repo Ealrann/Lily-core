@@ -1,24 +1,19 @@
 package org.sheepy.lily.core.adapter.impl;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Parameter;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.reflect.ConstructorHandle;
 import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
 import org.sheepy.lily.core.adapter.reflect.ExecutionHandle.Builder;
 import org.sheepy.lily.core.api.adapter.IAdapter;
-import org.sheepy.lily.core.api.adapter.annotation.Adapter;
-import org.sheepy.lily.core.api.adapter.annotation.Dispose;
-import org.sheepy.lily.core.api.adapter.annotation.Load;
-import org.sheepy.lily.core.api.adapter.annotation.NotifyChanged;
-import org.sheepy.lily.core.api.adapter.annotation.Statefull;
-import org.sheepy.lily.core.api.adapter.annotation.Tick;
+import org.sheepy.lily.core.api.adapter.annotation.*;
 import org.sheepy.lily.core.api.cadence.ETickerClock;
 import org.sheepy.lily.core.api.util.ReflectUtils;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Parameter;
+import java.util.ArrayList;
+import java.util.List;
 
 public final class AdapterInfo<T extends IAdapter>
 {
@@ -79,10 +74,7 @@ public final class AdapterInfo<T extends IAdapter>
 			final var clock = tickAnnotation.clock();
 			final var tickHandleBuilder = ExecutionHandle.Builder.fromMethod(tickMethod.method);
 
-			final var handler = new TickConfiguration(	tickHandleBuilder,
-														tickFrequency,
-														tickPriority,
-														clock);
+			final var handler = new TickConfiguration(tickHandleBuilder, tickFrequency, tickPriority, clock);
 			res.add(handler);
 		}
 		return res;
@@ -112,8 +104,8 @@ public final class AdapterInfo<T extends IAdapter>
 		return (double) frequency / frequencyRef.toSeconds(1);
 	}
 
-	private static List<ExecutionHandle.Builder> createHandleBuilders(	Class<?> type,
-																		Class<? extends Annotation> annotationClass)
+	private static List<ExecutionHandle.Builder> createHandleBuilders(Class<?> type,
+																	  Class<? extends Annotation> annotationClass)
 	{
 		final List<ExecutionHandle.Builder> res = new ArrayList<>();
 		final var annotatedMethods = ReflectUtils.gatherAnnotatedMethods(type, annotationClass);
@@ -133,8 +125,7 @@ public final class AdapterInfo<T extends IAdapter>
 	{
 		Constructor<T> res = null;
 
-		@SuppressWarnings("unchecked")
-		final var constructors = (Constructor<T>[]) domain.type.getDeclaredConstructors();
+		@SuppressWarnings("unchecked") final var constructors = (Constructor<T>[]) domain.type.getDeclaredConstructors();
 		final var applicableClass = domain.targetClassifier.getInstanceClass();
 
 		for (final var constructor : constructors)
@@ -170,15 +161,17 @@ public final class AdapterInfo<T extends IAdapter>
 		{
 			constructorNotFoundError();
 		}
+		else
+		{
+			res.setAccessible(true);
+		}
 
-		res.setAccessible(true);
 		return res;
 	}
 
 	private void constructorNotFoundError()
 	{
-		final String message = "The class [%s] should define a public constructor with no paramters, "
-				+ "or (if statefull), a constructor with one parameter, typed with the applicable class";
+		final String message = "The class [%s] should define a public constructor with no paramters, " + "or (if statefull), a constructor with one parameter, typed with the applicable class";
 		final String errorMessage = String.format(message, domain.type.getSimpleName());
 		throw new IllegalStateException(errorMessage);
 	}
@@ -194,24 +187,19 @@ public final class AdapterInfo<T extends IAdapter>
 
 	public T create(EObject target)
 	{
-		T res;
 		if (isSingleton == true)
 		{
-			res = singleton;
+			return singleton;
 		}
 		else
 		{
-			res = constructorHandle.newInstance(target);
+			return constructorHandle.newInstance(target);
 		}
-
-		return res;
 	}
 
 	public boolean isAutoAdapter()
 	{
-		return tickConfigurations.isEmpty() == false
-				|| lazy == false
-				|| (isSingleton && notifyConfigurations.isEmpty() == false);
+		return tickConfigurations.isEmpty() == false || lazy == false || (isSingleton && notifyConfigurations.isEmpty() == false);
 	}
 
 	public static final class NotifyConfiguration
@@ -233,10 +221,10 @@ public final class AdapterInfo<T extends IAdapter>
 		public final Integer tickPriority;
 		public final ETickerClock clock;
 
-		public TickConfiguration(	ExecutionHandle.Builder tickHandleBuilder,
-									Double tickFrequency,
-									Integer tickPriority,
-									ETickerClock clock)
+		public TickConfiguration(ExecutionHandle.Builder tickHandleBuilder,
+								 Double tickFrequency,
+								 Integer tickPriority,
+								 ETickerClock clock)
 		{
 			this.tickHandleBuilder = tickHandleBuilder;
 			this.tickFrequency = tickFrequency;

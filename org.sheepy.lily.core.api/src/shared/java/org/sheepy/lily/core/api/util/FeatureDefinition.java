@@ -20,11 +20,22 @@ public final class FeatureDefinition extends FeatureData
 			ePackage = EPackage.Registry.INSTANCE.getEPackage(nsURI);
 			eClass = (EClass) ePackage.getEClassifier(className);
 			feature = eClass.getEStructuralFeature(featureName);
-		} catch (final Exception e)
+
+			if (feature == null)
+			{
+				logError(def);
+			}
+		}
+		catch (final Exception e)
 		{
-			System.err.println("Cannot resolve the feature ref [" + def + "]");
+			logError(def);
 			e.printStackTrace();
 		}
+	}
+
+	private static void logError(final String def)
+	{
+		System.err.println("Cannot resolve the feature ref [" + def + "]");
 	}
 
 	public boolean match(Notification notification)

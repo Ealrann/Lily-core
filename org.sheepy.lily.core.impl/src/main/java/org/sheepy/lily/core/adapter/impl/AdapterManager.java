@@ -1,14 +1,14 @@
 package org.sheepy.lily.core.adapter.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.IAdapterManager;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.api.notification.INotificationListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public final class AdapterManager implements IAdapterManager
 {
@@ -41,48 +41,47 @@ public final class AdapterManager implements IAdapterManager
 	@Override
 	public <T extends IAdapter> T adapt(Class<T> type)
 	{
-		T res = findAdapter(type);
+		final T res = findAdapter(type);
 
-		if (res == null)
+		if (res != null)
 		{
-			res = createAdapter(type);
+			return res;
 		}
-
-		return res;
+		else
+		{
+			return createAdapter(type);
+		}
 	}
 
 	private <T extends IAdapter> T findAdapter(Class<T> type)
 	{
-		T res = null;
 		for (int i = 0; i < adapterHandles.size(); i++)
 		{
 			final var adapterHandle = adapterHandles.get(i);
 			if (adapterHandle.domain.isAdapterForType(type))
 			{
-				res = type.cast(adapterHandle.adapter);
-				break;
+				return type.cast(adapterHandle.adapter);
 			}
 		}
-		return res;
+		return null;
 	}
 
 	private <T extends IAdapter> T createAdapter(Class<T> type)
 	{
-		T res = null;
-
 		final var handle = deployer.createAdapter(type);
-
 		if (handle != null)
 		{
-			res = handle.adapter;
 			adapterHandles.add(handle);
 			if (loaded)
 			{
 				loadHandles(handle);
 			}
+			return handle.adapter;
 		}
-
-		return res;
+		else
+		{
+			return null;
+		}
 	}
 
 	@Override
