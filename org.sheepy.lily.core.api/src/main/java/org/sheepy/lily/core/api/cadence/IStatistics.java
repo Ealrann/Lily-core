@@ -16,5 +16,5 @@ public interface IStatistics extends IService
 
 	IStatistics INSTANCE = ServiceLoader.load(IStatistics.class)
 										.findFirst()
-										.get();
+										.orElse(null);
 }

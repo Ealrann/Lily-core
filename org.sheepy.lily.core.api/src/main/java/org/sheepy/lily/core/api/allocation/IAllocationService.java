@@ -9,5 +9,5 @@ public interface IAllocationService
 																	 IAllocable<T> allocable,
 																	 T context);
 
-	IAllocationService INSTANCE = ServiceLoader.load(IAllocationService.class).findFirst().get();
+	IAllocationService INSTANCE = ServiceLoader.load(IAllocationService.class).findFirst().orElse(null);
 }
