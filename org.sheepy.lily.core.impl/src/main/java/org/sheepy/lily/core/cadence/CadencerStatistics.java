@@ -1,10 +1,10 @@
 package org.sheepy.lily.core.cadence;
 
+import org.sheepy.lily.core.api.cadence.IStatistics;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import org.sheepy.lily.core.api.cadence.IStatistics;
 
 public class CadencerStatistics implements IStatistics
 {
@@ -52,12 +52,11 @@ public class CadencerStatistics implements IStatistics
 	@Override
 	public void printTimes()
 	{
-		System.out.println("===============================================");
+		System.out.println("===========================================================================");
 		System.out.println("Tickers times :");
-
-		System.out.format("                Name                 | Avg (ms) | Max (ms) | Total (ms)\n");
-		System.out.format("-----------------------------------------------------------------------\n");
-		final String messagePattern = "%-36s | %8.1f | %8.1f | %8.1f\n";
+		System.out.format("                   Name                    | Avg (ms) | Max (ms) | Total (ms)\n");
+		System.out.format("-----------------------------------------------------------------------------\n");
+		final String messagePattern = "%-42s | %8.1f | %8.1f | %8.1f\n";
 
 		for (final var accu : accumulatorsTime.values())
 		{
@@ -67,7 +66,7 @@ public class CadencerStatistics implements IStatistics
 			}
 		}
 
-		System.out.println("===============================================");
+		System.out.println("===========================================================================");
 	}
 
 	private void printTimes(final String message, AccumulatorTime accu, int depth)
