@@ -5,20 +5,23 @@ import org.sheepy.lily.core.api.adapter.annotation.Load;
 import org.sheepy.lily.core.api.adapter.annotation.Statefull;
 import org.sheepy.lily.core.api.adapter.annotation.Tick;
 import org.sheepy.lily.core.api.notification.Notifier;
-import org.sheepy.lily.core.api.notification.impl.IntNotification;
 import org.sheepy.lily.core.api.variable.IDurationVariableAdapter;
+import org.sheepy.lily.core.api.variable.IModelVariableAdapter;
 import org.sheepy.lily.core.model.variable.DurationVariable;
+
+import java.nio.ByteBuffer;
 
 @Statefull
 @Adapter(scope = DurationVariable.class, lazy = false)
-public final class DurationVariableAdapter extends Notifier implements IDurationVariableAdapter
+public final class DurationVariableAdapter extends Notifier<IModelVariableAdapter.Features> implements
+																							IDurationVariableAdapter
 {
 	private long startMs = 0;
 	private int durationMs = 0;
 
 	private DurationVariableAdapter()
 	{
-		super(Features.values().length);
+		super(IModelVariableAdapter.Features.values().length);
 	}
 
 	@Load
@@ -30,23 +33,22 @@ public final class DurationVariableAdapter extends Notifier implements IDuration
 	@Tick
 	private void tick()
 	{
-		final int oldDuration = durationMs;
 		durationMs = (int) (System.currentTimeMillis() - startMs);
-		fireNotification(new IntNotification(this, Features.Value, oldDuration, durationMs));
+		notify(IModelVariableAdapter.Features.Value, durationMs);
 	}
 
 	@Override
-	public void setValue(final String value)
+	public void getValue(final DurationVariable variable, final ByteBuffer buffer)
+	{
+		buffer.putInt(durationMs);
+	}
+
+	@Override
+	public void setValue(final DurationVariable variable, final String value)
 	{
 		resetDuration();
 		durationMs = Integer.parseInt(value);
 		startMs -= durationMs;
-	}
-
-	@Override
-	public int intValue(final DurationVariable variable)
-	{
-		return durationMs;
 	}
 
 	@Override
@@ -59,11 +61,5 @@ public final class DurationVariableAdapter extends Notifier implements IDuration
 	public int bytes()
 	{
 		return Integer.BYTES;
-	}
-
-	@Override
-	public Type type()
-	{
-		return Type.Int;
 	}
 }

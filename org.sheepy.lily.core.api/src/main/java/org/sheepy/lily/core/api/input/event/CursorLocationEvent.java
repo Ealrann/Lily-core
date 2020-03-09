@@ -3,18 +3,20 @@ package org.sheepy.lily.core.api.input.event;
 import org.sheepy.lily.core.api.input.IInputManager;
 import org.sheepy.lily.core.api.notification.INotifier;
 
-public class CharEvent implements IInputEvent
+public class CursorLocationEvent implements IInputEvent
 {
-	public final int codepoint;
+	public final float x;
+	public final float y;
 
-	public CharEvent(int codepoint)
+	public CursorLocationEvent(float x, float y)
 	{
-		this.codepoint = codepoint;
+		this.x = x;
+		this.y = y;
 	}
 
 	@Override
 	public void notify(final INotifier.Internal<IInputFeature> notifier)
 	{
-		notifier.notify(IInputManager.Features.CharEvent, this);
+		notifier.notify(IInputManager.Features.CursorLocationEvent, this);
 	}
 }

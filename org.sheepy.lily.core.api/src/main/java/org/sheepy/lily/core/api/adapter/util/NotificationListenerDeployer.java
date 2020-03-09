@@ -1,34 +1,43 @@
 package org.sheepy.lily.core.api.adapter.util;
 
-import java.util.List;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.notification.INotificationListener;
-import org.sheepy.lily.core.api.notification.util.AbstractModelSetRegistry;
+import org.sheepy.lily.core.api.notification.util.ModelStructureObserver;
 
-public class NotificationListenerDeployer extends AbstractModelSetRegistry
+import java.util.List;
+
+public final class NotificationListenerDeployer
 {
 	private final INotificationListener listener;
 	private final int[] featuresToListen;
+	private final ModelStructureObserver structureObserver;
 
 	public NotificationListenerDeployer(List<EStructuralFeature> structure,
 										INotificationListener listener,
 										int... featuresToListen)
 	{
-		super(structure);
+		structureObserver = new ModelStructureObserver(structure, this::add, this::remove);
 		this.listener = listener;
 		this.featuresToListen = featuresToListen;
 	}
 
-	@Override
-	protected void add(ILilyEObject newValue)
+	public void startDeploy(ILilyEObject root)
+	{
+		structureObserver.startObserve(root);
+	}
+
+	public void stopDeploy(ILilyEObject root)
+	{
+		structureObserver.stopObserve(root);
+	}
+
+	private void add(ILilyEObject newValue)
 	{
 		newValue.addListener(listener, featuresToListen);
 	}
 
-	@Override
-	protected void remove(ILilyEObject oldValue)
+	private void remove(ILilyEObject oldValue)
 	{
 		oldValue.removeListener(listener, featuresToListen);
 	}

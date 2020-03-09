@@ -514,6 +514,43 @@ public interface VariablePackage extends EPackage
 	int IMODEL_VARIABLE_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.ModelVariablePkgImpl <em>Model Variable Pkg</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.variable.impl.ModelVariablePkgImpl
+	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getModelVariablePkg()
+	 * @generated
+	 */
+	int MODEL_VARIABLE_PKG = 11;
+
+	/**
+	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_VARIABLE_PKG__VARIABLES = 0;
+
+	/**
+	 * The number of structural features of the '<em>Model Variable Pkg</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_VARIABLE_PKG_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Model Variable Pkg</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_VARIABLE_PKG_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.IntVariableImpl <em>Int Variable</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -521,7 +558,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getIntVariable()
 	 * @generated
 	 */
-	int INT_VARIABLE = 11;
+	int INT_VARIABLE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -567,7 +604,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getDurationVariable()
 	 * @generated
 	 */
-	int DURATION_VARIABLE = 12;
+	int DURATION_VARIABLE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -604,7 +641,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getIModelVariableAction()
 	 * @generated
 	 */
-	int IMODEL_VARIABLE_ACTION = 13;
+	int IMODEL_VARIABLE_ACTION = 14;
 
 	/**
 	 * The number of structural features of the '<em>IModel Variable Action</em>' class.
@@ -632,7 +669,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getIModelVariableActionContainer()
 	 * @generated
 	 */
-	int IMODEL_VARIABLE_ACTION_CONTAINER = 14;
+	int IMODEL_VARIABLE_ACTION_CONTAINER = 15;
 
 	/**
 	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
@@ -669,7 +706,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getSetVariableAction()
 	 * @generated
 	 */
-	int SET_VARIABLE_ACTION = 15;
+	int SET_VARIABLE_ACTION = 16;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -715,7 +752,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getLResolvedVariableFeature()
 	 * @generated
 	 */
-	int LRESOLVED_VARIABLE_FEATURE = 16;
+	int LRESOLVED_VARIABLE_FEATURE = 17;
 
 	/**
 	 * The meta object id for the '<em>Definition</em>' data type.
@@ -725,7 +762,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getVariableDefinition()
 	 * @generated
 	 */
-	int VARIABLE_DEFINITION = 17;
+	int VARIABLE_DEFINITION = 18;
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.IVariableResolver <em>IVariable Resolver</em>}'.
@@ -913,6 +950,27 @@ public interface VariablePackage extends EPackage
 	 * @generated
 	 */
 	EClass getIModelVariable();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.ModelVariablePkg <em>Model Variable Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Model Variable Pkg</em>'.
+	 * @see org.sheepy.lily.core.model.variable.ModelVariablePkg
+	 * @generated
+	 */
+	EClass getModelVariablePkg();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.variable.ModelVariablePkg#getVariables <em>Variables</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Variables</em>'.
+	 * @see org.sheepy.lily.core.model.variable.ModelVariablePkg#getVariables()
+	 * @see #getModelVariablePkg()
+	 * @generated
+	 */
+	EReference getModelVariablePkg_Variables();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.IntVariable <em>Int Variable</em>}'.
@@ -1219,6 +1277,24 @@ public interface VariablePackage extends EPackage
 		 * @generated
 		 */
 		EClass IMODEL_VARIABLE = eINSTANCE.getIModelVariable();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.impl.ModelVariablePkgImpl <em>Model Variable Pkg</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.variable.impl.ModelVariablePkgImpl
+		 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getModelVariablePkg()
+		 * @generated
+		 */
+		EClass MODEL_VARIABLE_PKG = eINSTANCE.getModelVariablePkg();
+
+		/**
+		 * The meta object literal for the '<em><b>Variables</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODEL_VARIABLE_PKG__VARIABLES = eINSTANCE.getModelVariablePkg_Variables();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.impl.IntVariableImpl <em>Int Variable</em>}' class.

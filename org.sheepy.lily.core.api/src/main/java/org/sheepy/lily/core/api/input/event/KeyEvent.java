@@ -1,6 +1,7 @@
 package org.sheepy.lily.core.api.input.event;
 
-import org.sheepy.lily.core.api.input.IInputManager.IInputListener;
+import org.sheepy.lily.core.api.input.IInputManager;
+import org.sheepy.lily.core.api.notification.INotifier;
 import org.sheepy.lily.core.model.types.EKeyState;
 
 public class KeyEvent implements IInputEvent
@@ -17,8 +18,8 @@ public class KeyEvent implements IInputEvent
 	}
 
 	@Override
-	public void fireEvent(IInputListener listener)
+	public void notify(final INotifier.Internal<IInputFeature> notifier)
 	{
-		listener.onKeyEvent(this);
+		notifier.notify(IInputManager.Features.KeyEvent, this);
 	}
 }

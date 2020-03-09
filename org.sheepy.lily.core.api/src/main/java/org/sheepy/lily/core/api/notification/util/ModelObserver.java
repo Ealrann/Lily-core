@@ -17,6 +17,11 @@ public class ModelObserver
 
 	private boolean deliver = true;
 
+	public ModelObserver(INotificationListener listener, EStructuralFeature structuralFeature)
+	{
+		this(listener, List.of(structuralFeature));
+	}
+
 	public ModelObserver(INotificationListener listener, List<? extends EStructuralFeature> structuralFeatures)
 	{
 		this.listener = listener;

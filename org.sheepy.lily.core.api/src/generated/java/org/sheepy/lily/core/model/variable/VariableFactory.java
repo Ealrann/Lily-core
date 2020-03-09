@@ -77,6 +77,15 @@ public interface VariableFactory extends EFactory
 	VarChangeActionPkg createVarChangeActionPkg();
 
 	/**
+	 * Returns a new object of class '<em>Model Variable Pkg</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Model Variable Pkg</em>'.
+	 * @generated
+	 */
+	ModelVariablePkg createModelVariablePkg();
+
+	/**
 	 * Returns a new object of class '<em>Int Variable</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

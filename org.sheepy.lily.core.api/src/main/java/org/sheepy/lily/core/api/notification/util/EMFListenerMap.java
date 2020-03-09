@@ -1,24 +1,23 @@
 package org.sheepy.lily.core.api.notification.util;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.sheepy.lily.core.api.notification.INotificationListener;
 
-public class ListenerNotificationMap implements INotificationListener
+import java.util.ArrayList;
+import java.util.List;
+
+public class EMFListenerMap
 {
 	private final int featureCount;
 
 	private List<INotificationListener>[] notificationMap = null;
 
-	public ListenerNotificationMap(int featureCount)
+	public EMFListenerMap(int featureCount)
 	{
 		this.featureCount = featureCount;
 	}
 
-	@Override
-	public void notifyChanged(Notification notification)
+	public void fireNotification(Notification notification)
 	{
 		if (notificationMap != null)
 		{
@@ -75,8 +74,7 @@ public class ListenerNotificationMap implements INotificationListener
 		notificationMap = new List[featureCount];
 	}
 
-	private void registerNotificationListener(	final INotificationListener listener,
-												final Integer id)
+	private void registerNotificationListener(final INotificationListener listener, final int id)
 	{
 		var list = notificationMap[id];
 		if (list == null)

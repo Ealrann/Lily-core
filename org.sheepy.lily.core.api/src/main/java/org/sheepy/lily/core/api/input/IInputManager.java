@@ -1,48 +1,29 @@
 package org.sheepy.lily.core.api.input;
 
-import java.util.EventListener;
-
 import org.joml.Vector2fc;
-import org.sheepy.lily.core.api.input.event.CharEvent;
-import org.sheepy.lily.core.api.input.event.KeyEvent;
-import org.sheepy.lily.core.api.input.event.MouseButtonEvent;
-import org.sheepy.lily.core.api.input.event.MouseLocationEvent;
-import org.sheepy.lily.core.api.input.event.ScrollEvent;
+import org.sheepy.lily.core.api.input.event.*;
+import org.sheepy.lily.core.api.notification.INotifier;
 
-public interface IInputManager
+public interface IInputManager extends INotifier<IInputFeature>
 {
+	interface Features
+	{
+		int COUNT = 7;
+
+		IInputFeature.InputFeature<CharEvent> CharEvent = new IInputFeature.InputFeature<>(0);
+		IInputFeature.InputFeature<KeyEvent> KeyEvent = new IInputFeature.InputFeature<>(1);
+		IInputFeature.InputFeature<MouseClickEvent> MouseClickEvent = new IInputFeature.InputFeature<>(2);
+		IInputFeature.InputFeature<CursorLocationEvent> CursorLocationEvent = new IInputFeature.InputFeature<>(3);
+		IInputFeature.InputFeature<ScrollEvent> ScrollEvent = new IInputFeature.InputFeature<>(4);
+		IInputFeature.InputFeature<Boolean> MouseOverUIEvent = new IInputFeature.InputFeature<>(5);
+		IInputFeature.InputFeature<Void> AfterPollInputs = new IInputFeature.InputFeature<>(6);
+	}
+
 	void showCursor(boolean show);
 	boolean isMouseOnUI();
 
 	Vector2fc getCursorPosition();
 	void setCursorPosition(Vector2fc position);
 
-	void addListener(IInputListener listener);
-	void removeListener(IInputListener listener);
-
 	void pollInputs();
-
-	interface IInputListener extends EventListener
-	{
-		default void onCharEvent(CharEvent event)
-		{}
-
-		default void onKeyEvent(KeyEvent event)
-		{}
-
-		default void onMouseClickEvent(MouseButtonEvent event)
-		{}
-
-		default void onMouseLocationEvent(MouseLocationEvent event)
-		{}
-
-		default void onScrollEvent(ScrollEvent event)
-		{}
-
-		default void onMouseOverUI(boolean overUI)
-		{}
-		
-		default void afterPollInputs()
-		{}
-	}
 }

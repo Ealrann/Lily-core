@@ -1,11 +1,5 @@
 package org.sheepy.lily.core.adapter.impl;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
@@ -16,9 +10,15 @@ import org.sheepy.lily.core.api.adapter.IAdapterRegistry;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.api.notification.INotificationListener;
-import org.sheepy.lily.core.api.notification.util.ListenerNotificationMap;
+import org.sheepy.lily.core.api.notification.util.EMFListenerMap;
 import org.sheepy.lily.core.api.notification.util.NotificationUnifier;
 import org.sheepy.lily.core.api.util.ModelUtil;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public final class AdapterManagerDeployer extends AdapterImpl
 {
@@ -26,7 +26,7 @@ public final class AdapterManagerDeployer extends AdapterImpl
 	private static final String ADAPTER_CREATION_LOOP = "Adapter creation loop: ";
 
 	private final Deque<AdapterDescriptor<?>> constructingAdapters = new ArrayDeque<>();
-	private final ListenerNotificationMap notificationMap;
+	private final EMFListenerMap listenerMap;
 
 	private boolean constructing = false;
 	private boolean autoLoad = false;
@@ -36,7 +36,7 @@ public final class AdapterManagerDeployer extends AdapterImpl
 		setTarget(target);
 
 		final int featureCount = target.eClass().getEAllStructuralFeatures().size();
-		notificationMap = new ListenerNotificationMap(featureCount);
+		listenerMap = new EMFListenerMap(featureCount);
 
 		target.eAdapters().add(this);
 	}
@@ -50,16 +50,13 @@ public final class AdapterManagerDeployer extends AdapterImpl
 	public void buildAutoAdapters(List<AdapterHandle<?>> gatherIn)
 	{
 		final var autoAdapters = getDefinitions();
-		if (autoAdapters != null)
+		for (int i = 0; i < autoAdapters.size(); i++)
 		{
-			for (int i = 0; i < autoAdapters.size(); i++)
+			final var descriptor = autoAdapters.get(i);
+			if (descriptor.info.isAutoAdapter())
 			{
-				final var descriptor = autoAdapters.get(i);
-				if (descriptor.info.isAutoAdapter())
-				{
-					final var handle = createAdapter(descriptor);
-					gatherIn.add(handle);
-				}
+				final var handle = createAdapter(descriptor);
+				gatherIn.add(handle);
 			}
 		}
 	}
@@ -85,21 +82,21 @@ public final class AdapterManagerDeployer extends AdapterImpl
 
 	private void throwAdapterCreationLoopException() throws AssertionError
 	{
-		final var classLoop = constructingAdapters	.stream()
-													.map(n -> n.domain.type.getSimpleName())
-													.collect(Collectors.joining(", "));
+		final var classLoop = constructingAdapters.stream()
+												  .map(n -> n.domain.type.getSimpleName())
+												  .collect(Collectors.joining(", "));
 
 		throw new AssertionError(ADAPTER_CREATION_LOOP + classLoop);
 	}
 
 	public void addListener(INotificationListener listener, int... features)
 	{
-		notificationMap.addListener(listener, features);
+		listenerMap.addListener(listener, features);
 	}
 
 	public void removeListener(INotificationListener listener, int... features)
 	{
-		notificationMap.removeListener(listener, features);
+		listenerMap.removeListener(listener, features);
 	}
 
 	@Override
@@ -111,7 +108,7 @@ public final class AdapterManagerDeployer extends AdapterImpl
 			NotificationUnifier.unify(notification, this::setupChild, this::disposeChild);
 		}
 
-		notificationMap.notifyChanged(notification);
+		listenerMap.fireNotification(notification);
 	}
 
 	private void setupChild(ILilyEObject notifier)
@@ -136,10 +133,10 @@ public final class AdapterManagerDeployer extends AdapterImpl
 
 	public void foreachChild(Consumer<LilyEObject> consumer)
 	{
-		ModelUtil	.streamChildren((EObject) target)
-					.map(LilyEObject.class::cast)
-					.collect(Collectors.toList())
-					.forEach(consumer);
+		ModelUtil.streamChildren((EObject) target)
+				 .map(LilyEObject.class::cast)
+				 .collect(Collectors.toList())
+				 .forEach(consumer);
 	}
 
 	public List<AdapterDescriptor<?>> getDefinitions()

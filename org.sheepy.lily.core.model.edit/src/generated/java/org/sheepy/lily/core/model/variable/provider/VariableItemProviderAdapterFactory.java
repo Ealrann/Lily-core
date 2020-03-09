@@ -241,6 +241,31 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.variable.ModelVariablePkg} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected ModelVariablePkgItemProvider modelVariablePkgItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.variable.ModelVariablePkg}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createModelVariablePkgAdapter()
+	{
+		if (modelVariablePkgItemProvider == null)
+		{
+			modelVariablePkgItemProvider = new ModelVariablePkgItemProvider(this);
+		}
+
+		return modelVariablePkgItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.variable.IntVariable} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -470,6 +495,7 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
 		if (booleanChangeActionItemProvider != null) booleanChangeActionItemProvider.dispose();
 		if (intChangeActionItemProvider != null) intChangeActionItemProvider.dispose();
 		if (varChangeActionPkgItemProvider != null) varChangeActionPkgItemProvider.dispose();
+		if (modelVariablePkgItemProvider != null) modelVariablePkgItemProvider.dispose();
 		if (intVariableItemProvider != null) intVariableItemProvider.dispose();
 		if (durationVariableItemProvider != null) durationVariableItemProvider.dispose();
 		if (setVariableActionItemProvider != null) setVariableActionItemProvider.dispose();

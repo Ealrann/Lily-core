@@ -1,21 +1,32 @@
 package org.sheepy.lily.core.api.notification.util;
 
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
-
-public class ModelSetRegistry<T extends ILilyEObject> extends AbstractModelSetRegistry
+public class ModelSetRegistry<T extends ILilyEObject>
 {
 	private final Class<T> classCast;
 	private final List<T> list = new ArrayList<>();
+	private final ModelStructureObserver structureObserver;
 
 	public ModelSetRegistry(Class<T> classCast, List<EStructuralFeature> features)
 	{
-		super(features);
+		structureObserver = new ModelStructureObserver(features, this::add, this::remove);
 		this.classCast = classCast;
+	}
+
+	public void startRegister(ILilyEObject root)
+	{
+		structureObserver.startObserve(root);
+	}
+
+	public void stopRegister(ILilyEObject root)
+	{
+		structureObserver.stopObserve(root);
 	}
 
 	public List<T> getElements()
@@ -23,15 +34,13 @@ public class ModelSetRegistry<T extends ILilyEObject> extends AbstractModelSetRe
 		return Collections.unmodifiableList(list);
 	}
 
-	@Override
-	protected void add(ILilyEObject newValue)
+	private void add(ILilyEObject newValue)
 	{
 		list.add(classCast.cast(newValue));
 	}
 
-	@Override
-	protected void remove(ILilyEObject oldValue)
+	private void remove(ILilyEObject oldValue)
 	{
-		list.remove(oldValue);
+		list.remove(classCast.cast(oldValue));
 	}
 }

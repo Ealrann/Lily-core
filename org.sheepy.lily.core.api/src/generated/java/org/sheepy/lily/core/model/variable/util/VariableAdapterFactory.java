@@ -133,6 +133,11 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 				return createIModelVariableAdapter();
 			}
 			@Override
+			public Adapter caseModelVariablePkg(ModelVariablePkg object)
+			{
+				return createModelVariablePkgAdapter();
+			}
+			@Override
 			public Adapter caseIntVariable(IntVariable object)
 			{
 				return createIntVariableAdapter();
@@ -349,6 +354,21 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createIModelVariableAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.ModelVariablePkg <em>Model Variable Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.variable.ModelVariablePkg
+	 * @generated
+	 */
+	public Adapter createModelVariablePkgAdapter()
 	{
 		return null;
 	}

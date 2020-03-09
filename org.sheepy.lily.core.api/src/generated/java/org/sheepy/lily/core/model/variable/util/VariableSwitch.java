@@ -169,6 +169,13 @@ public class VariableSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case VariablePackage.MODEL_VARIABLE_PKG:
+			{
+				ModelVariablePkg modelVariablePkg = (ModelVariablePkg)theEObject;
+				T result = caseModelVariablePkg(modelVariablePkg);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case VariablePackage.INT_VARIABLE:
 			{
 				IntVariable intVariable = (IntVariable)theEObject;
@@ -385,6 +392,22 @@ public class VariableSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseIModelVariable(IModelVariable object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Model Variable Pkg</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Model Variable Pkg</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseModelVariablePkg(ModelVariablePkg object)
 	{
 		return null;
 	}

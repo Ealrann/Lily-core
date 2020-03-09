@@ -55,6 +55,7 @@ import org.sheepy.lily.core.model.variable.IModelVariableActionContainer;
 import org.sheepy.lily.core.model.variable.IVariableResolver;
 import org.sheepy.lily.core.model.variable.IntChangeAction;
 import org.sheepy.lily.core.model.variable.IntVariable;
+import org.sheepy.lily.core.model.variable.ModelVariablePkg;
 import org.sheepy.lily.core.model.variable.SetVariableAction;
 import org.sheepy.lily.core.model.variable.VarChangeAction;
 import org.sheepy.lily.core.model.variable.VarChangeActionPkg;
@@ -145,6 +146,13 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * @generated
 	 */
 	private EClass iModelVariableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass modelVariablePkgEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -500,6 +508,28 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * @generated
 	 */
 	@Override
+	public EClass getModelVariablePkg()
+	{
+		return modelVariablePkgEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getModelVariablePkg_Variables()
+	{
+		return (EReference)modelVariablePkgEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getIntVariable()
 	{
 		return intVariableEClass;
@@ -675,6 +705,9 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 
 		iModelVariableEClass = createEClass(IMODEL_VARIABLE);
 
+		modelVariablePkgEClass = createEClass(MODEL_VARIABLE_PKG);
+		createEReference(modelVariablePkgEClass, MODEL_VARIABLE_PKG__VARIABLES);
+
 		intVariableEClass = createEClass(INT_VARIABLE);
 		createEAttribute(intVariableEClass, INT_VARIABLE__VALUE);
 
@@ -769,6 +802,9 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		initEReference(getVarChangeActionPkg_Actions(), this.getVarChangeAction(), null, "actions", null, 0, -1, VarChangeActionPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iModelVariableEClass, IModelVariable.class, "IModelVariable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(modelVariablePkgEClass, ModelVariablePkg.class, "ModelVariablePkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getModelVariablePkg_Variables(), this.getIModelVariable(), null, "variables", null, 0, -1, ModelVariablePkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(intVariableEClass, IntVariable.class, "IntVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIntVariable_Value(), ecorePackage.getEInt(), "value", null, 1, 1, IntVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

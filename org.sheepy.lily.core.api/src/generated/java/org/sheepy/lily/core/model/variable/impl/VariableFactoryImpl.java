@@ -73,6 +73,7 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 			case VariablePackage.BOOLEAN_CHANGE_ACTION: return createBooleanChangeAction();
 			case VariablePackage.INT_CHANGE_ACTION: return createIntChangeAction();
 			case VariablePackage.VAR_CHANGE_ACTION_PKG: return createVarChangeActionPkg();
+			case VariablePackage.MODEL_VARIABLE_PKG: return createModelVariablePkg();
 			case VariablePackage.INT_VARIABLE: return createIntVariable();
 			case VariablePackage.DURATION_VARIABLE: return createDurationVariable();
 			case VariablePackage.SET_VARIABLE_ACTION: return createSetVariableAction();
@@ -189,6 +190,18 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	{
 		VarChangeActionPkgImpl varChangeActionPkg = new VarChangeActionPkgImpl();
 		return varChangeActionPkg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ModelVariablePkg createModelVariablePkg()
+	{
+		ModelVariablePkgImpl modelVariablePkg = new ModelVariablePkgImpl();
+		return modelVariablePkg;
 	}
 
 	/**

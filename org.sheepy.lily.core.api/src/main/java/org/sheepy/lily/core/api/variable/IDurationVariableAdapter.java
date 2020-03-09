@@ -11,10 +11,4 @@ public interface IDurationVariableAdapter extends IModelVariableAdapter<Duration
 	{
 		return Integer.BYTES;
 	}
-
-	@Override
-	default Type type()
-	{
-		return Type.Int;
-	}
 }

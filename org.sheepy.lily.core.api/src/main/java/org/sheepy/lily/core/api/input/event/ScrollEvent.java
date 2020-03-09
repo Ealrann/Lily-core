@@ -1,6 +1,7 @@
 package org.sheepy.lily.core.api.input.event;
 
-import org.sheepy.lily.core.api.input.IInputManager.IInputListener;
+import org.sheepy.lily.core.api.input.IInputManager;
+import org.sheepy.lily.core.api.notification.INotifier;
 
 public class ScrollEvent implements IInputEvent
 {
@@ -14,8 +15,8 @@ public class ScrollEvent implements IInputEvent
 	}
 
 	@Override
-	public void fireEvent(IInputListener listener)
+	public void notify(final INotifier.Internal<IInputFeature> notifier)
 	{
-		listener.onScrollEvent(this);
+		notifier.notify(IInputManager.Features.ScrollEvent, this);
 	}
 }

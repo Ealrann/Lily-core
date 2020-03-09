@@ -1,27 +1,21 @@
 package org.sheepy.lily.core.api.variable;
 
 import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.notification.Feature;
 import org.sheepy.lily.core.api.notification.INotifier;
 import org.sheepy.lily.core.model.variable.IModelVariable;
 
-public interface IModelVariableAdapter<T extends IModelVariable> extends INotifier, IAdapter
+import java.nio.ByteBuffer;
+
+public interface IModelVariableAdapter<T extends IModelVariable> extends INotifier<IModelVariableAdapter.Features>,
+																		 IAdapter
 {
-	enum Features
+	enum Features implements Feature<Object, Features>
 	{
 		Value
 	}
 
-	enum Type
-	{
-		Int
-	}
-
 	int bytes();
-	Type type();
-	void setValue(String value);
-
-	default int intValue(T variable)
-	{
-		return 0;
-	}
+	void getValue(T variable, ByteBuffer buffer);
+	void setValue(T variable, String value);
 }

@@ -1,8 +1,8 @@
 package org.sheepy.lily.core.api.input.event;
 
-import org.sheepy.lily.core.api.input.IInputManager.IInputListener;
+import org.sheepy.lily.core.api.notification.INotifier;
 
 public interface IInputEvent
 {
-	void fireEvent(IInputListener listener);
+	void notify(INotifier.Internal<IInputFeature> notifier);
 }

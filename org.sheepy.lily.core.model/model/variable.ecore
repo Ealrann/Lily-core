@@ -35,6 +35,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IModelVariable" abstract="true" interface="true"
       eSuperTypes="types.ecore#//LNamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelVariablePkg">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
+        eType="#//IModelVariable" containment="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntVariable" eSuperTypes="#//IModelVariable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
