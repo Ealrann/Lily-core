@@ -4,7 +4,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
-import org.sheepy.lily.core.api.notification.INotificationListener;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -13,16 +12,16 @@ public class ModelObserver
 {
 	private final List<EStructuralFeature> features;
 	private final HierarchyNotificationListener rootListener;
-	private final INotificationListener listener;
+	private final Consumer<Notification> listener;
 
 	private boolean deliver = true;
 
-	public ModelObserver(INotificationListener listener, EStructuralFeature structuralFeature)
+	public ModelObserver(Consumer<Notification> listener, EStructuralFeature structuralFeature)
 	{
 		this(listener, List.of(structuralFeature));
 	}
 
-	public ModelObserver(INotificationListener listener, List<? extends EStructuralFeature> structuralFeatures)
+	public ModelObserver(Consumer<Notification> listener, List<? extends EStructuralFeature> structuralFeatures)
 	{
 		this.listener = listener;
 		this.features = List.copyOf(structuralFeatures);
@@ -40,16 +39,16 @@ public class ModelObserver
 	public void startObserve(ILilyEObject root)
 	{
 		rootListener.setTarget(root);
-		root.addListener(rootListener, features.get(0).getFeatureID());
+		root.listen(rootListener, features.get(0).getFeatureID());
 	}
 
 	public void stopObserve(ILilyEObject root)
 	{
-		root.removeListener(rootListener, features.get(0).getFeatureID());
+		root.sulk(rootListener, features.get(0).getFeatureID());
 		rootListener.unsetTarget(root);
 	}
 
-	private final class HierarchyNotificationListener implements INotificationListener
+	private final class HierarchyNotificationListener implements Consumer<Notification>
 	{
 		private final int depth;
 		private final int subFeatureId;
@@ -93,19 +92,19 @@ public class ModelObserver
 				{
 					if (feature.isMany() == false)
 					{
-						ModelObserver.this.listener.notifyChanged(new ENotificationImpl(target,
-																						Notification.ADD,
-																						feature.getFeatureID(),
-																						null,
-																						value));
+						ModelObserver.this.listener.accept(new ENotificationImpl(target,
+																				 Notification.ADD,
+																				 feature.getFeatureID(),
+																				 null,
+																				 value));
 					}
 					else
 					{
-						ModelObserver.this.listener.notifyChanged(new ENotificationImpl(target,
-																						Notification.ADD_MANY,
-																						feature.getFeatureID(),
-																						null,
-																						value));
+						ModelObserver.this.listener.accept(new ENotificationImpl(target,
+																				 Notification.ADD_MANY,
+																				 feature.getFeatureID(),
+																				 null,
+																				 value));
 					}
 				}
 			}
@@ -126,11 +125,11 @@ public class ModelObserver
 				if (deliver)
 				{
 					final int type = feature.isMany() ? Notification.REMOVE_MANY : Notification.REMOVE;
-					ModelObserver.this.listener.notifyChanged(new ENotificationImpl(target,
-																					type,
-																					feature.getFeatureID(),
-																					value,
-																					null));
+					ModelObserver.this.listener.accept(new ENotificationImpl(target,
+																			 type,
+																			 feature.getFeatureID(),
+																			 value,
+																			 null));
 				}
 			}
 			else
@@ -169,13 +168,13 @@ public class ModelObserver
 		}
 
 		@Override
-		public void notifyChanged(Notification notification)
+		public void accept(Notification notification)
 		{
 			if (isFinalDepth())
 			{
 				if (deliver)
 				{
-					ModelObserver.this.listener.notifyChanged(notification);
+					ModelObserver.this.listener.accept(notification);
 				}
 			}
 			else
@@ -191,14 +190,14 @@ public class ModelObserver
 
 		private void addChild(final ILilyEObject child)
 		{
-			child.addListener(childListener, subFeatureId);
+			child.listen(childListener, subFeatureId);
 			childListener.setTarget(child);
 		}
 
 		private void removeChild(final ILilyEObject child)
 		{
 			childListener.unsetTarget(child);
-			child.removeListener(childListener, subFeatureId);
+			child.sulk(childListener, subFeatureId);
 		}
 	}
 }

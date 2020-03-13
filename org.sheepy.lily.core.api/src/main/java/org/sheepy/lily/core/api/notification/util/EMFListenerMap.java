@@ -1,23 +1,24 @@
 package org.sheepy.lily.core.api.notification.util;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.sheepy.lily.core.api.notification.INotificationListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class EMFListenerMap
+public final class EMFListenerMap
 {
 	private final int featureCount;
 
-	private List<INotificationListener>[] notificationMap = null;
+	private List<Object>[] notificationMap = null;
 
 	public EMFListenerMap(int featureCount)
 	{
 		this.featureCount = featureCount;
 	}
 
-	public void fireNotification(Notification notification)
+	@SuppressWarnings("unchecked")
+	public void notify(Notification notification)
 	{
 		if (notificationMap != null)
 		{
@@ -31,14 +32,31 @@ public class EMFListenerMap
 					for (int i = 0; i < notificationListeners.size(); i++)
 					{
 						final var listener = notificationListeners.get(i);
-						listener.notifyChanged(notification);
+						if (listener instanceof Runnable)
+						{
+							((Runnable) listener).run();
+						}
+						else
+						{
+							((Consumer<Notification>) listener).accept(notification);
+						}
 					}
 				}
 			}
 		}
 	}
 
-	public void addListener(INotificationListener listener, int... features)
+	public void listen(Consumer<Notification> listener, int... features)
+	{
+		listenInternal(listener, features);
+	}
+
+	public void listenNoParam(Runnable listener, int... features)
+	{
+		listenInternal(listener, features);
+	}
+
+	private void listenInternal(Object listener, int... features)
 	{
 		if (notificationMap == null)
 		{
@@ -52,7 +70,17 @@ public class EMFListenerMap
 		}
 	}
 
-	public void removeListener(INotificationListener listener, int... features)
+	public void sulk(Consumer<Notification> listener, int... features)
+	{
+		sulkInternal(listener, features);
+	}
+
+	public void sulkNoParam(Runnable listener, int... features)
+	{
+		sulkInternal(listener, features);
+	}
+
+	private void sulkInternal(Object listener, int... features)
 	{
 		if (notificationMap != null)
 		{
@@ -74,7 +102,7 @@ public class EMFListenerMap
 		notificationMap = new List[featureCount];
 	}
 
-	private void registerNotificationListener(final INotificationListener listener, final int id)
+	private void registerNotificationListener(final Object listener, final int id)
 	{
 		var list = notificationMap[id];
 		if (list == null)

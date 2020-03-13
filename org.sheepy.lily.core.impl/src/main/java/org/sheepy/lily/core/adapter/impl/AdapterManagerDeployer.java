@@ -9,7 +9,6 @@ import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.IAdapterRegistry;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
-import org.sheepy.lily.core.api.notification.INotificationListener;
 import org.sheepy.lily.core.api.notification.util.EMFListenerMap;
 import org.sheepy.lily.core.api.notification.util.NotificationUnifier;
 import org.sheepy.lily.core.api.util.ModelUtil;
@@ -89,14 +88,24 @@ public final class AdapterManagerDeployer extends AdapterImpl
 		throw new AssertionError(ADAPTER_CREATION_LOOP + classLoop);
 	}
 
-	public void addListener(INotificationListener listener, int... features)
+	public void listen(Consumer<Notification> listener, int... features)
 	{
-		listenerMap.addListener(listener, features);
+		listenerMap.listen(listener, features);
 	}
 
-	public void removeListener(INotificationListener listener, int... features)
+	public void sulk(Consumer<Notification> listener, int... features)
 	{
-		listenerMap.removeListener(listener, features);
+		listenerMap.sulk(listener, features);
+	}
+
+	public void listenNoParam(Runnable listener, int... features)
+	{
+		listenerMap.listenNoParam(listener, features);
+	}
+
+	public void sulkNoParam(Runnable listener, int... features)
+	{
+		listenerMap.sulkNoParam(listener, features);
 	}
 
 	@Override
@@ -108,7 +117,7 @@ public final class AdapterManagerDeployer extends AdapterImpl
 			NotificationUnifier.unify(notification, this::setupChild, this::disposeChild);
 		}
 
-		listenerMap.fireNotification(notification);
+		listenerMap.notify(notification);
 	}
 
 	private void setupChild(ILilyEObject notifier)

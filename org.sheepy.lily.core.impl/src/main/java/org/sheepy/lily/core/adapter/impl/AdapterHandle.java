@@ -1,11 +1,5 @@
 package org.sheepy.lily.core.adapter.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.LongConsumer;
-import java.util.function.ObjLongConsumer;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
@@ -15,13 +9,20 @@ import org.sheepy.lily.core.adapter.impl.AdapterRegistry.AdapterDescriptor;
 import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.cadence.ETickerClock;
-import org.sheepy.lily.core.api.notification.INotificationListener;
+import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.util.Operation;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.LongConsumer;
+import java.util.function.ObjLongConsumer;
 
 public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.AdapterDescriptor<T>
 {
 	public final T adapter;
 	public final List<TickHandle> tickHandles;
+	public final List<ExecutionHandle> observeHandles;
 	public final List<NotifyHandle> notifyHandles;
 	private final List<ExecutionHandle> loadHandles;
 	private final List<ExecutionHandle> disposeHandles;
@@ -36,6 +37,7 @@ public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.Ada
 
 		loadHandles = List.copyOf(createHandles(descriptor.info.loadHandleBuilders));
 		disposeHandles = List.copyOf(createHandles(descriptor.info.disposeHandleBuilders));
+		observeHandles = List.copyOf(createHandles(descriptor.info.observeHandleBuilders));
 
 		tickHandles = List.copyOf(buildTickHandles(descriptor));
 		notifyHandles = List.copyOf(buildNotifyHandles(descriptor));
@@ -92,7 +94,15 @@ public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.Ada
 		}
 	}
 
-	public static final class NotifyHandle implements INotificationListener
+	public void buildObservatory(IObservatoryBuilder builder)
+	{
+		for (final var observeHandle : observeHandles)
+		{
+			observeHandle.invoke(builder);
+		}
+	}
+
+	public static final class NotifyHandle implements Consumer<Notification>
 	{
 		public final ExecutionHandle handle;
 		public final int[] featureIds;
@@ -104,7 +114,7 @@ public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.Ada
 		}
 
 		@Override
-		public void notifyChanged(Notification notification)
+		public void accept(Notification notification)
 		{
 			handle.invoke(notification, notification.getNotifier());
 		}
@@ -139,8 +149,7 @@ public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.Ada
 			}
 			else if (function instanceof Consumer)
 			{
-				@SuppressWarnings("unchecked")
-				final var oConsumer = (Consumer<EObject>) function;
+				@SuppressWarnings("unchecked") final var oConsumer = (Consumer<EObject>) function;
 				oConsumer.accept(target);
 			}
 			else if (function instanceof Operation)
@@ -149,8 +158,7 @@ public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.Ada
 			}
 			else if (function instanceof ObjLongConsumer)
 			{
-				@SuppressWarnings("unchecked")
-				final var oLongConsumer = (ObjLongConsumer<EObject>) function;
+				@SuppressWarnings("unchecked") final var oLongConsumer = (ObjLongConsumer<EObject>) function;
 				oLongConsumer.accept(target, stepNs);
 			}
 			else

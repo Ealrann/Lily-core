@@ -2,21 +2,41 @@ package org.sheepy.lily.core.api.input;
 
 import org.joml.Vector2fc;
 import org.sheepy.lily.core.api.input.event.*;
+import org.sheepy.lily.core.api.notification.Feature;
+import org.sheepy.lily.core.api.notification.IFeature;
 import org.sheepy.lily.core.api.notification.INotifier;
 
-public interface IInputManager extends INotifier<IInputFeature>
+import java.util.function.Consumer;
+
+public interface IInputManager extends INotifier<IInputManager.Features<?>>
 {
-	interface Features
+	interface Features<T> extends IFeature<T, Features<?>>
 	{
 		int COUNT = 7;
 
-		IInputFeature.InputFeature<CharEvent> CharEvent = new IInputFeature.InputFeature<>(0);
-		IInputFeature.InputFeature<KeyEvent> KeyEvent = new IInputFeature.InputFeature<>(1);
-		IInputFeature.InputFeature<MouseClickEvent> MouseClickEvent = new IInputFeature.InputFeature<>(2);
-		IInputFeature.InputFeature<CursorLocationEvent> CursorLocationEvent = new IInputFeature.InputFeature<>(3);
-		IInputFeature.InputFeature<ScrollEvent> ScrollEvent = new IInputFeature.InputFeature<>(4);
-		IInputFeature.InputFeature<Boolean> MouseOverUIEvent = new IInputFeature.InputFeature<>(5);
-		IInputFeature.InputFeature<Void> AfterPollInputs = new IInputFeature.InputFeature<>(6);
+		Features<Consumer<CharEvent>> CharEvent = new InputObjectFeature<>(0);
+		Features<Consumer<KeyEvent>> KeyEvent = new InputObjectFeature<>(1);
+		Features<Consumer<MouseClickEvent>> MouseClickEvent = new InputObjectFeature<>(2);
+		Features<Consumer<CursorLocationEvent>> CursorLocationEvent = new InputObjectFeature<>(3);
+		Features<Consumer<ScrollEvent>> ScrollEvent = new InputObjectFeature<>(4);
+		Features<Consumer<Boolean>> MouseOverUIEvent = new InputObjectFeature<>(5);
+		Features<Runnable> AfterPollInputs = new InputFeature(6);
+
+		final class InputObjectFeature<T> extends Feature<Consumer<T>, IInputManager.Features<?>> implements Features<Consumer<T>>
+		{
+			public InputObjectFeature(final int ordinal)
+			{
+				super(ordinal);
+			}
+		}
+
+		final class InputFeature extends Feature<Runnable, IInputManager.Features<?>> implements Features<Runnable>
+		{
+			public InputFeature(final int ordinal)
+			{
+				super(ordinal);
+			}
+		}
 	}
 
 	void showCursor(boolean show);

@@ -21,7 +21,8 @@ public final class IntVariableAdapter extends Notifier<IModelVariableAdapter.Fea
 	@NotifyChanged(featureIds = VariablePackage.INT_VARIABLE__VALUE)
 	private void valueChanged(Notification notification)
 	{
-		notify(IModelVariableAdapter.Features.Value, notification.getNewValue());
+		final var newValue = notification.getNewValue();
+		notify(IModelVariableAdapter.Features.Value, newValue);
 	}
 
 	@Override

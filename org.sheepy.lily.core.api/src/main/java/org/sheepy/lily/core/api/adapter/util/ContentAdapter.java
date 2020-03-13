@@ -1,20 +1,19 @@
 package org.sheepy.lily.core.api.adapter.util;
 
-import java.util.function.Consumer;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
-import org.sheepy.lily.core.api.notification.INotificationListener;
 import org.sheepy.lily.core.api.notification.util.NotificationUnifier;
+
+import java.util.function.Consumer;
 
 /**
  * Generic content adapter. deploy itself on all ILilyEObject children.
- * 
+ * <p>
  * Need to be overriden to do something usefull.
  */
 public final class ContentAdapter
 {
-	private final INotificationListener contentListener = this::notifyChanged;
+	private final Consumer<Notification> contentListener = this::notifyChanged;
 	private final Consumer<ILilyEObject> install;
 	private final Consumer<ILilyEObject> uninstall;
 
@@ -24,12 +23,12 @@ public final class ContentAdapter
 		this.uninstall = uninstall;
 	}
 
-	public final void install(ILilyEObject root)
+	public void install(ILilyEObject root)
 	{
 		root.streamAllChildren().forEach(this::add);
 	}
 
-	public final void uninstall(ILilyEObject root)
+	public void uninstall(ILilyEObject root)
 	{
 		root.streamAllChildren().forEach(this::remove);
 	}
@@ -37,14 +36,14 @@ public final class ContentAdapter
 	private void add(ILilyEObject added)
 	{
 		final var collectContainmentFeatures = collectContainmentFeatures(added);
-		added.addListener(contentListener, collectContainmentFeatures);
+		added.listen(contentListener, collectContainmentFeatures);
 		install.accept(added);
 	}
 
 	private void remove(ILilyEObject removed)
 	{
 		final var collectContainmentFeatures = collectContainmentFeatures(removed);
-		removed.removeListener(contentListener, collectContainmentFeatures);
+		removed.sulk(contentListener, collectContainmentFeatures);
 		uninstall.accept(removed);
 	}
 

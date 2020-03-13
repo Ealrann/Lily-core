@@ -23,6 +23,7 @@ public final class AdapterInfo<T extends IAdapter>
 
 	public final List<ExecutionHandle.Builder> loadHandleBuilders;
 	public final List<ExecutionHandle.Builder> disposeHandleBuilders;
+	public final List<ExecutionHandle.Builder> observeHandleBuilders;
 	public final List<TickConfiguration> tickConfigurations;
 	public final List<NotifyConfiguration> notifyConfigurations;
 
@@ -46,6 +47,7 @@ public final class AdapterInfo<T extends IAdapter>
 		constructorHandle = ConstructorHandle.Builder.fromMethod(constructor).build();
 		loadHandleBuilders = List.copyOf(createHandleBuilders(type, Load.class));
 		disposeHandleBuilders = List.copyOf(createHandleBuilders(type, Dispose.class));
+		observeHandleBuilders = List.copyOf(createHandleBuilders(type, Observe.class));
 
 		lazy = adapterAnnotation.lazy();
 		tickConfigurations = List.copyOf(buildTickerConfigurations(type));
@@ -199,7 +201,8 @@ public final class AdapterInfo<T extends IAdapter>
 
 	public boolean isAutoAdapter()
 	{
-		return tickConfigurations.isEmpty() == false || lazy == false || (isSingleton && notifyConfigurations.isEmpty() == false);
+		return observeHandleBuilders.isEmpty() == false || tickConfigurations.isEmpty() == false || lazy == false || (isSingleton && notifyConfigurations
+				.isEmpty() == false);
 	}
 
 	public static final class NotifyConfiguration

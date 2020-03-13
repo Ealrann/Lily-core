@@ -14,7 +14,7 @@ public class FeatureData
 	public FeatureData(String def)
 	{
 		this.definition = def;
-		String[] split = def.split(Pattern.quote("#"));
+		final String[] split = def.split(Pattern.quote("#"));
 		nsURI = split[0];
 		className = split[1];
 		featureName = split[2];

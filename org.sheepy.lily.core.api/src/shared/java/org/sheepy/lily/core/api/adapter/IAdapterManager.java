@@ -1,6 +1,8 @@
 package org.sheepy.lily.core.api.adapter;
 
-import org.sheepy.lily.core.api.notification.INotificationListener;
+import org.eclipse.emf.common.notify.Notification;
+
+import java.util.function.Consumer;
 
 public interface IAdapterManager
 {
@@ -9,6 +11,9 @@ public interface IAdapterManager
 	void load();
 	void dispose();
 
-	void addListener(INotificationListener listener, int... features);
-	void removeListener(INotificationListener listener, int... features);
+	void listen(Consumer<Notification> listener, int... features);
+	void sulk(Consumer<Notification> listener, int... features);
+
+	void listenNoParam(Runnable listener, int... features);
+	void sulkNoParam(Runnable listener, int... features);
 }

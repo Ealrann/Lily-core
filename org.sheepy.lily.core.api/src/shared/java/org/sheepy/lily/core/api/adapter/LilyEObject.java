@@ -1,11 +1,12 @@
 package org.sheepy.lily.core.api.adapter;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.sheepy.lily.core.api.notification.INotificationListener;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 public class LilyEObject extends EObjectImpl implements ILilyEObject
@@ -15,17 +16,31 @@ public class LilyEObject extends EObjectImpl implements ILilyEObject
 	private IAdapterManager adapterManager = null;
 
 	@Override
-	public final void addListener(INotificationListener listener, int... features)
+	public final void listen(Consumer<Notification> listener, int... features)
 	{
 		setupAdapterManager();
-		adapterManager.addListener(listener, features);
+		adapterManager.listen(listener, features);
 	}
 
 	@Override
-	public final void removeListener(INotificationListener listener, int... features)
+	public final void sulk(Consumer<Notification> listener, int... features)
 	{
 		setupAdapterManager();
-		adapterManager.removeListener(listener, features);
+		adapterManager.sulk(listener, features);
+	}
+
+	@Override
+	public final void listenNoParam(Runnable listener, int... features)
+	{
+		setupAdapterManager();
+		adapterManager.listenNoParam(listener, features);
+	}
+
+	@Override
+	public final void sulkNoParam(Runnable listener, int... features)
+	{
+		setupAdapterManager();
+		adapterManager.sulkNoParam(listener, features);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -94,17 +109,13 @@ public class LilyEObject extends EObjectImpl implements ILilyEObject
 	@Override
 	public final Stream<ILilyEObject> streamChildren()
 	{
-		return eClass().getEAllContainments()
-					   .stream()
-					   .flatMap(this::streamReference)
-					   .filter(Objects::nonNull);
+		return eClass().getEAllContainments().stream().flatMap(this::streamReference).filter(Objects::nonNull);
 	}
 
 	@Override
 	public final Stream<ILilyEObject> streamAllChildren()
 	{
-		return Stream.concat(Stream.of(this),
-							 streamChildren().flatMap(ILilyEObject::streamAllChildren));
+		return Stream.concat(Stream.of(this), streamChildren().flatMap(ILilyEObject::streamAllChildren));
 	}
 
 	@SuppressWarnings("unchecked")

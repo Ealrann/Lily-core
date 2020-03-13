@@ -8,8 +8,7 @@ import org.sheepy.lily.core.api.resource.CoreModelExtension;
 import org.sheepy.lily.core.api.resource.IModelExtension;
 import org.sheepy.lily.core.api.resource.IResourceLoader;
 
-module org.sheepy.lily.core.api
-{
+module org.sheepy.lily.core.api {
 	requires transitive org.eclipse.emf.common;
 	requires transitive org.eclipse.emf.ecore;
 	requires transitive org.eclipse.emf.ecore.xmi;
@@ -31,6 +30,7 @@ module org.sheepy.lily.core.api
 	exports org.sheepy.lily.core.api.maintainer;
 	exports org.sheepy.lily.core.api.notification;
 	exports org.sheepy.lily.core.api.notification.impl;
+	exports org.sheepy.lily.core.api.notification.observatory;
 	exports org.sheepy.lily.core.api.notification.util;
 	exports org.sheepy.lily.core.api.resource;
 	exports org.sheepy.lily.core.api.service;

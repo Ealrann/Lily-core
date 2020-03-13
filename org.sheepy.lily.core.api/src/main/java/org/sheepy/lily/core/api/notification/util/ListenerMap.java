@@ -1,165 +1,212 @@
 package org.sheepy.lily.core.api.notification.util;
 
-import org.sheepy.lily.core.api.notification.*;
+import org.sheepy.lily.core.api.notification.IFeature;
+import org.sheepy.lily.core.api.notification.INotifier;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.IntConsumer;
 import java.util.function.LongConsumer;
-import java.util.function.Supplier;
 
-public final class ListenerMap<F extends IFeature<?>> implements INotifier.Internal<F>
+public final class ListenerMap<Type extends IFeature<?, ?>> implements INotifier.Internal<Type>
 {
-	private final IListenerList<?>[] listenerMap;
+	private final List<Object>[] listenerMap;
 
+	@SuppressWarnings("unchecked")
 	public ListenerMap(int featureCount)
 	{
-		listenerMap = new IListenerList[featureCount];
+		listenerMap = new List[featureCount];
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <T> void notify(Feature<T, ? extends F> feature, T value)
+	public <Callback> void notify(final IFeature<? super Callback, Type> feature, final Consumer<Callback> caller)
 	{
-		final var listeners = (ListenerList<T>) listenerMap[feature.ordinal()];
-		if (listeners != null)
+		final var list = listenerMap[feature.ordinal()];
+		if (list != null)
 		{
-			listeners.notify(value);
+			for (int i = 0; i < list.size(); i++)
+			{
+				final var listener = list.get(i);
+				if (listener instanceof Runnable)
+				{
+					((Runnable) listener).run();
+				}
+				else
+				{
+					caller.accept((Callback) listener);
+				}
+			}
 		}
 	}
 
 	@Override
-	public void notify(IntFeature<? extends F> feature, int value)
-	{
-		final var listeners = (IntListenerList) listenerMap[feature.ordinal()];
-		if (listeners != null)
-		{
-			listeners.notify(value);
-		}
-	}
-
-	@Override
-	public void notify(LongFeature<? extends F> feature, long value)
-	{
-		final var listeners = (LongListenerList) listenerMap[feature.ordinal()];
-		if (listeners != null)
-		{
-			listeners.notify(value);
-		}
-	}
-
-	@Override
-	public <T> void listen(Consumer<? super T> listener, Feature<T, ? extends F> feature)
-	{
-		getOrCreateListenerList(feature.ordinal(), ListenerList<T>::new).add(listener);
-	}
-
-	@Override
-	public void listen(IntConsumer listener, IntFeature<? extends F> feature)
-	{
-		getOrCreateListenerList(feature.ordinal(), IntListenerList::new).add(listener);
-	}
-
-	@Override
-	public void listen(LongConsumer listener, LongFeature<? extends F> feature)
-	{
-		getOrCreateListenerList(feature.ordinal(), LongListenerList::new).add(listener);
-	}
-
-	@Override
-	public <T> void sulk(Consumer<? super T> listener, Feature<T, ? extends F> feature)
-	{
-		this.<Consumer<? super T>>getListenerList(feature.ordinal()).ifPresent(list -> list.remove(listener));
-	}
-
-	@Override
-	public void sulk(IntConsumer listener, IntFeature<? extends F> feature)
-	{
-		this.<IntConsumer>getListenerList(feature.ordinal()).ifPresent(list -> list.remove(listener));
-	}
-
-	@Override
-	public void sulk(LongConsumer listener, LongFeature<? extends F> feature)
-	{
-		this.<LongConsumer>getListenerList(feature.ordinal()).ifPresent(list -> list.remove(listener));
-	}
-
-	private <C> IListenerList<C> getOrCreateListenerList(int ordinal, Supplier<IListenerList<C>> supplier)
-	{
-		return this.<C>getListenerList(ordinal).orElse(mapCreateList(ordinal, supplier));
-	}
-
 	@SuppressWarnings("unchecked")
-	private <C> Optional<IListenerList<C>> getListenerList(int ordinal)
+	public <T> void notify(final IFeature<Consumer<T>, Type> feature, final T value)
 	{
-		final var res = (IListenerList<C>) listenerMap[ordinal];
-		if (res == null)
+		final var list = listenerMap[feature.ordinal()];
+		if (list != null)
 		{
-			return Optional.empty();
+			for (int i = 0; i < list.size(); i++)
+			{
+				final var listener = list.get(i);
+				if (listener instanceof Runnable)
+				{
+					((Runnable) listener).run();
+				}
+				else
+				{
+					((Consumer<? super T>) listener).accept(value);
+				}
+			}
+		}
+	}
+
+	@Override
+	public void notify(final IFeature<IntConsumer, Type> feature, final int value)
+	{
+		final var list = listenerMap[feature.ordinal()];
+		if (list != null)
+		{
+			for (int i = 0; i < list.size(); i++)
+			{
+				final var listener = list.get(i);
+				if (listener instanceof Runnable)
+				{
+					((Runnable) listener).run();
+				}
+				else
+				{
+					((IntConsumer) listener).accept(value);
+				}
+			}
+		}
+	}
+
+	@Override
+	public void notify(final IFeature<LongConsumer, Type> feature, final long value)
+	{
+		final var list = listenerMap[feature.ordinal()];
+		if (list != null)
+		{
+			for (int i = 0; i < list.size(); i++)
+			{
+				final var listener = list.get(i);
+				if (listener instanceof Runnable)
+				{
+					((Runnable) listener).run();
+				}
+				else
+				{
+					((LongConsumer) listener).accept(value);
+				}
+			}
+		}
+	}
+
+	@Override
+	public void notify(final IFeature<Runnable, Type> feature)
+	{
+		final var list = listenerMap[feature.ordinal()];
+		if (list != null)
+		{
+			for (int i = 0; i < list.size(); i++)
+			{
+				final var listener = list.get(i);
+				((Runnable) listener).run();
+			}
+		}
+	}
+
+	@Override
+	public <Callback> void listen(Callback listener, IFeature<? super Callback, Type> feature)
+	{
+		getOrCreateList(feature).add(listener);
+	}
+
+	@Override
+	public void listenNoParam(Runnable listener, IFeature<?, Type> feature)
+	{
+		getOrCreateList(feature).add(listener);
+	}
+
+	@Override
+	public <Callback> void listen(Callback listener, Collection<? extends IFeature<? super Callback, Type>> features)
+	{
+		for (var feature : features)
+		{
+			listen(listener, feature);
+		}
+	}
+
+	@Override
+	public void listenNoParam(Runnable listener, Collection<? extends IFeature<?, Type>> features)
+	{
+		for (var feature : features)
+		{
+			listenNoParam(listener, feature);
+		}
+	}
+
+	@Override
+	public <Callback> void sulk(Callback listener, IFeature<? super Callback, Type> feature)
+	{
+		getList(feature).ifPresent(list -> list.remove(listener));
+	}
+
+	@Override
+	public void sulkNoParam(Runnable listener, IFeature<?, Type> feature)
+	{
+		getList(feature).ifPresent(list -> list.remove(listener));
+	}
+
+	@Override
+	public <Callback> void sulk(Callback listener, Collection<? extends IFeature<? super Callback, Type>> features)
+	{
+		for (var feature : features)
+		{
+			sulk(listener, feature);
+		}
+	}
+
+	@Override
+	public void sulkNoParam(Runnable listener, Collection<? extends IFeature<?, Type>> features)
+	{
+		for (var feature : features)
+		{
+			sulkNoParam(listener, feature);
+		}
+	}
+
+	private List<Object> getOrCreateList(IFeature<?, Type> feature)
+	{
+		final int ordinal = feature.ordinal();
+		final var res = listenerMap[ordinal];
+		if (res != null)
+		{
+			return res;
 		}
 		else
 		{
+			final var newList = new ArrayList<>();
+			listenerMap[ordinal] = newList;
+			return newList;
+		}
+	}
+
+	private Optional<List<Object>> getList(IFeature<?, Type> feature)
+	{
+		final var res = listenerMap[feature.ordinal()];
+		if (res != null)
+		{
 			return Optional.of(res);
 		}
-	}
-
-	private <T extends IListenerList<?>> T mapCreateList(int ordinal, Supplier<T> supplier)
-	{
-		final var newList = supplier.get();
-		listenerMap[ordinal] = newList;
-		return newList;
-	}
-
-	private static abstract class IListenerList<C>
-	{
-		protected final List<C> listeners = new ArrayList<>(4);
-
-		public final void add(C listener)
+		else
 		{
-			listeners.add(listener);
-		}
-
-		public final void remove(C listener)
-		{
-			listeners.remove(listener);
-		}
-	}
-
-	private static final class ListenerList<T> extends IListenerList<Consumer<? super T>>
-	{
-		public void notify(T value)
-		{
-			for (int i = 0; i < listeners.size(); i++)
-			{
-				final var listener = listeners.get(i);
-				listener.accept(value);
-			}
-		}
-	}
-
-	private static final class IntListenerList extends IListenerList<IntConsumer>
-	{
-		public void notify(int value)
-		{
-			for (int i = 0; i < listeners.size(); i++)
-			{
-				final var listener = listeners.get(i);
-				listener.accept(value);
-			}
-		}
-	}
-
-	private static final class LongListenerList extends IListenerList<LongConsumer>
-	{
-		public void notify(long value)
-		{
-			for (int i = 0; i < listeners.size(); i++)
-			{
-				final var listener = listeners.get(i);
-				listener.accept(value);
-			}
+			return Optional.empty();
 		}
 	}
 }

@@ -1,16 +1,29 @@
 package org.sheepy.lily.core.api.variable;
 
-import org.sheepy.lily.core.api.adapter.IAdapter;
-import org.sheepy.lily.core.api.notification.INotificationListener;
+import org.sheepy.lily.core.api.adapter.INotifierAdapter;
+import org.sheepy.lily.core.api.notification.IFeature;
 import org.sheepy.lily.core.model.variable.IVariableResolver;
 
-public interface IVariableResolverAdapter<T extends IVariableResolver> extends IAdapter
+import java.util.function.Consumer;
+
+public interface IVariableResolverAdapter<T extends IVariableResolver> extends INotifierAdapter<IVariableResolverAdapter.Features>
 {
+	enum Features implements IFeature<Consumer<Object>, IVariableResolverAdapter.Features>
+	{
+		Value
+	}
+
 	Object getValue(T variableResolver);
 
 	void setValue(T variableResolver, Object object);
 
-	void addListener(INotificationListener listener);
+	default void listen(Consumer<Object> listener)
+	{
+		listen(listener, IVariableResolverAdapter.Features.Value);
+	}
 
-	void removeListener(INotificationListener listener);
+	default void sulk(Consumer<Object> listener)
+	{
+		sulk(listener, IVariableResolverAdapter.Features.Value);
+	}
 }

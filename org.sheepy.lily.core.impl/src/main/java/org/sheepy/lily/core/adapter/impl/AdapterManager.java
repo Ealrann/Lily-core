@@ -1,14 +1,18 @@
 package org.sheepy.lily.core.adapter.impl;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.IAdapterManager;
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
-import org.sheepy.lily.core.api.notification.INotificationListener;
+import org.sheepy.lily.core.api.notification.observatory.IObservatory;
+import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public final class AdapterManager implements IAdapterManager
 {
@@ -18,6 +22,7 @@ public final class AdapterManager implements IAdapterManager
 	private final AdapterManagerDeployer deployer;
 
 	private boolean loaded = false;
+	private IObservatory observatory = null;
 
 	public AdapterManager(EObject target)
 	{
@@ -27,15 +32,27 @@ public final class AdapterManager implements IAdapterManager
 	}
 
 	@Override
-	public void addListener(INotificationListener listener, int... features)
+	public void listen(Consumer<Notification> listener, int... features)
 	{
-		deployer.addListener(listener, features);
+		deployer.listen(listener, features);
 	}
 
 	@Override
-	public void removeListener(INotificationListener listener, int... features)
+	public void sulk(Consumer<Notification> listener, int... features)
 	{
-		deployer.removeListener(listener, features);
+		deployer.sulk(listener, features);
+	}
+
+	@Override
+	public void listenNoParam(Runnable listener, int... features)
+	{
+		deployer.listenNoParam(listener, features);
+	}
+
+	@Override
+	public void sulkNoParam(Runnable listener, int... features)
+	{
+		deployer.sulkNoParam(listener, features);
 	}
 
 	@Override
@@ -74,7 +91,7 @@ public final class AdapterManager implements IAdapterManager
 			adapterHandles.add(handle);
 			if (loaded)
 			{
-				loadHandles(handle);
+				loadHandle(handle);
 			}
 			return handle.adapter;
 		}
@@ -87,6 +104,7 @@ public final class AdapterManager implements IAdapterManager
 	@Override
 	public void load()
 	{
+		final var observatoryBuilder = IObservatoryBuilder.newObservatoryBuilder((ILilyEObject) deployer.getTarget());
 		if (loaded == false)
 		{
 			loaded = true;
@@ -94,9 +112,13 @@ public final class AdapterManager implements IAdapterManager
 			for (int i = 0; i < adapterHandles.size(); i++)
 			{
 				final var adapterHandle = adapterHandles.get(i);
-				loadHandles(adapterHandle);
+				adapterHandle.buildObservatory(observatoryBuilder);
+				loadHandle(adapterHandle);
 			}
 		}
+
+		observatory = observatoryBuilder.build();
+		observatory.observe(null);
 
 		deployer.foreachChild(LilyEObject::loadAdapterManager);
 	}
@@ -109,6 +131,9 @@ public final class AdapterManager implements IAdapterManager
 			deployer.foreachChild(LilyEObject::disposeAdapterManager);
 		}
 
+		observatory.shut(null);
+		observatory = null;
+
 		loaded = false;
 		deployer.setAutoLoad(false);
 
@@ -119,7 +144,7 @@ public final class AdapterManager implements IAdapterManager
 		}
 	}
 
-	public <T extends IAdapter> void loadHandles(final AdapterHandle<T> adapterHandle)
+	public <T extends IAdapter> void loadHandle(final AdapterHandle<T> adapterHandle)
 	{
 		addHandleListener(adapterHandle);
 		adapterHandle.load();
@@ -134,7 +159,7 @@ public final class AdapterManager implements IAdapterManager
 			final var notifyHandle = notifyHandles.get(i);
 			final var featureIds = notifyHandle.featureIds;
 
-			addListener(notifyHandle, featureIds);
+			listen(notifyHandle, featureIds);
 		}
 	}
 }

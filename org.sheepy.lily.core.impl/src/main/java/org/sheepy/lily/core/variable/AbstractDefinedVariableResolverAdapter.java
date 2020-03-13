@@ -1,69 +1,48 @@
 package org.sheepy.lily.core.variable;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.annotation.Dispose;
+import org.sheepy.lily.core.api.adapter.annotation.Load;
 import org.sheepy.lily.core.api.adapter.annotation.Statefull;
-import org.sheepy.lily.core.api.notification.INotificationListener;
+import org.sheepy.lily.core.api.notification.Notifier;
 import org.sheepy.lily.core.api.util.FeatureDefinition;
 import org.sheepy.lily.core.api.variable.IVariableResolverAdapter;
 import org.sheepy.lily.core.model.variable.IVariableResolver;
 
+import java.util.function.Consumer;
+
 @Statefull
-public abstract class AbstractDefinedVariableResolverAdapter<T extends IVariableResolver>
-		implements IVariableResolverAdapter<T>
+public abstract class AbstractDefinedVariableResolverAdapter<T extends IVariableResolver> extends Notifier<IVariableResolverAdapter.Features> implements
+																																			  IVariableResolverAdapter<T>
 {
-	private INotificationListener adapter = null;
-	private List<INotificationListener> listeners;
+	private final Consumer<Notification> adapter = this::fireListeners;
 	private ILilyEObject resolvedTarget;
 	private int featureID;
+
+	public AbstractDefinedVariableResolverAdapter()
+	{
+		super(Features.values().length);
+	}
+
+	@Load
+	private void load()
+	{
+		resolvedTarget = getResolvedTarget();
+		featureID = getFeatureDefinition().feature.getFeatureID();
+		resolvedTarget.listen(adapter, featureID);
+	}
 
 	@Dispose
 	public void unsetTarget()
 	{
-		if (adapter != null)
-		{
-			resolvedTarget.removeListener(adapter, featureID);
-		}
-	}
-
-	private void loadAdapter()
-	{
-		listeners = new ArrayList<>();
-		adapter = this::fireListeners;
-		resolvedTarget = getResolvedTarget();
-		featureID = getFeatureDefinition().feature.getFeatureID();
-		resolvedTarget.addListener(adapter, featureID);
+		resolvedTarget.sulk(adapter, featureID);
 	}
 
 	private void fireListeners(Notification notification)
 	{
-		for (final var listener : listeners)
-		{
-			listener.notifyChanged(notification);
-		}
-	}
-
-	@Override
-	public void addListener(INotificationListener listener)
-	{
-		if (adapter == null)
-		{
-			loadAdapter();
-		}
-		listeners.add(listener);
-	}
-
-	@Override
-	public void removeListener(INotificationListener listener)
-	{
-		if (listeners != null)
-		{
-			listeners.remove(listener);
-		}
+		final Object newValue = notification.getNewValue();
+		notify(Features.Value, newValue);
 	}
 
 	protected abstract FeatureDefinition getFeatureDefinition();
