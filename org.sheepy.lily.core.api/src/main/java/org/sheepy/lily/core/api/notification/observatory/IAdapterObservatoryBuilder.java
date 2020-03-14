@@ -1,9 +1,11 @@
 package org.sheepy.lily.core.api.notification.observatory;
 
-import org.sheepy.lily.core.api.notification.IFeature;
+import org.sheepy.lily.core.api.adapter.IAdapter;
 
-public interface IAdapterObservatoryBuilder<Type extends IFeature<?, ?>> extends IObservatory.IBuilder
+import java.util.function.Consumer;
+
+public interface IAdapterObservatoryBuilder<Type extends IAdapter> extends IObservatory.IBuilder
 {
-	<Listener> IAdapterObservatoryBuilder<Type> listen(Listener listener, IFeature<? super Listener, Type> feature);
-	IAdapterObservatoryBuilder<Type> listenNoParam(Runnable listener, IFeature<?, Type> feature);
+	IAdapterObservatoryBuilder<Type> listenAdd(Consumer<Type> onAddedObject);
+	IAdapterObservatoryBuilder<Type> listenRemove(Consumer<Type> onRemovedObject);
 }

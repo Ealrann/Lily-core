@@ -2,14 +2,16 @@ package org.sheepy.lily.core.api.notification.observatory.internal.eobject;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EReference;
+import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.INotifierAdapter;
 import org.sheepy.lily.core.api.notification.IFeature;
 import org.sheepy.lily.core.api.notification.observatory.IAdapterObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.IEObjectObservatoryBuilder;
+import org.sheepy.lily.core.api.notification.observatory.INotifierAdapterObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
-import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.internal.notifier.AdapterObservatory;
+import org.sheepy.lily.core.api.notification.observatory.internal.notifier.NotifierAdapterObservatory;
 import org.sheepy.lily.core.api.notification.util.ModelStructureObserver;
 
 import java.util.ArrayList;
@@ -105,15 +107,7 @@ public final class EObjectObservatory<T extends ILilyEObject> implements IObserv
 		}
 
 		@Override
-		public IObservatoryBuilder focus(ILilyEObject object)
-		{
-			final var child = new StaticObservatory.Builder(object);
-			children.add(child);
-			return child;
-		}
-
-		@Override
-		public IEObjectObservatoryBuilder<ILilyEObject> focus(final EReference reference)
+		public IEObjectObservatoryBuilder<ILilyEObject> explore(final EReference reference)
 		{
 			final var child = new EObjectObservatory.Builder<>(reference, ILilyEObject.class);
 			children.add(child);
@@ -121,8 +115,8 @@ public final class EObjectObservatory<T extends ILilyEObject> implements IObserv
 		}
 
 		@Override
-		public <Y extends ILilyEObject> IEObjectObservatoryBuilder<Y> focus(final EReference reference,
-																			final Class<Y> cast)
+		public <Y extends ILilyEObject> IEObjectObservatoryBuilder<Y> explore(final EReference reference,
+																			  final Class<Y> cast)
 		{
 			final var child = new EObjectObservatory.Builder<>(reference, cast);
 			children.add(child);
@@ -130,9 +124,18 @@ public final class EObjectObservatory<T extends ILilyEObject> implements IObserv
 		}
 
 		@Override
-		public <Y extends IFeature<?, ?>> IAdapterObservatoryBuilder<Y> focus(final Class<? extends INotifierAdapter<Y>> classifier)
+		public <L extends IAdapter> IAdapterObservatoryBuilder<L> adapt(final Class<L> classifier)
 		{
 			final var child = new AdapterObservatory.Builder<>(classifier);
+			children.add(child);
+			return child;
+		}
+
+		@Override
+		public <F extends IFeature<?, ?>> INotifierAdapterObservatoryBuilder<F, ? extends INotifierAdapter<F>> adaptNotifier(
+				final Class<? extends INotifierAdapter<F>> classifier)
+		{
+			final var child = new NotifierAdapterObservatory.Builder<>(classifier);
 			children.add(child);
 			return child;
 		}

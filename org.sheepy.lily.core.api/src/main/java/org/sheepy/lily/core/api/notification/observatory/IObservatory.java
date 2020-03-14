@@ -8,10 +8,6 @@ public interface IObservatory
 	void observe(ILilyEObject parent);
 	void shut(ILilyEObject parent);
 
-	interface IAdapterObservatory<Type extends IFeature<?, ?>> extends IObservatory
-	{
-	}
-
 	interface IBuilder
 	{
 		IObservatory build();

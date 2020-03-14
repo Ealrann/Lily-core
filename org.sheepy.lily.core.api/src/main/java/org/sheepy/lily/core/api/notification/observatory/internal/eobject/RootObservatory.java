@@ -2,27 +2,28 @@ package org.sheepy.lily.core.api.notification.observatory.internal.eobject;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EReference;
+import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.INotifierAdapter;
 import org.sheepy.lily.core.api.notification.IFeature;
-import org.sheepy.lily.core.api.notification.observatory.IAdapterObservatoryBuilder;
-import org.sheepy.lily.core.api.notification.observatory.IEObjectObservatoryBuilder;
-import org.sheepy.lily.core.api.notification.observatory.IObservatory;
-import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
+import org.sheepy.lily.core.api.notification.INotifier;
+import org.sheepy.lily.core.api.notification.observatory.*;
 import org.sheepy.lily.core.api.notification.observatory.internal.notifier.AdapterObservatory;
+import org.sheepy.lily.core.api.notification.observatory.internal.notifier.NotifierAdapterObservatory;
+import org.sheepy.lily.core.api.notification.observatory.internal.notifier.NotifierObservatory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public final class StaticObservatory implements IObservatory
+public final class RootObservatory implements IObservatory
 {
 	private final ILilyEObject root;
 	private final List<IObservatory> children;
 	private final List<IEObjectPOI> pois;
 	private boolean observing = false;
 
-	private StaticObservatory(ILilyEObject root, List<IObservatory> children, List<IEObjectPOI> pois)
+	private RootObservatory(ILilyEObject root, List<IObservatory> children, List<IEObjectPOI> pois)
 	{
 		this.root = root;
 		this.children = List.copyOf(children);
@@ -77,13 +78,21 @@ public final class StaticObservatory implements IObservatory
 		@Override
 		public IObservatoryBuilder focus(ILilyEObject object)
 		{
-			final var child = new StaticObservatory.Builder(object);
+			final var child = new RootObservatory.Builder(object);
 			children.add(child);
 			return child;
 		}
 
 		@Override
-		public IEObjectObservatoryBuilder<ILilyEObject> focus(final EReference reference)
+		public <F extends IFeature<?, ?>> INotifierObservatoryBuilder<F> focus(INotifier<F> notifier)
+		{
+			final var child = new NotifierObservatory.Builder<>(notifier);
+			children.add(child);
+			return child;
+		}
+
+		@Override
+		public IEObjectObservatoryBuilder<ILilyEObject> explore(final EReference reference)
 		{
 			final var child = new EObjectObservatory.Builder<>(reference, ILilyEObject.class);
 			children.add(child);
@@ -91,8 +100,8 @@ public final class StaticObservatory implements IObservatory
 		}
 
 		@Override
-		public <T extends ILilyEObject> IEObjectObservatoryBuilder<T> focus(final EReference reference,
-																			final Class<T> cast)
+		public <T extends ILilyEObject> IEObjectObservatoryBuilder<T> explore(final EReference reference,
+																			  final Class<T> cast)
 		{
 			final var child = new EObjectObservatory.Builder<>(reference, cast);
 			children.add(child);
@@ -100,9 +109,18 @@ public final class StaticObservatory implements IObservatory
 		}
 
 		@Override
-		public <T extends IFeature<?, ?>> IAdapterObservatoryBuilder<T> focus(final Class<? extends INotifierAdapter<T>> classifier)
+		public <T extends IAdapter> IAdapterObservatoryBuilder<T> adapt(final Class<T> classifier)
 		{
 			final var child = new AdapterObservatory.Builder<>(classifier);
+			children.add(child);
+			return child;
+		}
+
+		@Override
+		public <F extends IFeature<?, ?>> INotifierAdapterObservatoryBuilder<F, ? extends INotifierAdapter<F>> adaptNotifier(
+				final Class<? extends INotifierAdapter<F>> classifier)
+		{
+			final var child = new NotifierAdapterObservatory.Builder<>(classifier);
 			children.add(child);
 			return child;
 		}
@@ -129,7 +147,7 @@ public final class StaticObservatory implements IObservatory
 			{
 				builtChildren.add(child.build());
 			}
-			return new StaticObservatory(root, builtChildren, pois);
+			return new RootObservatory(root, builtChildren, pois);
 		}
 	}
 }
