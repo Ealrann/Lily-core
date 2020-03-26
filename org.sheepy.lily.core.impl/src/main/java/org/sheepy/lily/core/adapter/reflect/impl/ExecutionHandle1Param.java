@@ -1,12 +1,13 @@
 package org.sheepy.lily.core.adapter.reflect.impl;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles.Lookup;
-import java.util.function.Consumer;
-
 import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
 import org.sheepy.lily.core.adapter.reflect.util.ReflectUtil;
 import org.sheepy.lily.core.api.adapter.IAdapter;
+
+import java.lang.invoke.LambdaConversionException;
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles.Lookup;
+import java.util.function.Consumer;
 
 public final class ExecutionHandle1Param implements ExecutionHandle
 {
@@ -33,12 +34,13 @@ public final class ExecutionHandle1Param implements ExecutionHandle
 	{
 		private final MethodHandle factory;
 
-		public Builder(Lookup lookup, MethodHandle methodHandle, Class<?> type)
+		public Builder(Lookup lookup, MethodHandle methodHandle, Class<?> type) throws LambdaConversionException
 		{
 			factory = ReflectUtil.createConsumerFactory(lookup, methodHandle, type);
 		}
 
 		@Override
+		@SuppressWarnings("unchecked")
 		public ExecutionHandle build(IAdapter adapter)
 		{
 			try
@@ -46,7 +48,8 @@ public final class ExecutionHandle1Param implements ExecutionHandle
 				final var consumer = (Consumer<Object>) factory.invoke(adapter);
 				return new ExecutionHandle1Param(consumer);
 
-			} catch (final Throwable e)
+			}
+			catch (final Throwable e)
 			{
 				e.printStackTrace();
 				return null;
@@ -58,7 +61,7 @@ public final class ExecutionHandle1Param implements ExecutionHandle
 	{
 		private final ExecutionHandle handle;
 
-		public StaticBuilder(Lookup lookup, MethodHandle methodHandle)
+		public StaticBuilder(Lookup lookup, MethodHandle methodHandle) throws Throwable
 		{
 			final var consumer = ReflectUtil.createConsumer(lookup, methodHandle);
 			handle = new ExecutionHandle1Param(consumer);

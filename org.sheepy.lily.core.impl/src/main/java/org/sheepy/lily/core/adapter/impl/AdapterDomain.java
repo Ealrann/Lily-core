@@ -9,7 +9,7 @@ import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.resource.IModelExtension;
 import org.sheepy.lily.core.model.types.LNamedElement;
 
-public class AdapterDomain<T extends IAdapter>
+public final class AdapterDomain<T extends IAdapter>
 {
 	public final Class<T> type;
 	public final EClass targetClassifier;
@@ -46,9 +46,7 @@ public class AdapterDomain<T extends IAdapter>
 		{
 			for (final EPackage ePackage : extension.getEPackages())
 			{
-				final var epkg = ePackage.getClass()
-										 .getPackageName()
-										 .replaceAll(".impl", "");
+				final var epkg = ePackage.getClass().getPackageName().replaceAll(".impl", "");
 				if (pkgName.equals(epkg))
 				{
 					res = (EClass) ePackage.getEClassifier(name);
@@ -91,8 +89,8 @@ public class AdapterDomain<T extends IAdapter>
 
 		if (res == true && targetName.isEmpty() == false)
 		{
-			if (eObject instanceof LNamedElement == false
-					|| targetName.equals(((LNamedElement) eObject).getName()) == false)
+			if (eObject instanceof LNamedElement == false ||
+					targetName.equals(((LNamedElement) eObject).getName()) == false)
 			{
 				return false;
 			}
@@ -103,11 +101,12 @@ public class AdapterDomain<T extends IAdapter>
 
 	private boolean isClassApplicable(EClass eClass)
 	{
-		boolean res;
+		final boolean res;
 		if (inheritance)
 		{
 			res = targetClassifier.isSuperTypeOf(eClass);
-		} else
+		}
+		else
 		{
 			res = eClass == targetClassifier;
 		}

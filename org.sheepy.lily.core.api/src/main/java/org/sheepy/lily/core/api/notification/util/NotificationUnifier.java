@@ -1,106 +1,78 @@
 package org.sheepy.lily.core.api.notification.util;
 
-import java.util.List;
-import java.util.function.Consumer;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
+
+import java.util.List;
+import java.util.function.Consumer;
 
 public final class NotificationUnifier
 {
 	@SuppressWarnings("unchecked")
-	public static void unify(	Notification notification,
-								Consumer<ILilyEObject> onAdd,
-								Consumer<ILilyEObject> onRemove)
+	public static void unify(Notification notification, Consumer<ILilyEObject> onAdd, Consumer<ILilyEObject> onRemove)
 	{
 		switch (notification.getEventType())
 		{
-		case Notification.SET:
-		case Notification.UNSET:
-			final var setted = notification.getNewValue();
-			final var unsetted = notification.getOldValue();
-
-			if (setted != unsetted)
-			{
-				if (setted instanceof ILilyEObject)
+			case Notification.SET, Notification.UNSET -> {
+				final var setted = notification.getNewValue();
+				final var unsetted = notification.getOldValue();
+				if (setted != unsetted)
 				{
-					onAdd.accept((ILilyEObject) setted);
+					if (setted instanceof ILilyEObject)
+					{
+						onAdd.accept((ILilyEObject) setted);
+					}
+					if (unsetted instanceof ILilyEObject)
+					{
+						onRemove.accept((ILilyEObject) unsetted);
+					}
 				}
-				if (unsetted instanceof ILilyEObject)
+			}
+			case Notification.ADD -> onAdd.accept((ILilyEObject) notification.getNewValue());
+			case Notification.ADD_MANY -> {
+				final var newList = (List<ILilyEObject>) notification.getNewValue();
+				for (int i = 0; i < newList.size(); i++)
 				{
-					onRemove.accept((ILilyEObject) unsetted);
+					onAdd.accept(newList.get(i));
 				}
 			}
-			break;
-		case Notification.ADD:
-			final var added = (ILilyEObject) notification.getNewValue();
-			onAdd.accept(added);
-			break;
-		case Notification.ADD_MANY:
-			final var newList = (List<ILilyEObject>) notification.getNewValue();
-			for (int i = 0; i < newList.size(); i++)
-			{
-				onAdd.accept(newList.get(i));
+			case Notification.REMOVE -> onRemove.accept((ILilyEObject) notification.getOldValue());
+			case Notification.REMOVE_MANY -> {
+				final var oldList = (List<ILilyEObject>) notification.getOldValue();
+				for (int i = 0; i < oldList.size(); i++)
+				{
+					onRemove.accept(oldList.get(i));
+				}
 			}
-			break;
-		case Notification.REMOVE:
-			final var removed = (ILilyEObject) notification.getOldValue();
-			onRemove.accept(removed);
-			break;
-		case Notification.REMOVE_MANY:
-			final var oldList = (List<ILilyEObject>) notification.getOldValue();
-			for (int i = 0; i < oldList.size(); i++)
-			{
-				onRemove.accept(oldList.get(i));
-			}
-			break;
-		default:
-			break;
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	public static void unifyList(	Notification notification,
-									Consumer<List<? extends ILilyEObject>> onAdd,
-									Consumer<List<? extends ILilyEObject>> onRemove)
+	public static void unifyList(Notification notification,
+								 Consumer<List<? extends ILilyEObject>> onAdd,
+								 Consumer<List<? extends ILilyEObject>> onRemove)
 	{
 		switch (notification.getEventType())
 		{
-		case Notification.SET:
-		case Notification.UNSET:
-			final var setted = (ILilyEObject) notification.getNewValue();
-			final var unsetted = (ILilyEObject) notification.getOldValue();
-
-			if (setted != unsetted)
-			{
-				if (setted != null)
+			case Notification.SET, Notification.UNSET -> {
+				final var setted = (ILilyEObject) notification.getNewValue();
+				final var unsetted = (ILilyEObject) notification.getOldValue();
+				if (setted != unsetted)
 				{
-					onAdd.accept(List.of(setted));
-				}
-				if (unsetted != null)
-				{
-					onRemove.accept(List.of(unsetted));
+					if (setted != null)
+					{
+						onAdd.accept(List.of(setted));
+					}
+					if (unsetted != null)
+					{
+						onRemove.accept(List.of(unsetted));
+					}
 				}
 			}
-			break;
-		case Notification.ADD:
-			final var added = (ILilyEObject) notification.getNewValue();
-			onAdd.accept(List.of(added));
-			break;
-		case Notification.ADD_MANY:
-			final var newList = (List<ILilyEObject>) notification.getNewValue();
-			onAdd.accept(newList);
-			break;
-		case Notification.REMOVE:
-			final var removed = (ILilyEObject) notification.getOldValue();
-			onRemove.accept(List.of(removed));
-			break;
-		case Notification.REMOVE_MANY:
-			final var oldList = (List<ILilyEObject>) notification.getOldValue();
-			onRemove.accept(oldList);
-			break;
-		default:
-			break;
+			case Notification.ADD -> onAdd.accept(List.of((ILilyEObject) notification.getNewValue()));
+			case Notification.ADD_MANY -> onAdd.accept((List<ILilyEObject>) notification.getNewValue());
+			case Notification.REMOVE -> onRemove.accept(List.of((ILilyEObject) notification.getOldValue()));
+			case Notification.REMOVE_MANY -> onRemove.accept((List<ILilyEObject>) notification.getOldValue());
 		}
 	}
 }

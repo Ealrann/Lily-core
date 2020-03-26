@@ -1,5 +1,6 @@
 package org.sheepy.lily.core.adapter.reflect.impl;
 
+import java.lang.invoke.LambdaConversionException;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles.Lookup;
 import java.util.function.BiConsumer;
@@ -33,12 +34,13 @@ public final class ExecutionHandle2Param implements ExecutionHandle
 	{
 		private final MethodHandle factory;
 
-		public Builder(Lookup lookup, MethodHandle methodHandle, Class<?> type)
+		public Builder(Lookup lookup, MethodHandle methodHandle, Class<?> type) throws LambdaConversionException
 		{
 			factory = ReflectUtil.createBiConsumerFactory(lookup, methodHandle, type);
 		}
 
 		@Override
+		@SuppressWarnings("unchecked")
 		public ExecutionHandle build(IAdapter adapter)
 		{
 			try
@@ -58,7 +60,7 @@ public final class ExecutionHandle2Param implements ExecutionHandle
 	{
 		private final ExecutionHandle handle;
 
-		public StaticBuilder(Lookup lookup, MethodHandle methodHandle)
+		public StaticBuilder(Lookup lookup, MethodHandle methodHandle) throws Throwable
 		{
 			final var consumer = ReflectUtil.createBiConsumer(lookup, methodHandle);
 			handle = new ExecutionHandle2Param(consumer);

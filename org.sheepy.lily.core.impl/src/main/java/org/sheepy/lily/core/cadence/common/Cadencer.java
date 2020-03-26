@@ -187,15 +187,13 @@ public class Cadencer implements ICadencer
 		for (int i = 0; i < tickers.size(); i++)
 		{
 			final var ticker = tickers.get(i);
-			switch (ticker.clock)
-			{
-				case RealWorld:
-					ticker.accumulate(stepNs);
-					break;
-				case ApplicationWorld:
-					ticker.accumulate(appStepNs);
-					break;
-			}
+			final var accumulation = switch (ticker.clock)
+											 {
+												 case RealWorld -> stepNs;
+												 case ApplicationWorld -> appStepNs;
+											 };
+
+			ticker.accumulate(accumulation);
 
 			if (ticker.shouldTick())
 			{

@@ -1,13 +1,13 @@
 package org.sheepy.lily.core.adapter.reflect.impl;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles.Lookup;
-import java.util.function.Function;
-
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.reflect.ConstructorHandle;
 import org.sheepy.lily.core.adapter.reflect.util.ReflectUtil;
 import org.sheepy.lily.core.api.adapter.IAdapter;
+
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles.Lookup;
+import java.util.function.Function;
 
 public final class ConstructorHandleParam1<T extends IAdapter> implements ConstructorHandle<T>
 {
@@ -28,7 +28,7 @@ public final class ConstructorHandleParam1<T extends IAdapter> implements Constr
 	{
 		private final ConstructorHandle<T> handle;
 
-		public Builder(Lookup lookup, MethodHandle methodHandle)
+		public Builder(Lookup lookup, MethodHandle methodHandle) throws Throwable
 		{
 			final Function<EObject, T> function = ReflectUtil.createFunction(lookup, methodHandle);
 			handle = new ConstructorHandleParam1<>(function);

@@ -1,21 +1,20 @@
 package org.sheepy.lily.core.adapter.impl;
 
+import org.eclipse.emf.ecore.EObject;
+import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.IAdapterProvider;
+import org.sheepy.lily.core.api.adapter.IAdapterRegistry;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ServiceLoader;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import org.eclipse.emf.ecore.EObject;
-import org.sheepy.lily.core.api.adapter.IAdapter;
-import org.sheepy.lily.core.api.adapter.IAdapterProvider;
-import org.sheepy.lily.core.api.adapter.IAdapterRegistry;
-
 public final class AdapterRegistry implements IAdapterRegistry
 {
-	private final static List<IAdapterProvider> ADAPTERS = StreamSupport.stream(ServiceLoader	.load(IAdapterProvider.class)
-																								.spliterator(),
-																				false)
+	private final static List<IAdapterProvider> ADAPTERS = StreamSupport.stream(ServiceLoader.load(IAdapterProvider.class)
+																							 .spliterator(), false)
 																		.collect(Collectors.toList());
 
 	private final List<AdapterDescriptor<?>> descriptors = new ArrayList<>();
@@ -40,13 +39,13 @@ public final class AdapterRegistry implements IAdapterRegistry
 	private static <T extends IAdapter> AdapterDescriptor<T> createDescriptor(final Class<T> adapterClass)
 	{
 		final var domain = new AdapterDomain<>(adapterClass);
-		final var definition = new AdapterInfo<>(domain);
+		final var builder = new AdapterInfo.Builder<>(domain);
+		final var definition = builder.build();
 		return new AdapterDescriptor<>(domain, definition);
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T extends IAdapter> AdapterDescriptor<T> getDescriptorFor(	EObject eObject,
-																		Class<T> type)
+	public <T extends IAdapter> AdapterDescriptor<T> getDescriptorFor(EObject eObject, Class<T> type)
 	{
 		AdapterDescriptor<T> res = null;
 

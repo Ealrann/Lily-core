@@ -1,12 +1,13 @@
 package org.sheepy.lily.core.adapter.reflect.impl;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles.Lookup;
-
 import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
 import org.sheepy.lily.core.adapter.reflect.util.ReflectUtil;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.util.Operation;
+
+import java.lang.invoke.LambdaConversionException;
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles.Lookup;
 
 public final class ExecutionHandleNoParam implements ExecutionHandle
 {
@@ -33,7 +34,7 @@ public final class ExecutionHandleNoParam implements ExecutionHandle
 	{
 		private final MethodHandle factory;
 
-		public Builder(Lookup lookup, MethodHandle methodHandle, Class<?> type)
+		public Builder(Lookup lookup, MethodHandle methodHandle, Class<?> type) throws LambdaConversionException
 		{
 			factory = ReflectUtil.createOperationFactory(lookup, methodHandle, type);
 		}
@@ -46,7 +47,8 @@ public final class ExecutionHandleNoParam implements ExecutionHandle
 				final var operation = (Operation) factory.invoke(adapter);
 				return new ExecutionHandleNoParam(operation);
 
-			} catch (final Throwable e)
+			}
+			catch (final Throwable e)
 			{
 				e.printStackTrace();
 				return null;
@@ -58,7 +60,7 @@ public final class ExecutionHandleNoParam implements ExecutionHandle
 	{
 		private final ExecutionHandle handle;
 
-		public StaticBuilder(Lookup lookup, MethodHandle methodHandle)
+		public StaticBuilder(Lookup lookup, MethodHandle methodHandle) throws Throwable
 		{
 			final var operation = ReflectUtil.createOperation(lookup, methodHandle);
 			handle = new ExecutionHandleNoParam(operation);

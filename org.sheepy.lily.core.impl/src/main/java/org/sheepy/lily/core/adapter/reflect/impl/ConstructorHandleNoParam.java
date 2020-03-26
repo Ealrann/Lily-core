@@ -28,7 +28,7 @@ public final class ConstructorHandleNoParam<T extends IAdapter> implements Const
 	{
 		private final ConstructorHandle<T> handle;
 
-		public Builder(Lookup lookup, MethodHandle methodHandle)
+		public Builder(Lookup lookup, MethodHandle methodHandle) throws Throwable
 		{
 			final Supplier<T> supplier = ReflectUtil.createSupplier(lookup, methodHandle);
 			handle = new ConstructorHandleNoParam<>(supplier);

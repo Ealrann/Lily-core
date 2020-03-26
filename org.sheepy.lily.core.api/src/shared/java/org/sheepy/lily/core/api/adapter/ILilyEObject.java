@@ -18,10 +18,12 @@ public interface ILilyEObject extends InternalEObject
 	<T extends IAdapter> T adaptGeneric(Class<? extends IAdapter> type);
 	<T extends IAdapter> T adaptNotNullGeneric(Class<? extends IAdapter> type);
 
+	@Deprecated
 	default void addListener(INotificationListener listener, int... features)
 	{
 		listen(listener, features);
 	}
+	@Deprecated
 	default void removeListener(INotificationListener listener, int... features)
 	{
 		sulk(listener, features);

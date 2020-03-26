@@ -1,12 +1,12 @@
 package org.sheepy.lily.core.adapter.reflect;
 
-import java.lang.reflect.Constructor;
-
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.reflect.impl.ConstructorHandleNoParam;
 import org.sheepy.lily.core.adapter.reflect.impl.ConstructorHandleParam1;
 import org.sheepy.lily.core.adapter.reflect.util.ReflectUtil;
 import org.sheepy.lily.core.api.adapter.IAdapter;
+
+import java.lang.reflect.Constructor;
 
 public interface ConstructorHandle<T extends IAdapter>
 {
@@ -18,17 +18,22 @@ public interface ConstructorHandle<T extends IAdapter>
 		{
 			final var sourceClass = constructor.getDeclaringClass();
 			final int paramCount = constructor.getParameterCount();
-			final var privateLookup = ReflectUtil.reachPrivateLookup(sourceClass);
-			final var methodHandle = ReflectUtil.unreflect(constructor, privateLookup);
+			final var privateLookup = ReflectUtil.reachLookup(sourceClass);
 
-			switch (paramCount)
+			try
 			{
-				case 0:
-					return new ConstructorHandleNoParam.Builder<>(privateLookup, methodHandle);
-				case 1:
-					return new ConstructorHandleParam1.Builder<>(privateLookup, methodHandle);
-				default:
-					throw new AssertionError("Constructor not found");
+				final var methodHandle = ReflectUtil.unreflect(constructor, privateLookup);
+				return switch (paramCount)
+						{
+							case 0 -> new ConstructorHandleNoParam.Builder<>(privateLookup, methodHandle);
+							case 1 -> new ConstructorHandleParam1.Builder<>(privateLookup, methodHandle);
+							default -> throw new AssertionError("Constructor not found");
+						};
+			}
+			catch (final Throwable e)
+			{
+				new Exception("Cannot create Handle for Constructor: " + constructor, e).printStackTrace();
+				return null;
 			}
 		}
 

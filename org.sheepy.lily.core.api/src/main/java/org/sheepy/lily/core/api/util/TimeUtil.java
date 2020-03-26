@@ -1,32 +1,22 @@
 package org.sheepy.lily.core.api.util;
 
-import java.util.concurrent.TimeUnit;
-
 import org.sheepy.lily.core.model.types.ETimeUnit;
+
+import java.util.concurrent.TimeUnit;
 
 public final class TimeUtil
 {
-
 	public static TimeUnit resolveUnit(ETimeUnit unit)
 	{
-		switch (unit)
-		{
-		case DAYS:
-			return TimeUnit.DAYS;
-		case HOURS:
-			return TimeUnit.HOURS;
-		case MICROSECONDS:
-			return TimeUnit.MICROSECONDS;
-		case MILLISECONDS:
-			return TimeUnit.MILLISECONDS;
-		case MINUTES:
-			return TimeUnit.MINUTES;
-		case NANOSECONDS:
-			return TimeUnit.NANOSECONDS;
-		case SECONDS:
-			return TimeUnit.SECONDS;
-		default:
-			return null;
-		}
+		return switch (unit)
+				{
+					case DAYS -> TimeUnit.DAYS;
+					case HOURS -> TimeUnit.HOURS;
+					case MICROSECONDS -> TimeUnit.MICROSECONDS;
+					case MILLISECONDS -> TimeUnit.MILLISECONDS;
+					case MINUTES -> TimeUnit.MINUTES;
+					case NANOSECONDS -> TimeUnit.NANOSECONDS;
+					case SECONDS -> TimeUnit.SECONDS;
+				};
 	}
 }
