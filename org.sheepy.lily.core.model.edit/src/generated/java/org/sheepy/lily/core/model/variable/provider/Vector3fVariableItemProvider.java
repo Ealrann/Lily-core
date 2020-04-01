@@ -11,8 +11,7 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
-
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -20,20 +19,22 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.lily.core.model.variable.ModelVariablePkg;
-import org.sheepy.lily.core.model.variable.VariableFactory;
+import org.sheepy.lily.core.model.types.TypesPackage;
+
 import org.sheepy.lily.core.model.variable.VariablePackage;
+import org.sheepy.lily.core.model.variable.Vector3fVariable;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.lily.core.model.variable.ModelVariablePkg} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.variable.Vector3fVariable} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ModelVariablePkgItemProvider 
+public class Vector3fVariableItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -48,7 +49,7 @@ public class ModelVariablePkgItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ModelVariablePkgItemProvider(AdapterFactory adapterFactory)
+	public Vector3fVariableItemProvider(AdapterFactory adapterFactory)
 	{
 		super(adapterFactory);
 	}
@@ -66,45 +67,60 @@ public class ModelVariablePkgItemProvider
 		{
 			super.getPropertyDescriptors(object);
 
+			addNamePropertyDescriptor(object);
+			addVectorPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object)
+	protected void addNamePropertyDescriptor(Object object)
 	{
-		if (childrenFeatures == null)
-		{
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(VariablePackage.Literals.MODEL_VARIABLE_PKG__VARIABLES);
-		}
-		return childrenFeatures;
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LNamedElement_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LNamedElement_name_feature", "_UI_LNamedElement_type"),
+				 TypesPackage.Literals.LNAMED_ELEMENT__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
+	 * This adds a property descriptor for the Vector feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child)
+	protected void addVectorPropertyDescriptor(Object object)
 	{
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Vector3fVariable_vector_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Vector3fVariable_vector_feature", "_UI_Vector3fVariable_type"),
+				 VariablePackage.Literals.VECTOR3F_VARIABLE__VECTOR,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
-	 * This returns ModelVariablePkg.gif.
+	 * This returns Vector3fVariable.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -112,7 +128,7 @@ public class ModelVariablePkgItemProvider
 	@Override
 	public Object getImage(Object object)
 	{
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ModelVariablePkg"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Vector3fVariable"));
 	}
 
 	/**
@@ -124,7 +140,10 @@ public class ModelVariablePkgItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		return getString("_UI_ModelVariablePkg_type");
+		String label = ((Vector3fVariable)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_Vector3fVariable_type") :
+			getString("_UI_Vector3fVariable_type") + " " + label;
 	}
 
 
@@ -140,10 +159,11 @@ public class ModelVariablePkgItemProvider
 	{
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ModelVariablePkg.class))
+		switch (notification.getFeatureID(Vector3fVariable.class))
 		{
-			case VariablePackage.MODEL_VARIABLE_PKG__VARIABLES:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			case VariablePackage.VECTOR3F_VARIABLE__NAME:
+			case VariablePackage.VECTOR3F_VARIABLE__VECTOR:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -160,26 +180,6 @@ public class ModelVariablePkgItemProvider
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(VariablePackage.Literals.MODEL_VARIABLE_PKG__VARIABLES,
-				 VariableFactory.eINSTANCE.createIntVariable()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(VariablePackage.Literals.MODEL_VARIABLE_PKG__VARIABLES,
-				 VariableFactory.eINSTANCE.createFloatVariable()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(VariablePackage.Literals.MODEL_VARIABLE_PKG__VARIABLES,
-				 VariableFactory.eINSTANCE.createVector3fVariable()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(VariablePackage.Literals.MODEL_VARIABLE_PKG__VARIABLES,
-				 VariableFactory.eINSTANCE.createDurationVariable()));
 	}
 
 	/**

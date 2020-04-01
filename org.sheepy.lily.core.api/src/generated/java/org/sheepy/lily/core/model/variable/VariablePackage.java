@@ -597,6 +597,98 @@ public interface VariablePackage extends EPackage
 	int INT_VARIABLE_OPERATION_COUNT = IMODEL_VARIABLE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.FloatVariableImpl <em>Float Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.variable.impl.FloatVariableImpl
+	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getFloatVariable()
+	 * @generated
+	 */
+	int FLOAT_VARIABLE = 13;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOAT_VARIABLE__NAME = IMODEL_VARIABLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOAT_VARIABLE__VALUE = IMODEL_VARIABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Float Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOAT_VARIABLE_FEATURE_COUNT = IMODEL_VARIABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Float Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOAT_VARIABLE_OPERATION_COUNT = IMODEL_VARIABLE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.Vector3fVariableImpl <em>Vector3f Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.variable.impl.Vector3fVariableImpl
+	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getVector3fVariable()
+	 * @generated
+	 */
+	int VECTOR3F_VARIABLE = 14;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VECTOR3F_VARIABLE__NAME = IMODEL_VARIABLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Vector</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VECTOR3F_VARIABLE__VECTOR = IMODEL_VARIABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Vector3f Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VECTOR3F_VARIABLE_FEATURE_COUNT = IMODEL_VARIABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Vector3f Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VECTOR3F_VARIABLE_OPERATION_COUNT = IMODEL_VARIABLE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.variable.impl.DurationVariableImpl <em>Duration Variable</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -604,7 +696,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getDurationVariable()
 	 * @generated
 	 */
-	int DURATION_VARIABLE = 13;
+	int DURATION_VARIABLE = 15;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -641,7 +733,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getIModelVariableAction()
 	 * @generated
 	 */
-	int IMODEL_VARIABLE_ACTION = 14;
+	int IMODEL_VARIABLE_ACTION = 16;
 
 	/**
 	 * The number of structural features of the '<em>IModel Variable Action</em>' class.
@@ -669,7 +761,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getIModelVariableActionContainer()
 	 * @generated
 	 */
-	int IMODEL_VARIABLE_ACTION_CONTAINER = 15;
+	int IMODEL_VARIABLE_ACTION_CONTAINER = 17;
 
 	/**
 	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
@@ -706,7 +798,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getSetVariableAction()
 	 * @generated
 	 */
-	int SET_VARIABLE_ACTION = 16;
+	int SET_VARIABLE_ACTION = 18;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -752,7 +844,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getLResolvedVariableFeature()
 	 * @generated
 	 */
-	int LRESOLVED_VARIABLE_FEATURE = 17;
+	int LRESOLVED_VARIABLE_FEATURE = 19;
 
 	/**
 	 * The meta object id for the '<em>Definition</em>' data type.
@@ -762,7 +854,7 @@ public interface VariablePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getVariableDefinition()
 	 * @generated
 	 */
-	int VARIABLE_DEFINITION = 18;
+	int VARIABLE_DEFINITION = 20;
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.IVariableResolver <em>IVariable Resolver</em>}'.
@@ -992,6 +1084,48 @@ public interface VariablePackage extends EPackage
 	 * @generated
 	 */
 	EAttribute getIntVariable_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.FloatVariable <em>Float Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Float Variable</em>'.
+	 * @see org.sheepy.lily.core.model.variable.FloatVariable
+	 * @generated
+	 */
+	EClass getFloatVariable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.variable.FloatVariable#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.sheepy.lily.core.model.variable.FloatVariable#getValue()
+	 * @see #getFloatVariable()
+	 * @generated
+	 */
+	EAttribute getFloatVariable_Value();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.Vector3fVariable <em>Vector3f Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Vector3f Variable</em>'.
+	 * @see org.sheepy.lily.core.model.variable.Vector3fVariable
+	 * @generated
+	 */
+	EClass getVector3fVariable();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.variable.Vector3fVariable#getVector <em>Vector</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Vector</em>'.
+	 * @see org.sheepy.lily.core.model.variable.Vector3fVariable#getVector()
+	 * @see #getVector3fVariable()
+	 * @generated
+	 */
+	EAttribute getVector3fVariable_Vector();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.variable.DurationVariable <em>Duration Variable</em>}'.
@@ -1313,6 +1447,42 @@ public interface VariablePackage extends EPackage
 		 * @generated
 		 */
 		EAttribute INT_VARIABLE__VALUE = eINSTANCE.getIntVariable_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.impl.FloatVariableImpl <em>Float Variable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.variable.impl.FloatVariableImpl
+		 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getFloatVariable()
+		 * @generated
+		 */
+		EClass FLOAT_VARIABLE = eINSTANCE.getFloatVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FLOAT_VARIABLE__VALUE = eINSTANCE.getFloatVariable_Value();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.impl.Vector3fVariableImpl <em>Vector3f Variable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.variable.impl.Vector3fVariableImpl
+		 * @see org.sheepy.lily.core.model.variable.impl.VariablePackageImpl#getVector3fVariable()
+		 * @generated
+		 */
+		EClass VECTOR3F_VARIABLE = eINSTANCE.getVector3fVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Vector</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute VECTOR3F_VARIABLE__VECTOR = eINSTANCE.getVector3fVariable_Vector();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.variable.impl.DurationVariableImpl <em>Duration Variable</em>}' class.

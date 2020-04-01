@@ -4,10 +4,7 @@ import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.IAdapterProvider;
 import org.sheepy.lily.core.application.ApplicationAdapter;
 import org.sheepy.lily.core.cadence.adapter.*;
-import org.sheepy.lily.core.variable.ChainVariableResolverAdapter;
-import org.sheepy.lily.core.variable.DirectVariableResolverAdapter;
-import org.sheepy.lily.core.variable.DurationVariableAdapter;
-import org.sheepy.lily.core.variable.IntVariableAdapter;
+import org.sheepy.lily.core.variable.*;
 import org.sheepy.lily.core.variable.action.SetVariableActionAdapter;
 
 import java.util.List;
@@ -29,6 +26,8 @@ public class Adapters implements IAdapterProvider
 					   CloseApplicationAdapter.class,
 					   DurationVariableAdapter.class,
 					   IntVariableAdapter.class,
+					   FloatVariableAdapter.class,
+					   Vector3fVariableAdapter.class,
 					   SetVariableActionAdapter.class);
 	}
 }

@@ -185,6 +185,24 @@ public class VariableSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case VariablePackage.FLOAT_VARIABLE:
+			{
+				FloatVariable floatVariable = (FloatVariable)theEObject;
+				T result = caseFloatVariable(floatVariable);
+				if (result == null) result = caseIModelVariable(floatVariable);
+				if (result == null) result = caseLNamedElement(floatVariable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case VariablePackage.VECTOR3F_VARIABLE:
+			{
+				Vector3fVariable vector3fVariable = (Vector3fVariable)theEObject;
+				T result = caseVector3fVariable(vector3fVariable);
+				if (result == null) result = caseIModelVariable(vector3fVariable);
+				if (result == null) result = caseLNamedElement(vector3fVariable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case VariablePackage.DURATION_VARIABLE:
 			{
 				DurationVariable durationVariable = (DurationVariable)theEObject;
@@ -424,6 +442,38 @@ public class VariableSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseIntVariable(IntVariable object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Float Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Float Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFloatVariable(FloatVariable object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Vector3f Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Vector3f Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseVector3fVariable(Vector3fVariable object)
 	{
 		return null;
 	}

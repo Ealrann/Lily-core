@@ -48,6 +48,7 @@ import org.sheepy.lily.core.model.variable.ChainResolver;
 import org.sheepy.lily.core.model.variable.ChainVariableResolver;
 import org.sheepy.lily.core.model.variable.DirectVariableResolver;
 import org.sheepy.lily.core.model.variable.DurationVariable;
+import org.sheepy.lily.core.model.variable.FloatVariable;
 import org.sheepy.lily.core.model.variable.IDefinitionContainer;
 import org.sheepy.lily.core.model.variable.IModelVariable;
 import org.sheepy.lily.core.model.variable.IModelVariableAction;
@@ -61,6 +62,7 @@ import org.sheepy.lily.core.model.variable.VarChangeAction;
 import org.sheepy.lily.core.model.variable.VarChangeActionPkg;
 import org.sheepy.lily.core.model.variable.VariableFactory;
 import org.sheepy.lily.core.model.variable.VariablePackage;
+import org.sheepy.lily.core.model.variable.Vector3fVariable;
 
 /**
  * <!-- begin-user-doc -->
@@ -160,6 +162,20 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * @generated
 	 */
 	private EClass intVariableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass floatVariableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass vector3fVariableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -552,6 +568,50 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 	 * @generated
 	 */
 	@Override
+	public EClass getFloatVariable()
+	{
+		return floatVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getFloatVariable_Value()
+	{
+		return (EAttribute)floatVariableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getVector3fVariable()
+	{
+		return vector3fVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getVector3fVariable_Vector()
+	{
+		return (EAttribute)vector3fVariableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getDurationVariable()
 	{
 		return durationVariableEClass;
@@ -711,6 +771,12 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		intVariableEClass = createEClass(INT_VARIABLE);
 		createEAttribute(intVariableEClass, INT_VARIABLE__VALUE);
 
+		floatVariableEClass = createEClass(FLOAT_VARIABLE);
+		createEAttribute(floatVariableEClass, FLOAT_VARIABLE__VALUE);
+
+		vector3fVariableEClass = createEClass(VECTOR3F_VARIABLE);
+		createEAttribute(vector3fVariableEClass, VECTOR3F_VARIABLE__VECTOR);
+
 		durationVariableEClass = createEClass(DURATION_VARIABLE);
 
 		iModelVariableActionEClass = createEClass(IMODEL_VARIABLE_ACTION);
@@ -770,6 +836,8 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		intChangeActionEClass.getESuperTypes().add(this.getVarChangeAction());
 		iModelVariableEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
 		intVariableEClass.getESuperTypes().add(this.getIModelVariable());
+		floatVariableEClass.getESuperTypes().add(this.getIModelVariable());
+		vector3fVariableEClass.getESuperTypes().add(this.getIModelVariable());
 		durationVariableEClass.getESuperTypes().add(this.getIModelVariable());
 		setVariableActionEClass.getESuperTypes().add(this.getIModelVariableAction());
 
@@ -808,6 +876,12 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 
 		initEClass(intVariableEClass, IntVariable.class, "IntVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIntVariable_Value(), ecorePackage.getEInt(), "value", null, 1, 1, IntVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(floatVariableEClass, FloatVariable.class, "FloatVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFloatVariable_Value(), ecorePackage.getEFloat(), "value", null, 1, 1, FloatVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(vector3fVariableEClass, Vector3fVariable.class, "Vector3fVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getVector3fVariable_Vector(), theTypesPackage.getVector3f(), "vector", null, 0, 1, Vector3fVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(durationVariableEClass, DurationVariable.class, "DurationVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

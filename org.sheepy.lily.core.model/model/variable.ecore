@@ -42,6 +42,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="IntVariable" eSuperTypes="#//IModelVariable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FloatVariable" eSuperTypes="#//IModelVariable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Vector3fVariable" eSuperTypes="#//IModelVariable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vector" eType="ecore:EDataType types.ecore#//Vector3f"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DurationVariable" eSuperTypes="#//IModelVariable"/>
   <eClassifiers xsi:type="ecore:EClass" name="IModelVariableAction" abstract="true"
       interface="true"/>

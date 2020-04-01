@@ -291,6 +291,56 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.variable.FloatVariable} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected FloatVariableItemProvider floatVariableItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.variable.FloatVariable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createFloatVariableAdapter()
+	{
+		if (floatVariableItemProvider == null)
+		{
+			floatVariableItemProvider = new FloatVariableItemProvider(this);
+		}
+
+		return floatVariableItemProvider;
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.variable.Vector3fVariable} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected Vector3fVariableItemProvider vector3fVariableItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.variable.Vector3fVariable}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createVector3fVariableAdapter()
+	{
+		if (vector3fVariableItemProvider == null)
+		{
+			vector3fVariableItemProvider = new Vector3fVariableItemProvider(this);
+		}
+
+		return vector3fVariableItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.variable.DurationVariable} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -497,6 +547,8 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
 		if (varChangeActionPkgItemProvider != null) varChangeActionPkgItemProvider.dispose();
 		if (modelVariablePkgItemProvider != null) modelVariablePkgItemProvider.dispose();
 		if (intVariableItemProvider != null) intVariableItemProvider.dispose();
+		if (floatVariableItemProvider != null) floatVariableItemProvider.dispose();
+		if (vector3fVariableItemProvider != null) vector3fVariableItemProvider.dispose();
 		if (durationVariableItemProvider != null) durationVariableItemProvider.dispose();
 		if (setVariableActionItemProvider != null) setVariableActionItemProvider.dispose();
 	}

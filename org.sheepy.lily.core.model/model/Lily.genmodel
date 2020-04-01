@@ -190,6 +190,12 @@
     <genClasses ecoreClass="variable.ecore#//IntVariable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute variable.ecore#//IntVariable/value"/>
     </genClasses>
+    <genClasses ecoreClass="variable.ecore#//FloatVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute variable.ecore#//FloatVariable/value"/>
+    </genClasses>
+    <genClasses ecoreClass="variable.ecore#//Vector3fVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute variable.ecore#//Vector3fVariable/vector"/>
+    </genClasses>
     <genClasses ecoreClass="variable.ecore#//DurationVariable"/>
     <genClasses ecoreClass="variable.ecore#//IModelVariableAction"/>
     <genClasses ecoreClass="variable.ecore#//IModelVariableActionContainer">

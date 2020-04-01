@@ -95,6 +95,24 @@ public interface VariableFactory extends EFactory
 	IntVariable createIntVariable();
 
 	/**
+	 * Returns a new object of class '<em>Float Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Float Variable</em>'.
+	 * @generated
+	 */
+	FloatVariable createFloatVariable();
+
+	/**
+	 * Returns a new object of class '<em>Vector3f Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Vector3f Variable</em>'.
+	 * @generated
+	 */
+	Vector3fVariable createVector3fVariable();
+
+	/**
 	 * Returns a new object of class '<em>Duration Variable</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

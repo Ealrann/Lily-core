@@ -143,6 +143,16 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 				return createIntVariableAdapter();
 			}
 			@Override
+			public Adapter caseFloatVariable(FloatVariable object)
+			{
+				return createFloatVariableAdapter();
+			}
+			@Override
+			public Adapter caseVector3fVariable(Vector3fVariable object)
+			{
+				return createVector3fVariableAdapter();
+			}
+			@Override
 			public Adapter caseDurationVariable(DurationVariable object)
 			{
 				return createDurationVariableAdapter();
@@ -384,6 +394,36 @@ public class VariableAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createIntVariableAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.FloatVariable <em>Float Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.variable.FloatVariable
+	 * @generated
+	 */
+	public Adapter createFloatVariableAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.variable.Vector3fVariable <em>Vector3f Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.variable.Vector3fVariable
+	 * @generated
+	 */
+	public Adapter createVector3fVariableAdapter()
 	{
 		return null;
 	}

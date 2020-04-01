@@ -75,6 +75,8 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 			case VariablePackage.VAR_CHANGE_ACTION_PKG: return createVarChangeActionPkg();
 			case VariablePackage.MODEL_VARIABLE_PKG: return createModelVariablePkg();
 			case VariablePackage.INT_VARIABLE: return createIntVariable();
+			case VariablePackage.FLOAT_VARIABLE: return createFloatVariable();
+			case VariablePackage.VECTOR3F_VARIABLE: return createVector3fVariable();
 			case VariablePackage.DURATION_VARIABLE: return createDurationVariable();
 			case VariablePackage.SET_VARIABLE_ACTION: return createSetVariableAction();
 			default:
@@ -214,6 +216,30 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	{
 		IntVariableImpl intVariable = new IntVariableImpl();
 		return intVariable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public FloatVariable createFloatVariable()
+	{
+		FloatVariableImpl floatVariable = new FloatVariableImpl();
+		return floatVariable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Vector3fVariable createVector3fVariable()
+	{
+		Vector3fVariableImpl vector3fVariable = new Vector3fVariableImpl();
+		return vector3fVariable;
 	}
 
 	/**
