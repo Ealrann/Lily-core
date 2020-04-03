@@ -26,7 +26,7 @@ import org.sheepy.lily.core.model.types.LNamedElement;
  * @model
  * @generated
  */
-public interface BackgroundImage extends LNamedElement, IScenePart
+public interface BackgroundImage extends LNamedElement, ICompositor
 {
 
 	/**

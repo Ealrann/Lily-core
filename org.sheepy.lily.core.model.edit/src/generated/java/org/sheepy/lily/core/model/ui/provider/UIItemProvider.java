@@ -25,6 +25,8 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
+import org.sheepy.lily.core.model.application.ApplicationFactory;
+import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.ui.UI;
 import org.sheepy.lily.core.model.ui.UiFactory;
 import org.sheepy.lily.core.model.ui.UiPackage;
@@ -70,7 +72,6 @@ public class UIItemProvider
 
 			addImageSupportPropertyDescriptor(object);
 			addCurrentUIPagePropertyDescriptor(object);
-			addImagesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -122,29 +123,6 @@ public class UIItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Images feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addImagesPropertyDescriptor(Object object)
-	{
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_UI_images_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_UI_images_feature", "_UI_UI_type"),
-				 UiPackage.Literals.UI__IMAGES,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -158,6 +136,7 @@ public class UIItemProvider
 		if (childrenFeatures == null)
 		{
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(ApplicationPackage.Literals.ICOMPOSITOR__EXTENSION_PKG);
 			childrenFeatures.add(UiPackage.Literals.UI__UI_PAGES);
 			childrenFeatures.add(UiPackage.Literals.UI__FONT_PKG);
 		}
@@ -221,6 +200,7 @@ public class UIItemProvider
 			case UiPackage.UI__IMAGE_SUPPORT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
+			case UiPackage.UI__EXTENSION_PKG:
 			case UiPackage.UI__UI_PAGES:
 			case UiPackage.UI__FONT_PKG:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -243,6 +223,11 @@ public class UIItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(ApplicationPackage.Literals.ICOMPOSITOR__EXTENSION_PKG,
+				 ApplicationFactory.eINSTANCE.createCompositorExtensionPkg()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(UiPackage.Literals.UI__UI_PAGES,
 				 UiFactory.eINSTANCE.createUIPage()));
 
@@ -250,6 +235,30 @@ public class UIItemProvider
 			(createChildParameter
 				(UiPackage.Literals.UI__FONT_PKG,
 				 UiFactory.eINSTANCE.createFontPkg()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection)
+	{
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == ApplicationPackage.Literals.ICOMPOSITOR__EXTENSION_PKG;
+
+		if (qualify)
+		{
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

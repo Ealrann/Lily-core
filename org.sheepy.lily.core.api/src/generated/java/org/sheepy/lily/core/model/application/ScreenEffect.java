@@ -23,7 +23,7 @@ import org.sheepy.lily.core.model.types.LNamedElement;
  * @model
  * @generated
  */
-public interface ScreenEffect extends LNamedElement, IScenePart
+public interface ScreenEffect extends LNamedElement, ICompositor
 {
 	/**
 	 * Returns the value of the '<em><b>Src Image</b></em>' reference.

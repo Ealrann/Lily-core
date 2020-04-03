@@ -7,7 +7,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.inference.InferencePackage;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
@@ -329,13 +328,22 @@ public interface UiPackage extends EPackage
 	int UI = 1;
 
 	/**
+	 * The feature id for the '<em><b>Extension Pkg</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI__EXTENSION_PKG = ApplicationPackage.ICOMPOSITOR__EXTENSION_PKG;
+
+	/**
 	 * The feature id for the '<em><b>Image Support</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UI__IMAGE_SUPPORT = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 0;
+	int UI__IMAGE_SUPPORT = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Ui Pages</b></em>' containment reference list.
@@ -344,7 +352,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int UI__UI_PAGES = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 1;
+	int UI__UI_PAGES = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Current UI Page</b></em>' reference.
@@ -353,7 +361,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int UI__CURRENT_UI_PAGE = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 2;
+	int UI__CURRENT_UI_PAGE = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Font Pkg</b></em>' containment reference.
@@ -362,16 +370,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int UI__FONT_PKG = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Images</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int UI__IMAGES = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 4;
+	int UI__FONT_PKG = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>UI</em>' class.
@@ -380,7 +379,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int UI_FEATURE_COUNT = ApplicationPackage.ISCENE_PART_FEATURE_COUNT + 5;
+	int UI_FEATURE_COUNT = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -389,7 +388,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int UI___LINFERENCE_OBJECT = ApplicationPackage.ISCENE_PART___LINFERENCE_OBJECT;
+	int UI___LINFERENCE_OBJECT = ApplicationPackage.ICOMPOSITOR___LINFERENCE_OBJECT;
 
 	/**
 	 * The number of operations of the '<em>UI</em>' class.
@@ -398,7 +397,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int UI_OPERATION_COUNT = ApplicationPackage.ISCENE_PART_OPERATION_COUNT + 0;
+	int UI_OPERATION_COUNT = ApplicationPackage.ICOMPOSITOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.IUIElement <em>IUI Element</em>}' class.
@@ -2327,17 +2326,6 @@ public interface UiPackage extends EPackage
 	EReference getUI_FontPkg();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.sheepy.lily.core.model.ui.UI#getImages <em>Images</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Images</em>'.
-	 * @see org.sheepy.lily.core.model.ui.UI#getImages()
-	 * @see #getUI()
-	 * @generated
-	 */
-	EReference getUI_Images();
-
-	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.IUIElement <em>IUI Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3048,14 +3036,6 @@ public interface UiPackage extends EPackage
 		 * @generated
 		 */
 		EReference UI__FONT_PKG = eINSTANCE.getUI_FontPkg();
-
-		/**
-		 * The meta object literal for the '<em><b>Images</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference UI__IMAGES = eINSTANCE.getUI_Images();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.IUIElement <em>IUI Element</em>}' class.

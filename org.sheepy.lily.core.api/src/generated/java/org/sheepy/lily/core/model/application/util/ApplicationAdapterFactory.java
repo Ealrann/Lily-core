@@ -107,9 +107,19 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 				return createIModelAdapter();
 			}
 			@Override
-			public Adapter caseIScenePart(IScenePart object)
+			public Adapter caseICompositor(ICompositor object)
 			{
-				return createIScenePartAdapter();
+				return createICompositorAdapter();
+			}
+			@Override
+			public Adapter caseCompositorExtensionPkg(CompositorExtensionPkg object)
+			{
+				return createCompositorExtensionPkgAdapter();
+			}
+			@Override
+			public Adapter caseICompositorExtension(ICompositorExtension object)
+			{
+				return createICompositorExtensionAdapter();
 			}
 			@Override
 			public Adapter caseICadence(ICadence object)
@@ -268,16 +278,46 @@ public class ApplicationAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.IScenePart <em>IScene Part</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.ICompositor <em>ICompositor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.lily.core.model.application.IScenePart
+	 * @see org.sheepy.lily.core.model.application.ICompositor
 	 * @generated
 	 */
-	public Adapter createIScenePartAdapter()
+	public Adapter createICompositorAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.CompositorExtensionPkg <em>Compositor Extension Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.CompositorExtensionPkg
+	 * @generated
+	 */
+	public Adapter createCompositorExtensionPkgAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.application.ICompositorExtension <em>ICompositor Extension</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.application.ICompositorExtension
+	 * @generated
+	 */
+	public Adapter createICompositorExtensionAdapter()
 	{
 		return null;
 	}

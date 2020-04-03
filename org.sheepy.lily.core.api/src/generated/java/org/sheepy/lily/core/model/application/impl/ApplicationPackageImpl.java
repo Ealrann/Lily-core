@@ -16,12 +16,14 @@ import org.sheepy.lily.core.model.application.ApplicationExtensionPkg;
 import org.sheepy.lily.core.model.application.ApplicationFactory;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.BackgroundImage;
+import org.sheepy.lily.core.model.application.CompositorExtensionPkg;
 import org.sheepy.lily.core.model.application.GenericScenePart;
 import org.sheepy.lily.core.model.application.IApplicationExtension;
 import org.sheepy.lily.core.model.application.ICadence;
+import org.sheepy.lily.core.model.application.ICompositor;
+import org.sheepy.lily.core.model.application.ICompositorExtension;
 import org.sheepy.lily.core.model.application.IEngine;
 import org.sheepy.lily.core.model.application.IModel;
-import org.sheepy.lily.core.model.application.IScenePart;
 import org.sheepy.lily.core.model.application.Scene;
 import org.sheepy.lily.core.model.application.ScreenEffect;
 import org.sheepy.lily.core.model.application.SpecialEffect;
@@ -108,7 +110,21 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass iScenePartEClass = null;
+	private EClass iCompositorEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass compositorExtensionPkgEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iCompositorExtensionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -457,9 +473,53 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
-	public EClass getIScenePart()
+	public EClass getICompositor()
 	{
-		return iScenePartEClass;
+		return iCompositorEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getICompositor_ExtensionPkg()
+	{
+		return (EReference)iCompositorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getCompositorExtensionPkg()
+	{
+		return compositorExtensionPkgEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCompositorExtensionPkg_Extensions()
+	{
+		return (EReference)compositorExtensionPkgEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getICompositorExtension()
+	{
+		return iCompositorExtensionEClass;
 	}
 
 	/**
@@ -490,7 +550,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
-	public EReference getScene_Parts()
+	public EReference getScene_Compositors()
 	{
 		return (EReference)sceneEClass.getEStructuralFeatures().get(0);
 	}
@@ -726,12 +786,18 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 
 		iModelEClass = createEClass(IMODEL);
 
-		iScenePartEClass = createEClass(ISCENE_PART);
+		iCompositorEClass = createEClass(ICOMPOSITOR);
+		createEReference(iCompositorEClass, ICOMPOSITOR__EXTENSION_PKG);
+
+		compositorExtensionPkgEClass = createEClass(COMPOSITOR_EXTENSION_PKG);
+		createEReference(compositorExtensionPkgEClass, COMPOSITOR_EXTENSION_PKG__EXTENSIONS);
+
+		iCompositorExtensionEClass = createEClass(ICOMPOSITOR_EXTENSION);
 
 		iCadenceEClass = createEClass(ICADENCE);
 
 		sceneEClass = createEClass(SCENE);
-		createEReference(sceneEClass, SCENE__PARTS);
+		createEReference(sceneEClass, SCENE__COMPOSITORS);
 		createEAttribute(sceneEClass, SCENE__FULLSCREEN);
 		createEAttribute(sceneEClass, SCENE__RESIZEABLE);
 		createEAttribute(sceneEClass, SCENE__SIZE);
@@ -790,13 +856,13 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 
 		// Add supertypes to classes
 		iApplicationExtensionEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
-		iScenePartEClass.getESuperTypes().add(theInferencePackage.getIInferenceObject());
-		genericScenePartEClass.getESuperTypes().add(this.getIScenePart());
+		iCompositorEClass.getESuperTypes().add(theInferencePackage.getIInferenceObject());
+		genericScenePartEClass.getESuperTypes().add(this.getICompositor());
 		genericScenePartEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
 		backgroundImageEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
-		backgroundImageEClass.getESuperTypes().add(this.getIScenePart());
+		backgroundImageEClass.getESuperTypes().add(this.getICompositor());
 		screenEffectEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
-		screenEffectEClass.getESuperTypes().add(this.getIScenePart());
+		screenEffectEClass.getESuperTypes().add(this.getICompositor());
 		specialEffectEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
 		specialEffectEClass.getESuperTypes().add(theResourcePackage.getIResource());
 
@@ -825,12 +891,18 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 
 		initEClass(iModelEClass, IModel.class, "IModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(iScenePartEClass, IScenePart.class, "IScenePart", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(iCompositorEClass, ICompositor.class, "ICompositor", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getICompositor_ExtensionPkg(), this.getCompositorExtensionPkg(), null, "extensionPkg", null, 0, 1, ICompositor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(compositorExtensionPkgEClass, CompositorExtensionPkg.class, "CompositorExtensionPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCompositorExtensionPkg_Extensions(), this.getICompositorExtension(), null, "extensions", null, 0, -1, CompositorExtensionPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(iCompositorExtensionEClass, ICompositorExtension.class, "ICompositorExtension", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(iCadenceEClass, ICadence.class, "ICadence", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(sceneEClass, Scene.class, "Scene", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getScene_Parts(), this.getIScenePart(), null, "parts", null, 0, -1, Scene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getScene_Compositors(), this.getICompositor(), null, "compositors", null, 0, -1, Scene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getScene_Fullscreen(), ecorePackage.getEBoolean(), "fullscreen", "false", 0, 1, Scene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getScene_Resizeable(), ecorePackage.getEBoolean(), "resizeable", "false", 0, 1, Scene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getScene_Size(), theTypesPackage.getVector2i(), "size", "400,400", 0, 1, Scene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

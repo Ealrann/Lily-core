@@ -6,6 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -20,8 +21,8 @@ import org.sheepy.lily.core.api.adapter.LilyEObject;
 
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.BackgroundImage;
-import org.sheepy.lily.core.model.application.IScenePart;
-
+import org.sheepy.lily.core.model.application.CompositorExtensionPkg;
+import org.sheepy.lily.core.model.application.ICompositor;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 import org.sheepy.lily.core.model.inference.InferencePackage;
 
@@ -40,6 +41,7 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  * </p>
  * <ul>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getExtensionPkg <em>Extension Pkg</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getClearColor <em>Clear Color</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getSampling <em>Sampling</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getSrcImage <em>Src Image</em>}</li>
@@ -69,6 +71,16 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getExtensionPkg() <em>Extension Pkg</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExtensionPkg()
+	 * @generated
+	 * @ordered
+	 */
+	protected CompositorExtensionPkg extensionPkg;
 
 	/**
 	 * The default value of the '{@link #getClearColor() <em>Clear Color</em>}' attribute.
@@ -174,6 +186,83 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.BACKGROUND_IMAGE__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public CompositorExtensionPkg getExtensionPkg()
+	{
+		if (extensionPkg != null && ((EObject)extensionPkg).eIsProxy())
+		{
+			InternalEObject oldExtensionPkg = extensionPkg;
+			extensionPkg = (CompositorExtensionPkg)eResolveProxy(oldExtensionPkg);
+			if (extensionPkg != oldExtensionPkg)
+			{
+				InternalEObject newExtensionPkg = extensionPkg;
+				NotificationChain msgs = oldExtensionPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG, null, null);
+				if (newExtensionPkg.eInternalContainer() == null)
+				{
+					msgs = newExtensionPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG, oldExtensionPkg, extensionPkg));
+			}
+		}
+		return extensionPkg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CompositorExtensionPkg basicGetExtensionPkg()
+	{
+		return extensionPkg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExtensionPkg(CompositorExtensionPkg newExtensionPkg, NotificationChain msgs)
+	{
+		CompositorExtensionPkg oldExtensionPkg = extensionPkg;
+		extensionPkg = newExtensionPkg;
+		if (eNotificationRequired())
+		{
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG, oldExtensionPkg, newExtensionPkg);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setExtensionPkg(CompositorExtensionPkg newExtensionPkg)
+	{
+		if (newExtensionPkg != extensionPkg)
+		{
+			NotificationChain msgs = null;
+			if (extensionPkg != null)
+				msgs = ((InternalEObject)extensionPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG, null, msgs);
+			if (newExtensionPkg != null)
+				msgs = ((InternalEObject)newExtensionPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG, null, msgs);
+			msgs = basicSetExtensionPkg(newExtensionPkg, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG, newExtensionPkg, newExtensionPkg));
 	}
 
 	/**
@@ -333,12 +422,31 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+	{
+		switch (featureID)
+		{
+			case ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG:
+				return basicSetExtensionPkg(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType)
 	{
 		switch (featureID)
 		{
 			case ApplicationPackage.BACKGROUND_IMAGE__NAME:
 				return getName();
+			case ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG:
+				if (resolve) return getExtensionPkg();
+				return basicGetExtensionPkg();
 			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
 				return getClearColor();
 			case ApplicationPackage.BACKGROUND_IMAGE__SAMPLING:
@@ -365,6 +473,9 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 		{
 			case ApplicationPackage.BACKGROUND_IMAGE__NAME:
 				setName((String)newValue);
+				return;
+			case ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG:
+				setExtensionPkg((CompositorExtensionPkg)newValue);
 				return;
 			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
 				setClearColor((Vector3ic)newValue);
@@ -395,6 +506,9 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 			case ApplicationPackage.BACKGROUND_IMAGE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG:
+				setExtensionPkg((CompositorExtensionPkg)null);
+				return;
 			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
 				setClearColor(CLEAR_COLOR_EDEFAULT);
 				return;
@@ -423,6 +537,8 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 		{
 			case ApplicationPackage.BACKGROUND_IMAGE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG:
+				return extensionPkg != null;
 			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
 				return CLEAR_COLOR_EDEFAULT == null ? clearColor != null : !CLEAR_COLOR_EDEFAULT.equals(clearColor);
 			case ApplicationPackage.BACKGROUND_IMAGE__SAMPLING:
@@ -441,6 +557,58 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 	 * @generated
 	 */
 	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
+	{
+		if (baseClass == IInferenceObject.class)
+		{
+			switch (derivedFeatureID)
+			{
+				default: return -1;
+			}
+		}
+		if (baseClass == ICompositor.class)
+		{
+			switch (derivedFeatureID)
+			{
+				case ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG: return ApplicationPackage.ICOMPOSITOR__EXTENSION_PKG;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
+	{
+		if (baseClass == IInferenceObject.class)
+		{
+			switch (baseFeatureID)
+			{
+				default: return -1;
+			}
+		}
+		if (baseClass == ICompositor.class)
+		{
+			switch (baseFeatureID)
+			{
+				case ApplicationPackage.ICOMPOSITOR__EXTENSION_PKG: return ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass)
 	{
 		if (baseClass == IInferenceObject.class)
@@ -451,7 +619,7 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 				default: return -1;
 			}
 		}
-		if (baseClass == IScenePart.class)
+		if (baseClass == ICompositor.class)
 		{
 			switch (baseOperationID)
 			{

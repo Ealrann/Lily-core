@@ -17,7 +17,7 @@ import org.sheepy.lily.core.api.adapter.ILilyEObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.application.Scene#getParts <em>Parts</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Scene#getCompositors <em>Compositors</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Scene#isFullscreen <em>Fullscreen</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Scene#isResizeable <em>Resizeable</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Scene#getSize <em>Size</em>}</li>
@@ -31,16 +31,16 @@ import org.sheepy.lily.core.api.adapter.ILilyEObject;
 public interface Scene extends ILilyEObject
 {
 	/**
-	 * Returns the value of the '<em><b>Parts</b></em>' containment reference list.
-	 * The list contents are of type {@link org.sheepy.lily.core.model.application.IScenePart}.
+	 * Returns the value of the '<em><b>Compositors</b></em>' containment reference list.
+	 * The list contents are of type {@link org.sheepy.lily.core.model.application.ICompositor}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parts</em>' containment reference list.
-	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getScene_Parts()
+	 * @return the value of the '<em>Compositors</em>' containment reference list.
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getScene_Compositors()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList<IScenePart> getParts();
+	EList<ICompositor> getCompositors();
 
 	/**
 	 * Returns the value of the '<em><b>Fullscreen</b></em>' attribute.

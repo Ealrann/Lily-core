@@ -491,17 +491,6 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getUI_Images()
-	{
-		return (EReference)uiEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getIUIElement()
 	{
 		return iuiElementEClass;
@@ -1136,7 +1125,6 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		createEReference(uiEClass, UI__UI_PAGES);
 		createEReference(uiEClass, UI__CURRENT_UI_PAGE);
 		createEReference(uiEClass, UI__FONT_PKG);
-		createEReference(uiEClass, UI__IMAGES);
 
 		iuiElementEClass = createEClass(IUI_ELEMENT);
 
@@ -1253,7 +1241,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		// Add supertypes to classes
 		panelEClass.getESuperTypes().add(this.getIPanel());
 		panelEClass.getESuperTypes().add(thePresentationPackage.getISizedElement());
-		uiEClass.getESuperTypes().add(theApplicationPackage.getIScenePart());
+		uiEClass.getESuperTypes().add(theApplicationPackage.getICompositor());
 		iuiElementEClass.getESuperTypes().add(theInferencePackage.getIInferenceObject());
 		uiPageEClass.getESuperTypes().add(thePresentationPackage.getISizedElement());
 		uiPageEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
@@ -1295,7 +1283,6 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		initEReference(getUI_UiPages(), this.getUIPage(), null, "uiPages", null, 0, -1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUI_CurrentUIPage(), this.getUIPage(), null, "currentUIPage", null, 0, 1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUI_FontPkg(), this.getFontPkg(), null, "fontPkg", null, 1, 1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getUI_Images(), theResourcePackage.getIImage(), null, "images", null, 0, -1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iuiElementEClass, IUIElement.class, "IUIElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

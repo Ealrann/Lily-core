@@ -18,12 +18,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.sheepy.lily.core.api.adapter.LilyEObject;
+import org.sheepy.lily.core.model.application.CompositorExtensionPkg;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
-import org.sheepy.lily.core.model.resource.IImage;
 import org.sheepy.lily.core.model.ui.FontPkg;
 import org.sheepy.lily.core.model.ui.UI;
 import org.sheepy.lily.core.model.ui.UIPage;
@@ -37,17 +36,27 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getExtensionPkg <em>Extension Pkg</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#isImageSupport <em>Image Support</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getUiPages <em>Ui Pages</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getCurrentUIPage <em>Current UI Page</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getFontPkg <em>Font Pkg</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getImages <em>Images</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class UIImpl extends LilyEObject implements UI
 {
+	/**
+	 * The cached value of the '{@link #getExtensionPkg() <em>Extension Pkg</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExtensionPkg()
+	 * @generated
+	 * @ordered
+	 */
+	protected CompositorExtensionPkg extensionPkg;
+
 	/**
 	 * The default value of the '{@link #isImageSupport() <em>Image Support</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -99,16 +108,6 @@ public class UIImpl extends LilyEObject implements UI
 	protected FontPkg fontPkg;
 
 	/**
-	 * The cached value of the '{@link #getImages() <em>Images</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImages()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<IImage> images;
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -127,6 +126,83 @@ public class UIImpl extends LilyEObject implements UI
 	protected EClass eStaticClass()
 	{
 		return UiPackage.Literals.UI;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public CompositorExtensionPkg getExtensionPkg()
+	{
+		if (extensionPkg != null && ((EObject)extensionPkg).eIsProxy())
+		{
+			InternalEObject oldExtensionPkg = extensionPkg;
+			extensionPkg = (CompositorExtensionPkg)eResolveProxy(oldExtensionPkg);
+			if (extensionPkg != oldExtensionPkg)
+			{
+				InternalEObject newExtensionPkg = extensionPkg;
+				NotificationChain msgs = oldExtensionPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UiPackage.UI__EXTENSION_PKG, null, null);
+				if (newExtensionPkg.eInternalContainer() == null)
+				{
+					msgs = newExtensionPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UiPackage.UI__EXTENSION_PKG, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UiPackage.UI__EXTENSION_PKG, oldExtensionPkg, extensionPkg));
+			}
+		}
+		return extensionPkg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CompositorExtensionPkg basicGetExtensionPkg()
+	{
+		return extensionPkg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExtensionPkg(CompositorExtensionPkg newExtensionPkg, NotificationChain msgs)
+	{
+		CompositorExtensionPkg oldExtensionPkg = extensionPkg;
+		extensionPkg = newExtensionPkg;
+		if (eNotificationRequired())
+		{
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, UiPackage.UI__EXTENSION_PKG, oldExtensionPkg, newExtensionPkg);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setExtensionPkg(CompositorExtensionPkg newExtensionPkg)
+	{
+		if (newExtensionPkg != extensionPkg)
+		{
+			NotificationChain msgs = null;
+			if (extensionPkg != null)
+				msgs = ((InternalEObject)extensionPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UiPackage.UI__EXTENSION_PKG, null, msgs);
+			if (newExtensionPkg != null)
+				msgs = ((InternalEObject)newExtensionPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - UiPackage.UI__EXTENSION_PKG, null, msgs);
+			msgs = basicSetExtensionPkg(newExtensionPkg, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.UI__EXTENSION_PKG, newExtensionPkg, newExtensionPkg));
 	}
 
 	/**
@@ -297,21 +373,6 @@ public class UIImpl extends LilyEObject implements UI
 	 * @generated
 	 */
 	@Override
-	public EList<IImage> getImages()
-	{
-		if (images == null)
-		{
-			images = new EObjectResolvingEList<IImage>(IImage.class, this, UiPackage.UI__IMAGES);
-		}
-		return images;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public IInferenceObject lInferenceObject()
 	{
 		return this;
@@ -327,6 +388,8 @@ public class UIImpl extends LilyEObject implements UI
 	{
 		switch (featureID)
 		{
+			case UiPackage.UI__EXTENSION_PKG:
+				return basicSetExtensionPkg(null, msgs);
 			case UiPackage.UI__UI_PAGES:
 				return ((InternalEList<?>)getUiPages()).basicRemove(otherEnd, msgs);
 			case UiPackage.UI__FONT_PKG:
@@ -345,6 +408,9 @@ public class UIImpl extends LilyEObject implements UI
 	{
 		switch (featureID)
 		{
+			case UiPackage.UI__EXTENSION_PKG:
+				if (resolve) return getExtensionPkg();
+				return basicGetExtensionPkg();
 			case UiPackage.UI__IMAGE_SUPPORT:
 				return isImageSupport();
 			case UiPackage.UI__UI_PAGES:
@@ -355,8 +421,6 @@ public class UIImpl extends LilyEObject implements UI
 			case UiPackage.UI__FONT_PKG:
 				if (resolve) return getFontPkg();
 				return basicGetFontPkg();
-			case UiPackage.UI__IMAGES:
-				return getImages();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -372,6 +436,9 @@ public class UIImpl extends LilyEObject implements UI
 	{
 		switch (featureID)
 		{
+			case UiPackage.UI__EXTENSION_PKG:
+				setExtensionPkg((CompositorExtensionPkg)newValue);
+				return;
 			case UiPackage.UI__IMAGE_SUPPORT:
 				setImageSupport((Boolean)newValue);
 				return;
@@ -384,10 +451,6 @@ public class UIImpl extends LilyEObject implements UI
 				return;
 			case UiPackage.UI__FONT_PKG:
 				setFontPkg((FontPkg)newValue);
-				return;
-			case UiPackage.UI__IMAGES:
-				getImages().clear();
-				getImages().addAll((Collection<? extends IImage>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -403,6 +466,9 @@ public class UIImpl extends LilyEObject implements UI
 	{
 		switch (featureID)
 		{
+			case UiPackage.UI__EXTENSION_PKG:
+				setExtensionPkg((CompositorExtensionPkg)null);
+				return;
 			case UiPackage.UI__IMAGE_SUPPORT:
 				setImageSupport(IMAGE_SUPPORT_EDEFAULT);
 				return;
@@ -414,9 +480,6 @@ public class UIImpl extends LilyEObject implements UI
 				return;
 			case UiPackage.UI__FONT_PKG:
 				setFontPkg((FontPkg)null);
-				return;
-			case UiPackage.UI__IMAGES:
-				getImages().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -432,6 +495,8 @@ public class UIImpl extends LilyEObject implements UI
 	{
 		switch (featureID)
 		{
+			case UiPackage.UI__EXTENSION_PKG:
+				return extensionPkg != null;
 			case UiPackage.UI__IMAGE_SUPPORT:
 				return imageSupport != IMAGE_SUPPORT_EDEFAULT;
 			case UiPackage.UI__UI_PAGES:
@@ -440,8 +505,6 @@ public class UIImpl extends LilyEObject implements UI
 				return currentUIPage != null;
 			case UiPackage.UI__FONT_PKG:
 				return fontPkg != null;
-			case UiPackage.UI__IMAGES:
-				return images != null && !images.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

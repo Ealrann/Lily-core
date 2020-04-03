@@ -155,7 +155,7 @@ public class SceneItemProvider
 		if (childrenFeatures == null)
 		{
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ApplicationPackage.Literals.SCENE__PARTS);
+			childrenFeatures.add(ApplicationPackage.Literals.SCENE__COMPOSITORS);
 		}
 		return childrenFeatures;
 	}
@@ -217,7 +217,7 @@ public class SceneItemProvider
 			case ApplicationPackage.SCENE__SIZE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case ApplicationPackage.SCENE__PARTS:
+			case ApplicationPackage.SCENE__COMPOSITORS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -238,22 +238,22 @@ public class SceneItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ApplicationPackage.Literals.SCENE__PARTS,
+				(ApplicationPackage.Literals.SCENE__COMPOSITORS,
 				 ApplicationFactory.eINSTANCE.createGenericScenePart()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ApplicationPackage.Literals.SCENE__PARTS,
+				(ApplicationPackage.Literals.SCENE__COMPOSITORS,
 				 ApplicationFactory.eINSTANCE.createBackgroundImage()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ApplicationPackage.Literals.SCENE__PARTS,
+				(ApplicationPackage.Literals.SCENE__COMPOSITORS,
 				 ApplicationFactory.eINSTANCE.createScreenEffect()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ApplicationPackage.Literals.SCENE__PARTS,
+				(ApplicationPackage.Literals.SCENE__COMPOSITORS,
 				 UiFactory.eINSTANCE.createUI()));
 	}
 

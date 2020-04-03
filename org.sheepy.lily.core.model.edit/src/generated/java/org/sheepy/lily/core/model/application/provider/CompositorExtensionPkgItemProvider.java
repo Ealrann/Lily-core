@@ -1,6 +1,6 @@
 /**
  */
-package org.sheepy.lily.core.model.resource.provider;
+package org.sheepy.lily.core.model.application.provider;
 
 
 import java.util.Collection;
@@ -23,20 +23,16 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import org.sheepy.lily.core.model.application.ApplicationFactory;
-import org.sheepy.lily.core.model.resource.ResourceFactory;
-import org.sheepy.lily.core.model.resource.ResourcePackage;
-import org.sheepy.lily.core.model.resource.ResourcePkg;
-
-import org.sheepy.lily.core.model.ui.UiFactory;
+import org.sheepy.lily.core.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.application.CompositorExtensionPkg;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.lily.core.model.resource.ResourcePkg} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.application.CompositorExtensionPkg} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ResourcePkgItemProvider 
+public class CompositorExtensionPkgItemProvider 
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -51,7 +47,7 @@ public class ResourcePkgItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ResourcePkgItemProvider(AdapterFactory adapterFactory)
+	public CompositorExtensionPkgItemProvider(AdapterFactory adapterFactory)
 	{
 		super(adapterFactory);
 	}
@@ -87,7 +83,7 @@ public class ResourcePkgItemProvider
 		if (childrenFeatures == null)
 		{
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES);
+			childrenFeatures.add(ApplicationPackage.Literals.COMPOSITOR_EXTENSION_PKG__EXTENSIONS);
 		}
 		return childrenFeatures;
 	}
@@ -107,7 +103,7 @@ public class ResourcePkgItemProvider
 	}
 
 	/**
-	 * This returns ResourcePkg.gif.
+	 * This returns CompositorExtensionPkg.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -115,7 +111,7 @@ public class ResourcePkgItemProvider
 	@Override
 	public Object getImage(Object object)
 	{
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ResourcePkg"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/CompositorExtensionPkg"));
 	}
 
 	/**
@@ -127,7 +123,7 @@ public class ResourcePkgItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		return getString("_UI_ResourcePkg_type");
+		return getString("_UI_CompositorExtensionPkg_type");
 	}
 
 
@@ -143,9 +139,9 @@ public class ResourcePkgItemProvider
 	{
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ResourcePkg.class))
+		switch (notification.getFeatureID(CompositorExtensionPkg.class))
 		{
-			case ResourcePackage.RESOURCE_PKG__RESOURCES:
+			case ApplicationPackage.COMPOSITOR_EXTENSION_PKG__EXTENSIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -163,85 +159,6 @@ public class ResourcePkgItemProvider
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ResourceFactory.eINSTANCE.createIResource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ResourceFactory.eINSTANCE.createSound()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ResourceFactory.eINSTANCE.createMusic()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ResourceFactory.eINSTANCE.createSoundContinuous()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ResourceFactory.eINSTANCE.createVirtualResource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ResourceFactory.eINSTANCE.createLocalResource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ResourceFactory.eINSTANCE.createModuleResource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ResourceFactory.eINSTANCE.createStringModuleResource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 UiFactory.eINSTANCE.createFontTable()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 UiFactory.eINSTANCE.createFont()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ApplicationFactory.eINSTANCE.createSpecialEffect()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection)
-	{
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == ResourcePackage.Literals.RESOURCE_PKG__RESOURCES;
-
-		if (qualify)
-		{
-			return getString
-				("_UI_CreateChild_text2",
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

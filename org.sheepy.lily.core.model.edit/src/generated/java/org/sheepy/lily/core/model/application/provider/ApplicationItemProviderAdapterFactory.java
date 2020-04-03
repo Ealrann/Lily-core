@@ -193,6 +193,31 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.application.CompositorExtensionPkg} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CompositorExtensionPkgItemProvider compositorExtensionPkgItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.application.CompositorExtensionPkg}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCompositorExtensionPkgAdapter()
+	{
+		if (compositorExtensionPkgItemProvider == null)
+		{
+			compositorExtensionPkgItemProvider = new CompositorExtensionPkgItemProvider(this);
+		}
+
+		return compositorExtensionPkgItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.application.Scene} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -470,6 +495,7 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 		if (applicationExtensionPkgItemProvider != null) applicationExtensionPkgItemProvider.dispose();
 		if (timeConfigurationItemProvider != null) timeConfigurationItemProvider.dispose();
 		if (iModelItemProvider != null) iModelItemProvider.dispose();
+		if (compositorExtensionPkgItemProvider != null) compositorExtensionPkgItemProvider.dispose();
 		if (sceneItemProvider != null) sceneItemProvider.dispose();
 		if (genericScenePartItemProvider != null) genericScenePartItemProvider.dispose();
 		if (backgroundImageItemProvider != null) backgroundImageItemProvider.dispose();

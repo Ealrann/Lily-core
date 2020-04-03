@@ -118,11 +118,25 @@ public class ApplicationSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ApplicationPackage.ISCENE_PART:
+			case ApplicationPackage.ICOMPOSITOR:
 			{
-				IScenePart iScenePart = (IScenePart)theEObject;
-				T result = caseIScenePart(iScenePart);
-				if (result == null) result = caseIInferenceObject(iScenePart);
+				ICompositor iCompositor = (ICompositor)theEObject;
+				T result = caseICompositor(iCompositor);
+				if (result == null) result = caseIInferenceObject(iCompositor);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ApplicationPackage.COMPOSITOR_EXTENSION_PKG:
+			{
+				CompositorExtensionPkg compositorExtensionPkg = (CompositorExtensionPkg)theEObject;
+				T result = caseCompositorExtensionPkg(compositorExtensionPkg);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ApplicationPackage.ICOMPOSITOR_EXTENSION:
+			{
+				ICompositorExtension iCompositorExtension = (ICompositorExtension)theEObject;
+				T result = caseICompositorExtension(iCompositorExtension);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -144,7 +158,7 @@ public class ApplicationSwitch<T> extends Switch<T>
 			{
 				GenericScenePart genericScenePart = (GenericScenePart)theEObject;
 				T result = caseGenericScenePart(genericScenePart);
-				if (result == null) result = caseIScenePart(genericScenePart);
+				if (result == null) result = caseICompositor(genericScenePart);
 				if (result == null) result = caseLNamedElement(genericScenePart);
 				if (result == null) result = caseIInferenceObject(genericScenePart);
 				if (result == null) result = defaultCase(theEObject);
@@ -155,7 +169,7 @@ public class ApplicationSwitch<T> extends Switch<T>
 				BackgroundImage backgroundImage = (BackgroundImage)theEObject;
 				T result = caseBackgroundImage(backgroundImage);
 				if (result == null) result = caseLNamedElement(backgroundImage);
-				if (result == null) result = caseIScenePart(backgroundImage);
+				if (result == null) result = caseICompositor(backgroundImage);
 				if (result == null) result = caseIInferenceObject(backgroundImage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -165,7 +179,7 @@ public class ApplicationSwitch<T> extends Switch<T>
 				ScreenEffect screenEffect = (ScreenEffect)theEObject;
 				T result = caseScreenEffect(screenEffect);
 				if (result == null) result = caseLNamedElement(screenEffect);
-				if (result == null) result = caseIScenePart(screenEffect);
+				if (result == null) result = caseICompositor(screenEffect);
 				if (result == null) result = caseIInferenceObject(screenEffect);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -280,17 +294,49 @@ public class ApplicationSwitch<T> extends Switch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>IScene Part</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>ICompositor</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>IScene Part</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>ICompositor</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseIScenePart(IScenePart object)
+	public T caseICompositor(ICompositor object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Compositor Extension Pkg</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Compositor Extension Pkg</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCompositorExtensionPkg(CompositorExtensionPkg object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>ICompositor Extension</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>ICompositor Extension</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseICompositorExtension(ICompositorExtension object)
 	{
 		return null;
 	}

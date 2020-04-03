@@ -5,8 +5,8 @@
     modelPluginID="org.sheepy.lily.core.model" modelName="Lily" rootExtendsInterface="org.sheepy.lily.core.api.adapter.ILilyEObject"
     rootExtendsClass="org.sheepy.lily.core.api.adapter.LilyEObject" testsDirectory=""
     importerID="org.eclipse.emf.importer.ecore" containmentProxies="true" complianceLevel="11.0"
-    copyrightFields="false" operationReflection="true" importOrganizing="true" cleanup="true"
-    eclipsePlatformVersion="2019-06">
+    copyrightFields="false" usedGenPackages="#//application" operationReflection="true"
+    importOrganizing="true" cleanup="true" eclipsePlatformVersion="2019-06">
   <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel/exporter/org.eclipse.xsd.ecore.exporter">
     <genAnnotations source="selectedPackages">
       <details key="http://www.eclipse.org/emf/2002/Ecore" value="Ecore.xsd"/>
@@ -82,7 +82,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//UI/uiPages"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ui.ecore#//UI/currentUIPage"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//UI/fontPkg"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ui.ecore#//UI/images"/>
     </genClasses>
     <genClasses image="false" ecoreClass="ui.ecore#//IUIElement"/>
     <genClasses ecoreClass="ui.ecore#//UIPage" labelFeature="#//types/LNamedElement/name">
@@ -131,7 +130,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Button/state"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//Button/actions"/>
       <genOperations ecoreOperation="ui.ecore#//Button/lActions" body="return this.getActions();"/>
-      <genOperations ecoreOperation="ui.ecore#//Button/getExecutor" body="&lt;%org.eclipse.emf.ecore.EObject%> unit = this;&#xA;while (((unit instanceof &lt;%org.sheepy.lily.core.model.application.IScenePart%>) == false))&#xA;{&#xA;&#x9;unit = unit.eContainer();&#xA;}&#xA;return (org.sheepy.lily.core.model.ui.UI) unit;"/>
+      <genOperations ecoreOperation="ui.ecore#//Button/getExecutor" body="&lt;%org.eclipse.emf.ecore.EObject%> unit = this;&#xA;while (((unit instanceof &lt;%org.sheepy.lily.core.model.application.ICompositor%>) == false))&#xA;{&#xA;&#x9;unit = unit.eContainer();&#xA;}&#xA;return (org.sheepy.lily.core.model.ui.UI) unit;"/>
     </genClasses>
     <genClasses image="false" ecoreClass="ui.ecore#//AbstractBooleanButton">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//AbstractBooleanButton/textWhenTrue"/>
@@ -441,10 +440,16 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//IEngine/resourcePkg"/>
     </genClasses>
     <genClasses ecoreClass="application.ecore#//IModel"/>
-    <genClasses image="false" ecoreClass="application.ecore#//IScenePart"/>
+    <genClasses image="false" ecoreClass="application.ecore#//ICompositor">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//ICompositor/extensionPkg"/>
+    </genClasses>
+    <genClasses ecoreClass="application.ecore#//CompositorExtensionPkg">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//CompositorExtensionPkg/extensions"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="application.ecore#//ICompositorExtension"/>
     <genClasses image="false" ecoreClass="application.ecore#//ICadence"/>
     <genClasses ecoreClass="application.ecore#//Scene" labelFeature="#//application/Scene/size">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Scene/parts"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Scene/compositors"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Scene/fullscreen"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Scene/resizeable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Scene/size"/>

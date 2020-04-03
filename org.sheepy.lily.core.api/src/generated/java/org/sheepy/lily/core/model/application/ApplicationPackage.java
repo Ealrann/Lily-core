@@ -345,23 +345,32 @@ public interface ApplicationPackage extends EPackage
 	int IMODEL_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.IScenePart <em>IScene Part</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.ICompositor <em>ICompositor</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.lily.core.model.application.IScenePart
-	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIScenePart()
+	 * @see org.sheepy.lily.core.model.application.ICompositor
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getICompositor()
 	 * @generated
 	 */
-	int ISCENE_PART = 6;
+	int ICOMPOSITOR = 6;
 
 	/**
-	 * The number of structural features of the '<em>IScene Part</em>' class.
+	 * The feature id for the '<em><b>Extension Pkg</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISCENE_PART_FEATURE_COUNT = InferencePackage.IINFERENCE_OBJECT_FEATURE_COUNT + 0;
+	int ICOMPOSITOR__EXTENSION_PKG = InferencePackage.IINFERENCE_OBJECT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>ICompositor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICOMPOSITOR_FEATURE_COUNT = InferencePackage.IINFERENCE_OBJECT_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -370,16 +379,81 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int ISCENE_PART___LINFERENCE_OBJECT = InferencePackage.IINFERENCE_OBJECT___LINFERENCE_OBJECT;
+	int ICOMPOSITOR___LINFERENCE_OBJECT = InferencePackage.IINFERENCE_OBJECT___LINFERENCE_OBJECT;
 
 	/**
-	 * The number of operations of the '<em>IScene Part</em>' class.
+	 * The number of operations of the '<em>ICompositor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ISCENE_PART_OPERATION_COUNT = InferencePackage.IINFERENCE_OBJECT_OPERATION_COUNT + 0;
+	int ICOMPOSITOR_OPERATION_COUNT = InferencePackage.IINFERENCE_OBJECT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.CompositorExtensionPkgImpl <em>Compositor Extension Pkg</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.application.impl.CompositorExtensionPkgImpl
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getCompositorExtensionPkg()
+	 * @generated
+	 */
+	int COMPOSITOR_EXTENSION_PKG = 7;
+
+	/**
+	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITOR_EXTENSION_PKG__EXTENSIONS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Compositor Extension Pkg</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITOR_EXTENSION_PKG_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Compositor Extension Pkg</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITOR_EXTENSION_PKG_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.ICompositorExtension <em>ICompositor Extension</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.application.ICompositorExtension
+	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getICompositorExtension()
+	 * @generated
+	 */
+	int ICOMPOSITOR_EXTENSION = 8;
+
+	/**
+	 * The number of structural features of the '<em>ICompositor Extension</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICOMPOSITOR_EXTENSION_FEATURE_COUNT = 0;
+
+	/**
+	 * The number of operations of the '<em>ICompositor Extension</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICOMPOSITOR_EXTENSION_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.ICadence <em>ICadence</em>}' class.
@@ -389,7 +463,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getICadence()
 	 * @generated
 	 */
-	int ICADENCE = 7;
+	int ICADENCE = 9;
 
 	/**
 	 * The number of structural features of the '<em>ICadence</em>' class.
@@ -417,16 +491,16 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getScene()
 	 * @generated
 	 */
-	int SCENE = 8;
+	int SCENE = 10;
 
 	/**
-	 * The feature id for the '<em><b>Parts</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Compositors</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCENE__PARTS = 0;
+	int SCENE__COMPOSITORS = 0;
 
 	/**
 	 * The feature id for the '<em><b>Fullscreen</b></em>' attribute.
@@ -481,7 +555,16 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getGenericScenePart()
 	 * @generated
 	 */
-	int GENERIC_SCENE_PART = 9;
+	int GENERIC_SCENE_PART = 11;
+
+	/**
+	 * The feature id for the '<em><b>Extension Pkg</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_SCENE_PART__EXTENSION_PKG = ICOMPOSITOR__EXTENSION_PKG;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -490,7 +573,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GENERIC_SCENE_PART__NAME = ISCENE_PART_FEATURE_COUNT + 0;
+	int GENERIC_SCENE_PART__NAME = ICOMPOSITOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Generic Scene Part</em>' class.
@@ -499,7 +582,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GENERIC_SCENE_PART_FEATURE_COUNT = ISCENE_PART_FEATURE_COUNT + 1;
+	int GENERIC_SCENE_PART_FEATURE_COUNT = ICOMPOSITOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -508,7 +591,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GENERIC_SCENE_PART___LINFERENCE_OBJECT = ISCENE_PART___LINFERENCE_OBJECT;
+	int GENERIC_SCENE_PART___LINFERENCE_OBJECT = ICOMPOSITOR___LINFERENCE_OBJECT;
 
 	/**
 	 * The number of operations of the '<em>Generic Scene Part</em>' class.
@@ -517,7 +600,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int GENERIC_SCENE_PART_OPERATION_COUNT = ISCENE_PART_OPERATION_COUNT + 0;
+	int GENERIC_SCENE_PART_OPERATION_COUNT = ICOMPOSITOR_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl <em>Background Image</em>}' class.
@@ -527,7 +610,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getBackgroundImage()
 	 * @generated
 	 */
-	int BACKGROUND_IMAGE = 10;
+	int BACKGROUND_IMAGE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -539,13 +622,22 @@ public interface ApplicationPackage extends EPackage
 	int BACKGROUND_IMAGE__NAME = TypesPackage.LNAMED_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Extension Pkg</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND_IMAGE__EXTENSION_PKG = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Clear Color</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BACKGROUND_IMAGE__CLEAR_COLOR = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
+	int BACKGROUND_IMAGE__CLEAR_COLOR = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Sampling</b></em>' attribute.
@@ -554,7 +646,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int BACKGROUND_IMAGE__SAMPLING = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 1;
+	int BACKGROUND_IMAGE__SAMPLING = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Src Image</b></em>' reference.
@@ -563,7 +655,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int BACKGROUND_IMAGE__SRC_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 2;
+	int BACKGROUND_IMAGE__SRC_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Dst Image</b></em>' reference.
@@ -572,7 +664,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int BACKGROUND_IMAGE__DST_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 3;
+	int BACKGROUND_IMAGE__DST_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Background Image</em>' class.
@@ -581,7 +673,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int BACKGROUND_IMAGE_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 4;
+	int BACKGROUND_IMAGE_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -609,7 +701,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getScreenEffect()
 	 * @generated
 	 */
-	int SCREEN_EFFECT = 11;
+	int SCREEN_EFFECT = 13;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -621,13 +713,22 @@ public interface ApplicationPackage extends EPackage
 	int SCREEN_EFFECT__NAME = TypesPackage.LNAMED_ELEMENT__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Extension Pkg</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCREEN_EFFECT__EXTENSION_PKG = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Src Image</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCREEN_EFFECT__SRC_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
+	int SCREEN_EFFECT__SRC_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Dst Image</b></em>' reference.
@@ -636,7 +737,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SCREEN_EFFECT__DST_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 1;
+	int SCREEN_EFFECT__DST_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Effect</b></em>' containment reference.
@@ -645,7 +746,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SCREEN_EFFECT__EFFECT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 2;
+	int SCREEN_EFFECT__EFFECT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Screen Effect</em>' class.
@@ -654,7 +755,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SCREEN_EFFECT_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 3;
+	int SCREEN_EFFECT_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -682,7 +783,7 @@ public interface ApplicationPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getSpecialEffect()
 	 * @generated
 	 */
-	int SPECIAL_EFFECT = 12;
+	int SPECIAL_EFFECT = 14;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -922,14 +1023,56 @@ public interface ApplicationPackage extends EPackage
 	EClass getIModel();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.IScenePart <em>IScene Part</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.ICompositor <em>ICompositor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>IScene Part</em>'.
-	 * @see org.sheepy.lily.core.model.application.IScenePart
+	 * @return the meta object for class '<em>ICompositor</em>'.
+	 * @see org.sheepy.lily.core.model.application.ICompositor
 	 * @generated
 	 */
-	EClass getIScenePart();
+	EClass getICompositor();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.ICompositor#getExtensionPkg <em>Extension Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Extension Pkg</em>'.
+	 * @see org.sheepy.lily.core.model.application.ICompositor#getExtensionPkg()
+	 * @see #getICompositor()
+	 * @generated
+	 */
+	EReference getICompositor_ExtensionPkg();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.CompositorExtensionPkg <em>Compositor Extension Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Compositor Extension Pkg</em>'.
+	 * @see org.sheepy.lily.core.model.application.CompositorExtensionPkg
+	 * @generated
+	 */
+	EClass getCompositorExtensionPkg();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.application.CompositorExtensionPkg#getExtensions <em>Extensions</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Extensions</em>'.
+	 * @see org.sheepy.lily.core.model.application.CompositorExtensionPkg#getExtensions()
+	 * @see #getCompositorExtensionPkg()
+	 * @generated
+	 */
+	EReference getCompositorExtensionPkg_Extensions();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.ICompositorExtension <em>ICompositor Extension</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>ICompositor Extension</em>'.
+	 * @see org.sheepy.lily.core.model.application.ICompositorExtension
+	 * @generated
+	 */
+	EClass getICompositorExtension();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.ICadence <em>ICadence</em>}'.
@@ -952,15 +1095,15 @@ public interface ApplicationPackage extends EPackage
 	EClass getScene();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.application.Scene#getParts <em>Parts</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.application.Scene#getCompositors <em>Compositors</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parts</em>'.
-	 * @see org.sheepy.lily.core.model.application.Scene#getParts()
+	 * @return the meta object for the containment reference list '<em>Compositors</em>'.
+	 * @see org.sheepy.lily.core.model.application.Scene#getCompositors()
 	 * @see #getScene()
 	 * @generated
 	 */
-	EReference getScene_Parts();
+	EReference getScene_Compositors();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Scene#isFullscreen <em>Fullscreen</em>}'.
@@ -1315,14 +1458,50 @@ public interface ApplicationPackage extends EPackage
 		EClass IMODEL = eINSTANCE.getIModel();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.IScenePart <em>IScene Part</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.ICompositor <em>ICompositor</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.lily.core.model.application.IScenePart
-		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getIScenePart()
+		 * @see org.sheepy.lily.core.model.application.ICompositor
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getICompositor()
 		 * @generated
 		 */
-		EClass ISCENE_PART = eINSTANCE.getIScenePart();
+		EClass ICOMPOSITOR = eINSTANCE.getICompositor();
+
+		/**
+		 * The meta object literal for the '<em><b>Extension Pkg</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ICOMPOSITOR__EXTENSION_PKG = eINSTANCE.getICompositor_ExtensionPkg();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.CompositorExtensionPkgImpl <em>Compositor Extension Pkg</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.impl.CompositorExtensionPkgImpl
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getCompositorExtensionPkg()
+		 * @generated
+		 */
+		EClass COMPOSITOR_EXTENSION_PKG = eINSTANCE.getCompositorExtensionPkg();
+
+		/**
+		 * The meta object literal for the '<em><b>Extensions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPOSITOR_EXTENSION_PKG__EXTENSIONS = eINSTANCE.getCompositorExtensionPkg_Extensions();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.ICompositorExtension <em>ICompositor Extension</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.application.ICompositorExtension
+		 * @see org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl#getICompositorExtension()
+		 * @generated
+		 */
+		EClass ICOMPOSITOR_EXTENSION = eINSTANCE.getICompositorExtension();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.ICadence <em>ICadence</em>}' class.
@@ -1345,12 +1524,12 @@ public interface ApplicationPackage extends EPackage
 		EClass SCENE = eINSTANCE.getScene();
 
 		/**
-		 * The meta object literal for the '<em><b>Parts</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Compositors</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SCENE__PARTS = eINSTANCE.getScene_Parts();
+		EReference SCENE__COMPOSITORS = eINSTANCE.getScene_Compositors();
 
 		/**
 		 * The meta object literal for the '<em><b>Fullscreen</b></em>' attribute feature.

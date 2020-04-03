@@ -18,7 +18,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 
 import org.sheepy.lily.core.model.application.ApplicationPackage;
-import org.sheepy.lily.core.model.application.IScenePart;
+import org.sheepy.lily.core.model.application.CompositorExtensionPkg;
+import org.sheepy.lily.core.model.application.ICompositor;
 import org.sheepy.lily.core.model.application.ScreenEffect;
 import org.sheepy.lily.core.model.application.SpecialEffect;
 
@@ -36,6 +37,7 @@ import org.sheepy.lily.core.model.resource.IImage;
  * </p>
  * <ul>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ScreenEffectImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ScreenEffectImpl#getExtensionPkg <em>Extension Pkg</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ScreenEffectImpl#getSrcImage <em>Src Image</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ScreenEffectImpl#getDstImage <em>Dst Image</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ScreenEffectImpl#getEffect <em>Effect</em>}</li>
@@ -64,6 +66,16 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getExtensionPkg() <em>Extension Pkg</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExtensionPkg()
+	 * @generated
+	 * @ordered
+	 */
+	protected CompositorExtensionPkg extensionPkg;
 
 	/**
 	 * The cached value of the '{@link #getSrcImage() <em>Src Image</em>}' reference.
@@ -139,6 +151,83 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 		name = newName;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.SCREEN_EFFECT__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public CompositorExtensionPkg getExtensionPkg()
+	{
+		if (extensionPkg != null && ((EObject)extensionPkg).eIsProxy())
+		{
+			InternalEObject oldExtensionPkg = extensionPkg;
+			extensionPkg = (CompositorExtensionPkg)eResolveProxy(oldExtensionPkg);
+			if (extensionPkg != oldExtensionPkg)
+			{
+				InternalEObject newExtensionPkg = extensionPkg;
+				NotificationChain msgs = oldExtensionPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG, null, null);
+				if (newExtensionPkg.eInternalContainer() == null)
+				{
+					msgs = newExtensionPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG, oldExtensionPkg, extensionPkg));
+			}
+		}
+		return extensionPkg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CompositorExtensionPkg basicGetExtensionPkg()
+	{
+		return extensionPkg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExtensionPkg(CompositorExtensionPkg newExtensionPkg, NotificationChain msgs)
+	{
+		CompositorExtensionPkg oldExtensionPkg = extensionPkg;
+		extensionPkg = newExtensionPkg;
+		if (eNotificationRequired())
+		{
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG, oldExtensionPkg, newExtensionPkg);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setExtensionPkg(CompositorExtensionPkg newExtensionPkg)
+	{
+		if (newExtensionPkg != extensionPkg)
+		{
+			NotificationChain msgs = null;
+			if (extensionPkg != null)
+				msgs = ((InternalEObject)extensionPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG, null, msgs);
+			if (newExtensionPkg != null)
+				msgs = ((InternalEObject)newExtensionPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG, null, msgs);
+			msgs = basicSetExtensionPkg(newExtensionPkg, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG, newExtensionPkg, newExtensionPkg));
 	}
 
 	/**
@@ -329,6 +418,8 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 	{
 		switch (featureID)
 		{
+			case ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG:
+				return basicSetExtensionPkg(null, msgs);
 			case ApplicationPackage.SCREEN_EFFECT__EFFECT:
 				return basicSetEffect(null, msgs);
 		}
@@ -347,6 +438,9 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 		{
 			case ApplicationPackage.SCREEN_EFFECT__NAME:
 				return getName();
+			case ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG:
+				if (resolve) return getExtensionPkg();
+				return basicGetExtensionPkg();
 			case ApplicationPackage.SCREEN_EFFECT__SRC_IMAGE:
 				if (resolve) return getSrcImage();
 				return basicGetSrcImage();
@@ -372,6 +466,9 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 		{
 			case ApplicationPackage.SCREEN_EFFECT__NAME:
 				setName((String)newValue);
+				return;
+			case ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG:
+				setExtensionPkg((CompositorExtensionPkg)newValue);
 				return;
 			case ApplicationPackage.SCREEN_EFFECT__SRC_IMAGE:
 				setSrcImage((IImage)newValue);
@@ -399,6 +496,9 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 			case ApplicationPackage.SCREEN_EFFECT__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG:
+				setExtensionPkg((CompositorExtensionPkg)null);
+				return;
 			case ApplicationPackage.SCREEN_EFFECT__SRC_IMAGE:
 				setSrcImage((IImage)null);
 				return;
@@ -424,6 +524,8 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 		{
 			case ApplicationPackage.SCREEN_EFFECT__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG:
+				return extensionPkg != null;
 			case ApplicationPackage.SCREEN_EFFECT__SRC_IMAGE:
 				return srcImage != null;
 			case ApplicationPackage.SCREEN_EFFECT__DST_IMAGE:
@@ -432,6 +534,58 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 				return effect != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
+	{
+		if (baseClass == IInferenceObject.class)
+		{
+			switch (derivedFeatureID)
+			{
+				default: return -1;
+			}
+		}
+		if (baseClass == ICompositor.class)
+		{
+			switch (derivedFeatureID)
+			{
+				case ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG: return ApplicationPackage.ICOMPOSITOR__EXTENSION_PKG;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
+	{
+		if (baseClass == IInferenceObject.class)
+		{
+			switch (baseFeatureID)
+			{
+				default: return -1;
+			}
+		}
+		if (baseClass == ICompositor.class)
+		{
+			switch (baseFeatureID)
+			{
+				case ApplicationPackage.ICOMPOSITOR__EXTENSION_PKG: return ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**
@@ -450,7 +604,7 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 				default: return -1;
 			}
 		}
-		if (baseClass == IScenePart.class)
+		if (baseClass == ICompositor.class)
 		{
 			switch (baseOperationID)
 			{

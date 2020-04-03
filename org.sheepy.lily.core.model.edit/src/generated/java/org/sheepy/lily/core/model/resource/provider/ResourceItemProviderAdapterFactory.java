@@ -12,6 +12,8 @@ import org.eclipse.emf.common.notify.Notifier;
 
 import org.eclipse.emf.common.util.ResourceLocator;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.eclipse.emf.edit.provider.ChangeNotifier;
@@ -28,6 +30,11 @@ import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
+import org.sheepy.lily.core.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.application.IEngine;
+import org.sheepy.lily.core.model.application.SpecialEffect;
+import org.sheepy.lily.core.model.application.util.ApplicationSwitch;
+import org.sheepy.lily.core.model.resource.ResourceFactory;
 import org.sheepy.lily.core.model.resource.ResourcePackage;
 
 import org.sheepy.lily.core.model.resource.util.ResourceAdapterFactory;
@@ -473,6 +480,128 @@ public class ResourceItemProviderAdapterFactory extends ResourceAdapterFactory i
 		if (localResourceItemProvider != null) localResourceItemProvider.dispose();
 		if (moduleResourceItemProvider != null) moduleResourceItemProvider.dispose();
 		if (stringModuleResourceItemProvider != null) stringModuleResourceItemProvider.dispose();
+	}
+
+	/**
+	 * A child creation extender for the {@link ApplicationPackage}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static class ApplicationChildCreationExtender implements IChildCreationExtender
+	{
+		/**
+		 * The switch for creating child descriptors specific to each extended class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		protected static class CreationSwitch extends ApplicationSwitch<Object>
+		{
+			/**
+			 * The child descriptors being populated.
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			protected List<Object> newChildDescriptors;
+
+			/**
+			 * The domain in which to create the children.
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			protected EditingDomain editingDomain;
+
+			/**
+			 * Creates the a switch for populating child descriptors in the given domain.
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) 
+			{
+				this.newChildDescriptors = newChildDescriptors;
+				this.editingDomain = editingDomain;
+			}
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			@Override
+			public Object caseIEngine(IEngine object)
+			{
+				newChildDescriptors.add
+					(createChildParameter
+						(ApplicationPackage.Literals.IENGINE__RESOURCE_PKG,
+						 ResourceFactory.eINSTANCE.createResourcePkg()));
+
+				return null;
+			}
+ 
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			@Override
+			public Object caseSpecialEffect(SpecialEffect object)
+			{
+				newChildDescriptors.add
+					(createChildParameter
+						(ApplicationPackage.Literals.SPECIAL_EFFECT__SHADER,
+						 ResourceFactory.eINSTANCE.createLocalResource()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ApplicationPackage.Literals.SPECIAL_EFFECT__SHADER,
+						 ResourceFactory.eINSTANCE.createModuleResource()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ApplicationPackage.Literals.SPECIAL_EFFECT__SHADER,
+						 ResourceFactory.eINSTANCE.createStringModuleResource()));
+
+				return null;
+			}
+ 
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			protected CommandParameter createChildParameter(Object feature, Object child)
+			{
+				return new CommandParameter(null, feature, child);
+			}
+
+		}
+
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		@Override
+		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain)
+		{
+			ArrayList<Object> result = new ArrayList<Object>();
+			new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
+			return result;
+		}
+
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		@Override
+		public ResourceLocator getResourceLocator()
+		{
+			return LilyEditPlugin.INSTANCE;
+		}
 	}
 
 }

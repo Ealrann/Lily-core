@@ -14,6 +14,6 @@ import org.sheepy.lily.core.model.types.LNamedElement;
  * @model
  * @generated
  */
-public interface GenericScenePart extends IScenePart, LNamedElement
+public interface GenericScenePart extends ICompositor, LNamedElement
 {
 } // GenericScenePart

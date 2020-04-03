@@ -59,6 +59,15 @@ public interface ApplicationFactory extends EFactory
 	IModel createIModel();
 
 	/**
+	 * Returns a new object of class '<em>Compositor Extension Pkg</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Compositor Extension Pkg</em>'.
+	 * @generated
+	 */
+	CompositorExtensionPkg createCompositorExtensionPkg();
+
+	/**
 	 * Returns a new object of class '<em>Scene</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

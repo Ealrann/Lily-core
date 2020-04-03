@@ -22,7 +22,7 @@ import org.joml.Vector2ic;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 
 import org.sheepy.lily.core.model.application.ApplicationPackage;
-import org.sheepy.lily.core.model.application.IScenePart;
+import org.sheepy.lily.core.model.application.ICompositor;
 import org.sheepy.lily.core.model.application.Scene;
 
 import org.sheepy.lily.core.model.types.TypesFactory;
@@ -36,7 +36,7 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sheepy.lily.core.model.application.impl.SceneImpl#getParts <em>Parts</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.SceneImpl#getCompositors <em>Compositors</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.SceneImpl#isFullscreen <em>Fullscreen</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.SceneImpl#isResizeable <em>Resizeable</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.SceneImpl#getSize <em>Size</em>}</li>
@@ -47,14 +47,14 @@ import org.sheepy.lily.core.model.types.TypesPackage;
 public class SceneImpl extends LilyEObject implements Scene
 {
 	/**
-	 * The cached value of the '{@link #getParts() <em>Parts</em>}' containment reference list.
+	 * The cached value of the '{@link #getCompositors() <em>Compositors</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getParts()
+	 * @see #getCompositors()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<IScenePart> parts;
+	protected EList<ICompositor> compositors;
 
 	/**
 	 * The default value of the '{@link #isFullscreen() <em>Fullscreen</em>}' attribute.
@@ -143,13 +143,13 @@ public class SceneImpl extends LilyEObject implements Scene
 	 * @generated
 	 */
 	@Override
-	public EList<IScenePart> getParts()
+	public EList<ICompositor> getCompositors()
 	{
-		if (parts == null)
+		if (compositors == null)
 		{
-			parts = new EObjectContainmentEList.Resolving<IScenePart>(IScenePart.class, this, ApplicationPackage.SCENE__PARTS);
+			compositors = new EObjectContainmentEList.Resolving<ICompositor>(ICompositor.class, this, ApplicationPackage.SCENE__COMPOSITORS);
 		}
-		return parts;
+		return compositors;
 	}
 
 	/**
@@ -237,8 +237,8 @@ public class SceneImpl extends LilyEObject implements Scene
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.SCENE__PARTS:
-				return ((InternalEList<?>)getParts()).basicRemove(otherEnd, msgs);
+			case ApplicationPackage.SCENE__COMPOSITORS:
+				return ((InternalEList<?>)getCompositors()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -253,8 +253,8 @@ public class SceneImpl extends LilyEObject implements Scene
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.SCENE__PARTS:
-				return getParts();
+			case ApplicationPackage.SCENE__COMPOSITORS:
+				return getCompositors();
 			case ApplicationPackage.SCENE__FULLSCREEN:
 				return isFullscreen();
 			case ApplicationPackage.SCENE__RESIZEABLE:
@@ -276,9 +276,9 @@ public class SceneImpl extends LilyEObject implements Scene
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.SCENE__PARTS:
-				getParts().clear();
-				getParts().addAll((Collection<? extends IScenePart>)newValue);
+			case ApplicationPackage.SCENE__COMPOSITORS:
+				getCompositors().clear();
+				getCompositors().addAll((Collection<? extends ICompositor>)newValue);
 				return;
 			case ApplicationPackage.SCENE__FULLSCREEN:
 				setFullscreen((Boolean)newValue);
@@ -303,8 +303,8 @@ public class SceneImpl extends LilyEObject implements Scene
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.SCENE__PARTS:
-				getParts().clear();
+			case ApplicationPackage.SCENE__COMPOSITORS:
+				getCompositors().clear();
 				return;
 			case ApplicationPackage.SCENE__FULLSCREEN:
 				setFullscreen(FULLSCREEN_EDEFAULT);
@@ -329,8 +329,8 @@ public class SceneImpl extends LilyEObject implements Scene
 	{
 		switch (featureID)
 		{
-			case ApplicationPackage.SCENE__PARTS:
-				return parts != null && !parts.isEmpty();
+			case ApplicationPackage.SCENE__COMPOSITORS:
+				return compositors != null && !compositors.isEmpty();
 			case ApplicationPackage.SCENE__FULLSCREEN:
 				return fullscreen != FULLSCREEN_EDEFAULT;
 			case ApplicationPackage.SCENE__RESIZEABLE:

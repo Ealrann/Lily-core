@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
-import org.sheepy.lily.core.model.application.IScenePart;
+import org.sheepy.lily.core.model.application.ICompositor;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 import org.sheepy.lily.core.model.presentation.IPositionElement;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
@@ -95,7 +95,7 @@ public class UiSwitch<T> extends Switch<T>
 			{
 				UI ui = (UI)theEObject;
 				T result = caseUI(ui);
-				if (result == null) result = caseIScenePart(ui);
+				if (result == null) result = caseICompositor(ui);
 				if (result == null) result = caseIInferenceObject(ui);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -767,17 +767,17 @@ public class UiSwitch<T> extends Switch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>IScene Part</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>ICompositor</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>IScene Part</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>ICompositor</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseIScenePart(IScenePart object)
+	public T caseICompositor(ICompositor object)
 	{
 		return null;
 	}

@@ -68,6 +68,7 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 			case ApplicationPackage.APPLICATION_EXTENSION_PKG: return createApplicationExtensionPkg();
 			case ApplicationPackage.TIME_CONFIGURATION: return createTimeConfiguration();
 			case ApplicationPackage.IMODEL: return createIModel();
+			case ApplicationPackage.COMPOSITOR_EXTENSION_PKG: return createCompositorExtensionPkg();
 			case ApplicationPackage.SCENE: return createScene();
 			case ApplicationPackage.GENERIC_SCENE_PART: return createGenericScenePart();
 			case ApplicationPackage.BACKGROUND_IMAGE: return createBackgroundImage();
@@ -124,6 +125,18 @@ public class ApplicationFactoryImpl extends EFactoryImpl implements ApplicationF
 	{
 		IModelImpl iModel = new IModelImpl();
 		return iModel;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public CompositorExtensionPkg createCompositorExtensionPkg()
+	{
+		CompositorExtensionPkgImpl compositorExtensionPkg = new CompositorExtensionPkgImpl();
+		return compositorExtensionPkg;
 	}
 
 	/**

@@ -6,15 +6,19 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 
 import org.sheepy.lily.core.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.application.CompositorExtensionPkg;
 import org.sheepy.lily.core.model.application.GenericScenePart;
 
 import org.sheepy.lily.core.model.inference.IInferenceObject;
@@ -30,6 +34,7 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.GenericScenePartImpl#getExtensionPkg <em>Extension Pkg</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.GenericScenePartImpl#getName <em>Name</em>}</li>
  * </ul>
  *
@@ -37,6 +42,16 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  */
 public class GenericScenePartImpl extends LilyEObject implements GenericScenePart
 {
+	/**
+	 * The cached value of the '{@link #getExtensionPkg() <em>Extension Pkg</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExtensionPkg()
+	 * @generated
+	 * @ordered
+	 */
+	protected CompositorExtensionPkg extensionPkg;
+
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -84,6 +99,83 @@ public class GenericScenePartImpl extends LilyEObject implements GenericScenePar
 	 * @generated
 	 */
 	@Override
+	public CompositorExtensionPkg getExtensionPkg()
+	{
+		if (extensionPkg != null && ((EObject)extensionPkg).eIsProxy())
+		{
+			InternalEObject oldExtensionPkg = extensionPkg;
+			extensionPkg = (CompositorExtensionPkg)eResolveProxy(oldExtensionPkg);
+			if (extensionPkg != oldExtensionPkg)
+			{
+				InternalEObject newExtensionPkg = extensionPkg;
+				NotificationChain msgs = oldExtensionPkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.GENERIC_SCENE_PART__EXTENSION_PKG, null, null);
+				if (newExtensionPkg.eInternalContainer() == null)
+				{
+					msgs = newExtensionPkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.GENERIC_SCENE_PART__EXTENSION_PKG, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.GENERIC_SCENE_PART__EXTENSION_PKG, oldExtensionPkg, extensionPkg));
+			}
+		}
+		return extensionPkg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CompositorExtensionPkg basicGetExtensionPkg()
+	{
+		return extensionPkg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetExtensionPkg(CompositorExtensionPkg newExtensionPkg, NotificationChain msgs)
+	{
+		CompositorExtensionPkg oldExtensionPkg = extensionPkg;
+		extensionPkg = newExtensionPkg;
+		if (eNotificationRequired())
+		{
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplicationPackage.GENERIC_SCENE_PART__EXTENSION_PKG, oldExtensionPkg, newExtensionPkg);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setExtensionPkg(CompositorExtensionPkg newExtensionPkg)
+	{
+		if (newExtensionPkg != extensionPkg)
+		{
+			NotificationChain msgs = null;
+			if (extensionPkg != null)
+				msgs = ((InternalEObject)extensionPkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.GENERIC_SCENE_PART__EXTENSION_PKG, null, msgs);
+			if (newExtensionPkg != null)
+				msgs = ((InternalEObject)newExtensionPkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.GENERIC_SCENE_PART__EXTENSION_PKG, null, msgs);
+			msgs = basicSetExtensionPkg(newExtensionPkg, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.GENERIC_SCENE_PART__EXTENSION_PKG, newExtensionPkg, newExtensionPkg));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String getName()
 	{
 		return name;
@@ -120,10 +212,29 @@ public class GenericScenePartImpl extends LilyEObject implements GenericScenePar
 	 * @generated
 	 */
 	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+	{
+		switch (featureID)
+		{
+			case ApplicationPackage.GENERIC_SCENE_PART__EXTENSION_PKG:
+				return basicSetExtensionPkg(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType)
 	{
 		switch (featureID)
 		{
+			case ApplicationPackage.GENERIC_SCENE_PART__EXTENSION_PKG:
+				if (resolve) return getExtensionPkg();
+				return basicGetExtensionPkg();
 			case ApplicationPackage.GENERIC_SCENE_PART__NAME:
 				return getName();
 		}
@@ -140,6 +251,9 @@ public class GenericScenePartImpl extends LilyEObject implements GenericScenePar
 	{
 		switch (featureID)
 		{
+			case ApplicationPackage.GENERIC_SCENE_PART__EXTENSION_PKG:
+				setExtensionPkg((CompositorExtensionPkg)newValue);
+				return;
 			case ApplicationPackage.GENERIC_SCENE_PART__NAME:
 				setName((String)newValue);
 				return;
@@ -157,6 +271,9 @@ public class GenericScenePartImpl extends LilyEObject implements GenericScenePar
 	{
 		switch (featureID)
 		{
+			case ApplicationPackage.GENERIC_SCENE_PART__EXTENSION_PKG:
+				setExtensionPkg((CompositorExtensionPkg)null);
+				return;
 			case ApplicationPackage.GENERIC_SCENE_PART__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -174,6 +291,8 @@ public class GenericScenePartImpl extends LilyEObject implements GenericScenePar
 	{
 		switch (featureID)
 		{
+			case ApplicationPackage.GENERIC_SCENE_PART__EXTENSION_PKG:
+				return extensionPkg != null;
 			case ApplicationPackage.GENERIC_SCENE_PART__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}

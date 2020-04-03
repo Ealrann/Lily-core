@@ -159,6 +159,7 @@ public class ScreenEffectItemProvider
 		if (childrenFeatures == null)
 		{
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(ApplicationPackage.Literals.ICOMPOSITOR__EXTENSION_PKG);
 			childrenFeatures.add(ApplicationPackage.Literals.SCREEN_EFFECT__EFFECT);
 		}
 		return childrenFeatures;
@@ -223,6 +224,7 @@ public class ScreenEffectItemProvider
 			case ApplicationPackage.SCREEN_EFFECT__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
+			case ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG:
 			case ApplicationPackage.SCREEN_EFFECT__EFFECT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -241,6 +243,11 @@ public class ScreenEffectItemProvider
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
 	{
 		super.collectNewChildDescriptors(newChildDescriptors, object);
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ApplicationPackage.Literals.ICOMPOSITOR__EXTENSION_PKG,
+				 ApplicationFactory.eINSTANCE.createCompositorExtensionPkg()));
 
 		newChildDescriptors.add
 			(createChildParameter

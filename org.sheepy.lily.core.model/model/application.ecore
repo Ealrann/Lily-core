@@ -38,12 +38,21 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IModel"/>
-  <eClassifiers xsi:type="ecore:EClass" name="IScenePart" abstract="true" interface="true"
-      eSuperTypes="inference.ecore#//IInferenceObject"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ICompositor" abstract="true" interface="true"
+      eSuperTypes="inference.ecore#//IInferenceObject">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extensionPkg" eType="#//CompositorExtensionPkg"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompositorExtensionPkg">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extensions" upperBound="-1"
+        eType="#//ICompositorExtension" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ICompositorExtension" abstract="true"
+      interface="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="ICadence" abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="Scene">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parts" upperBound="-1"
-        eType="#//IScenePart" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compositors" upperBound="-1"
+        eType="#//ICompositor" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fullscreen" unique="false"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="resizeable" unique="false"
@@ -51,8 +60,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" unique="false" eType="ecore:EDataType types.ecore#//Vector2i"
         defaultValueLiteral="400,400"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="GenericScenePart" eSuperTypes="#//IScenePart types.ecore#//LNamedElement"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BackgroundImage" eSuperTypes="types.ecore#//LNamedElement #//IScenePart">
+  <eClassifiers xsi:type="ecore:EClass" name="GenericScenePart" eSuperTypes="#//ICompositor types.ecore#//LNamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BackgroundImage" eSuperTypes="types.ecore#//LNamedElement #//ICompositor">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="clearColor" lowerBound="1"
         eType="ecore:EDataType types.ecore#//Vector3i" defaultValueLiteral="0;0;0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampling" lowerBound="1"
@@ -61,7 +70,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="dstImage" lowerBound="1"
         eType="ecore:EClass resource.ecore#//IImage"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ScreenEffect" eSuperTypes="types.ecore#//LNamedElement #//IScenePart">
+  <eClassifiers xsi:type="ecore:EClass" name="ScreenEffect" eSuperTypes="types.ecore#//LNamedElement #//ICompositor">
     <eStructuralFeatures xsi:type="ecore:EReference" name="srcImage" eType="ecore:EClass resource.ecore#//IImage"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dstImage" lowerBound="1"
         eType="ecore:EClass resource.ecore#//IImage"/>
