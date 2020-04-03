@@ -67,7 +67,7 @@ public final class AdapterManagerDeployer extends AdapterImpl
 			throwAdapterCreationLoopException();
 		}
 
-		final var eTarget = (EObject) target;
+		final var eTarget = (ILilyEObject) target;
 		constructing = true;
 		constructingAdapters.addLast(descriptor);
 

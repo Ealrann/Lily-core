@@ -5,10 +5,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.ITickDescriptor;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.IAdapterManager;
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
-import org.sheepy.lily.core.api.notification.observatory.IObservatory;
-import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +19,6 @@ public final class AdapterManager implements IAdapterManager
 	private final AdapterManagerDeployer deployer;
 
 	private boolean loaded = false;
-	private IObservatory observatory = null;
 
 	public AdapterManager(EObject target)
 	{
@@ -104,43 +100,34 @@ public final class AdapterManager implements IAdapterManager
 	@Override
 	public void load()
 	{
-		final var observatoryBuilder = IObservatoryBuilder.newObservatoryBuilder((ILilyEObject) deployer.getTarget());
-		if (loaded == false)
+		if (!loaded)
 		{
 			loaded = true;
 			deployer.setAutoLoad(true);
+
 			for (int i = 0; i < adapterHandles.size(); i++)
 			{
 				final var adapterHandle = adapterHandles.get(i);
-				adapterHandle.buildObservatory(observatoryBuilder);
 				loadHandle(adapterHandle);
 			}
 		}
-
-		observatory = observatoryBuilder.build();
-		observatory.observe(null);
-
 		deployer.foreachChild(LilyEObject::loadAdapterManager);
 	}
 
 	@Override
 	public void dispose()
 	{
+		deployer.foreachChild(LilyEObject::disposeAdapterManager);
 		if (loaded)
 		{
-			deployer.foreachChild(LilyEObject::disposeAdapterManager);
-		}
+			loaded = false;
+			deployer.setAutoLoad(false);
 
-		observatory.shut(null);
-		observatory = null;
-
-		loaded = false;
-		deployer.setAutoLoad(false);
-
-		for (int i = 0; i < adapterHandles.size(); i++)
-		{
-			final var adapterHandle = adapterHandles.get(i);
-			adapterHandle.dispose();
+			for (int i = 0; i < adapterHandles.size(); i++)
+			{
+				final var adapterHandle = adapterHandles.get(i);
+				adapterHandle.dispose();
+			}
 		}
 	}
 

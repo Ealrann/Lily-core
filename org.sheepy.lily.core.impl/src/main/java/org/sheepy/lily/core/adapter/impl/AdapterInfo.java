@@ -68,8 +68,9 @@ public final class AdapterInfo<T extends IAdapter>
 
 	public boolean isAutoAdapter()
 	{
-		return observeHandleBuilders.isEmpty() == false || tickConfigurations.isEmpty() == false || lazy == false ||
-				(isSingleton && notifyConfigurations.isEmpty() == false);
+		return tickConfigurations.isEmpty() == false ||
+			   lazy == false ||
+			   (isSingleton && notifyConfigurations.isEmpty() == false);
 	}
 
 	public static final class NotifyConfiguration
@@ -212,7 +213,7 @@ public final class AdapterInfo<T extends IAdapter>
 		private void constructorNotFoundError()
 		{
 			final String message = "The class [%s] should define a public constructor with no paramters, " +
-					"or (if statefull), a constructor with one parameter, typed with the applicable class";
+								   "or (if statefull), a constructor with one parameter, typed with the applicable class";
 			final String errorMessage = String.format(message, domain.type.getSimpleName());
 			throw new IllegalStateException(errorMessage);
 		}

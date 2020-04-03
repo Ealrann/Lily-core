@@ -8,7 +8,9 @@ import org.sheepy.lily.core.adapter.impl.AdapterInfo.TickConfiguration;
 import org.sheepy.lily.core.adapter.impl.AdapterRegistry.AdapterDescriptor;
 import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
 import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.cadence.ETickerClock;
+import org.sheepy.lily.core.api.notification.observatory.IObservatory;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.util.Operation;
 
@@ -26,10 +28,11 @@ public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.Ada
 	public final List<NotifyHandle> notifyHandles;
 	private final List<ExecutionHandle> loadHandles;
 	private final List<ExecutionHandle> disposeHandles;
+	private final ILilyEObject target;
 
-	private final EObject target;
+	private IObservatory observatory = null;
 
-	AdapterHandle(AdapterDescriptor<T> descriptor, EObject target)
+	AdapterHandle(AdapterDescriptor<T> descriptor, ILilyEObject target)
 	{
 		super(descriptor.domain, descriptor.info);
 		this.target = target;
@@ -80,26 +83,42 @@ public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.Ada
 
 	public void load()
 	{
+		final var observatoryBuilder = buildObservatory();
+
 		for (final var loadHandle : loadHandles)
 		{
 			loadHandle.invoke(target);
+		}
+
+		if (!observatoryBuilder.isEmpty())
+		{
+			observatory = observatoryBuilder.build();
+			observatory.observe(null);
 		}
 	}
 
 	public void dispose()
 	{
+		if (observatory != null)
+		{
+			observatory.shut(null);
+			observatory = null;
+		}
+
 		for (final var disposeHandle : disposeHandles)
 		{
 			disposeHandle.invoke(target);
 		}
 	}
 
-	public void buildObservatory(IObservatoryBuilder builder)
+	private IObservatoryBuilder buildObservatory()
 	{
+		final var observatoryBuilder = IObservatoryBuilder.newObservatoryBuilder(target);
 		for (final var observeHandle : observeHandles)
 		{
-			observeHandle.invoke(builder);
+			observeHandle.invoke(observatoryBuilder);
 		}
+		return observatoryBuilder;
 	}
 
 	public static final class NotifyHandle implements Consumer<Notification>
