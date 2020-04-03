@@ -140,6 +140,12 @@ public final class RootObservatory implements IObservatory
 		}
 
 		@Override
+		public boolean isEmpty()
+		{
+			return pois.isEmpty() && children.isEmpty();
+		}
+
+		@Override
 		public IObservatory build()
 		{
 			final List<IObservatory> builtChildren = new ArrayList<>();

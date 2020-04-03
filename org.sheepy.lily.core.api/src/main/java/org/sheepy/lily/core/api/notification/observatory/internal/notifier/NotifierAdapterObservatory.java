@@ -96,15 +96,9 @@ public final class NotifierAdapterObservatory<Feature extends IFeature<?, ?>, Ty
 		}
 
 		@Override
-		public IAdapterObservatoryBuilder<Type> listenAdd(Consumer<Type> onAddedObject)
+		public IAdapterObservatoryBuilder<Type> gather(Consumer<Type> onAddedObject, Consumer<Type> onRemovedObject)
 		{
 			addListeners.add(onAddedObject);
-			return this;
-		}
-
-		@Override
-		public IAdapterObservatoryBuilder<Type> listenRemove(Consumer<Type> onRemovedObject)
-		{
 			removeListeners.add(onRemovedObject);
 			return this;
 		}

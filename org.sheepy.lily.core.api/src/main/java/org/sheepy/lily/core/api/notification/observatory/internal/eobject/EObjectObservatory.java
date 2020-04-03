@@ -12,7 +12,7 @@ import org.sheepy.lily.core.api.notification.observatory.INotifierAdapterObserva
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
 import org.sheepy.lily.core.api.notification.observatory.internal.notifier.AdapterObservatory;
 import org.sheepy.lily.core.api.notification.observatory.internal.notifier.NotifierAdapterObservatory;
-import org.sheepy.lily.core.api.notification.util.ModelStructureObserver;
+import org.sheepy.lily.core.api.notification.util.ModelStructureBulkObserver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,27 +20,27 @@ import java.util.function.Consumer;
 
 public final class EObjectObservatory<T extends ILilyEObject> implements IObservatory
 {
-	private final ModelStructureObserver structureObserver;
+	private final ModelStructureBulkObserver structureObserver;
 
 	private final Class<T> cast;
 	private final List<IObservatory> children;
 	private final List<IEObjectPOI> pois;
-	private final List<Consumer<T>> addListeners;
-	private final List<Consumer<T>> removeListeners;
+	private final List<GatherListener<T>> gatherListeners;
+	private final List<GatherBulkListener<T>> gatherBulkListeners;
 
 	public EObjectObservatory(EReference reference,
 							  Class<T> cast,
 							  List<IObservatory> children,
 							  List<IEObjectPOI> pois,
-							  List<Consumer<T>> addListeners,
-							  List<Consumer<T>> removeListeners)
+							  List<GatherListener<T>> gatherListeners,
+							  List<GatherBulkListener<T>> gatherBulkListeners)
 	{
-		structureObserver = new ModelStructureObserver(reference, this::startObserve, this::stopObserve);
+		structureObserver = new ModelStructureBulkObserver(reference, this::startObserve, this::stopObserve);
 		this.cast = cast;
 		this.children = List.copyOf(children);
 		this.pois = List.copyOf(pois);
-		this.addListeners = List.copyOf(addListeners);
-		this.removeListeners = List.copyOf(removeListeners);
+		this.gatherListeners = List.copyOf(gatherListeners);
+		this.gatherBulkListeners = List.copyOf(gatherBulkListeners);
 	}
 
 	@Override
@@ -55,39 +55,57 @@ public final class EObjectObservatory<T extends ILilyEObject> implements IObserv
 		structureObserver.stopObserve(parent);
 	}
 
-	private void startObserve(ILilyEObject object)
+	@SuppressWarnings("unchecked")
+	private void startObserve(List<? extends ILilyEObject> objects)
 	{
-		for (var listener : addListeners)
+		for (var listener : gatherBulkListeners)
 		{
-			listener.accept(cast.cast(object));
+			listener.discoverObjects.accept((List<T>) objects);
 		}
 
-		for (var poi : pois)
+		for (var object : objects)
 		{
-			poi.listen(object);
-		}
+			for (var listener : gatherListeners)
+			{
+				listener.discoverObject.accept(cast.cast(object));
+			}
 
-		for (var childObservatory : children)
-		{
-			childObservatory.observe(object);
+			for (var poi : pois)
+			{
+				poi.listen(object);
+			}
+
+			for (var childObservatory : children)
+			{
+				childObservatory.observe(object);
+			}
 		}
 	}
 
-	private void stopObserve(ILilyEObject object)
+	@SuppressWarnings("unchecked")
+	private void stopObserve(List<? extends ILilyEObject> objects)
 	{
-		for (var child : children)
+		for (var object : objects)
 		{
-			child.shut(object);
+			for (var child : children)
+			{
+				child.shut(object);
+			}
+
+			for (var poi : pois)
+			{
+				poi.sulk(object);
+			}
+
+			for (var listener : gatherListeners)
+			{
+				listener.removedObject.accept(cast.cast(object));
+			}
 		}
 
-		for (var poi : pois)
+		for (var listener : gatherBulkListeners)
 		{
-			poi.sulk(object);
-		}
-
-		for (var listener : removeListeners)
-		{
-			listener.accept(cast.cast(object));
+			listener.removedObjects.accept((List<T>) objects);
 		}
 	}
 
@@ -97,8 +115,8 @@ public final class EObjectObservatory<T extends ILilyEObject> implements IObserv
 		private final Class<T> cast;
 		private final List<IObservatory.IBuilder> children = new ArrayList<>();
 		private final List<IEObjectPOI> pois = new ArrayList<>();
-		private final List<Consumer<T>> addListeners = new ArrayList<>();
-		private final List<Consumer<T>> removeListeners = new ArrayList<>();
+		private final List<GatherListener<T>> gatherListeners = new ArrayList<>();
+		private final List<GatherBulkListener<T>> gatherBulkListeners = new ArrayList<>();
 
 		public Builder(EReference reference, Class<T> cast)
 		{
@@ -155,16 +173,17 @@ public final class EObjectObservatory<T extends ILilyEObject> implements IObserv
 		}
 
 		@Override
-		public IEObjectObservatoryBuilder<T> listenAdd(final Consumer<T> onAddedObject)
+		public IEObjectObservatoryBuilder<T> gather(Consumer<T> discoverObject, Consumer<T> removedObject)
 		{
-			addListeners.add(onAddedObject);
+			gatherListeners.add(new GatherListener<>(discoverObject, removedObject));
 			return this;
 		}
 
 		@Override
-		public IEObjectObservatoryBuilder<T> listenRemove(final Consumer<T> onRemovedObject)
+		public IEObjectObservatoryBuilder<T> gatherBulk(Consumer<List<T>> discoverObjects,
+														Consumer<List<T>> removedObjects)
 		{
-			removeListeners.add(onRemovedObject);
+			gatherBulkListeners.add(new GatherBulkListener<>(discoverObjects, removedObjects));
 			return this;
 		}
 
@@ -176,7 +195,31 @@ public final class EObjectObservatory<T extends ILilyEObject> implements IObserv
 			{
 				builtChildren.add(child.build());
 			}
-			return new EObjectObservatory<>(reference, cast, builtChildren, pois, addListeners, removeListeners);
+			return new EObjectObservatory<>(reference, cast, builtChildren, pois, gatherListeners, gatherBulkListeners);
+		}
+	}
+
+	private static final class GatherListener<T extends ILilyEObject>
+	{
+		final Consumer<T> discoverObject;
+		final Consumer<T> removedObject;
+
+		GatherListener(Consumer<T> discoverObject, Consumer<T> removedObject)
+		{
+			this.discoverObject = discoverObject;
+			this.removedObject = removedObject;
+		}
+	}
+
+	private static final class GatherBulkListener<T extends ILilyEObject>
+	{
+		final Consumer<List<T>> discoverObjects;
+		final Consumer<List<T>> removedObjects;
+
+		GatherBulkListener(Consumer<List<T>> discoverObjects, Consumer<List<T>> removedObjects)
+		{
+			this.discoverObjects = discoverObjects;
+			this.removedObjects = removedObjects;
 		}
 	}
 }

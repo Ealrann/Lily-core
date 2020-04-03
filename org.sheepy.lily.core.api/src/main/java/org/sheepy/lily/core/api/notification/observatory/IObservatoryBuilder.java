@@ -14,4 +14,5 @@ public interface IObservatoryBuilder extends IObservatory.IBuilder, IStructuralO
 
 	IObservatoryBuilder focus(ILilyEObject object);
 	<Y extends IFeature<?, ?>> INotifierObservatoryBuilder<Y> focus(INotifier<Y> notifier);
+	boolean isEmpty();
 }

@@ -6,6 +6,5 @@ import java.util.function.Consumer;
 
 public interface IAdapterObservatoryBuilder<Type extends IAdapter> extends IObservatory.IBuilder
 {
-	IAdapterObservatoryBuilder<Type> listenAdd(Consumer<Type> onAddedObject);
-	IAdapterObservatoryBuilder<Type> listenRemove(Consumer<Type> onRemovedObject);
+	IAdapterObservatoryBuilder<Type> gather(Consumer<Type> discoveredAdapter, Consumer<Type> removedAdapter);
 }

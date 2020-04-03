@@ -2,10 +2,12 @@ package org.sheepy.lily.core.api.notification.observatory;
 
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 public interface IEObjectObservatoryBuilder<L extends ILilyEObject> extends IStructuralObservatoryBuilder<IEObjectObservatoryBuilder<L>>
 {
-	IEObjectObservatoryBuilder<L> listenAdd(Consumer<L> onAddedObject);
-	IEObjectObservatoryBuilder<L> listenRemove(Consumer<L> onRemovedObject);
+	IEObjectObservatoryBuilder<L> gather(Consumer<L> discoveredObject, Consumer<L> removedObject);
+	IEObjectObservatoryBuilder<L> gatherBulk(Consumer<List<L>> discoveredObjects,
+											 Consumer<List<L>> removedObjects);
 }
