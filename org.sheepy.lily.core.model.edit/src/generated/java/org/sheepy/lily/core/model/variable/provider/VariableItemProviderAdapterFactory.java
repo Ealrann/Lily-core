@@ -19,7 +19,6 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
 import org.eclipse.emf.edit.provider.IChildCreationExtender;
-import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -41,7 +40,7 @@ import org.sheepy.lily.core.model.variable.util.VariableAdapterFactory;
  * @generated
  */
 public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
-		implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender
+		implements ComposeableAdapterFactory, IChangeNotifier, IChildCreationExtender
 {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
@@ -528,29 +527,6 @@ public class VariableItemProviderAdapterFactory extends VariableAdapterFactory
 		{
 			parentAdapterFactory.fireNotifyChanged(notification);
 		}
-	}
-
-	/**
-	 * This disposes all of the item providers created by this factory. 
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void dispose()
-	{
-		if (chainVariableResolverItemProvider != null) chainVariableResolverItemProvider.dispose();
-		if (chainResolverItemProvider != null) chainResolverItemProvider.dispose();
-		if (directVariableResolverItemProvider != null) directVariableResolverItemProvider.dispose();
-		if (booleanChangeActionItemProvider != null) booleanChangeActionItemProvider.dispose();
-		if (intChangeActionItemProvider != null) intChangeActionItemProvider.dispose();
-		if (varChangeActionPkgItemProvider != null) varChangeActionPkgItemProvider.dispose();
-		if (modelVariablePkgItemProvider != null) modelVariablePkgItemProvider.dispose();
-		if (intVariableItemProvider != null) intVariableItemProvider.dispose();
-		if (floatVariableItemProvider != null) floatVariableItemProvider.dispose();
-		if (vector3fVariableItemProvider != null) vector3fVariableItemProvider.dispose();
-		if (durationVariableItemProvider != null) durationVariableItemProvider.dispose();
-		if (setVariableActionItemProvider != null) setVariableActionItemProvider.dispose();
 	}
 
 }

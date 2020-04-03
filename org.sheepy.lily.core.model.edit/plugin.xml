@@ -97,13 +97,6 @@
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
    </extension>
 
-   <extension point="org.eclipse.emf.edit.childCreationExtenders">
-      <!-- @generated Lily -->
-      <extender
-            uri="org.sheepy.lily.core.model.application"
-            class="org.sheepy.lily.core.model.resource.provider.ResourceItemProviderAdapterFactory$ApplicationChildCreationExtender"/>
-   </extension>
-
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <!-- @generated Lily -->
       <factory
@@ -115,13 +108,6 @@
                org.eclipse.emf.edit.provider.ITreeItemContentProvider
                org.eclipse.emf.edit.provider.IItemLabelProvider
                org.eclipse.emf.edit.provider.IItemPropertySource"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.edit.childCreationExtenders">
-      <!-- @generated Lily -->
-      <extender
-            uri="org.sheepy.lily.core.model.application"
-            class="org.sheepy.lily.core.model.ui.provider.UiItemProviderAdapterFactory$ApplicationChildCreationExtender"/>
    </extension>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">

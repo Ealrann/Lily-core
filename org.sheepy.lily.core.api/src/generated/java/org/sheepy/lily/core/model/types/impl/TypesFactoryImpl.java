@@ -84,9 +84,9 @@ public class TypesFactoryImpl extends EFactoryImpl implements TypesFactory
 	{
 		switch (eClass.getClassifierID())
 		{
-			case TypesPackage.FLOAT_PARAMETER: return createFloatParameter();
-			case TypesPackage.STRING_PARAMETER: return createStringParameter();
-			case TypesPackage.BOOLEAN_PARAMETER: return createBooleanParameter();
+			case TypesPackage.FLOAT_PARAMETER: return (EObject)createFloatParameter();
+			case TypesPackage.STRING_PARAMETER: return (EObject)createStringParameter();
+			case TypesPackage.BOOLEAN_PARAMETER: return (EObject)createBooleanParameter();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

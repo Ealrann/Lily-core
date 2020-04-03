@@ -5,31 +5,24 @@ package org.sheepy.lily.core.model.application.provider;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.domain.EditingDomain;
-
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ChildCreationExtenderManager;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
 import org.eclipse.emf.edit.provider.IChildCreationExtender;
-import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.sheepy.lily.core.model.application.ApplicationPackage;
-
 import org.sheepy.lily.core.model.application.util.ApplicationAdapterFactory;
 import org.sheepy.lily.core.model.resource.provider.LilyEditPlugin;
 
@@ -43,7 +36,7 @@ import org.sheepy.lily.core.model.resource.provider.LilyEditPlugin;
  * @generated
  */
 public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFactory
-		implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender
+		implements ComposeableAdapterFactory, IChangeNotifier, IChildCreationExtender
 {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
@@ -480,27 +473,6 @@ public class ApplicationItemProviderAdapterFactory extends ApplicationAdapterFac
 		{
 			parentAdapterFactory.fireNotifyChanged(notification);
 		}
-	}
-
-	/**
-	 * This disposes all of the item providers created by this factory. 
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void dispose()
-	{
-		if (applicationItemProvider != null) applicationItemProvider.dispose();
-		if (applicationExtensionPkgItemProvider != null) applicationExtensionPkgItemProvider.dispose();
-		if (timeConfigurationItemProvider != null) timeConfigurationItemProvider.dispose();
-		if (iModelItemProvider != null) iModelItemProvider.dispose();
-		if (compositorExtensionPkgItemProvider != null) compositorExtensionPkgItemProvider.dispose();
-		if (sceneItemProvider != null) sceneItemProvider.dispose();
-		if (genericScenePartItemProvider != null) genericScenePartItemProvider.dispose();
-		if (backgroundImageItemProvider != null) backgroundImageItemProvider.dispose();
-		if (screenEffectItemProvider != null) screenEffectItemProvider.dispose();
-		if (specialEffectItemProvider != null) specialEffectItemProvider.dispose();
 	}
 
 }

@@ -13,11 +13,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.sheepy.lily.core.model.action.Action;
 import org.sheepy.lily.core.model.action.ActionFactory;
 import org.sheepy.lily.core.model.action.ActionPackage;
-
 import org.sheepy.lily.core.model.application.ApplicationPackage;
-
 import org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl;
-
 import org.sheepy.lily.core.model.cadence.CadencePackage;
 
 import org.sheepy.lily.core.model.cadence.impl.CadencePackageImpl;

@@ -25,11 +25,8 @@ import org.joml.Vector4ic;
 import org.sheepy.lily.core.model.action.ActionPackage;
 
 import org.sheepy.lily.core.model.action.impl.ActionPackageImpl;
-
 import org.sheepy.lily.core.model.application.ApplicationPackage;
-
 import org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl;
-
 import org.sheepy.lily.core.model.cadence.CadencePackage;
 import org.sheepy.lily.core.model.cadence.impl.CadencePackageImpl;
 import org.sheepy.lily.core.model.inference.InferencePackage;
@@ -364,10 +361,10 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		InferencePackageImpl theInferencePackage = (InferencePackageImpl)(registeredPackage instanceof InferencePackageImpl ? registeredPackage : InferencePackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CadencePackage.eNS_URI);
 		CadencePackageImpl theCadencePackage = (CadencePackageImpl)(registeredPackage instanceof CadencePackageImpl ? registeredPackage : CadencePackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
-		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl)(registeredPackage instanceof ApplicationPackageImpl ? registeredPackage : ApplicationPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
 		ActionPackageImpl theActionPackage = (ActionPackageImpl)(registeredPackage instanceof ActionPackageImpl ? registeredPackage : ActionPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
+		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl)(registeredPackage instanceof ApplicationPackageImpl ? registeredPackage : ApplicationPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theTypesPackage.createPackageContents();
@@ -378,8 +375,8 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		theMaintainerPackage.createPackageContents();
 		theInferencePackage.createPackageContents();
 		theCadencePackage.createPackageContents();
-		theApplicationPackage.createPackageContents();
 		theActionPackage.createPackageContents();
+		theApplicationPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theTypesPackage.initializePackageContents();
@@ -390,8 +387,8 @@ public class TypesPackageImpl extends EPackageImpl implements TypesPackage
 		theMaintainerPackage.initializePackageContents();
 		theInferencePackage.initializePackageContents();
 		theCadencePackage.initializePackageContents();
-		theApplicationPackage.initializePackageContents();
 		theActionPackage.initializePackageContents();
+		theApplicationPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theTypesPackage.freeze();

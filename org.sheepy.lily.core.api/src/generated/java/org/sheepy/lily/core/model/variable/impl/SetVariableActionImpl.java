@@ -117,7 +117,7 @@ public class SetVariableActionImpl extends LilyEObject implements SetVariableAct
 	{
 		if (variable != null && ((EObject)variable).eIsProxy())
 		{
-			InternalEObject oldVariable = variable;
+			InternalEObject oldVariable = (InternalEObject)variable;
 			variable = (IModelVariable)eResolveProxy(oldVariable);
 			if (variable != oldVariable)
 			{

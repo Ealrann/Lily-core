@@ -24,7 +24,6 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.sheepy.lily.core.model.application.ApplicationFactory;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.ui.UI;
@@ -235,30 +234,6 @@ public class UIItemProvider
 			(createChildParameter
 				(UiPackage.Literals.UI__FONT_PKG,
 				 UiFactory.eINSTANCE.createFontPkg()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection)
-	{
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == ApplicationPackage.Literals.ICOMPOSITOR__EXTENSION_PKG;
-
-		if (qualify)
-		{
-			return getString
-				("_UI_CreateChild_text2",
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

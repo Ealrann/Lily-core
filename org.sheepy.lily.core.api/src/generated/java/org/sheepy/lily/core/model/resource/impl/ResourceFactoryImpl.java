@@ -65,15 +65,15 @@ public class ResourceFactoryImpl extends EFactoryImpl implements ResourceFactory
 	{
 		switch (eClass.getClassifierID())
 		{
-			case ResourcePackage.SOUND: return createSound();
-			case ResourcePackage.MUSIC: return createMusic();
-			case ResourcePackage.SOUND_CONTINUOUS: return createSoundContinuous();
-			case ResourcePackage.RESOURCE_PKG: return createResourcePkg();
-			case ResourcePackage.IRESOURCE: return createIResource();
-			case ResourcePackage.VIRTUAL_RESOURCE: return createVirtualResource();
-			case ResourcePackage.LOCAL_RESOURCE: return createLocalResource();
-			case ResourcePackage.MODULE_RESOURCE: return createModuleResource();
-			case ResourcePackage.STRING_MODULE_RESOURCE: return createStringModuleResource();
+			case ResourcePackage.SOUND: return (EObject)createSound();
+			case ResourcePackage.MUSIC: return (EObject)createMusic();
+			case ResourcePackage.SOUND_CONTINUOUS: return (EObject)createSoundContinuous();
+			case ResourcePackage.RESOURCE_PKG: return (EObject)createResourcePkg();
+			case ResourcePackage.IRESOURCE: return (EObject)createIResource();
+			case ResourcePackage.VIRTUAL_RESOURCE: return (EObject)createVirtualResource();
+			case ResourcePackage.LOCAL_RESOURCE: return (EObject)createLocalResource();
+			case ResourcePackage.MODULE_RESOURCE: return (EObject)createModuleResource();
+			case ResourcePackage.STRING_MODULE_RESOURCE: return (EObject)createStringModuleResource();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

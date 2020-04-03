@@ -20,7 +20,6 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.IChangeNotifier;
 import org.eclipse.emf.edit.provider.IChildCreationExtender;
-import org.eclipse.emf.edit.provider.IDisposable;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
@@ -42,7 +41,7 @@ import org.sheepy.lily.core.model.resource.provider.LilyEditPlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class CadenceItemProviderAdapterFactory extends CadenceAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender
+public class CadenceItemProviderAdapterFactory extends CadenceAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IChildCreationExtender
 {
 	/**
 	 * This keeps track of the root adapter factory that delegates to this adapter factory.
@@ -429,25 +428,6 @@ public class CadenceItemProviderAdapterFactory extends CadenceAdapterFactory imp
 		{
 			parentAdapterFactory.fireNotifyChanged(notification);
 		}
-	}
-
-	/**
-	 * This disposes all of the item providers created by this factory. 
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void dispose()
-	{
-		if (cadenceItemProvider != null) cadenceItemProvider.dispose();
-		if (executeWhileItemProvider != null) executeWhileItemProvider.dispose();
-		if (executeIfItemProvider != null) executeIfItemProvider.dispose();
-		if (printUPSItemProvider != null) printUPSItemProvider.dispose();
-		if (haveTimeItemProvider != null) haveTimeItemProvider.dispose();
-		if (countUntilItemProvider != null) countUntilItemProvider.dispose();
-		if (closeApplicationItemProvider != null) closeApplicationItemProvider.dispose();
-		if (genericCadenceItemProvider != null) genericCadenceItemProvider.dispose();
 	}
 
 }

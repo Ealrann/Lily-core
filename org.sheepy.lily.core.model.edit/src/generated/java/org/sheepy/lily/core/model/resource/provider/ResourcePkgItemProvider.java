@@ -22,7 +22,6 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.sheepy.lily.core.model.application.ApplicationFactory;
 import org.sheepy.lily.core.model.resource.ResourceFactory;
 import org.sheepy.lily.core.model.resource.ResourcePackage;
@@ -218,30 +217,6 @@ public class ResourcePkgItemProvider
 			(createChildParameter
 				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
 				 ApplicationFactory.eINSTANCE.createSpecialEffect()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection)
-	{
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == ResourcePackage.Literals.RESOURCE_PKG__RESOURCES;
-
-		if (qualify)
-		{
-			return getString
-				("_UI_CreateChild_text2",
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

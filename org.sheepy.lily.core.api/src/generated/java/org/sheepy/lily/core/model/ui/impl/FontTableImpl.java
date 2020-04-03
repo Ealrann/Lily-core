@@ -90,11 +90,11 @@ public class FontTableImpl extends IResourceImpl implements FontTable
 	{
 		if (file != null && ((EObject)file).eIsProxy())
 		{
-			InternalEObject oldFile = file;
+			InternalEObject oldFile = (InternalEObject)file;
 			file = (FileResource)eResolveProxy(oldFile);
 			if (file != oldFile)
 			{
-				InternalEObject newFile = file;
+				InternalEObject newFile = (InternalEObject)file;
 				NotificationChain msgs = oldFile.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UiPackage.FONT_TABLE__FILE, null, null);
 				if (newFile.eInternalContainer() == null)
 				{

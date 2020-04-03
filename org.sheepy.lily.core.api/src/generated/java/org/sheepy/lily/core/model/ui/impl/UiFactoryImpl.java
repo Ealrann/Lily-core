@@ -64,20 +64,20 @@ public class UiFactoryImpl extends EFactoryImpl implements UiFactory
 	{
 		switch (eClass.getClassifierID())
 		{
-			case UiPackage.PANEL: return createPanel();
-			case UiPackage.UI: return createUI();
-			case UiPackage.UI_PAGE: return createUIPage();
-			case UiPackage.DYNAMIC_ROW_LAYOUT: return createDynamicRowLayout();
-			case UiPackage.VARIABLE_LABEL: return createVariableLabel();
-			case UiPackage.LABEL: return createLabel();
-			case UiPackage.SLIDER: return createSlider();
-			case UiPackage.TEXT_FIELD: return createTextField();
-			case UiPackage.BUTTON: return createButton();
-			case UiPackage.BOOLEAN_BUTTON: return createBooleanButton();
-			case UiPackage.BOOLEAN_ACTION_BUTTON: return createBooleanActionButton();
-			case UiPackage.FONT_PKG: return createFontPkg();
-			case UiPackage.FONT_TABLE: return createFontTable();
-			case UiPackage.FONT: return createFont();
+			case UiPackage.PANEL: return (EObject)createPanel();
+			case UiPackage.UI: return (EObject)createUI();
+			case UiPackage.UI_PAGE: return (EObject)createUIPage();
+			case UiPackage.DYNAMIC_ROW_LAYOUT: return (EObject)createDynamicRowLayout();
+			case UiPackage.VARIABLE_LABEL: return (EObject)createVariableLabel();
+			case UiPackage.LABEL: return (EObject)createLabel();
+			case UiPackage.SLIDER: return (EObject)createSlider();
+			case UiPackage.TEXT_FIELD: return (EObject)createTextField();
+			case UiPackage.BUTTON: return (EObject)createButton();
+			case UiPackage.BOOLEAN_BUTTON: return (EObject)createBooleanButton();
+			case UiPackage.BOOLEAN_ACTION_BUTTON: return (EObject)createBooleanActionButton();
+			case UiPackage.FONT_PKG: return (EObject)createFontPkg();
+			case UiPackage.FONT_TABLE: return (EObject)createFontTable();
+			case UiPackage.FONT: return (EObject)createFont();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

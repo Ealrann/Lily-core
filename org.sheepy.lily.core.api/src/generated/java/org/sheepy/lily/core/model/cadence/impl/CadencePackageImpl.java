@@ -11,11 +11,8 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.sheepy.lily.core.model.action.ActionPackage;
 
 import org.sheepy.lily.core.model.action.impl.ActionPackageImpl;
-
 import org.sheepy.lily.core.model.application.ApplicationPackage;
-
 import org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl;
-
 import org.sheepy.lily.core.model.cadence.Cadence;
 import org.sheepy.lily.core.model.cadence.CadenceFactory;
 import org.sheepy.lily.core.model.cadence.CadencePackage;
@@ -203,10 +200,10 @@ public class CadencePackageImpl extends EPackageImpl implements CadencePackage
 		MaintainerPackageImpl theMaintainerPackage = (MaintainerPackageImpl)(registeredPackage instanceof MaintainerPackageImpl ? registeredPackage : MaintainerPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
 		InferencePackageImpl theInferencePackage = (InferencePackageImpl)(registeredPackage instanceof InferencePackageImpl ? registeredPackage : InferencePackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
-		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl)(registeredPackage instanceof ApplicationPackageImpl ? registeredPackage : ApplicationPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
 		ActionPackageImpl theActionPackage = (ActionPackageImpl)(registeredPackage instanceof ActionPackageImpl ? registeredPackage : ActionPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
+		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl)(registeredPackage instanceof ApplicationPackageImpl ? registeredPackage : ApplicationPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theCadencePackage.createPackageContents();
@@ -217,8 +214,8 @@ public class CadencePackageImpl extends EPackageImpl implements CadencePackage
 		thePresentationPackage.createPackageContents();
 		theMaintainerPackage.createPackageContents();
 		theInferencePackage.createPackageContents();
-		theApplicationPackage.createPackageContents();
 		theActionPackage.createPackageContents();
+		theApplicationPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theCadencePackage.initializePackageContents();
@@ -229,8 +226,8 @@ public class CadencePackageImpl extends EPackageImpl implements CadencePackage
 		thePresentationPackage.initializePackageContents();
 		theMaintainerPackage.initializePackageContents();
 		theInferencePackage.initializePackageContents();
-		theApplicationPackage.initializePackageContents();
 		theActionPackage.initializePackageContents();
+		theApplicationPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theCadencePackage.freeze();

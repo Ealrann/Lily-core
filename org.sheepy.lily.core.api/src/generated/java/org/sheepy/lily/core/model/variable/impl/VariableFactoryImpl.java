@@ -67,18 +67,18 @@ public class VariableFactoryImpl extends EFactoryImpl implements VariableFactory
 	{
 		switch (eClass.getClassifierID())
 		{
-			case VariablePackage.CHAIN_VARIABLE_RESOLVER: return createChainVariableResolver();
-			case VariablePackage.CHAIN_RESOLVER: return createChainResolver();
-			case VariablePackage.DIRECT_VARIABLE_RESOLVER: return createDirectVariableResolver();
-			case VariablePackage.BOOLEAN_CHANGE_ACTION: return createBooleanChangeAction();
-			case VariablePackage.INT_CHANGE_ACTION: return createIntChangeAction();
-			case VariablePackage.VAR_CHANGE_ACTION_PKG: return createVarChangeActionPkg();
-			case VariablePackage.MODEL_VARIABLE_PKG: return createModelVariablePkg();
-			case VariablePackage.INT_VARIABLE: return createIntVariable();
-			case VariablePackage.FLOAT_VARIABLE: return createFloatVariable();
-			case VariablePackage.VECTOR3F_VARIABLE: return createVector3fVariable();
-			case VariablePackage.DURATION_VARIABLE: return createDurationVariable();
-			case VariablePackage.SET_VARIABLE_ACTION: return createSetVariableAction();
+			case VariablePackage.CHAIN_VARIABLE_RESOLVER: return (EObject)createChainVariableResolver();
+			case VariablePackage.CHAIN_RESOLVER: return (EObject)createChainResolver();
+			case VariablePackage.DIRECT_VARIABLE_RESOLVER: return (EObject)createDirectVariableResolver();
+			case VariablePackage.BOOLEAN_CHANGE_ACTION: return (EObject)createBooleanChangeAction();
+			case VariablePackage.INT_CHANGE_ACTION: return (EObject)createIntChangeAction();
+			case VariablePackage.VAR_CHANGE_ACTION_PKG: return (EObject)createVarChangeActionPkg();
+			case VariablePackage.MODEL_VARIABLE_PKG: return (EObject)createModelVariablePkg();
+			case VariablePackage.INT_VARIABLE: return (EObject)createIntVariable();
+			case VariablePackage.FLOAT_VARIABLE: return (EObject)createFloatVariable();
+			case VariablePackage.VECTOR3F_VARIABLE: return (EObject)createVector3fVariable();
+			case VariablePackage.DURATION_VARIABLE: return (EObject)createDurationVariable();
+			case VariablePackage.SET_VARIABLE_ACTION: return (EObject)createSetVariableAction();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

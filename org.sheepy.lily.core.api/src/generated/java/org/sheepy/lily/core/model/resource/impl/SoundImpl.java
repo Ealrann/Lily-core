@@ -70,11 +70,11 @@ public class SoundImpl extends IResourceImpl implements Sound
 	{
 		if (file != null && ((EObject)file).eIsProxy())
 		{
-			InternalEObject oldFile = file;
+			InternalEObject oldFile = (InternalEObject)file;
 			file = (FileResource)eResolveProxy(oldFile);
 			if (file != oldFile)
 			{
-				InternalEObject newFile = file;
+				InternalEObject newFile = (InternalEObject)file;
 				NotificationChain msgs = oldFile.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ResourcePackage.SOUND__FILE, null, null);
 				if (newFile.eInternalContainer() == null)
 				{

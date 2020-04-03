@@ -672,7 +672,7 @@ public class PanelImpl extends LilyEObject implements Panel
 	{
 		if (backgroundImage != null && ((EObject)backgroundImage).eIsProxy())
 		{
-			InternalEObject oldBackgroundImage = backgroundImage;
+			InternalEObject oldBackgroundImage = (InternalEObject)backgroundImage;
 			backgroundImage = (IImage)eResolveProxy(oldBackgroundImage);
 			if (backgroundImage != oldBackgroundImage)
 			{

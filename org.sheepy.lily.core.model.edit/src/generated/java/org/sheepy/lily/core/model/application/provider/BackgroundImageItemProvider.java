@@ -25,7 +25,6 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.sheepy.lily.core.model.application.ApplicationFactory;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.BackgroundImage;
-
 import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**

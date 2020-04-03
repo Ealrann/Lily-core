@@ -41,7 +41,6 @@ public final class LilyEditPlugin extends EMFPlugin
 		super
 		  (new ResourceLocator [] 
 		   {
-		     LilyEditPlugin.INSTANCE,
 		   });
 	}
 
