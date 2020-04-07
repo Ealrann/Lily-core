@@ -4,6 +4,7 @@ package org.sheepy.lily.core.model.ui;
 
 import org.eclipse.emf.common.util.EList;
 import org.sheepy.lily.core.model.application.ICompositor;
+import org.sheepy.lily.core.model.resource.IImage;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,6 +19,7 @@ import org.sheepy.lily.core.model.application.ICompositor;
  *   <li>{@link org.sheepy.lily.core.model.ui.UI#getUiPages <em>Ui Pages</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.UI#getCurrentUIPage <em>Current UI Page</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.UI#getFontPkg <em>Font Pkg</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.UI#getDstImage <em>Dst Image</em>}</li>
  * </ul>
  *
  * @see org.sheepy.lily.core.model.ui.UiPackage#getUI()
@@ -104,5 +106,27 @@ public interface UI extends ICompositor
 	 * @generated
 	 */
 	void setFontPkg(FontPkg value);
+
+	/**
+	 * Returns the value of the '<em><b>Dst Image</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Dst Image</em>' reference.
+	 * @see #setDstImage(IImage)
+	 * @see org.sheepy.lily.core.model.ui.UiPackage#getUI_DstImage()
+	 * @model required="true"
+	 * @generated
+	 */
+	IImage getDstImage();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.ui.UI#getDstImage <em>Dst Image</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Dst Image</em>' reference.
+	 * @see #getDstImage()
+	 * @generated
+	 */
+	void setDstImage(IImage value);
 
 } // UI

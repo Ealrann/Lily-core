@@ -93,7 +93,7 @@ public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.Ada
 		if (!observatoryBuilder.isEmpty())
 		{
 			observatory = observatoryBuilder.build();
-			observatory.observe(null);
+			observatory.observe(target);
 		}
 	}
 
@@ -101,7 +101,7 @@ public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.Ada
 	{
 		if (observatory != null)
 		{
-			observatory.shut(null);
+			observatory.shut(target);
 			observatory = null;
 		}
 
@@ -113,7 +113,7 @@ public final class AdapterHandle<T extends IAdapter> extends AdapterRegistry.Ada
 
 	private IObservatoryBuilder buildObservatory()
 	{
-		final var observatoryBuilder = IObservatoryBuilder.newObservatoryBuilder(target);
+		final var observatoryBuilder = IObservatoryBuilder.newObservatoryBuilder();
 		for (final var observeHandle : observeHandles)
 		{
 			observeHandle.invoke(observatoryBuilder);

@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.model.application.CompositorExtensionPkg;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
+import org.sheepy.lily.core.model.resource.IImage;
 import org.sheepy.lily.core.model.ui.FontPkg;
 import org.sheepy.lily.core.model.ui.UI;
 import org.sheepy.lily.core.model.ui.UIPage;
@@ -41,6 +42,7 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getUiPages <em>Ui Pages</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getCurrentUIPage <em>Current UI Page</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getFontPkg <em>Font Pkg</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getDstImage <em>Dst Image</em>}</li>
  * </ul>
  *
  * @generated
@@ -106,6 +108,16 @@ public class UIImpl extends LilyEObject implements UI
 	 * @ordered
 	 */
 	protected FontPkg fontPkg;
+
+	/**
+	 * The cached value of the '{@link #getDstImage() <em>Dst Image</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDstImage()
+	 * @generated
+	 * @ordered
+	 */
+	protected IImage dstImage;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -373,6 +385,51 @@ public class UIImpl extends LilyEObject implements UI
 	 * @generated
 	 */
 	@Override
+	public IImage getDstImage()
+	{
+		if (dstImage != null && ((EObject)dstImage).eIsProxy())
+		{
+			InternalEObject oldDstImage = dstImage;
+			dstImage = (IImage)eResolveProxy(oldDstImage);
+			if (dstImage != oldDstImage)
+			{
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UiPackage.UI__DST_IMAGE, oldDstImage, dstImage));
+			}
+		}
+		return dstImage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IImage basicGetDstImage()
+	{
+		return dstImage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setDstImage(IImage newDstImage)
+	{
+		IImage oldDstImage = dstImage;
+		dstImage = newDstImage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.UI__DST_IMAGE, oldDstImage, dstImage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public IInferenceObject lInferenceObject()
 	{
 		return this;
@@ -421,6 +478,9 @@ public class UIImpl extends LilyEObject implements UI
 			case UiPackage.UI__FONT_PKG:
 				if (resolve) return getFontPkg();
 				return basicGetFontPkg();
+			case UiPackage.UI__DST_IMAGE:
+				if (resolve) return getDstImage();
+				return basicGetDstImage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -452,6 +512,9 @@ public class UIImpl extends LilyEObject implements UI
 			case UiPackage.UI__FONT_PKG:
 				setFontPkg((FontPkg)newValue);
 				return;
+			case UiPackage.UI__DST_IMAGE:
+				setDstImage((IImage)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -481,6 +544,9 @@ public class UIImpl extends LilyEObject implements UI
 			case UiPackage.UI__FONT_PKG:
 				setFontPkg((FontPkg)null);
 				return;
+			case UiPackage.UI__DST_IMAGE:
+				setDstImage((IImage)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -505,6 +571,8 @@ public class UIImpl extends LilyEObject implements UI
 				return currentUIPage != null;
 			case UiPackage.UI__FONT_PKG:
 				return fontPkg != null;
+			case UiPackage.UI__DST_IMAGE:
+				return dstImage != null;
 		}
 		return super.eIsSet(featureID);
 	}

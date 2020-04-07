@@ -488,6 +488,17 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * @generated
 	 */
 	@Override
+	public EReference getUI_DstImage()
+	{
+		return (EReference)uiEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getIUIElement()
 	{
 		return iuiElementEClass;
@@ -1122,6 +1133,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		createEReference(uiEClass, UI__UI_PAGES);
 		createEReference(uiEClass, UI__CURRENT_UI_PAGE);
 		createEReference(uiEClass, UI__FONT_PKG);
+		createEReference(uiEClass, UI__DST_IMAGE);
 
 		iuiElementEClass = createEClass(IUI_ELEMENT);
 
@@ -1280,6 +1292,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		initEReference(getUI_UiPages(), this.getUIPage(), null, "uiPages", null, 0, -1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUI_CurrentUIPage(), this.getUIPage(), null, "currentUIPage", null, 0, 1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUI_FontPkg(), this.getFontPkg(), null, "fontPkg", null, 1, 1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUI_DstImage(), theResourcePackage.getIImage(), null, "dstImage", null, 1, 1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iuiElementEClass, IUIElement.class, "IUIElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

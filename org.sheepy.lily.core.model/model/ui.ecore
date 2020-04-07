@@ -26,6 +26,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentUIPage" eType="#//UIPage"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fontPkg" lowerBound="1"
         eType="#//FontPkg" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dstImage" lowerBound="1"
+        eType="ecore:EClass resource.ecore#//IImage"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IUIElement" abstract="true" interface="true"
       eSuperTypes="inference.ecore#//IInferenceObject"/>

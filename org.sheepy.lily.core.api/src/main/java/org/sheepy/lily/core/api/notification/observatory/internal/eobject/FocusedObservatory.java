@@ -16,14 +16,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public final class RootObservatory implements IObservatory
+public final class FocusedObservatory implements IObservatory
 {
+	private final ILilyEObject root;
 	private final List<IObservatory> children;
 	private final List<IEObjectPOI> pois;
 	private boolean observing = false;
 
-	private RootObservatory(List<IObservatory> children, List<IEObjectPOI> pois)
+	private FocusedObservatory(ILilyEObject root, List<IObservatory> children, List<IEObjectPOI> pois)
 	{
+		this.root = root;
 		this.children = List.copyOf(children);
 		this.pois = List.copyOf(pois);
 	}
@@ -35,12 +37,12 @@ public final class RootObservatory implements IObservatory
 
 		for (var poi : pois)
 		{
-			poi.listen(parent);
+			poi.listen(root);
 		}
 
 		for (var child : children)
 		{
-			child.observe(parent);
+			child.observe(root);
 		}
 		observing = true;
 	}
@@ -51,12 +53,12 @@ public final class RootObservatory implements IObservatory
 		assert observing;
 		for (var child : children)
 		{
-			child.shut(parent);
+			child.shut(root);
 		}
 
 		for (var poi : pois)
 		{
-			poi.sulk(parent);
+			poi.sulk(root);
 		}
 
 		observing = false;
@@ -64,8 +66,14 @@ public final class RootObservatory implements IObservatory
 
 	public static final class Builder implements IObservatoryBuilder
 	{
-		private final List<IObservatory.IBuilder> children = new ArrayList<>();
+		private final ILilyEObject root;
+		private final List<IBuilder> children = new ArrayList<>();
 		private final List<IEObjectPOI> pois = new ArrayList<>();
+
+		public Builder(ILilyEObject root)
+		{
+			this.root = root;
+		}
 
 		@Override
 		public IObservatoryBuilder focus(ILilyEObject object)
@@ -138,14 +146,14 @@ public final class RootObservatory implements IObservatory
 		}
 
 		@Override
-		public IObservatory build()
+		public FocusedObservatory build()
 		{
 			final List<IObservatory> builtChildren = new ArrayList<>();
 			for (var child : children)
 			{
 				builtChildren.add(child.build());
 			}
-			return new RootObservatory(builtChildren, pois);
+			return new FocusedObservatory(root, builtChildren, pois);
 		}
 	}
 }

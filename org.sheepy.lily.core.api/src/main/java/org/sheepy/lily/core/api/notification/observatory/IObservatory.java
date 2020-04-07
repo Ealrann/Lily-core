@@ -1,7 +1,6 @@
 package org.sheepy.lily.core.api.notification.observatory;
 
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
-import org.sheepy.lily.core.api.notification.IFeature;
 
 public interface IObservatory
 {

@@ -7,12 +7,12 @@ import org.sheepy.lily.core.api.notification.observatory.internal.eobject.RootOb
 
 public interface IObservatoryBuilder extends IObservatory.IBuilder, IStructuralObservatoryBuilder<IObservatoryBuilder>
 {
-	static IObservatoryBuilder newObservatoryBuilder(ILilyEObject root)
+	static IObservatoryBuilder newObservatoryBuilder()
 	{
-		return new RootObservatory.Builder(root);
+		return new RootObservatory.Builder();
 	}
 
-	IObservatoryBuilder focus(ILilyEObject object);
+	IObservatoryBuilder focus(ILilyEObject focus);
 	<Y extends IFeature<?, ?>> INotifierObservatoryBuilder<Y> focus(INotifier<Y> notifier);
 	boolean isEmpty();
 }

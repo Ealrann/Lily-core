@@ -80,6 +80,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//UI/uiPages"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ui.ecore#//UI/currentUIPage"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//UI/fontPkg"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ui.ecore#//UI/dstImage"/>
     </genClasses>
     <genClasses image="false" ecoreClass="ui.ecore#//IUIElement"/>
     <genClasses ecoreClass="ui.ecore#//UIPage" labelFeature="#//types/LNamedElement/name">
