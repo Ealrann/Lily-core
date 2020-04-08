@@ -10,6 +10,7 @@ import org.sheepy.lily.core.api.variable.IModelVariableAdapter;
 import org.sheepy.lily.core.model.variable.DurationVariable;
 
 import java.nio.ByteBuffer;
+import java.util.List;
 
 @Statefull
 @Adapter(scope = DurationVariable.class, lazy = false)
@@ -21,7 +22,7 @@ public final class DurationVariableAdapter extends Notifier<IModelVariableAdapte
 
 	private DurationVariableAdapter()
 	{
-		super(IModelVariableAdapter.Features.values().length);
+		super(List.of(Features.Value));
 	}
 
 	@Load

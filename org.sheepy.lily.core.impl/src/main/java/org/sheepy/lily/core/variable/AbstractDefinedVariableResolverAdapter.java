@@ -10,6 +10,7 @@ import org.sheepy.lily.core.api.util.FeatureDefinition;
 import org.sheepy.lily.core.api.variable.IVariableResolverAdapter;
 import org.sheepy.lily.core.model.variable.IVariableResolver;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 @Statefull
@@ -22,7 +23,7 @@ public abstract class AbstractDefinedVariableResolverAdapter<T extends IVariable
 
 	public AbstractDefinedVariableResolverAdapter()
 	{
-		super(Features.values().length);
+		super(List.of(Features.Value));
 	}
 
 	@Load

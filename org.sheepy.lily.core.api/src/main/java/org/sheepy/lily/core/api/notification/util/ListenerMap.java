@@ -1,6 +1,7 @@
 package org.sheepy.lily.core.api.notification.util;
 
-import org.sheepy.lily.core.api.notification.IFeature;
+import org.sheepy.lily.core.api.notification.Feature;
+import org.sheepy.lily.core.api.notification.IFeatures;
 import org.sheepy.lily.core.api.notification.INotifier;
 
 import java.util.ArrayList;
@@ -11,21 +12,23 @@ import java.util.function.Consumer;
 import java.util.function.IntConsumer;
 import java.util.function.LongConsumer;
 
-public final class ListenerMap<Type extends IFeature<?, ?>> implements INotifier.Internal<Type>
+public final class ListenerMap<Type extends IFeatures<Type>> implements INotifier.Internal<Type>
 {
 	private final List<Object>[] listenerMap;
+	private final List<Feature<?, Type>> features;
 
 	@SuppressWarnings("unchecked")
-	public ListenerMap(int featureCount)
+	public ListenerMap(List<Feature<?, Type>> features)
 	{
-		listenerMap = new List[featureCount];
+		this.listenerMap = new List[features.size()];
+		this.features = features;
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <Callback> void notify(final IFeature<? super Callback, Type> feature, final Consumer<Callback> caller)
+	public <Callback> void notify(final Feature<? super Callback, Type> feature, final Consumer<Callback> caller)
 	{
-		final var list = listenerMap[feature.ordinal()];
+		final var list = listenerMap[features.indexOf(feature)];
 		if (list != null)
 		{
 			for (int i = 0; i < list.size(); i++)
@@ -45,9 +48,9 @@ public final class ListenerMap<Type extends IFeature<?, ?>> implements INotifier
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <T> void notify(final IFeature<Consumer<T>, Type> feature, final T value)
+	public <T> void notify(final Feature<Consumer<T>, Type> feature, final T value)
 	{
-		final var list = listenerMap[feature.ordinal()];
+		final var list = listenerMap[features.indexOf(feature)];
 		if (list != null)
 		{
 			for (int i = 0; i < list.size(); i++)
@@ -66,9 +69,9 @@ public final class ListenerMap<Type extends IFeature<?, ?>> implements INotifier
 	}
 
 	@Override
-	public void notify(final IFeature<IntConsumer, Type> feature, final int value)
+	public void notify(final Feature<IntConsumer, Type> feature, final int value)
 	{
-		final var list = listenerMap[feature.ordinal()];
+		final var list = listenerMap[features.indexOf(feature)];
 		if (list != null)
 		{
 			for (int i = 0; i < list.size(); i++)
@@ -87,9 +90,9 @@ public final class ListenerMap<Type extends IFeature<?, ?>> implements INotifier
 	}
 
 	@Override
-	public void notify(final IFeature<LongConsumer, Type> feature, final long value)
+	public void notify(final Feature<LongConsumer, Type> feature, final long value)
 	{
-		final var list = listenerMap[feature.ordinal()];
+		final var list = listenerMap[features.indexOf(feature)];
 		if (list != null)
 		{
 			for (int i = 0; i < list.size(); i++)
@@ -108,9 +111,9 @@ public final class ListenerMap<Type extends IFeature<?, ?>> implements INotifier
 	}
 
 	@Override
-	public void notify(final IFeature<Runnable, Type> feature)
+	public void notify(final Feature<Runnable, Type> feature)
 	{
-		final var list = listenerMap[feature.ordinal()];
+		final var list = listenerMap[features.indexOf(feature)];
 		if (list != null)
 		{
 			for (int i = 0; i < list.size(); i++)
@@ -122,19 +125,19 @@ public final class ListenerMap<Type extends IFeature<?, ?>> implements INotifier
 	}
 
 	@Override
-	public <Callback> void listen(Callback listener, IFeature<? super Callback, Type> feature)
+	public <Callback> void listen(Callback listener, Feature<? super Callback, Type> feature)
 	{
 		getOrCreateList(feature).add(listener);
 	}
 
 	@Override
-	public void listenNoParam(Runnable listener, IFeature<?, Type> feature)
+	public void listenNoParam(Runnable listener, Feature<?, Type> feature)
 	{
 		getOrCreateList(feature).add(listener);
 	}
 
 	@Override
-	public <Callback> void listen(Callback listener, Collection<? extends IFeature<? super Callback, Type>> features)
+	public <Callback> void listen(Callback listener, Collection<? extends Feature<? super Callback, Type>> features)
 	{
 		for (var feature : features)
 		{
@@ -143,7 +146,7 @@ public final class ListenerMap<Type extends IFeature<?, ?>> implements INotifier
 	}
 
 	@Override
-	public void listenNoParam(Runnable listener, Collection<? extends IFeature<?, Type>> features)
+	public void listenNoParam(Runnable listener, Collection<? extends Feature<?, Type>> features)
 	{
 		for (var feature : features)
 		{
@@ -152,19 +155,19 @@ public final class ListenerMap<Type extends IFeature<?, ?>> implements INotifier
 	}
 
 	@Override
-	public <Callback> void sulk(Callback listener, IFeature<? super Callback, Type> feature)
+	public <Callback> void sulk(Callback listener, Feature<? super Callback, Type> feature)
 	{
 		getList(feature).ifPresent(list -> list.remove(listener));
 	}
 
 	@Override
-	public void sulkNoParam(Runnable listener, IFeature<?, Type> feature)
+	public void sulkNoParam(Runnable listener, Feature<?, Type> feature)
 	{
 		getList(feature).ifPresent(list -> list.remove(listener));
 	}
 
 	@Override
-	public <Callback> void sulk(Callback listener, Collection<? extends IFeature<? super Callback, Type>> features)
+	public <Callback> void sulk(Callback listener, Collection<? extends Feature<? super Callback, Type>> features)
 	{
 		for (var feature : features)
 		{
@@ -173,7 +176,7 @@ public final class ListenerMap<Type extends IFeature<?, ?>> implements INotifier
 	}
 
 	@Override
-	public void sulkNoParam(Runnable listener, Collection<? extends IFeature<?, Type>> features)
+	public void sulkNoParam(Runnable listener, Collection<? extends Feature<?, Type>> features)
 	{
 		for (var feature : features)
 		{
@@ -181,9 +184,9 @@ public final class ListenerMap<Type extends IFeature<?, ?>> implements INotifier
 		}
 	}
 
-	private List<Object> getOrCreateList(IFeature<?, Type> feature)
+	private List<Object> getOrCreateList(Feature<?, Type> feature)
 	{
-		final int ordinal = feature.ordinal();
+		final int ordinal = features.indexOf(feature);
 		final var res = listenerMap[ordinal];
 		if (res != null)
 		{
@@ -197,9 +200,10 @@ public final class ListenerMap<Type extends IFeature<?, ?>> implements INotifier
 		}
 	}
 
-	private Optional<List<Object>> getList(IFeature<?, Type> feature)
+	private Optional<List<Object>> getList(Feature<?, Type> feature)
 	{
-		final var res = listenerMap[feature.ordinal()];
+		final int ordinal = features.indexOf(feature);
+		final var res = listenerMap[ordinal];
 		if (res != null)
 		{
 			return Optional.of(res);

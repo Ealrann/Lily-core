@@ -4,7 +4,7 @@ import org.sheepy.lily.core.api.adapter.IAdapter;
 
 import java.util.function.Consumer;
 
-public interface IAdapterObservatoryBuilder<Type extends IAdapter> extends IObservatory.IBuilder
+public interface IAdapterObservatoryBuilder<Adapter extends IAdapter> extends IObservatory.IBuilder
 {
-	IAdapterObservatoryBuilder<Type> gather(Consumer<Type> discoveredAdapter, Consumer<Type> removedAdapter);
+	IAdapterObservatoryBuilder<Adapter> gather(Consumer<Adapter> discoveredAdapter, Consumer<Adapter> removedAdapter);
 }

@@ -1,17 +1,9 @@
 package org.sheepy.lily.core.api.notification;
 
-public abstract class Feature<Callback, Type extends IFeature<?, ?>> implements IFeature<Callback, Type>
+public final class Feature<Callback, Type extends IFeatures<Type>>
 {
-	private final int ordinal;
-
-	public Feature(int ordinal)
+	public static <Callback, Type extends IFeatures<Type>> Feature<Callback, Type> newFeature()
 	{
-		this.ordinal = ordinal;
-	}
-
-	@Override
-	public int ordinal()
-	{
-		return ordinal;
+		return new Feature<>();
 	}
 }

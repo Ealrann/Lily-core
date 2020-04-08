@@ -1,14 +1,15 @@
 package org.sheepy.lily.core.api.notification.observatory.internal.notifier;
 
-import org.sheepy.lily.core.api.notification.IFeature;
+import org.sheepy.lily.core.api.notification.Feature;
+import org.sheepy.lily.core.api.notification.IFeatures;
 import org.sheepy.lily.core.api.notification.INotifier;
 
-public final class NoParamNotifierPOI<Type extends IFeature<?, ?>> implements INotifierPOI<Type>
+public final class NoParamNotifierPOI<Type extends IFeatures<Type>> implements INotifierPOI<Type>
 {
 	private final Runnable listener;
-	private final IFeature<?, Type> feature;
+	private final Feature<?, Type> feature;
 
-	public NoParamNotifierPOI(Runnable listener, IFeature<?, Type> feature)
+	public NoParamNotifierPOI(Runnable listener, Feature<?, Type> feature)
 	{
 		this.listener = listener;
 		this.feature = feature;

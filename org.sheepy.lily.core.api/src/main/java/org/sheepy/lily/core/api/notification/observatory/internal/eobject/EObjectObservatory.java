@@ -5,7 +5,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.INotifierAdapter;
-import org.sheepy.lily.core.api.notification.IFeature;
+import org.sheepy.lily.core.api.notification.IFeatures;
 import org.sheepy.lily.core.api.notification.observatory.IAdapterObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.IEObjectObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.INotifierAdapterObservatoryBuilder;
@@ -150,7 +150,7 @@ public final class EObjectObservatory<T extends ILilyEObject> implements IObserv
 		}
 
 		@Override
-		public <F extends IFeature<?, ?>> INotifierAdapterObservatoryBuilder<F, ? extends INotifierAdapter<F>> adaptNotifier(
+		public <F extends IFeatures<F>> INotifierAdapterObservatoryBuilder<F, ? extends INotifierAdapter<F>> adaptNotifier(
 				final Class<? extends INotifierAdapter<F>> classifier)
 		{
 			final var child = new NotifierAdapterObservatory.Builder<>(classifier);

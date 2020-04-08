@@ -9,13 +9,14 @@ import org.sheepy.lily.core.model.variable.IntVariable;
 import org.sheepy.lily.core.model.variable.VariablePackage;
 
 import java.nio.ByteBuffer;
+import java.util.List;
 
 @Adapter(scope = IntVariable.class)
 public final class IntVariableAdapter extends Notifier<IModelVariableAdapter.Features> implements IModelVariableAdapter<IntVariable>
 {
 	private IntVariableAdapter()
 	{
-		super(IModelVariableAdapter.Features.values().length);
+		super(List.of(Features.Value));
 	}
 
 	@NotifyChanged(featureIds = VariablePackage.INT_VARIABLE__VALUE)

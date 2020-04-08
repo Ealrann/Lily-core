@@ -1,7 +1,8 @@
 package org.sheepy.lily.core.api.notification.observatory.internal.notifier;
 
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
-import org.sheepy.lily.core.api.notification.IFeature;
+import org.sheepy.lily.core.api.notification.Feature;
+import org.sheepy.lily.core.api.notification.IFeatures;
 import org.sheepy.lily.core.api.notification.INotifier;
 import org.sheepy.lily.core.api.notification.observatory.INotifierObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
@@ -9,7 +10,7 @@ import org.sheepy.lily.core.api.notification.observatory.IObservatory;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class NotifierObservatory<Type extends IFeature<?, ?>> implements IObservatory
+public final class NotifierObservatory<Type extends IFeatures<Type>> implements IObservatory
 {
 	private final INotifier<Type> notifier;
 	private final List<INotifierPOI<Type>> observationPoints;
@@ -38,7 +39,7 @@ public final class NotifierObservatory<Type extends IFeature<?, ?>> implements I
 		}
 	}
 
-	public static final class Builder<Type extends IFeature<?, ?>> implements INotifierObservatoryBuilder<Type>
+	public static final class Builder<Type extends IFeatures<Type>> implements INotifierObservatoryBuilder<Type>
 	{
 		private final INotifier<Type> notifier;
 		private final List<INotifierPOI<Type>> observationPoints = new ArrayList<>();
@@ -50,14 +51,14 @@ public final class NotifierObservatory<Type extends IFeature<?, ?>> implements I
 
 		@Override
 		public <Listener> INotifierObservatoryBuilder<Type> listen(Listener listener,
-																   IFeature<? super Listener, Type> feature)
+																   Feature<? super Listener, Type> feature)
 		{
 			observationPoints.add(new NotifierPOI<>(listener, feature));
 			return this;
 		}
 
 		@Override
-		public INotifierObservatoryBuilder<Type> listenNoParam(final Runnable listener, final IFeature<?, Type> feature)
+		public INotifierObservatoryBuilder<Type> listenNoParam(final Runnable listener, final Feature<?, Type> feature)
 		{
 			observationPoints.add(new NoParamNotifierPOI<>(listener, feature));
 			return this;

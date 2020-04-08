@@ -66,7 +66,7 @@ public class ChainVariableResolverAdapter extends AbstractDefinedVariableResolve
 		return resolvedTarget;
 	}
 
-	private <T extends IVariableResolver> ILilyEObject resolveTarget(T resolver)
+	private static <T extends IVariableResolver> ILilyEObject resolveTarget(T resolver)
 	{
 		final var firstAdapter = resolver.<IVariableResolverAdapter<T>>adaptNotNullGeneric(IVariableResolverAdapter.class);
 		return (ILilyEObject) firstAdapter.getValue(resolver);

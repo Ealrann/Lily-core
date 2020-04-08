@@ -8,6 +8,5 @@ import java.util.function.Consumer;
 public interface IEObjectObservatoryBuilder<L extends ILilyEObject> extends IStructuralObservatoryBuilder<IEObjectObservatoryBuilder<L>>
 {
 	IEObjectObservatoryBuilder<L> gather(Consumer<L> discoveredObject, Consumer<L> removedObject);
-	IEObjectObservatoryBuilder<L> gatherBulk(Consumer<List<L>> discoveredObjects,
-											 Consumer<List<L>> removedObjects);
+	IEObjectObservatoryBuilder<L> gatherBulk(Consumer<List<L>> discoveredObjects, Consumer<List<L>> removedObjects);
 }

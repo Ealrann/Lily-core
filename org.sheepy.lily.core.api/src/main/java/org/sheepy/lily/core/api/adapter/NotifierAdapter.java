@@ -1,12 +1,15 @@
 package org.sheepy.lily.core.api.adapter;
 
-import org.sheepy.lily.core.api.notification.IFeature;
+import org.sheepy.lily.core.api.notification.Feature;
+import org.sheepy.lily.core.api.notification.IFeatures;
 import org.sheepy.lily.core.api.notification.Notifier;
 
-public abstract class NotifierAdapter<Type extends IFeature<?, ?>> extends Notifier<Type> implements INotifierAdapter<Type>
+import java.util.List;
+
+public abstract class NotifierAdapter<Type extends IFeatures<Type>> extends Notifier<Type> implements INotifierAdapter<Type>
 {
-	public NotifierAdapter(int featureCount)
+	public NotifierAdapter(List<Feature<?, Type>> features)
 	{
-		super(featureCount);
+		super(features);
 	}
 }

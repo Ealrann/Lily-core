@@ -9,6 +9,7 @@ import org.sheepy.lily.core.model.variable.FloatVariable;
 import org.sheepy.lily.core.model.variable.VariablePackage;
 
 import java.nio.ByteBuffer;
+import java.util.List;
 
 @Adapter(scope = FloatVariable.class)
 public final class FloatVariableAdapter extends Notifier<IModelVariableAdapter.Features> implements
@@ -16,7 +17,7 @@ public final class FloatVariableAdapter extends Notifier<IModelVariableAdapter.F
 {
 	private FloatVariableAdapter()
 	{
-		super(Features.values().length);
+		super(List.of(Features.Value));
 	}
 
 	@NotifyChanged(featureIds = VariablePackage.FLOAT_VARIABLE__VALUE)
