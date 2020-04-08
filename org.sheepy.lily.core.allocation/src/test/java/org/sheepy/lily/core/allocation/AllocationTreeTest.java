@@ -7,6 +7,8 @@ import org.sheepy.lily.core.api.allocation.IAllocationContext;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
 public class AllocationTreeTest
 {
 	@Test

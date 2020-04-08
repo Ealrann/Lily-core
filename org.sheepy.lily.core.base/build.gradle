@@ -1,7 +1,3 @@
-plugins {
-	id 'java-library'
-}
-
 dependencies {
 	runtimeOnly project(":org.sheepy.lily.core.allocation")
 	runtimeOnly project(":org.sheepy.lily.core.impl")

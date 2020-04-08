@@ -1,11 +1,3 @@
-plugins {
-	id 'java-library'
-}
-
-test {
-	useJUnitPlatform()
-}
-
 dependencies {
 	api "org.joml:joml:$jomlVersion"
 
@@ -18,6 +10,10 @@ dependencies {
 
 	testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitJupiterVersion"
 	testRuntimeOnly "org.junit.platform:junit-platform-launcher:$junitPlatformVersion"
+}
+
+test {
+	useJUnitPlatform()
 }
 
 sourceSets {
