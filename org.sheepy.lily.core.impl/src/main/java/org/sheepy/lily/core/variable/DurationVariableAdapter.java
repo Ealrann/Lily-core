@@ -3,7 +3,7 @@ package org.sheepy.lily.core.variable;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.adapter.annotation.Load;
 import org.sheepy.lily.core.api.adapter.annotation.Statefull;
-import org.sheepy.lily.core.api.adapter.annotation.Tick;
+import org.sheepy.lily.core.api.cadence.Tick;
 import org.sheepy.lily.core.api.notification.Notifier;
 import org.sheepy.lily.core.api.variable.IDurationVariableAdapter;
 import org.sheepy.lily.core.api.variable.IModelVariableAdapter;

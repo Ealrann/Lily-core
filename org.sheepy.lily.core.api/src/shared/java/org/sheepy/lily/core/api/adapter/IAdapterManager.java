@@ -2,6 +2,7 @@ package org.sheepy.lily.core.api.adapter;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 public interface IAdapterManager
@@ -16,4 +17,6 @@ public interface IAdapterManager
 
 	void listenNoParam(Runnable listener, int... features);
 	void sulkNoParam(Runnable listener, int... features);
+
+	<T extends IAdapterAnnotationHandle> List<T> annotationHandles(Class<T> type);
 }

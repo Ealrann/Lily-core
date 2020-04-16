@@ -1,4 +1,4 @@
-package org.sheepy.lily.core.adapter.impl;
+package org.sheepy.lily.core.adapter;
 
 import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
 import org.sheepy.lily.core.api.adapter.IAdapterManager;

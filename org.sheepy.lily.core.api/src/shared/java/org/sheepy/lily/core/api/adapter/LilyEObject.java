@@ -78,6 +78,13 @@ public class LilyEObject extends EObjectImpl implements ILilyEObject
 		return adapt;
 	}
 
+	@Override
+	public final <T extends IAdapterAnnotationHandle> List<T> annotationHandlers(Class<T> type)
+	{
+		setupAdapterManager();
+		return adapterManager.annotationHandles(type);
+	}
+
 	public final IAdapterManager getAdapterManager()
 	{
 		setupAdapterManager();

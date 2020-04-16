@@ -4,6 +4,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.sheepy.lily.core.api.notification.INotificationListener;
 
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
@@ -34,4 +35,6 @@ public interface ILilyEObject extends InternalEObject
 
 	void listenNoParam(Runnable listener, int... features);
 	void sulkNoParam(Runnable listener, int... features);
+
+	<T extends IAdapterAnnotationHandle> List<T> annotationHandlers(Class<T> type);
 }

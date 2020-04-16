@@ -2,7 +2,7 @@ package org.sheepy.lily.core.adapter.reflect.impl;
 
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.reflect.ConstructorHandle;
-import org.sheepy.lily.core.adapter.reflect.util.ReflectUtil;
+import org.sheepy.lily.core.adapter.reflect.util.ReflectionUtil;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 
 import java.lang.invoke.MethodHandle;
@@ -30,7 +30,7 @@ public final class ConstructorHandleParam1<T extends IAdapter> implements Constr
 
 		public Builder(Lookup lookup, MethodHandle methodHandle) throws Throwable
 		{
-			final Function<EObject, T> function = ReflectUtil.createFunction(lookup, methodHandle);
+			final Function<EObject, T> function = ReflectionUtil.createFunction(lookup, methodHandle);
 			handle = new ConstructorHandleParam1<>(function);
 		}
 

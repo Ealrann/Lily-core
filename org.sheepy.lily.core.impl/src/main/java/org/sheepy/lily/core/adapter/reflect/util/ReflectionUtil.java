@@ -13,7 +13,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-public final class ReflectUtil
+public final class ReflectionUtil
 {
 	private static final MethodType TYPE_R_OPERATION = MethodType.methodType(Operation.class);
 	private static final MethodType TYPE_R_CONSUMER = MethodType.methodType(Consumer.class);
@@ -31,7 +31,7 @@ public final class ReflectUtil
 	private static final String FUNCTION_EXEC_METHOD = "apply";
 	private static final String SUPPLIER_EXEC_METHOD = "get";
 
-	private static final Module MODULE = ReflectUtil.class.getModule();
+	private static final Module MODULE = ReflectionUtil.class.getModule();
 
 	public static Lookup reachLookup(Class<?> targetClass)
 	{

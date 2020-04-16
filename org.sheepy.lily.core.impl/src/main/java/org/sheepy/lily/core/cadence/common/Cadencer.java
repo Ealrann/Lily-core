@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.sheepy.lily.core.adapter.impl.AdapterManager;
+import org.sheepy.lily.core.api.adapter.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.LilyEObject;
 import org.sheepy.lily.core.api.cadence.ETickerClock;
 import org.sheepy.lily.core.api.cadence.ICadencer;
@@ -18,6 +18,7 @@ import org.sheepy.lily.core.api.input.IInputManager;
 import org.sheepy.lily.core.api.util.DebugUtil;
 import org.sheepy.lily.core.api.util.TimeUtil;
 import org.sheepy.lily.core.cadence.execution.CommandStack;
+import org.sheepy.lily.core.cadence.tick.TickHandle;
 import org.sheepy.lily.core.model.application.Application;
 
 import java.util.ArrayList;
@@ -188,10 +189,10 @@ public class Cadencer implements ICadencer
 		{
 			final var ticker = tickers.get(i);
 			final var accumulation = switch (ticker.clock)
-											 {
-												 case RealWorld -> stepNs;
-												 case ApplicationWorld -> appStepNs;
-											 };
+					{
+						case RealWorld -> stepNs;
+						case ApplicationWorld -> appStepNs;
+					};
 
 			ticker.accumulate(accumulation);
 
@@ -304,9 +305,9 @@ public class Cadencer implements ICadencer
 		@Override
 		protected void setTarget(EObject target)
 		{
-			final var lilyObject = (LilyEObject) target;
+			final var lilyObject = (ILilyEObject) target;
 
-			final var tickDescriptors = ((AdapterManager) lilyObject.getAdapterManager()).tickers;
+			final var tickDescriptors = lilyObject.annotationHandlers(TickHandle.class);
 			for (int i = 0; i < tickDescriptors.size(); i++)
 			{
 				final var ticker = tickDescriptors.get(i);

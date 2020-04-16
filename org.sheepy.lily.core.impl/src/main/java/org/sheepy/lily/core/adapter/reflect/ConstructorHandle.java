@@ -3,7 +3,7 @@ package org.sheepy.lily.core.adapter.reflect;
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.reflect.impl.ConstructorHandleNoParam;
 import org.sheepy.lily.core.adapter.reflect.impl.ConstructorHandleParam1;
-import org.sheepy.lily.core.adapter.reflect.util.ReflectUtil;
+import org.sheepy.lily.core.adapter.reflect.util.ReflectionUtil;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 
 import java.lang.reflect.Constructor;
@@ -18,11 +18,11 @@ public interface ConstructorHandle<T extends IAdapter>
 		{
 			final var sourceClass = constructor.getDeclaringClass();
 			final int paramCount = constructor.getParameterCount();
-			final var privateLookup = ReflectUtil.reachLookup(sourceClass);
+			final var privateLookup = ReflectionUtil.reachLookup(sourceClass);
 
 			try
 			{
-				final var methodHandle = ReflectUtil.unreflect(constructor, privateLookup);
+				final var methodHandle = ReflectionUtil.unreflect(constructor, privateLookup);
 				return switch (paramCount)
 						{
 							case 0 -> new ConstructorHandleNoParam.Builder<>(privateLookup, methodHandle);

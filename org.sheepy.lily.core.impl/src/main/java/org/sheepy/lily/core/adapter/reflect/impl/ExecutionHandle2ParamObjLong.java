@@ -1,6 +1,7 @@
 package org.sheepy.lily.core.adapter.reflect.impl;
 
-import org.sheepy.lily.core.adapter.reflect.ExecutionHandle;
+import org.sheepy.lily.core.api.util.ExecutionHandle;
+import org.sheepy.lily.core.adapter.reflect.ExecutionHandleBuilder;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 
 import java.lang.invoke.LambdaConversionException;
@@ -33,7 +34,7 @@ public final class ExecutionHandle2ParamObjLong implements ExecutionHandle
 		return consumer;
 	}
 
-	public static final class Builder extends ExecutionHandle.Builder
+	public static final class Builder extends ExecutionHandleBuilder
 	{
 		private final MethodHandle factory;
 
@@ -68,7 +69,7 @@ public final class ExecutionHandle2ParamObjLong implements ExecutionHandle
 		}
 	}
 
-	public static final class StaticBuilder extends ExecutionHandle.Builder
+	public static final class StaticBuilder extends ExecutionHandleBuilder
 	{
 		private final ExecutionHandle handle;
 

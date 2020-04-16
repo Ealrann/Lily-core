@@ -1,12 +1,14 @@
 import org.sheepy.lily.core.Adapters;
-import org.sheepy.lily.core.adapter.impl.AdapterManagerFactory;
-import org.sheepy.lily.core.adapter.impl.AdapterRegistry;
+import org.sheepy.lily.core.adapter.AdapterManagerFactory;
+import org.sheepy.lily.core.adapter.AdapterRegistry;
+import org.sheepy.lily.core.api.adapter.IAdapterAnnotationService;
 import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
 import org.sheepy.lily.core.api.adapter.IAdapterProvider;
 import org.sheepy.lily.core.api.adapter.IAdapterRegistry;
 import org.sheepy.lily.core.api.cadence.IStatistics;
 import org.sheepy.lily.core.api.resource.IResourceLoader;
 import org.sheepy.lily.core.cadence.CadencerStatistics;
+import org.sheepy.lily.core.cadence.tick.CadencerAnnotationService;
 import org.sheepy.lily.core.resource.ResourceLoader;
 
 module org.sheepy.lily.core.impl
@@ -20,8 +22,10 @@ module org.sheepy.lily.core.impl
 
 	opens org.sheepy.lily.core.application;
 	opens org.sheepy.lily.core.variable;
-	
+
 	provides IAdapterProvider with Adapters;
+	provides IAdapterAnnotationService with CadencerAnnotationService;
 	
 	uses IAdapterProvider;
+	uses IAdapterAnnotationService;
 }

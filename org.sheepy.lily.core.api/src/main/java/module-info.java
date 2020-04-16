@@ -1,4 +1,5 @@
 import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.IAdapterAnnotationService;
 import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
 import org.sheepy.lily.core.api.adapter.IAdapterRegistry;
 import org.sheepy.lily.core.api.allocation.IAllocationService;
@@ -68,5 +69,6 @@ module org.sheepy.lily.core.api {
 	uses IResourceLoader;
 	uses IAdapterFactoryService;
 	uses IAdapter;
+	uses IAdapterAnnotationService;
 	uses IStatistics;
 }

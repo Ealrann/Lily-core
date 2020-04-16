@@ -1,7 +1,9 @@
-package org.sheepy.lily.core.adapter.impl;
+package org.sheepy.lily.core.adapter;
 
 import org.eclipse.emf.ecore.EObject;
+import org.sheepy.lily.core.adapter.description.AdapterDescriptor;
 import org.sheepy.lily.core.api.adapter.IAdapter;
+import org.sheepy.lily.core.api.adapter.IAdapterAnnotationService;
 import org.sheepy.lily.core.api.adapter.IAdapterProvider;
 import org.sheepy.lily.core.api.adapter.IAdapterRegistry;
 
@@ -9,13 +11,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ServiceLoader;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 public final class AdapterRegistry implements IAdapterRegistry
 {
-	private final static List<IAdapterProvider> ADAPTERS = StreamSupport.stream(ServiceLoader.load(IAdapterProvider.class)
-																							 .spliterator(), false)
+	private static final List<IAdapterProvider> ADAPTERS = ServiceLoader.load(IAdapterProvider.class)
+																		.stream()
+																		.map(ServiceLoader.Provider::get)
 																		.collect(Collectors.toList());
+
+	private static final List<IAdapterAnnotationService<?, ?>> ANNOTATION_SERVICES = ServiceLoader.load(
+			IAdapterAnnotationService.class)
+																								  .stream()
+																								  .map(t -> (IAdapterAnnotationService<?, ?>) t
+																										  .get())
+																								  .collect(Collectors.toList());
+	private static final AdapterDescriptor.Builder descriptorBuilder = new AdapterDescriptor.Builder(ANNOTATION_SERVICES);
 
 	private final List<AdapterDescriptor<?>> descriptors = new ArrayList<>();
 
@@ -38,10 +48,7 @@ public final class AdapterRegistry implements IAdapterRegistry
 
 	private static <T extends IAdapter> AdapterDescriptor<T> createDescriptor(final Class<T> adapterClass)
 	{
-		final var domain = new AdapterDomain<>(adapterClass);
-		final var builder = new AdapterInfo.Builder<>(domain);
-		final var definition = builder.build();
-		return new AdapterDescriptor<>(domain, definition);
+		return descriptorBuilder.build(adapterClass);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -81,22 +88,5 @@ public final class AdapterRegistry implements IAdapterRegistry
 		}
 
 		return res;
-	}
-
-	public static class AdapterDescriptor<T extends IAdapter>
-	{
-		public final AdapterDomain<T> domain;
-		public final AdapterInfo<T> info;
-
-		public AdapterDescriptor(AdapterDomain<T> domain, AdapterInfo<T> executor)
-		{
-			this.domain = domain;
-			this.info = executor;
-		}
-
-		public boolean isNamedAdapter()
-		{
-			return domain.targetName.isEmpty() == false;
-		}
 	}
 }

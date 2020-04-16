@@ -1,13 +1,13 @@
 package org.sheepy.lily.core.cadence.common;
 
-import org.sheepy.lily.core.adapter.ITickDescriptor;
+import org.sheepy.lily.core.cadence.tick.TickHandle;
 
 public class AdapterTickerWrapper extends AbstractTickerWrapper
 {
-	private final ITickDescriptor tickDescriptor;
+	private final TickHandle tickDescriptor;
 	private final int priority;
 
-	public AdapterTickerWrapper(ITickDescriptor tickDescriptor)
+	public AdapterTickerWrapper(TickHandle tickDescriptor)
 	{
 		super(tickDescriptor.getClock(), tickDescriptor.getFrequency());
 		this.tickDescriptor = tickDescriptor;
