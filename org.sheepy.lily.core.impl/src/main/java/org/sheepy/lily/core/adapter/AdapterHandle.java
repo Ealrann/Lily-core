@@ -5,20 +5,16 @@ import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.adapter.annotation.AnnotationHandles;
 import org.sheepy.lily.core.adapter.description.AdapterDomain;
 import org.sheepy.lily.core.adapter.description.NotifyConfiguration;
+import org.sheepy.lily.core.adapter.load.AdapterDisposeHandle;
+import org.sheepy.lily.core.adapter.load.AdapterLoadHandle;
+import org.sheepy.lily.core.adapter.observation.AdapterObservatory;
 import org.sheepy.lily.core.adapter.observation.AdapterObserveHandle;
 import org.sheepy.lily.core.adapter.reflect.ConstructorHandle;
-import org.sheepy.lily.core.adapter.reflect.ExecutionHandleBuilder;
 import org.sheepy.lily.core.api.adapter.IAdapter;
 import org.sheepy.lily.core.api.adapter.IAdapterAnnotationHandle;
 import org.sheepy.lily.core.api.adapter.ILilyEObject;
-import org.sheepy.lily.core.api.adapter.annotation.Dispose;
-import org.sheepy.lily.core.api.adapter.annotation.Load;
-import org.sheepy.lily.core.api.notification.observatory.IObservatory;
-import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.util.ExecutionHandle;
-import org.sheepy.lily.core.api.util.ReflectUtils;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Parameter;
 import java.util.ArrayList;
@@ -31,73 +27,34 @@ public final class AdapterHandle<T extends IAdapter>
 	public final T adapter;
 	public final List<NotifyHandle> notifyHandles;
 	public final List<AnnotationHandles<?>> annotationHandles;
-	private final List<ExecutionHandle> loadHandles;
-	private final List<ExecutionHandle> disposeHandles;
+	private final AdapterObservatory observatory;
 
 	private boolean loaded = false;
-	private IObservatory observatory = null;
 
-	public AdapterHandle(T adapter,
-						 List<ExecutionHandle> loadHandles,
-						 List<ExecutionHandle> disposeHandles,
-						 List<NotifyHandle> notifyHandles,
-						 List<AnnotationHandles<?>> annotationHandles)
+	public AdapterHandle(T adapter, List<NotifyHandle> notifyHandles, List<AnnotationHandles<?>> annotationHandles)
 	{
 		this.adapter = adapter;
-		this.loadHandles = List.copyOf(loadHandles);
-		this.disposeHandles = List.copyOf(disposeHandles);
 		this.notifyHandles = List.copyOf(notifyHandles);
 		this.annotationHandles = List.copyOf(annotationHandles);
+		observatory = annotationHandlesOf(AdapterObserveHandle.class).map(AdapterObservatory::new).orElse(null);
 	}
 
 	public void load(ILilyEObject target)
 	{
 		if (loaded == false)
 		{
-			for (final var loadHandle : loadHandles)
-			{
-				loadHandle.invoke(target);
-			}
-
-			observatory = getAnnotationHandles(AdapterObserveHandle.class).map(AdapterHandle::prepareObservatory)
-																		  .map(IObservatory.IBuilder::build)
-																		  .orElse(null);
-			if (observatory != null)
-			{
-				observatory.observe(target);
-			}
-
+			callHandles(AdapterLoadHandle.class, handle -> handle.load(target));
+			if (observatory != null) observatory.observe(target);
 			loaded = true;
 		}
-	}
-
-	@SuppressWarnings("unchecked")
-	private <T extends IAdapterAnnotationHandle> Optional<AnnotationHandles<T>> getAnnotationHandles(Class<T> type)
-	{
-		for (var handleContainer : annotationHandles)
-		{
-			if (handleContainer.type == type)
-			{
-				return Optional.of((AnnotationHandles<T>) handleContainer);
-			}
-		}
-		return Optional.empty();
 	}
 
 	public void dispose(ILilyEObject target)
 	{
 		if (loaded)
 		{
-			if (observatory != null)
-			{
-				observatory.shut(target);
-				observatory = null;
-			}
-
-			for (final var disposeHandle : disposeHandles)
-			{
-				disposeHandle.invoke(target);
-			}
+			if (observatory != null) observatory.shut(target);
+			callHandles(AdapterDisposeHandle.class, handle -> handle.dispose(target));
 			loaded = false;
 		}
 	}
@@ -107,14 +64,22 @@ public final class AdapterHandle<T extends IAdapter>
 		return type.isAssignableFrom(adapter.getClass());
 	}
 
-	private static IObservatoryBuilder prepareObservatory(final AnnotationHandles<AdapterObserveHandle> handles)
+	private <Y extends IAdapterAnnotationHandle> void callHandles(final Class<Y> classifier, final Consumer<Y> action)
 	{
-		final var observatoryBuilder = IObservatoryBuilder.newObservatoryBuilder();
-		for (var observationHandle : handles.handles)
+		annotationHandlesOf(classifier).ifPresent(handles -> handles.call(action));
+	}
+
+	private <Y extends IAdapterAnnotationHandle> Optional<AnnotationHandles<Y>> annotationHandlesOf(Class<Y> type)
+	{
+		for (var handleContainer : annotationHandles)
 		{
-			observationHandle.buildObservatory(observatoryBuilder);
+			if (handleContainer.type == type)
+			{
+				@SuppressWarnings("unchecked") final var castHandle = (AnnotationHandles<Y>) handleContainer;
+				return Optional.of(castHandle);
+			}
 		}
-		return observatoryBuilder;
+		return Optional.empty();
 	}
 
 	public static final class NotifyHandle implements Consumer<Notification>
@@ -139,21 +104,15 @@ public final class AdapterHandle<T extends IAdapter>
 	{
 		private final T singleton;
 		private final ConstructorHandle<T> constructorHandle;
-		private final List<ExecutionHandleBuilder> loadHandleBuilders;
-		private final List<ExecutionHandleBuilder> disposeHandleBuilders;
 		private final List<NotifyConfiguration> notifyConfigurations;
 		private final List<AnnotationHandles.Builder<?, ?>> annotationHandleBuilders;
 
 		public Builder(boolean isSingleton,
 					   ConstructorHandle<T> constructorHandle,
-					   List<ExecutionHandleBuilder> loadHandleBuilders,
-					   List<ExecutionHandleBuilder> disposeHandleBuilders,
 					   List<NotifyConfiguration> notifyConfigurations,
 					   List<AnnotationHandles.Builder<?, ?>> annotationHandleBuilders)
 		{
 			this.constructorHandle = constructorHandle;
-			this.loadHandleBuilders = loadHandleBuilders;
-			this.disposeHandleBuilders = disposeHandleBuilders;
 			this.notifyConfigurations = notifyConfigurations;
 			this.annotationHandleBuilders = annotationHandleBuilders;
 			this.singleton = isSingleton ? createSingleton() : null;
@@ -167,12 +126,10 @@ public final class AdapterHandle<T extends IAdapter>
 		public AdapterHandle<T> build(final ILilyEObject target)
 		{
 			final var adapter = instantiateAdapter(target);
-			final var loadHandles = List.copyOf(createHandles(loadHandleBuilders, adapter));
-			final var disposeHandles = List.copyOf(createHandles(disposeHandleBuilders, adapter));
 			final var notifyHandles = List.copyOf(buildNotifyHandles(adapter));
 			final var annotationHandles = List.copyOf(createAnnotationHandleContainers(adapter, target));
 
-			return new AdapterHandle<>(adapter, loadHandles, disposeHandles, notifyHandles, annotationHandles);
+			return new AdapterHandle<>(adapter, notifyHandles, annotationHandles);
 		}
 
 		public T instantiateAdapter(EObject target)
@@ -209,34 +166,17 @@ public final class AdapterHandle<T extends IAdapter>
 			return res;
 		}
 
-		private List<ExecutionHandle> createHandles(List<ExecutionHandleBuilder> builders, T adapter)
-		{
-			final List<ExecutionHandle> res = new ArrayList<>();
-			for (final var builder : builders)
-			{
-				res.add(builder.build(adapter));
-			}
-
-			return res;
-		}
-
 		public static final class BuilderBuilder
 		{
-			public static <T extends IAdapter> AdapterHandle.Builder<T> build(final Class<T> type,
-																			  final boolean isSingleton,
+			public static <T extends IAdapter> AdapterHandle.Builder<T> build(final boolean isSingleton,
 																			  final List<AnnotationHandles.Builder<?, ?>> handleBuilders,
 																			  final List<NotifyConfiguration> notifyConfigurations,
 																			  final AdapterDomain<T> domain)
 			{
 				final var constructor = gatherConstructor(domain, isSingleton);
 				final var constructorHandle = ConstructorHandle.Builder.fromMethod(constructor).build();
-				final var loadHandleBuilders = List.copyOf(createHandleBuilders(type, Load.class));
-				final var disposeHandleBuilders = List.copyOf(createHandleBuilders(type, Dispose.class));
-
 				return new AdapterHandle.Builder<>(isSingleton,
 												   constructorHandle,
-												   loadHandleBuilders,
-												   disposeHandleBuilders,
 												   notifyConfigurations,
 												   handleBuilders);
 			}
@@ -296,18 +236,6 @@ public final class AdapterHandle<T extends IAdapter>
 									   "or (if statefull), a constructor with one parameter, typed with the applicable class";
 				final String errorMessage = String.format(message, type.getSimpleName());
 				throw new IllegalStateException(errorMessage);
-			}
-
-			private static List<ExecutionHandleBuilder> createHandleBuilders(Class<?> type,
-																			 Class<? extends Annotation> annotationClass)
-			{
-				final List<ExecutionHandleBuilder> res = new ArrayList<>();
-				final var annotatedMethods = ReflectUtils.gatherAnnotatedMethods(type, annotationClass);
-				for (final var annotatedMethod : annotatedMethods)
-				{
-					res.add(ExecutionHandleBuilder.fromMethod(annotatedMethod.method));
-				}
-				return res;
 			}
 		}
 	}

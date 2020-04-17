@@ -57,8 +57,7 @@ public final class AdapterDescriptor<T extends IAdapter>
 														   isSingleton,
 														   forceLoad,
 														   notifyConfigurations);
-			final var handleBuilder = AdapterHandle.Builder.BuilderBuilder.build(type,
-																				 isSingleton,
+			final var handleBuilder = AdapterHandle.Builder.BuilderBuilder.build(isSingleton,
 																				 handleBuilders,
 																				 notifyConfigurations,
 																				 domain);

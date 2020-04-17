@@ -1,6 +1,8 @@
 import org.sheepy.lily.core.Adapters;
 import org.sheepy.lily.core.adapter.AdapterManagerFactory;
 import org.sheepy.lily.core.adapter.AdapterRegistry;
+import org.sheepy.lily.core.adapter.load.AdapterDisposeService;
+import org.sheepy.lily.core.adapter.load.AdapterLoadService;
 import org.sheepy.lily.core.adapter.observation.AdapterObserveService;
 import org.sheepy.lily.core.api.adapter.IAdapterAnnotationService;
 import org.sheepy.lily.core.api.adapter.IAdapterFactoryService;
@@ -24,7 +26,7 @@ module org.sheepy.lily.core.impl {
 	opens org.sheepy.lily.core.variable;
 
 	provides IAdapterProvider with Adapters;
-	provides IAdapterAnnotationService with CadencerAnnotationService, AdapterObserveService;
+	provides IAdapterAnnotationService with CadencerAnnotationService, AdapterLoadService, AdapterDisposeService, AdapterObserveService;
 
 	uses IAdapterProvider;
 	uses IAdapterAnnotationService;

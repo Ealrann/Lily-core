@@ -10,6 +10,7 @@ import org.sheepy.lily.core.api.util.ReflectUtils;
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -30,6 +31,11 @@ public final class AnnotationHandles<T extends IAdapterAnnotationHandle>
 										.collect(Collectors.toUnmodifiableList());
 
 		return new AnnotationHandles<>(type, joinedHandles);
+	}
+
+	public void call(Consumer<T> action)
+	{
+		handles.forEach(action);
 	}
 
 	public static final class Builder<T extends Annotation, R extends IAdapterAnnotationHandle>
