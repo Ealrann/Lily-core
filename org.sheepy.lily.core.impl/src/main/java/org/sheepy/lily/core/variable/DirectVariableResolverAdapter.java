@@ -1,14 +1,15 @@
 package org.sheepy.lily.core.variable;
 
 import org.eclipse.emf.ecore.EObject;
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
+import org.sheepy.lily.core.api.extender.ModelExtender;
 import org.sheepy.lily.core.api.util.FeatureDefinition;
 import org.sheepy.lily.core.model.variable.DirectVariableResolver;
 
-@Adapter(scope = DirectVariableResolver.class)
-public class DirectVariableResolverAdapter
-		extends AbstractDefinedVariableResolverAdapter<DirectVariableResolver>
+@ModelExtender(scope = DirectVariableResolver.class)
+@Adapter
+public class DirectVariableResolverAdapter extends AbstractDefinedVariableResolverAdapter<DirectVariableResolver>
 {
 	private final FeatureDefinition resolvedDefinition;
 	private final DirectVariableResolver resolver;

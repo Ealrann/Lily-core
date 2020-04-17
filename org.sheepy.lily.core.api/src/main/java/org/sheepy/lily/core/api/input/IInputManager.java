@@ -1,15 +1,25 @@
 package org.sheepy.lily.core.api.input;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.joml.Vector2fc;
+import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.input.event.*;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.Feature;
 import org.sheepy.lily.core.api.notification.IFeatures;
 import org.sheepy.lily.core.api.notification.INotifier;
+import org.sheepy.lily.core.model.application.Application;
 
 import java.util.function.Consumer;
 
-public interface IInputManager extends INotifier<IInputManager.Features>
+public interface IInputManager extends INotifier<IInputManager.Features>, IExtender
 {
+	static IInputManager get(ILilyEObject from)
+	{
+		final var application = (Application) EcoreUtil.getRootContainer(from);
+		return application.adapt(IInputManager.class);
+	}
+
 	interface Features extends IFeatures<Features>
 	{
 		Feature<Consumer<CharEvent>, Features> CharEvent = Feature.newFeature();

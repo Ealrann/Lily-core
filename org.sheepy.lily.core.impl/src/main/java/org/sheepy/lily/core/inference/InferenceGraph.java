@@ -32,8 +32,8 @@ public class InferenceGraph
 	{
 		for (LRule rule : inferer.getRules())
 		{
-			var eClass = rule.getNotification().eClass();
-			var rules = graph.computeIfAbsent(eClass, k -> new ArrayList<>());
+			final var eClass = rule.getNotification().eClass();
+			final var rules = graph.computeIfAbsent(eClass, k -> new ArrayList<>());
 
 			rules.add(rule);
 		}

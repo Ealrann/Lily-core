@@ -1,11 +1,12 @@
 package org.sheepy.lily.core.api.notification.observatory.internal.notifier;
 
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.Feature;
 import org.sheepy.lily.core.api.notification.IFeatures;
 import org.sheepy.lily.core.api.notification.INotifier;
 import org.sheepy.lily.core.api.notification.observatory.INotifierObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
+import org.sheepy.lily.core.api.notification.observatory.internal.InternalObservatoryBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +40,8 @@ public final class NotifierObservatory<Type extends IFeatures<Type>> implements 
 		}
 	}
 
-	public static final class Builder<Type extends IFeatures<Type>> implements INotifierObservatoryBuilder<Type>
+	public static final class Builder<Type extends IFeatures<Type>> implements INotifierObservatoryBuilder<Type>,
+																			   InternalObservatoryBuilder
 	{
 		private final INotifier<Type> notifier;
 		private final List<INotifierPOI<Type>> observationPoints = new ArrayList<>();

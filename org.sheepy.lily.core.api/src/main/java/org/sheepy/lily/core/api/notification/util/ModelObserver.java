@@ -1,30 +1,32 @@
 package org.sheepy.lily.core.api.notification.util;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
 public class ModelObserver
 {
-	private final List<EStructuralFeature> features;
+	private final int[] features;
 	private final HierarchyNotificationListener rootListener;
 	private final Consumer<Notification> listener;
 
 	private boolean deliver = true;
 
-	public ModelObserver(Consumer<Notification> listener, EStructuralFeature structuralFeature)
+	public ModelObserver(Consumer<Notification> listener, int structuralFeatureId)
 	{
-		this(listener, List.of(structuralFeature));
+		this(listener, new int[]{structuralFeatureId});
 	}
 
-	public ModelObserver(Consumer<Notification> listener, List<? extends EStructuralFeature> structuralFeatures)
+	public ModelObserver(Consumer<Notification> listener, int[] structuralFeatureIds)
 	{
 		this.listener = listener;
-		this.features = List.copyOf(structuralFeatures);
+		this.features = Arrays.copyOf(structuralFeatureIds, structuralFeatureIds.length);
 		rootListener = new HierarchyNotificationListener(0);
 	}
 
@@ -39,12 +41,12 @@ public class ModelObserver
 	public void startObserve(ILilyEObject root)
 	{
 		rootListener.setTarget(root);
-		root.listen(rootListener, features.get(0).getFeatureID());
+		root.listen(rootListener, features[0]);
 	}
 
 	public void stopObserve(ILilyEObject root)
 	{
-		root.sulk(rootListener, features.get(0).getFeatureID());
+		root.sulk(rootListener, features[0]);
 		rootListener.unsetTarget(root);
 	}
 
@@ -58,7 +60,7 @@ public class ModelObserver
 		{
 			this.depth = depth;
 			this.subFeatureId = computeSubFeatureId();
-			if (depth != features.size() - 1)
+			if (depth != features.length - 1)
 			{
 				childListener = new HierarchyNotificationListener(depth + 1);
 			}
@@ -70,20 +72,21 @@ public class ModelObserver
 
 		private int computeSubFeatureId()
 		{
-			if (depth == features.size() - 1)
+			if (depth == features.length - 1)
 			{
 				return -1;
 			}
 			else
 			{
-				return features.get(depth + 1).getFeatureID();
+				return features[depth + 1];
 			}
 		}
 
 		private void setTarget(ILilyEObject target)
 		{
-			final var feature = features.get(depth);
-			final var value = getValue(target, feature);
+			final var featureId = features[depth];
+			final var feature = target.eClass().getEStructuralFeature(featureId);
+			final var value = getValue(target, featureId);
 			if (value == null) return;
 
 			if (isFinalDepth())
@@ -94,7 +97,7 @@ public class ModelObserver
 					{
 						ModelObserver.this.listener.accept(new ENotificationImpl(target,
 																				 Notification.ADD,
-																				 feature.getFeatureID(),
+																				 featureId,
 																				 null,
 																				 value));
 					}
@@ -102,22 +105,38 @@ public class ModelObserver
 					{
 						ModelObserver.this.listener.accept(new ENotificationImpl(target,
 																				 Notification.ADD_MANY,
-																				 feature.getFeatureID(),
+																				 featureId,
 																				 null,
 																				 value));
 					}
 				}
 			}
+			else if (feature instanceof EReference)
+			{
+				try
+				{
+					actOnChildren(feature, value, this::addChild);
+				}
+				catch (IllegalArgumentException e)
+				{
+					throw new AssertionError("Error when exploring feature " + feature.getName() + " on " + target.eClass()
+																												  .getName(),
+											 e);
+				}
+			}
 			else
 			{
-				actOnChildren(feature, value, this::addChild);
+				throw new IllegalArgumentException("Observation failed, Feature Id " + featureId + " on class " + target
+						.eClass()
+						.getName() + " is not a EReference.");
 			}
 		}
 
 		private void unsetTarget(ILilyEObject target)
 		{
-			final var feature = features.get(depth);
-			final var value = getValue(target, feature);
+			final var featureId = features[depth];
+			final var feature = target.eClass().getEStructuralFeature(featureId);
+			final var value = getValue(target, featureId);
 			if (value == null) return;
 
 			if (isFinalDepth())
@@ -125,11 +144,7 @@ public class ModelObserver
 				if (deliver)
 				{
 					final int type = feature.isMany() ? Notification.REMOVE_MANY : Notification.REMOVE;
-					ModelObserver.this.listener.accept(new ENotificationImpl(target,
-																			 type,
-																			 feature.getFeatureID(),
-																			 value,
-																			 null));
+					ModelObserver.this.listener.accept(new ENotificationImpl(target, type, featureId, value, null));
 				}
 			}
 			else
@@ -155,16 +170,9 @@ public class ModelObserver
 			}
 		}
 
-		private Object getValue(ILilyEObject target, final EStructuralFeature feature)
+		private Object getValue(ILilyEObject target, final int featureId)
 		{
-			if (target.eClass().getEAllStructuralFeatures().contains(feature))
-			{
-				return target.eGet(feature);
-			}
-			else
-			{
-				return null;
-			}
+			return target.eGet(featureId, true, true);
 		}
 
 		@Override
@@ -185,7 +193,7 @@ public class ModelObserver
 
 		private boolean isFinalDepth()
 		{
-			return depth == features.size() - 1;
+			return depth == features.length - 1;
 		}
 
 		private void addChild(final ILilyEObject child)

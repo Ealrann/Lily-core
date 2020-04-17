@@ -2,8 +2,8 @@ package org.sheepy.lily.core.variable;
 
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.adapter.annotation.Load;
-import org.sheepy.lily.core.api.adapter.annotation.Statefull;
 import org.sheepy.lily.core.api.cadence.Tick;
+import org.sheepy.lily.core.api.extender.ModelExtender;
 import org.sheepy.lily.core.api.notification.Notifier;
 import org.sheepy.lily.core.api.variable.IDurationVariableAdapter;
 import org.sheepy.lily.core.api.variable.IModelVariableAdapter;
@@ -12,8 +12,8 @@ import org.sheepy.lily.core.model.variable.DurationVariable;
 import java.nio.ByteBuffer;
 import java.util.List;
 
-@Statefull
-@Adapter(scope = DurationVariable.class, lazy = false)
+@ModelExtender(scope = DurationVariable.class)
+@Adapter(lazy = false)
 public final class DurationVariableAdapter extends Notifier<IModelVariableAdapter.Features> implements
 																							IDurationVariableAdapter
 {

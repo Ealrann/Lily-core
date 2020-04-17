@@ -1,7 +1,6 @@
 package org.sheepy.lily.core.api.notification.util;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,7 +12,7 @@ public class ModelSetRegistry<T extends ILilyEObject>
 	private final List<T> list = new ArrayList<>();
 	private final ModelStructureObserver structureObserver;
 
-	public ModelSetRegistry(Class<T> classCast, List<EStructuralFeature> features)
+	public ModelSetRegistry(Class<T> classCast, int[] features)
 	{
 		structureObserver = new ModelStructureObserver(features, this::add, this::remove);
 		this.classCast = classCast;

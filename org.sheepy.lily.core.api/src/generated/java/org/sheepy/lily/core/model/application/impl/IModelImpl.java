@@ -4,7 +4,7 @@ package org.sheepy.lily.core.model.application.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.sheepy.lily.core.api.adapter.LilyEObject;
+import org.sheepy.lily.core.api.model.LilyEObject;
 
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.IModel;

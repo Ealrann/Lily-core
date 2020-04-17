@@ -1,5 +1,6 @@
 package org.sheepy.lily.core.cadence.common;
 
+import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.cadence.tick.TickHandle;
 
 public class AdapterTickerWrapper extends AbstractTickerWrapper
@@ -30,6 +31,11 @@ public class AdapterTickerWrapper extends AbstractTickerWrapper
 	public Object getTicker()
 	{
 		return tickDescriptor;
+	}
+
+	public EObject getTarget()
+	{
+		return tickDescriptor.target;
 	}
 
 	@Override

@@ -3,7 +3,7 @@
 package org.sheepy.lily.core.model.inference;
 
 import org.eclipse.emf.common.util.EList;
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.model.action.Action;
 
 /**

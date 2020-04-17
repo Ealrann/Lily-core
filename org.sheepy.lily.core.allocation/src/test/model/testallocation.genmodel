@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.sheepy.lily.core.allocation.test/generated/java"
+    modelPluginID="org.sheepy.lily.core.allocation.test" modelName="Testallocation"
+    rootExtendsInterface="org.sheepy.lily.core.api.model.ILilyEObject" rootExtendsClass="org.sheepy.lily.core.api.model.LilyEObject"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="14.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>testallocation.ecore</foreignModel>
+  <genPackages prefix="Testallocation" basePackage="org.sheepy.lily.core.allocation.test"
+      disposableProviderFactory="true" ecorePackage="testallocation.ecore#/">
+    <genClasses ecoreClass="testallocation.ecore#//Root">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference testallocation.ecore#//Root/nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference testallocation.ecore#//Root/containers"/>
+    </genClasses>
+    <genClasses ecoreClass="testallocation.ecore#//Node">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference testallocation.ecore#//Node/leaves"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference testallocation.ecore#//Node/container"/>
+    </genClasses>
+    <genClasses ecoreClass="testallocation.ecore#//Container">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference testallocation.ecore#//Container/boxes"/>
+    </genClasses>
+    <genClasses ecoreClass="testallocation.ecore#//Leaf">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference testallocation.ecore#//Leaf/boxes"/>
+    </genClasses>
+    <genClasses ecoreClass="testallocation.ecore#//Box"/>
+    <genClasses ecoreClass="testallocation.ecore#//AllocationObject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute testallocation.ecore#//AllocationObject/currentAllocationCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute testallocation.ecore#//AllocationObject/totalAllocationCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute testallocation.ecore#//AllocationObject/dependencyUpdateCount"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

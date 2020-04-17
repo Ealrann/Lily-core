@@ -1,6 +1,6 @@
 package org.sheepy.lily.core.api.notification.observatory;
 
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.util.List;
 import java.util.function.Consumer;

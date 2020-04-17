@@ -4,10 +4,12 @@ import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.cadence.ICadenceConditionAdapter;
 import org.sheepy.lily.core.api.cadence.ICadenceContext;
 import org.sheepy.lily.core.api.cadence.ICadenceTaskAdapter;
+import org.sheepy.lily.core.api.extender.ModelExtender;
 import org.sheepy.lily.core.model.cadence.ExecuteIf;
 import org.sheepy.lily.core.model.cadence.ICadenceTask;
 
-@Adapter(scope = ExecuteIf.class)
+@ModelExtender(scope = ExecuteIf.class)
+@Adapter(singleton = true)
 public final class ExecuteIfAdapter implements ICadenceTaskAdapter
 {
 	@Override

@@ -1,11 +1,13 @@
 package org.sheepy.lily.core.inference;
 
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
+import org.sheepy.lily.core.api.extender.ModelExtender;
 import org.sheepy.lily.core.api.inference.IInferenceAdapter;
 import org.sheepy.lily.core.api.inference.IInfererAdapter;
 import org.sheepy.lily.core.model.inference.Inferer;
 
-@Adapter(scope = Inferer.class, scopeInheritance = true)
+@ModelExtender(scope = Inferer.class, inherited = true)
+@Adapter(singleton = true)
 public class InfererAdapter implements IInfererAdapter
 {
 	@Override

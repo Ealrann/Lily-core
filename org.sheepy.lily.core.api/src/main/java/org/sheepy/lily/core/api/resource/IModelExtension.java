@@ -14,5 +14,5 @@ public interface IModelExtension extends IService
 	Collection<EPackage> getEPackages();
 
 	List<IModelExtension> EXTENSIONS = StreamSupport.stream(ServiceLoader.load(IModelExtension.class).spliterator(),
-															false).collect(Collectors.toList());
+															false).collect(Collectors.toUnmodifiableList());
 }
