@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Iterator;
 
-public class ClassHierarchyIterator implements Iterator<Class<?>>
+public final class ClassHierarchyIterator implements Iterator<Class<?>>
 {
 	private final Deque<Class<?>> stack = new ArrayDeque<>();
 
