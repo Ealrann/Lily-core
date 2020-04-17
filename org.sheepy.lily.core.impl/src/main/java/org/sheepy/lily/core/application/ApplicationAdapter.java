@@ -3,15 +3,15 @@ package org.sheepy.lily.core.application;
 import org.eclipse.emf.common.notify.Notification;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.adapter.annotation.NotifyChanged;
-import org.sheepy.lily.core.api.adapter.annotation.Statefull;
 import org.sheepy.lily.core.api.application.IApplicationAdapter;
 import org.sheepy.lily.core.api.cadence.ICadencer;
+import org.sheepy.lily.core.api.extender.ModelExtender;
 import org.sheepy.lily.core.cadence.common.Cadencer;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 
-@Statefull
-@Adapter(scope = Application.class, scopeInheritance = true)
+@ModelExtender(scope = Application.class, inherited = true)
+@Adapter
 public class ApplicationAdapter implements IApplicationAdapter
 {
 	private Cadencer cadencer = null;

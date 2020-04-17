@@ -6,14 +6,12 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
-import org.sheepy.lily.core.api.adapter.LilyEObject;
-import org.sheepy.lily.core.api.cadence.ETickerClock;
-import org.sheepy.lily.core.api.cadence.ICadencer;
-import org.sheepy.lily.core.api.cadence.IStatistics;
-import org.sheepy.lily.core.api.cadence.ITicker;
+import org.sheepy.lily.core.api.model.ILilyEObject;
+import org.sheepy.lily.core.api.model.LilyEObject;
+import org.sheepy.lily.core.api.cadence.*;
 import org.sheepy.lily.core.api.engine.IEngineAdapter;
 import org.sheepy.lily.core.api.engine.IInputEngineAdapter;
+import org.sheepy.lily.core.api.extender.IExtenderDescriptorRegistry;
 import org.sheepy.lily.core.api.input.IInputManager;
 import org.sheepy.lily.core.api.util.DebugUtil;
 import org.sheepy.lily.core.api.util.TimeUtil;
@@ -88,7 +86,6 @@ public class Cadencer implements ICadencer
 		stop.set(false);
 		mainThread = Thread.currentThread().getId();
 
-		((LilyEObject) application).setupAdapterManager();
 		((LilyEObject) application).loadAdapterManager();
 
 		for (final var engine : application.getEngines())
@@ -306,14 +303,14 @@ public class Cadencer implements ICadencer
 		protected void setTarget(EObject target)
 		{
 			final var lilyObject = (ILilyEObject) target;
+			final var manager = lilyObject.adapters();
 
-			final var tickDescriptors = lilyObject.annotationHandlers(TickHandle.class);
-			for (int i = 0; i < tickDescriptors.size(); i++)
-			{
-				final var ticker = tickDescriptors.get(i);
-				final var wrapper = new AdapterTickerWrapper(ticker);
-				addTicker(target, wrapper);
-			}
+			final var descriptors = IExtenderDescriptorRegistry.INSTANCE.streamDescriptors(lilyObject);
+			descriptors.filter(d -> d.containsMethodAnnotation(Tick.class))
+					   .map(manager::adaptHandleFromDescriptor)
+					   .map(handle -> new TickHandle.Builder(lilyObject, handle))
+					   .flatMap(TickHandle.Builder::build)
+					   .forEach(tickHandle -> addTicker(target, new AdapterTickerWrapper(tickHandle)));
 
 			super.setTarget(target);
 		}

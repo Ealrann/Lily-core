@@ -1,10 +1,8 @@
 package org.sheepy.lily.core.api.notification.util;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 public final class ModelStructureObserver
@@ -13,14 +11,14 @@ public final class ModelStructureObserver
 	private final Consumer<ILilyEObject> onAddedObject;
 	private final Consumer<ILilyEObject> onRemovedObject;
 
-	public ModelStructureObserver(EStructuralFeature feature,
+	public ModelStructureObserver(int feature,
 								  Consumer<ILilyEObject> onAddedObject,
 								  Consumer<ILilyEObject> onRemovedObject)
 	{
-		this(List.of(feature), onAddedObject, onRemovedObject);
+		this(new int[]{feature}, onAddedObject, onRemovedObject);
 	}
 
-	public ModelStructureObserver(List<EStructuralFeature> features,
+	public ModelStructureObserver(int[] features,
 								  Consumer<ILilyEObject> onAddedObject,
 								  Consumer<ILilyEObject> onRemovedObject)
 	{

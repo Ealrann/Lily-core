@@ -1,25 +1,20 @@
 package org.sheepy.lily.core.inference;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.sheepy.lily.core.api.adapter.annotation.Adapter;
+import org.sheepy.lily.core.api.extender.ModelExtender;
+import org.sheepy.lily.core.api.inference.IInferenceAdapter;
+import org.sheepy.lily.core.model.inference.*;
+import org.sheepy.lily.core.model.types.Parameter;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.sheepy.lily.core.api.adapter.annotation.Adapter;
-import org.sheepy.lily.core.api.adapter.annotation.Statefull;
-import org.sheepy.lily.core.api.inference.IInferenceAdapter;
-import org.sheepy.lily.core.model.inference.AbstractNotification;
-import org.sheepy.lily.core.model.inference.Condition;
-import org.sheepy.lily.core.model.inference.Inferer;
-import org.sheepy.lily.core.model.inference.LNotification;
-import org.sheepy.lily.core.model.inference.LRule;
-import org.sheepy.lily.core.model.inference.ParameteredNotification;
-import org.sheepy.lily.core.model.types.Parameter;
-
-@Statefull
-@Adapter(scope = EObject.class, scopeInheritance = true)
+@ModelExtender(scope = EObject.class, inherited = true)
+@Adapter
 public class InferenceAdapter implements IInferenceAdapter
 {
 	public final InferenceGraph ruleGraph = new InferenceGraph();
@@ -40,7 +35,7 @@ public class InferenceAdapter implements IInferenceAdapter
 	@Override
 	public void postNotification(EObject adaptedEntity, LNotification notification)
 	{
-		postNotificationInternal(adaptedEntity, notification, null);
+		postNotificationInternal(notification, null);
 
 		if (listeners.containsKey(notification.eClass()))
 		{
@@ -52,11 +47,11 @@ public class InferenceAdapter implements IInferenceAdapter
 	}
 
 	@Override
-	public <T extends Parameter> void postNotification(	EObject adaptedEntity,
-														ParameteredNotification<T> notification,
-														T parameter)
+	public <T extends Parameter> void postNotification(EObject adaptedEntity,
+													   ParameteredNotification<T> notification,
+													   T parameter)
 	{
-		postNotificationInternal(adaptedEntity, notification, parameter);
+		postNotificationInternal(notification, parameter);
 
 		if (listeners.containsKey(notification.eClass()))
 		{
@@ -67,12 +62,8 @@ public class InferenceAdapter implements IInferenceAdapter
 		}
 	}
 
-	@SuppressWarnings({
-			"rawtypes", "unchecked"
-	})
-	private void postNotificationInternal(	EObject adaptedEntity,
-											AbstractNotification notification,
-											Parameter parameter)
+	@SuppressWarnings({"rawtypes", "unchecked"})
+	private void postNotificationInternal(AbstractNotification notification, Parameter parameter)
 	{
 		for (final LRule rule : ruleGraph.getLinkedRules(notification))
 		{
@@ -110,7 +101,7 @@ public class InferenceAdapter implements IInferenceAdapter
 	@Override
 	public void addNotificationListener(EClass clazz, IInferenceListener listener)
 	{
-		var list = listeners.computeIfAbsent(clazz, k -> new ArrayList<>());
+		final var list = listeners.computeIfAbsent(clazz, k -> new ArrayList<>());
 		list.add(listener);
 	}
 

@@ -3,6 +3,7 @@ package org.sheepy.lily.core.variable;
 import org.eclipse.emf.common.notify.Notification;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.adapter.annotation.NotifyChanged;
+import org.sheepy.lily.core.api.extender.ModelExtender;
 import org.sheepy.lily.core.api.notification.Notifier;
 import org.sheepy.lily.core.api.variable.IModelVariableAdapter;
 import org.sheepy.lily.core.model.variable.FloatVariable;
@@ -11,7 +12,8 @@ import org.sheepy.lily.core.model.variable.VariablePackage;
 import java.nio.ByteBuffer;
 import java.util.List;
 
-@Adapter(scope = FloatVariable.class)
+@ModelExtender(scope = FloatVariable.class)
+@Adapter(singleton = true)
 public final class FloatVariableAdapter extends Notifier<IModelVariableAdapter.Features> implements
 																						 IModelVariableAdapter<FloatVariable>
 {

@@ -2,7 +2,7 @@
  */
 package org.sheepy.lily.core.model.inference;
 
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.model.types.Parameter;
 
 /**

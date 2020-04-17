@@ -1,7 +1,8 @@
 package org.sheepy.lily.core.api.notification.util;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.eclipse.emf.ecore.EReference;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -52,6 +53,7 @@ public final class NotificationUnifier
 								 Consumer<List<? extends ILilyEObject>> onAdd,
 								 Consumer<List<? extends ILilyEObject>> onRemove)
 	{
+		assert notification.getFeature() instanceof EReference;
 		switch (notification.getEventType())
 		{
 			case Notification.SET, Notification.UNSET -> {

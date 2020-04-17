@@ -1,28 +1,27 @@
 package org.sheepy.lily.core.api.adapter.util;
 
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.sheepy.lily.core.api.adapter.IAdapter;
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.api.model.ILilyEObject;
+import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.notification.util.ModelStructureObserver;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public final class AdapterSetRegistry<T extends IAdapter>
+public final class AdapterSetRegistry<Adapter extends IExtender>
 {
-	private final Class<T> adapterType;
+	private final Class<Adapter> adapterType;
 	private final List<ILilyEObject> objects = new ArrayList<>();
-	private final List<T> adapters = new ArrayList<>();
+	private final List<Adapter> adapters = new ArrayList<>();
 	private final ModelStructureObserver structureObserver;
 
-	public AdapterSetRegistry(Class<T> adapterType, List<EStructuralFeature> features)
+	public AdapterSetRegistry(Class<Adapter> adapterType, int[] features)
 	{
 		structureObserver = new ModelStructureObserver(features, this::add, this::remove);
 		this.adapterType = adapterType;
 	}
 
-	public List<T> getAdapters()
+	public List<Adapter> getAdapters()
 	{
 		return Collections.unmodifiableList(adapters);
 	}

@@ -1,13 +1,15 @@
 package org.sheepy.lily.core.variable.action;
 
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
+import org.sheepy.lily.core.api.extender.ModelExtender;
 import org.sheepy.lily.core.api.variable.IModelVariableActionAdapter;
 import org.sheepy.lily.core.api.variable.IModelVariableAdapter;
 import org.sheepy.lily.core.model.variable.IModelVariable;
 import org.sheepy.lily.core.model.variable.IModelVariableAction;
 import org.sheepy.lily.core.model.variable.SetVariableAction;
 
-@Adapter(scope = SetVariableAction.class)
+@ModelExtender(scope = SetVariableAction.class)
+@Adapter(singleton = true)
 public final class SetVariableActionAdapter implements IModelVariableActionAdapter
 {
 	@Override

@@ -3,10 +3,12 @@ package org.sheepy.lily.core.cadence.adapter;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.cadence.ICadenceConditionAdapter;
 import org.sheepy.lily.core.api.cadence.ICadenceContext;
+import org.sheepy.lily.core.api.extender.ModelExtender;
 import org.sheepy.lily.core.model.cadence.CountUntil;
 import org.sheepy.lily.core.model.cadence.ICadenceCondition;
 
-@Adapter(scope = CountUntil.class)
+@ModelExtender(scope = CountUntil.class)
+@Adapter(singleton = true)
 public class CountUntilAdapter implements ICadenceConditionAdapter
 {
 	@Override

@@ -1,22 +1,21 @@
 package org.sheepy.lily.core.api.adapter.util;
 
-import java.util.function.Consumer;
+import org.sheepy.lily.core.api.model.ILilyEObject;
+import org.sheepy.lily.core.api.extender.IExtender;
 
-import org.sheepy.lily.core.api.adapter.IAdapter;
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import java.util.function.Consumer;
 
 /**
  * Will try to deploy an Adapter on all children - Notify when one adatper is found/removed
  */
-public class AdapterDeployer<T extends IAdapter>
+public class AdapterDeployer<Adapter extends IExtender>
 {
-	private final Class<? extends IAdapter> type;
-	private final ContentAdapter contentAdapter = new ContentAdapter(	this::install,
-																		this::uninstall);
-	private final Consumer<T> adapterAdd;
-	private final Consumer<T> adapterRemove;
+	private final Class<Adapter> type;
+	private final ContentAdapter contentAdapter = new ContentAdapter(this::install, this::uninstall);
+	private final Consumer<Adapter> adapterAdd;
+	private final Consumer<Adapter> adapterRemove;
 
-	public AdapterDeployer(Class<T> type, Consumer<T> adapterAdd, Consumer<T> adapterRemove)
+	public AdapterDeployer(Class<Adapter> type, Consumer<Adapter> adapterAdd, Consumer<Adapter> adapterRemove)
 	{
 		this.adapterAdd = adapterAdd;
 		this.adapterRemove = adapterRemove;
@@ -33,25 +32,23 @@ public class AdapterDeployer<T extends IAdapter>
 		contentAdapter.uninstall(root);
 	}
 
-	@SuppressWarnings("unchecked")
 	private void install(ILilyEObject object)
 	{
 		final var adapter = object.adapt(type);
 
 		if (adapter != null)
 		{
-			adapterAdd.accept((T) adapter);
+			adapterAdd.accept(adapter);
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private void uninstall(ILilyEObject object)
 	{
 		final var adapter = object.adapt(type);
 
 		if (adapter != null)
 		{
-			adapterRemove.accept((T) adapter);
+			adapterRemove.accept(adapter);
 		}
 	}
 }

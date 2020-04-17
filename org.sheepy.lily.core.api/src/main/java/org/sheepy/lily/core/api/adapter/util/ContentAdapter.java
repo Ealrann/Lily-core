@@ -1,7 +1,7 @@
 package org.sheepy.lily.core.api.adapter.util;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.util.NotificationUnifier;
 
 import java.util.function.Consumer;

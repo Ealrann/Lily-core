@@ -1,11 +1,9 @@
 package org.sheepy.lily.core.api.adapter.util;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.util.ModelStructureObserver;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 public final class NotificationListenerDeployer
@@ -14,11 +12,11 @@ public final class NotificationListenerDeployer
 	private final int[] featuresToListen;
 	private final ModelStructureObserver structureObserver;
 
-	public NotificationListenerDeployer(List<EStructuralFeature> structure,
+	public NotificationListenerDeployer(int[] structuralFeatures,
 										Consumer<Notification> listener,
 										int... featuresToListen)
 	{
-		structureObserver = new ModelStructureObserver(structure, this::add, this::remove);
+		structureObserver = new ModelStructureObserver(structuralFeatures, this::add, this::remove);
 		this.listener = listener;
 		this.featuresToListen = featuresToListen;
 	}

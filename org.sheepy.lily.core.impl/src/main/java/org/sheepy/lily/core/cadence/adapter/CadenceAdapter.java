@@ -1,14 +1,14 @@
 package org.sheepy.lily.core.cadence.adapter;
 
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
-import org.sheepy.lily.core.api.adapter.annotation.Statefull;
 import org.sheepy.lily.core.api.cadence.ICadenceAdapter;
 import org.sheepy.lily.core.api.cadence.ICadenceContext;
 import org.sheepy.lily.core.api.cadence.ICadenceTaskAdapter;
+import org.sheepy.lily.core.api.extender.ModelExtender;
 import org.sheepy.lily.core.model.cadence.Cadence;
 
-@Statefull
-@Adapter(scope = Cadence.class)
+@ModelExtender(scope = Cadence.class)
+@Adapter
 public final class CadenceAdapter implements ICadenceAdapter
 {
 	private final Cadence cadence;

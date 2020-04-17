@@ -1,31 +1,29 @@
 package org.sheepy.lily.core.api.adapter.util;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EReference;
-import org.sheepy.lily.core.api.adapter.IAdapter;
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.api.model.ILilyEObject;
+import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.notification.util.ModelObserver;
 import org.sheepy.lily.core.api.notification.util.NotificationUnifier;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
-public class AdapterObserver<T extends IAdapter>
+public class AdapterObserver<Adapter extends IExtender>
 {
 	private final ModelObserver observer;
-	private final Class<? extends IAdapter> adapterType;
-	private final Consumer<T> newAdapter;
-	private final Consumer<T> oldAapter;
-	private final Map<ILilyEObject, T> adaptedMap = new HashMap<>();
+	private final Class<Adapter> adapterType;
+	private final Consumer<Adapter> newAdapter;
+	private final Consumer<Adapter> oldAapter;
+	private final Map<ILilyEObject, Adapter> adaptedMap = new HashMap<>();
 
-	public AdapterObserver(Class<? extends IAdapter> adapterType,
-						   List<EReference> features,
-						   Consumer<T> newAdapter,
-						   Consumer<T> oldAapter)
+	public AdapterObserver(Class<Adapter> adapterType,
+						   int[] referenceIds,
+						   Consumer<Adapter> newAdapter,
+						   Consumer<Adapter> oldAapter)
 	{
-		this.observer = new ModelObserver(this::notifyChanged, features);
+		this.observer = new ModelObserver(this::notifyChanged, referenceIds);
 		this.adapterType = adapterType;
 		this.newAdapter = newAdapter;
 		this.oldAapter = oldAapter;
@@ -59,7 +57,7 @@ public class AdapterObserver<T extends IAdapter>
 
 	private void add(ILilyEObject newValue)
 	{
-		final var adapter = newValue.<T>adaptGeneric(adapterType);
+		final var adapter = newValue.adapt(adapterType);
 		if (adapter != null)
 		{
 			adaptedMap.put(newValue, adapter);

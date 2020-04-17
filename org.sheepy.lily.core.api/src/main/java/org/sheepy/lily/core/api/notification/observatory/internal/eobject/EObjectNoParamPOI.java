@@ -1,6 +1,6 @@
 package org.sheepy.lily.core.api.notification.observatory.internal.eobject;
 
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 
 public final class EObjectNoParamPOI implements IEObjectPOI
 {

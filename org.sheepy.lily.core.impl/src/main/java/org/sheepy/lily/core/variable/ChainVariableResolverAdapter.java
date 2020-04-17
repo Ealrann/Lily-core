@@ -1,8 +1,9 @@
 package org.sheepy.lily.core.variable;
 
 import org.eclipse.emf.ecore.EObject;
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
+import org.sheepy.lily.core.api.extender.ModelExtender;
 import org.sheepy.lily.core.api.util.FeatureDefinition;
 import org.sheepy.lily.core.api.variable.IVariableResolverAdapter;
 import org.sheepy.lily.core.model.variable.ChainVariableResolver;
@@ -11,7 +12,8 @@ import org.sheepy.lily.core.model.variable.IVariableResolver;
 import java.util.HashMap;
 import java.util.Map;
 
-@Adapter(scope = ChainVariableResolver.class)
+@ModelExtender(scope = ChainVariableResolver.class)
+@Adapter
 public class ChainVariableResolverAdapter extends AbstractDefinedVariableResolverAdapter<ChainVariableResolver>
 {
 	private final Map<String, FeatureDefinition> definitionMap = new HashMap<>();

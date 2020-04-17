@@ -2,31 +2,41 @@ package org.sheepy.lily.core.api.util;
 
 public final class DebugUtil
 {
+	private static final String DEBUG_ARG = "debug";
+	private static final String DEBUG_VERBOSE_ARG = "debugVerbose";
+	private static final String DEBUG_ALLOCATION_ARG = "debugAllocation";
+
 	public static boolean DEBUG_ENABLED;
-	@SuppressWarnings("CanBeFinal")
 	public static boolean DEBUG_VERBOSE_ENABLED;
+	public static boolean DEBUG_ALLOCATION;
+
 	static
 	{
-		final String debugVerboseProperty = System.getProperty("debugVerbose");
-		final String debugProperty = System.getProperty("debug");
-		DEBUG_VERBOSE_ENABLED = debugVerboseProperty != null
-				&& debugVerboseProperty.equals("false") == false;
-		DEBUG_ENABLED = (debugProperty != null && debugProperty.equals("false") == false)
-				|| DEBUG_VERBOSE_ENABLED;
+		final String debugVerboseProperty = System.getProperty(DEBUG_VERBOSE_ARG);
+		final String debugAllocation = System.getProperty(DEBUG_ALLOCATION_ARG);
+		final String debugProperty = System.getProperty(DEBUG_ARG);
+		DEBUG_ENABLED = (debugProperty != null && debugProperty.equals("false") == false) || DEBUG_VERBOSE_ENABLED;
+		DEBUG_VERBOSE_ENABLED = debugVerboseProperty != null && debugVerboseProperty.equals("false") == false;
+		DEBUG_ALLOCATION = (debugAllocation != null && debugAllocation.equals("false") == false) || DEBUG_ALLOCATION;
 	}
 
 	public static void parseMainArgs(String[] args)
 	{
 		for (var arg : args)
 		{
-			if ("debug".equals(arg))
+			if (DEBUG_ARG.equals(arg))
 			{
 				DebugUtil.DEBUG_ENABLED = true;
 			}
-			if ("debugVerbose".equals(arg))
+			if (DEBUG_VERBOSE_ARG.equals(arg))
 			{
 				DebugUtil.DEBUG_ENABLED = true;
 				DebugUtil.DEBUG_VERBOSE_ENABLED = true;
+			}
+			if (DEBUG_ALLOCATION_ARG.equals(arg))
+			{
+				DebugUtil.DEBUG_ENABLED = true;
+				DebugUtil.DEBUG_ALLOCATION = true;
 			}
 		}
 	}

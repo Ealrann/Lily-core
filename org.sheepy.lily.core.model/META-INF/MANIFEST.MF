@@ -9,7 +9,7 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.joml,
- org.sheepy.lily.core.api.adapter,
+ org.sheepy.lily.core.api.model,
  org.sheepy.lily.core.api.notification,
  org.sheepy.lily.core.api.service,
  org.sheepy.lily.core.api.util,

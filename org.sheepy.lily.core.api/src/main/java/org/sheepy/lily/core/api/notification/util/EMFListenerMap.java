@@ -1,12 +1,13 @@
 package org.sheepy.lily.core.api.notification.util;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.sheepy.lily.core.api.notification.IEMFNotifier;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public final class EMFListenerMap
+public final class EMFListenerMap implements IEMFNotifier
 {
 	private final int featureCount;
 
@@ -46,11 +47,13 @@ public final class EMFListenerMap
 		}
 	}
 
+	@Override
 	public void listen(Consumer<Notification> listener, int... features)
 	{
 		listenInternal(listener, features);
 	}
 
+	@Override
 	public void listenNoParam(Runnable listener, int... features)
 	{
 		listenInternal(listener, features);
@@ -70,11 +73,13 @@ public final class EMFListenerMap
 		}
 	}
 
+	@Override
 	public void sulk(Consumer<Notification> listener, int... features)
 	{
 		sulkInternal(listener, features);
 	}
 
+	@Override
 	public void sulkNoParam(Runnable listener, int... features)
 	{
 		sulkInternal(listener, features);

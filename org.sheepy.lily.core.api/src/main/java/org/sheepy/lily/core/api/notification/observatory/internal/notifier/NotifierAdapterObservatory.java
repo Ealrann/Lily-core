@@ -1,83 +1,56 @@
 package org.sheepy.lily.core.api.notification.observatory.internal.notifier;
 
-import org.sheepy.lily.core.api.adapter.ILilyEObject;
-import org.sheepy.lily.core.api.adapter.INotifierAdapter;
+import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.notification.Feature;
 import org.sheepy.lily.core.api.notification.IFeatures;
-import org.sheepy.lily.core.api.notification.observatory.IAdapterObservatoryBuilder;
+import org.sheepy.lily.core.api.notification.INotifier;
 import org.sheepy.lily.core.api.notification.observatory.INotifierAdapterObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
+import org.sheepy.lily.core.api.notification.observatory.internal.InternalObservatoryBuilder;
+import org.sheepy.lily.core.api.notification.observatory.internal.allocation.AdapterObservatory;
+import org.sheepy.lily.core.api.notification.observatory.internal.allocation.IAdapterPOI;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public final class NotifierAdapterObservatory<Type extends IFeatures<Type>, Notifier extends INotifierAdapter<Type>> implements
-																													 IObservatory
+public final class NotifierAdapterObservatory<Type extends IFeatures<Type>, Notifier extends IExtender & INotifier<Type>> extends
+																														  AdapterObservatory<Notifier> implements
+																																					   IObservatory
 {
-	private final Class<Notifier> notifierAdapterClass;
 	private final List<INotifierPOI<Type>> observationPoints;
-	private final List<Consumer<Notifier>> addListeners;
-	private final List<Consumer<Notifier>> removeListeners;
 
 	public NotifierAdapterObservatory(Class<Notifier> notifierAdapterClass,
+									  List<IAdapterPOI<Notifier>> listeners,
 									  List<INotifierPOI<Type>> observationPoints,
 									  List<Consumer<Notifier>> addListeners,
 									  List<Consumer<Notifier>> removeListeners)
 	{
-		this.notifierAdapterClass = notifierAdapterClass;
+		super(notifierAdapterClass, listeners, addListeners, removeListeners);
 		this.observationPoints = List.copyOf(observationPoints);
-		this.addListeners = List.copyOf(addListeners);
-		this.removeListeners = List.copyOf(removeListeners);
 	}
 
 	@Override
-	public void observe(ILilyEObject object)
+	protected void onAdapterUpdate(final Notifier oldAdapter, final Notifier newAdapter)
 	{
-		final var adapter = object.adapt(notifierAdapterClass);
-		if (adapter != null)
+		super.onAdapterUpdate(oldAdapter, newAdapter);
+		for (final var point : observationPoints)
 		{
-			for (final var listener : addListeners)
-			{
-				listener.accept(adapter);
-			}
-
-			for (final var point : observationPoints)
-			{
-				point.listen(adapter);
-			}
+			if (oldAdapter != null) point.sulk(oldAdapter);
+			if (newAdapter != null) point.listen(newAdapter);
 		}
 	}
 
-	@Override
-	public void shut(ILilyEObject object)
+	public static final class Builder<Type extends IFeatures<Type>, Notifier extends IExtender & INotifier<Type>> extends
+																												  AdapterObservatory.Builder<Notifier> implements
+																																					   INotifierAdapterObservatoryBuilder<Type, Notifier>,
+																																					   InternalObservatoryBuilder
 	{
-		final var adapter = object.adapt(notifierAdapterClass);
-		if (adapter != null)
-		{
-			for (final var point : observationPoints)
-			{
-				point.sulk(adapter);
-			}
-
-			for (final var listener : removeListeners)
-			{
-				listener.accept(adapter);
-			}
-		}
-	}
-
-	public static final class Builder<Type extends IFeatures<Type>, Notifier extends INotifierAdapter<Type>> implements
-																											 INotifierAdapterObservatoryBuilder<Type, Notifier>
-	{
-		private final Class<Notifier> notifierAdapterClass;
 		private final List<INotifierPOI<Type>> observationPoints = new ArrayList<>();
-		private final List<Consumer<Notifier>> addListeners = new ArrayList<>();
-		private final List<Consumer<Notifier>> removeListeners = new ArrayList<>();
 
 		public Builder(Class<Notifier> notifierAdapterClass)
 		{
-			this.notifierAdapterClass = notifierAdapterClass;
+			super(notifierAdapterClass);
 		}
 
 		@Override
@@ -97,18 +70,10 @@ public final class NotifierAdapterObservatory<Type extends IFeatures<Type>, Noti
 		}
 
 		@Override
-		public IAdapterObservatoryBuilder<Notifier> gather(Consumer<Notifier> onAddedObject,
-														   Consumer<Notifier> onRemovedObject)
-		{
-			addListeners.add(onAddedObject);
-			removeListeners.add(onRemovedObject);
-			return this;
-		}
-
-		@Override
 		public IObservatory build()
 		{
-			return new NotifierAdapterObservatory<>(notifierAdapterClass,
+			return new NotifierAdapterObservatory<>(adapterClass,
+													listeners,
 													observationPoints,
 													addListeners,
 													removeListeners);
