@@ -1,19 +1,19 @@
 package org.sheepy.lily.core.allocation.dependency;
 
 import org.sheepy.lily.core.allocation.parameter.DependencyParameterResolver;
-import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.allocation.annotation.InjectDependency;
 import org.sheepy.lily.core.api.extender.parameter.IParameterResolverBuilder;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.Optional;
 
-public final class DependencyResolverBuilder implements IParameterResolverBuilder
+public final class DependencyParameterResolverBuilder implements IParameterResolverBuilder
 {
 	private final List<DependencyResolver> resolvers;
 
-	public DependencyResolverBuilder(List<DependencyResolver> resolvers)
+	public DependencyParameterResolverBuilder(List<DependencyResolver> resolvers)
 	{
 		this.resolvers = List.copyOf(resolvers);
 	}

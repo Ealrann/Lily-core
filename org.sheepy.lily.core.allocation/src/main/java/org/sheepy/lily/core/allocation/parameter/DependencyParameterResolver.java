@@ -1,6 +1,7 @@
 package org.sheepy.lily.core.allocation.parameter;
 
 import org.sheepy.lily.core.allocation.dependency.DependencyResolver;
+import org.sheepy.lily.core.allocation.dependency.container.IDependencyContainer;
 import org.sheepy.lily.core.api.extender.parameter.IParameterResolver;
 
 import java.util.List;
@@ -12,7 +13,7 @@ public record DependencyParameterResolver(Class<?>parameterClass, DependencyReso
 	@Override
 	public Object resolve()
 	{
-		final var stream = resolver.streamDependencies();
+		final var stream = resolver.streamDependencies().map(IDependencyContainer::get);
 		if (parameterClass == List.class)
 		{
 			return stream.collect(Collectors.toUnmodifiableList());

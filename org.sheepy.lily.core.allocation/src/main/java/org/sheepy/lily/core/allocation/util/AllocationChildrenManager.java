@@ -12,7 +12,6 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
-import java.util.function.Consumer;
 
 public final class AllocationChildrenManager
 {
@@ -22,24 +21,23 @@ public final class AllocationChildrenManager
 
 	private boolean observing = false;
 
-	public AllocationChildrenManager(final ILilyEObject source, Class<? extends IExtender> allocationClass)
+	public static AllocationChildrenManager newChildrenManager(final ILilyEObject source,
+															   Class<? extends IExtender> allocationClass)
 	{
-		observatory = newObservatory(source, allocationClass, this::add, this::remove);
-	}
-
-	private static IObservatory newObservatory(ILilyEObject source,
-											   Class<?> allocationClass,
-											   Consumer<ILilyEObject> onAdd,
-											   Consumer<ILilyEObject> onRemove)
-	{
+		final var annotationClass = AllocationChild.class;
 		final var builder = new GatherObservatoryBuilder();
-		for (var annotation : allocationClass.getAnnotationsByType(AllocationChild.class))
+		for (var annotation : allocationClass.getAnnotationsByType(annotationClass))
 		{
 			final var parentClass = annotation.parent();
 			final var parentDescription = ModelUtil.parent(source, parentClass);
 			builder.explore(parentDescription.distance(), annotation.features());
 		}
-		return builder.isEmpty() ? null : builder.build(onAdd, onRemove);
+		return new AllocationChildrenManager(builder);
+	}
+
+	private AllocationChildrenManager(GatherObservatoryBuilder observatoryBuilder)
+	{
+		observatory = observatoryBuilder.isEmpty() ? null : observatoryBuilder.build(this::add, this::remove);
 	}
 
 	public void ensureAllocation(final IAllocationContext context, final ILilyEObject target)
@@ -52,7 +50,7 @@ public final class AllocationChildrenManager
 			}
 			catch (Exception e)
 			{
-				throw new IllegalArgumentException("Failed to observe AllocationChildren", e);
+				throw new IllegalArgumentException("Failed to observe AllocationChild", e);
 			}
 			observing = true;
 

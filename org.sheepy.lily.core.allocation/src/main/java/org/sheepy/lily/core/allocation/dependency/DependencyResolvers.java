@@ -8,14 +8,14 @@ import java.util.stream.Stream;
 public final class DependencyResolvers
 {
 	private final List<DependencyResolver> resolvers;
-	private final DependencyResolverBuilder builder;
+	private final DependencyParameterResolverBuilder parameterResolverBuilder;
 
 	private boolean started = false;
 
 	public DependencyResolvers(List<DependencyResolver> resolvers)
 	{
 		this.resolvers = List.copyOf(resolvers);
-		builder = new DependencyResolverBuilder(resolvers);
+		parameterResolverBuilder = new DependencyParameterResolverBuilder(resolvers);
 	}
 
 	public void start(final ILilyEObject source)
@@ -46,25 +46,23 @@ public final class DependencyResolvers
 		}
 	}
 
-	public Stream<DependencyResolver> streamNotCriticalDirty()
+	public DependencyResolver get(final int index)
 	{
-		return resolvers.stream()
-						.filter(DependencyResolver::isNotCritical)
-						.filter(DependencyResolver::isLastResolveDirty);
+		return resolvers.get(index);
 	}
 
-	public DependencyResolverBuilder getBuilder()
+	public DependencyParameterResolverBuilder getParameterResolverBuilder()
 	{
-		return builder;
-	}
-
-	public Stream<DependencyResolver> streamCriticalDirty()
-	{
-		return resolvers.stream().filter(DependencyResolver::isCritical).filter(DependencyResolver::isLastResolveDirty);
+		return parameterResolverBuilder;
 	}
 
 	public boolean isStarted()
 	{
 		return started;
+	}
+
+	public Stream<DependencyResolver> stream()
+	{
+		return resolvers.stream();
 	}
 }

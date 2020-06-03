@@ -1,13 +1,14 @@
 package org.sheepy.lily.core.allocation.dependency.container;
 
 import org.sheepy.lily.core.allocation.AllocationHandle;
-import org.sheepy.lily.core.api.model.ILilyEObject;
+import org.sheepy.lily.core.allocation.AllocationInstance;
 import org.sheepy.lily.core.api.extender.IExtender;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 
 public final class AllocationDependencyContainer implements IDependencyContainer
 {
 	private final AllocationHandle<?> handle;
-	private IExtender resolvedAllocation = null;
+	private AllocationInstance<?> resolvedAllocation = null;
 
 	public AllocationDependencyContainer(AllocationHandle<?> handle)
 	{
@@ -17,19 +18,19 @@ public final class AllocationDependencyContainer implements IDependencyContainer
 	@Override
 	public void resolve()
 	{
-		resolvedAllocation = handle.getExtender();
+		resolvedAllocation = handle.getMainAllocation();
 	}
 
 	@Override
 	public boolean isAllocationDirty()
 	{
-		return handle.getExtender() != resolvedAllocation;
+		return resolvedAllocation.getStatus() != AllocationInstance.EStatus.Allocated;
 	}
 
 	@Override
 	public IExtender get()
 	{
-		return resolvedAllocation;
+		return resolvedAllocation.getAllocation();
 	}
 
 	@Override

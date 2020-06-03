@@ -3,7 +3,6 @@ package org.sheepy.lily.core.allocation.dependency;
 import org.sheepy.lily.core.allocation.dependency.container.IDependencyContainer;
 import org.sheepy.lily.core.allocation.util.GatherObservatoryBuilder;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationDependency;
-import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
 import org.sheepy.lily.core.api.util.ModelUtil;
@@ -18,18 +17,13 @@ public final class DependencyResolver
 	private final int index;
 	private final IObservatory observatory;
 	private final List<IDependencyContainer> dependencies = new ArrayList<>();
-	private final boolean critical;
 
 	private boolean dependencyChanged;
 
-	private DependencyResolver(AllocationDependency annotation,
-							   int index,
-							   boolean critical,
-							   GatherObservatoryBuilder observatoryBuilder)
+	private DependencyResolver(AllocationDependency annotation, int index, GatherObservatoryBuilder observatoryBuilder)
 	{
 		this.annotation = annotation;
 		this.index = index;
-		this.critical = critical;
 		this.observatory = observatoryBuilder.build(this::addDependency, this::removeDependency);
 	}
 
@@ -73,24 +67,15 @@ public final class DependencyResolver
 		dependencyChanged = false;
 	}
 
-	public Stream<IExtender> streamDependencies()
+	public Stream<IDependencyContainer> streamDependencies()
 	{
-		return dependencies.stream().map(IDependencyContainer::get);
+		return dependencies.stream();
 	}
 
+	@Deprecated
 	public boolean isLastResolveDirty()
 	{
 		return dependencyChanged || dependencies.stream().anyMatch(IDependencyContainer::isAllocationDirty);
-	}
-
-	public boolean isCritical()
-	{
-		return critical;
-	}
-
-	public boolean isNotCritical()
-	{
-		return !critical;
 	}
 
 	@Override
@@ -108,14 +93,12 @@ public final class DependencyResolver
 	{
 		private final AllocationDependency annotation;
 		private final int index;
-		private final boolean critical;
 		private final GatherObservatoryBuilder observatoryBuilder;
 
-		public Builder(AllocationDependency annotation, int index, boolean critical)
+		public Builder(AllocationDependency annotation, int index)
 		{
 			this.annotation = annotation;
 			this.index = index;
-			this.critical = critical;
 			observatoryBuilder = buildObservatory(annotation);
 		}
 
@@ -129,7 +112,7 @@ public final class DependencyResolver
 
 		public DependencyResolver build()
 		{
-			return new DependencyResolver(annotation, index, critical, observatoryBuilder);
+			return new DependencyResolver(annotation, index, observatoryBuilder);
 		}
 	}
 }

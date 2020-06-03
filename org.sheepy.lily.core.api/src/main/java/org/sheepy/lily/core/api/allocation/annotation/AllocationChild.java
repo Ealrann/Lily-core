@@ -6,7 +6,7 @@ import java.lang.annotation.*;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Repeatable(value = AllocationChild.List.class)
+@Repeatable(value = AllocationChild.AnnotationList.class)
 public @interface AllocationChild
 {
 	int[] features();
@@ -14,7 +14,7 @@ public @interface AllocationChild
 
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target({ElementType.TYPE})
-	@interface List
+	@interface AnnotationList
 	{
 		AllocationChild[] value();
 	}

@@ -1,5 +1,6 @@
 package org.sheepy.lily.core.allocation;
 
+import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptor;

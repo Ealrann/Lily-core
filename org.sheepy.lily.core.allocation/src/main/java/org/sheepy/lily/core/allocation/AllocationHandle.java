@@ -1,7 +1,7 @@
 package org.sheepy.lily.core.allocation;
 
-import org.sheepy.lily.core.allocation.dependency.DependencyResolver;
 import org.sheepy.lily.core.allocation.dependency.DependencyResolvers;
+import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
 import org.sheepy.lily.core.allocation.util.AllocationChildrenManager;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.IAllocationHandle;
@@ -9,7 +9,6 @@ import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.IEMFNotifier;
 import org.sheepy.lily.core.api.notification.util.ListenerList;
-import org.sheepy.lily.core.api.util.DebugUtil;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayDeque;
@@ -20,21 +19,21 @@ import java.util.stream.Stream;
 
 public final class AllocationHandle<Allocation extends IExtender> implements IAllocationHandle<Allocation>
 {
-	private final ListenerList<BiConsumer<Allocation, Allocation>> listeners = new ListenerList<>();
 	private final ILilyEObject target;
-	private final DependencyResolvers resolvers;
 	private final AllocationDescriptor<Allocation> descriptor;
+	private final DependencyResolvers resolvers;
 	private final AllocationChildrenManager children;
+	private final ListenerList<BiConsumer<Allocation, Allocation>> listeners = new ListenerList<>();
 
-	private final Deque<AllocationExtenderContainer<Allocation>> deprecatedHandles = new ArrayDeque<>(1);
-	private AllocationExtenderContainer<Allocation> mainHandle = null;
+	private final Deque<AllocationInstance<Allocation>> dirtyAllocations = new ArrayDeque<>(1);
+	private AllocationInstance<Allocation> mainAllocation = null;
 
 	public AllocationHandle(ILilyEObject target, AllocationDescriptor<Allocation> extenderDescriptor)
 	{
 		this.target = target;
 		this.descriptor = extenderDescriptor;
 		this.resolvers = descriptor.createResolvers();
-		this.children = new AllocationChildrenManager(target, descriptor.extenderClass());
+		this.children = AllocationChildrenManager.newChildrenManager(target, descriptor.extenderClass());
 	}
 
 	@Override
@@ -56,13 +55,13 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	@Override
 	public <A extends Annotation> Stream<AnnotatedHandle<A>> annotatedHandles(final Class<A> annotationClass)
 	{
-		if (mainHandle == null)
+		if (mainAllocation == null)
 		{
 			return Stream.empty();
 		}
 		else
 		{
-			return mainHandle.annotatedHandles(annotationClass);
+			return mainAllocation.annotatedHandles(annotationClass);
 		}
 	}
 
@@ -80,14 +79,19 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	@Override
 	public Allocation getExtender()
 	{
-		if (mainHandle == null)
+		if (mainAllocation == null)
 		{
 			throw new NoSuchElementException(descriptor.toString() + " is not allocated.");
 		}
 		else
 		{
-			return mainHandle.getAllocation();
+			return mainAllocation.getAllocation();
 		}
+	}
+
+	public AllocationInstance<Allocation> getMainAllocation()
+	{
+		return mainAllocation;
 	}
 
 	public void ensureAllocation(final IAllocationContext context)
@@ -98,57 +102,65 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 		}
 		catch (Exception e)
 		{
-			throw new AssertionError("Failed to ensure allocation of " + descriptor.extenderClass().getSimpleName(), e);
+			throw new AssertionError("Failed to ensure allocation of children of " + descriptor.extenderClass()
+																							   .getSimpleName(), e);
 		}
 
 		if (resolvers.isStarted() == false)
 		{
+			// TODO mettre dans load()
 			resolvers.start(target);
 		}
 
-		final boolean deprecated = checkMainHandle();
-		if (!deprecated)
-		{
-			resolvers.streamNotCriticalDirty().forEach(this::updateDependency);
-		}
-		else
+		if (mainAllocation == null)
 		{
 			allocateNew(target, context);
 		}
-	}
-
-	private void updateDependency(final DependencyResolver resolver)
-	{
-		resolver.resolve();
-		mainHandle.update(resolver);
-	}
-
-	private boolean checkMainHandle()
-	{
-		if (mainHandle != null)
+		else
 		{
-			final boolean dirtyMethod = mainHandle.isDirty();
-			final var criticalDependencyChanged = resolvers.streamCriticalDirty().findAny();
+			maintainsMainHAndle(context);
+		}
+	}
 
-			if (DebugUtil.DEBUG_ALLOCATION)
+	private void maintainsMainHAndle(final IAllocationContext context)
+	{
+		mainAllocation.maintains();
+		if (mainAllocation.getStatus() != AllocationInstance.EStatus.Allocated)
+		{
+			deprecateMainHandle();
+
+			if (tryRestoreHandle() == false)
 			{
-				if (dirtyMethod)
-				{
-					System.out.println(descriptor.toString() + " is now deprecated due to @Dirty method.");
-				}
-				if (criticalDependencyChanged.isPresent())
-				{
-					final var resolver = criticalDependencyChanged.get();
-					System.out.println(descriptor.toString() + " is now deprecated due to " + resolver.toString());
-				}
+				allocateNew(target, context);
 			}
+		}
+	}
 
-			return dirtyMethod || criticalDependencyChanged.isPresent();
+	private boolean tryRestoreHandle()
+	{
+		assert mainAllocation == null;
+
+		final var updatedHandle = dirtyAllocations.stream()
+												  .filter(AllocationInstance::isDirtyUpdatable)
+												  .findAny()
+												  .map(this::updateInstance);
+
+		if (updatedHandle.isPresent())
+		{
+			resolvers.resolve();
+			mainAllocation = updatedHandle.get();
+			return true;
 		}
 		else
 		{
-			return true;
+			return false;
 		}
+	}
+
+	private AllocationInstance<Allocation> updateInstance(AllocationInstance<Allocation> instance)
+	{
+		instance.update();
+		return instance;
 	}
 
 	public void cleanup(final IAllocationContext context)
@@ -159,38 +171,48 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 
 	public void free(final IAllocationContext context)
 	{
-		if (mainHandle != null)
+		if (mainAllocation != null)
 		{
-			final var oldAllocation = mainHandle.getAllocation();
+			final var oldAllocation = mainAllocation.getAllocation();
 			deprecateMainHandle();
 			listeners.notify(listener -> listener.accept(oldAllocation, null));
 		}
 
 		freeDeprecatedHandles(context);
-		resolvers.stop(target);
+
+		if (resolvers.isStarted())
+		{
+			// TODO mettre dans dispose()
+			resolvers.stop(target);
+		}
 		children.free(context, target);
 	}
 
 	private void deprecateMainHandle()
 	{
-		deprecatedHandles.add(mainHandle);
-		mainHandle.dispose(target);
-		mainHandle = null;
+		dirtyAllocations.add(mainAllocation);
+		mainAllocation.dispose(target);
+		mainAllocation = null;
 	}
 
 	private void freeDeprecatedHandles(IAllocationContext context)
 	{
-		for (var handle : deprecatedHandles)
+		final var it = dirtyAllocations.iterator();
+		for (var handle : dirtyAllocations)
 		{
 			handle.free(context);
+
+			if (handle.getStatus() == AllocationInstance.EStatus.Free)
+			{
+				it.remove();
+			}
 		}
-		deprecatedHandles.clear();
 	}
 
 	private void allocateNew(final ILilyEObject target, final IAllocationContext context)
 	{
-		final var oldAllocation = mainHandle != null ? mainHandle.getAllocation() : null;
-		if (mainHandle != null)
+		final var oldAllocation = mainAllocation != null ? mainAllocation.getAllocation() : null;
+		if (mainAllocation != null)
 		{
 			deprecateMainHandle();
 		}
@@ -198,9 +220,9 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 		try
 		{
 			resolvers.resolve();
-			mainHandle = descriptor.newHandle(target, resolvers, context);
-			mainHandle.load(target);
-			final var newAllocation = mainHandle.getAllocation();
+			mainAllocation = descriptor.newHandle(target, resolvers, context);
+			mainAllocation.load(target);
+			final var newAllocation = mainAllocation.getAllocation();
 			listeners.notify(listener -> listener.accept(oldAllocation, newAllocation));
 		}
 		catch (ReflectiveOperationException e)

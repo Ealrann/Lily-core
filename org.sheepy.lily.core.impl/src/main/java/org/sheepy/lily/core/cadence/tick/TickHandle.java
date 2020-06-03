@@ -99,9 +99,9 @@ public final class TickHandle
 
 		private TickHandle buildTickHandles(final IExtenderHandle.AnnotatedHandle<Tick> annotatedHandle)
 		{
-			final var config = new TickConfiguration(annotatedHandle.annotation);
+			final var config = new TickConfiguration(annotatedHandle.annotation());
 			final var adapterName = handle.getExtender().getClass().getSimpleName();
-			return new TickHandle(target, (ConsumerHandle) annotatedHandle.executionHandle, config, adapterName);
+			return new TickHandle(target, (ConsumerHandle) annotatedHandle.executionHandle(), config, adapterName);
 		}
 	}
 }

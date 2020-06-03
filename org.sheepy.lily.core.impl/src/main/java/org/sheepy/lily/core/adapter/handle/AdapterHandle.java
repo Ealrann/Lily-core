@@ -1,13 +1,13 @@
 package org.sheepy.lily.core.adapter.handle;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.annotation.Dispose;
 import org.sheepy.lily.core.api.adapter.annotation.Load;
 import org.sheepy.lily.core.api.adapter.annotation.NotifyChanged;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.IEMFNotifier;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
 import org.sheepy.lily.core.api.reflect.ConsumerHandle;
@@ -57,7 +57,7 @@ public final class AdapterHandle<Extender extends IExtender> implements IExtende
 
 	private <A extends Annotation> void callHandles(final Class<A> annotationClass, Object... parameters)
 	{
-		annotatedHandles(annotationClass).map(point -> ((ConsumerHandle) point.executionHandle))
+		annotatedHandles(annotationClass).map(point -> ((ConsumerHandle) point.executionHandle()))
 										 .forEach(handle -> handle.invoke(parameters));
 	}
 
@@ -74,8 +74,8 @@ public final class AdapterHandle<Extender extends IExtender> implements IExtende
 	{
 		final var notifyHandles = annotatedHandles(NotifyChanged.class);
 		notifyHandles.forEach(notifyHandle -> {
-			final var featureIds = notifyHandle.annotation.featureIds();
-			final var executionHandle = (ConsumerHandle) notifyHandle.executionHandle;
+			final var featureIds = notifyHandle.annotation().featureIds();
+			final var executionHandle = (ConsumerHandle) notifyHandle.executionHandle();
 			final var lambda = executionHandle.getLambdaFunction();
 			if (lambda instanceof Runnable)
 			{
@@ -93,8 +93,8 @@ public final class AdapterHandle<Extender extends IExtender> implements IExtende
 	{
 		final var notifyHandles = annotatedHandles(NotifyChanged.class);
 		notifyHandles.forEach(notifyHandle -> {
-			final var featureIds = notifyHandle.annotation.featureIds();
-			final var executionHandle = (ConsumerHandle) notifyHandle.executionHandle;
+			final var featureIds = notifyHandle.annotation().featureIds();
+			final var executionHandle = (ConsumerHandle) notifyHandle.executionHandle();
 			final var lambda = executionHandle.getLambdaFunction();
 			if (lambda instanceof Runnable)
 			{
