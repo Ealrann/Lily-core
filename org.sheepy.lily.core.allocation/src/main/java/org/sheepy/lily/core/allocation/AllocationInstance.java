@@ -3,22 +3,18 @@ package org.sheepy.lily.core.allocation;
 import org.sheepy.lily.core.allocation.dependency.container.IDependencyContainer;
 import org.sheepy.lily.core.allocation.description.DependencyPointer;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
-import org.sheepy.lily.core.api.allocation.annotation.DirtyAllocation;
 import org.sheepy.lily.core.api.allocation.annotation.Free;
-import org.sheepy.lily.core.api.allocation.annotation.LockAllocation;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
 import org.sheepy.lily.core.api.reflect.ConsumerHandle;
-import org.sheepy.lily.core.api.reflect.SupplierHandle;
 import org.sheepy.lily.core.api.util.AnnotationHandles;
 import org.sheepy.lily.core.api.util.DebugUtil;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
-import java.util.function.BooleanSupplier;
 import java.util.stream.Stream;
 
 public final class AllocationInstance<Allocation extends IExtender>
@@ -26,10 +22,9 @@ public final class AllocationInstance<Allocation extends IExtender>
 	public final Allocation extender;
 	private final IObservatory observatory;
 	private final List<? extends AnnotationHandles<?>> annotationHandles;
-	private final boolean hasDirtyMethod;
-	private final boolean hasLockMethod;
 	private final List<DependencyPointer> updatableDependencies;
 	private final List<IDependencyContainer> criticalDependencies;
+	private final AllocationConfigurator configurator;
 
 	private EStatus status = EStatus.Allocated;
 
@@ -43,15 +38,13 @@ public final class AllocationInstance<Allocation extends IExtender>
 
 	public AllocationInstance(IExtenderDescriptor.ExtenderContext<Allocation> extenderContext,
 							  final IObservatory observatory,
-							  boolean hasDirtyMethod,
-							  boolean hasLockMethod,
+							  AllocationConfigurator configurator,
 							  List<DependencyPointer> updatableDependencies,
 							  List<IDependencyContainer> criticalDependencies)
 	{
 		this.extender = extenderContext.extender();
 		this.annotationHandles = extenderContext.annotationHandles();
-		this.hasDirtyMethod = hasDirtyMethod;
-		this.hasLockMethod = hasLockMethod;
+		this.configurator = configurator;
 		this.observatory = observatory;
 		this.updatableDependencies = List.copyOf(updatableDependencies);
 		this.criticalDependencies = List.copyOf(criticalDependencies);
@@ -101,7 +94,7 @@ public final class AllocationInstance<Allocation extends IExtender>
 
 	private boolean dirtyMethod()
 	{
-		return hasDirtyMethod && annotatedHandles(DirtyAllocation.class).anyMatch(AllocationInstance::checkBooleanSupplier);
+		return configurator.isObsolete();
 	}
 
 	public boolean isDirtyUpdatable()
@@ -111,7 +104,7 @@ public final class AllocationInstance<Allocation extends IExtender>
 
 	private boolean isLocked()
 	{
-		return hasLockMethod && annotatedHandles(LockAllocation.class).anyMatch(AllocationInstance::checkBooleanSupplier);
+		return configurator.isLocked();
 	}
 
 	public boolean isUnlocked()
@@ -152,12 +145,6 @@ public final class AllocationInstance<Allocation extends IExtender>
 		return annotationHandles.stream()
 								.filter(h -> h.annotationClass().equals(annotationClass))
 								.flatMap(h -> ((AnnotationHandles<A>) h).handles().stream());
-	}
-
-	private static boolean checkBooleanSupplier(final IExtenderHandle.AnnotatedHandle<?> handle)
-	{
-		final var lambda = (BooleanSupplier) ((SupplierHandle) handle.executionHandle()).getLambdaFunction();
-		return lambda.getAsBoolean();
 	}
 
 	public Allocation getAllocation()

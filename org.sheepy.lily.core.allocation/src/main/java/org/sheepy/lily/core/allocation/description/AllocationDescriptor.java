@@ -1,14 +1,13 @@
 package org.sheepy.lily.core.allocation.description;
 
 import org.sheepy.lily.core.allocation.AllocationInstance;
-import org.sheepy.lily.core.allocation.dependency.DependencyResolvers;
 import org.sheepy.lily.core.allocation.dependency.DependencyResolver;
+import org.sheepy.lily.core.allocation.dependency.DependencyResolvers;
 import org.sheepy.lily.core.allocation.dependency.container.IDependencyContainer;
+import org.sheepy.lily.core.allocation.parameter.ConfiguratorParameterBuilder;
 import org.sheepy.lily.core.allocation.parameter.ContextParameterResolverBuilder;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationDependency;
-import org.sheepy.lily.core.api.allocation.annotation.DirtyAllocation;
-import org.sheepy.lily.core.api.allocation.annotation.LockAllocation;
 import org.sheepy.lily.core.api.allocation.annotation.UpdateDependency;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
@@ -26,14 +25,10 @@ public final class AllocationDescriptor<Allocation extends IExtender>
 {
 	private final IExtenderDescriptor<Allocation> extenderDescriptor;
 	private final List<DependencyResolver.Builder> builders;
-	private final boolean hasDirtyMethod;
-	private final boolean hasLockMethod;
 
 	public AllocationDescriptor(IExtenderDescriptor<Allocation> extenderDescriptor)
 	{
 		this.extenderDescriptor = extenderDescriptor;
-		hasDirtyMethod = extenderDescriptor.containsMethodAnnotation(DirtyAllocation.class);
-		hasLockMethod = extenderDescriptor.containsMethodAnnotation(LockAllocation.class);
 		builders = List.copyOf(createResolverBuilders());
 	}
 
@@ -100,7 +95,9 @@ public final class AllocationDescriptor<Allocation extends IExtender>
 		public AllocationInstance<Allocation> build() throws ReflectiveOperationException
 		{
 			final var observatory = IObservatoryBuilder.newObservatoryBuilder();
+			final var configuratorBuilder = new ConfiguratorParameterBuilder();
 			final var resolverBuilders = List.of(new ContextParameterResolverBuilder(context),
+												 configuratorBuilder,
 												 resolvers.getParameterResolverBuilder());
 			final var extenderContext = descriptor.extenderDescriptor.newExtender(target,
 																				  observatory,
@@ -110,8 +107,7 @@ public final class AllocationDescriptor<Allocation extends IExtender>
 
 			return new AllocationInstance<>(extenderContext,
 											observatory.build(),
-											descriptor.hasDirtyMethod,
-											descriptor.hasLockMethod,
+											configuratorBuilder.getConfigurator(),
 											updatableDependencies,
 											criticalDependencies);
 		}
