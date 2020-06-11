@@ -2,21 +2,17 @@ package org.sheepy.lily.core.allocation.dependency.container;
 
 import org.sheepy.lily.core.allocation.AllocationHandle;
 import org.sheepy.lily.core.allocation.AllocationInstance;
+import org.sheepy.lily.core.allocation.EAllocationStatus;
 import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.model.ILilyEObject;
+
+import java.util.function.Consumer;
 
 public final class AllocationDependencyContainer implements IDependencyContainer
 {
-	private final AllocationHandle<?> handle;
-	private AllocationInstance<?> resolvedAllocation = null;
+	private final AllocationInstance<?> resolvedAllocation;
+	private Consumer<EAllocationStatus> statusListener;
 
 	public AllocationDependencyContainer(AllocationHandle<?> handle)
-	{
-		this.handle = handle;
-	}
-
-	@Override
-	public void resolve()
 	{
 		resolvedAllocation = handle.getMainAllocation();
 	}
@@ -24,7 +20,7 @@ public final class AllocationDependencyContainer implements IDependencyContainer
 	@Override
 	public boolean isAllocationDirty()
 	{
-		return resolvedAllocation.getStatus() != AllocationInstance.EStatus.Allocated;
+		return resolvedAllocation.getStatus() != EAllocationStatus.Allocated;
 	}
 
 	@Override
@@ -34,8 +30,22 @@ public final class AllocationDependencyContainer implements IDependencyContainer
 	}
 
 	@Override
-	public ILilyEObject getTarget()
+	public void listen(Consumer<EAllocationStatus> statusListener)
 	{
-		return handle.getTarget();
+		this.statusListener = statusListener;
+		if (resolvedAllocation != null)
+		{
+			resolvedAllocation.listen(statusListener);
+		}
+	}
+
+	@Override
+	public void sulk(Consumer<EAllocationStatus> statusListener)
+	{
+		if (resolvedAllocation != null)
+		{
+			resolvedAllocation.sulk(this.statusListener);
+		}
+		this.statusListener = null;
 	}
 }

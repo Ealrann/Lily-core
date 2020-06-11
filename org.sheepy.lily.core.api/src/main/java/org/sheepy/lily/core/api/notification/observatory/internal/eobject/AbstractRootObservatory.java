@@ -8,6 +8,9 @@ import org.sheepy.lily.core.api.notification.INotifier;
 import org.sheepy.lily.core.api.notification.observatory.*;
 import org.sheepy.lily.core.api.notification.observatory.internal.InternalObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.internal.allocation.AdapterObservatory;
+import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.EObjectNoParamPOI;
+import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.EObjectPOI;
+import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.IEObjectPOI;
 import org.sheepy.lily.core.api.notification.observatory.internal.notifier.NotifierAdapterObservatory;
 import org.sheepy.lily.core.api.notification.observatory.internal.notifier.NotifierObservatory;
 

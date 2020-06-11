@@ -1,81 +1,65 @@
 package org.sheepy.lily.core.allocation.dependency;
 
 import org.sheepy.lily.core.allocation.dependency.container.IDependencyContainer;
-import org.sheepy.lily.core.allocation.util.GatherObservatoryBuilder;
+import org.sheepy.lily.core.allocation.util.StructureObserverBuilder;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationDependency;
 import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.notification.observatory.IObservatory;
+import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
+import org.sheepy.lily.core.api.notification.util.ListenerList;
+import org.sheepy.lily.core.api.util.IModelExplorer;
 import org.sheepy.lily.core.api.util.ModelUtil;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public final class DependencyResolver
 {
 	private final AllocationDependency annotation;
 	private final int index;
-	private final IObservatory observatory;
-	private final List<IDependencyContainer> dependencies = new ArrayList<>();
+	private final IModelExplorer modelExplorer;
+	private final IDependencyContainer.Builder dependencyBuilder;
+	private final ListenerList<Runnable> listeners = new ListenerList<>();
 
-	private boolean dependencyChanged;
-
-	private DependencyResolver(AllocationDependency annotation, int index, GatherObservatoryBuilder observatoryBuilder)
+	private DependencyResolver(AllocationDependency annotation, int index, StructureObserverBuilder observationBuilder)
 	{
 		this.annotation = annotation;
 		this.index = index;
-		this.observatory = observatoryBuilder.build(this::addDependency, this::removeDependency);
+		observationBuilder.installListeners(this::dependencyChanged, this::dependencyChanged);
+		modelExplorer = observationBuilder.buildExplorer();
+		dependencyBuilder = new IDependencyContainer.Builder(annotation.type());
 	}
 
-	public void start(final ILilyEObject source)
+	private void dependencyChanged(Object change)
 	{
-		final var parent = ModelUtil.findParent(source, annotation.parent());
-		observatory.observe(parent);
-		dependencyChanged = false;
+		notifyStructureChange();
 	}
 
-	public void stop(final ILilyEObject source)
+	public Stream<IDependencyContainer> resolveDependencies(ILilyEObject source)
 	{
-		final var parent = ModelUtil.findParent(source, annotation.parent());
-		observatory.shut(parent);
-		dependencies.clear();
+		return modelExplorer.stream(source, ILilyEObject.class)
+							.map(dependencyBuilder::build)
+							.filter(Optional::isPresent)
+							.map(Optional::get);
 	}
 
-	private void addDependency(ILilyEObject target)
+	public int getIndex()
 	{
-		dependencies.addAll(buildDependencyContainers(target));
-		dependencyChanged = true;
+		return index;
 	}
 
-	private void removeDependency(ILilyEObject target)
+	private void notifyStructureChange()
 	{
-		dependencies.removeIf(dep -> dep.getTarget() == target);
-		dependencyChanged = true;
+		listeners.notify(Runnable::run);
 	}
 
-	private List<IDependencyContainer> buildDependencyContainers(final ILilyEObject target)
+	public void listen(Runnable structureListener)
 	{
-		return new IDependencyContainer.Builder(target).build(annotation.type());
+		listeners.listen(structureListener);
 	}
 
-	public void resolve()
+	public void sulk(Runnable structureListener)
 	{
-		for (final var dep : dependencies)
-		{
-			dep.resolve();
-		}
-		dependencyChanged = false;
-	}
-
-	public Stream<IDependencyContainer> streamDependencies()
-	{
-		return dependencies.stream();
-	}
-
-	@Deprecated
-	public boolean isLastResolveDirty()
-	{
-		return dependencyChanged || dependencies.stream().anyMatch(IDependencyContainer::isAllocationDirty);
+		listeners.sulk(structureListener);
 	}
 
 	@Override
@@ -84,35 +68,29 @@ public final class DependencyResolver
 		return "Dependency{" + annotation.type().getSimpleName() + '}';
 	}
 
-	public int getIndex()
-	{
-		return index;
-	}
-
 	public static final class Builder
 	{
 		private final AllocationDependency annotation;
 		private final int index;
-		private final GatherObservatoryBuilder observatoryBuilder;
 
 		public Builder(AllocationDependency annotation, int index)
 		{
 			this.annotation = annotation;
 			this.index = index;
-			observatoryBuilder = buildObservatory(annotation);
 		}
 
-		private static GatherObservatoryBuilder buildObservatory(AllocationDependency annotation)
+		public DependencyResolver build(IObservatoryBuilder observatoryBuilder, ILilyEObject source)
 		{
+			final var observationBuilder = buildObservatory(observatoryBuilder, source);
+			return new DependencyResolver(annotation, index, observationBuilder);
+		}
+
+		private StructureObserverBuilder buildObservatory(IObservatoryBuilder observatoryBuilder, ILilyEObject source)
+		{
+			final var parentDistance = ModelUtil.parentDistance(source, annotation.parent());
 			final int[] features = annotation.features();
-			final var builder = new GatherObservatoryBuilder();
-			builder.explore(0, features);
+			final var builder = new StructureObserverBuilder(observatoryBuilder, parentDistance, features);
 			return builder;
-		}
-
-		public DependencyResolver build()
-		{
-			return new DependencyResolver(annotation, index, observatoryBuilder);
 		}
 	}
 }

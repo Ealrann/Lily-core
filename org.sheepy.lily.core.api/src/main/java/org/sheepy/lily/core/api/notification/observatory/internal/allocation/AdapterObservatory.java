@@ -123,8 +123,8 @@ public class AdapterObservatory<Type extends IExtender> implements IObservatory
 		public IAdapterObservatoryBuilder<Type> gatherAdaptation(Consumer<Type> onAddedObject,
 																 Consumer<Type> onRemovedObject)
 		{
-			addListeners.add(onAddedObject);
-			removeListeners.add(onRemovedObject);
+			if(onAddedObject != null) addListeners.add(onAddedObject);
+			if(onRemovedObject != null) removeListeners.add(onRemovedObject);
 			return this;
 		}
 

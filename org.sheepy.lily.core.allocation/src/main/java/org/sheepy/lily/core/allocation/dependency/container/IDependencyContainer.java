@@ -1,38 +1,44 @@
 package org.sheepy.lily.core.allocation.dependency.container;
 
 import org.sheepy.lily.core.allocation.AllocationHandle;
+import org.sheepy.lily.core.allocation.EAllocationStatus;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 public interface IDependencyContainer
 {
-	ILilyEObject getTarget();
-	void resolve();
 	IExtender get();
 	boolean isAllocationDirty();
+	void listen(Consumer<EAllocationStatus> statusListener);
+	void sulk(Consumer<EAllocationStatus> statusListener);
 
 	final class Builder
 	{
-		private final ILilyEObject target;
+		private final Class<? extends IExtender> type;
 
-		public Builder(final ILilyEObject target)
+		public Builder(Class<? extends IExtender> type)
 		{
-			this.target = target;
+			this.type = type;
 		}
 
-		public List<IDependencyContainer> build(Class<? extends IExtender> type)
+		public Stream<IDependencyContainer> streamBuild(final List<ILilyEObject> targets)
 		{
-			return target.adapters()
-						 .adaptHandles(type)
-						 .map(this::buildDependencyContainer)
-						 .collect(Collectors.toUnmodifiableList());
+			return targets.stream().map(this::build).filter(Optional::isPresent).map(Optional::get);
 		}
 
-		private IDependencyContainer buildDependencyContainer(final IExtenderHandle<? extends IExtender> handle)
+		public Optional<IDependencyContainer> build(ILilyEObject target)
+		{
+			final var res = target.adapters().adaptHandles(type).findAny().map(Builder::buildDependencyContainer);
+			return res;
+		}
+
+		private static IDependencyContainer buildDependencyContainer(final IExtenderHandle<? extends IExtender> handle)
 		{
 			if (handle instanceof AllocationHandle<?> allocationHandle)
 			{
@@ -40,7 +46,7 @@ public interface IDependencyContainer
 			}
 			else
 			{
-				return new AdapterDependencyContainer(handle, target);
+				return new AdapterDependencyContainer(handle);
 			}
 		}
 	}

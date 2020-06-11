@@ -116,6 +116,25 @@ public final class ModelUtil
 		return new ParentDescription<>(height, (T) eo);
 	}
 
+	public static int parentDistance(EObject eo, Class<? extends EObject> parentClassifier)
+	{
+		int height = 0;
+		while (parentClassifier.isInstance(eo) == false && eo != null)
+		{
+			height++;
+			eo = eo.eContainer();
+		}
+
+		if (parentClassifier.isInstance(eo))
+		{
+			return height;
+		}
+		else
+		{
+			return -1;
+		}
+	}
+
 	public static EClassifier resolveGenericType(EObject object, EClass genericHolder)
 	{
 		return resolveGenericType(object.eClass(), genericHolder);

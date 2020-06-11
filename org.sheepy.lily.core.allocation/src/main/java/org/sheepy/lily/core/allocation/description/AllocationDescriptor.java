@@ -1,51 +1,36 @@
 package org.sheepy.lily.core.allocation.description;
 
-import org.sheepy.lily.core.allocation.AllocationInstance;
 import org.sheepy.lily.core.allocation.dependency.DependencyResolver;
 import org.sheepy.lily.core.allocation.dependency.DependencyResolvers;
-import org.sheepy.lily.core.allocation.dependency.container.IDependencyContainer;
-import org.sheepy.lily.core.allocation.parameter.ConfiguratorParameterBuilder;
-import org.sheepy.lily.core.allocation.parameter.ContextParameterResolverBuilder;
-import org.sheepy.lily.core.api.allocation.IAllocationContext;
+import org.sheepy.lily.core.api.allocation.annotation.AllocationChild;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationDependency;
-import org.sheepy.lily.core.api.allocation.annotation.UpdateDependency;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
-import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
-import org.sheepy.lily.core.api.reflect.ConsumerHandle;
-import org.sheepy.lily.core.api.util.AnnotationHandles;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public final class AllocationDescriptor<Allocation extends IExtender>
 {
 	private final IExtenderDescriptor<Allocation> extenderDescriptor;
 	private final List<DependencyResolver.Builder> builders;
+	private final List<AllocationChild> childAnnotations;
 
 	public AllocationDescriptor(IExtenderDescriptor<Allocation> extenderDescriptor)
 	{
 		this.extenderDescriptor = extenderDescriptor;
 		builders = List.copyOf(createResolverBuilders());
+		childAnnotations = List.of(extenderDescriptor.extenderClass().getAnnotationsByType(AllocationChild.class));
 	}
 
-	public AllocationInstance<Allocation> newHandle(final ILilyEObject target,
-													final DependencyResolvers resolvers,
-													final IAllocationContext context) throws ReflectiveOperationException
-	{
-		final var builder = new InstanceBuilder<>(this, target, resolvers, context);
-		return builder.build();
-	}
-
-	public DependencyResolvers createResolvers()
+	public DependencyResolvers createResolvers(IObservatoryBuilder observatory, ILilyEObject source)
 	{
 		final List<DependencyResolver> resolvers = new ArrayList<>();
 		for (final var builder : builders)
 		{
-			resolvers.add(builder.build());
+			resolvers.add(builder.build(observatory, source));
 		}
 		return new DependencyResolvers(resolvers);
 	}
@@ -63,10 +48,9 @@ public final class AllocationDescriptor<Allocation extends IExtender>
 		return resolvers;
 	}
 
-	@Override
-	public String toString()
+	public List<AllocationChild> getChildrenAnnotations()
 	{
-		return "AllocationDescriptor{" + extenderDescriptor.extenderClass().getSimpleName() + '}';
+		return childAnnotations;
 	}
 
 	public Class<Allocation> extenderClass()
@@ -74,71 +58,14 @@ public final class AllocationDescriptor<Allocation extends IExtender>
 		return extenderDescriptor.extenderClass();
 	}
 
-	private static final class InstanceBuilder<Allocation extends IExtender>
+	public IExtenderDescriptor<Allocation> getExtenderDescriptor()
 	{
-		private final AllocationDescriptor<Allocation> descriptor;
-		private final ILilyEObject target;
-		private final DependencyResolvers resolvers;
-		private final IAllocationContext context;
+		return extenderDescriptor;
+	}
 
-		private InstanceBuilder(final AllocationDescriptor<Allocation> descriptor,
-								final ILilyEObject target,
-								final DependencyResolvers resolvers,
-								final IAllocationContext context)
-		{
-			this.descriptor = descriptor;
-			this.target = target;
-			this.resolvers = resolvers;
-			this.context = context;
-		}
-
-		public AllocationInstance<Allocation> build() throws ReflectiveOperationException
-		{
-			final var observatory = IObservatoryBuilder.newObservatoryBuilder();
-			final var configuratorBuilder = new ConfiguratorParameterBuilder();
-			final var resolverBuilders = List.of(new ContextParameterResolverBuilder(context),
-												 configuratorBuilder,
-												 resolvers.getParameterResolverBuilder());
-			final var extenderContext = descriptor.extenderDescriptor.newExtender(target,
-																				  observatory,
-																				  resolverBuilders);
-			final var updatableDependencies = gatherUpdatableDependencies(extenderContext);
-			final var criticalDependencies = filterCriticalDependencies(updatableDependencies);
-
-			return new AllocationInstance<>(extenderContext,
-											observatory.build(),
-											configuratorBuilder.getConfigurator(),
-											updatableDependencies,
-											criticalDependencies);
-		}
-
-		private List<IDependencyContainer> filterCriticalDependencies(final List<DependencyPointer> updatableDependencies)
-		{
-			return resolvers.stream()
-							.filter(resolver -> updatableDependencies.stream()
-																	 .map(DependencyPointer::resolver)
-																	 .noneMatch(res -> res == resolver))
-							.flatMap(DependencyResolver::streamDependencies)
-							.collect(Collectors.toUnmodifiableList());
-		}
-
-		@SuppressWarnings("unchecked")
-		private List<DependencyPointer> gatherUpdatableDependencies(final IExtenderDescriptor.ExtenderContext<?> extenderContext)
-		{
-			final var updatableDependencies = extenderContext.annotationHandles()
-															 .stream()
-															 .filter(handle -> handle.annotationClass() == UpdateDependency.class)
-															 .map(handle -> (AnnotationHandles<UpdateDependency>) handle)
-															 .flatMap(handle -> handle.handles().stream())
-															 .map(this::newDependencyPointer)
-															 .collect(Collectors.toUnmodifiableList());
-			return updatableDependencies;
-		}
-
-		private DependencyPointer newDependencyPointer(final IExtenderHandle.AnnotatedHandle<UpdateDependency> handle)
-		{
-			final var resolver = resolvers.get(handle.annotation().index());
-			return new DependencyPointer(resolver, (ConsumerHandle) handle.executionHandle());
-		}
+	@Override
+	public String toString()
+	{
+		return "AllocationDescriptor{" + extenderDescriptor.extenderClass().getSimpleName() + '}';
 	}
 }

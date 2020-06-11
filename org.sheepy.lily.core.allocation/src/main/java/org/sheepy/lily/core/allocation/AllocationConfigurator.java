@@ -6,13 +6,13 @@ public class AllocationConfigurator implements IAllocationConfigurator
 {
 	private boolean obsolete = false;
 
-	private Runnable whenObsolete;
-	private Runnable whenLocked;
+	private Runnable whenObsolete = null;
+	private Runnable whenLocked = null;
 
 	public void setCallbacks(Runnable whenObsolete)
 	{
-		assert whenObsolete == null;
-		assert whenLocked == null;
+		assert this.whenObsolete == null;
+		assert this.whenLocked == null;
 		this.whenObsolete = whenObsolete;
 	}
 

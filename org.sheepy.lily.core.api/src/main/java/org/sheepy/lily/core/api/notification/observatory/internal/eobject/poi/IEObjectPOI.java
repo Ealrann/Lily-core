@@ -1,4 +1,4 @@
-package org.sheepy.lily.core.api.notification.observatory.internal.eobject;
+package org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi;
 
 import org.sheepy.lily.core.api.model.ILilyEObject;
 

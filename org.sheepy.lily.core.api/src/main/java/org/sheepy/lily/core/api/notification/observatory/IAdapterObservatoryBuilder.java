@@ -7,7 +7,8 @@ import java.util.function.Consumer;
 
 public interface IAdapterObservatoryBuilder<Adapter extends IExtender>
 {
-	IAdapterObservatoryBuilder<Adapter> gatherAdaptation(Consumer<Adapter> discoveredAdapter, Consumer<Adapter> removedAdapter);
+	IAdapterObservatoryBuilder<Adapter> gatherAdaptation(Consumer<Adapter> discoveredAdapter,
+														 Consumer<Adapter> removedAdapter);
 
 	IAdapterObservatoryBuilder<Adapter> listenAdaptation(IExtenderHandle.ExtenderListener<Adapter> onAdapterUpdate);
 	IAdapterObservatoryBuilder<Adapter> listenAdaptationNoParam(Runnable onAdapterUpdate);

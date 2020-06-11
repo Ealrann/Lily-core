@@ -1,28 +1,28 @@
 package org.sheepy.lily.core.api.util;
 
-import org.eclipse.emf.ecore.EReference;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public final class ModelExplorer implements IModelExplorer
+public final class IntModelExplorer implements IModelExplorer
 {
 	private final int parentHeight;
-	private final List<EReference> references;
+	private final int[] references;
 
-	public ModelExplorer(List<EReference> references)
+	public IntModelExplorer(int[] references)
 	{
 		this(0, references);
 	}
 
-	public ModelExplorer(int parentHeight, List<EReference> references)
+	public IntModelExplorer(int parentHeight, int[] references)
 	{
 		this.parentHeight = parentHeight;
-		this.references = List.copyOf(references);
+		this.references = Arrays.copyOf(references, references.length);
 	}
 
 	@Override
@@ -73,7 +73,7 @@ public final class ModelExplorer implements IModelExplorer
 		return stream(root).map(e -> e.adaptNotNull(adapterType));
 	}
 
-	Stream<ILilyEObject> stream(ILilyEObject source)
+	private Stream<ILilyEObject> stream(ILilyEObject source)
 	{
 		final var root = parent(source);
 		final var list = List.of(root);
@@ -95,7 +95,7 @@ public final class ModelExplorer implements IModelExplorer
 	}
 
 	@SuppressWarnings("unchecked")
-	private static Stream<ILilyEObject> extractList(ILilyEObject object, EReference reference)
+	private static Stream<ILilyEObject> extractList(ILilyEObject object, int reference)
 	{
 		final var val = getValue(object, reference);
 		if (val != null)
@@ -115,15 +115,8 @@ public final class ModelExplorer implements IModelExplorer
 		}
 	}
 
-	private static Object getValue(ILilyEObject target, final EReference reference)
+	private static Object getValue(ILilyEObject target, final int reference)
 	{
-		if (target.eClass().getEAllStructuralFeatures().contains(reference))
-		{
-			return target.eGet(reference);
-		}
-		else
-		{
-			return null;
-		}
+		return target.eGet(reference, true, true);
 	}
 }

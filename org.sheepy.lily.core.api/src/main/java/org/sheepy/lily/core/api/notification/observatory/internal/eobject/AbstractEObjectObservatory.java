@@ -1,8 +1,8 @@
 package org.sheepy.lily.core.api.notification.observatory.internal.eobject;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.extender.IExtender;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.IFeatures;
 import org.sheepy.lily.core.api.notification.INotifier;
 import org.sheepy.lily.core.api.notification.observatory.IAdapterObservatoryBuilder;
@@ -11,6 +11,9 @@ import org.sheepy.lily.core.api.notification.observatory.INotifierAdapterObserva
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
 import org.sheepy.lily.core.api.notification.observatory.internal.InternalObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.internal.allocation.AdapterObservatory;
+import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.EObjectNoParamPOI;
+import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.EObjectPOI;
+import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.IEObjectPOI;
 import org.sheepy.lily.core.api.notification.observatory.internal.notifier.NotifierAdapterObservatory;
 
 import java.util.ArrayList;

@@ -30,7 +30,7 @@ public final class DependencyParameterResolverBuilder implements IParameterResol
 				final var annotation = (InjectDependency) parameterAnnotation;
 				final var index = annotation.index();
 				final var resolver = resolvers.get(index);
-				final var res = new DependencyParameterResolver(parameterClass, resolver);
+				final var res = new DependencyParameterResolver(target, parameterClass, resolver);
 				return Optional.of(res);
 			}
 			catch (Throwable throwable)

@@ -1,19 +1,18 @@
 package org.sheepy.lily.core.allocation;
 
-import org.sheepy.lily.core.allocation.dependency.DependencyResolvers;
 import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
-import org.sheepy.lily.core.allocation.util.AllocationChildrenManager;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.IAllocationHandle;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.IEMFNotifier;
+import org.sheepy.lily.core.api.notification.observatory.IObservatory;
+import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.util.ListenerList;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.NoSuchElementException;
 import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
@@ -21,29 +20,33 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 {
 	private final ILilyEObject target;
 	private final AllocationDescriptor<Allocation> descriptor;
-	private final DependencyResolvers resolvers;
-	private final AllocationChildrenManager children;
 	private final ListenerList<BiConsumer<Allocation, Allocation>> listeners = new ListenerList<>();
+	private final AllocationInstance.Builder<Allocation> instanceBuilder;
+	private final IObservatory dependencyObservatory;
 
 	private final Deque<AllocationInstance<Allocation>> dirtyAllocations = new ArrayDeque<>(1);
 	private AllocationInstance<Allocation> mainAllocation = null;
 
 	public AllocationHandle(ILilyEObject target, AllocationDescriptor<Allocation> extenderDescriptor)
 	{
+		final var observatoryBuilder = IObservatoryBuilder.newObservatoryBuilder();
 		this.target = target;
 		this.descriptor = extenderDescriptor;
-		this.resolvers = descriptor.createResolvers();
-		this.children = AllocationChildrenManager.newChildrenManager(target, descriptor.extenderClass());
+		final var resolvers = descriptor.createResolvers(observatoryBuilder, target);
+		instanceBuilder = new AllocationInstance.Builder<>(descriptor, target, resolvers);
+		this.dependencyObservatory = observatoryBuilder.build();
 	}
 
 	@Override
 	public void load(final ILilyEObject target, final IEMFNotifier notifier)
 	{
+		dependencyObservatory.observe(target);
 	}
 
 	@Override
 	public void dispose(final ILilyEObject target, final IEMFNotifier notifier)
 	{
+		dependencyObservatory.shut(target);
 	}
 
 	@Override
@@ -79,14 +82,7 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	@Override
 	public Allocation getExtender()
 	{
-		if (mainAllocation == null)
-		{
-			throw new NoSuchElementException(descriptor.toString() + " is not allocated.");
-		}
-		else
-		{
-			return mainAllocation.getAllocation();
-		}
+		return mainAllocation != null ? mainAllocation.getAllocation() : null;
 	}
 
 	public AllocationInstance<Allocation> getMainAllocation()
@@ -94,78 +90,17 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 		return mainAllocation;
 	}
 
-	public void ensureAllocation(final IAllocationContext context)
+	public void ensureAllocation(AllocationInstance<? extends IExtender> parent, final IAllocationContext context)
 	{
-		try
+		if (mainAllocation == null || mainAllocation.getStatus() == EAllocationStatus.Obsolete)
 		{
-			children.ensureAllocation(context, target);
+			allocateNew(parent, context);
 		}
-		catch (Exception e)
+		else if (mainAllocation.getStatus() == EAllocationStatus.Dirty)
 		{
-			throw new AssertionError("Failed to ensure allocation of children of " + descriptor.extenderClass()
-																							   .getSimpleName(), e);
-		}
-
-		if (resolvers.isStarted() == false)
-		{
-			// TODO mettre dans load()
-			resolvers.start(target);
+			mainAllocation.update(target);
 		}
 
-		if (mainAllocation == null)
-		{
-			allocateNew(target, context);
-		}
-		else
-		{
-			maintainsMainHAndle(context);
-		}
-	}
-
-	private void maintainsMainHAndle(final IAllocationContext context)
-	{
-		mainAllocation.maintains();
-		if (mainAllocation.getStatus() != AllocationInstance.EStatus.Allocated)
-		{
-			deprecateMainHandle();
-
-			if (tryRestoreHandle() == false)
-			{
-				allocateNew(target, context);
-			}
-		}
-	}
-
-	private boolean tryRestoreHandle()
-	{
-		assert mainAllocation == null;
-
-		final var updatedHandle = dirtyAllocations.stream()
-												  .filter(AllocationInstance::isDirtyUpdatable)
-												  .findAny()
-												  .map(this::updateInstance);
-
-		if (updatedHandle.isPresent())
-		{
-			resolvers.resolve();
-			mainAllocation = updatedHandle.get();
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-
-	private AllocationInstance<Allocation> updateInstance(AllocationInstance<Allocation> instance)
-	{
-		instance.update();
-		return instance;
-	}
-
-	public void cleanup(final IAllocationContext context)
-	{
-		children.cleanup(context);
 		freeDeprecatedHandles(context);
 	}
 
@@ -179,37 +114,24 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 		}
 
 		freeDeprecatedHandles(context);
-
-		if (resolvers.isStarted())
-		{
-			// TODO mettre dans dispose()
-			resolvers.stop(target);
-		}
-		children.free(context, target);
-	}
-
-	private void deprecateMainHandle()
-	{
-		dirtyAllocations.add(mainAllocation);
-		mainAllocation.dispose(target);
-		mainAllocation = null;
 	}
 
 	private void freeDeprecatedHandles(IAllocationContext context)
 	{
 		final var it = dirtyAllocations.iterator();
-		for (var handle : dirtyAllocations)
+		while (it.hasNext())
 		{
-			handle.free(context);
+			final var allocation = it.next();
+			allocation.free(context, target);
 
-			if (handle.getStatus() == AllocationInstance.EStatus.Free)
+			if (allocation.getStatus() == EAllocationStatus.Free)
 			{
 				it.remove();
 			}
 		}
 	}
 
-	private void allocateNew(final ILilyEObject target, final IAllocationContext context)
+	private void allocateNew(AllocationInstance<?> parent, final IAllocationContext context)
 	{
 		final var oldAllocation = mainAllocation != null ? mainAllocation.getAllocation() : null;
 		if (mainAllocation != null)
@@ -219,16 +141,21 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 
 		try
 		{
-			resolvers.resolve();
-			mainAllocation = descriptor.newHandle(target, resolvers, context);
-			mainAllocation.load(target);
+			mainAllocation = instanceBuilder.build(parent, context);
 			final var newAllocation = mainAllocation.getAllocation();
 			listeners.notify(listener -> listener.accept(oldAllocation, newAllocation));
+			mainAllocation.load(target);
 		}
-		catch (ReflectiveOperationException e)
+		catch (ReflectiveOperationException | AssertionError e)
 		{
 			e.printStackTrace();
 		}
+	}
+
+	private void deprecateMainHandle()
+	{
+		dirtyAllocations.add(mainAllocation);
+		mainAllocation = null;
 	}
 
 	@Override

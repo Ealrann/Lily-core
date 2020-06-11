@@ -1,7 +1,7 @@
 package org.sheepy.lily.core.allocation.parameter;
 
 import org.sheepy.lily.core.allocation.AllocationConfigurator;
-import org.sheepy.lily.core.api.allocation.annotation.InjectConfigurator;
+import org.sheepy.lily.core.api.allocation.IAllocationConfigurator;
 import org.sheepy.lily.core.api.extender.parameter.IParameterResolver;
 import org.sheepy.lily.core.api.extender.parameter.IParameterResolverBuilder;
 import org.sheepy.lily.core.api.model.ILilyEObject;
@@ -24,7 +24,7 @@ public final class ConfiguratorParameterBuilder implements IParameterResolverBui
 														   final Class<?> parameterClass,
 														   final Annotation parameterAnnotation)
 	{
-		if (parameterAnnotation instanceof InjectConfigurator)
+		if (parameterClass == IAllocationConfigurator.class)
 		{
 			if (configurator == null)
 			{

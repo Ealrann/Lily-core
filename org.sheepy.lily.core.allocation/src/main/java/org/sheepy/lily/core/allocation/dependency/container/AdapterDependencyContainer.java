@@ -1,31 +1,20 @@
 package org.sheepy.lily.core.allocation.dependency.container;
 
+import org.sheepy.lily.core.allocation.EAllocationStatus;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
-import org.sheepy.lily.core.api.model.ILilyEObject;
+
+import java.util.function.Consumer;
 
 public final class AdapterDependencyContainer implements IDependencyContainer
 {
+	private final IExtender resolvedAllocation;
 	private final IExtenderHandle<?> handle;
-	private final ILilyEObject target;
-	private IExtender resolvedAllocation = null;
 
-	public AdapterDependencyContainer(IExtenderHandle<?> handle, ILilyEObject target)
-	{
-		this.handle = handle;
-		this.target = target;
-	}
-
-	@Override
-	public void resolve()
+	public AdapterDependencyContainer(IExtenderHandle<?> handle)
 	{
 		resolvedAllocation = handle.getExtender();
-	}
-
-	@Override
-	public ILilyEObject getTarget()
-	{
-		return target;
+		this.handle = handle;
 	}
 
 	@Override
@@ -38,5 +27,15 @@ public final class AdapterDependencyContainer implements IDependencyContainer
 	public boolean isAllocationDirty()
 	{
 		return handle.getExtender() != resolvedAllocation;
+	}
+
+	@Override
+	public void listen(final Consumer<EAllocationStatus> statusListener)
+	{
+	}
+
+	@Override
+	public void sulk(final Consumer<EAllocationStatus> statusListener)
+	{
 	}
 }

@@ -35,7 +35,18 @@ public final class AdapterHandle<Extender extends IExtender> implements IExtende
 	@Override
 	public void load(ILilyEObject target, IEMFNotifier notifier)
 	{
-		if (observatory != null) observatory.observe(target);
+		if (observatory != null)
+		{
+			try
+			{
+				observatory.observe(target);
+			}
+			catch (Throwable e)
+			{
+				new AssertionError("Failed to start observatory of " + extender.getClass().getSimpleName(),
+								   e).printStackTrace();
+			}
+		}
 		registerHandleListeners(notifier);
 		callHandles(Load.class, target);
 	}

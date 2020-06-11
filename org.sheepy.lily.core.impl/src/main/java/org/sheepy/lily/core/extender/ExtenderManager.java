@@ -7,6 +7,7 @@ import org.sheepy.lily.core.api.model.LilyEObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -52,7 +53,7 @@ public final class ExtenderManager implements IExtenderManager.Internal
 	@Override
 	public <T extends IExtender> Stream<T> adapt(Class<T> type)
 	{
-		return getOrCreateHandlesOfExtenderType(type).map(IExtenderHandle::getExtender);
+		return getOrCreateHandlesOfExtenderType(type).map(IExtenderHandle::getExtender).filter(Objects::nonNull);
 	}
 
 	@Override
