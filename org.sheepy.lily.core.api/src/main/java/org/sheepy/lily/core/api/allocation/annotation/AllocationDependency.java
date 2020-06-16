@@ -1,7 +1,7 @@
 package org.sheepy.lily.core.api.allocation.annotation;
 
-import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.extender.IExtender;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.lang.annotation.*;
 
@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Repeatable(value = AllocationDependency.AnnotationList.class)
 public @interface AllocationDependency
 {
-	int[] features();
+	int[] features() default {};
 	Class<? extends ILilyEObject> parent() default ILilyEObject.class;
 	Class<? extends IExtender> type();
 

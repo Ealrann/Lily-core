@@ -7,12 +7,12 @@ import org.sheepy.lily.core.api.extender.IExtender;
 
 import java.util.function.Consumer;
 
-public final class AllocationDependencyContainer implements IDependencyContainer
+public final class AllocationDependencyContainer<T extends IExtender> implements IDependencyContainer
 {
-	private final AllocationInstance<?> resolvedAllocation;
-	private Consumer<EAllocationStatus> statusListener;
+	private final AllocationInstance<T> resolvedAllocation;
+	private Consumer<AllocationInstance<T>> statusListener;
 
-	public AllocationDependencyContainer(AllocationHandle<?> handle)
+	public AllocationDependencyContainer(AllocationHandle<T> handle)
 	{
 		resolvedAllocation = handle.getMainAllocation();
 	}
@@ -32,10 +32,10 @@ public final class AllocationDependencyContainer implements IDependencyContainer
 	@Override
 	public void listen(Consumer<EAllocationStatus> statusListener)
 	{
-		this.statusListener = statusListener;
+		this.statusListener = instance -> statusListener.accept(instance.getStatus());
 		if (resolvedAllocation != null)
 		{
-			resolvedAllocation.listen(statusListener);
+			resolvedAllocation.listen(this.statusListener);
 		}
 	}
 

@@ -2,33 +2,21 @@ package org.sheepy.lily.core.allocation.parameter;
 
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.extender.parameter.IParameterResolver;
-import org.sheepy.lily.core.api.extender.parameter.IParameterResolverBuilder;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.lang.annotation.Annotation;
-import java.util.Optional;
 
-public record ContextParameterResolverBuilder(IAllocationContext context) implements IParameterResolverBuilder,
-																					 IParameterResolver
+public record ContextParameterResolverBuilder(IAllocationContext context) implements IParameterResolver
 {
 	@Override
-	public Object resolve()
+	public boolean isApplicable(final Class<?> parameterClass, final Annotation parameterAnnotation)
 	{
-		return context;
+		return parameterClass.isInstance(context);
 	}
 
 	@Override
-	public Optional<ContextParameterResolverBuilder> tryBuild(final ILilyEObject target,
-															  final Class<?> parameterClass,
-															  final Annotation parameterAnnotation)
+	public Object resolve(ILilyEObject target, Class<?> parameterClass)
 	{
-		if (parameterClass.isInstance(context))
-		{
-			return Optional.of(this);
-		}
-		else
-		{
-			return Optional.empty();
-		}
+		return context;
 	}
 }

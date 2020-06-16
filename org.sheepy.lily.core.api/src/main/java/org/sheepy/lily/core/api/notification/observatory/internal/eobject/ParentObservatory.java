@@ -5,6 +5,7 @@ import org.sheepy.lily.core.api.notification.observatory.IEObjectObservatoryBuil
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
 import org.sheepy.lily.core.api.notification.observatory.internal.InternalObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.IEObjectPOI;
+import org.sheepy.lily.core.api.notification.util.ParentObserver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,8 @@ import java.util.List;
 public final class ParentObservatory<T extends ILilyEObject> extends AbstractEObjectObservatory<T> implements
 																								   IObservatory
 {
+	private final ParentObserver parentObserver = new ParentObserver(this::parentChange);
+
 	private ParentObservatory(Class<T> cast,
 							  List<IObservatory> children,
 							  List<IEObjectPOI> pois,
@@ -26,13 +29,21 @@ public final class ParentObservatory<T extends ILilyEObject> extends AbstractEOb
 	{
 		final var parent = (ILilyEObject) source.eContainer();
 		register(List.of(parent));
+		parentObserver.startObserve(source);
 	}
 
 	@Override
 	public void shut(final ILilyEObject source)
 	{
+		parentObserver.stopObserve(source);
 		final var parent = (ILilyEObject) source.eContainer();
-		unregister(List.of(parent));
+		if(parent != null) unregister(List.of(parent));
+	}
+
+	private void parentChange(ILilyEObject oldParent, ILilyEObject newParent)
+	{
+		unregister(List.of(oldParent));
+		if (newParent != null) register(List.of(newParent));
 	}
 
 	public static final class Builder<T extends ILilyEObject> extends AbstractEObjectObservatory.Builder<T> implements

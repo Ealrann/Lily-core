@@ -3,11 +3,10 @@ package org.sheepy.lily.core.extender;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
 import org.sheepy.lily.core.api.extender.parameter.IParameterResolver;
-import org.sheepy.lily.core.api.extender.parameter.IParameterResolverBuilder;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.reflect.ConstructorHandle;
 import org.sheepy.lily.core.api.util.ReflectUtils;
@@ -15,9 +14,8 @@ import org.sheepy.lily.core.model.types.LNamedElement;
 import org.sheepy.lily.core.reflect.util.AnnotationHandlesBuilder;
 
 import java.lang.annotation.Annotation;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -43,28 +41,30 @@ public final class ExtenderDescriptor<Extender extends IExtender> implements IEx
 		this.inheritance = inheritance;
 		this.targetName = targetName;
 		this.constructorHandle = constructorHandle;
-
-		final var annotatedMethods = ReflectUtils.gatherAnnotatedMethods(extenderClass);
-		this.executionHandleBuilders = List.copyOf(executionHandles(annotatedMethods));
+		this.executionHandleBuilders = executionHandles(extenderClass);
 	}
 
-	private static List<AnnotationHandlesBuilder<?>> executionHandles(final List<ReflectUtils.AnnotatedMethod<?>> annotatedMethods)
+	private static List<AnnotationHandlesBuilder<?>> executionHandles(final Class<?> extenderClass)
 	{
-		final List<AnnotationHandlesBuilder<?>> handleBuilders = new ArrayList<>();
-		for (var annotatedMethod : annotatedMethods)
-		{
-			if (handleBuilders.stream().noneMatch(builder -> builder.matchAddMethod(annotatedMethod)))
-			{
-				handleBuilders.add(new AnnotationHandlesBuilder<>(annotatedMethod));
-			}
-		}
-		return handleBuilders;
+		return ReflectUtils.streamAnnotatedMethods(extenderClass)
+						   .collect(Collectors.groupingBy(p -> p.annotation().annotationType()))
+						   .entrySet()
+						   .stream()
+						   .map(ExtenderDescriptor::buildAnnotationHandlesBuilder)
+						   .collect(Collectors.toUnmodifiableList());
+	}
+
+	@SuppressWarnings("unchecked")
+	private static <T extends Annotation> AnnotationHandlesBuilder<T> buildAnnotationHandlesBuilder(final Map.Entry<? extends Class<T>, List<ReflectUtils.AnnotatedMethod<?>>> entry)
+	{
+		final var methods = entry.getValue().stream().map(a -> (ReflectUtils.AnnotatedMethod<T>) a);
+		return new AnnotationHandlesBuilder<>(entry.getKey(), methods);
 	}
 
 	@Override
 	public ExtenderContext<Extender> newExtender(final ILilyEObject target,
 												 final IObservatoryBuilder observatory,
-												 final List<? extends IParameterResolverBuilder> resolvers) throws ReflectiveOperationException
+												 final List<? extends IParameterResolver> resolvers) throws ReflectiveOperationException
 	{
 		final var extender = instantiateExtender(target, observatory, resolvers);
 		final var annotationHandles = executionHandleBuilders.stream()
@@ -75,7 +75,7 @@ public final class ExtenderDescriptor<Extender extends IExtender> implements IEx
 
 	private Extender instantiateExtender(ILilyEObject target,
 										 IObservatoryBuilder observatory,
-										 List<? extends IParameterResolverBuilder> resolvers) throws ReflectiveOperationException
+										 List<? extends IParameterResolver> resolvers) throws ReflectiveOperationException
 	{
 		final var paramTypes = constructorHandle.getJavaConstructor().getParameterTypes();
 		final var paramAnnotations = constructorHandle.getJavaConstructor().getParameterAnnotations();
@@ -100,8 +100,8 @@ public final class ExtenderDescriptor<Extender extends IExtender> implements IEx
 			{
 				try
 				{
-					final var resolver = findResolver(target, resolvers, paramType, annotation);
-					parameters[i] = resolver.resolve();
+					final var resolver = findResolver(resolvers, paramType, annotation);
+					parameters[i] = resolver.resolve(target, paramType);
 				}
 				catch (ReflectiveOperationException e)
 				{
@@ -114,16 +114,13 @@ public final class ExtenderDescriptor<Extender extends IExtender> implements IEx
 		return constructorHandle.newInstance(parameters);
 	}
 
-	private static IParameterResolver findResolver(final ILilyEObject target,
-												   final List<? extends IParameterResolverBuilder> resolvers,
+	private static IParameterResolver findResolver(final List<? extends IParameterResolver> resolvers,
 												   final Class<?> paramType,
 												   final Annotation annotation) throws ReflectiveOperationException
 	{
 		return resolvers.stream()
-						.map(resolver -> resolver.tryBuild(target, paramType, annotation))
-						.filter(Optional::isPresent)
+						.filter(resolver -> resolver.isApplicable(paramType, annotation))
 						.findAny()
-						.map(Optional::get)
 						.orElseThrow(ReflectiveOperationException::new);
 	}
 

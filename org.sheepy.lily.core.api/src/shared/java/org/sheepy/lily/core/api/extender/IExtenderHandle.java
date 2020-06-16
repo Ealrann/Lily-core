@@ -17,8 +17,6 @@ public interface IExtenderHandle<T extends IExtender>
 	void dispose(ILilyEObject target, IEMFNotifier notifier);
 	<A extends Annotation> Stream<AnnotatedHandle<A>> annotatedHandles(Class<A> annotationClass);
 
-	boolean isExtenderChangeable();
-
 	void listen(ExtenderListener<T> extenderUpdateListener);
 	void listenNoParam(Runnable extenderUpdateListener);
 	void sulk(ExtenderListener<T> extenderUpdateListener);

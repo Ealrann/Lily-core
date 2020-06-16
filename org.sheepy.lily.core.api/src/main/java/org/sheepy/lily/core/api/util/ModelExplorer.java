@@ -32,6 +32,12 @@ public final class ModelExplorer implements IModelExplorer
 	}
 
 	@Override
+	public List<ILilyEObject> explore(ILilyEObject root)
+	{
+		return stream(root).collect(Collectors.toUnmodifiableList());
+	}
+
+	@Override
 	public <T extends ILilyEObject> Stream<T> stream(ILilyEObject root, Class<T> targetClass)
 	{
 		return stream(root).map(targetClass::cast);
@@ -73,7 +79,8 @@ public final class ModelExplorer implements IModelExplorer
 		return stream(root).map(e -> e.adaptNotNull(adapterType));
 	}
 
-	Stream<ILilyEObject> stream(ILilyEObject source)
+	@Override
+	public Stream<ILilyEObject> stream(ILilyEObject source)
 	{
 		final var root = parent(source);
 		final var list = List.of(root);

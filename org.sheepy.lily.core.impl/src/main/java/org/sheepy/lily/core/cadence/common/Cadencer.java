@@ -6,13 +6,14 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.model.LilyEObject;
+import org.sheepy.lily.core.api.allocation.IAllocationService;
 import org.sheepy.lily.core.api.cadence.*;
 import org.sheepy.lily.core.api.engine.IEngineAdapter;
 import org.sheepy.lily.core.api.engine.IInputEngineAdapter;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptorRegistry;
 import org.sheepy.lily.core.api.input.IInputManager;
+import org.sheepy.lily.core.api.model.ILilyEObject;
+import org.sheepy.lily.core.api.model.LilyEObject;
 import org.sheepy.lily.core.api.util.DebugUtil;
 import org.sheepy.lily.core.api.util.TimeUtil;
 import org.sheepy.lily.core.cadence.execution.CommandStack;
@@ -90,8 +91,7 @@ public class Cadencer implements ICadencer
 
 		for (final var engine : application.getEngines())
 		{
-			final var engineAdapter = engine.adapt(IEngineAdapter.class);
-			if (engineAdapter != null) engineAdapter.start();
+			IAllocationService.INSTANCE.ensureAllocation(engine, null);
 		}
 
 		for (final var engine : application.getEngines())
@@ -156,7 +156,8 @@ public class Cadencer implements ICadencer
 		for (final var engine : application.getEngines())
 		{
 			final var engineAdapter = engine.adapt(IEngineAdapter.class);
-			if (engineAdapter != null) engineAdapter.stop();
+			engineAdapter.waitIdle();
+			IAllocationService.INSTANCE.free(engine, null);
 		}
 
 		((LilyEObject) application).disposeAdapterManager();

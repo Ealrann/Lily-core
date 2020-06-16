@@ -76,9 +76,9 @@ public abstract class AbstractEObjectObservatory<T extends ILilyEObject> impleme
 	{
 		for (var object : objects)
 		{
-			for (var child : children)
+			for (var childObservatory : children)
 			{
-				child.shut(object);
+				childObservatory.shut(object);
 			}
 
 			for (var poi : pois)

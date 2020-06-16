@@ -9,18 +9,22 @@ import org.sheepy.lily.core.reflect.ExecutionHandleBuilder;
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class AnnotationHandlesBuilder<T extends Annotation>
 {
-	private final List<ExecutionMethod<T>> methods = new ArrayList<>();
 	private final Class<T> annotationClass;
+	private final List<ExecutionMethod<T>> methods;
 
-	public AnnotationHandlesBuilder(ReflectUtils.AnnotatedMethod<T> annotatedMethod)
+	public AnnotationHandlesBuilder(Class<T> annotationClass, Stream<ReflectUtils.AnnotatedMethod<T>> methods)
 	{
-		@SuppressWarnings("unchecked") final var classifier = (Class<T>) annotatedMethod.annotation().annotationType();
-		this.annotationClass = classifier;
-		registerMethod(annotatedMethod);
+		this.annotationClass = annotationClass;
+		this.methods = methods.map(AnnotationHandlesBuilder::buildExecutionMethod)
+							  .filter(Optional::isPresent)
+							  .map(Optional::get)
+							  .collect(Collectors.toUnmodifiableList());
 	}
 
 	public Class<T> annotationClass()
@@ -31,33 +35,6 @@ public final class AnnotationHandlesBuilder<T extends Annotation>
 	public Stream<T> streamAnnotations()
 	{
 		return methods.stream().map(m -> m.method.annotation());
-	}
-
-	public boolean matchAddMethod(final ReflectUtils.AnnotatedMethod<?> annotatedMethod)
-	{
-		if (annotatedMethod.annotation().annotationType() == annotationClass)
-		{
-			@SuppressWarnings("unchecked") final var cast = (ReflectUtils.AnnotatedMethod<T>) annotatedMethod;
-			registerMethod(cast);
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-
-	private void registerMethod(final ReflectUtils.AnnotatedMethod<T> cast)
-	{
-		try
-		{
-			final var executionMethod = new ExecutionMethod<>(cast);
-			methods.add(executionMethod);
-		}
-		catch (ReflectiveOperationException e)
-		{
-			e.printStackTrace();
-		}
 	}
 
 	public AnnotationHandles<T> build(Object adapter)
@@ -75,6 +52,19 @@ public final class AnnotationHandlesBuilder<T extends Annotation>
 		}
 
 		return new AnnotationHandles<>(annotationClass, List.copyOf(handles));
+	}
+
+	private static <T extends Annotation> Optional<ExecutionMethod<T>> buildExecutionMethod(ReflectUtils.AnnotatedMethod<T> method)
+	{
+		try
+		{
+			return Optional.of(new ExecutionMethod<>(method));
+		}
+		catch (ReflectiveOperationException e)
+		{
+			e.printStackTrace();
+			return Optional.empty();
+		}
 	}
 
 	public static record ExecutionMethod<T extends Annotation>(ReflectUtils.AnnotatedMethod<T>method,

@@ -3,18 +3,22 @@ package org.sheepy.lily.core.allocation.dependency;
 import org.sheepy.lily.core.allocation.dependency.container.IDependencyContainer;
 import org.sheepy.lily.core.allocation.util.StructureObserverBuilder;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationDependency;
+import org.sheepy.lily.core.api.allocation.annotation.InjectDependency;
+import org.sheepy.lily.core.api.extender.parameter.IParameterResolver;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.util.ListenerList;
 import org.sheepy.lily.core.api.util.IModelExplorer;
 import org.sheepy.lily.core.api.util.ModelUtil;
 
+import java.lang.annotation.Annotation;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public final class DependencyResolver
+public final class DependencyResolver implements IParameterResolver
 {
-	private final AllocationDependency annotation;
 	private final int index;
 	private final IModelExplorer modelExplorer;
 	private final IDependencyContainer.Builder dependencyBuilder;
@@ -22,7 +26,6 @@ public final class DependencyResolver
 
 	private DependencyResolver(AllocationDependency annotation, int index, StructureObserverBuilder observationBuilder)
 	{
-		this.annotation = annotation;
 		this.index = index;
 		observationBuilder.installListeners(this::dependencyChanged, this::dependencyChanged);
 		modelExplorer = observationBuilder.buildExplorer();
@@ -34,9 +37,29 @@ public final class DependencyResolver
 		notifyStructureChange();
 	}
 
+	@Override
+	public boolean isApplicable(final Class<?> parameterClass, final Annotation parameterAnnotation)
+	{
+		return parameterAnnotation instanceof InjectDependency injectAnnotation && injectAnnotation.index() == index;
+	}
+
+	@Override
+	public Object resolve(final ILilyEObject target, final Class<?> parameterClass)
+	{
+		final var stream = resolveDependencies(target).map(IDependencyContainer::get);
+		if (parameterClass == List.class)
+		{
+			return stream.collect(Collectors.toUnmodifiableList());
+		}
+		else
+		{
+			return stream.findAny().orElse(null);
+		}
+	}
+
 	public Stream<IDependencyContainer> resolveDependencies(ILilyEObject source)
 	{
-		return modelExplorer.stream(source, ILilyEObject.class)
+		return modelExplorer.stream(source)
 							.map(dependencyBuilder::build)
 							.filter(Optional::isPresent)
 							.map(Optional::get);
@@ -62,23 +85,8 @@ public final class DependencyResolver
 		listeners.sulk(structureListener);
 	}
 
-	@Override
-	public String toString()
+	public static record Builder(AllocationDependency annotation, int index)
 	{
-		return "Dependency{" + annotation.type().getSimpleName() + '}';
-	}
-
-	public static final class Builder
-	{
-		private final AllocationDependency annotation;
-		private final int index;
-
-		public Builder(AllocationDependency annotation, int index)
-		{
-			this.annotation = annotation;
-			this.index = index;
-		}
-
 		public DependencyResolver build(IObservatoryBuilder observatoryBuilder, ILilyEObject source)
 		{
 			final var observationBuilder = buildObservatory(observatoryBuilder, source);

@@ -4,10 +4,10 @@ import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.util.ServiceLoader;
 
-public interface IAllocationManager
+public interface IAllocationService
 {
 	void ensureAllocation(ILilyEObject target, IAllocationContext context);
 	void free(ILilyEObject target, IAllocationContext context);
 
-	IAllocationManager INSTANCE = ServiceLoader.load(IAllocationManager.class).findFirst().orElse(null);
+	IAllocationService INSTANCE = ServiceLoader.load(IAllocationService.class).findFirst().orElse(null);
 }

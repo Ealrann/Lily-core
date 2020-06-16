@@ -1,4 +1,4 @@
-import org.sheepy.lily.core.api.allocation.IAllocationManager;
+import org.sheepy.lily.core.api.allocation.IAllocationService;
 import org.sheepy.lily.core.api.application.IApplicationAdapter;
 import org.sheepy.lily.core.api.cadence.IStatistics;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptorRegistry;
@@ -71,6 +71,6 @@ module org.sheepy.lily.core.api {
 	uses IExtenderManagerFactory;
 	uses IStatistics;
 	uses IExtenderHandleFactory;
-	uses IAllocationManager;
+	uses IAllocationService;
 	uses IExtenderDescriptorRegistry;
 }

@@ -2,8 +2,8 @@ package org.sheepy.lily.core.api.extender;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.sheepy.lily.core.api.extender.parameter.IParameterResolver;
 import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.extender.parameter.IParameterResolverBuilder;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.util.AnnotationHandles;
 
@@ -22,7 +22,7 @@ public interface IExtenderDescriptor<T extends IExtender>
 	<A extends Annotation> Stream<A> streamMethodAnnotations(Class<A> annotationClass);
 	ExtenderContext<T> newExtender(ILilyEObject target,
 								   IObservatoryBuilder observatory,
-								   List<? extends IParameterResolverBuilder> resolvers) throws ReflectiveOperationException;
+								   List<? extends IParameterResolver> resolvers) throws ReflectiveOperationException;
 
 	record ExtenderContext<T extends IExtender>(T extender, List<? extends AnnotationHandles<?>>annotationHandles)
 	{

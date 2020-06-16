@@ -15,18 +15,12 @@ public class AdapterNoParamPOI<T extends IExtender> implements IAdapterPOI<T>
 	@Override
 	public void listen(final IExtenderHandle<T> handle)
 	{
-		if (handle.isExtenderChangeable())
-		{
-			handle.listenNoParam(onNewExtender);
-		}
+		handle.listenNoParam(onNewExtender);
 	}
 
 	@Override
 	public void sulk(final IExtenderHandle<T> handle)
 	{
-		if (handle.isExtenderChangeable())
-		{
-			handle.sulkNoParam(onNewExtender);
-		}
+		handle.sulkNoParam(onNewExtender);
 	}
 }

@@ -1,8 +1,8 @@
 package org.sheepy.lily.core.api.notification.observatory.internal.allocation;
 
-import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IAdapterObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
 import org.sheepy.lily.core.api.notification.observatory.internal.InternalObservatoryBuilder;
@@ -50,13 +50,10 @@ public class AdapterObservatory<Type extends IExtender> implements IObservatory
 			gather(adapter, gatherAdd);
 		}
 
-		if (handle.isExtenderChangeable())
+		handle.listen(onAdapterUpdate);
+		for (final var listener : listeners)
 		{
-			handle.listen(onAdapterUpdate);
-			for (final var listener : listeners)
-			{
-				listener.listen(handle);
-			}
+			listener.listen(handle);
 		}
 	}
 
@@ -68,14 +65,11 @@ public class AdapterObservatory<Type extends IExtender> implements IObservatory
 			gather(adapter, gatherRemove);
 		}
 
-		if (handle.isExtenderChangeable())
+		for (final var listener : listeners)
 		{
-			for (final var listener : listeners)
-			{
-				listener.sulk(handle);
-			}
-			handle.sulk(onAdapterUpdate);
+			listener.sulk(handle);
 		}
+		handle.sulk(onAdapterUpdate);
 	}
 
 	protected void onAdapterUpdate(Type oldAdapter, Type newAdapter)
@@ -123,8 +117,8 @@ public class AdapterObservatory<Type extends IExtender> implements IObservatory
 		public IAdapterObservatoryBuilder<Type> gatherAdaptation(Consumer<Type> onAddedObject,
 																 Consumer<Type> onRemovedObject)
 		{
-			if(onAddedObject != null) addListeners.add(onAddedObject);
-			if(onRemovedObject != null) removeListeners.add(onRemovedObject);
+			if (onAddedObject != null) addListeners.add(onAddedObject);
+			if (onRemovedObject != null) removeListeners.add(onRemovedObject);
 			return this;
 		}
 

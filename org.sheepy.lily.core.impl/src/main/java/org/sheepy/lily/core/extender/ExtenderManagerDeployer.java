@@ -63,12 +63,18 @@ public final class ExtenderManagerDeployer extends AdapterImpl implements IEMFNo
 	public void notifyChanged(Notification notification)
 	{
 		final var feature = notification.getFeature();
-		if (feature instanceof EReference && ((EReference) feature).isContainment() == true)
+		final boolean isContainment = feature instanceof EReference && ((EReference) feature).isContainment() == true;
+		if (isContainment)
 		{
-			NotificationUnifier.unify(notification, this::setupChild, this::disposeChild);
+			NotificationUnifier.unifyAdded(notification, this::setupChild);
 		}
 
 		listenerMap.notify(notification);
+
+		if (isContainment)
+		{
+			NotificationUnifier.unifyRemoved(notification, this::disposeChild);
+		}
 	}
 
 	private void setupChild(ILilyEObject notifier)

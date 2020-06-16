@@ -1,8 +1,8 @@
 package org.sheepy.lily.core.api.util;
 
 import org.eclipse.emf.ecore.EReference;
-import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.extender.IExtender;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,8 +46,7 @@ public final class CompositeModelExplorer
 
 	public <T extends IExtender> Stream<T> streamAdapt(ILilyEObject root, Class<T> adapterType)
 	{
-		return stream(root).map(e -> e.adapt(adapterType))
-						   .filter(Objects::nonNull);
+		return stream(root).map(e -> e.adapt(adapterType)).filter(Objects::nonNull);
 	}
 
 	public <T extends IExtender> List<T> exploreAdaptNotNull(ILilyEObject root, Class<T> adapterType)
@@ -55,8 +54,7 @@ public final class CompositeModelExplorer
 		return streamAdaptNotNull(root, adapterType).collect(Collectors.toUnmodifiableList());
 	}
 
-	public <T extends IExtender> Stream<T> streamAdaptNotNull(ILilyEObject root,
-															  Class<T> adapterType)
+	public <T extends IExtender> Stream<T> streamAdaptNotNull(ILilyEObject root, Class<T> adapterType)
 	{
 		return stream(root).map(e -> e.adaptNotNull(adapterType));
 	}

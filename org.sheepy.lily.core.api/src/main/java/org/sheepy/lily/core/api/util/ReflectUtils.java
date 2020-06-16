@@ -5,8 +5,9 @@ import org.sheepy.lily.core.api.extender.IExtender;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 public final class ReflectUtils
 {
@@ -28,59 +29,59 @@ public final class ReflectUtils
 		return res;
 	}
 
-	public static <T extends Annotation> Method gatherAnnotatedMethod(Class<?> type, Class<? extends T> annotationClass)
+	public static <T extends Annotation> Optional<AnnotatedMethod<T>> gatherAnnotatedMethod(Class<?> type,
+																							Class<T> annotationClass)
 	{
-		Method res = null;
-
-		final var methodAnnotation = gatherAnnotatedMethods(type, annotationClass);
-		if (methodAnnotation.isEmpty() == false)
-		{
-			res = methodAnnotation.get(0).method();
-		}
-
-		return res;
+		return streamAnnotatedMethods(type, annotationClass).findAny();
 	}
 
-	public static <T extends Annotation> List<AnnotatedMethod<T>> gatherAnnotatedMethods(Class<?> type,
-																						 Class<? extends T> annotationClass)
+	public static <T extends Annotation> Stream<AnnotatedMethod<T>> streamAnnotatedMethods(Class<?> type,
+																						   Class<T> annotationClass)
 	{
-		final List<AnnotatedMethod<T>> res = new ArrayList<>();
-		while (type != null)
-		{
-			for (final var method : type.getDeclaredMethods())
-			{
-				final var annotation = method.getAnnotation(annotationClass);
-				if (annotation != null)
-				{
-					res.add(new AnnotatedMethod<>(method, annotation));
-				}
-			}
-			type = type.getSuperclass();
-		}
-
-		return List.copyOf(res);
+		return streamClassHierarchy(type).map(Class::getDeclaredMethods)
+										 .flatMap(Arrays::stream)
+										 .map(method -> buildAnnotatedMethod(method, annotationClass))
+										 .filter(Optional::isPresent)
+										 .map(Optional::get);
 	}
 
-	public static List<AnnotatedMethod<?>> gatherAnnotatedMethods(Class<?> type)
+	private static <T extends Annotation> Optional<AnnotatedMethod<T>> buildAnnotatedMethod(Method method,
+																							Class<T> annotationClass)
 	{
-		final List<AnnotatedMethod<?>> res = new ArrayList<>();
-		while (type != Object.class)
+		final var annotation = method.getAnnotation(annotationClass);
+		if (annotation != null)
 		{
-			for (final var method : type.getDeclaredMethods())
-			{
-				for (final var annotation : method.getDeclaredAnnotations())
-				{
-					final String packageName = annotation.annotationType().getPackageName();
-					if (!packageName.startsWith("java") && !packageName.startsWith("sun"))
-					{
-						res.add(new AnnotatedMethod<>(method, annotation));
-					}
-				}
-			}
-			type = type.getSuperclass();
+			return Optional.of(new AnnotatedMethod<>(method, annotation));
 		}
+		else
+		{
+			return Optional.empty();
+		}
+	}
 
-		return List.copyOf(res);
+	public static Stream<Class<?>> streamClassHierarchy(Class<?> type)
+	{
+		return Stream.iterate(type, o -> o != Object.class, Class::getSuperclass);
+	}
+
+	public static Stream<AnnotatedMethod<? extends Annotation>> streamAnnotatedMethods(Class<?> type)
+	{
+		return streamClassHierarchy(type).map(Class::getDeclaredMethods)
+										 .flatMap(Arrays::stream)
+										 .flatMap(ReflectUtils::streamAnnotatedMethod);
+	}
+
+	public static Stream<AnnotatedMethod<? extends Annotation>> streamAnnotatedMethod(Method method)
+	{
+		return Arrays.stream(method.getAnnotations())
+					 .filter(ReflectUtils::isNotJavaAnnotation)
+					 .map(annotation -> new AnnotatedMethod<>(method, annotation));
+	}
+
+	private static boolean isNotJavaAnnotation(final Annotation annotation)
+	{
+		final String packageName = annotation.annotationType().getPackageName();
+		return !packageName.startsWith("java") && !packageName.startsWith("sun");
 	}
 
 	public static record AnnotatedMethod<T extends Annotation>(Method method, T annotation)

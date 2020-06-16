@@ -131,7 +131,7 @@ public final class ReflectionUtil
 													   factoryType,
 													   TYPE_OBJECT_VOID,
 													   methodHandle,
-													   TYPE_VOID_VOID);
+													   TYPE_OBJECT_VOID);
 		return site.getTarget();
 	}
 

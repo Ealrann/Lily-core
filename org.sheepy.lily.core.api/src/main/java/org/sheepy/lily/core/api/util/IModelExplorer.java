@@ -9,7 +9,9 @@ import java.util.stream.Stream;
 public interface IModelExplorer
 {
 	<T extends ILilyEObject> List<T> explore(ILilyEObject root, Class<T> targetClass);
+	List<ILilyEObject> explore(ILilyEObject root);
 	<T extends ILilyEObject> Stream<T> stream(ILilyEObject root, Class<T> targetClass);
+	Stream<ILilyEObject> stream(ILilyEObject root);
 	<T extends IExtender> List<T> exploreAdapt(ILilyEObject root, Class<T> adapterType);
 	<T extends IExtender> List<T> exploreAdaptGeneric(ILilyEObject root, Class<? extends IExtender> adapterType);
 	<T extends IExtender> Stream<T> streamAdapt(ILilyEObject root, Class<T> adapterType);

@@ -42,7 +42,7 @@ public interface IDependencyContainer
 		{
 			if (handle instanceof AllocationHandle<?> allocationHandle)
 			{
-				return new AllocationDependencyContainer(allocationHandle);
+				return new AllocationDependencyContainer<>(allocationHandle);
 			}
 			else
 			{

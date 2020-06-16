@@ -126,12 +126,6 @@ public final class AdapterHandle<Extender extends IExtender> implements IExtende
 	}
 
 	@Override
-	public boolean isExtenderChangeable()
-	{
-		return false;
-	}
-
-	@Override
 	public void listen(final ExtenderListener<Extender> listener)
 	{
 		// Not changeable, nothing to listen
