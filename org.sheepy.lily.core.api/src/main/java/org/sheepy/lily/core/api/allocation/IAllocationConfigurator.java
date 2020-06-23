@@ -5,4 +5,5 @@ public interface IAllocationConfigurator
 	void setAllocationObsolete();
 	void lockAllocation();
 	void unlockAllocation();
+	boolean isLocked();
 }

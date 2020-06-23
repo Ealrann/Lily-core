@@ -15,7 +15,7 @@ public interface IExtenderHandle<T extends IExtender>
 	T getExtender();
 	void load(ILilyEObject target, IEMFNotifier notifier);
 	void dispose(ILilyEObject target, IEMFNotifier notifier);
-	<A extends Annotation> Stream<AnnotatedHandle<A>> annotatedHandles(Class<A> annotationClass);
+	<A extends Annotation> Stream<AnnotatedHandle<A>> allAnnotatedHandles(Class<A> annotationClass);
 
 	void listen(ExtenderListener<T> extenderUpdateListener);
 	void listenNoParam(Runnable extenderUpdateListener);

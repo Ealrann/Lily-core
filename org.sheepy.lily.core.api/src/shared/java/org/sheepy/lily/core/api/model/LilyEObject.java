@@ -8,6 +8,7 @@ import org.sheepy.lily.core.api.extender.IExtenderManager;
 import org.sheepy.lily.core.api.extender.IExtenderManagerFactory;
 import org.sheepy.lily.core.model.types.LNamedElement;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
@@ -20,9 +21,18 @@ public abstract class LilyEObject extends EObjectImpl implements ILilyEObject
 
 	private final IExtenderManager.Internal extenderManager;
 
+	private List<Object> storage;
+
 	public LilyEObject()
 	{
 		extenderManager = ADAPTER_FACTORY != null ? ADAPTER_FACTORY.createExtenderManager(this) : null;
+	}
+
+	@Override
+	public List<Object> storage()
+	{
+		if (storage == null) storage = new ArrayList<>(2);
+		return storage;
 	}
 
 	@Override

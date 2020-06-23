@@ -32,7 +32,7 @@ public final class AllocationChildrenManager
 			final var childManager = childEntryManagers.get(i);
 			childManager.cleanup(source, context, freeEverything);
 		}
-		if(freeEverything) dirty = true;
+		if (freeEverything) dirty = true;
 	}
 
 	public void update(ILilyEObject source, final IAllocationContext context)
@@ -60,7 +60,12 @@ public final class AllocationChildrenManager
 
 	public IModelExplorer getChildrenExplorer(final int index)
 	{
-		return childEntryManagers.get(index).getModelExplorer();
+		final var res = childEntryManagers.stream()
+										  .filter(entry -> entry.getIndex() == index)
+										  .findAny()
+										  .map(ChildEntryManager::getModelExplorer);
+		assert res.isPresent();
+		return res.get();
 	}
 
 	public static final class Builder
@@ -74,23 +79,28 @@ public final class AllocationChildrenManager
 			this.target = target;
 		}
 
-		public AllocationChildrenManager build(final IObservatoryBuilder observatoryBuilder, final Runnable whenDirty)
+		public AllocationChildrenManager build(final IObservatoryBuilder observatoryBuilder,
+											   final Runnable whenDirty,
+											   final boolean preallocation)
 		{
-			final int size = childAnnotations.size();
-			final List<ChildEntryManager.Builder> res = new ArrayList<>(size);
-			for (int i = 0; i < size; i++)
+			final List<ChildEntryManager.Builder> builders = new ArrayList<>();
+			for (int i = 0; i < childAnnotations.size(); i++)
 			{
-				final var result = buildChildEntryManager(observatoryBuilder, i);
-				res.add(result);
+				final var annotation = childAnnotations.get(i);
+				if (annotation.allocateBeforeParent() == preallocation)
+				{
+					builders.add(buildEntry(observatoryBuilder, annotation, i));
+				}
 			}
-			return new AllocationChildrenManager(res, whenDirty);
+			return new AllocationChildrenManager(builders, whenDirty);
+
 		}
 
-		private ChildEntryManager.Builder buildChildEntryManager(final IObservatoryBuilder observatoryBuilder,
-																 final int index)
+		private ChildEntryManager.Builder buildEntry(final IObservatoryBuilder observatoryBuilder,
+													 final AllocationChild childAnnotation,
+													 int index)
 		{
-			final var childAnnotation = childAnnotations.get(index);
-			return new ChildEntryManager.Builder(target, observatoryBuilder, childAnnotation);
+			return new ChildEntryManager.Builder(target, observatoryBuilder, childAnnotation, index);
 		}
 	}
 }

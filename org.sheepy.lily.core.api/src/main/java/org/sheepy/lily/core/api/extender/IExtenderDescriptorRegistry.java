@@ -8,6 +8,7 @@ import java.util.stream.Stream;
 public interface IExtenderDescriptorRegistry
 {
 	Stream<IExtenderDescriptor<?>> streamDescriptors(final EObject target);
+	Stream<IExtenderDescriptor<?>> streamDescriptors();
 
 	IExtenderDescriptorRegistry INSTANCE = ServiceLoader.load(IExtenderDescriptorRegistry.class)
 														.findFirst()

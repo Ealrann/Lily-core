@@ -34,8 +34,7 @@ public interface IDependencyContainer
 
 		public Optional<IDependencyContainer> build(ILilyEObject target)
 		{
-			final var res = target.adapters().adaptHandles(type).findAny().map(Builder::buildDependencyContainer);
-			return res;
+			return target.adapters().adaptHandles(type).findAny().map(Builder::buildDependencyContainer);
 		}
 
 		private static IDependencyContainer buildDependencyContainer(final IExtenderHandle<? extends IExtender> handle)

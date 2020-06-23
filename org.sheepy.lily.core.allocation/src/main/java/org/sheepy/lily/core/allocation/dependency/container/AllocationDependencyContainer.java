@@ -15,6 +15,11 @@ public final class AllocationDependencyContainer<T extends IExtender> implements
 	public AllocationDependencyContainer(AllocationHandle<T> handle)
 	{
 		resolvedAllocation = handle.getMainAllocation();
+
+		if (resolvedAllocation == null)
+		{
+			throw new RuntimeException("Unallocated Dependency: " + handle.getExtenderClass().getSimpleName());
+		}
 	}
 
 	@Override
@@ -33,19 +38,13 @@ public final class AllocationDependencyContainer<T extends IExtender> implements
 	public void listen(Consumer<EAllocationStatus> statusListener)
 	{
 		this.statusListener = instance -> statusListener.accept(instance.getStatus());
-		if (resolvedAllocation != null)
-		{
-			resolvedAllocation.listen(this.statusListener);
-		}
+		resolvedAllocation.listen(this.statusListener);
 	}
 
 	@Override
 	public void sulk(Consumer<EAllocationStatus> statusListener)
 	{
-		if (resolvedAllocation != null)
-		{
-			resolvedAllocation.sulk(this.statusListener);
-		}
+		resolvedAllocation.sulk(this.statusListener);
 		this.statusListener = null;
 	}
 }

@@ -20,9 +20,11 @@ public final class ChildEntryManager
 	private final LinkedList<ILilyEObject> allocatedElements = new LinkedList<>();
 	private final IModelExplorer modelExplorer;
 	private final Runnable whenDirty;
+	private final int index;
 
-	private ChildEntryManager(StructureObserverBuilder observatoryBuilder, Runnable whenDirty)
+	private ChildEntryManager(StructureObserverBuilder observatoryBuilder, Runnable whenDirty, final int index)
 	{
+		this.index = index;
 		observatoryBuilder.installListeners(this::add, this::remove);
 		modelExplorer = observatoryBuilder.buildExplorer();
 		this.whenDirty = whenDirty;
@@ -92,19 +94,27 @@ public final class ChildEntryManager
 		return modelExplorer;
 	}
 
+	public int getIndex()
+	{
+		return index;
+	}
+
 	public static final class Builder
 	{
 		private final ILilyEObject source;
 		private final IObservatoryBuilder observatoryBuilder;
 		private final AllocationChild childAnnotation;
+		private final int index;
 
 		public Builder(final ILilyEObject source,
 					   IObservatoryBuilder observatoryBuilder,
-					   final AllocationChild childAnnotation)
+					   final AllocationChild childAnnotation,
+					   int index)
 		{
 			this.source = source;
 			this.observatoryBuilder = observatoryBuilder;
 			this.childAnnotation = childAnnotation;
+			this.index = index;
 		}
 
 		public ChildEntryManager build(Runnable whenDirty)
@@ -114,7 +124,7 @@ public final class ChildEntryManager
 			final var builder = new StructureObserverBuilder(observatoryBuilder,
 															 parentDistance,
 															 childAnnotation.features());
-			return new ChildEntryManager(builder, whenDirty);
+			return new ChildEntryManager(builder, whenDirty, index);
 		}
 	}
 }

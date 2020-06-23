@@ -5,10 +5,13 @@ import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderManager;
 import org.sheepy.lily.core.api.notification.IEMFNotifier;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 public interface ILilyEObject extends InternalEObject, IEMFNotifier
 {
+	List<Object> storage();
+
 	Stream<ILilyEObject> streamChildren();
 	Stream<ILilyEObject> streamAllChildren();
 

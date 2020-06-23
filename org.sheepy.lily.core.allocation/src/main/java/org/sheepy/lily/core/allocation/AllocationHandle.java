@@ -22,7 +22,8 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	private final ListenerList<ExtenderListener<Allocation>> listeners = new ListenerList<>();
 	private final ListenerList<Runnable> dirtyListeners = new ListenerList<>();
 	private final IObservatory observatory;
-	private final AllocationChildrenManager childrenManager;
+	private final AllocationChildrenManager preChildrenManager;
+	private final AllocationChildrenManager postChildrenManager;
 	private final AllocationManager<Allocation> allocationManager;
 
 	private boolean allocated = false;
@@ -36,12 +37,13 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 		final var resolvers = descriptor.createResolvers(observatoryBuilder, target);
 		final var childrenManagerBuilder = new AllocationChildrenManager.Builder(descriptor.getChildrenAnnotations(),
 																				 target);
-		childrenManager = childrenManagerBuilder.build(observatoryBuilder, this::setDirty);
-		final var instanceBuilder = new AllocationInstance.Builder<>(descriptor, target, resolvers, childrenManager);
-		allocationManager = new AllocationManager<>(target,
-													instanceBuilder,
-													this::allocationStatusChanged,
-													this::onAllocationChange);
+		postChildrenManager = childrenManagerBuilder.build(observatoryBuilder, this::setDirty, false);
+		preChildrenManager = childrenManagerBuilder.build(observatoryBuilder, this::setDirty, true);
+		final var instanceBuilder = new AllocationInstance.Builder<>(descriptor,
+																	 target,
+																	 resolvers,
+																	 postChildrenManager);
+		allocationManager = new AllocationManager<>(target, instanceBuilder, this::setDirty, this::onAllocationChange);
 		this.observatory = observatoryBuilder.build();
 	}
 
@@ -59,33 +61,41 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 
 	public void cleanup(final IAllocationContext context, boolean freeEverything)
 	{
-		if(allocated)
+		if (allocated)
 		{
-			if (freeEverything || childrenManager.isDirty())
+			if (freeEverything || postChildrenManager.isDirty())
 			{
 				final var childContext = descriptor.isProvidingContext() ? allocationManager.getProvidedContext() : context;
-				childrenManager.cleanup(target, childContext, freeEverything);
+				postChildrenManager.cleanup(target, childContext, freeEverything);
 			}
 			allocationManager.cleanup(context, freeEverything);
-			if(freeEverything) allocated = false;
+			if (freeEverything || postChildrenManager.isDirty())
+			{
+				preChildrenManager.cleanup(target, context, freeEverything);
+			}
+			if (freeEverything) allocated = false;
 		}
 	}
 
 	public void ensureAllocation(final IAllocationContext context)
 	{
+		if (preChildrenManager.isDirty())
+		{
+			preChildrenManager.update(target, context);
+		}
 		allocationManager.update(context);
-		if (childrenManager.isDirty())
+		if (postChildrenManager.isDirty())
 		{
 			final var providedContext = descriptor.isProvidingContext() ? allocationManager.getProvidedContext() : null;
 			if (providedContext != null)
 			{
 				providedContext.beforeChildrenAllocation();
-				childrenManager.update(target, providedContext);
+				postChildrenManager.update(target, providedContext);
 				providedContext.afterChildrenAllocation();
 			}
 			else
 			{
-				childrenManager.update(target, context);
+				postChildrenManager.update(target, context);
 			}
 			allocationManager.injectChildren();
 		}
@@ -94,17 +104,9 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	}
 
 	@Override
-	public <A extends Annotation> Stream<AnnotatedHandle<A>> annotatedHandles(final Class<A> annotationClass)
+	public <A extends Annotation> Stream<AnnotatedHandle<A>> allAnnotatedHandles(final Class<A> annotationClass)
 	{
-		return allocationManager.annotatedHandles(annotationClass);
-	}
-
-	private void allocationStatusChanged(AllocationInstance<Allocation> instance)
-	{
-		if (instance.getStatus() != EAllocationStatus.Allocated)
-		{
-			setDirty();
-		}
+		return allocationManager.allAnnotatedHandles(annotationClass);
 	}
 
 	private void setDirty()

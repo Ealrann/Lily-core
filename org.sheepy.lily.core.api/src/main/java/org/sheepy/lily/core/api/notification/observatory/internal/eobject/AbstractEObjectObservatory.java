@@ -179,17 +179,17 @@ public abstract class AbstractEObjectObservatory<T extends ILilyEObject> impleme
 		}
 
 		@Override
-		public IEObjectObservatoryBuilder<T> gather(Consumer<T> discoverObject, Consumer<T> removedObject)
+		public IEObjectObservatoryBuilder<T> gather(Consumer<T> discoveredObjects, Consumer<T> removedObject)
 		{
-			gatherListeners.add(new GatherListener<>(discoverObject, removedObject));
+			gatherListeners.add(new GatherListener<>(discoveredObjects, removedObject));
 			return this;
 		}
 
 		@Override
-		public IEObjectObservatoryBuilder<T> gatherBulk(Consumer<List<T>> discoverObjects,
+		public IEObjectObservatoryBuilder<T> gatherBulk(Consumer<List<T>> discoveredObjects,
 														Consumer<List<T>> removedObjects)
 		{
-			gatherBulkListeners.add(new GatherBulkListener<>(discoverObjects, removedObjects));
+			gatherBulkListeners.add(new GatherBulkListener<>(discoveredObjects, removedObjects));
 			return this;
 		}
 	}

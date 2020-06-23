@@ -41,23 +41,26 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 	private final List<? extends AnnotationHandles<?>> annotationHandles;
 	private final AllocationConfigurator configurator;
 	private final List<ChildrenInjector> childrenInjectors;
+	private final Runnable onUpdateNeeded;
 	private final DependencyManager dependencyManager;
 	private final ListenerList<Consumer<AllocationInstance<Allocation>>> listeners = new ListenerList<>();
 
 	private EAllocationStatus status = EAllocationStatus.Allocated;
 
-	public AllocationInstance(IExtenderDescriptor.ExtenderContext<Allocation> extenderContext,
-							  IObservatory observatory,
-							  List<DependencyUpdater.Builder> updatableDependencies,
-							  List<DependencyResolution.Builder> criticalDependencies,
-							  AllocationConfigurator configurator,
-							  final List<ChildrenInjector> childrenInjectors)
+	public AllocationInstance(final IExtenderDescriptor.ExtenderContext<Allocation> extenderContext,
+							  final IObservatory observatory,
+							  final List<DependencyUpdater.Builder> updatableDependencies,
+							  final List<DependencyResolution.Builder> criticalDependencies,
+							  final AllocationConfigurator configurator,
+							  final List<ChildrenInjector> childrenInjectors,
+							  final Runnable whenUpdateNeeded)
 	{
 		this.extender = extenderContext.extender();
 		this.annotationHandles = extenderContext.annotationHandles();
 		this.observatory = observatory;
 		this.configurator = configurator;
 		this.childrenInjectors = childrenInjectors;
+		this.onUpdateNeeded = whenUpdateNeeded;
 		this.dependencyManager = new DependencyManager(updatableDependencies,
 													   criticalDependencies,
 													   this::markDirty,
@@ -65,7 +68,7 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 
 		if (configurator != null)
 		{
-			configurator.setCallbacks(this::markObsolete);
+			configurator.setCallbacks(this::markObsolete, this::whenUnlocked);
 		}
 	}
 
@@ -99,9 +102,21 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 		setStatus(EAllocationStatus.Free);
 	}
 
+	private void whenUnlocked()
+	{
+		if (status != EAllocationStatus.Allocated)
+		{
+			onUpdateNeeded.run();
+		}
+	}
+
 	private void markObsolete()
 	{
-		setStatus(EAllocationStatus.Obsolete);
+		if (status != EAllocationStatus.Obsolete)
+		{
+			setStatus(EAllocationStatus.Obsolete);
+			onUpdateNeeded.run();
+		}
 	}
 
 	private void markDirty()
@@ -109,12 +124,13 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 		if (status == EAllocationStatus.Allocated)
 		{
 			setStatus(EAllocationStatus.Dirty);
+			onUpdateNeeded.run();
 		}
 	}
 
-	private boolean isLocked()
+	public boolean isLocked()
 	{
-		return configurator.isLocked();
+		return configurator != null && configurator.isLocked();
 	}
 
 	public boolean isUnlocked()
@@ -185,7 +201,8 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 		}
 
 		@SuppressWarnings("unchecked")
-		public AllocationInstance<Allocation> build(final IAllocationContext context) throws ReflectiveOperationException
+		public AllocationInstance<Allocation> build(final IAllocationContext context,
+													Runnable whenUpdateNeeded) throws ReflectiveOperationException
 		{
 			final var observatoryBuilder = IObservatoryBuilder.newObservatoryBuilder();
 			final var configuratorBuilder = new ConfiguratorParameterBuilder();
@@ -212,7 +229,8 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 											updatableDependencies,
 											criticalDependencies,
 											configuratorBuilder.getConfigurator(),
-											childrenInjectors);
+											childrenInjectors,
+											whenUpdateNeeded);
 		}
 
 		@SuppressWarnings("unchecked")

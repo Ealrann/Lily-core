@@ -103,7 +103,7 @@ public final class ExtenderDescriptor<Extender extends IExtender> implements IEx
 					final var resolver = findResolver(resolvers, paramType, annotation);
 					parameters[i] = resolver.resolve(target, paramType);
 				}
-				catch (ReflectiveOperationException e)
+				catch (Exception e)
 				{
 					throw new ReflectiveOperationException("Cannot resolve parameter " + i + " of constructor " + extenderClass
 							.getSimpleName(), e);

@@ -15,8 +15,9 @@ import java.util.stream.Stream;
 public final class ExtenderManager implements IExtenderManager.Internal
 {
 	private static final ExtenderDescriptorRegistry REGISTRY = (ExtenderDescriptorRegistry) IExtenderDescriptorRegistry.INSTANCE;
+
 	private final ExtenderManagerDeployer deployer;
-	private final List<IExtenderHandle<? extends IExtender>> handles = new ArrayList<>();
+	private final List<IExtenderHandle<? extends IExtender>> handles = new ArrayList<>(2);
 
 	private boolean loaded = false;
 

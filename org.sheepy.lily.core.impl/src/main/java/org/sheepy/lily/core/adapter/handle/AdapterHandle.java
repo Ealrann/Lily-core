@@ -68,13 +68,13 @@ public final class AdapterHandle<Extender extends IExtender> implements IExtende
 
 	private <A extends Annotation> void callHandles(final Class<A> annotationClass, Object... parameters)
 	{
-		annotatedHandles(annotationClass).map(point -> ((ConsumerHandle) point.executionHandle()))
-										 .forEach(handle -> handle.invoke(parameters));
+		allAnnotatedHandles(annotationClass).map(point -> ((ConsumerHandle) point.executionHandle()))
+											.forEach(handle -> handle.invoke(parameters));
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
-	public <A extends Annotation> Stream<IExtenderHandle.AnnotatedHandle<A>> annotatedHandles(Class<A> annotationClass)
+	public <A extends Annotation> Stream<IExtenderHandle.AnnotatedHandle<A>> allAnnotatedHandles(Class<A> annotationClass)
 	{
 		return annotationHandles.stream()
 								.filter(h -> h.annotationClass().equals(annotationClass))
@@ -83,7 +83,7 @@ public final class AdapterHandle<Extender extends IExtender> implements IExtende
 
 	private void registerHandleListeners(IEMFNotifier notifier)
 	{
-		final var notifyHandles = annotatedHandles(NotifyChanged.class);
+		final var notifyHandles = allAnnotatedHandles(NotifyChanged.class);
 		notifyHandles.forEach(notifyHandle -> {
 			final var featureIds = notifyHandle.annotation().featureIds();
 			final var executionHandle = (ConsumerHandle) notifyHandle.executionHandle();
@@ -102,7 +102,7 @@ public final class AdapterHandle<Extender extends IExtender> implements IExtende
 
 	private void unregisterHandleListeners(IEMFNotifier notifier)
 	{
-		final var notifyHandles = annotatedHandles(NotifyChanged.class);
+		final var notifyHandles = allAnnotatedHandles(NotifyChanged.class);
 		notifyHandles.forEach(notifyHandle -> {
 			final var featureIds = notifyHandle.annotation().featureIds();
 			final var executionHandle = (ConsumerHandle) notifyHandle.executionHandle();

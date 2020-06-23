@@ -4,9 +4,9 @@ import org.eclipse.emf.common.notify.Notification;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.adapter.annotation.NotifyChanged;
 import org.sheepy.lily.core.api.application.IApplicationAdapter;
-import org.sheepy.lily.core.api.cadence.ICadencer;
+import org.sheepy.lily.core.api.cadence.ICadenceManager;
 import org.sheepy.lily.core.api.extender.ModelExtender;
-import org.sheepy.lily.core.cadence.common.Cadencer;
+import org.sheepy.lily.core.cadence.common.CadenceManager;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 
@@ -14,7 +14,7 @@ import org.sheepy.lily.core.model.application.ApplicationPackage;
 @Adapter
 public class ApplicationAdapter implements IApplicationAdapter
 {
-	private Cadencer cadencer = null;
+	private CadenceManager cadenceManager = null;
 	private boolean launched = false;
 
 	@NotifyChanged(featureIds = ApplicationPackage.APPLICATION__RUN)
@@ -29,12 +29,12 @@ public class ApplicationAdapter implements IApplicationAdapter
 	@Override
 	public void launch(Application application, Runnable step)
 	{
-		cadencer = new Cadencer(application, step);
+		cadenceManager = new CadenceManager(application, step);
 
-		cadencer.load();
+		cadenceManager.load();
 		launched = true;
 
-		cadencer.run();
+		cadenceManager.run();
 	}
 
 	@Override
@@ -42,15 +42,15 @@ public class ApplicationAdapter implements IApplicationAdapter
 	{
 		if (launched == true)
 		{
-			cadencer.stop();
-			cadencer = null;
+			cadenceManager.stop();
+			cadenceManager = null;
 			launched = false;
 		}
 	}
 
 	@Override
-	public ICadencer getCadencer()
+	public ICadenceManager getCadenceManager()
 	{
-		return cadencer;
+		return cadenceManager;
 	}
 }

@@ -13,7 +13,6 @@ import org.sheepy.lily.core.api.util.ModelUtil;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -59,10 +58,20 @@ public final class DependencyResolver implements IParameterResolver
 
 	public Stream<IDependencyContainer> resolveDependencies(ILilyEObject source)
 	{
-		return modelExplorer.stream(source)
-							.map(dependencyBuilder::build)
-							.filter(Optional::isPresent)
-							.map(Optional::get);
+		return modelExplorer.stream(source).map(this::buildContainer);
+	}
+
+	private IDependencyContainer buildContainer(ILilyEObject target)
+	{
+		final var res = dependencyBuilder.build(target);
+		if (res.isPresent())
+		{
+			return res.get();
+		}
+		else
+		{
+			throw new RuntimeException("Cannot resolve dependency " + index);
+		}
 	}
 
 	public int getIndex()

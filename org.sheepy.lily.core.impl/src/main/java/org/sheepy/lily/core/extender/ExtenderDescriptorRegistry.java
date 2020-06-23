@@ -1,8 +1,8 @@
 package org.sheepy.lily.core.extender;
 
 import org.eclipse.emf.ecore.EObject;
-import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.extender.*;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.extender.util.ExtenderDescriptorBuilder;
 
 import java.lang.annotation.Annotation;
@@ -66,6 +66,12 @@ public final class ExtenderDescriptorRegistry implements IExtenderDescriptorRegi
 		return descriptors.stream()
 						  .filter(descriptor -> descriptor.descriptor.isApplicable(target))
 						  .map(d -> d.descriptor);
+	}
+
+	@Override
+	public Stream<IExtenderDescriptor<?>> streamDescriptors()
+	{
+		return descriptors.stream().map(d -> d.descriptor);
 	}
 
 	public Stream<DescriptorWraper<?>> descriptors(final EObject target)

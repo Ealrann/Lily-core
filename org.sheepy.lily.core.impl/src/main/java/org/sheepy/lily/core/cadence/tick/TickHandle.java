@@ -3,6 +3,7 @@ package org.sheepy.lily.core.cadence.tick;
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.api.cadence.ETickerClock;
 import org.sheepy.lily.core.api.cadence.Tick;
+import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.reflect.ConsumerHandle;
@@ -10,16 +11,18 @@ import org.sheepy.lily.core.api.reflect.ConsumerHandle;
 import java.util.function.Consumer;
 import java.util.function.LongConsumer;
 import java.util.function.ObjLongConsumer;
-import java.util.stream.Stream;
 
 public final class TickHandle
 {
 	private final ILilyEObject target;
-	private final ConsumerHandle handle;
+	private final IExtenderHandle<?> handle;
 	private final TickConfiguration configuration;
 	private final String adapterName;
 
-	public TickHandle(ILilyEObject target, ConsumerHandle handle, TickConfiguration configuration, String adapterName)
+	public TickHandle(ILilyEObject target,
+					  IExtenderHandle<?> handle,
+					  TickConfiguration configuration,
+					  String adapterName)
 	{
 		this.target = target;
 		this.handle = handle;
@@ -32,9 +35,17 @@ public final class TickHandle
 		return configuration.tickFrequency();
 	}
 
-	public void tick(long stepNs)
+	public void tick(final long stepNs)
 	{
-		final var function = handle.getLambdaFunction();
+		handle.allAnnotatedHandles(Tick.class)
+			  .filter(handle -> handle.annotation() == configuration.annotation())
+			  .forEach(handle -> tick(stepNs, handle));
+	}
+
+	private void tick(final long stepNs, final IExtenderHandle.AnnotatedHandle<Tick> tickAnnotatedHandle)
+	{
+		final var consumerHandle = (ConsumerHandle) tickAnnotatedHandle.executionHandle();
+		final var function = consumerHandle.getLambdaFunction();
 
 		// Let's do our best to avoid autoboxing
 		if (function instanceof LongConsumer)
@@ -83,25 +94,26 @@ public final class TickHandle
 
 	public static final class Builder
 	{
-		public final ILilyEObject target;
-		private final IExtenderHandle<?> handle;
+		private final IExtenderDescriptor<?> descriptor;
+		private final TickConfiguration tickConfiguration;
+		private final String adapterName;
 
-		public Builder(final ILilyEObject target, final IExtenderHandle<?> handle)
+		public Builder(final IExtenderDescriptor<?> descriptor, Tick annotation)
 		{
-			this.target = target;
-			this.handle = handle;
+			this.descriptor = descriptor;
+			tickConfiguration = new TickConfiguration(annotation);
+			adapterName = descriptor.extenderClass().getSimpleName();
 		}
 
-		public Stream<TickHandle> build()
+		public boolean isApplicable(ILilyEObject target)
 		{
-			return handle.annotatedHandles(Tick.class).map(this::buildTickHandles);
+			return descriptor.isApplicable(target);
 		}
 
-		private TickHandle buildTickHandles(final IExtenderHandle.AnnotatedHandle<Tick> annotatedHandle)
+		public TickHandle build(ILilyEObject target)
 		{
-			final var config = new TickConfiguration(annotatedHandle.annotation());
-			final var adapterName = handle.getExtender().getClass().getSimpleName();
-			return new TickHandle(target, (ConsumerHandle) annotatedHandle.executionHandle(), config, adapterName);
+			final var handle = target.adapters().adaptHandleFromDescriptor(descriptor);
+			return new TickHandle(target, handle, tickConfiguration, adapterName);
 		}
 	}
 }

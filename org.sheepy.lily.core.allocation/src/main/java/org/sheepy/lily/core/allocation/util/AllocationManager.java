@@ -11,14 +11,13 @@ import java.lang.annotation.Annotation;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.function.BiConsumer;
-import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 public final class AllocationManager<Allocation extends IExtender>
 {
 	private final ILilyEObject target;
 	private final AllocationInstance.Builder<Allocation> instanceBuilder;
-	private final Consumer<AllocationInstance<Allocation>> allocationListener;
+	private final Runnable whenUpdateNeeded;
 	private final BiConsumer<Allocation, Allocation> onAllocationChange;
 
 	private final Deque<AllocationInstance<Allocation>> dirtyAllocations = new ArrayDeque<>(1);
@@ -26,22 +25,28 @@ public final class AllocationManager<Allocation extends IExtender>
 
 	public AllocationManager(ILilyEObject target,
 							 AllocationInstance.Builder<Allocation> instanceBuilder,
-							 Consumer<AllocationInstance<Allocation>> allocationStatusListener,
+							 Runnable whenUpdateNeeded,
 							 IExtenderHandle.ExtenderListener<Allocation> onAllocationChange)
 	{
 		this.target = target;
 		this.instanceBuilder = instanceBuilder;
-		this.allocationListener = allocationStatusListener;
+		this.whenUpdateNeeded = whenUpdateNeeded;
 		this.onAllocationChange = onAllocationChange;
 	}
 
 	public void cleanup(final IAllocationContext context, boolean freeEverything)
 	{
-		if (mainAllocation != null && (freeEverything || mainAllocation.getStatus() == EAllocationStatus.Obsolete))
+		if (mainAllocation != null)
 		{
-			final var oldAllocation = mainAllocation.getAllocation();
-			deprecateMainHandle(context);
-			onAllocationChange.accept(oldAllocation, null);
+			final boolean obsolete = mainAllocation.getStatus() == EAllocationStatus.Obsolete;
+			final boolean dirtyLocked = mainAllocation.getStatus() == EAllocationStatus.Dirty && mainAllocation.isLocked();
+
+			if (freeEverything || obsolete || dirtyLocked)
+			{
+				final var oldAllocation = mainAllocation.getAllocation();
+				deprecateMainHandle();
+				onAllocationChange.accept(oldAllocation, null);
+			}
 		}
 		freeDeprecatedHandles(context);
 	}
@@ -50,14 +55,24 @@ public final class AllocationManager<Allocation extends IExtender>
 	{
 		if (mainAllocation == null)
 		{
-			allocateNew(context);
+			mainAllocation = dirtyAllocations.stream()
+											 .filter(AllocationManager::isAllocationDirtyUnlocked)
+											 .map(this::updateAllocation)
+											 .findAny()
+											 .orElseGet(() -> allocateNew(context));
+			mainAllocation.update(target);
+			onAllocationChange.accept(null, mainAllocation.getAllocation());
 		}
 		else if (mainAllocation.getStatus() == EAllocationStatus.Dirty)
 		{
 			mainAllocation.update(target);
 		}
+	}
 
-		freeDeprecatedHandles(context);
+	private AllocationInstance<Allocation> updateAllocation(AllocationInstance<Allocation> allocation)
+	{
+		allocation.update(target);
+		return allocation;
 	}
 
 	public void injectChildren()
@@ -65,43 +80,9 @@ public final class AllocationManager<Allocation extends IExtender>
 		mainAllocation.injectChildren(target);
 	}
 
-	public <A extends Annotation> Stream<IExtenderHandle.AnnotatedHandle<A>> annotatedHandles(final Class<A> annotationClass)
+	private void deprecateMainHandle()
 	{
-		if (mainAllocation == null)
-		{
-			return Stream.empty();
-		}
-		else
-		{
-			return mainAllocation.annotatedHandles(annotationClass);
-		}
-	}
-
-	private void allocateNew(final IAllocationContext context)
-	{
-		final var oldAllocation = mainAllocation != null ? mainAllocation.getAllocation() : null;
-		try
-		{
-			mainAllocation = instanceBuilder.build(context);
-			mainAllocation.load(target);
-			mainAllocation.listen(allocationListener);
-			final var newAllocation = mainAllocation.getAllocation();
-			onAllocationChange.accept(oldAllocation, newAllocation);
-		}
-		catch (ReflectiveOperationException | AssertionError e)
-		{
-			e.printStackTrace();
-		}
-	}
-
-	private void deprecateMainHandle(final IAllocationContext context)
-	{
-		mainAllocation.sulk(allocationListener);
-		mainAllocation.free(context, target);
-		if (mainAllocation.getStatus() != EAllocationStatus.Free)
-		{
-			dirtyAllocations.add(mainAllocation);
-		}
+		dirtyAllocations.add(mainAllocation);
 		mainAllocation = null;
 	}
 
@@ -111,13 +92,40 @@ public final class AllocationManager<Allocation extends IExtender>
 		while (it.hasNext())
 		{
 			final var allocation = it.next();
-			allocation.free(context, target);
-
-			if (allocation.getStatus() == EAllocationStatus.Free)
+			if (allocation.getStatus() == EAllocationStatus.Obsolete && allocation.isUnlocked())
 			{
+				allocation.free(context, target);
 				it.remove();
 			}
 		}
+	}
+
+	private AllocationInstance<Allocation> allocateNew(final IAllocationContext context)
+	{
+		try
+		{
+			final var newAllocationInstance = instanceBuilder.build(context, whenUpdateNeeded);
+			newAllocationInstance.load(target);
+			return newAllocationInstance;
+		}
+		catch (ReflectiveOperationException | AssertionError e)
+		{
+			throw new AssertionError(e);
+		}
+	}
+
+	public <A extends Annotation> Stream<IExtenderHandle.AnnotatedHandle<A>> allAnnotatedHandles(final Class<A> annotationClass)
+	{
+		final var otherStream = dirtyAllocations.stream().filter(this::isAllocationAlive);
+		final var mainStream = mainAllocation != null ? Stream.of(mainAllocation) : Stream.<AllocationInstance<Allocation>>empty();
+		final var fullStream = Stream.concat(mainStream, otherStream);
+		return fullStream.flatMap(allocation -> allocation.annotatedHandles(annotationClass));
+	}
+
+	private boolean isAllocationAlive(final AllocationInstance<Allocation> allocation)
+	{
+		final var status = allocation.getStatus();
+		return status == EAllocationStatus.Allocated || status == EAllocationStatus.Dirty;
 	}
 
 	public Allocation getExtender()
@@ -133,5 +141,10 @@ public final class AllocationManager<Allocation extends IExtender>
 	public IAllocationContext getProvidedContext()
 	{
 		return mainAllocation.getProvidedContext();
+	}
+
+	private static boolean isAllocationDirtyUnlocked(AllocationInstance<?> allocation)
+	{
+		return allocation.getStatus() == EAllocationStatus.Dirty && allocation.isUnlocked();
 	}
 }
