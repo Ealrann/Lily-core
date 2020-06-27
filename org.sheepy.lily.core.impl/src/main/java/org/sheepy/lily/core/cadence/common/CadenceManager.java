@@ -1,5 +1,6 @@
 package org.sheepy.lily.core.cadence.common;
 
+import org.sheepy.lily.core.api.allocation.IAllocationInstance;
 import org.sheepy.lily.core.api.allocation.IAllocationService;
 import org.sheepy.lily.core.api.cadence.ICadenceManager;
 import org.sheepy.lily.core.api.cadence.IStatistics;
@@ -11,9 +12,12 @@ import org.sheepy.lily.core.api.util.DebugUtil;
 import org.sheepy.lily.core.api.util.TimeUtil;
 import org.sheepy.lily.core.cadence.execution.CommandStack;
 import org.sheepy.lily.core.model.application.Application;
+import org.sheepy.lily.core.model.application.IEngine;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Collectors;
 
 public class CadenceManager implements ICadenceManager
 {
@@ -30,6 +34,7 @@ public class CadenceManager implements ICadenceManager
 
 	private IInputManager inputManager = null;
 	private Long mainThread = null;
+	private List<IAllocationInstance<IEngineAdapter>> engineAllocations;
 
 	public CadenceManager(Application application)
 	{
@@ -50,10 +55,10 @@ public class CadenceManager implements ICadenceManager
 
 		((LilyEObject) application).loadAdapterManager();
 
-		for (final var engine : application.getEngines())
-		{
-			IAllocationService.INSTANCE.ensureAllocation(engine, null);
-		}
+		engineAllocations = application.getEngines()
+									   .stream()
+									   .map(CadenceManager::allocateEngine)
+									   .collect(Collectors.toUnmodifiableList());
 
 		for (final var engine : application.getEngines())
 		{
@@ -108,11 +113,10 @@ public class CadenceManager implements ICadenceManager
 	{
 		cadencer.free();
 
-		for (final var engine : application.getEngines())
+		for (final var engineAllocation : engineAllocations)
 		{
-			final var engineAdapter = engine.adapt(IEngineAdapter.class);
-			engineAdapter.waitIdle();
-			IAllocationService.INSTANCE.free(engine, null);
+			engineAllocation.getAllocation().waitIdle();
+			engineAllocation.free(null);
 		}
 
 		((LilyEObject) application).disposeAdapterManager();
@@ -124,6 +128,11 @@ public class CadenceManager implements ICadenceManager
 		statistics.clear();
 
 		mainThread = null;
+	}
+
+	private static IAllocationInstance<IEngineAdapter> allocateEngine(final IEngine engine)
+	{
+		return IAllocationService.INSTANCE.allocate(engine, null, IEngineAdapter.class);
 	}
 
 	public void stop()

@@ -30,16 +30,16 @@ public record ChildrenInjector(Class<? extends IExtender>type, ConsumerHandle ha
 
 	public static final class Builder
 	{
-		private final AllocationChildrenManager childrenManager;
+		private final AllocationChildrenManager.Builder childrenManagerBuilder;
 
-		public Builder(final AllocationChildrenManager childrenManager)
+		public Builder(final AllocationChildrenManager.Builder childrenManagerBuilder)
 		{
-			this.childrenManager = childrenManager;
+			this.childrenManagerBuilder = childrenManagerBuilder;
 		}
 
 		public ChildrenInjector build(IExtenderHandle.AnnotatedHandle<InjectChildren> handle)
 		{
-			final var childrenExplorer = childrenManager.getChildrenExplorer(handle.annotation().index());
+			final var childrenExplorer = childrenManagerBuilder.getChildrenExplorer(handle.annotation().index());
 			return new ChildrenInjector(handle, childrenExplorer);
 		}
 	}

@@ -1,8 +1,8 @@
 package org.sheepy.lily.core.allocation.dependency.container;
 
 import org.sheepy.lily.core.allocation.AllocationHandle;
-import org.sheepy.lily.core.allocation.AllocationInstance;
 import org.sheepy.lily.core.allocation.EAllocationStatus;
+import org.sheepy.lily.core.allocation.instance.AllocationInstance;
 import org.sheepy.lily.core.api.extender.IExtender;
 
 import java.util.function.Consumer;
@@ -12,7 +12,7 @@ public final class AllocationDependencyContainer<T extends IExtender> implements
 	private final AllocationInstance<T> resolvedAllocation;
 	private Consumer<AllocationInstance<T>> statusListener;
 
-	public AllocationDependencyContainer(AllocationHandle<T> handle)
+	public AllocationDependencyContainer(final AllocationHandle<T> handle)
 	{
 		resolvedAllocation = handle.getMainAllocation();
 

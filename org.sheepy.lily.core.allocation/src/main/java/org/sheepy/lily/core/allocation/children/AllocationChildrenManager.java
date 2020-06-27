@@ -1,5 +1,6 @@
 package org.sheepy.lily.core.allocation.children;
 
+import org.sheepy.lily.core.allocation.util.StructureObserver;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationChild;
 import org.sheepy.lily.core.api.model.ILilyEObject;
@@ -16,21 +17,23 @@ public final class AllocationChildrenManager
 	private final Runnable whenDirty;
 	private boolean dirty = true;
 
-	public AllocationChildrenManager(List<ChildEntryManager.Builder> childEntryManagers, Runnable whenDirty)
+	public AllocationChildrenManager(final List<ChildEntryManager.Builder> childEntryManagers,
+									 final IObservatoryBuilder observatoryBuilder,
+									 final Runnable whenDirty)
 	{
 		this.childEntryManagers = childEntryManagers.stream()
-													.map(builder -> builder.build(this::setDirty))
+													.map(builder -> builder.build(observatoryBuilder, this::setDirty))
 													.collect(Collectors.toUnmodifiableList());
 		this.whenDirty = whenDirty;
 	}
 
-	public void cleanup(final ILilyEObject source, final IAllocationContext context, boolean freeEverything)
+	public void cleanup(final IAllocationContext context, boolean freeEverything)
 	{
 		final int size = childEntryManagers.size();
 		for (int i = size - 1; i >= 0; i--)
 		{
 			final var childManager = childEntryManagers.get(i);
-			childManager.cleanup(source, context, freeEverything);
+			childManager.cleanup(context, freeEverything);
 		}
 		if (freeEverything) dirty = true;
 	}
@@ -39,7 +42,7 @@ public final class AllocationChildrenManager
 	{
 		for (final var childManager : childEntryManagers)
 		{
-			childManager.ensureAllocation(source, context);
+			childManager.update(source, context);
 		}
 		dirty = false;
 	}
@@ -58,49 +61,52 @@ public final class AllocationChildrenManager
 		return dirty;
 	}
 
-	public IModelExplorer getChildrenExplorer(final int index)
-	{
-		final var res = childEntryManagers.stream()
-										  .filter(entry -> entry.getIndex() == index)
-										  .findAny()
-										  .map(ChildEntryManager::getModelExplorer);
-		assert res.isPresent();
-		return res.get();
-	}
-
 	public static final class Builder
 	{
-		private final List<AllocationChild> childAnnotations;
 		private final ILilyEObject target;
+		private final List<ChildEntryManager.Builder> preChildEntryBuilders;
+		private final List<ChildEntryManager.Builder> postChildEntryBuilders;
 
-		public Builder(List<AllocationChild> childAnnotations, final ILilyEObject target)
+		public Builder(final List<AllocationChild> childAnnotations, final ILilyEObject target)
 		{
-			this.childAnnotations = List.copyOf(childAnnotations);
 			this.target = target;
-		}
 
-		public AllocationChildrenManager build(final IObservatoryBuilder observatoryBuilder,
-											   final Runnable whenDirty,
-											   final boolean preallocation)
-		{
-			final List<ChildEntryManager.Builder> builders = new ArrayList<>();
+			final List<ChildEntryManager.Builder> preList = new ArrayList<>();
+			final List<ChildEntryManager.Builder> postList = new ArrayList<>();
 			for (int i = 0; i < childAnnotations.size(); i++)
 			{
 				final var annotation = childAnnotations.get(i);
-				if (annotation.allocateBeforeParent() == preallocation)
-				{
-					builders.add(buildEntry(observatoryBuilder, annotation, i));
-				}
+				final var entry = buildEntry(annotation, i);
+				final var trgList = annotation.allocateBeforeParent() ? preList : postList;
+				trgList.add(entry);
 			}
-			return new AllocationChildrenManager(builders, whenDirty);
 
+			preChildEntryBuilders = List.copyOf(preList);
+			postChildEntryBuilders = List.copyOf(postList);
 		}
 
-		private ChildEntryManager.Builder buildEntry(final IObservatoryBuilder observatoryBuilder,
-													 final AllocationChild childAnnotation,
-													 int index)
+		private ChildEntryManager.Builder buildEntry(final AllocationChild childAnnotation, int index)
 		{
-			return new ChildEntryManager.Builder(target, observatoryBuilder, childAnnotation, index);
+			return new ChildEntryManager.Builder(target, childAnnotation, index);
+		}
+
+		public AllocationChildrenManager build(final Runnable whenDirty,
+											   final boolean preallocation,
+											   final IObservatoryBuilder observatoryBuilder)
+		{
+			final var entryBuilders = preallocation ? preChildEntryBuilders : postChildEntryBuilders;
+
+			return new AllocationChildrenManager(entryBuilders, observatoryBuilder, whenDirty);
+		}
+
+		public IModelExplorer getChildrenExplorer(final int index)
+		{
+			return postChildEntryBuilders.stream()
+										 .filter(b -> b.index() == index)
+										 .findAny()
+										 .map(ChildEntryManager.Builder::structureObservatoryBuilder)
+										 .map(StructureObserver.Builder::buildExplorer)
+										 .orElse(null);
 		}
 	}
 }

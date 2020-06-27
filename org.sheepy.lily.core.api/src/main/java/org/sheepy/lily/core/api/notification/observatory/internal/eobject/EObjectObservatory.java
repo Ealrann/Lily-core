@@ -5,6 +5,8 @@ import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IEObjectObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
 import org.sheepy.lily.core.api.notification.observatory.internal.InternalObservatoryBuilder;
+import org.sheepy.lily.core.api.notification.observatory.internal.eobject.listener.GatherBulkListener;
+import org.sheepy.lily.core.api.notification.observatory.internal.eobject.listener.GatherListener;
 import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.IEObjectPOI;
 import org.sheepy.lily.core.api.notification.util.ModelStructureBulkObserver;
 

@@ -87,7 +87,7 @@ public final class IntModelExplorer implements IModelExplorer
 		var stream = list.stream();
 		for (final var feature : references)
 		{
-			stream = stream.flatMap(e -> extractList(e, feature));
+			stream = stream.flatMap(e -> stream(e, feature));
 		}
 		return stream;
 	}
@@ -102,7 +102,7 @@ public final class IntModelExplorer implements IModelExplorer
 	}
 
 	@SuppressWarnings("unchecked")
-	private static Stream<ILilyEObject> extractList(ILilyEObject object, int reference)
+	private static Stream<ILilyEObject> stream(ILilyEObject object, int reference)
 	{
 		final var val = getValue(object, reference);
 		if (val != null)

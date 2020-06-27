@@ -1,8 +1,7 @@
 package org.sheepy.lily.core.allocation;
 
-import org.sheepy.lily.core.allocation.children.AllocationChildrenManager;
 import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
-import org.sheepy.lily.core.allocation.util.AllocationManager;
+import org.sheepy.lily.core.allocation.instance.AllocationInstance;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.IAllocationHandle;
 import org.sheepy.lily.core.api.extender.IExtender;
@@ -17,33 +16,20 @@ import java.util.stream.Stream;
 
 public final class AllocationHandle<Allocation extends IExtender> implements IAllocationHandle<Allocation>
 {
-	private final ILilyEObject target;
 	private final AllocationDescriptor<Allocation> descriptor;
 	private final ListenerList<ExtenderListener<Allocation>> listeners = new ListenerList<>();
-	private final ListenerList<Runnable> dirtyListeners = new ListenerList<>();
 	private final IObservatory observatory;
-	private final AllocationChildrenManager preChildrenManager;
-	private final AllocationChildrenManager postChildrenManager;
-	private final AllocationManager<Allocation> allocationManager;
+	private final AllocationInstance.Builder<Allocation> instanceBuilder;
 
-	private boolean allocated = false;
-	private boolean dirty = true;
+	private AllocationInstance<Allocation> mainAllocation = null;
 
 	public AllocationHandle(ILilyEObject target, AllocationDescriptor<Allocation> descriptor)
 	{
 		final var observatoryBuilder = IObservatoryBuilder.newObservatoryBuilder();
-		this.target = target;
 		this.descriptor = descriptor;
 		final var resolvers = descriptor.createResolvers(observatoryBuilder, target);
-		final var childrenManagerBuilder = new AllocationChildrenManager.Builder(descriptor.getChildrenAnnotations(),
-																				 target);
-		postChildrenManager = childrenManagerBuilder.build(observatoryBuilder, this::setDirty, false);
-		preChildrenManager = childrenManagerBuilder.build(observatoryBuilder, this::setDirty, true);
-		final var instanceBuilder = new AllocationInstance.Builder<>(descriptor,
-																	 target,
-																	 resolvers,
-																	 postChildrenManager);
-		allocationManager = new AllocationManager<>(target, instanceBuilder, this::setDirty, this::onAllocationChange);
+
+		instanceBuilder = new AllocationInstance.Builder<>(descriptor, target, resolvers);
 		this.observatory = observatoryBuilder.build();
 	}
 
@@ -59,63 +45,35 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 		observatory.shut(target);
 	}
 
-	public void cleanup(final IAllocationContext context, boolean freeEverything)
+	public AllocationInstance<Allocation> allocateNew(final IAllocationContext context, Runnable whenUpdateNeeded)
 	{
-		if (allocated)
+		try
 		{
-			if (freeEverything || postChildrenManager.isDirty())
-			{
-				final var childContext = descriptor.isProvidingContext() ? allocationManager.getProvidedContext() : context;
-				postChildrenManager.cleanup(target, childContext, freeEverything);
-			}
-			allocationManager.cleanup(context, freeEverything);
-			if (freeEverything || postChildrenManager.isDirty())
-			{
-				preChildrenManager.cleanup(target, context, freeEverything);
-			}
-			if (freeEverything) allocated = false;
+			final var previousAllocation = getAllocationOrNull(mainAllocation);
+			mainAllocation = instanceBuilder.build(context, whenUpdateNeeded);
+			mainAllocation.load(context);
+			final var newAllocation = getAllocationOrNull(mainAllocation);
+			onAllocationChange(previousAllocation, newAllocation);
+			return mainAllocation;
+		}
+		catch (Exception e)
+		{
+			throw new AssertionError("Cannot build " + descriptor.extenderClass().getSimpleName(), e);
 		}
 	}
 
-	public void ensureAllocation(final IAllocationContext context)
+	public void setMainAllocation(final AllocationInstance<Allocation> allocation)
 	{
-		if (preChildrenManager.isDirty())
-		{
-			preChildrenManager.update(target, context);
-		}
-		allocationManager.update(context);
-		if (postChildrenManager.isDirty())
-		{
-			final var providedContext = descriptor.isProvidingContext() ? allocationManager.getProvidedContext() : null;
-			if (providedContext != null)
-			{
-				providedContext.beforeChildrenAllocation();
-				postChildrenManager.update(target, providedContext);
-				providedContext.afterChildrenAllocation();
-			}
-			else
-			{
-				postChildrenManager.update(target, context);
-			}
-			allocationManager.injectChildren();
-		}
-		dirty = false;
-		allocated = true;
+		final var previousAllocation = getAllocationOrNull(mainAllocation);
+		final var newAllocation = getAllocationOrNull(allocation);
+		this.mainAllocation = allocation;
+		onAllocationChange(previousAllocation, newAllocation);
 	}
 
 	@Override
 	public <A extends Annotation> Stream<AnnotatedHandle<A>> allAnnotatedHandles(final Class<A> annotationClass)
 	{
-		return allocationManager.allAnnotatedHandles(annotationClass);
-	}
-
-	private void setDirty()
-	{
-		if (dirty == false)
-		{
-			dirty = true;
-			dirtyListeners.notify(Runnable::run);
-		}
+		return mainAllocation.annotatedHandles(annotationClass);
 	}
 
 	@Override
@@ -127,7 +85,7 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	@Override
 	public Allocation getExtender()
 	{
-		return allocationManager.getExtender();
+		return getAllocationOrNull(mainAllocation);
 	}
 
 	private void onAllocationChange(Allocation oldAllocation, Allocation newAllocation)
@@ -137,7 +95,7 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 
 	public AllocationInstance<Allocation> getMainAllocation()
 	{
-		return allocationManager.getMainAllocation();
+		return mainAllocation;
 	}
 
 	@Override
@@ -164,13 +122,8 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 		listeners.sulkNoParam(listener);
 	}
 
-	public void listenDirty(final Runnable listener)
+	private static <T extends IExtender> T getAllocationOrNull(AllocationInstance<T> instance)
 	{
-		dirtyListeners.listen(listener);
-	}
-
-	public void sulkDirty(final Runnable listener)
-	{
-		dirtyListeners.sulk(listener);
+		return instance != null ? instance.getAllocation() : null;
 	}
 }

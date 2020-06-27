@@ -11,6 +11,8 @@ import org.sheepy.lily.core.api.notification.observatory.INotifierAdapterObserva
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
 import org.sheepy.lily.core.api.notification.observatory.internal.InternalObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.internal.allocation.AdapterObservatory;
+import org.sheepy.lily.core.api.notification.observatory.internal.eobject.listener.GatherBulkListener;
+import org.sheepy.lily.core.api.notification.observatory.internal.eobject.listener.GatherListener;
 import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.EObjectNoParamPOI;
 import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.EObjectPOI;
 import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.IEObjectPOI;
@@ -46,7 +48,7 @@ public abstract class AbstractEObjectObservatory<T extends ILilyEObject> impleme
 	{
 		for (var listener : gatherBulkListeners)
 		{
-			listener.discoverObjects.accept((List<T>) objects);
+			listener.discoverObjects().accept((List<T>) objects);
 		}
 
 		for (var object : objects)
@@ -55,7 +57,7 @@ public abstract class AbstractEObjectObservatory<T extends ILilyEObject> impleme
 			{
 				if (cast.isInstance(object))
 				{
-					listener.discoverObject.accept(cast.cast(object));
+					listener.discoverObject().accept(cast.cast(object));
 				}
 			}
 
@@ -90,14 +92,14 @@ public abstract class AbstractEObjectObservatory<T extends ILilyEObject> impleme
 			{
 				if (cast.isInstance(object))
 				{
-					listener.removedObject.accept(cast.cast(object));
+					listener.removedObject().accept(cast.cast(object));
 				}
 			}
 		}
 
 		for (var listener : gatherBulkListeners)
 		{
-			listener.removedObjects.accept((List<T>) objects);
+			listener.removedObjects().accept((List<T>) objects);
 		}
 	}
 
@@ -179,9 +181,9 @@ public abstract class AbstractEObjectObservatory<T extends ILilyEObject> impleme
 		}
 
 		@Override
-		public IEObjectObservatoryBuilder<T> gather(Consumer<T> discoveredObjects, Consumer<T> removedObject)
+		public IEObjectObservatoryBuilder<T> gather(Consumer<T> discoveredObject, Consumer<T> removedObject)
 		{
-			gatherListeners.add(new GatherListener<>(discoveredObjects, removedObject));
+			gatherListeners.add(new GatherListener<>(discoveredObject, removedObject));
 			return this;
 		}
 
@@ -191,30 +193,6 @@ public abstract class AbstractEObjectObservatory<T extends ILilyEObject> impleme
 		{
 			gatherBulkListeners.add(new GatherBulkListener<>(discoveredObjects, removedObjects));
 			return this;
-		}
-	}
-
-	protected static final class GatherListener<T extends ILilyEObject>
-	{
-		final Consumer<T> discoverObject;
-		final Consumer<T> removedObject;
-
-		GatherListener(Consumer<T> discoverObject, Consumer<T> removedObject)
-		{
-			this.discoverObject = discoverObject;
-			this.removedObject = removedObject;
-		}
-	}
-
-	protected static final class GatherBulkListener<T extends ILilyEObject>
-	{
-		final Consumer<List<T>> discoverObjects;
-		final Consumer<List<T>> removedObjects;
-
-		GatherBulkListener(Consumer<List<T>> discoverObjects, Consumer<List<T>> removedObjects)
-		{
-			this.discoverObjects = discoverObjects;
-			this.removedObjects = removedObjects;
 		}
 	}
 }

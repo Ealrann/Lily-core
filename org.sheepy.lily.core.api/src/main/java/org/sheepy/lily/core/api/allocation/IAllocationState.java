@@ -1,6 +1,6 @@
 package org.sheepy.lily.core.api.allocation;
 
-public interface IAllocationConfigurator
+public interface IAllocationState
 {
 	void setAllocationObsolete();
 	void lockAllocation();

@@ -70,4 +70,9 @@ public final class DependencyManager
 			case Obsolete, Free -> onObsolete.run();
 		}
 	}
+
+	public static final class Builder
+	{
+
+	}
 }

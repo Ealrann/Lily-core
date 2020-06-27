@@ -5,7 +5,7 @@ import org.sheepy.lily.core.api.notification.IFeatures;
 import org.sheepy.lily.core.api.notification.INotifier;
 import org.sheepy.lily.core.api.notification.observatory.internal.eobject.RootObservatory;
 
-public interface IObservatoryBuilder extends IStructuralObservatoryBuilder<IObservatoryBuilder>
+public interface IObservatoryBuilder extends IEObjectObservatoryBuilder<ILilyEObject>
 {
 	static IObservatoryBuilder newObservatoryBuilder()
 	{

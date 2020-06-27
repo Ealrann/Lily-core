@@ -1,13 +1,15 @@
 package org.sheepy.lily.core.api.notification.observatory.internal.eobject;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.extender.IExtender;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.IFeatures;
 import org.sheepy.lily.core.api.notification.INotifier;
 import org.sheepy.lily.core.api.notification.observatory.*;
 import org.sheepy.lily.core.api.notification.observatory.internal.InternalObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.internal.allocation.AdapterObservatory;
+import org.sheepy.lily.core.api.notification.observatory.internal.eobject.listener.GatherBulkListener;
+import org.sheepy.lily.core.api.notification.observatory.internal.eobject.listener.GatherListener;
 import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.EObjectNoParamPOI;
 import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.EObjectPOI;
 import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.IEObjectPOI;
@@ -22,36 +24,65 @@ public abstract class AbstractRootObservatory implements IObservatory
 {
 	private final List<IObservatory> children;
 	private final List<IEObjectPOI> pois;
+	private final List<GatherListener<ILilyEObject>> gatherListeners;
+	private final List<GatherBulkListener<ILilyEObject>> gatherBulkListeners;
 
-	protected AbstractRootObservatory(List<IObservatory> children, List<IEObjectPOI> pois)
+	protected AbstractRootObservatory(List<IObservatory> children,
+									  List<IEObjectPOI> pois,
+									  List<GatherListener<ILilyEObject>> gatherListeners,
+									  List<GatherBulkListener<ILilyEObject>> gatherBulkListeners)
 	{
 		this.children = List.copyOf(children);
 		this.pois = List.copyOf(pois);
+		this.gatherListeners = List.copyOf(gatherListeners);
+		this.gatherBulkListeners = List.copyOf(gatherBulkListeners);
 	}
 
 	protected void register(final ILilyEObject target)
 	{
+		for (var listener : gatherListeners)
+		{
+			listener.discoverObject().accept(target);
+		}
+		if (gatherBulkListeners.isEmpty() == false)
+		{
+			final var targetList = List.of(target);
+			for (var listener : gatherBulkListeners)
+			{
+				listener.discoverObjects().accept(targetList);
+			}
+		}
 		for (var poi : pois)
 		{
 			poi.listen(target);
 		}
-
 		for (var child : children)
 		{
 			child.observe(target);
 		}
 	}
 
-	protected void unregister(final ILilyEObject parent)
+	protected void unregister(final ILilyEObject target)
 	{
 		for (var child : children)
 		{
-			child.shut(parent);
+			child.shut(target);
 		}
-
 		for (var poi : pois)
 		{
-			poi.sulk(parent);
+			poi.sulk(target);
+		}
+		if (gatherBulkListeners.isEmpty() == false)
+		{
+			final var targetList = List.of(target);
+			for (var listener : gatherBulkListeners)
+			{
+				listener.removedObjects().accept(targetList);
+			}
+		}
+		for (var listener : gatherListeners)
+		{
+			listener.removedObject().accept(target);
 		}
 	}
 
@@ -59,6 +90,8 @@ public abstract class AbstractRootObservatory implements IObservatory
 	{
 		protected final List<InternalObservatoryBuilder> children = new ArrayList<>();
 		protected final List<IEObjectPOI> pois = new ArrayList<>();
+		protected final List<GatherListener<ILilyEObject>> gatherListeners = new ArrayList<>();
+		protected final List<GatherBulkListener<ILilyEObject>> gatherBulkListeners = new ArrayList<>();
 
 		@Override
 		public IObservatoryBuilder focus(ILilyEObject object)
@@ -115,6 +148,22 @@ public abstract class AbstractRootObservatory implements IObservatory
 			final var child = new AdapterObservatory.Builder<>(classifier);
 			children.add(child);
 			return child;
+		}
+
+		@Override
+		public IEObjectObservatoryBuilder<ILilyEObject> gather(final Consumer<ILilyEObject> discoveredObject,
+															   final Consumer<ILilyEObject> removedObject)
+		{
+			gatherListeners.add(new GatherListener<>(discoveredObject, removedObject));
+			return this;
+		}
+
+		@Override
+		public IEObjectObservatoryBuilder<ILilyEObject> gatherBulk(final Consumer<List<ILilyEObject>> discoveredObjects,
+																   final Consumer<List<ILilyEObject>> removedObjects)
+		{
+			gatherBulkListeners.add(new GatherBulkListener<>(discoveredObjects, removedObjects));
+			return this;
 		}
 
 		@Override
