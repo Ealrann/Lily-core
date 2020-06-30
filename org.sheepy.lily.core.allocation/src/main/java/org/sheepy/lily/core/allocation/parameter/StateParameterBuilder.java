@@ -7,11 +7,11 @@ import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.lang.annotation.Annotation;
 
-public final class ConfiguratorParameterBuilder implements IParameterResolver
+public final class StateParameterBuilder implements IParameterResolver
 {
 	private final AllocationState state;
 
-	public ConfiguratorParameterBuilder(AllocationState state)
+	public StateParameterBuilder(AllocationState state)
 	{
 		this.state = state;
 	}

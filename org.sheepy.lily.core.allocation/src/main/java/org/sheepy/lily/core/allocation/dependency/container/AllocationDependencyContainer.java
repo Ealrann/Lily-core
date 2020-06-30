@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 public final class AllocationDependencyContainer<T extends IExtender> implements IDependencyContainer
 {
 	private final AllocationInstance<T> resolvedAllocation;
-	private Consumer<AllocationInstance<T>> statusListener;
+	private Consumer<EAllocationStatus> statusListener;
 
 	public AllocationDependencyContainer(final AllocationHandle<T> handle)
 	{
@@ -37,7 +37,7 @@ public final class AllocationDependencyContainer<T extends IExtender> implements
 	@Override
 	public void listen(Consumer<EAllocationStatus> statusListener)
 	{
-		this.statusListener = instance -> statusListener.accept(instance.getStatus());
+		this.statusListener = statusListener;
 		resolvedAllocation.listen(this.statusListener);
 	}
 

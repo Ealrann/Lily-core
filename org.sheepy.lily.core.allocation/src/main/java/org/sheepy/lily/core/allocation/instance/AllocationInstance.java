@@ -2,37 +2,30 @@ package org.sheepy.lily.core.allocation.instance;
 
 import org.sheepy.lily.core.allocation.EAllocationStatus;
 import org.sheepy.lily.core.allocation.children.AllocationChildrenManager;
-import org.sheepy.lily.core.allocation.children.ChildrenInjector;
+import org.sheepy.lily.core.allocation.children.IAllocationChildrenManager;
 import org.sheepy.lily.core.allocation.dependency.DependencyManager;
-import org.sheepy.lily.core.allocation.dependency.DependencyResolution;
 import org.sheepy.lily.core.allocation.dependency.DependencyResolver;
-import org.sheepy.lily.core.allocation.dependency.DependencyUpdater;
 import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
-import org.sheepy.lily.core.allocation.parameter.ConfiguratorParameterBuilder;
-import org.sheepy.lily.core.allocation.parameter.ContextParameterResolverBuilder;
+import org.sheepy.lily.core.allocation.parameter.AllocationParametersBuilder;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.IAllocationInstance;
 import org.sheepy.lily.core.api.allocation.annotation.Free;
-import org.sheepy.lily.core.api.allocation.annotation.InjectChildren;
 import org.sheepy.lily.core.api.allocation.annotation.ProvideContext;
-import org.sheepy.lily.core.api.allocation.annotation.UpdateDependency;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
-import org.sheepy.lily.core.api.extender.parameter.IParameterResolver;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
-import org.sheepy.lily.core.api.notification.util.ListenerList;
+import org.sheepy.lily.core.api.notification.util.ConsumerListenerList;
 import org.sheepy.lily.core.api.reflect.ConsumerHandle;
 import org.sheepy.lily.core.api.reflect.SupplierHandle;
 import org.sheepy.lily.core.api.util.AnnotationHandles;
 
 import java.lang.annotation.Annotation;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public final class AllocationInstance<Allocation extends IExtender> implements IAllocationInstance<Allocation>
@@ -40,108 +33,52 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 	private final ILilyEObject target;
 	private final IObservatory observatory;
 	private final AllocationState state;
-	private final List<ChildrenInjector> childrenInjectors;
-	private final boolean provideContext;
 	private final DependencyManager dependencyManager;
-	private final ListenerList<Consumer<AllocationInstance<Allocation>>> listeners = new ListenerList<>();
-	private final AllocationChildrenManager preChildrenManager;
-	private final AllocationChildrenManager postChildrenManager;
+	private final ConsumerListenerList<EAllocationStatus> listeners = new ConsumerListenerList<>();
+	private final IAllocationChildrenManager preChildrenManager;
+	private final IAllocationChildrenManager postChildrenManager;
 	private final IExtenderDescriptor.ExtenderContext<Allocation> extenderContext;
 
-	@SuppressWarnings("unchecked")
 	public AllocationInstance(final ILilyEObject target,
 							  final AllocationDescriptor<Allocation> descriptor,
-							  final ChildrenInjector.Builder childrenInjectorBuilder,
-							  final List<DependencyResolver> resolvers,
+							  final AllocationParametersBuilder parameterBuilder,
+							  final DependencyManager.Builder dependencyManagerBuilder,
 							  final IAllocationContext context,
 							  final Runnable whenUpdateNeeded,
 							  final AllocationChildrenManager.Builder childrenManagerBuilder) throws ReflectiveOperationException
 	{
 		final var observatoryBuilder = IObservatoryBuilder.newObservatoryBuilder();
 		this.target = target;
-		this.provideContext = descriptor.isProvidingContext();
+		this.state = new AllocationState(this::onStatusChange, whenUpdateNeeded);
 
-		state = new AllocationState(this::onStatusChange, whenUpdateNeeded);
+		final var provideContext = descriptor.isProvidingContext();
+		final var parameterResolvers = parameterBuilder.build(state, context);
+		final var extenderDescriptor = descriptor.getExtenderDescriptor();
+		final Supplier<IAllocationContext> contextProvider = provideContext ? this::getProvidedContext : null;
+		final var config = new IAllocationChildrenManager.Configuration(state::markBranchDirty,
+																		state::markDirty,
+																		state::markObsolete,
+																		observatoryBuilder);
 
-		final var parameterResolvers = new ArrayList<IParameterResolver>(resolvers.size() + 2);
-		parameterResolvers.add(new ContextParameterResolverBuilder(context));
-		parameterResolvers.addAll(resolvers);
-		parameterResolvers.add(new ConfiguratorParameterBuilder(state));
-
-		preChildrenManager = childrenManagerBuilder.build(state::markBranchDirty, true, observatoryBuilder);
-		postChildrenManager = childrenManagerBuilder.build(state::markBranchDirty, false, observatoryBuilder);
-
+		preChildrenManager = childrenManagerBuilder.buildPreAllocation(config);
+		preChildrenManager.update(target, context);
+		extenderContext = extenderDescriptor.newExtender(target, observatoryBuilder, parameterResolvers);
+		postChildrenManager = childrenManagerBuilder.buildPostAllocation(config, contextProvider, extenderContext);
+		dependencyManager = dependencyManagerBuilder.build(extenderContext, state::markDirty, state::markObsolete);
 		observatory = observatoryBuilder.isEmpty() == false ? observatoryBuilder.build() : null;
 		if (observatory != null) observatory.observe(target);
-
-		preChildrenManager.update(target, context);
-		extenderContext = descriptor.getExtenderDescriptor()
-									.newExtender(target, observatoryBuilder, parameterResolvers);
-
-		childrenInjectors = extenderContext.annotationHandles()
-										   .stream()
-										   .filter(h -> h.match(InjectChildren.class))
-										   .map(h -> (AnnotationHandles<InjectChildren>) h)
-										   .flatMap(AnnotationHandles::stream)
-										   .map(childrenInjectorBuilder::build)
-										   .collect(Collectors.toUnmodifiableList());
-
-		final var updatableDependencies = gatherUpdatableDependencies(resolvers, extenderContext);
-		final var criticalDependencies = filterCriticalDependencies(resolvers, updatableDependencies);
-		this.dependencyManager = new DependencyManager(updatableDependencies,
-													   criticalDependencies,
-													   state::markDirty,
-													   state::markObsolete);
 	}
 
 	public void load(final IAllocationContext context)
 	{
-		updatePostChildren(context);
-	}
-
-	private void onStatusChange(EAllocationStatus oldStatus, EAllocationStatus newStatus)
-	{
-		listeners.notify(listener -> listener.accept(this));
-	}
-
-	private List<DependencyResolution.Builder> filterCriticalDependencies(final List<DependencyResolver> resolvers,
-																		  final List<DependencyUpdater.Builder> updatableDependencies)
-	{
-		return resolvers.stream()
-						.filter(resolver -> updatableDependencies.stream()
-																 .map(DependencyUpdater.Builder::resolutionBuilder)
-																 .map(DependencyResolution.Builder::resolver)
-																 .noneMatch(res -> res == resolver))
-						.map(resolver -> new DependencyResolution.Builder(resolver, target))
-						.collect(Collectors.toUnmodifiableList());
-	}
-
-	@SuppressWarnings("unchecked")
-	private List<DependencyUpdater.Builder> gatherUpdatableDependencies(final List<DependencyResolver> resolvers,
-																		final IExtenderDescriptor.ExtenderContext<?> extenderContext)
-	{
-		final var updatableDependencies = extenderContext.annotationHandles()
-														 .stream()
-														 .filter(handle -> handle.annotationClass() == UpdateDependency.class)
-														 .map(handle -> (AnnotationHandles<UpdateDependency>) handle)
-														 .flatMap(handle -> handle.handles().stream())
-														 .map(handle -> newDependencyUpdater(resolvers, handle))
-														 .collect(Collectors.toUnmodifiableList());
-		return updatableDependencies;
-	}
-
-	private DependencyUpdater.Builder newDependencyUpdater(final List<DependencyResolver> resolvers,
-														   final IExtenderHandle.AnnotatedHandle<UpdateDependency> handle)
-	{
-		final var resolver = resolvers.get(handle.annotation().index());
-		final var resolutionBuilder = new DependencyResolution.Builder(resolver, target);
-		return new DependencyUpdater.Builder(resolutionBuilder, handle);
+		postChildrenManager.update(target, context);
 	}
 
 	@Override
 	public void update(IAllocationContext context)
 	{
-		assert isDirty() && isUpdatable();
+		assert isDirty();
+		assert isUpdatable();
 
 		if (preChildrenManager.isDirty())
 		{
@@ -152,59 +89,44 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 
 		if (postChildrenManager.isDirty())
 		{
-			updatePostChildren(context);
+			postChildrenManager.update(target, context);
 		}
 
 		state.setStatus(EAllocationStatus.Allocated);
 		state.setBranchStatus(EAllocationStatus.Allocated);
 	}
 
-	private void updatePostChildren(final IAllocationContext context)
+	@Override
+	public void free(IAllocationContext context)
 	{
-		final var providedContext = provideContext ? getProvidedContext() : null;
-		if (providedContext != null)
-		{
-			providedContext.beforeChildrenAllocation();
-			postChildrenManager.update(target, providedContext);
-			providedContext.afterChildrenAllocation();
-		}
-		else
-		{
-			postChildrenManager.update(target, context);
-		}
-		injectChildren();
-	}
-
-	private void injectChildren()
-	{
-		for (final var childInjector : childrenInjectors)
-		{
-			childInjector.inject(target);
-		}
+		cleanup(context, true);
 	}
 
 	public void cleanup(final IAllocationContext context, boolean freeEverything)
 	{
-		if (freeEverything || postChildrenManager.isDirty())
+		final boolean free = freeEverything || state.getStatus() == EAllocationStatus.Obsolete;
+
+		if (free || postChildrenManager.isDirty())
 		{
-			final var childContext = provideContext ? getProvidedContext() : context;
-			postChildrenManager.cleanup(childContext, freeEverything);
+			postChildrenManager.cleanup(context, free);
 		}
 
-		if (freeEverything || state.getStatus() == EAllocationStatus.Obsolete)
+		if (free)
 		{
-			free(context);
+			freeInternal(context);
 		}
 
-		if (freeEverything || postChildrenManager.isDirty())
+		if (free || preChildrenManager.isDirty())
 		{
-			preChildrenManager.cleanup(context, freeEverything);
+			preChildrenManager.cleanup(context, free);
 		}
-		if (freeEverything) state.setStatus(EAllocationStatus.Free);
+		if (free)
+		{
+			state.setStatus(EAllocationStatus.Free);
+		}
 	}
 
-	@Override
-	public void free(IAllocationContext context)
+	private void freeInternal(IAllocationContext context)
 	{
 		if (observatory != null) observatory.shut(target);
 		dependencyManager.free();
@@ -215,6 +137,11 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 		state.setStatus(EAllocationStatus.Free);
 	}
 
+	private void onStatusChange(EAllocationStatus oldStatus, EAllocationStatus newStatus)
+	{
+		listeners.notify(newStatus);
+	}
+
 	public boolean isDirty()
 	{
 		return state.isDirty();
@@ -222,7 +149,9 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 
 	public boolean isUpdatable()
 	{
-		return isUnlocked() && state.getStatus() == EAllocationStatus.Dirty;
+		final var status = state.getStatus();
+		final boolean updatableStatus = status != EAllocationStatus.Obsolete && status != EAllocationStatus.Free;
+		return isUnlocked() && updatableStatus;
 	}
 
 	public boolean isLocked()
@@ -240,12 +169,12 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 		return state.getStatus();
 	}
 
-	public void listen(Consumer<AllocationInstance<Allocation>> listener)
+	public void listen(Consumer<EAllocationStatus> listener)
 	{
 		listeners.listen(listener);
 	}
 
-	public void sulk(Consumer<AllocationInstance<Allocation>> listener)
+	public void sulk(Consumer<EAllocationStatus> listener)
 	{
 		listeners.sulk(listener);
 	}
@@ -279,9 +208,9 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 	{
 		private final AllocationDescriptor<Allocation> descriptor;
 		private final ILilyEObject target;
-		private final List<DependencyResolver> resolvers;
-		private final ChildrenInjector.Builder childrenInjectorBuilder;
 		private final AllocationChildrenManager.Builder childrenManagerBuilder;
+		private final AllocationParametersBuilder allocationParametersBuilder;
+		private final DependencyManager.Builder dependencyManagerBuilder;
 
 		public Builder(final AllocationDescriptor<Allocation> descriptor,
 					   final ILilyEObject target,
@@ -289,9 +218,9 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 		{
 			this.descriptor = descriptor;
 			this.target = target;
-			this.resolvers = resolvers;
 			childrenManagerBuilder = new AllocationChildrenManager.Builder(descriptor.getChildrenAnnotations(), target);
-			childrenInjectorBuilder = new ChildrenInjector.Builder(childrenManagerBuilder);
+			allocationParametersBuilder = new AllocationParametersBuilder(resolvers);
+			dependencyManagerBuilder = new DependencyManager.Builder(resolvers, target);
 		}
 
 		public AllocationInstance<Allocation> build(final IAllocationContext context,
@@ -299,8 +228,8 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 		{
 			return new AllocationInstance<>(target,
 											descriptor,
-											childrenInjectorBuilder,
-											resolvers,
+											allocationParametersBuilder,
+											dependencyManagerBuilder,
 											context,
 											whenUpdateNeeded,
 											childrenManagerBuilder);

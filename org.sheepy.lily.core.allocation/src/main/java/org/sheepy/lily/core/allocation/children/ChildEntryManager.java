@@ -1,19 +1,17 @@
 package org.sheepy.lily.core.allocation.children;
 
 import org.sheepy.lily.core.allocation.AllocationHandle;
+import org.sheepy.lily.core.allocation.EAllocationStatus;
 import org.sheepy.lily.core.allocation.util.StructureObserver;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationChild;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.util.IModelExplorer;
 import org.sheepy.lily.core.api.util.ModelUtil;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -22,20 +20,23 @@ public final class ChildEntryManager
 	private final Deque<ILilyEObject> removedElements = new ArrayDeque<>();
 	private final LinkedList<ChildAllocationContainer> allocatedElements = new LinkedList<>();
 	private final IModelExplorer modelExplorer;
-	private final Runnable whenDirty;
+	private final Runnable whenBranchDirty;
+	private final Optional<Consumer<EAllocationStatus>> listener;
 	private final int index;
 
 	private boolean addedElements = true;
 
-	private ChildEntryManager(StructureObserver observatoryBuilder,
-							  IModelExplorer modelExplorer,
-							  Runnable whenDirty,
+	private ChildEntryManager(final StructureObserver observatoryBuilder,
+							  final IModelExplorer modelExplorer,
+							  final Runnable whenBranchDirty,
+							  final Optional<Consumer<EAllocationStatus>> listener,
 							  final int index)
 	{
+		this.listener = listener;
 		this.index = index;
 		observatoryBuilder.installListeners(this::add, this::remove);
 		this.modelExplorer = modelExplorer;
-		this.whenDirty = whenDirty;
+		this.whenBranchDirty = whenBranchDirty;
 	}
 
 	public void cleanup(IAllocationContext context, boolean freeEverything)
@@ -68,10 +69,7 @@ public final class ChildEntryManager
 	{
 		if (addedElements)
 		{
-			allocatedElements.clear();
-
 			final var children = modelExplorer.explore(source);
-
 			for (int i = 0; i < children.size(); i++)
 			{
 				final var currentElement = children.get(i);
@@ -97,26 +95,21 @@ public final class ChildEntryManager
 		return new ChildAllocationContainer(target, containers);
 	}
 
-	private ChildContainer<?> newChildContainer(AllocationHandle<?> handle)
+	private ChildContainer<? extends IExtender> newChildContainer(AllocationHandle<?> handle)
 	{
-		return new ChildContainer<>(handle, whenDirty);
+		return new ChildContainer<>(handle, whenBranchDirty, listener);
 	}
 
 	public void add(List<ILilyEObject> children)
 	{
-		whenDirty.run();
+		whenBranchDirty.run();
 		addedElements = true;
 	}
 
 	public void remove(List<ILilyEObject> removedChildren)
 	{
 		removedElements.addAll(removedChildren);
-		whenDirty.run();
-	}
-
-	public IModelExplorer getModelExplorer()
-	{
-		return modelExplorer;
+		whenBranchDirty.run();
 	}
 
 	public int getIndex()
@@ -132,11 +125,12 @@ public final class ChildEntryManager
 		}
 	}
 
-	public static record Builder(int index, StructureObserver.Builder structureObservatoryBuilder)
+	public static record Builder(int index, StructureObserver.Builder structureObservatoryBuilder,
+								 boolean buildStatusListener)
 	{
 		public Builder(final ILilyEObject source, final AllocationChild childAnnotation, int index)
 		{
-			this(index, buildStructureObserverBuilder(source, childAnnotation));
+			this(index, buildStructureObserverBuilder(source, childAnnotation), childAnnotation.reportStateToParent());
 		}
 
 		private static StructureObserver.Builder buildStructureObserverBuilder(final ILilyEObject source,
@@ -147,13 +141,22 @@ public final class ChildEntryManager
 			return new StructureObserver.Builder(parentDistance, childAnnotation.features());
 		}
 
-		public ChildEntryManager build(IObservatoryBuilder observatoryBuilder, Runnable whenDirty)
+		public ChildEntryManager build(final IAllocationChildrenManager.Configuration config)
 		{
-			return new ChildEntryManager(structureObservatoryBuilder.build(observatoryBuilder),
-										 structureObservatoryBuilder.buildExplorer(),
-										 whenDirty,
+			final var structureObserver = structureObservatoryBuilder.build(config.observatoryBuilder());
+			final var modelExplorer = structureObservatoryBuilder.buildExplorer();
+			final var statusListener = getStatusListener(config);
+
+			return new ChildEntryManager(structureObserver,
+										 modelExplorer,
+										 config.whenBranchDirty(),
+										 statusListener,
 										 index);
 		}
 
+		private Optional<Consumer<EAllocationStatus>> getStatusListener(final IAllocationChildrenManager.Configuration config)
+		{
+			return buildStatusListener ? Optional.of(config::reactOnStatusChange) : Optional.empty();
+		}
 	}
 }

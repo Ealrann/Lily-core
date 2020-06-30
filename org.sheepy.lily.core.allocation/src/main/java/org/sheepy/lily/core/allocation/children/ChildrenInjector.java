@@ -27,20 +27,4 @@ public record ChildrenInjector(Class<? extends IExtender>type, ConsumerHandle ha
 		if (many) handle.invoke(stream.collect(Collectors.toUnmodifiableList()));
 		else handle.invoke(stream.findAny().orElse(null));
 	}
-
-	public static final class Builder
-	{
-		private final AllocationChildrenManager.Builder childrenManagerBuilder;
-
-		public Builder(final AllocationChildrenManager.Builder childrenManagerBuilder)
-		{
-			this.childrenManagerBuilder = childrenManagerBuilder;
-		}
-
-		public ChildrenInjector build(IExtenderHandle.AnnotatedHandle<InjectChildren> handle)
-		{
-			final var childrenExplorer = childrenManagerBuilder.getChildrenExplorer(handle.annotation().index());
-			return new ChildrenInjector(handle, childrenExplorer);
-		}
-	}
 }

@@ -46,7 +46,13 @@ public final class AllocationService implements IAllocationService
 		if (descriptor.isPresent())
 		{
 			final var handle = (AllocationHandle<?>) target.adapters().adaptHandleFromDescriptor(descriptor.get());
-			handle.getMainAllocation().update(context);
+			final var allocation = handle.getMainAllocation();
+
+			if (allocation.isDirty() && allocation.isUpdatable())
+			{
+				allocation.cleanup(context, false);
+				allocation.update(context);
+			}
 		}
 	}
 }

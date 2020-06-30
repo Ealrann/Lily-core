@@ -6,58 +6,54 @@ import org.sheepy.lily.core.allocation.instance.AllocationInstance;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.extender.IExtender;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
 public final class ChildContainer<Allocation extends IExtender>
 {
 	private final AllocationHandle<Allocation> handle;
 	private final Runnable whenUpdateNeeded;
+	private final Optional<Consumer<EAllocationStatus>> listener;
 
-	private final Deque<AllocationInstance<Allocation>> dirtyAllocations = new ArrayDeque<>(1);
+	private final List<AllocationInstance<Allocation>> dirtyAllocations = new ArrayList<>(1);
 	private AllocationInstance<Allocation> mainAllocation;
 
-	public ChildContainer(final AllocationHandle<Allocation> handle, Runnable whenUpdateNeeded)
+	public ChildContainer(final AllocationHandle<Allocation> handle,
+						  final Runnable whenUpdateNeeded,
+						  final Optional<Consumer<EAllocationStatus>> listener)
 	{
 		this.handle = handle;
 		this.whenUpdateNeeded = whenUpdateNeeded;
+		this.listener = listener;
 	}
 
 	public void cleanup(final IAllocationContext context, boolean freeEverything)
 	{
 		if (mainAllocation != null)
 		{
-			final boolean obsolete = mainAllocation.getStatus() == EAllocationStatus.Obsolete;
-			final boolean dirtyLocked = mainAllocation.getStatus() == EAllocationStatus.Dirty && mainAllocation.isLocked();
+			final var status = mainAllocation.getStatus();
+			final boolean obsolete = status == EAllocationStatus.Obsolete;
+			final boolean dirtyLocked = status == EAllocationStatus.Dirty && mainAllocation.isLocked();
 
 			if (freeEverything || obsolete || dirtyLocked)
 			{
-				deprecateMainHandle();
+				deprecateMainAllocation();
 			}
 			else if (mainAllocation.isDirty())
 			{
 				mainAllocation.cleanup(context, false);
 			}
 		}
-		freeDeprecatedHandles(context);
+		freeDeprecatedHandles(context, freeEverything);
 	}
 
 	public void update(IAllocationContext context)
 	{
 		if (mainAllocation == null)
 		{
-			final var candidate = dirtyAllocations.stream().filter(AllocationInstance::isUpdatable).findAny();
-
-			if (candidate.isPresent())
-			{
-				mainAllocation = candidate.get();
-				mainAllocation.update(context);
-				handle.setMainAllocation(mainAllocation);
-			}
-			else
-			{
-				mainAllocation = handle.allocateNew(context, whenUpdateNeeded);
-			}
+			resolveMainAllocation(context);
 		}
 		else if (mainAllocation.isDirty())
 		{
@@ -65,19 +61,36 @@ public final class ChildContainer<Allocation extends IExtender>
 		}
 	}
 
-	private void deprecateMainHandle()
+	private void resolveMainAllocation(final IAllocationContext context)
 	{
+		final var candidate = dirtyAllocations.stream().filter(AllocationInstance::isUpdatable).findAny();
+		if (candidate.isPresent())
+		{
+			mainAllocation = candidate.get();
+			mainAllocation.update(context);
+			handle.setMainAllocation(mainAllocation);
+		}
+		else
+		{
+			mainAllocation = handle.allocateNew(context, whenUpdateNeeded);
+		}
+		listener.ifPresent(mainAllocation::listen);
+	}
+
+	private void deprecateMainAllocation()
+	{
+		listener.ifPresent(mainAllocation::sulk);
 		dirtyAllocations.add(mainAllocation);
 		mainAllocation = null;
 	}
 
-	private void freeDeprecatedHandles(IAllocationContext context)
+	private void freeDeprecatedHandles(final IAllocationContext context, final boolean freeEverything)
 	{
 		final var it = dirtyAllocations.iterator();
 		while (it.hasNext())
 		{
 			final var allocation = it.next();
-			if (allocation.getStatus() == EAllocationStatus.Obsolete && allocation.isUnlocked())
+			if (freeEverything || (allocation.getStatus() == EAllocationStatus.Obsolete && allocation.isUnlocked()))
 			{
 				allocation.free(context);
 				it.remove();
