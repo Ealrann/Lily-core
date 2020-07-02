@@ -111,7 +111,7 @@ public final class ExtenderDescriptorRegistry implements IExtenderDescriptorRegi
 			for (var factory : IExtenderHandleFactory.FACTORIES)
 			{
 				final Class<? extends Annotation> factoryAnnotation = factory.describedBy();
-				if (descriptor.containsMethodAnnotation(factoryAnnotation))
+				if (descriptor.containsClassAnnotation(factoryAnnotation))
 				{
 					return factory.newBuilder(descriptor);
 				}

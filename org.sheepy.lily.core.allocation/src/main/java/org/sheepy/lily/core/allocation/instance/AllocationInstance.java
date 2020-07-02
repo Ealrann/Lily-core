@@ -21,6 +21,7 @@ import org.sheepy.lily.core.api.notification.util.ConsumerListenerList;
 import org.sheepy.lily.core.api.reflect.ConsumerHandle;
 import org.sheepy.lily.core.api.reflect.SupplierHandle;
 import org.sheepy.lily.core.api.util.AnnotationHandles;
+import org.sheepy.lily.core.api.util.DebugUtil;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
@@ -64,9 +65,17 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 		preChildrenManager.update(target, context);
 		extenderContext = extenderDescriptor.newExtender(target, observatoryBuilder, parameterResolvers);
 		postChildrenManager = childrenManagerBuilder.buildPostAllocation(config, contextProvider, extenderContext);
-		dependencyManager = dependencyManagerBuilder.build(extenderContext, state::markDirty, state::markObsolete);
+
+		final Runnable markObsolete = DebugUtil.DEBUG_ALLOCATION ? this::markObsoleteAndLog : state::markObsolete;
+		dependencyManager = dependencyManagerBuilder.build(extenderContext, state::markDirty, markObsolete);
 		observatory = observatoryBuilder.isEmpty() == false ? observatoryBuilder.build() : null;
 		if (observatory != null) observatory.observe(target);
+	}
+
+	private void markObsoleteAndLog()
+	{
+		System.out.println(extenderContext.extender().getClass().getSimpleName() + " obsolete due to dependency");
+		state.markObsolete();
 	}
 
 	public void load(final IAllocationContext context)
@@ -100,6 +109,12 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 	public void free(IAllocationContext context)
 	{
 		cleanup(context, true);
+	}
+
+	@Override
+	public void cleanup(final IAllocationContext context)
+	{
+		cleanup(context, false);
 	}
 
 	public void cleanup(final IAllocationContext context, boolean freeEverything)

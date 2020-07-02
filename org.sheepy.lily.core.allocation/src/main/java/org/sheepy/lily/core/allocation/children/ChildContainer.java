@@ -35,7 +35,7 @@ public final class ChildContainer<Allocation extends IExtender>
 		{
 			final var status = mainAllocation.getStatus();
 			final boolean obsolete = status == EAllocationStatus.Obsolete;
-			final boolean dirtyLocked = status == EAllocationStatus.Dirty && mainAllocation.isLocked();
+			final boolean dirtyLocked = mainAllocation.isDirty() && mainAllocation.isLocked();
 
 			if (freeEverything || obsolete || dirtyLocked)
 			{
@@ -90,7 +90,9 @@ public final class ChildContainer<Allocation extends IExtender>
 		while (it.hasNext())
 		{
 			final var allocation = it.next();
-			if (freeEverything || (allocation.getStatus() == EAllocationStatus.Obsolete && allocation.isUnlocked()))
+			final var obsolete = allocation.getStatus() == EAllocationStatus.Obsolete;
+			final var unlocked = allocation.isUnlocked();
+			if (freeEverything || (obsolete && unlocked))
 			{
 				allocation.free(context);
 				it.remove();

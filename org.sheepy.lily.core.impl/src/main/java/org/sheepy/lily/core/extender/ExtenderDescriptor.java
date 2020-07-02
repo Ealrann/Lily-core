@@ -168,15 +168,15 @@ public final class ExtenderDescriptor<Extender extends IExtender> implements IEx
 	@Override
 	public boolean containsMethodAnnotation(final Class<? extends Annotation> annotationClass)
 	{
-		return extenderClass.isAnnotationPresent(annotationClass);
+		return executionHandleBuilders.stream()
+									  .map(AnnotationHandlesBuilder::annotationClass)
+									  .anyMatch(bAnnotationClass -> bAnnotationClass == annotationClass);
 	}
 
 	@Override
 	public boolean containsClassAnnotation(final Class<? extends Annotation> annotationClass)
 	{
-		return executionHandleBuilders.stream()
-									  .map(AnnotationHandlesBuilder::annotationClass)
-									  .anyMatch(bAnnotationClass -> bAnnotationClass == annotationClass);
+		return extenderClass.isAnnotationPresent(annotationClass);
 	}
 
 	@Override

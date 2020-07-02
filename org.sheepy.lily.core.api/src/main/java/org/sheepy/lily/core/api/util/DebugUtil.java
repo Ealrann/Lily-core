@@ -15,9 +15,9 @@ public final class DebugUtil
 		final String debugVerboseProperty = System.getProperty(DEBUG_VERBOSE_ARG);
 		final String debugAllocation = System.getProperty(DEBUG_ALLOCATION_ARG);
 		final String debugProperty = System.getProperty(DEBUG_ARG);
-		DEBUG_ENABLED = (debugProperty != null && debugProperty.equals("false") == false) || DEBUG_VERBOSE_ENABLED;
+		DEBUG_ALLOCATION = (debugAllocation != null && debugAllocation.equals("false") == false);
 		DEBUG_VERBOSE_ENABLED = debugVerboseProperty != null && debugVerboseProperty.equals("false") == false;
-		DEBUG_ALLOCATION = (debugAllocation != null && debugAllocation.equals("false") == false) || DEBUG_ALLOCATION;
+		DEBUG_ENABLED = (debugProperty != null && debugProperty.equals("false") == false) || DEBUG_VERBOSE_ENABLED || DEBUG_ALLOCATION;
 	}
 
 	public static void parseMainArgs(String[] args)

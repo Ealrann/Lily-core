@@ -14,7 +14,7 @@ import java.util.function.ObjLongConsumer;
 
 public final class TickHandle
 {
-	private final ILilyEObject target;
+	public final ILilyEObject target;
 	private final IExtenderHandle<?> handle;
 	private final TickConfiguration configuration;
 	private final String adapterName;

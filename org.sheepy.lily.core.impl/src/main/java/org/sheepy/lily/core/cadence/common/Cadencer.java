@@ -10,9 +10,7 @@ import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.cadence.tick.TickHandle;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -21,7 +19,7 @@ public final class Cadencer
 	private static final String CADENCER_TICK = "Tickers";
 
 	private final CadenceContentAdater cadenceContentAdapter;
-	private final List<AbstractTickerWrapper> course = new ArrayList<>();
+	private final List<AdapterTickerWrapper> course = new ArrayList<>();
 	private final IStatistics statistics = IStatistics.INSTANCE;
 
 	public Cadencer(ILilyEObject root)
@@ -48,7 +46,7 @@ public final class Cadencer
 		int index = 0;
 		while (index < course.size())
 		{
-			final AbstractTickerWrapper ticker = course.get(index++);
+			final var ticker = course.get(index++);
 			final boolean stopped = ticker.stop.get();
 
 			do
@@ -91,7 +89,7 @@ public final class Cadencer
 		}
 	}
 
-	public void removeTicker(AbstractTickerWrapper ticker)
+	public void removeTicker(AdapterTickerWrapper ticker)
 	{
 		cadenceContentAdapter.tickers.remove(ticker);
 	}
@@ -100,8 +98,7 @@ public final class Cadencer
 	{
 		private static final List<TickHandle.Builder> TICK_BUILDERS = createTickBuilders();
 
-		private final Map<EObject, List<AbstractTickerWrapper>> tickerMap = new HashMap<>();
-		private final List<AbstractTickerWrapper> tickers = new ArrayList<>();
+		private final List<AdapterTickerWrapper> tickers = new ArrayList<>();
 		private final ILilyEObject root;
 
 		public CadenceContentAdater(ILilyEObject root)
@@ -122,31 +119,29 @@ public final class Cadencer
 			TICK_BUILDERS.stream()
 						 .filter(builder -> builder.isApplicable(lilyObject))
 						 .map(builder -> builder.build(lilyObject))
-						 .forEach(tickHandle -> addTicker(target, new AdapterTickerWrapper(tickHandle)));
+						 .map(AdapterTickerWrapper::new)
+						 .collect(Collectors.toCollection(() -> tickers));
 			super.setTarget(target);
 		}
 
 		@Override
 		protected void unsetTarget(EObject target)
 		{
-			final var objectTickers = tickerMap.get(target);
-			if (objectTickers != null)
-			{
-				for (int i = 0; i < objectTickers.size(); i++)
-				{
-					final var next = objectTickers.get(i);
-					next.stop.set(true);
-				}
-				tickerMap.remove(target);
-				tickers.removeAll(objectTickers);
-			}
+			tickers.removeIf(wrapper -> checkAndStop(wrapper, target));
+			super.unsetTarget(target);
 		}
 
-		private void addTicker(EObject target, AdapterTickerWrapper wrapper)
+		private static boolean checkAndStop(AdapterTickerWrapper wrapper, EObject target)
 		{
-			tickers.add(wrapper);
-			final var list = tickerMap.computeIfAbsent(target, k -> new ArrayList<>());
-			list.add(wrapper);
+			if (wrapper.getTarget() == target)
+			{
+				wrapper.stop.set(true);
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 
 		private static List<TickHandle.Builder> createTickBuilders()

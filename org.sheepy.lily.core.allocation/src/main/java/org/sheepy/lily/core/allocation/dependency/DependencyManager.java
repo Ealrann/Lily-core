@@ -6,6 +6,7 @@ import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.util.AnnotationHandles;
+import org.sheepy.lily.core.api.util.DebugUtil;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -19,6 +20,7 @@ public final class DependencyManager
 	private final Runnable onObsolete;
 	private final Consumer<EAllocationStatus> updatableDependencyChange = this::updatableDependencyChange;
 	private final Consumer<EAllocationStatus> criticalDependencyChange = this::criticalDependencyChange;
+	private final CriticalChange criticalDependencyChangeDebug = this::criticalDependencyChangeDebug;
 
 	public DependencyManager(final List<DependencyUpdater.Builder> updatableDependencies,
 							 final List<DependencyResolution.Builder> criticalDependencies,
@@ -29,10 +31,24 @@ public final class DependencyManager
 														  .map(builder -> builder.build(updatableDependencyChange))
 														  .collect(Collectors.toUnmodifiableList());
 		this.criticalDependencies = criticalDependencies.stream()
-														.map(builder -> builder.build(criticalDependencyChange))
+														.map(this::buildCriticalChange)
 														.collect(Collectors.toUnmodifiableList());
 		this.onDirty = onDirty;
 		this.onObsolete = onObsolete;
+	}
+
+	private DependencyResolution buildCriticalChange(DependencyResolution.Builder builder)
+	{
+		if (DebugUtil.DEBUG_ALLOCATION)
+		{
+			final int index = builder.index();
+			final Consumer<EAllocationStatus> statusConsumer = s -> criticalDependencyChangeDebug.onChange(index, s);
+			return builder.build(statusConsumer);
+		}
+		else
+		{
+			return builder.build(criticalDependencyChange);
+		}
 	}
 
 	public void update(ILilyEObject target)
@@ -73,6 +89,23 @@ public final class DependencyManager
 			case Dirty -> onDirty.run();
 			case Obsolete, Free -> onObsolete.run();
 		}
+	}
+
+	private void criticalDependencyChangeDebug(int index, EAllocationStatus newStatus)
+	{
+		switch (newStatus)
+		{
+			case Dirty -> onDirty.run();
+			case Obsolete, Free -> {
+				if (DebugUtil.DEBUG_ALLOCATION) logCriticalChange(index);
+				onObsolete.run();
+			}
+		}
+	}
+
+	private static void logCriticalChange(final int index)
+	{
+		System.out.println("Critical dependency changed, index = " + index);
 	}
 
 	public static final class Builder
@@ -130,5 +163,11 @@ public final class DependencyManager
 			final var resolutionBuilder = new DependencyResolution.Builder(resolver, target);
 			return new DependencyUpdater.Builder(resolutionBuilder, handle);
 		}
+	}
+
+	@FunctionalInterface
+	interface CriticalChange
+	{
+		void onChange(int index, EAllocationStatus newStatus);
 	}
 }

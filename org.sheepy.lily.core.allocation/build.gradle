@@ -1,6 +1,7 @@
 dependencies {
 	api project(":org.sheepy.lily.core.api")
 
+	testImplementation project(":org.sheepy.lily.core.base")
 	testImplementation "org.junit.jupiter:junit-jupiter-api:$junitJupiterVersion"
 	testImplementation "org.junit.jupiter:junit-jupiter-params:$junitJupiterVersion"
 
@@ -10,4 +11,12 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+
+sourceSets {
+	test {
+		java {
+			srcDirs+= ["src/test/generated/java"]
+		}
+	}
 }

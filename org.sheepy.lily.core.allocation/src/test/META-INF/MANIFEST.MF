@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.sheepy.lily.core.allocation.test;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Export-Package: org.sheepy.lily.core.allocation.test.testallocation,
+ org.sheepy.lily.core.allocation.test.testallocation.impl,
+ org.sheepy.lily.core.allocation.test.testallocation.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
+ org.sheepy.lily.core.model;bundle-version="0.1.0"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-14
+Automatic-Module-Name: org.sheepy.lily.core.allocation.test

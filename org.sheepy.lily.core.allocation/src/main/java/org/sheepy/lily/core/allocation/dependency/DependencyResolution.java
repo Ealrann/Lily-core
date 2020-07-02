@@ -85,5 +85,10 @@ public final class DependencyResolution
 		{
 			return new DependencyResolution(resolver, target, statusListener);
 		}
+
+		public int index()
+		{
+			return resolver.getIndex();
+		}
 	}
 }

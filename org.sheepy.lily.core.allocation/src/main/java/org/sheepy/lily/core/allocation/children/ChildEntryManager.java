@@ -17,7 +17,7 @@ import java.util.stream.Stream;
 
 public final class ChildEntryManager
 {
-	private final Deque<ILilyEObject> removedElements = new ArrayDeque<>();
+	private final Deque<ChildAllocationContainer> removedElements = new ArrayDeque<>();
 	private final LinkedList<ChildAllocationContainer> allocatedElements = new LinkedList<>();
 	private final IModelExplorer modelExplorer;
 	private final Runnable whenBranchDirty;
@@ -41,15 +41,12 @@ public final class ChildEntryManager
 
 	public void cleanup(IAllocationContext context, boolean freeEverything)
 	{
-		final var removedAllocatedElements = allocatedElements.stream()
-															  .filter(a -> removedElements.contains(a.target))
-															  .collect(Collectors.toUnmodifiableList());
-		for (final var removed : removedAllocatedElements)
+		while (removedElements.isEmpty() == false)
 		{
+			final var removed = removedElements.pop();
 			removed.containers.forEach(c -> c.cleanup(context, true));
 			allocatedElements.remove(removed);
 		}
-		removedElements.clear();
 
 		for (int i = allocatedElements.size() - 1; i >= 0; i--)
 		{
@@ -108,7 +105,10 @@ public final class ChildEntryManager
 
 	public void remove(List<ILilyEObject> removedChildren)
 	{
-		removedElements.addAll(removedChildren);
+		allocatedElements.stream()
+						 .filter(a -> removedChildren.contains(a.target))
+						 .collect(Collectors.toCollection(() -> removedElements));
+
 		whenBranchDirty.run();
 	}
 

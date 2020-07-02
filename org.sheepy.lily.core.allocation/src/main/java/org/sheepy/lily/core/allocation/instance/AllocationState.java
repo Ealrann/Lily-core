@@ -33,10 +33,7 @@ public class AllocationState implements IAllocationState
 		if (status != EAllocationStatus.Obsolete)
 		{
 			setStatus(EAllocationStatus.Obsolete);
-			if (locked == false)
-			{
-				whenUpdateNeeded.run();
-			}
+			whenUpdateNeeded.run();
 		}
 	}
 
@@ -45,10 +42,7 @@ public class AllocationState implements IAllocationState
 		if (status == EAllocationStatus.Allocated)
 		{
 			setStatus(EAllocationStatus.Dirty);
-			if (locked == false)
-			{
-				whenUpdateNeeded.run();
-			}
+			whenUpdateNeeded.run();
 		}
 	}
 
@@ -81,11 +75,6 @@ public class AllocationState implements IAllocationState
 		this.branchStatus = newBranchStatus;
 	}
 
-	public boolean isDirty()
-	{
-		return status != EAllocationStatus.Allocated || branchStatus != EAllocationStatus.Allocated;
-	}
-
 	@Override
 	public void lockAllocation()
 	{
@@ -98,11 +87,16 @@ public class AllocationState implements IAllocationState
 		if (locked)
 		{
 			locked = false;
-			if (status == EAllocationStatus.Dirty || status == EAllocationStatus.Obsolete)
+			if (isDirty())
 			{
 				whenUpdateNeeded.run();
 			}
 		}
+	}
+
+	public boolean isDirty()
+	{
+		return status != EAllocationStatus.Allocated || branchStatus != EAllocationStatus.Allocated;
 	}
 
 	@Override
