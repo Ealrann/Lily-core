@@ -1,6 +1,7 @@
 package org.sheepy.lily.core.allocation;
 
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
+import org.sheepy.lily.core.allocation.instance.FreeContext;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.IAllocationService;
 import org.sheepy.lily.core.api.extender.IExtender;
@@ -50,7 +51,7 @@ public final class AllocationService implements IAllocationService
 
 			if (allocation.isDirty() && allocation.isUpdatable())
 			{
-				allocation.cleanup(context, false);
+				allocation.cleanup(new FreeContext(context, false));
 				allocation.update(context);
 			}
 		}

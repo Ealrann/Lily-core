@@ -5,7 +5,6 @@ import org.sheepy.lily.core.api.allocation.IAllocationService;
 import org.sheepy.lily.core.api.cadence.ICadenceManager;
 import org.sheepy.lily.core.api.cadence.IStatistics;
 import org.sheepy.lily.core.api.engine.IEngineAdapter;
-import org.sheepy.lily.core.api.engine.IInputEngineAdapter;
 import org.sheepy.lily.core.api.input.IInputManager;
 import org.sheepy.lily.core.api.model.LilyEObject;
 import org.sheepy.lily.core.api.util.DebugUtil;
@@ -60,18 +59,7 @@ public class CadenceManager implements ICadenceManager
 									   .map(CadenceManager::allocateEngine)
 									   .collect(Collectors.toUnmodifiableList());
 
-		for (final var engine : application.getEngines())
-		{
-			final var adapter = engine.adapt(IInputEngineAdapter.class);
-			if (adapter != null)
-			{
-				inputManager = adapter.getInputManager();
-				if (inputManager != null)
-				{
-					break;
-				}
-			}
-		}
+		inputManager = application.adapt(IInputManager.class);
 	}
 
 	public void run()
@@ -81,10 +69,7 @@ public class CadenceManager implements ICadenceManager
 		while (stop.get() == false)
 		{
 			final long start = System.nanoTime();
-			if (inputManager != null)
-			{
-				inputManager.pollInputs();
-			}
+			inputManager.pollInputs();
 
 			final long stepNs = System.nanoTime() - lastUpdate;
 			lastUpdate = System.nanoTime();

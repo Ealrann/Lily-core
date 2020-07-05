@@ -75,7 +75,7 @@ public final class DependencyResolver implements IParameterResolver
 			}
 			else
 			{
-				throw new RuntimeException("Cannot resolve dependency " + index);
+				throw new RuntimeException("Cannot resolve dependency " + index + " " + target.eClass().getName() );
 			}
 		}
 		catch(RuntimeException e)

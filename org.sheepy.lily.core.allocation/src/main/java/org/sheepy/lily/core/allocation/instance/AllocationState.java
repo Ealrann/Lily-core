@@ -7,7 +7,6 @@ import java.util.function.BiConsumer;
 
 public class AllocationState implements IAllocationState
 {
-
 	private final Runnable whenUpdateNeeded;
 	private final BiConsumer<EAllocationStatus, EAllocationStatus> onStatusChange;
 

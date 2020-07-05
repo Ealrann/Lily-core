@@ -108,34 +108,35 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 	@Override
 	public void free(IAllocationContext context)
 	{
-		cleanup(context, true);
+		cleanup(new FreeContext(context, true));
 	}
 
 	@Override
 	public void cleanup(final IAllocationContext context)
 	{
-		cleanup(context, false);
+		cleanup(new FreeContext(context, false));
 	}
 
-	public void cleanup(final IAllocationContext context, boolean freeEverything)
+	public void cleanup(final FreeContext context)
 	{
-		final boolean free = freeEverything || state.getStatus() == EAllocationStatus.Obsolete;
+		final var subContext = context.encapsulate(state.getStatus() == EAllocationStatus.Obsolete);
+		final var freeRequested = subContext.freeEverything();
 
-		if (free || postChildrenManager.isDirty())
+		if (freeRequested || postChildrenManager.isDirty())
 		{
-			postChildrenManager.cleanup(context, free);
+			postChildrenManager.cleanup(subContext);
 		}
 
-		if (free)
+		if (freeRequested)
 		{
-			freeInternal(context);
+			freeInternal(subContext.context());
 		}
 
-		if (free || preChildrenManager.isDirty())
+		if (freeRequested || preChildrenManager.isDirty())
 		{
-			preChildrenManager.cleanup(context, free);
+			preChildrenManager.cleanup(subContext);
 		}
-		if (free)
+		if (freeRequested)
 		{
 			state.setStatus(EAllocationStatus.Free);
 		}

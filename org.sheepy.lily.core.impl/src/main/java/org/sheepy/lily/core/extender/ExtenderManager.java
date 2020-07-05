@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class ExtenderManager implements IExtenderManager.Internal
@@ -108,15 +107,13 @@ public final class ExtenderManager implements IExtenderManager.Internal
 		}
 		else
 		{
-			return createHandles(type).stream();
+			return createHandles(type);
 		}
 	}
 
-	private <T extends IExtender> List<IExtenderHandle<T>> createHandles(final Class<T> type)
+	private <T extends IExtender> Stream<IExtenderHandle<T>> createHandles(final Class<T> type)
 	{
-		return REGISTRY.descriptors(deployer.getTarget(), type)
-					   .map(this::createHandle)
-					   .collect(Collectors.toUnmodifiableList());
+		return REGISTRY.descriptors(deployer.getTarget(), type).map(this::createHandle);
 	}
 
 	private <T extends IExtender> IExtenderHandle<T> createHandle(ExtenderDescriptorRegistry.DescriptorWraper<T> descriptor)

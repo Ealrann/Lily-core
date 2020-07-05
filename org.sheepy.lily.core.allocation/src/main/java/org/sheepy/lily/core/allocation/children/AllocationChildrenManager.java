@@ -1,5 +1,6 @@
 package org.sheepy.lily.core.allocation.children;
 
+import org.sheepy.lily.core.allocation.instance.FreeContext;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 
@@ -44,13 +45,13 @@ public final class AllocationChildrenManager implements IAllocationChildrenManag
 	}
 
 	@Override
-	public void cleanup(final IAllocationContext context, boolean freeEverything)
+	public void cleanup(final FreeContext context)
 	{
 		final int size = childEntryManagers.size();
 		for (int i = size - 1; i >= 0; i--)
 		{
 			final var childManager = childEntryManagers.get(i);
-			childManager.cleanup(context, freeEverything);
+			childManager.cleanup(context);
 		}
 	}
 

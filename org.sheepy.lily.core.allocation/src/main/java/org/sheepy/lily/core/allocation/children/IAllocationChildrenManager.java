@@ -1,6 +1,7 @@
 package org.sheepy.lily.core.allocation.children;
 
 import org.sheepy.lily.core.allocation.EAllocationStatus;
+import org.sheepy.lily.core.allocation.instance.FreeContext;
 import org.sheepy.lily.core.allocation.util.StructureObserver;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationChild;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 public interface IAllocationChildrenManager
 {
 	void update(ILilyEObject source, final IAllocationContext context);
-	void cleanup(final IAllocationContext context, boolean freeEverything);
+	void cleanup(final FreeContext context);
 	boolean isDirty();
 
 	final class Builder

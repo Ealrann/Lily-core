@@ -2,6 +2,7 @@ package org.sheepy.lily.core.allocation.children;
 
 import org.sheepy.lily.core.allocation.AllocationHandle;
 import org.sheepy.lily.core.allocation.EAllocationStatus;
+import org.sheepy.lily.core.allocation.instance.FreeContext;
 import org.sheepy.lily.core.allocation.util.StructureObserver;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationChild;
@@ -39,14 +40,9 @@ public final class ChildEntryManager
 		this.whenBranchDirty = whenBranchDirty;
 	}
 
-	public void cleanup(IAllocationContext context, boolean freeEverything)
+	public void cleanup(final FreeContext context)
 	{
-		while (removedElements.isEmpty() == false)
-		{
-			final var removed = removedElements.pop();
-			removed.containers.forEach(c -> c.cleanup(context, true));
-			allocatedElements.remove(removed);
-		}
+		freeRemovedElements(context);
 
 		for (int i = allocatedElements.size() - 1; i >= 0; i--)
 		{
@@ -55,11 +51,24 @@ public final class ChildEntryManager
 			for (int j = containers.size() - 1; j >= 0; j--)
 			{
 				final var container = containers.get(j);
-				container.cleanup(context, freeEverything);
+				container.cleanup(context);
 			}
 		}
+		if (context.freeEverything()) allocatedElements.clear();
+	}
 
-		if (freeEverything) allocatedElements.clear();
+	private void freeRemovedElements(final FreeContext context)
+	{
+		if (removedElements.isEmpty() == false)
+		{
+			final var subContext = context.encapsulate(true);
+			while (removedElements.isEmpty() == false)
+			{
+				final var removed = removedElements.pop();
+				removed.containers.forEach(c -> c.cleanup(subContext));
+				allocatedElements.remove(removed);
+			}
+		}
 	}
 
 	public void update(ILilyEObject source, IAllocationContext context)

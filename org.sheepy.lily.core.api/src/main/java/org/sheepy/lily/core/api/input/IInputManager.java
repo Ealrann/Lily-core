@@ -2,29 +2,22 @@ package org.sheepy.lily.core.api.input;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.joml.Vector2fc;
-import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.engine.IInputEngineAdapter;
+import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.input.event.*;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.Feature;
 import org.sheepy.lily.core.api.notification.IFeatures;
 import org.sheepy.lily.core.api.notification.INotifier;
 import org.sheepy.lily.core.model.application.Application;
 
-import java.util.Objects;
-import java.util.Optional;
 import java.util.function.Consumer;
 
-public interface IInputManager extends INotifier<IInputManager.Features>
+public interface IInputManager extends INotifier<IInputManager.Features>, IExtender
 {
-	static Optional<IInputManager> get(ILilyEObject from)
+	static IInputManager get(ILilyEObject from)
 	{
 		final var application = (Application) EcoreUtil.getRootContainer(from);
-		return application.getEngines()
-						  .stream()
-						  .map(engine -> engine.adapt(IInputEngineAdapter.class))
-						  .filter(Objects::nonNull)
-						  .findAny()
-						  .map(IInputEngineAdapter::getInputManager);
+		return application.adapt(IInputManager.class);
 	}
 
 	interface Features extends IFeatures<Features>

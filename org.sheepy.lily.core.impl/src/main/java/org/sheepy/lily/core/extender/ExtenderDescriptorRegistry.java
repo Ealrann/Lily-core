@@ -33,11 +33,6 @@ public final class ExtenderDescriptorRegistry implements IExtenderDescriptorRegi
 		}
 	}
 
-	public void register(Class<? extends IExtender> classifier)
-	{
-		createDescriptor(classifier);
-	}
-
 	private void createDescriptor(final Class<? extends IExtender> extenderClass)
 	{
 		try
@@ -49,6 +44,11 @@ public final class ExtenderDescriptorRegistry implements IExtenderDescriptorRegi
 		{
 			e.printStackTrace();
 		}
+	}
+
+	public Stream<DescriptorWraper<?>> descriptors(final EObject target)
+	{
+		return descriptors.stream().filter(descriptor -> descriptor.descriptor.isApplicable(target));
 	}
 
 	@SuppressWarnings("unchecked")
@@ -72,11 +72,6 @@ public final class ExtenderDescriptorRegistry implements IExtenderDescriptorRegi
 	public Stream<IExtenderDescriptor<?>> streamDescriptors()
 	{
 		return descriptors.stream().map(d -> d.descriptor);
-	}
-
-	public Stream<DescriptorWraper<?>> descriptors(final EObject target)
-	{
-		return descriptors.stream().filter(descriptor -> descriptor.descriptor.isApplicable(target));
 	}
 
 	@SuppressWarnings("unchecked")
