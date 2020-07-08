@@ -31,14 +31,23 @@ public final class NotifierAdapterObservatory<Type extends IFeatures<Type>, Noti
 	}
 
 	@Override
-	protected void onAdapterUpdate(final Notifier oldAdapter, final Notifier newAdapter)
+	protected void gatherAdd(final Notifier newAdapter)
 	{
-		super.onAdapterUpdate(oldAdapter, newAdapter);
+		super.gatherAdd(newAdapter);
 		for (final var point : observationPoints)
 		{
-			if (oldAdapter != null) point.sulk(oldAdapter);
-			if (newAdapter != null) point.listen(newAdapter);
+			point.listen(newAdapter);
 		}
+	}
+
+	@Override
+	protected void gatherRemove(final Notifier oldAdapter)
+	{
+		for (final var point : observationPoints)
+		{
+			point.sulk(oldAdapter);
+		}
+		super.gatherRemove(oldAdapter);
 	}
 
 	public static final class Builder<Type extends IFeatures<Type>, Notifier extends IExtender & INotifier<Type>> extends

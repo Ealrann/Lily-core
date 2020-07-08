@@ -47,7 +47,7 @@ public class AdapterObservatory<Type extends IExtender> implements IObservatory
 		final var adapter = handle.getExtender();
 		if (adapter != null)
 		{
-			gather(adapter, gatherAdd);
+			gatherAdd(adapter);
 		}
 
 		handle.listen(onAdapterUpdate);
@@ -62,7 +62,7 @@ public class AdapterObservatory<Type extends IExtender> implements IObservatory
 		final var adapter = handle.getExtender();
 		if (adapter != null)
 		{
-			gather(adapter, gatherRemove);
+			gatherRemove(adapter);
 		}
 
 		for (final var listener : listeners)
@@ -74,13 +74,21 @@ public class AdapterObservatory<Type extends IExtender> implements IObservatory
 
 	protected void onAdapterUpdate(Type oldAdapter, Type newAdapter)
 	{
-		if (oldAdapter != null) gather(oldAdapter, gatherRemove);
-		if (newAdapter != null) gather(newAdapter, gatherAdd);
+		if (oldAdapter != null) gatherRemove(oldAdapter);
+		if (newAdapter != null) gatherAdd(newAdapter);
 	}
 
-	protected void gather(final Type adapter, final List<Consumer<Type>> gatherAdd)
+	protected void gatherAdd(final Type adapter)
 	{
 		for (final var listener : gatherAdd)
+		{
+			listener.accept(adapter);
+		}
+	}
+
+	protected void gatherRemove(final Type adapter)
+	{
+		for (final var listener : gatherRemove)
 		{
 			listener.accept(adapter);
 		}
