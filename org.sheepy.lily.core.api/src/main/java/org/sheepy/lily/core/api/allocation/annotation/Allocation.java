@@ -12,4 +12,5 @@ import java.lang.annotation.Target;
 public @interface Allocation
 {
 	Class<? extends IAllocationContext> context() default IAllocationContext.class;
+	boolean reuseDirtyAllocations() default false;
 }

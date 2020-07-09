@@ -240,7 +240,7 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 		}
 
 		public AllocationInstance<Allocation> build(final IAllocationContext context,
-													Runnable whenUpdateNeeded) throws ReflectiveOperationException
+													final Runnable whenUpdateNeeded) throws ReflectiveOperationException
 		{
 			return new AllocationInstance<>(target,
 											descriptor,

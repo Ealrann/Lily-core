@@ -19,6 +19,7 @@ public final class AllocationDescriptor<Allocation extends IExtender>
 	private final List<DependencyResolver.Builder> builders;
 	private final List<AllocationChild> childAnnotations;
 	private final boolean provideContext;
+	private final boolean reuseDirtyAllocations;
 
 	public AllocationDescriptor(IExtenderDescriptor<Allocation> extenderDescriptor)
 	{
@@ -26,6 +27,9 @@ public final class AllocationDescriptor<Allocation extends IExtender>
 		builders = List.copyOf(createResolverBuilders());
 		childAnnotations = List.of(extenderDescriptor.extenderClass().getAnnotationsByType(AllocationChild.class));
 		provideContext = extenderDescriptor.streamMethodAnnotations(ProvideContext.class).findAny().isPresent();
+		final var annotation = extenderDescriptor.extenderClass()
+												 .getAnnotation(org.sheepy.lily.core.api.allocation.annotation.Allocation.class);
+		reuseDirtyAllocations = annotation.reuseDirtyAllocations();
 	}
 
 	public List<DependencyResolver> createResolvers(IObservatoryBuilder observatory, ILilyEObject source)
@@ -61,6 +65,11 @@ public final class AllocationDescriptor<Allocation extends IExtender>
 	public IExtenderDescriptor<Allocation> getExtenderDescriptor()
 	{
 		return extenderDescriptor;
+	}
+
+	public boolean reuseDirtyAllocations()
+	{
+		return reuseDirtyAllocations;
 	}
 
 	public boolean isProvidingContext()

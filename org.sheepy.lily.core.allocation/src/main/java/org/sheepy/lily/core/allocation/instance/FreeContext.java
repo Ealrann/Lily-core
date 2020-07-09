@@ -31,4 +31,18 @@ public record FreeContext(IAllocationContext context, boolean freeEverything)
 			return false;
 		}
 	}
+
+	public boolean freeIfUnlocked(final AllocationInstance<?> allocation)
+	{
+		final var unlocked = allocation.isUnlocked();
+		if (freeEverything() || unlocked)
+		{
+			allocation.cleanup(encapsulate(true));
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }

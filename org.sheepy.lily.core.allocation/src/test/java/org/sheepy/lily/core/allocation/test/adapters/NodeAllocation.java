@@ -13,7 +13,7 @@ import org.sheepy.lily.core.api.extender.ModelExtender;
 import java.util.List;
 
 @ModelExtender(scope = Node.class)
-@Allocation
+@Allocation(reuseDirtyAllocations = true)
 @AllocationChild(features = TestallocationPackage.NODE__LEAVES)
 @AllocationDependency(features = TestallocationPackage.NODE__CONTAINER, type = AllocationObjectAllocation.class)
 public class NodeAllocation extends AllocationObjectAllocation

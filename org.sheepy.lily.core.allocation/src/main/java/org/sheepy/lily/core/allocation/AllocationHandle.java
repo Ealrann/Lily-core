@@ -122,6 +122,11 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 		listeners.sulkNoParam(listener);
 	}
 
+	public AllocationDescriptor<Allocation> getDescriptor()
+	{
+		return descriptor;
+	}
+
 	private static <T extends IExtender> T getAllocationOrNull(AllocationInstance<T> instance)
 	{
 		return instance != null ? instance.getAllocation() : null;
