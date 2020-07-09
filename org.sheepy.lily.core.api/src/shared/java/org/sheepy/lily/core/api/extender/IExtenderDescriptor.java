@@ -5,6 +5,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.api.extender.parameter.IParameterResolver;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
+import org.sheepy.lily.core.api.reflect.ConsumerHandle;
 import org.sheepy.lily.core.api.util.AnnotationHandles;
 
 import java.lang.annotation.Annotation;
@@ -26,5 +27,19 @@ public interface IExtenderDescriptor<T extends IExtender>
 
 	record ExtenderContext<T extends IExtender>(T extender, List<? extends AnnotationHandles<?>>annotationHandles)
 	{
+		public Stream<ConsumerHandle> annotatedConsumer(Class<? extends Annotation> annotationClass)
+		{
+			return annotatedHandles(annotationClass).map(IExtenderHandle.AnnotatedHandle::executionHandle)
+													.filter(ConsumerHandle.class::isInstance)
+													.map(ConsumerHandle.class::cast);
+		}
+
+		@SuppressWarnings("unchecked")
+		public <A extends Annotation> Stream<IExtenderHandle.AnnotatedHandle<A>> annotatedHandles(Class<A> annotationClass)
+		{
+			return annotationHandles.stream()
+									.filter(h -> h.annotationClass().equals(annotationClass))
+									.flatMap(h -> ((AnnotationHandles<A>) h).handles().stream());
+		}
 	}
 }

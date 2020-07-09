@@ -1,4 +1,4 @@
-package org.sheepy.lily.core.allocation.children;
+package org.sheepy.lily.core.allocation.children.instance;
 
 import org.sheepy.lily.core.allocation.AllocationHandle;
 import org.sheepy.lily.core.allocation.EAllocationStatus;
@@ -7,24 +7,24 @@ import org.sheepy.lily.core.allocation.instance.FreeContext;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.extender.IExtender;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public final class ChildContainer<Allocation extends IExtender>
+public final class ChildInstanceAllocator<Allocation extends IExtender>
 {
 	private final AllocationHandle<Allocation> handle;
 	private final boolean reuseDirtyAllocations;
 	private final Runnable whenUpdateNeeded;
 	private final Optional<Consumer<EAllocationStatus>> listener;
 
-	private final List<AllocationInstance<Allocation>> dirtyAllocations = new ArrayList<>(1);
+	private final List<AllocationInstance<Allocation>> dirtyAllocations = new LinkedList<>();
 	private AllocationInstance<Allocation> mainAllocation;
 
-	public ChildContainer(final AllocationHandle<Allocation> handle,
-						  final Runnable whenUpdateNeeded,
-						  final Optional<Consumer<EAllocationStatus>> listener)
+	public ChildInstanceAllocator(final AllocationHandle<Allocation> handle,
+								  final Runnable whenUpdateNeeded,
+								  final Optional<Consumer<EAllocationStatus>> listener)
 	{
 		this.handle = handle;
 		this.reuseDirtyAllocations = handle.getDescriptor().reuseDirtyAllocations();
@@ -62,6 +62,11 @@ public final class ChildContainer<Allocation extends IExtender>
 		{
 			mainAllocation.update(context);
 		}
+	}
+
+	public void markChildrenObsolete()
+	{
+		mainAllocation.markObsolete();
 	}
 
 	private void resolveMainAllocation(final IAllocationContext context)

@@ -1,5 +1,6 @@
-package org.sheepy.lily.core.allocation.children;
+package org.sheepy.lily.core.allocation.children.manager;
 
+import org.sheepy.lily.core.allocation.children.instance.ChildrenSupervisor;
 import org.sheepy.lily.core.allocation.instance.FreeContext;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.model.ILilyEObject;
@@ -13,7 +14,7 @@ public final class ContextAllocationChildrenManager implements IAllocationChildr
 	private final List<ChildrenInjector> childrenInjectors;
 	private final AllocationChildrenManager childrenManager;
 
-	ContextAllocationChildrenManager(final List<ChildEntryManager.Builder> childEntryManagers,
+	ContextAllocationChildrenManager(final List<ChildrenSupervisor.Builder> childEntryManagers,
 									 final Configuration config,
 									 final Supplier<IAllocationContext> contextProvider,
 									 final List<ChildrenInjector> childrenInjectors)
@@ -56,6 +57,12 @@ public final class ContextAllocationChildrenManager implements IAllocationChildr
 		{
 			childrenManager.cleanup(context);
 		}
+	}
+
+	@Override
+	public void markChildrenObsolete()
+	{
+		childrenManager.markChildrenObsolete();
 	}
 
 	@Override

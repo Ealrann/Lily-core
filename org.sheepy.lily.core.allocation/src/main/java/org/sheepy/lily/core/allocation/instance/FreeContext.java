@@ -21,7 +21,7 @@ public record FreeContext(IAllocationContext context, boolean freeEverything)
 	{
 		final var obsolete = allocation.getStatus() == EAllocationStatus.Obsolete;
 		final var unlocked = allocation.isUnlocked();
-		if (freeEverything() || (obsolete && unlocked))
+		if (freeEverything || (obsolete && unlocked))
 		{
 			allocation.cleanup(encapsulate(true));
 			return true;
@@ -35,7 +35,7 @@ public record FreeContext(IAllocationContext context, boolean freeEverything)
 	public boolean freeIfUnlocked(final AllocationInstance<?> allocation)
 	{
 		final var unlocked = allocation.isUnlocked();
-		if (freeEverything() || unlocked)
+		if (freeEverything || unlocked)
 		{
 			allocation.cleanup(encapsulate(true));
 			return true;

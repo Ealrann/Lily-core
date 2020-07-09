@@ -89,7 +89,7 @@ public final class TreeAnnotationCaller extends EContentAdapter
 		{
 			target.adapters()
 				  .adaptHandleFromDescriptor(descriptor)
-				  .allAnnotatedHandles(annotationType)
+				  .annotatedHandles(annotationType)
 				  .forEach(a -> ((ConsumerHandle) a.executionHandle()).invoke());
 		}
 	}

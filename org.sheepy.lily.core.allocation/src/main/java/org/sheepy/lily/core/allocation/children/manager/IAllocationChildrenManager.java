@@ -1,6 +1,7 @@
-package org.sheepy.lily.core.allocation.children;
+package org.sheepy.lily.core.allocation.children.manager;
 
 import org.sheepy.lily.core.allocation.EAllocationStatus;
+import org.sheepy.lily.core.allocation.children.instance.ChildrenSupervisor;
 import org.sheepy.lily.core.allocation.instance.FreeContext;
 import org.sheepy.lily.core.allocation.util.StructureObserver;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
@@ -23,19 +24,20 @@ public interface IAllocationChildrenManager
 	void update(ILilyEObject source, final IAllocationContext context);
 	void cleanup(final FreeContext context);
 	boolean isDirty();
+	void markChildrenObsolete();
 
 	final class Builder
 	{
 		private final ILilyEObject target;
-		private final List<ChildEntryManager.Builder> preChildEntryBuilders;
-		private final List<ChildEntryManager.Builder> postChildEntryBuilders;
+		private final List<ChildrenSupervisor.Builder> preChildEntryBuilders;
+		private final List<ChildrenSupervisor.Builder> postChildEntryBuilders;
 
 		public Builder(final List<AllocationChild> childAnnotations, final ILilyEObject target)
 		{
 			this.target = target;
 
-			final List<ChildEntryManager.Builder> preList = new ArrayList<>();
-			final List<ChildEntryManager.Builder> postList = new ArrayList<>();
+			final List<ChildrenSupervisor.Builder> preList = new ArrayList<>();
+			final List<ChildrenSupervisor.Builder> postList = new ArrayList<>();
 			for (int i = 0; i < childAnnotations.size(); i++)
 			{
 				final var annotation = childAnnotations.get(i);
@@ -48,9 +50,9 @@ public interface IAllocationChildrenManager
 			postChildEntryBuilders = List.copyOf(postList);
 		}
 
-		private ChildEntryManager.Builder buildEntry(final AllocationChild childAnnotation, int index)
+		private ChildrenSupervisor.Builder buildEntry(final AllocationChild childAnnotation, int index)
 		{
-			return new ChildEntryManager.Builder(target, childAnnotation, index);
+			return new ChildrenSupervisor.Builder(target, childAnnotation, index);
 		}
 
 		public IAllocationChildrenManager buildPreAllocation(final Configuration config)
@@ -95,7 +97,7 @@ public interface IAllocationChildrenManager
 			return postChildEntryBuilders.stream()
 										 .filter(b -> b.index() == index)
 										 .findAny()
-										 .map(ChildEntryManager.Builder::structureObservatoryBuilder)
+										 .map(ChildrenSupervisor.Builder::structureObservatoryBuilder)
 										 .map(StructureObserver.Builder::buildExplorer)
 										 .orElse(null);
 		}

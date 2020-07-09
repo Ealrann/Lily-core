@@ -2,6 +2,7 @@ package org.sheepy.lily.core.allocation;
 
 import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
+import org.sheepy.lily.core.allocation.instance.AllocationInstanceBuilder;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.IAllocationHandle;
 import org.sheepy.lily.core.api.extender.IExtender;
@@ -19,7 +20,7 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	private final AllocationDescriptor<Allocation> descriptor;
 	private final ListenerList<ExtenderListener<Allocation>> listeners = new ListenerList<>();
 	private final IObservatory observatory;
-	private final AllocationInstance.Builder<Allocation> instanceBuilder;
+	private final AllocationInstanceBuilder<Allocation> instanceBuilder;
 
 	private AllocationInstance<Allocation> mainAllocation = null;
 
@@ -29,7 +30,7 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 		this.descriptor = descriptor;
 		final var resolvers = descriptor.createResolvers(observatoryBuilder, target);
 
-		instanceBuilder = new AllocationInstance.Builder<>(descriptor, target, resolvers);
+		instanceBuilder = new AllocationInstanceBuilder<>(descriptor, target, resolvers);
 		this.observatory = observatoryBuilder.build();
 	}
 
@@ -71,7 +72,7 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	}
 
 	@Override
-	public <A extends Annotation> Stream<AnnotatedHandle<A>> allAnnotatedHandles(final Class<A> annotationClass)
+	public <A extends Annotation> Stream<AnnotatedHandle<A>> annotatedHandles(final Class<A> annotationClass)
 	{
 		return mainAllocation.annotatedHandles(annotationClass);
 	}
@@ -79,7 +80,7 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	@Override
 	public Class<Allocation> getExtenderClass()
 	{
-		return descriptor.getExtenderDescriptor().extenderClass();
+		return descriptor.extenderDescriptor().extenderClass();
 	}
 
 	@Override

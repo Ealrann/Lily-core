@@ -37,7 +37,7 @@ public final class TickHandle
 
 	public void tick(final long stepNs)
 	{
-		handle.allAnnotatedHandles(Tick.class)
+		handle.annotatedHandles(Tick.class)
 			  .filter(handle -> handle.annotation() == configuration.annotation())
 			  .forEach(handle -> tick(stepNs, handle));
 	}

@@ -6,4 +6,5 @@ public interface IAllocationState
 	void lockAllocation();
 	void unlockAllocation();
 	boolean isLocked();
+	void requestUpdate();
 }

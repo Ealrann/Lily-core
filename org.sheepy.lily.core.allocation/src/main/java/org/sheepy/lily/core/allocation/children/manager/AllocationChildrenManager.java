@@ -1,5 +1,6 @@
-package org.sheepy.lily.core.allocation.children;
+package org.sheepy.lily.core.allocation.children.manager;
 
+import org.sheepy.lily.core.allocation.children.instance.ChildrenSupervisor;
 import org.sheepy.lily.core.allocation.instance.FreeContext;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.model.ILilyEObject;
@@ -9,13 +10,13 @@ import java.util.stream.Collectors;
 
 public final class AllocationChildrenManager implements IAllocationChildrenManager
 {
-	private final List<ChildEntryManager> childEntryManagers;
+	private final List<ChildrenSupervisor> childrenSupervisors;
 	private final Configuration encapsulatedConfig;
 	private final Runnable whenBranchDirty;
 
 	private boolean dirty = true;
 
-	AllocationChildrenManager(final List<ChildEntryManager.Builder> childEntryManagerBuilders,
+	AllocationChildrenManager(final List<ChildrenSupervisor.Builder> childEntryManagerBuilders,
 							  final Configuration config)
 	{
 		whenBranchDirty = config.whenBranchDirty();
@@ -24,20 +25,29 @@ public final class AllocationChildrenManager implements IAllocationChildrenManag
 											   config.whenObsolete(),
 											   config.observatoryBuilder());
 
-		childEntryManagers = childEntryManagerBuilders.stream()
-													  .map(this::buildChildEntryManager)
-													  .collect(Collectors.toUnmodifiableList());
+		childrenSupervisors = childEntryManagerBuilders.stream()
+													   .map(this::buildChildEntryManager)
+													   .collect(Collectors.toUnmodifiableList());
 	}
 
-	private ChildEntryManager buildChildEntryManager(ChildEntryManager.Builder builder)
+	private ChildrenSupervisor buildChildEntryManager(ChildrenSupervisor.Builder builder)
 	{
 		return builder.build(encapsulatedConfig);
 	}
 
 	@Override
+	public void markChildrenObsolete()
+	{
+		for (final var child : childrenSupervisors)
+		{
+			child.markChildrenObsolete();
+		}
+	}
+
+	@Override
 	public void update(ILilyEObject source, final IAllocationContext context)
 	{
-		for (final var childManager : childEntryManagers)
+		for (final var childManager : childrenSupervisors)
 		{
 			childManager.update(source, context);
 		}
@@ -47,10 +57,10 @@ public final class AllocationChildrenManager implements IAllocationChildrenManag
 	@Override
 	public void cleanup(final FreeContext context)
 	{
-		final int size = childEntryManagers.size();
+		final int size = childrenSupervisors.size();
 		for (int i = size - 1; i >= 0; i--)
 		{
-			final var childManager = childEntryManagers.get(i);
+			final var childManager = childrenSupervisors.get(i);
 			childManager.cleanup(context);
 		}
 	}

@@ -46,6 +46,25 @@ public final class ExtenderDescriptorRegistry implements IExtenderDescriptorRegi
 		}
 	}
 
+	@Override
+	public Stream<IExtenderDescriptor<?>> streamDescriptors()
+	{
+		return descriptors.stream().map(d -> d.descriptor);
+	}
+
+	@Override
+	public Stream<IExtenderDescriptor<?>> streamDescriptors(final EObject target)
+	{
+		return descriptors(target).map(d -> d.descriptor);
+	}
+
+	@Override
+	public <T extends IExtender> Stream<IExtenderDescriptor<T>> streamDescriptors(final EObject target,
+																				  final Class<T> type)
+	{
+		return descriptors(target, type).map(d -> d.descriptor);
+	}
+
 	public Stream<DescriptorWraper<?>> descriptors(final EObject target)
 	{
 		return descriptors.stream().filter(descriptor -> descriptor.descriptor.isApplicable(target));
@@ -58,20 +77,6 @@ public final class ExtenderDescriptorRegistry implements IExtenderDescriptorRegi
 						  .filter(descriptor -> descriptor.descriptor.isExtenderForType(type))
 						  .filter(descriptor -> descriptor.descriptor.isApplicable(target))
 						  .map(descriptor -> ((DescriptorWraper<T>) descriptor));
-	}
-
-	@Override
-	public Stream<IExtenderDescriptor<?>> streamDescriptors(final EObject target)
-	{
-		return descriptors.stream()
-						  .filter(descriptor -> descriptor.descriptor.isApplicable(target))
-						  .map(d -> d.descriptor);
-	}
-
-	@Override
-	public Stream<IExtenderDescriptor<?>> streamDescriptors()
-	{
-		return descriptors.stream().map(d -> d.descriptor);
 	}
 
 	@SuppressWarnings("unchecked")

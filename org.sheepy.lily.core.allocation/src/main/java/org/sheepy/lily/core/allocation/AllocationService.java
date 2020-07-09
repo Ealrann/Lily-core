@@ -11,28 +11,12 @@ import org.sheepy.lily.core.api.model.ILilyEObject;
 
 public final class AllocationService implements IAllocationService
 {
-	@SuppressWarnings("unchecked")
 	@Override
-	public <T extends IExtender> AllocationInstance<T> allocate(ILilyEObject target,
-																IAllocationContext context,
-																Class<T> type)
+	public <T extends IExtender> AllocationInstance<T> allocate(final ILilyEObject target,
+																final IAllocationContext context,
+																final Class<T> type)
 	{
-		final var descriptor = IExtenderDescriptorRegistry.INSTANCE.streamDescriptors()
-																   .filter(de -> de.isExtenderForType(type))
-																   .filter(de -> de.isApplicable(target))
-																   .map(de -> (IExtenderDescriptor<T>) de)
-																   .findAny();
-
-		if (descriptor.isPresent())
-		{
-			final var handle = (AllocationHandle<T>) target.adapters().adaptHandleFromDescriptor(descriptor.get());
-			return handle.allocateNew(context, () -> {
-			});
-		}
-		else
-		{
-			return null;
-		}
+		return new Allocator<>(target, context, type).allocate();
 	}
 
 	@Override
@@ -40,20 +24,56 @@ public final class AllocationService implements IAllocationService
 								 final IAllocationContext context,
 								 final Class<? extends IExtender> type)
 	{
-		final var descriptor = IExtenderDescriptorRegistry.INSTANCE.streamDescriptors()
-																   .filter(de -> de.isExtenderForType(type))
-																   .filter(de -> de.isApplicable(target))
-																   .findAny();
-		if (descriptor.isPresent())
-		{
-			final var handle = (AllocationHandle<?>) target.adapters().adaptHandleFromDescriptor(descriptor.get());
-			final var allocation = handle.getMainAllocation();
+		new Updater(target, context, type).update();
+	}
 
-			if (allocation.isDirty() && allocation.isUpdatable())
-			{
-				allocation.cleanup(new FreeContext(context, false));
-				allocation.update(context);
-			}
+	private static record Allocator<T extends IExtender>(ILilyEObject target, IAllocationContext context, Class<T>type)
+	{
+		public AllocationInstance<T> allocate()
+		{
+			return IExtenderDescriptorRegistry.INSTANCE.streamDescriptors(target, type)
+													   .map(this::adaptHandle)
+													   .map(this::allocateHandle)
+													   .findAny()
+													   .orElse(null);
+		}
+
+		private AllocationInstance<T> allocateHandle(final AllocationHandle<T> handle)
+		{
+			return handle.allocateNew(context, () -> {});
+		}
+
+		private AllocationHandle<T> adaptHandle(final IExtenderDescriptor<T> descriptor)
+		{
+			return (AllocationHandle<T>) target.adapters().adaptHandleFromDescriptor(descriptor);
+		}
+	}
+
+	private static record Updater(ILilyEObject target, IAllocationContext context, Class<? extends IExtender>type)
+	{
+		public void update()
+		{
+			IExtenderDescriptorRegistry.INSTANCE.streamDescriptors(target, type)
+												.map(this::adaptHandle)
+												.map(AllocationHandle::getMainAllocation)
+												.filter(Updater::isUpdatable)
+												.forEach(this::updateHandle);
+		}
+
+		private void updateHandle(final AllocationInstance<?> allocation)
+		{
+			allocation.cleanup(new FreeContext(context, false));
+			allocation.update(context);
+		}
+
+		private AllocationHandle<?> adaptHandle(final IExtenderDescriptor<?> descriptor)
+		{
+			return (AllocationHandle<?>) target.adapters().adaptHandleFromDescriptor(descriptor);
+		}
+
+		private static boolean isUpdatable(final AllocationInstance<?> allocation)
+		{
+			return allocation.isDirty() && allocation.isUpdatable();
 		}
 	}
 }

@@ -13,6 +13,7 @@ public class AllocationState implements IAllocationState
 	private EAllocationStatus status = EAllocationStatus.Allocated;
 	private EAllocationStatus branchStatus = EAllocationStatus.Allocated;
 	private boolean locked = false;
+	private boolean needUpdate = false;
 
 	public AllocationState(final BiConsumer<EAllocationStatus, EAllocationStatus> onStatusChange,
 						   final Runnable whenUpdateNeeded)
@@ -54,9 +55,26 @@ public class AllocationState implements IAllocationState
 		}
 	}
 
+	@Override
+	public void requestUpdate()
+	{
+		if (this.needUpdate == false)
+		{
+			this.needUpdate = true;
+			markDirty();
+		}
+	}
+
 	public EAllocationStatus getStatus()
 	{
 		return status;
+	}
+
+	public void reset()
+	{
+		setStatus(EAllocationStatus.Allocated);
+		this.needUpdate = false;
+		this.branchStatus = EAllocationStatus.Allocated;
 	}
 
 	public void setStatus(EAllocationStatus status)
@@ -102,5 +120,10 @@ public class AllocationState implements IAllocationState
 	public boolean isLocked()
 	{
 		return locked;
+	}
+
+	public boolean needUpdate()
+	{
+		return needUpdate;
 	}
 }
