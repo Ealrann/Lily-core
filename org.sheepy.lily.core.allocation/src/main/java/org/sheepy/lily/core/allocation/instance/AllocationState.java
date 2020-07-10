@@ -73,7 +73,6 @@ public class AllocationState implements IAllocationState
 	public void reset()
 	{
 		setStatus(EAllocationStatus.Allocated);
-		this.needUpdate = false;
 		this.branchStatus = EAllocationStatus.Allocated;
 	}
 
@@ -125,5 +124,10 @@ public class AllocationState implements IAllocationState
 	public boolean needUpdate()
 	{
 		return needUpdate;
+	}
+
+	public void updated()
+	{
+		needUpdate = false;
 	}
 }

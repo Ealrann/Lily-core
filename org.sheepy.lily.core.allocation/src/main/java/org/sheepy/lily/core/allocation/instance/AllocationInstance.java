@@ -71,6 +71,7 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 
 		if (state.needUpdate())
 		{
+			state.updated();
 			extenderContext.annotatedConsumer(Update.class).forEach(ConsumerHandle::invoke);
 		}
 
