@@ -124,4 +124,30 @@ public class TestCompositeChildren
 		assertEquals(2, container.getTotalAllocationCount());
 		assertEquals(2, box.getTotalAllocationCount());
 	}
+
+	@Test
+	public void tryLockBranch()
+	{
+		final var root = TestallocationFactory.eINSTANCE.createRoot();
+		final var container = TestallocationFactory.eINSTANCE.createContainer();
+		final var box1 = TestallocationFactory.eINSTANCE.createBox();
+		final var box2 = TestallocationFactory.eINSTANCE.createBox();
+		final var node = TestallocationFactory.eINSTANCE.createNode();
+		final var leaf = TestallocationFactory.eINSTANCE.createLeaf();
+
+		root.getContainers().add(container);
+		root.getNodes().add(node);
+		container.getBoxes().add(box1);
+		container.getBoxes().add(box2);
+		node.getLeaves().add(leaf);
+		leaf.getBoxes().add(box1);
+
+		final var rootAllocation = IAllocationService.INSTANCE.allocate(root, null, AllocationObjectAllocation.class);
+
+		container.adapt(ContainerAllocation.class).lockAllocation();
+		box2.adapt(BoxAllocation.class).markObsolete();
+
+		rootAllocation.cleanup(null);
+		rootAllocation.update(null);
+	}
 }

@@ -36,13 +36,9 @@ public final class ChildInstanceAllocator<Allocation extends IExtender>
 	{
 		if (mainAllocation != null)
 		{
-			final var status = mainAllocation.getStatus();
-			final boolean obsolete = status == EAllocationStatus.Obsolete;
-			final boolean dirtyLocked = mainAllocation.isDirty() && mainAllocation.isLocked();
-
-			if (context.freeEverything() || obsolete || dirtyLocked)
+			if (context.freeEverything() || isMainAllocationObsolete())
 			{
-				deprecateMainAllocation(context);
+				deprecateMainAllocation(context, true);
 			}
 			else if (mainAllocation.isDirty())
 			{
@@ -54,6 +50,14 @@ public final class ChildInstanceAllocator<Allocation extends IExtender>
 
 	public void update(IAllocationContext context)
 	{
+		if (mainAllocation != null)
+		{
+			if (isMainAllocationObsolete())
+			{
+				deprecateMainAllocation(new FreeContext(context, false), false);
+			}
+		}
+
 		if (mainAllocation == null)
 		{
 			resolveMainAllocation(context);
@@ -62,6 +66,13 @@ public final class ChildInstanceAllocator<Allocation extends IExtender>
 		{
 			mainAllocation.update(context);
 		}
+	}
+
+	private boolean isMainAllocationObsolete()
+	{
+		final boolean obsolete = mainAllocation.getStatus() == EAllocationStatus.Obsolete;
+		final boolean dirtyLocked = mainAllocation.isDirty() && mainAllocation.isLocked();
+		return obsolete || dirtyLocked;
 	}
 
 	public void markChildrenObsolete()
@@ -95,18 +106,22 @@ public final class ChildInstanceAllocator<Allocation extends IExtender>
 		return dirtyAllocations.stream().filter(AllocationInstance::isUpdatable).findAny();
 	}
 
-	private void deprecateMainAllocation(final FreeContext context)
+	private void deprecateMainAllocation(final FreeContext context, boolean tryFree)
 	{
 		listener.ifPresent(mainAllocation::sulk);
 
-		final boolean free = reuseDirtyAllocations ? context.freeIfObsoleteUnlocked(mainAllocation) : context.freeIfUnlocked(
-				mainAllocation);
-
+		final boolean free = tryFree && tryFreeMainAllocation(context);
 		if (free == false)
 		{
 			dirtyAllocations.add(mainAllocation);
 		}
 		mainAllocation = null;
+	}
+
+	private boolean tryFreeMainAllocation(final FreeContext context)
+	{
+		return reuseDirtyAllocations ? context.freeIfObsoleteUnlocked(mainAllocation) : context.freeIfUnlocked(
+				mainAllocation);
 	}
 
 	private void freeDeprecatedHandles(final FreeContext context)
