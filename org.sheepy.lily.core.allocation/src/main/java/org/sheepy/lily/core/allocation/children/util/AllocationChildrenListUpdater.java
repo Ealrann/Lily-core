@@ -9,7 +9,6 @@ import org.sheepy.lily.core.api.util.IModelExplorer;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
@@ -19,8 +18,6 @@ public final class AllocationChildrenListUpdater
 	private final Runnable whenBranchDirty;
 	private final Optional<Consumer<EAllocationStatus>> listener;
 	private final IModelExplorer modelExplorer;
-
-	private ListIterator<ChildAllocationContainer> iterator;
 
 	public AllocationChildrenListUpdater(Runnable whenBranchDirty,
 										 Optional<Consumer<EAllocationStatus>> listener,
@@ -34,7 +31,7 @@ public final class AllocationChildrenListUpdater
 	public void updateAllocationList(LinkedList<ChildAllocationContainer> listToUpdate, final ILilyEObject source)
 	{
 		final var modelIterator = modelExplorer.stream(source).iterator();
-		final var listIterator = listToUpdate.listIterator(0);
+		final var listIterator = listToUpdate.listIterator();
 
 		while (modelIterator.hasNext())
 		{
@@ -43,7 +40,8 @@ public final class AllocationChildrenListUpdater
 			{
 				if (listIterator.next().target() != currentElement)
 				{
-					listIterator.set(buildAllocationContainer(currentElement));
+					listIterator.previous();
+					listIterator.add(buildAllocationContainer(currentElement));
 				}
 			}
 			else
