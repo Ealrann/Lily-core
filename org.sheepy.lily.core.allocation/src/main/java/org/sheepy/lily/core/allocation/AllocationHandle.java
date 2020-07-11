@@ -27,9 +27,9 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	public AllocationHandle(ILilyEObject target, AllocationDescriptor<Allocation> descriptor)
 	{
 		final var observatoryBuilder = IObservatoryBuilder.newObservatoryBuilder();
-		this.descriptor = descriptor;
 		final var resolvers = descriptor.createResolvers(observatoryBuilder, target);
 
+		this.descriptor = descriptor;
 		instanceBuilder = new AllocationInstanceBuilder<>(descriptor, target, resolvers);
 		this.observatory = observatoryBuilder.build();
 	}
