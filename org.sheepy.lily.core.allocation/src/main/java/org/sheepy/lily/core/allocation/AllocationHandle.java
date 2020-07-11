@@ -74,7 +74,7 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	@Override
 	public <A extends Annotation> Stream<AnnotatedHandle<A>> annotatedHandles(final Class<A> annotationClass)
 	{
-		return mainAllocation.annotatedHandles(annotationClass);
+		return mainAllocation != null ? mainAllocation.annotatedHandles(annotationClass) : Stream.empty();
 	}
 
 	@Override
