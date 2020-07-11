@@ -38,10 +38,11 @@ public final class AllocationChildrenListUpdater
 			final var currentElement = modelIterator.next();
 			if (listIterator.hasNext())
 			{
-				if (listIterator.next().target() != currentElement)
+				final var currentChild = listIterator.next();
+				if (currentChild.target() != currentElement)
 				{
-					listIterator.previous();
-					listIterator.add(buildAllocationContainer(currentElement));
+					listIterator.set(buildAllocationContainer(currentElement));
+					listIterator.add(currentChild);
 				}
 			}
 			else
