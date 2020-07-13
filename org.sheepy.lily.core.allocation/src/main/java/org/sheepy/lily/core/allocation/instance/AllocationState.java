@@ -3,12 +3,14 @@ package org.sheepy.lily.core.allocation.instance;
 import org.sheepy.lily.core.allocation.EAllocationStatus;
 import org.sheepy.lily.core.api.allocation.IAllocationState;
 
+import java.math.BigInteger;
 import java.util.function.BiConsumer;
 
 public class AllocationState implements IAllocationState
 {
 	private final Runnable whenUpdateNeeded;
 	private final BiConsumer<EAllocationStatus, EAllocationStatus> onStatusChange;
+	private final BitLocker bitLocker = new BitLocker();
 
 	private EAllocationStatus status = EAllocationStatus.Allocated;
 	private EAllocationStatus branchStatus = EAllocationStatus.Allocated;
@@ -20,6 +22,23 @@ public class AllocationState implements IAllocationState
 	{
 		this.onStatusChange = onStatusChange;
 		this.whenUpdateNeeded = whenUpdateNeeded;
+	}
+
+	@Override
+	public Lock lockUntil()
+	{
+		lockAllocation();
+		final int lock = bitLocker.newLock();
+		return () -> releaseLock(lock);
+	}
+
+	private void releaseLock(int lock)
+	{
+		bitLocker.release(lock);
+		if (bitLocker.isLocked() == false)
+		{
+			unlockAllocation();
+		}
 	}
 
 	@Override
@@ -86,15 +105,13 @@ public class AllocationState implements IAllocationState
 		}
 	}
 
-	public void setBranchStatus(final EAllocationStatus newBranchStatus)
-	{
-		this.branchStatus = newBranchStatus;
-	}
-
 	@Override
 	public void lockAllocation()
 	{
-		locked = true;
+		if (!locked)
+		{
+			locked = true;
+		}
 	}
 
 	@Override
@@ -129,5 +146,32 @@ public class AllocationState implements IAllocationState
 	public void updated()
 	{
 		needUpdate = false;
+	}
+
+	private static final class BitLocker
+	{
+		private BigInteger bits = BigInteger.ZERO;
+
+		public int newLock()
+		{
+			int lock = 0;
+			while (bits.testBit(lock)) lock++;
+			bits = bits.setBit(lock);
+			return lock;
+		}
+
+		public void release(int lock)
+		{
+			bits = bits.clearBit(lock);
+			if (bits.equals(BigInteger.ZERO))
+			{
+				bits = BigInteger.ZERO;
+			}
+		}
+
+		public boolean isLocked()
+		{
+			return !bits.equals(BigInteger.ZERO);
+		}
 	}
 }

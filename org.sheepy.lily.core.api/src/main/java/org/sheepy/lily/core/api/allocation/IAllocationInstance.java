@@ -8,4 +8,5 @@ public interface IAllocationInstance<Allocation extends IExtender>
 	void cleanup(IAllocationContext context);
 	void free(IAllocationContext context);
 	Allocation getAllocation();
+	boolean isDirty();
 }

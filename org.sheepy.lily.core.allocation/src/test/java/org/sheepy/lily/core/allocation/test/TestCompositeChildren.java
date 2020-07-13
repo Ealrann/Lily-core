@@ -6,6 +6,7 @@ import org.sheepy.lily.core.allocation.test.adapters.BoxAllocation;
 import org.sheepy.lily.core.allocation.test.adapters.ContainerAllocation;
 import org.sheepy.lily.core.allocation.test.testallocation.TestallocationFactory;
 import org.sheepy.lily.core.api.allocation.IAllocationService;
+import org.sheepy.lily.core.api.model.LilyEObject;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -21,6 +22,7 @@ public class TestCompositeChildren
 		root.getContainers().add(container);
 		container.getBoxes().add(box);
 
+		((LilyEObject)root).loadAdapterManager();
 		final var rootAllocation = IAllocationService.INSTANCE.allocate(root, null, AllocationObjectAllocation.class);
 
 		assertEquals(1, root.getCurrentAllocationCount());

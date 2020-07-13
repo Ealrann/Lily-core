@@ -23,7 +23,7 @@ public final class ExtenderManager implements IExtenderManager.Internal
 	public ExtenderManager(ILilyEObject target)
 	{
 		deployer = new ExtenderManagerDeployer(target);
-	}
+ 	}
 
 	@Override
 	public void load()

@@ -29,6 +29,11 @@ public class AllocationObjectAllocation implements IExtender
 		allocationState.lockAllocation();
 	}
 
+	public IAllocationState.Lock newLock()
+	{
+		return allocationState.lockUntil();
+	}
+
 	public void unlockAllocation()
 	{
 		allocationState.unlockAllocation();

@@ -36,13 +36,20 @@ public final class ChildInstanceAllocator<Allocation extends IExtender>
 	{
 		if (mainAllocation != null)
 		{
-			if (context.freeEverything() || isMainAllocationObsolete())
+			if (mainAllocation.isUnlocked())
 			{
-				deprecateMainAllocation(context, true);
+				if (context.freeEverything() || isMainAllocationObsolete())
+				{
+					deprecateMainAllocation(context, true);
+				}
+				else if (mainAllocation.isDirty())
+				{
+					mainAllocation.cleanup(context);
+				}
 			}
 			else if (mainAllocation.isDirty())
 			{
-				mainAllocation.cleanup(context);
+				deprecateMainAllocation(context.encapsulate(false), false);
 			}
 		}
 		freeDeprecatedHandles(context);
@@ -52,7 +59,9 @@ public final class ChildInstanceAllocator<Allocation extends IExtender>
 	{
 		if (mainAllocation != null)
 		{
-			if (isMainAllocationObsolete())
+			final boolean unlockObsolete = mainAllocation.isUnlocked() && isMainAllocationObsolete();
+			final boolean lockDirty = mainAllocation.isLocked() && mainAllocation.isDirty();
+			if (unlockObsolete || lockDirty)
 			{
 				deprecateMainAllocation(new FreeContext(context, false), false);
 			}

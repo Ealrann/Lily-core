@@ -5,11 +5,11 @@ import org.sheepy.lily.core.api.allocation.IAllocationContext;
 
 public record FreeContext(IAllocationContext context, boolean freeEverything)
 {
-	public FreeContext encapsulate(boolean forceFree)
+	public FreeContext encapsulate(boolean freeEverything)
 	{
-		if (freeEverything == false && forceFree)
+		if (this.freeEverything != freeEverything)
 		{
-			return new FreeContext(context, true);
+			return new FreeContext(context, freeEverything);
 		}
 		else
 		{
@@ -21,7 +21,7 @@ public record FreeContext(IAllocationContext context, boolean freeEverything)
 	{
 		final var obsolete = allocation.getStatus() == EAllocationStatus.Obsolete;
 		final var unlocked = allocation.isUnlocked();
-		if (freeEverything || (obsolete && unlocked))
+		if ((freeEverything || obsolete) && unlocked)
 		{
 			allocation.cleanup(encapsulate(true));
 			return true;
@@ -35,7 +35,7 @@ public record FreeContext(IAllocationContext context, boolean freeEverything)
 	public boolean freeIfUnlocked(final AllocationInstance<?> allocation)
 	{
 		final var unlocked = allocation.isUnlocked();
-		if (freeEverything || unlocked)
+		if (unlocked)
 		{
 			allocation.cleanup(encapsulate(true));
 			return true;

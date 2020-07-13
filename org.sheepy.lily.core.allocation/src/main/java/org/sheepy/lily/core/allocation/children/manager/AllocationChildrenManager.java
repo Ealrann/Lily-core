@@ -67,11 +67,8 @@ public final class AllocationChildrenManager implements IAllocationChildrenManag
 
 	private void setDirty()
 	{
-		if (dirty == false)
-		{
-			whenBranchDirty.run();
-			dirty = true;
-		}
+		whenBranchDirty.run();
+		dirty = true;
 	}
 
 	@Override

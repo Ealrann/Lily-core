@@ -54,6 +54,7 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 	public void load(final IAllocationContext context)
 	{
 		postChildrenManager.update(target, context);
+		state.reset();
 	}
 
 	@Override
@@ -97,8 +98,9 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 
 	public void cleanup(final FreeContext context)
 	{
-		final var subContext = context.encapsulate(state.getStatus() == EAllocationStatus.Obsolete);
+		final var subContext = context.encapsulate(context.freeEverything() || state.getStatus() == EAllocationStatus.Obsolete);
 		final var freeRequested = subContext.freeEverything();
+		assert !freeRequested || isUnlocked();
 
 		if (freeRequested || postChildrenManager.isDirty())
 		{
@@ -128,6 +130,7 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 		state.setStatus(EAllocationStatus.Free);
 	}
 
+	@Override
 	public boolean isDirty()
 	{
 		return state.isDirty();
