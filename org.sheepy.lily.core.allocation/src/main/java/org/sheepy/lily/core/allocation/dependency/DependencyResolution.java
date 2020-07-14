@@ -38,6 +38,7 @@ public final class DependencyResolution
 	public void free()
 	{
 		resolver.sulk(structureChange);
+		if (statusListener != null) sulk();
 	}
 
 	private void resolve(ILilyEObject target)
