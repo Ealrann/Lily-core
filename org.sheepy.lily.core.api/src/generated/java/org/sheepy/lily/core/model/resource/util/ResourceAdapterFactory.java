@@ -136,6 +136,11 @@ public class ResourceAdapterFactory extends AdapterFactoryImpl
 				return createStringModuleResourceAdapter();
 			}
 			@Override
+			public Adapter caseFileImage(FileImage object)
+			{
+				return createFileImageAdapter();
+			}
+			@Override
 			public Adapter caseLNamedElement(LNamedElement object)
 			{
 				return createLNamedElementAdapter();
@@ -353,6 +358,21 @@ public class ResourceAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createStringModuleResourceAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.resource.FileImage <em>File Image</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.resource.FileImage
+	 * @generated
+	 */
+	public Adapter createFileImageAdapter()
 	{
 		return null;
 	}

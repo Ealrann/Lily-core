@@ -22,6 +22,7 @@ import org.sheepy.lily.core.model.application.IEngine;
 import org.sheepy.lily.core.model.application.IModel;
 import org.sheepy.lily.core.model.application.Scene;
 import org.sheepy.lily.core.model.application.TimeConfiguration;
+import org.sheepy.lily.core.model.resource.ResourcePkg;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,6 +39,7 @@ import org.sheepy.lily.core.model.application.TimeConfiguration;
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getTimeConfiguration <em>Time Configuration</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getExtensionPkg <em>Extension Pkg</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getModels <em>Models</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getResourcePkg <em>Resource Pkg</em>}</li>
  * </ul>
  *
  * @generated
@@ -133,6 +135,16 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @ordered
 	 */
 	protected EList<IModel> models;
+
+	/**
+	 * The cached value of the '{@link #getResourcePkg() <em>Resource Pkg</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResourcePkg()
+	 * @generated
+	 * @ordered
+	 */
+	protected ResourcePkg resourcePkg;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -472,6 +484,83 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @generated
 	 */
 	@Override
+	public ResourcePkg getResourcePkg()
+	{
+		if (resourcePkg != null && ((EObject)resourcePkg).eIsProxy())
+		{
+			InternalEObject oldResourcePkg = resourcePkg;
+			resourcePkg = (ResourcePkg)eResolveProxy(oldResourcePkg);
+			if (resourcePkg != oldResourcePkg)
+			{
+				InternalEObject newResourcePkg = resourcePkg;
+				NotificationChain msgs = oldResourcePkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__RESOURCE_PKG, null, null);
+				if (newResourcePkg.eInternalContainer() == null)
+				{
+					msgs = newResourcePkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__RESOURCE_PKG, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.APPLICATION__RESOURCE_PKG, oldResourcePkg, resourcePkg));
+			}
+		}
+		return resourcePkg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ResourcePkg basicGetResourcePkg()
+	{
+		return resourcePkg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetResourcePkg(ResourcePkg newResourcePkg, NotificationChain msgs)
+	{
+		ResourcePkg oldResourcePkg = resourcePkg;
+		resourcePkg = newResourcePkg;
+		if (eNotificationRequired())
+		{
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__RESOURCE_PKG, oldResourcePkg, newResourcePkg);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setResourcePkg(ResourcePkg newResourcePkg)
+	{
+		if (newResourcePkg != resourcePkg)
+		{
+			NotificationChain msgs = null;
+			if (resourcePkg != null)
+				msgs = ((InternalEObject)resourcePkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__RESOURCE_PKG, null, msgs);
+			if (newResourcePkg != null)
+				msgs = ((InternalEObject)newResourcePkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.APPLICATION__RESOURCE_PKG, null, msgs);
+			msgs = basicSetResourcePkg(newResourcePkg, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__RESOURCE_PKG, newResourcePkg, newResourcePkg));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
 		switch (featureID)
@@ -486,6 +575,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return basicSetExtensionPkg(null, msgs);
 			case ApplicationPackage.APPLICATION__MODELS:
 				return ((InternalEList<?>)getModels()).basicRemove(otherEnd, msgs);
+			case ApplicationPackage.APPLICATION__RESOURCE_PKG:
+				return basicSetResourcePkg(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -517,6 +608,9 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return basicGetExtensionPkg();
 			case ApplicationPackage.APPLICATION__MODELS:
 				return getModels();
+			case ApplicationPackage.APPLICATION__RESOURCE_PKG:
+				if (resolve) return getResourcePkg();
+				return basicGetResourcePkg();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -555,6 +649,9 @@ public class ApplicationImpl extends LilyEObject implements Application
 				getModels().clear();
 				getModels().addAll((Collection<? extends IModel>)newValue);
 				return;
+			case ApplicationPackage.APPLICATION__RESOURCE_PKG:
+				setResourcePkg((ResourcePkg)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -590,6 +687,9 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__MODELS:
 				getModels().clear();
 				return;
+			case ApplicationPackage.APPLICATION__RESOURCE_PKG:
+				setResourcePkg((ResourcePkg)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -618,6 +718,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return extensionPkg != null;
 			case ApplicationPackage.APPLICATION__MODELS:
 				return models != null && !models.isEmpty();
+			case ApplicationPackage.APPLICATION__RESOURCE_PKG:
+				return resourcePkg != null;
 		}
 		return super.eIsSet(featureID);
 	}

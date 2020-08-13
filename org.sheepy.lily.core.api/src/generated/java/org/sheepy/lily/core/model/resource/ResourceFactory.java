@@ -104,6 +104,15 @@ public interface ResourceFactory extends EFactory
 	StringModuleResource createStringModuleResource();
 
 	/**
+	 * Returns a new object of class '<em>File Image</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>File Image</em>'.
+	 * @generated
+	 */
+	FileImage createFileImage();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -9,40 +9,22 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.edit.provider.IChildCreationExtender;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.sheepy.lily.core.model.application.ApplicationFactory;
+
+import org.sheepy.lily.core.model.resource.FileImage;
 import org.sheepy.lily.core.model.resource.ResourceFactory;
 import org.sheepy.lily.core.model.resource.ResourcePackage;
-import org.sheepy.lily.core.model.resource.ResourcePkg;
-
-import org.sheepy.lily.core.model.ui.UiFactory;
 
 /**
- * This is the item provider adapter for a {@link org.sheepy.lily.core.model.resource.ResourcePkg} object.
+ * This is the item provider adapter for a {@link org.sheepy.lily.core.model.resource.FileImage} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ResourcePkgItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource
+public class FileImageItemProvider extends IResourceItemProvider
 {
 	/**
 	 * This constructs an instance from a factory and a notifier.
@@ -50,7 +32,7 @@ public class ResourcePkgItemProvider
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ResourcePkgItemProvider(AdapterFactory adapterFactory)
+	public FileImageItemProvider(AdapterFactory adapterFactory)
 	{
 		super(adapterFactory);
 	}
@@ -86,7 +68,7 @@ public class ResourcePkgItemProvider
 		if (childrenFeatures == null)
 		{
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES);
+			childrenFeatures.add(ResourcePackage.Literals.FILE_IMAGE__FILE);
 		}
 		return childrenFeatures;
 	}
@@ -106,7 +88,7 @@ public class ResourcePkgItemProvider
 	}
 
 	/**
-	 * This returns ResourcePkg.gif.
+	 * This returns FileImage.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -114,7 +96,7 @@ public class ResourcePkgItemProvider
 	@Override
 	public Object getImage(Object object)
 	{
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ResourcePkg"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/FileImage"));
 	}
 
 	/**
@@ -126,7 +108,10 @@ public class ResourcePkgItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		return getString("_UI_ResourcePkg_type");
+		String label = ((FileImage)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_FileImage_type") :
+			getString("_UI_FileImage_type") + " " + label;
 	}
 
 
@@ -142,9 +127,9 @@ public class ResourcePkgItemProvider
 	{
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(ResourcePkg.class))
+		switch (notification.getFeatureID(FileImage.class))
 		{
-			case ResourcePackage.RESOURCE_PKG__RESOURCES:
+			case ResourcePackage.FILE_IMAGE__FILE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -165,75 +150,18 @@ public class ResourcePkgItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ResourceFactory.eINSTANCE.createIResource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ResourceFactory.eINSTANCE.createSound()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ResourceFactory.eINSTANCE.createMusic()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ResourceFactory.eINSTANCE.createSoundContinuous()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ResourceFactory.eINSTANCE.createVirtualResource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
+				(ResourcePackage.Literals.FILE_IMAGE__FILE,
 				 ResourceFactory.eINSTANCE.createLocalResource()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
+				(ResourcePackage.Literals.FILE_IMAGE__FILE,
 				 ResourceFactory.eINSTANCE.createModuleResource()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
+				(ResourcePackage.Literals.FILE_IMAGE__FILE,
 				 ResourceFactory.eINSTANCE.createStringModuleResource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ResourceFactory.eINSTANCE.createFileImage()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 UiFactory.eINSTANCE.createFontTable()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 UiFactory.eINSTANCE.createFont()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ApplicationFactory.eINSTANCE.createSpecialEffect()));
-	}
-
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator()
-	{
-		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
 	}
 
 }

@@ -33,6 +33,7 @@ import org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl;
 
 import org.sheepy.lily.core.model.resource.AbstractModuleResource;
 import org.sheepy.lily.core.model.resource.ESampling;
+import org.sheepy.lily.core.model.resource.FileImage;
 import org.sheepy.lily.core.model.resource.FileResource;
 import org.sheepy.lily.core.model.resource.IImage;
 import org.sheepy.lily.core.model.resource.IResource;
@@ -150,6 +151,13 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 	 * @generated
 	 */
 	private EClass stringModuleResourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass fileImageEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -485,6 +493,28 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 	 * @generated
 	 */
 	@Override
+	public EClass getFileImage()
+	{
+		return fileImageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getFileImage_File()
+	{
+		return (EReference)fileImageEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getESampling()
 	{
 		return eSamplingEEnum;
@@ -553,6 +583,9 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 		stringModuleResourceEClass = createEClass(STRING_MODULE_RESOURCE);
 		createEAttribute(stringModuleResourceEClass, STRING_MODULE_RESOURCE__MODULE_NAME);
 
+		fileImageEClass = createEClass(FILE_IMAGE);
+		createEReference(fileImageEClass, FILE_IMAGE__FILE);
+
 		// Create enums
 		eSamplingEEnum = createEEnum(ESAMPLING);
 	}
@@ -600,6 +633,7 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 		abstractModuleResourceEClass.getESuperTypes().add(this.getFileResource());
 		moduleResourceEClass.getESuperTypes().add(this.getAbstractModuleResource());
 		stringModuleResourceEClass.getESuperTypes().add(this.getAbstractModuleResource());
+		fileImageEClass.getESuperTypes().add(this.getIImage());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(soundEClass, Sound.class, "Sound", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -633,6 +667,9 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 
 		initEClass(stringModuleResourceEClass, StringModuleResource.class, "StringModuleResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getStringModuleResource_ModuleName(), ecorePackage.getEString(), "moduleName", null, 1, 1, StringModuleResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(fileImageEClass, FileImage.class, "FileImage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getFileImage_File(), this.getFileResource(), null, "file", null, 1, 1, FileImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(eSamplingEEnum, ESampling.class, "ESampling");

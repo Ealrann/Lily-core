@@ -133,13 +133,22 @@ public interface ApplicationPackage extends EPackage
 	int APPLICATION__MODELS = 6;
 
 	/**
+	 * The feature id for the '<em><b>Resource Pkg</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION__RESOURCE_PKG = 7;
+
+	/**
 	 * The number of structural features of the '<em>Application</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_FEATURE_COUNT = 7;
+	int APPLICATION_FEATURE_COUNT = 8;
 
 	/**
 	 * The number of operations of the '<em>Application</em>' class.
@@ -918,6 +927,17 @@ public interface ApplicationPackage extends EPackage
 	EReference getApplication_Models();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.Application#getResourcePkg <em>Resource Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Resource Pkg</em>'.
+	 * @see org.sheepy.lily.core.model.application.Application#getResourcePkg()
+	 * @see #getApplication()
+	 * @generated
+	 */
+	EReference getApplication_ResourcePkg();
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.IApplicationExtension <em>IApplication Extension</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1366,6 +1386,14 @@ public interface ApplicationPackage extends EPackage
 		 * @generated
 		 */
 		EReference APPLICATION__MODELS = eINSTANCE.getApplication_Models();
+
+		/**
+		 * The meta object literal for the '<em><b>Resource Pkg</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference APPLICATION__RESOURCE_PKG = eINSTANCE.getApplication_ResourcePkg();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.IApplicationExtension <em>IApplication Extension</em>}' class.

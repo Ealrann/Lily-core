@@ -20,6 +20,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="models" upperBound="-1"
         eType="#//IModel" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resourcePkg" eType="ecore:EClass resource.ecore#//ResourcePkg"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IApplicationExtension" abstract="true"
       interface="true" eSuperTypes="types.ecore#//LNamedElement"/>

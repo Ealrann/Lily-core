@@ -61,6 +61,9 @@
     <genClasses ecoreClass="resource.ecore#//StringModuleResource">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute resource.ecore#//StringModuleResource/moduleName"/>
     </genClasses>
+    <genClasses ecoreClass="resource.ecore#//FileImage">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference resource.ecore#//FileImage/file"/>
+    </genClasses>
   </genPackages>
   <genPackages prefix="Ui" basePackage="org.sheepy.lily.core.model" resource="XMI"
       extensibleProviderFactory="true" childCreationExtenders="true" ecorePackage="ui.ecore#/">
@@ -428,6 +431,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/timeConfiguration"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/extensionPkg"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/models"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Application/resourcePkg"/>
     </genClasses>
     <genClasses image="false" ecoreClass="application.ecore#//IApplicationExtension"/>
     <genClasses ecoreClass="application.ecore#//ApplicationExtensionPkg">

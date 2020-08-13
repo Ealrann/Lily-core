@@ -614,6 +614,52 @@ public interface ResourcePackage extends EPackage
 	int STRING_MODULE_RESOURCE_OPERATION_COUNT = ABSTRACT_MODULE_RESOURCE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.resource.impl.FileImageImpl <em>File Image</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.resource.impl.FileImageImpl
+	 * @see org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl#getFileImage()
+	 * @generated
+	 */
+	int FILE_IMAGE = 12;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_IMAGE__NAME = IIMAGE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>File</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_IMAGE__FILE = IIMAGE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>File Image</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_IMAGE_FEATURE_COUNT = IIMAGE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>File Image</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_IMAGE_OPERATION_COUNT = IIMAGE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.resource.ESampling <em>ESampling</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -621,7 +667,7 @@ public interface ResourcePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl#getESampling()
 	 * @generated
 	 */
-	int ESAMPLING = 12;
+	int ESAMPLING = 13;
 
 
 	/**
@@ -831,6 +877,27 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 */
 	EAttribute getStringModuleResource_ModuleName();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.resource.FileImage <em>File Image</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>File Image</em>'.
+	 * @see org.sheepy.lily.core.model.resource.FileImage
+	 * @generated
+	 */
+	EClass getFileImage();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.resource.FileImage#getFile <em>File</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>File</em>'.
+	 * @see org.sheepy.lily.core.model.resource.FileImage#getFile()
+	 * @see #getFileImage()
+	 * @generated
+	 */
+	EReference getFileImage_File();
 
 	/**
 	 * Returns the meta object for enum '{@link org.sheepy.lily.core.model.resource.ESampling <em>ESampling</em>}'.
@@ -1049,6 +1116,24 @@ public interface ResourcePackage extends EPackage
 		 * @generated
 		 */
 		EAttribute STRING_MODULE_RESOURCE__MODULE_NAME = eINSTANCE.getStringModuleResource_ModuleName();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.resource.impl.FileImageImpl <em>File Image</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.resource.impl.FileImageImpl
+		 * @see org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl#getFileImage()
+		 * @generated
+		 */
+		EClass FILE_IMAGE = eINSTANCE.getFileImage();
+
+		/**
+		 * The meta object literal for the '<em><b>File</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FILE_IMAGE__FILE = eINSTANCE.getFileImage_File();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.resource.ESampling <em>ESampling</em>}' enum.

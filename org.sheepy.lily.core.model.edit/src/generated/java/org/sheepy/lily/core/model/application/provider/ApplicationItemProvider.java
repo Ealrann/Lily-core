@@ -25,6 +25,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationFactory;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.resource.ResourceFactory;
 
 /**
  * This is the item provider adapter for a {@link org.sheepy.lily.core.model.application.Application} object.
@@ -130,6 +131,7 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__TIME_CONFIGURATION);
 			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__EXTENSION_PKG);
 			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__MODELS);
+			childrenFeatures.add(ApplicationPackage.Literals.APPLICATION__RESOURCE_PKG);
 		}
 		return childrenFeatures;
 	}
@@ -198,6 +200,7 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 			case ApplicationPackage.APPLICATION__TIME_CONFIGURATION:
 			case ApplicationPackage.APPLICATION__EXTENSION_PKG:
 			case ApplicationPackage.APPLICATION__MODELS:
+			case ApplicationPackage.APPLICATION__RESOURCE_PKG:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -235,6 +238,11 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 			(createChildParameter
 				(ApplicationPackage.Literals.APPLICATION__MODELS,
 				 ApplicationFactory.eINSTANCE.createIModel()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ApplicationPackage.Literals.APPLICATION__RESOURCE_PKG,
+				 ResourceFactory.eINSTANCE.createResourcePkg()));
 	}
 
 	/**
