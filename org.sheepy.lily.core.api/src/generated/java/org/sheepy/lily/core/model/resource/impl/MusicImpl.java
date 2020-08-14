@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.sheepy.lily.core.api.model.LilyEObject;
 import org.sheepy.lily.core.model.resource.FileResource;
 import org.sheepy.lily.core.model.resource.Music;
 import org.sheepy.lily.core.model.resource.ResourcePackage;
@@ -22,13 +23,32 @@ import org.sheepy.lily.core.model.resource.ResourcePackage;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.sheepy.lily.core.model.resource.impl.MusicImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.resource.impl.MusicImpl#getFile <em>File</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class MusicImpl extends IResourceImpl implements Music
+public class MusicImpl extends LilyEObject implements Music
 {
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 	/**
 	 * The cached value of the '{@link #getFile() <em>File</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -66,15 +86,40 @@ public class MusicImpl extends IResourceImpl implements Music
 	 * @generated
 	 */
 	@Override
+	public String getName()
+	{
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setName(String newName)
+	{
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ResourcePackage.MUSIC__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public FileResource getFile()
 	{
 		if (file != null && ((EObject)file).eIsProxy())
 		{
-			InternalEObject oldFile = (InternalEObject)file;
+			InternalEObject oldFile = file;
 			file = (FileResource)eResolveProxy(oldFile);
 			if (file != oldFile)
 			{
-				InternalEObject newFile = (InternalEObject)file;
+				InternalEObject newFile = file;
 				NotificationChain msgs = oldFile.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ResourcePackage.MUSIC__FILE, null, null);
 				if (newFile.eInternalContainer() == null)
 				{
@@ -163,6 +208,8 @@ public class MusicImpl extends IResourceImpl implements Music
 	{
 		switch (featureID)
 		{
+			case ResourcePackage.MUSIC__NAME:
+				return getName();
 			case ResourcePackage.MUSIC__FILE:
 				if (resolve) return getFile();
 				return basicGetFile();
@@ -180,6 +227,9 @@ public class MusicImpl extends IResourceImpl implements Music
 	{
 		switch (featureID)
 		{
+			case ResourcePackage.MUSIC__NAME:
+				setName((String)newValue);
+				return;
 			case ResourcePackage.MUSIC__FILE:
 				setFile((FileResource)newValue);
 				return;
@@ -197,6 +247,9 @@ public class MusicImpl extends IResourceImpl implements Music
 	{
 		switch (featureID)
 		{
+			case ResourcePackage.MUSIC__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 			case ResourcePackage.MUSIC__FILE:
 				setFile((FileResource)null);
 				return;
@@ -214,10 +267,29 @@ public class MusicImpl extends IResourceImpl implements Music
 	{
 		switch (featureID)
 		{
+			case ResourcePackage.MUSIC__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ResourcePackage.MUSIC__FILE:
 				return file != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString()
+	{
+		if (eIsProxy()) return super.toString();
+
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //MusicImpl

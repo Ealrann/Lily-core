@@ -3,7 +3,7 @@
 package org.sheepy.lily.core.model.ui;
 
 import org.eclipse.emf.common.util.EList;
-import org.sheepy.lily.core.model.resource.IResource;
+import org.sheepy.lily.core.model.resource.IRootResource;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +22,7 @@ import org.sheepy.lily.core.model.resource.IResource;
  * @model
  * @generated
  */
-public interface Font extends IResource
+public interface Font extends IRootResource
 {
 	/**
 	 * Returns the value of the '<em><b>Tables</b></em>' containment reference list.

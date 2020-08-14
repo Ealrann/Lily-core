@@ -15,8 +15,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.sheepy.lily.core.api.model.LilyEObject;
-
-import org.sheepy.lily.core.model.resource.IResource;
+import org.sheepy.lily.core.model.resource.IRootResource;
 import org.sheepy.lily.core.model.resource.ResourcePackage;
 import org.sheepy.lily.core.model.resource.ResourcePkg;
 
@@ -43,7 +42,7 @@ public class ResourcePkgImpl extends LilyEObject implements ResourcePkg
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<IResource> resources;
+	protected EList<IRootResource> resources;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -72,11 +71,11 @@ public class ResourcePkgImpl extends LilyEObject implements ResourcePkg
 	 * @generated
 	 */
 	@Override
-	public EList<IResource> getResources()
+	public EList<IRootResource> getResources()
 	{
 		if (resources == null)
 		{
-			resources = new EObjectContainmentEList.Resolving<IResource>(IResource.class, this, ResourcePackage.RESOURCE_PKG__RESOURCES);
+			resources = new EObjectContainmentEList.Resolving<IRootResource>(IRootResource.class, this, ResourcePackage.RESOURCE_PKG__RESOURCES);
 		}
 		return resources;
 	}
@@ -126,7 +125,7 @@ public class ResourcePkgImpl extends LilyEObject implements ResourcePkg
 		{
 			case ResourcePackage.RESOURCE_PKG__RESOURCES:
 				getResources().clear();
-				getResources().addAll((Collection<? extends IResource>)newValue);
+				getResources().addAll((Collection<? extends IRootResource>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

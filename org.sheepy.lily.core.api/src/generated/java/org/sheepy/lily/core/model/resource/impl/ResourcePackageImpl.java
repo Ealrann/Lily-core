@@ -36,7 +36,7 @@ import org.sheepy.lily.core.model.resource.ESampling;
 import org.sheepy.lily.core.model.resource.FileImage;
 import org.sheepy.lily.core.model.resource.FileResource;
 import org.sheepy.lily.core.model.resource.IImage;
-import org.sheepy.lily.core.model.resource.IResource;
+import org.sheepy.lily.core.model.resource.IRootResource;
 import org.sheepy.lily.core.model.resource.LocalResource;
 import org.sheepy.lily.core.model.resource.ModuleResource;
 import org.sheepy.lily.core.model.resource.Music;
@@ -47,7 +47,6 @@ import org.sheepy.lily.core.model.resource.Sound;
 
 import org.sheepy.lily.core.model.resource.SoundContinuous;
 import org.sheepy.lily.core.model.resource.StringModuleResource;
-import org.sheepy.lily.core.model.resource.VirtualResource;
 import org.sheepy.lily.core.model.types.TypesPackage;
 
 import org.sheepy.lily.core.model.types.impl.TypesPackageImpl;
@@ -101,7 +100,7 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass iResourceEClass = null;
+	private EClass iRootResourceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -109,13 +108,6 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 	 * @generated
 	 */
 	private EClass iImageEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass virtualResourceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -372,9 +364,9 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 	 * @generated
 	 */
 	@Override
-	public EClass getIResource()
+	public EClass getIRootResource()
 	{
-		return iResourceEClass;
+		return iRootResourceEClass;
 	}
 
 	/**
@@ -386,17 +378,6 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 	public EClass getIImage()
 	{
 		return iImageEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getVirtualResource()
-	{
-		return virtualResourceEClass;
 	}
 
 	/**
@@ -564,11 +545,9 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 		resourcePkgEClass = createEClass(RESOURCE_PKG);
 		createEReference(resourcePkgEClass, RESOURCE_PKG__RESOURCES);
 
-		iResourceEClass = createEClass(IRESOURCE);
+		iRootResourceEClass = createEClass(IROOT_RESOURCE);
 
 		iImageEClass = createEClass(IIMAGE);
-
-		virtualResourceEClass = createEClass(VIRTUAL_RESOURCE);
 
 		fileResourceEClass = createEClass(FILE_RESOURCE);
 		createEAttribute(fileResourceEClass, FILE_RESOURCE__PATH);
@@ -622,17 +601,17 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		soundEClass.getESuperTypes().add(this.getIResource());
-		musicEClass.getESuperTypes().add(this.getIResource());
+		soundEClass.getESuperTypes().add(this.getIRootResource());
+		musicEClass.getESuperTypes().add(this.getIRootResource());
 		soundContinuousEClass.getESuperTypes().add(this.getSound());
-		iResourceEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
-		iImageEClass.getESuperTypes().add(this.getIResource());
-		virtualResourceEClass.getESuperTypes().add(this.getIResource());
-		fileResourceEClass.getESuperTypes().add(this.getIResource());
+		iRootResourceEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
+		iImageEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
+		fileResourceEClass.getESuperTypes().add(this.getIRootResource());
 		localResourceEClass.getESuperTypes().add(this.getFileResource());
 		abstractModuleResourceEClass.getESuperTypes().add(this.getFileResource());
 		moduleResourceEClass.getESuperTypes().add(this.getAbstractModuleResource());
 		stringModuleResourceEClass.getESuperTypes().add(this.getAbstractModuleResource());
+		fileImageEClass.getESuperTypes().add(this.getIRootResource());
 		fileImageEClass.getESuperTypes().add(this.getIImage());
 
 		// Initialize classes, features, and operations; add parameters
@@ -647,13 +626,11 @@ public class ResourcePackageImpl extends EPackageImpl implements ResourcePackage
 		initEAttribute(getSoundContinuous_DecayMs(), ecorePackage.getEInt(), "decayMs", null, 1, 1, SoundContinuous.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(resourcePkgEClass, ResourcePkg.class, "ResourcePkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getResourcePkg_Resources(), this.getIResource(), null, "resources", null, 0, -1, ResourcePkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getResourcePkg_Resources(), this.getIRootResource(), null, "resources", null, 0, -1, ResourcePkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(iResourceEClass, IResource.class, "IResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(iRootResourceEClass, IRootResource.class, "IRootResource", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(iImageEClass, IImage.class, "IImage", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(virtualResourceEClass, VirtualResource.class, "VirtualResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(fileResourceEClass, FileResource.class, "FileResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFileResource_Path(), ecorePackage.getEString(), "path", null, 1, 1, FileResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

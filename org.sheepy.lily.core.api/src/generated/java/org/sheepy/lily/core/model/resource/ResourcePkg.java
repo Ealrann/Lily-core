@@ -27,7 +27,7 @@ public interface ResourcePkg extends ILilyEObject
 {
 	/**
 	 * Returns the value of the '<em><b>Resources</b></em>' containment reference list.
-	 * The list contents are of type {@link org.sheepy.lily.core.model.resource.IResource}.
+	 * The list contents are of type {@link org.sheepy.lily.core.model.resource.IRootResource}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Resources</em>' containment reference list.
@@ -35,6 +35,6 @@ public interface ResourcePkg extends ILilyEObject
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	EList<IResource> getResources();
+	EList<IRootResource> getResources();
 
 } // ResourcePkg

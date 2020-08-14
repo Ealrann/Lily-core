@@ -18,7 +18,7 @@ package org.sheepy.lily.core.model.resource;
  * @model
  * @generated
  */
-public interface Sound extends IResource
+public interface Sound extends IRootResource
 {
 	/**
 	 * Returns the value of the '<em><b>File</b></em>' containment reference.

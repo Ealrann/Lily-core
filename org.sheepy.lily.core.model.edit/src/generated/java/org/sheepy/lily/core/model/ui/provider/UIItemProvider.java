@@ -72,6 +72,7 @@ public class UIItemProvider
 			addImageSupportPropertyDescriptor(object);
 			addCurrentUIPagePropertyDescriptor(object);
 			addDstImagePropertyDescriptor(object);
+			addImagesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -137,6 +138,29 @@ public class UIItemProvider
 				 getString("_UI_UI_dstImage_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_UI_dstImage_feature", "_UI_UI_type"),
 				 UiPackage.Literals.UI__DST_IMAGE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Images feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addImagesPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_UI_images_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_UI_images_feature", "_UI_UI_type"),
+				 UiPackage.Literals.UI__IMAGES,
 				 true,
 				 false,
 				 true,

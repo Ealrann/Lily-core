@@ -12,7 +12,7 @@ import org.sheepy.lily.core.model.application.ICompositor;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 import org.sheepy.lily.core.model.presentation.IPositionElement;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
-import org.sheepy.lily.core.model.resource.IResource;
+import org.sheepy.lily.core.model.resource.IRootResource;
 import org.sheepy.lily.core.model.types.LNamedElement;
 
 import org.sheepy.lily.core.model.ui.*;
@@ -215,9 +215,9 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 				return createICompositorAdapter();
 			}
 			@Override
-			public Adapter caseIResource(IResource object)
+			public Adapter caseIRootResource(IRootResource object)
 			{
-				return createIResourceAdapter();
+				return createIRootResourceAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object)
@@ -646,16 +646,16 @@ public class UiAdapterFactory extends AdapterFactoryImpl
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.resource.IResource <em>IResource</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.resource.IRootResource <em>IRoot Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.sheepy.lily.core.model.resource.IResource
+	 * @see org.sheepy.lily.core.model.resource.IRootResource
 	 * @generated
 	 */
-	public Adapter createIResourceAdapter()
+	public Adapter createIRootResourceAdapter()
 	{
 		return null;
 	}

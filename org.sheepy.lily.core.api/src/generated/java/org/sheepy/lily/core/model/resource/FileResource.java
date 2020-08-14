@@ -19,7 +19,7 @@ package org.sheepy.lily.core.model.resource;
  * @model abstract="true"
  * @generated
  */
-public interface FileResource extends IResource
+public interface FileResource extends IRootResource
 {
 	/**
 	 * Returns the value of the '<em><b>Path</b></em>' attribute.

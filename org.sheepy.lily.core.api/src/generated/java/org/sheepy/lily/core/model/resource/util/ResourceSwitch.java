@@ -77,7 +77,7 @@ public class ResourceSwitch<T> extends Switch<T>
 			{
 				Sound sound = (Sound)theEObject;
 				T result = caseSound(sound);
-				if (result == null) result = caseIResource(sound);
+				if (result == null) result = caseIRootResource(sound);
 				if (result == null) result = caseLNamedElement(sound);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -86,7 +86,7 @@ public class ResourceSwitch<T> extends Switch<T>
 			{
 				Music music = (Music)theEObject;
 				T result = caseMusic(music);
-				if (result == null) result = caseIResource(music);
+				if (result == null) result = caseIRootResource(music);
 				if (result == null) result = caseLNamedElement(music);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -96,7 +96,7 @@ public class ResourceSwitch<T> extends Switch<T>
 				SoundContinuous soundContinuous = (SoundContinuous)theEObject;
 				T result = caseSoundContinuous(soundContinuous);
 				if (result == null) result = caseSound(soundContinuous);
-				if (result == null) result = caseIResource(soundContinuous);
+				if (result == null) result = caseIRootResource(soundContinuous);
 				if (result == null) result = caseLNamedElement(soundContinuous);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -108,11 +108,11 @@ public class ResourceSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ResourcePackage.IRESOURCE:
+			case ResourcePackage.IROOT_RESOURCE:
 			{
-				IResource iResource = (IResource)theEObject;
-				T result = caseIResource(iResource);
-				if (result == null) result = caseLNamedElement(iResource);
+				IRootResource iRootResource = (IRootResource)theEObject;
+				T result = caseIRootResource(iRootResource);
+				if (result == null) result = caseLNamedElement(iRootResource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -120,17 +120,7 @@ public class ResourceSwitch<T> extends Switch<T>
 			{
 				IImage iImage = (IImage)theEObject;
 				T result = caseIImage(iImage);
-				if (result == null) result = caseIResource(iImage);
 				if (result == null) result = caseLNamedElement(iImage);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ResourcePackage.VIRTUAL_RESOURCE:
-			{
-				VirtualResource virtualResource = (VirtualResource)theEObject;
-				T result = caseVirtualResource(virtualResource);
-				if (result == null) result = caseIResource(virtualResource);
-				if (result == null) result = caseLNamedElement(virtualResource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -138,7 +128,7 @@ public class ResourceSwitch<T> extends Switch<T>
 			{
 				FileResource fileResource = (FileResource)theEObject;
 				T result = caseFileResource(fileResource);
-				if (result == null) result = caseIResource(fileResource);
+				if (result == null) result = caseIRootResource(fileResource);
 				if (result == null) result = caseLNamedElement(fileResource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -148,7 +138,7 @@ public class ResourceSwitch<T> extends Switch<T>
 				LocalResource localResource = (LocalResource)theEObject;
 				T result = caseLocalResource(localResource);
 				if (result == null) result = caseFileResource(localResource);
-				if (result == null) result = caseIResource(localResource);
+				if (result == null) result = caseIRootResource(localResource);
 				if (result == null) result = caseLNamedElement(localResource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -158,7 +148,7 @@ public class ResourceSwitch<T> extends Switch<T>
 				AbstractModuleResource abstractModuleResource = (AbstractModuleResource)theEObject;
 				T result = caseAbstractModuleResource(abstractModuleResource);
 				if (result == null) result = caseFileResource(abstractModuleResource);
-				if (result == null) result = caseIResource(abstractModuleResource);
+				if (result == null) result = caseIRootResource(abstractModuleResource);
 				if (result == null) result = caseLNamedElement(abstractModuleResource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -169,7 +159,7 @@ public class ResourceSwitch<T> extends Switch<T>
 				T result = caseModuleResource(moduleResource);
 				if (result == null) result = caseAbstractModuleResource(moduleResource);
 				if (result == null) result = caseFileResource(moduleResource);
-				if (result == null) result = caseIResource(moduleResource);
+				if (result == null) result = caseIRootResource(moduleResource);
 				if (result == null) result = caseLNamedElement(moduleResource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -180,7 +170,7 @@ public class ResourceSwitch<T> extends Switch<T>
 				T result = caseStringModuleResource(stringModuleResource);
 				if (result == null) result = caseAbstractModuleResource(stringModuleResource);
 				if (result == null) result = caseFileResource(stringModuleResource);
-				if (result == null) result = caseIResource(stringModuleResource);
+				if (result == null) result = caseIRootResource(stringModuleResource);
 				if (result == null) result = caseLNamedElement(stringModuleResource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -189,8 +179,8 @@ public class ResourceSwitch<T> extends Switch<T>
 			{
 				FileImage fileImage = (FileImage)theEObject;
 				T result = caseFileImage(fileImage);
+				if (result == null) result = caseIRootResource(fileImage);
 				if (result == null) result = caseIImage(fileImage);
-				if (result == null) result = caseIResource(fileImage);
 				if (result == null) result = caseLNamedElement(fileImage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -264,17 +254,17 @@ public class ResourceSwitch<T> extends Switch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>IResource</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>IRoot Resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>IResource</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>IRoot Resource</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseIResource(IResource object)
+	public T caseIRootResource(IRootResource object)
 	{
 		return null;
 	}
@@ -291,22 +281,6 @@ public class ResourceSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseIImage(IImage object)
-	{
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Virtual Resource</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Virtual Resource</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseVirtualResource(VirtualResource object)
 	{
 		return null;
 	}

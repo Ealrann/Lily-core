@@ -60,14 +60,14 @@ public interface ResourcePackage extends EPackage
 	ResourcePackage eINSTANCE = org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.sheepy.lily.core.model.resource.impl.IResourceImpl <em>IResource</em>}' class.
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.resource.IRootResource <em>IRoot Resource</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.sheepy.lily.core.model.resource.impl.IResourceImpl
-	 * @see org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl#getIResource()
+	 * @see org.sheepy.lily.core.model.resource.IRootResource
+	 * @see org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl#getIRootResource()
 	 * @generated
 	 */
-	int IRESOURCE = 4;
+	int IROOT_RESOURCE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -76,25 +76,25 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IRESOURCE__NAME = TypesPackage.LNAMED_ELEMENT__NAME;
+	int IROOT_RESOURCE__NAME = TypesPackage.LNAMED_ELEMENT__NAME;
 
 	/**
-	 * The number of structural features of the '<em>IResource</em>' class.
+	 * The number of structural features of the '<em>IRoot Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IRESOURCE_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
+	int IROOT_RESOURCE_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>IResource</em>' class.
+	 * The number of operations of the '<em>IRoot Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IRESOURCE_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 0;
+	int IROOT_RESOURCE_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.resource.impl.SoundImpl <em>Sound</em>}' class.
@@ -113,7 +113,7 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SOUND__NAME = IRESOURCE__NAME;
+	int SOUND__NAME = IROOT_RESOURCE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>File</b></em>' containment reference.
@@ -122,7 +122,7 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SOUND__FILE = IRESOURCE_FEATURE_COUNT + 0;
+	int SOUND__FILE = IROOT_RESOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Sound</em>' class.
@@ -131,7 +131,7 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SOUND_FEATURE_COUNT = IRESOURCE_FEATURE_COUNT + 1;
+	int SOUND_FEATURE_COUNT = IROOT_RESOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Sound</em>' class.
@@ -140,7 +140,7 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SOUND_OPERATION_COUNT = IRESOURCE_OPERATION_COUNT + 0;
+	int SOUND_OPERATION_COUNT = IROOT_RESOURCE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.resource.impl.MusicImpl <em>Music</em>}' class.
@@ -159,7 +159,7 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int MUSIC__NAME = IRESOURCE__NAME;
+	int MUSIC__NAME = IROOT_RESOURCE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>File</b></em>' containment reference.
@@ -168,7 +168,7 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int MUSIC__FILE = IRESOURCE_FEATURE_COUNT + 0;
+	int MUSIC__FILE = IROOT_RESOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Music</em>' class.
@@ -177,7 +177,7 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int MUSIC_FEATURE_COUNT = IRESOURCE_FEATURE_COUNT + 1;
+	int MUSIC_FEATURE_COUNT = IROOT_RESOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Music</em>' class.
@@ -186,7 +186,7 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int MUSIC_OPERATION_COUNT = IRESOURCE_OPERATION_COUNT + 0;
+	int MUSIC_OPERATION_COUNT = IROOT_RESOURCE_OPERATION_COUNT + 0;
 
 
 	/**
@@ -308,7 +308,7 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IIMAGE__NAME = IRESOURCE__NAME;
+	int IIMAGE__NAME = TypesPackage.LNAMED_ELEMENT__NAME;
 
 	/**
 	 * The number of structural features of the '<em>IImage</em>' class.
@@ -317,7 +317,7 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IIMAGE_FEATURE_COUNT = IRESOURCE_FEATURE_COUNT + 0;
+	int IIMAGE_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>IImage</em>' class.
@@ -326,44 +326,7 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int IIMAGE_OPERATION_COUNT = IRESOURCE_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.sheepy.lily.core.model.resource.impl.VirtualResourceImpl <em>Virtual Resource</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.sheepy.lily.core.model.resource.impl.VirtualResourceImpl
-	 * @see org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl#getVirtualResource()
-	 * @generated
-	 */
-	int VIRTUAL_RESOURCE = 6;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VIRTUAL_RESOURCE__NAME = IRESOURCE__NAME;
-
-	/**
-	 * The number of structural features of the '<em>Virtual Resource</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VIRTUAL_RESOURCE_FEATURE_COUNT = IRESOURCE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Virtual Resource</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VIRTUAL_RESOURCE_OPERATION_COUNT = IRESOURCE_OPERATION_COUNT + 0;
+	int IIMAGE_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.resource.impl.FileResourceImpl <em>File Resource</em>}' class.
@@ -373,7 +336,7 @@ public interface ResourcePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl#getFileResource()
 	 * @generated
 	 */
-	int FILE_RESOURCE = 7;
+	int FILE_RESOURCE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -382,7 +345,7 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_RESOURCE__NAME = IRESOURCE__NAME;
+	int FILE_RESOURCE__NAME = IROOT_RESOURCE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Path</b></em>' attribute.
@@ -391,7 +354,7 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_RESOURCE__PATH = IRESOURCE_FEATURE_COUNT + 0;
+	int FILE_RESOURCE__PATH = IROOT_RESOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>File Resource</em>' class.
@@ -400,7 +363,7 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_RESOURCE_FEATURE_COUNT = IRESOURCE_FEATURE_COUNT + 1;
+	int FILE_RESOURCE_FEATURE_COUNT = IROOT_RESOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>File Resource</em>' class.
@@ -409,7 +372,7 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_RESOURCE_OPERATION_COUNT = IRESOURCE_OPERATION_COUNT + 0;
+	int FILE_RESOURCE_OPERATION_COUNT = IROOT_RESOURCE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.resource.impl.LocalResourceImpl <em>Local Resource</em>}' class.
@@ -419,7 +382,7 @@ public interface ResourcePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl#getLocalResource()
 	 * @generated
 	 */
-	int LOCAL_RESOURCE = 8;
+	int LOCAL_RESOURCE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -465,7 +428,7 @@ public interface ResourcePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl#getAbstractModuleResource()
 	 * @generated
 	 */
-	int ABSTRACT_MODULE_RESOURCE = 9;
+	int ABSTRACT_MODULE_RESOURCE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -511,7 +474,7 @@ public interface ResourcePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl#getModuleResource()
 	 * @generated
 	 */
-	int MODULE_RESOURCE = 10;
+	int MODULE_RESOURCE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -566,7 +529,7 @@ public interface ResourcePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl#getStringModuleResource()
 	 * @generated
 	 */
-	int STRING_MODULE_RESOURCE = 11;
+	int STRING_MODULE_RESOURCE = 10;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -621,7 +584,7 @@ public interface ResourcePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl#getFileImage()
 	 * @generated
 	 */
-	int FILE_IMAGE = 12;
+	int FILE_IMAGE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -630,7 +593,7 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_IMAGE__NAME = IIMAGE__NAME;
+	int FILE_IMAGE__NAME = IROOT_RESOURCE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>File</b></em>' containment reference.
@@ -639,7 +602,7 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_IMAGE__FILE = IIMAGE_FEATURE_COUNT + 0;
+	int FILE_IMAGE__FILE = IROOT_RESOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>File Image</em>' class.
@@ -648,7 +611,7 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_IMAGE_FEATURE_COUNT = IIMAGE_FEATURE_COUNT + 1;
+	int FILE_IMAGE_FEATURE_COUNT = IROOT_RESOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>File Image</em>' class.
@@ -657,7 +620,7 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_IMAGE_OPERATION_COUNT = IIMAGE_OPERATION_COUNT + 0;
+	int FILE_IMAGE_OPERATION_COUNT = IROOT_RESOURCE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.resource.ESampling <em>ESampling</em>}' enum.
@@ -667,7 +630,7 @@ public interface ResourcePackage extends EPackage
 	 * @see org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl#getESampling()
 	 * @generated
 	 */
-	int ESAMPLING = 13;
+	int ESAMPLING = 12;
 
 
 	/**
@@ -766,14 +729,14 @@ public interface ResourcePackage extends EPackage
 	EReference getResourcePkg_Resources();
 
 	/**
-	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.resource.IResource <em>IResource</em>}'.
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.resource.IRootResource <em>IRoot Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>IResource</em>'.
-	 * @see org.sheepy.lily.core.model.resource.IResource
+	 * @return the meta object for class '<em>IRoot Resource</em>'.
+	 * @see org.sheepy.lily.core.model.resource.IRootResource
 	 * @generated
 	 */
-	EClass getIResource();
+	EClass getIRootResource();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.resource.IImage <em>IImage</em>}'.
@@ -784,16 +747,6 @@ public interface ResourcePackage extends EPackage
 	 * @generated
 	 */
 	EClass getIImage();
-
-	/**
-	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.resource.VirtualResource <em>Virtual Resource</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Virtual Resource</em>'.
-	 * @see org.sheepy.lily.core.model.resource.VirtualResource
-	 * @generated
-	 */
-	EClass getVirtualResource();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.resource.FileResource <em>File Resource</em>}'.
@@ -1014,14 +967,14 @@ public interface ResourcePackage extends EPackage
 		EReference RESOURCE_PKG__RESOURCES = eINSTANCE.getResourcePkg_Resources();
 
 		/**
-		 * The meta object literal for the '{@link org.sheepy.lily.core.model.resource.impl.IResourceImpl <em>IResource</em>}' class.
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.resource.IRootResource <em>IRoot Resource</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.sheepy.lily.core.model.resource.impl.IResourceImpl
-		 * @see org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl#getIResource()
+		 * @see org.sheepy.lily.core.model.resource.IRootResource
+		 * @see org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl#getIRootResource()
 		 * @generated
 		 */
-		EClass IRESOURCE = eINSTANCE.getIResource();
+		EClass IROOT_RESOURCE = eINSTANCE.getIRootResource();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.resource.IImage <em>IImage</em>}' class.
@@ -1032,16 +985,6 @@ public interface ResourcePackage extends EPackage
 		 * @generated
 		 */
 		EClass IIMAGE = eINSTANCE.getIImage();
-
-		/**
-		 * The meta object literal for the '{@link org.sheepy.lily.core.model.resource.impl.VirtualResourceImpl <em>Virtual Resource</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.sheepy.lily.core.model.resource.impl.VirtualResourceImpl
-		 * @see org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl#getVirtualResource()
-		 * @generated
-		 */
-		EClass VIRTUAL_RESOURCE = eINSTANCE.getVirtualResource();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.resource.impl.FileResourceImpl <em>File Resource</em>}' class.

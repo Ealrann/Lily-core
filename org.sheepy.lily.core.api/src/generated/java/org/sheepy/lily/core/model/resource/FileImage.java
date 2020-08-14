@@ -19,7 +19,7 @@ package org.sheepy.lily.core.model.resource;
  * @model
  * @generated
  */
-public interface FileImage extends IImage
+public interface FileImage extends IRootResource, IImage
 {
 	/**
 	 * Returns the value of the '<em><b>File</b></em>' containment reference.

@@ -11,6 +11,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.eclipse.emf.edit.provider.ChangeNotifier;
@@ -25,9 +27,15 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.sheepy.lily.core.model.resource.FileImage;
+import org.sheepy.lily.core.model.resource.Music;
+import org.sheepy.lily.core.model.resource.ResourceFactory;
 import org.sheepy.lily.core.model.resource.ResourcePackage;
 
+import org.sheepy.lily.core.model.resource.ResourcePkg;
+import org.sheepy.lily.core.model.resource.Sound;
 import org.sheepy.lily.core.model.resource.util.ResourceAdapterFactory;
+import org.sheepy.lily.core.model.resource.util.ResourceSwitch;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -185,56 +193,6 @@ public class ResourceItemProviderAdapterFactory extends ResourceAdapterFactory i
 		}
 
 		return resourcePkgItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.resource.IResource} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected IResourceItemProvider iResourceItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.sheepy.lily.core.model.resource.IResource}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createIResourceAdapter()
-	{
-		if (iResourceItemProvider == null)
-		{
-			iResourceItemProvider = new IResourceItemProvider(this);
-		}
-
-		return iResourceItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.resource.VirtualResource} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected VirtualResourceItemProvider virtualResourceItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.sheepy.lily.core.model.resource.VirtualResource}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createVirtualResourceAdapter()
-	{
-		if (virtualResourceItemProvider == null)
-		{
-			virtualResourceItemProvider = new VirtualResourceItemProvider(this);
-		}
-
-		return virtualResourceItemProvider;
 	}
 
 	/**
@@ -474,6 +432,210 @@ public class ResourceItemProviderAdapterFactory extends ResourceAdapterFactory i
 		if (parentAdapterFactory != null)
 		{
 			parentAdapterFactory.fireNotifyChanged(notification);
+		}
+	}
+
+	/**
+	 * A child creation extender for the {@link ResourcePackage}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static class ResourceChildCreationExtender implements IChildCreationExtender
+	{
+		/**
+		 * The switch for creating child descriptors specific to each extended class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		protected static class CreationSwitch extends ResourceSwitch<Object>
+		{
+			/**
+			 * The child descriptors being populated.
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			protected List<Object> newChildDescriptors;
+
+			/**
+			 * The domain in which to create the children.
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			protected EditingDomain editingDomain;
+
+			/**
+			 * Creates the a switch for populating child descriptors in the given domain.
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain) 
+			{
+				this.newChildDescriptors = newChildDescriptors;
+				this.editingDomain = editingDomain;
+			}
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			@Override
+			public Object caseSound(Sound object)
+			{
+				newChildDescriptors.add
+					(createChildParameter
+						(ResourcePackage.Literals.SOUND__FILE,
+						 ResourceFactory.eINSTANCE.createLocalResource()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ResourcePackage.Literals.SOUND__FILE,
+						 ResourceFactory.eINSTANCE.createModuleResource()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ResourcePackage.Literals.SOUND__FILE,
+						 ResourceFactory.eINSTANCE.createStringModuleResource()));
+
+				return null;
+			}
+ 
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			@Override
+			public Object caseMusic(Music object)
+			{
+				newChildDescriptors.add
+					(createChildParameter
+						(ResourcePackage.Literals.MUSIC__FILE,
+						 ResourceFactory.eINSTANCE.createLocalResource()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ResourcePackage.Literals.MUSIC__FILE,
+						 ResourceFactory.eINSTANCE.createModuleResource()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ResourcePackage.Literals.MUSIC__FILE,
+						 ResourceFactory.eINSTANCE.createStringModuleResource()));
+
+				return null;
+			}
+ 
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			@Override
+			public Object caseResourcePkg(ResourcePkg object)
+			{
+				newChildDescriptors.add
+					(createChildParameter
+						(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
+						 ResourceFactory.eINSTANCE.createSound()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
+						 ResourceFactory.eINSTANCE.createMusic()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
+						 ResourceFactory.eINSTANCE.createSoundContinuous()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
+						 ResourceFactory.eINSTANCE.createLocalResource()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
+						 ResourceFactory.eINSTANCE.createModuleResource()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
+						 ResourceFactory.eINSTANCE.createStringModuleResource()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
+						 ResourceFactory.eINSTANCE.createFileImage()));
+
+				return null;
+			}
+ 
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			@Override
+			public Object caseFileImage(FileImage object)
+			{
+				newChildDescriptors.add
+					(createChildParameter
+						(ResourcePackage.Literals.FILE_IMAGE__FILE,
+						 ResourceFactory.eINSTANCE.createLocalResource()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ResourcePackage.Literals.FILE_IMAGE__FILE,
+						 ResourceFactory.eINSTANCE.createModuleResource()));
+
+				newChildDescriptors.add
+					(createChildParameter
+						(ResourcePackage.Literals.FILE_IMAGE__FILE,
+						 ResourceFactory.eINSTANCE.createStringModuleResource()));
+
+				return null;
+			}
+ 
+			/**
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @generated
+			 */
+			protected CommandParameter createChildParameter(Object feature, Object child)
+			{
+				return new CommandParameter(null, feature, child);
+			}
+
+		}
+
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		@Override
+		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain)
+		{
+			ArrayList<Object> result = new ArrayList<Object>();
+			new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
+			return result;
+		}
+
+		/**
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		@Override
+		public ResourceLocator getResourceLocator()
+		{
+			return LilyEditPlugin.INSTANCE;
 		}
 	}
 

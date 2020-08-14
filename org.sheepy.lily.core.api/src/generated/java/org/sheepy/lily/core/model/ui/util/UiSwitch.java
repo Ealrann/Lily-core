@@ -10,7 +10,7 @@ import org.sheepy.lily.core.model.application.ICompositor;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 import org.sheepy.lily.core.model.presentation.IPositionElement;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
-import org.sheepy.lily.core.model.resource.IResource;
+import org.sheepy.lily.core.model.resource.IRootResource;
 import org.sheepy.lily.core.model.types.LNamedElement;
 
 import org.sheepy.lily.core.model.ui.*;
@@ -332,8 +332,6 @@ public class UiSwitch<T> extends Switch<T>
 			{
 				FontTable fontTable = (FontTable)theEObject;
 				T result = caseFontTable(fontTable);
-				if (result == null) result = caseIResource(fontTable);
-				if (result == null) result = caseLNamedElement(fontTable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -341,7 +339,7 @@ public class UiSwitch<T> extends Switch<T>
 			{
 				Font font = (Font)theEObject;
 				T result = caseFont(font);
-				if (result == null) result = caseIResource(font);
+				if (result == null) result = caseIRootResource(font);
 				if (result == null) result = caseLNamedElement(font);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -783,17 +781,17 @@ public class UiSwitch<T> extends Switch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>IResource</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>IRoot Resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>IResource</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>IRoot Resource</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseIResource(IResource object)
+	public T caseIRootResource(IRootResource object)
 	{
 		return null;
 	}

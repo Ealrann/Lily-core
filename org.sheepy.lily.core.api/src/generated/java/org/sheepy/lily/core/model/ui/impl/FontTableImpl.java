@@ -16,8 +16,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
+import org.sheepy.lily.core.api.model.LilyEObject;
 import org.sheepy.lily.core.model.resource.FileResource;
-import org.sheepy.lily.core.model.resource.impl.IResourceImpl;
 import org.sheepy.lily.core.model.types.ECharTable;
 
 import org.sheepy.lily.core.model.ui.FontTable;
@@ -37,7 +37,7 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  *
  * @generated
  */
-public class FontTableImpl extends IResourceImpl implements FontTable
+public class FontTableImpl extends LilyEObject implements FontTable
 {
 	/**
 	 * The cached value of the '{@link #getFile() <em>File</em>}' containment reference.
@@ -90,11 +90,11 @@ public class FontTableImpl extends IResourceImpl implements FontTable
 	{
 		if (file != null && ((EObject)file).eIsProxy())
 		{
-			InternalEObject oldFile = (InternalEObject)file;
+			InternalEObject oldFile = file;
 			file = (FileResource)eResolveProxy(oldFile);
 			if (file != oldFile)
 			{
-				InternalEObject newFile = (InternalEObject)file;
+				InternalEObject newFile = file;
 				NotificationChain msgs = oldFile.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - UiPackage.FONT_TABLE__FILE, null, null);
 				if (newFile.eInternalContainer() == null)
 				{

@@ -5,8 +5,7 @@ package org.sheepy.lily.core.model.application;
 import org.eclipse.emf.common.util.EList;
 
 import org.sheepy.lily.core.model.resource.FileResource;
-
-import org.sheepy.lily.core.model.resource.IResource;
+import org.sheepy.lily.core.model.resource.IRootResource;
 import org.sheepy.lily.core.model.types.LNamedElement;
 
 import org.sheepy.lily.core.model.variable.IModelVariable;
@@ -28,7 +27,7 @@ import org.sheepy.lily.core.model.variable.IModelVariable;
  * @model
  * @generated
  */
-public interface SpecialEffect extends LNamedElement, IResource
+public interface SpecialEffect extends LNamedElement, IRootResource
 {
 	/**
 	 * Returns the value of the '<em><b>Shader</b></em>' containment reference.

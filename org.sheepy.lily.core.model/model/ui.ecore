@@ -28,6 +28,8 @@
         eType="#//FontPkg" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="dstImage" lowerBound="1"
         eType="ecore:EClass resource.ecore#//IImage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="images" upperBound="-1"
+        eType="ecore:EClass resource.ecore#//IImage"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IUIElement" abstract="true" interface="true"
       eSuperTypes="inference.ecore#//IInferenceObject"/>
@@ -138,13 +140,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="fonts" lowerBound="1" upperBound="-1"
         eType="#//Font" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FontTable" eSuperTypes="resource.ecore#//IResource">
+  <eClassifiers xsi:type="ecore:EClass" name="FontTable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="file" lowerBound="1" eType="ecore:EClass resource.ecore#//FileResource"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="charTables" lowerBound="1"
         upperBound="-1" eType="ecore:EEnum types.ecore#//ECharTable"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Font" eSuperTypes="resource.ecore#//IResource">
+  <eClassifiers xsi:type="ecore:EClass" name="Font" eSuperTypes="resource.ecore#//IRootResource">
     <eStructuralFeatures xsi:type="ecore:EReference" name="tables" lowerBound="1"
         upperBound="-1" eType="#//FontTable" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" lowerBound="1"

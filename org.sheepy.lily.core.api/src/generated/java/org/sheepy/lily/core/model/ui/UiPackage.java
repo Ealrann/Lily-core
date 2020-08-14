@@ -382,13 +382,22 @@ public interface UiPackage extends EPackage
 	int UI__DST_IMAGE = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 4;
 
 	/**
+	 * The feature id for the '<em><b>Images</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UI__IMAGES = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>UI</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UI_FEATURE_COUNT = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 5;
+	int UI_FEATURE_COUNT = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 6;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -2083,22 +2092,13 @@ public interface UiPackage extends EPackage
 	int FONT_TABLE = 20;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FONT_TABLE__NAME = ResourcePackage.IRESOURCE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>File</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FONT_TABLE__FILE = ResourcePackage.IRESOURCE_FEATURE_COUNT + 0;
+	int FONT_TABLE__FILE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Char Tables</b></em>' attribute list.
@@ -2107,7 +2107,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT_TABLE__CHAR_TABLES = ResourcePackage.IRESOURCE_FEATURE_COUNT + 1;
+	int FONT_TABLE__CHAR_TABLES = 1;
 
 	/**
 	 * The number of structural features of the '<em>Font Table</em>' class.
@@ -2116,7 +2116,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT_TABLE_FEATURE_COUNT = ResourcePackage.IRESOURCE_FEATURE_COUNT + 2;
+	int FONT_TABLE_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Font Table</em>' class.
@@ -2125,7 +2125,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT_TABLE_OPERATION_COUNT = ResourcePackage.IRESOURCE_OPERATION_COUNT + 0;
+	int FONT_TABLE_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.FontImpl <em>Font</em>}' class.
@@ -2144,7 +2144,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT__NAME = ResourcePackage.IRESOURCE__NAME;
+	int FONT__NAME = ResourcePackage.IROOT_RESOURCE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Tables</b></em>' containment reference list.
@@ -2153,7 +2153,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT__TABLES = ResourcePackage.IRESOURCE_FEATURE_COUNT + 0;
+	int FONT__TABLES = ResourcePackage.IROOT_RESOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Height</b></em>' attribute.
@@ -2162,7 +2162,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT__HEIGHT = ResourcePackage.IRESOURCE_FEATURE_COUNT + 1;
+	int FONT__HEIGHT = ResourcePackage.IROOT_RESOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Font</em>' class.
@@ -2171,7 +2171,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT_FEATURE_COUNT = ResourcePackage.IRESOURCE_FEATURE_COUNT + 2;
+	int FONT_FEATURE_COUNT = ResourcePackage.IROOT_RESOURCE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Font</em>' class.
@@ -2180,7 +2180,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT_OPERATION_COUNT = ResourcePackage.IRESOURCE_OPERATION_COUNT + 0;
+	int FONT_OPERATION_COUNT = ResourcePackage.IROOT_RESOURCE_OPERATION_COUNT + 0;
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.Panel <em>Panel</em>}'.
@@ -2344,6 +2344,17 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	EReference getUI_DstImage();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.sheepy.lily.core.model.ui.UI#getImages <em>Images</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Images</em>'.
+	 * @see org.sheepy.lily.core.model.ui.UI#getImages()
+	 * @see #getUI()
+	 * @generated
+	 */
+	EReference getUI_Images();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.IUIElement <em>IUI Element</em>}'.
@@ -3064,6 +3075,14 @@ public interface UiPackage extends EPackage
 		 * @generated
 		 */
 		EReference UI__DST_IMAGE = eINSTANCE.getUI_DstImage();
+
+		/**
+		 * The meta object literal for the '<em><b>Images</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference UI__IMAGES = eINSTANCE.getUI_Images();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.IUIElement <em>IUI Element</em>}' class.

@@ -59,24 +59,6 @@ public interface ResourceFactory extends EFactory
 	ResourcePkg createResourcePkg();
 
 	/**
-	 * Returns a new object of class '<em>IResource</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>IResource</em>'.
-	 * @generated
-	 */
-	IResource createIResource();
-
-	/**
-	 * Returns a new object of class '<em>Virtual Resource</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Virtual Resource</em>'.
-	 * @generated
-	 */
-	VirtualResource createVirtualResource();
-
-	/**
 	 * Returns a new object of class '<em>Local Resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

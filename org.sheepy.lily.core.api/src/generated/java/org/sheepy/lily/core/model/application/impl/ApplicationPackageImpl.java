@@ -876,7 +876,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		screenEffectEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
 		screenEffectEClass.getESuperTypes().add(this.getICompositor());
 		specialEffectEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
-		specialEffectEClass.getESuperTypes().add(theResourcePackage.getIResource());
+		specialEffectEClass.getESuperTypes().add(theResourcePackage.getIRootResource());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(applicationEClass, Application.class, "Application", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

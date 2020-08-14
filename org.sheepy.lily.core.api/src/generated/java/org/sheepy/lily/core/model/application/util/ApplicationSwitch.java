@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.util.Switch;
 
 import org.sheepy.lily.core.model.application.*;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
-import org.sheepy.lily.core.model.resource.IResource;
+import org.sheepy.lily.core.model.resource.IRootResource;
 import org.sheepy.lily.core.model.types.LNamedElement;
 
 /**
@@ -188,7 +188,7 @@ public class ApplicationSwitch<T> extends Switch<T>
 			{
 				SpecialEffect specialEffect = (SpecialEffect)theEObject;
 				T result = caseSpecialEffect(specialEffect);
-				if (result == null) result = caseIResource(specialEffect);
+				if (result == null) result = caseIRootResource(specialEffect);
 				if (result == null) result = caseLNamedElement(specialEffect);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -454,17 +454,17 @@ public class ApplicationSwitch<T> extends Switch<T>
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>IResource</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>IRoot Resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>IResource</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>IRoot Resource</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseIResource(IResource object)
+	public T caseIRootResource(IRootResource object)
 	{
 		return null;
 	}

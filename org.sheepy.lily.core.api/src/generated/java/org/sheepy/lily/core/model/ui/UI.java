@@ -20,6 +20,7 @@ import org.sheepy.lily.core.model.resource.IImage;
  *   <li>{@link org.sheepy.lily.core.model.ui.UI#getCurrentUIPage <em>Current UI Page</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.UI#getFontPkg <em>Font Pkg</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.UI#getDstImage <em>Dst Image</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.UI#getImages <em>Images</em>}</li>
  * </ul>
  *
  * @see org.sheepy.lily.core.model.ui.UiPackage#getUI()
@@ -128,5 +129,17 @@ public interface UI extends ICompositor
 	 * @generated
 	 */
 	void setDstImage(IImage value);
+
+	/**
+	 * Returns the value of the '<em><b>Images</b></em>' reference list.
+	 * The list contents are of type {@link org.sheepy.lily.core.model.resource.IImage}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Images</em>' reference list.
+	 * @see org.sheepy.lily.core.model.ui.UiPackage#getUI_Images()
+	 * @model
+	 * @generated
+	 */
+	EList<IImage> getImages();
 
 } // UI

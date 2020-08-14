@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.sheepy.lily.core.api.model.LilyEObject;
@@ -43,6 +44,7 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getCurrentUIPage <em>Current UI Page</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getFontPkg <em>Font Pkg</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getDstImage <em>Dst Image</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getImages <em>Images</em>}</li>
  * </ul>
  *
  * @generated
@@ -118,6 +120,16 @@ public class UIImpl extends LilyEObject implements UI
 	 * @ordered
 	 */
 	protected IImage dstImage;
+
+	/**
+	 * The cached value of the '{@link #getImages() <em>Images</em>}' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImages()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<IImage> images;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -430,6 +442,21 @@ public class UIImpl extends LilyEObject implements UI
 	 * @generated
 	 */
 	@Override
+	public EList<IImage> getImages()
+	{
+		if (images == null)
+		{
+			images = new EObjectResolvingEList<IImage>(IImage.class, this, UiPackage.UI__IMAGES);
+		}
+		return images;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public IInferenceObject lInferenceObject()
 	{
 		return this;
@@ -481,6 +508,8 @@ public class UIImpl extends LilyEObject implements UI
 			case UiPackage.UI__DST_IMAGE:
 				if (resolve) return getDstImage();
 				return basicGetDstImage();
+			case UiPackage.UI__IMAGES:
+				return getImages();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -515,6 +544,10 @@ public class UIImpl extends LilyEObject implements UI
 			case UiPackage.UI__DST_IMAGE:
 				setDstImage((IImage)newValue);
 				return;
+			case UiPackage.UI__IMAGES:
+				getImages().clear();
+				getImages().addAll((Collection<? extends IImage>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -547,6 +580,9 @@ public class UIImpl extends LilyEObject implements UI
 			case UiPackage.UI__DST_IMAGE:
 				setDstImage((IImage)null);
 				return;
+			case UiPackage.UI__IMAGES:
+				getImages().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -573,6 +609,8 @@ public class UIImpl extends LilyEObject implements UI
 				return fontPkg != null;
 			case UiPackage.UI__DST_IMAGE:
 				return dstImage != null;
+			case UiPackage.UI__IMAGES:
+				return images != null && !images.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

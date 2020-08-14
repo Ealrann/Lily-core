@@ -166,11 +166,6 @@ public class ResourcePkgItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ResourceFactory.eINSTANCE.createIResource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
 				 ResourceFactory.eINSTANCE.createSound()));
 
 		newChildDescriptors.add
@@ -182,11 +177,6 @@ public class ResourcePkgItemProvider
 			(createChildParameter
 				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
 				 ResourceFactory.eINSTANCE.createSoundContinuous()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 ResourceFactory.eINSTANCE.createVirtualResource()));
 
 		newChildDescriptors.add
 			(createChildParameter
@@ -207,11 +197,6 @@ public class ResourcePkgItemProvider
 			(createChildParameter
 				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
 				 ResourceFactory.eINSTANCE.createFileImage()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(ResourcePackage.Literals.RESOURCE_PKG__RESOURCES,
-				 UiFactory.eINSTANCE.createFontTable()));
 
 		newChildDescriptors.add
 			(createChildParameter

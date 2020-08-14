@@ -69,8 +69,6 @@ public class ResourceFactoryImpl extends EFactoryImpl implements ResourceFactory
 			case ResourcePackage.MUSIC: return createMusic();
 			case ResourcePackage.SOUND_CONTINUOUS: return createSoundContinuous();
 			case ResourcePackage.RESOURCE_PKG: return createResourcePkg();
-			case ResourcePackage.IRESOURCE: return createIResource();
-			case ResourcePackage.VIRTUAL_RESOURCE: return createVirtualResource();
 			case ResourcePackage.LOCAL_RESOURCE: return createLocalResource();
 			case ResourcePackage.MODULE_RESOURCE: return createModuleResource();
 			case ResourcePackage.STRING_MODULE_RESOURCE: return createStringModuleResource();
@@ -160,30 +158,6 @@ public class ResourceFactoryImpl extends EFactoryImpl implements ResourceFactory
 	{
 		ResourcePkgImpl resourcePkg = new ResourcePkgImpl();
 		return resourcePkg;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public IResource createIResource()
-	{
-		IResourceImpl iResource = new IResourceImpl();
-		return iResource;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public VirtualResource createVirtualResource()
-	{
-		VirtualResourceImpl virtualResource = new VirtualResourceImpl();
-		return virtualResource;
 	}
 
 	/**
