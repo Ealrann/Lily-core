@@ -39,7 +39,7 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  * </p>
  * <ul>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getExtensionPkg <em>Extension Pkg</em>}</li>
- *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#isImageSupport <em>Image Support</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#isEnabled <em>Enabled</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getUiPages <em>Ui Pages</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getCurrentUIPage <em>Current UI Page</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.UIImpl#getFontPkg <em>Font Pkg</em>}</li>
@@ -62,24 +62,24 @@ public class UIImpl extends LilyEObject implements UI
 	protected CompositorExtensionPkg extensionPkg;
 
 	/**
-	 * The default value of the '{@link #isImageSupport() <em>Image Support</em>}' attribute.
+	 * The default value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isImageSupport()
+	 * @see #isEnabled()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IMAGE_SUPPORT_EDEFAULT = true;
+	protected static final boolean ENABLED_EDEFAULT = true;
 
 	/**
-	 * The cached value of the '{@link #isImageSupport() <em>Image Support</em>}' attribute.
+	 * The cached value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isImageSupport()
+	 * @see #isEnabled()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean imageSupport = IMAGE_SUPPORT_EDEFAULT;
+	protected boolean enabled = ENABLED_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getUiPages() <em>Ui Pages</em>}' containment reference list.
@@ -235,9 +235,9 @@ public class UIImpl extends LilyEObject implements UI
 	 * @generated
 	 */
 	@Override
-	public boolean isImageSupport()
+	public boolean isEnabled()
 	{
-		return imageSupport;
+		return enabled;
 	}
 
 	/**
@@ -246,12 +246,12 @@ public class UIImpl extends LilyEObject implements UI
 	 * @generated
 	 */
 	@Override
-	public void setImageSupport(boolean newImageSupport)
+	public void setEnabled(boolean newEnabled)
 	{
-		boolean oldImageSupport = imageSupport;
-		imageSupport = newImageSupport;
+		boolean oldEnabled = enabled;
+		enabled = newEnabled;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.UI__IMAGE_SUPPORT, oldImageSupport, imageSupport));
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.UI__ENABLED, oldEnabled, enabled));
 	}
 
 	/**
@@ -495,8 +495,8 @@ public class UIImpl extends LilyEObject implements UI
 			case UiPackage.UI__EXTENSION_PKG:
 				if (resolve) return getExtensionPkg();
 				return basicGetExtensionPkg();
-			case UiPackage.UI__IMAGE_SUPPORT:
-				return isImageSupport();
+			case UiPackage.UI__ENABLED:
+				return isEnabled();
 			case UiPackage.UI__UI_PAGES:
 				return getUiPages();
 			case UiPackage.UI__CURRENT_UI_PAGE:
@@ -528,8 +528,8 @@ public class UIImpl extends LilyEObject implements UI
 			case UiPackage.UI__EXTENSION_PKG:
 				setExtensionPkg((CompositorExtensionPkg)newValue);
 				return;
-			case UiPackage.UI__IMAGE_SUPPORT:
-				setImageSupport((Boolean)newValue);
+			case UiPackage.UI__ENABLED:
+				setEnabled((Boolean)newValue);
 				return;
 			case UiPackage.UI__UI_PAGES:
 				getUiPages().clear();
@@ -565,8 +565,8 @@ public class UIImpl extends LilyEObject implements UI
 			case UiPackage.UI__EXTENSION_PKG:
 				setExtensionPkg((CompositorExtensionPkg)null);
 				return;
-			case UiPackage.UI__IMAGE_SUPPORT:
-				setImageSupport(IMAGE_SUPPORT_EDEFAULT);
+			case UiPackage.UI__ENABLED:
+				setEnabled(ENABLED_EDEFAULT);
 				return;
 			case UiPackage.UI__UI_PAGES:
 				getUiPages().clear();
@@ -599,8 +599,8 @@ public class UIImpl extends LilyEObject implements UI
 		{
 			case UiPackage.UI__EXTENSION_PKG:
 				return extensionPkg != null;
-			case UiPackage.UI__IMAGE_SUPPORT:
-				return imageSupport != IMAGE_SUPPORT_EDEFAULT;
+			case UiPackage.UI__ENABLED:
+				return enabled != ENABLED_EDEFAULT;
 			case UiPackage.UI__UI_PAGES:
 				return uiPages != null && !uiPages.isEmpty();
 			case UiPackage.UI__CURRENT_UI_PAGE:
@@ -642,8 +642,8 @@ public class UIImpl extends LilyEObject implements UI
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (imageSupport: ");
-		result.append(imageSupport);
+		result.append(" (enabled: ");
+		result.append(enabled);
 		result.append(')');
 		return result.toString();
 	}

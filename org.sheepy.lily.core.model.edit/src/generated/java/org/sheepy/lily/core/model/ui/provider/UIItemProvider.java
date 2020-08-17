@@ -69,7 +69,7 @@ public class UIItemProvider
 		{
 			super.getPropertyDescriptors(object);
 
-			addImageSupportPropertyDescriptor(object);
+			addEnabledPropertyDescriptor(object);
 			addCurrentUIPagePropertyDescriptor(object);
 			addDstImagePropertyDescriptor(object);
 			addImagesPropertyDescriptor(object);
@@ -78,20 +78,20 @@ public class UIItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Image Support feature.
+	 * This adds a property descriptor for the Enabled feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addImageSupportPropertyDescriptor(Object object)
+	protected void addEnabledPropertyDescriptor(Object object)
 	{
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_UI_imageSupport_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_UI_imageSupport_feature", "_UI_UI_type"),
-				 UiPackage.Literals.UI__IMAGE_SUPPORT,
+				 getString("_UI_ICompositor_enabled_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ICompositor_enabled_feature", "_UI_ICompositor_type"),
+				 ApplicationPackage.Literals.ICOMPOSITOR__ENABLED,
 				 true,
 				 false,
 				 false,
@@ -226,7 +226,7 @@ public class UIItemProvider
 	public String getText(Object object)
 	{
 		UI ui = (UI)object;
-		return getString("_UI_UI_type") + " " + ui.isImageSupport();
+		return getString("_UI_UI_type") + " " + ui.isEnabled();
 	}
 
 
@@ -244,7 +244,7 @@ public class UIItemProvider
 
 		switch (notification.getFeatureID(UI.class))
 		{
-			case UiPackage.UI__IMAGE_SUPPORT:
+			case UiPackage.UI__ENABLED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case UiPackage.UI__EXTENSION_PKG:

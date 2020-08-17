@@ -19,8 +19,6 @@
         eType="ecore:EDataType types.ecore#//Vector4i" defaultValueLiteral="60;60;60;150"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UI" eSuperTypes="application.ecore#//ICompositor">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="imageSupport" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="uiPages" upperBound="-1"
         eType="#//UIPage" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentUIPage" eType="#//UIPage"/>
@@ -140,7 +138,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="fonts" lowerBound="1" upperBound="-1"
         eType="#//Font" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FontTable">
+  <eClassifiers xsi:type="ecore:EClass" name="FontTable" eSuperTypes="types.ecore#//LNamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="file" lowerBound="1" eType="ecore:EClass resource.ecore#//FileResource"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="charTables" lowerBound="1"

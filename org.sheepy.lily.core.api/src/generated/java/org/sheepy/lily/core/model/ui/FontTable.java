@@ -3,9 +3,9 @@
 package org.sheepy.lily.core.model.ui;
 
 import org.eclipse.emf.common.util.EList;
-import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.model.resource.FileResource;
 import org.sheepy.lily.core.model.types.ECharTable;
+import org.sheepy.lily.core.model.types.LNamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,10 +22,9 @@ import org.sheepy.lily.core.model.types.ECharTable;
  *
  * @see org.sheepy.lily.core.model.ui.UiPackage#getFontTable()
  * @model
- * @extends ILilyEObject
  * @generated
  */
-public interface FontTable extends ILilyEObject
+public interface FontTable extends LNamedElement
 {
 	/**
 	 * Returns the value of the '<em><b>File</b></em>' containment reference.

@@ -35,6 +35,7 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  * </p>
  * <ul>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.GenericScenePartImpl#getExtensionPkg <em>Extension Pkg</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.GenericScenePartImpl#isEnabled <em>Enabled</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.GenericScenePartImpl#getName <em>Name</em>}</li>
  * </ul>
  *
@@ -51,6 +52,26 @@ public class GenericScenePartImpl extends LilyEObject implements GenericScenePar
 	 * @ordered
 	 */
 	protected CompositorExtensionPkg extensionPkg;
+
+	/**
+	 * The default value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ENABLED_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean enabled = ENABLED_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -176,6 +197,31 @@ public class GenericScenePartImpl extends LilyEObject implements GenericScenePar
 	 * @generated
 	 */
 	@Override
+	public boolean isEnabled()
+	{
+		return enabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setEnabled(boolean newEnabled)
+	{
+		boolean oldEnabled = enabled;
+		enabled = newEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.GENERIC_SCENE_PART__ENABLED, oldEnabled, enabled));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public String getName()
 	{
 		return name;
@@ -235,6 +281,8 @@ public class GenericScenePartImpl extends LilyEObject implements GenericScenePar
 			case ApplicationPackage.GENERIC_SCENE_PART__EXTENSION_PKG:
 				if (resolve) return getExtensionPkg();
 				return basicGetExtensionPkg();
+			case ApplicationPackage.GENERIC_SCENE_PART__ENABLED:
+				return isEnabled();
 			case ApplicationPackage.GENERIC_SCENE_PART__NAME:
 				return getName();
 		}
@@ -253,6 +301,9 @@ public class GenericScenePartImpl extends LilyEObject implements GenericScenePar
 		{
 			case ApplicationPackage.GENERIC_SCENE_PART__EXTENSION_PKG:
 				setExtensionPkg((CompositorExtensionPkg)newValue);
+				return;
+			case ApplicationPackage.GENERIC_SCENE_PART__ENABLED:
+				setEnabled((Boolean)newValue);
 				return;
 			case ApplicationPackage.GENERIC_SCENE_PART__NAME:
 				setName((String)newValue);
@@ -274,6 +325,9 @@ public class GenericScenePartImpl extends LilyEObject implements GenericScenePar
 			case ApplicationPackage.GENERIC_SCENE_PART__EXTENSION_PKG:
 				setExtensionPkg((CompositorExtensionPkg)null);
 				return;
+			case ApplicationPackage.GENERIC_SCENE_PART__ENABLED:
+				setEnabled(ENABLED_EDEFAULT);
+				return;
 			case ApplicationPackage.GENERIC_SCENE_PART__NAME:
 				setName(NAME_EDEFAULT);
 				return;
@@ -293,6 +347,8 @@ public class GenericScenePartImpl extends LilyEObject implements GenericScenePar
 		{
 			case ApplicationPackage.GENERIC_SCENE_PART__EXTENSION_PKG:
 				return extensionPkg != null;
+			case ApplicationPackage.GENERIC_SCENE_PART__ENABLED:
+				return enabled != ENABLED_EDEFAULT;
 			case ApplicationPackage.GENERIC_SCENE_PART__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
@@ -364,7 +420,9 @@ public class GenericScenePartImpl extends LilyEObject implements GenericScenePar
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (name: ");
+		result.append(" (enabled: ");
+		result.append(enabled);
+		result.append(", name: ");
 		result.append(name);
 		result.append(')');
 		return result.toString();

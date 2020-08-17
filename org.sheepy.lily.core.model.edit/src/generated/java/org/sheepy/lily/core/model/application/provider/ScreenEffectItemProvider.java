@@ -69,6 +69,7 @@ public class ScreenEffectItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addEnabledPropertyDescriptor(object);
 			addSrcImagePropertyDescriptor(object);
 			addDstImagePropertyDescriptor(object);
 		}
@@ -94,6 +95,29 @@ public class ScreenEffectItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Enabled feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEnabledPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ICompositor_enabled_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ICompositor_enabled_feature", "_UI_ICompositor_type"),
+				 ApplicationPackage.Literals.ICOMPOSITOR__ENABLED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -221,6 +245,7 @@ public class ScreenEffectItemProvider
 		switch (notification.getFeatureID(ScreenEffect.class))
 		{
 			case ApplicationPackage.SCREEN_EFFECT__NAME:
+			case ApplicationPackage.SCREEN_EFFECT__ENABLED:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG:

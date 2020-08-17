@@ -67,6 +67,7 @@ public class BackgroundImageItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addEnabledPropertyDescriptor(object);
 			addClearColorPropertyDescriptor(object);
 			addSamplingPropertyDescriptor(object);
 			addSrcImagePropertyDescriptor(object);
@@ -94,6 +95,29 @@ public class BackgroundImageItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Enabled feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEnabledPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ICompositor_enabled_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ICompositor_enabled_feature", "_UI_ICompositor_type"),
+				 ApplicationPackage.Literals.ICOMPOSITOR__ENABLED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -266,6 +290,7 @@ public class BackgroundImageItemProvider
 		switch (notification.getFeatureID(BackgroundImage.class))
 		{
 			case ApplicationPackage.BACKGROUND_IMAGE__NAME:
+			case ApplicationPackage.BACKGROUND_IMAGE__ENABLED:
 			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
 			case ApplicationPackage.BACKGROUND_IMAGE__SAMPLING:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

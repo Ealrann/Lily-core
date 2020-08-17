@@ -68,9 +68,33 @@ public class GenericScenePartItemProvider
 		{
 			super.getPropertyDescriptors(object);
 
+			addEnabledPropertyDescriptor(object);
 			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Enabled feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEnabledPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ICompositor_enabled_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ICompositor_enabled_feature", "_UI_ICompositor_type"),
+				 ApplicationPackage.Literals.ICOMPOSITOR__ENABLED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -171,6 +195,7 @@ public class GenericScenePartItemProvider
 
 		switch (notification.getFeatureID(GenericScenePart.class))
 		{
+			case ApplicationPackage.GENERIC_SCENE_PART__ENABLED:
 			case ApplicationPackage.GENERIC_SCENE_PART__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

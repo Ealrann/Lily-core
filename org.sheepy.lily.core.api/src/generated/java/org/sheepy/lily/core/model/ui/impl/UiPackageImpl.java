@@ -291,10 +291,10 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		InferencePackageImpl theInferencePackage = (InferencePackageImpl)(registeredPackage instanceof InferencePackageImpl ? registeredPackage : InferencePackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CadencePackage.eNS_URI);
 		CadencePackageImpl theCadencePackage = (CadencePackageImpl)(registeredPackage instanceof CadencePackageImpl ? registeredPackage : CadencePackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
-		ActionPackageImpl theActionPackage = (ActionPackageImpl)(registeredPackage instanceof ActionPackageImpl ? registeredPackage : ActionPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
 		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl)(registeredPackage instanceof ApplicationPackageImpl ? registeredPackage : ApplicationPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
+		ActionPackageImpl theActionPackage = (ActionPackageImpl)(registeredPackage instanceof ActionPackageImpl ? registeredPackage : ActionPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theUiPackage.createPackageContents();
@@ -305,8 +305,8 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		theMaintainerPackage.createPackageContents();
 		theInferencePackage.createPackageContents();
 		theCadencePackage.createPackageContents();
-		theActionPackage.createPackageContents();
 		theApplicationPackage.createPackageContents();
+		theActionPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theUiPackage.initializePackageContents();
@@ -317,8 +317,8 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		theMaintainerPackage.initializePackageContents();
 		theInferencePackage.initializePackageContents();
 		theCadencePackage.initializePackageContents();
-		theActionPackage.initializePackageContents();
 		theApplicationPackage.initializePackageContents();
+		theActionPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theUiPackage.freeze();
@@ -444,20 +444,9 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getUI_ImageSupport()
-	{
-		return (EAttribute)uiEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getUI_UiPages()
 	{
-		return (EReference)uiEClass.getEStructuralFeatures().get(1);
+		return (EReference)uiEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -468,7 +457,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EReference getUI_CurrentUIPage()
 	{
-		return (EReference)uiEClass.getEStructuralFeatures().get(2);
+		return (EReference)uiEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -479,7 +468,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EReference getUI_FontPkg()
 	{
-		return (EReference)uiEClass.getEStructuralFeatures().get(3);
+		return (EReference)uiEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -490,7 +479,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EReference getUI_DstImage()
 	{
-		return (EReference)uiEClass.getEStructuralFeatures().get(4);
+		return (EReference)uiEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -501,7 +490,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	@Override
 	public EReference getUI_Images()
 	{
-		return (EReference)uiEClass.getEStructuralFeatures().get(5);
+		return (EReference)uiEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1140,7 +1129,6 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		createEAttribute(panelEClass, PANEL__BORDER_COLOR);
 
 		uiEClass = createEClass(UI);
-		createEAttribute(uiEClass, UI__IMAGE_SUPPORT);
 		createEReference(uiEClass, UI__UI_PAGES);
 		createEReference(uiEClass, UI__CURRENT_UI_PAGE);
 		createEReference(uiEClass, UI__FONT_PKG);
@@ -1285,6 +1273,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		abstractBooleanButtonEClass.getESuperTypes().add(this.getAbstractButton());
 		booleanButtonEClass.getESuperTypes().add(this.getAbstractBooleanButton());
 		booleanActionButtonEClass.getESuperTypes().add(this.getAbstractBooleanButton());
+		fontTableEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
 		fontEClass.getESuperTypes().add(theResourcePackage.getIRootResource());
 
 		// Initialize classes, features, and operations; add parameters
@@ -1299,7 +1288,6 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		initEAttribute(getPanel_BorderColor(), theTypesPackage.getVector4i(), "borderColor", "60;60;60;150", 1, 1, Panel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(uiEClass, org.sheepy.lily.core.model.ui.UI.class, "UI", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getUI_ImageSupport(), ecorePackage.getEBoolean(), "imageSupport", "true", 1, 1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUI_UiPages(), this.getUIPage(), null, "uiPages", null, 0, -1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUI_CurrentUIPage(), this.getUIPage(), null, "currentUIPage", null, 0, 1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUI_FontPkg(), this.getFontPkg(), null, "fontPkg", null, 1, 1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

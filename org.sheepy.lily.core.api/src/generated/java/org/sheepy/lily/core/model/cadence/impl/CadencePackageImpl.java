@@ -200,10 +200,10 @@ public class CadencePackageImpl extends EPackageImpl implements CadencePackage
 		MaintainerPackageImpl theMaintainerPackage = (MaintainerPackageImpl)(registeredPackage instanceof MaintainerPackageImpl ? registeredPackage : MaintainerPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(InferencePackage.eNS_URI);
 		InferencePackageImpl theInferencePackage = (InferencePackageImpl)(registeredPackage instanceof InferencePackageImpl ? registeredPackage : InferencePackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
-		ActionPackageImpl theActionPackage = (ActionPackageImpl)(registeredPackage instanceof ActionPackageImpl ? registeredPackage : ActionPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
 		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl)(registeredPackage instanceof ApplicationPackageImpl ? registeredPackage : ApplicationPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
+		ActionPackageImpl theActionPackage = (ActionPackageImpl)(registeredPackage instanceof ActionPackageImpl ? registeredPackage : ActionPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theCadencePackage.createPackageContents();
@@ -214,8 +214,8 @@ public class CadencePackageImpl extends EPackageImpl implements CadencePackage
 		thePresentationPackage.createPackageContents();
 		theMaintainerPackage.createPackageContents();
 		theInferencePackage.createPackageContents();
-		theActionPackage.createPackageContents();
 		theApplicationPackage.createPackageContents();
+		theActionPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theCadencePackage.initializePackageContents();
@@ -226,8 +226,8 @@ public class CadencePackageImpl extends EPackageImpl implements CadencePackage
 		thePresentationPackage.initializePackageContents();
 		theMaintainerPackage.initializePackageContents();
 		theInferencePackage.initializePackageContents();
-		theActionPackage.initializePackageContents();
 		theApplicationPackage.initializePackageContents();
+		theActionPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theCadencePackage.freeze();

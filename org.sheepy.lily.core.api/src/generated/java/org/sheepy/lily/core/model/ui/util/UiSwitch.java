@@ -332,6 +332,7 @@ public class UiSwitch<T> extends Switch<T>
 			{
 				FontTable fontTable = (FontTable)theEObject;
 				T result = caseFontTable(fontTable);
+				if (result == null) result = caseLNamedElement(fontTable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

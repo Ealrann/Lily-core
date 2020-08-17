@@ -24,6 +24,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.sheepy.lily.core.model.resource.ResourceFactory;
+import org.sheepy.lily.core.model.types.TypesPackage;
 import org.sheepy.lily.core.model.ui.FontTable;
 import org.sheepy.lily.core.model.ui.UiPackage;
 
@@ -59,9 +60,33 @@ public class FontTableItemProvider extends ItemProviderAdapter implements IEditi
 		{
 			super.getPropertyDescriptors(object);
 
+			addNamePropertyDescriptor(object);
 			addCharTablesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_LNamedElement_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_LNamedElement_name_feature", "_UI_LNamedElement_type"),
+				 TypesPackage.Literals.LNAMED_ELEMENT__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
@@ -141,7 +166,10 @@ public class FontTableItemProvider extends ItemProviderAdapter implements IEditi
 	@Override
 	public String getText(Object object)
 	{
-		return getString("_UI_FontTable_type");
+		String label = ((FontTable)object).getName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_FontTable_type") :
+			getString("_UI_FontTable_type") + " " + label;
 	}
 
 
@@ -159,6 +187,7 @@ public class FontTableItemProvider extends ItemProviderAdapter implements IEditi
 
 		switch (notification.getFeatureID(FontTable.class))
 		{
+			case UiPackage.FONT_TABLE__NAME:
 			case UiPackage.FONT_TABLE__CHAR_TABLES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
@@ -195,30 +224,6 @@ public class FontTableItemProvider extends ItemProviderAdapter implements IEditi
 			(createChildParameter
 				(UiPackage.Literals.FONT_TABLE__FILE,
 				 ResourceFactory.eINSTANCE.createStringModuleResource()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection)
-	{
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == UiPackage.Literals.FONT_TABLE__FILE;
-
-		if (qualify)
-		{
-			return getString
-				("_UI_CreateChild_text2",
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

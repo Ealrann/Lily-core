@@ -42,6 +42,7 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  * <ul>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getExtensionPkg <em>Extension Pkg</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#isEnabled <em>Enabled</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getClearColor <em>Clear Color</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getSampling <em>Sampling</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.BackgroundImageImpl#getSrcImage <em>Src Image</em>}</li>
@@ -81,6 +82,26 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 	 * @ordered
 	 */
 	protected CompositorExtensionPkg extensionPkg;
+
+	/**
+	 * The default value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ENABLED_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean enabled = ENABLED_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getClearColor() <em>Clear Color</em>}' attribute.
@@ -271,6 +292,31 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 	 * @generated
 	 */
 	@Override
+	public boolean isEnabled()
+	{
+		return enabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setEnabled(boolean newEnabled)
+	{
+		boolean oldEnabled = enabled;
+		enabled = newEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.BACKGROUND_IMAGE__ENABLED, oldEnabled, enabled));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Vector3ic getClearColor()
 	{
 		return clearColor;
@@ -447,6 +493,8 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 			case ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG:
 				if (resolve) return getExtensionPkg();
 				return basicGetExtensionPkg();
+			case ApplicationPackage.BACKGROUND_IMAGE__ENABLED:
+				return isEnabled();
 			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
 				return getClearColor();
 			case ApplicationPackage.BACKGROUND_IMAGE__SAMPLING:
@@ -476,6 +524,9 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 				return;
 			case ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG:
 				setExtensionPkg((CompositorExtensionPkg)newValue);
+				return;
+			case ApplicationPackage.BACKGROUND_IMAGE__ENABLED:
+				setEnabled((Boolean)newValue);
 				return;
 			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
 				setClearColor((Vector3ic)newValue);
@@ -509,6 +560,9 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 			case ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG:
 				setExtensionPkg((CompositorExtensionPkg)null);
 				return;
+			case ApplicationPackage.BACKGROUND_IMAGE__ENABLED:
+				setEnabled(ENABLED_EDEFAULT);
+				return;
 			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
 				setClearColor(CLEAR_COLOR_EDEFAULT);
 				return;
@@ -539,6 +593,8 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG:
 				return extensionPkg != null;
+			case ApplicationPackage.BACKGROUND_IMAGE__ENABLED:
+				return enabled != ENABLED_EDEFAULT;
 			case ApplicationPackage.BACKGROUND_IMAGE__CLEAR_COLOR:
 				return CLEAR_COLOR_EDEFAULT == null ? clearColor != null : !CLEAR_COLOR_EDEFAULT.equals(clearColor);
 			case ApplicationPackage.BACKGROUND_IMAGE__SAMPLING:
@@ -571,6 +627,7 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 			switch (derivedFeatureID)
 			{
 				case ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG: return ApplicationPackage.ICOMPOSITOR__EXTENSION_PKG;
+				case ApplicationPackage.BACKGROUND_IMAGE__ENABLED: return ApplicationPackage.ICOMPOSITOR__ENABLED;
 				default: return -1;
 			}
 		}
@@ -597,6 +654,7 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 			switch (baseFeatureID)
 			{
 				case ApplicationPackage.ICOMPOSITOR__EXTENSION_PKG: return ApplicationPackage.BACKGROUND_IMAGE__EXTENSION_PKG;
+				case ApplicationPackage.ICOMPOSITOR__ENABLED: return ApplicationPackage.BACKGROUND_IMAGE__ENABLED;
 				default: return -1;
 			}
 		}
@@ -658,6 +716,8 @@ public class BackgroundImageImpl extends LilyEObject implements BackgroundImage
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", enabled: ");
+		result.append(enabled);
 		result.append(", clearColor: ");
 		result.append(clearColor);
 		result.append(", sampling: ");

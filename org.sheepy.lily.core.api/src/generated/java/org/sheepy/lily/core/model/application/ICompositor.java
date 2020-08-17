@@ -14,6 +14,7 @@ import org.sheepy.lily.core.model.inference.IInferenceObject;
  * </p>
  * <ul>
  *   <li>{@link org.sheepy.lily.core.model.application.ICompositor#getExtensionPkg <em>Extension Pkg</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.ICompositor#isEnabled <em>Enabled</em>}</li>
  * </ul>
  *
  * @see org.sheepy.lily.core.model.application.ApplicationPackage#getICompositor()
@@ -44,4 +45,27 @@ public interface ICompositor extends IInferenceObject
 	 * @generated
 	 */
 	void setExtensionPkg(CompositorExtensionPkg value);
+
+	/**
+	 * Returns the value of the '<em><b>Enabled</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Enabled</em>' attribute.
+	 * @see #setEnabled(boolean)
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getICompositor_Enabled()
+	 * @model default="true" required="true"
+	 * @generated
+	 */
+	boolean isEnabled();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.ICompositor#isEnabled <em>Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Enabled</em>' attribute.
+	 * @see #isEnabled()
+	 * @generated
+	 */
+	void setEnabled(boolean value);
 } // ICompositor

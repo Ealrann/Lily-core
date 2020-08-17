@@ -31,6 +31,7 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.FontTableImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.FontTableImpl#getFile <em>File</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.FontTableImpl#getCharTables <em>Char Tables</em>}</li>
  * </ul>
@@ -39,6 +40,26 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  */
 public class FontTableImpl extends LilyEObject implements FontTable
 {
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
+
 	/**
 	 * The cached value of the '{@link #getFile() <em>File</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -78,6 +99,31 @@ public class FontTableImpl extends LilyEObject implements FontTable
 	protected EClass eStaticClass()
 	{
 		return UiPackage.Literals.FONT_TABLE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getName()
+	{
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setName(String newName)
+	{
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.FONT_TABLE__NAME, oldName, name));
 	}
 
 	/**
@@ -198,6 +244,8 @@ public class FontTableImpl extends LilyEObject implements FontTable
 	{
 		switch (featureID)
 		{
+			case UiPackage.FONT_TABLE__NAME:
+				return getName();
 			case UiPackage.FONT_TABLE__FILE:
 				if (resolve) return getFile();
 				return basicGetFile();
@@ -218,6 +266,9 @@ public class FontTableImpl extends LilyEObject implements FontTable
 	{
 		switch (featureID)
 		{
+			case UiPackage.FONT_TABLE__NAME:
+				setName((String)newValue);
+				return;
 			case UiPackage.FONT_TABLE__FILE:
 				setFile((FileResource)newValue);
 				return;
@@ -239,6 +290,9 @@ public class FontTableImpl extends LilyEObject implements FontTable
 	{
 		switch (featureID)
 		{
+			case UiPackage.FONT_TABLE__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 			case UiPackage.FONT_TABLE__FILE:
 				setFile((FileResource)null);
 				return;
@@ -259,6 +313,8 @@ public class FontTableImpl extends LilyEObject implements FontTable
 	{
 		switch (featureID)
 		{
+			case UiPackage.FONT_TABLE__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case UiPackage.FONT_TABLE__FILE:
 				return file != null;
 			case UiPackage.FONT_TABLE__CHAR_TABLES:
@@ -278,7 +334,9 @@ public class FontTableImpl extends LilyEObject implements FontTable
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (charTables: ");
+		result.append(" (name: ");
+		result.append(name);
+		result.append(", charTables: ");
 		result.append(charTables);
 		result.append(')');
 		return result.toString();

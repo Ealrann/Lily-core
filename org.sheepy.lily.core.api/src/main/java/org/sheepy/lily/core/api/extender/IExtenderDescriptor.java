@@ -1,7 +1,5 @@
 package org.sheepy.lily.core.api.extender;
 
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.api.extender.parameter.IParameterResolver;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
@@ -12,21 +10,33 @@ import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.stream.Stream;
 
-public interface IExtenderDescriptor<T extends IExtender>
+public interface IExtenderDescriptor<T extends IExtender> extends IExtenderDescription<T>
 {
-	Class<T> extenderClass();
-	EClass targetEClass();
-	boolean isExtenderForType(Class<?> allocationAdapterType);
-	boolean isApplicable(EObject target);
-	boolean containsMethodAnnotation(Class<? extends Annotation> annotationClass);
-	boolean containsClassAnnotation(Class<? extends Annotation> annotationClass);
-	<A extends Annotation> Stream<A> streamMethodAnnotations(Class<A> annotationClass);
 	ExtenderContext<T> newExtender(ILilyEObject target,
 								   IObservatoryBuilder observatory,
 								   List<? extends IParameterResolver> resolvers) throws ReflectiveOperationException;
 
-	record ExtenderContext<T extends IExtender>(T extender, List<? extends AnnotationHandles<?>>annotationHandles)
+	final class ExtenderContext<T extends IExtender>
 	{
+		private final T extender;
+		private final List<? extends AnnotationHandles<?>> annotationHandles;
+
+		public ExtenderContext(T extender, List<? extends AnnotationHandles<?>> annotationHandles)
+		{
+			this.extender = extender;
+			this.annotationHandles = annotationHandles;
+		}
+
+		public T extender()
+		{
+			return extender;
+		}
+
+		public List<? extends AnnotationHandles<?>> annotationHandles()
+		{
+			return annotationHandles;
+		}
+
 		public Stream<ConsumerHandle> annotatedConsumer(Class<? extends Annotation> annotationClass)
 		{
 			return annotatedHandles(annotationClass).map(IExtenderHandle.AnnotatedHandle::executionHandle)

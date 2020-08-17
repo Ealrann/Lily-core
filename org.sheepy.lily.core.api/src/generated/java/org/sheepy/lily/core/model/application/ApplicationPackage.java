@@ -299,22 +299,13 @@ public interface ApplicationPackage extends EPackage
 	int IENGINE = 4;
 
 	/**
-	 * The feature id for the '<em><b>Resource Pkg</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IENGINE__RESOURCE_PKG = 0;
-
-	/**
 	 * The number of structural features of the '<em>IEngine</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IENGINE_FEATURE_COUNT = 1;
+	int IENGINE_FEATURE_COUNT = 0;
 
 	/**
 	 * The number of operations of the '<em>IEngine</em>' class.
@@ -373,13 +364,22 @@ public interface ApplicationPackage extends EPackage
 	int ICOMPOSITOR__EXTENSION_PKG = InferencePackage.IINFERENCE_OBJECT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ICOMPOSITOR__ENABLED = InferencePackage.IINFERENCE_OBJECT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>ICompositor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ICOMPOSITOR_FEATURE_COUNT = InferencePackage.IINFERENCE_OBJECT_FEATURE_COUNT + 1;
+	int ICOMPOSITOR_FEATURE_COUNT = InferencePackage.IINFERENCE_OBJECT_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -576,6 +576,15 @@ public interface ApplicationPackage extends EPackage
 	int GENERIC_SCENE_PART__EXTENSION_PKG = ICOMPOSITOR__EXTENSION_PKG;
 
 	/**
+	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GENERIC_SCENE_PART__ENABLED = ICOMPOSITOR__ENABLED;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -640,13 +649,22 @@ public interface ApplicationPackage extends EPackage
 	int BACKGROUND_IMAGE__EXTENSION_PKG = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BACKGROUND_IMAGE__ENABLED = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Clear Color</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BACKGROUND_IMAGE__CLEAR_COLOR = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 1;
+	int BACKGROUND_IMAGE__CLEAR_COLOR = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Sampling</b></em>' attribute.
@@ -655,7 +673,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int BACKGROUND_IMAGE__SAMPLING = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 2;
+	int BACKGROUND_IMAGE__SAMPLING = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Src Image</b></em>' reference.
@@ -664,7 +682,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int BACKGROUND_IMAGE__SRC_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 3;
+	int BACKGROUND_IMAGE__SRC_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Dst Image</b></em>' reference.
@@ -673,7 +691,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int BACKGROUND_IMAGE__DST_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 4;
+	int BACKGROUND_IMAGE__DST_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Background Image</em>' class.
@@ -682,7 +700,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int BACKGROUND_IMAGE_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 5;
+	int BACKGROUND_IMAGE_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -731,13 +749,22 @@ public interface ApplicationPackage extends EPackage
 	int SCREEN_EFFECT__EXTENSION_PKG = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCREEN_EFFECT__ENABLED = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Src Image</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCREEN_EFFECT__SRC_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 1;
+	int SCREEN_EFFECT__SRC_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Dst Image</b></em>' reference.
@@ -746,7 +773,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SCREEN_EFFECT__DST_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 2;
+	int SCREEN_EFFECT__DST_IMAGE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Effect</b></em>' containment reference.
@@ -755,7 +782,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SCREEN_EFFECT__EFFECT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 3;
+	int SCREEN_EFFECT__EFFECT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Screen Effect</em>' class.
@@ -764,7 +791,7 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int SCREEN_EFFECT_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 4;
+	int SCREEN_EFFECT_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -1022,17 +1049,6 @@ public interface ApplicationPackage extends EPackage
 	EClass getIEngine();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.IEngine#getResourcePkg <em>Resource Pkg</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Resource Pkg</em>'.
-	 * @see org.sheepy.lily.core.model.application.IEngine#getResourcePkg()
-	 * @see #getIEngine()
-	 * @generated
-	 */
-	EReference getIEngine_ResourcePkg();
-
-	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.IModel <em>IModel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1062,6 +1078,17 @@ public interface ApplicationPackage extends EPackage
 	 * @generated
 	 */
 	EReference getICompositor_ExtensionPkg();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.ICompositor#isEnabled <em>Enabled</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Enabled</em>'.
+	 * @see org.sheepy.lily.core.model.application.ICompositor#isEnabled()
+	 * @see #getICompositor()
+	 * @generated
+	 */
+	EAttribute getICompositor_Enabled();
 
 	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.CompositorExtensionPkg <em>Compositor Extension Pkg</em>}'.
@@ -1468,14 +1495,6 @@ public interface ApplicationPackage extends EPackage
 		EClass IENGINE = eINSTANCE.getIEngine();
 
 		/**
-		 * The meta object literal for the '<em><b>Resource Pkg</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference IENGINE__RESOURCE_PKG = eINSTANCE.getIEngine_ResourcePkg();
-
-		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.IModelImpl <em>IModel</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1502,6 +1521,14 @@ public interface ApplicationPackage extends EPackage
 		 * @generated
 		 */
 		EReference ICOMPOSITOR__EXTENSION_PKG = eINSTANCE.getICompositor_ExtensionPkg();
+
+		/**
+		 * The meta object literal for the '<em><b>Enabled</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ICOMPOSITOR__ENABLED = eINSTANCE.getICompositor_Enabled();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.CompositorExtensionPkgImpl <em>Compositor Extension Pkg</em>}' class.

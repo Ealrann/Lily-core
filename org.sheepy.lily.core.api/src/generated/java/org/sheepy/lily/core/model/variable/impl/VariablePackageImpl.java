@@ -280,10 +280,10 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		InferencePackageImpl theInferencePackage = (InferencePackageImpl)(registeredPackage instanceof InferencePackageImpl ? registeredPackage : InferencePackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(CadencePackage.eNS_URI);
 		CadencePackageImpl theCadencePackage = (CadencePackageImpl)(registeredPackage instanceof CadencePackageImpl ? registeredPackage : CadencePackage.eINSTANCE);
-		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
-		ActionPackageImpl theActionPackage = (ActionPackageImpl)(registeredPackage instanceof ActionPackageImpl ? registeredPackage : ActionPackage.eINSTANCE);
 		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ApplicationPackage.eNS_URI);
 		ApplicationPackageImpl theApplicationPackage = (ApplicationPackageImpl)(registeredPackage instanceof ApplicationPackageImpl ? registeredPackage : ApplicationPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ActionPackage.eNS_URI);
+		ActionPackageImpl theActionPackage = (ActionPackageImpl)(registeredPackage instanceof ActionPackageImpl ? registeredPackage : ActionPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theVariablePackage.createPackageContents();
@@ -294,8 +294,8 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		theMaintainerPackage.createPackageContents();
 		theInferencePackage.createPackageContents();
 		theCadencePackage.createPackageContents();
-		theActionPackage.createPackageContents();
 		theApplicationPackage.createPackageContents();
+		theActionPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theVariablePackage.initializePackageContents();
@@ -306,8 +306,8 @@ public class VariablePackageImpl extends EPackageImpl implements VariablePackage
 		theMaintainerPackage.initializePackageContents();
 		theInferencePackage.initializePackageContents();
 		theCadencePackage.initializePackageContents();
-		theActionPackage.initializePackageContents();
 		theApplicationPackage.initializePackageContents();
+		theActionPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theVariablePackage.freeze();

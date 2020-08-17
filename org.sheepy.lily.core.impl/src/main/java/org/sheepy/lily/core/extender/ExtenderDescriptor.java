@@ -186,12 +186,6 @@ public final class ExtenderDescriptor<Extender extends IExtender> implements IEx
 	}
 
 	@Override
-	public EClass targetEClass()
-	{
-		return targetEClass;
-	}
-
-	@Override
 	public String toString()
 	{
 		return "ExtenderDescriptor{" + "extenderClass=" + extenderClass + '}';

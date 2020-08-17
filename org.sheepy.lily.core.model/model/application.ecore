@@ -38,15 +38,14 @@
         lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
         defaultValueLiteral="1"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IEngine" abstract="true" interface="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="resourcePkg" eType="ecore:EClass resource.ecore#//ResourcePkg"
-        containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IEngine" abstract="true" interface="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="IModel"/>
   <eClassifiers xsi:type="ecore:EClass" name="ICompositor" abstract="true" interface="true"
       eSuperTypes="inference.ecore#//IInferenceObject">
     <eStructuralFeatures xsi:type="ecore:EReference" name="extensionPkg" eType="#//CompositorExtensionPkg"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="enabled" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompositorExtensionPkg">
     <eStructuralFeatures xsi:type="ecore:EReference" name="extensions" upperBound="-1"

@@ -4,7 +4,7 @@ import org.sheepy.lily.core.api.allocation.IAllocationInstance;
 import org.sheepy.lily.core.api.allocation.IAllocationService;
 import org.sheepy.lily.core.api.cadence.ICadenceManager;
 import org.sheepy.lily.core.api.cadence.IStatistics;
-import org.sheepy.lily.core.api.engine.IEngineAdapter;
+import org.sheepy.lily.core.api.engine.IEngineAllocation;
 import org.sheepy.lily.core.api.input.IInputManager;
 import org.sheepy.lily.core.api.model.LilyEObject;
 import org.sheepy.lily.core.api.util.DebugUtil;
@@ -33,7 +33,7 @@ public class CadenceManager implements ICadenceManager
 
 	private IInputManager inputManager = null;
 	private Long mainThread = null;
-	private List<IAllocationInstance<IEngineAdapter>> engineAllocations;
+	private List<IAllocationInstance<IEngineAllocation>> engineAllocations;
 
 	public CadenceManager(Application application)
 	{
@@ -78,7 +78,7 @@ public class CadenceManager implements ICadenceManager
 			final long d = System.nanoTime();
 			for (final var engine : application.getEngines())
 			{
-				final var engineAdapter = engine.adapt(IEngineAdapter.class);
+				final var engineAdapter = engine.adapt(IEngineAllocation.class);
 				if (engineAdapter != null) engineAdapter.step();
 			}
 
@@ -115,9 +115,9 @@ public class CadenceManager implements ICadenceManager
 		mainThread = null;
 	}
 
-	private static IAllocationInstance<IEngineAdapter> allocateEngine(final IEngine engine)
+	private static IAllocationInstance<IEngineAllocation> allocateEngine(final IEngine engine)
 	{
-		return IAllocationService.INSTANCE.allocate(engine, null, IEngineAdapter.class);
+		return IAllocationService.INSTANCE.allocate(engine, null, IEngineAllocation.class);
 	}
 
 	public void stop()

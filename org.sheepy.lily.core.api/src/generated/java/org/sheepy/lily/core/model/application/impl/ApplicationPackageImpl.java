@@ -462,17 +462,6 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
-	public EReference getIEngine_ResourcePkg()
-	{
-		return (EReference)iEngineEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getIModel()
 	{
 		return iModelEClass;
@@ -498,6 +487,17 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	public EReference getICompositor_ExtensionPkg()
 	{
 		return (EReference)iCompositorEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getICompositor_Enabled()
+	{
+		return (EAttribute)iCompositorEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -794,12 +794,12 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEAttribute(timeConfigurationEClass, TIME_CONFIGURATION__TIME_FACTOR);
 
 		iEngineEClass = createEClass(IENGINE);
-		createEReference(iEngineEClass, IENGINE__RESOURCE_PKG);
 
 		iModelEClass = createEClass(IMODEL);
 
 		iCompositorEClass = createEClass(ICOMPOSITOR);
 		createEReference(iCompositorEClass, ICOMPOSITOR__EXTENSION_PKG);
+		createEAttribute(iCompositorEClass, ICOMPOSITOR__ENABLED);
 
 		compositorExtensionPkgEClass = createEClass(COMPOSITOR_EXTENSION_PKG);
 		createEReference(compositorExtensionPkgEClass, COMPOSITOR_EXTENSION_PKG__EXTENSIONS);
@@ -900,12 +900,12 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEAttribute(getTimeConfiguration_TimeFactor(), ecorePackage.getEDouble(), "timeFactor", "1", 1, 1, TimeConfiguration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iEngineEClass, IEngine.class, "IEngine", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIEngine_ResourcePkg(), theResourcePackage.getResourcePkg(), null, "resourcePkg", null, 0, 1, IEngine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iModelEClass, IModel.class, "IModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(iCompositorEClass, ICompositor.class, "ICompositor", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getICompositor_ExtensionPkg(), this.getCompositorExtensionPkg(), null, "extensionPkg", null, 0, 1, ICompositor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getICompositor_Enabled(), ecorePackage.getEBoolean(), "enabled", "true", 1, 1, ICompositor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(compositorExtensionPkgEClass, CompositorExtensionPkg.class, "CompositorExtensionPkg", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCompositorExtensionPkg_Extensions(), this.getICompositorExtension(), null, "extensions", null, 0, -1, CompositorExtensionPkg.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

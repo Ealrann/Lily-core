@@ -22,8 +22,33 @@ public interface IExtenderHandle<T extends IExtender>
 	void sulk(ExtenderListener<T> extenderUpdateListener);
 	void sulkNoParam(Runnable extenderUpdateListener);
 
-	record AnnotatedHandle<T extends Annotation>(T annotation, Method method, ExecutionHandle executionHandle)
+	final class AnnotatedHandle<T extends Annotation>
 	{
+		private final T annotation;
+		private final Method method;
+		private final ExecutionHandle executionHandle;
+
+		public AnnotatedHandle(T annotation, Method method, ExecutionHandle executionHandle)
+		{
+			this.annotation = annotation;
+			this.method = method;
+			this.executionHandle = executionHandle;
+		}
+
+		public T annotation()
+		{
+			return annotation;
+		}
+
+		public Method method()
+		{
+			return method;
+		}
+
+		public ExecutionHandle executionHandle()
+		{
+			return executionHandle;
+		}
 	}
 
 	@FunctionalInterface

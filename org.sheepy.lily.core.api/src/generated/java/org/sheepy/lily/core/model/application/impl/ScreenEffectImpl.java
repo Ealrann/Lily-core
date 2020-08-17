@@ -38,6 +38,7 @@ import org.sheepy.lily.core.model.resource.IImage;
  * <ul>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ScreenEffectImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ScreenEffectImpl#getExtensionPkg <em>Extension Pkg</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ScreenEffectImpl#isEnabled <em>Enabled</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ScreenEffectImpl#getSrcImage <em>Src Image</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ScreenEffectImpl#getDstImage <em>Dst Image</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ScreenEffectImpl#getEffect <em>Effect</em>}</li>
@@ -76,6 +77,26 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 	 * @ordered
 	 */
 	protected CompositorExtensionPkg extensionPkg;
+
+	/**
+	 * The default value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ENABLED_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isEnabled() <em>Enabled</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isEnabled()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean enabled = ENABLED_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getSrcImage() <em>Src Image</em>}' reference.
@@ -228,6 +249,31 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG, newExtensionPkg, newExtensionPkg));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isEnabled()
+	{
+		return enabled;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setEnabled(boolean newEnabled)
+	{
+		boolean oldEnabled = enabled;
+		enabled = newEnabled;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.SCREEN_EFFECT__ENABLED, oldEnabled, enabled));
 	}
 
 	/**
@@ -441,6 +487,8 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 			case ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG:
 				if (resolve) return getExtensionPkg();
 				return basicGetExtensionPkg();
+			case ApplicationPackage.SCREEN_EFFECT__ENABLED:
+				return isEnabled();
 			case ApplicationPackage.SCREEN_EFFECT__SRC_IMAGE:
 				if (resolve) return getSrcImage();
 				return basicGetSrcImage();
@@ -469,6 +517,9 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 				return;
 			case ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG:
 				setExtensionPkg((CompositorExtensionPkg)newValue);
+				return;
+			case ApplicationPackage.SCREEN_EFFECT__ENABLED:
+				setEnabled((Boolean)newValue);
 				return;
 			case ApplicationPackage.SCREEN_EFFECT__SRC_IMAGE:
 				setSrcImage((IImage)newValue);
@@ -499,6 +550,9 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 			case ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG:
 				setExtensionPkg((CompositorExtensionPkg)null);
 				return;
+			case ApplicationPackage.SCREEN_EFFECT__ENABLED:
+				setEnabled(ENABLED_EDEFAULT);
+				return;
 			case ApplicationPackage.SCREEN_EFFECT__SRC_IMAGE:
 				setSrcImage((IImage)null);
 				return;
@@ -526,6 +580,8 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG:
 				return extensionPkg != null;
+			case ApplicationPackage.SCREEN_EFFECT__ENABLED:
+				return enabled != ENABLED_EDEFAULT;
 			case ApplicationPackage.SCREEN_EFFECT__SRC_IMAGE:
 				return srcImage != null;
 			case ApplicationPackage.SCREEN_EFFECT__DST_IMAGE:
@@ -556,6 +612,7 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 			switch (derivedFeatureID)
 			{
 				case ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG: return ApplicationPackage.ICOMPOSITOR__EXTENSION_PKG;
+				case ApplicationPackage.SCREEN_EFFECT__ENABLED: return ApplicationPackage.ICOMPOSITOR__ENABLED;
 				default: return -1;
 			}
 		}
@@ -582,6 +639,7 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 			switch (baseFeatureID)
 			{
 				case ApplicationPackage.ICOMPOSITOR__EXTENSION_PKG: return ApplicationPackage.SCREEN_EFFECT__EXTENSION_PKG;
+				case ApplicationPackage.ICOMPOSITOR__ENABLED: return ApplicationPackage.SCREEN_EFFECT__ENABLED;
 				default: return -1;
 			}
 		}
@@ -643,6 +701,8 @@ public class ScreenEffectImpl extends LilyEObject implements ScreenEffect
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", enabled: ");
+		result.append(enabled);
 		result.append(')');
 		return result.toString();
 	}

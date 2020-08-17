@@ -74,7 +74,7 @@ public final class ExtenderManager implements IExtenderManager.Internal
 	}
 
 	@Override
-	public <T extends IExtender> IExtenderHandle<T> adaptHandleFromDescriptor(final IExtenderDescriptor<T> descriptor)
+	public <T extends IExtender> IExtenderHandle<T> adaptHandleFromDescriptor(final IExtenderDescription<T> descriptor)
 	{
 		return REGISTRY.getWrapper(descriptor).map(this::getOrCreateHandle).orElse(null);
 	}

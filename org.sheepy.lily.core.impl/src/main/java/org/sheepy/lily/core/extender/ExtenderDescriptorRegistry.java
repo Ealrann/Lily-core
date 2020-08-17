@@ -80,7 +80,7 @@ public final class ExtenderDescriptorRegistry implements IExtenderDescriptorRegi
 	}
 
 	@SuppressWarnings("unchecked")
-	public <T extends IExtender> Optional<DescriptorWraper<T>> getWrapper(final IExtenderDescriptor<T> descriptor)
+	public <T extends IExtender> Optional<DescriptorWraper<T>> getWrapper(final IExtenderDescription<T> descriptor)
 	{
 		return descriptors.stream()
 						  .filter(wrapper -> wrapper.descriptor == descriptor)
@@ -91,7 +91,7 @@ public final class ExtenderDescriptorRegistry implements IExtenderDescriptorRegi
 	public static record DescriptorWraper<T extends IExtender>(IExtenderDescriptor<T>descriptor,
 															   IExtenderHandleBuilder<T>builder)
 	{
-		public DescriptorWraper(IExtenderDescriptor<T> descriptor)
+		public DescriptorWraper(ExtenderDescriptor<T> descriptor)
 		{
 			this(descriptor, newBuilder(descriptor));
 		}
@@ -106,7 +106,7 @@ public final class ExtenderDescriptorRegistry implements IExtenderDescriptorRegi
 			return builder.isAuto();
 		}
 
-		private static <T extends IExtender> IExtenderHandleBuilder<T> newBuilder(final IExtenderDescriptor<T> descriptor)
+		private static <T extends IExtender> IExtenderHandleBuilder<T> newBuilder(final ExtenderDescriptor<T> descriptor)
 		{
 			for (var factory : IExtenderHandleFactory.FACTORIES)
 			{

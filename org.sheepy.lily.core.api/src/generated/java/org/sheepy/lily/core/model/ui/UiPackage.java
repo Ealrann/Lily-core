@@ -337,13 +337,13 @@ public interface UiPackage extends EPackage
 	int UI__EXTENSION_PKG = ApplicationPackage.ICOMPOSITOR__EXTENSION_PKG;
 
 	/**
-	 * The feature id for the '<em><b>Image Support</b></em>' attribute.
+	 * The feature id for the '<em><b>Enabled</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UI__IMAGE_SUPPORT = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 0;
+	int UI__ENABLED = ApplicationPackage.ICOMPOSITOR__ENABLED;
 
 	/**
 	 * The feature id for the '<em><b>Ui Pages</b></em>' containment reference list.
@@ -352,7 +352,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int UI__UI_PAGES = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 1;
+	int UI__UI_PAGES = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Current UI Page</b></em>' reference.
@@ -361,7 +361,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int UI__CURRENT_UI_PAGE = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 2;
+	int UI__CURRENT_UI_PAGE = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Font Pkg</b></em>' containment reference.
@@ -370,7 +370,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int UI__FONT_PKG = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 3;
+	int UI__FONT_PKG = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Dst Image</b></em>' reference.
@@ -379,7 +379,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int UI__DST_IMAGE = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 4;
+	int UI__DST_IMAGE = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Images</b></em>' reference list.
@@ -388,7 +388,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int UI__IMAGES = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 5;
+	int UI__IMAGES = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>UI</em>' class.
@@ -397,7 +397,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int UI_FEATURE_COUNT = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 6;
+	int UI_FEATURE_COUNT = ApplicationPackage.ICOMPOSITOR_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -2092,13 +2092,22 @@ public interface UiPackage extends EPackage
 	int FONT_TABLE = 20;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FONT_TABLE__NAME = TypesPackage.LNAMED_ELEMENT__NAME;
+
+	/**
 	 * The feature id for the '<em><b>File</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FONT_TABLE__FILE = 0;
+	int FONT_TABLE__FILE = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Char Tables</b></em>' attribute list.
@@ -2107,7 +2116,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT_TABLE__CHAR_TABLES = 1;
+	int FONT_TABLE__CHAR_TABLES = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Font Table</em>' class.
@@ -2116,7 +2125,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT_TABLE_FEATURE_COUNT = 2;
+	int FONT_TABLE_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Font Table</em>' class.
@@ -2125,7 +2134,7 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 * @ordered
 	 */
-	int FONT_TABLE_OPERATION_COUNT = 0;
+	int FONT_TABLE_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.sheepy.lily.core.model.ui.impl.FontImpl <em>Font</em>}' class.
@@ -2289,17 +2298,6 @@ public interface UiPackage extends EPackage
 	 * @generated
 	 */
 	EClass getUI();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.UI#isImageSupport <em>Image Support</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Image Support</em>'.
-	 * @see org.sheepy.lily.core.model.ui.UI#isImageSupport()
-	 * @see #getUI()
-	 * @generated
-	 */
-	EAttribute getUI_ImageSupport();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.ui.UI#getUiPages <em>Ui Pages</em>}'.
@@ -3035,14 +3033,6 @@ public interface UiPackage extends EPackage
 		 * @generated
 		 */
 		EClass UI = eINSTANCE.getUI();
-
-		/**
-		 * The meta object literal for the '<em><b>Image Support</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute UI__IMAGE_SUPPORT = eINSTANCE.getUI_ImageSupport();
 
 		/**
 		 * The meta object literal for the '<em><b>Ui Pages</b></em>' containment reference list feature.
