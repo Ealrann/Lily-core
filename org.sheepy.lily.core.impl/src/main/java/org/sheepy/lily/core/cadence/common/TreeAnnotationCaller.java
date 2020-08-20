@@ -4,6 +4,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptorRegistry;
+import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.reflect.ConsumerHandle;
 
@@ -83,14 +84,16 @@ public final class TreeAnnotationCaller extends EContentAdapter
 												   .collect(Collectors.toUnmodifiableList());
 	}
 
-	private static record Caller(IExtenderDescriptor<?>descriptor, ILilyEObject target)
+	private static record Caller(IExtenderDescriptor<?> descriptor, ILilyEObject target)
 	{
 		public void call(Class<? extends Annotation> annotationType)
 		{
 			target.adapters()
 				  .adaptHandleFromDescriptor(descriptor)
 				  .annotatedHandles(annotationType)
-				  .forEach(a -> ((ConsumerHandle) a.executionHandle()).invoke());
+				  .map(IExtenderHandle.AnnotatedHandle::executionHandle)
+				  .map(ConsumerHandle.class::cast)
+				  .forEach(ConsumerHandle::invoke);
 		}
 	}
 }

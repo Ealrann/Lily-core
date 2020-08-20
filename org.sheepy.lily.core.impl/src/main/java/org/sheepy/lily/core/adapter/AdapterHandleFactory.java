@@ -1,4 +1,4 @@
-package org.sheepy.lily.core.adapter.handle;
+package org.sheepy.lily.core.adapter;
 
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.extender.IExtender;

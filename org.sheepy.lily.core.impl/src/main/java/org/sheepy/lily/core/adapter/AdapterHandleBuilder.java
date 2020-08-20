@@ -1,16 +1,16 @@
-package org.sheepy.lily.core.adapter.handle;
+package org.sheepy.lily.core.adapter;
 
-import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.extender.IExtenderHandleBuilder;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 
 import java.util.List;
 
-public class AdapterHandleBuilder<T extends IExtender> implements IExtenderHandleBuilder<T>
+public final class AdapterHandleBuilder<T extends IExtender> implements IExtenderHandleBuilder<T>
 {
 	private final IExtenderDescriptor<T> extenderDescriptor;
 	private final IExtenderHandle<T> singleton;
@@ -38,7 +38,7 @@ public class AdapterHandleBuilder<T extends IExtender> implements IExtenderHandl
 			final var observatoryBuilder = IObservatoryBuilder.newObservatoryBuilder();
 			final var extenderContext = extenderDescriptor.newExtender(target, observatoryBuilder, List.of());
 			final var observatory = observatoryBuilder.isEmpty() ? null : observatoryBuilder.build();
-			return new AdapterHandle<>(extenderContext, observatory);
+			return buildNewHandle(extenderContext, observatory);
 		}
 		catch (ReflectiveOperationException e)
 		{
@@ -47,11 +47,26 @@ public class AdapterHandleBuilder<T extends IExtender> implements IExtenderHandl
 		}
 	}
 
+	private IExtenderHandle<T> buildNewHandle(final IExtenderDescriptor.ExtenderContext<T> extenderContext,
+											  final org.sheepy.lily.core.api.notification.observatory.IObservatory observatory)
+	{
+		if (observatory != null || extenderContext.annotationHandles().isEmpty() == false)
+		{
+			return new AdapterHandleFull<>(extenderContext.extender(),
+										   extenderContext.annotationHandles(),
+										   observatory);
+		}
+		else
+		{
+			return new AdapterHandleWrapper<>(extenderContext.extender());
+		}
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
-	public Class<AdapterHandle<T>> getHandleClass()
+	public Class<AdapterHandleFull<T>> getHandleClass()
 	{
-		return (Class<AdapterHandle<T>>) (Class<?>) AdapterHandle.class;
+		return (Class<AdapterHandleFull<T>>) (Class<?>) AdapterHandleFull.class;
 	}
 
 	@Override

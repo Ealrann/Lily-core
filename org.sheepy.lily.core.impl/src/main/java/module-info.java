@@ -1,5 +1,5 @@
 import org.sheepy.lily.core.Extenders;
-import org.sheepy.lily.core.adapter.handle.AdapterHandleFactory;
+import org.sheepy.lily.core.adapter.AdapterHandleFactory;
 import org.sheepy.lily.core.api.cadence.IStatistics;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptorRegistry;
 import org.sheepy.lily.core.api.extender.IExtenderHandleFactory;

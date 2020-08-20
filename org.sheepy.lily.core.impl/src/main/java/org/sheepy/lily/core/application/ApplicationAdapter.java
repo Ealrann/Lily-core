@@ -6,6 +6,7 @@ import org.sheepy.lily.core.api.adapter.annotation.NotifyChanged;
 import org.sheepy.lily.core.api.application.IApplicationAdapter;
 import org.sheepy.lily.core.api.cadence.ICadenceManager;
 import org.sheepy.lily.core.api.extender.ModelExtender;
+import org.sheepy.lily.core.api.util.DebugUtil;
 import org.sheepy.lily.core.cadence.common.CadenceManager;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
@@ -33,6 +34,15 @@ public class ApplicationAdapter implements IApplicationAdapter
 
 		cadenceManager.load();
 		launched = true;
+
+		if(DebugUtil.DEBUG_ENABLED)
+		{
+			final Runtime runtime = Runtime.getRuntime();
+			final long total = runtime.totalMemory();
+			final long free = runtime.freeMemory();
+			final long used = total - free;
+			System.out.println("Used memory after load = " + used);
+		}
 
 		cadenceManager.run();
 	}
