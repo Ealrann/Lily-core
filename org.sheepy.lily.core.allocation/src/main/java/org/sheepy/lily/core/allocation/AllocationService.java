@@ -45,7 +45,7 @@ public final class AllocationService implements IAllocationService
 
 		private AllocationHandle<T> adaptHandle(final IExtenderDescriptor<T> descriptor)
 		{
-			return (AllocationHandle<T>) target.adapters().adaptHandleFromDescriptor(descriptor);
+			return (AllocationHandle<T>) target.extenders().adaptHandleFromDescriptor(descriptor);
 		}
 	}
 
@@ -68,7 +68,7 @@ public final class AllocationService implements IAllocationService
 
 		private AllocationHandle<?> adaptHandle(final IExtenderDescriptor<?> descriptor)
 		{
-			return (AllocationHandle<?>) target.adapters().adaptHandleFromDescriptor(descriptor);
+			return (AllocationHandle<?>) target.extenders().adaptHandleFromDescriptor(descriptor);
 		}
 
 		private static boolean isUpdatable(final AllocationInstance<?> allocation)

@@ -6,7 +6,6 @@ import org.sheepy.lily.core.api.adapter.annotation.Load;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.notification.IEMFNotifier;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
 import org.sheepy.lily.core.api.util.AnnotationHandles;
 
@@ -30,7 +29,7 @@ public final class AdapterHandleFull<Extender extends IExtender> implements IExt
 	}
 
 	@Override
-	public void load(ILilyEObject target, IEMFNotifier notifier)
+	public void load(ILilyEObject target)
 	{
 		if (observatory != null)
 		{
@@ -43,15 +42,15 @@ public final class AdapterHandleFull<Extender extends IExtender> implements IExt
 				throwObserveError(e);
 			}
 		}
-		annotationHandleManager.registerHandleListeners(notifier);
+		annotationHandleManager.registerHandleListeners(target);
 		annotationHandleManager.callHandles(Load.class, target);
 	}
 
 	@Override
-	public void dispose(ILilyEObject target, IEMFNotifier notifier)
+	public void dispose(ILilyEObject target)
 	{
 		if (observatory != null) observatory.shut(target);
-		annotationHandleManager.unregisterHandleListeners(notifier);
+		annotationHandleManager.unregisterHandleListeners(target);
 		annotationHandleManager.callHandles(Dispose.class, target);
 	}
 

@@ -1,7 +1,6 @@
 package org.sheepy.lily.core.api.extender;
 
 import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.notification.IEMFNotifier;
 import org.sheepy.lily.core.api.reflect.ExecutionHandle;
 
 import java.lang.annotation.Annotation;
@@ -13,8 +12,8 @@ public interface IExtenderHandle<T extends IExtender>
 {
 	Class<T> getExtenderClass();
 	T getExtender();
-	void load(ILilyEObject target, IEMFNotifier notifier);
-	void dispose(ILilyEObject target, IEMFNotifier notifier);
+	void load(ILilyEObject target);
+	void dispose(ILilyEObject target);
 	<A extends Annotation> Stream<AnnotatedHandle<A>> annotatedHandles(Class<A> annotationClass);
 
 	void listen(ExtenderListener<T> extenderUpdateListener);

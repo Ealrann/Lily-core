@@ -7,7 +7,6 @@ import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.IAllocationHandle;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.notification.IEMFNotifier;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.util.ListenerList;
@@ -35,13 +34,13 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	}
 
 	@Override
-	public void load(final ILilyEObject target, final IEMFNotifier notifier)
+	public void load(final ILilyEObject target)
 	{
 		observatory.observe(target);
 	}
 
 	@Override
-	public void dispose(final ILilyEObject target, final IEMFNotifier notifier)
+	public void dispose(final ILilyEObject target)
 	{
 		observatory.shut(target);
 	}

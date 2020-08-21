@@ -25,12 +25,12 @@ public final class ContentAdapter
 
 	public void install(ILilyEObject root)
 	{
-		root.streamAllChildren().forEach(this::add);
+		root.streamTree().forEach(this::add);
 	}
 
 	public void uninstall(ILilyEObject root)
 	{
-		root.streamAllChildren().forEach(this::remove);
+		root.streamTree().forEach(this::remove);
 	}
 
 	private void add(ILilyEObject added)

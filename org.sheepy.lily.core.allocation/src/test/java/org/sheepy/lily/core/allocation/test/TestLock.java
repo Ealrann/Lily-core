@@ -29,7 +29,7 @@ public final class TestLock
 		container.getBoxes().add(box2);
 		leaf.getBoxes().add(box1);
 
-		((LilyEObject) root).loadAdapterManager();
+		((LilyEObject) root).loadExtenderManager();
 		final var rootAllocation = IAllocationService.INSTANCE.allocate(root, null, AllocationObjectAllocation.class);
 
 		assertEquals(1, root.getCurrentAllocationCount());
@@ -85,7 +85,7 @@ public final class TestLock
 		container.getBoxes().add(box1);
 		leaf.getBoxes().add(box1);
 
-		((LilyEObject) root).loadAdapterManager();
+		((LilyEObject) root).loadExtenderManager();
 		final var rootAllocation = IAllocationService.INSTANCE.allocate(root, null, AllocationObjectAllocation.class);
 
 		assertEquals(1, root.getCurrentAllocationCount());

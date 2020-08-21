@@ -22,7 +22,7 @@ public class TestCompositeChildren
 		root.getContainers().add(container);
 		container.getBoxes().add(box);
 
-		((LilyEObject)root).loadAdapterManager();
+		((LilyEObject)root).loadExtenderManager();
 		final var rootAllocation = IAllocationService.INSTANCE.allocate(root, null, AllocationObjectAllocation.class);
 
 		assertEquals(1, root.getCurrentAllocationCount());

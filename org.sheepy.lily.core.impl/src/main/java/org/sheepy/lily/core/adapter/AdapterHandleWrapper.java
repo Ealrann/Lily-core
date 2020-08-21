@@ -3,7 +3,6 @@ package org.sheepy.lily.core.adapter;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.notification.IEMFNotifier;
 
 import java.lang.annotation.Annotation;
 import java.util.stream.Stream;
@@ -18,12 +17,12 @@ public final class AdapterHandleWrapper<Extender extends IExtender> implements I
 	}
 
 	@Override
-	public void load(ILilyEObject target, IEMFNotifier notifier)
+	public void load(ILilyEObject target)
 	{
 	}
 
 	@Override
-	public void dispose(ILilyEObject target, IEMFNotifier notifier)
+	public void dispose(ILilyEObject target)
 	{
 	}
 

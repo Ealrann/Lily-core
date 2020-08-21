@@ -52,7 +52,7 @@ public class CadenceManager implements ICadenceManager
 		stop.set(false);
 		mainThread = Thread.currentThread().getId();
 
-		((LilyEObject) application).loadAdapterManager();
+		((LilyEObject) application).loadExtenderManager();
 
 		engineAllocations = application.getEngines()
 									   .stream()
@@ -104,7 +104,7 @@ public class CadenceManager implements ICadenceManager
 			engineAllocation.free(null);
 		}
 
-		((LilyEObject) application).disposeAdapterManager();
+		((LilyEObject) application).disposeExtenderManager();
 
 		if (DebugUtil.DEBUG_ENABLED)
 		{

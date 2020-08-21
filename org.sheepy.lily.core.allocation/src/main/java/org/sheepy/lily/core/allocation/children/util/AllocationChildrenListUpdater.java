@@ -54,7 +54,7 @@ public final class AllocationChildrenListUpdater
 
 	private ChildAllocationContainer buildAllocationContainer(ILilyEObject target)
 	{
-		final List<ChildInstanceAllocator<? extends IExtender>> containers = target.adapters()
+		final List<ChildInstanceAllocator<? extends IExtender>> containers = target.extenders()
 																				   .adaptHandlesOfType(AllocationHandle.class)
 																				   .map(handle -> (AllocationHandle<?>) handle)
 																				   .map(this::newChildContainer)

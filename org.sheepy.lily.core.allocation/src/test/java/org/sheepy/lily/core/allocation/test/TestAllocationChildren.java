@@ -20,7 +20,7 @@ public final class TestAllocationChildren
 		root.getNodes().add(node);
 		node.getLeaves().add(leaf);
 
-		((LilyEObject) root).loadAdapterManager();
+		((LilyEObject) root).loadExtenderManager();
 		final var rootAllocation = IAllocationService.INSTANCE.allocate(root, null, AllocationObjectAllocation.class);
 
 		assertEquals(1, root.getCurrentAllocationCount());
@@ -98,7 +98,7 @@ public final class TestAllocationChildren
 		root.getNodes().add(node);
 		node.getLeaves().add(leaf1);
 
-		((LilyEObject) root).loadAdapterManager();
+		((LilyEObject) root).loadExtenderManager();
 		final var rootAllocation = IAllocationService.INSTANCE.allocate(root, null, AllocationObjectAllocation.class);
 
 		assertEquals(1, root.getCurrentAllocationCount());
@@ -142,7 +142,7 @@ public final class TestAllocationChildren
 		root.getContainers().add(container);
 		container.getBoxes().add(box1);
 
-		((LilyEObject) root).loadAdapterManager();
+		((LilyEObject) root).loadExtenderManager();
 		final var rootAllocation = IAllocationService.INSTANCE.allocate(root, null, AllocationObjectAllocation.class);
 
 		assertEquals(1, root.getCurrentAllocationCount());

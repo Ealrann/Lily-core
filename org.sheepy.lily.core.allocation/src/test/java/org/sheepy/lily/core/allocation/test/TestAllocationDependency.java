@@ -28,7 +28,7 @@ public class TestAllocationDependency
 		container.getBoxes().add(box);
 		node.setContainer(container);
 
-		((LilyEObject)root).loadAdapterManager();
+		((LilyEObject)root).loadExtenderManager();
 		final var rootAllocation = IAllocationService.INSTANCE.allocate(root, null, AllocationObjectAllocation.class);
 
 		assertEquals(1, root.getCurrentAllocationCount());
@@ -80,7 +80,7 @@ public class TestAllocationDependency
 		container.getBoxes().add(box);
 		leaf.getBoxes().add(box);
 
-		((LilyEObject)root).loadAdapterManager();
+		((LilyEObject)root).loadExtenderManager();
 		final var rootAllocation = IAllocationService.INSTANCE.allocate(root, null, AllocationObjectAllocation.class);
 
 		assertEquals(1, root.getCurrentAllocationCount());

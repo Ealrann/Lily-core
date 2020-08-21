@@ -15,7 +15,7 @@ public final class BasicTest
 	{
 		final var root = TestallocationFactory.eINSTANCE.createRoot();
 
-		((LilyEObject)root).loadAdapterManager();
+		((LilyEObject)root).loadExtenderManager();
 		IAllocationService.INSTANCE.allocate(root, null, AllocationObjectAllocation.class);
 
 		assertEquals(1, root.getCurrentAllocationCount());

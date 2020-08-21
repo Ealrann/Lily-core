@@ -2,61 +2,62 @@ package org.sheepy.lily.core.api.model;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderManager;
 import org.sheepy.lily.core.api.extender.IExtenderManagerFactory;
+import org.sheepy.lily.core.api.notification.util.NotificationUnifier;
 import org.sheepy.lily.core.model.types.LNamedElement;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
-public abstract class LilyEObject extends EObjectImpl implements ILilyEObject
+public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObject
 {
 	private static final String CANNOT_FIND_ADAPTER_S_FOR_CLASS_S = "Cannot find adapter [%s] for class [%s]";
 	private static final IExtenderManagerFactory ADAPTER_FACTORY = IExtenderManagerFactory.INSTANCE;
 
 	private final IExtenderManager.Internal extenderManager;
 
-	private List<Object> storage;
+	private boolean loaded = false;
 
 	public LilyEObject()
 	{
+		super();
 		extenderManager = ADAPTER_FACTORY != null ? ADAPTER_FACTORY.createExtenderManager(this) : null;
 	}
 
 	@Override
-	public List<Object> storage()
+	public void eNotify(final Notification notification)
 	{
-		if (storage == null) storage = new ArrayList<>(2);
-		return storage;
+		final var feature = notification.getFeature();
+		final boolean isContainment = feature instanceof EReference reference && reference.isContainment();
+		if (isContainment) NotificationUnifier.unifyAdded(notification, this::setupChild);
+		super.eNotify(notification);
+		if (isContainment) NotificationUnifier.unifyRemoved(notification, this::disposeChild);
 	}
 
 	@Override
-	public final void listen(Consumer<Notification> listener, int... features)
+	public boolean eNotificationRequired()
 	{
-		extenderManager.listen(listener, features);
+		return true;
 	}
 
-	@Override
-	public final void sulk(Consumer<Notification> listener, int... features)
+	private void setupChild(ILilyEObject notifier)
 	{
-		extenderManager.sulk(listener, features);
+		if (loaded && notifier instanceof LilyEObject child)
+		{
+			child.loadExtenderManager();
+		}
 	}
 
-	@Override
-	public final void listenNoParam(Runnable listener, int... features)
+	private void disposeChild(ILilyEObject notifier)
 	{
-		extenderManager.listenNoParam(listener, features);
-	}
-
-	@Override
-	public final void sulkNoParam(Runnable listener, int... features)
-	{
-		extenderManager.sulkNoParam(listener, features);
+		if (loaded && notifier instanceof LilyEObject child)
+		{
+			child.disposeExtenderManager();
+		}
 	}
 
 	@Override
@@ -96,19 +97,34 @@ public abstract class LilyEObject extends EObjectImpl implements ILilyEObject
 	}
 
 	@Override
-	public final IExtenderManager adapters()
+	public final IExtenderManager extenders()
 	{
 		return extenderManager;
 	}
 
-	public final void loadAdapterManager()
+	public final void loadExtenderManager()
 	{
-		extenderManager.load();
+		if (!loaded)
+		{
+			loaded = true;
+			extenderManager.load();
+		}
+		foreachChild(LilyEObject::loadExtenderManager);
 	}
 
-	public final void disposeAdapterManager()
+	public final void disposeExtenderManager()
 	{
-		extenderManager.dispose();
+		foreachChild(LilyEObject::disposeExtenderManager);
+		if (loaded)
+		{
+			extenderManager.dispose();
+			loaded = false;
+		}
+	}
+
+	private void foreachChild(Consumer<LilyEObject> consumer)
+	{
+		streamChildren().map(LilyEObject.class::cast).forEach(consumer);
 	}
 
 	@Override
@@ -118,9 +134,9 @@ public abstract class LilyEObject extends EObjectImpl implements ILilyEObject
 	}
 
 	@Override
-	public final Stream<ILilyEObject> streamAllChildren()
+	public final Stream<ILilyEObject> streamTree()
 	{
-		return Stream.concat(Stream.of(this), streamChildren().flatMap(ILilyEObject::streamAllChildren));
+		return Stream.concat(Stream.of(this), streamChildren().flatMap(ILilyEObject::streamTree));
 	}
 
 	@SuppressWarnings("unchecked")
@@ -132,12 +148,7 @@ public abstract class LilyEObject extends EObjectImpl implements ILilyEObject
 		}
 		else
 		{
-			final var value = (ILilyEObject) eGet(ref);
-			if (value != null)
-			{
-				return Stream.of(value);
-			}
+			return Stream.ofNullable((ILilyEObject) eGet(ref));
 		}
-		return Stream.empty();
 	}
 }
