@@ -1,13 +1,14 @@
 package org.sheepy.lily.core.cadence.common;
 
+import org.sheepy.lily.core.api.cadence.ETickerClock;
+
 import java.util.Comparator;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.sheepy.lily.core.api.cadence.ETickerClock;
-
 public abstract class AbstractTickerWrapper
 {
-	public static final Comparator<AbstractTickerWrapper> COMPARATOR = (o1, o2) -> Integer.compare(o2.getPriority(), o1.getPriority());
+	public static final Comparator<AbstractTickerWrapper> COMPARATOR = (o1, o2) -> Integer.compare(o2.getPriority(),
+																								   o1.getPriority());
 
 	public final double frequency;
 	public final ETickerClock clock;
@@ -31,6 +32,17 @@ public abstract class AbstractTickerWrapper
 			// If frequency <= 0, each accumulation leads to a tick.
 			tickerStep = -1;
 		}
+	}
+
+	public void accumulate(final long stepNs, final long appStepNs)
+	{
+		final var accumulation = switch (clock)
+				{
+					case RealWorld -> stepNs;
+					case ApplicationWorld -> appStepNs;
+				};
+
+		accumulate(accumulation);
 	}
 
 	public void accumulate(long stepNano)

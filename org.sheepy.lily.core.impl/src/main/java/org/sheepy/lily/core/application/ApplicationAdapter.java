@@ -40,8 +40,8 @@ public class ApplicationAdapter implements IApplicationAdapter
 			final Runtime runtime = Runtime.getRuntime();
 			final long total = runtime.totalMemory();
 			final long free = runtime.freeMemory();
-			final long used = total - free;
-			System.out.println("Used memory after load = " + used);
+			final double used = (total - free) / 1e6;
+			System.out.format("Used memory after load = %f Mb\n", used);
 		}
 
 		cadenceManager.run();

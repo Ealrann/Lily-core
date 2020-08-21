@@ -9,8 +9,7 @@ import org.sheepy.lily.core.api.extender.IExtenderDescriptorRegistry;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.cadence.tick.TickHandle;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -19,8 +18,6 @@ public final class Cadencer
 	private static final String CADENCER_TICK = "Tickers";
 
 	private final CadenceContentAdater cadenceContentAdapter;
-	private final List<AdapterTickerWrapper> course = new ArrayList<>();
-	private final IStatistics statistics = IStatistics.INSTANCE;
 
 	public Cadencer(ILilyEObject root)
 	{
@@ -37,68 +34,21 @@ public final class Cadencer
 		// =========
 		// Compute tickers to execute
 		// =========
-		accumulateAndGather(stepNs, appStepNs);
-		course.sort(AbstractTickerWrapper.COMPARATOR);
+		cadenceContentAdapter.accumulate(stepNs, appStepNs);
 
 		// =========
 		// Execute tickers
 		// =========
-		int index = 0;
-		while (index < course.size())
-		{
-			final var ticker = course.get(index++);
-			final boolean stopped = ticker.stop.get();
-
-			do
-			{
-				if (stopped)
-				{
-					removeTicker(ticker);
-				}
-				else
-				{
-					final long d = System.nanoTime();
-
-					ticker.tick();
-
-					statistics.addTime(CADENCER_TICK, ticker.getLabel(), System.nanoTime() - d);
-				}
-			} while (!stopped && ticker.shouldTick());
-		}
-		course.clear();
-	}
-
-	private void accumulateAndGather(final long stepNs, final long appStepNs)
-	{
-		final var tickers = cadenceContentAdapter.tickers;
-		for (int i = 0; i < tickers.size(); i++)
-		{
-			final var ticker = tickers.get(i);
-			final var accumulation = switch (ticker.clock)
-					{
-						case RealWorld -> stepNs;
-						case ApplicationWorld -> appStepNs;
-					};
-
-			ticker.accumulate(accumulation);
-
-			if (ticker.shouldTick())
-			{
-				course.add(ticker);
-			}
-		}
-	}
-
-	public void removeTicker(AdapterTickerWrapper ticker)
-	{
-		cadenceContentAdapter.tickers.remove(ticker);
+		cadenceContentAdapter.tick();
 	}
 
 	private static final class CadenceContentAdater extends EContentAdapter
 	{
 		private static final List<TickHandle.Builder> TICK_BUILDERS = createTickBuilders();
+		private static final IStatistics statistics = IStatistics.INSTANCE;
 
-		private final List<AdapterTickerWrapper> tickers = new ArrayList<>();
+		private final NavigableMap<Integer, List<AdapterTickerWrapper>> tickerMap = new TreeMap<>();
+		private final Deque<AdapterTickerWrapper> stoppedTickers = new ArrayDeque<>();
 		private final ILilyEObject root;
 
 		public CadenceContentAdater(ILilyEObject root)
@@ -120,15 +70,65 @@ public final class Cadencer
 						 .filter(builder -> builder.isApplicable(lilyObject))
 						 .map(builder -> builder.build(lilyObject))
 						 .map(AdapterTickerWrapper::new)
-						 .collect(Collectors.toCollection(() -> tickers));
+						 .forEach(this::addTicker);
 			super.setTarget(target);
 		}
 
 		@Override
 		protected void unsetTarget(EObject target)
 		{
-			tickers.removeIf(wrapper -> checkAndStop(wrapper, target));
+			for (final var tickers : tickerMap.values())
+			{
+				tickers.removeIf(wrapper -> checkAndStop(wrapper, target));
+			}
 			super.unsetTarget(target);
+		}
+
+		private void accumulate(final long stepNs, final long appStepNs)
+		{
+			for (final var tickers : tickerMap.values())
+			{
+				for (final var ticker : tickers)
+				{
+					ticker.accumulate(stepNs, appStepNs);
+				}
+			}
+		}
+
+		private void tick()
+		{
+			tickerMap.values()
+					 .stream()
+					 .flatMap(List::stream)
+					 .filter(AbstractTickerWrapper::shouldTick)
+					 .forEach(this::tick);
+
+			stoppedTickers.forEach(this::removeTicker);
+			stoppedTickers.clear();
+		}
+
+		private void tick(final AdapterTickerWrapper ticker)
+		{
+			final long start = System.nanoTime();
+			while (!ticker.stop.get() && ticker.shouldTick())
+			{
+				ticker.tick();
+			}
+			statistics.addTime(CADENCER_TICK, ticker.getLabel(), System.nanoTime() - start);
+
+			if (ticker.stop.get()) stoppedTickers.add(ticker);
+		}
+
+		private void addTicker(final AdapterTickerWrapper ticker)
+		{
+			final var list = tickerMap.computeIfAbsent(ticker.getPriority(), p -> new ArrayList<>());
+			list.add(ticker);
+		}
+
+		private void removeTicker(final AdapterTickerWrapper ticker)
+		{
+			final var list = tickerMap.get(ticker.getPriority());
+			if (list != null) list.remove(ticker);
 		}
 
 		private static boolean checkAndStop(AdapterTickerWrapper wrapper, EObject target)
