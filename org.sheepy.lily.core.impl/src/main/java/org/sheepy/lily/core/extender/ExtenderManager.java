@@ -27,8 +27,8 @@ public final class ExtenderManager implements IExtenderManager.Internal
 	{
 		if (!loaded)
 		{
-			buildAutoAdapters();
 			loaded = true;
+			buildAutoAdapters();
 			streamHandles().forEach(this::loadHandle);
 		}
 	}
