@@ -135,13 +135,6 @@ public final class ChildInstanceAllocator<Allocation extends IExtender>
 
 	private void freeDeprecatedHandles(final FreeContext context)
 	{
-		if (reuseDirtyAllocations)
-		{
-			dirtyAllocations.removeIf(context::freeIfObsoleteUnlocked);
-		}
-		else
-		{
-			dirtyAllocations.removeIf(context::freeIfUnlocked);
-		}
+		dirtyAllocations.removeIf(reuseDirtyAllocations ? context::freeIfObsoleteUnlocked : context::freeIfUnlocked);
 	}
 }

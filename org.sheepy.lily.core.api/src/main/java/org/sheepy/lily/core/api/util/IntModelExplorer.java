@@ -83,11 +83,10 @@ public final class IntModelExplorer implements IModelExplorer
 	public Stream<ILilyEObject> stream(ILilyEObject source)
 	{
 		final var root = parent(source);
-		final var list = List.of(root);
-		var stream = list.stream();
-		for (final var feature : references)
+		var stream = Stream.of(root);
+		for (final var reference : references)
 		{
-			stream = stream.flatMap(e -> stream(e, feature));
+			stream = stream.flatMap(e -> stream(e, reference));
 		}
 		return stream;
 	}
@@ -105,20 +104,13 @@ public final class IntModelExplorer implements IModelExplorer
 	private static Stream<ILilyEObject> stream(ILilyEObject object, int reference)
 	{
 		final var val = getValue(object, reference);
-		if (val != null)
+		if (val instanceof List)
 		{
-			if (val instanceof List)
-			{
-				return ((List<ILilyEObject>) val).stream();
-			}
-			else
-			{
-				return Stream.of((ILilyEObject) val);
-			}
+			return ((List<ILilyEObject>) val).stream();
 		}
 		else
 		{
-			return Stream.empty();
+			return Stream.ofNullable((ILilyEObject) val);
 		}
 	}
 

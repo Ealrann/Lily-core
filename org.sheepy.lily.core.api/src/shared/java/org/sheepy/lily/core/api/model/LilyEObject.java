@@ -30,7 +30,7 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	}
 
 	@Override
-	public void eNotify(final Notification notification)
+	public final void eNotify(final Notification notification)
 	{
 		final var feature = notification.getFeature();
 		final boolean isContainment = feature instanceof EReference reference && reference.isContainment();
@@ -40,7 +40,7 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	}
 
 	@Override
-	public boolean eNotificationRequired()
+	public final boolean eNotificationRequired()
 	{
 		return true;
 	}
@@ -69,7 +69,7 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	}
 
 	@Override
-	public <T extends IExtender> T adapt(Class<T> type)
+	public final <T extends IExtender> T adapt(Class<T> type)
 	{
 		return extenderManager.adapt(type).findAny().orElse(null);
 	}

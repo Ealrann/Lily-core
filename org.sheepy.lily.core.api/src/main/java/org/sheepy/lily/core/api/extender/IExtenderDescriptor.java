@@ -49,7 +49,7 @@ public interface IExtenderDescriptor<T extends IExtender> extends IExtenderDescr
 		{
 			return annotationHandles.stream()
 									.filter(h -> h.annotationClass().equals(annotationClass))
-									.flatMap(h -> ((AnnotationHandles<A>) h).handles().stream());
+									.flatMap(h -> ((AnnotationHandles<A>) h).stream());
 		}
 	}
 }

@@ -61,11 +61,6 @@ public final class CompositeModelExplorer
 
 	private Stream<ILilyEObject> stream(ILilyEObject root)
 	{
-		final List<Stream<ILilyEObject>> res = new ArrayList<>();
-		for (final var explorer : explorers)
-		{
-			res.add(explorer.stream(root));
-		}
-		return res.stream().flatMap(t -> t);
+		return explorers.stream().flatMap(e -> e.stream(root));
 	}
 }

@@ -79,7 +79,7 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	@Override
 	public Class<Allocation> getExtenderClass()
 	{
-		return descriptor.extenderDescriptor().extenderClass();
+		return descriptor.extenderClass();
 	}
 
 	@Override

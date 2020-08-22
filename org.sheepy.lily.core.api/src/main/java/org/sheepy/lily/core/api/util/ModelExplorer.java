@@ -83,8 +83,7 @@ public final class ModelExplorer implements IModelExplorer
 	public Stream<ILilyEObject> stream(ILilyEObject source)
 	{
 		final var root = parent(source);
-		final var list = List.of(root);
-		var stream = list.stream();
+		var stream = Stream.of(root);
 		for (final var feature : references)
 		{
 			stream = stream.flatMap(e -> extractList(e, feature));
@@ -105,20 +104,13 @@ public final class ModelExplorer implements IModelExplorer
 	private static Stream<ILilyEObject> extractList(ILilyEObject object, EReference reference)
 	{
 		final var val = getValue(object, reference);
-		if (val != null)
+		if (val instanceof List)
 		{
-			if (val instanceof List)
-			{
-				return ((List<ILilyEObject>) val).stream();
-			}
-			else
-			{
-				return Stream.of((ILilyEObject) val);
-			}
+			return ((List<ILilyEObject>) val).stream();
 		}
 		else
 		{
-			return Stream.empty();
+			return Stream.ofNullable((ILilyEObject) val);
 		}
 	}
 
