@@ -1,6 +1,6 @@
 package org.sheepy.lily.core.allocation.dependency;
 
-import org.sheepy.lily.core.allocation.EAllocationStatus;
+import org.sheepy.lily.core.api.allocation.EAllocationStatus;
 import org.sheepy.lily.core.allocation.dependency.container.IDependencyContainer;
 import org.sheepy.lily.core.api.allocation.annotation.UpdateDependency;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;

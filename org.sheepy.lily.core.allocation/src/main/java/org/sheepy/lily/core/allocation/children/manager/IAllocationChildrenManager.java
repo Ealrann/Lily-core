@@ -1,6 +1,6 @@
 package org.sheepy.lily.core.allocation.children.manager;
 
-import org.sheepy.lily.core.allocation.EAllocationStatus;
+import org.sheepy.lily.core.api.allocation.EAllocationStatus;
 import org.sheepy.lily.core.allocation.children.instance.ChildrenSupervisor;
 import org.sheepy.lily.core.allocation.instance.FreeContext;
 import org.sheepy.lily.core.allocation.util.StructureObserver;

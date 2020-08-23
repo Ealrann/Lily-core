@@ -1,4 +1,4 @@
-package org.sheepy.lily.core.allocation;
+package org.sheepy.lily.core.api.allocation;
 
 public enum EAllocationStatus
 {

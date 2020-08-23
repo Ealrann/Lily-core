@@ -1,7 +1,7 @@
 package org.sheepy.lily.core.allocation.children.instance;
 
 import org.sheepy.lily.core.allocation.AllocationHandle;
-import org.sheepy.lily.core.allocation.EAllocationStatus;
+import org.sheepy.lily.core.api.allocation.EAllocationStatus;
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
 import org.sheepy.lily.core.allocation.instance.FreeContext;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
@@ -107,7 +107,7 @@ public final class ChildInstanceAllocator<Allocation extends IExtender>
 		{
 			mainAllocation = handle.allocateNew(context, whenUpdateNeeded);
 		}
-		listener.ifPresent(mainAllocation::listen);
+		listener.ifPresent(mainAllocation::listenStatus);
 	}
 
 	private Optional<AllocationInstance<Allocation>> searchCandidate()
@@ -117,7 +117,7 @@ public final class ChildInstanceAllocator<Allocation extends IExtender>
 
 	private void deprecateMainAllocation(final FreeContext context, boolean tryFree)
 	{
-		listener.ifPresent(mainAllocation::sulk);
+		listener.ifPresent(mainAllocation::sulkStatus);
 
 		final boolean free = tryFree && tryFreeMainAllocation(context);
 		if (free == false)

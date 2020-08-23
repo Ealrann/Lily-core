@@ -1,7 +1,7 @@
 package org.sheepy.lily.core.allocation.dependency.container;
 
 import org.sheepy.lily.core.allocation.AllocationHandle;
-import org.sheepy.lily.core.allocation.EAllocationStatus;
+import org.sheepy.lily.core.api.allocation.EAllocationStatus;
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
 import org.sheepy.lily.core.api.extender.IExtender;
 
@@ -38,13 +38,13 @@ public final class AllocationDependencyContainer<T extends IExtender> implements
 	public void listen(Consumer<EAllocationStatus> statusListener)
 	{
 		this.statusListener = statusListener;
-		resolvedAllocation.listen(this.statusListener);
+		resolvedAllocation.listenStatus(this.statusListener);
 	}
 
 	@Override
 	public void sulk(Consumer<EAllocationStatus> statusListener)
 	{
-		resolvedAllocation.sulk(this.statusListener);
+		resolvedAllocation.sulkStatus(this.statusListener);
 		this.statusListener = null;
 	}
 }

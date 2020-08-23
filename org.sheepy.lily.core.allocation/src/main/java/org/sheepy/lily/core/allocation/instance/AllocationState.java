@@ -1,6 +1,6 @@
 package org.sheepy.lily.core.allocation.instance;
 
-import org.sheepy.lily.core.allocation.EAllocationStatus;
+import org.sheepy.lily.core.api.allocation.EAllocationStatus;
 import org.sheepy.lily.core.api.allocation.IAllocationState;
 
 import java.math.BigInteger;
