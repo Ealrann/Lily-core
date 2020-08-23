@@ -2,7 +2,6 @@ package org.sheepy.lily.core.api.util;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.*;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.resource.IModelExtension;
 import org.sheepy.lily.core.model.application.Application;
@@ -249,44 +248,56 @@ public final class ModelUtil
 			return Stream.ofNullable((ILilyEObject) eo.eGet(ref));
 		}
 	}
-
-	@SuppressWarnings("unchecked")
-	public static void copyFeatures(EObject src, final EObject trg, final List<EStructuralFeature> features)
+	public static Optional<ContainmentPath> containmentPath(final EObject parent, EObject child)
 	{
-		for (final var feature : features)
+		final Deque<ChildReference> res = new ArrayDeque<>();
+		while (child != null && child != parent && child.eContainer() != null)
 		{
-			final boolean isNonContainment = feature instanceof EAttribute || (feature instanceof EReference && ((EReference) feature)
-					.isContainment() == false);
+			res.addFirst(ChildReference.referenceFromParent(child));
+			child = child.eContainer();
+		}
+		if (child == parent) return Optional.of(new ContainmentPath(res));
+		else return Optional.empty();
+	}
 
-			if (isNonContainment)
+	public static record ChildReference(EReference reference, int index)
+	{
+		public static ChildReference referenceFromParent(EObject child)
+		{
+			final var containmentFeature = child.eContainmentFeature();
+			final var container = child.eContainer();
+			final var many = containmentFeature.isMany();
+			final int index = many ? ((EList<?>) container.eGet(containmentFeature)).indexOf(child) : 0;
+			return new ChildReference(containmentFeature, index);
+		}
+
+		@SuppressWarnings("unchecked")
+		public EObject eGet(EObject source)
+		{
+			if (source == null)
 			{
-				if (feature.isMany() == false)
-				{
-					trg.eSet(feature, src.eGet(feature));
-				}
-				else
-				{
-					final var listSrc = (EList<Object>) src.eGet(feature);
-					final var listTrg = (EList<Object>) trg.eGet(feature);
-					listTrg.addAll(listSrc);
-				}
+				return null;
+			}
+			else if (reference.isMany())
+			{
+				return ((EList<EObject>) source.eGet(reference)).get(index);
 			}
 			else
 			{
-				if (feature.isMany() == false)
-				{
-					trg.eSet(feature, EcoreUtil.copy((EObject) src.eGet(feature)));
-				}
-				else
-				{
-					final var listSrc = (EList<EObject>) src.eGet(feature);
-					final var listTrg = (EList<EObject>) trg.eGet(feature);
-					for (final EObject element : listSrc)
-					{
-						listTrg.add(EcoreUtil.copy(element));
-					}
-				}
+				return (EObject) source.eGet(reference);
 			}
+		}
+	}
+
+	public static record ContainmentPath(Collection<ChildReference> path)
+	{
+		public EObject eGet(EObject source)
+		{
+			for (final var childReference : path)
+			{
+				source = childReference.eGet(source);
+			}
+			return source;
 		}
 	}
 }
