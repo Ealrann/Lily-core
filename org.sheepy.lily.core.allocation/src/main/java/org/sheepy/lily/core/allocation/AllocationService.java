@@ -3,6 +3,7 @@ package org.sheepy.lily.core.allocation;
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
 import org.sheepy.lily.core.allocation.instance.FreeContext;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
+import org.sheepy.lily.core.api.allocation.IAllocationInstance;
 import org.sheepy.lily.core.api.allocation.IAllocationService;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
@@ -27,7 +28,28 @@ public final class AllocationService implements IAllocationService
 		new Updater(target, context, type).update();
 	}
 
-	private static record Allocator<T extends IExtender>(ILilyEObject target, IAllocationContext context, Class<T>type)
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T extends IExtender> void setMainAllocation(final IAllocationInstance<T> allocation)
+	{
+		final var allocationInstance = (AllocationInstance<T>) allocation;
+		final var target = allocationInstance.getTarget();
+		final var type = allocationInstance.getAllocation().getClass();
+
+		IExtenderDescriptorRegistry.INSTANCE.streamDescriptors(target, type)
+											.findAny()
+											.map(d -> (IExtenderDescriptor<T>) d)
+											.map(d -> adaptHandle(d, target))
+											.ifPresent(handle -> handle.setMainAllocation(allocationInstance));
+	}
+
+	private static <T extends IExtender> AllocationHandle<T> adaptHandle(final IExtenderDescriptor<T> descriptor,
+																		 final ILilyEObject target)
+	{
+		return (AllocationHandle<T>) target.extenders().adaptHandleFromDescriptor(descriptor);
+	}
+
+	private static record Allocator<T extends IExtender>(ILilyEObject target, IAllocationContext context, Class<T> type)
 	{
 		public AllocationInstance<T> allocate()
 		{
@@ -49,7 +71,7 @@ public final class AllocationService implements IAllocationService
 		}
 	}
 
-	private static record Updater(ILilyEObject target, IAllocationContext context, Class<? extends IExtender>type)
+	private static record Updater(ILilyEObject target, IAllocationContext context, Class<? extends IExtender> type)
 	{
 		public void update()
 		{

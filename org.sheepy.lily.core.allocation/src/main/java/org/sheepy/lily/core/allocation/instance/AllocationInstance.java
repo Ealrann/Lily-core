@@ -185,4 +185,9 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 	{
 		return extenderContext.extender();
 	}
+
+	public ILilyEObject getTarget()
+	{
+		return target;
+	}
 }
