@@ -12,6 +12,7 @@ public interface IExtenderManager
 
 	interface Internal extends IExtenderManager
 	{
+		void deploy();
 		void load();
 		void dispose();
 	}

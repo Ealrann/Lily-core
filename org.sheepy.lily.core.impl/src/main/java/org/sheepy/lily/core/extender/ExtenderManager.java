@@ -22,13 +22,17 @@ public final class ExtenderManager implements IExtenderManager.Internal
 		this.target = target;
 	}
 
+	public void deploy()
+	{
+		buildAutoAdapters();
+	}
+
 	@Override
 	public void load()
 	{
 		if (!loaded)
 		{
 			loaded = true;
-			buildAutoAdapters();
 			streamHandles().forEach(this::loadHandle);
 		}
 	}

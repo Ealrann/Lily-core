@@ -49,6 +49,7 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	{
 		if (loaded && notifier instanceof LilyEObject child)
 		{
+			child.deployExtenerManager();
 			child.loadExtenderManager();
 		}
 	}
@@ -103,6 +104,11 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 		return extenderManager;
 	}
 
+	public final void deployExtenerManager()
+	{
+		streamTreeConcurrent().forEach(LilyEObject::deploy);
+	}
+
 	public final void loadExtenderManager()
 	{
 		streamTreeConcurrent().forEach(LilyEObject::load);
@@ -111,6 +117,11 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	public final void disposeExtenderManager()
 	{
 		streamTree().map(LilyEObject.class::cast).forEach(LilyEObject::dispose);
+	}
+
+	private void deploy()
+	{
+		extenderManager.deploy();
 	}
 
 	private void load()
