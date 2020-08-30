@@ -1,101 +1,108 @@
 package org.sheepy.lily.core.allocation;
 
-import org.sheepy.lily.core.allocation.instance.AllocationInstance;
-import org.sheepy.lily.core.allocation.instance.FreeContext;
+import org.sheepy.lily.core.allocation.operation.IOperationNode;
+import org.sheepy.lily.core.allocation.operator.OperationContext;
+import org.sheepy.lily.core.allocation.operator.Operator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
-import org.sheepy.lily.core.api.allocation.IAllocationInstance;
 import org.sheepy.lily.core.api.allocation.IAllocationService;
 import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptorRegistry;
 import org.sheepy.lily.core.api.model.ILilyEObject;
+
+import java.util.Optional;
 
 public final class AllocationService implements IAllocationService
 {
-	@Override
-	public <T extends IExtender> AllocationInstance<T> allocate(final ILilyEObject target,
-																final IAllocationContext context,
-																final Class<T> type)
-	{
-		return new Allocator<>(target, context, type).allocate();
-	}
-
 	@Override
 	public void updateAllocation(final ILilyEObject target,
 								 final IAllocationContext context,
 								 final Class<? extends IExtender> type)
 	{
-		new Updater(target, context, type).update();
+		final var operationContext = new OperationContext(target, context, type);
+		final var operator = new Operator(operationContext, false);
+		final var reverseOperator = new Operator(operationContext, true);
+
+		triage(operator);
+		cleanup(reverseOperator);
+		update(operator);
 	}
 
-	@SuppressWarnings("unchecked")
+	private static void update(final Operator operator)
+	{
+		operator.operate(AllocationService::buildAllocationNode);
+	}
+
+	private static void cleanup(final Operator reverseOperator)
+	{
+		reverseOperator.operate(AllocationService::buildCleanupNode);
+	}
+
+	private static void triage(final Operator operator)
+	{
+		operator.operate(AllocationService::buildTriageNode);
+	}
+
 	@Override
-	public <T extends IExtender> void setMainAllocation(final IAllocationInstance<T> allocation)
+	public void free(final ILilyEObject target, final IAllocationContext context, final Class<? extends IExtender> type)
 	{
-		final var allocationInstance = (AllocationInstance<T>) allocation;
-		final var target = allocationInstance.getTarget();
-		final var type = allocationInstance.getAllocation().getClass();
+		final var operationContext = new OperationContext(target, context, type);
+		final var freeOperator = new Operator(operationContext, true);
 
-		IExtenderDescriptorRegistry.INSTANCE.streamDescriptors(target, type)
-											.findAny()
-											.map(d -> (IExtenderDescriptor<T>) d)
-											.map(d -> adaptHandle(d, target))
-											.ifPresent(handle -> handle.setMainAllocation(allocationInstance));
+		freeOperator.operate(AllocationService::buildFreeNode);
 	}
 
-	private static <T extends IExtender> AllocationHandle<T> adaptHandle(final IExtenderDescriptor<T> descriptor,
-																		 final ILilyEObject target)
+	private static <T extends IExtender> Optional<IOperationNode> buildTriageNode(AllocationHandle<T> handle)
 	{
-		return (AllocationHandle<T>) target.extenders().adaptHandleFromDescriptor(descriptor);
-	}
-
-	private static record Allocator<T extends IExtender>(ILilyEObject target, IAllocationContext context, Class<T> type)
-	{
-		public AllocationInstance<T> allocate()
+		final var mainAllocation = handle.getMainAllocation();
+		if (mainAllocation != null && mainAllocation.isDirty())
 		{
-			return IExtenderDescriptorRegistry.INSTANCE.streamDescriptors(target, type)
-													   .map(this::adaptHandle)
-													   .map(this::allocateHandle)
-													   .findAny()
-													   .orElse(null);
+			return Optional.of(mainAllocation.prepareTriage(false));
 		}
-
-		private AllocationInstance<T> allocateHandle(final AllocationHandle<T> handle)
+		else
 		{
-			return handle.allocateNew(context, () -> {});
-		}
-
-		private AllocationHandle<T> adaptHandle(final IExtenderDescriptor<T> descriptor)
-		{
-			return (AllocationHandle<T>) target.extenders().adaptHandleFromDescriptor(descriptor);
+			return Optional.empty();
 		}
 	}
 
-	private static record Updater(ILilyEObject target, IAllocationContext context, Class<? extends IExtender> type)
+	private static Optional<IOperationNode> buildCleanupNode(AllocationHandle<?> handle)
 	{
-		public void update()
+		final var mainAllocation = handle.getMainAllocation();
+		if (mainAllocation != null && mainAllocation.isDirty())
 		{
-			IExtenderDescriptorRegistry.INSTANCE.streamDescriptors(target, type)
-												.map(this::adaptHandle)
-												.map(AllocationHandle::getMainAllocation)
-												.filter(Updater::isUpdatable)
-												.forEach(this::updateHandle);
+			return Optional.of(mainAllocation.prepareCleanup());
 		}
-
-		private void updateHandle(final AllocationInstance<?> allocation)
+		else
 		{
-			allocation.cleanup(new FreeContext(context, false));
-			allocation.update(context);
+			return Optional.empty();
 		}
+	}
 
-		private AllocationHandle<?> adaptHandle(final IExtenderDescriptor<?> descriptor)
+	private static <T extends IExtender> Optional<IOperationNode> buildAllocationNode(AllocationHandle<T> handle)
+	{
+		final var mainAllocation = handle.getMainAllocation();
+		if (mainAllocation == null)
 		{
-			return (AllocationHandle<?>) target.extenders().adaptHandleFromDescriptor(descriptor);
+			return Optional.of(handle.newNodeBuilder());
 		}
-
-		private static boolean isUpdatable(final AllocationInstance<?> allocation)
+		else if (mainAllocation.isDirty())
 		{
-			return allocation.isDirty() && allocation.isUpdatable();
+			return Optional.of(handle.prepareUpdate(mainAllocation));
+		}
+		else
+		{
+			return Optional.empty();
+		}
+	}
+
+	private static <T extends IExtender> Optional<IOperationNode> buildFreeNode(AllocationHandle<T> handle)
+	{
+		final var mainAllocation = handle.getMainAllocation();
+		if (mainAllocation != null)
+		{
+			return Optional.of(handle.prepareFree(mainAllocation));
+		}
+		else
+		{
+			return Optional.empty();
 		}
 	}
 }

@@ -5,30 +5,54 @@ import org.sheepy.lily.core.api.notification.observatory.IEObjectObservatoryBuil
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.util.IModelExplorer;
 import org.sheepy.lily.core.api.util.IntModelExplorer;
+import org.sheepy.lily.core.api.util.ModelUtil;
 
 import java.util.List;
 import java.util.function.Consumer;
 
 public final class StructureObserver
 {
-	private final IObservatoryBuilder observatoryBuilder;
-	private final int parentHeight;
+	private final Class<? extends ILilyEObject> parentType;
 	private final int[] features;
+	private final IntModelExplorer modelExplorer;
 
-	public StructureObserver(IObservatoryBuilder observatoryBuilder, int parentHeight, int[] features)
+	public StructureObserver(final Class<? extends ILilyEObject> parentType, final int[] features)
 	{
-		this.observatoryBuilder = observatoryBuilder;
-		this.parentHeight = parentHeight;
+		this.parentType = parentType;
 		this.features = features;
+		this.modelExplorer = new IntModelExplorer(parentType, features);
 	}
 
-	public void installListeners(Consumer<List<ILilyEObject>> onAdd, Consumer<List<ILilyEObject>> onRemove)
+	public IModelExplorer getExplorer()
 	{
-		final var leafObservatory = explore();
+		return modelExplorer;
+	}
+
+	public void installGatherer(final ILilyEObject source,
+								final IObservatoryBuilder observatoryBuilder,
+								final Consumer<List<ILilyEObject>> onAdd,
+								final Consumer<List<ILilyEObject>> onRemove)
+	{
+		final var parentHeight = ModelUtil.parentDistance(source, parentType);
+		final var leafObservatory = explore(observatoryBuilder, parentHeight, true);
 		leafObservatory.gatherBulk(onAdd, onRemove);
 	}
 
-	private IEObjectObservatoryBuilder<ILilyEObject> explore()
+	public void installListener(final ILilyEObject source,
+								final IObservatoryBuilder observatoryBuilder,
+								final Runnable structureChanged)
+	{
+		if (features.length > 0)
+		{
+			final var parentHeight = ModelUtil.parentDistance(source, parentType);
+			final var leafObservatory = explore(observatoryBuilder, parentHeight, false);
+			leafObservatory.listenNoParam(structureChanged, features[features.length - 1]);
+		}
+	}
+
+	private IEObjectObservatoryBuilder<ILilyEObject> explore(final IObservatoryBuilder observatoryBuilder,
+															 final int parentHeight,
+															 final boolean exploreLastFeature)
 	{
 		IEObjectObservatoryBuilder<ILilyEObject> gatherableBuilder = observatoryBuilder;
 
@@ -37,33 +61,13 @@ public final class StructureObserver
 			gatherableBuilder = gatherableBuilder.exploreParent();
 		}
 
-		for (int featureId : features)
+		final int size = exploreLastFeature ? features.length : features.length - 1;
+		for (int i = 0; i < size; i++)
 		{
+			final var featureId = features[i];
 			gatherableBuilder = gatherableBuilder.explore(featureId);
 		}
 
 		return gatherableBuilder;
-	}
-
-	public static final class Builder
-	{
-		private final int parentHeight;
-		private final int[] features;
-
-		public Builder(int parentHeight, int[] features)
-		{
-			this.parentHeight = parentHeight;
-			this.features = features;
-		}
-
-		public StructureObserver build(IObservatoryBuilder observatoryBuilder)
-		{
-			return new StructureObserver(observatoryBuilder, parentHeight, features);
-		}
-
-		public IModelExplorer buildExplorer()
-		{
-			return new IntModelExplorer(parentHeight, features);
-		}
 	}
 }

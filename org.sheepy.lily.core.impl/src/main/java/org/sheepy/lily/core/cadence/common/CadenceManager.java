@@ -1,6 +1,5 @@
 package org.sheepy.lily.core.cadence.common;
 
-import org.sheepy.lily.core.api.allocation.IAllocationInstance;
 import org.sheepy.lily.core.api.allocation.IAllocationService;
 import org.sheepy.lily.core.api.cadence.ICadenceManager;
 import org.sheepy.lily.core.api.cadence.IStatistics;
@@ -13,10 +12,8 @@ import org.sheepy.lily.core.cadence.execution.CommandStack;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.IEngine;
 
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.stream.Collectors;
 
 public class CadenceManager implements ICadenceManager
 {
@@ -33,7 +30,6 @@ public class CadenceManager implements ICadenceManager
 
 	private IInputManager inputManager = null;
 	private Long mainThread = null;
-	private List<IAllocationInstance<IEngineAllocation>> engineAllocations;
 
 	public CadenceManager(Application application)
 	{
@@ -55,10 +51,7 @@ public class CadenceManager implements ICadenceManager
 		((LilyEObject) application).deployExtenerManager();
 		((LilyEObject) application).loadExtenderManager();
 
-		engineAllocations = application.getEngines()
-									   .stream()
-									   .map(CadenceManager::allocateEngine)
-									   .collect(Collectors.toUnmodifiableList());
+		application.getEngines().forEach(CadenceManager::allocateEngine);
 
 		inputManager = application.adapt(IInputManager.class);
 	}
@@ -99,11 +92,7 @@ public class CadenceManager implements ICadenceManager
 	{
 		cadencer.free();
 
-		for (final var engineAllocation : engineAllocations)
-		{
-			engineAllocation.getAllocation().waitIdle();
-			engineAllocation.free(null);
-		}
+		application.getEngines().forEach(CadenceManager::freeEngine);
 
 		((LilyEObject) application).disposeExtenderManager();
 
@@ -116,9 +105,15 @@ public class CadenceManager implements ICadenceManager
 		mainThread = null;
 	}
 
-	private static IAllocationInstance<IEngineAllocation> allocateEngine(final IEngine engine)
+	private static void allocateEngine(final IEngine engine)
 	{
-		return IAllocationService.INSTANCE.allocate(engine, null, IEngineAllocation.class);
+		IAllocationService.INSTANCE.updateAllocation(engine, null, IEngineAllocation.class);
+	}
+
+	private static void freeEngine(final IEngine engine)
+	{
+		engine.adapt(IEngineAllocation.class).waitIdle();
+		IAllocationService.INSTANCE.free(engine, null, IEngineAllocation.class);
 	}
 
 	public void stop()

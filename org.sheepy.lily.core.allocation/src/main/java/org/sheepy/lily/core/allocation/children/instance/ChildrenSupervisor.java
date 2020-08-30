@@ -1,80 +1,72 @@
 package org.sheepy.lily.core.allocation.children.instance;
 
-import org.sheepy.lily.core.api.allocation.EAllocationStatus;
-import org.sheepy.lily.core.allocation.children.manager.IAllocationChildrenManager;
-import org.sheepy.lily.core.allocation.children.util.AllocationChildrenList;
-import org.sheepy.lily.core.allocation.children.util.ChildInstanceAllocators;
-import org.sheepy.lily.core.allocation.instance.FreeContext;
+import org.sheepy.lily.core.allocation.AllocationHandle;
+import org.sheepy.lily.core.allocation.children.manager.ChildrenInjector;
+import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
+import org.sheepy.lily.core.allocation.operation.IOperationNode;
 import org.sheepy.lily.core.allocation.util.StructureObserver;
-import org.sheepy.lily.core.api.allocation.IAllocationContext;
-import org.sheepy.lily.core.api.allocation.annotation.AllocationChild;
 import org.sheepy.lily.core.api.model.ILilyEObject;
+import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.util.IModelExplorer;
-import org.sheepy.lily.core.api.util.ModelUtil;
+import org.sheepy.lily.core.api.util.StreamUtil;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public final class ChildrenSupervisor
 {
-	private final Deque<ChildInstanceAllocators> removedElements = new ArrayDeque<>();
 	private final Runnable whenBranchDirty;
-	private final AllocationChildrenList children;
-	private final int index;
+	private final List<ChildDescriptorAllocator> childrenAllocators = new ArrayList<>();
+	private final IModelExplorer modelExplorer;
+	private final List<ChildrenInjector> injectors;
 
 	private boolean addedElements = true;
 
-	private ChildrenSupervisor(final StructureObserver observatoryBuilder,
-							   final IModelExplorer modelExplorer,
+	private ChildrenSupervisor(final IModelExplorer modelExplorer,
 							   final Runnable whenBranchDirty,
-							   final Optional<Consumer<EAllocationStatus>> listener,
-							   final int index)
+							   final List<ChildrenInjector> injectors)
 	{
-		this.index = index;
-		observatoryBuilder.installListeners(this::add, this::remove);
+		this.modelExplorer = modelExplorer;
+		this.injectors = List.copyOf(injectors);
 		this.whenBranchDirty = whenBranchDirty;
-		children = new AllocationChildrenList(whenBranchDirty, listener, modelExplorer);
 	}
 
-	public void cleanup(final FreeContext context)
+	public Stream<IOperationNode> prepareTriage(final boolean forceTriage)
 	{
-		freeRemovedElements(context);
-		children.reverseStream()
-				.flatMap(ChildInstanceAllocators::reverseStream)
-				.forEach(child -> child.cleanup(context));
-		if (context.freeEverything()) children.clear();
+		return childrenAllocators.stream().flatMap(c -> c.prepareTriage(forceTriage));
 	}
 
-	private void freeRemovedElements(final FreeContext context)
+	public Stream<IOperationNode> prepareCleanup(final boolean free)
 	{
-		if (removedElements.isEmpty() == false)
-		{
-			final var subContext = context.encapsulate(true);
-			while (removedElements.isEmpty() == false)
-			{
-				final var removed = removedElements.pop();
-				removed.instanceAllocators().forEach(c -> c.cleanup(subContext));
-				children.remove(removed);
-			}
-		}
+		return StreamUtil.reverseStream(childrenAllocators).flatMap(e -> e.prepareCleanup(free));
 	}
 
-	public void update(ILilyEObject source, IAllocationContext context)
+	public Stream<IOperationNode> prepareUpdate(final ILilyEObject source)
+	{
+		return Stream.of(source).flatMap(this::prepareChildrenUpdate);
+	}
+
+	private Stream<IOperationNode> prepareChildrenUpdate(ILilyEObject source)
 	{
 		if (addedElements)
 		{
-			children.updateAllocationList(source);
 			addedElements = false;
+
+			final var children = modelExplorer.stream(source).collect(Collectors.toUnmodifiableList());
+			for (final var childrenAllocator : childrenAllocators)
+			{
+				childrenAllocator.reload(children);
+			}
 		}
-		children.streamInstanceAllocators().forEach(c -> c.update(context));
+
+		return childrenAllocators.stream().flatMap(ChildDescriptorAllocator::prepareUpdate);
 	}
 
-	public void add(List<ILilyEObject> children)
+	private void add(List<ILilyEObject> children)
 	{
+		reloadDescriptors(children);
 		if (addedElements == false)
 		{
 			whenBranchDirty.run();
@@ -82,59 +74,51 @@ public final class ChildrenSupervisor
 		}
 	}
 
-	public void remove(List<ILilyEObject> removedChildren)
+	private void remove(List<ILilyEObject> removedChildren)
 	{
-		final boolean wasEmpty = removedElements.isEmpty();
+		for (final var childrenAllocator : childrenAllocators)
+		{
+			childrenAllocator.removeChildren(removedChildren);
+		}
+		whenBranchDirty.run();
+	}
+
+	private void reloadDescriptors(final List<ILilyEObject> children)
+	{
 		children.stream()
-				.filter(a -> removedChildren.contains(a.target()))
-				.collect(Collectors.toCollection(() -> removedElements));
-		if (wasEmpty && removedElements.isEmpty() == false)
-		{
-			whenBranchDirty.run();
-		}
+				.flatMap(c -> c.extenders().adaptHandlesOfType(AllocationHandle.class))
+				.map(handle -> (AllocationHandle<?>) handle)
+				.map(AllocationHandle::getDescriptor)
+				.distinct()
+				.filter(descriptor -> childrenAllocators.stream().noneMatch(a -> a.descriptor() == descriptor))
+				.map(this::buildAllocator)
+				.collect(Collectors.toCollection(() -> childrenAllocators));
 	}
 
-	public int getIndex()
+	private ChildDescriptorAllocator buildAllocator(final AllocationDescriptor<?> descriptor)
 	{
-		return index;
+		final var filteredInjectors = injectors.stream()
+											   .filter(i -> i.match(descriptor))
+											   .collect(Collectors.toUnmodifiableList());
+		return new ChildDescriptorAllocator(descriptor, filteredInjectors, whenBranchDirty);
 	}
 
-	public void markChildrenObsolete()
+	public static record Builder(StructureObserver structureObservatory, List<ChildrenInjector> childrenInjectors)
 	{
-		children.streamInstanceAllocators().forEach(ChildInstanceAllocator::markChildrenObsolete);
-	}
-
-	public static record Builder(int index, StructureObserver.Builder structureObservatoryBuilder, boolean buildStatusListener)
-	{
-		public Builder(final ILilyEObject source, final AllocationChild childAnnotation, int index)
+		public ChildrenSupervisor build(final Runnable whenBranchDirty,
+										final IObservatoryBuilder observatoryBuilder,
+										final ILilyEObject target)
 		{
-			this(index, buildStructureObserverBuilder(source, childAnnotation), childAnnotation.reportStateToParent());
-		}
 
-		private static StructureObserver.Builder buildStructureObserverBuilder(final ILilyEObject source,
-																			   final AllocationChild childAnnotation)
-		{
-			final var parentClass = childAnnotation.parent();
-			final var parentDistance = ModelUtil.parentDistance(source, parentClass);
-			return new StructureObserver.Builder(parentDistance, childAnnotation.features());
-		}
+			final var childrenSupervisor = new ChildrenSupervisor(structureObservatory.getExplorer(),
+																  whenBranchDirty,
+																  childrenInjectors);
+			structureObservatory.installGatherer(target,
+												 observatoryBuilder,
+												 childrenSupervisor::add,
+												 childrenSupervisor::remove);
 
-		public ChildrenSupervisor build(final IAllocationChildrenManager.Configuration config)
-		{
-			final var structureObserver = structureObservatoryBuilder.build(config.observatoryBuilder());
-			final var modelExplorer = structureObservatoryBuilder.buildExplorer();
-			final var statusListener = getStatusListener(config);
-
-			return new ChildrenSupervisor(structureObserver,
-										  modelExplorer,
-										  config.whenBranchDirty(),
-										  statusListener,
-										  index);
-		}
-
-		private Optional<Consumer<EAllocationStatus>> getStatusListener(final IAllocationChildrenManager.Configuration config)
-		{
-			return buildStatusListener ? Optional.of(config::reactOnStatusChange) : Optional.empty();
+			return childrenSupervisor;
 		}
 	}
 }

@@ -1,10 +1,11 @@
 package org.sheepy.lily.core.allocation.instance;
 
-import org.sheepy.lily.core.api.allocation.EAllocationStatus;
-import org.sheepy.lily.core.allocation.children.manager.IAllocationChildrenManager;
+import org.sheepy.lily.core.allocation.children.manager.AllocationChildrenManager;
 import org.sheepy.lily.core.allocation.dependency.DependencyManager;
+import org.sheepy.lily.core.allocation.operation.InstanceTreeOperation;
+import org.sheepy.lily.core.allocation.operation.IOperationNode;
+import org.sheepy.lily.core.api.allocation.EAllocationStatus;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
-import org.sheepy.lily.core.api.allocation.IAllocationInstance;
 import org.sheepy.lily.core.api.allocation.annotation.Free;
 import org.sheepy.lily.core.api.allocation.annotation.Update;
 import org.sheepy.lily.core.api.extender.IExtender;
@@ -12,37 +13,33 @@ import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
-import org.sheepy.lily.core.api.notification.util.ConsumerListenerList;
-import org.sheepy.lily.core.api.reflect.ConsumerHandle;
 
 import java.lang.annotation.Annotation;
-import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
-public final class AllocationInstance<Allocation extends IExtender> implements IAllocationInstance<Allocation>
+public final class AllocationInstance<Allocation extends IExtender>
 {
-	private final ILilyEObject target;
+	private final IObservatory preObservatory;
 	private final IObservatory observatory;
 	private final AllocationState state;
-	private final ConsumerListenerList<EAllocationStatus> listeners;
 	private final DependencyManager dependencyManager;
-	private final IAllocationChildrenManager preChildrenManager;
-	private final IAllocationChildrenManager postChildrenManager;
+	private final AllocationChildrenManager preChildrenManager;
+	private final AllocationChildrenManager postChildrenManager;
 	private final IExtenderDescriptor.ExtenderContext<Allocation> extenderContext;
 
 	public AllocationInstance(final ILilyEObject target,
+							  final IObservatory preObservatory,
 							  final IObservatory observatory,
 							  final AllocationState state,
-							  final ConsumerListenerList<EAllocationStatus> listeners,
 							  final DependencyManager dependencyManager,
-							  final IAllocationChildrenManager preChildrenManager,
-							  final IAllocationChildrenManager postChildrenManager,
+							  final AllocationChildrenManager preChildrenManager,
+							  final AllocationChildrenManager postChildrenManager,
 							  final IExtenderDescriptor.ExtenderContext<Allocation> extenderContext)
 	{
-		this.target = target;
+		this.preObservatory = preObservatory;
 		this.observatory = observatory;
 		this.state = state;
-		this.listeners = listeners;
 		this.dependencyManager = dependencyManager;
 		this.preChildrenManager = preChildrenManager;
 		this.postChildrenManager = postChildrenManager;
@@ -51,86 +48,48 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 		if (observatory != null) observatory.observe(target);
 	}
 
-	public void load(final IAllocationContext context)
+	public IOperationNode prepareTriage(final boolean forceTriage)
 	{
-		postChildrenManager.update(target, context);
-		state.reset();
+		return prepareOperationNode(cm -> cm.prepareTriage(forceTriage));
 	}
 
-	@Override
-	public void update(IAllocationContext context)
+	public IOperationNode prepareCleanup()
 	{
-		assert isDirty();
-		assert isUpdatable();
+		return prepareOperationNode(cm -> cm.prepareCleanup(false));
+	}
 
-		if (preChildrenManager.isDirty())
-		{
-			preChildrenManager.update(target, context);
-		}
+	private InstanceTreeOperation prepareOperationNode(final Function<AllocationChildrenManager, Stream<IOperationNode>> childExctractor)
+	{
+		return new InstanceTreeOperation(childExctractor, this);
+	}
+
+	public void update(ILilyEObject target)
+	{
+		assert isUpdatable();
 
 		dependencyManager.update(target);
 
 		if (state.needUpdate())
 		{
 			state.updated();
-			extenderContext.annotatedConsumer(Update.class).forEach(ConsumerHandle::invoke);
-		}
-
-		if (postChildrenManager.isDirty())
-		{
-			postChildrenManager.update(target, context);
+			final var it = extenderContext.annotatedConsumer(Update.class).iterator();
+			while (it.hasNext()) it.next().invoke();
 		}
 
 		state.reset();
 	}
 
-	@Override
-	public void free(IAllocationContext context)
+	public void free(final ILilyEObject target, final IAllocationContext context)
 	{
-		cleanup(new FreeContext(context, true));
-	}
-
-	@Override
-	public void cleanup(final IAllocationContext context)
-	{
-		cleanup(new FreeContext(context, false));
-	}
-
-	public void cleanup(final FreeContext context)
-	{
-		final var subContext = context.encapsulate(context.freeEverything() || state.getStatus() == EAllocationStatus.Obsolete);
-		final var freeRequested = subContext.freeEverything();
-		assert !freeRequested || isUnlocked();
-
-		if (freeRequested || postChildrenManager.isDirty())
-		{
-			postChildrenManager.cleanup(subContext);
-		}
-
-		if (freeRequested)
-		{
-			freeInternal(subContext.context());
-		}
-
-		if (freeRequested || preChildrenManager.isDirty())
-		{
-			preChildrenManager.cleanup(subContext);
-		}
-		if (freeRequested)
-		{
-			state.setStatus(EAllocationStatus.Free);
-		}
-	}
-
-	private void freeInternal(IAllocationContext context)
-	{
+		assert isUnlocked();
+		if (preObservatory != null) preObservatory.shut(target);
 		if (observatory != null) observatory.shut(target);
 		dependencyManager.free();
-		extenderContext.annotatedConsumer(Free.class).forEach(c -> c.invoke(context));
+		final var it = extenderContext.annotatedConsumer(Free.class).iterator();
+		while (it.hasNext()) it.next().invoke(context);
 		state.setStatus(EAllocationStatus.Free);
 	}
 
-	@Override
 	public boolean isDirty()
 	{
 		return state.isDirty();
@@ -140,12 +99,9 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 	{
 		final var status = state.getStatus();
 		final boolean updatableStatus = status != EAllocationStatus.Obsolete && status != EAllocationStatus.Free;
-		return isUnlocked() && updatableStatus;
-	}
+		final boolean updatable = updatableStatus && isUnlocked();
 
-	public void markObsolete()
-	{
-		state.markObsolete();
+		return !isDirty() || updatable;
 	}
 
 	public boolean isLocked()
@@ -163,31 +119,23 @@ public final class AllocationInstance<Allocation extends IExtender> implements I
 		return state.getStatus();
 	}
 
-	@Override
-	public void listenStatus(Consumer<EAllocationStatus> listener)
-	{
-		listeners.listen(listener);
-	}
-
-	@Override
-	public void sulkStatus(Consumer<EAllocationStatus> listener)
-	{
-		listeners.sulk(listener);
-	}
-
 	public <A extends Annotation> Stream<IExtenderHandle.AnnotatedHandle<A>> annotatedHandles(Class<A> annotationClass)
 	{
 		return extenderContext.annotatedHandles(annotationClass);
 	}
 
-	@Override
+	public AllocationChildrenManager getPreChildrenManager()
+	{
+		return preChildrenManager;
+	}
+
+	public AllocationChildrenManager getPostChildrenManager()
+	{
+		return postChildrenManager;
+	}
+
 	public Allocation getAllocation()
 	{
 		return extenderContext.extender();
-	}
-
-	public ILilyEObject getTarget()
-	{
-		return target;
 	}
 }

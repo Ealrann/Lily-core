@@ -10,9 +10,7 @@ import org.sheepy.lily.core.api.notification.observatory.internal.InternalObserv
 import org.sheepy.lily.core.api.notification.observatory.internal.allocation.AdapterObservatory;
 import org.sheepy.lily.core.api.notification.observatory.internal.eobject.listener.GatherBulkListener;
 import org.sheepy.lily.core.api.notification.observatory.internal.eobject.listener.GatherListener;
-import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.EObjectNoParamPOI;
-import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.EObjectPOI;
-import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.IEObjectPOI;
+import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.*;
 import org.sheepy.lily.core.api.notification.observatory.internal.notifier.NotifierAdapterObservatory;
 import org.sheepy.lily.core.api.notification.observatory.internal.notifier.NotifierObservatory;
 
@@ -151,22 +149,6 @@ public abstract class AbstractRootObservatory implements IObservatory
 		}
 
 		@Override
-		public IEObjectObservatoryBuilder<ILilyEObject> gather(final Consumer<ILilyEObject> discoveredObject,
-															   final Consumer<ILilyEObject> removedObject)
-		{
-			gatherListeners.add(new GatherListener<>(discoveredObject, removedObject));
-			return this;
-		}
-
-		@Override
-		public IEObjectObservatoryBuilder<ILilyEObject> gatherBulk(final Consumer<List<ILilyEObject>> discoveredObjects,
-																   final Consumer<List<ILilyEObject>> removedObjects)
-		{
-			gatherBulkListeners.add(new GatherBulkListener<>(discoveredObjects, removedObjects));
-			return this;
-		}
-
-		@Override
 		public <F extends IFeatures<F>, N extends IExtender & INotifier<F>> INotifierAdapterObservatoryBuilder<F, N> adaptNotifier(
 				final Class<N> classifier)
 		{
@@ -186,6 +168,36 @@ public abstract class AbstractRootObservatory implements IObservatory
 		public IObservatoryBuilder listenNoParam(final Runnable listener, final int... features)
 		{
 			pois.add(new EObjectNoParamPOI(listener, features));
+			return this;
+		}
+
+		@Override
+		public IObservatoryBuilder listenStructure(final Consumer<Notification> structureChanged)
+		{
+			pois.add(new EObjectStructurePOI(structureChanged));
+			return this;
+		}
+
+		@Override
+		public IObservatoryBuilder listenStructureNoParam(final Runnable structureChanged)
+		{
+			pois.add(new EObjectStructureNoParamPOI(structureChanged));
+			return this;
+		}
+
+		@Override
+		public IEObjectObservatoryBuilder<ILilyEObject> gather(final Consumer<ILilyEObject> discoveredObject,
+															   final Consumer<ILilyEObject> removedObject)
+		{
+			gatherListeners.add(new GatherListener<>(discoveredObject, removedObject));
+			return this;
+		}
+
+		@Override
+		public IEObjectObservatoryBuilder<ILilyEObject> gatherBulk(final Consumer<List<ILilyEObject>> discoveredObjects,
+																   final Consumer<List<ILilyEObject>> removedObjects)
+		{
+			gatherBulkListeners.add(new GatherBulkListener<>(discoveredObjects, removedObjects));
 			return this;
 		}
 

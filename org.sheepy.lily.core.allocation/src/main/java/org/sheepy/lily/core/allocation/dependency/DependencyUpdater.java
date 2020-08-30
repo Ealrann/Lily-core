@@ -1,25 +1,24 @@
 package org.sheepy.lily.core.allocation.dependency;
 
-import org.sheepy.lily.core.api.allocation.EAllocationStatus;
-import org.sheepy.lily.core.allocation.dependency.container.IDependencyContainer;
+import org.sheepy.lily.core.allocation.dependency.container.DependencyContainer;
 import org.sheepy.lily.core.api.allocation.annotation.UpdateDependency;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
+import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.reflect.ConsumerHandle;
 
 import java.lang.reflect.Method;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public final class DependencyUpdater
 {
-	private final DependencyResolution resolution;
+	private final DependencyWatcher resolution;
 	private final ConsumerHandle updateHandle;
 	private final Method method;
 	private final boolean many;
 
-	public DependencyUpdater(final DependencyResolution resolution,
+	public DependencyUpdater(final DependencyWatcher resolution,
 							 final IExtenderHandle.AnnotatedHandle<UpdateDependency> updateHandle)
 	{
 		this.resolution = resolution;
@@ -43,7 +42,7 @@ public final class DependencyUpdater
 			{
 				final var allocations = resolution.getResolvedAllocations()
 												  .stream()
-												  .map(IDependencyContainer::get)
+												  .map(DependencyContainer::get)
 												  .collect(Collectors.toUnmodifiableList());
 				updateHandle.invoke(allocations);
 			}
@@ -64,12 +63,13 @@ public final class DependencyUpdater
 		resolution.free();
 	}
 
-	public static record Builder(DependencyResolution.Builder resolutionBuilder,
-								 IExtenderHandle.AnnotatedHandle<UpdateDependency>updateHandle)
+	public static record Builder(DependencyWatcher.Builder resolutionBuilder, IExtenderHandle.AnnotatedHandle<UpdateDependency> updateHandle)
 	{
-		public DependencyUpdater build(final Consumer<EAllocationStatus> statusListener)
+		public DependencyUpdater build(final IObservatoryBuilder observatoryBuilder,
+									   final Runnable onResolutionObsolete)
 		{
-			final var resolution = resolutionBuilder.build(statusListener);
+			final var resolution = resolutionBuilder.build(observatoryBuilder,
+														   onResolutionObsolete);
 			return new DependencyUpdater(resolution, updateHandle);
 		}
 	}

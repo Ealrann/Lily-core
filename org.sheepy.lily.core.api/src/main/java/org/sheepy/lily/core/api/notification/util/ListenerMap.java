@@ -4,23 +4,24 @@ import org.sheepy.lily.core.api.notification.Feature;
 import org.sheepy.lily.core.api.notification.IFeatures;
 import org.sheepy.lily.core.api.notification.INotifier;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Deque;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.function.Consumer;
 import java.util.function.IntConsumer;
 import java.util.function.LongConsumer;
 
 public final class ListenerMap<Type extends IFeatures<Type>> implements INotifier.Internal<Type>
 {
-	private final List<Object>[] listenerMap;
+	private final Deque<Object>[] listenerMap;
 	private final List<Feature<?, Type>> features;
 
 	@SuppressWarnings("unchecked")
 	public ListenerMap(List<Feature<?, Type>> features)
 	{
-		this.listenerMap = new List[features.size()];
+		this.listenerMap = new Deque[features.size()];
 		this.features = features;
 	}
 
@@ -28,15 +29,14 @@ public final class ListenerMap<Type extends IFeatures<Type>> implements INotifie
 	@SuppressWarnings("unchecked")
 	public <Callback> void notify(final Feature<? super Callback, Type> feature, final Consumer<Callback> caller)
 	{
-		final var list = listenerMap[features.indexOf(feature)];
-		if (list != null)
+		final var listeners = listenerMap[features.indexOf(feature)];
+		if (listeners != null)
 		{
-			for (int i = 0; i < list.size(); i++)
+			for (final var listener : listeners)
 			{
-				final var listener = list.get(i);
-				if (listener instanceof Runnable)
+				if (listener instanceof Runnable runnable)
 				{
-					((Runnable) listener).run();
+					runnable.run();
 				}
 				else
 				{
@@ -50,15 +50,14 @@ public final class ListenerMap<Type extends IFeatures<Type>> implements INotifie
 	@SuppressWarnings("unchecked")
 	public <T> void notify(final Feature<Consumer<T>, Type> feature, final T value)
 	{
-		final var list = listenerMap[features.indexOf(feature)];
-		if (list != null)
+		final var listeners = listenerMap[features.indexOf(feature)];
+		if (listeners != null)
 		{
-			for (int i = 0; i < list.size(); i++)
+			for (final var listener : listeners)
 			{
-				final var listener = list.get(i);
-				if (listener instanceof Runnable)
+				if (listener instanceof Runnable runnable)
 				{
-					((Runnable) listener).run();
+					runnable.run();
 				}
 				else
 				{
@@ -71,15 +70,14 @@ public final class ListenerMap<Type extends IFeatures<Type>> implements INotifie
 	@Override
 	public void notify(final Feature<IntConsumer, Type> feature, final int value)
 	{
-		final var list = listenerMap[features.indexOf(feature)];
-		if (list != null)
+		final var listeners = listenerMap[features.indexOf(feature)];
+		if (listeners != null)
 		{
-			for (int i = 0; i < list.size(); i++)
+			for (final var listener : listeners)
 			{
-				final var listener = list.get(i);
-				if (listener instanceof Runnable)
+				if (listener instanceof Runnable runnable)
 				{
-					((Runnable) listener).run();
+					runnable.run();
 				}
 				else
 				{
@@ -92,15 +90,14 @@ public final class ListenerMap<Type extends IFeatures<Type>> implements INotifie
 	@Override
 	public void notify(final Feature<LongConsumer, Type> feature, final long value)
 	{
-		final var list = listenerMap[features.indexOf(feature)];
-		if (list != null)
+		final var listeners = listenerMap[features.indexOf(feature)];
+		if (listeners != null)
 		{
-			for (int i = 0; i < list.size(); i++)
+			for (final var listener : listeners)
 			{
-				final var listener = list.get(i);
-				if (listener instanceof Runnable)
+				if (listener instanceof Runnable runnable)
 				{
-					((Runnable) listener).run();
+					runnable.run();
 				}
 				else
 				{
@@ -113,12 +110,11 @@ public final class ListenerMap<Type extends IFeatures<Type>> implements INotifie
 	@Override
 	public void notify(final Feature<Runnable, Type> feature)
 	{
-		final var list = listenerMap[features.indexOf(feature)];
-		if (list != null)
+		final var listeners = listenerMap[features.indexOf(feature)];
+		if (listeners != null)
 		{
-			for (int i = 0; i < list.size(); i++)
+			for (final var listener : listeners)
 			{
-				final var listener = list.get(i);
 				((Runnable) listener).run();
 			}
 		}
@@ -184,7 +180,7 @@ public final class ListenerMap<Type extends IFeatures<Type>> implements INotifie
 		}
 	}
 
-	private List<Object> getOrCreateList(Feature<?, Type> feature)
+	private Deque<Object> getOrCreateList(Feature<?, Type> feature)
 	{
 		final int ordinal = features.indexOf(feature);
 		final var res = listenerMap[ordinal];
@@ -194,13 +190,13 @@ public final class ListenerMap<Type extends IFeatures<Type>> implements INotifie
 		}
 		else
 		{
-			final var newList = new ArrayList<>();
+			final var newList = new ConcurrentLinkedDeque<>();
 			listenerMap[ordinal] = newList;
 			return newList;
 		}
 	}
 
-	private Optional<List<Object>> getList(Feature<?, Type> feature)
+	private Optional<Deque<Object>> getList(Feature<?, Type> feature)
 	{
 		final int ordinal = features.indexOf(feature);
 		final var res = listenerMap[ordinal];

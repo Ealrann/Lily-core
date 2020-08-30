@@ -3,46 +3,50 @@ package org.sheepy.lily.core.api.notification.util;
 import org.eclipse.emf.common.notify.Notification;
 import org.sheepy.lily.core.api.notification.IEMFNotifier;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Deque;
+import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.function.Consumer;
 
 public final class EMFListenerMap implements IEMFNotifier
 {
 	private final int featureCount;
 
-	private List<Object>[] notificationMap = null;
+	private Deque<Object>[] listenerMap = null;
 
 	public EMFListenerMap(int featureCount)
 	{
 		this.featureCount = featureCount;
 	}
 
-	@SuppressWarnings("unchecked")
 	public void notify(Notification notification)
 	{
-		if (notificationMap != null)
+		if (listenerMap != null)
 		{
 			final var targetClass = notification.getNotifier().getClass();
 			final int featureId = notification.getFeatureID(targetClass);
 			if (featureId != Notification.NO_FEATURE_ID)
 			{
-				final var notificationListeners = notificationMap[featureId];
-				if (notificationListeners != null)
+				final var listeners = listenerMap[featureId];
+				if (listeners != null)
 				{
-					for (int i = 0; i < notificationListeners.size(); i++)
-					{
-						final var listener = notificationListeners.get(i);
-						if (listener instanceof Runnable)
-						{
-							((Runnable) listener).run();
-						}
-						else
-						{
-							((Consumer<Notification>) listener).accept(notification);
-						}
-					}
+					notify(listeners, notification);
 				}
+			}
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	private static void notify(final Deque<Object> notificationListeners, final Notification notification)
+	{
+		for (final var listener : notificationListeners)
+		{
+			if (listener instanceof Runnable runnable)
+			{
+				runnable.run();
+			}
+			else
+			{
+				((Consumer<Notification>) listener).accept(notification);
 			}
 		}
 	}
@@ -61,7 +65,7 @@ public final class EMFListenerMap implements IEMFNotifier
 
 	private void listenInternal(Object listener, int... features)
 	{
-		if (notificationMap == null)
+		if (listenerMap == null)
 		{
 			initNotificationMap();
 		}
@@ -87,12 +91,12 @@ public final class EMFListenerMap implements IEMFNotifier
 
 	private void sulkInternal(Object listener, int... features)
 	{
-		if (notificationMap != null)
+		if (listenerMap != null)
 		{
 			for (int i = 0; i < features.length; i++)
 			{
 				final var feature = features[i];
-				final var list = notificationMap[feature];
+				final var list = listenerMap[feature];
 				if (list != null)
 				{
 					list.remove(listener);
@@ -104,16 +108,16 @@ public final class EMFListenerMap implements IEMFNotifier
 	@SuppressWarnings("unchecked")
 	private void initNotificationMap()
 	{
-		notificationMap = new List[featureCount];
+		listenerMap = new Deque[featureCount];
 	}
 
 	private void registerNotificationListener(final Object listener, final int id)
 	{
-		var list = notificationMap[id];
+		var list = listenerMap[id];
 		if (list == null)
 		{
-			list = new ArrayList<>(2);
-			notificationMap[id] = list;
+			list = new ConcurrentLinkedDeque<>();
+			listenerMap[id] = list;
 		}
 		list.add(listener);
 	}

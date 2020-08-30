@@ -1,26 +1,24 @@
 package org.sheepy.lily.core.allocation.instance;
 
+import org.sheepy.lily.core.allocation.util.BitLocker;
 import org.sheepy.lily.core.api.allocation.EAllocationStatus;
 import org.sheepy.lily.core.api.allocation.IAllocationState;
+import org.sheepy.lily.core.api.notification.util.ConsumerListenerList;
 
-import java.math.BigInteger;
-import java.util.function.BiConsumer;
+import java.util.function.Consumer;
 
-public class AllocationState implements IAllocationState
+public final class AllocationState implements IAllocationState
 {
 	private final Runnable whenUpdateNeeded;
-	private final BiConsumer<EAllocationStatus, EAllocationStatus> onStatusChange;
 	private final BitLocker bitLocker = new BitLocker();
+	private final ConsumerListenerList<EAllocationStatus> listeners = new ConsumerListenerList<>();
 
 	private EAllocationStatus status = EAllocationStatus.Allocated;
-	private EAllocationStatus branchStatus = EAllocationStatus.Allocated;
 	private boolean locked = false;
 	private boolean needUpdate = false;
 
-	public AllocationState(final BiConsumer<EAllocationStatus, EAllocationStatus> onStatusChange,
-						   final Runnable whenUpdateNeeded)
+	public AllocationState(final Runnable whenUpdateNeeded)
 	{
-		this.onStatusChange = onStatusChange;
 		this.whenUpdateNeeded = whenUpdateNeeded;
 	}
 
@@ -67,9 +65,9 @@ public class AllocationState implements IAllocationState
 
 	public void markBranchDirty()
 	{
-		if (branchStatus == EAllocationStatus.Allocated)
+		if (status == EAllocationStatus.Allocated)
 		{
-			branchStatus = EAllocationStatus.Dirty;
+			setStatus(EAllocationStatus.Dirty);
 			whenUpdateNeeded.run();
 		}
 	}
@@ -92,16 +90,14 @@ public class AllocationState implements IAllocationState
 	public void reset()
 	{
 		setStatus(EAllocationStatus.Allocated);
-		this.branchStatus = EAllocationStatus.Allocated;
 	}
 
 	public void setStatus(EAllocationStatus status)
 	{
 		if (this.status != status)
 		{
-			final var oldStatus = this.status;
 			this.status = status;
-			onStatusChange.accept(oldStatus, status);
+			listeners.notify(status);
 		}
 	}
 
@@ -127,9 +123,21 @@ public class AllocationState implements IAllocationState
 		}
 	}
 
+	@Override
+	public void listenStatus(Consumer<EAllocationStatus> listener)
+	{
+		listeners.listen(listener);
+	}
+
+	@Override
+	public void sulkStatus(Consumer<EAllocationStatus> listener)
+	{
+		listeners.sulk(listener);
+	}
+
 	public boolean isDirty()
 	{
-		return status != EAllocationStatus.Allocated || branchStatus != EAllocationStatus.Allocated;
+		return status != EAllocationStatus.Allocated;
 	}
 
 	@Override
@@ -146,32 +154,5 @@ public class AllocationState implements IAllocationState
 	public void updated()
 	{
 		needUpdate = false;
-	}
-
-	private static final class BitLocker
-	{
-		private BigInteger bits = BigInteger.ZERO;
-
-		public int newLock()
-		{
-			int lock = 0;
-			while (bits.testBit(lock)) lock++;
-			bits = bits.setBit(lock);
-			return lock;
-		}
-
-		public void release(int lock)
-		{
-			bits = bits.clearBit(lock);
-			if (bits.equals(BigInteger.ZERO))
-			{
-				bits = BigInteger.ZERO;
-			}
-		}
-
-		public boolean isLocked()
-		{
-			return !bits.equals(BigInteger.ZERO);
-		}
 	}
 }

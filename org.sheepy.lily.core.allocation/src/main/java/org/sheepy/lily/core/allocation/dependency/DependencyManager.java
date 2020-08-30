@@ -1,53 +1,53 @@
 package org.sheepy.lily.core.allocation.dependency;
 
-import org.sheepy.lily.core.api.allocation.EAllocationStatus;
 import org.sheepy.lily.core.api.allocation.annotation.UpdateDependency;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
+import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.util.AnnotationHandles;
 import org.sheepy.lily.core.api.util.DebugUtil;
 
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public final class DependencyManager
 {
 	private final List<DependencyUpdater> updatableDependencies;
-	private final List<DependencyResolution> criticalDependencies;
-	private final Runnable onDirty;
-	private final Runnable onObsolete;
-	private final Consumer<EAllocationStatus> updatableDependencyChange = this::updatableDependencyChange;
-	private final Consumer<EAllocationStatus> criticalDependencyChange = this::criticalDependencyChange;
+	private final List<DependencyWatcher> criticalDependencies;
+	private final Runnable onCriticalChange;
 	private final CriticalChange criticalDependencyChangeDebug = this::criticalDependencyChangeDebug;
 
-	public DependencyManager(final List<DependencyUpdater.Builder> updatableDependencies,
-							 final List<DependencyResolution.Builder> criticalDependencies,
-							 final Runnable onDirty,
-							 final Runnable onObsolete)
+	public DependencyManager(final IObservatoryBuilder observatoryBuilder,
+							 final List<DependencyUpdater.Builder> updatableDependencies,
+							 final List<DependencyWatcher.Builder> criticalDependencies,
+							 final Runnable onUpdatableChange,
+							 final Runnable onCriticalChange)
 	{
+		this.onCriticalChange = onCriticalChange;
 		this.updatableDependencies = updatableDependencies.stream()
-														  .map(builder -> builder.build(updatableDependencyChange))
+														  .map(builder -> builder.build(observatoryBuilder,
+																						onUpdatableChange))
 														  .collect(Collectors.toUnmodifiableList());
 		this.criticalDependencies = criticalDependencies.stream()
-														.map(this::buildCriticalChange)
+														.map(builder -> buildCriticalDependencyResolution(
+																observatoryBuilder,
+																builder))
 														.collect(Collectors.toUnmodifiableList());
-		this.onDirty = onDirty;
-		this.onObsolete = onObsolete;
 	}
 
-	private DependencyResolution buildCriticalChange(DependencyResolution.Builder builder)
+	private DependencyWatcher buildCriticalDependencyResolution(final IObservatoryBuilder observatoryBuilder,
+																final DependencyWatcher.Builder builder)
 	{
 		if (DebugUtil.DEBUG_ALLOCATION)
 		{
 			final int index = builder.index();
-			final Consumer<EAllocationStatus> statusConsumer = s -> criticalDependencyChangeDebug.onChange(index, s);
-			return builder.build(statusConsumer);
+			final Runnable statusConsumer = () -> criticalDependencyChangeDebug.onChange(index);
+			return builder.build(observatoryBuilder, statusConsumer);
 		}
 		else
 		{
-			return builder.build(criticalDependencyChange);
+			return builder.build(observatoryBuilder, onCriticalChange);
 		}
 	}
 
@@ -74,33 +74,10 @@ public final class DependencyManager
 		}
 	}
 
-	private void updatableDependencyChange(EAllocationStatus newStatus)
+	private void criticalDependencyChangeDebug(int index)
 	{
-		if (newStatus != EAllocationStatus.Allocated)
-		{
-			onDirty.run();
-		}
-	}
-
-	private void criticalDependencyChange(EAllocationStatus newStatus)
-	{
-		switch (newStatus)
-		{
-			case Dirty -> onDirty.run();
-			case Obsolete, Free -> onObsolete.run();
-		}
-	}
-
-	private void criticalDependencyChangeDebug(int index, EAllocationStatus newStatus)
-	{
-		switch (newStatus)
-		{
-			case Dirty -> onDirty.run();
-			case Obsolete, Free -> {
-				if (DebugUtil.DEBUG_ALLOCATION) logCriticalChange(index);
-				onObsolete.run();
-			}
-		}
+		logCriticalChange(index);
+		onCriticalChange.run();
 	}
 
 	private static void logCriticalChange(final int index)
@@ -111,56 +88,64 @@ public final class DependencyManager
 	public static final class Builder
 	{
 		private final List<DependencyResolver> resolvers;
-		private final ILilyEObject target;
 
-		public Builder(final List<DependencyResolver> resolvers, final ILilyEObject target)
+		public Builder(final List<DependencyResolver> resolvers)
 		{
 			this.resolvers = resolvers;
-			this.target = target;
 		}
 
-		public DependencyManager build(final IExtenderDescriptor.ExtenderContext<?> extenderContext,
+		public DependencyManager build(final ILilyEObject target,
+									   final IObservatoryBuilder observatoryBuilder,
+									   final IExtenderDescriptor.ExtenderContext<?> extenderContext,
 									   final Runnable onDirty,
 									   final Runnable onObsolete)
 		{
-			final var updatableDependencies = gatherUpdatableDependencies(extenderContext);
-			final var criticalDependencies = filterCriticalDependencies(updatableDependencies);
-			return new DependencyManager(updatableDependencies, criticalDependencies, onDirty, onObsolete);
+			final var updatableDependencies = gatherUpdatableDependencies(target, extenderContext);
+			final var criticalDependencies = filterCriticalDependencies(target, updatableDependencies);
+			return new DependencyManager(observatoryBuilder,
+										 updatableDependencies,
+										 criticalDependencies,
+										 onDirty,
+										 onObsolete);
 		}
 
-		private List<DependencyResolution.Builder> filterCriticalDependencies(final List<DependencyUpdater.Builder> updatableDependencies)
+		private List<DependencyWatcher.Builder> filterCriticalDependencies(final ILilyEObject target,
+																		   final List<DependencyUpdater.Builder> updatableDependencies)
 		{
 			return resolvers.stream()
 							.filter(resolver -> updatableDependencies.stream()
 																	 .map(DependencyUpdater.Builder::resolutionBuilder)
-																	 .map(DependencyResolution.Builder::resolver)
+																	 .map(DependencyWatcher.Builder::resolver)
 																	 .noneMatch(res -> res == resolver))
-							.map(this::newDependencyResolutionBuilder)
+							.map(r -> newDependencyResolutionBuilder(r, target))
 							.collect(Collectors.toUnmodifiableList());
 		}
 
-		private DependencyResolution.Builder newDependencyResolutionBuilder(DependencyResolver resolver)
+		private static DependencyWatcher.Builder newDependencyResolutionBuilder(final DependencyResolver resolver,
+																				final ILilyEObject target)
 		{
-			return new DependencyResolution.Builder(resolver, target);
+			return new DependencyWatcher.Builder(resolver, target);
 		}
 
 		@SuppressWarnings("unchecked")
-		private List<DependencyUpdater.Builder> gatherUpdatableDependencies(final IExtenderDescriptor.ExtenderContext<?> extenderContext)
+		private List<DependencyUpdater.Builder> gatherUpdatableDependencies(final ILilyEObject target,
+																			final IExtenderDescriptor.ExtenderContext<?> extenderContext)
 		{
 			final var updatableDependencies = extenderContext.annotationHandles()
 															 .stream()
 															 .filter(handle -> handle.annotationClass() == UpdateDependency.class)
 															 .map(handle -> (AnnotationHandles<UpdateDependency>) handle)
 															 .flatMap(handle -> handle.handles().stream())
-															 .map(this::newDependencyUpdater)
+															 .map(h -> newDependencyUpdater(target, h))
 															 .collect(Collectors.toUnmodifiableList());
 			return updatableDependencies;
 		}
 
-		private DependencyUpdater.Builder newDependencyUpdater(final IExtenderHandle.AnnotatedHandle<UpdateDependency> handle)
+		private DependencyUpdater.Builder newDependencyUpdater(final ILilyEObject target,
+															   final IExtenderHandle.AnnotatedHandle<UpdateDependency> handle)
 		{
 			final var resolver = resolvers.get(handle.annotation().index());
-			final var resolutionBuilder = new DependencyResolution.Builder(resolver, target);
+			final var resolutionBuilder = new DependencyWatcher.Builder(resolver, target);
 			return new DependencyUpdater.Builder(resolutionBuilder, handle);
 		}
 	}
@@ -168,6 +153,6 @@ public final class DependencyManager
 	@FunctionalInterface
 	interface CriticalChange
 	{
-		void onChange(int index, EAllocationStatus newStatus);
+		void onChange(int index);
 	}
 }

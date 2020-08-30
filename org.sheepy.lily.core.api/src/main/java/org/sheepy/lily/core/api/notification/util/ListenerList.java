@@ -1,22 +1,21 @@
 package org.sheepy.lily.core.api.notification.util;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Deque;
+import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.function.Consumer;
 
 public final class ListenerList<Type>
 {
-	private final List<Object> listeners = new ArrayList<>();
+	private final Deque<Object> listeners = new ConcurrentLinkedDeque<>();
 
 	@SuppressWarnings("unchecked")
 	public void notify(final Consumer<Type> listenerExecution)
 	{
-		for (int i = 0; i < listeners.size(); i++)
+		for (final var listener : listeners)
 		{
-			final var listener = listeners.get(i);
-			if (listener instanceof Runnable)
+			if (listener instanceof Runnable runnable)
 			{
-				((Runnable) listener).run();
+				runnable.run();
 			}
 			else
 			{

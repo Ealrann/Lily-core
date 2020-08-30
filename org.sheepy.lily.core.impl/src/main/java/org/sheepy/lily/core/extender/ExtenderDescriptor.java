@@ -16,6 +16,7 @@ import org.sheepy.lily.core.reflect.util.AnnotationHandlesBuilder;
 import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -42,6 +43,21 @@ public final class ExtenderDescriptor<Extender extends IExtender> implements IEx
 		this.targetName = targetName;
 		this.constructorHandle = constructorHandle;
 		this.executionHandleBuilders = executionHandles(extenderClass);
+	}
+
+	@Override
+	public boolean equals(final Object o)
+	{
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		final ExtenderDescriptor<?> that = (ExtenderDescriptor<?>) o;
+		return extenderClass.equals(that.extenderClass);
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return Objects.hash(extenderClass);
 	}
 
 	private static List<AnnotationHandlesBuilder<?>> executionHandles(final Class<?> extenderClass)

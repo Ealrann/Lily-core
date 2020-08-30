@@ -1,9 +1,7 @@
 package org.sheepy.lily.core.allocation.test;
 
 import org.junit.jupiter.api.Test;
-import org.sheepy.lily.core.allocation.test.adapters.AllocationObjectAllocation;
-import org.sheepy.lily.core.allocation.test.adapters.ContainerAllocation;
-import org.sheepy.lily.core.allocation.test.adapters.LeafAllocation;
+import org.sheepy.lily.core.allocation.test.adapters.*;
 import org.sheepy.lily.core.allocation.test.testallocation.TestallocationFactory;
 import org.sheepy.lily.core.api.allocation.IAllocationService;
 import org.sheepy.lily.core.api.model.LilyEObject;
@@ -15,6 +13,7 @@ public final class TestLock
 	@Test
 	public void testLockLeaf()
 	{
+		final var context = new TestContext(0);
 		final var root = TestallocationFactory.eINSTANCE.createRoot();
 		final var node = TestallocationFactory.eINSTANCE.createNode();
 		final var leaf = TestallocationFactory.eINSTANCE.createLeaf();
@@ -30,7 +29,7 @@ public final class TestLock
 		leaf.getBoxes().add(box1);
 
 		((LilyEObject) root).loadExtenderManager();
-		final var rootAllocation = IAllocationService.INSTANCE.allocate(root, null, AllocationObjectAllocation.class);
+		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, node.getCurrentAllocationCount());
@@ -44,8 +43,7 @@ public final class TestLock
 		leaf.getBoxes().clear();
 		leaf.getBoxes().add(box2);
 
-		rootAllocation.cleanup(null);
-		rootAllocation.update(null);
+		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, node.getCurrentAllocationCount());
 		assertEquals(2, leaf.getCurrentAllocationCount());
@@ -54,12 +52,10 @@ public final class TestLock
 		assertEquals(1, box2.getCurrentAllocationCount());
 
 		lock1.unlock();
-		rootAllocation.cleanup(null);
-		assert !rootAllocation.isDirty();
+		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
 
 		lock2.unlock();
-		rootAllocation.cleanup(null);
-		rootAllocation.update(null);
+		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, node.getCurrentAllocationCount());
@@ -72,6 +68,7 @@ public final class TestLock
 	@Test
 	public void testLockContainer()
 	{
+		final var context = new TestContext(0);
 		final var root = TestallocationFactory.eINSTANCE.createRoot();
 		final var node = TestallocationFactory.eINSTANCE.createNode();
 		final var leaf = TestallocationFactory.eINSTANCE.createLeaf();
@@ -86,7 +83,7 @@ public final class TestLock
 		leaf.getBoxes().add(box1);
 
 		((LilyEObject) root).loadExtenderManager();
-		final var rootAllocation = IAllocationService.INSTANCE.allocate(root, null, AllocationObjectAllocation.class);
+		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, node.getCurrentAllocationCount());
@@ -102,8 +99,7 @@ public final class TestLock
 		leaf.getBoxes().clear();
 		leaf.getBoxes().add(box2);
 
-		rootAllocation.cleanup(null);
-		rootAllocation.update(null);
+		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, node.getCurrentAllocationCount());
 		assertEquals(1, leaf.getCurrentAllocationCount());
@@ -112,12 +108,10 @@ public final class TestLock
 		assertEquals(1, box2.getCurrentAllocationCount());
 
 		lock1.unlock();
-		rootAllocation.cleanup(null);
-		assert !rootAllocation.isDirty();
+		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
 
 		lock2.unlock();
-		rootAllocation.cleanup(null);
-		rootAllocation.update(null);
+		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, node.getCurrentAllocationCount());
@@ -125,5 +119,66 @@ public final class TestLock
 		assertEquals(1, container.getCurrentAllocationCount());
 		assertEquals(0, box1.getCurrentAllocationCount());
 		assertEquals(1, box2.getCurrentAllocationCount());
+	}
+
+	@Test
+	public void testFreeReusableAllocations()
+	{
+		final var context = new TestContext(0);
+		final var root = TestallocationFactory.eINSTANCE.createRoot();
+		final var node = TestallocationFactory.eINSTANCE.createNode();
+
+		root.getNodes().add(node);
+
+		((LilyEObject) root).loadExtenderManager();
+		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+
+		assertEquals(1, root.getCurrentAllocationCount());
+		assertEquals(1, node.getCurrentAllocationCount());
+		assertEquals(1, root.getTotalAllocationCount());
+		assertEquals(1, node.getTotalAllocationCount());
+
+		final var lock1 = node.adapt(NodeAllocation.class).newLock();
+		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+
+		assertEquals(1, root.getCurrentAllocationCount());
+		assertEquals(1, node.getCurrentAllocationCount());
+		assertEquals(1, root.getTotalAllocationCount());
+		assertEquals(1, node.getTotalAllocationCount());
+
+		node.adapt(NodeAllocation.class).requestUpdate();
+		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+
+		assertEquals(1, root.getCurrentAllocationCount());
+		assertEquals(2, node.getCurrentAllocationCount());
+		assertEquals(1, root.getTotalAllocationCount());
+		assertEquals(2, node.getTotalAllocationCount());
+
+		final var lock2 = node.adapt(NodeAllocation.class).newLock();
+		node.adapt(NodeAllocation.class).requestUpdate();
+		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+
+		assertEquals(1, root.getCurrentAllocationCount());
+		assertEquals(3, node.getCurrentAllocationCount());
+		assertEquals(1, root.getTotalAllocationCount());
+		assertEquals(3, node.getTotalAllocationCount());
+
+		lock1.unlock();
+		final var lock3 = node.adapt(NodeAllocation.class).newLock();
+		node.adapt(NodeAllocation.class).requestUpdate();
+		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+
+		assertEquals(1, root.getCurrentAllocationCount());
+		assertEquals(3, node.getCurrentAllocationCount());
+		assertEquals(1, root.getTotalAllocationCount());
+		assertEquals(3, node.getTotalAllocationCount());
+
+
+		lock2.unlock();
+		lock3.unlock();
+		IAllocationService.INSTANCE.free(root, context, AllocationObjectAllocation.class);
+
+		assertEquals(0, root.getCurrentAllocationCount());
+		assertEquals(0, node.getCurrentAllocationCount());
 	}
 }

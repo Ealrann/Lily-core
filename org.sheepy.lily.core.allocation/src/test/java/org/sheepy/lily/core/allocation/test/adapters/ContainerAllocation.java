@@ -9,12 +9,17 @@ import org.sheepy.lily.core.api.allocation.annotation.AllocationChild;
 import org.sheepy.lily.core.api.extender.ModelExtender;
 
 @ModelExtender(scope = Container.class)
-@Allocation
-@AllocationChild(allocateBeforeParent = true, reportStateToParent = true, features = TestallocationPackage.CONTAINER__BOXES)
+@Allocation(context = TestContext.class)
+@AllocationChild(allocateBeforeParent = true, features = TestallocationPackage.CONTAINER__BOXES)
 public class ContainerAllocation extends AllocationObjectAllocation
 {
-	protected ContainerAllocation(final AllocationObject object, final IAllocationState allocationState)
+	protected ContainerAllocation(final AllocationObject object,
+								  final TestContext context,
+								  final IAllocationState allocationState)
 	{
 		super(object, allocationState);
+
+		assert context.level == 0;
+		assert context.isPrepared();
 	}
 }

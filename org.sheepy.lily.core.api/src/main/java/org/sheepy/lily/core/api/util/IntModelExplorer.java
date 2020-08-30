@@ -11,17 +11,17 @@ import java.util.stream.Stream;
 
 public final class IntModelExplorer implements IModelExplorer
 {
-	private final int parentHeight;
+	private final Class<? extends ILilyEObject> parentClass;
 	private final int[] references;
 
 	public IntModelExplorer(int[] references)
 	{
-		this(0, references);
+		this(ILilyEObject.class, references);
 	}
 
-	public IntModelExplorer(int parentHeight, int[] references)
+	public IntModelExplorer(Class<? extends ILilyEObject> parentClass, int[] references)
 	{
-		this.parentHeight = parentHeight;
+		this.parentClass = parentClass;
 		this.references = Arrays.copyOf(references, references.length);
 	}
 
@@ -93,7 +93,7 @@ public final class IntModelExplorer implements IModelExplorer
 
 	private ILilyEObject parent(ILilyEObject source)
 	{
-		for (int i = 0; i < parentHeight; i++)
+		while (parentClass.isInstance(source) == false)
 		{
 			source = (ILilyEObject) source.eContainer();
 		}

@@ -2,64 +2,57 @@ package org.sheepy.lily.core.allocation;
 
 import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
-import org.sheepy.lily.core.allocation.instance.AllocationInstanceBuilder;
-import org.sheepy.lily.core.api.allocation.IAllocationContext;
+import org.sheepy.lily.core.allocation.operation.FreeOperation;
+import org.sheepy.lily.core.allocation.operation.IOperationNode;
+import org.sheepy.lily.core.allocation.operation.InstanceBuildOperation;
+import org.sheepy.lily.core.allocation.operation.UpdateOperation;
 import org.sheepy.lily.core.api.allocation.IAllocationHandle;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.notification.observatory.IObservatory;
-import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.util.ListenerList;
 
 import java.lang.annotation.Annotation;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 public final class AllocationHandle<Allocation extends IExtender> implements IAllocationHandle<Allocation>
 {
+	private final ILilyEObject target;
 	private final AllocationDescriptor<Allocation> descriptor;
 	private final ListenerList<ExtenderListener<Allocation>> listeners = new ListenerList<>();
-	private final IObservatory observatory;
-	private final AllocationInstanceBuilder<Allocation> instanceBuilder;
 
 	private AllocationInstance<Allocation> mainAllocation = null;
 
 	public AllocationHandle(ILilyEObject target, AllocationDescriptor<Allocation> descriptor)
 	{
-		final var observatoryBuilder = IObservatoryBuilder.newObservatoryBuilder();
-		final var resolvers = descriptor.createResolvers(observatoryBuilder, target);
-
+		this.target = target;
 		this.descriptor = descriptor;
-		instanceBuilder = new AllocationInstanceBuilder<>(descriptor, target, resolvers);
-		this.observatory = observatoryBuilder.build();
 	}
 
 	@Override
 	public void load(final ILilyEObject target)
 	{
-		observatory.observe(target);
 	}
 
 	@Override
 	public void dispose(final ILilyEObject target)
 	{
-		observatory.shut(target);
 	}
 
-	public AllocationInstance<Allocation> allocateNew(final IAllocationContext context, Runnable whenUpdateNeeded)
+	public InstanceBuildOperation<Allocation> newNodeBuilder()
 	{
-		try
-		{
-			final var previousAllocation = getAllocationOrNull(mainAllocation);
-			mainAllocation = instanceBuilder.build(context, whenUpdateNeeded);
-			mainAllocation.load(context);
-			final var newAllocation = getAllocationOrNull(mainAllocation);
-			onAllocationChange(previousAllocation, newAllocation);
-			return mainAllocation;
-		}
-		catch (Exception e)
-		{
-			throw new AssertionError("Cannot build " + descriptor.extenderClass().getSimpleName(), e);
-		}
+		return new InstanceBuildOperation<>(descriptor.prepareBuild(target, () -> {}), this::setMainAllocation);
+	}
+
+	public InstanceBuildOperation<Allocation> newNodeBuilder(Runnable whenUpdateNeeded,
+															 Consumer<AllocationInstance<Allocation>> postBuild)
+	{
+		final Consumer<AllocationInstance<Allocation>> afterBuild = newAllocation -> {
+			setMainAllocation(newAllocation);
+			postBuild.accept(newAllocation);
+		};
+
+		return new InstanceBuildOperation<>(descriptor.prepareBuild(target, whenUpdateNeeded), afterBuild);
 	}
 
 	public void setMainAllocation(final AllocationInstance<Allocation> allocation)
@@ -68,6 +61,16 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 		final var newAllocation = getAllocationOrNull(allocation);
 		this.mainAllocation = allocation;
 		onAllocationChange(previousAllocation, newAllocation);
+	}
+
+	public IOperationNode prepareUpdate(final AllocationInstance<Allocation> allocation)
+	{
+		return new UpdateOperation(target, allocation);
+	}
+
+	public IOperationNode prepareFree(final AllocationInstance<Allocation> allocation)
+	{
+		return new FreeOperation(target, allocation);
 	}
 
 	@Override
@@ -130,5 +133,10 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	private static <T extends IExtender> T getAllocationOrNull(AllocationInstance<T> instance)
 	{
 		return instance != null ? instance.getAllocation() : null;
+	}
+
+	public ILilyEObject getTarget()
+	{
+		return target;
 	}
 }

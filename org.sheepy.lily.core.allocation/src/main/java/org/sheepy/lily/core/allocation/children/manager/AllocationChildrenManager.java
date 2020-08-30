@@ -1,79 +1,44 @@
 package org.sheepy.lily.core.allocation.children.manager;
 
 import org.sheepy.lily.core.allocation.children.instance.ChildrenSupervisor;
-import org.sheepy.lily.core.allocation.instance.FreeContext;
+import org.sheepy.lily.core.allocation.operation.IOperationNode;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.model.ILilyEObject;
+import org.sheepy.lily.core.api.util.StreamUtil;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public final class AllocationChildrenManager implements IAllocationChildrenManager
+public final class AllocationChildrenManager
 {
 	private final List<ChildrenSupervisor> childrenSupervisors;
-	private final Configuration encapsulatedConfig;
-	private final Runnable whenBranchDirty;
+	private final Optional<IAllocationContext> providedContext;
 
-	private boolean dirty = true;
-
-	AllocationChildrenManager(final List<ChildrenSupervisor.Builder> childEntryManagerBuilders,
-							  final Configuration config)
+	AllocationChildrenManager(final List<ChildrenSupervisor> childrenSupervisors,
+							  final Optional<IAllocationContext> providedContext)
 	{
-		whenBranchDirty = config.whenBranchDirty();
-		encapsulatedConfig = new Configuration(this::setDirty,
-											   config.whenDirty(),
-											   config.whenObsolete(),
-											   config.observatoryBuilder());
-
-		childrenSupervisors = childEntryManagerBuilders.stream()
-													   .map(this::buildChildEntryManager)
-													   .collect(Collectors.toUnmodifiableList());
+		this.childrenSupervisors = List.copyOf(childrenSupervisors);
+		this.providedContext = providedContext;
 	}
 
-	private ChildrenSupervisor buildChildEntryManager(ChildrenSupervisor.Builder builder)
+	public Stream<IOperationNode> prepareTriage(final boolean forceTriage)
 	{
-		return builder.build(encapsulatedConfig);
+		return childrenSupervisors.stream().flatMap(a -> a.prepareTriage(forceTriage));
 	}
 
-	@Override
-	public void markChildrenObsolete()
+	public Stream<IOperationNode> prepareUpdate(ILilyEObject source)
 	{
-		for (final var child : childrenSupervisors)
-		{
-			child.markChildrenObsolete();
-		}
+		return childrenSupervisors.stream().flatMap(s -> s.prepareUpdate(source));
 	}
 
-	@Override
-	public void update(ILilyEObject source, final IAllocationContext context)
+	public Stream<IOperationNode> prepareCleanup(final boolean free)
 	{
-		for (final var childManager : childrenSupervisors)
-		{
-			childManager.update(source, context);
-		}
-		dirty = false;
+		return StreamUtil.reverseStream(childrenSupervisors).flatMap(s -> s.prepareCleanup(free));
 	}
 
-	@Override
-	public void cleanup(final FreeContext context)
+	public Optional<IAllocationContext> getProvidedContext()
 	{
-		final int size = childrenSupervisors.size();
-		for (int i = size - 1; i >= 0; i--)
-		{
-			final var childManager = childrenSupervisors.get(i);
-			childManager.cleanup(context);
-		}
-	}
-
-	private void setDirty()
-	{
-		whenBranchDirty.run();
-		dirty = true;
-	}
-
-	@Override
-	public boolean isDirty()
-	{
-		return dirty;
+		return providedContext;
 	}
 }

@@ -12,7 +12,6 @@ public @interface AllocationChild
 	int[] features();
 	Class<? extends ILilyEObject> parent() default ILilyEObject.class;
 	boolean allocateBeforeParent() default false;
-	boolean reportStateToParent() default false;
 
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target({ElementType.TYPE})

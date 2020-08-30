@@ -7,11 +7,16 @@ import org.sheepy.lily.core.api.allocation.annotation.Allocation;
 import org.sheepy.lily.core.api.extender.ModelExtender;
 
 @ModelExtender(scope = Box.class)
-@Allocation
+@Allocation(context = TestContext.class)
 public class BoxAllocation extends AllocationObjectAllocation
 {
-	protected BoxAllocation(final AllocationObject object, final IAllocationState allocationState)
+	protected BoxAllocation(final AllocationObject object,
+							final TestContext context,
+							final IAllocationState allocationState)
 	{
 		super(object, allocationState);
+
+		assert context.level == 0;
+		assert context.isPrepared();
 	}
 }

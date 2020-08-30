@@ -13,9 +13,7 @@ import org.sheepy.lily.core.api.notification.observatory.internal.InternalObserv
 import org.sheepy.lily.core.api.notification.observatory.internal.allocation.AdapterObservatory;
 import org.sheepy.lily.core.api.notification.observatory.internal.eobject.listener.GatherBulkListener;
 import org.sheepy.lily.core.api.notification.observatory.internal.eobject.listener.GatherListener;
-import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.EObjectNoParamPOI;
-import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.EObjectPOI;
-import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.IEObjectPOI;
+import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.*;
 import org.sheepy.lily.core.api.notification.observatory.internal.notifier.NotifierAdapterObservatory;
 
 import java.util.ArrayList;
@@ -177,6 +175,20 @@ public abstract class AbstractEObjectObservatory<T extends ILilyEObject> impleme
 		public IEObjectObservatoryBuilder<T> listenNoParam(final Runnable listener, final int... features)
 		{
 			pois.add(new EObjectNoParamPOI(listener, features));
+			return this;
+		}
+
+		@Override
+		public IEObjectObservatoryBuilder<T> listenStructure(final Consumer<Notification> structureChanged															 )
+		{
+			pois.add(new EObjectStructurePOI(structureChanged));
+			return this;
+		}
+
+		@Override
+		public IEObjectObservatoryBuilder<T> listenStructureNoParam(final Runnable structureChanged)
+		{
+			pois.add(new EObjectStructureNoParamPOI(structureChanged));
 			return this;
 		}
 

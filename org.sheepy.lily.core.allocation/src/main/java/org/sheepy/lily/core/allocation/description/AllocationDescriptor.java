@@ -1,6 +1,11 @@
 package org.sheepy.lily.core.allocation.description;
 
+import org.sheepy.lily.core.allocation.children.manager.AllocationChildrenBuilder;
+import org.sheepy.lily.core.allocation.dependency.DependencyManager;
 import org.sheepy.lily.core.allocation.dependency.DependencyResolver;
+import org.sheepy.lily.core.allocation.instance.AllocationInstanceBuilder;
+import org.sheepy.lily.core.allocation.instance.AllocationState;
+import org.sheepy.lily.core.allocation.parameter.AllocationParametersBuilder;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationChild;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationDependency;
 import org.sheepy.lily.core.api.allocation.annotation.ProvideContext;
@@ -11,24 +16,52 @@ import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
 
-public record AllocationDescriptor<Allocation extends IExtender>(IExtenderDescriptor<Allocation>extenderDescriptor,
-																 List<DependencyResolver.Builder>dependencyResolverBuilders,
-																 List<AllocationChild>childAnnotations,
+public record AllocationDescriptor<Allocation extends IExtender>(IExtenderDescriptor<Allocation> extenderDescriptor,
+																 DependencyManager.Builder dependencyManagerBuilder,
+																 AllocationChildrenBuilder allocationChildrenBuilder,
+																 AllocationParametersBuilder allocationParametersBuilder,
 																 boolean provideContext,
 																 boolean reuseDirtyAllocations)
 {
-	public List<DependencyResolver> createResolvers(IObservatoryBuilder observatory, ILilyEObject source)
-	{
-		return dependencyResolverBuilders.stream()
-										 .map(builder -> builder.build(observatory, source))
-										 .collect(Collectors.toUnmodifiableList());
-	}
-
 	public Class<Allocation> extenderClass()
 	{
 		return extenderDescriptor.extenderClass();
+	}
+
+	public AllocationInstanceBuilder<Allocation> prepareBuild(final ILilyEObject target,
+															  final Runnable whenUpdateNeeded)
+	{
+		final var observatoryBuilder = IObservatoryBuilder.newObservatoryBuilder();
+		final var state = new AllocationState(whenUpdateNeeded);
+
+		final var preChildrenManager = allocationChildrenBuilder.buildPreAllocation(state::markBranchDirty,
+																					target,
+																					observatoryBuilder);
+		final var preObservatory = observatoryBuilder.isEmpty() == false ? observatoryBuilder.build() : null;
+		if (preObservatory != null) preObservatory.observe(target);
+
+		return new AllocationInstanceBuilder<>(target,
+											   preChildrenManager,
+											   this,
+											   preObservatory,
+											   state);
+	}
+
+	@Override
+	public boolean equals(final Object o)
+	{
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		final AllocationDescriptor<?> that = (AllocationDescriptor<?>) o;
+		return extenderDescriptor.equals(that.extenderDescriptor);
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return Objects.hash(extenderDescriptor);
 	}
 
 	@Override
@@ -48,7 +81,7 @@ public record AllocationDescriptor<Allocation extends IExtender>(IExtenderDescri
 
 		public AllocationDescriptor<Allocation> build()
 		{
-			final var builders = List.copyOf(createResolverBuilders());
+			final var dependencyResolvers = List.copyOf(createResolverBuilders());
 			final var childAnnotations = List.of(extenderDescriptor.extenderClass()
 																   .getAnnotationsByType(AllocationChild.class));
 			final var provideContext = extenderDescriptor.streamMethodAnnotations(ProvideContext.class)
@@ -58,22 +91,27 @@ public record AllocationDescriptor<Allocation extends IExtender>(IExtenderDescri
 													 .getAnnotation(org.sheepy.lily.core.api.allocation.annotation.Allocation.class);
 			final var reuseDirtyAllocations = annotation.reuseDirtyAllocations();
 
+			final var childrenManagerBuilder = new AllocationChildrenBuilder(childAnnotations);
+			final var allocationParametersBuilder = new AllocationParametersBuilder(dependencyResolvers);
+			final var dependencyManagerBuilder = new DependencyManager.Builder(dependencyResolvers);
+
 			return new AllocationDescriptor<>(extenderDescriptor,
-											  builders,
-											  childAnnotations,
+											  dependencyManagerBuilder,
+											  childrenManagerBuilder,
+											  allocationParametersBuilder,
 											  provideContext,
 											  reuseDirtyAllocations);
 		}
 
-		private List<DependencyResolver.Builder> createResolverBuilders()
+		private List<DependencyResolver> createResolverBuilders()
 		{
 			final var allocationClass = extenderDescriptor.extenderClass();
 			final var dependencyAnnotations = allocationClass.getAnnotationsByType(AllocationDependency.class);
-			final List<DependencyResolver.Builder> resolvers = new ArrayList<>(dependencyAnnotations.length);
+			final List<DependencyResolver> resolvers = new ArrayList<>(dependencyAnnotations.length);
 			for (int i = 0; i < dependencyAnnotations.length; i++)
 			{
 				final var dependencyAnnotation = dependencyAnnotations[i];
-				resolvers.add(new DependencyResolver.Builder(dependencyAnnotation, i));
+				resolvers.add(new DependencyResolver(dependencyAnnotation, i));
 			}
 			return resolvers;
 		}

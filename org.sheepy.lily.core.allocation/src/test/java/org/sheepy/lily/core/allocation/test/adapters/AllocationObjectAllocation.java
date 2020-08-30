@@ -8,7 +8,7 @@ import org.sheepy.lily.core.api.extender.IExtender;
 public class AllocationObjectAllocation implements IExtender
 {
 	protected final AllocationObject object;
-	private final IAllocationState allocationState;
+	protected final IAllocationState allocationState;
 
 	protected AllocationObjectAllocation(AllocationObject object, IAllocationState allocationState)
 	{
@@ -16,6 +16,11 @@ public class AllocationObjectAllocation implements IExtender
 		this.allocationState = allocationState;
 		object.setTotalAllocationCount(object.getTotalAllocationCount() + 1);
 		object.setCurrentAllocationCount(object.getCurrentAllocationCount() + 1);
+	}
+
+	public void requestUpdate()
+	{
+		allocationState.requestUpdate();
 	}
 
 	@Free
