@@ -40,7 +40,8 @@ public final class ChildrenSupervisor
 
 	public Stream<IOperationNode> prepareCleanup(final boolean free)
 	{
-		return StreamUtil.reverseStream(childrenAllocators).flatMap(e -> e.prepareCleanup(free));
+		return StreamUtil.reverseStream(childrenAllocators)
+						 .flatMap(free ? ChildDescriptorAllocator::prepareFree : ChildDescriptorAllocator::prepareCleanup);
 	}
 
 	public Stream<IOperationNode> prepareUpdate(final ILilyEObject source)

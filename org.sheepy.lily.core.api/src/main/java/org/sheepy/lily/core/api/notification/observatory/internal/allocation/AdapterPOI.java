@@ -3,7 +3,7 @@ package org.sheepy.lily.core.api.notification.observatory.internal.allocation;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 
-public class AdapterPOI<T extends IExtender> implements IAdapterPOI<T>
+public final class AdapterPOI<T extends IExtender> implements IAdapterPOI<T>
 {
 	private final IExtenderHandle.ExtenderListener<T> onNewExtender;
 

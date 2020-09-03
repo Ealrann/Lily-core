@@ -16,6 +16,11 @@ public interface IExtenderDescriptor<T extends IExtender> extends IExtenderDescr
 								   IObservatoryBuilder observatory,
 								   List<? extends IParameterResolver> resolvers) throws ReflectiveOperationException;
 
+	default IExtenderHandle<T> adapHandle(final ILilyEObject object)
+	{
+		return object.extenders().adaptHandleFromDescriptor(this);
+	}
+
 	final class ExtenderContext<T extends IExtender>
 	{
 		private final T extender;

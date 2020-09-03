@@ -1,6 +1,5 @@
 package org.sheepy.lily.core.allocation.children.instance;
 
-import org.sheepy.lily.core.allocation.AllocationHandle;
 import org.sheepy.lily.core.allocation.children.manager.ChildrenInjector;
 import org.sheepy.lily.core.allocation.children.util.HandleChildrenList;
 import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
@@ -38,13 +37,7 @@ public final class ChildDescriptorAllocator
 
 	public void reload(final List<ILilyEObject> children)
 	{
-		final var extenderDescriptor = descriptor.extenderDescriptor();
-		final var handleStream = children.stream()
-										 .filter(extenderDescriptor::isApplicable)
-										 .map(ILilyEObject::extenders)
-										 .map(e -> e.adaptHandleFromDescriptor(extenderDescriptor))
-										 .map(h -> (AllocationHandle<?>) h);
-
+		final var handleStream = descriptor.adaptHandles(children.stream());
 		handleChildren.reload(handleStream);
 	}
 
@@ -53,9 +46,14 @@ public final class ChildDescriptorAllocator
 		return handleChildren.prepareTriage(forceTriage);
 	}
 
-	public Stream<IOperationNode> prepareCleanup(final boolean free)
+	public Stream<IOperationNode> prepareCleanup()
 	{
-		return handleChildren.prepareCleanup(free);
+		return handleChildren.prepareCleanup(false);
+	}
+
+	public Stream<IOperationNode> prepareFree()
+	{
+		return handleChildren.prepareCleanup(true);
 	}
 
 	public Stream<IOperationNode> prepareUpdate()
@@ -68,8 +66,7 @@ public final class ChildDescriptorAllocator
 
 	private Stream<IOperationNode> prepareInjection()
 	{
-		final var childrenCollector = new ChildrenCollector();
-		return injectors.stream().map(injector -> injector.prepareInjection(childrenCollector));
+		return new ChildrenCollector().prepareInjection();
 	}
 
 	public AllocationDescriptor<?> descriptor()
@@ -87,6 +84,16 @@ public final class ChildDescriptorAllocator
 		{
 			if (collected == false) collect();
 			return collection;
+		}
+
+		public Stream<IOperationNode> prepareInjection()
+		{
+			return injectors.stream().map(this::inject);
+		}
+
+		private IOperationNode inject(ChildrenInjector injector)
+		{
+			return c -> injector.inject(get());
 		}
 
 		private void collect()

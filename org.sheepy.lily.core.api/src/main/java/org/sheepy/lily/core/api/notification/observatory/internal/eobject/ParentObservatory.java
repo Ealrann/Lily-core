@@ -9,19 +9,19 @@ import org.sheepy.lily.core.api.notification.observatory.internal.eobject.listen
 import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.IEObjectPOI;
 import org.sheepy.lily.core.api.notification.util.ParentObserver;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class ParentObservatory<T extends ILilyEObject> extends AbstractEObjectObservatory<T> implements
 																								   IObservatory
 {
 	private final ParentObserver parentObserver = new ParentObserver(this::parentChange);
 
-	private ParentObservatory(Class<T> cast,
-							  List<IObservatory> children,
-							  List<IEObjectPOI> pois,
-							  List<GatherListener<T>> gatherListeners,
-							  List<GatherBulkListener<T>> gatherBulkListeners)
+	private ParentObservatory(final Class<T> cast,
+							  final List<IObservatory> children,
+							  final List<IEObjectPOI> pois,
+							  final List<GatherListener<T>> gatherListeners,
+							  final List<GatherBulkListener<T>> gatherBulkListeners)
 	{
 		super(cast, children, pois, gatherListeners, gatherBulkListeners);
 	}
@@ -60,11 +60,10 @@ public final class ParentObservatory<T extends ILilyEObject> extends AbstractEOb
 		@Override
 		public ParentObservatory<T> build()
 		{
-			final List<IObservatory> builtChildren = new ArrayList<>();
-			for (var child : children)
-			{
-				builtChildren.add(child.build());
-			}
+			final var builtChildren = children.stream()
+											  .map(InternalObservatoryBuilder::build)
+											  .collect(Collectors.toUnmodifiableList());
+
 			return new ParentObservatory<>(cast, builtChildren, pois, gatherListeners, gatherBulkListeners);
 		}
 	}

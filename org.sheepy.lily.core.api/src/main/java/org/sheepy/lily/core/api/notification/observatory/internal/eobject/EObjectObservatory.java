@@ -10,20 +10,20 @@ import org.sheepy.lily.core.api.notification.observatory.internal.eobject.listen
 import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.IEObjectPOI;
 import org.sheepy.lily.core.api.notification.util.ModelStructureBulkObserver;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class EObjectObservatory<T extends ILilyEObject> extends AbstractEObjectObservatory<T>
 {
 	private final ModelStructureBulkObserver structureObserver;
 	private final int referenceId;
 
-	public EObjectObservatory(int referenceId,
-							  Class<T> cast,
-							  List<IObservatory> children,
-							  List<IEObjectPOI> pois,
-							  List<GatherListener<T>> gatherListeners,
-							  List<GatherBulkListener<T>> gatherBulkListeners)
+	public EObjectObservatory(final int referenceId,
+							  final Class<T> cast,
+							  final List<IObservatory> children,
+							  final List<IEObjectPOI> pois,
+							  final List<GatherListener<T>> gatherListeners,
+							  final List<GatherBulkListener<T>> gatherBulkListeners)
 	{
 		super(cast, children, pois, gatherListeners, gatherBulkListeners);
 		structureObserver = new ModelStructureBulkObserver(referenceId, this::startObserve, this::stopObserve);
@@ -84,11 +84,10 @@ public final class EObjectObservatory<T extends ILilyEObject> extends AbstractEO
 		@Override
 		public IObservatory build()
 		{
-			final List<IObservatory> builtChildren = new ArrayList<>();
-			for (var child : children)
-			{
-				builtChildren.add(child.build());
-			}
+			final var builtChildren = children.stream()
+											  .map(InternalObservatoryBuilder::build)
+											  .collect(Collectors.toUnmodifiableList());
+
 			return new EObjectObservatory<>(referenceId,
 											cast,
 											builtChildren,

@@ -15,6 +15,7 @@ import java.util.stream.Stream;
 public final class Operator
 {
 	private final OperationBuilder operationBuilder;
+	private final Deque<AllocationLayer> course = new ArrayDeque<>();
 
 	public Operator(final OperationContext context, final boolean reverse)
 	{
@@ -23,7 +24,7 @@ public final class Operator
 
 	public void operate(final Function<AllocationHandle<?>, Optional<IOperationNode>> nodeBuilder)
 	{
-		final Deque<AllocationLayer> course = new ArrayDeque<>();
+		course.clear();
 		operationBuilder.rootLayers(nodeBuilder).forEach(course::add);
 
 		while (course.isEmpty() == false)
@@ -41,9 +42,9 @@ public final class Operator
 				final var node = operation.node();
 				switch (operation.phase())
 				{
-					case PreChildren -> course.add(buildLayer(node.preChildren(), context, false));
+					case PreChildren -> buildLayer(node.preChildren(), context, false);
 					case Main -> node.operate(context);
-					case PostChildren -> course.add(buildLayer(node.postChildren(), context, node.providedContext()));
+					case PostChildren -> buildLayer(node.postChildren(), context, node.providedContext());
 				}
 
 				if (operation.hasNextPhase()) operation.nextPhase();
@@ -52,20 +53,25 @@ public final class Operator
 		}
 	}
 
-	private AllocationLayer buildLayer(final Stream<IOperationNode> children,
-									   final IAllocationContext parentContext,
-									   final Optional<IAllocationContext> providedContext)
+	private void buildLayer(final Stream<IOperationNode> children,
+							final IAllocationContext parentContext,
+							final Optional<IAllocationContext> providedContext)
 	{
 		final var prepareContext = providedContext.isPresent();
 		final var childContext = providedContext.orElse(parentContext);
-		return buildLayer(children, childContext, prepareContext);
+		buildLayer(children, childContext, prepareContext);
 	}
 
-	private AllocationLayer buildLayer(final Stream<IOperationNode> children,
-									   final IAllocationContext context,
-									   final boolean prepareContext)
+	private void buildLayer(final Stream<IOperationNode> children,
+							final IAllocationContext context,
+							final boolean prepareContext)
 	{
 		final var operationStream = children.map(operationBuilder::newWrapper);
-		return new AllocationLayer(operationStream, context, prepareContext);
+		final var iterator = operationStream.iterator();
+		if (iterator.hasNext())
+		{
+			final var layer = new AllocationLayer(iterator, context, prepareContext);
+			course.add(layer);
+		}
 	}
 }

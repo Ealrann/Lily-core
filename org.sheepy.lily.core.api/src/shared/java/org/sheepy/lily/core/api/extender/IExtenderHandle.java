@@ -21,6 +21,11 @@ public interface IExtenderHandle<T extends IExtender>
 	void sulk(ExtenderListener<T> extenderUpdateListener);
 	void sulkNoParam(Runnable extenderUpdateListener);
 
+	default boolean match(Class<? extends IExtender> classifier)
+	{
+		return classifier.isAssignableFrom(getExtenderClass());
+	}
+
 	final class AnnotatedHandle<T extends Annotation>
 	{
 		private final T annotation;

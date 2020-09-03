@@ -30,7 +30,7 @@ public final class OperationBuilder
 												   .flatMap(Optional::stream)
 												   .map(this::newWrapper)
 												   .map(Stream::of)
-												   .map(stream -> new AllocationLayer(stream,
+												   .map(stream -> new AllocationLayer(stream.iterator(),
 																					  context.rootContext(),
 																					  true));
 	}

@@ -6,6 +6,7 @@ import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.extender.IExtenderHandleBuilder;
 import org.sheepy.lily.core.api.model.ILilyEObject;
+import org.sheepy.lily.core.api.notification.observatory.IObservatory;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 
 import java.util.List;
@@ -48,7 +49,7 @@ public final class AdapterHandleBuilder<T extends IExtender> implements IExtende
 	}
 
 	private IExtenderHandle<T> buildNewHandle(final IExtenderDescriptor.ExtenderContext<T> extenderContext,
-											  final org.sheepy.lily.core.api.notification.observatory.IObservatory observatory)
+											  final IObservatory observatory)
 	{
 		if (observatory != null || extenderContext.annotationHandles().isEmpty() == false)
 		{

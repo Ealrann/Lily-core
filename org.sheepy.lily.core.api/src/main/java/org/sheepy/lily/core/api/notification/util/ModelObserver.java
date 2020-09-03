@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class ModelObserver
+public final class ModelObserver
 {
 	private final int[] features;
 	private final HierarchyNotificationListener rootListener;

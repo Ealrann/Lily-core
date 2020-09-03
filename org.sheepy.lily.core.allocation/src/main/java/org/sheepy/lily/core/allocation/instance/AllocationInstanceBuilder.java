@@ -1,5 +1,6 @@
 package org.sheepy.lily.core.allocation.instance;
 
+import org.sheepy.lily.core.allocation.children.manager.AllocationChildrenBuilder;
 import org.sheepy.lily.core.allocation.children.manager.AllocationChildrenManager;
 import org.sheepy.lily.core.allocation.dependency.DependencyManager;
 import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
@@ -46,12 +47,11 @@ public final class AllocationInstanceBuilder<Allocation extends IExtender>
 		final var parameterResolvers = descriptor.allocationParametersBuilder().build(state, context);
 		final var extenderContext = extenderDescriptor.newExtender(target, observatoryBuilder, parameterResolvers);
 		final var providedContext = provideContext ? contextProvider(extenderContext) : Optional.<IAllocationContext>empty();
+		final var buildContext = new AllocationChildrenBuilder.BuildContext(state::markBranchDirty,
+																			target,
+																			observatoryBuilder);
 		postChildrenManager = descriptor.allocationChildrenBuilder()
-										.buildPostAllocation(state::markBranchDirty,
-															 target,
-															 observatoryBuilder,
-															 providedContext,
-															 extenderContext);
+										.buildPostAllocation(buildContext, providedContext, extenderContext);
 		final var dependencyManager = buildDependencyManager(observatoryBuilder, extenderContext);
 		final var observatory = observatoryBuilder.isEmpty() == false ? observatoryBuilder.build() : null;
 

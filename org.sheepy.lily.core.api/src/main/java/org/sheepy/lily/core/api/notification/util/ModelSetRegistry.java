@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ModelSetRegistry<T extends ILilyEObject>
+public final class ModelSetRegistry<T extends ILilyEObject>
 {
 	private final Class<T> classCast;
 	private final List<T> list = new ArrayList<>();

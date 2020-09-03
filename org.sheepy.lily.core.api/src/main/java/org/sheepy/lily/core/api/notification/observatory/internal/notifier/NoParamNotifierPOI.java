@@ -9,7 +9,7 @@ public final class NoParamNotifierPOI<Type extends IFeatures<Type>> implements I
 	private final Runnable listener;
 	private final Feature<?, Type> feature;
 
-	public NoParamNotifierPOI(Runnable listener, Feature<?, Type> feature)
+	public NoParamNotifierPOI(final Runnable listener, Feature<?, Type> feature)
 	{
 		this.listener = listener;
 		this.feature = feature;

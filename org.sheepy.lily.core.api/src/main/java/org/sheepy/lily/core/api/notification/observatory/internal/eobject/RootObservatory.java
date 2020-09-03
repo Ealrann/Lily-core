@@ -2,19 +2,20 @@ package org.sheepy.lily.core.api.notification.observatory.internal.eobject;
 
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
+import org.sheepy.lily.core.api.notification.observatory.internal.InternalObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.internal.eobject.listener.GatherBulkListener;
 import org.sheepy.lily.core.api.notification.observatory.internal.eobject.listener.GatherListener;
 import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.IEObjectPOI;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class RootObservatory extends AbstractRootObservatory
 {
-	private RootObservatory(List<IObservatory> children,
-							List<IEObjectPOI> pois,
-							List<GatherListener<ILilyEObject>> gatherListeners,
-							List<GatherBulkListener<ILilyEObject>> gatherBulkListeners)
+	private RootObservatory(final List<IObservatory> children,
+							final List<IEObjectPOI> pois,
+							final List<GatherListener<ILilyEObject>> gatherListeners,
+							final List<GatherBulkListener<ILilyEObject>> gatherBulkListeners)
 	{
 		super(children, pois, gatherListeners, gatherBulkListeners);
 	}
@@ -36,11 +37,10 @@ public final class RootObservatory extends AbstractRootObservatory
 		@Override
 		public IObservatory build()
 		{
-			final List<IObservatory> builtChildren = new ArrayList<>();
-			for (var child : children)
-			{
-				builtChildren.add(child.build());
-			}
+			final var builtChildren = children.stream()
+											  .map(InternalObservatoryBuilder::build)
+											  .collect(Collectors.toUnmodifiableList());
+
 			return new RootObservatory(builtChildren, pois, gatherListeners, gatherBulkListeners);
 		}
 	}

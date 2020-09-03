@@ -2,16 +2,14 @@ package org.sheepy.lily.core.allocation.children.instance;
 
 import org.sheepy.lily.core.allocation.AllocationHandle;
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
-import org.sheepy.lily.core.allocation.operation.TriageOperation;
 import org.sheepy.lily.core.allocation.operation.IOperationNode;
+import org.sheepy.lily.core.allocation.operation.TriageOperation;
 import org.sheepy.lily.core.api.allocation.EAllocationStatus;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.util.Deque;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentLinkedDeque;
-import java.util.function.BooleanSupplier;
+import java.util.LinkedList;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -21,7 +19,7 @@ public final class ChildHandleAllocator<Allocation extends IExtender>
 	private final boolean reuseDirtyAllocations;
 	private final Runnable whenUpdateNeeded;
 
-	private final Deque<AllocationInstance<Allocation>> dirtyAllocations = new ConcurrentLinkedDeque<>();
+	private final Deque<AllocationInstance<Allocation>> dirtyAllocations = new LinkedList<>();
 	private AllocationInstance<Allocation> mainAllocation;
 
 	public ChildHandleAllocator(final AllocationHandle<Allocation> handle, final Runnable whenUpdateNeeded)
@@ -31,56 +29,28 @@ public final class ChildHandleAllocator<Allocation extends IExtender>
 		this.whenUpdateNeeded = whenUpdateNeeded;
 	}
 
-	public Optional<IOperationNode> prepareTriage(final boolean forceTriage)
+	public boolean canTriage()
 	{
-		if (mainAllocation != null)
-		{
-			final BooleanSupplier triageOperation = () -> {
-				final var oldAllocation = mainAllocation;
-				final AllocationInstance<Allocation> newAllocation;
-				if (needReallocation() || forceTriage)
-				{
-					newAllocation = reuseDirtyAllocations && !forceTriage ? searchCandidate().orElse(null) : null;
-				}
-				else
-				{
-					newAllocation = mainAllocation;
-				}
+		return mainAllocation != null;
+	}
 
-				if (oldAllocation != newAllocation)
-				{
-					if (oldAllocation != null)
-					{
-						dirtyAllocations.add(oldAllocation);
-					}
-					if (newAllocation != null)
-					{
-						dirtyAllocations.remove(newAllocation);
-					}
+	public IOperationNode prepareTriage(final boolean forceTriage)
+	{
+		assert mainAllocation != null;
+		return new TriageOperation(mainAllocation, this::triage, forceTriage, this::needReallocation);
+	}
 
-					mainAllocation = newAllocation;
-					if (handle.getMainAllocation() == oldAllocation) handle.setMainAllocation(newAllocation);
-
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			};
-
-			return Optional.of(new TriageOperation(mainAllocation, triageOperation, needReallocation() || forceTriage));
-		}
-		else
-		{
-			return Optional.empty();
-		}
+	private void triage(final boolean canReuseAllocations)
+	{
+		final var oldAllocation = mainAllocation;
+		dirtyAllocations.add(oldAllocation);
+		mainAllocation = reuseDirtyAllocations && canReuseAllocations ? searchAndRestoreCandidate() : null;
+		if (handle.getMainAllocation() == oldAllocation) handle.setMainAllocation(mainAllocation);
 	}
 
 	public Stream<IOperationNode> prepareCleanup(final boolean free)
 	{
 		final var dirtyNodes = prepareCleanupDirty(free);
-
 		if (mainAllocation != null && (free || mainAllocation.isDirty()))
 		{
 			return Stream.concat(dirtyNodes, Stream.of(prepareCleanupMain(free)));
@@ -91,20 +61,21 @@ public final class ChildHandleAllocator<Allocation extends IExtender>
 		}
 	}
 
-	public Optional<IOperationNode> prepareUpdate()
+	public boolean canUpdate()
+	{
+		return mainAllocation == null || mainAllocation.isDirty();
+	}
+
+	public IOperationNode prepareUpdate()
 	{
 		if (mainAllocation == null)
 		{
 			final var instanceBuilder = handle.newNodeBuilder(whenUpdateNeeded, instance -> mainAllocation = instance);
-			return Optional.of(instanceBuilder);
-		}
-		else if (mainAllocation.isDirty())
-		{
-			return Optional.of(handle.prepareUpdate(mainAllocation));
+			return instanceBuilder;
 		}
 		else
 		{
-			return Optional.empty();
+			return handle.prepareUpdate(mainAllocation);
 		}
 	}
 
@@ -130,7 +101,7 @@ public final class ChildHandleAllocator<Allocation extends IExtender>
 	private Stream<IOperationNode> prepareCleanupDirty(final boolean free)
 	{
 		final var readyToFree = dirtyAllocations.stream()
-												.filter(alloc -> shouldFreeDirty(alloc, free))
+												.filter(free ? AllocationInstance::isUnlocked : this::shouldFreeDirty)
 												.collect(Collectors.toUnmodifiableList());
 		dirtyAllocations.removeAll(readyToFree);
 		return readyToFree.stream().map(this::prepareFreeDirty);
@@ -141,14 +112,14 @@ public final class ChildHandleAllocator<Allocation extends IExtender>
 		return handle.prepareFree(alloc);
 	}
 
-	private boolean shouldFreeDirty(final AllocationInstance<?> allocation, final boolean free)
+	private boolean shouldFreeDirty(final AllocationInstance<?> allocation)
 	{
 		final var obsolete = allocation.getStatus() == EAllocationStatus.Obsolete;
 		final var unlocked = allocation.isUnlocked();
 
 		if (reuseDirtyAllocations)
 		{
-			return (free || obsolete) && unlocked;
+			return obsolete && unlocked;
 		}
 		else
 		{
@@ -163,9 +134,16 @@ public final class ChildHandleAllocator<Allocation extends IExtender>
 		return obsolete || dirtyLocked;
 	}
 
-	private Optional<AllocationInstance<Allocation>> searchCandidate()
+	private AllocationInstance<Allocation> searchAndRestoreCandidate()
 	{
-		return dirtyAllocations.stream().filter(AllocationInstance::isUpdatable).findAny();
+		final var candidate = dirtyAllocations.stream().filter(AllocationInstance::isUpdatable).findAny();
+		if (candidate.isPresent())
+		{
+			final var restored = candidate.get();
+			dirtyAllocations.remove(restored);
+			return restored;
+		}
+		else return null;
 	}
 
 	public AllocationInstance<Allocation> getMainAllocation()

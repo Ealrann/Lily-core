@@ -22,6 +22,7 @@ public final class ExtenderManager implements IExtenderManager.Internal
 		this.target = target;
 	}
 
+	@Override
 	public void deploy()
 	{
 		buildAutoAdapters();
@@ -138,7 +139,7 @@ public final class ExtenderManager implements IExtenderManager.Internal
 	public <T extends IExtender> Stream<IExtenderHandle<T>> getHandles(final Class<T> type)
 	{
 		return handles.stream()
-					  .filter(handle -> type.isAssignableFrom(handle.getExtenderClass()))
+					  .filter(handle -> handle.match(type))
 					  .map(handle -> (IExtenderHandle<T>) handle);
 	}
 

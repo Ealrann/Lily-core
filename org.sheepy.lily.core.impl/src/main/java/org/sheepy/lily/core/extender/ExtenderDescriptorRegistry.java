@@ -49,20 +49,20 @@ public final class ExtenderDescriptorRegistry implements IExtenderDescriptorRegi
 	@Override
 	public Stream<IExtenderDescriptor<?>> streamDescriptors()
 	{
-		return descriptors.stream().map(d -> d.descriptor);
+		return descriptors.stream().map(DescriptorWraper::descriptor);
 	}
 
 	@Override
 	public Stream<IExtenderDescriptor<?>> streamDescriptors(final EObject target)
 	{
-		return descriptors(target).map(d -> d.descriptor);
+		return descriptors(target).map(DescriptorWraper::descriptor);
 	}
 
 	@Override
 	public <T extends IExtender> Stream<IExtenderDescriptor<T>> streamDescriptors(final EObject target,
 																				  final Class<T> type)
 	{
-		return descriptors(target, type).map(d -> d.descriptor);
+		return descriptors(target, type).map(DescriptorWraper::descriptor);
 	}
 
 	public Stream<DescriptorWraper<?>> descriptors(final EObject target)
@@ -88,8 +88,8 @@ public final class ExtenderDescriptorRegistry implements IExtenderDescriptorRegi
 						  .map(wrapper -> (DescriptorWraper<T>) wrapper);
 	}
 
-	public static record DescriptorWraper<T extends IExtender>(IExtenderDescriptor<T>descriptor,
-															   IExtenderHandleBuilder<T>builder)
+	public static record DescriptorWraper<T extends IExtender>(IExtenderDescriptor<T> descriptor,
+															   IExtenderHandleBuilder<T> builder)
 	{
 		public DescriptorWraper(ExtenderDescriptor<T> descriptor)
 		{

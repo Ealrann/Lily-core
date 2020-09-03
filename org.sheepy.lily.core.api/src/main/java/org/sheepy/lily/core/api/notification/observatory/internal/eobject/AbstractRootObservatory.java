@@ -25,10 +25,10 @@ public abstract class AbstractRootObservatory implements IObservatory
 	private final List<GatherListener<ILilyEObject>> gatherListeners;
 	private final List<GatherBulkListener<ILilyEObject>> gatherBulkListeners;
 
-	protected AbstractRootObservatory(List<IObservatory> children,
-									  List<IEObjectPOI> pois,
-									  List<GatherListener<ILilyEObject>> gatherListeners,
-									  List<GatherBulkListener<ILilyEObject>> gatherBulkListeners)
+	protected AbstractRootObservatory(final List<IObservatory> children,
+									  final List<IEObjectPOI> pois,
+									  final List<GatherListener<ILilyEObject>> gatherListeners,
+									  final List<GatherBulkListener<ILilyEObject>> gatherBulkListeners)
 	{
 		this.children = List.copyOf(children);
 		this.pois = List.copyOf(pois);

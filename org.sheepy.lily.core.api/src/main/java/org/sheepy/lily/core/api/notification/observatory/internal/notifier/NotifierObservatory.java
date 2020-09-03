@@ -16,7 +16,7 @@ public final class NotifierObservatory<Type extends IFeatures<Type>> implements 
 	private final INotifier<Type> notifier;
 	private final List<INotifierPOI<Type>> observationPoints;
 
-	public NotifierObservatory(INotifier<Type> notifier, List<INotifierPOI<Type>> observationPoints)
+	public NotifierObservatory(final INotifier<Type> notifier, List<INotifierPOI<Type>> observationPoints)
 	{
 		this.notifier = notifier;
 		this.observationPoints = List.copyOf(observationPoints);

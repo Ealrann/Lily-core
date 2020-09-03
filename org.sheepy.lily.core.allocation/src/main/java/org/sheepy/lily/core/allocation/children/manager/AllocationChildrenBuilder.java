@@ -43,23 +43,17 @@ public final class AllocationChildrenBuilder
 		return new ChildrenPreBuilder(childAnnotation, index);
 	}
 
-	public AllocationChildrenManager buildPreAllocation(final Runnable whenBranchDirty,
-														final ILilyEObject target,
-														final IObservatoryBuilder observatoryBuilder)
+	public AllocationChildrenManager buildPreAllocation(final BuildContext buildContext)
 	{
 		final var childrenSupervisors = preChildrenBuilders.stream()
-														   .map(builder -> builder.build(whenBranchDirty,
-																						 observatoryBuilder,
-																						 target))
+														   .map(buildContext::build)
 														   .collect(Collectors.toUnmodifiableList());
 
 		return new AllocationChildrenManager(childrenSupervisors, null);
 	}
 
 	@SuppressWarnings("unchecked")
-	public AllocationChildrenManager buildPostAllocation(final Runnable whenBranchDirty,
-														 final ILilyEObject target,
-														 final IObservatoryBuilder observatoryBuilder,
+	public AllocationChildrenManager buildPostAllocation(final BuildContext buildContext,
 														 final Optional<IAllocationContext> providedContext,
 														 final IExtenderDescriptor.ExtenderContext<?> extenderContext)
 	{
@@ -75,12 +69,20 @@ public final class AllocationChildrenBuilder
 																  .collect(Collectors.toUnmodifiableList());
 
 		final var childrenSupervisors = postChildEntryBuilders.stream()
-															  .map(builder -> builder.build(whenBranchDirty,
-																							observatoryBuilder,
-																							target))
+															  .map(buildContext::build)
 															  .collect(Collectors.toUnmodifiableList());
 
 		return new AllocationChildrenManager(childrenSupervisors, providedContext);
+	}
+
+	public static record BuildContext(Runnable whenBranchDirty,
+									  ILilyEObject target,
+									  IObservatoryBuilder observatoryBuilder)
+	{
+		public ChildrenSupervisor build(ChildrenSupervisor.Builder builder)
+		{
+			return builder.build(whenBranchDirty, observatoryBuilder, target);
+		}
 	}
 
 	public static record ChildrenPreBuilder(int index, StructureObserver structureObservatory)

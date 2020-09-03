@@ -20,11 +20,11 @@ public final class NotifierAdapterObservatory<Type extends IFeatures<Type>, Noti
 {
 	private final List<INotifierPOI<Type>> observationPoints;
 
-	public NotifierAdapterObservatory(Class<Notifier> notifierAdapterClass,
-									  List<IAdapterPOI<Notifier>> listeners,
-									  List<INotifierPOI<Type>> observationPoints,
-									  List<Consumer<Notifier>> addListeners,
-									  List<Consumer<Notifier>> removeListeners)
+	public NotifierAdapterObservatory(final Class<Notifier> notifierAdapterClass,
+									  final List<IAdapterPOI<Notifier>> listeners,
+									  final List<INotifierPOI<Type>> observationPoints,
+									  final List<Consumer<Notifier>> addListeners,
+									  final List<Consumer<Notifier>> removeListeners)
 	{
 		super(notifierAdapterClass, listeners, addListeners, removeListeners);
 		this.observationPoints = List.copyOf(observationPoints);

@@ -9,7 +9,7 @@ public final class NotifierPOI<Callback, Type extends IFeatures<Type>> implement
 	private final Callback listener;
 	private final Feature<Callback, Type> feature;
 
-	public NotifierPOI(Callback listener, Feature<Callback, Type> feature)
+	public NotifierPOI(final Callback listener, Feature<Callback, Type> feature)
 	{
 		this.listener = listener;
 		this.feature = feature;

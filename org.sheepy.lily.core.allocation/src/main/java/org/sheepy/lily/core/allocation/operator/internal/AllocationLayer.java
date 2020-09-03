@@ -3,7 +3,6 @@ package org.sheepy.lily.core.allocation.operator.internal;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 
 import java.util.Iterator;
-import java.util.stream.Stream;
 
 public final class AllocationLayer
 {
@@ -13,11 +12,11 @@ public final class AllocationLayer
 
 	private OperationWrapper current = null;
 
-	public AllocationLayer(final Stream<OperationWrapper> nodes,
+	public AllocationLayer(final Iterator<OperationWrapper> nodes,
 						   final IAllocationContext context,
 						   final boolean prepareContext)
 	{
-		this.nodes = nodes.iterator();
+		this.nodes = nodes;
 		this.context = context;
 		this.prepareContext = prepareContext;
 

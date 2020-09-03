@@ -9,12 +9,11 @@ import java.util.stream.StreamSupport;
 
 public final class StreamUtil
 {
-	public static final int CHARACTERISTICS = Spliterator.ORDERED | Spliterator.SORTED | Spliterator.SIZED | Spliterator.IMMUTABLE;
+	public static final int CHARACTERISTICS = Spliterator.ORDERED | Spliterator.SIZED | Spliterator.IMMUTABLE;
 
 	public static <T> Stream<T> reverseStream(List<T> list)
 	{
-		final var it = new ListReverseIterator<>(list);
-		final var spliterator = Spliterators.spliterator(it, list.size(), CHARACTERISTICS);
+		final var spliterator = new ListReverseSpliterator<>(list);
 		return StreamSupport.stream(spliterator, false);
 	}
 

@@ -28,11 +28,11 @@ public abstract class AbstractEObjectObservatory<T extends ILilyEObject> impleme
 	private final List<GatherListener<T>> gatherListeners;
 	private final List<GatherBulkListener<T>> gatherBulkListeners;
 
-	public AbstractEObjectObservatory(Class<T> cast,
-									  List<IObservatory> children,
-									  List<IEObjectPOI> pois,
-									  List<GatherListener<T>> gatherListeners,
-									  List<GatherBulkListener<T>> gatherBulkListeners)
+	public AbstractEObjectObservatory(final Class<T> cast,
+									  final List<IObservatory> children,
+									  final List<IEObjectPOI> pois,
+									  final List<GatherListener<T>> gatherListeners,
+									  final List<GatherBulkListener<T>> gatherBulkListeners)
 	{
 		this.cast = cast;
 		this.children = List.copyOf(children);

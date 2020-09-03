@@ -12,7 +12,7 @@ import java.util.stream.Stream;
 public final class IntModelExplorer implements IModelExplorer
 {
 	private final Class<? extends ILilyEObject> parentClass;
-	private final int[] references;
+	private final List<ReferenceExplorer> references;
 
 	public IntModelExplorer(int[] references)
 	{
@@ -22,7 +22,9 @@ public final class IntModelExplorer implements IModelExplorer
 	public IntModelExplorer(Class<? extends ILilyEObject> parentClass, int[] references)
 	{
 		this.parentClass = parentClass;
-		this.references = Arrays.copyOf(references, references.length);
+		this.references = Arrays.stream(references)
+								.mapToObj(ReferenceExplorer::new)
+								.collect(Collectors.toUnmodifiableList());
 	}
 
 	@Override
@@ -86,7 +88,7 @@ public final class IntModelExplorer implements IModelExplorer
 		var stream = Stream.of(root);
 		for (final var reference : references)
 		{
-			stream = stream.flatMap(e -> stream(e, reference));
+			stream = stream.flatMap(reference::stream);
 		}
 		return stream;
 	}
@@ -98,24 +100,5 @@ public final class IntModelExplorer implements IModelExplorer
 			source = (ILilyEObject) source.eContainer();
 		}
 		return source;
-	}
-
-	@SuppressWarnings("unchecked")
-	private static Stream<ILilyEObject> stream(ILilyEObject object, int reference)
-	{
-		final var val = getValue(object, reference);
-		if (val instanceof List)
-		{
-			return ((List<ILilyEObject>) val).stream();
-		}
-		else
-		{
-			return Stream.ofNullable((ILilyEObject) val);
-		}
-	}
-
-	private static Object getValue(ILilyEObject target, final int reference)
-	{
-		return target.eGet(reference, true, true);
 	}
 }

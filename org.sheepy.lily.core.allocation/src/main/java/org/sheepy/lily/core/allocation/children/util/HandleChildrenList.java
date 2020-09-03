@@ -8,7 +8,6 @@ import org.sheepy.lily.core.api.util.StreamUtil;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Stream;
 
 public final class HandleChildrenList
@@ -60,23 +59,28 @@ public final class HandleChildrenList
 
 	public Stream<IOperationNode> prepareTriage(final boolean forceTriage)
 	{
-		return stream().map(a -> a.prepareTriage(forceTriage)).flatMap(Optional::stream);
+		return stream().filter(ChildHandleAllocator::canTriage).map(a -> a.prepareTriage(forceTriage));
 	}
 
 	public Stream<IOperationNode> prepareCleanup(final boolean free)
 	{
-		final var removedCleanupStream = removedAllocators.stream().flatMap(e -> e.prepareCleanup(true));
-		final IOperationNode cleanRemovedList = c -> removedAllocators.removeIf(ChildHandleAllocator::isFree);
-		final var removedStream = Stream.concat(removedCleanupStream, Stream.of(cleanRemovedList));
-
 		final var cleanupStream = reverseStream().flatMap(a -> a.prepareCleanup(free));
-
-		return Stream.concat(removedStream, cleanupStream);
+		if (removedAllocators.isEmpty() == false)
+		{
+			final var removedCleanupStream = removedAllocators.stream().flatMap(e -> e.prepareCleanup(true));
+			final IOperationNode cleanRemovedList = c -> removedAllocators.removeIf(ChildHandleAllocator::isFree);
+			final var removedStream = Stream.concat(removedCleanupStream, Stream.of(cleanRemovedList));
+			return Stream.concat(removedStream, cleanupStream);
+		}
+		else
+		{
+			return cleanupStream;
+		}
 	}
 
 	public Stream<IOperationNode> prepareUpdate()
 	{
-		return stream().map(ChildHandleAllocator::prepareUpdate).flatMap(Optional::stream);
+		return stream().filter(ChildHandleAllocator::canUpdate).map(ChildHandleAllocator::prepareUpdate);
 	}
 
 	public void resolveAndRemove(final ILilyEObject target)

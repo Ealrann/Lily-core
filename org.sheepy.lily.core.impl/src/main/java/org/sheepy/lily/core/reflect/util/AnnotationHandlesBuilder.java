@@ -7,7 +7,6 @@ import org.sheepy.lily.core.api.util.ReflectUtils;
 import org.sheepy.lily.core.reflect.ExecutionHandleBuilder;
 
 import java.lang.annotation.Annotation;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -39,19 +38,22 @@ public final class AnnotationHandlesBuilder<T extends Annotation>
 
 	public AnnotationHandles<T> build(Object adapter)
 	{
-		final List<IExtenderHandle.AnnotatedHandle<T>> handles = new ArrayList<>();
+		final var handles = methods.stream()
+								   .map(m -> buildAnnotationHandle(adapter, m))
+								   .collect(Collectors.toUnmodifiableList());
 
-		for (var method : methods)
-		{
-			final var consumerHandleBuilder = method.executionHandleBuilder;
-			final var annotation = method.method.annotation();
-			final var annotationHandle = new IExtenderHandle.AnnotatedHandle<>(annotation,
-																			   method.method.method(),
-																			   consumerHandleBuilder.build(adapter));
-			handles.add(annotationHandle);
-		}
+		return new AnnotationHandles<>(annotationClass, handles);
+	}
 
-		return new AnnotationHandles<>(annotationClass, List.copyOf(handles));
+	private IExtenderHandle.AnnotatedHandle<T> buildAnnotationHandle(final Object adapter,
+																	 final ExecutionMethod<T> method)
+	{
+		final var consumerHandleBuilder = method.executionHandleBuilder;
+		final var annotation = method.method.annotation();
+		final var annotationHandle = new IExtenderHandle.AnnotatedHandle<>(annotation,
+																		   method.method.method(),
+																		   consumerHandleBuilder.build(adapter));
+		return annotationHandle;
 	}
 
 	private static <T extends Annotation> Optional<ExecutionMethod<T>> buildExecutionMethod(ReflectUtils.AnnotatedMethod<T> method)
@@ -67,7 +69,7 @@ public final class AnnotationHandlesBuilder<T extends Annotation>
 		}
 	}
 
-	public static record ExecutionMethod<T extends Annotation>(ReflectUtils.AnnotatedMethod<T>method,
+	public static record ExecutionMethod<T extends Annotation>(ReflectUtils.AnnotatedMethod<T> method,
 															   IExecutionHandleBuilder executionHandleBuilder)
 	{
 		private ExecutionMethod(ReflectUtils.AnnotatedMethod<T> method) throws ReflectiveOperationException

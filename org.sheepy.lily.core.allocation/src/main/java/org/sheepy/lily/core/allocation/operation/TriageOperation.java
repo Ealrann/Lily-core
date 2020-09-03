@@ -10,25 +10,30 @@ import java.util.stream.Stream;
 public class TriageOperation implements IOperationNode
 {
 	private final AllocationInstance<?> allocation;
-	private final BooleanSupplier triageOperation;
+	private final BooleanConsumer triageOperation;
+	private final BooleanSupplier needReallocation;
+	private final boolean initialForceTriage;
 
-	private boolean forceTriage;
+	private boolean triage;
 
 	public TriageOperation(final AllocationInstance<?> allocation,
-						   final BooleanSupplier triageOperation,
-						   final boolean forceTriage)
+						   final BooleanConsumer triageOperation,
+						   final boolean triage,
+						   final BooleanSupplier needReallocation)
 	{
 		this.allocation = allocation;
 		this.triageOperation = triageOperation;
-		this.forceTriage = forceTriage;
+		this.initialForceTriage = triage;
+		this.needReallocation = needReallocation;
 	}
 
 	@Override
 	public Stream<IOperationNode> preChildren()
 	{
-		if (forceTriage || allocation.isDirty())
+		triage = initialForceTriage || needReallocation.getAsBoolean();
+		if (triage || allocation.isDirty())
 		{
-			return allocation.getPreChildrenManager().prepareTriage(forceTriage);
+			return allocation.getPreChildrenManager().prepareTriage(triage);
 		}
 		else
 		{
@@ -39,18 +44,19 @@ public class TriageOperation implements IOperationNode
 	@Override
 	public void operate(final IAllocationContext context)
 	{
-		if (forceTriage || allocation.isDirty())
+		triage = triage || initialForceTriage || needReallocation.getAsBoolean();
+		if (triage)
 		{
-			forceTriage |= triageOperation.getAsBoolean();
+			triageOperation.accept(!initialForceTriage);
 		}
 	}
 
 	@Override
 	public Stream<IOperationNode> postChildren()
 	{
-		if (forceTriage || allocation.isDirty())
+		if (triage || allocation.isDirty())
 		{
-			return allocation.getPostChildrenManager().prepareTriage(forceTriage);
+			return allocation.getPostChildrenManager().prepareTriage(triage);
 		}
 		else
 		{
@@ -62,5 +68,11 @@ public class TriageOperation implements IOperationNode
 	public Optional<IAllocationContext> providedContext()
 	{
 		return allocation.getPostChildrenManager().getProvidedContext();
+	}
+
+	@FunctionalInterface
+	public interface BooleanConsumer
+	{
+		void accept(boolean input);
 	}
 }

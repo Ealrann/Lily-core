@@ -1,5 +1,6 @@
 package org.sheepy.lily.core.allocation.description;
 
+import org.sheepy.lily.core.allocation.AllocationHandle;
 import org.sheepy.lily.core.allocation.children.manager.AllocationChildrenBuilder;
 import org.sheepy.lily.core.allocation.dependency.DependencyManager;
 import org.sheepy.lily.core.allocation.dependency.DependencyResolver;
@@ -11,12 +12,14 @@ import org.sheepy.lily.core.api.allocation.annotation.AllocationDependency;
 import org.sheepy.lily.core.api.allocation.annotation.ProvideContext;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
+import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Stream;
 
 public record AllocationDescriptor<Allocation extends IExtender>(IExtenderDescriptor<Allocation> extenderDescriptor,
 																 DependencyManager.Builder dependencyManagerBuilder,
@@ -35,18 +38,26 @@ public record AllocationDescriptor<Allocation extends IExtender>(IExtenderDescri
 	{
 		final var observatoryBuilder = IObservatoryBuilder.newObservatoryBuilder();
 		final var state = new AllocationState(whenUpdateNeeded);
-
-		final var preChildrenManager = allocationChildrenBuilder.buildPreAllocation(state::markBranchDirty,
-																					target,
-																					observatoryBuilder);
+		final var buildContext = new AllocationChildrenBuilder.BuildContext(state::markBranchDirty,
+																			target,
+																			observatoryBuilder);
+		final var preChildrenManager = allocationChildrenBuilder.buildPreAllocation(buildContext);
 		final var preObservatory = observatoryBuilder.isEmpty() == false ? observatoryBuilder.build() : null;
 		if (preObservatory != null) preObservatory.observe(target);
 
-		return new AllocationInstanceBuilder<>(target,
-											   preChildrenManager,
-											   this,
-											   preObservatory,
-											   state);
+		return new AllocationInstanceBuilder<>(target, preChildrenManager, this, preObservatory, state);
+	}
+
+	public Stream<AllocationHandle<Allocation>> adaptHandles(Stream<ILilyEObject> objectStream)
+	{
+		return objectStream.filter(extenderDescriptor::isApplicable)
+						   .map(extenderDescriptor::adapHandle)
+						   .map(this::castHandle);
+	}
+
+	private AllocationHandle<Allocation> castHandle(IExtenderHandle<Allocation> handle)
+	{
+		return (AllocationHandle<Allocation>) handle;
 	}
 
 	@Override

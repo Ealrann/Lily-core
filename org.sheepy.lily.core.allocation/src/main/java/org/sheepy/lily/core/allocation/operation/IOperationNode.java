@@ -18,6 +18,7 @@ public interface IOperationNode
 	{
 		return Stream.empty();
 	}
+
 	default Stream<IOperationNode> postChildren()
 	{
 		return Stream.empty();
