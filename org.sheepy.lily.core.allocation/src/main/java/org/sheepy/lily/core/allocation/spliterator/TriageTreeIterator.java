@@ -4,12 +4,14 @@ import org.sheepy.lily.core.allocation.children.instance.ChildDescriptorAllocato
 import org.sheepy.lily.core.allocation.children.instance.ChildHandleAllocator;
 import org.sheepy.lily.core.allocation.children.instance.ChildrenSupervisor;
 import org.sheepy.lily.core.allocation.children.manager.AllocationChildrenManager;
-import org.sheepy.lily.core.allocation.operation.IOperation;
+import org.sheepy.lily.core.allocation.operation.TriageOperation;
 
 import java.util.Optional;
 
 public final class TriageTreeIterator extends AllocationTreeIterator<TriageTreeIterator>
 {
+	private final TriageOperation operation = new TriageOperation();
+
 	private boolean force;
 
 	public TriageTreeIterator()
@@ -24,12 +26,13 @@ public final class TriageTreeIterator extends AllocationTreeIterator<TriageTreeI
 	}
 
 	@Override
-	public Optional<IOperation<TriageTreeIterator>> tryAdvance()
+	public Optional<TriageOperation> tryAdvance()
 	{
-		final var handle = tryAdvanceHandleAllocator();
-		if (handle != null)
+		final var handleAllocator = tryAdvanceHandleAllocator();
+		if (handleAllocator != null)
 		{
-			return Optional.of(handle.prepareTriageOperation(force));
+			operation.setup(handleAllocator, force);
+			return Optional.of(operation);
 		}
 		else
 		{
@@ -50,6 +53,6 @@ public final class TriageTreeIterator extends AllocationTreeIterator<TriageTreeI
 	@Override
 	protected boolean operatesOnHandleAllocator(final ChildHandleAllocator<?> handleAllocator)
 	{
-		return handleAllocator.canTriage();
+		return handleAllocator.canTriage(force);
 	}
 }

@@ -45,6 +45,7 @@ public final class TreeOperator<T extends AllocationTreeIterator<T>>
 		while (cursor >= 0)
 		{
 			final var layer = course.get(cursor);
+			layer.next();
 			if (layer.done())
 			{
 				layer.close();
@@ -61,9 +62,6 @@ public final class TreeOperator<T extends AllocationTreeIterator<T>>
 					case Main -> operation.operate(context);
 					case PostChildren -> buildPostLayer(operation, context, operation.providedContext());
 				}
-
-				if (operationWrapper.hasNextPhase()) operationWrapper.nextPhase();
-				else layer.next();
 			}
 		}
 	}
@@ -74,7 +72,6 @@ public final class TreeOperator<T extends AllocationTreeIterator<T>>
 		final var layer = getOrCreateLayer();
 		layer.load(context, false);
 		operation.loadPreChildrenIterator(layer.iterator());
-		layer.next();
 	}
 
 	private void buildPostLayer(final IOperation<T> operation,
@@ -87,7 +84,6 @@ public final class TreeOperator<T extends AllocationTreeIterator<T>>
 		final var childContext = providedContext.orElse(parentContext);
 		layer.load(childContext, prepareContext);
 		operation.loadPostChildrenIterator(layer.iterator());
-		layer.next();
 	}
 
 	private AllocationTreeLayer<T> getOrCreateLayer()

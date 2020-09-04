@@ -1,36 +1,38 @@
 package org.sheepy.lily.core.allocation.operation;
 
+import org.sheepy.lily.core.allocation.children.instance.ChildHandleAllocator;
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
 import org.sheepy.lily.core.allocation.spliterator.TriageTreeIterator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 
 import java.util.Optional;
-import java.util.function.BooleanSupplier;
 
 public class TriageOperation implements IOperation<TriageTreeIterator>
 {
-	private final AllocationInstance<?> allocation;
-	private final BooleanConsumer triageOperation;
-	private final BooleanSupplier needReallocation;
-	private final boolean initialForceTriage;
+	private ChildHandleAllocator<?> handleAllocator;
+	private boolean initialForceTriage;
+	private AllocationInstance<?> allocation;
 
 	private boolean triage;
 
-	public TriageOperation(final AllocationInstance<?> allocation,
-						   final BooleanConsumer triageOperation,
-						   final boolean triage,
-						   final BooleanSupplier needReallocation)
+	public void setup(final ChildHandleAllocator<?> handleAllocator, final boolean forceTriage)
 	{
+		this.handleAllocator = handleAllocator;
+		this.initialForceTriage = forceTriage;
+		this.allocation = handleAllocator.getMainAllocation();
+	}
+
+	public void setup(AllocationInstance<?> allocation)
+	{
+		this.handleAllocator = null;
+		this.initialForceTriage = false;
 		this.allocation = allocation;
-		this.triageOperation = triageOperation;
-		this.initialForceTriage = triage;
-		this.needReallocation = needReallocation;
 	}
 
 	@Override
 	public void loadPreChildrenIterator(final TriageTreeIterator iterator)
 	{
-		triage = initialForceTriage || needReallocation.getAsBoolean();
+		triage = initialForceTriage || (handleAllocator != null && handleAllocator.needReallocation());
 		if (triage || allocation.isDirty())
 		{
 			iterator.load(allocation.getPreChildrenManager(), triage);
@@ -44,10 +46,10 @@ public class TriageOperation implements IOperation<TriageTreeIterator>
 	@Override
 	public void operate(final IAllocationContext context)
 	{
-		triage = triage || initialForceTriage || needReallocation.getAsBoolean();
-		if (triage)
+		triage = triage || initialForceTriage || (handleAllocator != null && handleAllocator.needReallocation());
+		if (triage && handleAllocator != null)
 		{
-			triageOperation.accept(!initialForceTriage);
+			handleAllocator.triage(!initialForceTriage);
 		}
 	}
 
@@ -68,11 +70,5 @@ public class TriageOperation implements IOperation<TriageTreeIterator>
 	public Optional<IAllocationContext> providedContext()
 	{
 		return allocation.getPostChildrenManager().getProvidedContext();
-	}
-
-	@FunctionalInterface
-	public interface BooleanConsumer
-	{
-		void accept(boolean input);
 	}
 }

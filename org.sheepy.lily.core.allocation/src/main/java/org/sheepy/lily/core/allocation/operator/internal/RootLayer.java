@@ -11,6 +11,7 @@ public class RootLayer<T extends AllocationTreeIterator<T>> implements ILayer<T>
 	private final IAllocationContext context;
 
 	private OperationWrapper<T> current = null;
+	private boolean first = true;
 
 	public RootLayer(Iterator<OperationWrapper<T>> wrappers, IAllocationContext context)
 	{
@@ -21,8 +22,6 @@ public class RootLayer<T extends AllocationTreeIterator<T>> implements ILayer<T>
 		{
 			context.beforeChildrenAllocation();
 		}
-
-		next();
 	}
 
 	@Override
@@ -46,7 +45,15 @@ public class RootLayer<T extends AllocationTreeIterator<T>> implements ILayer<T>
 	@Override
 	public void next()
 	{
-		current = wrappers.hasNext() ? wrappers.next() : null;
+		if (first || !current.hasNextPhase())
+		{
+			current = wrappers.hasNext() ? wrappers.next() : null;
+			first = false;
+		}
+		else
+		{
+			current.nextPhase();
+		}
 	}
 
 	@Override

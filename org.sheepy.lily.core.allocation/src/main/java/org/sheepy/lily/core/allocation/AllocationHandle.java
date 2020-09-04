@@ -2,9 +2,11 @@ package org.sheepy.lily.core.allocation;
 
 import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
-import org.sheepy.lily.core.allocation.operation.*;
+import org.sheepy.lily.core.allocation.operation.BuildOperation;
+import org.sheepy.lily.core.allocation.operation.CleanupOperation;
+import org.sheepy.lily.core.allocation.operation.FreeOperation;
+import org.sheepy.lily.core.allocation.operation.IOperation;
 import org.sheepy.lily.core.allocation.spliterator.CleanupTreeIterator;
-import org.sheepy.lily.core.allocation.spliterator.UpdateTreeIterator;
 import org.sheepy.lily.core.api.allocation.IAllocationHandle;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.model.ILilyEObject;
@@ -38,20 +40,28 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	{
 	}
 
-	public BuildOperation<Allocation> newBuildOperation()
+	public void setupBuildOperation(BuildOperation buildOperation)
 	{
-		return new BuildOperation<>(descriptor.prepareBuild(target, () -> {}), this::setMainAllocation);
+		buildOperation.setup(getDescriptor().prepareBuild(target, () -> {}), this::setMainAllocationUnsafe);
 	}
 
-	public BuildOperation<Allocation> newBuildOperation(Runnable whenUpdateNeeded,
-														Consumer<AllocationInstance<Allocation>> postBuild)
+	public void setupBuildOperation(BuildOperation buildOperation,
+									Runnable whenUpdateNeeded,
+									Consumer<AllocationInstance<Allocation>> postBuild)
 	{
-		final Consumer<AllocationInstance<Allocation>> afterBuild = newAllocation -> {
-			setMainAllocation(newAllocation);
-			postBuild.accept(newAllocation);
+		final Consumer<AllocationInstance<?>> afterBuild = newAllocation -> {
+			@SuppressWarnings("unchecked") final var allocation = (AllocationInstance<Allocation>) newAllocation;
+			setMainAllocation(allocation);
+			postBuild.accept(allocation);
 		};
 
-		return new BuildOperation<>(descriptor.prepareBuild(target, whenUpdateNeeded), afterBuild);
+		buildOperation.setup(getDescriptor().prepareBuild(target, whenUpdateNeeded), afterBuild);
+	}
+
+	@SuppressWarnings("unchecked")
+	private void setMainAllocationUnsafe(final AllocationInstance<?> newAllocation)
+	{
+		setMainAllocation((AllocationInstance<Allocation>) newAllocation);
 	}
 
 	public void setMainAllocation(final AllocationInstance<Allocation> allocation)
@@ -60,11 +70,6 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 		final var newAllocation = getAllocationOrNull(allocation);
 		this.mainAllocation = allocation;
 		onAllocationChange(previousAllocation, newAllocation);
-	}
-
-	public IOperation<UpdateTreeIterator> prepareIteratorUpdate(final AllocationInstance<Allocation> allocation)
-	{
-		return new UpdateOperation(target, allocation);
 	}
 
 	public IOperation<CleanupTreeIterator> prepareCleanupOperation(final AllocationInstance<Allocation> allocation)

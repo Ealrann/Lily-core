@@ -9,13 +9,13 @@ import java.util.Optional;
 
 public final class UpdateOperation implements IOperation<UpdateTreeIterator>
 {
-	private final ILilyEObject target;
-	private final AllocationInstance<?> allocation;
+	private ILilyEObject target;
+	private AllocationInstance<?> allocation;
 
-	public UpdateOperation(final ILilyEObject target, final AllocationInstance<?> allocation)
+	public void setup(final AllocationInstance<?> allocation, final ILilyEObject source)
 	{
 		this.allocation = allocation;
-		this.target = target;
+		this.target = source;
 	}
 
 	@Override

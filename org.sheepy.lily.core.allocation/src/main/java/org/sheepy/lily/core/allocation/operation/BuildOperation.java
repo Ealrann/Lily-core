@@ -5,19 +5,18 @@ import org.sheepy.lily.core.allocation.instance.AllocationInstance;
 import org.sheepy.lily.core.allocation.instance.AllocationInstanceBuilder;
 import org.sheepy.lily.core.allocation.spliterator.UpdateTreeIterator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
-import org.sheepy.lily.core.api.extender.IExtender;
 
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public final class BuildOperation<Allocation extends IExtender> implements IOperation<UpdateTreeIterator>
+public final class BuildOperation implements IOperation<UpdateTreeIterator>
 {
-	private final AllocationInstanceBuilder<Allocation> allocationInstanceBuilder;
-	private final Consumer<AllocationInstance<Allocation>> postBuildOperation;
+	private AllocationInstanceBuilder<?> allocationInstanceBuilder;
+	private Consumer<AllocationInstance<?>> postBuildOperation;
 	private AllocationChildrenManager postChildrenManager;
 
-	public BuildOperation(AllocationInstanceBuilder<Allocation> allocationInstanceBuilder,
-						  Consumer<AllocationInstance<Allocation>> postBuildOperation)
+	public void setup(AllocationInstanceBuilder<?> allocationInstanceBuilder,
+					  Consumer<AllocationInstance<?>> postBuildOperation)
 	{
 		this.allocationInstanceBuilder = allocationInstanceBuilder;
 		this.postBuildOperation = postBuildOperation;

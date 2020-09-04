@@ -165,5 +165,5 @@ public abstract class AllocationTreeIterator<T extends AllocationTreeIterator<T>
 	protected abstract void postUpdateDescriptorAllocator(final ChildDescriptorAllocator descriptorAllocator);
 	protected abstract boolean operatesOnHandleAllocator(final ChildHandleAllocator<?> handleAllocator);
 
-	public abstract Optional<IOperation<T>> tryAdvance();
+	public abstract Optional<? extends IOperation<T>> tryAdvance();
 }

@@ -1,8 +1,6 @@
 package org.sheepy.lily.core.allocation;
 
-import org.sheepy.lily.core.allocation.operation.CleanupOperation;
-import org.sheepy.lily.core.allocation.operation.IOperation;
-import org.sheepy.lily.core.allocation.operation.TriageOperation;
+import org.sheepy.lily.core.allocation.operation.*;
 import org.sheepy.lily.core.allocation.operator.OperationContext;
 import org.sheepy.lily.core.allocation.operator.TreeOperator;
 import org.sheepy.lily.core.allocation.spliterator.CleanupTreeIterator;
@@ -58,7 +56,9 @@ public final class AllocationService implements IAllocationService
 		final var mainAllocation = handle.getMainAllocation();
 		if (mainAllocation != null && mainAllocation.isDirty())
 		{
-			return Optional.of(new TriageOperation(mainAllocation, b -> {}, false, () -> false));
+			final var triageOperation = new TriageOperation();
+			triageOperation.setup(mainAllocation);
+			return Optional.of(triageOperation);
 		}
 		else
 		{
@@ -84,11 +84,15 @@ public final class AllocationService implements IAllocationService
 		final var mainAllocation = handle.getMainAllocation();
 		if (mainAllocation == null)
 		{
-			return Optional.of(handle.newBuildOperation());
+			final var operation = new BuildOperation();
+			handle.setupBuildOperation(operation);
+			return Optional.of(operation);
 		}
 		else if (mainAllocation.isDirty())
 		{
-			return Optional.of(handle.prepareIteratorUpdate(mainAllocation));
+			final var operation = new UpdateOperation();
+			operation.setup(mainAllocation, handle.getTarget());
+			return Optional.of(operation);
 		}
 		else
 		{

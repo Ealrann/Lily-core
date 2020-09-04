@@ -11,6 +11,7 @@ public final class AllocationTreeLayer<T extends AllocationTreeIterator<T>> impl
 	private IAllocationContext context;
 	private boolean prepareContext;
 	private boolean done;
+	private boolean first;
 
 	public AllocationTreeLayer(T treeIterator, final boolean reverse)
 	{
@@ -23,6 +24,7 @@ public final class AllocationTreeLayer<T extends AllocationTreeIterator<T>> impl
 		this.context = context;
 		this.prepareContext = prepareContext;
 		this.done = false;
+		this.first = true;
 		if (prepareContext && context != null)
 		{
 			context.beforeChildrenAllocation();
@@ -50,7 +52,15 @@ public final class AllocationTreeLayer<T extends AllocationTreeIterator<T>> impl
 	@Override
 	public void next()
 	{
-		treeIterator.tryAdvance().ifPresentOrElse(operationWrapper::load, this::setDone);
+		if (first || !operationWrapper.hasNextPhase())
+		{
+			treeIterator.tryAdvance().ifPresentOrElse(operationWrapper::load, this::setDone);
+			first = false;
+		}
+		else
+		{
+			operationWrapper.nextPhase();
+		}
 	}
 
 	private void setDone()

@@ -2,11 +2,9 @@ package org.sheepy.lily.core.allocation.children.instance;
 
 import org.sheepy.lily.core.allocation.AllocationHandle;
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
+import org.sheepy.lily.core.allocation.operation.BuildOperation;
 import org.sheepy.lily.core.allocation.operation.IOperation;
-import org.sheepy.lily.core.allocation.operation.TriageOperation;
 import org.sheepy.lily.core.allocation.spliterator.CleanupTreeIterator;
-import org.sheepy.lily.core.allocation.spliterator.TriageTreeIterator;
-import org.sheepy.lily.core.allocation.spliterator.UpdateTreeIterator;
 import org.sheepy.lily.core.api.allocation.EAllocationStatus;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.model.ILilyEObject;
@@ -32,18 +30,12 @@ public final class ChildHandleAllocator<Allocation extends IExtender>
 		this.whenUpdateNeeded = whenUpdateNeeded;
 	}
 
-	public boolean canTriage()
+	public boolean canTriage(final boolean force)
 	{
-		return mainAllocation != null;
+		return mainAllocation != null && (force || mainAllocation.isDirty());
 	}
 
-	public IOperation<TriageTreeIterator> prepareTriageOperation(final boolean forceTriage)
-	{
-		assert mainAllocation != null;
-		return new TriageOperation(mainAllocation, this::triage, forceTriage, this::needReallocation);
-	}
-
-	private void triage(final boolean canReuseAllocations)
+	public void triage(final boolean canReuseAllocations)
 	{
 		final var oldAllocation = mainAllocation;
 		dirtyAllocations.add(oldAllocation);
@@ -69,16 +61,9 @@ public final class ChildHandleAllocator<Allocation extends IExtender>
 		return mainAllocation == null || mainAllocation.isDirty();
 	}
 
-	public IOperation<UpdateTreeIterator> prepareUpdateOperation()
+	public void setupBuildOperation(final BuildOperation operation)
 	{
-		if (mainAllocation == null)
-		{
-			return handle.newBuildOperation(whenUpdateNeeded, instance -> mainAllocation = instance);
-		}
-		else
-		{
-			return handle.prepareIteratorUpdate(mainAllocation);
-		}
+		handle.setupBuildOperation(operation, whenUpdateNeeded, instance -> mainAllocation = instance);
 	}
 
 	public boolean isFree()
@@ -129,7 +114,7 @@ public final class ChildHandleAllocator<Allocation extends IExtender>
 		}
 	}
 
-	private boolean needReallocation()
+	public boolean needReallocation()
 	{
 		final boolean obsolete = mainAllocation.getStatus() == EAllocationStatus.Obsolete;
 		final boolean dirtyLocked = mainAllocation.isDirty() && mainAllocation.isLocked();
