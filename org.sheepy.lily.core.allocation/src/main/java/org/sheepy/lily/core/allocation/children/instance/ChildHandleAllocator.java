@@ -2,8 +2,11 @@ package org.sheepy.lily.core.allocation.children.instance;
 
 import org.sheepy.lily.core.allocation.AllocationHandle;
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
-import org.sheepy.lily.core.allocation.operation.IOperationNode;
+import org.sheepy.lily.core.allocation.operation.IOperation;
 import org.sheepy.lily.core.allocation.operation.TriageOperation;
+import org.sheepy.lily.core.allocation.spliterator.CleanupTreeIterator;
+import org.sheepy.lily.core.allocation.spliterator.TriageTreeIterator;
+import org.sheepy.lily.core.allocation.spliterator.UpdateTreeIterator;
 import org.sheepy.lily.core.api.allocation.EAllocationStatus;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.model.ILilyEObject;
@@ -34,7 +37,7 @@ public final class ChildHandleAllocator<Allocation extends IExtender>
 		return mainAllocation != null;
 	}
 
-	public IOperationNode prepareTriage(final boolean forceTriage)
+	public IOperation<TriageTreeIterator> prepareTriageOperation(final boolean forceTriage)
 	{
 		assert mainAllocation != null;
 		return new TriageOperation(mainAllocation, this::triage, forceTriage, this::needReallocation);
@@ -48,12 +51,12 @@ public final class ChildHandleAllocator<Allocation extends IExtender>
 		if (handle.getMainAllocation() == oldAllocation) handle.setMainAllocation(mainAllocation);
 	}
 
-	public Stream<IOperationNode> prepareCleanup(final boolean free)
+	public Stream<IOperation<CleanupTreeIterator>> prepareCleanupOperation(final boolean free)
 	{
-		final var dirtyNodes = prepareCleanupDirty(free);
+		final var dirtyNodes = prepareCleanupDirtyOperations(free);
 		if (mainAllocation != null && (free || mainAllocation.isDirty()))
 		{
-			return Stream.concat(dirtyNodes, Stream.of(prepareCleanupMain(free)));
+			return Stream.concat(dirtyNodes, Stream.of(prepareCleanupMainOperation(free)));
 		}
 		else
 		{
@@ -61,21 +64,20 @@ public final class ChildHandleAllocator<Allocation extends IExtender>
 		}
 	}
 
-	public boolean canUpdate()
+	public boolean shouldUpdate()
 	{
 		return mainAllocation == null || mainAllocation.isDirty();
 	}
 
-	public IOperationNode prepareUpdate()
+	public IOperation<UpdateTreeIterator> prepareUpdateOperation()
 	{
 		if (mainAllocation == null)
 		{
-			final var instanceBuilder = handle.newNodeBuilder(whenUpdateNeeded, instance -> mainAllocation = instance);
-			return instanceBuilder;
+			return handle.newBuildOperation(whenUpdateNeeded, instance -> mainAllocation = instance);
 		}
 		else
 		{
-			return handle.prepareUpdate(mainAllocation);
+			return handle.prepareIteratorUpdate(mainAllocation);
 		}
 	}
 
@@ -84,32 +86,32 @@ public final class ChildHandleAllocator<Allocation extends IExtender>
 		return mainAllocation == null && dirtyAllocations.isEmpty();
 	}
 
-	private IOperationNode prepareCleanupMain(final boolean free)
+	private IOperation<CleanupTreeIterator> prepareCleanupMainOperation(final boolean free)
 	{
 		if (free && mainAllocation.isUnlocked())
 		{
-			final var prepareFree = handle.prepareFree(mainAllocation);
+			final var prepareFree = handle.prepareFreeOperation(mainAllocation);
 			mainAllocation = null;
 			return prepareFree;
 		}
 		else
 		{
-			return mainAllocation.prepareCleanup();
+			return handle.prepareCleanupOperation(mainAllocation);
 		}
 	}
 
-	private Stream<IOperationNode> prepareCleanupDirty(final boolean free)
+	private Stream<IOperation<CleanupTreeIterator>> prepareCleanupDirtyOperations(final boolean free)
 	{
 		final var readyToFree = dirtyAllocations.stream()
 												.filter(free ? AllocationInstance::isUnlocked : this::shouldFreeDirty)
 												.collect(Collectors.toUnmodifiableList());
 		dirtyAllocations.removeAll(readyToFree);
-		return readyToFree.stream().map(this::prepareFreeDirty);
+		return readyToFree.stream().map(this::prepareFreeDirtyOperation);
 	}
 
-	private IOperationNode prepareFreeDirty(final AllocationInstance<Allocation> alloc)
+	private IOperation<CleanupTreeIterator> prepareFreeDirtyOperation(final AllocationInstance<Allocation> alloc)
 	{
-		return handle.prepareFree(alloc);
+		return handle.prepareFreeOperation(alloc);
 	}
 
 	private boolean shouldFreeDirty(final AllocationInstance<?> allocation)

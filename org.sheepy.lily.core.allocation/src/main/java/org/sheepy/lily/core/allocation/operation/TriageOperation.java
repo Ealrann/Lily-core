@@ -1,13 +1,13 @@
 package org.sheepy.lily.core.allocation.operation;
 
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
+import org.sheepy.lily.core.allocation.spliterator.TriageTreeIterator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 
 import java.util.Optional;
 import java.util.function.BooleanSupplier;
-import java.util.stream.Stream;
 
-public class TriageOperation implements IOperationNode
+public class TriageOperation implements IOperation<TriageTreeIterator>
 {
 	private final AllocationInstance<?> allocation;
 	private final BooleanConsumer triageOperation;
@@ -28,16 +28,16 @@ public class TriageOperation implements IOperationNode
 	}
 
 	@Override
-	public Stream<IOperationNode> preChildren()
+	public void loadPreChildrenIterator(final TriageTreeIterator iterator)
 	{
 		triage = initialForceTriage || needReallocation.getAsBoolean();
 		if (triage || allocation.isDirty())
 		{
-			return allocation.getPreChildrenManager().prepareTriage(triage);
+			iterator.load(allocation.getPreChildrenManager(), triage);
 		}
 		else
 		{
-			return Stream.empty();
+			iterator.loadEmpty();
 		}
 	}
 
@@ -52,15 +52,15 @@ public class TriageOperation implements IOperationNode
 	}
 
 	@Override
-	public Stream<IOperationNode> postChildren()
+	public void loadPostChildrenIterator(TriageTreeIterator iterator)
 	{
 		if (triage || allocation.isDirty())
 		{
-			return allocation.getPostChildrenManager().prepareTriage(triage);
+			iterator.load(allocation.getPostChildrenManager(), triage);
 		}
 		else
 		{
-			return Stream.empty();
+			iterator.loadEmpty();
 		}
 	}
 

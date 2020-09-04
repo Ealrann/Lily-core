@@ -1,8 +1,13 @@
 package org.sheepy.lily.core.allocation;
 
-import org.sheepy.lily.core.allocation.operation.IOperationNode;
+import org.sheepy.lily.core.allocation.operation.CleanupOperation;
+import org.sheepy.lily.core.allocation.operation.IOperation;
+import org.sheepy.lily.core.allocation.operation.TriageOperation;
 import org.sheepy.lily.core.allocation.operator.OperationContext;
-import org.sheepy.lily.core.allocation.operator.Operator;
+import org.sheepy.lily.core.allocation.operator.TreeOperator;
+import org.sheepy.lily.core.allocation.spliterator.CleanupTreeIterator;
+import org.sheepy.lily.core.allocation.spliterator.TriageTreeIterator;
+import org.sheepy.lily.core.allocation.spliterator.UpdateTreeIterator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.IAllocationService;
 import org.sheepy.lily.core.api.extender.IExtender;
@@ -18,44 +23,42 @@ public final class AllocationService implements IAllocationService
 								 final Class<? extends IExtender> type)
 	{
 		final var operationContext = new OperationContext(target, context, type);
-		final var operator = new Operator(operationContext, false);
-		final var reverseOperator = new Operator(operationContext, true);
+		final var triageOperator = new TreeOperator<>(operationContext,
+													  AllocationService::buildTriageOperation,
+													  TriageTreeIterator::new,
+													  false);
+		final var cleanupOperator = new TreeOperator<>(operationContext,
+													   AllocationService::buildCleanupOperation,
+													   CleanupTreeIterator::new,
+													   true);
+		final var updateOperator = new TreeOperator<>(operationContext,
+													  AllocationService::buildUpdateOperation,
+													  UpdateTreeIterator::new,
+													  false);
 
-		triage(operator);
-		cleanup(reverseOperator);
-		update(operator);
-	}
-
-	private static void update(final Operator operator)
-	{
-		operator.operate(AllocationService::buildAllocationNode);
-	}
-
-	private static void cleanup(final Operator reverseOperator)
-	{
-		reverseOperator.operate(AllocationService::buildCleanupNode);
-	}
-
-	private static void triage(final Operator operator)
-	{
-		operator.operate(AllocationService::buildTriageNode);
+		triageOperator.operate();
+		cleanupOperator.operate();
+		updateOperator.operate();
 	}
 
 	@Override
 	public void free(final ILilyEObject target, final IAllocationContext context, final Class<? extends IExtender> type)
 	{
 		final var operationContext = new OperationContext(target, context, type);
-		final var freeOperator = new Operator(operationContext, true);
+		final var cleanupOperator = new TreeOperator<>(operationContext,
+													   AllocationService::buildFreeOperation,
+													   CleanupTreeIterator::new,
+													   true);
 
-		freeOperator.operate(AllocationService::buildFreeNode);
+		cleanupOperator.operate();
 	}
 
-	private static <T extends IExtender> Optional<IOperationNode> buildTriageNode(AllocationHandle<T> handle)
+	private static <T extends IExtender> Optional<IOperation<TriageTreeIterator>> buildTriageOperation(AllocationHandle<T> handle)
 	{
 		final var mainAllocation = handle.getMainAllocation();
 		if (mainAllocation != null && mainAllocation.isDirty())
 		{
-			return Optional.of(mainAllocation.prepareTriage(false));
+			return Optional.of(new TriageOperation(mainAllocation, b -> {}, false, () -> false));
 		}
 		else
 		{
@@ -63,12 +66,12 @@ public final class AllocationService implements IAllocationService
 		}
 	}
 
-	private static Optional<IOperationNode> buildCleanupNode(AllocationHandle<?> handle)
+	private static Optional<IOperation<CleanupTreeIterator>> buildCleanupOperation(AllocationHandle<?> handle)
 	{
 		final var mainAllocation = handle.getMainAllocation();
 		if (mainAllocation != null && mainAllocation.isDirty())
 		{
-			return Optional.of(mainAllocation.prepareCleanup());
+			return Optional.of(new CleanupOperation(mainAllocation));
 		}
 		else
 		{
@@ -76,16 +79,16 @@ public final class AllocationService implements IAllocationService
 		}
 	}
 
-	private static <T extends IExtender> Optional<IOperationNode> buildAllocationNode(AllocationHandle<T> handle)
+	private static <T extends IExtender> Optional<IOperation<UpdateTreeIterator>> buildUpdateOperation(AllocationHandle<T> handle)
 	{
 		final var mainAllocation = handle.getMainAllocation();
 		if (mainAllocation == null)
 		{
-			return Optional.of(handle.newNodeBuilder());
+			return Optional.of(handle.newBuildOperation());
 		}
 		else if (mainAllocation.isDirty())
 		{
-			return Optional.of(handle.prepareUpdate(mainAllocation));
+			return Optional.of(handle.prepareIteratorUpdate(mainAllocation));
 		}
 		else
 		{
@@ -93,12 +96,12 @@ public final class AllocationService implements IAllocationService
 		}
 	}
 
-	private static <T extends IExtender> Optional<IOperationNode> buildFreeNode(AllocationHandle<T> handle)
+	private static <T extends IExtender> Optional<IOperation<CleanupTreeIterator>> buildFreeOperation(AllocationHandle<T> handle)
 	{
 		final var mainAllocation = handle.getMainAllocation();
 		if (mainAllocation != null)
 		{
-			return Optional.of(handle.prepareFree(mainAllocation));
+			return Optional.of(handle.prepareFreeOperation(mainAllocation));
 		}
 		else
 		{

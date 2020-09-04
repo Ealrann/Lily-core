@@ -2,10 +2,9 @@ package org.sheepy.lily.core.allocation;
 
 import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
-import org.sheepy.lily.core.allocation.operation.FreeOperation;
-import org.sheepy.lily.core.allocation.operation.IOperationNode;
-import org.sheepy.lily.core.allocation.operation.InstanceBuildOperation;
-import org.sheepy.lily.core.allocation.operation.UpdateOperation;
+import org.sheepy.lily.core.allocation.operation.*;
+import org.sheepy.lily.core.allocation.spliterator.CleanupTreeIterator;
+import org.sheepy.lily.core.allocation.spliterator.UpdateTreeIterator;
 import org.sheepy.lily.core.api.allocation.IAllocationHandle;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.model.ILilyEObject;
@@ -39,20 +38,20 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	{
 	}
 
-	public InstanceBuildOperation<Allocation> newNodeBuilder()
+	public BuildOperation<Allocation> newBuildOperation()
 	{
-		return new InstanceBuildOperation<>(descriptor.prepareBuild(target, () -> {}), this::setMainAllocation);
+		return new BuildOperation<>(descriptor.prepareBuild(target, () -> {}), this::setMainAllocation);
 	}
 
-	public InstanceBuildOperation<Allocation> newNodeBuilder(Runnable whenUpdateNeeded,
-															 Consumer<AllocationInstance<Allocation>> postBuild)
+	public BuildOperation<Allocation> newBuildOperation(Runnable whenUpdateNeeded,
+														Consumer<AllocationInstance<Allocation>> postBuild)
 	{
 		final Consumer<AllocationInstance<Allocation>> afterBuild = newAllocation -> {
 			setMainAllocation(newAllocation);
 			postBuild.accept(newAllocation);
 		};
 
-		return new InstanceBuildOperation<>(descriptor.prepareBuild(target, whenUpdateNeeded), afterBuild);
+		return new BuildOperation<>(descriptor.prepareBuild(target, whenUpdateNeeded), afterBuild);
 	}
 
 	public void setMainAllocation(final AllocationInstance<Allocation> allocation)
@@ -63,12 +62,17 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 		onAllocationChange(previousAllocation, newAllocation);
 	}
 
-	public IOperationNode prepareUpdate(final AllocationInstance<Allocation> allocation)
+	public IOperation<UpdateTreeIterator> prepareIteratorUpdate(final AllocationInstance<Allocation> allocation)
 	{
 		return new UpdateOperation(target, allocation);
 	}
 
-	public IOperationNode prepareFree(final AllocationInstance<Allocation> allocation)
+	public IOperation<CleanupTreeIterator> prepareCleanupOperation(final AllocationInstance<Allocation> allocation)
+	{
+		return new CleanupOperation(allocation);
+	}
+
+	public IOperation<CleanupTreeIterator> prepareFreeOperation(final AllocationInstance<Allocation> allocation)
 	{
 		return new FreeOperation(target, allocation);
 	}

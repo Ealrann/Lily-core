@@ -1,13 +1,13 @@
 package org.sheepy.lily.core.allocation.operation;
 
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
+import org.sheepy.lily.core.allocation.spliterator.UpdateTreeIterator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.util.Optional;
-import java.util.stream.Stream;
 
-public final class UpdateOperation implements IOperationNode
+public final class UpdateOperation implements IOperation<UpdateTreeIterator>
 {
 	private final ILilyEObject target;
 	private final AllocationInstance<?> allocation;
@@ -19,9 +19,9 @@ public final class UpdateOperation implements IOperationNode
 	}
 
 	@Override
-	public Stream<IOperationNode> preChildren()
+	public void loadPreChildrenIterator(UpdateTreeIterator iterator)
 	{
-		return allocation.getPreChildrenManager().prepareUpdate(target);
+		iterator.load(target, allocation.getPreChildrenManager());
 	}
 
 	@Override
@@ -31,9 +31,9 @@ public final class UpdateOperation implements IOperationNode
 	}
 
 	@Override
-	public Stream<IOperationNode> postChildren()
+	public void loadPostChildrenIterator(UpdateTreeIterator iterator)
 	{
-		return allocation.getPostChildrenManager().prepareUpdate(target);
+		iterator.load(target, allocation.getPostChildrenManager());
 	}
 
 	@Override

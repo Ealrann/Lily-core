@@ -1,11 +1,11 @@
 package org.sheepy.lily.core.allocation.operation;
 
+import org.sheepy.lily.core.allocation.spliterator.AllocationTreeIterator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 
 import java.util.Optional;
-import java.util.stream.Stream;
 
-public interface IOperationNode
+public interface IOperation<T extends AllocationTreeIterator<T>>
 {
 	default Optional<IAllocationContext> providedContext()
 	{
@@ -14,13 +14,11 @@ public interface IOperationNode
 
 	void operate(IAllocationContext context);
 
-	default Stream<IOperationNode> preChildren()
+	default void loadPreChildrenIterator(T iterator)
 	{
-		return Stream.empty();
 	}
 
-	default Stream<IOperationNode> postChildren()
+	default void loadPostChildrenIterator(T iterator)
 	{
-		return Stream.empty();
 	}
 }

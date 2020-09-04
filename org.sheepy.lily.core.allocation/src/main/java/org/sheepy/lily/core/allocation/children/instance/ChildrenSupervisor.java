@@ -3,17 +3,14 @@ package org.sheepy.lily.core.allocation.children.instance;
 import org.sheepy.lily.core.allocation.AllocationHandle;
 import org.sheepy.lily.core.allocation.children.manager.ChildrenInjector;
 import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
-import org.sheepy.lily.core.allocation.operation.IOperationNode;
 import org.sheepy.lily.core.allocation.util.StructureObserver;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.util.IModelExplorer;
-import org.sheepy.lily.core.api.util.StreamUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public final class ChildrenSupervisor
 {
@@ -33,23 +30,7 @@ public final class ChildrenSupervisor
 		this.whenBranchDirty = whenBranchDirty;
 	}
 
-	public Stream<IOperationNode> prepareTriage(final boolean forceTriage)
-	{
-		return childrenAllocators.stream().flatMap(c -> c.prepareTriage(forceTriage));
-	}
-
-	public Stream<IOperationNode> prepareCleanup(final boolean free)
-	{
-		return StreamUtil.reverseStream(childrenAllocators)
-						 .flatMap(free ? ChildDescriptorAllocator::prepareFree : ChildDescriptorAllocator::prepareCleanup);
-	}
-
-	public Stream<IOperationNode> prepareUpdate(final ILilyEObject source)
-	{
-		return Stream.of(source).flatMap(this::prepareChildrenUpdate);
-	}
-
-	private Stream<IOperationNode> prepareChildrenUpdate(ILilyEObject source)
+	public void update(final ILilyEObject source)
 	{
 		if (addedElements)
 		{
@@ -61,8 +42,6 @@ public final class ChildrenSupervisor
 				childrenAllocator.reload(children);
 			}
 		}
-
-		return childrenAllocators.stream().flatMap(ChildDescriptorAllocator::prepareUpdate);
 	}
 
 	private void add(List<ILilyEObject> children)
@@ -102,6 +81,11 @@ public final class ChildrenSupervisor
 											   .filter(i -> i.match(descriptor))
 											   .collect(Collectors.toUnmodifiableList());
 		return new ChildDescriptorAllocator(descriptor, filteredInjectors, whenBranchDirty);
+	}
+
+	public List<ChildDescriptorAllocator> getDescriptorAllocators()
+	{
+		return childrenAllocators;
 	}
 
 	public static record Builder(StructureObserver structureObservatory, List<ChildrenInjector> childrenInjectors)

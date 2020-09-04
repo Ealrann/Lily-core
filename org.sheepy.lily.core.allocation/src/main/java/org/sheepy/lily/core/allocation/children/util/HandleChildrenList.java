@@ -2,9 +2,7 @@ package org.sheepy.lily.core.allocation.children.util;
 
 import org.sheepy.lily.core.allocation.AllocationHandle;
 import org.sheepy.lily.core.allocation.children.instance.ChildHandleAllocator;
-import org.sheepy.lily.core.allocation.operation.IOperationNode;
 import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.util.StreamUtil;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -57,30 +55,9 @@ public final class HandleChildrenList
 		return new ChildHandleAllocator<>(handle, whenBranchDirty);
 	}
 
-	public Stream<IOperationNode> prepareTriage(final boolean forceTriage)
+	public void postCleanup()
 	{
-		return stream().filter(ChildHandleAllocator::canTriage).map(a -> a.prepareTriage(forceTriage));
-	}
-
-	public Stream<IOperationNode> prepareCleanup(final boolean free)
-	{
-		final var cleanupStream = reverseStream().flatMap(a -> a.prepareCleanup(free));
-		if (removedAllocators.isEmpty() == false)
-		{
-			final var removedCleanupStream = removedAllocators.stream().flatMap(e -> e.prepareCleanup(true));
-			final IOperationNode cleanRemovedList = c -> removedAllocators.removeIf(ChildHandleAllocator::isFree);
-			final var removedStream = Stream.concat(removedCleanupStream, Stream.of(cleanRemovedList));
-			return Stream.concat(removedStream, cleanupStream);
-		}
-		else
-		{
-			return cleanupStream;
-		}
-	}
-
-	public Stream<IOperationNode> prepareUpdate()
-	{
-		return stream().filter(ChildHandleAllocator::canUpdate).map(ChildHandleAllocator::prepareUpdate);
+		removedAllocators.removeIf(ChildHandleAllocator::isFree);
 	}
 
 	public void resolveAndRemove(final ILilyEObject target)
@@ -102,8 +79,13 @@ public final class HandleChildrenList
 		return allocators.stream();
 	}
 
-	public Stream<ChildHandleAllocator<?>> reverseStream()
+	public List<ChildHandleAllocator<?>> getHandleAllocators()
 	{
-		return StreamUtil.reverseStream(allocators);
+		return allocators;
+	}
+
+	public List<ChildHandleAllocator<?>> getRemovedHandleAllocators()
+	{
+		return removedAllocators;
 	}
 }

@@ -4,14 +4,10 @@ import org.sheepy.lily.core.allocation.children.manager.ChildrenInjector;
 import org.sheepy.lily.core.allocation.children.util.HandleChildrenList;
 import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
-import org.sheepy.lily.core.allocation.operation.IOperationNode;
-import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.util.List;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public final class ChildDescriptorAllocator
 {
@@ -41,32 +37,22 @@ public final class ChildDescriptorAllocator
 		handleChildren.reload(handleStream);
 	}
 
-	public Stream<IOperationNode> prepareTriage(final boolean forceTriage)
+	public void postCleanup()
 	{
-		return handleChildren.prepareTriage(forceTriage);
+		handleChildren.postCleanup();
 	}
 
-	public Stream<IOperationNode> prepareCleanup()
+	public void postUpdate()
 	{
-		return handleChildren.prepareCleanup(false);
-	}
+		final var collection = handleChildren.stream()
+											 .map(ChildHandleAllocator::getMainAllocation)
+											 .map(AllocationInstance::getAllocation)
+											 .collect(Collectors.toUnmodifiableList());
 
-	public Stream<IOperationNode> prepareFree()
-	{
-		return handleChildren.prepareCleanup(true);
-	}
-
-	public Stream<IOperationNode> prepareUpdate()
-	{
-		final var updateStream = handleChildren.prepareUpdate();
-		final var injectionStream = prepareInjection();
-
-		return Stream.concat(updateStream, injectionStream);
-	}
-
-	private Stream<IOperationNode> prepareInjection()
-	{
-		return new ChildrenCollector().prepareInjection();
+		for (final var injector : injectors)
+		{
+			injector.inject(collection);
+		}
 	}
 
 	public AllocationDescriptor<?> descriptor()
@@ -74,35 +60,13 @@ public final class ChildDescriptorAllocator
 		return descriptor;
 	}
 
-	private final class ChildrenCollector implements Supplier<List<IExtender>>
+	public List<ChildHandleAllocator<?>> getHandles()
 	{
-		private boolean collected = false;
-		private List<IExtender> collection;
+		return handleChildren.getHandleAllocators();
+	}
 
-		@Override
-		public List<IExtender> get()
-		{
-			if (collected == false) collect();
-			return collection;
-		}
-
-		public Stream<IOperationNode> prepareInjection()
-		{
-			return injectors.stream().map(this::inject);
-		}
-
-		private IOperationNode inject(ChildrenInjector injector)
-		{
-			return c -> injector.inject(get());
-		}
-
-		private void collect()
-		{
-			collection = handleChildren.stream()
-									   .map(ChildHandleAllocator::getMainAllocation)
-									   .map(AllocationInstance::getAllocation)
-									   .collect(Collectors.toUnmodifiableList());
-			collected = true;
-		}
+	public List<ChildHandleAllocator<?>> getRemovedHandles()
+	{
+		return handleChildren.getRemovedHandleAllocators();
 	}
 }

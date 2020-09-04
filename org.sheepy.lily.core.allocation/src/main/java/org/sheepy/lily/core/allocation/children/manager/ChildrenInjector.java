@@ -23,7 +23,7 @@ public record ChildrenInjector(Class<? extends IExtender> type, ConsumerHandle h
 		return extenderClass.isAssignableFrom(type);
 	}
 
-	public void inject(final List<IExtender> children)
+	public void inject(final List<? extends IExtender> children)
 	{
 		if (many) handle.invoke(children);
 		else handle.invoke(children.isEmpty() ? null : children.get(0));

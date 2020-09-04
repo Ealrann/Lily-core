@@ -2,8 +2,6 @@ package org.sheepy.lily.core.allocation.instance;
 
 import org.sheepy.lily.core.allocation.children.manager.AllocationChildrenManager;
 import org.sheepy.lily.core.allocation.dependency.DependencyManager;
-import org.sheepy.lily.core.allocation.operation.InstanceTreeOperation;
-import org.sheepy.lily.core.allocation.operation.IOperationNode;
 import org.sheepy.lily.core.api.allocation.EAllocationStatus;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.annotation.Free;
@@ -15,7 +13,6 @@ import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
 
 import java.lang.annotation.Annotation;
-import java.util.function.Function;
 import java.util.stream.Stream;
 
 public final class AllocationInstance<Allocation extends IExtender>
@@ -46,21 +43,6 @@ public final class AllocationInstance<Allocation extends IExtender>
 		this.extenderContext = extenderContext;
 
 		if (observatory != null) observatory.observe(target);
-	}
-
-	public IOperationNode prepareTriage(final boolean forceTriage)
-	{
-		return prepareOperationNode(cm -> cm.prepareTriage(forceTriage));
-	}
-
-	public IOperationNode prepareCleanup()
-	{
-		return prepareOperationNode(cm -> cm.prepareCleanup(false));
-	}
-
-	private InstanceTreeOperation prepareOperationNode(final Function<AllocationChildrenManager, Stream<IOperationNode>> childExctractor)
-	{
-		return new InstanceTreeOperation(childExctractor, this);
 	}
 
 	public void update(ILilyEObject target)

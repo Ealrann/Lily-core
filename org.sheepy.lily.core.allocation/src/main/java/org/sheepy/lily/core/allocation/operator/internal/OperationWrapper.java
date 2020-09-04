@@ -1,8 +1,9 @@
 package org.sheepy.lily.core.allocation.operator.internal;
 
-import org.sheepy.lily.core.allocation.operation.IOperationNode;
+import org.sheepy.lily.core.allocation.operation.IOperation;
+import org.sheepy.lily.core.allocation.spliterator.AllocationTreeIterator;
 
-public final class OperationWrapper
+public final class OperationWrapper<T extends AllocationTreeIterator<T>>
 {
 	public enum EOperationPhase
 	{
@@ -11,16 +12,19 @@ public final class OperationWrapper
 		PostChildren
 	}
 
-	private final IOperationNode node;
 	private final boolean reverse;
 
+	private IOperation<T> operation;
 	private EOperationPhase phase;
 
-	public OperationWrapper(final IOperationNode node, final boolean reverse)
+	public OperationWrapper(final boolean reverse)
 	{
-		this.node = node;
 		this.reverse = reverse;
+	}
 
+	public void load(final IOperation<T> operation)
+	{
+		this.operation = operation;
 		phase = reverse ? EOperationPhase.PostChildren : EOperationPhase.PreChildren;
 	}
 
@@ -44,9 +48,9 @@ public final class OperationWrapper
 				};
 	}
 
-	public IOperationNode node()
+	public IOperation<T> operation()
 	{
-		return node;
+		return operation;
 	}
 
 	public EOperationPhase phase()
