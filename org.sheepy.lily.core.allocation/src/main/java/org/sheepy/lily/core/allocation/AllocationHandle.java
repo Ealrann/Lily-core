@@ -3,10 +3,6 @@ package org.sheepy.lily.core.allocation;
 import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
 import org.sheepy.lily.core.allocation.operation.BuildOperation;
-import org.sheepy.lily.core.allocation.operation.CleanupOperation;
-import org.sheepy.lily.core.allocation.operation.FreeOperation;
-import org.sheepy.lily.core.allocation.operation.IOperation;
-import org.sheepy.lily.core.allocation.spliterator.CleanupTreeIterator;
 import org.sheepy.lily.core.api.allocation.IAllocationHandle;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.model.ILilyEObject;
@@ -70,16 +66,6 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 		final var newAllocation = getAllocationOrNull(allocation);
 		this.mainAllocation = allocation;
 		onAllocationChange(previousAllocation, newAllocation);
-	}
-
-	public IOperation<CleanupTreeIterator> prepareCleanupOperation(final AllocationInstance<Allocation> allocation)
-	{
-		return new CleanupOperation(allocation);
-	}
-
-	public IOperation<CleanupTreeIterator> prepareFreeOperation(final AllocationInstance<Allocation> allocation)
-	{
-		return new FreeOperation(target, allocation);
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 package org.sheepy.lily.core.allocation.operator.internal;
 
-import org.sheepy.lily.core.allocation.spliterator.AllocationTreeIterator;
+import org.sheepy.lily.core.allocation.treeiterator.AllocationTreeIterator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 
 public final class AllocationTreeLayer<T extends AllocationTreeIterator<T>> implements ILayer<T>
@@ -52,7 +52,7 @@ public final class AllocationTreeLayer<T extends AllocationTreeIterator<T>> impl
 	@Override
 	public void next()
 	{
-		if (first || !operationWrapper.hasNextPhase())
+		if (first || operationWrapper.onLastPhase())
 		{
 			treeIterator.tryAdvance().ifPresentOrElse(operationWrapper::load, this::setDone);
 			first = false;

@@ -3,7 +3,7 @@ package org.sheepy.lily.core.allocation.operator.internal;
 import org.sheepy.lily.core.allocation.AllocationHandle;
 import org.sheepy.lily.core.allocation.operation.IOperation;
 import org.sheepy.lily.core.allocation.operator.OperationContext;
-import org.sheepy.lily.core.allocation.spliterator.AllocationTreeIterator;
+import org.sheepy.lily.core.allocation.treeiterator.AllocationTreeIterator;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptorRegistry;

@@ -1,6 +1,6 @@
 package org.sheepy.lily.core.allocation.operation;
 
-import org.sheepy.lily.core.allocation.spliterator.AllocationTreeIterator;
+import org.sheepy.lily.core.allocation.treeiterator.AllocationTreeIterator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 
 import java.util.Optional;

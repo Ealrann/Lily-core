@@ -1,7 +1,7 @@
 package org.sheepy.lily.core.allocation.operation;
 
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
-import org.sheepy.lily.core.allocation.spliterator.CleanupTreeIterator;
+import org.sheepy.lily.core.allocation.treeiterator.CleanupTreeIterator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 
@@ -9,10 +9,10 @@ import java.util.Optional;
 
 public final class FreeOperation implements IOperation<CleanupTreeIterator>
 {
-	private final ILilyEObject target;
-	private final AllocationInstance<?> allocation;
+	private ILilyEObject target;
+	private AllocationInstance<?> allocation;
 
-	public FreeOperation(final ILilyEObject target, final AllocationInstance<?> allocation)
+	public void setup(final ILilyEObject target, final AllocationInstance<?> allocation)
 	{
 		this.allocation = allocation;
 		this.target = target;

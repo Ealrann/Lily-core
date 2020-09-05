@@ -154,7 +154,6 @@ public class TestCompositeChildren
 		node.getLeaves().add(leaf);
 		leaf.getBoxes().add(box1);
 
-
 		((LilyEObject) root).loadExtenderManager();
 		final var allocator = IAllocationService.INSTANCE.buildAllocator(root,
 																		 context,

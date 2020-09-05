@@ -1,7 +1,7 @@
 package org.sheepy.lily.core.allocation.operator.internal;
 
 import org.sheepy.lily.core.allocation.operation.IOperation;
-import org.sheepy.lily.core.allocation.spliterator.AllocationTreeIterator;
+import org.sheepy.lily.core.allocation.treeiterator.AllocationTreeIterator;
 
 public final class OperationWrapper<T extends AllocationTreeIterator<T>>
 {
@@ -28,9 +28,9 @@ public final class OperationWrapper<T extends AllocationTreeIterator<T>>
 		phase = reverse ? EOperationPhase.PostChildren : EOperationPhase.PreChildren;
 	}
 
-	public boolean hasNextPhase()
+	public boolean onLastPhase()
 	{
-		return reverse ? phase != EOperationPhase.PreChildren : phase != EOperationPhase.PostChildren;
+		return reverse ? phase == EOperationPhase.PreChildren : phase == EOperationPhase.PostChildren;
 	}
 
 	public void nextPhase()

@@ -3,9 +3,9 @@ package org.sheepy.lily.core.allocation;
 import org.sheepy.lily.core.allocation.operation.*;
 import org.sheepy.lily.core.allocation.operator.OperationContext;
 import org.sheepy.lily.core.allocation.operator.TreeOperator;
-import org.sheepy.lily.core.allocation.spliterator.CleanupTreeIterator;
-import org.sheepy.lily.core.allocation.spliterator.TriageTreeIterator;
-import org.sheepy.lily.core.allocation.spliterator.UpdateTreeIterator;
+import org.sheepy.lily.core.allocation.treeiterator.CleanupTreeIterator;
+import org.sheepy.lily.core.allocation.treeiterator.TriageTreeIterator;
+import org.sheepy.lily.core.allocation.treeiterator.UpdateTreeIterator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.IAllocator;
 import org.sheepy.lily.core.api.extender.IExtender;
@@ -75,7 +75,9 @@ public class Allocator implements IAllocator
 		final var mainAllocation = handle.getMainAllocation();
 		if (mainAllocation != null && mainAllocation.isDirty())
 		{
-			return Optional.of(new CleanupOperation(mainAllocation));
+			final var cleanupOperation = new CleanupOperation();
+			cleanupOperation.setup(mainAllocation);
+			return Optional.of(cleanupOperation);
 		}
 		else
 		{
@@ -109,7 +111,9 @@ public class Allocator implements IAllocator
 		final var mainAllocation = handle.getMainAllocation();
 		if (mainAllocation != null)
 		{
-			return Optional.of(handle.prepareFreeOperation(mainAllocation));
+			final var freeOperation = new FreeOperation();
+			freeOperation.setup(handle.getTarget(), mainAllocation);
+			return Optional.of(freeOperation);
 		}
 		else
 		{

@@ -1,4 +1,4 @@
-package org.sheepy.lily.core.allocation.spliterator;
+package org.sheepy.lily.core.allocation.treeiterator;
 
 import org.sheepy.lily.core.allocation.children.instance.ChildDescriptorAllocator;
 import org.sheepy.lily.core.allocation.children.instance.ChildHandleAllocator;

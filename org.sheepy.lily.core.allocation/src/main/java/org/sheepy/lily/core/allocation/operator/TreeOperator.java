@@ -5,7 +5,7 @@ import org.sheepy.lily.core.allocation.operation.IOperation;
 import org.sheepy.lily.core.allocation.operator.internal.AllocationTreeLayer;
 import org.sheepy.lily.core.allocation.operator.internal.ILayer;
 import org.sheepy.lily.core.allocation.operator.internal.TreeLayerBuilder;
-import org.sheepy.lily.core.allocation.spliterator.AllocationTreeIterator;
+import org.sheepy.lily.core.allocation.treeiterator.AllocationTreeIterator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 
 import java.util.ArrayList;

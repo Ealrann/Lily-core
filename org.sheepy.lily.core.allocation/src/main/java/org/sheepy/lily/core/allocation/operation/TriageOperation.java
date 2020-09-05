@@ -2,7 +2,7 @@ package org.sheepy.lily.core.allocation.operation;
 
 import org.sheepy.lily.core.allocation.children.instance.ChildHandleAllocator;
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
-import org.sheepy.lily.core.allocation.spliterator.TriageTreeIterator;
+import org.sheepy.lily.core.allocation.treeiterator.TriageTreeIterator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 
 import java.util.Optional;

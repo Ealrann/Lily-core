@@ -1,7 +1,7 @@
 package org.sheepy.lily.core.allocation.operation;
 
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
-import org.sheepy.lily.core.allocation.spliterator.UpdateTreeIterator;
+import org.sheepy.lily.core.allocation.treeiterator.UpdateTreeIterator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 

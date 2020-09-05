@@ -1,16 +1,16 @@
 package org.sheepy.lily.core.allocation.operation;
 
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
-import org.sheepy.lily.core.allocation.spliterator.CleanupTreeIterator;
+import org.sheepy.lily.core.allocation.treeiterator.CleanupTreeIterator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 
 import java.util.Optional;
 
 public final class CleanupOperation implements IOperation<CleanupTreeIterator>
 {
-	private final AllocationInstance<?> allocation;
+	private AllocationInstance<?> allocation;
 
-	public CleanupOperation(final AllocationInstance<?> allocation)
+	public void setup(final AllocationInstance<?> allocation)
 	{
 		this.allocation = allocation;
 	}
