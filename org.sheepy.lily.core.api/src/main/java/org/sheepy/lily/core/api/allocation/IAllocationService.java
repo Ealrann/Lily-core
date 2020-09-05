@@ -7,8 +7,7 @@ import java.util.ServiceLoader;
 
 public interface IAllocationService
 {
-	void updateAllocation(ILilyEObject target, IAllocationContext context, Class<? extends IExtender> type);
-	void free(ILilyEObject target, IAllocationContext context, Class<? extends IExtender> type);
+	IAllocator buildAllocator(ILilyEObject target, IAllocationContext context, Class<? extends IExtender> type);
 
 	IAllocationService INSTANCE = ServiceLoader.load(IAllocationService.class).findFirst().orElse(null);
 }

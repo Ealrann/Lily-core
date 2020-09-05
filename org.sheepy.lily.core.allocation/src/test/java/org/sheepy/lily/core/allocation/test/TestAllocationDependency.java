@@ -27,7 +27,10 @@ public class TestAllocationDependency
 		node.setContainer(container);
 
 		((LilyEObject) root).loadExtenderManager();
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		final var allocator = IAllocationService.INSTANCE.buildAllocator(root,
+																		 context,
+																		 AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, node.getCurrentAllocationCount());
@@ -39,7 +42,7 @@ public class TestAllocationDependency
 		final var containerAllocation = container.adapt(ContainerAllocation.class);
 		containerAllocation.lockAllocation();
 		containerAllocation.markObsolete();
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, node.getDependencyUpdateCount());
 		assertEquals(1, root.getCurrentAllocationCount());
@@ -51,7 +54,7 @@ public class TestAllocationDependency
 		assertEquals(2, box.getCurrentAllocationCount());
 
 		containerAllocation.unlockAllocation();
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, node.getDependencyUpdateCount());
 		assertEquals(1, root.getCurrentAllocationCount());
@@ -81,7 +84,10 @@ public class TestAllocationDependency
 		leaf.getBoxes().add(box);
 
 		((LilyEObject)root).loadExtenderManager();
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		final var allocator = IAllocationService.INSTANCE.buildAllocator(root,
+																		 context,
+																		 AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, node.getCurrentAllocationCount());
@@ -92,7 +98,7 @@ public class TestAllocationDependency
 		assertEquals(1, box.getTotalAllocationCount());
 
 		box.adapt(BoxAllocation.class).markObsolete();
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, node.getCurrentAllocationCount());
@@ -104,7 +110,7 @@ public class TestAllocationDependency
 
 		leaf.adapt(LeafAllocation.class).lockAllocation();
 		box.adapt(BoxAllocation.class).markObsolete();
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, node.getCurrentAllocationCount());
@@ -132,7 +138,10 @@ public class TestAllocationDependency
 		leaf.getBoxes().add(box);
 
 		((LilyEObject)root).loadExtenderManager();
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		final var allocator = IAllocationService.INSTANCE.buildAllocator(root,
+																		 context,
+																		 AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, node.getCurrentAllocationCount());
@@ -142,8 +151,8 @@ public class TestAllocationDependency
 		assertEquals(1, leaf.getTotalAllocationCount());
 		assertEquals(1, box.getTotalAllocationCount());
 
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		allocator.updateAllocation();
+		allocator.updateAllocation();
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, node.getCurrentAllocationCount());
@@ -154,7 +163,7 @@ public class TestAllocationDependency
 		assertEquals(1, box.getTotalAllocationCount());
 
 		box.adapt(BoxAllocation.class).requestUpdate();
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, node.getCurrentAllocationCount());
@@ -167,7 +176,7 @@ public class TestAllocationDependency
 		box.adapt(BoxAllocation.class).requestUpdate();
 		final var lock = box.adapt(BoxAllocation.class).newLock();
 
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, leaf.getCurrentAllocationCount());
 		assertEquals(2, box.getCurrentAllocationCount());
@@ -176,7 +185,7 @@ public class TestAllocationDependency
 
 		lock.unlock();
 
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, leaf.getCurrentAllocationCount());
 		assertEquals(1, box.getCurrentAllocationCount());
@@ -201,7 +210,10 @@ public class TestAllocationDependency
 		leaf.getBoxes().add(box);
 
 		((LilyEObject) root).loadExtenderManager();
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		final var allocator = IAllocationService.INSTANCE.buildAllocator(root,
+																		 context,
+																		 AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, node.getCurrentAllocationCount());
@@ -213,7 +225,7 @@ public class TestAllocationDependency
 
 		container.adapt(AllocationObjectAllocation.class).requestUpdate();
 		container.adapt(AllocationObjectAllocation.class).lockAllocation();
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(2, container.getCurrentAllocationCount());
 		assertEquals(2, box.getCurrentAllocationCount());
@@ -243,7 +255,10 @@ public class TestAllocationDependency
 		node3.setContainer(container1);
 
 		((LilyEObject) root).loadExtenderManager();
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		final var allocator = IAllocationService.INSTANCE.buildAllocator(root,
+																		 context,
+																		 AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, node1.getCurrentAllocationCount());
@@ -259,7 +274,7 @@ public class TestAllocationDependency
 		node1.setContainer(container2);
 		node2.setContainer(container2);
 		node3.setContainer(container2);
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, node1.getCurrentAllocationCount());

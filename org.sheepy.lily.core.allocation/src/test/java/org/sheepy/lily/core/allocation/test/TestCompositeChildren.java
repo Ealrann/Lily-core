@@ -25,14 +25,17 @@ public class TestCompositeChildren
 		container.getBoxes().add(box);
 
 		((LilyEObject) root).loadExtenderManager();
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		final var allocator = IAllocationService.INSTANCE.buildAllocator(root,
+																		 context,
+																		 AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, container.getCurrentAllocationCount());
 		assertEquals(1, box.getCurrentAllocationCount());
 
 		container.adapt(ContainerAllocation.class).markObsolete();
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, container.getCurrentAllocationCount());
@@ -41,7 +44,7 @@ public class TestCompositeChildren
 		assertEquals(2, box.getTotalAllocationCount());
 
 		box.adapt(BoxAllocation.class).markObsolete();
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, container.getCurrentAllocationCount());
@@ -61,7 +64,11 @@ public class TestCompositeChildren
 		root.getContainers().add(container);
 		container.getBoxes().add(box);
 
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		((LilyEObject) root).loadExtenderManager();
+		final var allocator = IAllocationService.INSTANCE.buildAllocator(root,
+																		 context,
+																		 AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, container.getCurrentAllocationCount());
@@ -70,7 +77,7 @@ public class TestCompositeChildren
 		final var containerAllocation = container.adapt(ContainerAllocation.class);
 		containerAllocation.markObsolete();
 		containerAllocation.lockAllocation();
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(2, container.getCurrentAllocationCount());
@@ -79,7 +86,7 @@ public class TestCompositeChildren
 		assertEquals(2, box.getTotalAllocationCount());
 
 		containerAllocation.unlockAllocation();
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, container.getCurrentAllocationCount());
 		assertEquals(1, box.getCurrentAllocationCount());
@@ -98,7 +105,11 @@ public class TestCompositeChildren
 		root.getContainers().add(container);
 		container.getBoxes().add(box);
 
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		((LilyEObject) root).loadExtenderManager();
+		final var allocator = IAllocationService.INSTANCE.buildAllocator(root,
+																		 context,
+																		 AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, container.getCurrentAllocationCount());
@@ -108,7 +119,7 @@ public class TestCompositeChildren
 		final var boxAllocation = box.adapt(BoxAllocation.class);
 		boxAllocation.markObsolete();
 		containerAllocation.lockAllocation();
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(2, container.getCurrentAllocationCount());
@@ -117,7 +128,7 @@ public class TestCompositeChildren
 		assertEquals(2, box.getTotalAllocationCount());
 
 		containerAllocation.unlockAllocation();
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 		assertEquals(1, root.getCurrentAllocationCount());
 		assertEquals(1, container.getCurrentAllocationCount());
 		assertEquals(1, box.getCurrentAllocationCount());
@@ -143,11 +154,16 @@ public class TestCompositeChildren
 		node.getLeaves().add(leaf);
 		leaf.getBoxes().add(box1);
 
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+
+		((LilyEObject) root).loadExtenderManager();
+		final var allocator = IAllocationService.INSTANCE.buildAllocator(root,
+																		 context,
+																		 AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 
 		container.adapt(ContainerAllocation.class).lockAllocation();
 		box2.adapt(BoxAllocation.class).markObsolete();
 
-		IAllocationService.INSTANCE.updateAllocation(root, context, AllocationObjectAllocation.class);
+		allocator.updateAllocation();
 	}
 }
