@@ -5,16 +5,22 @@ import org.sheepy.lily.core.api.extender.IExtenderHandle;
 
 public final class DependencyContainer
 {
-	private final IExtender extender;
-	private final IExtenderHandle<? extends IExtender> handle;
+	private final IExtenderHandle<?> handle;
 	private final Runnable onDependencyUpdate;
 
-	public DependencyContainer(final IExtenderHandle<? extends IExtender> handle, final Runnable onDependencyUpdate)
+	private IExtender extender;
+
+	public DependencyContainer(final IExtenderHandle<?> handle, final Runnable onDependencyUpdate)
 	{
 		this.handle = handle;
 		this.onDependencyUpdate = onDependencyUpdate;
 		extender = handle.getExtender();
 		handle.listenNoParam(onDependencyUpdate);
+	}
+
+	public void update()
+	{
+		extender = handle.getExtender();
 	}
 
 	public void free()
@@ -30,5 +36,10 @@ public final class DependencyContainer
 	public boolean isDirty()
 	{
 		return extender != handle.getExtender();
+	}
+
+	public IExtenderHandle<?> handle()
+	{
+		return handle;
 	}
 }

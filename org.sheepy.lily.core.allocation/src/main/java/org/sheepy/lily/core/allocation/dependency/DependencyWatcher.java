@@ -4,14 +4,12 @@ import org.sheepy.lily.core.allocation.dependency.container.DependencyContainer;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Deque;
 
 public final class DependencyWatcher
 {
-	private final DependencyResolver resolver;
 	private final Runnable onResolutionObsolete;
-	private List<DependencyContainer> currentAllocations = List.of();
+	private final DependencyResolutionManager resolutionManager;
 
 	private boolean structureChanged = false;
 
@@ -20,38 +18,31 @@ public final class DependencyWatcher
 							 final IObservatoryBuilder observatoryBuilder,
 							 final Runnable onResolutionObsolete)
 	{
-		this.resolver = resolver;
 		this.onResolutionObsolete = onResolutionObsolete;
-		resolve(target);
+		resolutionManager = new DependencyResolutionManager(resolver, onResolutionObsolete);
+		resolutionManager.resolve(target);
 		resolver.installStructureListener(target, observatoryBuilder, this::structureChange);
 	}
 
 	public void update(ILilyEObject target)
 	{
-		resolve(target);
+		resolutionManager.resolve(target);
+		structureChanged = false;
 	}
 
-	public List<DependencyContainer> getResolvedAllocations()
+	public Deque<DependencyContainer> getResolvedAllocations()
 	{
-		return currentAllocations;
+		return resolutionManager.getResolutions();
 	}
 
 	public void free()
 	{
-		currentAllocations.forEach(DependencyContainer::free);
-	}
-
-	private void resolve(ILilyEObject target)
-	{
-		currentAllocations.forEach(DependencyContainer::free);
-		currentAllocations = resolver.resolveDependencies(target, onResolutionObsolete)
-									 .collect(Collectors.toUnmodifiableList());
-		structureChanged = false;
+		resolutionManager.free();
 	}
 
 	public boolean isDirty()
 	{
-		return structureChanged || currentAllocations.stream().anyMatch(DependencyContainer::isDirty);
+		return structureChanged || resolutionManager.isDirty();
 	}
 
 	private void structureChange()

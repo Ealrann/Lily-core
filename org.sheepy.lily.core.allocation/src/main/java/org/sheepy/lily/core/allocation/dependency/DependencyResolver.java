@@ -9,12 +9,12 @@ import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.extender.parameter.IParameterResolver;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
+import org.sheepy.lily.core.api.util.IModelExplorer;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public final class DependencyResolver implements IParameterResolver
 {
@@ -47,7 +47,7 @@ public final class DependencyResolver implements IParameterResolver
 	{
 		final var stream = structureObserver.getExplorer()
 											.stream(source)
-											.map(this::resolve)
+											.map(this::resolveOptional)
 											.flatMap(Optional::stream)
 											.map(IExtenderHandle::getExtender);
 		if (parameterClass == List.class)
@@ -60,27 +60,11 @@ public final class DependencyResolver implements IParameterResolver
 		}
 	}
 
-	public Stream<DependencyContainer> resolveDependencies(final ILilyEObject source,
-														   final Runnable whenResolutionObsolete)
-	{
-		return structureObserver.getExplorer()
-								.stream(source)
-								.map(target -> buildContainer(target, whenResolutionObsolete));
-	}
-
-	private DependencyContainer buildContainer(final ILilyEObject target, final Runnable whenResolutionObsolete)
+	public DependencyContainer buildContainer(final ILilyEObject target, final Runnable whenResolutionObsolete)
 	{
 		try
 		{
-			final var res = resolve(target).map(h -> new DependencyContainer(h, whenResolutionObsolete));
-			if (res.isPresent())
-			{
-				return res.get();
-			}
-			else
-			{
-				throw new RuntimeException("Cannot resolve dependency " + index + " " + target.eClass().getName());
-			}
+			return new DependencyContainer(resolve(target), whenResolutionObsolete);
 		}
 		catch (RuntimeException e)
 		{
@@ -88,7 +72,14 @@ public final class DependencyResolver implements IParameterResolver
 		}
 	}
 
-	private Optional<? extends IExtenderHandle<?>> resolve(final ILilyEObject target)
+	public IExtenderHandle<?> resolve(final ILilyEObject target)
+	{
+		final var resolution = resolveOptional(target);
+		if (resolution.isPresent()) return resolution.get();
+		else throw new RuntimeException("Cannot resolve dependency " + index + " " + target.eClass().getName());
+	}
+
+	private Optional<? extends IExtenderHandle<?>> resolveOptional(final ILilyEObject target)
 	{
 		return target.extenders().adaptHandles(type).findAny();
 	}
@@ -103,5 +94,10 @@ public final class DependencyResolver implements IParameterResolver
 										 final Runnable structureChanged)
 	{
 		structureObserver.installListener(source, observatoryBuilder, structureChanged);
+	}
+
+	public IModelExplorer getModelExplorer()
+	{
+		return structureObserver.getExplorer();
 	}
 }

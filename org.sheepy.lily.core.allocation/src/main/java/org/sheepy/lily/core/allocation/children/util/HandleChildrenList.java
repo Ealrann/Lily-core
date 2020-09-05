@@ -39,8 +39,8 @@ public final class HandleChildrenList
 				final var currentChildAllocator = listIterator.next();
 				if (currentChildAllocator.handle() != currentHandle)
 				{
-					listIterator.set(buildAllocationContainer(currentHandle));
-					listIterator.add(currentChildAllocator);
+					listIterator.previous();
+					listIterator.add(buildAllocationContainer(currentHandle));
 				}
 			}
 			else

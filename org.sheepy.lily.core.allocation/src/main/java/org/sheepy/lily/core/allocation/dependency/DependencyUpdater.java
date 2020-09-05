@@ -48,7 +48,7 @@ public final class DependencyUpdater
 			}
 			else
 			{
-				final var allocation = resolution.getResolvedAllocations().get(0).get();
+				final var allocation = resolution.getResolvedAllocations().getFirst().get();
 				updateHandle.invoke(allocation);
 			}
 		}
@@ -63,13 +63,13 @@ public final class DependencyUpdater
 		resolution.free();
 	}
 
-	public static record Builder(DependencyWatcher.Builder resolutionBuilder, IExtenderHandle.AnnotatedHandle<UpdateDependency> updateHandle)
+	public static record Builder(DependencyWatcher.Builder resolutionBuilder,
+								 IExtenderHandle.AnnotatedHandle<UpdateDependency> updateHandle)
 	{
 		public DependencyUpdater build(final IObservatoryBuilder observatoryBuilder,
 									   final Runnable onResolutionObsolete)
 		{
-			final var resolution = resolutionBuilder.build(observatoryBuilder,
-														   onResolutionObsolete);
+			final var resolution = resolutionBuilder.build(observatoryBuilder, onResolutionObsolete);
 			return new DependencyUpdater(resolution, updateHandle);
 		}
 	}
