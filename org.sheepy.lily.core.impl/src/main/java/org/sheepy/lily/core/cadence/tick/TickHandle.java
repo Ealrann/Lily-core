@@ -11,6 +11,7 @@ import org.sheepy.lily.core.api.reflect.ConsumerHandle;
 import java.util.function.Consumer;
 import java.util.function.LongConsumer;
 import java.util.function.ObjLongConsumer;
+import java.util.stream.Stream;
 
 public final class TickHandle
 {
@@ -35,41 +36,45 @@ public final class TickHandle
 		return configuration.tickFrequency();
 	}
 
-	public void tick(final long stepNs)
+	public Stream<LongConsumer> prepareTickOperations()
 	{
-		handle.annotatedHandles(Tick.class)
-			  .filter(handle -> handle.annotation() == configuration.annotation())
-			  .forEach(handle -> tick(stepNs, handle));
+		return handle.annotatedHandles(Tick.class).filter(this::match).map(this::tickOperation);
 	}
 
-	private void tick(final long stepNs, final IExtenderHandle.AnnotatedHandle<Tick> tickAnnotatedHandle)
+	private LongConsumer tickOperation(final IExtenderHandle.AnnotatedHandle<Tick> tickAnnotatedHandle)
 	{
 		final var consumerHandle = (ConsumerHandle) tickAnnotatedHandle.executionHandle();
 		final var function = consumerHandle.getLambdaFunction();
 
 		// Let's do our best to avoid autoboxing
-		if (function instanceof LongConsumer)
+		if (function instanceof LongConsumer longConsumer)
 		{
-			((LongConsumer) function).accept(stepNs);
+			return longConsumer;
 		}
 		else if (function instanceof Consumer)
 		{
 			@SuppressWarnings("unchecked") final var oConsumer = (Consumer<EObject>) function;
-			oConsumer.accept(target);
+			return stepNs -> oConsumer.accept(target);
 		}
-		else if (function instanceof Runnable)
+		else if (function instanceof Runnable runnable)
 		{
-			((Runnable) function).run();
+			return stepNs -> runnable.run();
 		}
 		else if (function instanceof ObjLongConsumer)
 		{
 			@SuppressWarnings("unchecked") final var oLongConsumer = (ObjLongConsumer<EObject>) function;
-			oLongConsumer.accept(target, stepNs);
+			return stepNs -> oLongConsumer.accept(target, stepNs);
 		}
 		else
 		{
 			throwError();
+			return stepNs -> {};
 		}
+	}
+
+	private boolean match(final IExtenderHandle.AnnotatedHandle<Tick> handle)
+	{
+		return handle.annotation() == configuration.annotation();
 	}
 
 	private static void throwError() throws AssertionError

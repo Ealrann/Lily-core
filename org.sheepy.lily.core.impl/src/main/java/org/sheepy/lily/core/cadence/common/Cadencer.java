@@ -7,9 +7,14 @@ import org.sheepy.lily.core.api.cadence.Tick;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptorRegistry;
 import org.sheepy.lily.core.api.model.ILilyEObject;
+import org.sheepy.lily.core.api.util.DebugUtil;
 import org.sheepy.lily.core.cadence.tick.TickHandle;
+import org.sheepy.lily.core.cadence.tick.wrapper.ITickerWrapper;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NavigableMap;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -47,8 +52,7 @@ public final class Cadencer
 		private static final List<TickHandle.Builder> TICK_BUILDERS = createTickBuilders();
 		private static final IStatistics statistics = IStatistics.INSTANCE;
 
-		private final NavigableMap<Integer, List<AdapterTickerWrapper>> tickerMap = new TreeMap<>();
-		private final Deque<AdapterTickerWrapper> stoppedTickers = new ArrayDeque<>();
+		private final NavigableMap<Integer, List<ITickerWrapper>> tickerMap = new TreeMap<>();
 		private final ILilyEObject root;
 
 		public CadenceContentAdater(ILilyEObject root)
@@ -69,7 +73,7 @@ public final class Cadencer
 			TICK_BUILDERS.stream()
 						 .filter(builder -> builder.isApplicable(lilyObject))
 						 .map(builder -> builder.build(lilyObject))
-						 .map(AdapterTickerWrapper::new)
+						 .map(ITickerWrapper::build)
 						 .forEach(this::addTicker);
 			super.setTarget(target);
 		}
@@ -97,45 +101,56 @@ public final class Cadencer
 
 		private void tick()
 		{
-			tickerMap.values()
-					 .stream()
-					 .flatMap(List::stream)
-					 .filter(AbstractTickerWrapper::shouldTick)
-					 .forEach(this::tick);
+			final var iterator = tickerMap.values()
+										  .stream()
+										  .flatMap(List::stream)
+										  .filter(ITickerWrapper::shouldTick)
+										  .iterator();
+			// Iterator to flatten the call stack
+			while (iterator.hasNext())
+			{
+				final var ticker = iterator.next();
+				if (DebugUtil.DEBUG_ENABLED) tickDebug(ticker);
+				else tick(ticker);
+			}
 
-			stoppedTickers.forEach(this::removeTicker);
-			stoppedTickers.clear();
+			tickerMap.values().forEach(tickers -> tickers.removeIf(ITickerWrapper::isStopped));
 		}
 
-		private void tick(final AdapterTickerWrapper ticker)
+		private static void tickDebug(final ITickerWrapper ticker)
 		{
 			final long start = System.nanoTime();
-			while (!ticker.stop.get() && ticker.shouldTick())
-			{
-				ticker.tick();
-			}
+			tick(ticker);
 			statistics.addTime(CADENCER_TICK, ticker.getLabel(), System.nanoTime() - start);
-
-			if (ticker.stop.get()) stoppedTickers.add(ticker);
 		}
 
-		private void addTicker(final AdapterTickerWrapper ticker)
+		private static void tick(final ITickerWrapper ticker)
+		{
+			final var tickOperations = ticker.getTickHandle()
+											 .prepareTickOperations()
+											 .collect(Collectors.toUnmodifiableList());
+
+			while (!ticker.isStopped() && ticker.shouldTick())
+			{
+				final var stepNs = ticker.discharge();
+				for (final var operation : tickOperations)
+				{
+					operation.accept(stepNs);
+				}
+			}
+		}
+
+		private void addTicker(final ITickerWrapper ticker)
 		{
 			final var list = tickerMap.computeIfAbsent(ticker.getPriority(), p -> new ArrayList<>());
 			list.add(ticker);
 		}
 
-		private void removeTicker(final AdapterTickerWrapper ticker)
-		{
-			final var list = tickerMap.get(ticker.getPriority());
-			if (list != null) list.remove(ticker);
-		}
-
-		private static boolean checkAndStop(AdapterTickerWrapper wrapper, EObject target)
+		private static boolean checkAndStop(ITickerWrapper wrapper, EObject target)
 		{
 			if (wrapper.getTarget() == target)
 			{
-				wrapper.stop.set(true);
+				wrapper.stop();
 				return true;
 			}
 			else
