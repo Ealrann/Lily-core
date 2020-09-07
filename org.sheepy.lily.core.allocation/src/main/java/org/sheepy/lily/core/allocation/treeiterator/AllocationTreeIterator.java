@@ -54,6 +54,11 @@ public abstract class AllocationTreeIterator<T extends AllocationTreeIterator<T>
 	{
 		if (childrenManager == null) return false;
 
+		if (currentSupervisor != null)
+		{
+			postUpdateSupervisor(currentSupervisor);
+		}
+
 		final var supervisors = childrenManager.getSupervisors();
 		if (!checkSupervisorIndex(supervisors))
 		{
@@ -162,6 +167,7 @@ public abstract class AllocationTreeIterator<T extends AllocationTreeIterator<T>
 	}
 
 	protected abstract void updateSupervisor(final ChildrenSupervisor supervisor);
+	protected abstract void postUpdateSupervisor(final ChildrenSupervisor supervisor);
 	protected abstract void postUpdateDescriptorAllocator(final ChildDescriptorAllocator descriptorAllocator);
 	protected abstract boolean operatesOnHandleAllocator(final ChildHandleAllocator<?> handleAllocator);
 

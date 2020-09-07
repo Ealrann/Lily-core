@@ -1,12 +1,15 @@
 package org.sheepy.lily.core.allocation.children.manager;
 
-import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
 import org.sheepy.lily.core.api.allocation.annotation.InjectChildren;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.reflect.ConsumerHandle;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public record ChildrenInjector(Class<? extends IExtender> type, ConsumerHandle handle, boolean many)
 {
@@ -17,10 +20,12 @@ public record ChildrenInjector(Class<? extends IExtender> type, ConsumerHandle h
 			 handle.method().getParameterTypes()[0] == List.class);
 	}
 
-	public boolean match(AllocationDescriptor<?> descriptor)
+	public void inject(final Stream<ILilyEObject> children)
 	{
-		final var extenderClass = descriptor.extenderClass();
-		return type.isAssignableFrom(extenderClass);
+		final var allocations = children.map(element -> element.adapt(type))
+										.filter(Objects::nonNull)
+										.collect(Collectors.toUnmodifiableList());
+		inject(allocations);
 	}
 
 	public void inject(final List<? extends IExtender> children)

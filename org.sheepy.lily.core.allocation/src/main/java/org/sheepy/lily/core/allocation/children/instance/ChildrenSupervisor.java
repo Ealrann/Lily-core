@@ -44,6 +44,14 @@ public final class ChildrenSupervisor
 		}
 	}
 
+	public void postUpdate(final ILilyEObject source)
+	{
+		for (final var injector : injectors)
+		{
+			injector.inject(modelExplorer.stream(source));
+		}
+	}
+
 	private void add(List<ILilyEObject> children)
 	{
 		reloadDescriptors(children);
@@ -77,10 +85,7 @@ public final class ChildrenSupervisor
 
 	private ChildDescriptorAllocator buildAllocator(final AllocationDescriptor<?> descriptor)
 	{
-		final var filteredInjectors = injectors.stream()
-											   .filter(i -> i.match(descriptor))
-											   .collect(Collectors.toUnmodifiableList());
-		return new ChildDescriptorAllocator(descriptor, filteredInjectors, whenBranchDirty);
+		return new ChildDescriptorAllocator(descriptor, whenBranchDirty);
 	}
 
 	public List<ChildDescriptorAllocator> getDescriptorAllocators()

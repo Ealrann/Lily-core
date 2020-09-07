@@ -61,9 +61,14 @@ public final class UpdateTreeIterator extends AllocationTreeIterator<UpdateTreeI
 	}
 
 	@Override
+	protected void postUpdateSupervisor(final ChildrenSupervisor supervisor)
+	{
+		supervisor.postUpdate(source);
+	}
+
+	@Override
 	protected void postUpdateDescriptorAllocator(final ChildDescriptorAllocator descriptorAllocator)
 	{
-		descriptorAllocator.postUpdate();
 	}
 
 	@Override

@@ -49,7 +49,7 @@ public final class CleanupTreeIterator extends AllocationTreeIterator<CleanupTre
 				else
 				{
 					currentHandleAllocator.getDirtyAllocations().remove(currentAllocation);
-					allocationIndex --;
+					allocationIndex--;
 				}
 				freeOperation.setup(currentHandleAllocator.target(), currentAllocation);
 				return Optional.of(freeOperation);
@@ -116,6 +116,11 @@ public final class CleanupTreeIterator extends AllocationTreeIterator<CleanupTre
 
 	@Override
 	protected void updateSupervisor(final ChildrenSupervisor supervisor)
+	{
+	}
+
+	@Override
+	protected void postUpdateSupervisor(final ChildrenSupervisor supervisor)
 	{
 	}
 

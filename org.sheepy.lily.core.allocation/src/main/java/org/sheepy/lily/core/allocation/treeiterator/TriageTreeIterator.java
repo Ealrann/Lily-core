@@ -46,6 +46,11 @@ public final class TriageTreeIterator extends AllocationTreeIterator<TriageTreeI
 	}
 
 	@Override
+	protected void postUpdateSupervisor(final ChildrenSupervisor supervisor)
+	{
+	}
+
+	@Override
 	protected void postUpdateDescriptorAllocator(final ChildDescriptorAllocator descriptorAllocator)
 	{
 	}
