@@ -20,7 +20,7 @@ public record ChildrenInjector(Class<? extends IExtender> type, ConsumerHandle h
 	public boolean match(AllocationDescriptor<?> descriptor)
 	{
 		final var extenderClass = descriptor.extenderClass();
-		return extenderClass.isAssignableFrom(type);
+		return type.isAssignableFrom(extenderClass);
 	}
 
 	public void inject(final List<? extends IExtender> children)
