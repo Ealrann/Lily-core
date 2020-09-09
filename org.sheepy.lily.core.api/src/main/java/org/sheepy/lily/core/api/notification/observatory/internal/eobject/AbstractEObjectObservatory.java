@@ -156,7 +156,7 @@ public abstract class AbstractEObjectObservatory<T extends ILilyEObject> impleme
 		}
 
 		@Override
-		public <F extends IFeatures<F>, N extends IExtender & INotifier<F>> INotifierAdapterObservatoryBuilder<F, N> adaptNotifier(
+		public <F extends IFeatures<?>, N extends IExtender & INotifier<? extends F>> INotifierAdapterObservatoryBuilder<F, N> adaptNotifier(
 				final Class<N> classifier)
 		{
 			final var child = new NotifierAdapterObservatory.Builder<>(classifier);
@@ -179,7 +179,7 @@ public abstract class AbstractEObjectObservatory<T extends ILilyEObject> impleme
 		}
 
 		@Override
-		public IEObjectObservatoryBuilder<T> listenStructure(final Consumer<Notification> structureChanged															 )
+		public IEObjectObservatoryBuilder<T> listenStructure(final Consumer<Notification> structureChanged)
 		{
 			pois.add(new EObjectStructurePOI(structureChanged));
 			return this;

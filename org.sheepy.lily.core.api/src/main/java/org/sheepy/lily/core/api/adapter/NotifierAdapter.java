@@ -8,7 +8,7 @@ import java.util.List;
 
 public abstract class NotifierAdapter<Type extends IFeatures<Type>> extends Notifier<Type> implements INotifierAdapter<Type>
 {
-	public NotifierAdapter(List<Feature<?, Type>> features)
+	public NotifierAdapter(List<Feature<?, ? super Type>> features)
 	{
 		super(features);
 	}

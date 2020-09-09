@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public final class NotifierAdapterObservatory<Type extends IFeatures<Type>, Notifier extends IExtender & INotifier<Type>> extends
-																														  AdapterObservatory<Notifier> implements
-																																					   IObservatory
+public final class NotifierAdapterObservatory<Type extends IFeatures<?>, Notifier extends IExtender & INotifier<? extends Type>> extends
+																																 AdapterObservatory<Notifier> implements
+																																							  IObservatory
 {
 	private final List<INotifierPOI<Type>> observationPoints;
 
@@ -50,10 +50,10 @@ public final class NotifierAdapterObservatory<Type extends IFeatures<Type>, Noti
 		super.gatherRemove(oldAdapter);
 	}
 
-	public static final class Builder<Type extends IFeatures<Type>, Notifier extends IExtender & INotifier<Type>> extends
-																												  AdapterObservatory.Builder<Notifier> implements
-																																					   INotifierAdapterObservatoryBuilder<Type, Notifier>,
-																																					   InternalObservatoryBuilder
+	public static final class Builder<Type extends IFeatures<?>, Notifier extends IExtender & INotifier<? extends Type>> extends
+																														 AdapterObservatory.Builder<Notifier> implements
+																																							  INotifierAdapterObservatoryBuilder<Type, Notifier>,
+																																							  InternalObservatoryBuilder
 	{
 		private final List<INotifierPOI<Type>> observationPoints = new ArrayList<>();
 
@@ -64,7 +64,7 @@ public final class NotifierAdapterObservatory<Type extends IFeatures<Type>, Noti
 
 		@Override
 		public <Listener> INotifierAdapterObservatoryBuilder<Type, Notifier> listen(Listener listener,
-																					Feature<? super Listener, Type> feature)
+																					Feature<Listener, ? super Type> feature)
 		{
 			observationPoints.add(new NotifierPOI<>(listener, feature));
 			return this;
@@ -72,7 +72,7 @@ public final class NotifierAdapterObservatory<Type extends IFeatures<Type>, Noti
 
 		@Override
 		public INotifierAdapterObservatoryBuilder<Type, Notifier> listenNoParam(final Runnable listener,
-																				final Feature<?, Type> feature)
+																				final Feature<?, ? super Type> feature)
 		{
 			observationPoints.add(new NoParamNotifierPOI<>(listener, feature));
 			return this;

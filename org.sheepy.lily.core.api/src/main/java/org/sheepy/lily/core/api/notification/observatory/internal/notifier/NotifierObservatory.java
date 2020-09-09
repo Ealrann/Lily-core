@@ -11,12 +11,12 @@ import org.sheepy.lily.core.api.notification.observatory.internal.InternalObserv
 import java.util.ArrayList;
 import java.util.List;
 
-public final class NotifierObservatory<Type extends IFeatures<Type>> implements IObservatory
+public final class NotifierObservatory<Type extends IFeatures<? extends Type>> implements IObservatory
 {
-	private final INotifier<Type> notifier;
+	private final INotifier<? extends Type> notifier;
 	private final List<INotifierPOI<Type>> observationPoints;
 
-	public NotifierObservatory(final INotifier<Type> notifier, List<INotifierPOI<Type>> observationPoints)
+	public NotifierObservatory(final INotifier<? extends Type> notifier, List<INotifierPOI<Type>> observationPoints)
 	{
 		this.notifier = notifier;
 		this.observationPoints = List.copyOf(observationPoints);
@@ -53,14 +53,15 @@ public final class NotifierObservatory<Type extends IFeatures<Type>> implements 
 
 		@Override
 		public <Listener> INotifierObservatoryBuilder<Type> listen(Listener listener,
-																   Feature<? super Listener, Type> feature)
+																   Feature<Listener, ? super Type> feature)
 		{
 			observationPoints.add(new NotifierPOI<>(listener, feature));
 			return this;
 		}
 
 		@Override
-		public INotifierObservatoryBuilder<Type> listenNoParam(final Runnable listener, final Feature<?, Type> feature)
+		public INotifierObservatoryBuilder<Type> listenNoParam(final Runnable listener,
+															   final Feature<?, ? super Type> feature)
 		{
 			observationPoints.add(new NoParamNotifierPOI<>(listener, feature));
 			return this;
