@@ -9,7 +9,6 @@ import java.util.List;
 public final class ChildDescriptorAllocator
 {
 	private final AllocationDescriptor<?> descriptor;
-
 	private final HandleChildrenList handleChildren;
 
 	public ChildDescriptorAllocator(final AllocationDescriptor<?> descriptor, final Runnable whenBranchDirty)

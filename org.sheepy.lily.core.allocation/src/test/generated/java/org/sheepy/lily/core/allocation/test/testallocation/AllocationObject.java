@@ -16,6 +16,7 @@ import org.sheepy.lily.core.api.model.ILilyEObject;
  *   <li>{@link org.sheepy.lily.core.allocation.test.testallocation.AllocationObject#getCurrentAllocationCount <em>Current Allocation Count</em>}</li>
  *   <li>{@link org.sheepy.lily.core.allocation.test.testallocation.AllocationObject#getTotalAllocationCount <em>Total Allocation Count</em>}</li>
  *   <li>{@link org.sheepy.lily.core.allocation.test.testallocation.AllocationObject#getDependencyUpdateCount <em>Dependency Update Count</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.allocation.test.testallocation.AllocationObject#isActivated <em>Activated</em>}</li>
  * </ul>
  *
  * @see org.sheepy.lily.core.allocation.test.testallocation.TestallocationPackage#getAllocationObject()
@@ -93,5 +94,28 @@ public interface AllocationObject extends ILilyEObject
 	 * @generated
 	 */
 	void setDependencyUpdateCount(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Activated</b></em>' attribute.
+	 * The default value is <code>"true"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Activated</em>' attribute.
+	 * @see #setActivated(boolean)
+	 * @see org.sheepy.lily.core.allocation.test.testallocation.TestallocationPackage#getAllocationObject_Activated()
+	 * @model default="true"
+	 * @generated
+	 */
+	boolean isActivated();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.lily.core.allocation.test.testallocation.AllocationObject#isActivated <em>Activated</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Activated</em>' attribute.
+	 * @see #isActivated()
+	 * @generated
+	 */
+	void setActivated(boolean value);
 
 } // AllocationObject

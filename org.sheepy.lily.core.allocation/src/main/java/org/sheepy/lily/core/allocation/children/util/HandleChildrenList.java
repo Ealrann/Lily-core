@@ -57,7 +57,7 @@ public final class HandleChildrenList
 
 	public void postCleanup()
 	{
-		removedAllocators.removeIf(ChildHandleAllocator::isFree);
+		removedAllocators.removeIf(HandleChildrenList::tryFreeHandleAllocator);
 	}
 
 	public void resolveAndRemove(final ILilyEObject target)
@@ -82,6 +82,19 @@ public final class HandleChildrenList
 	public List<ChildHandleAllocator<?>> getHandleAllocators()
 	{
 		return allocators;
+	}
+
+	private static boolean tryFreeHandleAllocator(ChildHandleAllocator<?> handleAllocator)
+	{
+		if (handleAllocator.isFree())
+		{
+			handleAllocator.free();
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	public List<ChildHandleAllocator<?>> getRemovedHandleAllocators()

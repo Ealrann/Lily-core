@@ -32,7 +32,7 @@ public class TriageOperation implements IOperation<TriageTreeIterator>
 	@Override
 	public void loadPreChildrenIterator(final TriageTreeIterator iterator)
 	{
-		triage = initialForceTriage || (handleAllocator != null && handleAllocator.needReallocation());
+		triage = initialForceTriage || (handleAllocator != null && handleAllocator.needTriage());
 		if (triage || allocation.isDirty())
 		{
 			iterator.load(allocation.getPreChildrenManager(), triage);
@@ -46,10 +46,10 @@ public class TriageOperation implements IOperation<TriageTreeIterator>
 	@Override
 	public void operate(final IAllocationContext context)
 	{
-		triage = triage || initialForceTriage || (handleAllocator != null && handleAllocator.needReallocation());
+		triage = triage || initialForceTriage || (handleAllocator != null && handleAllocator.needTriage());
 		if (triage && handleAllocator != null)
 		{
-			handleAllocator.triage(!initialForceTriage);
+			handleAllocator.triage(initialForceTriage);
 		}
 	}
 

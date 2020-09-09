@@ -27,6 +27,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute testallocation.ecore#//AllocationObject/currentAllocationCount"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute testallocation.ecore#//AllocationObject/totalAllocationCount"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute testallocation.ecore#//AllocationObject/dependencyUpdateCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute testallocation.ecore#//AllocationObject/activated"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

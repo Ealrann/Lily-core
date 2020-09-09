@@ -13,4 +13,5 @@ public @interface Allocation
 {
 	Class<? extends IAllocationContext> context() default IAllocationContext.class;
 	boolean reuseDirtyAllocations() default false;
+	int activator() default -1;
 }

@@ -151,6 +151,12 @@ public final class ExtenderDescriptor<Extender extends IExtender> implements IEx
 	}
 
 	@Override
+	public EClass targetEClass()
+	{
+		return targetEClass;
+	}
+
+	@Override
 	public boolean isExtenderForType(Class<?> type)
 	{
 		return type.isAssignableFrom(this.extenderClass);

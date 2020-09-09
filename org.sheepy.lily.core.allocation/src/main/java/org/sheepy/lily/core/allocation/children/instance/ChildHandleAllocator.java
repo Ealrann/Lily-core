@@ -22,8 +22,14 @@ public final class ChildHandleAllocator<Allocation extends IExtender>
 	public ChildHandleAllocator(final AllocationHandle<Allocation> handle, final Runnable whenUpdateNeeded)
 	{
 		this.handle = handle;
-		this.reuseDirtyAllocations = handle.getDescriptor().reuseDirtyAllocations();
 		this.whenUpdateNeeded = whenUpdateNeeded;
+		this.reuseDirtyAllocations = handle.getDescriptor().reuseDirtyAllocations();
+		handle.listenActivation(whenUpdateNeeded);
+	}
+
+	public void free()
+	{
+		handle.sulkActivation(whenUpdateNeeded);
 	}
 
 	public boolean canTriage(final boolean force)
@@ -31,8 +37,9 @@ public final class ChildHandleAllocator<Allocation extends IExtender>
 		return mainAllocation != null && (force || mainAllocation.isDirty());
 	}
 
-	public void triage(final boolean canReuseAllocations)
+	public void triage(final boolean forcedTriage)
 	{
+		final boolean canReuseAllocations = !forcedTriage && handle.isActivated();
 		final var oldAllocation = mainAllocation;
 		dirtyAllocations.add(oldAllocation);
 		mainAllocation = reuseDirtyAllocations && canReuseAllocations ? searchAndRestoreCandidate() : null;
@@ -41,7 +48,7 @@ public final class ChildHandleAllocator<Allocation extends IExtender>
 
 	public boolean shouldUpdate()
 	{
-		return mainAllocation == null || mainAllocation.isDirty();
+		return (mainAllocation == null || mainAllocation.isDirty()) &&  handle.isActivated();
 	}
 
 	public void setupBuildOperation(final BuildOperation operation)
@@ -69,11 +76,12 @@ public final class ChildHandleAllocator<Allocation extends IExtender>
 		return mainAllocation == null && dirtyAllocations.isEmpty();
 	}
 
-	public boolean needReallocation()
+	public boolean needTriage()
 	{
 		final boolean obsolete = mainAllocation.getStatus() == EAllocationStatus.Obsolete;
 		final boolean dirtyLocked = mainAllocation.isDirty() && mainAllocation.isLocked();
-		return obsolete || dirtyLocked;
+		final boolean deactivated = handle.isActivated() == false;
+		return obsolete || dirtyLocked || deactivated;
 	}
 
 	private AllocationInstance<Allocation> searchAndRestoreCandidate()

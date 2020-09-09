@@ -1,5 +1,6 @@
 package org.sheepy.lily.core.allocation.dependency.container;
 
+import org.sheepy.lily.core.allocation.AllocationHandle;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 
@@ -16,6 +17,7 @@ public final class DependencyContainer
 		this.onDependencyUpdate = onDependencyUpdate;
 		extender = handle.getExtender();
 		handle.listenNoParam(onDependencyUpdate);
+		if (handle instanceof AllocationHandle<?> allocHandle) allocHandle.listenActivation(onDependencyUpdate);
 	}
 
 	public void update()
@@ -25,6 +27,7 @@ public final class DependencyContainer
 
 	public void free()
 	{
+		if (handle instanceof AllocationHandle<?> allocHandle) allocHandle.sulkActivation(onDependencyUpdate);
 		handle.sulkNoParam(onDependencyUpdate);
 	}
 

@@ -83,7 +83,7 @@ public class TestAllocationDependency
 		container.getBoxes().add(box);
 		leaf.getBoxes().add(box);
 
-		((LilyEObject)root).loadExtenderManager();
+		((LilyEObject) root).loadExtenderManager();
 		final var allocator = IAllocationService.INSTANCE.buildAllocator(root,
 																		 context,
 																		 AllocationObjectAllocation.class);
@@ -137,7 +137,7 @@ public class TestAllocationDependency
 		container.getBoxes().add(box);
 		leaf.getBoxes().add(box);
 
-		((LilyEObject)root).loadExtenderManager();
+		((LilyEObject) root).loadExtenderManager();
 		final var allocator = IAllocationService.INSTANCE.buildAllocator(root,
 																		 context,
 																		 AllocationObjectAllocation.class);
@@ -233,6 +233,61 @@ public class TestAllocationDependency
 		assertEquals(2, container.getTotalAllocationCount());
 		assertEquals(2, box.getTotalAllocationCount());
 		assertEquals(2, leaf.getTotalAllocationCount());
+	}
+
+	@Test
+	public void testDeactivateDependency()
+	{
+		final var context = new TestContext(0);
+		final var root = TestallocationFactory.eINSTANCE.createRoot();
+		final var node = TestallocationFactory.eINSTANCE.createNode();
+		final var leaf = TestallocationFactory.eINSTANCE.createLeaf();
+		final var container = TestallocationFactory.eINSTANCE.createContainer();
+		final var box1 = TestallocationFactory.eINSTANCE.createBox();
+		final var box2 = TestallocationFactory.eINSTANCE.createBox();
+
+		root.getNodes().add(node);
+		root.getContainers().add(container);
+		node.getLeaves().add(leaf);
+		container.getBoxes().add(box1);
+		container.getBoxes().add(box2);
+		leaf.getBoxes().add(box1);
+		leaf.getBoxes().add(box2);
+
+		((LilyEObject) root).loadExtenderManager();
+		final var allocator = IAllocationService.INSTANCE.buildAllocator(root,
+																		 context,
+																		 AllocationObjectAllocation.class);
+
+		box2.setActivated(false);
+		allocator.updateAllocation();
+
+		assertEquals(1, root.getCurrentAllocationCount());
+		assertEquals(1, node.getCurrentAllocationCount());
+		assertEquals(1, container.getCurrentAllocationCount());
+		assertEquals(1, leaf.getCurrentAllocationCount());
+		assertEquals(1, leaf.getTotalAllocationCount());
+		assertEquals(1, box1.getCurrentAllocationCount());
+		assertEquals(0, box2.getCurrentAllocationCount());
+		assertEquals(1, box1.getTotalAllocationCount());
+		assertEquals(0, box2.getTotalAllocationCount());
+
+		box2.setActivated(true);
+		allocator.updateAllocation();
+
+		assertEquals(1, box1.getCurrentAllocationCount());
+		assertEquals(1, box2.getCurrentAllocationCount());
+		assertEquals(1, box1.getTotalAllocationCount());
+		assertEquals(1, box2.getTotalAllocationCount());
+
+		box1.setActivated(false);
+		box2.setActivated(false);
+		allocator.updateAllocation();
+
+		assertEquals(0, box1.getCurrentAllocationCount());
+		assertEquals(0, box2.getCurrentAllocationCount());
+		assertEquals(1, box1.getTotalAllocationCount());
+		assertEquals(1, box2.getTotalAllocationCount());
 	}
 
 	@Test

@@ -13,6 +13,7 @@ import org.sheepy.lily.core.api.util.IModelExplorer;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -49,7 +50,8 @@ public final class DependencyResolver implements IParameterResolver
 											.stream(source)
 											.map(this::resolveOptional)
 											.flatMap(Optional::stream)
-											.map(IExtenderHandle::getExtender);
+											.map(IExtenderHandle::getExtender)
+											.filter(Objects::nonNull);
 		if (parameterClass == List.class)
 		{
 			return stream.collect(Collectors.toUnmodifiableList());

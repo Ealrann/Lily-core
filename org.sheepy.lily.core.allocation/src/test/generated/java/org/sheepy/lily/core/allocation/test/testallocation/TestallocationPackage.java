@@ -95,13 +95,22 @@ public interface TestallocationPackage extends EPackage
 	int ALLOCATION_OBJECT__DEPENDENCY_UPDATE_COUNT = 2;
 
 	/**
+	 * The feature id for the '<em><b>Activated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ALLOCATION_OBJECT__ACTIVATED = 3;
+
+	/**
 	 * The number of structural features of the '<em>Allocation Object</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ALLOCATION_OBJECT_FEATURE_COUNT = 3;
+	int ALLOCATION_OBJECT_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Allocation Object</em>' class.
@@ -148,6 +157,15 @@ public interface TestallocationPackage extends EPackage
 	 * @ordered
 	 */
 	int ROOT__DEPENDENCY_UPDATE_COUNT = ALLOCATION_OBJECT__DEPENDENCY_UPDATE_COUNT;
+
+	/**
+	 * The feature id for the '<em><b>Activated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROOT__ACTIVATED = ALLOCATION_OBJECT__ACTIVATED;
 
 	/**
 	 * The feature id for the '<em><b>Nodes</b></em>' containment reference list.
@@ -223,6 +241,15 @@ public interface TestallocationPackage extends EPackage
 	int NODE__DEPENDENCY_UPDATE_COUNT = ALLOCATION_OBJECT__DEPENDENCY_UPDATE_COUNT;
 
 	/**
+	 * The feature id for the '<em><b>Activated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__ACTIVATED = ALLOCATION_OBJECT__ACTIVATED;
+
+	/**
 	 * The feature id for the '<em><b>Leaves</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -296,6 +323,15 @@ public interface TestallocationPackage extends EPackage
 	int CONTAINER__DEPENDENCY_UPDATE_COUNT = ALLOCATION_OBJECT__DEPENDENCY_UPDATE_COUNT;
 
 	/**
+	 * The feature id for the '<em><b>Activated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__ACTIVATED = ALLOCATION_OBJECT__ACTIVATED;
+
+	/**
 	 * The feature id for the '<em><b>Boxes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -360,6 +396,15 @@ public interface TestallocationPackage extends EPackage
 	int LEAF__DEPENDENCY_UPDATE_COUNT = ALLOCATION_OBJECT__DEPENDENCY_UPDATE_COUNT;
 
 	/**
+	 * The feature id for the '<em><b>Activated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LEAF__ACTIVATED = ALLOCATION_OBJECT__ACTIVATED;
+
+	/**
 	 * The feature id for the '<em><b>Boxes</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -422,6 +467,15 @@ public interface TestallocationPackage extends EPackage
 	 * @ordered
 	 */
 	int BOX__DEPENDENCY_UPDATE_COUNT = ALLOCATION_OBJECT__DEPENDENCY_UPDATE_COUNT;
+
+	/**
+	 * The feature id for the '<em><b>Activated</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOX__ACTIVATED = ALLOCATION_OBJECT__ACTIVATED;
 
 	/**
 	 * The number of structural features of the '<em>Box</em>' class.
@@ -602,6 +656,17 @@ public interface TestallocationPackage extends EPackage
 	EAttribute getAllocationObject_DependencyUpdateCount();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.allocation.test.testallocation.AllocationObject#isActivated <em>Activated</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Activated</em>'.
+	 * @see org.sheepy.lily.core.allocation.test.testallocation.AllocationObject#isActivated()
+	 * @see #getAllocationObject()
+	 * @generated
+	 */
+	EAttribute getAllocationObject_Activated();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -756,6 +821,14 @@ public interface TestallocationPackage extends EPackage
 		 * @generated
 		 */
 		EAttribute ALLOCATION_OBJECT__DEPENDENCY_UPDATE_COUNT = eINSTANCE.getAllocationObject_DependencyUpdateCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Activated</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ALLOCATION_OBJECT__ACTIVATED = eINSTANCE.getAllocationObject_Activated();
 
 	}
 

@@ -24,6 +24,7 @@ import org.sheepy.lily.core.api.model.LilyEObject;
  *   <li>{@link org.sheepy.lily.core.allocation.test.testallocation.impl.AllocationObjectImpl#getCurrentAllocationCount <em>Current Allocation Count</em>}</li>
  *   <li>{@link org.sheepy.lily.core.allocation.test.testallocation.impl.AllocationObjectImpl#getTotalAllocationCount <em>Total Allocation Count</em>}</li>
  *   <li>{@link org.sheepy.lily.core.allocation.test.testallocation.impl.AllocationObjectImpl#getDependencyUpdateCount <em>Dependency Update Count</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.allocation.test.testallocation.impl.AllocationObjectImpl#isActivated <em>Activated</em>}</li>
  * </ul>
  *
  * @generated
@@ -89,6 +90,26 @@ public class AllocationObjectImpl extends LilyEObject implements AllocationObjec
 	 * @ordered
 	 */
 	protected int dependencyUpdateCount = DEPENDENCY_UPDATE_COUNT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isActivated() <em>Activated</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isActivated()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean ACTIVATED_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isActivated() <em>Activated</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isActivated()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean activated = ACTIVATED_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -192,6 +213,31 @@ public class AllocationObjectImpl extends LilyEObject implements AllocationObjec
 	 * @generated
 	 */
 	@Override
+	public boolean isActivated()
+	{
+		return activated;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setActivated(boolean newActivated)
+	{
+		boolean oldActivated = activated;
+		activated = newActivated;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, TestallocationPackage.ALLOCATION_OBJECT__ACTIVATED, oldActivated, activated));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType)
 	{
 		switch (featureID)
@@ -202,6 +248,8 @@ public class AllocationObjectImpl extends LilyEObject implements AllocationObjec
 				return getTotalAllocationCount();
 			case TestallocationPackage.ALLOCATION_OBJECT__DEPENDENCY_UPDATE_COUNT:
 				return getDependencyUpdateCount();
+			case TestallocationPackage.ALLOCATION_OBJECT__ACTIVATED:
+				return isActivated();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -224,6 +272,9 @@ public class AllocationObjectImpl extends LilyEObject implements AllocationObjec
 				return;
 			case TestallocationPackage.ALLOCATION_OBJECT__DEPENDENCY_UPDATE_COUNT:
 				setDependencyUpdateCount((Integer)newValue);
+				return;
+			case TestallocationPackage.ALLOCATION_OBJECT__ACTIVATED:
+				setActivated((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -248,6 +299,9 @@ public class AllocationObjectImpl extends LilyEObject implements AllocationObjec
 			case TestallocationPackage.ALLOCATION_OBJECT__DEPENDENCY_UPDATE_COUNT:
 				setDependencyUpdateCount(DEPENDENCY_UPDATE_COUNT_EDEFAULT);
 				return;
+			case TestallocationPackage.ALLOCATION_OBJECT__ACTIVATED:
+				setActivated(ACTIVATED_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -268,6 +322,8 @@ public class AllocationObjectImpl extends LilyEObject implements AllocationObjec
 				return totalAllocationCount != TOTAL_ALLOCATION_COUNT_EDEFAULT;
 			case TestallocationPackage.ALLOCATION_OBJECT__DEPENDENCY_UPDATE_COUNT:
 				return dependencyUpdateCount != DEPENDENCY_UPDATE_COUNT_EDEFAULT;
+			case TestallocationPackage.ALLOCATION_OBJECT__ACTIVATED:
+				return activated != ACTIVATED_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -289,6 +345,8 @@ public class AllocationObjectImpl extends LilyEObject implements AllocationObjec
 		result.append(totalAllocationCount);
 		result.append(", dependencyUpdateCount: ");
 		result.append(dependencyUpdateCount);
+		result.append(", activated: ");
+		result.append(activated);
 		result.append(')');
 		return result.toString();
 	}

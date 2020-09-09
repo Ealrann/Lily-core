@@ -1,5 +1,6 @@
 package org.sheepy.lily.core.allocation.description;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.sheepy.lily.core.allocation.AllocationHandle;
 import org.sheepy.lily.core.allocation.children.manager.AllocationChildrenBuilder;
 import org.sheepy.lily.core.allocation.dependency.DependencyManager;
@@ -25,6 +26,7 @@ public record AllocationDescriptor<Allocation extends IExtender>(IExtenderDescri
 																 DependencyManager.Builder dependencyManagerBuilder,
 																 AllocationChildrenBuilder allocationChildrenBuilder,
 																 AllocationParametersBuilder allocationParametersBuilder,
+																 EAttribute activator,
 																 boolean provideContext,
 																 boolean reuseDirtyAllocations)
 {
@@ -100,6 +102,8 @@ public record AllocationDescriptor<Allocation extends IExtender>(IExtenderDescri
 														 .isPresent();
 			final var annotation = extenderDescriptor.extenderClass()
 													 .getAnnotation(org.sheepy.lily.core.api.allocation.annotation.Allocation.class);
+			final EAttribute activatorFeature = getActivatorFeature(annotation);
+
 			final var reuseDirtyAllocations = annotation.reuseDirtyAllocations();
 
 			final var childrenManagerBuilder = new AllocationChildrenBuilder(childAnnotations);
@@ -110,8 +114,17 @@ public record AllocationDescriptor<Allocation extends IExtender>(IExtenderDescri
 											  dependencyManagerBuilder,
 											  childrenManagerBuilder,
 											  allocationParametersBuilder,
+											  activatorFeature,
 											  provideContext,
 											  reuseDirtyAllocations);
+		}
+
+		private EAttribute getActivatorFeature(final org.sheepy.lily.core.api.allocation.annotation.Allocation annotation)
+		{
+			final var activatorID = annotation.activator();
+			final var eClass = extenderDescriptor.targetEClass();
+			final var activatorFeature = activatorID > -1 ? (EAttribute) eClass.getEStructuralFeature(activatorID) : null;
+			return activatorFeature;
 		}
 
 		private List<DependencyResolver> createResolverBuilders()

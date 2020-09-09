@@ -74,6 +74,6 @@ public final class UpdateTreeIterator extends AllocationTreeIterator<UpdateTreeI
 	@Override
 	protected boolean operatesOnHandleAllocator(final ChildHandleAllocator<?> currentHandleAllocator)
 	{
-		return this.currentHandleAllocator.shouldUpdate();
+		return currentHandleAllocator.shouldUpdate();
 	}
 }

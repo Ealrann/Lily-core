@@ -1,24 +1,37 @@
 package org.sheepy.lily.core.allocation;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
 import org.sheepy.lily.core.allocation.operation.BuildOperation;
 import org.sheepy.lily.core.api.allocation.IAllocationHandle;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.notification.util.ListenerList;
+import org.sheepy.lily.core.api.notification.Feature;
+import org.sheepy.lily.core.api.notification.IFeatures;
+import org.sheepy.lily.core.api.notification.util.ListenerMap;
 
 import java.lang.annotation.Annotation;
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 public final class AllocationHandle<Allocation extends IExtender> implements IAllocationHandle<Allocation>
 {
+	private interface Features extends IFeatures<Features>
+	{
+	}
+
+	private static final Feature<Runnable, Features> Activation = Feature.newFeature();
+	private final Feature<ExtenderListener<Allocation>, Features> MainAllocation = Feature.newFeature();
+
 	private final ILilyEObject target;
 	private final AllocationDescriptor<Allocation> descriptor;
-	private final ListenerList<ExtenderListener<Allocation>> listeners = new ListenerList<>();
+	private final ListenerMap<Features> listeners = new ListenerMap<>(List.of(MainAllocation, Activation));
+	private final Consumer<Notification> activatorChanged = n -> activatorChanged(n.getNewBooleanValue());
 
 	private AllocationInstance<Allocation> mainAllocation = null;
+	private boolean activated;
 
 	public AllocationHandle(ILilyEObject target, AllocationDescriptor<Allocation> descriptor)
 	{
@@ -29,11 +42,33 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	@Override
 	public void load(final ILilyEObject target)
 	{
+		final var activator = descriptor.activator();
+		if (activator != null)
+		{
+			target.listen(activatorChanged, activator.getFeatureID());
+			activated = (boolean) target.eGet(activator);
+		}
+		else
+		{
+			activated = true;
+		}
 	}
 
 	@Override
 	public void dispose(final ILilyEObject target)
 	{
+		final var activator = descriptor.activator();
+		if (activator != null)
+		{
+			target.sulk(activatorChanged, activator.getFeatureID());
+		}
+	}
+
+	private void activatorChanged(boolean newState)
+	{
+		activated = newState;
+		if (mainAllocation != null) mainAllocation.setDirty();
+		listeners.notify(Activation);
 	}
 
 	public void setupBuildOperation(BuildOperation buildOperation)
@@ -74,6 +109,11 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 		return mainAllocation != null ? mainAllocation.annotatedHandles(annotationClass) : Stream.empty();
 	}
 
+	public boolean isActivated()
+	{
+		return activated;
+	}
+
 	@Override
 	public Class<Allocation> getExtenderClass()
 	{
@@ -88,7 +128,7 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 
 	private void onAllocationChange(Allocation oldAllocation, Allocation newAllocation)
 	{
-		listeners.notify(listener -> listener.accept(oldAllocation, newAllocation));
+		listeners.notify(MainAllocation, listener -> listener.accept(oldAllocation, newAllocation));
 	}
 
 	public AllocationInstance<Allocation> getMainAllocation()
@@ -99,25 +139,25 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	@Override
 	public void listen(final ExtenderListener<Allocation> listener)
 	{
-		listeners.listen(listener);
+		listeners.listen(listener, MainAllocation);
 	}
 
 	@Override
 	public void listenNoParam(final Runnable listener)
 	{
-		listeners.listenNoParam(listener);
+		listeners.listenNoParam(listener, MainAllocation);
 	}
 
 	@Override
 	public void sulk(final ExtenderListener<Allocation> listener)
 	{
-		listeners.sulk(listener);
+		listeners.sulk(listener, MainAllocation);
 	}
 
 	@Override
 	public void sulkNoParam(final Runnable listener)
 	{
-		listeners.sulkNoParam(listener);
+		listeners.sulkNoParam(listener, MainAllocation);
 	}
 
 	public AllocationDescriptor<Allocation> getDescriptor()
@@ -125,13 +165,23 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 		return descriptor;
 	}
 
+	public ILilyEObject getTarget()
+	{
+		return target;
+	}
+
 	private static <T extends IExtender> T getAllocationOrNull(AllocationInstance<T> instance)
 	{
 		return instance != null ? instance.getAllocation() : null;
 	}
 
-	public ILilyEObject getTarget()
+	public void listenActivation(final Runnable onActivationChange)
 	{
-		return target;
+		listeners.listen(onActivationChange, Activation);
+	}
+
+	public void sulkActivation(final Runnable onActivationChange)
+	{
+		listeners.sulk(onActivationChange, Activation);
 	}
 }

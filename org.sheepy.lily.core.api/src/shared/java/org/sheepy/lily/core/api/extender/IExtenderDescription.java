@@ -1,5 +1,6 @@
 package org.sheepy.lily.core.api.extender;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
 import java.lang.annotation.Annotation;
@@ -13,4 +14,5 @@ public interface IExtenderDescription<T extends IExtender>
 	boolean containsMethodAnnotation(Class<? extends Annotation> annotationClass);
 	boolean containsClassAnnotation(Class<? extends Annotation> annotationClass);
 	<A extends Annotation> Stream<A> streamMethodAnnotations(Class<A> annotationClass);
+	EClass targetEClass();
 }

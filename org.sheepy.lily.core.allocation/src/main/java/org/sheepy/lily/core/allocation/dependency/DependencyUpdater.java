@@ -9,6 +9,7 @@ import org.sheepy.lily.core.api.reflect.ConsumerHandle;
 
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public final class DependencyUpdater
@@ -43,6 +44,7 @@ public final class DependencyUpdater
 				final var allocations = resolution.getResolvedAllocations()
 												  .stream()
 												  .map(DependencyContainer::get)
+												  .filter(Objects::nonNull)
 												  .collect(Collectors.toUnmodifiableList());
 				updateHandle.invoke(allocations);
 			}

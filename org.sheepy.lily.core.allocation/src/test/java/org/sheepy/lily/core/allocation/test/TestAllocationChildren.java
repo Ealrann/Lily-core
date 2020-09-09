@@ -166,4 +166,54 @@ public final class TestAllocationChildren
 		assertEquals(0, box1.getCurrentAllocationCount());
 		assertEquals(1, box2.getCurrentAllocationCount());
 	}
+
+	@Test
+	public void testDeactivateChildren()
+	{
+		final var context = new TestContext(0);
+		final var root = TestallocationFactory.eINSTANCE.createRoot();
+		final var container = TestallocationFactory.eINSTANCE.createContainer();
+		final var box1 = TestallocationFactory.eINSTANCE.createBox();
+		final var box2 = TestallocationFactory.eINSTANCE.createBox();
+
+		root.getContainers().add(container);
+		container.getBoxes().add(box1);
+		container.getBoxes().add(box2);
+
+		box2.setActivated(false);
+
+		((LilyEObject) root).loadExtenderManager();
+		final var allocator = IAllocationService.INSTANCE.buildAllocator(root,
+																		 context,
+																		 AllocationObjectAllocation.class);
+		allocator.updateAllocation();
+
+		assertEquals(1, root.getCurrentAllocationCount());
+		assertEquals(1, container.getCurrentAllocationCount());
+		assertEquals(1, box1.getCurrentAllocationCount());
+		assertEquals(0, box2.getCurrentAllocationCount());
+		assertEquals(1, box1.getTotalAllocationCount());
+		assertEquals(0, box2.getTotalAllocationCount());
+
+		box2.setActivated(true);
+		allocator.updateAllocation();
+
+		assertEquals(1, root.getCurrentAllocationCount());
+		assertEquals(1, container.getCurrentAllocationCount());
+		assertEquals(1, box1.getCurrentAllocationCount());
+		assertEquals(1, box2.getCurrentAllocationCount());
+		assertEquals(1, box1.getTotalAllocationCount());
+		assertEquals(1, box2.getTotalAllocationCount());
+
+		box1.setActivated(false);
+		box2.setActivated(false);
+		allocator.updateAllocation();
+
+		assertEquals(1, root.getCurrentAllocationCount());
+		assertEquals(1, container.getCurrentAllocationCount());
+		assertEquals(0, box1.getCurrentAllocationCount());
+		assertEquals(0, box2.getCurrentAllocationCount());
+		assertEquals(1, box1.getTotalAllocationCount());
+		assertEquals(1, box2.getTotalAllocationCount());
+	}
 }

@@ -86,6 +86,11 @@ public final class AllocationInstance<Allocation extends IExtender>
 		return !isDirty() || updatable;
 	}
 
+	public void setDirty()
+	{
+		state.markDirty();
+	}
+
 	public boolean isLocked()
 	{
 		return state.isLocked();

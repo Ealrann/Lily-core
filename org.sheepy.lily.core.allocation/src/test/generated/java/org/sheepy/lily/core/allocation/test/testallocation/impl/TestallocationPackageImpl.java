@@ -301,6 +301,17 @@ public class TestallocationPackageImpl extends EPackageImpl implements Testalloc
 	 * @generated
 	 */
 	@Override
+	public EAttribute getAllocationObject_Activated()
+	{
+		return (EAttribute)allocationObjectEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public TestallocationFactory getTestallocationFactory()
 	{
 		return (TestallocationFactory)getEFactoryInstance();
@@ -346,6 +357,7 @@ public class TestallocationPackageImpl extends EPackageImpl implements Testalloc
 		createEAttribute(allocationObjectEClass, ALLOCATION_OBJECT__CURRENT_ALLOCATION_COUNT);
 		createEAttribute(allocationObjectEClass, ALLOCATION_OBJECT__TOTAL_ALLOCATION_COUNT);
 		createEAttribute(allocationObjectEClass, ALLOCATION_OBJECT__DEPENDENCY_UPDATE_COUNT);
+		createEAttribute(allocationObjectEClass, ALLOCATION_OBJECT__ACTIVATED);
 	}
 
 	/**
@@ -404,6 +416,7 @@ public class TestallocationPackageImpl extends EPackageImpl implements Testalloc
 		initEAttribute(getAllocationObject_CurrentAllocationCount(), ecorePackage.getEInt(), "currentAllocationCount", "0", 0, 1, AllocationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAllocationObject_TotalAllocationCount(), ecorePackage.getEInt(), "totalAllocationCount", "0", 0, 1, AllocationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAllocationObject_DependencyUpdateCount(), ecorePackage.getEInt(), "dependencyUpdateCount", "0", 0, 1, AllocationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAllocationObject_Activated(), ecorePackage.getEBoolean(), "activated", "true", 0, 1, AllocationObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
