@@ -19,7 +19,7 @@ public final class ListenerMap<Type extends IFeatures<?>> implements INotifier.I
 	private final List<Feature<?, ? super Type>> features;
 
 	@SuppressWarnings("unchecked")
-	public ListenerMap(List<Feature<?, ? super Type>> features)
+	public ListenerMap(final List<Feature<?, ? super Type>> features)
 	{
 		this.listenerMap = new Deque[features.size()];
 		this.features = features;
@@ -109,6 +109,26 @@ public final class ListenerMap<Type extends IFeatures<?>> implements INotifier.I
 	}
 
 	@Override
+	public void notify(final Feature<BooleanConsumer, ? super Type> feature, final boolean value)
+	{
+		final var listeners = listenerMap[features.indexOf(feature)];
+		if (listeners != null)
+		{
+			for (final var listener : listeners)
+			{
+				if (listener instanceof Runnable runnable)
+				{
+					runnable.run();
+				}
+				else
+				{
+					((BooleanConsumer) listener).accept(value);
+				}
+			}
+		}
+	}
+
+	@Override
 	public void notify(final Feature<Runnable, ? super Type> feature)
 	{
 		final var listeners = listenerMap[features.indexOf(feature)];
@@ -122,20 +142,20 @@ public final class ListenerMap<Type extends IFeatures<?>> implements INotifier.I
 	}
 
 	@Override
-	public <Callback> void listen(Callback listener, Feature<? super Callback, ? super Type> feature)
+	public <Callback> void listen(final Callback listener, final Feature<? super Callback, ? super Type> feature)
 	{
 		getOrCreateList(feature).add(listener);
 	}
 
 	@Override
-	public void listenNoParam(Runnable listener, Feature<?, ? super Type> feature)
+	public void listenNoParam(final Runnable listener, final Feature<?, ? super Type> feature)
 	{
 		getOrCreateList(feature).add(listener);
 	}
 
 	@Override
-	public <Callback> void listen(Callback listener,
-								  Collection<? extends Feature<? super Callback, ? super Type>> features)
+	public <Callback> void listen(final Callback listener,
+								  final Collection<? extends Feature<? super Callback, ? super Type>> features)
 	{
 		for (var feature : features)
 		{
@@ -144,7 +164,7 @@ public final class ListenerMap<Type extends IFeatures<?>> implements INotifier.I
 	}
 
 	@Override
-	public void listenNoParam(Runnable listener, Collection<? extends Feature<?, ? super Type>> features)
+	public void listenNoParam(final Runnable listener, final Collection<? extends Feature<?, ? super Type>> features)
 	{
 		for (var feature : features)
 		{
@@ -153,20 +173,20 @@ public final class ListenerMap<Type extends IFeatures<?>> implements INotifier.I
 	}
 
 	@Override
-	public <Callback> void sulk(Callback listener, Feature<? super Callback, ? super Type> feature)
+	public <Callback> void sulk(final Callback listener, final Feature<? super Callback, ? super Type> feature)
 	{
 		getList(feature).ifPresent(list -> list.remove(listener));
 	}
 
 	@Override
-	public void sulkNoParam(Runnable listener, Feature<?, ? super Type> feature)
+	public void sulkNoParam(final Runnable listener, final Feature<?, ? super Type> feature)
 	{
 		getList(feature).ifPresent(list -> list.remove(listener));
 	}
 
 	@Override
-	public <Callback> void sulk(Callback listener,
-								Collection<? extends Feature<? super Callback, ? super Type>> features)
+	public <Callback> void sulk(final Callback listener,
+								final Collection<? extends Feature<? super Callback, ? super Type>> features)
 	{
 		for (var feature : features)
 		{
@@ -175,7 +195,7 @@ public final class ListenerMap<Type extends IFeatures<?>> implements INotifier.I
 	}
 
 	@Override
-	public void sulkNoParam(Runnable listener, Collection<? extends Feature<?, ? super Type>> features)
+	public void sulkNoParam(final Runnable listener, final Collection<? extends Feature<?, ? super Type>> features)
 	{
 		for (var feature : features)
 		{
@@ -183,7 +203,7 @@ public final class ListenerMap<Type extends IFeatures<?>> implements INotifier.I
 		}
 	}
 
-	private Deque<Object> getOrCreateList(Feature<?, ? super Type> feature)
+	private Deque<Object> getOrCreateList(final Feature<?, ? super Type> feature)
 	{
 		final int ordinal = features.indexOf(feature);
 		final var res = listenerMap[ordinal];
@@ -199,7 +219,7 @@ public final class ListenerMap<Type extends IFeatures<?>> implements INotifier.I
 		}
 	}
 
-	private Optional<Deque<Object>> getList(Feature<?, ? super Type> feature)
+	private Optional<Deque<Object>> getList(final Feature<?, ? super Type> feature)
 	{
 		final int ordinal = features.indexOf(feature);
 		final var res = listenerMap[ordinal];

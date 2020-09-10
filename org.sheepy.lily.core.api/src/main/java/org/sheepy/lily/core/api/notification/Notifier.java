@@ -1,5 +1,6 @@
 package org.sheepy.lily.core.api.notification;
 
+import org.sheepy.lily.core.api.notification.util.BooleanConsumer;
 import org.sheepy.lily.core.api.notification.util.ListenerMap;
 
 import java.util.Collection;
@@ -12,7 +13,7 @@ public class Notifier<Type extends IFeatures<?>> implements INotifier.Internal<T
 {
 	private final ListenerMap<Type> listenerMap;
 
-	public Notifier(List<Feature<?, ? super Type>> features)
+	public Notifier(final List<Feature<?, ? super Type>> features)
 	{
 		listenerMap = new ListenerMap<>(features);
 	}
@@ -68,7 +69,8 @@ public class Notifier<Type extends IFeatures<?>> implements INotifier.Internal<T
 	}
 
 	@Override
-	public <Callback> void notify(final Feature<? super Callback, ? super Type> feature, final Consumer<Callback> caller)
+	public <Callback> void notify(final Feature<? super Callback, ? super Type> feature,
+								  final Consumer<Callback> caller)
 	{
 		listenerMap.notify(feature, caller);
 	}
@@ -87,6 +89,12 @@ public class Notifier<Type extends IFeatures<?>> implements INotifier.Internal<T
 
 	@Override
 	public void notify(final Feature<LongConsumer, ? super Type> feature, final long value)
+	{
+		listenerMap.notify(feature, value);
+	}
+
+	@Override
+	public void notify(final Feature<BooleanConsumer, ? super Type> feature, final boolean value)
 	{
 		listenerMap.notify(feature, value);
 	}
