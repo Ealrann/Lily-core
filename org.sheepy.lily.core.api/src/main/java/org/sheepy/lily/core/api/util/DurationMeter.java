@@ -47,7 +47,6 @@ public class DurationMeter
 		final long averageDuration = duration / tick;
 		final int convertedDuration = (int) reportUnit.convert(averageDuration, TimeUnit.NANOSECONDS);
 
-		System.out.println(String.format("%s: %d %s", name, convertedDuration,
-				reportUnit.toChronoUnit().name()));
+		System.out.printf("%s: %d %s%n", name, convertedDuration, reportUnit.toChronoUnit().name());
 	}
 }

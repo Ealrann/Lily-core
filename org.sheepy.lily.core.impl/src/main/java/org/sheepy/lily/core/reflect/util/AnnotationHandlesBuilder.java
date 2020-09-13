@@ -2,7 +2,7 @@ package org.sheepy.lily.core.reflect.util;
 
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.reflect.IExecutionHandleBuilder;
-import org.sheepy.lily.core.api.util.AnnotationHandles;
+import org.sheepy.lily.core.api.extender.AnnotationHandles;
 import org.sheepy.lily.core.api.util.ReflectUtils;
 import org.sheepy.lily.core.reflect.ExecutionHandleBuilder;
 

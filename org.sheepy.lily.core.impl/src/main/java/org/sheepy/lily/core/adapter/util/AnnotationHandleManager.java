@@ -5,7 +5,7 @@ import org.sheepy.lily.core.api.adapter.annotation.NotifyChanged;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.notification.IEMFNotifier;
 import org.sheepy.lily.core.api.reflect.ConsumerHandle;
-import org.sheepy.lily.core.api.util.AnnotationHandles;
+import org.sheepy.lily.core.api.extender.AnnotationHandles;
 
 import java.lang.annotation.Annotation;
 import java.util.List;

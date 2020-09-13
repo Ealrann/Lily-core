@@ -12,32 +12,20 @@ public interface IInferenceAdapter extends IExtender
 {
 	void postNotification(EObject unit, LNotification notification);
 
-	<T extends Parameter> void postNotification(EObject unit,
-												ParameteredNotification<T> notification,
-												T parameter);
+	<T extends Parameter> void postNotification(EObject unit, ParameteredNotification<T> notification, T parameter);
 
 	void addInferer(Inferer inferer);
 
 	void removeInferer(Inferer inferer);
 
-	/**
-	 * @param clazz    The {@link LNotification} eClass listened
-	 * @param listener
-	 */
-	void addNotificationListener(EClass clazz, IInferenceListener listener);
+	void addNotificationListener(EClass listenedEclass, IInferenceListener listener);
 
-	/**
-	 * @param clazz    The {@link LNotification} eClass listened
-	 * @param listener
-	 */
-	void removeNotificationListener(EClass clazz, IInferenceListener listener);
+	void removeNotificationListener(EClass listenedEclass, IInferenceListener listener);
 
 	interface IInferenceListener
 	{
 		void onNotification(EObject unit, LNotification notification);
 
-		<T extends Parameter> void onNotification(EObject unit,
-												  ParameteredNotification<T> notification,
-												  T parameter);
+		<T extends Parameter> void onNotification(EObject unit, ParameteredNotification<T> notification, T parameter);
 	}
 }

@@ -7,7 +7,7 @@ import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
-import org.sheepy.lily.core.api.util.AnnotationHandles;
+import org.sheepy.lily.core.api.extender.AnnotationHandles;
 
 import java.lang.annotation.Annotation;
 import java.util.List;

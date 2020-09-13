@@ -99,9 +99,9 @@ public class InferenceAdapter implements IInferenceAdapter
 	}
 
 	@Override
-	public void addNotificationListener(EClass clazz, IInferenceListener listener)
+	public void addNotificationListener(EClass listenedEclass, IInferenceListener listener)
 	{
-		final var list = listeners.computeIfAbsent(clazz, k -> new ArrayList<>());
+		final var list = listeners.computeIfAbsent(listenedEclass, k -> new ArrayList<>());
 		list.add(listener);
 	}
 

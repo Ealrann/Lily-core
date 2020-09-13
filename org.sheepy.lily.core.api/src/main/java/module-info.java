@@ -20,6 +20,7 @@ module org.sheepy.lily.core.api {
 	exports org.sheepy.lily.core.api.allocation;
 	exports org.sheepy.lily.core.api.allocation.annotation;
 	exports org.sheepy.lily.core.api.model;
+	exports org.sheepy.lily.core.api.adapter;
 	exports org.sheepy.lily.core.api.adapter.annotation;
 	exports org.sheepy.lily.core.api.adapter.util;
 	exports org.sheepy.lily.core.api.application;

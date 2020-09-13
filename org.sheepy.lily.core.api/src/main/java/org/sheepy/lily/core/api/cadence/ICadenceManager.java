@@ -1,6 +1,5 @@
 package org.sheepy.lily.core.api.cadence;
 
-import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.api.input.IInputManager;
 
 public interface ICadenceManager

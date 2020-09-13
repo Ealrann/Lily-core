@@ -43,6 +43,7 @@ public final class EObjectObservatory<T extends ILilyEObject> extends AbstractEO
 		structureObserver.stopObserve(parent);
 	}
 
+	@SuppressWarnings("SameReturnValue")
 	private boolean checkParent(final ILilyEObject parent)
 	{
 		final var eStructuralFeature = parent.eClass().getEStructuralFeature(referenceId);

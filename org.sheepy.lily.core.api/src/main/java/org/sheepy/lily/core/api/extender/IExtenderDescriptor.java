@@ -4,7 +4,6 @@ import org.sheepy.lily.core.api.extender.parameter.IParameterResolver;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.reflect.ConsumerHandle;
-import org.sheepy.lily.core.api.util.AnnotationHandles;
 
 import java.lang.annotation.Annotation;
 import java.util.List;

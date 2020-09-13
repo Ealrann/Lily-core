@@ -1,6 +1,4 @@
-package org.sheepy.lily.core.api.util;
-
-import org.sheepy.lily.core.api.extender.IExtenderHandle;
+package org.sheepy.lily.core.api.extender;
 
 import java.lang.annotation.Annotation;
 import java.util.List;

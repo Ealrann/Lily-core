@@ -10,8 +10,6 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-14
 Export-Package: org.joml,
  org.sheepy.lily.core.api.model,
- org.sheepy.lily.core.api.notification,
- org.sheepy.lily.core.api.service,
  org.sheepy.lily.core.api.util,
  org.sheepy.lily.core.model.action,
  org.sheepy.lily.core.model.action.impl,

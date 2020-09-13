@@ -19,7 +19,7 @@ public abstract class EditingCommand
 	 * <p>
 	 * The command will not be executed if doPrepare() returns false.
 	 */
-	@SuppressWarnings({"static-method", "SameReturnValue"})
+	@SuppressWarnings({"static-method", "SameReturnValue", "MethodMayBeStatic"})
 	public boolean doPrepare()
 	{
 		return true;
@@ -36,7 +36,7 @@ public abstract class EditingCommand
 	 * While this method return true, the command will stay on the command
 	 * stack.
 	 */
-	@SuppressWarnings({"static-method", "SameReturnValue"})
+	@SuppressWarnings({"static-method", "SameReturnValue", "MethodMayBeStatic"})
 	public boolean keepInStack()
 	{
 		return false;

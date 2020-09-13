@@ -19,11 +19,15 @@ public class ResourceUtil
 		{
 			if (dir.isDirectory())
 			{
-				for (File f : dir.listFiles())
+				final var files = dir.listFiles();
+				if(files != null)
 				{
-					if (f.getName().endsWith(".xmi") || f.getName().endsWith(".xml"))
+					for (final var file : files)
 					{
-						res.add(URI.createFileURI(f.getAbsolutePath()));
+						if (file.getName().endsWith(".xmi") || file.getName().endsWith(".xml"))
+						{
+							res.add(URI.createFileURI(file.getAbsolutePath()));
+						}
 					}
 				}
 			}

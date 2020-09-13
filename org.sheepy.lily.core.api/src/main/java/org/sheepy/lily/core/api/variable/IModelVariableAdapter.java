@@ -19,7 +19,7 @@ public interface IModelVariableAdapter<T extends IModelVariable> extends INotifi
 	void getValue(T variable, ByteBuffer buffer);
 	void setValue(T variable, String value);
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({"unchecked", "RedundantCast"})
 	static Class<? extends INotifierAdapter<IModelVariableAdapter.Features>> notifierClass()
 	{
 		return (Class<? extends INotifierAdapter<IModelVariableAdapter.Features>>) (Class<?>) IModelVariableAdapter.class;
