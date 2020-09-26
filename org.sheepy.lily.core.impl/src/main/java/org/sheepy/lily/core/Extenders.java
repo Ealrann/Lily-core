@@ -7,6 +7,7 @@ import org.sheepy.lily.core.cadence.adapter.*;
 import org.sheepy.lily.core.variable.*;
 import org.sheepy.lily.core.variable.action.SetVariableActionAdapter;
 
+import java.lang.invoke.MethodHandles;
 import java.util.List;
 
 public class Extenders implements IExtenderProvider
@@ -29,5 +30,11 @@ public class Extenders implements IExtenderProvider
 					   FloatVariableAdapter.class,
 					   Vector3fVariableAdapter.class,
 					   SetVariableActionAdapter.class);
+	}
+
+	@Override
+	public MethodHandles.Lookup lookup()
+	{
+		return MethodHandles.lookup();
 	}
 }

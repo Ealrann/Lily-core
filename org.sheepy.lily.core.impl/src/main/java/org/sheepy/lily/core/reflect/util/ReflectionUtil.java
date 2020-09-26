@@ -28,7 +28,32 @@ public final class ReflectionUtil
 
 	private static final Module MODULE = ReflectionUtil.class.getModule();
 
-	public static Lookup reachLookup(Class<?> targetClass) throws IllegalAccessException
+	public static MethodHandleContext unreflect(final Constructor<?> constructor,
+												final MethodHandles.Lookup lookup) throws IllegalAccessException
+	{
+		final Class<?> declaringClass = constructor.getDeclaringClass();
+		final var privateLookup = reachPrivateLookup(lookup, declaringClass);
+		final var constructorHandle = lookup.unreflectConstructor(constructor);
+
+		return new MethodHandleContext(constructorHandle, declaringClass, privateLookup);
+	}
+
+	public static MethodHandleContext unreflect(final Method method,
+												final MethodHandles.Lookup lookup) throws IllegalAccessException
+	{
+		final var modifiers = method.getModifiers();
+		final var staticMethod = Modifier.isStatic(modifiers);
+		final var declaringClass = method.getDeclaringClass();
+		final var privateLookup = reachPrivateLookup(lookup, declaringClass);
+
+		final var methodHandle = staticMethod
+				? privateLookup.unreflect(method) : privateLookup.unreflectSpecial(method, declaringClass);
+
+		return new MethodHandleContext(methodHandle, declaringClass, privateLookup);
+	}
+
+	private static Lookup reachPrivateLookup(final MethodHandles.Lookup lookup,
+											final Class<?> targetClass) throws IllegalAccessException
 	{
 		final var otherModule = targetClass.getModule();
 		final boolean canRead = MODULE.canRead(otherModule);
@@ -37,153 +62,128 @@ public final class ReflectionUtil
 			MODULE.addReads(otherModule);
 		}
 
-		return MethodHandles.privateLookupIn(targetClass, MethodHandles.lookup());
+		return MethodHandles.privateLookupIn(targetClass, lookup);
 	}
 
-	public static MethodHandle unreflect(Constructor<?> constructor, Lookup lookup) throws IllegalAccessException
+	public static Runnable createRunnable(final MethodHandleContext context) throws Throwable
 	{
-		return lookup.unreflectConstructor(constructor);
-	}
-
-	public static MethodHandle unreflect(Method method, Lookup lookup, Class<?> caller) throws IllegalAccessException
-	{
-		if (Modifier.isStatic(method.getModifiers()) == false)
-		{
-			return lookup.unreflectSpecial(method, caller);
-		}
-		else
-		{
-			return lookup.unreflect(method);
-		}
-	}
-
-	public static Runnable createRunnable(Lookup lookup, MethodHandle methodHandle) throws Throwable
-	{
-		final CallSite site = LambdaMetafactory.metafactory(lookup,
+		final CallSite site = LambdaMetafactory.metafactory(context.privateLookup(),
 															RUNNABLE_EXEC_METHOD,
 															TYPE_R_RUNNABLE,
 															TYPE_VOID_VOID,
-															methodHandle,
-															methodHandle.type());
+															context.methodHandle(),
+															context.methodHandle().type());
 		return (Runnable) site.getTarget().invokeExact();
 	}
 
-	public static MethodHandle createRunnableFactory(Lookup lookup,
-													 MethodHandle methodHandle,
-													 Class<?> type) throws LambdaConversionException
+	public static MethodHandle createRunnableFactory(final MethodHandleContext context) throws LambdaConversionException
 	{
-		final var factoryType = MethodType.methodType(Runnable.class, type);
-		final var site = LambdaMetafactory.metafactory(lookup,
+		final var factoryType = MethodType.methodType(Runnable.class, context.declaringClass());
+		final var site = LambdaMetafactory.metafactory(context.privateLookup(),
 													   RUNNABLE_EXEC_METHOD,
 													   factoryType,
 													   TYPE_VOID_VOID,
-													   methodHandle,
+													   context.methodHandle(),
 													   TYPE_VOID_VOID);
+
 		return site.getTarget();
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T> Consumer<T> createConsumer(Lookup lookup, MethodHandle methodHandle) throws Throwable
+	public static <T> Consumer<T> createConsumer(final MethodHandleContext context) throws Throwable
 	{
-		final var site = LambdaMetafactory.metafactory(lookup,
+		final var site = LambdaMetafactory.metafactory(context.privateLookup(),
 													   CONSUMER_EXEC_METHOD,
 													   TYPE_R_CONSUMER,
 													   TYPE_VOID_OBJECT,
-													   methodHandle,
-													   methodHandle.type());
+													   context.methodHandle(),
+													   context.methodHandle().type());
 		return (Consumer<T>) site.getTarget().invokeExact();
 	}
 
-	public static MethodHandle createConsumerFactory(Lookup lookup,
-													 MethodHandle methodHandle,
-													 Class<?> type) throws LambdaConversionException
+	public static MethodHandle createConsumerFactory(final MethodHandleContext context) throws LambdaConversionException
 	{
-		final var factoryType = MethodType.methodType(Consumer.class, type);
-		final var targetType = methodHandle.type().dropParameterTypes(0, 1);
-		final var site = LambdaMetafactory.metafactory(lookup,
+		final var factoryType = MethodType.methodType(Consumer.class, context.declaringClass());
+		final var targetType = context.methodHandle().type().dropParameterTypes(0, 1);
+		final var site = LambdaMetafactory.metafactory(context.privateLookup(),
 													   CONSUMER_EXEC_METHOD,
 													   factoryType,
 													   TYPE_VOID_OBJECT,
-													   methodHandle,
+													   context.methodHandle(),
 													   targetType);
 		return site.getTarget();
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T> Supplier<T> createSupplier(Lookup lookup, MethodHandle methodHandle) throws Throwable
+	public static <T> Supplier<T> createSupplier(final MethodHandleContext context) throws Throwable
 	{
-		final CallSite site = LambdaMetafactory.metafactory(lookup,
+		final CallSite site = LambdaMetafactory.metafactory(context.privateLookup(),
 															SUPPLIER_EXEC_METHOD,
 															TYPE_R_SUPPLIER,
 															TYPE_OBJECT_VOID,
-															methodHandle,
-															methodHandle.type());
+															context.methodHandle(),
+															context.methodHandle().type());
 		return (Supplier<T>) site.getTarget().invokeExact();
 	}
 
-	public static MethodHandle createSupplierFactory(Lookup lookup,
-													 MethodHandle methodHandle,
-													 Class<?> type) throws LambdaConversionException
+	public static MethodHandle createSupplierFactory(final MethodHandleContext context) throws LambdaConversionException
 	{
-		final var factoryType = MethodType.methodType(Supplier.class, type);
-		final var site = LambdaMetafactory.metafactory(lookup,
+		final var factoryType = MethodType.methodType(Supplier.class, context.declaringClass());
+		final var site = LambdaMetafactory.metafactory(context.privateLookup(),
 													   SUPPLIER_EXEC_METHOD,
 													   factoryType,
 													   TYPE_OBJECT_VOID,
-													   methodHandle,
+													   context.methodHandle(),
 													   TYPE_OBJECT_VOID);
 		return site.getTarget();
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T> BiConsumer<T, Object> createBiConsumer(Lookup lookup, MethodHandle methodHandle) throws Throwable
+	public static <T> BiConsumer<T, Object> createBiConsumer(final MethodHandleContext context) throws Throwable
 	{
-		final var site = LambdaMetafactory.metafactory(lookup,
+		final var site = LambdaMetafactory.metafactory(context.privateLookup(),
 													   CONSUMER_EXEC_METHOD,
 													   TYPE_R_BICONSUMER,
 													   TYPE_VOID_OBJECT_OBJECT,
-													   methodHandle,
-													   methodHandle.type());
+													   context.methodHandle(),
+													   context.methodHandle().type());
 		return (BiConsumer<T, Object>) site.getTarget().invokeExact();
 	}
 
-	public static MethodHandle createBiConsumerFactory(Lookup lookup,
-													   MethodHandle methodHandle,
-													   Class<?> type) throws LambdaConversionException
+	public static MethodHandle createBiConsumerFactory(final MethodHandleContext context) throws LambdaConversionException
 	{
-		final var factoryType = MethodType.methodType(BiConsumer.class, type);
-		final var targetType = methodHandle.type().dropParameterTypes(0, 1);
-		final var site = LambdaMetafactory.metafactory(lookup,
+		final var factoryType = MethodType.methodType(BiConsumer.class, context.declaringClass());
+		final var targetType = context.methodHandle().type().dropParameterTypes(0, 1);
+		final var site = LambdaMetafactory.metafactory(context.privateLookup(),
 													   CONSUMER_EXEC_METHOD,
 													   factoryType,
 													   TYPE_VOID_OBJECT_OBJECT,
-													   methodHandle,
+													   context.methodHandle(),
 													   targetType);
 		return site.getTarget();
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T> Function<Object, T> createFunction(Lookup lookup, MethodHandle methodHandle) throws Throwable
+	public static <T> Function<Object, T> createFunction(final MethodHandleContext context) throws Throwable
 	{
-		final CallSite site = LambdaMetafactory.metafactory(lookup,
+		final CallSite site = LambdaMetafactory.metafactory(context.privateLookup(),
 															FUNCTION_EXEC_METHOD,
 															TYPE_R_FUNCTION,
-															methodHandle.type().generic(),
-															methodHandle,
-															methodHandle.type());
+															context.methodHandle().type().generic(),
+															context.methodHandle(),
+															context.methodHandle().type());
 		return (Function<Object, T>) site.getTarget().invokeExact();
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T> BiFunction<Object, Object, T> createBiFunction(Lookup lookup,
-																	 MethodHandle methodHandle) throws Throwable
+	public static <T> BiFunction<Object, Object, T> createBiFunction(final MethodHandleContext context) throws Throwable
 	{
-		final CallSite site = LambdaMetafactory.metafactory(lookup,
+		final CallSite site = LambdaMetafactory.metafactory(context.privateLookup(),
 															FUNCTION_EXEC_METHOD,
 															TYPE_R_BIFUNCTION,
-															methodHandle.type().generic(),
-															methodHandle,
-															methodHandle.type());
+															context.methodHandle().type().generic(),
+															context.methodHandle(),
+															context.methodHandle().type());
 		return (BiFunction<Object, Object, T>) site.getTarget().invokeExact();
 	}
 }

@@ -1,11 +1,11 @@
 package org.sheepy.lily.core.reflect.execution;
 
-import org.sheepy.lily.core.reflect.util.ReflectionUtil;
 import org.sheepy.lily.core.api.reflect.ConsumerHandle;
+import org.sheepy.lily.core.reflect.util.MethodHandleContext;
+import org.sheepy.lily.core.reflect.util.ReflectionUtil;
 
 import java.lang.invoke.LambdaConversionException;
 import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles.Lookup;
 
 public final class ConsumerHandleNoParam implements ConsumerHandle
 {
@@ -32,9 +32,9 @@ public final class ConsumerHandleNoParam implements ConsumerHandle
 	{
 		private final MethodHandle factory;
 
-		public Builder(Lookup lookup, MethodHandle methodHandle, Class<?> type) throws LambdaConversionException
+		public Builder(final MethodHandleContext context) throws LambdaConversionException
 		{
-			factory = ReflectionUtil.createRunnableFactory(lookup, methodHandle, type);
+			factory = ReflectionUtil.createRunnableFactory(context);
 		}
 
 		@Override
@@ -58,9 +58,9 @@ public final class ConsumerHandleNoParam implements ConsumerHandle
 	{
 		private final ConsumerHandle handle;
 
-		public StaticBuilder(Lookup lookup, MethodHandle methodHandle) throws Throwable
+		public StaticBuilder(final MethodHandleContext context) throws Throwable
 		{
-			final var runnable = ReflectionUtil.createRunnable(lookup, methodHandle);
+			final var runnable = ReflectionUtil.createRunnable(context);
 			handle = new ConsumerHandleNoParam(runnable);
 		}
 

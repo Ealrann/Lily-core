@@ -20,27 +20,8 @@ public interface IExtenderDescriptor<T extends IExtender> extends IExtenderDescr
 		return object.extenders().adaptHandleFromDescriptor(this);
 	}
 
-	final class ExtenderContext<T extends IExtender>
+	record ExtenderContext<T extends IExtender>(T extender, List<? extends AnnotationHandles<?>> annotationHandles)
 	{
-		private final T extender;
-		private final List<? extends AnnotationHandles<?>> annotationHandles;
-
-		public ExtenderContext(T extender, List<? extends AnnotationHandles<?>> annotationHandles)
-		{
-			this.extender = extender;
-			this.annotationHandles = annotationHandles;
-		}
-
-		public T extender()
-		{
-			return extender;
-		}
-
-		public List<? extends AnnotationHandles<?>> annotationHandles()
-		{
-			return annotationHandles;
-		}
-
 		public Stream<ConsumerHandle> annotatedConsumer(Class<? extends Annotation> annotationClass)
 		{
 			return annotatedHandles(annotationClass).map(IExtenderHandle.AnnotatedHandle::executionHandle)

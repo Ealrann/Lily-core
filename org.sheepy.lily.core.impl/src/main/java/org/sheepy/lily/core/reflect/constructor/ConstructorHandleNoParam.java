@@ -1,10 +1,9 @@
 package org.sheepy.lily.core.reflect.constructor;
 
-import org.sheepy.lily.core.reflect.util.ReflectionUtil;
 import org.sheepy.lily.core.api.reflect.ConstructorHandle;
+import org.sheepy.lily.core.reflect.util.MethodHandleContext;
+import org.sheepy.lily.core.reflect.util.ReflectionUtil;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles.Lookup;
 import java.lang.reflect.Constructor;
 import java.util.function.Supplier;
 
@@ -35,9 +34,9 @@ public final class ConstructorHandleNoParam<T> implements ConstructorHandle<T>
 	{
 		private final ConstructorHandle<T> handle;
 
-		public Builder(Lookup lookup, MethodHandle methodHandle, Constructor<T> constructor) throws Throwable
+		public Builder(final MethodHandleContext context, final Constructor<T> constructor) throws Throwable
 		{
-			final Supplier<T> supplier = ReflectionUtil.createSupplier(lookup, methodHandle);
+			final Supplier<T> supplier = ReflectionUtil.createSupplier(context);
 			handle = new ConstructorHandleNoParam<>(supplier, constructor);
 		}
 

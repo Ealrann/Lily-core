@@ -1,26 +1,25 @@
 package org.sheepy.lily.core.reflect.supplier;
 
-import org.sheepy.lily.core.reflect.ExecutionHandleBuilder;
-import org.sheepy.lily.core.reflect.util.ReflectionUtil;
 import org.sheepy.lily.core.api.reflect.SupplierHandle;
+import org.sheepy.lily.core.reflect.ExecutionHandleBuilder;
+import org.sheepy.lily.core.reflect.util.MethodHandleContext;
+import org.sheepy.lily.core.reflect.util.ReflectionUtil;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles.Lookup;
+import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 public abstract class SupplierHandleBuilder extends ExecutionHandleBuilder
 {
-	public static final SupplierHandleBuilder fromMethod(Method method) throws ReflectiveOperationException
+	public static final SupplierHandleBuilder fromMethod(final MethodHandles.Lookup lookup,
+														 final Method method) throws ReflectiveOperationException
 	{
-		final var type = method.getDeclaringClass();
-		final var lookup = ReflectionUtil.reachLookup(type);
 		final var isStatic = Modifier.isStatic(method.getModifiers());
 
 		try
 		{
-			final var methodHandle = ReflectionUtil.unreflect(method, lookup, type);
-			return buildNoArgs(type, lookup, methodHandle, isStatic);
+			final var methodHandle = ReflectionUtil.unreflect(method, lookup);
+			return buildNoArgs(methodHandle, isStatic);
 		}
 		catch (final Throwable e)
 		{
@@ -28,20 +27,18 @@ public abstract class SupplierHandleBuilder extends ExecutionHandleBuilder
 		}
 	}
 
-	private static SupplierHandleBuilder buildNoArgs(final Class<?> type,
-													 final Lookup lookup,
-													 final MethodHandle methodHandle,
+	private static SupplierHandleBuilder buildNoArgs(final MethodHandleContext methodHandleContext,
 													 final boolean isStatic) throws Throwable
 	{
-		if (methodHandle.type().returnType() == Boolean.TYPE)
+		if (methodHandleContext.methodHandle().type().returnType() == Boolean.TYPE)
 		{
-			if (isStatic) return new BooleanSupplierHandle.StaticBuilder(lookup, methodHandle);
-			else return new BooleanSupplierHandle.Builder(lookup, methodHandle, type);
+			if (isStatic) return new BooleanSupplierHandle.StaticBuilder(methodHandleContext);
+			else return new BooleanSupplierHandle.Builder(methodHandleContext);
 		}
 		else
 		{
-			if (isStatic) return new ObjectSupplierHandle.StaticBuilder(lookup, methodHandle);
-			else return new ObjectSupplierHandle.Builder(lookup, methodHandle, type);
+			if (isStatic) return new ObjectSupplierHandle.StaticBuilder(methodHandleContext);
+			else return new ObjectSupplierHandle.Builder(methodHandleContext);
 		}
 	}
 

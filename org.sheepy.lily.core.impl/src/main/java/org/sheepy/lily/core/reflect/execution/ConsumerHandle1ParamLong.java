@@ -1,11 +1,11 @@
 package org.sheepy.lily.core.reflect.execution;
 
 import org.sheepy.lily.core.api.reflect.ConsumerHandle;
+import org.sheepy.lily.core.reflect.util.MethodHandleContext;
 
 import java.lang.invoke.LambdaConversionException;
 import java.lang.invoke.LambdaMetafactory;
 import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles.Lookup;
 import java.lang.invoke.MethodType;
 import java.util.function.Consumer;
 import java.util.function.LongConsumer;
@@ -35,15 +35,15 @@ public final class ConsumerHandle1ParamLong implements ConsumerHandle
 	{
 		private final MethodHandle factory;
 
-		public Builder(Lookup lookup, MethodHandle methodHandle, Class<?> type) throws LambdaConversionException
+		public Builder(final MethodHandleContext context) throws LambdaConversionException
 		{
-			final var factoryType = MethodType.methodType(LongConsumer.class, type);
-			final var targetType = methodHandle.type().dropParameterTypes(0, 1);
-			final var site = LambdaMetafactory.metafactory(lookup,
+			final var factoryType = MethodType.methodType(LongConsumer.class, context.declaringClass());
+			final var targetType = context.methodHandle().type().dropParameterTypes(0, 1);
+			final var site = LambdaMetafactory.metafactory(context.privateLookup(),
 														   "accept",
 														   factoryType,
 														   MethodType.methodType(Void.TYPE, Long.TYPE),
-														   methodHandle,
+														   context.methodHandle(),
 														   targetType);
 			factory = site.getTarget();
 		}
@@ -69,14 +69,14 @@ public final class ConsumerHandle1ParamLong implements ConsumerHandle
 	{
 		private final ConsumerHandle handle;
 
-		public StaticBuilder(Lookup lookup, MethodHandle methodHandle) throws Throwable
+		public StaticBuilder(final MethodHandleContext context) throws Throwable
 		{
-			final var site = LambdaMetafactory.metafactory(lookup,
+			final var site = LambdaMetafactory.metafactory(context.privateLookup(),
 														   "accept",
 														   MethodType.methodType(Consumer.class),
 														   MethodType.methodType(Void.TYPE, Long.TYPE),
-														   methodHandle,
-														   methodHandle.type());
+														   context.methodHandle(),
+														   context.methodHandle().type());
 
 			final var consumer = (LongConsumer) site.getTarget().invoke();
 			handle = new ConsumerHandle1ParamLong(consumer);

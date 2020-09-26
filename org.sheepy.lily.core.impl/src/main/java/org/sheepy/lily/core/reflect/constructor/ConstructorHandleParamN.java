@@ -1,6 +1,7 @@
 package org.sheepy.lily.core.reflect.constructor;
 
 import org.sheepy.lily.core.api.reflect.ConstructorHandle;
+import org.sheepy.lily.core.reflect.util.MethodHandleContext;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.reflect.Constructor;
@@ -41,9 +42,9 @@ public final class ConstructorHandleParamN<T> implements ConstructorHandle<T>
 	{
 		private final ConstructorHandle<T> handle;
 
-		public Builder(MethodHandle methodHandle, Constructor<T> constructor)
+		public Builder(final MethodHandleContext context, final Constructor<T> constructor)
 		{
-			handle = new ConstructorHandleParamN<>(methodHandle, constructor);
+			handle = new ConstructorHandleParamN<>(context.methodHandle(), constructor);
 		}
 
 		@Override

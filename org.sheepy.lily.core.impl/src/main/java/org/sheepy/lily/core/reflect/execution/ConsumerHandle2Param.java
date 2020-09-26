@@ -1,11 +1,11 @@
 package org.sheepy.lily.core.reflect.execution;
 
-import org.sheepy.lily.core.reflect.util.ReflectionUtil;
 import org.sheepy.lily.core.api.reflect.ConsumerHandle;
+import org.sheepy.lily.core.reflect.util.MethodHandleContext;
+import org.sheepy.lily.core.reflect.util.ReflectionUtil;
 
 import java.lang.invoke.LambdaConversionException;
 import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles.Lookup;
 import java.util.function.BiConsumer;
 
 public final class ConsumerHandle2Param implements ConsumerHandle
@@ -33,9 +33,9 @@ public final class ConsumerHandle2Param implements ConsumerHandle
 	{
 		private final MethodHandle factory;
 
-		public Builder(Lookup lookup, MethodHandle methodHandle, Class<?> type) throws LambdaConversionException
+		public Builder(final MethodHandleContext context) throws LambdaConversionException
 		{
-			factory = ReflectionUtil.createBiConsumerFactory(lookup, methodHandle, type);
+			factory = ReflectionUtil.createBiConsumerFactory(context);
 		}
 
 		@Override
@@ -60,9 +60,9 @@ public final class ConsumerHandle2Param implements ConsumerHandle
 	{
 		private final ConsumerHandle handle;
 
-		public StaticBuilder(Lookup lookup, MethodHandle methodHandle) throws Throwable
+		public StaticBuilder(final MethodHandleContext context) throws Throwable
 		{
-			final var consumer = ReflectionUtil.createBiConsumer(lookup, methodHandle);
+			final var consumer = ReflectionUtil.createBiConsumer(context);
 			handle = new ConsumerHandle2Param(consumer);
 		}
 

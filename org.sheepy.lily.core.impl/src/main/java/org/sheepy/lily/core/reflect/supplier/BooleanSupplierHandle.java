@@ -1,11 +1,11 @@
 package org.sheepy.lily.core.reflect.supplier;
 
 import org.sheepy.lily.core.api.reflect.SupplierHandle;
+import org.sheepy.lily.core.reflect.util.MethodHandleContext;
 
 import java.lang.invoke.LambdaConversionException;
 import java.lang.invoke.LambdaMetafactory;
 import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles.Lookup;
 import java.lang.invoke.MethodType;
 import java.util.function.BooleanSupplier;
 
@@ -34,15 +34,15 @@ public final class BooleanSupplierHandle implements SupplierHandle
 	{
 		private final MethodHandle factory;
 
-		public Builder(Lookup lookup, MethodHandle methodHandle, Class<?> type) throws LambdaConversionException
+		public Builder(final MethodHandleContext context) throws LambdaConversionException
 		{
-			final var factoryType = MethodType.methodType(BooleanSupplier.class, type);
-			final var targetType = methodHandle.type().dropParameterTypes(0, 1);
-			final var site = LambdaMetafactory.metafactory(lookup,
+			final var factoryType = MethodType.methodType(BooleanSupplier.class, context.declaringClass());
+			final var targetType = context.methodHandle().type().dropParameterTypes(0, 1);
+			final var site = LambdaMetafactory.metafactory(context.privateLookup(),
 														   "getAsBoolean",
 														   factoryType,
 														   MethodType.methodType(Boolean.TYPE),
-														   methodHandle,
+														   context.methodHandle(),
 														   targetType);
 			factory = site.getTarget();
 		}
@@ -68,14 +68,14 @@ public final class BooleanSupplierHandle implements SupplierHandle
 	{
 		private final BooleanSupplierHandle handle;
 
-		public StaticBuilder(Lookup lookup, MethodHandle methodHandle) throws Throwable
+		public StaticBuilder(final MethodHandleContext methodHandleContext) throws Throwable
 		{
-			final var site = LambdaMetafactory.metafactory(lookup,
+			final var site = LambdaMetafactory.metafactory(methodHandleContext.privateLookup(),
 														   "getAsBoolean",
 														   MethodType.methodType(BooleanSupplier.class),
 														   MethodType.methodType(Boolean.TYPE),
-														   methodHandle,
-														   methodHandle.type());
+														   methodHandleContext.methodHandle(),
+														   methodHandleContext.methodHandle().type());
 
 			final var supplier = (BooleanSupplier) site.getTarget().invoke();
 			handle = new BooleanSupplierHandle(supplier);

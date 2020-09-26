@@ -1,27 +1,27 @@
 package org.sheepy.lily.core.reflect.constructor;
 
-import org.sheepy.lily.core.reflect.util.ReflectionUtil;
 import org.sheepy.lily.core.api.reflect.ConstructorHandle;
+import org.sheepy.lily.core.reflect.util.ReflectionUtil;
 
+import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Constructor;
 
 public abstract class ConstructorHandleBuilder<T>
 {
-	public static final <T> ConstructorHandleBuilder<T> fromMethod(Constructor<T> constructor) throws ReflectiveOperationException
+	public static final <T> ConstructorHandleBuilder<T> fromMethod(final MethodHandles.Lookup lookup,
+																   final Constructor<T> constructor) throws ReflectiveOperationException
 	{
-		final var sourceClass = constructor.getDeclaringClass();
 		final int paramCount = constructor.getParameterCount();
-		final var privateLookup = ReflectionUtil.reachLookup(sourceClass);
 
 		try
 		{
-			final var methodHandle = ReflectionUtil.unreflect(constructor, privateLookup);
+			final var context = ReflectionUtil.unreflect(constructor, lookup);
 			return switch (paramCount)
 					{
-						case 0 -> new ConstructorHandleNoParam.Builder<>(privateLookup, methodHandle, constructor);
-						case 1 -> new ConstructorHandleParam1.Builder<>(privateLookup, methodHandle, constructor);
-						case 2 -> new ConstructorHandleParam2.Builder<>(privateLookup, methodHandle, constructor);
-						default -> new ConstructorHandleParamN.Builder<>(methodHandle, constructor);
+						case 0 -> new ConstructorHandleNoParam.Builder<>(context, constructor);
+						case 1 -> new ConstructorHandleParam1.Builder<>(context, constructor);
+						case 2 -> new ConstructorHandleParam2.Builder<>(context, constructor);
+						default -> new ConstructorHandleParamN.Builder<>(context, constructor);
 					};
 		}
 		catch (final Throwable e)

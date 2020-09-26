@@ -1,11 +1,11 @@
 package org.sheepy.lily.core.reflect.supplier;
 
-import org.sheepy.lily.core.reflect.util.ReflectionUtil;
 import org.sheepy.lily.core.api.reflect.SupplierHandle;
+import org.sheepy.lily.core.reflect.util.MethodHandleContext;
+import org.sheepy.lily.core.reflect.util.ReflectionUtil;
 
 import java.lang.invoke.LambdaConversionException;
 import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles.Lookup;
 import java.util.function.Supplier;
 
 public final class ObjectSupplierHandle implements SupplierHandle
@@ -33,9 +33,9 @@ public final class ObjectSupplierHandle implements SupplierHandle
 	{
 		private final MethodHandle factory;
 
-		public Builder(Lookup lookup, MethodHandle methodHandle, Class<?> type) throws LambdaConversionException
+		public Builder(final MethodHandleContext context) throws LambdaConversionException
 		{
-			factory = ReflectionUtil.createSupplierFactory(lookup, methodHandle, type);
+			factory = ReflectionUtil.createSupplierFactory(context);
 		}
 
 		@Override
@@ -60,9 +60,9 @@ public final class ObjectSupplierHandle implements SupplierHandle
 	{
 		private final ObjectSupplierHandle handle;
 
-		public StaticBuilder(Lookup lookup, MethodHandle methodHandle) throws Throwable
+		public StaticBuilder(final MethodHandleContext context) throws Throwable
 		{
-			final var supplier = ReflectionUtil.createSupplier(lookup, methodHandle);
+			final var supplier = ReflectionUtil.createSupplier(context);
 			handle = new ObjectSupplierHandle(supplier);
 		}
 

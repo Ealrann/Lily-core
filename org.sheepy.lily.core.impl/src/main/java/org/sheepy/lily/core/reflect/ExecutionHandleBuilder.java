@@ -4,19 +4,21 @@ import org.sheepy.lily.core.api.reflect.IExecutionHandleBuilder;
 import org.sheepy.lily.core.reflect.execution.ConsumerHandleBuilder;
 import org.sheepy.lily.core.reflect.supplier.SupplierHandleBuilder;
 
+import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Method;
 
 public abstract class ExecutionHandleBuilder implements IExecutionHandleBuilder
 {
-	public static ExecutionHandleBuilder fromMethod(Method method) throws ReflectiveOperationException
+	public static ExecutionHandleBuilder fromMethod(final MethodHandles.Lookup lookup,
+													final Method method) throws ReflectiveOperationException
 	{
 		if (method.getReturnType() != Void.TYPE)
 		{
-			return SupplierHandleBuilder.fromMethod(method);
+			return SupplierHandleBuilder.fromMethod(lookup, method);
 		}
 		else
 		{
-			return ConsumerHandleBuilder.fromMethod(method);
+			return ConsumerHandleBuilder.fromMethod(lookup, method);
 		}
 	}
 }
