@@ -81,7 +81,8 @@ public final class ExtenderManager implements IExtenderManager.Internal
 	{
 		REGISTRY.descriptors(target)
 				.filter(ExtenderDescriptorRegistry.DescriptorWraper::isAuto)
-				.forEach(this::getOrCreateHandle);
+				.iterator()
+				.forEachRemaining(this::getOrCreateHandle);
 	}
 
 	private <T extends IExtender> IExtenderHandle<T> getOrCreateHandle(final ExtenderDescriptorRegistry.DescriptorWraper<T> descriptor)

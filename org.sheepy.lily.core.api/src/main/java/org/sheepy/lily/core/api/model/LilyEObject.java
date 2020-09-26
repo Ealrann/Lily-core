@@ -106,12 +106,12 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 
 	public final void deployExtenerManager()
 	{
-		streamTreeConcurrent().forEach(LilyEObject::deploy);
+		streamTreeConcurrent().iterator().forEachRemaining(LilyEObject::deploy);
 	}
 
 	public final void loadExtenderManager()
 	{
-		streamTreeConcurrent().forEach(LilyEObject::load);
+		streamTreeConcurrent().iterator().forEachRemaining(LilyEObject::load);
 	}
 
 	public final void disposeExtenderManager()

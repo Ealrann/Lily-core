@@ -3,11 +3,12 @@ package org.sheepy.lily.core.adapter;
 import org.sheepy.lily.core.adapter.util.AnnotationHandleManager;
 import org.sheepy.lily.core.api.adapter.annotation.Dispose;
 import org.sheepy.lily.core.api.adapter.annotation.Load;
+import org.sheepy.lily.core.api.extender.AnnotationHandles;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
-import org.sheepy.lily.core.api.extender.AnnotationHandles;
+import org.sheepy.lily.core.api.reflect.ConsumerHandle;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
@@ -43,7 +44,7 @@ public final class AdapterHandleFull<Extender extends IExtender> implements IExt
 			}
 		}
 		annotationHandleManager.registerHandleListeners(target);
-		annotationHandleManager.callHandles(Load.class, target);
+		handles(Load.class, target);
 	}
 
 	@Override
@@ -51,7 +52,16 @@ public final class AdapterHandleFull<Extender extends IExtender> implements IExt
 	{
 		if (observatory != null) observatory.shut(target);
 		annotationHandleManager.unregisterHandleListeners(target);
-		annotationHandleManager.callHandles(Dispose.class, target);
+		handles(Dispose.class, target);
+	}
+
+	private <A extends Annotation> void handles(final Class<A> annotationClass, Object... parameters)
+	{
+		annotationHandleManager.annotatedHandles(annotationClass)
+							   .map(IExtenderHandle.AnnotatedHandle::executionHandle)
+							   .map(ConsumerHandle.class::cast)
+							   .iterator()
+							   .forEachRemaining(handle -> handle.invoke(parameters));
 	}
 
 	@Override

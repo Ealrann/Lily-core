@@ -59,13 +59,6 @@ public final class AnnotationHandleManager
 		});
 	}
 
-	public <A extends Annotation> void callHandles(final Class<A> annotationClass, Object... parameters)
-	{
-		annotatedHandles(annotationClass).map(IExtenderHandle.AnnotatedHandle::executionHandle)
-										 .map(ConsumerHandle.class::cast)
-										 .forEach(handle -> handle.invoke(parameters));
-	}
-
 	@SuppressWarnings("unchecked")
 	public <A extends Annotation> Stream<IExtenderHandle.AnnotatedHandle<A>> annotatedHandles(Class<A> annotationClass)
 	{
