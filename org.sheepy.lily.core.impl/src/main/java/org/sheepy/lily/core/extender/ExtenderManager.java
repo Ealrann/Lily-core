@@ -66,7 +66,7 @@ public final class ExtenderManager implements IExtenderManager.Internal
 	{
 		return REGISTRY.descriptors(target)
 					   .filter(descriptor -> descriptor.handleBuilder().getHandleClass() == handleType)
-					   .map(builder -> (ExtenderDescriptorRegistry.DescriptorContext<?>) builder)
+					   .map(builder -> (DescriptorContext<?>) builder)
 					   .map(this::getOrCreateHandle)
 					   .map(res -> (T) res);
 	}
@@ -74,18 +74,18 @@ public final class ExtenderManager implements IExtenderManager.Internal
 	@Override
 	public <T extends IExtender> IExtenderHandle<T> adaptHandleFromDescriptor(final IExtenderDescription<T> descriptor)
 	{
-		return REGISTRY.getWrapper(descriptor).map(this::getOrCreateHandle).orElse(null);
+		return REGISTRY.getDescriptorContext(descriptor).map(this::getOrCreateHandle).orElse(null);
 	}
 
 	private void buildAutoAdapters()
 	{
 		REGISTRY.descriptors(target)
-				.filter(ExtenderDescriptorRegistry.DescriptorContext::isAuto)
+				.filter(DescriptorContext::isAuto)
 				.iterator()
 				.forEachRemaining(this::getOrCreateHandle);
 	}
 
-	private <T extends IExtender> IExtenderHandle<T> getOrCreateHandle(final ExtenderDescriptorRegistry.DescriptorContext<T> descriptor)
+	private <T extends IExtender> IExtenderHandle<T> getOrCreateHandle(final DescriptorContext<T> descriptor)
 	{
 		final Class<T> type = descriptor.descriptor().extenderClass();
 		if (containsType(type))
@@ -115,7 +115,7 @@ public final class ExtenderManager implements IExtenderManager.Internal
 		return REGISTRY.descriptors(target, type).map(this::createHandle);
 	}
 
-	private <T extends IExtender> IExtenderHandle<T> createHandle(ExtenderDescriptorRegistry.DescriptorContext<T> descriptor)
+	private <T extends IExtender> IExtenderHandle<T> createHandle(DescriptorContext<T> descriptor)
 	{
 		final var handle = descriptor.newHandle(target);
 		handles.add(handle);
