@@ -13,5 +13,6 @@ public @interface ModelExtender
 {
 	Class<? extends EObject> scope();
 	String name() default "";
+	String identifier() default "";
 	boolean inherited() default false;
 }

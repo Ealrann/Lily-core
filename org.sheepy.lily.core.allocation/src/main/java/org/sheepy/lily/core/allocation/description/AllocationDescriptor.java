@@ -30,11 +30,6 @@ public record AllocationDescriptor<Allocation extends IExtender>(IExtenderDescri
 																 boolean provideContext,
 																 boolean reuseDirtyAllocations)
 {
-	public Class<Allocation> extenderClass()
-	{
-		return extenderDescriptor.extenderClass();
-	}
-
 	public AllocationInstanceBuilder<Allocation> prepareBuild(final ILilyEObject target,
 															  final Runnable whenUpdateNeeded)
 	{

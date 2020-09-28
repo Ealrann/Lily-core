@@ -9,7 +9,8 @@ import java.util.stream.Stream;
 public interface IExtenderDescription<T extends IExtender>
 {
 	Class<T> extenderClass();
-	boolean isExtenderForType(Class<?> allocationAdapterType);
+	boolean match(Class<? extends IExtender> classifier);
+	boolean match(Class<? extends IExtender> classifier, String identifier);
 	boolean isApplicable(EObject target);
 	boolean containsMethodAnnotation(Class<? extends Annotation> annotationClass);
 	boolean containsClassAnnotation(Class<? extends Annotation> annotationClass);

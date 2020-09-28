@@ -6,6 +6,7 @@ import org.sheepy.lily.core.allocation.instance.AllocationInstance;
 import org.sheepy.lily.core.allocation.operation.BuildOperation;
 import org.sheepy.lily.core.api.allocation.IAllocationHandle;
 import org.sheepy.lily.core.api.extender.IExtender;
+import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.Feature;
 import org.sheepy.lily.core.api.notification.IFeatures;
@@ -19,8 +20,7 @@ import java.util.stream.Stream;
 public final class AllocationHandle<Allocation extends IExtender> implements IAllocationHandle<Allocation>
 {
 	private interface Features extends IFeatures<Features>
-	{
-	}
+	{}
 
 	private static final Feature<Runnable, Features> Activation = Feature.newFeature();
 	private final Feature<ExtenderListener<Allocation>, Features> MainAllocation = Feature.newFeature();
@@ -115,12 +115,6 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	}
 
 	@Override
-	public Class<Allocation> getExtenderClass()
-	{
-		return descriptor.extenderClass();
-	}
-
-	@Override
 	public Allocation getExtender()
 	{
 		return getAllocationOrNull(mainAllocation);
@@ -134,6 +128,12 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	public AllocationInstance<Allocation> getMainAllocation()
 	{
 		return mainAllocation;
+	}
+
+	@Override
+	public IExtenderDescriptor<Allocation> descriptor()
+	{
+		return descriptor.extenderDescriptor();
 	}
 
 	@Override

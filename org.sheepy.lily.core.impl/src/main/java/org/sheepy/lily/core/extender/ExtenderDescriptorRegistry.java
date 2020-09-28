@@ -61,8 +61,19 @@ public final class ExtenderDescriptorRegistry implements IExtenderDescriptorRegi
 	public <T extends IExtender> Stream<DescriptorContext<T>> descriptors(final EObject target, final Class<T> type)
 	{
 		return descriptors.stream()
-						  .filter(descriptor -> descriptor.descriptor().isExtenderForType(type))
 						  .filter(descriptor -> descriptor.descriptor().isApplicable(target))
+						  .filter(descriptor -> descriptor.descriptor().match(type))
+						  .map(descriptor -> ((DescriptorContext<T>) descriptor));
+	}
+
+	@SuppressWarnings("unchecked")
+	public <T extends IExtender> Stream<DescriptorContext<T>> descriptors(final EObject target,
+																		  final Class<T> type,
+																		  final String identifier)
+	{
+		return descriptors.stream()
+						  .filter(descriptor -> descriptor.descriptor().isApplicable(target))
+						  .filter(descriptor -> descriptor.descriptor().match(type, identifier))
 						  .map(descriptor -> ((DescriptorContext<T>) descriptor));
 	}
 

@@ -13,6 +13,7 @@ public interface ILilyEObject extends InternalEObject, IEMFNotifier
 	Stream<ILilyEObject> streamTree();
 
 	<T extends IExtender> T adapt(Class<T> type);
+	<T extends IExtender> T adapt(Class<T> type, String identifier);
 	<T extends IExtender> T adaptNotNull(Class<T> type);
 
 	<T extends IExtender> T adaptGeneric(Class<? extends IExtender> type);

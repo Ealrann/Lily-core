@@ -63,27 +63,33 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	}
 
 	@Override
-	public final <T extends IExtender> T adaptGeneric(Class<? extends IExtender> type)
+	public final <T extends IExtender> T adaptGeneric(final Class<? extends IExtender> type)
 	{
 		@SuppressWarnings("unchecked") final var adapt = (T) adapt(type);
 		return adapt;
 	}
 
 	@Override
-	public final <T extends IExtender> T adapt(Class<T> type)
+	public final <T extends IExtender> T adapt(final Class<T> type)
 	{
 		return extenderManager.adapt(type).findAny().orElse(null);
 	}
 
 	@Override
-	public final <T extends IExtender> T adaptNotNullGeneric(Class<? extends IExtender> type)
+	public final <T extends IExtender> T adapt(final Class<T> type, final String identifier)
+	{
+		return extenderManager.adapt(type, identifier).findAny().orElse(null);
+	}
+
+	@Override
+	public final <T extends IExtender> T adaptNotNullGeneric(final Class<? extends IExtender> type)
 	{
 		@SuppressWarnings("unchecked") final var adapt = (T) adaptNotNull(type);
 		return adapt;
 	}
 
 	@Override
-	public final <T extends IExtender> T adaptNotNull(Class<T> type)
+	public final <T extends IExtender> T adaptNotNull(final Class<T> type)
 	{
 		final T adapt = adapt(type);
 		if (adapt == null)

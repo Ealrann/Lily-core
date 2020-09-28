@@ -5,6 +5,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
+import org.sheepy.lily.core.api.extender.ModelExtender;
 import org.sheepy.lily.core.api.extender.parameter.IParameterResolver;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
@@ -21,26 +22,21 @@ import java.util.stream.Stream;
 
 public final class ExtenderDescriptor<Extender extends IExtender> implements IExtenderDescriptor<Extender>
 {
+	private final ModelExtender annotation;
 	private final Class<Extender> extenderClass;
 	private final EClass targetEClass;
-	private final boolean inheritance;
-	private final String targetName;
 	private final ExtenderBuilder<Extender> extenderBuilder;
 	private final List<AnnotationHandlesBuilder<?>> executionHandleBuilders;
 
-	public ExtenderDescriptor(ConstructorHandle<Extender> constructorHandle,
-							  Class<Extender> extenderClass,
-							  EClass targetEClass,
-							  boolean inheritance,
-							  String targetName,
-							  List<AnnotationHandlesBuilder<?>> executionHandleBuilders)
+	public ExtenderDescriptor(final ConstructorHandle<Extender> constructorHandle,
+							  final ModelExtender annotation,
+							  final Class<Extender> extenderClass,
+							  final EClass targetEClass,
+							  final List<AnnotationHandlesBuilder<?>> executionHandleBuilders)
 	{
-		assert extenderClass != null;
-
+		this.annotation = annotation;
 		this.extenderClass = extenderClass;
 		this.targetEClass = targetEClass;
-		this.inheritance = inheritance;
-		this.targetName = targetName;
 		this.extenderBuilder = new ExtenderBuilder<>(constructorHandle, extenderClass);
 		this.executionHandleBuilders = List.copyOf(executionHandleBuilders);
 	}
@@ -74,9 +70,15 @@ public final class ExtenderDescriptor<Extender extends IExtender> implements IEx
 	}
 
 	@Override
-	public boolean isExtenderForType(final Class<?> type)
+	public boolean match(final Class<? extends IExtender> type)
 	{
-		return type.isAssignableFrom(this.extenderClass);
+		return type.isAssignableFrom(extenderClass);
+	}
+
+	@Override
+	public boolean match(final Class<? extends IExtender> type, final String identifier)
+	{
+		return match(type) && Objects.equals(annotation.identifier(), identifier);
 	}
 
 	@Override
@@ -84,17 +86,17 @@ public final class ExtenderDescriptor<Extender extends IExtender> implements IEx
 	{
 		final boolean res = isClassApplicable(target.eClass());
 
-		if (res && targetName.isEmpty() == false)
+		if (res && annotation.name().isEmpty() == false)
 		{
-			return target instanceof LNamedElement named && targetName.equals(named.getName());
+			return target instanceof LNamedElement named && annotation.name().equals(named.getName());
 		}
 
 		return res;
 	}
 
-	public boolean isClassApplicable(final EClass eClass)
+	private boolean isClassApplicable(final EClass eClass)
 	{
-		if (inheritance)
+		if (annotation.inherited())
 		{
 			return targetEClass == EcorePackage.Literals.EOBJECT || targetEClass.isSuperTypeOf(eClass);
 		}

@@ -49,13 +49,20 @@ public final class ExtenderManager implements IExtenderManager.Internal
 	}
 
 	@Override
-	public <T extends IExtender> Stream<T> adapt(Class<T> type)
+	public <T extends IExtender> Stream<T> adapt(final Class<T> type)
 	{
 		return getOrCreateHandlesOfExtenderType(type).map(IExtenderHandle::getExtender).filter(Objects::nonNull);
 	}
 
 	@Override
-	public <T extends IExtender> Stream<? extends IExtenderHandle<T>> adaptHandles(Class<T> type)
+	public <T extends IExtender> Stream<T> adapt(final Class<T> type, final String identifier)
+	{
+		return getOrCreateHandlesOfExtenderType(type, identifier).map(IExtenderHandle::getExtender)
+																 .filter(Objects::nonNull);
+	}
+
+	@Override
+	public <T extends IExtender> Stream<? extends IExtenderHandle<T>> adaptHandles(final Class<T> type)
 	{
 		return getOrCreateHandlesOfExtenderType(type);
 	}
@@ -88,7 +95,7 @@ public final class ExtenderManager implements IExtenderManager.Internal
 	private <T extends IExtender> IExtenderHandle<T> getOrCreateHandle(final DescriptorContext<T> descriptor)
 	{
 		final Class<T> type = descriptor.descriptor().extenderClass();
-		if (containsType(type))
+		if (anyMatch(type))
 		{
 			return getHandles(type).findFirst().orElse(null);
 		}
@@ -98,9 +105,9 @@ public final class ExtenderManager implements IExtenderManager.Internal
 		}
 	}
 
-	private <T extends IExtender> Stream<? extends IExtenderHandle<T>> getOrCreateHandlesOfExtenderType(Class<T> type)
+	private <T extends IExtender> Stream<? extends IExtenderHandle<T>> getOrCreateHandlesOfExtenderType(final Class<T> type)
 	{
-		if (containsType(type))
+		if (anyMatch(type))
 		{
 			return getHandles(type);
 		}
@@ -110,9 +117,27 @@ public final class ExtenderManager implements IExtenderManager.Internal
 		}
 	}
 
+	private <T extends IExtender> Stream<? extends IExtenderHandle<T>> getOrCreateHandlesOfExtenderType(final Class<T> type,
+																										final String identifier)
+	{
+		if (anyMatch(type, identifier))
+		{
+			return getHandles(type, identifier);
+		}
+		else
+		{
+			return createHandles(type, identifier);
+		}
+	}
+
 	private <T extends IExtender> Stream<IExtenderHandle<T>> createHandles(final Class<T> type)
 	{
 		return REGISTRY.descriptors(target, type).map(this::createHandle);
+	}
+
+	private <T extends IExtender> Stream<IExtenderHandle<T>> createHandles(final Class<T> type, final String identifier)
+	{
+		return REGISTRY.descriptors(target, type, identifier).map(this::createHandle);
 	}
 
 	private <T extends IExtender> IExtenderHandle<T> createHandle(DescriptorContext<T> descriptor)
@@ -131,17 +156,26 @@ public final class ExtenderManager implements IExtenderManager.Internal
 		}
 	}
 
-	private boolean containsType(final Class<? extends IExtender> type)
+	private boolean anyMatch(final Class<? extends IExtender> type)
 	{
-		return handles.stream().anyMatch(handle -> type.isAssignableFrom(handle.getExtenderClass()));
+		return streamHandles().anyMatch(handle -> handle.match(type));
+	}
+
+	private boolean anyMatch(final Class<? extends IExtender> type, final String identifier)
+	{
+		return streamHandles().anyMatch(handle -> handle.match(type, identifier));
 	}
 
 	@SuppressWarnings("unchecked")
 	public <T extends IExtender> Stream<IExtenderHandle<T>> getHandles(final Class<T> type)
 	{
-		return handles.stream()
-					  .filter(handle -> handle.match(type))
-					  .map(handle -> (IExtenderHandle<T>) handle);
+		return streamHandles().filter(handle -> handle.match(type)).map(handle -> (IExtenderHandle<T>) handle);
+	}
+
+	@SuppressWarnings("unchecked")
+	public <T extends IExtender> Stream<IExtenderHandle<T>> getHandles(final Class<T> type, final String identifier)
+	{
+		return streamHandles().filter(handle -> handle.match(type, identifier)).map(handle -> (IExtenderHandle<T>) handle);
 	}
 
 	private Stream<IExtenderHandle<? extends IExtender>> streamHandles()

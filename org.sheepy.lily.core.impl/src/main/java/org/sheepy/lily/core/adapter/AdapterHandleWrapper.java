@@ -1,6 +1,7 @@
 package org.sheepy.lily.core.adapter;
 
 import org.sheepy.lily.core.api.extender.IExtender;
+import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 
@@ -9,10 +10,12 @@ import java.util.stream.Stream;
 
 public final class AdapterHandleWrapper<Extender extends IExtender> implements IExtenderHandle<Extender>
 {
+	private final IExtenderDescriptor<Extender> descriptor;
 	private final Extender extender;
 
-	public AdapterHandleWrapper(final Extender extender)
+	public AdapterHandleWrapper(final IExtenderDescriptor<Extender> descriptor, final Extender extender)
 	{
+		this.descriptor = descriptor;
 		this.extender = extender;
 	}
 
@@ -33,10 +36,9 @@ public final class AdapterHandleWrapper<Extender extends IExtender> implements I
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
-	public Class<Extender> getExtenderClass()
+	public IExtenderDescriptor<Extender> descriptor()
 	{
-		return (Class<Extender>) extender.getClass();
+		return descriptor;
 	}
 
 	@Override

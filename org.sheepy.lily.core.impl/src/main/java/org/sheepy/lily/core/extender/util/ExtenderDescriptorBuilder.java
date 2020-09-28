@@ -32,8 +32,6 @@ public final class ExtenderDescriptorBuilder
 		final ModelExtender modelExtenderAnnotation = getModelAnnotation(type);
 		final var targetClass = modelExtenderAnnotation.scope();
 		final var targetEClass = ModelUtil.resolveEClass(targetClass);
-		final String targetName = modelExtenderAnnotation.name();
-		final boolean inheritance = modelExtenderAnnotation.inherited();
 
 		try
 		{
@@ -41,10 +39,9 @@ public final class ExtenderDescriptorBuilder
 			final var executionHandles = executionHandles(type);
 
 			final var res = new ExtenderDescriptor<>(constructorHandle,
+													 modelExtenderAnnotation,
 													 type,
 													 targetEClass,
-													 inheritance,
-													 targetName,
 													 executionHandles);
 			return Optional.of(res);
 		}
