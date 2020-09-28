@@ -1,16 +1,19 @@
 package org.sheepy.lily.core.resource;
 
-import java.io.IOException;
-import java.io.InputStream;
-
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.sheepy.lily.core.api.resource.IModelExtension;
-import org.sheepy.lily.core.api.resource.IResourceLoader;
+import org.sheepy.lily.core.api.resource.IResourceService;
 import org.sheepy.lily.core.api.util.DebugUtil;
 
-public class ResourceLoader implements IResourceLoader
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Map;
+
+public class ResourceService implements IResourceService
 {
 	// Load all EPackages
 	static
@@ -38,11 +41,27 @@ public class ResourceLoader implements IResourceLoader
 		try
 		{
 			res.load(inputStream, null);
-		} catch (final IOException e)
+		}
+		catch (final IOException e)
 		{
 			e.printStackTrace();
 		}
 
 		return res;
+	}
+
+	@Override
+	public void saveResource(final EObject root, final URI uri)
+	{
+		final var resource = new XMIResourceImpl(uri);
+		resource.getContents().add(root);
+		try
+		{
+			resource.save(Map.of());
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 	}
 }

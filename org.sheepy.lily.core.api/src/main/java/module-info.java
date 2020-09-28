@@ -6,7 +6,7 @@ import org.sheepy.lily.core.api.extender.IExtenderHandleFactory;
 import org.sheepy.lily.core.api.extender.IExtenderManagerFactory;
 import org.sheepy.lily.core.api.resource.CoreModelExtension;
 import org.sheepy.lily.core.api.resource.IModelExtension;
-import org.sheepy.lily.core.api.resource.IResourceLoader;
+import org.sheepy.lily.core.api.resource.IResourceService;
 
 module org.sheepy.lily.core.api {
 	requires transitive org.eclipse.emf.common;
@@ -68,7 +68,7 @@ module org.sheepy.lily.core.api {
 
 	uses IApplicationAdapter;
 	uses IModelExtension;
-	uses IResourceLoader;
+	uses IResourceService;
 	uses IExtenderManagerFactory;
 	uses IStatistics;
 	uses IExtenderHandleFactory;

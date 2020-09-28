@@ -5,17 +5,17 @@ import org.sheepy.lily.core.api.extender.IExtenderDescriptorRegistry;
 import org.sheepy.lily.core.api.extender.IExtenderHandleFactory;
 import org.sheepy.lily.core.api.extender.IExtenderManagerFactory;
 import org.sheepy.lily.core.api.extender.IExtenderProvider;
-import org.sheepy.lily.core.api.resource.IResourceLoader;
+import org.sheepy.lily.core.api.resource.IResourceService;
 import org.sheepy.lily.core.cadence.CadencerStatistics;
 import org.sheepy.lily.core.extender.ExtenderDescriptorRegistry;
 import org.sheepy.lily.core.extender.ExtenderManagerFactory;
-import org.sheepy.lily.core.resource.ResourceLoader;
+import org.sheepy.lily.core.resource.ResourceService;
 
 module org.sheepy.lily.core.impl {
 
 	requires transitive org.sheepy.lily.core.api;
 
-	provides IResourceLoader with ResourceLoader;
+	provides IResourceService with ResourceService;
 	provides IExtenderManagerFactory with ExtenderManagerFactory;
 	provides IStatistics with CadencerStatistics;
 	provides IExtenderDescriptorRegistry with ExtenderDescriptorRegistry;
