@@ -2,14 +2,15 @@ package org.sheepy.lily.core.api.model;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.util.EContentsEList;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderManager;
 import org.sheepy.lily.core.api.extender.IExtenderManagerFactory;
 import org.sheepy.lily.core.api.notification.util.NotificationUnifier;
+import org.sheepy.lily.core.api.util.TreeLazyIterator;
 import org.sheepy.lily.core.model.types.LNamedElement;
 
 import java.util.List;
+import java.util.Spliterator;
 import java.util.Spliterators;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -129,12 +130,12 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 
 	public final void loadExtenderManager()
 	{
-		streamTreeConcurrent().forEach(LilyEObject::load);
+		treeIterator().forEachRemaining(object -> ((LilyEObject) object).load());
 	}
 
 	public final void disposeExtenderManager()
 	{
-		streamTree().map(LilyEObject.class::cast).forEach(LilyEObject::dispose);
+		treeIterator().forEachRemaining(object -> ((LilyEObject) object).dispose());
 	}
 
 	private void load()
@@ -156,30 +157,20 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	}
 
 	@Override
-	public final Stream<ILilyEObject> streamChildren()
+	public final Stream<ILilyEObject> streamTree()
 	{
-		return eClass().getEAllContainments().stream().flatMap(this::streamReference);
+		return StreamSupport.stream(Spliterators.spliteratorUnknownSize(treeIterator(), Spliterator.ORDERED), false);
+	}
+
+	private TreeLazyIterator treeIterator()
+	{
+		return new TreeLazyIterator(this);
 	}
 
 	@Override
-	public final Stream<ILilyEObject> streamTree()
+	public final Stream<ILilyEObject> streamChildren()
 	{
-		return Stream.of(Stream.of(this), streamChildren().flatMap(ILilyEObject::streamTree)).flatMap(t -> t);
-	}
-
-	private Stream<LilyEObject> streamTreeConcurrent()
-	{
-		return Stream.of(Stream.of(this), streamChildrenConcurrent().flatMap(LilyEObject::streamTreeConcurrent))
-					 .flatMap(t -> t);
-	}
-
-	private Stream<LilyEObject> streamChildrenConcurrent()
-	{
-		final var containmentFeatures = eClass().getEAllContainments().toArray(EReference[]::new);
-		// This iterator supports insertion while iterating
-		final var it = new EContentsEList.FeatureIteratorImpl<LilyEObject>(this, containmentFeatures);
-		final var spliterator = Spliterators.spliteratorUnknownSize(it, 0);
-		return StreamSupport.stream(spliterator, false);
+		return eClass().getEAllContainments().stream().flatMap(this::streamReference);
 	}
 
 	@SuppressWarnings("unchecked")
