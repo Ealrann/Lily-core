@@ -5,7 +5,6 @@ import org.sheepy.lily.core.api.adapter.annotation.Dispose;
 import org.sheepy.lily.core.api.adapter.annotation.Load;
 import org.sheepy.lily.core.api.extender.AnnotationHandles;
 import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
@@ -17,17 +16,14 @@ import java.util.stream.Stream;
 
 public final class AdapterHandleFull<Extender extends IExtender> implements IExtenderHandle<Extender>
 {
-	private final IExtenderDescriptor<Extender> descriptor;
 	private final Extender extender;
 	private final AnnotationHandleManager annotationHandleManager;
 	private final IObservatory observatory;
 
-	public AdapterHandleFull(final IExtenderDescriptor<Extender> descriptor,
-							 final Extender extender,
+	public AdapterHandleFull(final Extender extender,
 							 final List<? extends AnnotationHandles<?>> annotationHandles,
 							 final IObservatory observatory)
 	{
-		this.descriptor = descriptor;
 		this.extender = extender;
 		this.annotationHandleManager = new AnnotationHandleManager(annotationHandles);
 		this.observatory = observatory;
@@ -79,12 +75,6 @@ public final class AdapterHandleFull<Extender extends IExtender> implements IExt
 		final var extenderName = extender.getClass().getSimpleName();
 		final var error = new AssertionError("Failed to start observatory of " + extenderName, e);
 		error.printStackTrace();
-	}
-
-	@Override
-	public IExtenderDescriptor<Extender> descriptor()
-	{
-		return descriptor;
 	}
 
 	@Override

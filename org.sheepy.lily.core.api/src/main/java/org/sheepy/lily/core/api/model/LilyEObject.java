@@ -16,18 +16,13 @@ import java.util.stream.StreamSupport;
 
 public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObject
 {
-	private static final String CANNOT_FIND_ADAPTER_S_FOR_CLASS_S = "Cannot find adapter [%s] for class [%s]";
+	private static final String CANNOT_FIND_ADAPTER = "Cannot find adapter [%s] for class [%s]";
+	private static final String CANNOT_FIND_IDENTIFIED_ADAPTER = "Cannot find adapter [%s] (id = %s) for class [%s]";
 	private static final IExtenderManagerFactory ADAPTER_FACTORY = IExtenderManagerFactory.INSTANCE;
 
-	private final IExtenderManager.Internal extenderManager;
+	private IExtenderManager.Internal extenderManager = null;
 
 	private boolean loaded = false;
-
-	public LilyEObject()
-	{
-		super();
-		extenderManager = ADAPTER_FACTORY != null ? ADAPTER_FACTORY.createExtenderManager(this) : null;
-	}
 
 	@Override
 	public final void eNotify(final Notification notification)
@@ -49,7 +44,6 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	{
 		if (loaded && notifier instanceof LilyEObject child)
 		{
-			child.deployExtenerManager();
 			child.loadExtenderManager();
 		}
 	}
@@ -72,13 +66,13 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	@Override
 	public final <T extends IExtender> T adapt(final Class<T> type)
 	{
-		return extenderManager.adapt(type).findAny().orElse(null);
+		return extenders().adapt(type);
 	}
 
 	@Override
 	public final <T extends IExtender> T adapt(final Class<T> type, final String identifier)
 	{
-		return extenderManager.adapt(type, identifier).findAny().orElse(null);
+		return extenders().adapt(type, identifier);
 	}
 
 	@Override
@@ -94,7 +88,7 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 		final T adapt = adapt(type);
 		if (adapt == null)
 		{
-			var message = String.format(CANNOT_FIND_ADAPTER_S_FOR_CLASS_S, type.getSimpleName(), eClass().getName());
+			var message = String.format(CANNOT_FIND_ADAPTER, type.getSimpleName(), eClass().getName());
 			if (this instanceof LNamedElement)
 			{
 				message += ": " + ((LNamedElement) this).getName();
@@ -105,19 +99,37 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	}
 
 	@Override
-	public final IExtenderManager extenders()
+	public final <T extends IExtender> T adaptNotNull(final Class<T> type, final String identifier)
 	{
-		return extenderManager;
+		final T adapt = adapt(type, identifier);
+		if (adapt == null)
+		{
+			var message = String.format(CANNOT_FIND_IDENTIFIED_ADAPTER,
+										type.getSimpleName(),
+										identifier,
+										eClass().getName());
+			if (this instanceof LNamedElement)
+			{
+				message += ": " + ((LNamedElement) this).getName();
+			}
+			throw new NullPointerException(message);
+		}
+		return adapt;
 	}
 
-	public final void deployExtenerManager()
+	@Override
+	public final IExtenderManager.Internal extenders()
 	{
-		streamTreeConcurrent().iterator().forEachRemaining(LilyEObject::deploy);
+		if (extenderManager == null)
+		{
+			extenderManager = ADAPTER_FACTORY != null ? ADAPTER_FACTORY.createExtenderManager(this) : null;
+		}
+		return extenderManager;
 	}
 
 	public final void loadExtenderManager()
 	{
-		streamTreeConcurrent().iterator().forEachRemaining(LilyEObject::load);
+		streamTreeConcurrent().forEach(LilyEObject::load);
 	}
 
 	public final void disposeExtenderManager()
@@ -125,17 +137,12 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 		streamTree().map(LilyEObject.class::cast).forEach(LilyEObject::dispose);
 	}
 
-	private void deploy()
-	{
-		extenderManager.deploy();
-	}
-
 	private void load()
 	{
 		if (!loaded)
 		{
 			loaded = true;
-			extenderManager.load();
+			extenders().load();
 		}
 	}
 
@@ -143,7 +150,7 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	{
 		if (loaded)
 		{
-			extenderManager.dispose();
+			extenders().dispose();
 			loaded = false;
 		}
 	}
@@ -152,15 +159,6 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	public final Stream<ILilyEObject> streamChildren()
 	{
 		return eClass().getEAllContainments().stream().flatMap(this::streamReference);
-	}
-
-	private Stream<LilyEObject> streamChildrenConcurrent()
-	{
-		final var containmentFeatures = eClass().getEAllContainments().toArray(EReference[]::new);
-		// This iterator supports insertion while iterating
-		final var it = new EContentsEList.FeatureIteratorImpl<LilyEObject>(this, containmentFeatures);
-		final var spliterator = Spliterators.spliteratorUnknownSize(it, 0);
-		return StreamSupport.stream(spliterator, false);
 	}
 
 	@Override
@@ -173,6 +171,15 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	{
 		return Stream.of(Stream.of(this), streamChildrenConcurrent().flatMap(LilyEObject::streamTreeConcurrent))
 					 .flatMap(t -> t);
+	}
+
+	private Stream<LilyEObject> streamChildrenConcurrent()
+	{
+		final var containmentFeatures = eClass().getEAllContainments().toArray(EReference[]::new);
+		// This iterator supports insertion while iterating
+		final var it = new EContentsEList.FeatureIteratorImpl<LilyEObject>(this, containmentFeatures);
+		final var spliterator = Spliterators.spliteratorUnknownSize(it, 0);
+		return StreamSupport.stream(spliterator, false);
 	}
 
 	@SuppressWarnings("unchecked")

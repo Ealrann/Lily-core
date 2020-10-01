@@ -43,8 +43,7 @@ public final class AdapterHandleBuilder<T extends IExtender> implements IExtende
 		}
 		catch (ReflectiveOperationException e)
 		{
-			e.printStackTrace();
-			return null;
+			throw new AssertionError(e);
 		}
 	}
 
@@ -53,14 +52,13 @@ public final class AdapterHandleBuilder<T extends IExtender> implements IExtende
 	{
 		if (observatory != null || extenderContext.annotationHandles().isEmpty() == false)
 		{
-			return new AdapterHandleFull<>(extenderDescriptor,
-										   extenderContext.extender(),
+			return new AdapterHandleFull<>(extenderContext.extender(),
 										   extenderContext.annotationHandles(),
 										   observatory);
 		}
 		else
 		{
-			return new AdapterHandleWrapper<>(extenderDescriptor, extenderContext.extender());
+			return new AdapterHandleWrapper<>(extenderContext.extender());
 		}
 	}
 

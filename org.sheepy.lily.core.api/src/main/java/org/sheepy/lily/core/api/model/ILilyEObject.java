@@ -15,6 +15,7 @@ public interface ILilyEObject extends InternalEObject, IEMFNotifier
 	<T extends IExtender> T adapt(Class<T> type);
 	<T extends IExtender> T adapt(Class<T> type, String identifier);
 	<T extends IExtender> T adaptNotNull(Class<T> type);
+	<T extends IExtender> T adaptNotNull(Class<T> type, String identifier);
 
 	<T extends IExtender> T adaptGeneric(Class<? extends IExtender> type);
 	<T extends IExtender> T adaptNotNullGeneric(Class<? extends IExtender> type);

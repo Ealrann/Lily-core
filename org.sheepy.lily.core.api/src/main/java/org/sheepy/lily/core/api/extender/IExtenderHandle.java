@@ -14,22 +14,11 @@ public interface IExtenderHandle<T extends IExtender>
 	void load(ILilyEObject target);
 	void dispose(ILilyEObject target);
 	<A extends Annotation> Stream<AnnotatedHandle<A>> annotatedHandles(Class<A> annotationClass);
-	IExtenderDescriptor<T> descriptor();
 
 	void listen(ExtenderListener<T> extenderUpdateListener);
 	void listenNoParam(Runnable extenderUpdateListener);
 	void sulk(ExtenderListener<T> extenderUpdateListener);
 	void sulkNoParam(Runnable extenderUpdateListener);
-
-	default boolean match(final Class<? extends IExtender> classifier)
-	{
-		return descriptor().match(classifier);
-	}
-
-	default boolean match(final Class<? extends IExtender> classifier, final String identifier)
-	{
-		return descriptor().match(classifier, identifier);
-	}
 
 	final class AnnotatedHandle<T extends Annotation>
 	{

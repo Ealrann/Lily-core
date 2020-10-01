@@ -21,7 +21,7 @@ public final class AnnotationHandleManager
 		this.annotationHandles = List.copyOf(annotationHandles);
 	}
 
-	public void registerHandleListeners(IEMFNotifier notifier)
+	public void registerHandleListeners(final IEMFNotifier notifier)
 	{
 		final var notifyHandles = annotatedHandles(NotifyChanged.class);
 		notifyHandles.forEach(notifyHandle -> {

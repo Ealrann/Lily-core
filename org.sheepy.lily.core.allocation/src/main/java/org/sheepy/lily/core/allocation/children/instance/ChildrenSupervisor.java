@@ -52,6 +52,7 @@ public final class ChildrenSupervisor
 		}
 	}
 
+	@SuppressWarnings("MethodOnlyUsedFromInnerClass")
 	private void add(List<ILilyEObject> children)
 	{
 		reloadDescriptors(children);
@@ -62,6 +63,7 @@ public final class ChildrenSupervisor
 		}
 	}
 
+	@SuppressWarnings("MethodOnlyUsedFromInnerClass")
 	private void remove(List<ILilyEObject> removedChildren)
 	{
 		for (final var childrenAllocator : childrenAllocators)
@@ -93,7 +95,7 @@ public final class ChildrenSupervisor
 		return childrenAllocators;
 	}
 
-	public static record Builder(StructureObserver structureObservatory, List<ChildrenInjector> childrenInjectors)
+	public record Builder(StructureObserver structureObservatory, List<ChildrenInjector> childrenInjectors)
 	{
 		public ChildrenSupervisor build(final Runnable whenBranchDirty,
 										final IObservatoryBuilder observatoryBuilder,
