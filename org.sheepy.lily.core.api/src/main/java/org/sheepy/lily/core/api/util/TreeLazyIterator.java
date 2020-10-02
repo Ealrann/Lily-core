@@ -1,6 +1,5 @@
 package org.sheepy.lily.core.api.util;
 
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EContentsEList;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 
@@ -11,6 +10,7 @@ import java.util.Iterator;
 public class TreeLazyIterator implements Iterator<ILilyEObject>
 {
 	private final Deque<IterationNode> iteratorStack = new ArrayDeque<>();
+	private final ContainmentFeatureMap featureMap = new ContainmentFeatureMap();
 
 	public TreeLazyIterator(final ILilyEObject root)
 	{
@@ -20,7 +20,7 @@ public class TreeLazyIterator implements Iterator<ILilyEObject>
 
 	private IterationNode newNode(final ILilyEObject root)
 	{
-		final var containmentFeatures = root.eClass().getEAllContainments().toArray(EReference[]::new);
+		final var containmentFeatures = featureMap.features(root.eClass());
 		final var it = new EContentsEList.FeatureIteratorImpl<ILilyEObject>(root, containmentFeatures);
 		return new IterationNode(root, it);
 	}
