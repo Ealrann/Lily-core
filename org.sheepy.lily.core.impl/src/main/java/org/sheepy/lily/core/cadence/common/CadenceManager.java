@@ -14,6 +14,7 @@ import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.IEngine;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
@@ -101,6 +102,7 @@ public class CadenceManager implements ICadenceManager
 		application.getEngines()
 				   .stream()
 				   .map(e -> e.adapt(IEngineAllocation.class))
+				   .filter(Objects::nonNull)
 				   .forEach(IEngineAllocation::waitIdle);
 		engineAllocators.forEach(IAllocator::free);
 		engineAllocators = null;
