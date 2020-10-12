@@ -1,8 +1,9 @@
 package org.sheepy.lily.core.api.util;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class ClassHierarchyIteratorTest
 {
@@ -20,7 +21,7 @@ public class ClassHierarchyIteratorTest
 		checkCount(iterator, 8);
 	}
 
-	private void checkCount(ClassHierarchyIterator iterator, int expectedCount)
+	private static void checkCount(ClassHierarchyIterator iterator, int expectedCount)
 	{
 		int count = 0;
 		while (iterator.hasNext())
@@ -57,6 +58,6 @@ public class ClassHierarchyIteratorTest
 	private interface I3
 	{}
 
-	private class B extends A implements I3
+	private static class B extends A implements I3
 	{}
 }

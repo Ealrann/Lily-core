@@ -1,57 +1,47 @@
 package org.sheepy.lily.core.api.util;
 
-import org.eclipse.emf.ecore.util.EContentsEList;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EReference;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Iterator;
+import java.util.*;
+import java.util.function.Consumer;
 
-public class TreeLazyIterator implements Iterator<ILilyEObject>
+public class TreeLazyIterator implements Spliterator<ILilyEObject>
 {
-	private final Deque<IterationNode> iteratorStack = new ArrayDeque<>();
-	private final ContainmentFeatureMap featureMap = new ContainmentFeatureMap();
+	private final Deque<IIterationWrapper> iteratorStack = new ArrayDeque<>();
+	private final Deque<IIterationWrapper> oldNodes = new ArrayDeque<>();
 
 	public TreeLazyIterator(final ILilyEObject root)
 	{
-		final var node = newNode(root);
+		final var node = new IterationRoot();
+		node.load(root);
 		iteratorStack.add(node);
 	}
 
-	private IterationNode newNode(final ILilyEObject root)
-	{
-		final var containmentFeatures = featureMap.features(root.eClass());
-		final var it = new EContentsEList.FeatureIteratorImpl<ILilyEObject>(root, containmentFeatures);
-		return new IterationNode(root, it);
-	}
-
 	@Override
-	public boolean hasNext()
+	public boolean tryAdvance(final Consumer<? super ILilyEObject> action)
 	{
-		return iteratorStack.isEmpty() == false;
-	}
+		progress();
 
-	@Override
-	public ILilyEObject next()
-	{
-		final var currentNode = iteratorStack.getLast();
-
-		final ILilyEObject res;
-		if (currentNode.step == IterationNode.EStep.Element)
+		if (iteratorStack.isEmpty() == false)
 		{
-			res = currentNode.element;
-			currentNode.step = IterationNode.EStep.Iterator;
+			final var currentNode = iteratorStack.getLast();
+			final var res = currentNode.next();
+			action.accept(res);
+			iteratorStack.add(newNode(res));
+			return true;
 		}
 		else
 		{
-			res = currentNode.iterator.next();
-			final var childNode = newNode(res);
-			childNode.step = IterationNode.EStep.Iterator;
-			iteratorStack.add(childNode);
+			return false;
 		}
+	}
 
-		progress();
-
+	private IIterationWrapper newNode(final ILilyEObject element)
+	{
+		final var res = oldNodes.isEmpty() ? new IterationNode() : oldNodes.pop();
+		res.load(element);
 		return res;
 	}
 
@@ -60,31 +50,149 @@ public class TreeLazyIterator implements Iterator<ILilyEObject>
 		if (iteratorStack.isEmpty() == false)
 		{
 			final var currentNode = iteratorStack.getLast();
-			if (currentNode.iterator.hasNext() == false)
+			if (currentNode.hasNext() == false)
 			{
+				currentNode.dispose();
+				oldNodes.add(currentNode);
 				iteratorStack.removeLast();
 				progress();
 			}
 		}
 	}
 
-	private static final class IterationNode
+	@Override
+	public Spliterator<ILilyEObject> trySplit()
 	{
-		private final ILilyEObject element;
-		private final Iterator<ILilyEObject> iterator;
+		return null;
+	}
 
-		private enum EStep
+	@Override
+	public long estimateSize()
+	{
+		return Long.MAX_VALUE;
+	}
+
+	@Override
+	public int characteristics()
+	{
+		return CONCURRENT | ORDERED | DISTINCT | NONNULL;
+	}
+
+	private interface IIterationWrapper extends Iterator<ILilyEObject>
+	{
+		void load(final ILilyEObject element);
+		void dispose();
+	}
+
+	private static final class IterationRoot implements IIterationWrapper
+	{
+		private ILilyEObject root = null;
+
+		@Override
+		public void load(final ILilyEObject element)
 		{
-			Element,
-			Iterator
+			root = element;
 		}
 
-		private EStep step = EStep.Element;
-
-		public IterationNode(final ILilyEObject element, final Iterator<ILilyEObject> iterator)
+		@Override
+		public void dispose()
 		{
-			this.element = element;
-			this.iterator = iterator;
+		}
+
+		@Override
+		public boolean hasNext()
+		{
+			return root != null;
+		}
+
+		@Override
+		public ILilyEObject next()
+		{
+			final var res = root;
+			root = null;
+			return res;
+		}
+	}
+
+	private static final class IterationNode implements IIterationWrapper
+	{
+		private final Consumer<Notification> listener = this::notifyChanged;
+		private final Deque<ILilyEObject> course = new ArrayDeque<>();
+
+		private ElementContext elementContext = null;
+
+		@Override
+		public void load(final ILilyEObject element)
+		{
+			assert course.isEmpty();
+			this.elementContext = new ElementContext(element, element.eClass().getEAllContainments());
+			elementContext.load(listener, course);
+		}
+
+		@Override
+		public void dispose()
+		{
+			assert course.isEmpty();
+			elementContext.dispose(listener);
+			elementContext = null;
+		}
+
+		@Override
+		public boolean hasNext()
+		{
+			assert elementContext != null;
+			return course.isEmpty() == false;
+		}
+
+		@Override
+		public ILilyEObject next()
+		{
+			assert elementContext != null;
+			return course.pop();
+		}
+
+		@SuppressWarnings("unchecked")
+		private void notifyChanged(final Notification notification)
+		{
+			final var newVal = notification.getNewValue();
+			final var oldVal = notification.getOldValue();
+
+			switch (notification.getEventType())
+			{
+				case Notification.ADD, Notification.SET -> {
+					if (newVal != null) course.add((ILilyEObject) newVal);
+				}
+				case Notification.ADD_MANY -> course.addAll((List<ILilyEObject>) newVal);
+				case Notification.REMOVE -> {
+					if (oldVal != null) //noinspection RedundantCast
+						course.remove((ILilyEObject) oldVal);
+				}
+				case Notification.REMOVE_MANY -> course.removeAll((List<ILilyEObject>) oldVal);
+			}
+		}
+
+		private record ElementContext(ILilyEObject element, List<EReference> containmentReferences)
+		{
+			@SuppressWarnings("unchecked")
+			public void load(final Consumer<Notification> listener, final Deque<ILilyEObject> course)
+			{
+				for (final var feature : containmentReferences)
+				{
+					final var val = element.eGet(feature);
+					if (feature.isMany()) course.addAll((List<ILilyEObject>) val);
+					else if (val != null) course.add((ILilyEObject) val);
+
+					element.listen(listener, feature.getFeatureID());
+				}
+			}
+
+			public void dispose(Consumer<Notification> listener)
+			{
+				for (final var feature : containmentReferences)
+				{
+					element.sulk(listener, feature.getFeatureID());
+				}
+			}
 		}
 	}
 }

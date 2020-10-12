@@ -10,8 +10,6 @@ import org.sheepy.lily.core.api.util.TreeLazyIterator;
 import org.sheepy.lily.core.model.types.LNamedElement;
 
 import java.util.List;
-import java.util.Spliterator;
-import java.util.Spliterators;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
@@ -159,7 +157,7 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	@Override
 	public final Stream<ILilyEObject> streamTree()
 	{
-		return StreamSupport.stream(Spliterators.spliteratorUnknownSize(treeIterator(), Spliterator.ORDERED), false);
+		return StreamSupport.stream(treeIterator(), false);
 	}
 
 	private TreeLazyIterator treeIterator()
