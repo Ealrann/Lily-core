@@ -1,7 +1,6 @@
 package org.sheepy.lily.core.api.util;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EReference;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.util.*;
@@ -125,7 +124,7 @@ public class TreeLazyIterator implements Spliterator<ILilyEObject>
 		public void load(final ILilyEObject element)
 		{
 			assert course.isEmpty();
-			this.elementContext = new ElementContext(element, element.eClass().getEAllContainments());
+			this.elementContext = new ElementContext(element);
 			elementContext.load(listener, course);
 		}
 
@@ -171,26 +170,28 @@ public class TreeLazyIterator implements Spliterator<ILilyEObject>
 			}
 		}
 
-		private record ElementContext(ILilyEObject element, List<EReference> containmentReferences)
+		private record ElementContext(ILilyEObject element)
 		{
 			@SuppressWarnings("unchecked")
 			public void load(final Consumer<Notification> listener, final Deque<ILilyEObject> course)
 			{
-				for (final var feature : containmentReferences)
+				final var eClass = element.eClass();
+				for (final var feature : eClass.getEAllContainments())
 				{
 					final var val = element.eGet(feature);
 					if (feature.isMany()) course.addAll((List<ILilyEObject>) val);
 					else if (val != null) course.add((ILilyEObject) val);
 
-					element.listen(listener, feature.getFeatureID());
+					element.listen(listener, eClass.getFeatureID(feature));
 				}
 			}
 
 			public void dispose(Consumer<Notification> listener)
 			{
-				for (final var feature : containmentReferences)
+				final var eClass = element.eClass();
+				for (final var feature : eClass.getEAllContainments())
 				{
-					element.sulk(listener, feature.getFeatureID());
+					element.sulk(listener, eClass.getFeatureID(feature));
 				}
 			}
 		}

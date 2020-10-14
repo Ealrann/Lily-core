@@ -59,7 +59,7 @@ public final class ContentAdapter
 		final int[] res = new int[list.size()];
 		for (int i = 0; i < list.size(); i++)
 		{
-			res[i] = list.get(i).getFeatureID();
+			res[i] = classifier.getFeatureID(list.get(i));
 		}
 		return res;
 	}

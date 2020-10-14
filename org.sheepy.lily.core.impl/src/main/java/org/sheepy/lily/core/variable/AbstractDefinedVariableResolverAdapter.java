@@ -1,9 +1,9 @@
 package org.sheepy.lily.core.variable;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.adapter.annotation.Dispose;
 import org.sheepy.lily.core.api.adapter.annotation.Load;
+import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.Notifier;
 import org.sheepy.lily.core.api.util.FeatureDefinition;
 import org.sheepy.lily.core.api.variable.IVariableResolverAdapter;
@@ -28,7 +28,8 @@ public abstract class AbstractDefinedVariableResolverAdapter<T extends IVariable
 	private void load()
 	{
 		resolvedTarget = getResolvedTarget();
-		featureID = getFeatureDefinition().feature.getFeatureID();
+		final var resolvedEclass = resolvedTarget.eClass();
+		featureID = resolvedEclass.getFeatureID(getFeatureDefinition().feature);
 		resolvedTarget.listen(adapter, featureID);
 	}
 

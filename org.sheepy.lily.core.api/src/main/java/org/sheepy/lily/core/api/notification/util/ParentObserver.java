@@ -50,7 +50,8 @@ public final class ParentObserver
 		{
 			final var container = (ILilyEObject) source.eContainer();
 			assert container != null; // cannot deal with this case. Please stop listen parent before removing an object.
-			final int containingFeature = source.eContainingFeature().getFeatureID();
+			final var containerEClass = container.eClass();
+			final int containingFeature = containerEClass.getFeatureID(source.eContainingFeature());
 			container.listen(containerListener, containingFeature);
 		}
 
@@ -59,7 +60,8 @@ public final class ParentObserver
 			final var container = (ILilyEObject) source.eContainer();
 			if (container != null)
 			{
-				final int containingFeature = source.eContainingFeature().getFeatureID();
+				final var containerEClass = container.eClass();
+				final int containingFeature = containerEClass.getFeatureID(source.eContainingFeature());
 				container.sulk(containerListener, containingFeature);
 			}
 		}
@@ -75,7 +77,8 @@ public final class ParentObserver
 				oldParent.sulk(containerListener, oldContainingFeature);
 				if (newParent != null)
 				{
-					final int containingFeature = source.eContainingFeature().getFeatureID();
+					final var parentEclass = newParent.eClass();
+					final int containingFeature = parentEclass.getFeatureID(source.eContainingFeature());
 					newParent.listen(containerListener, containingFeature);
 				}
 				listener.accept(oldParent, newParent);

@@ -19,8 +19,7 @@ import java.util.stream.Stream;
 public final class AllocationHandle<Allocation extends IExtender> implements IAllocationHandle<Allocation>
 {
 	private interface Features extends IFeatures<Features>
-	{
-	}
+	{}
 
 	private static final Feature<Runnable, Features> Activation = Feature.newFeature();
 	private final Feature<ExtenderListener<Allocation>, Features> MainAllocation = Feature.newFeature();
@@ -43,10 +42,10 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	public void load(final ILilyEObject target)
 	{
 		final var activator = descriptor.activator();
-		if (activator != null)
+		if (activator > -1)
 		{
-			target.listen(activatorChanged, activator.getFeatureID());
-			activated = (boolean) target.eGet(activator);
+			target.listen(activatorChanged, activator);
+			activated = (boolean) target.eGet(activator, true, true);
 		}
 		else
 		{
@@ -58,7 +57,7 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	public void dispose(final ILilyEObject target)
 	{
 		final var activator = descriptor.activator();
-		if (activator != null) target.sulk(activatorChanged, activator.getFeatureID());
+		if (activator > -1) target.sulk(activatorChanged, activator);
 	}
 
 	private void activatorChanged(boolean newState)
