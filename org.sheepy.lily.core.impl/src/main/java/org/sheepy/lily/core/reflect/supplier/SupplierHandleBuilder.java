@@ -9,7 +9,10 @@ import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
-public abstract class SupplierHandleBuilder extends ExecutionHandleBuilder
+public abstract sealed class SupplierHandleBuilder extends ExecutionHandleBuilder permits BooleanSupplierHandle.Builder,
+																						  BooleanSupplierHandle.StaticBuilder,
+																						  ObjectSupplierHandle.Builder,
+																						  ObjectSupplierHandle.StaticBuilder
 {
 	public static final SupplierHandleBuilder fromMethod(final MethodHandles.Lookup lookup,
 														 final Method method) throws ReflectiveOperationException

@@ -7,7 +7,8 @@ import org.sheepy.lily.core.reflect.supplier.SupplierHandleBuilder;
 import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Method;
 
-public abstract class ExecutionHandleBuilder implements IExecutionHandleBuilder
+public abstract sealed class ExecutionHandleBuilder implements IExecutionHandleBuilder permits ConsumerHandleBuilder,
+																							   SupplierHandleBuilder
 {
 	public static ExecutionHandleBuilder fromMethod(final MethodHandles.Lookup lookup,
 													final Method method) throws ReflectiveOperationException

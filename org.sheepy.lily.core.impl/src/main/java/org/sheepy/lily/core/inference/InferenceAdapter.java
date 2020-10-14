@@ -86,7 +86,7 @@ public class InferenceAdapter implements IInferenceAdapter
 //																					rule.getAction(),
 //																					parameter);
 //
-//					// TODO si actionDispatcher est null, il faut mettre de coté
+//					// TO-DO si actionDispatcher est null, il faut mettre de coté
 //					// les notif pour
 //					// les executer plus tard
 //

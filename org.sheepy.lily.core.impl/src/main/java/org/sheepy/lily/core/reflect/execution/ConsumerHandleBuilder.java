@@ -9,7 +9,16 @@ import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
-public abstract class ConsumerHandleBuilder extends ExecutionHandleBuilder
+public abstract sealed class ConsumerHandleBuilder extends ExecutionHandleBuilder permits ConsumerHandleNoParam.StaticBuilder,
+																						  ConsumerHandleNoParam.Builder,
+																						  ConsumerHandle1ParamLong.StaticBuilder,
+																						  ConsumerHandle1ParamLong.Builder,
+																						  ConsumerHandle1Param.StaticBuilder,
+																						  ConsumerHandle1Param.Builder,
+																						  ConsumerHandle2ParamObjLong.StaticBuilder,
+																						  ConsumerHandle2ParamObjLong.Builder,
+																						  ConsumerHandle2Param.StaticBuilder,
+																						  ConsumerHandle2Param.Builder
 {
 	public static final ConsumerHandleBuilder fromMethod(final MethodHandles.Lookup lookup,
 														 final Method method) throws ReflectiveOperationException

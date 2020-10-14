@@ -6,7 +6,10 @@ import org.sheepy.lily.core.reflect.util.ReflectionUtil;
 import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Constructor;
 
-public abstract class ConstructorHandleBuilder<T>
+public abstract sealed class ConstructorHandleBuilder<T> permits ConstructorHandleNoParam.Builder,
+																 ConstructorHandleParam1.Builder,
+																 ConstructorHandleParam2.Builder,
+																 ConstructorHandleParamN.Builder
 {
 	public static final <T> ConstructorHandleBuilder<T> fromMethod(final MethodHandles.Lookup lookup,
 																   final Constructor<T> constructor) throws ReflectiveOperationException
