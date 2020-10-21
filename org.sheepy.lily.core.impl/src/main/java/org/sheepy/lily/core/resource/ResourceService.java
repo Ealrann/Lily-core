@@ -8,10 +8,12 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.sheepy.lily.core.api.resource.IModelExtension;
 import org.sheepy.lily.core.api.resource.IResourceService;
 import org.sheepy.lily.core.api.util.DebugUtil;
+import org.sheepy.lily.core.model.application.Application;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
+import java.util.Optional;
 
 public class ResourceService implements IResourceService
 {
@@ -62,6 +64,30 @@ public class ResourceService implements IResourceService
 		catch (IOException e)
 		{
 			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public Optional<Application> loadApplication(final Module module, final String filePath)
+	{
+		try
+		{
+			final var inputStream = module.getResourceAsStream(filePath);
+			final var resource = loadResource(inputStream);
+
+			if (resource != null && resource.getContents().isEmpty() == false)
+			{
+				return Optional.of((Application) resource.getContents().get(0));
+			}
+			else
+			{
+				return Optional.empty();
+			}
+		}
+		catch (final IOException e)
+		{
+			e.printStackTrace();
+			return Optional.empty();
 		}
 	}
 }
