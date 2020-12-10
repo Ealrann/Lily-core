@@ -3,7 +3,6 @@ package org.sheepy.lily.core.extender.util;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.ModelExtender;
 import org.sheepy.lily.core.api.reflect.ConstructorHandle;
-import org.sheepy.lily.core.api.util.ModelUtil;
 import org.sheepy.lily.core.api.util.ReflectUtils;
 import org.sheepy.lily.core.extender.ExtenderDescriptor;
 import org.sheepy.lily.core.reflect.ExecutionHandleBuilder;
@@ -30,8 +29,6 @@ public final class ExtenderDescriptorBuilder
 	public <Extender extends IExtender> Optional<ExtenderDescriptor<Extender>> build(final Class<Extender> type)
 	{
 		final ModelExtender modelExtenderAnnotation = getModelAnnotation(type);
-		final var targetClass = modelExtenderAnnotation.scope();
-		final var targetEClass = ModelUtil.resolveEClass(targetClass);
 
 		try
 		{
@@ -41,7 +38,6 @@ public final class ExtenderDescriptorBuilder
 			final var res = new ExtenderDescriptor<>(constructorHandle,
 													 modelExtenderAnnotation,
 													 type,
-													 targetEClass,
 													 executionHandles);
 			return Optional.of(res);
 		}
@@ -55,7 +51,8 @@ public final class ExtenderDescriptorBuilder
 	private List<AnnotationHandlesBuilder<?>> executionHandles(final Class<?> extenderClass)
 	{
 		return ReflectUtils.streamAnnotatedMethods(extenderClass)
-						   .collect(Collectors.groupingBy(p -> p.annotation().annotationType()))
+						   .collect(Collectors.groupingBy(p -> p.annotation()
+																.annotationType()))
 						   .entrySet()
 						   .stream()
 						   .map(this::buildAnnotationHandlesBuilder)
@@ -65,7 +62,9 @@ public final class ExtenderDescriptorBuilder
 	@SuppressWarnings("unchecked")
 	private <T extends Annotation> AnnotationHandlesBuilder<T> buildAnnotationHandlesBuilder(final Map.Entry<? extends Class<T>, List<ReflectUtils.AnnotatedMethod<?>>> entry)
 	{
-		final var methods = entry.getValue().stream().map(am -> (ReflectUtils.AnnotatedMethod<T>) am);
+		final var methods = entry.getValue()
+								 .stream()
+								 .map(am -> (ReflectUtils.AnnotatedMethod<T>) am);
 		final var executionMethods = methods.map(this::buildExecutionMethod)
 											.filter(Optional::isPresent)
 											.map(Optional::get)
@@ -77,7 +76,9 @@ public final class ExtenderDescriptorBuilder
 	{
 		try
 		{
-			final var module = method.method().getDeclaringClass().getModule();
+			final var module = method.method()
+									 .getDeclaringClass()
+									 .getModule();
 			final var lookup = lookupMap.get(module);
 			final var handleBuilder = ExecutionHandleBuilder.fromMethod(lookup, method.method());
 			return Optional.of(new AnnotationHandlesBuilder.ExecutionMethod<>(method, handleBuilder));
@@ -94,7 +95,8 @@ public final class ExtenderDescriptorBuilder
 		final var module = type.getModule();
 		final var lookup = lookupMap.get(module);
 		final var constructor = gatherConstructor(type);
-		return ConstructorHandleBuilder.fromMethod(lookup, constructor).build();
+		return ConstructorHandleBuilder.fromMethod(lookup, constructor)
+									   .build();
 	}
 
 	private static <Extender> ModelExtender getModelAnnotation(final Class<Extender> type)

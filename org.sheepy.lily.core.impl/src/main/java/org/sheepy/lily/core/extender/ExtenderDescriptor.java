@@ -1,8 +1,5 @@
 package org.sheepy.lily.core.extender;
 
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
 import org.sheepy.lily.core.api.extender.ModelExtender;
@@ -15,6 +12,7 @@ import org.sheepy.lily.core.model.types.LNamedElement;
 import org.sheepy.lily.core.reflect.util.AnnotationHandlesBuilder;
 
 import java.lang.annotation.Annotation;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -24,19 +22,16 @@ public final class ExtenderDescriptor<Extender extends IExtender> implements IEx
 {
 	private final ModelExtender annotation;
 	private final Class<Extender> extenderClass;
-	private final EClass targetEClass;
 	private final ExtenderBuilder<Extender> extenderBuilder;
 	private final List<AnnotationHandlesBuilder<?>> executionHandleBuilders;
 
 	public ExtenderDescriptor(final ConstructorHandle<Extender> constructorHandle,
 							  final ModelExtender annotation,
 							  final Class<Extender> extenderClass,
-							  final EClass targetEClass,
 							  final List<AnnotationHandlesBuilder<?>> executionHandleBuilders)
 	{
 		this.annotation = annotation;
 		this.extenderClass = extenderClass;
-		this.targetEClass = targetEClass;
 		this.extenderBuilder = new ExtenderBuilder<>(constructorHandle, extenderClass);
 		this.executionHandleBuilders = List.copyOf(executionHandleBuilders);
 	}
@@ -64,12 +59,6 @@ public final class ExtenderDescriptor<Extender extends IExtender> implements IEx
 	}
 
 	@Override
-	public EClass targetEClass()
-	{
-		return targetEClass;
-	}
-
-	@Override
 	public boolean match(final Class<? extends IExtender> type)
 	{
 		return type.isAssignableFrom(extenderClass);
@@ -82,28 +71,41 @@ public final class ExtenderDescriptor<Extender extends IExtender> implements IEx
 	}
 
 	@Override
-	public boolean isApplicable(final EObject target)
+	public boolean isApplicable(final Object target)
 	{
-		final boolean res = isClassApplicable(target.eClass());
+		final boolean res = isClassApplicable(target.getClass());
 
-		if (res && annotation.name().isEmpty() == false)
+		if (res && annotation.name()
+							 .isEmpty() == false)
 		{
-			return target instanceof LNamedElement named && annotation.name().equals(named.getName());
+			return target instanceof LNamedElement named && annotation.name()
+																	  .equals(named.getName());
 		}
 
 		return res;
 	}
 
-	private boolean isClassApplicable(final EClass eClass)
+	private boolean isClassApplicable(final Class<?> classifier)
 	{
+		final var scope = annotation.scope();
 		if (annotation.inherited())
 		{
-			return targetEClass == EcorePackage.Literals.EOBJECT || targetEClass.isSuperTypeOf(eClass);
+			return scope.isAssignableFrom(classifier);
+		}
+		else if (scope.isInterface())
+		{
+			return isDirectInterfaceOf(classifier, scope);
 		}
 		else
 		{
-			return eClass == targetEClass;
+			return scope.equals(classifier);
 		}
+	}
+
+	private static boolean isDirectInterfaceOf(final Class<?> rootClass, final Class<?> _interface)
+	{
+		return Arrays.stream(rootClass.getInterfaces())
+					 .anyMatch(i -> i == _interface);
 	}
 
 	@Override
