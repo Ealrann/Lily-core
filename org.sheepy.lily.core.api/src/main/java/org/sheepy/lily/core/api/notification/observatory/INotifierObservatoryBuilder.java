@@ -1,7 +1,7 @@
 package org.sheepy.lily.core.api.notification.observatory;
 
-import org.sheepy.lily.core.api.notification.Feature;
-import org.sheepy.lily.core.api.notification.IFeatures;
+import org.logoce.notification.api.Feature;
+import org.logoce.notification.api.IFeatures;
 
 public interface INotifierObservatoryBuilder<Type extends IFeatures<?>>
 {

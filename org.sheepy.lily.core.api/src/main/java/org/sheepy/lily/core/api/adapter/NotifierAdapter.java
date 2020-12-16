@@ -1,8 +1,8 @@
 package org.sheepy.lily.core.api.adapter;
 
-import org.sheepy.lily.core.api.notification.Feature;
-import org.sheepy.lily.core.api.notification.IFeatures;
-import org.sheepy.lily.core.api.notification.Notifier;
+import org.logoce.notification.api.Feature;
+import org.logoce.notification.api.IFeatures;
+import org.logoce.notification.api.Notifier;
 
 import java.util.List;
 

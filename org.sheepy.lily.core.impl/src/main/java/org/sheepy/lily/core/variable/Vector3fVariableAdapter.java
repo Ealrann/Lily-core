@@ -4,7 +4,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.adapter.annotation.NotifyChanged;
 import org.sheepy.lily.core.api.extender.ModelExtender;
-import org.sheepy.lily.core.api.notification.Notifier;
+import org.logoce.notification.api.Notifier;
 import org.sheepy.lily.core.api.variable.IModelVariableAdapter;
 import org.sheepy.lily.core.model.variable.VariablePackage;
 import org.sheepy.lily.core.model.variable.Vector3fVariable;

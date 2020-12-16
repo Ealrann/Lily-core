@@ -1,7 +1,4 @@
-package org.sheepy.lily.core.api.notification;
-
-import org.sheepy.lily.core.api.notification.util.BooleanConsumer;
-import org.sheepy.lily.core.api.notification.util.ListenerMap;
+package org.logoce.notification.api;
 
 import java.util.Collection;
 import java.util.List;

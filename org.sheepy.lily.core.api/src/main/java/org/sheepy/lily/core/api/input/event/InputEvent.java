@@ -1,8 +1,8 @@
 package org.sheepy.lily.core.api.input.event;
 
 import org.sheepy.lily.core.api.input.IInputManager;
-import org.sheepy.lily.core.api.notification.Feature;
-import org.sheepy.lily.core.api.notification.INotifier;
+import org.logoce.notification.api.Feature;
+import org.logoce.notification.api.INotifier;
 
 import java.util.function.Consumer;
 

@@ -4,7 +4,7 @@ import org.sheepy.lily.core.api.adapter.annotation.Adapter;
 import org.sheepy.lily.core.api.adapter.annotation.Load;
 import org.sheepy.lily.core.api.cadence.Tick;
 import org.sheepy.lily.core.api.extender.ModelExtender;
-import org.sheepy.lily.core.api.notification.Notifier;
+import org.logoce.notification.api.Notifier;
 import org.sheepy.lily.core.api.variable.IDurationVariableAdapter;
 import org.sheepy.lily.core.api.variable.IModelVariableAdapter;
 import org.sheepy.lily.core.model.variable.DurationVariable;

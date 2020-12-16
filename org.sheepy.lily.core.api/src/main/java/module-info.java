@@ -8,7 +8,11 @@ import org.sheepy.lily.core.api.resource.CoreModelExtension;
 import org.sheepy.lily.core.api.resource.IModelExtension;
 import org.sheepy.lily.core.api.resource.IResourceService;
 
-module org.sheepy.lily.core.api {
+module org.sheepy.lily.core.api
+{
+	requires transitive logoce.adapter;
+	requires transitive logoce.notification;
+
 	requires transitive org.eclipse.emf.common;
 	requires transitive org.eclipse.emf.ecore;
 	requires transitive org.eclipse.emf.ecore.xmi;

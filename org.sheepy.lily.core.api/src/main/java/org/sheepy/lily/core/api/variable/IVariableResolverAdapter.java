@@ -1,8 +1,8 @@
 package org.sheepy.lily.core.api.variable;
 
 import org.sheepy.lily.core.api.adapter.INotifierAdapter;
-import org.sheepy.lily.core.api.notification.Feature;
-import org.sheepy.lily.core.api.notification.IFeatures;
+import org.logoce.notification.api.Feature;
+import org.logoce.notification.api.IFeatures;
 import org.sheepy.lily.core.model.variable.IVariableResolver;
 
 import java.util.function.Consumer;

@@ -1,8 +1,4 @@
-package org.sheepy.lily.core.api.notification.util;
-
-import org.sheepy.lily.core.api.notification.Feature;
-import org.sheepy.lily.core.api.notification.IFeatures;
-import org.sheepy.lily.core.api.notification.INotifier;
+package org.logoce.notification.api;
 
 import java.util.Collection;
 import java.util.Deque;

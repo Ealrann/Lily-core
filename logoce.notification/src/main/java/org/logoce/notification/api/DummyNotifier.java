@@ -1,4 +1,4 @@
-package org.sheepy.lily.core.api.notification;
+package org.logoce.notification.api;
 
 import java.util.Collection;
 

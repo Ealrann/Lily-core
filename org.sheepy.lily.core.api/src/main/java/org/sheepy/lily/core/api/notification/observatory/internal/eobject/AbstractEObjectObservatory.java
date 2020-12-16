@@ -1,10 +1,10 @@
 package org.sheepy.lily.core.api.notification.observatory.internal.eobject;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.logoce.notification.api.IFeatures;
+import org.logoce.notification.api.INotifier;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.notification.IFeatures;
-import org.sheepy.lily.core.api.notification.INotifier;
 import org.sheepy.lily.core.api.notification.observatory.IAdapterObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.IEObjectObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.INotifierAdapterObservatoryBuilder;
@@ -46,7 +46,8 @@ public abstract class AbstractEObjectObservatory<T extends ILilyEObject> impleme
 	{
 		for (var listener : gatherBulkListeners)
 		{
-			listener.discoverObjects().accept((List<T>) objects);
+			listener.discoverObjects()
+					.accept((List<T>) objects);
 		}
 
 		for (var object : objects)
@@ -55,7 +56,8 @@ public abstract class AbstractEObjectObservatory<T extends ILilyEObject> impleme
 			{
 				if (cast.isInstance(object))
 				{
-					listener.discoverObject().accept(cast.cast(object));
+					listener.discoverObject()
+							.accept(cast.cast(object));
 				}
 			}
 
@@ -90,14 +92,16 @@ public abstract class AbstractEObjectObservatory<T extends ILilyEObject> impleme
 			{
 				if (cast.isInstance(object))
 				{
-					listener.removedObject().accept(cast.cast(object));
+					listener.removedObject()
+							.accept(cast.cast(object));
 				}
 			}
 		}
 
 		for (var listener : gatherBulkListeners)
 		{
-			listener.removedObjects().accept((List<T>) objects);
+			listener.removedObjects()
+					.accept((List<T>) objects);
 		}
 	}
 

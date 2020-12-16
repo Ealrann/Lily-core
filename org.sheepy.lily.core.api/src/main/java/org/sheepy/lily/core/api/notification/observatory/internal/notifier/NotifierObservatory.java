@@ -1,9 +1,9 @@
 package org.sheepy.lily.core.api.notification.observatory.internal.notifier;
 
 import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.notification.Feature;
-import org.sheepy.lily.core.api.notification.IFeatures;
-import org.sheepy.lily.core.api.notification.INotifier;
+import org.logoce.notification.api.Feature;
+import org.logoce.notification.api.IFeatures;
+import org.logoce.notification.api.INotifier;
 import org.sheepy.lily.core.api.notification.observatory.INotifierObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
 import org.sheepy.lily.core.api.notification.observatory.internal.InternalObservatoryBuilder;

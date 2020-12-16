@@ -5,9 +5,9 @@ import org.joml.Vector2fc;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.input.event.*;
 import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.notification.Feature;
-import org.sheepy.lily.core.api.notification.IFeatures;
-import org.sheepy.lily.core.api.notification.INotifier;
+import org.logoce.notification.api.Feature;
+import org.logoce.notification.api.IFeatures;
+import org.logoce.notification.api.INotifier;
 import org.sheepy.lily.core.model.application.Application;
 
 import java.util.function.Consumer;

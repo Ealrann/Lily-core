@@ -1,7 +1,5 @@
 package org.sheepy.lily.core.api.extender;
 
-import org.eclipse.emf.ecore.EObject;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -11,7 +9,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ModelExtender
 {
-	Class<? extends EObject> scope();
+	Class<?> scope();
 	String name() default "";
 	String identifier() default "";
 	boolean inherited() default false;

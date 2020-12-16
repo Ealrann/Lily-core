@@ -1,4 +1,7 @@
 dependencies {
+	api project(":logoce.adapter")
+	api project(":logoce.notification")
+
 	api "org.joml:joml:$jomlVersion"
 
 	api "emf.standalone:org.eclipse.emf.common:$emfVersion"

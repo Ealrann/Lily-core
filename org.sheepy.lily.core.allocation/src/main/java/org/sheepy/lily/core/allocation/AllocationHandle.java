@@ -1,15 +1,15 @@
 package org.sheepy.lily.core.allocation;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.logoce.notification.api.Feature;
+import org.logoce.notification.api.IFeatures;
+import org.logoce.notification.api.ListenerMap;
 import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
 import org.sheepy.lily.core.allocation.operation.BuildOperation;
 import org.sheepy.lily.core.api.allocation.IAllocationHandle;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.notification.Feature;
-import org.sheepy.lily.core.api.notification.IFeatures;
-import org.sheepy.lily.core.api.notification.util.ListenerMap;
 
 import java.lang.annotation.Annotation;
 import java.util.List;

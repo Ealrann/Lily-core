@@ -1,4 +1,4 @@
-package org.sheepy.lily.core.api.notification.util;
+package org.logoce.notification.api;
 
 @FunctionalInterface
 public interface BooleanConsumer
