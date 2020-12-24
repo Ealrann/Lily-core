@@ -5,7 +5,6 @@ import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
-import org.sheepy.lily.core.api.extender.AnnotationHandles;
 import org.sheepy.lily.core.api.util.DebugUtil;
 
 import java.util.List;
@@ -127,15 +126,11 @@ public final class DependencyManager
 			return new DependencyWatcher.Builder(resolver, target);
 		}
 
-		@SuppressWarnings("unchecked")
 		private List<DependencyUpdater.Builder> gatherUpdatableDependencies(final ILilyEObject target,
 																			final IExtenderDescriptor.ExtenderContext<?> extenderContext)
 		{
 			final var updatableDependencies = extenderContext.annotationHandles()
-															 .stream()
-															 .filter(handle -> handle.annotationClass() == UpdateDependency.class)
-															 .map(handle -> (AnnotationHandles<UpdateDependency>) handle)
-															 .flatMap(handle -> handle.handles().stream())
+															 .stream(UpdateDependency.class)
 															 .map(h -> newDependencyUpdater(target, h))
 															 .collect(Collectors.toUnmodifiableList());
 			return updatableDependencies;
@@ -144,7 +139,8 @@ public final class DependencyManager
 		private DependencyUpdater.Builder newDependencyUpdater(final ILilyEObject target,
 															   final IExtenderHandle.AnnotatedHandle<UpdateDependency> handle)
 		{
-			final var resolver = resolvers.get(handle.annotation().index());
+			final var resolver = resolvers.get(handle.annotation()
+													 .index());
 			final var resolutionBuilder = new DependencyWatcher.Builder(resolver, target);
 			return new DependencyUpdater.Builder(resolutionBuilder, handle);
 		}

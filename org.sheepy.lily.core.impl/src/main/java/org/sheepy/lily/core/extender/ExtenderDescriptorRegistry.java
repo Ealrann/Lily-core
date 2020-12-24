@@ -1,10 +1,6 @@
 package org.sheepy.lily.core.extender;
 
-import org.eclipse.emf.ecore.EObject;
-import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptorRegistry;
-import org.sheepy.lily.core.api.extender.IExtenderProvider;
+import org.sheepy.lily.core.api.extender.*;
 import org.sheepy.lily.core.extender.util.DescriptorContextBuilder;
 import org.sheepy.lily.core.extender.util.ExtenderDescriptorBuilder;
 
@@ -44,7 +40,7 @@ public final class ExtenderDescriptorRegistry implements IExtenderDescriptorRegi
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T extends IExtender> Stream<IExtenderDescriptor<T>> streamDescriptors(final EObject target,
+	public <T extends IExtender> Stream<IExtenderDescriptor<T>> streamDescriptors(final IAdaptable target,
 																				  final Class<T> type)
 	{
 		return descriptors.stream()
@@ -54,7 +50,7 @@ public final class ExtenderDescriptorRegistry implements IExtenderDescriptorRegi
 						  .map(DescriptorContext::descriptor);
 	}
 
-	public Stream<DescriptorContext<?>> descriptors(final EObject target)
+	public Stream<DescriptorContext<?>> descriptors(final IAdaptable target)
 	{
 		return descriptors.stream().filter(descriptor -> descriptor.descriptor().isApplicable(target));
 	}

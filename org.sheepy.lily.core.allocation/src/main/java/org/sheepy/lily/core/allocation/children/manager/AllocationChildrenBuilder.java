@@ -9,7 +9,6 @@ import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
-import org.sheepy.lily.core.api.extender.AnnotationHandles;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +33,9 @@ public final class AllocationChildrenBuilder
 			trgList.add(entry);
 		}
 
-		preChildrenBuilders = preList.stream().map(b -> b.build(List.of())).collect(Collectors.toUnmodifiableList());
+		preChildrenBuilders = preList.stream()
+									 .map(b -> b.build(List.of()))
+									 .collect(Collectors.toUnmodifiableList());
 		postChildrenPreBuilders = List.copyOf(postList);
 	}
 
@@ -52,16 +53,12 @@ public final class AllocationChildrenBuilder
 		return new AllocationChildrenManager(childrenSupervisors, null);
 	}
 
-	@SuppressWarnings("unchecked")
 	public AllocationChildrenManager buildPostAllocation(final BuildContext buildContext,
 														 final Optional<IAllocationContext> providedContext,
 														 final IExtenderDescriptor.ExtenderContext<?> extenderContext)
 	{
 		final var annotationHandles = extenderContext.annotationHandles()
-													 .stream()
-													 .filter(h -> h.match(InjectChildren.class))
-													 .map(h -> (AnnotationHandles<InjectChildren>) h)
-													 .flatMap(AnnotationHandles::stream)
+													 .stream(InjectChildren.class)
 													 .collect(Collectors.toUnmodifiableList());
 
 		final var postChildEntryBuilders = postChildrenPreBuilders.stream()
@@ -111,12 +108,14 @@ public final class AllocationChildrenBuilder
 		{
 			public Stream<IExtenderHandle.AnnotatedHandle<InjectChildren>> stream()
 			{
-				return annotationHandles.stream().filter(this::match);
+				return annotationHandles.stream()
+										.filter(this::match);
 			}
 
 			private boolean match(final IExtenderHandle.AnnotatedHandle<InjectChildren> h)
 			{
-				return h.annotation().index() == index;
+				return h.annotation()
+						.index() == index;
 			}
 		}
 	}

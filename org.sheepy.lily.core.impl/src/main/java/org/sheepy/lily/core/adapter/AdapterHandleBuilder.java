@@ -1,45 +1,53 @@
 package org.sheepy.lily.core.adapter;
 
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
-import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
-import org.sheepy.lily.core.api.extender.IExtenderHandle;
-import org.sheepy.lily.core.api.extender.IExtenderHandleBuilder;
-import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.notification.observatory.IObservatory;
-import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
+import org.sheepy.lily.core.api.extender.*;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public final class AdapterHandleBuilder<T extends IExtender> implements IExtenderHandleBuilder<T>
 {
 	private final IExtenderDescriptor<T> extenderDescriptor;
+	private final List<IAdapterExtension.Descriptor> extensionDescriptors;
 	private final IExtenderHandle<T> singleton;
 	private final boolean lazy;
 
-	public AdapterHandleBuilder(IExtenderDescriptor<T> extenderDescriptor)
+	public AdapterHandleBuilder(final IExtenderDescriptor<T> extenderDescriptor,
+								final List<IAdapterExtension.Descriptor> extensionDescriptors)
 	{
 		this.extenderDescriptor = extenderDescriptor;
-		final var adapterAnnotation = extenderDescriptor.extenderClass().getAnnotation(Adapter.class);
+		this.extensionDescriptors = List.copyOf(extensionDescriptors);
+		final var adapterAnnotation = extenderDescriptor.extenderClass()
+														.getAnnotation(Adapter.class);
 		final var isSingleton = adapterAnnotation.singleton();
 		this.lazy = adapterAnnotation.lazy();
 		this.singleton = isSingleton ? newHandle(null) : null;
 	}
 
 	@Override
-	public IExtenderHandle<T> build(final ILilyEObject target)
+	public IExtenderHandle<T> build(final IAdaptable target)
 	{
 		return singleton != null ? singleton : newHandle(target);
 	}
 
-	private IExtenderHandle<T> newHandle(final ILilyEObject target)
+	private IExtenderHandle<T> newHandle(final IAdaptable target)
 	{
 		try
 		{
-			final var observatoryBuilder = IObservatoryBuilder.newObservatoryBuilder();
-			final var extenderContext = extenderDescriptor.newExtender(target, observatoryBuilder, List.of());
-			final var observatory = observatoryBuilder.isEmpty() ? null : observatoryBuilder.build();
-			return buildNewHandle(extenderContext, observatory);
+			final var extensionBuilders = extensionDescriptors.stream()
+															  .map(IAdapterExtension.Descriptor::newBuilder)
+															  .collect(Collectors.toUnmodifiableList());
+			final var parameterResolvers = extensionBuilders.stream()
+															.map(IAdapterExtension.Builder::parameterResolver)
+															.filter(Optional::isPresent)
+															.map(Optional::get);
+			final var extenderContext = extenderDescriptor.newExtender(target, parameterResolvers);
+			final var extensions = extensionBuilders.stream()
+													.map(builder -> builder.build(extenderContext))
+													.collect(Collectors.toUnmodifiableList());
+			return buildNewHandle(extenderContext, extensions);
 		}
 		catch (ReflectiveOperationException e)
 		{
@@ -48,17 +56,19 @@ public final class AdapterHandleBuilder<T extends IExtender> implements IExtende
 	}
 
 	private IExtenderHandle<T> buildNewHandle(final IExtenderDescriptor.ExtenderContext<T> extenderContext,
-											  final IObservatory observatory)
+											  final List<IAdapterExtension> extensions)
 	{
-		if (observatory != null || extenderContext.annotationHandles().isEmpty() == false)
+		final var noAnnotations = extenderContext.annotationHandles()
+												 .isEmpty();
+		final var noExtensions = extensions.stream()
+										   .allMatch(IAdapterExtension::isEmpty);
+		if (noAnnotations && noExtensions)
 		{
-			return new AdapterHandleFull<>(extenderContext.extender(),
-										   extenderContext.annotationHandles(),
-										   observatory);
+			return new AdapterHandleWrapper<>(extenderContext.extender());
 		}
 		else
 		{
-			return new AdapterHandleWrapper<>(extenderContext.extender());
+			return new AdapterHandleFull<>(extenderContext.extender(), extenderContext.annotationHandles(), extensions);
 		}
 	}
 

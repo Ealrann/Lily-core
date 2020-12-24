@@ -4,34 +4,27 @@ import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.stream.Stream;
 
-public final class AnnotationHandles<T extends Annotation>
+public class AnnotationHandles
 {
-	private final Class<T> annotationClass;
-	private final List<IExtenderHandle.AnnotatedHandle<T>> handles;
+	private final List<AnnotationHandleGroup<?>> annotationHandles;
 
-	public AnnotationHandles(Class<T> annotationClass, List<IExtenderHandle.AnnotatedHandle<T>> handles)
+	public AnnotationHandles(final List<? extends AnnotationHandleGroup<?>> annotationHandles)
 	{
-		this.annotationClass = annotationClass;
-		this.handles = handles;
+		this.annotationHandles = List.copyOf(annotationHandles);
 	}
 
-	public Class<T> annotationClass()
+	@SuppressWarnings("unchecked")
+	public <A extends Annotation> Stream<IExtenderHandle.AnnotatedHandle<A>> stream(Class<A> annotationClass)
 	{
-		return annotationClass;
+		return annotationHandles.stream()
+								.filter(h -> h.annotationClass()
+											  .equals(annotationClass))
+								.flatMap(h -> ((AnnotationHandleGroup<A>) h).handles()
+																			.stream());
 	}
 
-	public List<IExtenderHandle.AnnotatedHandle<T>> handles()
+	public boolean isEmpty()
 	{
-		return handles;
-	}
-
-	public boolean match(Class<? extends Annotation> classifier)
-	{
-		return annotationClass == classifier;
-	}
-
-	public Stream<IExtenderHandle.AnnotatedHandle<T>> stream()
-	{
-		return handles.stream();
+		return annotationHandles.isEmpty();
 	}
 }

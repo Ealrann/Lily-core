@@ -1,8 +1,8 @@
 package org.sheepy.lily.core.allocation.parameter;
 
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
+import org.sheepy.lily.core.api.extender.IAdaptable;
 import org.sheepy.lily.core.api.extender.parameter.IParameterResolver;
-import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.lang.annotation.Annotation;
 
@@ -15,7 +15,7 @@ public record ContextParameterResolverBuilder(IAllocationContext context) implem
 	}
 
 	@Override
-	public Object resolve(ILilyEObject target, Class<?> parameterClass)
+	public Object resolve(IAdaptable target, Class<?> parameterClass)
 	{
 		return context;
 	}

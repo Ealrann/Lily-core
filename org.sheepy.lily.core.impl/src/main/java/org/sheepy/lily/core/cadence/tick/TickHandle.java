@@ -117,7 +117,7 @@ public final class TickHandle
 
 		public TickHandle build(ILilyEObject target)
 		{
-			final var handle = target.extenders().adaptHandleFromDescriptor(descriptor);
+			final var handle = target.adapterManager().adaptHandleFromDescriptor(descriptor);
 			return new TickHandle(target, handle, tickConfiguration, adapterName);
 		}
 	}

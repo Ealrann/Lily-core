@@ -54,8 +54,10 @@ public final class AllocationInstance<Allocation extends IExtender>
 		if (state.needUpdate())
 		{
 			state.updated();
-			final var it = extenderContext.annotatedConsumer(Update.class).iterator();
-			while (it.hasNext()) it.next().invoke();
+			final var it = extenderContext.annotatedConsumer(Update.class)
+										  .iterator();
+			while (it.hasNext()) it.next()
+								   .invoke();
 		}
 
 		state.reset();
@@ -67,8 +69,10 @@ public final class AllocationInstance<Allocation extends IExtender>
 		if (preObservatory != null) preObservatory.shut(target);
 		if (observatory != null) observatory.shut(target);
 		dependencyManager.free();
-		final var it = extenderContext.annotatedConsumer(Free.class).iterator();
-		while (it.hasNext()) it.next().invoke(context);
+		final var it = extenderContext.annotatedConsumer(Free.class)
+									  .iterator();
+		while (it.hasNext()) it.next()
+							   .invoke(context);
 		state.setStatus(EAllocationStatus.Free);
 	}
 
@@ -108,7 +112,8 @@ public final class AllocationInstance<Allocation extends IExtender>
 
 	public <A extends Annotation> Stream<IExtenderHandle.AnnotatedHandle<A>> annotatedHandles(Class<A> annotationClass)
 	{
-		return extenderContext.annotatedHandles(annotationClass);
+		return extenderContext.annotationHandles()
+							  .stream(annotationClass);
 	}
 
 	public AllocationChildrenManager getPreChildrenManager()

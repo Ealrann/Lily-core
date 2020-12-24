@@ -33,13 +33,13 @@ public class AdapterObservatory<Type extends IExtender> implements IObservatory
 	@Override
 	public void observe(ILilyEObject object)
 	{
-		object.extenders().adaptHandles(adapterClass).forEach(this::observeHandle);
+		object.adapterManager().adaptHandles(adapterClass).forEach(this::observeHandle);
 	}
 
 	@Override
 	public void shut(ILilyEObject object)
 	{
-		object.extenders().adaptHandles(adapterClass).forEach(this::sulkHandle);
+		object.adapterManager().adaptHandles(adapterClass).forEach(this::sulkHandle);
 	}
 
 	protected void observeHandle(final IExtenderHandle<Type> handle)

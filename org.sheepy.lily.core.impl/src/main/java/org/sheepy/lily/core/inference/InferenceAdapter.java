@@ -3,6 +3,7 @@ package org.sheepy.lily.core.inference;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.api.adapter.annotation.Adapter;
+import org.sheepy.lily.core.api.extender.IAdaptable;
 import org.sheepy.lily.core.api.extender.ModelExtender;
 import org.sheepy.lily.core.api.inference.IInferenceAdapter;
 import org.sheepy.lily.core.model.inference.*;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@ModelExtender(scope = EObject.class, inherited = true)
+@ModelExtender(scope = IAdaptable.class, inherited = true)
 @Adapter
 public class InferenceAdapter implements IInferenceAdapter
 {
@@ -67,13 +68,15 @@ public class InferenceAdapter implements IInferenceAdapter
 	{
 		for (final LRule rule : ruleGraph.getLinkedRules(notification))
 		{
-			if (rule.getNotification().match(notification))
+			if (rule.getNotification()
+					.match(notification))
 			{
 				boolean match = true;
 
 				for (final Condition c : rule.getConditions())
 				{
-					if (c.getType().isInstance(parameter) == false || c.match(parameter) == false)
+					if (c.getType()
+						 .isInstance(parameter) == false || c.match(parameter) == false)
 					{
 						match = false;
 						break;

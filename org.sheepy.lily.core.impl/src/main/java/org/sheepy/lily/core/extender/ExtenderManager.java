@@ -1,7 +1,6 @@
 package org.sheepy.lily.core.extender;
 
 import org.sheepy.lily.core.api.extender.*;
-import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.util.List;
 import java.util.Objects;
@@ -14,14 +13,16 @@ public final class ExtenderManager implements IExtenderManager.Internal
 	private static final ExtenderDescriptorRegistry REGISTRY = (ExtenderDescriptorRegistry) IExtenderDescriptorRegistry.INSTANCE;
 
 	private final List<HandleWrapper<? extends IExtender>> handles;
-	private final ILilyEObject target;
+	private final IAdaptable target;
 
 	private boolean disposed = false;
 
-	public ExtenderManager(ILilyEObject target)
+	public ExtenderManager(IAdaptable target)
 	{
 		this.target = target;
-		handles = REGISTRY.descriptors(target).map(HandleWrapper::new).collect(Collectors.toUnmodifiableList());
+		handles = REGISTRY.descriptors(target)
+						  .map(HandleWrapper::new)
+						  .collect(Collectors.toUnmodifiableList());
 	}
 
 	@Override
@@ -29,7 +30,9 @@ public final class ExtenderManager implements IExtenderManager.Internal
 	{
 		if (!disposed)
 		{
-			handles.stream().filter(HandleWrapper::isAuto).forEach(w -> w.handle(target));
+			handles.stream()
+				   .filter(HandleWrapper::isAuto)
+				   .forEach(w -> w.handle(target));
 		}
 		else
 		{
@@ -77,7 +80,8 @@ public final class ExtenderManager implements IExtenderManager.Internal
 	public <T extends IExtenderHandle<?>> Stream<T> adaptHandlesOfType(final Class<T> handleType)
 	{
 		return handles.stream()
-					  .filter(w -> handleType.isAssignableFrom(w.descriptorContext.handleBuilder().getHandleClass()))
+					  .filter(w -> handleType.isAssignableFrom(w.descriptorContext.handleBuilder()
+																				  .getHandleClass()))
 					  .map(handleWrapper -> handleWrapper.handle(target))
 					  .map(handle -> (T) handle);
 	}
@@ -96,12 +100,14 @@ public final class ExtenderManager implements IExtenderManager.Internal
 
 	private static Predicate<HandleWrapper<?>> filter(final Class<? extends IExtender> type, final String identifier)
 	{
-		return wrapper -> wrapper.descriptorContext.descriptor().match(type, identifier);
+		return wrapper -> wrapper.descriptorContext.descriptor()
+												   .match(type, identifier);
 	}
 
 	private static Predicate<HandleWrapper<?>> filter(final Class<? extends IExtender> type)
 	{
-		return wrapper -> wrapper.descriptorContext.descriptor().match(type);
+		return wrapper -> wrapper.descriptorContext.descriptor()
+												   .match(type);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -123,11 +129,12 @@ public final class ExtenderManager implements IExtenderManager.Internal
 			this.descriptorContext = descriptorContext;
 		}
 
-		public IExtenderHandle<T> handle(final ILilyEObject target)
+		public IExtenderHandle<T> handle(final IAdaptable target)
 		{
 			if (handle == null)
 			{
-				handle = descriptorContext.handleBuilder().build(target);
+				handle = descriptorContext.handleBuilder()
+										  .build(target);
 				handle.load(target);
 			}
 			return handle;
@@ -138,12 +145,12 @@ public final class ExtenderManager implements IExtenderManager.Internal
 			return descriptorContext.isAuto();
 		}
 
-		public void load(final ILilyEObject target)
+		public void load(final IAdaptable target)
 		{
 			if (handle != null) handle.load(target);
 		}
 
-		public void dispose(final ILilyEObject target)
+		public void dispose(final IAdaptable target)
 		{
 			if (handle != null) handle.dispose(target);
 		}

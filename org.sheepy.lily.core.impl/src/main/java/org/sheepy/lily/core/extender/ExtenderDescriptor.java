@@ -1,11 +1,7 @@
 package org.sheepy.lily.core.extender;
 
-import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
-import org.sheepy.lily.core.api.extender.ModelExtender;
+import org.sheepy.lily.core.api.extender.*;
 import org.sheepy.lily.core.api.extender.parameter.IParameterResolver;
-import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.reflect.ConstructorHandle;
 import org.sheepy.lily.core.extender.util.ExtenderBuilder;
 import org.sheepy.lily.core.model.types.LNamedElement;
@@ -37,15 +33,14 @@ public final class ExtenderDescriptor<Extender extends IExtender> implements IEx
 	}
 
 	@Override
-	public ExtenderContext<Extender> newExtender(final ILilyEObject target,
-												 final IObservatoryBuilder observatory,
-												 final List<? extends IParameterResolver> resolvers) throws ReflectiveOperationException
+	public ExtenderContext<Extender> newExtender(final IAdaptable target,
+												 final Stream<? extends IParameterResolver> resolvers) throws ReflectiveOperationException
 	{
-		final var extender = extenderBuilder.build(target, observatory, resolvers);
+		final var extender = extenderBuilder.build(target, resolvers);
 		final var annotationHandles = executionHandleBuilders.stream()
 															 .map(builder -> builder.build(extender))
 															 .collect(Collectors.toUnmodifiableList());
-		return new ExtenderContext<>(extender, annotationHandles);
+		return new ExtenderContext<>(extender, new AnnotationHandles(annotationHandles));
 	}
 
 	@SuppressWarnings("unchecked")

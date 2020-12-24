@@ -1,5 +1,6 @@
 package org.sheepy.lily.core.adapter;
 
+import org.sheepy.lily.core.api.extender.IAdaptable;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
@@ -17,12 +18,12 @@ public final class AdapterHandleWrapper<Extender extends IExtender> implements I
 	}
 
 	@Override
-	public void load(ILilyEObject target)
+	public void load(IAdaptable target)
 	{
 	}
 
 	@Override
-	public void dispose(ILilyEObject target)
+	public void dispose(IAdaptable target)
 	{
 	}
 

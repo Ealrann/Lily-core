@@ -76,7 +76,7 @@ public final class ChildrenSupervisor
 	private void reloadDescriptors(final List<ILilyEObject> children)
 	{
 		children.stream()
-				.flatMap(c -> c.extenders().adaptHandlesOfType(AllocationHandle.class))
+				.flatMap(c -> c.adapterManager().adaptHandlesOfType(AllocationHandle.class))
 				.map(handle -> (AllocationHandle<?>) handle)
 				.map(AllocationHandle::getDescriptor)
 				.distinct()

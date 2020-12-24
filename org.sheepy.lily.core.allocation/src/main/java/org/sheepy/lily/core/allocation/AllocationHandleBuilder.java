@@ -1,11 +1,7 @@
 package org.sheepy.lily.core.allocation;
 
 import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
-import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
-import org.sheepy.lily.core.api.extender.IExtenderHandle;
-import org.sheepy.lily.core.api.extender.IExtenderHandleBuilder;
-import org.sheepy.lily.core.api.model.ILilyEObject;
+import org.sheepy.lily.core.api.extender.*;
 
 public final class AllocationHandleBuilder<E extends IExtender> implements IExtenderHandleBuilder<E>
 {
@@ -17,7 +13,7 @@ public final class AllocationHandleBuilder<E extends IExtender> implements IExte
 	}
 
 	@Override
-	public IExtenderHandle<E> build(final ILilyEObject target)
+	public IExtenderHandle<E> build(final IAdaptable target)
 	{
 		return new AllocationHandle<>(target, allocationDescriptor);
 	}

@@ -2,8 +2,8 @@ package org.sheepy.lily.core.allocation.parameter;
 
 import org.sheepy.lily.core.allocation.instance.AllocationState;
 import org.sheepy.lily.core.api.allocation.IAllocationState;
+import org.sheepy.lily.core.api.extender.IAdaptable;
 import org.sheepy.lily.core.api.extender.parameter.IParameterResolver;
-import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.lang.annotation.Annotation;
 
@@ -23,7 +23,7 @@ public final class StateParameterBuilder implements IParameterResolver
 	}
 
 	@Override
-	public Object resolve(ILilyEObject target, Class<?> paramClass)
+	public Object resolve(IAdaptable target, Class<?> paramClass)
 	{
 		return state;
 	}

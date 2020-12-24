@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ModelExtender
 {
-	Class<?> scope();
+	Class<? extends IAdaptable> scope();
 	String name() default "";
 	String identifier() default "";
 	boolean inherited() default false;

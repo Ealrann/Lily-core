@@ -8,6 +8,7 @@ import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
 import org.sheepy.lily.core.allocation.operation.BuildOperation;
 import org.sheepy.lily.core.api.allocation.IAllocationHandle;
+import org.sheepy.lily.core.api.extender.IAdaptable;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 
@@ -32,20 +33,20 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	private AllocationInstance<Allocation> mainAllocation = null;
 	private boolean activated;
 
-	public AllocationHandle(ILilyEObject target, AllocationDescriptor<Allocation> descriptor)
+	public AllocationHandle(final IAdaptable target, final AllocationDescriptor<Allocation> descriptor)
 	{
-		this.target = target;
+		this.target = (ILilyEObject) target;
 		this.descriptor = descriptor;
 	}
 
 	@Override
-	public void load(final ILilyEObject target)
+	public void load(final IAdaptable target)
 	{
 		final var activator = descriptor.activator();
 		if (activator > -1)
 		{
-			target.listen(activatorChanged, activator);
-			activated = (boolean) target.eGet(activator, true, true);
+			this.target.listen(activatorChanged, activator);
+			activated = (boolean) this.target.eGet(activator, true, true);
 		}
 		else
 		{
@@ -54,10 +55,10 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 	}
 
 	@Override
-	public void dispose(final ILilyEObject target)
+	public void dispose(final IAdaptable target)
 	{
 		final var activator = descriptor.activator();
-		if (activator > -1) target.sulk(activatorChanged, activator);
+		if (activator > -1) this.target.sulk(activatorChanged, activator);
 	}
 
 	private void activatorChanged(boolean newState)

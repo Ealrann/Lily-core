@@ -1,13 +1,14 @@
 package org.sheepy.lily.core.extender.util;
 
+import org.sheepy.lily.core.api.extender.IAdaptable;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.parameter.IParameterResolver;
-import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.reflect.ConstructorHandle;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public final class ExtenderBuilder<Extender extends IExtender>
 {
@@ -20,10 +21,10 @@ public final class ExtenderBuilder<Extender extends IExtender>
 		this.extenderClass = extenderClass;
 	}
 
-	public Extender build(final ILilyEObject target,
-						  final IObservatoryBuilder observatory,
-						  final List<? extends IParameterResolver> resolvers) throws ReflectiveOperationException
+	public Extender build(final IAdaptable target,
+						  final Stream<? extends IParameterResolver> resolvers) throws ReflectiveOperationException
 	{
+		final var resolverList = resolvers.collect(Collectors.toUnmodifiableList());
 		final var javaConstructor = constructorHandle.getJavaConstructor();
 		final var paramTypes = javaConstructor.getParameterTypes();
 		final var paramAnnotations = javaConstructor.getParameterAnnotations();
@@ -40,15 +41,11 @@ public final class ExtenderBuilder<Extender extends IExtender>
 			{
 				parameters[i] = target;
 			}
-			else if (paramType == IObservatoryBuilder.class)
-			{
-				parameters[i] = observatory;
-			}
 			else
 			{
 				try
 				{
-					final var resolver = findResolver(resolvers, paramType, annotation);
+					final var resolver = findResolver(resolverList, paramType, annotation);
 					parameters[i] = resolver.resolve(target, paramType);
 				}
 				catch (Exception e)

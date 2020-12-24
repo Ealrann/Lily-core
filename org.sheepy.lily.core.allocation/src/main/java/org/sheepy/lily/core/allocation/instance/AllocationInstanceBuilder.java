@@ -44,8 +44,8 @@ public final class AllocationInstanceBuilder<Allocation extends IExtender>
 		final var provideContext = descriptor.provideContext();
 		final var extenderDescriptor = descriptor.extenderDescriptor();
 		final var observatoryBuilder = IObservatoryBuilder.newObservatoryBuilder();
-		final var parameterResolvers = descriptor.allocationParametersBuilder().build(state, context);
-		final var extenderContext = extenderDescriptor.newExtender(target, observatoryBuilder, parameterResolvers);
+		final var parameterResolvers = descriptor.allocationParametersBuilder().build(state, context, observatoryBuilder);
+		final var extenderContext = extenderDescriptor.newExtender(target, parameterResolvers);
 		final var providedContext = provideContext ? contextProvider(extenderContext) : Optional.<IAllocationContext>empty();
 		final var buildContext = new AllocationChildrenBuilder.BuildContext(state::markBranchDirty,
 																			target,
@@ -98,7 +98,8 @@ public final class AllocationInstanceBuilder<Allocation extends IExtender>
 
 	public static Optional<IAllocationContext> contextProvider(IExtenderDescriptor.ExtenderContext<?> extenderContext)
 	{
-		final var supplier = extenderContext.annotatedHandles(ProvideContext.class)
+		final var supplier = extenderContext.annotationHandles()
+											.stream(ProvideContext.class)
 											.map(IExtenderHandle.AnnotatedHandle::executionHandle)
 											.map(SupplierHandle.class::cast)
 											.findAny()

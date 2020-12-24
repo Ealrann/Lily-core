@@ -65,13 +65,13 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	@Override
 	public final <T extends IExtender> T adapt(final Class<T> type)
 	{
-		return extenders().adapt(type);
+		return adapterManager().adapt(type);
 	}
 
 	@Override
 	public final <T extends IExtender> T adapt(final Class<T> type, final String identifier)
 	{
-		return extenders().adapt(type, identifier);
+		return adapterManager().adapt(type, identifier);
 	}
 
 	@Override
@@ -117,7 +117,7 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	}
 
 	@Override
-	public final IExtenderManager.Internal extenders()
+	public final IExtenderManager.Internal adapterManager()
 	{
 		if (extenderManager == null)
 		{
@@ -141,7 +141,7 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 		if (!loaded)
 		{
 			loaded = true;
-			extenders().load();
+			adapterManager().load();
 		}
 	}
 
@@ -149,7 +149,7 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	{
 		if (loaded)
 		{
-			extenders().dispose();
+			adapterManager().dispose();
 			loaded = false;
 		}
 	}
@@ -168,7 +168,9 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	@Override
 	public final Stream<ILilyEObject> streamChildren()
 	{
-		return eClass().getEAllContainments().stream().flatMap(this::streamReference);
+		return eClass().getEAllContainments()
+					   .stream()
+					   .flatMap(this::streamReference);
 	}
 
 	@SuppressWarnings("unchecked")

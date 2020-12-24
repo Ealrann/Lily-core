@@ -1,13 +1,11 @@
 package org.sheepy.lily.core.reflect.util;
 
-import org.sheepy.lily.core.api.extender.AnnotationHandles;
+import org.sheepy.lily.core.api.extender.AnnotationHandleGroup;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.reflect.IExecutionHandleBuilder;
 import org.sheepy.lily.core.api.util.ReflectUtils;
-import org.sheepy.lily.core.reflect.ExecutionHandleBuilder;
 
 import java.lang.annotation.Annotation;
-import java.lang.invoke.MethodHandles;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -33,13 +31,13 @@ public final class AnnotationHandlesBuilder<T extends Annotation>
 		return methods.stream().map(m -> m.method.annotation());
 	}
 
-	public AnnotationHandles<T> build(Object adapter)
+	public AnnotationHandleGroup<T> build(Object adapter)
 	{
 		final var handles = methods.stream()
 								   .map(m -> buildAnnotationHandle(adapter, m))
 								   .collect(Collectors.toUnmodifiableList());
 
-		return new AnnotationHandles<>(annotationClass, handles);
+		return new AnnotationHandleGroup<>(annotationClass, handles);
 	}
 
 	private IExtenderHandle.AnnotatedHandle<T> buildAnnotationHandle(final Object adapter,

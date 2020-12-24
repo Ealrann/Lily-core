@@ -4,6 +4,7 @@ import org.sheepy.lily.core.allocation.dependency.container.DependencyContainer;
 import org.sheepy.lily.core.allocation.util.StructureObserver;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationDependency;
 import org.sheepy.lily.core.api.allocation.annotation.InjectDependency;
+import org.sheepy.lily.core.api.extender.IAdaptable;
 import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.extender.parameter.IParameterResolver;
@@ -44,10 +45,10 @@ public final class DependencyResolver implements IParameterResolver
 	}
 
 	@Override
-	public Object resolve(final ILilyEObject source, final Class<?> parameterClass)
+	public Object resolve(final IAdaptable source, final Class<?> parameterClass)
 	{
 		final var stream = structureObserver.getExplorer()
-											.stream(source)
+											.stream((ILilyEObject) source)
 											.map(this::resolveOptional)
 											.flatMap(Optional::stream)
 											.map(IExtenderHandle::getExtender)
@@ -58,7 +59,8 @@ public final class DependencyResolver implements IParameterResolver
 		}
 		else
 		{
-			return stream.findAny().orElse(null);
+			return stream.findAny()
+						 .orElse(null);
 		}
 	}
 
@@ -78,12 +80,15 @@ public final class DependencyResolver implements IParameterResolver
 	{
 		final var resolution = resolveOptional(target);
 		if (resolution.isPresent()) return resolution.get();
-		else throw new RuntimeException("Cannot resolve dependency " + index + " " + target.eClass().getName());
+		else throw new RuntimeException("Cannot resolve dependency " + index + " " + target.eClass()
+																						   .getName());
 	}
 
 	private Optional<? extends IExtenderHandle<?>> resolveOptional(final ILilyEObject target)
 	{
-		return target.extenders().adaptHandles(type).findAny();
+		return target.adapterManager()
+					 .adaptHandles(type)
+					 .findAny();
 	}
 
 	public int getIndex()

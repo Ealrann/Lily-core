@@ -1,13 +1,8 @@
 package org.sheepy.lily.core.adapter;
 
-import org.sheepy.lily.core.adapter.util.AnnotationHandleManager;
 import org.sheepy.lily.core.api.adapter.annotation.Dispose;
 import org.sheepy.lily.core.api.adapter.annotation.Load;
-import org.sheepy.lily.core.api.extender.AnnotationHandles;
-import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.extender.IExtenderHandle;
-import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.notification.observatory.IObservatory;
+import org.sheepy.lily.core.api.extender.*;
 import org.sheepy.lily.core.api.reflect.ConsumerHandle;
 
 import java.lang.annotation.Annotation;
@@ -17,63 +12,64 @@ import java.util.stream.Stream;
 public final class AdapterHandleFull<Extender extends IExtender> implements IExtenderHandle<Extender>
 {
 	private final Extender extender;
-	private final AnnotationHandleManager annotationHandleManager;
-	private final IObservatory observatory;
+	private final AnnotationHandles annotationHandles;
+	private final List<IAdapterExtension> extensions;
 
 	public AdapterHandleFull(final Extender extender,
-							 final List<? extends AnnotationHandles<?>> annotationHandles,
-							 final IObservatory observatory)
+							 final AnnotationHandles annotationHandles,
+							 final List<IAdapterExtension> extensions)
 	{
 		this.extender = extender;
-		this.annotationHandleManager = new AnnotationHandleManager(annotationHandles);
-		this.observatory = observatory;
+		this.annotationHandles = annotationHandles;
+		this.extensions = List.copyOf(extensions);
 	}
 
 	@Override
-	public void load(ILilyEObject target)
+	public void load(final IAdaptable target)
 	{
-		if (observatory != null)
+		for (final var extension : extensions)
 		{
 			try
 			{
-				observatory.observe(target);
+				extension.load(target);
 			}
 			catch (Throwable e)
 			{
-				throwObserveError(e);
+				throwObserveError(e, extension);
 			}
 		}
-		annotationHandleManager.registerHandleListeners(target);
 		handles(Load.class, target);
 	}
 
 	@Override
-	public void dispose(ILilyEObject target)
+	public void dispose(final IAdaptable target)
 	{
-		if (observatory != null) observatory.shut(target);
-		annotationHandleManager.unregisterHandleListeners(target);
+		extensions.forEach(e -> e.dispose(target));
 		handles(Dispose.class, target);
 	}
 
 	private <A extends Annotation> void handles(final Class<A> annotationClass, Object... parameters)
 	{
-		annotationHandleManager.annotatedHandles(annotationClass)
-							   .map(IExtenderHandle.AnnotatedHandle::executionHandle)
-							   .map(ConsumerHandle.class::cast)
-							   .iterator()
-							   .forEachRemaining(handle -> handle.invoke(parameters));
+		annotationHandles.stream(annotationClass)
+						 .map(IExtenderHandle.AnnotatedHandle::executionHandle)
+						 .map(ConsumerHandle.class::cast)
+						 .iterator()
+						 .forEachRemaining(handle -> handle.invoke(parameters));
 	}
 
 	@Override
 	public <A extends Annotation> Stream<IExtenderHandle.AnnotatedHandle<A>> annotatedHandles(Class<A> annotationClass)
 	{
-		return annotationHandleManager.annotatedHandles(annotationClass);
+		return annotationHandles.stream(annotationClass);
 	}
 
-	private void throwObserveError(final Throwable e)
+	private void throwObserveError(final Throwable e, final IAdapterExtension extension)
 	{
-		final var extenderName = extender.getClass().getSimpleName();
-		final var error = new AssertionError("Failed to start observatory of " + extenderName, e);
+		final var extenderName = extender.getClass()
+										 .getSimpleName();
+		final var error = new AssertionError("Failed to start " + extension.getClass()
+																		   .getSimpleName() + " for " + extenderName,
+											 e);
 		error.printStackTrace();
 	}
 
