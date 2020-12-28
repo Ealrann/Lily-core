@@ -38,7 +38,9 @@ public final class TickHandle
 
 	public Stream<LongConsumer> prepareTickOperations()
 	{
-		return handle.annotatedHandles(Tick.class).filter(this::match).map(this::tickOperation);
+		return handle.annotatedHandles(Tick.class)
+					 .filter(this::match)
+					 .map(this::tickOperation);
 	}
 
 	private LongConsumer tickOperation(final IExtenderHandle.AnnotatedHandle<Tick> tickAnnotatedHandle)
@@ -107,7 +109,8 @@ public final class TickHandle
 		{
 			this.descriptor = descriptor;
 			tickConfiguration = new TickConfiguration(annotation);
-			adapterName = descriptor.extenderClass().getSimpleName();
+			adapterName = descriptor.extenderClass()
+									.getSimpleName();
 		}
 
 		public boolean isApplicable(ILilyEObject target)
@@ -117,7 +120,8 @@ public final class TickHandle
 
 		public TickHandle build(ILilyEObject target)
 		{
-			final var handle = target.adapterManager().adaptHandleFromDescriptor(descriptor);
+			final var handle = target.adapterManager()
+									 .adaptHandle(descriptor);
 			return new TickHandle(target, handle, tickConfiguration, adapterName);
 		}
 	}

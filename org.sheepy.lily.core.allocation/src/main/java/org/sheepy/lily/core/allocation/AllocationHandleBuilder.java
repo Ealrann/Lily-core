@@ -24,10 +24,4 @@ public final class AllocationHandleBuilder<E extends IExtender> implements IExte
 	{
 		return (Class<AllocationHandle<E>>) (Class<?>) AllocationHandle.class;
 	}
-
-	@Override
-	public boolean isAuto()
-	{
-		return false;
-	}
 }

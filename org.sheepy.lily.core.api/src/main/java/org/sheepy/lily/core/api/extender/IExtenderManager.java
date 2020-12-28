@@ -6,10 +6,22 @@ public interface IExtenderManager
 {
 	<T extends IExtender> T adapt(Class<T> type);
 	<T extends IExtender> T adapt(Class<T> type, String identifier);
-	<T extends IExtender> Stream<? extends IExtenderHandle<T>> adaptHandles(Class<T> type);
 
-	<T extends IExtender> IExtenderHandle<T> adaptHandleFromDescriptor(IExtenderDescription<T> descriptor);
-	<T extends IExtenderHandle<?>> Stream<T> adaptHandlesOfType(Class<T> handleType);
+	Stream<IExtenderDescriptor<?>> availableDescriptors();
+	<T extends IExtender> IExtenderHandle<T> adaptHandle(IExtenderDescriptor<T> descriptor);
+	<T extends IExtenderHandle<?>> Stream<T> adaptHandlesOfType(final Class<T> handleType);
+
+	@SuppressWarnings("unchecked")
+	default <T extends IExtender> Stream<IExtenderDescriptor<T>> availableDescriptors(Class<T> type)
+	{
+		return availableDescriptors().filter(descriptor -> descriptor.match(type))
+									 .map(descriptor -> (IExtenderDescriptor<T>) descriptor);
+	}
+
+	default <T extends IExtender> Stream<IExtenderHandle<T>> adaptHandles(Class<T> type)
+	{
+		return availableDescriptors(type).map(this::adaptHandle);
+	}
 
 	interface Internal extends IExtenderManager
 	{

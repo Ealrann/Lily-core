@@ -12,7 +12,6 @@ public final class AdapterHandleBuilder<T extends IExtender> implements IExtende
 	private final IExtenderDescriptor<T> extenderDescriptor;
 	private final List<IAdapterExtension.Descriptor> extensionDescriptors;
 	private final IExtenderHandle<T> singleton;
-	private final boolean lazy;
 
 	public AdapterHandleBuilder(final IExtenderDescriptor<T> extenderDescriptor,
 								final List<IAdapterExtension.Descriptor> extensionDescriptors)
@@ -22,7 +21,6 @@ public final class AdapterHandleBuilder<T extends IExtender> implements IExtende
 		final var adapterAnnotation = extenderDescriptor.extenderClass()
 														.getAnnotation(Adapter.class);
 		final var isSingleton = adapterAnnotation.singleton();
-		this.lazy = adapterAnnotation.lazy();
 		this.singleton = isSingleton ? newHandle(null) : null;
 	}
 
@@ -77,11 +75,5 @@ public final class AdapterHandleBuilder<T extends IExtender> implements IExtende
 	public Class<AdapterHandleFull<T>> getHandleClass()
 	{
 		return (Class<AdapterHandleFull<T>>) (Class<?>) AdapterHandleFull.class;
-	}
-
-	@Override
-	public boolean isAuto()
-	{
-		return !lazy;
 	}
 }

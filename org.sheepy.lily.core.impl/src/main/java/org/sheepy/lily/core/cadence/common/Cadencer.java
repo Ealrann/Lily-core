@@ -2,6 +2,7 @@ package org.sheepy.lily.core.cadence.common;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.sheepy.lily.core.api.cadence.AutoLoad;
 import org.sheepy.lily.core.api.cadence.IStatistics;
 import org.sheepy.lily.core.api.cadence.Tick;
 import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
@@ -58,16 +59,18 @@ public final class Cadencer
 		public CadenceContentAdater(ILilyEObject root)
 		{
 			this.root = root;
-			root.eAdapters().add(this);
+			root.eAdapters()
+				.add(this);
 		}
 
 		public void free()
 		{
-			root.eAdapters().remove(this);
+			root.eAdapters()
+				.remove(this);
 		}
 
 		@Override
-		protected void setTarget(EObject target)
+		protected void setTarget(final EObject target)
 		{
 			final var lilyObject = (ILilyEObject) target;
 			TICK_BUILDERS.stream()
@@ -75,6 +78,13 @@ public final class Cadencer
 						 .map(builder -> builder.build(lilyObject))
 						 .map(ITickerWrapper::build)
 						 .forEach(this::addTicker);
+
+			lilyObject.adapterManager()
+					  .availableDescriptors()
+					  .filter(descriptor -> descriptor.containsClassAnnotation(AutoLoad.class))
+					  .forEach(descriptor -> lilyObject.adapterManager()
+													   .adaptHandle(descriptor));
+
 			super.setTarget(target);
 		}
 
@@ -114,7 +124,8 @@ public final class Cadencer
 				else tick(ticker);
 			}
 
-			tickerMap.values().forEach(tickers -> tickers.removeIf(ITickerWrapper::isStopped));
+			tickerMap.values()
+					 .forEach(tickers -> tickers.removeIf(ITickerWrapper::isStopped));
 		}
 
 		private static void tickDebug(final ITickerWrapper ticker)

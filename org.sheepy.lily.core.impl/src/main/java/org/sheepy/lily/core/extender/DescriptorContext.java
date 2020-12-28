@@ -13,9 +13,4 @@ public record DescriptorContext<T extends IExtender>(IExtenderDescriptor<T> desc
 	{
 		return handleBuilder.build(target);
 	}
-
-	public boolean isAuto()
-	{
-		return handleBuilder.isAuto();
-	}
 }

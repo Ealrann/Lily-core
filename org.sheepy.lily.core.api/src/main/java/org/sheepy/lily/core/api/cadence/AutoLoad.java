@@ -1,4 +1,4 @@
-package org.sheepy.lily.core.api.adapter.annotation;
+package org.sheepy.lily.core.api.cadence;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,7 +7,5 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Adapter
-{
-	boolean singleton() default false;
-}
+public @interface AutoLoad
+{}

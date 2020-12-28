@@ -28,13 +28,7 @@ public final class ExtenderManager implements IExtenderManager.Internal
 	@Override
 	public void load()
 	{
-		if (!disposed)
-		{
-			handles.stream()
-				   .filter(HandleWrapper::isAuto)
-				   .forEach(w -> w.handle(target));
-		}
-		else
+		if (disposed)
 		{
 			disposed = false;
 			handles.forEach(w -> w.load(target));
@@ -70,9 +64,22 @@ public final class ExtenderManager implements IExtenderManager.Internal
 	}
 
 	@Override
-	public <T extends IExtender> Stream<? extends IExtenderHandle<T>> adaptHandles(final Class<T> type)
+	public Stream<IExtenderDescriptor<?>> availableDescriptors()
 	{
-		return handles(filter(type));
+		return handles.stream()
+					  .map(HandleWrapper::descriptor);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T extends IExtender> IExtenderHandle<T> adaptHandle(final IExtenderDescriptor<T> descriptor)
+	{
+		return handles.stream()
+					  .filter(wrapper -> wrapper.descriptorContext.descriptor() == descriptor)
+					  .map(handleWrapper -> handleWrapper.handle(target))
+					  .map(handle -> (IExtenderHandle<T>) handle)
+					  .findAny()
+					  .orElse(null);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -84,18 +91,6 @@ public final class ExtenderManager implements IExtenderManager.Internal
 																				  .getHandleClass()))
 					  .map(handleWrapper -> handleWrapper.handle(target))
 					  .map(handle -> (T) handle);
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public <T extends IExtender> IExtenderHandle<T> adaptHandleFromDescriptor(final IExtenderDescription<T> descriptor)
-	{
-		return handles.stream()
-					  .filter(wrapper -> wrapper.descriptorContext.descriptor() == descriptor)
-					  .map(handleWrapper -> handleWrapper.handle(target))
-					  .map(handle -> (IExtenderHandle<T>) handle)
-					  .findAny()
-					  .orElse(null);
 	}
 
 	private static Predicate<HandleWrapper<?>> filter(final Class<? extends IExtender> type, final String identifier)
@@ -140,9 +135,9 @@ public final class ExtenderManager implements IExtenderManager.Internal
 			return handle;
 		}
 
-		public boolean isAuto()
+		public IExtenderDescriptor<T> descriptor()
 		{
-			return descriptorContext.isAuto();
+			return descriptorContext.descriptor();
 		}
 
 		public void load(final IAdaptable target)

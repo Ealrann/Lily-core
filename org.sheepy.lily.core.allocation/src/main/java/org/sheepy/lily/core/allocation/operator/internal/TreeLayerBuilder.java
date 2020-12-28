@@ -35,7 +35,9 @@ public final class TreeLayerBuilder
 
 	private AllocationHandle<?> adaptHandle(final IExtenderDescriptor<? extends IExtender> descriptor)
 	{
-		return (AllocationHandle<?>) context.target().adapterManager().adaptHandleFromDescriptor(descriptor);
+		return (AllocationHandle<?>) context.target()
+											.adapterManager()
+											.adaptHandle(descriptor);
 	}
 
 	private <T extends AllocationTreeIterator<T>> OperationWrapper<T> newWrapper(IOperation<T> operation)
