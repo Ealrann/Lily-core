@@ -1,9 +1,9 @@
 package org.sheepy.lily.core.api.resource;
 
 import org.joml.Vector2ic;
-import org.sheepy.lily.core.api.extender.IExtender;
+import org.logoce.extender.api.IAdapter;
 
-public interface IFileImageAdapter extends IExtender
+public interface IFileImageAdapter extends IAdapter
 {
 	Vector2ic size();
 }

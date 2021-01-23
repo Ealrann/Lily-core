@@ -1,9 +1,9 @@
 package org.sheepy.lily.core.api.cadence;
 
-import org.sheepy.lily.core.api.extender.IExtender;
+import org.logoce.extender.api.IAdapter;
 import org.sheepy.lily.core.model.cadence.ICadenceCondition;
 
-public interface ICadenceConditionAdapter extends IExtender
+public interface ICadenceConditionAdapter extends IAdapter
 {
 	boolean check(ICadenceCondition condition, ICadenceContext context);
 }

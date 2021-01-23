@@ -1,13 +1,13 @@
 package org.sheepy.lily.core.allocation.dependency;
 
+import org.logoce.extender.api.IAdaptable;
 import org.sheepy.lily.core.allocation.dependency.container.DependencyContainer;
 import org.sheepy.lily.core.allocation.util.StructureObserver;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationDependency;
 import org.sheepy.lily.core.api.allocation.annotation.InjectDependency;
-import org.sheepy.lily.core.api.extender.IAdaptable;
-import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.extender.IExtenderHandle;
-import org.sheepy.lily.core.api.extender.parameter.IParameterResolver;
+import org.logoce.extender.api.IAdapter;
+import org.logoce.extender.api.IAdapterHandle;
+import org.logoce.extender.api.parameter.IParameterResolver;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.util.IModelExplorer;
@@ -22,7 +22,7 @@ public final class DependencyResolver implements IParameterResolver
 {
 	private final int index;
 	private final StructureObserver structureObserver;
-	private final Class<? extends IExtender> type;
+	private final Class<? extends IAdapter> type;
 
 	public DependencyResolver(AllocationDependency annotation, int index)
 	{
@@ -51,7 +51,7 @@ public final class DependencyResolver implements IParameterResolver
 											.stream((ILilyEObject) source)
 											.map(this::resolveOptional)
 											.flatMap(Optional::stream)
-											.map(IExtenderHandle::getExtender)
+											.map(IAdapterHandle::getExtender)
 											.filter(Objects::nonNull);
 		if (parameterClass == List.class)
 		{
@@ -76,7 +76,7 @@ public final class DependencyResolver implements IParameterResolver
 		}
 	}
 
-	public IExtenderHandle<?> resolve(final ILilyEObject target)
+	public IAdapterHandle<?> resolve(final ILilyEObject target)
 	{
 		final var resolution = resolveOptional(target);
 		if (resolution.isPresent()) return resolution.get();
@@ -84,7 +84,7 @@ public final class DependencyResolver implements IParameterResolver
 																						   .getName());
 	}
 
-	private Optional<? extends IExtenderHandle<?>> resolveOptional(final ILilyEObject target)
+	private Optional<? extends IAdapterHandle<?>> resolveOptional(final ILilyEObject target)
 	{
 		return target.adapterManager()
 					 .adaptHandles(type)

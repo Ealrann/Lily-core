@@ -1,7 +1,7 @@
 package org.sheepy.lily.core.api.notification.observatory;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.sheepy.lily.core.api.extender.IExtender;
+import org.logoce.extender.api.IAdapter;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.logoce.notification.api.IFeatures;
 import org.logoce.notification.api.INotifier;
@@ -15,8 +15,8 @@ public interface IStructuralObservatoryBuilder<C extends IStructuralObservatoryB
 	IEObjectObservatoryBuilder<ILilyEObject> exploreParent();
 	<Target extends ILilyEObject> IEObjectObservatoryBuilder<Target> exploreParent(Class<Target> cast);
 
-	<T extends IExtender> IAdapterObservatoryBuilder<T> adapt(Class<T> classifier);
-	<F extends IFeatures<?>, T extends IExtender & INotifier<? extends F>> INotifierAdapterObservatoryBuilder<F, T> adaptNotifier(
+	<T extends IAdapter> IAdapterObservatoryBuilder<T> adapt(Class<T> classifier);
+	<F extends IFeatures<?>, T extends IAdapter & INotifier<? extends F>> INotifierAdapterObservatoryBuilder<F, T> adaptNotifier(
 			Class<T> classifier);
 
 	C listen(Consumer<Notification> listener, int... features);

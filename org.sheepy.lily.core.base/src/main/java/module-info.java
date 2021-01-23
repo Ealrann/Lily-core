@@ -1,2 +1,2 @@
-module org.sheepy.lily.core.base
-{}
+module org.sheepy.lily.core.base {
+}

@@ -6,7 +6,7 @@ import org.sheepy.lily.core.allocation.test.testallocation.TestallocationPackage
 import org.sheepy.lily.core.api.allocation.IAllocationState;
 import org.sheepy.lily.core.api.allocation.annotation.Allocation;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationDependency;
-import org.sheepy.lily.core.api.extender.ModelExtender;
+import org.logoce.extender.api.ModelExtender;
 
 @ModelExtender(scope = Leaf.class)
 @Allocation(context = TestContext.class)

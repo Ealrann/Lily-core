@@ -1,9 +1,9 @@
 package org.sheepy.lily.core.api.notification.observatory.internal.allocation;
 
-import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.extender.IExtenderHandle;
+import org.logoce.extender.api.IAdapter;
+import org.logoce.extender.api.IAdapterHandle;
 
-public final class AdapterNoParamPOI<T extends IExtender> implements IAdapterPOI<T>
+public final class AdapterNoParamPOI<T extends IAdapter> implements IAdapterPOI<T>
 {
 	private final Runnable onNewExtender;
 
@@ -13,13 +13,13 @@ public final class AdapterNoParamPOI<T extends IExtender> implements IAdapterPOI
 	}
 
 	@Override
-	public void listen(final IExtenderHandle<T> handle)
+	public void listen(final IAdapterHandle<T> handle)
 	{
 		handle.listenNoParam(onNewExtender);
 	}
 
 	@Override
-	public void sulk(final IExtenderHandle<T> handle)
+	public void sulk(final IAdapterHandle<T> handle)
 	{
 		handle.sulkNoParam(onNewExtender);
 	}

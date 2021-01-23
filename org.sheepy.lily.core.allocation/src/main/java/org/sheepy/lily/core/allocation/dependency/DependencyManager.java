@@ -1,8 +1,8 @@
 package org.sheepy.lily.core.allocation.dependency;
 
 import org.sheepy.lily.core.api.allocation.annotation.UpdateDependency;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
-import org.sheepy.lily.core.api.extender.IExtenderHandle;
+import org.logoce.extender.api.IAdapterDescriptor;
+import org.logoce.extender.api.IAdapterHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.util.DebugUtil;
@@ -95,7 +95,7 @@ public final class DependencyManager
 
 		public DependencyManager build(final ILilyEObject target,
 									   final IObservatoryBuilder observatoryBuilder,
-									   final IExtenderDescriptor.ExtenderContext<?> extenderContext,
+									   final IAdapterDescriptor.ExtenderContext<?> extenderContext,
 									   final Runnable onDirty,
 									   final Runnable onObsolete)
 		{
@@ -127,7 +127,7 @@ public final class DependencyManager
 		}
 
 		private List<DependencyUpdater.Builder> gatherUpdatableDependencies(final ILilyEObject target,
-																			final IExtenderDescriptor.ExtenderContext<?> extenderContext)
+																			final IAdapterDescriptor.ExtenderContext<?> extenderContext)
 		{
 			final var updatableDependencies = extenderContext.annotationHandles()
 															 .stream(UpdateDependency.class)
@@ -137,7 +137,7 @@ public final class DependencyManager
 		}
 
 		private DependencyUpdater.Builder newDependencyUpdater(final ILilyEObject target,
-															   final IExtenderHandle.AnnotatedHandle<UpdateDependency> handle)
+															   final IAdapterHandle.AnnotatedHandle<UpdateDependency> handle)
 		{
 			final var resolver = resolvers.get(handle.annotation()
 													 .index());

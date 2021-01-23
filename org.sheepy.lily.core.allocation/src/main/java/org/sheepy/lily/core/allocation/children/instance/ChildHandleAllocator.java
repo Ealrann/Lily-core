@@ -4,13 +4,13 @@ import org.sheepy.lily.core.allocation.AllocationHandle;
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
 import org.sheepy.lily.core.allocation.operation.BuildOperation;
 import org.sheepy.lily.core.api.allocation.EAllocationStatus;
-import org.sheepy.lily.core.api.extender.IExtender;
+import org.logoce.extender.api.IAdapter;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public final class ChildHandleAllocator<Allocation extends IExtender>
+public final class ChildHandleAllocator<Allocation extends IAdapter>
 {
 	private final AllocationHandle<Allocation> handle;
 	private final boolean reuseDirtyAllocations;

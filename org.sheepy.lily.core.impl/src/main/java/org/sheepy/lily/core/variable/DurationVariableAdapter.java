@@ -1,10 +1,10 @@
 package org.sheepy.lily.core.variable;
 
-import org.sheepy.lily.core.api.adapter.annotation.Adapter;
-import org.sheepy.lily.core.api.adapter.annotation.Load;
+import org.logoce.adapter.api.Adapter;
+import org.sheepy.lily.core.api.adapter.Load;
 import org.sheepy.lily.core.api.cadence.AutoLoad;
 import org.sheepy.lily.core.api.cadence.Tick;
-import org.sheepy.lily.core.api.extender.ModelExtender;
+import org.logoce.extender.api.ModelExtender;
 import org.logoce.notification.api.Notifier;
 import org.sheepy.lily.core.api.variable.IDurationVariableAdapter;
 import org.sheepy.lily.core.api.variable.IModelVariableAdapter;

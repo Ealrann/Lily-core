@@ -1,6 +1,6 @@
 package org.sheepy.lily.core.api.notification.observatory.internal.notifier;
 
-import org.sheepy.lily.core.api.extender.IExtender;
+import org.logoce.extender.api.IAdapter;
 import org.logoce.notification.api.Feature;
 import org.logoce.notification.api.IFeatures;
 import org.logoce.notification.api.INotifier;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public final class NotifierAdapterObservatory<Type extends IFeatures<?>, Notifier extends IExtender & INotifier<? extends Type>> extends
+public final class NotifierAdapterObservatory<Type extends IFeatures<?>, Notifier extends IAdapter & INotifier<? extends Type>> extends
 																																 AdapterObservatory<Notifier> implements
 																																							  IObservatory
 {
@@ -50,7 +50,7 @@ public final class NotifierAdapterObservatory<Type extends IFeatures<?>, Notifie
 		super.gatherRemove(oldAdapter);
 	}
 
-	public static final class Builder<Type extends IFeatures<?>, Notifier extends IExtender & INotifier<? extends Type>> extends
+	public static final class Builder<Type extends IFeatures<?>, Notifier extends IAdapter & INotifier<? extends Type>> extends
 																														 AdapterObservatory.Builder<Notifier> implements
 																																							  INotifierAdapterObservatoryBuilder<Type, Notifier>,
 																																							  InternalObservatoryBuilder

@@ -1,10 +1,10 @@
 package org.sheepy.lily.core.cadence.adapter;
 
-import org.sheepy.lily.core.api.adapter.annotation.Adapter;
+import org.logoce.adapter.api.Adapter;
 import org.sheepy.lily.core.api.cadence.ICadenceConditionAdapter;
 import org.sheepy.lily.core.api.cadence.ICadenceContext;
 import org.sheepy.lily.core.api.cadence.ICadenceTaskAdapter;
-import org.sheepy.lily.core.api.extender.ModelExtender;
+import org.logoce.extender.api.ModelExtender;
 import org.sheepy.lily.core.model.cadence.ExecuteIf;
 import org.sheepy.lily.core.model.cadence.ICadenceTask;
 

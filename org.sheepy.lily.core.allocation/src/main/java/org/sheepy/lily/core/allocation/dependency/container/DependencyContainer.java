@@ -1,17 +1,17 @@
 package org.sheepy.lily.core.allocation.dependency.container;
 
 import org.sheepy.lily.core.allocation.AllocationHandle;
-import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.extender.IExtenderHandle;
+import org.logoce.extender.api.IAdapter;
+import org.logoce.extender.api.IAdapterHandle;
 
 public final class DependencyContainer
 {
-	private final IExtenderHandle<?> handle;
+	private final IAdapterHandle<?> handle;
 	private final Runnable onDependencyUpdate;
 
-	private IExtender extender;
+	private IAdapter extender;
 
-	public DependencyContainer(final IExtenderHandle<?> handle, final Runnable onDependencyUpdate)
+	public DependencyContainer(final IAdapterHandle<?> handle, final Runnable onDependencyUpdate)
 	{
 		this.handle = handle;
 		this.onDependencyUpdate = onDependencyUpdate;
@@ -31,7 +31,7 @@ public final class DependencyContainer
 		handle.sulkNoParam(onDependencyUpdate);
 	}
 
-	public IExtender get()
+	public IAdapter get()
 	{
 		return extender;
 	}
@@ -41,7 +41,7 @@ public final class DependencyContainer
 		return extender != handle.getExtender();
 	}
 
-	public IExtenderHandle<?> handle()
+	public IAdapterHandle<?> handle()
 	{
 		return handle;
 	}

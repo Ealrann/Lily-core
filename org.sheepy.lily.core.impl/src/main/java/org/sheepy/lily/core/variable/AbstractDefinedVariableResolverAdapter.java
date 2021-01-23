@@ -1,8 +1,8 @@
 package org.sheepy.lily.core.variable;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.sheepy.lily.core.api.adapter.annotation.Dispose;
-import org.sheepy.lily.core.api.adapter.annotation.Load;
+import org.sheepy.lily.core.api.adapter.Dispose;
+import org.sheepy.lily.core.api.adapter.Load;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.logoce.notification.api.Notifier;
 import org.sheepy.lily.core.api.util.FeatureDefinition;

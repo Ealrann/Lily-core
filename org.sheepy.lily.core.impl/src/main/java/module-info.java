@@ -1,14 +1,14 @@
+import org.logoce.extender.api.IAdapterExtension;
+import org.logoce.extender.api.IAdapterProvider;
+import org.logoce.extender.ext.IAdaptableNameMatcher;
 import org.sheepy.lily.core.Extenders;
-import org.sheepy.lily.core.adapter.AdapterHandleFactory;
+import org.sheepy.lily.core.adapter.AdaptableNameMatcher;
+import org.sheepy.lily.core.adapter.LoadDisposeAdapterExtension;
+import org.sheepy.lily.core.adapter.NotifyChangeManager;
+import org.sheepy.lily.core.adapter.ObservatoryManager;
 import org.sheepy.lily.core.api.cadence.IStatistics;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptorRegistry;
-import org.sheepy.lily.core.api.extender.IExtenderHandleFactory;
-import org.sheepy.lily.core.api.extender.IExtenderManagerFactory;
-import org.sheepy.lily.core.api.extender.IExtenderProvider;
 import org.sheepy.lily.core.api.resource.IResourceService;
 import org.sheepy.lily.core.cadence.CadencerStatistics;
-import org.sheepy.lily.core.extender.ExtenderDescriptorRegistry;
-import org.sheepy.lily.core.extender.ExtenderManagerFactory;
 import org.sheepy.lily.core.resource.ResourceService;
 
 module org.sheepy.lily.core.impl {
@@ -16,14 +16,13 @@ module org.sheepy.lily.core.impl {
 	requires transitive org.sheepy.lily.core.api;
 
 	provides IResourceService with ResourceService;
-	provides IExtenderManagerFactory with ExtenderManagerFactory;
 	provides IStatistics with CadencerStatistics;
-	provides IExtenderDescriptorRegistry with ExtenderDescriptorRegistry;
-	provides IExtenderProvider with Extenders;
-	provides IExtenderHandleFactory with AdapterHandleFactory;
+	provides IAdapterProvider with Extenders;
+	provides IAdapterExtension.Descriptor with ObservatoryManager.Descriptor, LoadDisposeAdapterExtension.Descriptor, NotifyChangeManager.Descriptor;
+	provides IAdaptableNameMatcher with AdaptableNameMatcher;
 
+	opens org.sheepy.lily.core.cadence.adapter;
 	opens org.sheepy.lily.core.application;
 	opens org.sheepy.lily.core.variable;
-
-	uses IExtenderProvider;
+	opens org.sheepy.lily.core.variable.action;
 }

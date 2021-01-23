@@ -1,16 +1,13 @@
 import org.sheepy.lily.core.api.allocation.IAllocationService;
 import org.sheepy.lily.core.api.application.IApplicationAdapter;
 import org.sheepy.lily.core.api.cadence.IStatistics;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptorRegistry;
-import org.sheepy.lily.core.api.extender.IExtenderHandleFactory;
-import org.sheepy.lily.core.api.extender.IExtenderManagerFactory;
 import org.sheepy.lily.core.api.resource.CoreModelExtension;
 import org.sheepy.lily.core.api.resource.IModelExtension;
 import org.sheepy.lily.core.api.resource.IResourceService;
 
-module org.sheepy.lily.core.api
-{
+module org.sheepy.lily.core.api {
 	requires transitive logoce.adapter;
+	requires transitive logoce.extender;
 	requires transitive logoce.notification;
 
 	requires transitive org.eclipse.emf.common;
@@ -24,14 +21,10 @@ module org.sheepy.lily.core.api
 	exports org.sheepy.lily.core.api.allocation;
 	exports org.sheepy.lily.core.api.allocation.annotation;
 	exports org.sheepy.lily.core.api.model;
-	exports org.sheepy.lily.core.api.adapter;
-	exports org.sheepy.lily.core.api.adapter.annotation;
-	exports org.sheepy.lily.core.api.adapter.util;
 	exports org.sheepy.lily.core.api.application;
+	exports org.sheepy.lily.core.api.adapter;
 	exports org.sheepy.lily.core.api.cadence;
 	exports org.sheepy.lily.core.api.engine;
-	exports org.sheepy.lily.core.api.extender;
-	exports org.sheepy.lily.core.api.extender.parameter;
 	exports org.sheepy.lily.core.api.inference;
 	exports org.sheepy.lily.core.api.input;
 	exports org.sheepy.lily.core.api.input.event;
@@ -40,9 +33,7 @@ module org.sheepy.lily.core.api
 	exports org.sheepy.lily.core.api.notification.impl;
 	exports org.sheepy.lily.core.api.notification.observatory;
 	exports org.sheepy.lily.core.api.notification.util;
-	exports org.sheepy.lily.core.api.reflect;
 	exports org.sheepy.lily.core.api.resource;
-	exports org.sheepy.lily.core.api.service;
 	exports org.sheepy.lily.core.api.util;
 	exports org.sheepy.lily.core.api.variable;
 
@@ -73,9 +64,6 @@ module org.sheepy.lily.core.api
 	uses IApplicationAdapter;
 	uses IModelExtension;
 	uses IResourceService;
-	uses IExtenderManagerFactory;
 	uses IStatistics;
-	uses IExtenderHandleFactory;
 	uses IAllocationService;
-	uses IExtenderDescriptorRegistry;
 }

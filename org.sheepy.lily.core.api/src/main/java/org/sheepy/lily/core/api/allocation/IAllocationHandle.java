@@ -1,8 +1,8 @@
 package org.sheepy.lily.core.api.allocation;
 
-import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.extender.IExtenderHandle;
+import org.logoce.extender.api.IAdapter;
+import org.logoce.extender.api.IAdapterHandle;
 
-public interface IAllocationHandle<T extends IExtender> extends IExtenderHandle<T>
+public interface IAllocationHandle<T extends IAdapter> extends IAdapterHandle<T>
 {
 }

@@ -1,7 +1,7 @@
 package org.sheepy.lily.core.variable.action;
 
-import org.sheepy.lily.core.api.adapter.annotation.Adapter;
-import org.sheepy.lily.core.api.extender.ModelExtender;
+import org.logoce.adapter.api.Adapter;
+import org.logoce.extender.api.ModelExtender;
 import org.sheepy.lily.core.api.variable.IModelVariableActionAdapter;
 import org.sheepy.lily.core.api.variable.IModelVariableAdapter;
 import org.sheepy.lily.core.model.variable.IModelVariable;

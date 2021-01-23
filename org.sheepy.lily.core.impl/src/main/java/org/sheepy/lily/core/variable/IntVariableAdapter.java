@@ -1,9 +1,9 @@
 package org.sheepy.lily.core.variable;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.sheepy.lily.core.api.adapter.annotation.Adapter;
-import org.sheepy.lily.core.api.adapter.annotation.NotifyChanged;
-import org.sheepy.lily.core.api.extender.ModelExtender;
+import org.logoce.adapter.api.Adapter;
+import org.sheepy.lily.core.api.adapter.NotifyChanged;
+import org.logoce.extender.api.ModelExtender;
 import org.logoce.notification.api.Notifier;
 import org.sheepy.lily.core.api.variable.IModelVariableAdapter;
 import org.sheepy.lily.core.model.variable.IntVariable;

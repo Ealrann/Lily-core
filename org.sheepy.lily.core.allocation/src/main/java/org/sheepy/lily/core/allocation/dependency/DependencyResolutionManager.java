@@ -1,7 +1,7 @@
 package org.sheepy.lily.core.allocation.dependency;
 
 import org.sheepy.lily.core.allocation.dependency.container.DependencyContainer;
-import org.sheepy.lily.core.api.extender.IExtenderHandle;
+import org.logoce.extender.api.IAdapterHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.util.Deque;
@@ -65,7 +65,7 @@ public final class DependencyResolutionManager
 		}
 	}
 
-	private boolean searchHandleFromIndex(final int index, final IExtenderHandle<?> handle)
+	private boolean searchHandleFromIndex(final int index, final IAdapterHandle<?> handle)
 	{
 		final var subIterator = currentAllocations.listIterator(index);
 		while (subIterator.hasNext())

@@ -1,16 +1,19 @@
 package org.sheepy.lily.core.allocation;
 
+import org.logoce.extender.api.IAdapter;
+import org.logoce.extender.api.IAdapterDescriptor;
+import org.logoce.extender.api.IAdapterExtension;
+import org.logoce.extender.ext.IAdapterHandleFactory;
 import org.sheepy.lily.core.api.allocation.annotation.Allocation;
-import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
-import org.sheepy.lily.core.api.extender.IExtenderHandleFactory;
 
 import java.lang.annotation.Annotation;
+import java.util.List;
 
-public final class AllocationHandleFactory implements IExtenderHandleFactory
+public final class AllocationHandleFactory implements IAdapterHandleFactory
 {
 	@Override
-	public <E extends IExtender> AllocationHandleBuilder<E> newBuilder(final IExtenderDescriptor<E> descriptor)
+	public <E extends IAdapter> AllocationHandleBuilder<E> newBuilder(final IAdapterDescriptor<E> descriptor,
+																	  final List<IAdapterExtension.Descriptor> extensionDescriptors)
 	{
 		return new AllocationHandleBuilder<>(descriptor);
 	}

@@ -1,6 +1,6 @@
 package org.sheepy.lily.core.api.allocation.annotation;
 
-import org.sheepy.lily.core.api.extender.IExtender;
+import org.logoce.extender.api.IAdapter;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -12,5 +12,5 @@ import java.lang.annotation.Target;
 public @interface InjectChildren
 {
 	int index();
-	Class<? extends IExtender> type();
+	Class<? extends IAdapter> type();
 }

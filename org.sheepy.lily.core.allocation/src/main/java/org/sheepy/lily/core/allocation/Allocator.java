@@ -8,7 +8,7 @@ import org.sheepy.lily.core.allocation.treeiterator.TriageTreeIterator;
 import org.sheepy.lily.core.allocation.treeiterator.UpdateTreeIterator;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.IAllocator;
-import org.sheepy.lily.core.api.extender.IExtender;
+import org.logoce.extender.api.IAdapter;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.util.Optional;
@@ -20,7 +20,7 @@ public class Allocator implements IAllocator
 	private final TreeOperator<UpdateTreeIterator> updateOperator;
 	private final TreeOperator<CleanupTreeIterator> freeOperator;
 
-	public Allocator(final ILilyEObject target, final IAllocationContext context, final Class<? extends IExtender> type)
+	public Allocator(final ILilyEObject target, final IAllocationContext context, final Class<? extends IAdapter> type)
 	{
 		final var operationContext = new OperationContext(target, context, type);
 		triageOperator = new TreeOperator<>(operationContext,
@@ -55,7 +55,7 @@ public class Allocator implements IAllocator
 		freeOperator.operate();
 	}
 
-	private static <T extends IExtender> Optional<IOperation<TriageTreeIterator>> buildTriageOperation(AllocationHandle<T> handle)
+	private static <T extends IAdapter> Optional<IOperation<TriageTreeIterator>> buildTriageOperation(AllocationHandle<T> handle)
 	{
 		final var mainAllocation = handle.getMainAllocation();
 		if (mainAllocation != null && mainAllocation.isDirty())
@@ -85,7 +85,7 @@ public class Allocator implements IAllocator
 		}
 	}
 
-	private static <T extends IExtender> Optional<IOperation<UpdateTreeIterator>> buildUpdateOperation(AllocationHandle<T> handle)
+	private static <T extends IAdapter> Optional<IOperation<UpdateTreeIterator>> buildUpdateOperation(AllocationHandle<T> handle)
 	{
 		final var mainAllocation = handle.getMainAllocation();
 		if (mainAllocation == null)
@@ -106,7 +106,7 @@ public class Allocator implements IAllocator
 		}
 	}
 
-	private static <T extends IExtender> Optional<IOperation<CleanupTreeIterator>> buildFreeOperation(AllocationHandle<T> handle)
+	private static <T extends IAdapter> Optional<IOperation<CleanupTreeIterator>> buildFreeOperation(AllocationHandle<T> handle)
 	{
 		final var mainAllocation = handle.getMainAllocation();
 		if (mainAllocation != null)

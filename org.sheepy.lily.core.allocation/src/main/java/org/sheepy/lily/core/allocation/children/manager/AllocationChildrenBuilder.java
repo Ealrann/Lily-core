@@ -5,8 +5,8 @@ import org.sheepy.lily.core.allocation.util.StructureObserver;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationChild;
 import org.sheepy.lily.core.api.allocation.annotation.InjectChildren;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
-import org.sheepy.lily.core.api.extender.IExtenderHandle;
+import org.logoce.extender.api.IAdapterDescriptor;
+import org.logoce.extender.api.IAdapterHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 
@@ -55,7 +55,7 @@ public final class AllocationChildrenBuilder
 
 	public AllocationChildrenManager buildPostAllocation(final BuildContext buildContext,
 														 final Optional<IAllocationContext> providedContext,
-														 final IExtenderDescriptor.ExtenderContext<?> extenderContext)
+														 final IAdapterDescriptor.ExtenderContext<?> extenderContext)
 	{
 		final var annotationHandles = extenderContext.annotationHandles()
 													 .stream(InjectChildren.class)
@@ -94,7 +94,7 @@ public final class AllocationChildrenBuilder
 			return new StructureObserver(childAnnotation.parent(), childAnnotation.features());
 		}
 
-		public ChildrenSupervisor.Builder build(final List<IExtenderHandle.AnnotatedHandle<InjectChildren>> annotationHandles)
+		public ChildrenSupervisor.Builder build(final List<IAdapterHandle.AnnotatedHandle<InjectChildren>> annotationHandles)
 		{
 			final var childrenInjectors = new AnnotationFilter(annotationHandles, index).stream()
 																						.map(ChildrenInjector::new)
@@ -103,16 +103,16 @@ public final class AllocationChildrenBuilder
 			return new ChildrenSupervisor.Builder(structureObservatory, childrenInjectors);
 		}
 
-		public static record AnnotationFilter(List<IExtenderHandle.AnnotatedHandle<InjectChildren>> annotationHandles,
+		public static record AnnotationFilter(List<IAdapterHandle.AnnotatedHandle<InjectChildren>> annotationHandles,
 											  int index)
 		{
-			public Stream<IExtenderHandle.AnnotatedHandle<InjectChildren>> stream()
+			public Stream<IAdapterHandle.AnnotatedHandle<InjectChildren>> stream()
 			{
 				return annotationHandles.stream()
 										.filter(this::match);
 			}
 
-			private boolean match(final IExtenderHandle.AnnotatedHandle<InjectChildren> h)
+			private boolean match(final IAdapterHandle.AnnotatedHandle<InjectChildren> h)
 			{
 				return h.annotation()
 						.index() == index;

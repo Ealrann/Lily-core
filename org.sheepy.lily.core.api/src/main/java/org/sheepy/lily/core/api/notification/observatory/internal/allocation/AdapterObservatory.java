@@ -1,7 +1,7 @@
 package org.sheepy.lily.core.api.notification.observatory.internal.allocation;
 
-import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.extender.IExtenderHandle;
+import org.logoce.extender.api.IAdapter;
+import org.logoce.extender.api.IAdapterHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IAdapterObservatoryBuilder;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
@@ -11,13 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class AdapterObservatory<Type extends IExtender> implements IObservatory
+public class AdapterObservatory<Type extends IAdapter> implements IObservatory
 {
 	private final Class<Type> adapterClass;
 	private final List<IAdapterPOI<Type>> listeners;
 	private final List<Consumer<Type>> gatherAdd;
 	private final List<Consumer<Type>> gatherRemove;
-	private final IExtenderHandle.ExtenderListener<Type> onAdapterUpdate = this::onAdapterUpdate;
+	private final IAdapterHandle.ExtenderListener<Type> onAdapterUpdate = this::onAdapterUpdate;
 
 	public AdapterObservatory(Class<Type> adapterClass,
 							  List<IAdapterPOI<Type>> listeners,
@@ -46,7 +46,7 @@ public class AdapterObservatory<Type extends IExtender> implements IObservatory
 			  .forEach(this::sulkHandle);
 	}
 
-	protected void observeHandle(final IExtenderHandle<Type> handle)
+	protected void observeHandle(final IAdapterHandle<Type> handle)
 	{
 		final var adapter = handle.getExtender();
 		if (adapter != null)
@@ -61,7 +61,7 @@ public class AdapterObservatory<Type extends IExtender> implements IObservatory
 		}
 	}
 
-	protected void sulkHandle(final IExtenderHandle<Type> handle)
+	protected void sulkHandle(final IAdapterHandle<Type> handle)
 	{
 		final var adapter = handle.getExtender();
 		if (adapter != null)
@@ -98,8 +98,8 @@ public class AdapterObservatory<Type extends IExtender> implements IObservatory
 		}
 	}
 
-	public static class Builder<Type extends IExtender> implements IAdapterObservatoryBuilder<Type>,
-																   InternalObservatoryBuilder
+	public static class Builder<Type extends IAdapter> implements IAdapterObservatoryBuilder<Type>,
+																  InternalObservatoryBuilder
 	{
 		protected final Class<Type> adapterClass;
 		protected final List<IAdapterPOI<Type>> listeners = new ArrayList<>();
@@ -112,7 +112,7 @@ public class AdapterObservatory<Type extends IExtender> implements IObservatory
 		}
 
 		@Override
-		public IAdapterObservatoryBuilder<Type> listenAdaptation(IExtenderHandle.ExtenderListener<Type> onNewAllocation)
+		public IAdapterObservatoryBuilder<Type> listenAdaptation(IAdapterHandle.ExtenderListener<Type> onNewAllocation)
 		{
 			listeners.add(new AdapterPOI<>(onNewAllocation));
 			return this;

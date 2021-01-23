@@ -1,12 +1,12 @@
 package org.sheepy.lily.core.api.inference;
 
 import org.eclipse.emf.ecore.EObject;
-import org.sheepy.lily.core.api.adapter.annotation.Dispose;
-import org.sheepy.lily.core.api.adapter.annotation.Load;
-import org.sheepy.lily.core.api.extender.IExtender;
+import org.sheepy.lily.core.api.adapter.Dispose;
+import org.sheepy.lily.core.api.adapter.Load;
+import org.logoce.extender.api.IAdapter;
 import org.sheepy.lily.core.model.inference.Inferer;
 
-public interface IInfererAdapter extends IExtender
+public interface IInfererAdapter extends IAdapter
 {
 	@Load
 	default void load(EObject unit)

@@ -10,9 +10,9 @@ import org.sheepy.lily.core.allocation.parameter.AllocationParametersBuilder;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationChild;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationDependency;
 import org.sheepy.lily.core.api.allocation.annotation.ProvideContext;
-import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
-import org.sheepy.lily.core.api.extender.IExtenderHandle;
+import org.logoce.extender.api.IAdapter;
+import org.logoce.extender.api.IAdapterDescriptor;
+import org.logoce.extender.api.IAdapterHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 
@@ -21,13 +21,13 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
 
-public record AllocationDescriptor<Allocation extends IExtender>(IExtenderDescriptor<Allocation> extenderDescriptor,
-																 DependencyManager.Builder dependencyManagerBuilder,
-																 AllocationChildrenBuilder allocationChildrenBuilder,
-																 AllocationParametersBuilder allocationParametersBuilder,
-																 int activator,
-																 boolean provideContext,
-																 boolean reuseDirtyAllocations)
+public record AllocationDescriptor<Allocation extends IAdapter>(IAdapterDescriptor<Allocation> extenderDescriptor,
+																DependencyManager.Builder dependencyManagerBuilder,
+																AllocationChildrenBuilder allocationChildrenBuilder,
+																AllocationParametersBuilder allocationParametersBuilder,
+																int activator,
+																boolean provideContext,
+																boolean reuseDirtyAllocations)
 {
 	public AllocationInstanceBuilder<Allocation> prepareBuild(final ILilyEObject target,
 															  final Runnable whenUpdateNeeded)
@@ -51,7 +51,7 @@ public record AllocationDescriptor<Allocation extends IExtender>(IExtenderDescri
 						   .map(this::castHandle);
 	}
 
-	private AllocationHandle<Allocation> castHandle(IExtenderHandle<Allocation> handle)
+	private AllocationHandle<Allocation> castHandle(IAdapterHandle<Allocation> handle)
 	{
 		return (AllocationHandle<Allocation>) handle;
 	}
@@ -77,11 +77,11 @@ public record AllocationDescriptor<Allocation extends IExtender>(IExtenderDescri
 		return "AllocationDescriptor{" + extenderDescriptor.extenderClass().getSimpleName() + '}';
 	}
 
-	public static final class Builder<Allocation extends IExtender>
+	public static final class Builder<Allocation extends IAdapter>
 	{
-		private final IExtenderDescriptor<Allocation> extenderDescriptor;
+		private final IAdapterDescriptor<Allocation> extenderDescriptor;
 
-		public Builder(IExtenderDescriptor<Allocation> extenderDescriptor)
+		public Builder(IAdapterDescriptor<Allocation> extenderDescriptor)
 		{
 			this.extenderDescriptor = extenderDescriptor;
 		}

@@ -2,10 +2,10 @@ package org.sheepy.lily.core.allocation.dependency;
 
 import org.sheepy.lily.core.allocation.dependency.container.DependencyContainer;
 import org.sheepy.lily.core.api.allocation.annotation.UpdateDependency;
-import org.sheepy.lily.core.api.extender.IExtenderHandle;
+import org.logoce.extender.api.IAdapterHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
-import org.sheepy.lily.core.api.reflect.ConsumerHandle;
+import org.logoce.extender.api.reflect.ConsumerHandle;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -20,7 +20,7 @@ public final class DependencyUpdater
 	private final boolean many;
 
 	public DependencyUpdater(final DependencyWatcher resolution,
-							 final IExtenderHandle.AnnotatedHandle<UpdateDependency> updateHandle)
+							 final IAdapterHandle.AnnotatedHandle<UpdateDependency> updateHandle)
 	{
 		this.resolution = resolution;
 		this.updateHandle = (ConsumerHandle) updateHandle.executionHandle();
@@ -66,7 +66,7 @@ public final class DependencyUpdater
 	}
 
 	public static record Builder(DependencyWatcher.Builder resolutionBuilder,
-								 IExtenderHandle.AnnotatedHandle<UpdateDependency> updateHandle)
+								 IAdapterHandle.AnnotatedHandle<UpdateDependency> updateHandle)
 	{
 		public DependencyUpdater build(final IObservatoryBuilder observatoryBuilder,
 									   final Runnable onResolutionObsolete)

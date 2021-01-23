@@ -1,12 +1,12 @@
 package org.sheepy.lily.core.allocation.test.adapters;
 
+import org.logoce.extender.api.ModelExtender;
 import org.sheepy.lily.core.allocation.test.testallocation.AllocationObject;
 import org.sheepy.lily.core.allocation.test.testallocation.Root;
 import org.sheepy.lily.core.allocation.test.testallocation.TestallocationPackage;
 import org.sheepy.lily.core.api.allocation.IAllocationState;
 import org.sheepy.lily.core.api.allocation.annotation.Allocation;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationChild;
-import org.sheepy.lily.core.api.extender.ModelExtender;
 
 @ModelExtender(scope = Root.class)
 @Allocation(context = TestContext.class)

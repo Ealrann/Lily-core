@@ -1,8 +1,8 @@
 package org.sheepy.lily.core.api.cadence;
 
-import org.sheepy.lily.core.api.extender.IExtender;
+import org.logoce.extender.api.IAdapter;
 
-public interface ICadenceAdapter extends IExtender
+public interface ICadenceAdapter extends IAdapter
 {
 	void run();
 }

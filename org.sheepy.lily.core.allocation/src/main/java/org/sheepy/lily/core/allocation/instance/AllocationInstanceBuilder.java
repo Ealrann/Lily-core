@@ -6,18 +6,18 @@ import org.sheepy.lily.core.allocation.dependency.DependencyManager;
 import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.annotation.ProvideContext;
-import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
-import org.sheepy.lily.core.api.extender.IExtenderHandle;
+import org.logoce.extender.api.IAdapter;
+import org.logoce.extender.api.IAdapterDescriptor;
+import org.logoce.extender.api.IAdapterHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
-import org.sheepy.lily.core.api.reflect.SupplierHandle;
+import org.logoce.extender.api.reflect.SupplierHandle;
 import org.sheepy.lily.core.api.util.DebugUtil;
 
 import java.util.Optional;
 
-public final class AllocationInstanceBuilder<Allocation extends IExtender>
+public final class AllocationInstanceBuilder<Allocation extends IAdapter>
 {
 	private final ILilyEObject target;
 	private final AllocationChildrenManager preChildrenManager;
@@ -66,7 +66,7 @@ public final class AllocationInstanceBuilder<Allocation extends IExtender>
 	}
 
 	private DependencyManager buildDependencyManager(final IObservatoryBuilder observatoryBuilder,
-													 final IExtenderDescriptor.ExtenderContext<Allocation> extenderContext)
+													 final IAdapterDescriptor.ExtenderContext<Allocation> extenderContext)
 	{
 		final var alloctionName = extenderContext.extender().getClass().getSimpleName();
 		final Runnable markObsolete = DebugUtil.DEBUG_ALLOCATION ? () -> markObsoleteAndLog(alloctionName,
@@ -96,11 +96,11 @@ public final class AllocationInstanceBuilder<Allocation extends IExtender>
 		return postChildrenManager;
 	}
 
-	public static Optional<IAllocationContext> contextProvider(IExtenderDescriptor.ExtenderContext<?> extenderContext)
+	public static Optional<IAllocationContext> contextProvider(IAdapterDescriptor.ExtenderContext<?> extenderContext)
 	{
 		final var supplier = extenderContext.annotationHandles()
 											.stream(ProvideContext.class)
-											.map(IExtenderHandle.AnnotatedHandle::executionHandle)
+											.map(IAdapterHandle.AnnotatedHandle::executionHandle)
 											.map(SupplierHandle.class::cast)
 											.findAny()
 											.orElseThrow();

@@ -1,21 +1,21 @@
 package org.sheepy.lily.core.allocation.instance;
 
+import org.logoce.extender.api.IAdapter;
+import org.logoce.extender.api.IAdapterDescriptor;
+import org.logoce.extender.api.IAdapterHandle;
 import org.sheepy.lily.core.allocation.children.manager.AllocationChildrenManager;
 import org.sheepy.lily.core.allocation.dependency.DependencyManager;
 import org.sheepy.lily.core.api.allocation.EAllocationStatus;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.annotation.Free;
 import org.sheepy.lily.core.api.allocation.annotation.Update;
-import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
-import org.sheepy.lily.core.api.extender.IExtenderHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatory;
 
 import java.lang.annotation.Annotation;
 import java.util.stream.Stream;
 
-public final class AllocationInstance<Allocation extends IExtender>
+public final class AllocationInstance<Allocation extends IAdapter>
 {
 	private final IObservatory preObservatory;
 	private final IObservatory observatory;
@@ -23,7 +23,7 @@ public final class AllocationInstance<Allocation extends IExtender>
 	private final DependencyManager dependencyManager;
 	private final AllocationChildrenManager preChildrenManager;
 	private final AllocationChildrenManager postChildrenManager;
-	private final IExtenderDescriptor.ExtenderContext<Allocation> extenderContext;
+	private final IAdapterDescriptor.ExtenderContext<Allocation> extenderContext;
 
 	public AllocationInstance(final ILilyEObject target,
 							  final IObservatory preObservatory,
@@ -32,7 +32,7 @@ public final class AllocationInstance<Allocation extends IExtender>
 							  final DependencyManager dependencyManager,
 							  final AllocationChildrenManager preChildrenManager,
 							  final AllocationChildrenManager postChildrenManager,
-							  final IExtenderDescriptor.ExtenderContext<Allocation> extenderContext)
+							  final IAdapterDescriptor.ExtenderContext<Allocation> extenderContext)
 	{
 		this.preObservatory = preObservatory;
 		this.observatory = observatory;
@@ -110,7 +110,7 @@ public final class AllocationInstance<Allocation extends IExtender>
 		return state.getStatus();
 	}
 
-	public <A extends Annotation> Stream<IExtenderHandle.AnnotatedHandle<A>> annotatedHandles(Class<A> annotationClass)
+	public <A extends Annotation> Stream<IAdapterHandle.AnnotatedHandle<A>> annotatedHandles(Class<A> annotationClass)
 	{
 		return extenderContext.annotationHandles()
 							  .stream(annotationClass);

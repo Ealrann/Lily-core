@@ -1,7 +1,7 @@
 package org.sheepy.lily.core.api.util;
 
 import org.eclipse.emf.ecore.EReference;
-import org.sheepy.lily.core.api.extender.IExtender;
+import org.logoce.extender.api.IAdapter;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.util.ArrayList;
@@ -39,22 +39,22 @@ public final class CompositeModelExplorer
 		return stream(root).map(targetClass::cast);
 	}
 
-	public <T extends IExtender> List<T> exploreAdapt(ILilyEObject root, Class<T> adapterType)
+	public <T extends IAdapter> List<T> exploreAdapt(ILilyEObject root, Class<T> adapterType)
 	{
 		return streamAdapt(root, adapterType).collect(Collectors.toUnmodifiableList());
 	}
 
-	public <T extends IExtender> Stream<T> streamAdapt(ILilyEObject root, Class<T> adapterType)
+	public <T extends IAdapter> Stream<T> streamAdapt(ILilyEObject root, Class<T> adapterType)
 	{
 		return stream(root).map(e -> e.adapt(adapterType)).filter(Objects::nonNull);
 	}
 
-	public <T extends IExtender> List<T> exploreAdaptNotNull(ILilyEObject root, Class<T> adapterType)
+	public <T extends IAdapter> List<T> exploreAdaptNotNull(ILilyEObject root, Class<T> adapterType)
 	{
 		return streamAdaptNotNull(root, adapterType).collect(Collectors.toUnmodifiableList());
 	}
 
-	public <T extends IExtender> Stream<T> streamAdaptNotNull(ILilyEObject root, Class<T> adapterType)
+	public <T extends IAdapter> Stream<T> streamAdaptNotNull(ILilyEObject root, Class<T> adapterType)
 	{
 		return stream(root).map(e -> e.adaptNotNull(adapterType));
 	}

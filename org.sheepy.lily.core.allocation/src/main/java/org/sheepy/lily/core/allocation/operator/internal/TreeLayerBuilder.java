@@ -1,12 +1,12 @@
 package org.sheepy.lily.core.allocation.operator.internal;
 
+import org.logoce.extender.api.IAdapter;
+import org.logoce.extender.api.IAdapterDescriptor;
+import org.logoce.extender.api.IAdapterDescriptorRegistry;
 import org.sheepy.lily.core.allocation.AllocationHandle;
 import org.sheepy.lily.core.allocation.operation.IOperation;
 import org.sheepy.lily.core.allocation.operator.OperationContext;
 import org.sheepy.lily.core.allocation.treeiterator.AllocationTreeIterator;
-import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptorRegistry;
 
 import java.util.Optional;
 import java.util.function.Function;
@@ -24,16 +24,16 @@ public final class TreeLayerBuilder
 
 	public <T extends AllocationTreeIterator<T>> ILayer<T> rootLayer(final Function<AllocationHandle<?>, Optional<? extends IOperation<T>>> operationBuilder)
 	{
-		final var stream = IExtenderDescriptorRegistry.INSTANCE.streamDescriptors(context.target(), context.type())
-															   .map(this::adaptHandle)
-															   .map(operationBuilder)
-															   .flatMap(Optional::stream)
-															   .map(this::newWrapper);
+		final var stream = IAdapterDescriptorRegistry.INSTANCE.streamDescriptors(context.target(), context.type())
+															  .map(this::adaptHandle)
+															  .map(operationBuilder)
+															  .flatMap(Optional::stream)
+															  .map(this::newWrapper);
 
 		return new RootLayer<>(stream.iterator(), context.rootContext());
 	}
 
-	private AllocationHandle<?> adaptHandle(final IExtenderDescriptor<? extends IExtender> descriptor)
+	private AllocationHandle<?> adaptHandle(final IAdapterDescriptor<? extends IAdapter> descriptor)
 	{
 		return (AllocationHandle<?>) context.target()
 											.adapterManager()

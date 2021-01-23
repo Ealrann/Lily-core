@@ -1,9 +1,9 @@
 package org.sheepy.lily.core.allocation.parameter;
 
+import org.logoce.extender.api.IAdaptable;
+import org.logoce.extender.api.parameter.IParameterResolver;
 import org.sheepy.lily.core.allocation.instance.AllocationState;
 import org.sheepy.lily.core.api.allocation.IAllocationState;
-import org.sheepy.lily.core.api.extender.IAdaptable;
-import org.sheepy.lily.core.api.extender.parameter.IParameterResolver;
 
 import java.lang.annotation.Annotation;
 

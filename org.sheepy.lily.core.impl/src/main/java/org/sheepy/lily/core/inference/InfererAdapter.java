@@ -1,7 +1,7 @@
 package org.sheepy.lily.core.inference;
 
-import org.sheepy.lily.core.api.adapter.annotation.Adapter;
-import org.sheepy.lily.core.api.extender.ModelExtender;
+import org.logoce.adapter.api.Adapter;
+import org.logoce.extender.api.ModelExtender;
 import org.sheepy.lily.core.api.inference.IInferenceAdapter;
 import org.sheepy.lily.core.api.inference.IInfererAdapter;
 import org.sheepy.lily.core.model.inference.Inferer;

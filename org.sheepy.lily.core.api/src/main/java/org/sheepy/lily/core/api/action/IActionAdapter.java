@@ -1,9 +1,9 @@
 package org.sheepy.lily.core.api.action;
 
-import org.sheepy.lily.core.api.extender.IExtender;
+import org.logoce.extender.api.IAdapter;
 import org.sheepy.lily.core.model.action.Action;
 
-public interface IActionAdapter<T extends Action> extends IExtender
+public interface IActionAdapter<T extends Action> extends IAdapter
 {
 	void execute(T action);
 }

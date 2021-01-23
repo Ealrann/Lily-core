@@ -2,9 +2,7 @@ package org.sheepy.lily.core.api.cadence;
 
 import java.util.ServiceLoader;
 
-import org.sheepy.lily.core.api.service.IService;
-
-public interface IStatistics extends IService
+public interface IStatistics
 {
 	void addTime(String label, long durationNs);
 

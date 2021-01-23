@@ -1,6 +1,8 @@
 package org.sheepy.lily.core.allocation;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.logoce.extender.api.IAdaptable;
+import org.logoce.extender.api.IAdapter;
 import org.logoce.notification.api.Feature;
 import org.logoce.notification.api.IFeatures;
 import org.logoce.notification.api.ListenerMap;
@@ -8,8 +10,6 @@ import org.sheepy.lily.core.allocation.description.AllocationDescriptor;
 import org.sheepy.lily.core.allocation.instance.AllocationInstance;
 import org.sheepy.lily.core.allocation.operation.BuildOperation;
 import org.sheepy.lily.core.api.allocation.IAllocationHandle;
-import org.sheepy.lily.core.api.extender.IAdaptable;
-import org.sheepy.lily.core.api.extender.IExtender;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.lang.annotation.Annotation;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
-public final class AllocationHandle<Allocation extends IExtender> implements IAllocationHandle<Allocation>
+public final class AllocationHandle<Allocation extends IAdapter> implements IAllocationHandle<Allocation>
 {
 	private interface Features extends IFeatures<Features>
 	{}
@@ -161,7 +161,7 @@ public final class AllocationHandle<Allocation extends IExtender> implements IAl
 		return target;
 	}
 
-	private static <T extends IExtender> T getAllocationOrNull(AllocationInstance<T> instance)
+	private static <T extends IAdapter> T getAllocationOrNull(AllocationInstance<T> instance)
 	{
 		return instance != null ? instance.getAllocation() : null;
 	}

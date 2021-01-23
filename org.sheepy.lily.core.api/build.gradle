@@ -1,4 +1,5 @@
 dependencies {
+	api project(":logoce.extender")
 	api project(":logoce.adapter")
 	api project(":logoce.notification")
 

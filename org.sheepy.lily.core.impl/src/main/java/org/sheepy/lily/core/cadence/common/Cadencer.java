@@ -2,11 +2,11 @@ package org.sheepy.lily.core.cadence.common;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.logoce.extender.api.IAdapterDescriptorRegistry;
 import org.sheepy.lily.core.api.cadence.AutoLoad;
 import org.sheepy.lily.core.api.cadence.IStatistics;
 import org.sheepy.lily.core.api.cadence.Tick;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptorRegistry;
+import org.logoce.extender.api.IAdapterDescriptor;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.util.DebugUtil;
 import org.sheepy.lily.core.cadence.tick.TickHandle;
@@ -172,13 +172,13 @@ public final class Cadencer
 
 		private static List<TickHandle.Builder> createTickBuilders()
 		{
-			return IExtenderDescriptorRegistry.INSTANCE.streamDescriptors()
-													   .filter(de -> de.containsMethodAnnotation(Tick.class))
-													   .flatMap(CadenceContentAdater::createBuildersFromDescriptor)
-													   .collect(Collectors.toUnmodifiableList());
+			return IAdapterDescriptorRegistry.INSTANCE.streamDescriptors()
+													  .filter(de -> de.containsMethodAnnotation(Tick.class))
+													  .flatMap(CadenceContentAdater::createBuildersFromDescriptor)
+													  .collect(Collectors.toUnmodifiableList());
 		}
 
-		private static Stream<TickHandle.Builder> createBuildersFromDescriptor(IExtenderDescriptor<?> descriptor)
+		private static Stream<TickHandle.Builder> createBuildersFromDescriptor(IAdapterDescriptor<?> descriptor)
 		{
 			return descriptor.streamMethodAnnotations(Tick.class)
 							 .map(annotation -> new TickHandle.Builder(descriptor, annotation));

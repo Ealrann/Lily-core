@@ -1,11 +1,11 @@
 package org.sheepy.lily.core.application;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.sheepy.lily.core.api.adapter.annotation.Adapter;
-import org.sheepy.lily.core.api.adapter.annotation.NotifyChanged;
+import org.logoce.adapter.api.Adapter;
+import org.sheepy.lily.core.api.adapter.NotifyChanged;
 import org.sheepy.lily.core.api.application.IApplicationAdapter;
 import org.sheepy.lily.core.api.cadence.ICadenceManager;
-import org.sheepy.lily.core.api.extender.ModelExtender;
+import org.logoce.extender.api.ModelExtender;
 import org.sheepy.lily.core.api.util.DebugUtil;
 import org.sheepy.lily.core.cadence.common.CadenceManager;
 import org.sheepy.lily.core.model.application.Application;

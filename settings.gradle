@@ -1,10 +1,8 @@
 rootProject.name = "org.sheepy.lily.core"
 
-
 include 'logoce.extender'
 include 'logoce.adapter'
 include 'logoce.notification'
-
 
 include 'org.sheepy.lily.core.api'
 

@@ -1,7 +1,7 @@
 package org.sheepy.lily.core.api.notification.observatory.internal.eobject;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.sheepy.lily.core.api.extender.IExtender;
+import org.logoce.extender.api.IAdapter;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.logoce.notification.api.IFeatures;
 import org.logoce.notification.api.INotifier;
@@ -141,7 +141,7 @@ public abstract class AbstractRootObservatory implements IObservatory
 		}
 
 		@Override
-		public <T extends IExtender> IAdapterObservatoryBuilder<T> adapt(final Class<T> classifier)
+		public <T extends IAdapter> IAdapterObservatoryBuilder<T> adapt(final Class<T> classifier)
 		{
 			final var child = new AdapterObservatory.Builder<>(classifier);
 			children.add(child);
@@ -149,7 +149,7 @@ public abstract class AbstractRootObservatory implements IObservatory
 		}
 
 		@Override
-		public <F extends IFeatures<?>, N extends IExtender & INotifier<? extends F>> INotifierAdapterObservatoryBuilder<F, N> adaptNotifier(
+		public <F extends IFeatures<?>, N extends IAdapter & INotifier<? extends F>> INotifierAdapterObservatoryBuilder<F, N> adaptNotifier(
 				final Class<N> classifier)
 		{
 			final var child = new NotifierAdapterObservatory.Builder<>(classifier);

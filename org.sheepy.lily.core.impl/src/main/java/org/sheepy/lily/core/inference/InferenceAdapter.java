@@ -2,9 +2,9 @@ package org.sheepy.lily.core.inference;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.sheepy.lily.core.api.adapter.annotation.Adapter;
-import org.sheepy.lily.core.api.extender.IAdaptable;
-import org.sheepy.lily.core.api.extender.ModelExtender;
+import org.logoce.extender.api.IAdaptable;
+import org.logoce.extender.api.ModelExtender;
+import org.logoce.adapter.api.Adapter;
 import org.sheepy.lily.core.api.inference.IInferenceAdapter;
 import org.sheepy.lily.core.model.inference.*;
 import org.sheepy.lily.core.model.types.Parameter;

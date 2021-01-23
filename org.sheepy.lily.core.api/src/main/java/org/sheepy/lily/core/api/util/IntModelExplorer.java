@@ -1,6 +1,6 @@
 package org.sheepy.lily.core.api.util;
 
-import org.sheepy.lily.core.api.extender.IExtender;
+import org.logoce.extender.api.IAdapter;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 
 import java.util.Arrays;
@@ -46,37 +46,37 @@ public final class IntModelExplorer implements IModelExplorer
 	}
 
 	@Override
-	public <T extends IExtender> List<T> exploreAdapt(ILilyEObject root, Class<T> adapterType)
+	public <T extends IAdapter> List<T> exploreAdapt(ILilyEObject root, Class<T> adapterType)
 	{
 		return streamAdapt(root, adapterType).collect(Collectors.toUnmodifiableList());
 	}
 
 	@Override
-	public <T extends IExtender> List<T> exploreAdaptGeneric(ILilyEObject root, Class<? extends IExtender> adapterType)
+	public <T extends IAdapter> List<T> exploreAdaptGeneric(ILilyEObject root, Class<? extends IAdapter> adapterType)
 	{
 		return this.<T>streamAdaptGeneric(root, adapterType).collect(Collectors.toUnmodifiableList());
 	}
 
 	@Override
-	public <T extends IExtender> Stream<T> streamAdapt(ILilyEObject root, Class<T> adapterType)
+	public <T extends IAdapter> Stream<T> streamAdapt(ILilyEObject root, Class<T> adapterType)
 	{
 		return stream(root).map(e -> e.adapt(adapterType)).filter(Objects::nonNull);
 	}
 
 	@Override
-	public <T extends IExtender> Stream<T> streamAdaptGeneric(ILilyEObject root, Class<? extends IExtender> adapterType)
+	public <T extends IAdapter> Stream<T> streamAdaptGeneric(ILilyEObject root, Class<? extends IAdapter> adapterType)
 	{
 		return stream(root).map(e -> e.<T>adaptGeneric(adapterType)).filter(Objects::nonNull);
 	}
 
 	@Override
-	public <T extends IExtender> List<T> exploreAdaptNotNull(ILilyEObject root, Class<T> adapterType)
+	public <T extends IAdapter> List<T> exploreAdaptNotNull(ILilyEObject root, Class<T> adapterType)
 	{
 		return streamAdaptNotNull(root, adapterType).collect(Collectors.toUnmodifiableList());
 	}
 
 	@Override
-	public <T extends IExtender> Stream<T> streamAdaptNotNull(ILilyEObject root, Class<T> adapterType)
+	public <T extends IAdapter> Stream<T> streamAdaptNotNull(ILilyEObject root, Class<T> adapterType)
 	{
 		return stream(root).map(e -> e.adaptNotNull(adapterType));
 	}

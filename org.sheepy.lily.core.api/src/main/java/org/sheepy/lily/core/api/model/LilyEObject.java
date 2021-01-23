@@ -2,9 +2,8 @@ package org.sheepy.lily.core.api.model;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EReference;
-import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.extender.IExtenderManager;
-import org.sheepy.lily.core.api.extender.IExtenderManagerFactory;
+import org.logoce.adapter.api.BasicAdapterManager;
+import org.logoce.extender.api.IAdapter;
 import org.sheepy.lily.core.api.notification.util.NotificationUnifier;
 import org.sheepy.lily.core.api.util.TreeLazyIterator;
 import org.sheepy.lily.core.model.types.LNamedElement;
@@ -17,9 +16,8 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 {
 	private static final String CANNOT_FIND_ADAPTER = "Cannot find adapter [%s] for class [%s]";
 	private static final String CANNOT_FIND_IDENTIFIED_ADAPTER = "Cannot find adapter [%s] (id = %s) for class [%s]";
-	private static final IExtenderManagerFactory ADAPTER_FACTORY = IExtenderManagerFactory.INSTANCE;
 
-	private IExtenderManager.Internal extenderManager = null;
+	private BasicAdapterManager extenderManager = null;
 
 	private boolean loaded = false;
 
@@ -56,33 +54,33 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	}
 
 	@Override
-	public final <T extends IExtender> T adaptGeneric(final Class<? extends IExtender> type)
+	public final <T extends IAdapter> T adaptGeneric(final Class<? extends IAdapter> type)
 	{
 		@SuppressWarnings("unchecked") final var adapt = (T) adapt(type);
 		return adapt;
 	}
 
 	@Override
-	public final <T extends IExtender> T adapt(final Class<T> type)
+	public final <T extends IAdapter> T adapt(final Class<T> type)
 	{
 		return adapterManager().adapt(type);
 	}
 
 	@Override
-	public final <T extends IExtender> T adapt(final Class<T> type, final String identifier)
+	public final <T extends IAdapter> T adapt(final Class<T> type, final String identifier)
 	{
 		return adapterManager().adapt(type, identifier);
 	}
 
 	@Override
-	public final <T extends IExtender> T adaptNotNullGeneric(final Class<? extends IExtender> type)
+	public final <T extends IAdapter> T adaptNotNullGeneric(final Class<? extends IAdapter> type)
 	{
 		@SuppressWarnings("unchecked") final var adapt = (T) adaptNotNull(type);
 		return adapt;
 	}
 
 	@Override
-	public final <T extends IExtender> T adaptNotNull(final Class<T> type)
+	public final <T extends IAdapter> T adaptNotNull(final Class<T> type)
 	{
 		final T adapt = adapt(type);
 		if (adapt == null)
@@ -98,7 +96,7 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	}
 
 	@Override
-	public final <T extends IExtender> T adaptNotNull(final Class<T> type, final String identifier)
+	public final <T extends IAdapter> T adaptNotNull(final Class<T> type, final String identifier)
 	{
 		final T adapt = adapt(type, identifier);
 		if (adapt == null)
@@ -117,11 +115,11 @@ public abstract class LilyEObject extends LilyBasicNotifier implements ILilyEObj
 	}
 
 	@Override
-	public final IExtenderManager.Internal adapterManager()
+	public final BasicAdapterManager adapterManager()
 	{
 		if (extenderManager == null)
 		{
-			extenderManager = ADAPTER_FACTORY != null ? ADAPTER_FACTORY.createExtenderManager(this) : null;
+			extenderManager = new BasicAdapterManager(this);
 		}
 		return extenderManager;
 	}

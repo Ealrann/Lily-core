@@ -1,10 +1,10 @@
 package org.sheepy.lily.core.api.notification.observatory.internal.allocation;
 
-import org.sheepy.lily.core.api.extender.IExtender;
-import org.sheepy.lily.core.api.extender.IExtenderHandle;
+import org.logoce.extender.api.IAdapter;
+import org.logoce.extender.api.IAdapterHandle;
 
-public interface IAdapterPOI<T extends IExtender>
+public interface IAdapterPOI<T extends IAdapter>
 {
-	void listen(IExtenderHandle<T> handle);
-	void sulk(IExtenderHandle<T> handle);
+	void listen(IAdapterHandle<T> handle);
+	void sulk(IAdapterHandle<T> handle);
 }

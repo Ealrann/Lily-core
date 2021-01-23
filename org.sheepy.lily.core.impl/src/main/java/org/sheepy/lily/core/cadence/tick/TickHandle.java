@@ -3,10 +3,10 @@ package org.sheepy.lily.core.cadence.tick;
 import org.eclipse.emf.ecore.EObject;
 import org.sheepy.lily.core.api.cadence.ETickerClock;
 import org.sheepy.lily.core.api.cadence.Tick;
-import org.sheepy.lily.core.api.extender.IExtenderDescriptor;
-import org.sheepy.lily.core.api.extender.IExtenderHandle;
+import org.logoce.extender.api.IAdapterDescriptor;
+import org.logoce.extender.api.IAdapterHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
-import org.sheepy.lily.core.api.reflect.ConsumerHandle;
+import org.logoce.extender.api.reflect.ConsumerHandle;
 
 import java.util.function.Consumer;
 import java.util.function.LongConsumer;
@@ -16,12 +16,12 @@ import java.util.stream.Stream;
 public final class TickHandle
 {
 	public final ILilyEObject target;
-	private final IExtenderHandle<?> handle;
+	private final IAdapterHandle<?> handle;
 	private final TickConfiguration configuration;
 	private final String adapterName;
 
 	public TickHandle(ILilyEObject target,
-					  IExtenderHandle<?> handle,
+					  IAdapterHandle<?> handle,
 					  TickConfiguration configuration,
 					  String adapterName)
 	{
@@ -43,7 +43,7 @@ public final class TickHandle
 					 .map(this::tickOperation);
 	}
 
-	private LongConsumer tickOperation(final IExtenderHandle.AnnotatedHandle<Tick> tickAnnotatedHandle)
+	private LongConsumer tickOperation(final IAdapterHandle.AnnotatedHandle<Tick> tickAnnotatedHandle)
 	{
 		final var consumerHandle = (ConsumerHandle) tickAnnotatedHandle.executionHandle();
 		final var function = consumerHandle.getLambdaFunction();
@@ -74,7 +74,7 @@ public final class TickHandle
 		}
 	}
 
-	private boolean match(final IExtenderHandle.AnnotatedHandle<Tick> handle)
+	private boolean match(final IAdapterHandle.AnnotatedHandle<Tick> handle)
 	{
 		return handle.annotation() == configuration.annotation();
 	}
@@ -101,11 +101,11 @@ public final class TickHandle
 
 	public static final class Builder
 	{
-		private final IExtenderDescriptor<?> descriptor;
+		private final IAdapterDescriptor<?> descriptor;
 		private final TickConfiguration tickConfiguration;
 		private final String adapterName;
 
-		public Builder(final IExtenderDescriptor<?> descriptor, Tick annotation)
+		public Builder(final IAdapterDescriptor<?> descriptor, Tick annotation)
 		{
 			this.descriptor = descriptor;
 			tickConfiguration = new TickConfiguration(annotation);
