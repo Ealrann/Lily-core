@@ -1,12 +1,13 @@
 rootProject.name = "org.sheepy.lily.core"
 
-include 'logoce.extender'
-include 'logoce.adapter'
-include 'logoce.notification'
-
 include 'org.sheepy.lily.core.api'
 
 include 'org.sheepy.lily.core.base'
 
 include 'org.sheepy.lily.core.allocation'
 include 'org.sheepy.lily.core.impl'
+
+
+if (gradle.parent == null) {
+	includeBuild '../Logoce'
+}

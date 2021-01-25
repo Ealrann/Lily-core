@@ -1,7 +1,7 @@
 dependencies {
-	api project(":logoce.extender")
-	api project(":logoce.adapter")
-	api project(":logoce.notification")
+	api 'logoce:logoce.extender'
+	api 'logoce:logoce.adapter'
+	api 'logoce:logoce.notification'
 
 	api "org.joml:joml:$jomlVersion"
 
