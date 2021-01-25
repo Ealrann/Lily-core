@@ -5,11 +5,15 @@ import org.logoce.extender.api.IAdapterManager;
 
 public abstract class BasicAdaptable implements IAdaptable
 {
-	private final BasicAdapterManager adapterManager = new BasicAdapterManager(this);
+	private BasicAdapterManager adapterManager = null;
 
 	@Override
 	public IAdapterManager adapterManager()
 	{
+		if (adapterManager == null)
+		{
+			adapterManager = new BasicAdapterManager(this);
+		}
 		return adapterManager;
 	}
 }

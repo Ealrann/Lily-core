@@ -11,7 +11,13 @@ public class Adapters implements IAdapterProvider
 	@Override
 	public List<Class<? extends IAdapter>> classifiers()
 	{
-		return List.of(TestAdapter.TestAdapter1.class, TestAdapter.TestAdapter2.class);
+		return List.of(TestAdapter.TestAdapter1.class,
+					   TestAdapter.TestAdapter2.class,
+					   TestAdapter.TestSingletonAdapter.class,
+					   TestAdapter.TestNamedAdapter1.class,
+					   TestAdapter.TestNamedAdapter2.class,
+					   TestAdapter.TestIdAdapter1.class,
+					   TestAdapter.TestIdAdapter2.class);
 	}
 
 	@Override
