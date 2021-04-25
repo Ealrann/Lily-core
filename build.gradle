@@ -22,7 +22,7 @@ subprojects {
 
 	afterEvaluate {
 		repositories {
-			jcenter()
+			mavenCentral()
 			maven {
 				url "https://maven.pkg.github.com/ealrann/emf-standalone"
 				credentials {
