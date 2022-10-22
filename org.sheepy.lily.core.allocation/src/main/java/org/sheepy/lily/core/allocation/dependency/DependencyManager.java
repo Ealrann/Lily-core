@@ -1,14 +1,13 @@
 package org.sheepy.lily.core.allocation.dependency;
 
-import org.sheepy.lily.core.api.allocation.annotation.UpdateDependency;
 import org.logoce.extender.api.IAdapterDescriptor;
 import org.logoce.extender.api.IAdapterHandle;
+import org.sheepy.lily.core.api.allocation.annotation.UpdateDependency;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.util.DebugUtil;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public final class DependencyManager
 {
@@ -27,12 +26,12 @@ public final class DependencyManager
 		this.updatableDependencies = updatableDependencies.stream()
 														  .map(builder -> builder.build(observatoryBuilder,
 																						onUpdatableChange))
-														  .collect(Collectors.toUnmodifiableList());
+														  .toList();
 		this.criticalDependencies = criticalDependencies.stream()
 														.map(builder -> buildCriticalDependencyResolution(
 																observatoryBuilder,
 																builder))
-														.collect(Collectors.toUnmodifiableList());
+														.toList();
 	}
 
 	private DependencyWatcher buildCriticalDependencyResolution(final IObservatoryBuilder observatoryBuilder,
@@ -117,7 +116,7 @@ public final class DependencyManager
 																	 .map(DependencyWatcher.Builder::resolver)
 																	 .noneMatch(res -> res == resolver))
 							.map(r -> newDependencyResolutionBuilder(r, target))
-							.collect(Collectors.toUnmodifiableList());
+							.toList();
 		}
 
 		private static DependencyWatcher.Builder newDependencyResolutionBuilder(final DependencyResolver resolver,
@@ -132,7 +131,7 @@ public final class DependencyManager
 			final var updatableDependencies = extenderContext.annotationHandles()
 															 .stream(UpdateDependency.class)
 															 .map(h -> newDependencyUpdater(target, h))
-															 .collect(Collectors.toUnmodifiableList());
+															 .toList();
 			return updatableDependencies;
 		}
 

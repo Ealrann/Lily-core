@@ -1,10 +1,10 @@
 package org.sheepy.lily.core.cadence.adapter;
 
 import org.logoce.adapter.api.Adapter;
+import org.logoce.extender.api.ModelExtender;
 import org.sheepy.lily.core.api.cadence.ICadenceAdapter;
 import org.sheepy.lily.core.api.cadence.ICadenceContext;
 import org.sheepy.lily.core.api.cadence.ICadenceTaskAdapter;
-import org.logoce.extender.api.ModelExtender;
 import org.sheepy.lily.core.model.cadence.Cadence;
 
 @ModelExtender(scope = Cadence.class)
@@ -42,17 +42,8 @@ public final class CadenceAdapter implements ICadenceAdapter
 		}
 	}
 
-	private static final class CadenceContext implements ICadenceContext
+	private record CadenceContext(long start, long end) implements ICadenceContext
 	{
-		private final long start;
-		private final long end;
-
-		CadenceContext(long start, long end)
-		{
-			this.start = start;
-			this.end = end;
-		}
-
 		@Override
 		public long startTimeNs()
 		{

@@ -1,19 +1,18 @@
 package org.sheepy.lily.core.allocation.children.manager;
 
+import org.logoce.extender.api.IAdapterDescriptor;
+import org.logoce.extender.api.IAdapterHandle;
 import org.sheepy.lily.core.allocation.children.instance.ChildrenSupervisor;
 import org.sheepy.lily.core.allocation.util.StructureObserver;
 import org.sheepy.lily.core.api.allocation.IAllocationContext;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationChild;
 import org.sheepy.lily.core.api.allocation.annotation.InjectChildren;
-import org.logoce.extender.api.IAdapterDescriptor;
-import org.logoce.extender.api.IAdapterHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class AllocationChildrenBuilder
@@ -35,7 +34,7 @@ public final class AllocationChildrenBuilder
 
 		preChildrenBuilders = preList.stream()
 									 .map(b -> b.build(List.of()))
-									 .collect(Collectors.toUnmodifiableList());
+									 .toList();
 		postChildrenPreBuilders = List.copyOf(postList);
 	}
 
@@ -48,7 +47,7 @@ public final class AllocationChildrenBuilder
 	{
 		final var childrenSupervisors = preChildrenBuilders.stream()
 														   .map(buildContext::build)
-														   .collect(Collectors.toUnmodifiableList());
+														   .toList();
 
 		return new AllocationChildrenManager(childrenSupervisors, null);
 	}
@@ -59,22 +58,20 @@ public final class AllocationChildrenBuilder
 	{
 		final var annotationHandles = extenderContext.annotationHandles()
 													 .stream(InjectChildren.class)
-													 .collect(Collectors.toUnmodifiableList());
+													 .toList();
 
 		final var postChildEntryBuilders = postChildrenPreBuilders.stream()
 																  .map(preBuilder -> preBuilder.build(annotationHandles))
-																  .collect(Collectors.toUnmodifiableList());
+																  .toList();
 
 		final var childrenSupervisors = postChildEntryBuilders.stream()
 															  .map(buildContext::build)
-															  .collect(Collectors.toUnmodifiableList());
+															  .toList();
 
 		return new AllocationChildrenManager(childrenSupervisors, providedContext);
 	}
 
-	public static record BuildContext(Runnable whenBranchDirty,
-									  ILilyEObject target,
-									  IObservatoryBuilder observatoryBuilder)
+	public record BuildContext(Runnable whenBranchDirty, ILilyEObject target, IObservatoryBuilder observatoryBuilder)
 	{
 		public ChildrenSupervisor build(ChildrenSupervisor.Builder builder)
 		{
@@ -82,7 +79,7 @@ public final class AllocationChildrenBuilder
 		}
 	}
 
-	public static record ChildrenPreBuilder(int index, StructureObserver structureObservatory)
+	public record ChildrenPreBuilder(int index, StructureObserver structureObservatory)
 	{
 		public ChildrenPreBuilder(final AllocationChild childAnnotation, final int index)
 		{
@@ -98,13 +95,13 @@ public final class AllocationChildrenBuilder
 		{
 			final var childrenInjectors = new AnnotationFilter(annotationHandles, index).stream()
 																						.map(ChildrenInjector::new)
-																						.collect(Collectors.toUnmodifiableList());
+																						.toList();
 
 			return new ChildrenSupervisor.Builder(structureObservatory, childrenInjectors);
 		}
 
-		public static record AnnotationFilter(List<IAdapterHandle.AnnotatedHandle<InjectChildren>> annotationHandles,
-											  int index)
+		public record AnnotationFilter(List<IAdapterHandle.AnnotatedHandle<InjectChildren>> annotationHandles,
+									   int index)
 		{
 			public Stream<IAdapterHandle.AnnotatedHandle<InjectChildren>> stream()
 			{

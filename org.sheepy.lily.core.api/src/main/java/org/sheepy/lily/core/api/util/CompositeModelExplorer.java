@@ -7,7 +7,6 @@ import org.sheepy.lily.core.api.model.ILilyEObject;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class CompositeModelExplorer
@@ -31,7 +30,7 @@ public final class CompositeModelExplorer
 
 	public <T extends ILilyEObject> List<T> explore(ILilyEObject root, Class<T> targetClass)
 	{
-		return stream(root, targetClass).collect(Collectors.toUnmodifiableList());
+		return stream(root, targetClass).toList();
 	}
 
 	public <T extends ILilyEObject> Stream<T> stream(ILilyEObject root, Class<T> targetClass)
@@ -41,7 +40,7 @@ public final class CompositeModelExplorer
 
 	public <T extends IAdapter> List<T> exploreAdapt(ILilyEObject root, Class<T> adapterType)
 	{
-		return streamAdapt(root, adapterType).collect(Collectors.toUnmodifiableList());
+		return streamAdapt(root, adapterType).toList();
 	}
 
 	public <T extends IAdapter> Stream<T> streamAdapt(ILilyEObject root, Class<T> adapterType)
@@ -51,7 +50,7 @@ public final class CompositeModelExplorer
 
 	public <T extends IAdapter> List<T> exploreAdaptNotNull(ILilyEObject root, Class<T> adapterType)
 	{
-		return streamAdaptNotNull(root, adapterType).collect(Collectors.toUnmodifiableList());
+		return streamAdaptNotNull(root, adapterType).toList();
 	}
 
 	public <T extends IAdapter> Stream<T> streamAdaptNotNull(ILilyEObject root, Class<T> adapterType)

@@ -13,7 +13,6 @@ import org.sheepy.lily.core.api.notification.IEMFNotifier;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
 
 public final class NotifyChangeManager implements IAdapterExtension
 {
@@ -79,7 +78,7 @@ public final class NotifyChangeManager implements IAdapterExtension
 		{
 			final var notifyHandles = context.annotationHandles()
 											 .stream(NotifyChanged.class)
-											 .collect(Collectors.toUnmodifiableList());
+											 .toList();
 			return new NotifyChangeManager(notifyHandles);
 		}
 

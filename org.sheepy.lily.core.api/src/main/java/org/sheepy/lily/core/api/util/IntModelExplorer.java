@@ -6,7 +6,6 @@ import org.sheepy.lily.core.api.model.ILilyEObject;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class IntModelExplorer implements IModelExplorer
@@ -24,19 +23,19 @@ public final class IntModelExplorer implements IModelExplorer
 		this.parentClass = parentClass;
 		this.references = Arrays.stream(references)
 								.mapToObj(ReferenceExplorer::new)
-								.collect(Collectors.toUnmodifiableList());
+								.toList();
 	}
 
 	@Override
 	public <T extends ILilyEObject> List<T> explore(ILilyEObject root, Class<T> targetClass)
 	{
-		return stream(root, targetClass).collect(Collectors.toUnmodifiableList());
+		return stream(root, targetClass).toList();
 	}
 
 	@Override
 	public List<ILilyEObject> explore(ILilyEObject root)
 	{
-		return stream(root).collect(Collectors.toUnmodifiableList());
+		return stream(root).toList();
 	}
 
 	@Override
@@ -48,31 +47,34 @@ public final class IntModelExplorer implements IModelExplorer
 	@Override
 	public <T extends IAdapter> List<T> exploreAdapt(ILilyEObject root, Class<T> adapterType)
 	{
-		return streamAdapt(root, adapterType).collect(Collectors.toUnmodifiableList());
+		return streamAdapt(root, adapterType).toList();
 	}
 
 	@Override
 	public <T extends IAdapter> List<T> exploreAdaptGeneric(ILilyEObject root, Class<? extends IAdapter> adapterType)
 	{
-		return this.<T>streamAdaptGeneric(root, adapterType).collect(Collectors.toUnmodifiableList());
+		return this.<T>streamAdaptGeneric(root, adapterType)
+				   .toList();
 	}
 
 	@Override
 	public <T extends IAdapter> Stream<T> streamAdapt(ILilyEObject root, Class<T> adapterType)
 	{
-		return stream(root).map(e -> e.adapt(adapterType)).filter(Objects::nonNull);
+		return stream(root).map(e -> e.adapt(adapterType))
+						   .filter(Objects::nonNull);
 	}
 
 	@Override
 	public <T extends IAdapter> Stream<T> streamAdaptGeneric(ILilyEObject root, Class<? extends IAdapter> adapterType)
 	{
-		return stream(root).map(e -> e.<T>adaptGeneric(adapterType)).filter(Objects::nonNull);
+		return stream(root).map(e -> e.<T>adaptGeneric(adapterType))
+						   .filter(Objects::nonNull);
 	}
 
 	@Override
 	public <T extends IAdapter> List<T> exploreAdaptNotNull(ILilyEObject root, Class<T> adapterType)
 	{
-		return streamAdaptNotNull(root, adapterType).collect(Collectors.toUnmodifiableList());
+		return streamAdaptNotNull(root, adapterType).toList();
 	}
 
 	@Override

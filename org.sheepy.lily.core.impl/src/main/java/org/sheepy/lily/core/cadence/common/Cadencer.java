@@ -2,11 +2,11 @@ package org.sheepy.lily.core.cadence.common;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.logoce.extender.api.IAdapterDescriptor;
 import org.logoce.extender.api.IAdapterDescriptorRegistry;
 import org.sheepy.lily.core.api.cadence.AutoLoad;
 import org.sheepy.lily.core.api.cadence.IStatistics;
 import org.sheepy.lily.core.api.cadence.Tick;
-import org.logoce.extender.api.IAdapterDescriptor;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.util.DebugUtil;
 import org.sheepy.lily.core.cadence.tick.TickHandle;
@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NavigableMap;
 import java.util.TreeMap;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class Cadencer
@@ -139,7 +138,7 @@ public final class Cadencer
 		{
 			final var tickOperations = ticker.getTickHandle()
 											 .prepareTickOperations()
-											 .collect(Collectors.toUnmodifiableList());
+											 .toList();
 
 			while (!ticker.isStopped() && ticker.shouldTick())
 			{
@@ -175,7 +174,7 @@ public final class Cadencer
 			return IAdapterDescriptorRegistry.INSTANCE.streamDescriptors()
 													  .filter(de -> de.containsMethodAnnotation(Tick.class))
 													  .flatMap(CadenceContentAdater::createBuildersFromDescriptor)
-													  .collect(Collectors.toUnmodifiableList());
+													  .toList();
 		}
 
 		private static Stream<TickHandle.Builder> createBuildersFromDescriptor(IAdapterDescriptor<?> descriptor)

@@ -1,16 +1,15 @@
 package org.sheepy.lily.core.allocation.dependency;
 
+import org.logoce.extender.api.IAdapterHandle;
+import org.logoce.extender.api.reflect.ConsumerHandle;
 import org.sheepy.lily.core.allocation.dependency.container.DependencyContainer;
 import org.sheepy.lily.core.api.allocation.annotation.UpdateDependency;
-import org.logoce.extender.api.IAdapterHandle;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
-import org.logoce.extender.api.reflect.ConsumerHandle;
 
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public final class DependencyUpdater
 {
@@ -45,12 +44,14 @@ public final class DependencyUpdater
 												  .stream()
 												  .map(DependencyContainer::get)
 												  .filter(Objects::nonNull)
-												  .collect(Collectors.toUnmodifiableList());
+												  .toList();
 				updateHandle.invoke(allocations);
 			}
 			else
 			{
-				final var allocation = resolution.getResolvedAllocations().getFirst().get();
+				final var allocation = resolution.getResolvedAllocations()
+												 .getFirst()
+												 .get();
 				updateHandle.invoke(allocation);
 			}
 		}
@@ -65,8 +66,8 @@ public final class DependencyUpdater
 		resolution.free();
 	}
 
-	public static record Builder(DependencyWatcher.Builder resolutionBuilder,
-								 IAdapterHandle.AnnotatedHandle<UpdateDependency> updateHandle)
+	public record Builder(DependencyWatcher.Builder resolutionBuilder,
+						  IAdapterHandle.AnnotatedHandle<UpdateDependency> updateHandle)
 	{
 		public DependencyUpdater build(final IObservatoryBuilder observatoryBuilder,
 									   final Runnable onResolutionObsolete)

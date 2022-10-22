@@ -1,13 +1,13 @@
 package org.sheepy.lily.core.allocation.dependency;
 
 import org.logoce.extender.api.IAdaptable;
+import org.logoce.extender.api.IAdapter;
+import org.logoce.extender.api.IAdapterHandle;
+import org.logoce.extender.api.parameter.IParameterResolver;
 import org.sheepy.lily.core.allocation.dependency.container.DependencyContainer;
 import org.sheepy.lily.core.allocation.util.StructureObserver;
 import org.sheepy.lily.core.api.allocation.annotation.AllocationDependency;
 import org.sheepy.lily.core.api.allocation.annotation.InjectDependency;
-import org.logoce.extender.api.IAdapter;
-import org.logoce.extender.api.IAdapterHandle;
-import org.logoce.extender.api.parameter.IParameterResolver;
 import org.sheepy.lily.core.api.model.ILilyEObject;
 import org.sheepy.lily.core.api.notification.observatory.IObservatoryBuilder;
 import org.sheepy.lily.core.api.util.IModelExplorer;
@@ -16,7 +16,6 @@ import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public final class DependencyResolver implements IParameterResolver
 {
@@ -55,7 +54,7 @@ public final class DependencyResolver implements IParameterResolver
 											.filter(Objects::nonNull);
 		if (parameterClass == List.class)
 		{
-			return stream.collect(Collectors.toUnmodifiableList());
+			return stream.toList();
 		}
 		else
 		{

@@ -11,7 +11,6 @@ import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.IE
 import org.sheepy.lily.core.api.notification.util.ModelStructureBulkObserver;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public final class EObjectObservatory<T extends ILilyEObject> extends AbstractEObjectObservatory<T>
 {
@@ -87,7 +86,7 @@ public final class EObjectObservatory<T extends ILilyEObject> extends AbstractEO
 		{
 			final var builtChildren = children.stream()
 											  .map(InternalObservatoryBuilder::build)
-											  .collect(Collectors.toUnmodifiableList());
+											  .toList();
 
 			return new EObjectObservatory<>(referenceId,
 											cast,

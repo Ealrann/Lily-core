@@ -163,7 +163,7 @@ public class TreeLazyIterator implements Spliterator<ILilyEObject>
 				}
 				case Notification.ADD_MANY -> course.addAll((List<ILilyEObject>) newVal);
 				case Notification.REMOVE -> {
-					if (oldVal != null) //noinspection RedundantCast
+					if (oldVal != null)
 						course.remove((ILilyEObject) oldVal);
 				}
 				case Notification.REMOVE_MANY -> course.removeAll((List<ILilyEObject>) oldVal);

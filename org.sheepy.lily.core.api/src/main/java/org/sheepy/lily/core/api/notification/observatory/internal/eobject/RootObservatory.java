@@ -8,7 +8,6 @@ import org.sheepy.lily.core.api.notification.observatory.internal.eobject.listen
 import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.IEObjectPOI;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public final class RootObservatory extends AbstractRootObservatory
 {
@@ -39,7 +38,7 @@ public final class RootObservatory extends AbstractRootObservatory
 		{
 			final var builtChildren = children.stream()
 											  .map(InternalObservatoryBuilder::build)
-											  .collect(Collectors.toUnmodifiableList());
+											  .toList();
 
 			return new RootObservatory(builtChildren, pois, gatherListeners, gatherBulkListeners);
 		}

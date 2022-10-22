@@ -51,7 +51,7 @@ public final class DependencyWatcher
 		structureChanged = true;
 	}
 
-	public static record Builder(DependencyResolver resolver, ILilyEObject target)
+	public record Builder(DependencyResolver resolver, ILilyEObject target)
 	{
 		public DependencyWatcher build(final IObservatoryBuilder observatoryBuilder,
 									   final Runnable onResolutionObsolete)

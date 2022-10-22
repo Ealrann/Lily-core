@@ -10,7 +10,6 @@ import org.sheepy.lily.core.api.notification.observatory.internal.eobject.poi.IE
 import org.sheepy.lily.core.api.notification.util.ParentObserver;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public final class ParentObservatory<T extends ILilyEObject> extends AbstractEObjectObservatory<T> implements
 																								   IObservatory
@@ -62,7 +61,7 @@ public final class ParentObservatory<T extends ILilyEObject> extends AbstractEOb
 		{
 			final var builtChildren = children.stream()
 											  .map(InternalObservatoryBuilder::build)
-											  .collect(Collectors.toUnmodifiableList());
+											  .toList();
 
 			return new ParentObservatory<>(cast, builtChildren, pois, gatherListeners, gatherBulkListeners);
 		}

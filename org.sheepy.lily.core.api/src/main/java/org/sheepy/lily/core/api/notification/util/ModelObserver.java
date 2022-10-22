@@ -154,7 +154,7 @@ public final class ModelObserver
 		}
 
 		@SuppressWarnings("unchecked")
-		private void actOnChildren(EStructuralFeature feature, Object value, Consumer<ILilyEObject> action)
+		private static void actOnChildren(EStructuralFeature feature, Object value, Consumer<ILilyEObject> action)
 		{
 			if (feature.isMany() == false)
 			{
@@ -170,7 +170,7 @@ public final class ModelObserver
 			}
 		}
 
-		private Object getValue(ILilyEObject target, final int featureId)
+		private static Object getValue(ILilyEObject target, final int featureId)
 		{
 			return target.eGet(featureId, true, true);
 		}

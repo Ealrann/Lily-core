@@ -17,7 +17,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.stream.Collectors;
 
 public class CadenceManager implements ICadenceManager
 {
@@ -51,14 +50,15 @@ public class CadenceManager implements ICadenceManager
 	public void load()
 	{
 		stop.set(false);
-		mainThread = Thread.currentThread().getId();
+		mainThread = Thread.currentThread()
+						   .getId();
 
 		((LilyEObject) application).loadExtenderManager();
 
 		engineAllocators = application.getEngines()
 									  .stream()
 									  .map(CadenceManager::allocateEngine)
-									  .collect(Collectors.toUnmodifiableList());
+									  .toList();
 
 		inputManager = application.adapt(IInputManager.class);
 	}

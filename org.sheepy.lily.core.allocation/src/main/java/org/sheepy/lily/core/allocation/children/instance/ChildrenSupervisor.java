@@ -36,7 +36,8 @@ public final class ChildrenSupervisor
 		{
 			addedElements = false;
 
-			final var children = modelExplorer.stream(source).collect(Collectors.toUnmodifiableList());
+			final var children = modelExplorer.stream(source)
+											  .toList();
 			for (final var childrenAllocator : childrenAllocators)
 			{
 				childrenAllocator.reload(children);
@@ -76,11 +77,13 @@ public final class ChildrenSupervisor
 	private void reloadDescriptors(final List<ILilyEObject> children)
 	{
 		children.stream()
-				.flatMap(c -> c.adapterManager().adaptHandlesOfType(AllocationHandle.class))
+				.flatMap(c -> c.adapterManager()
+							   .adaptHandlesOfType(AllocationHandle.class))
 				.map(handle -> (AllocationHandle<?>) handle)
 				.map(AllocationHandle::getDescriptor)
 				.distinct()
-				.filter(descriptor -> childrenAllocators.stream().noneMatch(a -> a.descriptor() == descriptor))
+				.filter(descriptor -> childrenAllocators.stream()
+														.noneMatch(a -> a.descriptor() == descriptor))
 				.map(this::buildAllocator)
 				.collect(Collectors.toCollection(() -> childrenAllocators));
 	}

@@ -98,7 +98,7 @@ public final class ModelUtil
 		return parentClassifier.cast(eo);
 	}
 
-	public static record ParentDescription<T extends EObject>(int distance, T parent)
+	public record ParentDescription<T extends EObject>(int distance, T parent)
 	{
 	}
 
@@ -260,7 +260,7 @@ public final class ModelUtil
 		else return Optional.empty();
 	}
 
-	public static record ChildReference(EReference reference, int index)
+	public record ChildReference(EReference reference, int index)
 	{
 		public static ChildReference referenceFromParent(EObject child)
 		{
@@ -289,7 +289,7 @@ public final class ModelUtil
 		}
 	}
 
-	public static record ContainmentPath(Collection<ChildReference> path)
+	public record ContainmentPath(Collection<ChildReference> path)
 	{
 		public EObject eGet(EObject source)
 		{
