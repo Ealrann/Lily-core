@@ -5,25 +5,17 @@ package org.sheepy.lily.core.model.application.impl;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-
 import org.sheepy.lily.core.api.model.LilyEObject;
-
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.SpecialEffect;
-
 import org.sheepy.lily.core.model.resource.FileResource;
-
 import org.sheepy.lily.core.model.variable.IModelVariable;
 
 /**
@@ -216,7 +208,7 @@ public class SpecialEffectImpl extends LilyEObject implements SpecialEffect
 	{
 		if (inputs == null)
 		{
-			inputs = new EObjectResolvingEList<IModelVariable>(IModelVariable.class, this, ApplicationPackage.SPECIAL_EFFECT__INPUTS);
+			inputs = new EObjectResolvingEList<>(IModelVariable.class, this, ApplicationPackage.SPECIAL_EFFECT__INPUTS);
 		}
 		return inputs;
 	}

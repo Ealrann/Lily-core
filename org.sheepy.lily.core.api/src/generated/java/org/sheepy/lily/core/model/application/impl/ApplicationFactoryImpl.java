@@ -5,12 +5,20 @@ package org.sheepy.lily.core.model.application.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.sheepy.lily.core.model.application.*;
+import org.sheepy.lily.core.model.application.Application;
+import org.sheepy.lily.core.model.application.ApplicationExtensionPkg;
+import org.sheepy.lily.core.model.application.ApplicationFactory;
+import org.sheepy.lily.core.model.application.ApplicationPackage;
+import org.sheepy.lily.core.model.application.BackgroundImage;
+import org.sheepy.lily.core.model.application.CompositorExtensionPkg;
+import org.sheepy.lily.core.model.application.GenericScenePart;
+import org.sheepy.lily.core.model.application.IModel;
+import org.sheepy.lily.core.model.application.Scene;
+import org.sheepy.lily.core.model.application.ScreenEffect;
+import org.sheepy.lily.core.model.application.SpecialEffect;
+import org.sheepy.lily.core.model.application.TimeConfiguration;
 
 /**
  * <!-- begin-user-doc -->

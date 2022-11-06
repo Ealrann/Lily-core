@@ -3,30 +3,22 @@
 package org.sheepy.lily.core.model.ui.impl;
 
 import java.lang.reflect.InvocationTargetException;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.joml.Vector2ic;
-
 import org.joml.Vector4ic;
 import org.sheepy.lily.core.api.model.LilyEObject;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
 import org.sheepy.lily.core.model.inference.InferencePackage;
-
 import org.sheepy.lily.core.model.presentation.IPositionElement;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
@@ -35,7 +27,6 @@ import org.sheepy.lily.core.model.types.EHorizontalRelative;
 import org.sheepy.lily.core.model.types.EVerticalRelative;
 import org.sheepy.lily.core.model.types.TypesFactory;
 import org.sheepy.lily.core.model.types.TypesPackage;
-
 import org.sheepy.lily.core.model.ui.IControl;
 import org.sheepy.lily.core.model.ui.IUIElement;
 import org.sheepy.lily.core.model.ui.Panel;
@@ -556,7 +547,7 @@ public class PanelImpl extends LilyEObject implements Panel
 	{
 		if (controls == null)
 		{
-			controls = new EObjectContainmentEList<IControl>(IControl.class, this, UiPackage.PANEL__CONTROLS);
+			controls = new EObjectContainmentEList<>(IControl.class, this, UiPackage.PANEL__CONTROLS);
 		}
 		return controls;
 	}

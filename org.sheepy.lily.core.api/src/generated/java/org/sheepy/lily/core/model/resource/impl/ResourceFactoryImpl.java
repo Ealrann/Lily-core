@@ -6,12 +6,19 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.sheepy.lily.core.model.resource.*;
+import org.sheepy.lily.core.model.resource.ESampling;
+import org.sheepy.lily.core.model.resource.FileImage;
+import org.sheepy.lily.core.model.resource.LocalResource;
+import org.sheepy.lily.core.model.resource.ModuleResource;
+import org.sheepy.lily.core.model.resource.Music;
+import org.sheepy.lily.core.model.resource.ResourceFactory;
+import org.sheepy.lily.core.model.resource.ResourcePackage;
+import org.sheepy.lily.core.model.resource.ResourcePkg;
+import org.sheepy.lily.core.model.resource.Sound;
+import org.sheepy.lily.core.model.resource.SoundContinuous;
+import org.sheepy.lily.core.model.resource.StringModuleResource;
 
 /**
  * <!-- begin-user-doc -->

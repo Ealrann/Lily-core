@@ -3,14 +3,13 @@
 package org.sheepy.lily.core.model.application.impl;
 
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -177,7 +176,7 @@ public class ApplicationImpl extends LilyEObject implements Application
 	{
 		if (engines == null)
 		{
-			engines = new EObjectContainmentEList.Resolving<IEngine>(IEngine.class, this, ApplicationPackage.APPLICATION__ENGINES);
+			engines = new EObjectContainmentEList.Resolving<>(IEngine.class, this, ApplicationPackage.APPLICATION__ENGINES);
 		}
 		return engines;
 	}
@@ -473,7 +472,7 @@ public class ApplicationImpl extends LilyEObject implements Application
 	{
 		if (models == null)
 		{
-			models = new EObjectContainmentEList.Resolving<IModel>(IModel.class, this, ApplicationPackage.APPLICATION__MODELS);
+			models = new EObjectContainmentEList.Resolving<>(IModel.class, this, ApplicationPackage.APPLICATION__MODELS);
 		}
 		return models;
 	}

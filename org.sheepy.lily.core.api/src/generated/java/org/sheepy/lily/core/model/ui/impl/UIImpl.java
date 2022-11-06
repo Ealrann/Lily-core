@@ -3,24 +3,18 @@
 package org.sheepy.lily.core.model.ui.impl;
 
 import java.lang.reflect.InvocationTargetException;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.sheepy.lily.core.api.model.LilyEObject;
 import org.sheepy.lily.core.model.application.CompositorExtensionPkg;
 import org.sheepy.lily.core.model.inference.IInferenceObject;
@@ -264,7 +258,7 @@ public class UIImpl extends LilyEObject implements UI
 	{
 		if (uiPages == null)
 		{
-			uiPages = new EObjectContainmentEList.Resolving<UIPage>(UIPage.class, this, UiPackage.UI__UI_PAGES);
+			uiPages = new EObjectContainmentEList.Resolving<>(UIPage.class, this, UiPackage.UI__UI_PAGES);
 		}
 		return uiPages;
 	}
@@ -446,7 +440,7 @@ public class UIImpl extends LilyEObject implements UI
 	{
 		if (images == null)
 		{
-			images = new EObjectResolvingEList<IImage>(IImage.class, this, UiPackage.UI__IMAGES);
+			images = new EObjectResolvingEList<>(IImage.class, this, UiPackage.UI__IMAGES);
 		}
 		return images;
 	}

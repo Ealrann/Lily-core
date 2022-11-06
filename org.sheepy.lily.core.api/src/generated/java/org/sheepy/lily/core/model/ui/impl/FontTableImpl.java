@@ -6,20 +6,15 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.sheepy.lily.core.api.model.LilyEObject;
 import org.sheepy.lily.core.model.resource.FileResource;
 import org.sheepy.lily.core.model.types.ECharTable;
-
 import org.sheepy.lily.core.model.ui.FontTable;
 import org.sheepy.lily.core.model.ui.UiPackage;
 
@@ -213,7 +208,7 @@ public class FontTableImpl extends LilyEObject implements FontTable
 	{
 		if (charTables == null)
 		{
-			charTables = new EDataTypeUniqueEList<ECharTable>(ECharTable.class, this, UiPackage.FONT_TABLE__CHAR_TABLES);
+			charTables = new EDataTypeUniqueEList<>(ECharTable.class, this, UiPackage.FONT_TABLE__CHAR_TABLES);
 		}
 		return charTables;
 	}
