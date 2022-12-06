@@ -8,9 +8,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -22,7 +20,6 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
 import org.sheepy.lily.core.model.types.TypesPackage;
 import org.sheepy.lily.core.model.ui.Panel;
@@ -67,6 +64,7 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 			addVerticalRelativePropertyDescriptor(object);
 			addHorizontalRelativePropertyDescriptor(object);
 			addCatchInputsPropertyDescriptor(object);
+			addReportingHoverPropertyDescriptor(object);
 			addWidthPropertyDescriptor(object);
 			addHeightPropertyDescriptor(object);
 			addShowTitlePropertyDescriptor(object);
@@ -168,7 +166,30 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
+				 getString("_UI_BehaviourPropertyCategory"),
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Reporting Hover feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addReportingHoverPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_IPanel_reportingHover_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IPanel_reportingHover_feature", "_UI_IPanel_type"),
+				 UiPackage.Literals.IPANEL__REPORTING_HOVER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 getString("_UI_BehaviourPropertyCategory"),
 				 null));
 	}
 
@@ -481,6 +502,7 @@ public class PanelItemProvider extends ItemProviderAdapter implements IEditingDo
 			case UiPackage.PANEL__VERTICAL_RELATIVE:
 			case UiPackage.PANEL__HORIZONTAL_RELATIVE:
 			case UiPackage.PANEL__CATCH_INPUTS:
+			case UiPackage.PANEL__REPORTING_HOVER:
 			case UiPackage.PANEL__WIDTH:
 			case UiPackage.PANEL__HEIGHT:
 			case UiPackage.PANEL__SHOW_TITLE:

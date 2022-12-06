@@ -119,13 +119,22 @@ public interface UiPackage extends EPackage
 	int IPANEL__CATCH_INPUTS = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Reporting Hover</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPANEL__REPORTING_HOVER = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>IPanel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int IPANEL_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 4;
+	int IPANEL_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>LInference Object</em>' operation.
@@ -199,6 +208,15 @@ public interface UiPackage extends EPackage
 	 * @ordered
 	 */
 	int PANEL__CATCH_INPUTS = IPANEL__CATCH_INPUTS;
+
+	/**
+	 * The feature id for the '<em><b>Reporting Hover</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PANEL__REPORTING_HOVER = IPANEL__REPORTING_HOVER;
 
 	/**
 	 * The feature id for the '<em><b>Width</b></em>' attribute.
@@ -2407,6 +2425,17 @@ public interface UiPackage extends EPackage
 	EAttribute getIPanel_CatchInputs();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.ui.IPanel#isReportingHover <em>Reporting Hover</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Reporting Hover</em>'.
+	 * @see org.sheepy.lily.core.model.ui.IPanel#isReportingHover()
+	 * @see #getIPanel()
+	 * @generated
+	 */
+	EAttribute getIPanel_ReportingHover();
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.ui.IControl <em>IControl</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3119,6 +3148,14 @@ public interface UiPackage extends EPackage
 		 * @generated
 		 */
 		EAttribute IPANEL__CATCH_INPUTS = eINSTANCE.getIPanel_CatchInputs();
+
+		/**
+		 * The meta object literal for the '<em><b>Reporting Hover</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute IPANEL__REPORTING_HOVER = eINSTANCE.getIPanel_ReportingHover();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.ui.IControl <em>IControl</em>}' class.

@@ -88,7 +88,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//UIPage/panels"/>
     </genClasses>
     <genClasses image="false" ecoreClass="ui.ecore#//IPanel">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//IPanel/catchInputs"/>
+      <genFeatures createChild="false" propertyCategory="Behaviour" ecoreFeature="ecore:EAttribute ui.ecore#//IPanel/catchInputs"/>
+      <genFeatures createChild="false" propertyCategory="Behaviour" ecoreFeature="ecore:EAttribute ui.ecore#//IPanel/reportingHover"/>
     </genClasses>
     <genClasses image="false" ecoreClass="ui.ecore#//IControl"/>
     <genClasses image="false" ecoreClass="ui.ecore#//Widget"/>

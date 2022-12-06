@@ -7,36 +7,23 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.sheepy.lily.core.model.action.ActionPackage;
-
 import org.sheepy.lily.core.model.action.impl.ActionPackageImpl;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl;
 import org.sheepy.lily.core.model.cadence.CadencePackage;
-
 import org.sheepy.lily.core.model.cadence.impl.CadencePackageImpl;
-
 import org.sheepy.lily.core.model.inference.InferencePackage;
-
 import org.sheepy.lily.core.model.inference.impl.InferencePackageImpl;
-
 import org.sheepy.lily.core.model.maintainer.MaintainerPackage;
-
 import org.sheepy.lily.core.model.maintainer.impl.MaintainerPackageImpl;
-
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
-
 import org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl;
-
 import org.sheepy.lily.core.model.resource.ResourcePackage;
 import org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl;
 import org.sheepy.lily.core.model.types.TypesPackage;
-
 import org.sheepy.lily.core.model.types.impl.TypesPackageImpl;
-
 import org.sheepy.lily.core.model.ui.AbstractBooleanButton;
 import org.sheepy.lily.core.model.ui.AbstractButton;
 import org.sheepy.lily.core.model.ui.AbstractLabel;
@@ -60,9 +47,7 @@ import org.sheepy.lily.core.model.ui.UiFactory;
 import org.sheepy.lily.core.model.ui.UiPackage;
 import org.sheepy.lily.core.model.ui.VariableLabel;
 import org.sheepy.lily.core.model.ui.Widget;
-
 import org.sheepy.lily.core.model.variable.VariablePackage;
-
 import org.sheepy.lily.core.model.variable.impl.VariablePackageImpl;
 
 /**
@@ -546,6 +531,17 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 	public EAttribute getIPanel_CatchInputs()
 	{
 		return (EAttribute)iPanelEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getIPanel_ReportingHover()
+	{
+		return (EAttribute)iPanelEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1142,6 +1138,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 
 		iPanelEClass = createEClass(IPANEL);
 		createEAttribute(iPanelEClass, IPANEL__CATCH_INPUTS);
+		createEAttribute(iPanelEClass, IPANEL__REPORTING_HOVER);
 
 		iControlEClass = createEClass(ICONTROL);
 
@@ -1301,6 +1298,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 
 		initEClass(iPanelEClass, IPanel.class, "IPanel", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIPanel_CatchInputs(), ecorePackage.getEBoolean(), "catchInputs", "true", 1, 1, IPanel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIPanel_ReportingHover(), ecorePackage.getEBoolean(), "reportingHover", "true", 1, 1, IPanel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iControlEClass, IControl.class, "IControl", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

@@ -45,6 +45,7 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getVerticalRelative <em>Vertical Relative</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getHorizontalRelative <em>Horizontal Relative</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#isCatchInputs <em>Catch Inputs</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#isReportingHover <em>Reporting Hover</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getWidth <em>Width</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getHeight <em>Height</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.ui.impl.PanelImpl#getControls <em>Controls</em>}</li>
@@ -160,6 +161,26 @@ public class PanelImpl extends LilyEObject implements Panel
 	 * @ordered
 	 */
 	protected boolean catchInputs = CATCH_INPUTS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isReportingHover() <em>Reporting Hover</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isReportingHover()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean REPORTING_HOVER_EDEFAULT = true;
+
+	/**
+	 * The cached value of the '{@link #isReportingHover() <em>Reporting Hover</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isReportingHover()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean reportingHover = REPORTING_HOVER_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getWidth() <em>Width</em>}' attribute.
@@ -493,6 +514,31 @@ public class PanelImpl extends LilyEObject implements Panel
 	 * @generated
 	 */
 	@Override
+	public boolean isReportingHover()
+	{
+		return reportingHover;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setReportingHover(boolean newReportingHover)
+	{
+		boolean oldReportingHover = reportingHover;
+		reportingHover = newReportingHover;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, UiPackage.PANEL__REPORTING_HOVER, oldReportingHover, reportingHover));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public int getWidth()
 	{
 		return width;
@@ -794,6 +840,8 @@ public class PanelImpl extends LilyEObject implements Panel
 				return getHorizontalRelative();
 			case UiPackage.PANEL__CATCH_INPUTS:
 				return isCatchInputs();
+			case UiPackage.PANEL__REPORTING_HOVER:
+				return isReportingHover();
 			case UiPackage.PANEL__WIDTH:
 				return getWidth();
 			case UiPackage.PANEL__HEIGHT:
@@ -844,6 +892,9 @@ public class PanelImpl extends LilyEObject implements Panel
 				return;
 			case UiPackage.PANEL__CATCH_INPUTS:
 				setCatchInputs((Boolean)newValue);
+				return;
+			case UiPackage.PANEL__REPORTING_HOVER:
+				setReportingHover((Boolean)newValue);
 				return;
 			case UiPackage.PANEL__WIDTH:
 				setWidth((Integer)newValue);
@@ -905,6 +956,9 @@ public class PanelImpl extends LilyEObject implements Panel
 			case UiPackage.PANEL__CATCH_INPUTS:
 				setCatchInputs(CATCH_INPUTS_EDEFAULT);
 				return;
+			case UiPackage.PANEL__REPORTING_HOVER:
+				setReportingHover(REPORTING_HOVER_EDEFAULT);
+				return;
 			case UiPackage.PANEL__WIDTH:
 				setWidth(WIDTH_EDEFAULT);
 				return;
@@ -959,6 +1013,8 @@ public class PanelImpl extends LilyEObject implements Panel
 				return horizontalRelative != HORIZONTAL_RELATIVE_EDEFAULT;
 			case UiPackage.PANEL__CATCH_INPUTS:
 				return catchInputs != CATCH_INPUTS_EDEFAULT;
+			case UiPackage.PANEL__REPORTING_HOVER:
+				return reportingHover != REPORTING_HOVER_EDEFAULT;
 			case UiPackage.PANEL__WIDTH:
 				return width != WIDTH_EDEFAULT;
 			case UiPackage.PANEL__HEIGHT:
@@ -1148,6 +1204,8 @@ public class PanelImpl extends LilyEObject implements Panel
 		result.append(horizontalRelative);
 		result.append(", catchInputs: ");
 		result.append(catchInputs);
+		result.append(", reportingHover: ");
+		result.append(reportingHover);
 		result.append(", width: ");
 		result.append(width);
 		result.append(", height: ");

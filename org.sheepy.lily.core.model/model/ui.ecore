@@ -41,7 +41,17 @@
   <eClassifiers xsi:type="ecore:EClass" name="IPanel" abstract="true" interface="true"
       eSuperTypes="types.ecore#//LNamedElement #//IUIElement presentation.ecore#//IPositionElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="catchInputs" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="propertyCategory" value="Behaviour"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reportingHover" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="propertyCategory" value="Behaviour"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IControl" abstract="true" interface="true"
       eSuperTypes="#//IUIElement"/>
