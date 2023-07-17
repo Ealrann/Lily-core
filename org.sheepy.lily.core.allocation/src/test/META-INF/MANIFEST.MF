@@ -13,5 +13,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.sheepy.lily.core.model;bundle-version="0.1.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-14
 Automatic-Module-Name: org.sheepy.lily.core.allocation.test
