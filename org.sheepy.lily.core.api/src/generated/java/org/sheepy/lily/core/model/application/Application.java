@@ -23,6 +23,7 @@ import org.sheepy.lily.core.model.resource.ResourcePkg;
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getExtensionPkg <em>Extension Pkg</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getModels <em>Models</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Application#getResourcePkg <em>Resource Pkg</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Application#getVersion <em>Version</em>}</li>
  * </ul>
  *
  * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication()
@@ -189,5 +190,28 @@ public interface Application extends ILilyEObject
 	 * @generated
 	 */
 	void setResourcePkg(ResourcePkg value);
+
+	/**
+	 * Returns the value of the '<em><b>Version</b></em>' attribute.
+	 * The default value is <code>"0.0.0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Version</em>' attribute.
+	 * @see #setVersion(String)
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getApplication_Version()
+	 * @model default="0.0.0" required="true"
+	 * @generated
+	 */
+	String getVersion();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Application#getVersion <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Version</em>' attribute.
+	 * @see #getVersion()
+	 * @generated
+	 */
+	void setVersion(String value);
 
 } // Application

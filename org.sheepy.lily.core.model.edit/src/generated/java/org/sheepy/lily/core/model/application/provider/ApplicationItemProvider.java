@@ -9,7 +9,6 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -21,7 +20,6 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationFactory;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
@@ -62,6 +60,7 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 
 			addRunPropertyDescriptor(object);
 			addTitlePropertyDescriptor(object);
+			addVersionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -104,6 +103,29 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 				 getString("_UI_Application_title_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Application_title_feature", "_UI_Application_type"),
 				 ApplicationPackage.Literals.APPLICATION__TITLE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Version feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVersionPropertyDescriptor(Object object)
+	{
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Application_version_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Application_version_feature", "_UI_Application_type"),
+				 ApplicationPackage.Literals.APPLICATION__VERSION,
 				 true,
 				 false,
 				 false,
@@ -193,6 +215,7 @@ public class ApplicationItemProvider extends ItemProviderAdapter implements IEdi
 		{
 			case ApplicationPackage.APPLICATION__RUN:
 			case ApplicationPackage.APPLICATION__TITLE:
+			case ApplicationPackage.APPLICATION__VERSION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ApplicationPackage.APPLICATION__ENGINES:

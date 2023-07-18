@@ -22,6 +22,8 @@
         eType="#//IModel" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resourcePkg" eType="ecore:EClass resource.ecore#//ResourcePkg"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="0.0.0"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IApplicationExtension" abstract="true"
       interface="true" eSuperTypes="types.ecore#//LNamedElement"/>

@@ -7,9 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.sheepy.lily.core.model.action.ActionPackage;
-
 import org.sheepy.lily.core.model.action.impl.ActionPackageImpl;
 import org.sheepy.lily.core.model.application.Application;
 import org.sheepy.lily.core.model.application.ApplicationExtensionPkg;
@@ -31,28 +29,18 @@ import org.sheepy.lily.core.model.application.TimeConfiguration;
 import org.sheepy.lily.core.model.cadence.CadencePackage;
 import org.sheepy.lily.core.model.cadence.impl.CadencePackageImpl;
 import org.sheepy.lily.core.model.inference.InferencePackage;
-
 import org.sheepy.lily.core.model.inference.impl.InferencePackageImpl;
-
 import org.sheepy.lily.core.model.maintainer.MaintainerPackage;
-
 import org.sheepy.lily.core.model.maintainer.impl.MaintainerPackageImpl;
-
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
-
 import org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl;
 import org.sheepy.lily.core.model.resource.ResourcePackage;
 import org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl;
 import org.sheepy.lily.core.model.types.TypesPackage;
-
 import org.sheepy.lily.core.model.types.impl.TypesPackageImpl;
-
 import org.sheepy.lily.core.model.ui.UiPackage;
-
 import org.sheepy.lily.core.model.ui.impl.UiPackageImpl;
-
 import org.sheepy.lily.core.model.variable.VariablePackage;
-
 import org.sheepy.lily.core.model.variable.impl.VariablePackageImpl;
 
 /**
@@ -366,6 +354,17 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	public EReference getApplication_ResourcePkg()
 	{
 		return (EReference)applicationEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getApplication_Version()
+	{
+		return (EAttribute)applicationEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -782,6 +781,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEReference(applicationEClass, APPLICATION__EXTENSION_PKG);
 		createEReference(applicationEClass, APPLICATION__MODELS);
 		createEReference(applicationEClass, APPLICATION__RESOURCE_PKG);
+		createEAttribute(applicationEClass, APPLICATION__VERSION);
 
 		iApplicationExtensionEClass = createEClass(IAPPLICATION_EXTENSION);
 
@@ -888,6 +888,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEReference(getApplication_ExtensionPkg(), this.getApplicationExtensionPkg(), null, "extensionPkg", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_Models(), this.getIModel(), null, "models", null, 0, -1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getApplication_ResourcePkg(), theResourcePackage.getResourcePkg(), null, "resourcePkg", null, 0, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_Version(), ecorePackage.getEString(), "version", "0.0.0", 1, 1, Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iApplicationExtensionEClass, IApplicationExtension.class, "IApplicationExtension", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

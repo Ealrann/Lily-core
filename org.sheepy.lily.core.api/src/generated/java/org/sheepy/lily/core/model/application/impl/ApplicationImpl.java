@@ -39,6 +39,7 @@ import org.sheepy.lily.core.model.resource.ResourcePkg;
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getExtensionPkg <em>Extension Pkg</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getModels <em>Models</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getResourcePkg <em>Resource Pkg</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.ApplicationImpl#getVersion <em>Version</em>}</li>
  * </ul>
  *
  * @generated
@@ -144,6 +145,26 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @ordered
 	 */
 	protected ResourcePkg resourcePkg;
+
+	/**
+	 * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String VERSION_EDEFAULT = "0.0.0";
+
+	/**
+	 * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected String version = VERSION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -560,6 +581,31 @@ public class ApplicationImpl extends LilyEObject implements Application
 	 * @generated
 	 */
 	@Override
+	public String getVersion()
+	{
+		return version;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setVersion(String newVersion)
+	{
+		String oldVersion = version;
+		version = newVersion;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.APPLICATION__VERSION, oldVersion, version));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
 		switch (featureID)
@@ -610,6 +656,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__RESOURCE_PKG:
 				if (resolve) return getResourcePkg();
 				return basicGetResourcePkg();
+			case ApplicationPackage.APPLICATION__VERSION:
+				return getVersion();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -651,6 +699,9 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__RESOURCE_PKG:
 				setResourcePkg((ResourcePkg)newValue);
 				return;
+			case ApplicationPackage.APPLICATION__VERSION:
+				setVersion((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -689,6 +740,9 @@ public class ApplicationImpl extends LilyEObject implements Application
 			case ApplicationPackage.APPLICATION__RESOURCE_PKG:
 				setResourcePkg((ResourcePkg)null);
 				return;
+			case ApplicationPackage.APPLICATION__VERSION:
+				setVersion(VERSION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -719,6 +773,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 				return models != null && !models.isEmpty();
 			case ApplicationPackage.APPLICATION__RESOURCE_PKG:
 				return resourcePkg != null;
+			case ApplicationPackage.APPLICATION__VERSION:
+				return VERSION_EDEFAULT == null ? version != null : !VERSION_EDEFAULT.equals(version);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -738,6 +794,8 @@ public class ApplicationImpl extends LilyEObject implements Application
 		result.append(run);
 		result.append(", title: ");
 		result.append(title);
+		result.append(", version: ");
+		result.append(version);
 		result.append(')');
 		return result.toString();
 	}

@@ -142,13 +142,22 @@ public interface ApplicationPackage extends EPackage
 	int APPLICATION__RESOURCE_PKG = 7;
 
 	/**
+	 * The feature id for the '<em><b>Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int APPLICATION__VERSION = 8;
+
+	/**
 	 * The number of structural features of the '<em>Application</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int APPLICATION_FEATURE_COUNT = 8;
+	int APPLICATION_FEATURE_COUNT = 9;
 
 	/**
 	 * The number of operations of the '<em>Application</em>' class.
@@ -965,6 +974,17 @@ public interface ApplicationPackage extends EPackage
 	EReference getApplication_ResourcePkg();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.sheepy.lily.core.model.application.Application#getVersion <em>Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Version</em>'.
+	 * @see org.sheepy.lily.core.model.application.Application#getVersion()
+	 * @see #getApplication()
+	 * @generated
+	 */
+	EAttribute getApplication_Version();
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.IApplicationExtension <em>IApplication Extension</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1421,6 +1441,14 @@ public interface ApplicationPackage extends EPackage
 		 * @generated
 		 */
 		EReference APPLICATION__RESOURCE_PKG = eINSTANCE.getApplication_ResourcePkg();
+
+		/**
+		 * The meta object literal for the '<em><b>Version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute APPLICATION__VERSION = eINSTANCE.getApplication_Version();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.IApplicationExtension <em>IApplication Extension</em>}' class.
