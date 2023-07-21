@@ -21,6 +21,7 @@ module org.sheepy.lily.core.impl {
 	provides IAdapterExtension.Descriptor with ObservatoryManager.Descriptor, LoadDisposeAdapterExtension.Descriptor, NotifyChangeManager.Descriptor;
 	provides IAdaptableNameMatcher with AdaptableNameMatcher;
 
+	opens org.sheepy.lily.core.action;
 	opens org.sheepy.lily.core.cadence.adapter;
 	opens org.sheepy.lily.core.application;
 	opens org.sheepy.lily.core.variable;
