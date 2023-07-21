@@ -476,5 +476,6 @@
       extensibleProviderFactory="true" ecorePackage="action.ecore#/">
     <genDataTypes ecoreDataType="action.ecore#//ActionList"/>
     <genClasses image="false" ecoreClass="action.ecore#//Action"/>
+    <genClasses ecoreClass="action.ecore#//CloseApplicationAction"/>
   </genPackages>
 </genmodel:GenModel>

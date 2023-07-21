@@ -8,11 +8,8 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
@@ -36,7 +33,7 @@ import org.sheepy.lily.core.model.ui.UiPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class UIItemProvider 
+public class UIItemProvider
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,

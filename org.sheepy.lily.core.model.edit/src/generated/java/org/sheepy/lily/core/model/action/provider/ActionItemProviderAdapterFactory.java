@@ -9,11 +9,8 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.util.ResourceLocator;
-
 import org.eclipse.emf.edit.domain.EditingDomain;
-
 import org.eclipse.emf.edit.provider.ChangeNotifier;
 import org.eclipse.emf.edit.provider.ChildCreationExtenderManager;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
@@ -26,9 +23,7 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
 import org.sheepy.lily.core.model.action.ActionPackage;
-
 import org.sheepy.lily.core.model.action.util.ActionAdapterFactory;
 import org.sheepy.lily.core.model.resource.provider.LilyEditPlugin;
 
@@ -74,7 +69,7 @@ public class ActionItemProviderAdapterFactory extends ActionAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected Collection<Object> supportedTypes = new ArrayList<Object>();
+	protected Collection<Object> supportedTypes = new ArrayList<>();
 
 	/**
 	 * This constructs an instance.
@@ -89,6 +84,31 @@ public class ActionItemProviderAdapterFactory extends ActionAdapterFactory
 		supportedTypes.add(ITreeItemContentProvider.class);
 		supportedTypes.add(IItemLabelProvider.class);
 		supportedTypes.add(IItemPropertySource.class);
+	}
+
+	/**
+	 * This keeps track of the one adapter used for all {@link org.sheepy.lily.core.model.action.CloseApplicationAction} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected CloseApplicationActionItemProvider closeApplicationActionItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.sheepy.lily.core.model.action.CloseApplicationAction}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createCloseApplicationActionAdapter()
+	{
+		if (closeApplicationActionItemProvider == null)
+		{
+			closeApplicationActionItemProvider = new CloseApplicationActionItemProvider(this);
+		}
+
+		return closeApplicationActionItemProvider;
 	}
 
 	/**

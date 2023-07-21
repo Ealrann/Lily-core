@@ -2,7 +2,7 @@ package org.sheepy.lily.core;
 
 import org.logoce.extender.api.IAdapter;
 import org.logoce.extender.api.IAdapterProvider;
-import org.sheepy.lily.core.action.BooleanChangeActionAdapter;
+import org.sheepy.lily.core.action.CloseApplicationActionAdapter;
 import org.sheepy.lily.core.application.ApplicationAdapter;
 import org.sheepy.lily.core.cadence.adapter.*;
 import org.sheepy.lily.core.variable.*;
@@ -18,6 +18,7 @@ public class Extenders implements IAdapterProvider
 	{
 		return List.of(DirectVariableResolverAdapter.class,
 					   ChainVariableResolverAdapter.class,
+					   CloseApplicationActionAdapter.class,
 					   BooleanChangeActionAdapter.class,
 					   ApplicationAdapter.class,
 					   ExecuteIfAdapter.class,

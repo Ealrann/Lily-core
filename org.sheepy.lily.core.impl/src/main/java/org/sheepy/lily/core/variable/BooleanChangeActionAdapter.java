@@ -1,4 +1,4 @@
-package org.sheepy.lily.core.action;
+package org.sheepy.lily.core.variable;
 
 import org.logoce.adapter.api.Adapter;
 import org.logoce.extender.api.ModelExtender;

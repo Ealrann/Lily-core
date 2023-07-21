@@ -23,6 +23,15 @@ public interface ActionFactory extends EFactory
 	ActionFactory eINSTANCE = org.sheepy.lily.core.model.action.impl.ActionFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Close Application Action</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Close Application Action</em>'.
+	 * @generated
+	 */
+	CloseApplicationAction createCloseApplicationAction();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

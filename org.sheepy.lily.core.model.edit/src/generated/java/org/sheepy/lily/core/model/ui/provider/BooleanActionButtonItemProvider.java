@@ -8,13 +8,12 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.joml.Vector2ic;
+import org.sheepy.lily.core.model.action.ActionFactory;
 import org.sheepy.lily.core.model.ui.BooleanActionButton;
 import org.sheepy.lily.core.model.ui.UiPackage;
-
 import org.sheepy.lily.core.model.variable.VariableFactory;
 
 /**
@@ -161,6 +160,11 @@ public class BooleanActionButtonItemProvider extends AbstractBooleanButtonItemPr
 
 		newChildDescriptors.add
 			(createChildParameter
+				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_TRUE,
+				 ActionFactory.eINSTANCE.createCloseApplicationAction()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE,
 				 VariableFactory.eINSTANCE.createBooleanChangeAction()));
 
@@ -168,6 +172,11 @@ public class BooleanActionButtonItemProvider extends AbstractBooleanButtonItemPr
 			(createChildParameter
 				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE,
 				 VariableFactory.eINSTANCE.createIntChangeAction()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.BOOLEAN_ACTION_BUTTON__ACTION_WHEN_FALSE,
+				 ActionFactory.eINSTANCE.createCloseApplicationAction()));
 	}
 
 	/**

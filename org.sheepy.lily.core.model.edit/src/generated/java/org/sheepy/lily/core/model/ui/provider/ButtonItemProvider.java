@@ -8,15 +8,14 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.joml.Vector2ic;
+import org.sheepy.lily.core.model.action.ActionFactory;
 import org.sheepy.lily.core.model.ui.Button;
 import org.sheepy.lily.core.model.ui.UiPackage;
-
 import org.sheepy.lily.core.model.variable.VariableFactory;
 
 /**
@@ -210,6 +209,11 @@ public class ButtonItemProvider extends AbstractButtonItemProvider
 			(createChildParameter
 				(UiPackage.Literals.BUTTON__ACTIONS,
 				 VariableFactory.eINSTANCE.createIntChangeAction()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UiPackage.Literals.BUTTON__ACTIONS,
+				 ActionFactory.eINSTANCE.createCloseApplicationAction()));
 	}
 
 }

@@ -7,44 +7,28 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.sheepy.lily.core.model.action.Action;
 import org.sheepy.lily.core.model.action.ActionFactory;
 import org.sheepy.lily.core.model.action.ActionPackage;
+import org.sheepy.lily.core.model.action.CloseApplicationAction;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl;
 import org.sheepy.lily.core.model.cadence.CadencePackage;
-
 import org.sheepy.lily.core.model.cadence.impl.CadencePackageImpl;
-
 import org.sheepy.lily.core.model.inference.InferencePackage;
-
 import org.sheepy.lily.core.model.inference.impl.InferencePackageImpl;
-
 import org.sheepy.lily.core.model.maintainer.MaintainerPackage;
-
 import org.sheepy.lily.core.model.maintainer.impl.MaintainerPackageImpl;
-
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
-
 import org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl;
-
 import org.sheepy.lily.core.model.resource.ResourcePackage;
-
 import org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl;
-
 import org.sheepy.lily.core.model.types.TypesPackage;
-
 import org.sheepy.lily.core.model.types.impl.TypesPackageImpl;
-
 import org.sheepy.lily.core.model.ui.UiPackage;
-
 import org.sheepy.lily.core.model.ui.impl.UiPackageImpl;
-
 import org.sheepy.lily.core.model.variable.VariablePackage;
-
 import org.sheepy.lily.core.model.variable.impl.VariablePackageImpl;
 
 /**
@@ -61,6 +45,13 @@ public class ActionPackageImpl extends EPackageImpl implements ActionPackage
 	 * @generated
 	 */
 	private EClass actionEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass closeApplicationActionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -187,6 +178,17 @@ public class ActionPackageImpl extends EPackageImpl implements ActionPackage
 	 * @generated
 	 */
 	@Override
+	public EClass getCloseApplicationAction()
+	{
+		return closeApplicationActionEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EDataType getActionList()
 	{
 		return actionListEDataType;
@@ -225,6 +227,8 @@ public class ActionPackageImpl extends EPackageImpl implements ActionPackage
 		// Create classes and their features
 		actionEClass = createEClass(ACTION);
 
+		closeApplicationActionEClass = createEClass(CLOSE_APPLICATION_ACTION);
+
 		// Create data types
 		actionListEDataType = createEDataType(ACTION_LIST);
 	}
@@ -262,9 +266,12 @@ public class ActionPackageImpl extends EPackageImpl implements ActionPackage
 
 		// Add supertypes to classes
 		actionEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
+		closeApplicationActionEClass.getESuperTypes().add(this.getAction());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(actionEClass, Action.class, "Action", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(closeApplicationActionEClass, CloseApplicationAction.class, "CloseApplicationAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Initialize data types
 		initEDataType(actionListEDataType, List.class, "ActionList", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS, "java.util.List<? extends org.sheepy.lily.core.model.action.Action>");

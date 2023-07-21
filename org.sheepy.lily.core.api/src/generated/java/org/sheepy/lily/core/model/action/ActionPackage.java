@@ -5,7 +5,6 @@ package org.sheepy.lily.core.model.action;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
@@ -96,6 +95,43 @@ public interface ActionPackage extends EPackage
 	int ACTION_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.action.impl.CloseApplicationActionImpl <em>Close Application Action</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.action.impl.CloseApplicationActionImpl
+	 * @see org.sheepy.lily.core.model.action.impl.ActionPackageImpl#getCloseApplicationAction()
+	 * @generated
+	 */
+	int CLOSE_APPLICATION_ACTION = 1;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOSE_APPLICATION_ACTION__NAME = ACTION__NAME;
+
+	/**
+	 * The number of structural features of the '<em>Close Application Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOSE_APPLICATION_ACTION_FEATURE_COUNT = ACTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Close Application Action</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLOSE_APPLICATION_ACTION_OPERATION_COUNT = ACTION_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '<em>List</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -103,7 +139,7 @@ public interface ActionPackage extends EPackage
 	 * @see org.sheepy.lily.core.model.action.impl.ActionPackageImpl#getActionList()
 	 * @generated
 	 */
-	int ACTION_LIST = 1;
+	int ACTION_LIST = 2;
 
 
 	/**
@@ -115,6 +151,16 @@ public interface ActionPackage extends EPackage
 	 * @generated
 	 */
 	EClass getAction();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.action.CloseApplicationAction <em>Close Application Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Close Application Action</em>'.
+	 * @see org.sheepy.lily.core.model.action.CloseApplicationAction
+	 * @generated
+	 */
+	EClass getCloseApplicationAction();
 
 	/**
 	 * Returns the meta object for data type '{@link java.util.List <em>List</em>}'.
@@ -160,6 +206,16 @@ public interface ActionPackage extends EPackage
 		 * @generated
 		 */
 		EClass ACTION = eINSTANCE.getAction();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.action.impl.CloseApplicationActionImpl <em>Close Application Action</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.action.impl.CloseApplicationActionImpl
+		 * @see org.sheepy.lily.core.model.action.impl.ActionPackageImpl#getCloseApplicationAction()
+		 * @generated
+		 */
+		EClass CLOSE_APPLICATION_ACTION = eINSTANCE.getCloseApplicationAction();
 
 		/**
 		 * The meta object literal for the '<em>List</em>' data type.

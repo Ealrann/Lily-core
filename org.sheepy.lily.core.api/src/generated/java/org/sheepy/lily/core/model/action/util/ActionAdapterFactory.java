@@ -4,13 +4,11 @@ package org.sheepy.lily.core.model.action.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.sheepy.lily.core.model.action.*;
-
+import org.sheepy.lily.core.model.action.Action;
+import org.sheepy.lily.core.model.action.ActionPackage;
+import org.sheepy.lily.core.model.action.CloseApplicationAction;
 import org.sheepy.lily.core.model.types.LNamedElement;
 
 /**
@@ -74,12 +72,17 @@ public class ActionAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	protected ActionSwitch<Adapter> modelSwitch =
-		new ActionSwitch<Adapter>()
+		new ActionSwitch<>()
 		{
 			@Override
 			public Adapter caseAction(Action object)
 			{
 				return createActionAdapter();
+			}
+			@Override
+			public Adapter caseCloseApplicationAction(CloseApplicationAction object)
+			{
+				return createCloseApplicationActionAdapter();
 			}
 			@Override
 			public Adapter caseLNamedElement(LNamedElement object)
@@ -119,6 +122,21 @@ public class ActionAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createActionAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.action.CloseApplicationAction <em>Close Application Action</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.action.CloseApplicationAction
+	 * @generated
+	 */
+	public Adapter createCloseApplicationActionAdapter()
 	{
 		return null;
 	}

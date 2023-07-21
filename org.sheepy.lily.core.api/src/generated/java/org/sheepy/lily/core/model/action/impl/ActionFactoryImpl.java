@@ -8,12 +8,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.sheepy.lily.core.model.action.*;
+import org.sheepy.lily.core.model.action.Action;
+import org.sheepy.lily.core.model.action.ActionFactory;
+import org.sheepy.lily.core.model.action.ActionPackage;
+import org.sheepy.lily.core.model.action.CloseApplicationAction;
 
 /**
  * <!-- begin-user-doc -->
@@ -67,6 +67,7 @@ public class ActionFactoryImpl extends EFactoryImpl implements ActionFactory
 	{
 		switch (eClass.getClassifierID())
 		{
+			case ActionPackage.CLOSE_APPLICATION_ACTION: return createCloseApplicationAction();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -104,6 +105,18 @@ public class ActionFactoryImpl extends EFactoryImpl implements ActionFactory
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public CloseApplicationAction createCloseApplicationAction()
+	{
+		CloseApplicationActionImpl closeApplicationAction = new CloseApplicationActionImpl();
+		return closeApplicationAction;
 	}
 
 	/**
