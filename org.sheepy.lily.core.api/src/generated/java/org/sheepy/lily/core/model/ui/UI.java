@@ -91,7 +91,7 @@ public interface UI extends ICompositor
 	 * @return the value of the '<em>Dst Image</em>' reference.
 	 * @see #setDstImage(IImage)
 	 * @see org.sheepy.lily.core.model.ui.UiPackage#getUI_DstImage()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	IImage getDstImage();

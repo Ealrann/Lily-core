@@ -68,6 +68,8 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" unique="false" eType="ecore:EDataType types.ecore#//Vector2i"
         defaultValueLiteral="400,400"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resourcePkg" eType="ecore:EClass resource.ecore#//ResourcePkg"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GenericScenePart" eSuperTypes="#//ICompositor types.ecore#//LNamedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="BackgroundImage" eSuperTypes="types.ecore#//LNamedElement #//ICompositor">
@@ -76,8 +78,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sampling" lowerBound="1"
         eType="ecore:EEnum resource.ecore#//ESampling"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="srcImage" eType="ecore:EClass resource.ecore#//IImage"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="dstImage" lowerBound="1"
-        eType="ecore:EClass resource.ecore#//IImage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dstImage" eType="ecore:EClass resource.ecore#//IImage"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ScreenEffect" eSuperTypes="types.ecore#//LNamedElement #//ICompositor">
     <eStructuralFeatures xsi:type="ecore:EReference" name="srcImage" eType="ecore:EClass resource.ecore#//IImage"/>

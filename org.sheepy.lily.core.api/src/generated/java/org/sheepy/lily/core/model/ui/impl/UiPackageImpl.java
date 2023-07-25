@@ -1288,7 +1288,7 @@ public class UiPackageImpl extends EPackageImpl implements UiPackage
 		initEReference(getUI_UiPages(), this.getUIPage(), null, "uiPages", null, 0, -1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUI_CurrentUIPage(), this.getUIPage(), null, "currentUIPage", null, 0, 1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUI_FontPkg(), this.getFontPkg(), null, "fontPkg", null, 1, 1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getUI_DstImage(), theResourcePackage.getIImage(), null, "dstImage", null, 1, 1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUI_DstImage(), theResourcePackage.getIImage(), null, "dstImage", null, 0, 1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUI_Images(), theResourcePackage.getIImage(), null, "images", null, 0, -1, org.sheepy.lily.core.model.ui.UI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(iuiElementEClass, IUIElement.class, "IUIElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

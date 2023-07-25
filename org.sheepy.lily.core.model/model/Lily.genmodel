@@ -123,10 +123,10 @@
     <genClasses ecoreClass="ui.ecore#//TextField">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//TextField/variableResolver"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="ui.ecore#//AbstractButton">
+    <genClasses image="false" ecoreClass="ui.ecore#//AbstractButton" labelFeature="#//ui/AbstractButton/text">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//AbstractButton/text"/>
     </genClasses>
-    <genClasses ecoreClass="ui.ecore#//Button">
+    <genClasses ecoreClass="ui.ecore#//Button" labelFeature="#//ui/AbstractButton/text">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Button/shortcut"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ui.ecore#//Button/state"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ui.ecore#//Button/actions"/>
@@ -454,6 +454,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Scene/fullscreen"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Scene/resizeable"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute application.ecore#//Scene/size"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference application.ecore#//Scene/resourcePkg"/>
     </genClasses>
     <genClasses ecoreClass="application.ecore#//GenericScenePart"/>
     <genClasses ecoreClass="application.ecore#//BackgroundImage">

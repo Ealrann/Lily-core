@@ -3,10 +3,9 @@
 package org.sheepy.lily.core.model.application;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.joml.Vector2ic;
-
 import org.sheepy.lily.core.api.model.ILilyEObject;
+import org.sheepy.lily.core.model.resource.ResourcePkg;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,6 +20,7 @@ import org.sheepy.lily.core.api.model.ILilyEObject;
  *   <li>{@link org.sheepy.lily.core.model.application.Scene#isFullscreen <em>Fullscreen</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Scene#isResizeable <em>Resizeable</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.Scene#getSize <em>Size</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.Scene#getResourcePkg <em>Resource Pkg</em>}</li>
  * </ul>
  *
  * @see org.sheepy.lily.core.model.application.ApplicationPackage#getScene()
@@ -110,5 +110,27 @@ public interface Scene extends ILilyEObject
 	 * @generated
 	 */
 	void setSize(Vector2ic value);
+
+	/**
+	 * Returns the value of the '<em><b>Resource Pkg</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Resource Pkg</em>' containment reference.
+	 * @see #setResourcePkg(ResourcePkg)
+	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getScene_ResourcePkg()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	ResourcePkg getResourcePkg();
+
+	/**
+	 * Sets the value of the '{@link org.sheepy.lily.core.model.application.Scene#getResourcePkg <em>Resource Pkg</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Resource Pkg</em>' containment reference.
+	 * @see #getResourcePkg()
+	 * @generated
+	 */
+	void setResourcePkg(ResourcePkg value);
 
 } // Scene

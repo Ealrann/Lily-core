@@ -106,7 +106,7 @@ public interface BackgroundImage extends LNamedElement, ICompositor
 	 * @return the value of the '<em>Dst Image</em>' reference.
 	 * @see #setDstImage(IImage)
 	 * @see org.sheepy.lily.core.model.application.ApplicationPackage#getBackgroundImage_DstImage()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	IImage getDstImage();

@@ -604,6 +604,17 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 	 * @generated
 	 */
 	@Override
+	public EReference getScene_ResourcePkg()
+	{
+		return (EReference)sceneEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getGenericScenePart()
 	{
 		return genericScenePartEClass;
@@ -813,6 +824,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		createEAttribute(sceneEClass, SCENE__FULLSCREEN);
 		createEAttribute(sceneEClass, SCENE__RESIZEABLE);
 		createEAttribute(sceneEClass, SCENE__SIZE);
+		createEReference(sceneEClass, SCENE__RESOURCE_PKG);
 
 		genericScenePartEClass = createEClass(GENERIC_SCENE_PART);
 
@@ -920,6 +932,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEAttribute(getScene_Fullscreen(), ecorePackage.getEBoolean(), "fullscreen", "false", 0, 1, Scene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getScene_Resizeable(), ecorePackage.getEBoolean(), "resizeable", "false", 0, 1, Scene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getScene_Size(), theTypesPackage.getVector2i(), "size", "400,400", 0, 1, Scene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getScene_ResourcePkg(), theResourcePackage.getResourcePkg(), null, "resourcePkg", null, 0, 1, Scene.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(genericScenePartEClass, GenericScenePart.class, "GenericScenePart", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -927,7 +940,7 @@ public class ApplicationPackageImpl extends EPackageImpl implements ApplicationP
 		initEAttribute(getBackgroundImage_ClearColor(), theTypesPackage.getVector3i(), "clearColor", "0;0;0", 1, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getBackgroundImage_Sampling(), theResourcePackage.getESampling(), "sampling", null, 1, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getBackgroundImage_SrcImage(), theResourcePackage.getIImage(), null, "srcImage", null, 0, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBackgroundImage_DstImage(), theResourcePackage.getIImage(), null, "dstImage", null, 1, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getBackgroundImage_DstImage(), theResourcePackage.getIImage(), null, "dstImage", null, 0, 1, BackgroundImage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(screenEffectEClass, ScreenEffect.class, "ScreenEffect", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getScreenEffect_SrcImage(), theResourcePackage.getIImage(), null, "srcImage", null, 0, 1, ScreenEffect.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

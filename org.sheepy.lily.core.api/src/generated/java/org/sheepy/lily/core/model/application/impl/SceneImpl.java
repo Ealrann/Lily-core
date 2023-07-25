@@ -6,25 +6,19 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.joml.Vector2ic;
-
 import org.sheepy.lily.core.api.model.LilyEObject;
-
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.ICompositor;
 import org.sheepy.lily.core.model.application.Scene;
-
+import org.sheepy.lily.core.model.resource.ResourcePkg;
 import org.sheepy.lily.core.model.types.TypesFactory;
 import org.sheepy.lily.core.model.types.TypesPackage;
 
@@ -40,6 +34,7 @@ import org.sheepy.lily.core.model.types.TypesPackage;
  *   <li>{@link org.sheepy.lily.core.model.application.impl.SceneImpl#isFullscreen <em>Fullscreen</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.SceneImpl#isResizeable <em>Resizeable</em>}</li>
  *   <li>{@link org.sheepy.lily.core.model.application.impl.SceneImpl#getSize <em>Size</em>}</li>
+ *   <li>{@link org.sheepy.lily.core.model.application.impl.SceneImpl#getResourcePkg <em>Resource Pkg</em>}</li>
  * </ul>
  *
  * @generated
@@ -117,6 +112,16 @@ public class SceneImpl extends LilyEObject implements Scene
 	protected Vector2ic size = SIZE_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getResourcePkg() <em>Resource Pkg</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResourcePkg()
+	 * @generated
+	 * @ordered
+	 */
+	protected ResourcePkg resourcePkg;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -147,7 +152,7 @@ public class SceneImpl extends LilyEObject implements Scene
 	{
 		if (compositors == null)
 		{
-			compositors = new EObjectContainmentEList.Resolving<ICompositor>(ICompositor.class, this, ApplicationPackage.SCENE__COMPOSITORS);
+			compositors = new EObjectContainmentEList.Resolving<>(ICompositor.class, this, ApplicationPackage.SCENE__COMPOSITORS);
 		}
 		return compositors;
 	}
@@ -233,12 +238,91 @@ public class SceneImpl extends LilyEObject implements Scene
 	 * @generated
 	 */
 	@Override
+	public ResourcePkg getResourcePkg()
+	{
+		if (resourcePkg != null && ((EObject)resourcePkg).eIsProxy())
+		{
+			InternalEObject oldResourcePkg = resourcePkg;
+			resourcePkg = (ResourcePkg)eResolveProxy(oldResourcePkg);
+			if (resourcePkg != oldResourcePkg)
+			{
+				InternalEObject newResourcePkg = resourcePkg;
+				NotificationChain msgs = oldResourcePkg.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.SCENE__RESOURCE_PKG, null, null);
+				if (newResourcePkg.eInternalContainer() == null)
+				{
+					msgs = newResourcePkg.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.SCENE__RESOURCE_PKG, null, msgs);
+				}
+				if (msgs != null) msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ApplicationPackage.SCENE__RESOURCE_PKG, oldResourcePkg, resourcePkg));
+			}
+		}
+		return resourcePkg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ResourcePkg basicGetResourcePkg()
+	{
+		return resourcePkg;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetResourcePkg(ResourcePkg newResourcePkg, NotificationChain msgs)
+	{
+		ResourcePkg oldResourcePkg = resourcePkg;
+		resourcePkg = newResourcePkg;
+		if (eNotificationRequired())
+		{
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ApplicationPackage.SCENE__RESOURCE_PKG, oldResourcePkg, newResourcePkg);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setResourcePkg(ResourcePkg newResourcePkg)
+	{
+		if (newResourcePkg != resourcePkg)
+		{
+			NotificationChain msgs = null;
+			if (resourcePkg != null)
+				msgs = ((InternalEObject)resourcePkg).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.SCENE__RESOURCE_PKG, null, msgs);
+			if (newResourcePkg != null)
+				msgs = ((InternalEObject)newResourcePkg).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ApplicationPackage.SCENE__RESOURCE_PKG, null, msgs);
+			msgs = basicSetResourcePkg(newResourcePkg, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ApplicationPackage.SCENE__RESOURCE_PKG, newResourcePkg, newResourcePkg));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
 	{
 		switch (featureID)
 		{
 			case ApplicationPackage.SCENE__COMPOSITORS:
 				return ((InternalEList<?>)getCompositors()).basicRemove(otherEnd, msgs);
+			case ApplicationPackage.SCENE__RESOURCE_PKG:
+				return basicSetResourcePkg(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -261,6 +345,9 @@ public class SceneImpl extends LilyEObject implements Scene
 				return isResizeable();
 			case ApplicationPackage.SCENE__SIZE:
 				return getSize();
+			case ApplicationPackage.SCENE__RESOURCE_PKG:
+				if (resolve) return getResourcePkg();
+				return basicGetResourcePkg();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -289,6 +376,9 @@ public class SceneImpl extends LilyEObject implements Scene
 			case ApplicationPackage.SCENE__SIZE:
 				setSize((Vector2ic)newValue);
 				return;
+			case ApplicationPackage.SCENE__RESOURCE_PKG:
+				setResourcePkg((ResourcePkg)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -315,6 +405,9 @@ public class SceneImpl extends LilyEObject implements Scene
 			case ApplicationPackage.SCENE__SIZE:
 				setSize(SIZE_EDEFAULT);
 				return;
+			case ApplicationPackage.SCENE__RESOURCE_PKG:
+				setResourcePkg((ResourcePkg)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -337,6 +430,8 @@ public class SceneImpl extends LilyEObject implements Scene
 				return resizeable != RESIZEABLE_EDEFAULT;
 			case ApplicationPackage.SCENE__SIZE:
 				return SIZE_EDEFAULT == null ? size != null : !SIZE_EDEFAULT.equals(size);
+			case ApplicationPackage.SCENE__RESOURCE_PKG:
+				return resourcePkg != null;
 		}
 		return super.eIsSet(featureID);
 	}

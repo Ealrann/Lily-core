@@ -548,13 +548,22 @@ public interface ApplicationPackage extends EPackage
 	int SCENE__SIZE = 3;
 
 	/**
+	 * The feature id for the '<em><b>Resource Pkg</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SCENE__RESOURCE_PKG = 4;
+
+	/**
 	 * The number of structural features of the '<em>Scene</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SCENE_FEATURE_COUNT = 4;
+	int SCENE_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Scene</em>' class.
@@ -1206,6 +1215,17 @@ public interface ApplicationPackage extends EPackage
 	EAttribute getScene_Size();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.sheepy.lily.core.model.application.Scene#getResourcePkg <em>Resource Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Resource Pkg</em>'.
+	 * @see org.sheepy.lily.core.model.application.Scene#getResourcePkg()
+	 * @see #getScene()
+	 * @generated
+	 */
+	EReference getScene_ResourcePkg();
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.application.GenericScenePart <em>Generic Scene Part</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1637,6 +1657,14 @@ public interface ApplicationPackage extends EPackage
 		 * @generated
 		 */
 		EAttribute SCENE__SIZE = eINSTANCE.getScene_Size();
+
+		/**
+		 * The meta object literal for the '<em><b>Resource Pkg</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SCENE__RESOURCE_PKG = eINSTANCE.getScene_ResourcePkg();
 
 		/**
 		 * The meta object literal for the '{@link org.sheepy.lily.core.model.application.impl.GenericScenePartImpl <em>Generic Scene Part</em>}' class.

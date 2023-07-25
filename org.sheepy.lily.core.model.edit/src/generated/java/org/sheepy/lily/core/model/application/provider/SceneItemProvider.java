@@ -24,6 +24,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.sheepy.lily.core.model.application.ApplicationFactory;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.Scene;
+import org.sheepy.lily.core.model.resource.ResourceFactory;
 import org.sheepy.lily.core.model.ui.UiFactory;
 
 /**
@@ -32,7 +33,7 @@ import org.sheepy.lily.core.model.ui.UiFactory;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SceneItemProvider 
+public class SceneItemProvider
 	extends ItemProviderAdapter
 	implements
 		IEditingDomainItemProvider,
@@ -156,6 +157,7 @@ public class SceneItemProvider
 		{
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(ApplicationPackage.Literals.SCENE__COMPOSITORS);
+			childrenFeatures.add(ApplicationPackage.Literals.SCENE__RESOURCE_PKG);
 		}
 		return childrenFeatures;
 	}
@@ -218,6 +220,7 @@ public class SceneItemProvider
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case ApplicationPackage.SCENE__COMPOSITORS:
+			case ApplicationPackage.SCENE__RESOURCE_PKG:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -255,6 +258,11 @@ public class SceneItemProvider
 			(createChildParameter
 				(ApplicationPackage.Literals.SCENE__COMPOSITORS,
 				 UiFactory.eINSTANCE.createUI()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(ApplicationPackage.Literals.SCENE__RESOURCE_PKG,
+				 ResourceFactory.eINSTANCE.createResourcePkg()));
 	}
 
 	/**
