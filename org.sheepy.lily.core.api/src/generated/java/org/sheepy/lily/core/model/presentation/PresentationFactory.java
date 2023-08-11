@@ -23,6 +23,15 @@ public interface PresentationFactory extends EFactory
 	PresentationFactory eINSTANCE = org.sheepy.lily.core.model.presentation.impl.PresentationFactoryImpl.init();
 
 	/**
+	 * Returns a new object of class '<em>Presentations</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Presentations</em>'.
+	 * @generated
+	 */
+	Presentations createPresentations();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

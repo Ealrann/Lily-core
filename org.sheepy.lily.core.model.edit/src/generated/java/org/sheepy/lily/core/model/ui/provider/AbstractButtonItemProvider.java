@@ -11,7 +11,6 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.joml.Vector2ic;
 import org.sheepy.lily.core.model.ui.AbstractButton;
 import org.sheepy.lily.core.model.ui.UiPackage;
 
@@ -84,8 +83,7 @@ public class AbstractButtonItemProvider extends TextWidgetItemProvider
 	@Override
 	public String getText(Object object)
 	{
-		Vector2ic labelValue = ((AbstractButton)object).getPosition();
-		String label = labelValue == null ? null : labelValue.toString();
+		String label = ((AbstractButton)object).getText();
 		return label == null || label.length() == 0 ?
 			getString("_UI_AbstractButton_type") :
 			getString("_UI_AbstractButton_type") + " " + label;

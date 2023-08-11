@@ -5,38 +5,31 @@ package org.sheepy.lily.core.model.presentation.impl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.sheepy.lily.core.model.action.ActionPackage;
-
 import org.sheepy.lily.core.model.action.impl.ActionPackageImpl;
 import org.sheepy.lily.core.model.application.ApplicationPackage;
 import org.sheepy.lily.core.model.application.impl.ApplicationPackageImpl;
 import org.sheepy.lily.core.model.cadence.CadencePackage;
 import org.sheepy.lily.core.model.cadence.impl.CadencePackageImpl;
 import org.sheepy.lily.core.model.inference.InferencePackage;
-
 import org.sheepy.lily.core.model.inference.impl.InferencePackageImpl;
-
 import org.sheepy.lily.core.model.maintainer.MaintainerPackage;
-
 import org.sheepy.lily.core.model.maintainer.impl.MaintainerPackageImpl;
 import org.sheepy.lily.core.model.presentation.IPositionElement;
+import org.sheepy.lily.core.model.presentation.IPresentationPkg;
 import org.sheepy.lily.core.model.presentation.ISizedElement;
 import org.sheepy.lily.core.model.presentation.PresentationFactory;
 import org.sheepy.lily.core.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.presentation.Presentations;
 import org.sheepy.lily.core.model.resource.ResourcePackage;
 import org.sheepy.lily.core.model.resource.impl.ResourcePackageImpl;
 import org.sheepy.lily.core.model.types.TypesPackage;
-
 import org.sheepy.lily.core.model.types.impl.TypesPackageImpl;
-
 import org.sheepy.lily.core.model.ui.UiPackage;
-
 import org.sheepy.lily.core.model.ui.impl.UiPackageImpl;
-
 import org.sheepy.lily.core.model.variable.VariablePackage;
-
 import org.sheepy.lily.core.model.variable.impl.VariablePackageImpl;
 
 /**
@@ -60,6 +53,20 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * @generated
 	 */
 	private EClass iSizedElementEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass presentationsEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iPresentationPkgEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -245,6 +252,39 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 	 * @generated
 	 */
 	@Override
+	public EClass getPresentations()
+	{
+		return presentationsEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getPresentations_PresentationPkgs()
+	{
+		return (EReference)presentationsEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getIPresentationPkg()
+	{
+		return iPresentationPkgEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public PresentationFactory getPresentationFactory()
 	{
 		return (PresentationFactory)getEFactoryInstance();
@@ -278,6 +318,11 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 		iSizedElementEClass = createEClass(ISIZED_ELEMENT);
 		createEAttribute(iSizedElementEClass, ISIZED_ELEMENT__WIDTH);
 		createEAttribute(iSizedElementEClass, ISIZED_ELEMENT__HEIGHT);
+
+		presentationsEClass = createEClass(PRESENTATIONS);
+		createEReference(presentationsEClass, PRESENTATIONS__PRESENTATION_PKGS);
+
+		iPresentationPkgEClass = createEClass(IPRESENTATION_PKG);
 	}
 
 	/**
@@ -313,6 +358,7 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 
 		// Add supertypes to classes
 		iSizedElementEClass.getESuperTypes().add(this.getIPositionElement());
+		iPresentationPkgEClass.getESuperTypes().add(theTypesPackage.getLNamedElement());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(iPositionElementEClass, IPositionElement.class, "IPositionElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -323,6 +369,11 @@ public class PresentationPackageImpl extends EPackageImpl implements Presentatio
 		initEClass(iSizedElementEClass, ISizedElement.class, "ISizedElement", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getISizedElement_Width(), ecorePackage.getEInt(), "width", null, 0, 1, ISizedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getISizedElement_Height(), ecorePackage.getEInt(), "height", null, 0, 1, ISizedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(presentationsEClass, Presentations.class, "Presentations", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPresentations_PresentationPkgs(), this.getIPresentationPkg(), null, "presentationPkgs", null, 0, -1, Presentations.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(iPresentationPkgEClass, IPresentationPkg.class, "IPresentationPkg", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -338,6 +338,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//ISizedElement/width"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute presentation.ecore#//ISizedElement/height"/>
     </genClasses>
+    <genClasses ecoreClass="presentation.ecore#//Presentations">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference presentation.ecore#//Presentations/presentationPkgs"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="presentation.ecore#//IPresentationPkg"/>
   </genPackages>
   <genPackages prefix="Maintainer" basePackage="org.sheepy.lily.core.model" resource="XMI"
       extensibleProviderFactory="true" ecorePackage="maintainer.ecore#/">

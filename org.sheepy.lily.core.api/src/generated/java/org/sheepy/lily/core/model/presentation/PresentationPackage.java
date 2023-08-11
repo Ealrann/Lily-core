@@ -5,6 +5,8 @@ package org.sheepy.lily.core.model.presentation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+import org.sheepy.lily.core.model.types.TypesPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -185,6 +187,80 @@ public interface PresentationPackage extends EPackage
 	int ISIZED_ELEMENT_OPERATION_COUNT = IPOSITION_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.impl.PresentationsImpl <em>Presentations</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationsImpl
+	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getPresentations()
+	 * @generated
+	 */
+	int PRESENTATIONS = 2;
+
+	/**
+	 * The feature id for the '<em><b>Presentation Pkgs</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRESENTATIONS__PRESENTATION_PKGS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Presentations</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRESENTATIONS_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Presentations</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRESENTATIONS_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.sheepy.lily.core.model.presentation.IPresentationPkg <em>IPresentation Pkg</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.sheepy.lily.core.model.presentation.IPresentationPkg
+	 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getIPresentationPkg()
+	 * @generated
+	 */
+	int IPRESENTATION_PKG = 3;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPRESENTATION_PKG__NAME = TypesPackage.LNAMED_ELEMENT__NAME;
+
+	/**
+	 * The number of structural features of the '<em>IPresentation Pkg</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPRESENTATION_PKG_FEATURE_COUNT = TypesPackage.LNAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>IPresentation Pkg</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IPRESENTATION_PKG_OPERATION_COUNT = TypesPackage.LNAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
 	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.IPositionElement <em>IPosition Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -258,6 +334,37 @@ public interface PresentationPackage extends EPackage
 	 * @generated
 	 */
 	EAttribute getISizedElement_Height();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.Presentations <em>Presentations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Presentations</em>'.
+	 * @see org.sheepy.lily.core.model.presentation.Presentations
+	 * @generated
+	 */
+	EClass getPresentations();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.sheepy.lily.core.model.presentation.Presentations#getPresentationPkgs <em>Presentation Pkgs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Presentation Pkgs</em>'.
+	 * @see org.sheepy.lily.core.model.presentation.Presentations#getPresentationPkgs()
+	 * @see #getPresentations()
+	 * @generated
+	 */
+	EReference getPresentations_PresentationPkgs();
+
+	/**
+	 * Returns the meta object for class '{@link org.sheepy.lily.core.model.presentation.IPresentationPkg <em>IPresentation Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>IPresentation Pkg</em>'.
+	 * @see org.sheepy.lily.core.model.presentation.IPresentationPkg
+	 * @generated
+	 */
+	EClass getIPresentationPkg();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -342,6 +449,34 @@ public interface PresentationPackage extends EPackage
 		 * @generated
 		 */
 		EAttribute ISIZED_ELEMENT__HEIGHT = eINSTANCE.getISizedElement_Height();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.impl.PresentationsImpl <em>Presentations</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationsImpl
+		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getPresentations()
+		 * @generated
+		 */
+		EClass PRESENTATIONS = eINSTANCE.getPresentations();
+
+		/**
+		 * The meta object literal for the '<em><b>Presentation Pkgs</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PRESENTATIONS__PRESENTATION_PKGS = eINSTANCE.getPresentations_PresentationPkgs();
+
+		/**
+		 * The meta object literal for the '{@link org.sheepy.lily.core.model.presentation.IPresentationPkg <em>IPresentation Pkg</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.sheepy.lily.core.model.presentation.IPresentationPkg
+		 * @see org.sheepy.lily.core.model.presentation.impl.PresentationPackageImpl#getIPresentationPkg()
+		 * @generated
+		 */
+		EClass IPRESENTATION_PKG = eINSTANCE.getIPresentationPkg();
 
 	}
 

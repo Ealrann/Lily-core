@@ -4,9 +4,13 @@ package org.sheepy.lily.core.model.presentation.util;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-import org.sheepy.lily.core.model.presentation.*;
+import org.sheepy.lily.core.model.presentation.IPositionElement;
+import org.sheepy.lily.core.model.presentation.IPresentationPkg;
+import org.sheepy.lily.core.model.presentation.ISizedElement;
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.presentation.Presentations;
+import org.sheepy.lily.core.model.types.LNamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -86,6 +90,21 @@ public class PresentationSwitch<T> extends Switch<T>
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case PresentationPackage.PRESENTATIONS:
+			{
+				Presentations presentations = (Presentations)theEObject;
+				T result = casePresentations(presentations);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PresentationPackage.IPRESENTATION_PKG:
+			{
+				IPresentationPkg iPresentationPkg = (IPresentationPkg)theEObject;
+				T result = caseIPresentationPkg(iPresentationPkg);
+				if (result == null) result = caseLNamedElement(iPresentationPkg);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -118,6 +137,54 @@ public class PresentationSwitch<T> extends Switch<T>
 	 * @generated
 	 */
 	public T caseISizedElement(ISizedElement object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Presentations</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Presentations</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePresentations(Presentations object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>IPresentation Pkg</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>IPresentation Pkg</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIPresentationPkg(IPresentationPkg object)
+	{
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>LNamed Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>LNamed Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseLNamedElement(LNamedElement object)
 	{
 		return null;
 	}

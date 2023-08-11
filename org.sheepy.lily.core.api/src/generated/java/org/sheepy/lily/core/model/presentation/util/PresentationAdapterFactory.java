@@ -4,11 +4,14 @@ package org.sheepy.lily.core.model.presentation.util;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-import org.sheepy.lily.core.model.presentation.*;
+import org.sheepy.lily.core.model.presentation.IPositionElement;
+import org.sheepy.lily.core.model.presentation.IPresentationPkg;
+import org.sheepy.lily.core.model.presentation.ISizedElement;
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.presentation.Presentations;
+import org.sheepy.lily.core.model.types.LNamedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -70,7 +73,7 @@ public class PresentationAdapterFactory extends AdapterFactoryImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected PresentationSwitch<Adapter> modelSwitch = new PresentationSwitch<Adapter>()
+	protected PresentationSwitch<Adapter> modelSwitch = new PresentationSwitch<>()
 		{
 			@Override
 			public Adapter caseIPositionElement(IPositionElement object)
@@ -81,6 +84,21 @@ public class PresentationAdapterFactory extends AdapterFactoryImpl
 			public Adapter caseISizedElement(ISizedElement object)
 			{
 				return createISizedElementAdapter();
+			}
+			@Override
+			public Adapter casePresentations(Presentations object)
+			{
+				return createPresentationsAdapter();
+			}
+			@Override
+			public Adapter caseIPresentationPkg(IPresentationPkg object)
+			{
+				return createIPresentationPkgAdapter();
+			}
+			@Override
+			public Adapter caseLNamedElement(LNamedElement object)
+			{
+				return createLNamedElementAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object)
@@ -129,6 +147,51 @@ public class PresentationAdapterFactory extends AdapterFactoryImpl
 	 * @generated
 	 */
 	public Adapter createISizedElementAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.presentation.Presentations <em>Presentations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.presentation.Presentations
+	 * @generated
+	 */
+	public Adapter createPresentationsAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.presentation.IPresentationPkg <em>IPresentation Pkg</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.presentation.IPresentationPkg
+	 * @generated
+	 */
+	public Adapter createIPresentationPkgAdapter()
+	{
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.sheepy.lily.core.model.types.LNamedElement <em>LNamed Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.sheepy.lily.core.model.types.LNamedElement
+	 * @generated
+	 */
+	public Adapter createLNamedElementAdapter()
 	{
 		return null;
 	}

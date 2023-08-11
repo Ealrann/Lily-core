@@ -5,12 +5,11 @@ package org.sheepy.lily.core.model.presentation.impl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.sheepy.lily.core.model.presentation.*;
+import org.sheepy.lily.core.model.presentation.PresentationFactory;
+import org.sheepy.lily.core.model.presentation.PresentationPackage;
+import org.sheepy.lily.core.model.presentation.Presentations;
 
 /**
  * <!-- begin-user-doc -->
@@ -64,9 +63,22 @@ public class PresentationFactoryImpl extends EFactoryImpl implements Presentatio
 	{
 		switch (eClass.getClassifierID())
 		{
+			case PresentationPackage.PRESENTATIONS: return createPresentations();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Presentations createPresentations()
+	{
+		PresentationsImpl presentations = new PresentationsImpl();
+		return presentations;
 	}
 
 	/**
