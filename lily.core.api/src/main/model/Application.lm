@@ -1,0 +1,74 @@
+(MetaModel domain=org.sheepy.lily.core.model name=Application
+	imports=org.sheepy.lily.core.model.Types,org.sheepy.lily.core.model.Resource,org.sheepy.lily.core.model.Inference,org.sheepy.lily.core.model.Variable
+
+	(Definition Application
+	    (includes group=#LMCore@Model)
+		(+contains name=engines [0..*] @IEngine)
+		(+att name=run datatype=#LMCore@boolean [0..1] defaultValue=true)
+		(+att name=title datatype=#LMCore@string [0..1] defaultValue="Vulkan Application")
+		(+contains name=scene [0..1] @Scene)
+		(+contains name=timeConfiguration [0..1] @TimeConfiguration)
+		(+contains name=extensionPkg [0..1] @ApplicationExtensionPkg)
+		(+contains name=models [0..*] @IModel)
+		(+contains name=resourcePkg [0..1] #Resource@ResourcePkg)
+		(+att name=version datatype=#LMCore@string [1..1] defaultValue="0.0.0"))
+
+	(Group IApplicationExtension
+		(includes group=#Types@LNamedElement))
+
+	(Definition ApplicationExtensionPkg
+		(+contains name=extensions [0..*] @IApplicationExtension))
+
+	(Definition TimeConfiguration
+		(+att name=timeStep datatype=#LMCore@long [1..1] defaultValue=1)
+		(+att name=unit datatype=#Types@ETimeUnit [1..1] defaultValue=SECONDS)
+		(+att name=timeFactor datatype=#LMCore@double [1..1] defaultValue=1))
+
+	(Group IEngine)
+
+	(Group IModel)
+
+	(Group ICompositor
+		(includes group=#Inference@IInferenceObject)
+		(+contains name=extensionPkg [0..1] @CompositorExtensionPkg)
+		(+att name=enabled datatype=#LMCore@boolean [1..1] defaultValue=true))
+
+	(Definition CompositorExtensionPkg
+		(+contains name=extensions [0..*] @ICompositorExtension))
+
+	(Group ICompositorExtension)
+
+	(Group ICadence)
+
+	(Definition Scene
+		(+contains name=compositors [0..*] @ICompositor)
+		(+att name=fullscreen datatype=#LMCore@boolean [0..1] defaultValue=false)
+		(+att name=resizeable datatype=#LMCore@boolean [0..1] defaultValue=false)
+		(+att name=size datatype=#Types@Vector2i [0..1] defaultValue="400;400")
+		(+contains name=resourcePkg [0..1] #Resource@ResourcePkg))
+
+	(Definition GenericScenePart
+		(includes group=@ICompositor)
+		(includes group=#Types@LNamedElement))
+
+	(Definition BackgroundImage
+		(includes group=#Types@LNamedElement)
+		(includes group=@ICompositor)
+		(+att name=clearColor datatype=#Types@Vector3i [1..1] defaultValue="0;0;0")
+		(+att name=sampling datatype=#Resource@ESampling [1..1] defaultValue=Linear)
+		(+refers name=srcImage [0..1] #Resource@IImage)
+		(+refers name=dstImage [0..1] #Resource@IImage))
+
+	(Definition ScreenEffect
+		(includes group=#Types@LNamedElement)
+		(includes group=@ICompositor)
+		(+refers name=srcImage [0..1] #Resource@IImage)
+		(+refers name=dstImage [1..1] #Resource@IImage)
+		(+contains name=effect [1..1] @SpecialEffect))
+
+	(Definition SpecialEffect
+		(includes group=#Types@LNamedElement)
+		(includes group=#Resource@IRootResource)
+		(+contains name=shader [1..1] #Resource@FileResource)
+		(+refers name=inputs [0..*] #Variable@IModelVariable))
+)

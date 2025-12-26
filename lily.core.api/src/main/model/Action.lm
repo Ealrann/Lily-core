@@ -1,0 +1,15 @@
+(MetaModel domain=org.sheepy.lily.core.model name=Action imports=org.sheepy.lily.core.model.Types
+
+	(Definition ActionList
+		(Generic T (extension boundType=extends type=@Action))
+		(-att list [1..1] @JavaList
+			(parameters ../../generics.0)))
+
+	(JavaWrapper name=JavaList qualifiedClassName=java.util.List)
+
+	(Group Action
+		(includes group=#Types@LNamedElement))
+
+	(Definition CloseApplicationAction
+		(includes group=@Action))
+)

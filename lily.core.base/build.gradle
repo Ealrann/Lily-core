@@ -1,0 +1,4 @@
+dependencies {
+	runtimeOnly project(':lily.core.allocation')
+	runtimeOnly project(':lily.core.impl')
+}

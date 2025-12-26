@@ -1,0 +1,10 @@
+dependencies {
+	api project(':lily.core.api')
+	implementation "org.logoce.lmf:logoce.lmf.core.loader"
+}
+
+sourceSets {
+	main {
+		java.srcDirs += ['src/main/generated']
+	}
+}

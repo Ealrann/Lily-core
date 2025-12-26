@@ -1,0 +1,22 @@
+[user]
+name =
+email =
+
+[color]
+ui = auto
+
+[alias]
+st = status
+co = checkout
+ci = commit
+lg = log --graph --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ar)%Creset'
+oops = commit --amend --no-edit
+su = submodule update
+si = submodule init
+pr = pull --rebase --recurse-submodules
+
+[color "branch"]
+upstream = cyan
+
+[tag]
+sort = version:refname

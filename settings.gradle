@@ -1,0 +1,18 @@
+pluginManagement {
+	repositories {
+		mavenLocal()
+		gradlePluginPortal()
+	}
+	includeBuild '../lmf'
+}
+
+rootProject.name = "Lily-core"
+
+include 'lily.core.api'
+include 'lily.core.impl'
+include 'lily.core.allocation'
+include 'lily.core.base'
+
+if (gradle.parent == null) {
+	includeBuild('../lmf')
+}

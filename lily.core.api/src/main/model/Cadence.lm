@@ -1,0 +1,44 @@
+(MetaModel domain=org.sheepy.lily.core.model name=Cadence
+	imports=org.sheepy.lily.core.model.Application,org.sheepy.lily.core.model.Types
+
+	(Definition Cadence
+		(includes group=@CadenceTaskPkg)
+		(includes group=#Application@ICadence)
+		(+att name=frequency datatype=#LMCore@int [1..1] defaultValue=-1)
+		(+att name=printUPS datatype=#LMCore@boolean [1..1] defaultValue=false))
+
+	(Group ICadenceTask)
+
+	(Group CadenceTaskPkg
+		(includes group=@ICadenceTask)
+		(+contains name=tasks [0..*] @ICadenceTask))
+
+	(Definition ExecuteWhile
+		(includes group=@CadenceTaskPkg)
+		(+contains name=conditions [0..*] @ICadenceCondition))
+
+	(Definition ExecuteIf
+		(includes group=@CadenceTaskPkg)
+		(+contains name=conditions [0..*] @ICadenceCondition))
+
+	(Definition PrintUPS
+		(includes group=@ICadenceTask)
+		(+att name=printEveryMs datatype=#LMCore@int [1..1] defaultValue=2000))
+
+	(Group ICadenceCondition)
+
+	(Definition HaveTime
+		(includes group=@ICadenceCondition))
+
+	(Definition CountUntil
+		(includes group=@ICadenceCondition)
+		(+att name=totalCount datatype=#LMCore@int [1..1] defaultValue=1)
+		(+att name=currentCount datatype=#LMCore@int [1..1] defaultValue=0))
+
+	(Definition CloseApplication
+		(includes group=@ICadenceTask))
+
+	(Definition GenericCadence
+		(includes group=#Application@ICadence)
+		(includes group=#Types@LNamedElement))
+)

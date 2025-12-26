@@ -1,0 +1,28 @@
+(MetaModel domain=org.sheepy.lily.core.allocation.test name=Testallocation
+    (Group AllocationObject
+        (+att name=currentAllocationCount datatype=#LMCore@int [0..1] defaultValue="0")
+        (+att name=totalAllocationCount datatype=#LMCore@int [0..1] defaultValue="0")
+        (+att name=dependencyUpdateCount datatype=#LMCore@int [0..1] defaultValue="0")
+        (+att name=activated datatype=#LMCore@boolean [0..1] defaultValue="true"))
+
+    (Definition Root
+        (includes group=@AllocationObject)
+        (+contains name=nodes @Node [0..*])
+        (+contains name=containers @Container [0..*]))
+
+    (Definition Node
+        (includes group=@AllocationObject)
+        (+contains name=leaves @Leaf [0..*])
+        (+refers name=container @Container [0..1]))
+
+    (Definition Container
+        (includes group=@AllocationObject)
+        (+contains name=boxes @Box [0..*]))
+
+    (Definition Leaf
+        (includes group=@AllocationObject)
+        (+refers name=boxes @Box [0..*]))
+
+    (Definition Box
+        (includes group=@AllocationObject))
+)

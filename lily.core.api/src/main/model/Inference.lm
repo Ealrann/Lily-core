@@ -1,0 +1,43 @@
+(MetaModel domain=org.sheepy.lily.core.model name=Inference
+	imports=org.sheepy.lily.core.model.Types,org.sheepy.lily.core.model.Action
+
+	(JavaWrapper name=JavaClass qualifiedClassName=java.lang.Class)
+
+	(Group IInferenceObject
+		(Operation name=lInferenceObject returnType=@IInferenceObject))
+
+	(Group Inferer
+		(includes group=@IInferenceObject)
+		(+contains name=rules [0..*] @LRule)
+		(Operation name=lExecutor returnType=@IInferenceObject))
+
+	(Group Sensor
+		(includes group=@IInferenceObject))
+
+	(Group AbstractNotification
+		(Operation name=match returnType=#LMCore@boolean
+			(OperationParameter name=compareTo type=@AbstractNotification)))
+
+	(Group LNotification
+		(includes group=@AbstractNotification))
+
+	(Group ParameteredNotification
+		(includes group=@AbstractNotification)
+		(Generic T
+			(extension boundType=extends type=#Types@Parameter)))
+
+	(Group Condition
+		(Generic T
+			(extension boundType=extends type=#Types@Parameter))
+		(+contains name=value [0..1] ^T)
+		(+refers name=definition [0..1] @LNotification)
+		(Operation name=getType returnType=@JavaClass
+			(returnTypeParameters type=^T))
+		(Operation name=match returnType=#LMCore@boolean
+			(OperationParameter name=compareTo type=^T)))
+
+	(Definition LRule
+		(+contains name=notification [1..1] @AbstractNotification)
+		(+refers name=action [0..1] #Action@Action)
+		(+contains name=conditions [0..*] @Condition))
+)

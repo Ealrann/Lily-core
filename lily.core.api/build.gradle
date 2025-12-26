@@ -1,0 +1,25 @@
+
+buildscript {
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+	dependencies {
+		classpath "org.joml:joml:$jomlVersion"
+	}
+}
+
+plugins {
+	id 'org.logoce.lmf.gradle-plugin' version "$logoceVersion"
+}
+
+sourceSets {
+	main {
+		java.srcDirs += ['src/main/model', 'src/main/generated']
+	}
+}
+
+dependencies {
+	api "org.logoce.lmf:logoce.lmf.core.api"
+	api "org.joml:joml:$jomlVersion"
+}

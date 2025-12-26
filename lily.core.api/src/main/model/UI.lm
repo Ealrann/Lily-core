@@ -1,0 +1,122 @@
+(MetaModel domain=org.sheepy.lily.core.model name=UI
+	imports=org.sheepy.lily.core.model.Types,org.sheepy.lily.core.model.Resource,org.sheepy.lily.core.model.Application,org.sheepy.lily.core.model.Inference,org.sheepy.lily.core.model.Variable,org.sheepy.lily.core.model.Action,org.sheepy.lily.core.model.Presentation
+
+	(Definition Panel
+		(includes group=@IPanel)
+		(includes group=#Presentation@ISizedElement)
+		(+contains name=controls [0..*] @IControl)
+		(+att name=showTitle datatype=#LMCore@boolean [0..1] defaultValue=false)
+		(+att name=minimizable datatype=#LMCore@boolean [0..1] defaultValue=false)
+		(+att name=movable datatype=#LMCore@boolean [0..1] defaultValue=false)
+		(+att name=minimized datatype=#LMCore@boolean [0..1] defaultValue=false)
+		(+refers name=backgroundImage [0..1] #Resource@IImage)
+		(+att name=backgroundColor datatype=#Types@Vector4i [1..1] defaultValue="90;90;90;150")
+		(+att name=borderColor datatype=#Types@Vector4i [1..1] defaultValue="60;60;60;150"))
+
+	(Definition UI
+		(includes group=#Application@ICompositor)
+		(+contains name=uiPages [0..*] @UIPage)
+		(+refers name=currentUIPage [0..1] @UIPage)
+		(+contains name=fontPkg [1..1] @FontPkg)
+		(+refers name=dstImage [0..1] #Resource@IImage)
+		(+refers name=images [0..*] #Resource@IImage))
+
+	(Group IUIElement
+		(includes group=#Inference@IInferenceObject))
+
+	(Definition UIPage
+		(includes group=#Presentation@ISizedElement)
+		(includes group=#Types@LNamedElement)
+		(+contains name=panels [0..*] @IPanel))
+
+	(Group IPanel
+		(includes group=#Types@LNamedElement)
+		(includes group=@IUIElement)
+		(includes group=#Presentation@IPositionElement)
+		(+att name=catchInputs datatype=#LMCore@boolean [1..1] defaultValue=true)
+		(+att name=reportingHover datatype=#LMCore@boolean [1..1] defaultValue=true))
+
+	(Group IControl
+		(includes group=@IUIElement))
+
+	(Group Widget
+		(includes group=@IControl)
+		(includes group=@IUIElement)
+		(includes group=#Presentation@ISizedElement))
+
+	(Group TextWidget
+		(includes group=@Widget)
+		(+refers name=font [0..1] @Font))
+
+	(Group AbstractLabel
+		(includes group=@TextWidget)
+		(+att name=text datatype=#LMCore@string [0..1] defaultValue="")
+		(+att name=fontScale datatype=#LMCore@float [0..1] defaultValue=1f))
+
+	(Definition DynamicRowLayout
+		(includes group=@IControl)
+		(+att name=height datatype=#LMCore@int [0..1] defaultValue=16)
+		(+att name=columnCount datatype=#LMCore@int [0..1] defaultValue=1))
+
+	(Definition VariableLabel
+		(includes group=@AbstractLabel)
+		(+contains name=variableResolver [1..1] #Variable@IVariableResolver)
+		(+att name=showName datatype=#LMCore@boolean [1..1] defaultValue=true)
+		(+att name=format datatype=#LMCore@string [0..1]))
+
+	(Definition Label
+		(includes group=@AbstractLabel)
+		(+att name=wrap datatype=#LMCore@boolean [1..1] defaultValue=false)
+		(+att name=narrator datatype=#LMCore@boolean [1..1] defaultValue=false)
+		(+att name=narrationSpeed datatype=#LMCore@int [0..1] defaultValue=100))
+
+	(Definition Slider
+		(includes group=@TextWidget)
+		(+att name=minValue datatype=#LMCore@int [0..1] defaultValue=0)
+		(+att name=maxValue datatype=#LMCore@int [0..1] defaultValue=10)
+		(+att name=step datatype=#LMCore@int [0..1] defaultValue=1)
+		(+contains name=variableResolver [1..1] #Variable@IVariableResolver))
+
+	(Definition TextField
+		(includes group=@TextWidget)
+		(+contains name=variableResolver [0..1] #Variable@IVariableResolver))
+
+	(Group AbstractButton
+		(includes group=@TextWidget)
+		(+att name=text datatype=#LMCore@string [0..1] defaultValue=""))
+
+	(Definition Button
+		(includes group=@AbstractButton)
+		(+att name=shortcut datatype=#LMCore@int [0..1])
+		(+att name=state datatype=#Types@EKeyState [0..1])
+		(+contains name=actions [0..*] #Action@Action)
+		(Operation name=lActions returnType=#Action@ActionList)
+		(Operation name=getExecutor returnType=#Inference@IInferenceObject))
+
+	(Group AbstractBooleanButton
+		(includes group=@AbstractButton)
+		(+att name=textWhenTrue datatype=#LMCore@string [0..1])
+		(+att name=textWhenFalse datatype=#LMCore@string [0..1]))
+
+	(Definition BooleanButton
+		(includes group=@AbstractBooleanButton)
+		(+contains name=variableResolver [0..1] #Variable@IVariableResolver))
+
+	(Definition BooleanActionButton
+		(includes group=@AbstractBooleanButton)
+		(+contains name=actionWhenTrue [0..1] #Action@Action)
+		(+contains name=actionWhenFalse [0..1] #Action@Action))
+
+	(Definition FontPkg
+		(+contains name=fonts [1..*] @Font))
+
+	(Definition FontTable
+		(includes group=#Types@LNamedElement)
+		(+contains name=file [1..1] #Resource@FileResource)
+		(+att name=charTables datatype=#Types@ECharTable [1..*]))
+
+	(Definition Font
+		(includes group=#Resource@IRootResource)
+		(+contains name=tables [1..*] @FontTable)
+		(+att name=height datatype=#LMCore@float [1..1] defaultValue=18f))
+)

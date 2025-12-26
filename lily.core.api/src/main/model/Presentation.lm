@@ -1,0 +1,18 @@
+(MetaModel domain=org.sheepy.lily.core.model name=Presentation imports=org.sheepy.lily.core.model.Types
+
+	(Group IPositionElement
+		(+att name=position datatype=#Types@Vector2i [0..1] defaultValue="0;0")
+		(+att name=verticalRelative datatype=#Types@EVerticalRelative [0..1] defaultValue=TOP)
+		(+att name=horizontalRelative datatype=#Types@EHorizontalRelative [0..1] defaultValue=LEFT))
+
+	(Group ISizedElement
+		(includes group=@IPositionElement)
+		(+att name=width datatype=#LMCore@int [0..1])
+		(+att name=height datatype=#LMCore@int [0..1]))
+
+	(Group IPresentationPkg
+		(includes group=#Types@LNamedElement))
+
+	(Definition Presentations
+		(+contains name=presentationPkgs [0..*] @IPresentationPkg))
+)

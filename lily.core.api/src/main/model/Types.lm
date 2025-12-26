@@ -1,0 +1,105 @@
+(MetaModel domain=org.sheepy.lily.core.model name=Types
+	(JavaWrapper name=Vector4d qualifiedClassName=org.joml.Vector4dc
+		(serializer convert="if(it!=null){double x=it.x();double y=it.y();double z=it.z();double w=it.w();return (x+\";\"+y+\";\"+z+\";\"+w);}return \"0;0;0;0\";"
+			create="if(it!=null){final String[] split=it.split(\";\");if(split.length==4){double x=Double.parseDouble(split[0]);double y=Double.parseDouble(split[1]);double z=Double.parseDouble(split[2]);double w=Double.parseDouble(split[3]);return new org.joml.Vector4d(x,y,z,w);}}return new org.joml.Vector4d(0,0,0,0);"))
+	(JavaWrapper name=Vector4f qualifiedClassName=org.joml.Vector4fc
+		(serializer convert="if(it!=null){float x=it.x();float y=it.y();float z=it.z();float w=it.w();return (x+\";\"+y+\";\"+z+\";\"+w);}return \"0;0;0;0\";"
+			create="if(it!=null){final String[] split=it.split(\";\");if(split.length==4){float x=Float.parseFloat(split[0]);float y=Float.parseFloat(split[1]);float z=Float.parseFloat(split[2]);float w=Float.parseFloat(split[3]);return new org.joml.Vector4f(x,y,z,w);}}return new org.joml.Vector4f(0f,0f,0f,0f);"))
+	(JavaWrapper name=Vector4i qualifiedClassName=org.joml.Vector4ic
+		(serializer convert="if(it!=null){int x=it.x();int y=it.y();int z=it.z();int w=it.w();return (x+\";\"+y+\";\"+z+\";\"+w);}return \"0;0;0;0\";"
+			create="if(it!=null){final String[] split=it.split(\";\");if(split.length==4){int x=Integer.parseInt(split[0]);int y=Integer.parseInt(split[1]);int z=Integer.parseInt(split[2]);int w=Integer.parseInt(split[3]);return new org.joml.Vector4i(x,y,z,w);}}return new org.joml.Vector4i(0,0,0,0);"))
+	(JavaWrapper name=Color4f qualifiedClassName=org.joml.Vector4fc
+		(serializer convert="if(it!=null){float x=it.x();float y=it.y();float z=it.z();float w=it.w();return (x+\";\"+y+\";\"+z+\";\"+w);}return \"0;0;0;0\";"
+			create="if(it!=null){final String[] split=it.split(\";\");if(split.length==4){float x=Float.parseFloat(split[0]);float y=Float.parseFloat(split[1]);float z=Float.parseFloat(split[2]);float w=Float.parseFloat(split[3]);return new org.joml.Vector4f(x,y,z,w);}}return new org.joml.Vector4f(0f,0f,0f,0f);"))
+	(JavaWrapper name=Color3f qualifiedClassName=org.joml.Vector3fc
+		(serializer convert="if(it!=null){float x=it.x();float y=it.y();float z=it.z();return (x+\";\"+y+\";\"+z);}return \"0;0;0\";"
+			create="if(it!=null){final String[] split=it.split(\";\");if(split.length==3){float x=Float.parseFloat(split[0]);float y=Float.parseFloat(split[1]);float z=Float.parseFloat(split[2]);return new org.joml.Vector3f(x,y,z);}}return new org.joml.Vector3f(0f,0f,0f);"))
+	(JavaWrapper name=Vector3d qualifiedClassName=org.joml.Vector3dc
+		(serializer convert="if(it!=null){double x=it.x();double y=it.y();double z=it.z();return (x+\";\"+y+\";\"+z);}return \"0;0;0\";"
+			create="if(it!=null){final String[] split=it.split(\";\");if(split.length==3){double x=Double.parseDouble(split[0]);double y=Double.parseDouble(split[1]);double z=Double.parseDouble(split[2]);return new org.joml.Vector3d(x,y,z);}}return new org.joml.Vector3d(0,0,0);"))
+	(JavaWrapper name=Vector3f qualifiedClassName=org.joml.Vector3fc
+		(serializer convert="if(it!=null){float x=it.x();float y=it.y();float z=it.z();return (x+\";\"+y+\";\"+z);}return \"0;0;0\";"
+			create="if(it!=null){final String[] split=it.split(\";\");if(split.length==3){float x=Float.parseFloat(split[0]);float y=Float.parseFloat(split[1]);float z=Float.parseFloat(split[2]);return new org.joml.Vector3f(x,y,z);}}return new org.joml.Vector3f(0f,0f,0f);"))
+	(JavaWrapper name=Vector3i qualifiedClassName=org.joml.Vector3ic
+		(serializer convert="if(it!=null){int x=it.x();int y=it.y();int z=it.z();return (x+\";\"+y+\";\"+z);}return \"0;0;0\";"
+			create="if(it!=null){final String[] split=it.split(\";\");if(split.length==3){int x=Integer.parseInt(split[0]);int y=Integer.parseInt(split[1]);int z=Integer.parseInt(split[2]);return new org.joml.Vector3i(x,y,z);}}return new org.joml.Vector3i(0,0,0);"))
+	(JavaWrapper name=Vector2f qualifiedClassName=org.joml.Vector2fc
+		(serializer convert="if(it!=null){float x=it.x();float y=it.y();return (x+\";\"+y);}return \"0;0\";"
+			create="if(it!=null){final String[] split=it.split(\";\");if(split.length==2){float x=Float.parseFloat(split[0]);float y=Float.parseFloat(split[1]);return new org.joml.Vector2f(x,y);}}return new org.joml.Vector2f(0f,0f);"))
+	(JavaWrapper name=Vector2i qualifiedClassName=org.joml.Vector2ic
+		(serializer convert="if(it!=null){int x=it.x();int y=it.y();return (x+\";\"+y);}return \"0;0\";"
+			create="if(it!=null){final String[] split=it.split(\";\");if(split.length==2){int x=Integer.parseInt(split[0]);int y=Integer.parseInt(split[1]);return new org.joml.Vector2i(x,y);}}return new org.joml.Vector2i(0,0);"))
+	(JavaWrapper name=Vector2d qualifiedClassName=org.joml.Vector2dc
+		(serializer convert="if(it!=null){double x=it.x();double y=it.y();return (x+\";\"+y);}return \"0;0\";"
+			create="if(it!=null){final String[] split=it.split(\";\");if(split.length==2){double x=Double.parseDouble(split[0]);double y=Double.parseDouble(split[1]);return new org.joml.Vector2d(x,y);}}return new org.joml.Vector2d(0,0);"))
+	(JavaWrapper name=JavaModule qualifiedClassName=java.lang.Module)
+	(JavaWrapper name=JavaObject qualifiedClassName=java.lang.Object)
+
+	(Group LNamedElement
+		(includes #LMCore@Named))
+
+	(Definition ModelPart
+	    (includes #LMCore@Model)
+	    (+contains children [0..*] #LMCore@LMObject))
+
+	(Group Parameter)
+
+	(Group PositionParameter
+		(includes group=@Parameter)
+		(Operation name=getPosition returnType=@Vector2i))
+
+	(Group PositionFParameter
+		(includes group=@Parameter)
+		(Operation name=getPosition returnType=@Vector2f))
+
+	(Group NativeParameter
+		(includes group=@Parameter)
+		(Generic T)
+		(Operation name=getNativeValue returnType=@JavaObject
+			(returnTypeParameters ../../generics.0)))
+
+	(Definition FloatParameter
+		(includes group=@NativeParameter
+			(parameters type=#LMCore@float))
+		(+att name=value datatype=#LMCore@float [0..1])
+		(Operation name=getNativeValue content="return this.value();" returnType=#LMCore@float))
+
+	(Definition StringParameter
+		(includes group=@NativeParameter
+			(parameters type=#LMCore@string))
+		(+att name=value datatype=#LMCore@string [0..1])
+		(Operation name=getNativeValue content="return this.value();" returnType=#LMCore@string))
+
+	(Definition BooleanParameter
+		(includes group=@NativeParameter
+			(parameters type=#LMCore@boolean))
+		(+att name=value datatype=#LMCore@boolean [0..1])
+		(Operation name=getNativeValue content="return this.value();" returnType=#LMCore@boolean))
+
+	(Enum ENotificationDirection Parent,Children,Self,All)
+	(Enum EMoveState START_MOVING,STOP_MOVING)
+	(Enum EDirection UP,LEFT,RIGHT,DOWN)
+	(Enum ETimeUnit
+		NANOSECONDS : 0 ,
+		MICROSECONDS : 1 ,
+		MILLISECONDS : 2 ,
+		SECONDS : 3 ,
+		MINUTES : 4 ,
+		HOURS : 5 ,
+		DAYS : 6
+		(EnumAttribute value #LMCore@int))
+	(Enum ENumberComparisonType Equal,InfOrEqual,SupOrEqual,Inf,Sup)
+	(Enum ERelative
+		HORIZONTAL : 0 ,
+		VERTICAL : 1
+		(EnumAttribute value #LMCore@int))
+	(Enum EVerticalRelative BOTTOM,MIDDLE,TOP)
+	(Enum EHorizontalRelative LEFT,MIDDLE,RIGHT)
+	(Enum EMouseButton RIGHT,LEFT,MIDDLE,_4,_5,_6,_7,_8)
+	(Enum EKeyState
+		RELEASED : 0 ,
+		PRESSED : 1 ,
+		REPEATED : 2
+		(EnumAttribute value #LMCore@int))
+	(Enum ECharTable Base,Extended,Chinese)
+)

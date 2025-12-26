@@ -1,0 +1,15 @@
+(MetaModel domain=org.sheepy.lily.core.model name=Maintainer
+	(Group Maintainable
+		(Generic T
+			(extension boundType=extends type=@Maintainable
+				(parameters ../../../generics.0)))
+		(+refers name=maintainer [0..1] @Maintainer
+		    (parameters ../../generics.0)))
+
+	(Group Maintainer
+		(Generic T
+			(extension boundType=extends type=@Maintainable
+				(parameters ../../../generics.0)))
+		(+refers name=maintained [0..*] @Maintainable
+		    (parameters ../../generics.0)))
+)

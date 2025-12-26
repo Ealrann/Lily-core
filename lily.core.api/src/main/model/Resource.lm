@@ -1,0 +1,52 @@
+(MetaModel domain=org.sheepy.lily.core.model name=Resource imports=org.sheepy.lily.core.model.Types
+
+	(Enum ESampling
+		Linear : 0 ,
+		Nearest : 1
+		(EnumAttribute value #LMCore@int))
+
+	(Group IRootResource
+		(includes group=#Types@LNamedElement))
+
+	(Group IImage
+		(includes group=#Types@LNamedElement))
+
+	(Definition ResourcePkg
+		(+contains name=resources [0..*] @IRootResource))
+
+	(Definition FileResource
+		(includes group=@IRootResource)
+		(+att name=path datatype=#LMCore@string [1..1]))
+
+	(Definition LocalResource
+		(includes group=@FileResource))
+
+	(Group AbstractModuleResource
+		(includes group=@FileResource))
+
+	(Definition ModuleResource
+		(includes group=@AbstractModuleResource)
+		(+att name=module datatype=#Types@JavaModule [1..1]))
+
+	(Definition StringModuleResource
+		(includes group=@AbstractModuleResource)
+		(+att name=moduleName datatype=#LMCore@string [1..1]))
+
+	(Definition Sound
+		(includes group=@IRootResource)
+		(+contains name=file [1..1] @FileResource))
+
+	(Definition Music
+		(includes group=@IRootResource)
+		(+contains name=file [1..1] @FileResource))
+
+	(Definition SoundContinuous
+		(includes group=@Sound)
+		(+att name=attackMs datatype=#LMCore@int [1..1])
+		(+att name=decayMs datatype=#LMCore@int [1..1]))
+
+	(Definition FileImage
+		(includes group=@IRootResource)
+		(includes group=@IImage)
+		(+contains name=file [1..1] @FileResource))
+)
