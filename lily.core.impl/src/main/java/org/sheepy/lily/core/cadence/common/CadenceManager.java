@@ -51,7 +51,7 @@ public class CadenceManager implements ICadenceManager
 	{
 		stop.set(false);
 		mainThread = Thread.currentThread()
-						   .getId();
+						   .threadId();
 
 		((FeaturedObject<?>) application).loadExtenderManager();
 
